@@ -254,7 +254,7 @@ export const t = {
   nextStepPlaceholder: "0 registros",
   nextStepDescription: "¡Sigue así para conocerte mejor!",
   emotionalRegistry: "Registro Emocional",
-  registerEmotion: "Registrar Emoción",
+  registerEmotion: "Autorregistro",
   myEmotionalProfile: "Mi Perfil Emocional",
   myEmotionalProfileDescription: "Una vista multidimensional de tu estado.",
   myEvolution: "Mi Evolución del Ánimo",
