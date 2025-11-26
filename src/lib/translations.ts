@@ -144,6 +144,7 @@ export const t = {
   startModule: "Comenzar Módulo",
   markAsCompleted: "Marcar como completado",
   markAsNotCompleted: "Marcar como No Completado",
+  completed: "Completado",
   startReading: "Iniciar Lectura",
   moduleCompletedTitle: "¡Módulo Completado!",
   moduleCompletedMessage: "Has completado el módulo '{moduleTitle}'.",
