@@ -246,10 +246,6 @@ export default function DashboardPage() {
   const [isRefreshingEmotions, setIsRefreshingEmotions] = useState(false);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   
-  // No necesitamos el estado para las dimensiones, ya que están incrustadas.
-  // const [assessmentDimensions, setAssessmentDimensions] = useState<AssessmentDimension[]>([]);
-
-
   const generateUserActivityApiUrl = useCallback((newEntryData: EmotionalEntry, userIdForUrlParam?: string | null): string => {
     const activityPayload: SingleEmotionalEntryActivity = { entry: newEntryData };
     const jsonPayloadForDatosActividad = encryptDataAES(activityPayload);
@@ -294,18 +290,18 @@ export default function DashboardPage() {
   }, [t]);
 
   useEffect(() => {
-    // Carga inicial de datos
     loadDataFromStorage();
 
-    // Escuchar eventos para recargar si los datos cambian en otra parte de la app
-    window.addEventListener('storage', loadDataFromStorage);
-    window.addEventListener('emotional-entries-updated', loadDataFromStorage);
-    window.addEventListener('assessment-history-updated', loadDataFromStorage);
+    const handleStorageChange = () => loadDataFromStorage();
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('emotional-entries-updated', handleStorageChange);
+    window.addEventListener('assessment-history-updated', handleStorageChange);
 
     return () => {
-      window.removeEventListener('storage', loadDataFromStorage);
-      window.removeEventListener('emotional-entries-updated', loadDataFromStorage);
-      window.removeEventListener('assessment-history-updated', loadDataFromStorage);
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('emotional-entries-updated', handleStorageChange);
+      window.removeEventListener('assessment-history-updated', handleStorageChange);
     };
   }, [loadDataFromStorage]);
 
@@ -353,8 +349,6 @@ export default function DashboardPage() {
     const userIdFromContext = user.id;
 
     const newEntry = addEmotionalEntry(data);
-
-    // Actualiza el estado local para reflejar el cambio inmediatamente
     loadDataFromStorage();
 
     toast({
@@ -454,7 +448,7 @@ export default function DashboardPage() {
     if (result.success && result.entries) {
       console.log("DashboardPage (handleRefreshEmotions): Successfully fetched activities. Entries count:", result.entries.length);
       overwriteEmotionalEntries(result.entries);
-      loadDataFromStorage(); // Recarga todo desde el localStorage
+      loadDataFromStorage();
       toast({
         title: "Emociones Actualizadas",
         description: "Se han cargado tus últimos registros emocionales.",
@@ -469,6 +463,25 @@ export default function DashboardPage() {
     }
     setIsRefreshingEmotions(false);
   };
+  
+  const weeklyEntryCount = useMemo(() => {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    return allEntriesForChart.filter(entry => new Date(entry.timestamp) > oneWeekAgo).length;
+  }, [allEntriesForChart]);
+  
+  const focusArea = useMemo(() => {
+    return latestAssessment?.data.priorityAreas[0]?.split('(')[0].trim() || "Autoconocimiento";
+  }, [latestAssessment]);
+
+  const activePathProgress = useMemo(() => {
+    if (!currentActivePath) return { value: "Ninguna", description: "Inicia una ruta desde la sección de Rutas" };
+    const progress = currentActivePath.totalModules > 0 ? (currentActivePath.completedModuleIds.length / currentActivePath.totalModules) * 100 : 0;
+    return {
+      value: `${progress.toFixed(0)}% de ${currentActivePath.title}`,
+      description: `${currentActivePath.completedModuleIds.length} de ${currentActivePath.totalModules} módulos completados.`
+    };
+  }, [currentActivePath]);
 
   return (
     <div className="container mx-auto py-8 space-y-10">
@@ -483,34 +496,34 @@ export default function DashboardPage() {
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <DashboardSummaryCard
-            title={t.currentWellbeing}
-            value={lastEmotion ? lastEmotion : t.wellbeingPlaceholder}
-            description={t.wellbeingDescription}
+            title="Tu Bienestar Hoy"
+            value={lastEmotion || "Estable"}
+            description="Basado en tu último registro emocional."
             icon={lastEmotion ? CheckCircle : Smile}
-            cardColorClass={lastEmotion ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700" : "bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-700" }
+            cardColorClass={lastEmotion ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700" : "bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-700"}
             iconColorClass={lastEmotion ? "text-green-600 dark:text-green-400" : "text-slate-600 dark:text-slate-400"}
           />
           <DashboardSummaryCard
-            title={t.progressSinceLast}
-            value={t.progressPlaceholder}
-            description={t.progressDescription}
-            icon={TrendingUp}
-            cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
-            iconColorClass="text-blue-600 dark:text-blue-400"
-          />
-          <DashboardSummaryCard
-            title={t.inFocus}
-            value={t.inFocusPlaceholder}
-            description={t.inFocusDescription}
+            title="Área Prioritaria"
+            value={focusArea}
+            description="Tu principal área de enfoque según tu última evaluación."
             icon={Target}
             cardColorClass="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700"
             iconColorClass="text-purple-600 dark:text-purple-400"
           />
           <DashboardSummaryCard
-            title={t.nextStep}
-            value={t.nextStepPlaceholder}
-            description={t.nextStepDescription}
-            icon={Lightbulb}
+            title="Ruta en Curso"
+            value={activePathProgress.value}
+            description={activePathProgress.description}
+            icon={TrendingUp}
+            cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
+            iconColorClass="text-blue-600 dark:text-blue-400"
+          />
+          <DashboardSummaryCard
+            title="Registros esta Semana"
+            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'registro' : 'registros'}`}
+            description="¡Sigue así para conocerte mejor!"
+            icon={Activity}
             cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
             iconColorClass="text-yellow-600 dark:text-yellow-500"
           />
@@ -655,6 +668,13 @@ export default function DashboardPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
+             {latestAssessment && (
+                 <Button asChild variant="secondary" className="ml-4">
+                    <Link href="/assessment">
+                        Iniciar Evaluación Completa
+                    </Link>
+                </Button>
+             )}
           </CardFooter>
         </Card>
       </section>
