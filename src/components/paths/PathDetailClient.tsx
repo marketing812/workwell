@@ -29,11 +29,13 @@ import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
   AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { getCompletedModules, saveCompletedModules } from '@/lib/progressStore';
 import { useActivePath } from '@/contexts/ActivePathContext';
@@ -928,108 +930,6 @@ Cuando ${moment}, voy a ${action}.
   );
 }
 
-function FutureSelfVisualizationExercise({
-  content,
-  pathId,
-  audioUrl,
-}: {
-  content: ModuleContent;
-  pathId: string;
-  audioUrl?: string;
-}) {
-  const { toast } = useToast();
-  const [habit, setHabit] = useState('');
-  const [futureSelf, setFutureSelf] = useState('');
-  const [emotions, setEmotions] = useState('');
-  const [thoughts, setThoughts] = useState('');
-  const [benefits, setBenefits] = useState('');
-  const [steps, setSteps] = useState('');
-  const [saved, setSaved] = useState(false);
-
-  if (content.type !== 'exercise') return null;
-
-  const handleSave = (e: FormEvent) => {
-    e.preventDefault();
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Hábito visualizado:* ${habit}
-*Cómo era mi yo futuro:* ${futureSelf}
-*Emociones que sentí:* ${emotions}
-*Pensamientos que aparecieron:* ${thoughts}
-*Beneficios en mi vida:* ${benefits}
-*Pasos que me ayudaron:* ${steps}
-        `;
-    addNotebookEntry({ title: 'Mi Visualización del Yo Futuro', content: notebookContent, pathId });
-    toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
-    setSaved(true);
-  };
-
-  return (
-    <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center">
-          <Edit3 className="mr-2" />
-          {content.title}
-        </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {audioUrl && (
-          <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-              <source src={audioUrl} type="audio/mp3" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-          </div>
-        )}
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm">
-            Después de realizar la visualización (ya sea leyéndola o escuchando el audio), responde a las siguientes
-            preguntas para anclar la experiencia.
-          </p>
-          <div className="space-y-2">
-            <Label htmlFor="habit">¿Qué hábito visualizaste?</Label>
-            <Textarea id="habit" value={habit} onChange={e => setHabit(e.target.value)} disabled={saved} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="future-self">¿Cómo era tu yo futuro?</Label>
-            <Textarea
-              id="future-self"
-              value={futureSelf}
-              onChange={e => setFutureSelf(e.target.value)}
-              disabled={saved}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="emotions">¿Qué emociones sentiste?</Label>
-            <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} disabled={saved} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="thoughts">¿Qué pensamientos nuevos aparecieron?</Label>
-            <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} disabled={saved} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="benefits">¿Qué beneficios viste en tu vida?</Label>
-            <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={saved} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="steps">¿Qué pasos te ayudaron a llegar hasta ahí?</Label>
-            <Textarea id="steps" value={steps} onChange={e => setSteps(e.target.value)} disabled={saved} />
-          </div>
-          {!saved ? (
-            <Button type="submit" className="w-full">
-              Guardar mi visualización
-            </Button>
-          ) : (
-            <p className="text-center text-green-600">¡Visualización guardada!</p>
-          )}
-        </form>
-      </CardContent>
-    </Card>
-  );
-}
-
 function RealisticRitualExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -1491,7 +1391,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={pathId} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={pathId} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -1785,6 +1685,8 @@ export function PathDetailClient({ path }: { path: Path }) {
 
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
+  const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (path) {
@@ -1808,33 +1710,42 @@ export function PathDetailClient({ path }: { path: Path }) {
     );
   }
 
-  const toggleComplete = (moduleId: string, moduleTitle: string) => {
-    const newCompletedModules = new Set(completedModules);
-    let justCompletedModule = false;
-
-    if (newCompletedModules.has(moduleId)) {
-      newCompletedModules.delete(moduleId);
+  const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
+    if (completedModules.has(moduleId)) {
+      setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
     } else {
-      newCompletedModules.add(moduleId);
-      justCompletedModule = true;
+      completeModule(moduleId, moduleTitle); // Directly complete it
     }
+  };
+
+  const completeModule = (moduleId: string, moduleTitle: string) => {
+    const newCompletedModules = new Set(completedModules);
+    newCompletedModules.add(moduleId);
+    
+    setCompletedModules(newCompletedModules);
+    saveCompletedModules(path.id, newCompletedModules);
+    contextUpdateModuleCompletion(path.id, moduleId, true);
+    
+    toast({
+      title: t.moduleCompletedTitle,
+      description: t.moduleCompletedMessage.replace('{moduleTitle}', moduleTitle),
+      duration: 3000,
+    });
+
+    const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
+    if (allModulesCompleted) {
+      setShowPathCongratsDialog(true);
+    }
+  };
+
+  const uncompleteModule = (moduleId: string) => {
+    const newCompletedModules = new Set(completedModules);
+    newCompletedModules.delete(moduleId);
 
     setCompletedModules(newCompletedModules);
     saveCompletedModules(path.id, newCompletedModules);
-    contextUpdateModuleCompletion(path.id, moduleId, justCompletedModule);
-
-    if (justCompletedModule) {
-      toast({
-        title: t.moduleCompletedTitle,
-        description: t.moduleCompletedMessage.replace('{moduleTitle}', moduleTitle),
-        duration: 3000,
-      });
-
-      const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
-      if (allModulesCompleted) {
-        setShowPathCongratsDialog(true);
-      }
-    }
+    contextUpdateModuleCompletion(path.id, moduleId, false);
+    setUncompleteModuleId(null); // Close the dialog
   };
 
   const getModuleIcon = (type: PathModule['type']) => {
@@ -1907,15 +1818,6 @@ export function PathDetailClient({ path }: { path: Path }) {
                       )}
                     </div>
                   </div>
-                  {completedModules.has(module.id) && (
-                    <Badge
-                      variant="secondary"
-                      className="border-green-600 bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200"
-                    >
-                      <CheckCircle className="mr-1.5 h-4 w-4" />
-                      Completado
-                    </Badge>
-                  )}
                 </div>
               </CardHeader>
               <CardContent>
@@ -1937,14 +1839,13 @@ export function PathDetailClient({ path }: { path: Path }) {
 
               </CardContent>
               <CardFooter>
-                <Button
-                  onClick={() => toggleComplete(module.id, module.title)}
-                  variant={completedModules.has(module.id) ? 'secondary' : 'default'}
+                 <Button
+                  onClick={() => handleToggleComplete(module.id, module.title)}
+                  variant={completedModules.has(module.id) ? 'default' : 'secondary'}
+                  className={completedModules.has(module.id) ? 'bg-green-600 hover:bg-green-700' : ''}
                 >
                   <Check className="mr-2 h-4 w-4" />
-                  {completedModules.has(module.id)
-                    ? t.markAsNotCompleted
-                    : t.markAsCompleted}
+                  {completedModules.has(module.id) ? "Completado" : "Marcar como completado"}
                 </Button>
               </CardFooter>
             </Card>
@@ -1957,6 +1858,23 @@ export function PathDetailClient({ path }: { path: Path }) {
           <Link href="/paths">{t.allPaths}</Link>
         </Button>
       </div>
+
+       <AlertDialog open={!!uncompleteModuleId} onOpenChange={(open) => !open && setUncompleteModuleId(null)}>
+        <AlertDialogContent>
+            <AlertDialogHeader>
+                <AlertDialogTitle>¿Desmarcar Módulo?</AlertDialogTitle>
+                <AlertDialogDescription>
+                    Este módulo ya está marcado como completado. ¿Estás seguro de que quieres desmarcarlo?
+                </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setUncompleteModuleId(null)}>Cancelar</AlertDialogCancel>
+                <AlertDialogAction onClick={() => uncompleteModuleId && uncompleteModule(uncompleteModuleId)}>
+                    Sí, desmarcar
+                </AlertDialogAction>
+            </AlertDialogFooter>
+        </AlertDialogContent>
+       </AlertDialog>
 
       <AlertDialog open={showPathCongratsDialog} onOpenChange={setShowPathCongratsDialog}>
         <AlertDialogContent>
