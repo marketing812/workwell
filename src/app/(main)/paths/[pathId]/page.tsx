@@ -20,13 +20,6 @@ export default async function Page({ params }: PageProps) {
   return <PathDetailClient path={path} />;
 }
 
-// Se restaura generateStaticParams para que Next.js sepa qué páginas construir.
-export async function generateStaticParams(): Promise<{pathId: string}[]> {
-  return pathsData.map((path) => ({
-    pathId: path.id,
-  }));
-}
-
 export async function generateMetadata(
   { params }: PageProps
 ): Promise<Metadata> {

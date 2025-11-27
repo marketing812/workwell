@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -10,6 +11,7 @@ import { CheckCircle, PlayCircle } from 'lucide-react';
 import type { Path } from '@/data/pathsData';
 import { useTranslations } from '@/lib/translations';
 import { getCompletedModules } from '@/lib/progressStore';
+import { Skeleton } from '../ui/skeleton';
 
 interface PathProgressCardProps {
   path: Path;
@@ -23,12 +25,32 @@ export function PathProgressCard({ path }: PathProgressCardProps) {
   useEffect(() => {
     // This effect runs only on the client side
     setIsClient(true);
-    setCompletedModules(getCompletedModules(path.id));
+    const updateProgress = () => {
+      setCompletedModules(getCompletedModules(path.id));
+    };
+
+    updateProgress();
+    window.addEventListener(`progress-updated-${path.id}`, updateProgress);
+    return () => window.removeEventListener(`progress-updated-${path.id}`, updateProgress);
   }, [path.id]);
 
   if (!isClient) {
-    // Render a placeholder or null on the server to avoid hydration mismatch
-    return null; 
+    // Render a skeleton placeholder on the server to avoid hydration mismatch
+    return (
+        <Card className="shadow-lg flex flex-col">
+            <CardHeader>
+                <Skeleton className="h-6 w-3/4" />
+                <Skeleton className="h-4 w-full mt-2" />
+                <Skeleton className="h-4 w-2/3 mt-1" />
+            </CardHeader>
+            <CardContent className="flex-grow space-y-4">
+                 <Skeleton className="h-2 w-full" />
+            </CardContent>
+            <CardFooter>
+                <Skeleton className="h-10 w-full" />
+            </CardFooter>
+        </Card>
+    );
   }
 
   const totalModules = path.modules.length;
