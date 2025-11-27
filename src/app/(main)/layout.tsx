@@ -1,5 +1,5 @@
-
 "use client";
+
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,7 @@ import { AppHeader } from "@/components/layout/AppHeader";
 import { useUser } from '@/contexts/UserContext';
 import { Loader2 } from 'lucide-react';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { DailyCheckInProvider, useDailyCheckIn } from '@/hooks/use-daily-check-in.tsx';
+import { DailyCheckInProvider, useDailyCheckIn } from '@/hooks/use-daily-check-in';
 import { DailyCheckInPopup } from '@/components/daily-check-in/DailyCheckInPopup';
 import * as React from 'react';
 
