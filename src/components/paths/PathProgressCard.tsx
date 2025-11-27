@@ -30,8 +30,23 @@ export function PathProgressCard({ path }: PathProgressCardProps) {
     };
 
     updateProgress();
-    window.addEventListener(`progress-updated-${path.id}`, updateProgress);
-    return () => window.removeEventListener(`progress-updated-${path.id}`, updateProgress);
+    
+    const handleStorageUpdate = () => {
+        // This is a more robust way to listen for changes
+        // It's triggered by `saveCompletedModules`
+        updateProgress();
+    };
+
+    // Custom event listener
+    window.addEventListener(`progress-updated-${path.id}`, handleStorageUpdate);
+    
+    // Also listen for general storage changes as a fallback
+    window.addEventListener('storage', handleStorageUpdate);
+
+    return () => {
+      window.removeEventListener(`progress-updated-${path.id}`, handleStorageUpdate);
+      window.removeEventListener('storage', handleStorageUpdate);
+    };
   }, [path.id]);
 
   if (!isClient) {
@@ -96,3 +111,5 @@ export function PathProgressCard({ path }: PathProgressCardProps) {
     </Card>
   );
 }
+
+    
