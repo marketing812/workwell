@@ -6,8 +6,8 @@ import type { Metadata } from 'next';
 
 type PageProps = { params: { pathId: string } };
 
-// Se restaura el funcionamiento estándar de Next.js para estas páginas
-// eliminando 'force-dynamic' y restaurando 'generateStaticParams'.
+// Se añade esta línea para forzar el renderizado dinámico y evitar problemas de caché
+export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }: PageProps) {
   const { pathId } = params;
