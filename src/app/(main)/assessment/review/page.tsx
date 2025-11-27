@@ -46,3 +46,5 @@ export default function AssessmentReviewPage() {
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';
