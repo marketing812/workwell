@@ -35,7 +35,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { getCompletedModules, saveCompletedModules } from '@/lib/progressStore';
 import { useActivePath } from '@/contexts/ActivePathContext';
@@ -930,6 +929,108 @@ Cuando ${moment}, voy a ${action}.
   );
 }
 
+function FutureSelfVisualizationExercise({
+  content,
+  pathId,
+  audioUrl,
+}: {
+  content: ModuleContent;
+  pathId: string;
+  audioUrl?: string;
+}) {
+  const { toast } = useToast();
+  const [habit, setHabit] = useState('');
+  const [futureSelf, setFutureSelf] = useState('');
+  const [emotions, setEmotions] = useState('');
+  const [thoughts, setThoughts] = useState('');
+  const [benefits, setBenefits] = useState('');
+  const [steps, setSteps] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  if (content.type !== 'exercise') return null;
+
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+*Hábito visualizado:* ${habit}
+*Cómo era mi yo futuro:* ${futureSelf}
+*Emociones que sentí:* ${emotions}
+*Pensamientos que aparecieron:* ${thoughts}
+*Beneficios en mi vida:* ${benefits}
+*Pasos que me ayudaron:* ${steps}
+        `;
+    addNotebookEntry({ title: 'Mi Visualización del Yo Futuro', content: notebookContent, pathId });
+    toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
+    setSaved(true);
+  };
+
+  return (
+    <Card className="bg-muted/30 my-6 shadow-md">
+      <CardHeader>
+        <CardTitle className="text-lg text-accent flex items-center">
+          <Edit3 className="mr-2" />
+          {content.title}
+        </CardTitle>
+        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {audioUrl && (
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src={audioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        )}
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSave} className="space-y-4">
+          <p className="text-sm">
+            Después de realizar la visualización (ya sea leyéndola o escuchando el audio), responde a las siguientes
+            preguntas para anclar la experiencia.
+          </p>
+          <div className="space-y-2">
+            <Label htmlFor="habit">¿Qué hábito visualizaste?</Label>
+            <Textarea id="habit" value={habit} onChange={e => setHabit(e.target.value)} disabled={saved} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="future-self">¿Cómo era tu yo futuro?</Label>
+            <Textarea
+              id="future-self"
+              value={futureSelf}
+              onChange={e => setFutureSelf(e.target.value)}
+              disabled={saved}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="emotions">¿Qué emociones sentiste?</Label>
+            <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} disabled={saved} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="thoughts">¿Qué pensamientos nuevos aparecieron?</Label>
+            <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} disabled={saved} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="benefits">¿Qué beneficios viste en tu vida?</Label>
+            <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={saved} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="steps">¿Qué pasos te ayudaron a llegar hasta ahí?</Label>
+            <Textarea id="steps" value={steps} onChange={e => setSteps(e.target.value)} disabled={saved} />
+          </div>
+          {!saved ? (
+            <Button type="submit" className="w-full">
+              Guardar mi visualización
+            </Button>
+          ) : (
+            <p className="text-center text-green-600">¡Visualización guardada!</p>
+          )}
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
+
 function RealisticRitualExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -1686,9 +1787,11 @@ export function PathDetailClient({ path }: { path: Path }) {
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
 
   useEffect(() => {
+    setIsClient(true);
     if (path) {
       const initialCompleted = getCompletedModules(path.id);
       setCompletedModules(initialCompleted);
@@ -1697,15 +1800,11 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path) {
-    // This case should ideally be handled by the server component with notFound()
+  if (!path || !isClient) {
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <AlertTriangle className="w-12 h-12 text-destructive" />
-        {t.errorOccurred} Ruta no encontrada.
-        <Button asChild variant="outline">
-          <Link href="/paths">{t.allPaths}</Link>
-        </Button>
+        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+        <p>Cargando ruta...</p>
       </div>
     );
   }
@@ -1896,3 +1995,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
