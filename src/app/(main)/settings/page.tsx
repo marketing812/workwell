@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, type FormEvent } from 'react';
@@ -16,7 +15,6 @@ import { useTheme } from 'next-themes';
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import Link from 'next/link';
 import { pathsData } from '@/data/pathsData';
-import { generatePathPdf } from '@/lib/pdfGenerator';
 import type { Path } from '@/data/pathsData';
 
 export default function SettingsPage() {
@@ -36,7 +34,6 @@ export default function SettingsPage() {
 
   const [isSaving, setIsSaving] = useState(false);
   const [appVersion, setAppVersion] = useState('');
-  const [isDownloading, setIsDownloading] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
@@ -88,27 +85,6 @@ export default function SettingsPage() {
       setIsSaving(false);
     }
   };
-  
-  const handleDownload = async (path: Path) => {
-    setIsDownloading(path.id);
-    try {
-      await generatePathPdf(path);
-      toast({
-        title: 'Descarga Completa',
-        description: `Se ha descargado el PDF de la ruta "${path.title}".`
-      });
-    } catch (error) {
-      toast({
-        title: 'Error en la Descarga',
-        description: 'No se pudo generar el PDF. Por favor, inténtalo de nuevo.',
-        variant: 'destructive',
-      });
-      console.error('Error generating PDF:', error);
-    } finally {
-      setIsDownloading(null);
-    }
-  };
-
 
   const handleClearEntries = () => {
     clearAllEmotionalEntries();
@@ -209,38 +185,6 @@ export default function SettingsPage() {
                 </SelectContent>
               </Select>
             </CardContent>
-          </Card>
-          
-           <Card>
-              <CardHeader>
-                  <CardTitle className="text-xl flex items-center">
-                      <Download className="mr-2 h-5 w-5" />
-                      Exportar Rutas a PDF
-                  </CardTitle>
-                  <CardDescription>
-                      Aquí puedes descargar el contenido completo de cada ruta de desarrollo en formato PDF para consultarlo sin conexión o imprimirlo.
-                  </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                  {pathsData.map(path => (
-                      <div key={path.id} className="flex items-center justify-between rounded-lg border p-3">
-                          <p className="font-medium text-sm">{path.title}</p>
-                          <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => handleDownload(path)}
-                              disabled={isDownloading === path.id}
-                          >
-                              {isDownloading === path.id ? (
-                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              ) : (
-                                  <Download className="mr-2 h-4 w-4" />
-                              )}
-                              Descargar
-                          </Button>
-                      </div>
-                  ))}
-              </CardContent>
           </Card>
 
           <Card>
