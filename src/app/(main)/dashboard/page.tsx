@@ -239,6 +239,7 @@ export default function DashboardPage() {
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
 
+  const [isClient, setIsClient] = useState(false);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   const [recentEntries, setRecentEntries] = useState<EmotionalEntry[]>([]);
   const [lastEmotion, setLastEmotion] = useState<string | null>(null);
@@ -290,6 +291,8 @@ export default function DashboardPage() {
   }, [t]);
 
   useEffect(() => {
+    // This effect runs only on the client
+    setIsClient(true);
     loadDataFromStorage();
 
     const handleStorageChange = () => loadDataFromStorage();
@@ -307,7 +310,7 @@ export default function DashboardPage() {
 
 
   const chartData = useMemo(() => {
-    if (!allEntriesForChart || allEntriesForChart.length === 0) {
+    if (!isClient || !allEntriesForChart || allEntriesForChart.length === 0) {
       return [];
     }
 
@@ -333,7 +336,7 @@ export default function DashboardPage() {
         };
       });
     return processedData;
-  }, [allEntriesForChart, t]);
+  }, [isClient, allEntriesForChart, t]);
 
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
@@ -465,23 +468,34 @@ export default function DashboardPage() {
   };
   
   const weeklyEntryCount = useMemo(() => {
+    if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     return allEntriesForChart.filter(entry => new Date(entry.timestamp) > oneWeekAgo).length;
-  }, [allEntriesForChart]);
+  }, [isClient, allEntriesForChart]);
   
   const focusArea = useMemo(() => {
+    if (!isClient) return "Autoconocimiento";
     return latestAssessment?.data.priorityAreas[0]?.split('(')[0].trim() || "Autoconocimiento";
-  }, [latestAssessment]);
+  }, [isClient, latestAssessment]);
 
   const activePathProgress = useMemo(() => {
-    if (!currentActivePath) return { value: "Ninguna", description: "Inicia una ruta desde la sección de Rutas" };
+    if (!isClient || !currentActivePath) return { value: "Ninguna", description: "Inicia una ruta desde la sección de Rutas" };
     const progress = currentActivePath.totalModules > 0 ? (currentActivePath.completedModuleIds.length / currentActivePath.totalModules) * 100 : 0;
     return {
       value: `${progress.toFixed(0)}% de ${currentActivePath.title}`,
       description: `${currentActivePath.completedModuleIds.length} de ${currentActivePath.totalModules} módulos completados.`
     };
-  }, [currentActivePath]);
+  }, [isClient, currentActivePath]);
+
+  if (!isClient) {
+    // Render a skeleton or loading state on the server to avoid hydration errors
+    return (
+      <div className="container mx-auto py-8">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto py-8 space-y-10">
@@ -661,20 +675,25 @@ export default function DashboardPage() {
               }
             </p>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex-wrap gap-4">
             <Button asChild size="lg">
-              <Link href="/assessment/review">
+              <Link href="/assessment/intro">
                 {latestAssessment ? "Volver a Evaluarme" : t.takeInitialAssessment}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
              {latestAssessment && (
-                 <Button asChild variant="secondary" className="ml-4">
-                    <Link href="/assessment">
-                        Iniciar Evaluación Completa
+                 <Button asChild variant="outline">
+                    <Link href="/my-assessments">
+                        Ver Historial de Evaluaciones
                     </Link>
                 </Button>
              )}
+             <Button asChild variant="secondary">
+                <Link href="/assessment">
+                    Iniciar Evaluación Completa
+                </Link>
+            </Button>
           </CardFooter>
         </Card>
       </section>
