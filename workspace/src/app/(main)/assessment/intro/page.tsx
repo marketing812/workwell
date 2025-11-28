@@ -90,7 +90,7 @@ export default function AssessmentIntroPage() {
             </Link>
           </Button>
         </CardFooter>
-        
+        <p>hola<p>
       </Card>
     </div>
   );
