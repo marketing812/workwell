@@ -26,10 +26,6 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  typescript: { ignoreBuildErrors: true }, // ⚠️ solo temporal
-  eslint: { ignoreDuringBuilds: true },    // ⚠️ solo temporal
-  productionBrowserSourceMaps: false, // Deshabilita source maps en producción
-
 };
 
 export default nextConfig;

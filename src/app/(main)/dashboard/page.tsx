@@ -19,7 +19,7 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Lightbulb, Edit, Radar, LineChart as LineChartIcon, NotebookPen, CheckCircle, Info, UserCircle2, Lock, KeyRound, ShieldQuestion, Trash2, Activity, Send, FileText, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
+import { Smile, TrendingUp, Target, Lightbulb, Edit, Radar, LineChart as LineChartIcon, NotebookPen, CheckCircle, Info, UserCircle2, Lock, KeyRound, ShieldQuestion, Trash2, Activity, Send, FileText, RefreshCw, Loader2, ArrowRight } from "lucide-react";
 import { getRecentEmotionalEntries, addEmotionalEntry, formatEntryTimestamp, type EmotionalEntry, getEmotionalEntries, overwriteEmotionalEntries } from "@/data/emotionalEntriesStore";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -34,175 +34,6 @@ import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHi
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 
-
-const assessmentDimensionsData: AssessmentDimension[] = [
-    {
-      "id": "dim1",
-      "name": "Regulación Emocional y Estrés",
-      "definition": "Capacidad para gestionar emociones difíciles, mantener el equilibrio en momentos de tensión y responder con serenidad frente a la incertidumbre o el conflicto.",
-      "recommendedPathId": "gestion-estres",
-      "items": [
-        { "id": "dim1_item1", "text": "Suelo mantener la calma cuando las cosas se complican.", "weight": 1 },
-        { "id": "dim1_item2", "text": "Me desbordo fácilmente ante el estrés o la presión.", "weight": 1, "isInverse": true },
-        { "id": "dim1_item3", "text": "Soy capaz de respirar hondo y pensar con claridad incluso en momentos difíciles.", "weight": 1 },
-        { "id": "dim1_item4", "text": "Me recupero con rapidez después de una situación emocionalmente intensa.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim2",
-      "name": "Flexibilidad Mental y Adaptabilidad",
-      "definition": "Capacidad para abrirse a nuevas ideas, aceptar el cambio como parte natural de la vida y adaptarse mentalmente a escenarios inciertos o inesperados.",
-      "recommendedPathId": "tolerar-incertidumbre",
-      "items": [
-        { "id": "dim2_item1", "text": "Me entusiasma aprender cosas nuevas, incluso si desafían lo que ya sé.", "weight": 1 },
-        { "id": "dim2_item2", "text": "Suelo encontrar soluciones creativas cuando algo no sale como esperaba.", "weight": 1 },
-        { "id": "dim2_item3", "text": "A menudo cuestiono mis propias creencias o formas de pensar.", "weight": 1 },
-        { "id": "dim2_item4", "text": "Me adapto con rapidez cuando las circunstancias cambian.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim3",
-      "name": "Autorregulación personal y constancia",
-      "definition": "Capacidad de organizarse, mantenerse disciplinado/a y cumplir con lo que uno se propone, incluso cuando requiere esfuerzo o perseverancia.",
-      "recommendedPathId": "superar-procrastinacion",
-      "items": [
-        { "id": "dim3_item1", "text": "Suelo cumplir mis objetivos, aunque me cuesten.", "weight": 1 },
-        { "id": "dim3_item2", "text": "Soy constante con mis compromisos personales y profesionales.", "weight": 1 },
-        { "id": "dim3_item3", "text": "Planifico mis días para aprovechar bien el tiempo.", "weight": 1 },
-        { "id": "dim3_item4", "text": "Me cuesta priorizar lo importante cuando tengo muchas cosas pendientes.", "weight": 1, "isInverse": true }
-      ]
-    },
-    {
-      "id": "dim4",
-      "name": "Autoafirmación y Expresión Personal",
-      "definition": "Capacidad de expresar opiniones, necesidades y límites de forma clara y segura, manteniendo el respeto por uno mismo y por los demás.",
-      "recommendedPathId": "poner-limites",
-      "items": [
-        { "id": "dim4_item1", "text": "Me siento con derecho a expresar lo que necesito, aunque sea incómodo.", "weight": 1 },
-        { "id": "dim4_item2", "text": "Soy capaz de defender mi opinión sin imponerla.", "weight": 1 },
-        { "id": "dim4_item3", "text": "Me cuesta decir \"no\", incluso cuando lo deseo.", "weight": 1, "isInverse": true },
-        { "id": "dim4_item4", "text": "En situaciones difíciles, puedo mantener mi postura con respeto.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim5",
-      "name": "Empatía y Conexión Interpersonal",
-      "definition": "Capacidad de ponerse en el lugar del otro, construir vínculos saludables y actuar desde la comprensión y el respeto mutuo.",
-      "recommendedPathId": "relaciones-autenticas",
-      "items": [
-        { "id": "dim5_item1", "text": "Me interesa entender cómo se sienten las personas que me rodean.", "weight": 1 },
-        { "id": "dim5_item2", "text": "A veces actúo sin considerar el impacto emocional que puede tener en otros.", "weight": 1, "isInverse": true },
-        { "id": "dim5_item3", "text": "Suelo conectar fácilmente con las emociones de los demás.", "weight": 1 },
-        { "id": "dim5_item4", "text": "Tengo sensibilidad para detectar cuándo alguien necesita apoyo.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim6",
-      "name": "Insight y Autoconciencia",
-      "definition": "Capacidad de observarse a uno mismo, reconocer patrones emocionales y conductuales y comprender cómo afectan a la vida personal y profesional.",
-      "recommendedPathId": "comprender-mejor-cada-dia",
-      "items": [
-        { "id": "dim6_item1", "text": "Reflexiono con frecuencia sobre lo que siento y por qué.", "weight": 1 },
-        { "id": "dim6_item2", "text": "Se con claridad quién soy porque conozco mis puntos fuertes y también mis áreas a mejorar.", "weight": 1 },
-        { "id": "dim6_item3", "text": "Soy consciente de cómo influyen mis emociones en mis decisiones.", "weight": 1 },
-        { "id": "dim6_item4", "text": "Reconozco cuándo repito patrones que no me benefician y trato de cambiarlos.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim7",
-      "name": "Propósito Vital y Dirección Personal",
-      "definition": "Claridad sobre lo que uno quiere lograr en la vida, conexión con los propios valores y motivación para avanzar hacia metas significativas.",
-      "recommendedPathId": "volver-a-lo-importante",
-      "items": [
-        { "id": "dim7_item1", "text": "Tengo claro qué es importante para mí en la vida.", "weight": 1 },
-        { "id": "dim7_item2", "text": "Tomo decisiones alineadas con mis prioridades y valores personales.", "weight": 1 },
-        { "id": "dim7_item3", "text": "Siento que lo que hago tiene sentido y propósito.", "weight": 1 },
-        { "id": "dim7_item4", "text": "Estoy construyendo un camino de vida que me representa.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim8",
-      "name": "Estilo de Afrontamiento",
-      "definition": "Estilo de enfrentar los desafíos con determinación, capacidad de adaptación y actitud constructiva ante las dificultades.",
-      "recommendedPathId": "resiliencia-en-accion",
-      "items": [
-        { "id": "dim8_item1", "text": "Cuando tengo un problema, rápidamente busco cómo solucionarlo sin quedarme estancado/a.", "weight": 1 },
-        { "id": "dim8_item2", "text": "Trato de sacar un aprendizaje personal incluso en los momentos más difíciles.", "weight": 1 },
-        { "id": "dim8_item3", "text": "Frente a la dificultad, trato de mantener la mente abierta y flexible.", "weight": 1 },
-        { "id": "dim8_item4", "text": "Me adapto sin perder de vista lo que quiero conseguir.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim9",
-      "name": "Integridad y Coherencia Ética",
-      "definition": "Capacidad de actuar de acuerdo con valores personales sólidos, ser coherente entre lo que se piensa, se siente y se hace, y tener sensibilidad ética en las decisiones.",
-      "recommendedPathId": "vivir-con-coherencia",
-      "items": [
-        { "id": "dim9_item1", "text": "Intento actuar con integridad, incluso cuando no es lo mejor o más fácil.", "weight": 1 },
-        { "id": "dim9_item2", "text": "Me importa mucho el impacto de mis acciones en otras personas.", "weight": 1 },
-        { "id": "dim9_item3", "text": "La honestidad guía mis decisiones, también en lo pequeño.", "weight": 1 },
-        { "id": "dim9_item4", "text": "Me esfuerzo por ser la misma persona en todos los ámbitos de mi vida.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim10",
-      "name": "Responsabilidad Personal y Aceptación Consciente",
-      "definition": "Capacidad de reconocer el papel que uno tiene en las situaciones que atraviesa, asumir la parte de responsabilidad sin caer en la culpa, y actuar desde la aceptación y el compromiso con el cambio.",
-      "recommendedPathId": "ni-culpa-ni-queja",
-      "items": [
-        { "id": "dim10_item1", "text": "Reflexiono y se reconocer cuándo he contribuido a que algo no salga como esperaba.", "weight": 1 },
-        { "id": "dim10_item2", "text": "Cuando afronto dificultades, pienso y me pregunto qué puedo hacer diferente.", "weight": 1 },
-        { "id": "dim10_item3", "text": "Asumo la responsabilidad de mis actos incluso cuando es incómodo.", "weight": 1 },
-        { "id": "dim10_item4", "text": "Soy consciente del papel que tengo en las situaciones que vivo y eso me permite aprender y crecer.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim11",
-      "name": "Apoyo Social Percibido",
-      "definition": "Grado en que la persona percibe tener apoyo emocional, instrumental y profesional disponible tanto en su vida personal como laboral. Evalúa la sensación de sentirse acompañado/a, comprendido/a y respaldado/a por otros.",
-      "recommendedPathId": "confiar-en-mi-red",
-      "items": [
-        { "id": "dim11_item1", "text": "Siento que tengo personas en mi vida con las que puedo contar cuando lo necesito.", "weight": 1 },
-        { "id": "dim11_item2", "text": "En mi entorno laboral, me siento respaldado/a por compañeros y superiores.", "weight": 1 },
-        { "id": "dim11_item3", "text": "Me cuesta pedir ayuda, incluso cuando la necesito.", "weight": 1, "isInverse": true },
-        { "id": "dim11_item4", "text": "Me siento parte de una red de apoyo y sostén emocional sólida y accesible.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim12",
-      "name": "Estado de Ánimo",
-      "definition": "Evaluación del estado de ánimo general y la presencia de síntomas relacionados con el desánimo o la anhedonia en las últimas semanas.",
-      "recommendedPathId": "volver-a-lo-importante",
-      "items": [
-        { "id": "dim12_item1", "text": "Me siento triste o desanimado/a.", "weight": 1 },
-        { "id": "dim12_item2", "text": "Tengo dificultad para disfrutar de las actividades que solían gustarme.", "weight": 1 },
-        { "id": "dim12_item3", "text": "Me siento inútil o inferior a los demás.", "weight": 1 },
-        { "id": "dim12_item4", "text": "Me siento culpable por cosas que hago o no hago.", "weight": 1 },
-        { "id": "dim12_item5", "text": "Me siento agotado/a física o mentalmente.", "weight": 1 },
-        { "id": "dim12_item6", "text": "Tengo dificultad para mantener la concentración en tareas.", "weight": 1 },
-        { "id": "dim12_item7", "text": "Me falta motivación para realizar actividades cotidianas.", "weight": 1 },
-        { "id": "dim12_item8", "text": "Siento que mi vida carece de sentido o dirección.", "weight": 1 },
-        { "id": "dim12_item9", "text": "Me aíslo o evito el contacto con otras personas.", "weight": 1 },
-        { "id": "dim12_item10", "text": "Siento que nada va a cambiar, aunque me esfuerce.", "weight": 1 },
-        { "id": "dim12_item11", "text": "Siento que he perdido interés por cuidar de mí mismo/a (higiene, salud, descanso...).", "weight": 1 },
-        { "id": "dim12_item12", "text": "Últimamente me cuesta identificar o expresar lo que siento.", "weight": 1 }
-      ]
-    },
-    {
-      "id": "dim13",
-      "name": "Ansiedad Estado",
-      "definition": "Evaluación del nivel de ansiedad y tensión experimentado en el momento presente o en los últimos días.",
-      "recommendedPathId": "regular-ansiedad-paso-a-paso",
-      "items": [
-        { "id": "dim13_item1", "text": "Me siento tenso/a o nervioso/a actualmente.", "weight": 1 },
-        { "id": "dim13_item2", "text": "Me preocupo por cosas que normalmente no me afectan.", "weight": 1 },
-        { "id": "dim13_item3", "text": "Siento una inquietud interna difícil de controlar.", "weight": 1 },
-        { "id": "dim13_item4", "text": "Me cuesta relajarme incluso en situaciones tranquilas.", "weight": 1 },
-        { "id": "dim13_item5", "text": "Reacciono con irritabilidad ante pequeñas molestias.", "weight": 1 },
-        { "id": "dim13_item6", "text": "Siento que pierdo el control fácilmente sobre mis emociones.", "weight": 1 }
-      ]
-    }
-  ];
 
 interface ProcessedChartDataPoint {
   date: string;
@@ -239,14 +70,15 @@ export default function DashboardPage() {
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
 
-  const [isClient, setIsClient] = useState(false);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   const [recentEntries, setRecentEntries] = useState<EmotionalEntry[]>([]);
   const [lastEmotion, setLastEmotion] = useState<string | null>(null);
   const [allEntriesForChart, setAllEntriesForChart] = useState<EmotionalEntry[]>([]);
   const [isRefreshingEmotions, setIsRefreshingEmotions] = useState(false);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
-  
+  const [assessmentDimensions, setAssessmentDimensions] = useState<AssessmentDimension[]>([]);
+
+
   const generateUserActivityApiUrl = useCallback((newEntryData: EmotionalEntry, userIdForUrlParam?: string | null): string => {
     const activityPayload: SingleEmotionalEntryActivity = { entry: newEntryData };
     const jsonPayloadForDatosActividad = encryptDataAES(activityPayload);
@@ -264,53 +96,43 @@ export default function DashboardPage() {
   }, []);
 
 
-  const loadDataFromStorage = useCallback(() => {
-    const loadedRecentEntries = getRecentEmotionalEntries(NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD);
-    const loadedAllEntries = getEmotionalEntries(); 
-    const assessmentHistory = getAssessmentHistory();
-    
-    if (assessmentHistory.length > 0) {
-        setLatestAssessment(assessmentHistory[0]);
-    } else {
-        setLatestAssessment(null);
-    }
-
-    setRecentEntries(loadedRecentEntries);
-    setAllEntriesForChart(loadedAllEntries);
-
-    if (loadedRecentEntries.length > 0) {
-        const lastRegisteredEmotion = emotionOptions.find(e => e.value === loadedRecentEntries[0].emotion);
-        if (lastRegisteredEmotion) {
-            setLastEmotion(t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value);
-        } else {
-            setLastEmotion(null);
-        }
-    } else {
-        setLastEmotion(null);
-    }
-  }, [t]);
-
   useEffect(() => {
-    // This effect runs only on the client
-    setIsClient(true);
-    loadDataFromStorage();
+    const loadInitialData = async () => {
+        const loadedRecentEntries = getRecentEmotionalEntries(NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD);
+        const loadedAllEntries = getEmotionalEntries(); 
+        const assessmentHistory = getAssessmentHistory();
+        
+        if (assessmentHistory.length > 0) {
+            setLatestAssessment(assessmentHistory[0]);
+        }
 
-    const handleStorageChange = () => loadDataFromStorage();
+        try {
+          // Ya no es necesario, las preguntas están incrustadas
+        } catch (error) {
+          console.error("Failed to load assessment dimensions on dashboard:", error);
+          toast({
+            title: "Error de Carga",
+            description: "No se pudieron cargar los datos de la evaluación para el gráfico. Por favor, recarga la página.",
+            variant: "destructive"
+          });
+        }
 
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('emotional-entries-updated', handleStorageChange);
-    window.addEventListener('assessment-history-updated', handleStorageChange);
+        setRecentEntries(loadedRecentEntries);
+        setAllEntriesForChart(loadedAllEntries);
 
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('emotional-entries-updated', handleStorageChange);
-      window.removeEventListener('assessment-history-updated', handleStorageChange);
+        if (loadedRecentEntries.length > 0) {
+            const lastRegisteredEmotion = emotionOptions.find(e => e.value === loadedRecentEntries[0].emotion);
+            if (lastRegisteredEmotion) {
+                setLastEmotion(t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value);
+            }
+        }
     };
-  }, [loadDataFromStorage]);
+    loadInitialData();
+  }, [t, toast]);
 
 
   const chartData = useMemo(() => {
-    if (!isClient || !allEntriesForChart || allEntriesForChart.length === 0) {
+    if (!allEntriesForChart || allEntriesForChart.length === 0) {
       return [];
     }
 
@@ -336,7 +158,7 @@ export default function DashboardPage() {
         };
       });
     return processedData;
-  }, [isClient, allEntriesForChart, t]);
+  }, [allEntriesForChart, t]);
 
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
@@ -352,7 +174,13 @@ export default function DashboardPage() {
     const userIdFromContext = user.id;
 
     const newEntry = addEmotionalEntry(data);
-    loadDataFromStorage();
+
+    setRecentEntries(prevEntries => [newEntry, ...prevEntries].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
+    setAllEntriesForChart(prevAllEntries => [newEntry, ...prevAllEntries].sort((a,b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()));
+    const lastRegisteredEmotionDetails = emotionOptions.find(e => e.value === newEntry.emotion);
+    if (lastRegisteredEmotionDetails) {
+        setLastEmotion(t[lastRegisteredEmotionDetails.labelKey as keyof typeof t] || lastRegisteredEmotionDetails.value);
+    }
 
     toast({
       title: t.emotionalEntrySavedTitle,
@@ -451,7 +279,17 @@ export default function DashboardPage() {
     if (result.success && result.entries) {
       console.log("DashboardPage (handleRefreshEmotions): Successfully fetched activities. Entries count:", result.entries.length);
       overwriteEmotionalEntries(result.entries);
-      loadDataFromStorage();
+      const newRecent = getRecentEmotionalEntries(NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD);
+      const newAll = getEmotionalEntries();
+      console.log("DashboardPage (handleRefreshEmotions): Entries from localStorage after overwrite (newAll first 5):", JSON.stringify(newAll.slice(0,5)));
+      setRecentEntries(newRecent);
+      setAllEntriesForChart(newAll);
+      if (newRecent.length > 0) {
+        const lastRegEmotion = emotionOptions.find(e => e.value === newRecent[0].emotion);
+        setLastEmotion(lastRegEmotion ? (t[lastRegEmotion.labelKey as keyof typeof t] || lastRegEmotion.value) : null);
+      } else {
+        setLastEmotion(null);
+      }
       toast({
         title: "Emociones Actualizadas",
         description: "Se han cargado tus últimos registros emocionales.",
@@ -466,36 +304,6 @@ export default function DashboardPage() {
     }
     setIsRefreshingEmotions(false);
   };
-  
-  const weeklyEntryCount = useMemo(() => {
-    if (!isClient) return 0;
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allEntriesForChart.filter(entry => new Date(entry.timestamp) > oneWeekAgo).length;
-  }, [isClient, allEntriesForChart]);
-  
-  const focusArea = useMemo(() => {
-    if (!isClient) return "Autoconocimiento";
-    return latestAssessment?.data.priorityAreas[0]?.split('(')[0].trim() || "Autoconocimiento";
-  }, [isClient, latestAssessment]);
-
-  const activePathProgress = useMemo(() => {
-    if (!isClient || !currentActivePath) return { value: "Ninguna", description: "Inicia una ruta desde la sección de Rutas" };
-    const progress = currentActivePath.totalModules > 0 ? (currentActivePath.completedModuleIds.length / currentActivePath.totalModules) * 100 : 0;
-    return {
-      value: `${progress.toFixed(0)}% de ${currentActivePath.title}`,
-      description: `${currentActivePath.completedModuleIds.length} de ${currentActivePath.totalModules} módulos completados.`
-    };
-  }, [isClient, currentActivePath]);
-
-  if (!isClient) {
-    // Render a skeleton or loading state on the server to avoid hydration errors
-    return (
-      <div className="container mx-auto py-8">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
-  }
 
   return (
     <div className="container mx-auto py-8 space-y-10">
@@ -510,34 +318,34 @@ export default function DashboardPage() {
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <DashboardSummaryCard
-            title="Tu Bienestar Hoy"
-            value={lastEmotion || "Estable"}
-            description="Basado en tu último registro emocional."
+            title={t.currentWellbeing}
+            value={lastEmotion ? lastEmotion : t.wellbeingPlaceholder}
+            description={t.wellbeingDescription}
             icon={lastEmotion ? CheckCircle : Smile}
-            cardColorClass={lastEmotion ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700" : "bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-700"}
+            cardColorClass={lastEmotion ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700" : "bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-700" }
             iconColorClass={lastEmotion ? "text-green-600 dark:text-green-400" : "text-slate-600 dark:text-slate-400"}
           />
           <DashboardSummaryCard
-            title="Área Prioritaria"
-            value={focusArea}
-            description="Tu principal área de enfoque según tu última evaluación."
-            icon={Target}
-            cardColorClass="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700"
-            iconColorClass="text-purple-600 dark:text-purple-400"
-          />
-          <DashboardSummaryCard
-            title="Ruta en Curso"
-            value={activePathProgress.value}
-            description={activePathProgress.description}
+            title={t.progressSinceLast}
+            value={t.progressPlaceholder}
+            description={t.progressDescription}
             icon={TrendingUp}
             cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
             iconColorClass="text-blue-600 dark:text-blue-400"
           />
           <DashboardSummaryCard
-            title="Registros esta Semana"
-            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'registro' : 'registros'}`}
-            description="¡Sigue así para conocerte mejor!"
-            icon={Activity}
+            title={t.inFocus}
+            value={t.inFocusPlaceholder}
+            description={t.inFocusDescription}
+            icon={Target}
+            cardColorClass="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700"
+            iconColorClass="text-purple-600 dark:text-purple-400"
+          />
+          <DashboardSummaryCard
+            title={t.nextStep}
+            value={t.nextStepPlaceholder}
+            description={t.nextStepDescription}
+            icon={Lightbulb}
             cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
             iconColorClass="text-yellow-600 dark:text-yellow-500"
           />
@@ -639,7 +447,7 @@ export default function DashboardPage() {
             {latestAssessment ? (
                 <EmotionalProfileChart 
                     results={latestAssessment.data}
-                    assessmentDimensions={assessmentDimensionsData}
+                    assessmentDimensions={assessmentDimensions}
                     className="lg:h-[450px]"
                 />
             ) : (
@@ -658,7 +466,6 @@ export default function DashboardPage() {
           />
         </div>
       </section>
-
     </div>
   );
 }

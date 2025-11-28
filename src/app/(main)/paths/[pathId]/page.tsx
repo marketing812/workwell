@@ -2,14 +2,13 @@
 import { pathsData } from '@/data/pathsData';
 import { PathDetailClient } from '@/components/paths/PathDetailClient';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
 
-type PageProps = { params: { pathId: string } };
+interface PathDetailPageProps {
+  params: { pathId: string };
+}
 
-// Se añade esta línea para forzar el renderizado dinámico y evitar problemas de caché
-export const dynamic = 'force-dynamic';
-
-export default async function Page({ params }: PageProps) {
+// ✅ Se corrige la doble declaración de 'async'
+export default async function PathDetailPage({ params }: PathDetailPageProps) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
@@ -20,10 +19,9 @@ export default async function Page({ params }: PageProps) {
   return <PathDetailClient path={path} />;
 }
 
-export async function generateMetadata(
-  { params }: PageProps
-): Promise<Metadata> {
-  const { pathId } = params;
-  const path = pathsData.find(p => p.id === pathId);
-  return { title: path?.title || "Ruta de Desarrollo" };
+// ✅ Esto está correcto
+export async function generateStaticParams() {
+  return pathsData.map((path) => ({
+    pathId: path.id,
+  }));
 }

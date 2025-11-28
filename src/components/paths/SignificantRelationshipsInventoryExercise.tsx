@@ -18,7 +18,6 @@ export function SignificantRelationshipsInventoryExercise({ content, pathId }: S
   const { toast } = useToast();
   const [step, setStep] = useState(0);
 
-  // State for user inputs
   const [sustainPerson, setSustainPerson] = useState('');
   const [sustainAction, setSustainAction] = useState('');
   const [inspirePerson, setInspirePerson] = useState('');
