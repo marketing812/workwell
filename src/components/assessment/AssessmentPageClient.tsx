@@ -37,9 +37,10 @@ export interface StoredAssessmentResults {
 
 interface AssessmentPageClientProps {
   assessmentDimensions: AssessmentDimension[];
+  isGuided?: boolean;
 }
 
-export default function AssessmentPageClient({ assessmentDimensions }: AssessmentPageClientProps) {
+export default function AssessmentPageClient({ assessmentDimensions, isGuided = false }: AssessmentPageClientProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -178,6 +179,7 @@ export default function AssessmentPageClient({ assessmentDimensions }: Assessmen
         onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         assessmentDimensions={assessmentDimensions}
+        isGuided={isGuided}
       />
         
       {generatedSaveUrl && (
@@ -215,5 +217,3 @@ export default function AssessmentPageClient({ assessmentDimensions }: Assessmen
     </div>
   );
 }
-
-    
