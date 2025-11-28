@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -15,7 +14,7 @@ import {
   useSidebar, // Importar el hook
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, Archive } from "lucide-react";
+import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, Archive, List } from "lucide-react";
 import { useTranslations } from "@/lib/translations";
 import { useUser } from "@/contexts/UserContext";
 import { Logo } from "@/components/Logo";
@@ -30,6 +29,7 @@ const navItems = [
   { href: "/chatbot", labelKey: "navChatbot", icon: Bot },
   // { href: "/knowledge-assistant", labelKey: "navKnowledgeAssistant", icon: FileQuestion },
   { href: "/resources", labelKey: "navResources", icon: Library },
+  { href: "/assessment/review", labelKey: "navAssessmentReview", icon: List },
 ];
 
 const settingsNavItems = [
@@ -44,11 +44,14 @@ export function AppSidebar() {
 
   const isActive = (href: string) => {
     if (href === "/assessment/intro") {
-      // Highlights for any page under /assessment except history
-      return pathname.startsWith("/assessment") && !pathname.startsWith('/assessment/history-results'); 
+      // Highlights for any page under /assessment except history and review
+      return pathname.startsWith("/assessment") && !pathname.startsWith('/assessment/history-results') && !pathname.startsWith('/assessment/review'); 
     }
     if (href === "/my-assessments") {
         return pathname.startsWith("/my-assessments") || pathname.startsWith("/assessment/history-results");
+    }
+    if (href === "/assessment/review") {
+        return pathname === href;
     }
     if (href === "/resources") {
         return pathname.startsWith("/resources");

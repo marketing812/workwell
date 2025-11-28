@@ -1,5 +1,3 @@
-
-
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -46,6 +44,7 @@ export const t = {
   navMyAssessments: "Mis Evaluaciones",
   navTherapeuticNotebook: "Cuaderno Terapéutico",
   navMyEmotions: "Mis Emociones",
+  navAssessmentReview: "Ver Preguntas",
   // Welcome Page / Dashboard (Old, parts might be reused or removed)
   welcomeToWorkWell: "Te damos la bienvenida a EMOTIVA, un espacio para reconectar contigo. Este viaje es personal.",
   startYourJourney: "Comienza tu viaje hacia el bienestar",
