@@ -2,7 +2,7 @@
 "use client";
 
 import { type InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
-import { useTranslations } from '@/lib/translations';
+import { t } from '@/lib/translations';
 
 // La URL de la API ahora apunta a nuestra ruta interna
 const API_PROXY_URL = "/api/save-assessment"; 
@@ -23,8 +23,6 @@ export type SaveResult = {
 };
 
 export async function saveAssessment(payloadToSave: AssessmentSavePayload): Promise<SaveResult> {
-  const t = useTranslations();
-  
   try {
     console.log("saveAssessment (Client): Sending payload to internal API proxy:", API_PROXY_URL);
 
@@ -51,7 +49,7 @@ export async function saveAssessment(payloadToSave: AssessmentSavePayload): Prom
   } catch (error: any) {
     let errorMessage = t.assessmentSavedErrorGeneric;
     if (error.name === 'AbortError') {
-      errorMessage = t.assessmentSavedErrorTimeout;
+        errorMessage = t.assessmentSavedErrorTimeout;
     } else if (error instanceof TypeError && error.message.toLowerCase().includes('failed to fetch')) {
         errorMessage = t.assessmentSavedErrorFetchFailed;
     }
