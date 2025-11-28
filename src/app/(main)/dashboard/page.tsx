@@ -659,45 +659,6 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      <section aria-labelledby="assessment-cta-heading" className="py-6">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-primary flex items-center">
-              <ClipboardList className="mr-3 h-6 w-6" />
-              Tu Evaluación de Bienestar
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              {latestAssessment ? 
-                '¿Sientes que es momento de revisar cómo estás? Vuelve a realizar la evaluación para obtener una nueva perspectiva sobre tu perfil emocional y recibir recomendaciones actualizadas.' :
-                'Realiza tu primera evaluación para descubrir tu perfil emocional y recibir rutas de desarrollo personalizadas.'
-              }
-            </p>
-          </CardContent>
-          <CardFooter className="flex-wrap gap-4">
-            <Button asChild size="lg">
-              <Link href="/assessment/intro">
-                {latestAssessment ? "Volver a Evaluarme" : t.takeInitialAssessment}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-             {latestAssessment && (
-                 <Button asChild variant="outline">
-                    <Link href="/my-assessments">
-                        Ver Historial de Evaluaciones
-                    </Link>
-                </Button>
-             )}
-             <Button asChild variant="secondary">
-                <Link href="/assessment">
-                    Iniciar Evaluación Completa
-                </Link>
-            </Button>
-          </CardFooter>
-        </Card>
-      </section>
-
     </div>
   );
 }
