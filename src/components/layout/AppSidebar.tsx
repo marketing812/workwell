@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -14,7 +15,7 @@ import {
   useSidebar, // Importar el hook
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, Archive, List } from "lucide-react";
+import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, Archive, List, Wand2 } from "lucide-react";
 import { useTranslations } from "@/lib/translations";
 import { useUser } from "@/contexts/UserContext";
 import { Logo } from "@/components/Logo";
@@ -22,6 +23,7 @@ import { Logo } from "@/components/Logo";
 const navItems = [
   { href: "/dashboard", labelKey: "navDashboard", icon: LayoutDashboard },
   { href: "/assessment/intro", labelKey: "navAssessment", icon: ClipboardList }, 
+  { href: "/assessment/guided", labelKey: "navInteractiveAssessment", icon: Wand2 },
   { href: "/my-assessments", labelKey: "navMyAssessments", icon: History },
   { href: "/paths", labelKey: "navPaths", icon: Milestone },
   { href: "/emotional-log", labelKey: "navMyEmotions", icon: HeartPulse },
@@ -43,7 +45,7 @@ export function AppSidebar() {
   const { setOpenMobile, isMobile } = useSidebar(); // Usar el hook para acceder al estado y la función
 
   const isActive = (href: string) => {
-    if (href === "/assessment/intro") {
+    if (href === "/assessment/intro" || href === "/assessment/guided") {
       // Highlights for any page under /assessment except history and review
       return pathname.startsWith("/assessment") && !pathname.startsWith('/assessment/history-results') && !pathname.startsWith('/assessment/review'); 
     }

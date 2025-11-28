@@ -1,3 +1,4 @@
+
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -36,6 +37,7 @@ export const t = {
   // Sidebar Navigation
   navDashboard: "Panel",
   navAssessment: "Evaluación",
+  navInteractiveAssessment: "Evaluación Guiada",
   navPaths: "Rutas",
   navChatbot: "Mentor IA",
   navKnowledgeAssistant: "Asistente",
@@ -56,7 +58,7 @@ export const t = {
   startAssessment: "Comenzar Evaluación",
   dimensionProgress: "Dimensión {current} de {total}",
   itemProgress: "Ítem {currentItem} de {totalItems} (Sección {currentDim}/{totalDims})",
-  nextItem: "Siguiente Ítem",
+  nextItem: "Siguiente",
   previousItem: "Ítem Anterior",
   nextDimension: "Siguiente Dimensión",
   previousDimension: "Dimensión Anterior",
