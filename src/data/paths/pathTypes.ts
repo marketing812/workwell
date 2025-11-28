@@ -1,5 +1,3 @@
-
-
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;

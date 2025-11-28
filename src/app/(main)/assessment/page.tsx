@@ -1,7 +1,21 @@
 
 "use client";
 import AssessmentPageClient from '@/components/assessment/AssessmentPageClient';
-import type { AssessmentDimension } from '@/data/paths/pathTypes';
+//import type { AssessmentDimension } from '@/data/paths/pathTypes';
+type AssessmentItem = {
+  id: string;
+  text: string;
+  weight: number;
+  isInverse?: boolean;
+};
+ 
+type AssessmentDimension = {
+  id: string;
+  name: string;
+  definition: string;
+  recommendedPathId: string;
+  items: AssessmentItem[];
+};
 
 // INCRUSTADO: Las preguntas de la evaluación están ahora directamente aquí para máxima fiabilidad.
 const assessmentDimensions: AssessmentDimension[] = [
