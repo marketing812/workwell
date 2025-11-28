@@ -31,7 +31,6 @@ const navItems = [
   { href: "/chatbot", labelKey: "navChatbot", icon: Bot },
   // { href: "/knowledge-assistant", labelKey: "navKnowledgeAssistant", icon: FileQuestion },
   { href: "/resources", labelKey: "navResources", icon: Library },
-  { href: "/assessment/review", labelKey: "navAssessmentReview", icon: List },
 ];
 
 const settingsNavItems = [
