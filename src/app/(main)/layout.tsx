@@ -59,3 +59,4 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
     </TooltipProvider>
   );
 }
+export const dynamic = 'force-dynamic';
