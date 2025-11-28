@@ -124,3 +124,5 @@ ${reflection.toolUsed || 'No especificado.'}
     </Card>
   );
 }
+
+    

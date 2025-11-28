@@ -3,10 +3,6 @@ import { NextResponse } from 'next/server';
 import path from 'path';
 import { promises as fs } from 'fs';
 
-// Esta ruta de API ya no es necesaria porque las preguntas están incrustadas directamente
-// en los componentes para garantizar la máxima fiabilidad.
-// Se mantiene el archivo por si se decide reactivar en el futuro, pero no se llamará.
-
 export async function GET(request: Request) {
   try {
     // Construye la ruta al archivo JSON. process.cwd() apunta al directorio raíz del proyecto.
@@ -22,5 +18,3 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Failed to load assessment questions' }, { status: 500 });
   }
 }
-
-    

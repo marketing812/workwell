@@ -29,7 +29,6 @@ import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -64,7 +63,6 @@ import { UncertaintyMapExercise } from '@/components/paths/UncertaintyMapExercis
 import { ControlTrafficLightExercise } from '@/components/paths/ControlTrafficLightExercise';
 import { AlternativeStoriesExercise } from '@/components/paths/AlternativeStoriesExercise';
 import { MantraExercise } from '@/components/paths/MantraExercise';
-import { RitualDeEntregaConscienteExercise } from './RitualDeEntregaConscienteExercise';
 // RUTA 3
 import { DelSabotajeALaAccionExercise } from '@/components/paths/DelSabotajeALaAccionExercise';
 // RUTA 4
@@ -1491,8 +1489,6 @@ function ContentItemRenderer({
       return <AlternativeStoriesExercise key={index} content={contentItem} />;
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
-    case 'ritualDeEntregaConscienteExercise':
-        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={pathId} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -1786,12 +1782,8 @@ export function PathDetailClient({ path }: { path: Path }) {
 
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
-  const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
-
 
   useEffect(() => {
-    setIsClient(true);
     if (path) {
       const initialCompleted = getCompletedModules(path.id);
       setCompletedModules(initialCompleted);
@@ -1800,51 +1792,46 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path || !isClient) {
+  if (!path) {
+    // This case should ideally be handled by the server component with notFound()
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
-        <p>Cargando ruta...</p>
+        <AlertTriangle className="w-12 h-12 text-destructive" />
+        {t.errorOccurred} Ruta no encontrada.
+        <Button asChild variant="outline">
+          <Link href="/paths">{t.allPaths}</Link>
+        </Button>
       </div>
     );
   }
 
-  const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
-    if (completedModules.has(moduleId)) {
-      setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
+  const toggleComplete = (moduleId: string, moduleTitle: string) => {
+    const newCompletedModules = new Set(completedModules);
+    let justCompletedModule = false;
+
+    if (newCompletedModules.has(moduleId)) {
+      newCompletedModules.delete(moduleId);
     } else {
-      completeModule(moduleId, moduleTitle); // Directly complete it
+      newCompletedModules.add(moduleId);
+      justCompletedModule = true;
     }
-  };
-
-  const completeModule = (moduleId: string, moduleTitle: string) => {
-    const newCompletedModules = new Set(completedModules);
-    newCompletedModules.add(moduleId);
-    
-    setCompletedModules(newCompletedModules);
-    saveCompletedModules(path.id, newCompletedModules);
-    contextUpdateModuleCompletion(path.id, moduleId, true);
-    
-    toast({
-      title: t.moduleCompletedTitle,
-      description: t.moduleCompletedMessage.replace('{moduleTitle}', moduleTitle),
-      duration: 3000,
-    });
-
-    const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
-    if (allModulesCompleted) {
-      setShowPathCongratsDialog(true);
-    }
-  };
-
-  const uncompleteModule = (moduleId: string) => {
-    const newCompletedModules = new Set(completedModules);
-    newCompletedModules.delete(moduleId);
 
     setCompletedModules(newCompletedModules);
     saveCompletedModules(path.id, newCompletedModules);
-    contextUpdateModuleCompletion(path.id, moduleId, false);
-    setUncompleteModuleId(null); // Close the dialog
+    contextUpdateModuleCompletion(path.id, moduleId, justCompletedModule);
+
+    if (justCompletedModule) {
+      toast({
+        title: t.moduleCompletedTitle,
+        description: t.moduleCompletedMessage.replace('{moduleTitle}', moduleTitle),
+        duration: 3000,
+      });
+
+      const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
+      if (allModulesCompleted) {
+        setShowPathCongratsDialog(true);
+      }
+    }
   };
 
   const getModuleIcon = (type: PathModule['type']) => {
@@ -1917,6 +1904,15 @@ export function PathDetailClient({ path }: { path: Path }) {
                       )}
                     </div>
                   </div>
+                  {completedModules.has(module.id) && (
+                    <Badge
+                      variant="secondary"
+                      className="border-green-600 bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200"
+                    >
+                      <CheckCircle className="mr-1.5 h-4 w-4" />
+                      Completado
+                    </Badge>
+                  )}
                 </div>
               </CardHeader>
               <CardContent>
@@ -1938,13 +1934,14 @@ export function PathDetailClient({ path }: { path: Path }) {
 
               </CardContent>
               <CardFooter>
-                 <Button
-                  onClick={() => handleToggleComplete(module.id, module.title)}
-                  variant={completedModules.has(module.id) ? 'default' : 'secondary'}
-                  className={completedModules.has(module.id) ? 'bg-green-600 hover:bg-green-700' : ''}
+                <Button
+                  onClick={() => toggleComplete(module.id, module.title)}
+                  variant={completedModules.has(module.id) ? 'secondary' : 'default'}
                 >
                   <Check className="mr-2 h-4 w-4" />
-                  {completedModules.has(module.id) ? "Completado" : "Marcar como completado"}
+                  {completedModules.has(module.id)
+                    ? t.markAsNotCompleted
+                    : t.markAsCompleted}
                 </Button>
               </CardFooter>
             </Card>
@@ -1957,23 +1954,6 @@ export function PathDetailClient({ path }: { path: Path }) {
           <Link href="/paths">{t.allPaths}</Link>
         </Button>
       </div>
-
-       <AlertDialog open={!!uncompleteModuleId} onOpenChange={(open) => !open && setUncompleteModuleId(null)}>
-        <AlertDialogContent>
-            <AlertDialogHeader>
-                <AlertDialogTitle>¿Desmarcar Módulo?</AlertDialogTitle>
-                <AlertDialogDescription>
-                    Este módulo ya está marcado como completado. ¿Estás seguro de que quieres desmarcarlo?
-                </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-                <AlertDialogCancel onClick={() => setUncompleteModuleId(null)}>Cancelar</AlertDialogCancel>
-                <AlertDialogAction onClick={() => uncompleteModuleId && uncompleteModule(uncompleteModuleId)}>
-                    Sí, desmarcar
-                </AlertDialogAction>
-            </AlertDialogFooter>
-        </AlertDialogContent>
-       </AlertDialog>
 
       <AlertDialog open={showPathCongratsDialog} onOpenChange={setShowPathCongratsDialog}>
         <AlertDialogContent>
@@ -1995,5 +1975,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    

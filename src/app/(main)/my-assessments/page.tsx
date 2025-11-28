@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations } from '@/lib/translations';
 import { Button } from '@/components/ui/button';
@@ -130,30 +130,26 @@ export default function MyAssessmentsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [hasInProgress, setHasInProgress] = useState(false);
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isClient) return;
-
-    try {
-        const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
-        if(savedProgress) {
-            const parsedData = JSON.parse(savedProgress);
-            setHasInProgress(!!parsedData && !!parsedData.answers && Object.keys(parsedData.answers).length > 0);
-        } else {
+    // Check for in-progress assessment on mount and whenever user changes
+    if (typeof window !== 'undefined') {
+        try {
+            const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
+            if(savedProgress) {
+                const parsedData = JSON.parse(savedProgress);
+                setHasInProgress(!!parsedData && !!parsedData.answers && Object.keys(parsedData.answers).length > 0);
+            } else {
+                setHasInProgress(false);
+            }
+        } catch(e) {
+            console.error("Error checking in-progress assessment:", e);
             setHasInProgress(false);
         }
-    } catch(e) {
-        console.error("Error checking in-progress assessment:", e);
-        setHasInProgress(false);
     }
-  }, [isClient, user]);
+  }, [user]);
 
-  const fetchAssessments = useCallback(async () => {
+  const fetchAssessments = async () => {
     if (!user || !user.id) {
       setError(t.errorOccurred + " (Usuario no autenticado o ID de usuario no disponible para la API)");
       setIsLoading(false);
@@ -170,6 +166,7 @@ export default function MyAssessmentsPage() {
     let constructedApiUrl = "";
     try {
       const encryptedUserId = forceEncryptStringAES(currentUserId);
+      console.log("MyAssessmentsPage: Encrypted user ID (for API request):", encryptedUserId.substring(0, 50) + "...");
       
       constructedApiUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getEvaluacion&usuario=${encodeURIComponent(encryptedUserId)}`;
       console.log("MyAssessmentsPage: Fetching assessments from URL (first 150 chars):", constructedApiUrl.substring(0,150) + "...");
@@ -179,16 +176,21 @@ export default function MyAssessmentsPage() {
       const response = await fetch(constructedApiUrl, { signal });
       let responseText = await response.text();
       
+      console.log("MyAssessmentsPage: Raw API Response Text (first 500 chars before any parsing):", responseText.substring(0,500) + (responseText.length > 500 ? "..." : ""));
+
       let jsonToParse = responseText;
       const varDumpRegex = /^string\(\d+\)\s*"([\s\S]*)"\s*$/;
       const match = responseText.match(varDumpRegex);
 
       if (match && match[1]) {
+        console.log("MyAssessmentsPage: Detected var_dump-like output. Attempting to extract JSON content.");
         jsonToParse = match[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        console.log("MyAssessmentsPage: Extracted potential JSON string for parsing (first 500 chars):", jsonToParse.substring(0,500) + (jsonToParse.length > 500 ? "..." : ""));
       }
 
 
       if (!response.ok) {
+        console.error(`MyAssessmentsPage: API Error HTTP ${response.status}. StatusText: ${response.statusText}. ResponseBody (potentially stripped, first 300 chars): ${jsonToParse.substring(0,300)}`);
         throw new Error(`${t.errorOccurred} (HTTP ${response.status}): ${response.statusText || jsonToParse.substring(0,100) || 'Error del servidor'}`);
       }
       
@@ -196,38 +198,63 @@ export default function MyAssessmentsPage() {
       try {
         apiResult = JSON.parse(jsonToParse);
       } catch (jsonError: any) {
+        let devErrorMessage = "MyAssessmentsPage: Failed to parse JSON response from API.";
+        if (typeof responseText === 'string' && responseText.trim().toLowerCase().startsWith('string(') && !match) {
+            devErrorMessage += " The response looks like PHP var_dump() output, but regex extraction or subsequent parsing failed.";
+        } else if (match && jsonToParse !== responseText) { 
+             devErrorMessage = "MyAssessmentsPage: Failed to parse extracted JSON from var_dump-like output.";
+        }
+        console.error(devErrorMessage, "Raw text was (first 500 chars):", responseText.substring(0,500), "Error:", jsonError);
         setError(t.errorOccurred + " (Respuesta del servidor no es JSON válido. Revisa la consola del navegador para ver la respuesta cruda del servidor.)");
         setIsLoading(false);
         return;
       }
+      
+      console.log("MyAssessmentsPage: API call status OK. Parsed API Result (from jsonToParse, first 500 chars of stringified):", JSON.stringify(apiResult).substring(0,500) + "...");
+
 
       if (apiResult.status === "OK") {
         let potentialAssessmentsArray: any = null;
 
         if (Array.isArray(apiResult.data)) {
+          console.log("MyAssessmentsPage: Data from API is already an array.");
           potentialAssessmentsArray = apiResult.data;
         } else if (typeof apiResult.data === 'string' && apiResult.data.trim() !== '') {
+          console.log("MyAssessmentsPage: Data from API is a string, attempting decryption...");
           const decryptedData = decryptDataAES(apiResult.data);
+          console.log("MyAssessmentsPage: Decrypted data (type " + typeof decryptedData + ", first 500 chars of stringified):", JSON.stringify(decryptedData).substring(0,500) + "...");
           if (decryptedData && Array.isArray(decryptedData)) {
+            console.log("MyAssessmentsPage: Successfully decrypted API data into an array.");
             potentialAssessmentsArray = decryptedData;
           } else {
+            console.warn(
+                "MyAssessmentsPage: Decrypted API data is NOT an array or decryption was not successful. Type of decryptedData:", 
+                typeof decryptedData, 
+                ". Value (first 200 chars):", JSON.stringify(decryptedData).substring(0,200),
+                ". This will likely cause a validation error next."
+            );
             potentialAssessmentsArray = decryptedData; 
           }
         } else if (apiResult.data === null || (typeof apiResult.data === 'string' && (apiResult.data.trim() === '' || apiResult.data.trim() === "[]" || apiResult.data.toLowerCase().includes("no hay evaluaciones")))) {
+            console.log("MyAssessmentsPage: API reported 'OK' but data is null, empty, or indicates no assessments. Treating as empty list.");
             potentialAssessmentsArray = [];
         }
 
         if (potentialAssessmentsArray !== null && potentialAssessmentsArray !== undefined) { 
+          console.log("MyAssessmentsPage: Data before Zod validation (potentialAssessmentsArray, first 1000 chars):", JSON.stringify(potentialAssessmentsArray).substring(0,1000) + "...");
           const validationResult = ApiFetchedAssessmentsSchema.safeParse(potentialAssessmentsArray);
           if (validationResult.success) {
+            // Convert timestamps to full ISO string if they are not already, before sorting and saving
             const processedAssessments = validationResult.data.map(record => {
                 try {
                     const dateObj = new Date(record.timestamp.includes('T') ? record.timestamp : record.timestamp.replace(' ', 'T'));
                     if (isNaN(dateObj.getTime())) {
+                        console.warn(`MyAssessmentsPage: Invalid timestamp format for record ID ${record.id}: ${record.timestamp}. Keeping original.`);
                         return record;
                     }
                     return { ...record, timestamp: dateObj.toISOString() };
                 } catch (e) {
+                    console.warn(`MyAssessmentsPage: Error processing timestamp for record ID ${record.id}: ${record.timestamp}. Keeping original. Error: ${e}`);
                     return record;
                 }
             });
@@ -236,12 +263,22 @@ export default function MyAssessmentsPage() {
               new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
             );
             
-            setAssessments(sortedAssessments);
-            overwriteAssessmentHistory(sortedAssessments);
+            setAssessments(sortedAssessments); // Update React state for display
+            overwriteAssessmentHistory(sortedAssessments); // Sync with localStorage
+            console.log("MyAssessmentsPage: Successfully fetched, processed, validated and stored assessments:", sortedAssessments.length, "records.");
             if (sortedAssessments.length === 0) { 
                 setError(null); 
             }
           } else {
+            const flatErrors = validationResult.error.flatten();
+            console.error(
+              "MyAssessmentsPage: Zod validation failed.",
+              "Flattened errors:", flatErrors,
+              "Full Zod error object:", validationResult.error,
+              "Zod error issues (stringified):", JSON.stringify(validationResult.error.issues, null, 2)
+            );
+            console.error("MyAssessmentsPage: Data that FAILED Zod validation (potentialAssessmentsArray, first 1000 chars):", JSON.stringify(potentialAssessmentsArray).substring(0,1000) + "...");
+            
             let userErrorMessage = t.errorOccurred + " (Datos de evaluación recibidos no son válidos o tienen un formato incorrecto)";
             if (validationResult.error.issues.length > 0) {
                 const firstIssue = validationResult.error.issues[0];
@@ -250,19 +287,22 @@ export default function MyAssessmentsPage() {
             setError(userErrorMessage);
           }
         } else { 
+          console.warn("MyAssessmentsPage: No valid array of assessments obtained after processing API data. Original apiResult.data type:", typeof apiResult.data, "apiResult.data:", apiResult.data);
            setError(t.errorOccurred + " (No se pudieron procesar los datos de evaluaciones. Formato inesperado o fallo en desencriptación.)");
         }
 
       } else { 
+        console.warn("MyAssessmentsPage: API reported 'NOOK'. Message:", apiResult.message);
         if (apiResult.message && apiResult.message.toLowerCase().includes("no hay evaluaciones")) {
             setAssessments([]); 
-            overwriteAssessmentHistory([]);
+            overwriteAssessmentHistory([]); // Clear local store if API says no assessments
             setError(null); 
         } else {
             setError(`${t.errorOccurred}: ${apiResult.message || 'Error desconocido del servidor'}`);
         }
       }
     } catch (e: any) {
+      console.error("MyAssessmentsPage: Error fetching or processing assessments:", e);
       let errorMessage = t.errorOccurred;
       if (e.name === 'AbortError' || (e.cause && e.cause.code === 'UND_ERR_CONNECT_TIMEOUT')) {
         errorMessage = t.errorOccurred + " (Tiempo de espera agotado)";
@@ -275,18 +315,20 @@ export default function MyAssessmentsPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [user, t]);
+  };
 
   useEffect(() => {
-    if (isClient && !userLoading && user && user.id) { 
+    if (!userLoading && user && user.id) { 
       fetchAssessments();
-    } else if (isClient && !userLoading && (!user || !user.id)) {
+    } else if (!userLoading && (!user || !user.id)) {
       setIsLoading(false);
       setError(t.errorOccurred + " (Debes iniciar sesión y tener un ID de usuario para ver tus evaluaciones)");
+      console.warn("MyAssessmentsPage: User not loaded or user.id missing. User:", user);
     }
-  }, [isClient, user, userLoading, t, fetchAssessments]); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, userLoading]); 
 
-  if (!isClient || isLoading || userLoading) {
+  if (isLoading || userLoading) {
     return (
       <div className="container mx-auto py-8 text-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
@@ -390,7 +432,3 @@ export default function MyAssessmentsPage() {
     </div>
   );
 }
-
-    
-
-    

@@ -180,4 +180,3 @@ export default function AssessmentPage() {
     />
   );
 }
-export const dynamic = 'force-dynamic';

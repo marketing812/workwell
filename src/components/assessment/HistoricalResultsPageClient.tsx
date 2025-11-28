@@ -195,10 +195,11 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
   const [assessmentRecord, setAssessmentRecord] = useState<AssessmentRecord | null | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [assessmentDimensions, setAssessmentDimensions] = useState<AssessmentDimension[]>([]);
   const [rawAnswersWithWeight, setRawAnswersWithWeight] = useState<Record<string, { score: number, weight: number }> | null>(null);
 
   useEffect(() => {
-    const processData = () => {
+    const processData = async () => {
       setIsLoading(true);
       if (!assessmentId) {
         setError("ID de evaluación no proporcionado.");
@@ -210,6 +211,8 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
       try {
         const dimensions = assessmentDimensionsData;
         const record = getAssessmentById(assessmentId);
+
+        setAssessmentDimensions(dimensions);
 
         if (record) {
           setAssessmentRecord(record);
@@ -300,7 +303,7 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
         userId={user?.id}
         onRetake={handleRetakeAssessment}
         assessmentTimestamp={assessmentRecord.timestamp} 
-        assessmentDimensions={assessmentDimensionsData} // Pasar las dimensiones
+        assessmentDimensions={assessmentDimensions} // Pasar las dimensiones
       />
        <div className="mt-8 text-center">
         <Button onClick={handleViewHistory} variant="outline">
@@ -310,5 +313,3 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
     </div>
   );
 }
-
-    
