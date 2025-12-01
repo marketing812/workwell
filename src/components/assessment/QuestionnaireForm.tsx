@@ -50,10 +50,7 @@ const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
 
 interface InProgressData {
   answers: Record<string, { score: number; weight: number }>;
-  position: {
-    dimension: number;
-    item: number;
-  };
+  position: number;
 }
 
 interface QuestionnaireFormProps {
@@ -219,7 +216,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
                         className="sr-only"
                       />
                       {IconComponent ? <IconComponent className="h-8 w-8 sm:h-10 sm:h-10 text-foreground/80" /> : option.label}
-                      <span className="text-xs mt-1">{option.value}</span>
                     </Label>
                   );
                 })}
