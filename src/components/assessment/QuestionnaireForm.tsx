@@ -76,7 +76,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
 
 
   useEffect(() => {
-    if (!isGuided || assessmentDimensions.length === 0) return;
+    if (!isGuided || assessmentDimensions.length === 0 || hasLoadedProgress) return;
 
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
@@ -106,7 +106,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     } catch (error) {
       console.error("Error loading in-progress assessment:", error);
     }
-  }, [toast, isGuided, assessmentDimensions]);
+  }, [toast, isGuided, assessmentDimensions, hasLoadedProgress]);
   
   const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
     if (!isGuided) return;
@@ -133,7 +133,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
       [item.id]: { score: parseInt(value), weight: item.weight }
     };
     setAnswers(newAnswers);
-    saveProgress(currentDimensionIndex, currentItemIndexInDimension, newAnswers);
     
     if (isGuided) {
       setTimeout(() => {
@@ -143,7 +142,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
                   setShowDimensionCompletedDialog(true);
               }
           } else {
-              setCurrentItemIndexInDimension(prev => prev + 1);
+              const nextItemIndex = currentItemIndexInDimension + 1;
+              setCurrentItemIndexInDimension(nextItemIndex);
+              saveProgress(currentDimensionIndex, nextItemIndex, newAnswers);
           }
       }, 250); // Short delay before sliding
     }
@@ -294,7 +295,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
           {hasLoadedProgress && (
-             <Button variant="destructive_outline" size="sm" onClick={handleRestart}>
+             <Button variant="destructive" size="sm" onClick={handleRestart}>
               <Trash2 className="mr-2 h-4 w-4" /> Reiniciar
             </Button>
           )}
