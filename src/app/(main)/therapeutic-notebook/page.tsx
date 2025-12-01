@@ -75,7 +75,7 @@ export default function TherapeuticNotebookPage() {
             return (
               <Card key={entry.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
-                      <CardTitle className="text-xl text-accent">{entry.title}</CardTitle>
+                      <CardTitle className="text-xl text-accent">{path ? path.title : entry.title}</CardTitle>
                       <CardDescription className="flex flex-col sm:flex-row sm:items-center text-xs pt-1 gap-x-4">
                           <span className="flex items-center">
                             <Calendar className="mr-2 h-4 w-4" />
@@ -84,7 +84,7 @@ export default function TherapeuticNotebookPage() {
                           {path && (
                             <span className="flex items-center mt-1 sm:mt-0 text-primary">
                               <ArrowRight className="mr-2 h-3 w-3" />
-                              En ruta: {path.title}
+                              {entry.title}
                             </span>
                           )}
                       </CardDescription>
