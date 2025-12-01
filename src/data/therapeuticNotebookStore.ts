@@ -13,6 +13,7 @@ export interface NotebookEntry {
   title: string; // e.g., "Reflexión: Identifica tu disparador"
   content: string; // The user's full written reflection
   pathId?: string; // Optional: ID of the path this reflection is associated with
+  ruta?: string; // NEW: The name of the path (route)
 }
 
 const NOTEBOOK_ENTRIES_KEY = "workwell-therapeutic-notebook";
