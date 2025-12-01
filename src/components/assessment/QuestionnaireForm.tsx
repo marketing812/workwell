@@ -20,6 +20,7 @@ import {
   AlertDialogTitle 
 } from '@/components/ui/alert-dialog';
 import { useRouter } from 'next/navigation';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 
 // Helper para asegurar que los iconos se cargan correctamente
@@ -191,6 +192,20 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     }
   };
 
+  const handleNextStep = () => {
+    if (!currentItem || !answers[currentItem.id]) return; // Prevent advancing if no answer is selected
+    const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+    if (isLastItemInDimension) {
+      if (!isSubmitting) { 
+        setShowDimensionCompletedDialog(true);
+      }
+    } else {
+      const nextItemIndex = currentItemIndexInDimension + 1;
+      setCurrentItemIndexInDimension(nextItemIndex);
+      saveProgress(currentDimensionIndex, nextItemIndex, answers);
+    }
+  };
+
   const handleSaveForLater = () => {
     const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
     let dimToSave = currentDimensionIndex;
@@ -227,6 +242,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   }
 
   const isFirstQuestion = currentDimensionIndex === 0 && currentItemIndexInDimension === 0;
+  const isNextButtonActive = answers[currentItem.id] !== undefined;
 
   return (
     <>
@@ -288,7 +304,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          
+          <Button onClick={handleNextStep} disabled={!isNextButtonActive}>
+            Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </CardFooter>
       </Card>
       
