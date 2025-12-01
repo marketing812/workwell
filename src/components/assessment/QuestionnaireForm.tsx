@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
-import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft, Trash2 } from 'lucide-react';
+import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { 
   AlertDialog, 
@@ -103,12 +103,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           });
         }
       } else {
-        // Mark as "loaded" even if there is no saved progress to prevent re-checking
         setHasLoadedProgress(true);
       }
     } catch (error) {
       console.error("Error loading in-progress assessment:", error);
-      setHasLoadedProgress(true); // Prevent re-checking on error
+      setHasLoadedProgress(true);
     }
   }, [toast, assessmentDimensions, hasLoadedProgress]);
   
@@ -206,15 +205,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     router.push('/my-assessments');
   };
 
-  const handleRestart = () => {
-    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
-    setAnswers({});
-    setCurrentDimensionIndex(0);
-    setCurrentItemIndexInDimension(0);
-    setHasLoadedProgress(true); // Prevents reloading old state after reset
-    toast({ title: "Evaluación Reiniciada", description: "Puedes empezar desde el principio." });
-  };
-
   if (!currentItem) {
     if (allItems.length > 0 && currentOverallIndex >= allItems.length) {
        return (
@@ -298,11 +288,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          {hasLoadedProgress && (
-             <Button variant="destructive" size="sm" onClick={handleRestart}>
-              <Trash2 className="mr-2 h-4 w-4" /> Reiniciar
-            </Button>
-          )}
+          
         </CardFooter>
       </Card>
       
