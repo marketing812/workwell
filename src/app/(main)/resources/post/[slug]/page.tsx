@@ -3,14 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { Clock, ArrowLeft } from 'lucide-react';
 import { getPostBySlug, type ResourcePost } from '@/data/resourcesData';
 import { notFound } from 'next/navigation';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import type { Metadata } from 'next';
 import type { RoutePageProps } from '@/types/page-props';
 
-// Fija la página a renderizado dinámico para asegurar que los datos se obtienen en cada petición
 export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }: RoutePageProps<{ slug: string }>) {
@@ -22,12 +20,10 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
       notFound();
   }
 
-  // Se gestiona el cambio de dominio en la URL de la imagen
   let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
   if (imageUrl) {
     imageUrl = imageUrl.replace('workwellfut.hl1450.dinaserver.com', 'workwellfut.com');
   }
-
 
   return (
     <div className="container mx-auto py-8 max-w-4xl">
@@ -70,7 +66,6 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
   );
 }
 
-// Función para generar los metadatos de la página (título de la pestaña)
 export async function generateMetadata({ params }: RoutePageProps<{ slug: string }>): Promise<Metadata> {
   const { slug } = params;
   const post = await getPostBySlug(slug);
