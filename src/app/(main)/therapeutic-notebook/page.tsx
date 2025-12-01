@@ -10,6 +10,7 @@ import { getNotebookEntries, formatEntryTimestamp, type NotebookEntry } from "@/
 import { ArrowLeft, NotebookText, Calendar, Eye, FileJson } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/contexts/UserContext";
+import { pathsData } from '@/data/pathsData'; // Importar datos de las rutas
 
 const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
 
@@ -69,30 +70,41 @@ export default function TherapeuticNotebookPage() {
 
       <div className="space-y-6">
         {entries.length > 0 ? (
-          entries.map((entry) => (
-            <Card key={entry.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardHeader>
-                    <CardTitle className="text-xl text-accent">{entry.title}</CardTitle>
-                    <CardDescription className="flex items-center text-xs pt-1">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        {formatEntryTimestamp(entry.timestamp)}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-sm text-foreground/80 line-clamp-3 whitespace-pre-line break-words">
-                        {entry.content}
-                    </p>
-                </CardContent>
-                <CardFooter>
-                    <Button asChild variant="outline" className="w-full">
-                      <Link href={`/therapeutic-notebook/${entry.id}`}>
-                        <Eye className="mr-2 h-4 w-4" />
-                        Ver Entrada Completa
-                      </Link>
-                    </Button>
-                </CardFooter>
-            </Card>
-          ))
+          entries.map((entry) => {
+            const path = entry.pathId ? pathsData.find(p => p.id === entry.pathId) : null;
+            return (
+              <Card key={entry.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader>
+                      <CardTitle className="text-xl text-accent">{entry.title}</CardTitle>
+                      <CardDescription className="flex flex-col sm:flex-row sm:items-center text-xs pt-1 gap-x-4">
+                          <span className="flex items-center">
+                            <Calendar className="mr-2 h-4 w-4" />
+                            {formatEntryTimestamp(entry.timestamp)}
+                          </span>
+                          {path && (
+                            <span className="flex items-center mt-1 sm:mt-0 text-primary">
+                              <ArrowRight className="mr-2 h-3 w-3" />
+                              En ruta: {path.title}
+                            </span>
+                          )}
+                      </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                      <p className="text-sm text-foreground/80 line-clamp-3 whitespace-pre-line break-words">
+                          {entry.content}
+                      </p>
+                  </CardContent>
+                  <CardFooter>
+                      <Button asChild variant="outline" className="w-full">
+                        <Link href={`/therapeutic-notebook/${entry.id}`}>
+                          <Eye className="mr-2 h-4 w-4" />
+                          Ver Entrada Completa
+                        </Link>
+                      </Button>
+                  </CardFooter>
+              </Card>
+            );
+          })
         ) : (
           <Card className="text-center py-12 px-6">
             <CardContent>
