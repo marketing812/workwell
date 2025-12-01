@@ -15,7 +15,7 @@ import {
   useSidebar, // Importar el hook
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, Wand2 } from "lucide-react";
+import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, List } from "lucide-react";
 import { useTranslations } from "@/lib/translations";
 import { useUser } from "@/contexts/UserContext";
 import { Logo } from "@/components/Logo";

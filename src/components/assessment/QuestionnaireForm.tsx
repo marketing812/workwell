@@ -76,7 +76,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
 
 
   useEffect(() => {
-    if (!isGuided || assessmentDimensions.length === 0 || hasLoadedProgress) return;
+    if (assessmentDimensions.length === 0 || hasLoadedProgress) return;
 
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
@@ -102,11 +102,15 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
             description: "Hemos cargado tu progreso anterior.",
           });
         }
+      } else {
+        // Mark as "loaded" even if there is no saved progress to prevent re-checking
+        setHasLoadedProgress(true);
       }
     } catch (error) {
       console.error("Error loading in-progress assessment:", error);
+      setHasLoadedProgress(true); // Prevent re-checking on error
     }
-  }, [toast, isGuided, assessmentDimensions, hasLoadedProgress]);
+  }, [toast, assessmentDimensions, hasLoadedProgress]);
   
   const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
     if (!isGuided) return;
@@ -207,7 +211,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     setAnswers({});
     setCurrentDimensionIndex(0);
     setCurrentItemIndexInDimension(0);
-    setHasLoadedProgress(false);
+    setHasLoadedProgress(true); // Prevents reloading old state after reset
     toast({ title: "Evaluación Reiniciada", description: "Puedes empezar desde el principio." });
   };
 
