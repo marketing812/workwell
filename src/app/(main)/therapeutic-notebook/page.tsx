@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { useTranslations } from "@/lib/translations";
 import { getNotebookEntries, formatEntryTimestamp, type NotebookEntry } from "@/data/therapeuticNotebookStore";
-import { ArrowLeft, NotebookText, Calendar, Eye, FileJson } from "lucide-react";
+import { ArrowLeft, NotebookText, Calendar, Eye, FileJson, ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/contexts/UserContext";
 import { pathsData } from '@/data/pathsData'; // Importar datos de las rutas
