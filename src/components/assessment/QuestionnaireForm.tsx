@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
-import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { 
   AlertDialog, 
@@ -20,7 +20,6 @@ import {
   AlertDialogTitle 
 } from '@/components/ui/alert-dialog';
 import { useRouter } from 'next/navigation';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 
 // Helper para asegurar que los iconos se cargan correctamente
@@ -73,9 +72,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
 
   const [answers, setAnswers] = useState<Record<string, { score: number; weight: number }>>({});
   const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false);
+  const [hasLoadedProgress, setHasLoadedProgress] = useState(false);
+
 
   useEffect(() => {
-    if (!isGuided || assessmentDimensions.length === 0) return; // Logic for guided version, ensure dimensions are loaded
+    if (!isGuided || assessmentDimensions.length === 0) return;
 
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
@@ -85,7 +86,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           setAnswers(parsedData.answers);
           const { dimension, item } = parsedData.position;
 
-          // Validate position to prevent errors
           const isLastDimension = dimension >= assessmentDimensions.length - 1;
           const isLastItem = isLastDimension && item >= assessmentDimensions[assessmentDimensions.length - 1].items.length - 1;
 
@@ -93,11 +93,10 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
             setCurrentDimensionIndex(dimension);
             setCurrentItemIndexInDimension(item);
           } else {
-            // If saved progress is at the very end, put them at the last question to allow finishing
             setCurrentDimensionIndex(assessmentDimensions.length - 1);
             setCurrentItemIndexInDimension(assessmentDimensions[assessmentDimensions.length - 1].items.length - 1);
           }
-          
+          setHasLoadedProgress(true);
           toast({
             title: "Evaluación Reanudada",
             description: "Hemos cargado tu progreso anterior.",
@@ -110,6 +109,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   }, [toast, isGuided, assessmentDimensions]);
   
   const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
+    if (!isGuided) return;
     try {
       const dataToSave: InProgressData = {
         answers: currentAnswers,
@@ -135,16 +135,18 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     setAnswers(newAnswers);
     saveProgress(currentDimensionIndex, currentItemIndexInDimension, newAnswers);
     
-    setTimeout(() => {
-        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-        if (isLastItemInDimension) {
-            if (!isSubmitting) { 
-                setShowDimensionCompletedDialog(true);
-            }
-        } else {
-            setCurrentItemIndexInDimension(prev => prev + 1);
-        }
-    }, 250); // Short delay before sliding
+    if (isGuided) {
+      setTimeout(() => {
+          const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+          if (isLastItemInDimension) {
+              if (!isSubmitting) { 
+                  setShowDimensionCompletedDialog(true);
+              }
+          } else {
+              setCurrentItemIndexInDimension(prev => prev + 1);
+          }
+      }, 250); // Short delay before sliding
+    }
   };
   
   const handleGoBack = () => {
@@ -197,6 +199,15 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     toast({ title: "Progreso Guardado", description: "Puedes continuar tu evaluación más tarde desde 'Mis Evaluaciones'." });
     setShowDimensionCompletedDialog(false);
     router.push('/my-assessments');
+  };
+
+  const handleRestart = () => {
+    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
+    setAnswers({});
+    setCurrentDimensionIndex(0);
+    setCurrentItemIndexInDimension(0);
+    setHasLoadedProgress(false);
+    toast({ title: "Evaluación Reiniciada", description: "Puedes empezar desde el principio." });
   };
 
   if (!currentItem) {
@@ -282,7 +293,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          <p className="text-sm text-muted-foreground">{currentOverallIndex + 1} / {allItems.length}</p>
+          {hasLoadedProgress && (
+             <Button variant="destructive_outline" size="sm" onClick={handleRestart}>
+              <Trash2 className="mr-2 h-4 w-4" /> Reiniciar
+            </Button>
+          )}
         </CardFooter>
       </Card>
       
