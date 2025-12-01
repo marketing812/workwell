@@ -40,7 +40,7 @@ interface AssessmentPageClientProps {
   isGuided?: boolean;
 }
 
-export default function AssessmentPageClient({ assessmentDimensions, isGuided = false }: AssessmentPageClientProps) {
+export default function AssessmentPageClient({ assessmentDimensions, isGuided = true }: AssessmentPageClientProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
