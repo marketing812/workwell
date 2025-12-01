@@ -186,7 +186,7 @@ class ModuleErrorBoundary extends React.Component<{
 }
 
 class ContentItemErrorBoundary extends React.Component<{
-  pathId: string;
+  path: Path;
   module: PathModule;
   index: number;
   contentItem: ModuleContent;
@@ -196,7 +196,7 @@ class ContentItemErrorBoundary extends React.Component<{
     console.error(
       '[ContentItemErrorBoundary] Error al renderizar contentItem',
       {
-        pathId: this.props.pathId,
+        pathId: this.props.path.id,
         moduleId: this.props.module.id,
         moduleTitle: this.props.module.title,
         contentIndex: this.props.index,
@@ -600,27 +600,27 @@ function ContentItemRenderer({
         >{`"${contentItem.text}"`}</blockquote>
       );
     case 'stressMapExercise':
-      return <StressMapExercise key={index} content={contentItem} path={path} />;
+      return <StressMapExercise key={index} content={contentItem} />;
     case 'triggerExercise':
-      return <TriggerExercise key={index} content={contentItem} path={path} />;
+      return <TriggerExercise key={index} content={contentItem} />;
     case 'detectiveExercise':
-      return <DetectiveExercise key={index} content={contentItem} path={path} />;
+      return <DetectiveExercise key={index} content={contentItem} />;
     case 'demandsExercise':
-      return <DemandsExercise key={index} content={contentItem} path={path} />;
+      return <DemandsExercise key={index} content={contentItem} />;
     case 'wellbeingPlanExercise':
-      return <WellbeingPlanExercise key={index} content={contentItem} path={path} />;
+      return <WellbeingPlanExercise key={index} content={contentItem} />;
     case 'uncertaintyMapExercise':
-      return <UncertaintyMapExercise key={index} content={contentItem} path={path} />;
+      return <UncertaintyMapExercise key={index} content={contentItem} />;
     case 'controlTrafficLightExercise':
-      return <ControlTrafficLightExercise key={index} content={contentItem} path={path} />;
+      return <ControlTrafficLightExercise key={index} content={contentItem} />;
     case 'alternativeStoriesExercise':
-      return <AlternativeStoriesExercise key={index} content={contentItem} path={path} />;
+      return <AlternativeStoriesExercise key={index} content={contentItem} />;
     case 'mantraExercise':
-      return <MantraExercise key={index} content={contentItem} path={path} />;
+      return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
-      return <DelSabotajeALaAccionExercise key={index} content={contentItem} path={path} />;
+      return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
       return (
         <TherapeuticNotebookReflectionExercise
@@ -913,11 +913,8 @@ export function PathDetailClient({ path }: { path: Path }) {
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
-
 
   useEffect(() => {
-    setIsClient(true);
     if (path) {
       const initialCompleted = getCompletedModules(path.id);
       setCompletedModules(initialCompleted);
@@ -926,11 +923,15 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path || !isClient) {
+  if (!path) {
+    // This case should ideally be handled by the server component with notFound()
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
-        <p>Cargando ruta...</p>
+        <AlertTriangle className="w-12 h-12 text-destructive" />
+        {t.errorOccurred} Ruta no encontrada.
+        <Button asChild variant="outline">
+          <Link href="/paths">{t.allPaths}</Link>
+        </Button>
       </div>
     );
   }
@@ -1058,7 +1059,7 @@ export function PathDetailClient({ path }: { path: Path }) {
               {module.content.map((contentItem, i) => (
                 <ContentItemErrorBoundary
                   key={i}
-                  pathId={path.id}
+                  path={path}
                   module={module}
                   index={i}
                   contentItem={contentItem}
@@ -1130,3 +1131,4 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
