@@ -63,7 +63,7 @@ interface QuestionnaireFormProps {
   isGuided?: boolean;
 }
 
-export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions, isGuided = false }: QuestionnaireFormProps) {
+export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions, isGuided = true }: QuestionnaireFormProps) {
   const t = useTranslations();
   const router = useRouter();
   const { toast } = useToast();
@@ -304,7 +304,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          <Button onClick={handleNextStep} disabled={!isNextButtonActive}>
+          <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
             Siguiente <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </CardFooter>
@@ -337,3 +337,4 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     </>
   );
 }
+
