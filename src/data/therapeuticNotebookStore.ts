@@ -180,9 +180,19 @@ export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
  */
 export function formatEntryTimestamp(isoTimestamp: string): string {
   try {
-    return format(parseISO(isoTimestamp), "dd MMM yyyy, HH:mm", { locale: es });
+    const date = parseISO(isoTimestamp);
+    // Check if the date is valid. parseISO can return an invalid date.
+    if (isNaN(date.getTime())) {
+      // Try to parse with a more flexible approach if ISO parsing fails
+      const flexibleDate = new Date(isoTimestamp.replace(' ', 'T'));
+      if (isNaN(flexibleDate.getTime())) {
+        throw new Error('Invalid date string provided');
+      }
+      return format(flexibleDate, "dd MMM yyyy, HH:mm", { locale: es });
+    }
+    return format(date, "dd MMM yyyy, HH:mm", { locale: es });
   } catch (error) {
-    console.error("Error formatting timestamp:", error);
+    console.error("Error formatting timestamp:", error, "Input:", isoTimestamp);
     return "Fecha inválida";
   }
 }
@@ -201,3 +211,4 @@ export function clearAllNotebookEntries(): void {
     console.error("Error clearing notebook entries from localStorage:", error);
   }
 }
+
