@@ -10,7 +10,6 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import type { Metadata } from 'next';
 import type { RoutePageProps } from '@/types/page-props';
 
-// Fija la página a renderizado dinámico para asegurar que los datos se obtienen en cada petición
 export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }: RoutePageProps<{ slug: string }>) {
@@ -18,12 +17,10 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
   
   const category: ResourceCategory | null = await getCategoryBySlug(slug);
 
-  // Si la categoría no existe, lanzamos un 404
   if (!category) {
     notFound();
   }
 
-  // Ahora que sabemos que la categoría existe, obtenemos los posts.
   const posts: ResourcePost[] = await getPostsByCategory(slug);
   
   return (
@@ -49,7 +46,6 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
       {posts.length > 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => {
-            // Se gestiona el cambio de dominio en la URL de la imagen
             let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
             if (imageUrl) {
               imageUrl = imageUrl.replace('workwellfut.hl1450.dinaserver.com', 'workwellfut.com');
@@ -90,7 +86,6 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
   );
 }
 
-// Función para generar los metadatos de la página (título de la pestaña)
 export async function generateMetadata({ params }: RoutePageProps<{ slug: string }>): Promise<Metadata> {
   const { slug } = params;
   const category = await getCategoryBySlug(slug);
