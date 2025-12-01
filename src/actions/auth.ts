@@ -1,3 +1,4 @@
+
 "use server";
 
 import { z } from "zod";
@@ -870,26 +871,14 @@ export async function fetchUserActivities(
         const transformedEntries = potentialEntriesArray.map((rawEntry: any) => {
           if (Array.isArray(rawEntry) && rawEntry.length >= 5) {
             // Assuming structure: [idactividad, fecha, idusuario, situation, emotion]
-            // And that rawEntry[1] (fecha) is a parseable date string
-            let timestamp = rawEntry[1];
-            try {
-                // Attempt to convert to ISO string if not already
-                // This assumes rawEntry[1] is a string that new Date() can parse.
-                // If it's already ISO, new Date().toISOString() is idempotent for valid ISO strings.
-                timestamp = new Date(rawEntry[1]).toISOString();
-            } catch (dateError) {
-                console.warn(`fetchUserActivities: Could not parse date string "${rawEntry[1]}" for entry ID ${rawEntry[0]}. Using original.`, dateError);
-                // If parsing fails, use the original string and let Zod validation catch it if it's truly invalid.
-            }
             return {
               id: String(rawEntry[0]),
-              timestamp: timestamp, 
+              timestamp: rawEntry[1], // Use the date string as is
               situation: String(rawEntry[3]),
               emotion: String(rawEntry[4]),
             };
           }
-          // If rawEntry is already an object (potentially from a previous transformation or direct from API)
-          // or if it's not an array of the expected length, return it as is for Zod to validate.
+          // If rawEntry is already an object, pass it through
           return rawEntry;
         }).filter(entry => entry && typeof entry === 'object'); // Filter out any nulls or non-objects from bad transformations
 
@@ -994,15 +983,9 @@ export async function fetchNotebookEntries(
         const transformedEntries = potentialEntriesArray.map((rawEntry: any) => {
             if (Array.isArray(rawEntry) && rawEntry.length >= 4) {
                 // Assuming structure [idcuaderno, fechahora, titulo, contenido, (opcional) pathId]
-                let timestamp = rawEntry[1];
-                try {
-                    timestamp = new Date(rawEntry[1]).toISOString();
-                } catch(e) {
-                    console.warn(`Could not parse notebook date ${rawEntry[1]}. Using original.`);
-                }
                 return {
                     id: String(rawEntry[0]),
-                    timestamp: timestamp,
+                    timestamp: rawEntry[1], // Use date string as is
                     title: String(rawEntry[2]),
                     content: String(rawEntry[3]),
                     pathId: rawEntry.length > 4 ? String(rawEntry[4]) : null,
