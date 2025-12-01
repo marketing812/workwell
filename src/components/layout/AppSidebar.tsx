@@ -23,7 +23,6 @@ import { Logo } from "@/components/Logo";
 const navItems = [
   { href: "/dashboard", labelKey: "navDashboard", icon: LayoutDashboard },
   { href: "/assessment/intro", labelKey: "navAssessment", icon: ClipboardList }, 
-  { href: "/assessment/guided", labelKey: "navInteractiveAssessment", icon: Wand2 },
   { href: "/my-assessments", labelKey: "navMyAssessments", icon: History },
   { href: "/paths", labelKey: "navPaths", icon: Milestone },
   { href: "/emotional-log", labelKey: "navMyEmotions", icon: HeartPulse },
