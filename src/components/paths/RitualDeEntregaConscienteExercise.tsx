@@ -9,14 +9,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, Book, Feather, Wind } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-import type { ModuleContent } from '@/data/paths/pathTypes';
+import type { Path, ModuleContent } from '@/data/pathsData';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
-  pathId: string;
+  path: Path;
 }
 
-export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeEntregaConscienteExerciseProps) {
+export function RitualDeEntregaConscienteExercise({ content, path }: RitualDeEntregaConscienteExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0); // 0: initial choice, 1: write, 2: breathe, 3: gratitude
 
@@ -34,7 +34,8 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
     addNotebookEntry({
       title: `Ritual de Entrega Consciente: ${option}`,
       content: entryContent,
-      pathId: pathId,
+      pathId: path.id,
+      ruta: path.title,
     });
     toast({
       title: "Ritual Guardado",
