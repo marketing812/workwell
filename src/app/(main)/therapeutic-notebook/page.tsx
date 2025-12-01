@@ -79,7 +79,7 @@ export default function TherapeuticNotebookPage() {
                           <Calendar className="mr-2 h-4 w-4" />
                           {formatEntryTimestamp(entry.timestamp)}
                         </span>
-                        {entry.ruta && (
+                        {entry.ruta && entry.title !== entry.ruta && (
                           <span className="flex items-center mt-1 sm:mt-0 text-primary">
                             <ArrowRight className="mr-2 h-3 w-3" />
                             {entry.title}
@@ -134,4 +134,3 @@ export default function TherapeuticNotebookPage() {
     </div>
   );
 }
-
