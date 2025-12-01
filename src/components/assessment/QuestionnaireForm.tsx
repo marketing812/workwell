@@ -75,24 +75,33 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false);
 
   useEffect(() => {
-    if (!isGuided) return; // This logic is only for the guided version
+    if (!isGuided || assessmentDimensions.length === 0) return; // Logic for guided version, ensure dimensions are loaded
+
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
       if (savedProgress) {
         const parsedData = JSON.parse(savedProgress) as InProgressData;
         if (parsedData.answers && parsedData.position) {
-            setAnswers(parsedData.answers);
-            const { dimension, item } = parsedData.position;
+          setAnswers(parsedData.answers);
+          const { dimension, item } = parsedData.position;
 
-            if (dimension < assessmentDimensions.length && item < assessmentDimensions[dimension].items.length) {
-              setCurrentDimensionIndex(dimension);
-              setCurrentItemIndexInDimension(item);
-            }
-            
-            toast({
-              title: "Evaluación Reanudada",
-              description: "Hemos cargado tu progreso anterior.",
-            });
+          // Validate position to prevent errors
+          const isLastDimension = dimension >= assessmentDimensions.length - 1;
+          const isLastItem = isLastDimension && item >= assessmentDimensions[assessmentDimensions.length - 1].items.length - 1;
+
+          if (!isLastItem) {
+            setCurrentDimensionIndex(dimension);
+            setCurrentItemIndexInDimension(item);
+          } else {
+            // If saved progress is at the very end, put them at the last question to allow finishing
+            setCurrentDimensionIndex(assessmentDimensions.length - 1);
+            setCurrentItemIndexInDimension(assessmentDimensions[assessmentDimensions.length - 1].items.length - 1);
+          }
+          
+          toast({
+            title: "Evaluación Reanudada",
+            description: "Hemos cargado tu progreso anterior.",
+          });
         }
       }
     } catch (error) {
