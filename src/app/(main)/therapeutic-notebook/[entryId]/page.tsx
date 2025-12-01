@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -140,4 +139,3 @@ export default function NotebookEntryDetailPage() {
     </div>
   );
 }
-
