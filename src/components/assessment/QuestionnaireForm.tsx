@@ -134,20 +134,19 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     };
     setAnswers(newAnswers);
     
-    // Correction: This logic should ONLY run for the guided mode.
     if (isGuided) {
       setTimeout(() => {
-          const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-          if (isLastItemInDimension) {
-              if (!isSubmitting) { 
-                  setShowDimensionCompletedDialog(true);
-              }
-          } else {
-              const nextItemIndex = currentItemIndexInDimension + 1;
-              setCurrentItemIndexInDimension(nextItemIndex);
-              saveProgress(currentDimensionIndex, nextItemIndex, newAnswers);
-          }
-      }, 250); // Short delay before sliding
+        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+        if (isLastItemInDimension) {
+            if (!isSubmitting) { 
+                setShowDimensionCompletedDialog(true);
+            }
+        } else {
+            const nextItemIndex = currentItemIndexInDimension + 1;
+            setCurrentItemIndexInDimension(nextItemIndex);
+            saveProgress(currentDimensionIndex, nextItemIndex, newAnswers);
+        }
+      }, 250); 
     }
   };
   
@@ -330,3 +329,4 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     </>
   );
 }
+
