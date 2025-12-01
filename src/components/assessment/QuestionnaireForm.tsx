@@ -50,7 +50,10 @@ const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
 
 interface InProgressData {
   answers: Record<string, { score: number; weight: number }>;
-  position: number;
+  position: {
+    dimension: number;
+    item: number;
+  };
 }
 
 interface QuestionnaireFormProps {
@@ -65,26 +68,27 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   const router = useRouter();
   const { toast } = useToast();
   
-  const allItems = assessmentDimensions.flatMap(dim => dim.items);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentDimensionIndex, setCurrentDimensionIndex] = useState(0);
+  const [currentItemIndexInDimension, setCurrentItemIndexInDimension] = useState(0);
 
   const [answers, setAnswers] = useState<Record<string, { score: number; weight: number }>>({});
-  const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false); // This might be removed for guided version
+  const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false);
 
   useEffect(() => {
+    if (!isGuided) return; // This logic is only for the guided version
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
       if (savedProgress) {
         const parsedData = JSON.parse(savedProgress) as InProgressData;
-        if (parsedData.answers) {
+        if (parsedData.answers && parsedData.position) {
             setAnswers(parsedData.answers);
-            if(isGuided){
-                const answeredIds = Object.keys(parsedData.answers);
-                const lastAnsweredItemIndex = allItems.findIndex(item => item.id === answeredIds[answeredIds.length - 1]);
-                if (lastAnsweredItemIndex !== -1 && lastAnsweredItemIndex < allItems.length - 1) {
-                    setCurrentIndex(lastAnsweredItemIndex + 1);
-                }
+            const { dimension, item } = parsedData.position;
+
+            if (dimension < assessmentDimensions.length && item < assessmentDimensions[dimension].items.length) {
+              setCurrentDimensionIndex(dimension);
+              setCurrentItemIndexInDimension(item);
             }
+            
             toast({
               title: "Evaluación Reanudada",
               description: "Hemos cargado tu progreso anterior.",
@@ -94,13 +98,13 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     } catch (error) {
       console.error("Error loading in-progress assessment:", error);
     }
-  }, [toast, isGuided, allItems]);
+  }, [toast, isGuided, assessmentDimensions]);
   
-  const saveProgress = (index: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
+  const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
     try {
-      const dataToSave = {
+      const dataToSave: InProgressData = {
         answers: currentAnswers,
-        position: index, // Simplified for guided version
+        position: { dimension: dimIndex, item: itemIndex }
       };
       localStorage.setItem(IN_PROGRESS_ANSWERS_KEY, JSON.stringify(dataToSave));
     } catch (error) {
@@ -108,8 +112,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     }
   };
 
-  const currentItem = allItems[currentIndex];
-  const progressPercentage = (currentIndex / allItems.length) * 100;
+  const currentDimension = assessmentDimensions[currentDimensionIndex];
+  const allItems = assessmentDimensions.flatMap(dim => dim.items);
+  const currentOverallIndex = assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension;
+  const currentItem = currentDimension?.items[currentItemIndexInDimension];
+  const progressPercentage = (currentOverallIndex / allItems.length) * 100;
 
   const handleAnswerChange = (item: AssessmentItem, value: string) => {
     const newAnswers = {
@@ -117,25 +124,33 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
       [item.id]: { score: parseInt(value), weight: item.weight }
     };
     setAnswers(newAnswers);
+    saveProgress(currentDimensionIndex, currentItemIndexInDimension, newAnswers);
     
     setTimeout(() => {
-        if (currentIndex < allItems.length - 1) {
-            setCurrentIndex(currentIndex + 1);
+        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+        if (isLastItemInDimension) {
+            if (!isSubmitting) { 
+                setShowDimensionCompletedDialog(true);
+            }
         } else {
-            submitFullAssessment(newAnswers);
+            setCurrentItemIndexInDimension(prev => prev + 1);
         }
     }, 250); // Short delay before sliding
   };
   
   const handleGoBack = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    if (currentItemIndexInDimension > 0) {
+      setCurrentItemIndexInDimension(prev => prev - 1);
+    } else if (currentDimensionIndex > 0) {
+      const prevDimIndex = currentDimensionIndex - 1;
+      const prevDim = assessmentDimensions[prevDimIndex];
+      setCurrentDimensionIndex(prevDimIndex);
+      setCurrentItemIndexInDimension(prevDim.items.length - 1);
     }
   };
 
   const submitFullAssessment = async (finalAnswers: Record<string, { score: number; weight: number }>) => {
     const allAnswered = allItems.every(item => finalAnswers.hasOwnProperty(item.id));
-
     if (!allAnswered) {
        toast({
          title: "Cuestionario Incompleto",
@@ -148,8 +163,35 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     await onSubmit(finalAnswers);
   };
   
+  const handleDialogContinue = () => {
+    setShowDimensionCompletedDialog(false);
+    const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
+    if (!isLastDimension) {
+      const nextDimIndex = currentDimensionIndex + 1;
+      setCurrentDimensionIndex(nextDimIndex);
+      setCurrentItemIndexInDimension(0);
+      saveProgress(nextDimIndex, 0, answers);
+    } else {
+      submitFullAssessment(answers);
+    }
+  };
+
+  const handleSaveForLater = () => {
+    const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
+    let dimToSave = currentDimensionIndex;
+    let itemToSave = currentItemIndexInDimension;
+    if (currentItemIndexInDimension === currentDimension.items.length - 1 && !isLastDimension) {
+      dimToSave = currentDimensionIndex + 1;
+      itemToSave = 0;
+    }
+    saveProgress(dimToSave, itemToSave, answers);
+    toast({ title: "Progreso Guardado", description: "Puedes continuar tu evaluación más tarde desde 'Mis Evaluaciones'." });
+    setShowDimensionCompletedDialog(false);
+    router.push('/my-assessments');
+  };
+
   if (!currentItem) {
-    if (allItems.length > 0 && currentIndex >= allItems.length) {
+    if (allItems.length > 0 && currentOverallIndex >= allItems.length) {
        return (
         <Card className="w-full max-w-2xl mx-auto shadow-xl text-center p-8">
             <CardHeader>
@@ -169,7 +211,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     return <div className="flex justify-center items-center h-64"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
   }
 
-  const isFirstQuestion = currentIndex === 0;
+  const isFirstQuestion = currentDimensionIndex === 0 && currentItemIndexInDimension === 0;
 
   return (
     <>
@@ -177,8 +219,13 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
         <CardHeader>
           <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
           <CardTitle className="text-lg font-semibold text-center text-primary">
-            Evaluación Guiada
+            {t.assessmentTitle}
           </CardTitle>
+          {isGuided && (
+            <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
+                {currentDimension.name}
+            </CardDescription>
+          )}
         </CardHeader>
         <CardContent className="pt-2 px-2 sm:px-6">
             <div 
@@ -186,7 +233,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
               className={cn("py-4", "animate-in fade-in-0 slide-in-from-right-5 duration-500")}
             >
               <p className="text-xs font-medium text-muted-foreground mb-2 text-center">
-                Pregunta {currentIndex + 1} de {allItems.length}
+                Pregunta {currentOverallIndex + 1} de {allItems.length}
               </p>
               <p className="text-md sm:text-lg font-semibold text-primary mb-6 min-h-[3em] text-center px-2">{currentItem.text}</p>
               <RadioGroup
@@ -226,9 +273,34 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          <p className="text-sm text-muted-foreground">{currentIndex + 1} / {allItems.length}</p>
+          <p className="text-sm text-muted-foreground">{currentOverallIndex + 1} / {allItems.length}</p>
         </CardFooter>
       </Card>
+      
+      <AlertDialog open={showDimensionCompletedDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-2xl text-primary flex items-center gap-2 justify-center">
+                <CheckCircle className="h-7 w-7" /> {t.dimensionCompletedTitle}
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-base py-2 text-center">
+              {t.dimensionCompletedMessage
+                  .replace("{dimensionNumber}", (currentDimensionIndex + 1).toString())
+                  .replace("{totalDimensions}", assessmentDimensions.length.toString())}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="mt-4 flex-col sm:flex-row sm:justify-end sm:space-x-2 gap-2 sm:gap-0">
+            <Button variant="outline" onClick={handleSaveForLater} disabled={isSubmitting} className="w-full sm:w-auto">
+              <Save className="mr-2 h-4 w-4" /> {t.saveForLaterButton}
+            </Button>
+            <Button onClick={handleDialogContinue} disabled={isSubmitting} className="w-full sm:w-auto" autoFocus>
+              {currentDimensionIndex === assessmentDimensions.length - 1 ? (isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.finishAssessment) : t.continueButton} 
+              {currentDimensionIndex < assessmentDimensions.length - 1 && <ArrowRight className="ml-2 h-4 w-4" />}
+              {currentDimensionIndex === assessmentDimensions.length - 1 && !isSubmitting && <CheckCircle className="ml-2 h-4 w-4" />}
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }
