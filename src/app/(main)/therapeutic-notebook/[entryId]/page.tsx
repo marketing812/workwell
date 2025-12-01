@@ -106,9 +106,17 @@ export default function NotebookEntryDetailPage() {
                 <NotebookText className="h-7 w-7" />
                 {entry.title}
               </CardTitle>
-              <CardDescription className="flex items-center text-sm pt-2 text-muted-foreground">
-                <Calendar className="mr-2 h-4 w-4" />
-                {formatEntryTimestamp(entry.timestamp)}
+              <CardDescription className="flex flex-col sm:flex-row sm:items-center text-sm pt-2 text-muted-foreground gap-x-4">
+                  <span className="flex items-center">
+                    <Calendar className="mr-2 h-4 w-4" />
+                    {formatEntryTimestamp(entry.timestamp)}
+                  </span>
+                  {entry.ruta && (
+                     <span className="flex items-center text-primary mt-2 sm:mt-0">
+                        <ArrowRight className="mr-2 h-3 w-3" />
+                        {entry.ruta}
+                    </span>
+                  )}
               </CardDescription>
             </div>
             {entry.pathId && (
@@ -132,3 +140,4 @@ export default function NotebookEntryDetailPage() {
     </div>
   );
 }
+

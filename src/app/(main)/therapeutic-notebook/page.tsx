@@ -124,7 +124,7 @@ export default function TherapeuticNotebookPage() {
             <p className="text-xs text-muted-foreground mb-2">
               Esta es la URL completa que se utilizó para obtener los datos de tu cuaderno. Puedes copiarla y pegarla en una nueva pestaña del navegador para ver la respuesta directa de la API.
             </p>
-            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all shadow-inner">
+            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
               <code>{debugUrl}</code>
             </pre>
           </CardContent>
@@ -134,3 +134,4 @@ export default function TherapeuticNotebookPage() {
     </div>
   );
 }
+
