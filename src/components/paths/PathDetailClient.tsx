@@ -29,6 +29,7 @@ import { useToast } from '@/hooks/use-toast';
 import {
   AlertDialog,
   AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -51,6 +52,7 @@ import { es } from 'date-fns/locale';
 import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
+import { Loader2 } from 'lucide-react';
 
 // RUTA 1
 import { StressMapExercise } from '@/components/paths/StressMapExercise';
@@ -63,7 +65,7 @@ import { UncertaintyMapExercise } from '@/components/paths/UncertaintyMapExercis
 import { ControlTrafficLightExercise } from '@/components/paths/ControlTrafficLightExercise';
 import { AlternativeStoriesExercise } from '@/components/paths/AlternativeStoriesExercise';
 import { MantraExercise } from '@/components/paths/MantraExercise';
-import { RitualDeEntregaConscienteExercise } from './RitualDeEntregaConscienteExercise';
+import { RitualDeEntregaConscienteExercise } from '@/components/paths/RitualDeEntregaConscienteExercise';
 // RUTA 3
 import { DelSabotajeALaAccionExercise } from '@/components/paths/DelSabotajeALaAccionExercise';
 // RUTA 4
@@ -184,7 +186,7 @@ class ModuleErrorBoundary extends React.Component<{
 }
 
 class ContentItemErrorBoundary extends React.Component<{
-  path: Path;
+  pathId: string;
   module: PathModule;
   index: number;
   contentItem: ModuleContent;
@@ -194,7 +196,7 @@ class ContentItemErrorBoundary extends React.Component<{
     console.error(
       '[ContentItemErrorBoundary] Error al renderizar contentItem',
       {
-        pathId: this.props.path.id,
+        pathId: this.props.pathId,
         moduleId: this.props.module.id,
         moduleTitle: this.props.module.title,
         contentIndex: this.props.index,
@@ -598,27 +600,27 @@ function ContentItemRenderer({
         >{`"${contentItem.text}"`}</blockquote>
       );
     case 'stressMapExercise':
-      return <StressMapExercise key={index} content={contentItem} path={path} />;
+      return <StressMapExercise key={index} content={contentItem} />;
     case 'triggerExercise':
-      return <TriggerExercise key={index} content={contentItem} path={path} />;
+      return <TriggerExercise key={index} content={contentItem} />;
     case 'detectiveExercise':
-      return <DetectiveExercise key={index} content={contentItem} path={path} />;
+      return <DetectiveExercise key={index} content={contentItem} />;
     case 'demandsExercise':
-      return <DemandsExercise key={index} content={contentItem} path={path} />;
+      return <DemandsExercise key={index} content={contentItem} />;
     case 'wellbeingPlanExercise':
-      return <WellbeingPlanExercise key={index} content={contentItem} path={path} />;
+      return <WellbeingPlanExercise key={index} content={contentItem} />;
     case 'uncertaintyMapExercise':
-      return <UncertaintyMapExercise key={index} content={contentItem} path={path} />;
+      return <UncertaintyMapExercise key={index} content={contentItem} />;
     case 'controlTrafficLightExercise':
-      return <ControlTrafficLightExercise key={index} content={contentItem} path={path} />;
+      return <ControlTrafficLightExercise key={index} content={contentItem} />;
     case 'alternativeStoriesExercise':
-      return <AlternativeStoriesExercise key={index} content={contentItem} path={path} />;
+      return <AlternativeStoriesExercise key={index} content={contentItem} />;
     case 'mantraExercise':
-      return <MantraExercise key={index} content={contentItem} path={path} />;
+      return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
-      return <DelSabotajeALaAccionExercise key={index} content={contentItem} path={path} />;
+      return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
       return (
         <TherapeuticNotebookReflectionExercise
@@ -927,7 +929,7 @@ export function PathDetailClient({ path }: { path: Path }) {
   if (!path || !isClient) {
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+        <AlertTriangle className="w-12 h-12 text-destructive" />
         <p>Cargando ruta...</p>
       </div>
     );
@@ -1056,7 +1058,7 @@ export function PathDetailClient({ path }: { path: Path }) {
               {module.content.map((contentItem, i) => (
                 <ContentItemErrorBoundary
                   key={i}
-                  path={path}
+                  pathId={path.id}
                   module={module}
                   index={i}
                   contentItem={contentItem}
@@ -1128,3 +1130,4 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
