@@ -134,6 +134,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     };
     setAnswers(newAnswers);
     
+    // Correction: This logic should ONLY run for the guided mode.
     if (isGuided) {
       setTimeout(() => {
           const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
@@ -283,7 +284,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
                         id={`${currentItem.id}-${option.value}`}
                         className="sr-only"
                       />
-                      {IconComponent ? <IconComponent className="h-8 w-8 sm:h-10 sm:h-10 text-foreground/80" /> : option.label}
+                      {IconComponent ? <IconComponent className="h-8 w-8 sm:h-10 sm:h-10 text-foreground/80" /> : null}
                     </Label>
                   );
                 })}
