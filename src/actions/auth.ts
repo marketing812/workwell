@@ -86,6 +86,7 @@ const EmotionalEntrySchema = z.object({
   id: z.string(),
   situation: z.string(),
   emotion: z.string(),
+  thought: z.string(),
   timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Timestamp must be a valid ISO date string",
   }),
@@ -101,6 +102,7 @@ const NotebookEntrySchema = z.object({
   title: z.string(),
   content: z.string(),
   pathId: z.string().optional().nullable().transform(val => val ?? undefined),
+  ruta: z.string().optional(),
 });
 const FetchedNotebookEntriesSchema = z.array(NotebookEntrySchema);
 
@@ -869,18 +871,29 @@ export async function fetchUserActivities(
       if (potentialEntriesArray && Array.isArray(potentialEntriesArray)) {
         // Transform array of arrays to array of objects if necessary
         const transformedEntries = potentialEntriesArray.map((rawEntry: any) => {
-          if (Array.isArray(rawEntry) && rawEntry.length >= 5) {
-            // Assuming structure: [idactividad, fecha, idusuario, situation, emotion]
-            return {
-              id: String(rawEntry[0]),
-              timestamp: rawEntry[1], // Use the date string as is
-              situation: String(rawEntry[3]),
-              emotion: String(rawEntry[4]),
-            };
-          }
-          // If rawEntry is already an object, pass it through
-          return rawEntry;
-        }).filter(entry => entry && typeof entry === 'object'); // Filter out any nulls or non-objects from bad transformations
+            if (Array.isArray(rawEntry) && rawEntry.length >= 5) {
+                // Assuming structure: [idactividad, fecha, idusuario, situation, emotion, (opcional) thought]
+                // The 'thought' may or may not be present
+                let timestamp = rawEntry[1];
+                try {
+                    timestamp = new Date(rawEntry[1]).toISOString();
+                } catch (dateError) {
+                    console.warn(`fetchUserActivities: Could not parse date string "${rawEntry[1]}" for entry ID ${rawEntry[0]}. Using original.`, dateError);
+                }
+                return {
+                    id: String(rawEntry[0]),
+                    timestamp: timestamp,
+                    situation: String(rawEntry[3]),
+                    emotion: String(rawEntry[4]),
+                    thought: rawEntry.length > 5 ? String(rawEntry[5]) : "", // Add thought or empty string
+                };
+            }
+            // If it's already an object, ensure it has a 'thought' property.
+            if (rawEntry && typeof rawEntry === 'object' && !('thought' in rawEntry)) {
+                rawEntry.thought = "";
+            }
+            return rawEntry;
+        }).filter(entry => entry && typeof entry === 'object');
 
         console.log("fetchUserActivities: Transformed entries before Zod validation:", JSON.stringify(transformedEntries, null, 2).substring(0,500) + "...");
         const validationResult = FetchedEmotionalEntriesSchema.safeParse(transformedEntries);
@@ -982,13 +995,20 @@ export async function fetchNotebookEntries(
       if (potentialEntriesArray && Array.isArray(potentialEntriesArray)) {
         const transformedEntries = potentialEntriesArray.map((rawEntry: any) => {
             if (Array.isArray(rawEntry) && rawEntry.length >= 4) {
-                // Assuming structure [idcuaderno, fechahora, titulo, contenido, (opcional) pathId]
+                 let timestamp = rawEntry[1];
+                try {
+                    timestamp = new Date(rawEntry[1]).toISOString();
+                } catch(e) {
+                    console.warn(`Could not parse notebook date ${rawEntry[1]}. Using original.`);
+                }
+                // Assuming structure [idcuaderno, fechahora, titulo, contenido, (opcional) pathId, (opcional) ruta]
                 return {
                     id: String(rawEntry[0]),
-                    timestamp: rawEntry[1], // Use date string as is
+                    timestamp: timestamp,
                     title: String(rawEntry[2]),
                     content: String(rawEntry[3]),
                     pathId: rawEntry.length > 4 ? String(rawEntry[4]) : null,
+                    ruta: rawEntry.length > 5 ? String(rawEntry[5]) : undefined,
                 };
             }
             return rawEntry;
