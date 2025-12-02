@@ -21,7 +21,6 @@ import {
   X as XIcon,
   Minus as MinusIcon,
   CheckIcon,
-  Loader2,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -618,7 +617,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -927,12 +926,7 @@ export function PathDetailClient({ path }: { path: Path }) {
   }, [path, loadPath]);
 
   if (!path || !isClient) {
-    return (
-      <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
-        <p>Cargando ruta...</p>
-      </div>
-    );
+    return null; // O un spinner/esqueleto
   }
 
   const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
