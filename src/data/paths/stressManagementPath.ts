@@ -1,11 +1,12 @@
 
-import type { Path } from './../pathsData';
+import type { Path } from '../pathsData';
 
 export const stressManagementPath: Path = {
   id: 'gestion-estres',
   title: 'Gestionar el Estrés con Conciencia',
   description: 'El estrés no es tu enemigo, es una señal que merece ser escuchada. En esta ruta aprenderás a reconocer cómo se activa en ti, regularlo con técnicas efectivas y responder con más calma y conciencia.',
   dataAiHint: 'stress management mindfulness',
+  audioUrl: 'https://workwellfut.com/audios/ruta1/INTRODUCCIONRUTA.mp3',
   modules: [
     {
       id: 'estres_sem1',
@@ -153,12 +154,9 @@ export const stressManagementPath: Path = {
         title: 'Semana 2: Activa tu Regulación Fisiológica',
         type: 'skill_practice',
         estimatedTime: '15-20 min',
+        audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/INTROSEMANA2.mp3',
         content: [
-            {
-                type: 'paragraphWithAudio',
-                text: '¿Sabías que tu cuerpo también forma parte del proceso de autorregulación emocional? Bienvenida o bienvenido a la segunda sesión de esta ruta: “Activa tu regulación fisiológica”.   Esta semana vas a descubrir cómo tu cuerpo participa en la gestión del estrés. El objetivo es que empieces a conocer tu sistema nervioso, entiendas por qué se activa en ciertos momentos y aprendas a enviarle señales de seguridad. Vas a entrenar técnicas que te ayuden a decirle a tu cuerpo: “ya estás a salvo”.   Mientras escuchas este audio, piensa en algún momento reciente en que tu cuerpo te haya ayudado a calmarte sin proponértelo.   En el siguiente audio te explicaré por qué esto no es casualidad.',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/INTROSEMANA2.mp3',
-            },
+            { type: 'paragraph', text: '¿Sabías que tu cuerpo también forma parte del proceso de autorregulación emocional? Bienvenida o bienvenido a la segunda sesión de esta ruta: “Activa tu regulación fisiológica”.   Esta semana vas a descubrir cómo tu cuerpo participa en la gestión del estrés. El objetivo es que empieces a conocer tu sistema nervioso, entiendas por qué se activa en ciertos momentos y aprendas a enviarle señales de seguridad. Vas a entrenar técnicas que te ayuden a decirle a tu cuerpo: “ya estás a salvo”.   Mientras escuchas este audio, piensa en algún momento reciente en que tu cuerpo te haya ayudado a calmarte sin proponértelo.   En el siguiente audio te explicaré por qué esto no es casualidad.'},
             { type: 'title', text: 'Psicoeducación' },
             { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.' },
             {
@@ -269,12 +267,9 @@ export const stressManagementPath: Path = {
         title: 'Semana 3: Reestructura tus Pensamientos de Sobrecarga',
         type: 'skill_practice',
         estimatedTime: '20-25 min',
+        audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3',
         content: [
-            {
-                type: 'paragraphWithAudio',
-                text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3'
-            },
+            { type: 'paragraph', text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.'},
             { type: 'title', text: 'Psicoeducación' },
             { type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.'},
             {
@@ -396,12 +391,9 @@ export const stressManagementPath: Path = {
         title: 'Semana 4: Plan de Acción y Prevención de Recaídas',
         type: 'summary',
         estimatedTime: '15-20 min',
+        audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/INTRODUCCIONSEMANA4.mp3',
         content: [
-            {
-              type: 'paragraphWithAudio',
-              text: 'Esta semana vas a consolidar todo lo aprendido creando tu propio plan de bienestar emocional. El objetivo es que desarrolles una herramienta personalizada para prevenir recaídas, cuidarte en los momentos difíciles y responder con más conciencia cuando el estrés reaparezca. Tener un plan no significa eliminar el estrés, sino recordarte que tienes recursos para afrontarlo con calma, flexibilidad y autocompasión.',
-              audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/INTRODUCCIONSEMANA4.mp3',
-            },
+            { type: 'paragraph', text: 'Esta semana vas a consolidar todo lo aprendido creando tu propio plan de bienestar emocional. El objetivo es que desarrolles una herramienta personalizada para prevenir recaídas, cuidarte en los momentos difíciles y responder con más conciencia cuando el estrés reaparezca. Tener un plan no significa eliminar el estrés, sino recordarte que tienes recursos para afrontarlo con calma, flexibilidad y autocompasión.'},
             { type: 'title', text: 'Psicoeducación' },
             { type: 'paragraph', text: 'De la teoría a la práctica: tu plan personal para sostenerte\nEl estrés no desaparece para siempre. Vuelve en forma de tareas acumuladas, expectativas, interrupciones o pensamientos exigentes. Por eso, el objetivo de esta semana es ayudarte a crear tu propio plan de acción: un mapa de recursos, señales de alerta y estrategias que te ayuden a cuidarte cuando lo necesites.\nMás adelante, en la Técnica 1, empezarás a diseñar tu plan personalizado.\nPero antes, necesitas entender para qué sirve, cuáles son sus partes y cómo te ayuda a sostenerte en los momentos difíciles. Este contexto será tu base para crear algo realmente útil y tuyo.\nEste plan no es un protocolo rígido. Es una herramienta viva, ajustada a tu realidad y fortalecida por todo lo que has aprendido. Aquí no buscamos perfección, sino continuidad. Porque prevenir recaídas no es evitar el estrés, sino prepararte para responder con mayor conciencia cuando vuelva a aparecer.'},
             {
