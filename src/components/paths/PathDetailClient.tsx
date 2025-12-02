@@ -618,7 +618,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -1053,6 +1053,11 @@ export function PathDetailClient({ path }: { path: Path }) {
                     </Badge>
                   )}
                 </div>
+                 {module.audioUrl && (
+                  <div className="pt-4">
+                    <audio src={module.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
+                  </div>
+                )}
               </CardHeader>
               <CardContent>
               {module.content.map((contentItem, i) => (
