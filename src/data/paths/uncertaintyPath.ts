@@ -14,7 +14,11 @@ export const uncertaintyPath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.\nNo se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.' },
+        { 
+            type: 'paragraphWithAudio', 
+            text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.\nNo se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion1.mp3'
+        },
         { 
           type: 'title', 
           text: 'Psicoeducación'
@@ -85,12 +89,14 @@ export const uncertaintyPath: Path = {
           objective: 'Diferencia entre lo que depende de ti, lo que puedes influir y lo que está fuera de tu control para enfocar tu energía en lo que sí puedes transformar.',
           duration: '6 a 9 minutos'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+        audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion1.mp3',
+        prompts: [
           '¿Qué intenté controlar esta semana que no estaba en mis manos?',
           '¿Cómo me sentí al soltarlo?',
           '¿Qué ideas me llevo sobre mi forma de vivir lo incierto?',
         ]},
-        { type: 'title', text: 'Resumen Clave de la Semana' },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio10Ruta2Sesion1.mp3' },
         { type: 'list', items: [
             'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
             'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
@@ -108,35 +114,19 @@ export const uncertaintyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
+          { 
+            type: 'paragraphWithAudio', 
+            text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3',
+          },
           { type: 'title', text: 'Psicoeducación' },
           {
-            type: 'title',
-            text: '¿Por qué imaginamos lo peor?',
+            type: 'collapsible',
+            title: '¿Por qué imaginamos lo peor?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3',
-          },
-          {
-            type: 'paragraph',
-            text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. ',
-          },
-          {
-            type: 'collapsible',
-            title: '¿Cómo funciona la anticipación?',
             content: [
-              {
-                type: 'paragraph',
-                text: 'Desde la TCC y la neurociencia afectiva, sabemos que:   La preocupación es una cadena de pensamientos negativos sobre algo que normalmente no ha ocurrido, difíciles de controlar y que buscan prepararte para lo peor. Además, la preocupación te proporciona una falsa sensacion de control.   Pero en realidad, lo que consiguen estos pensamientos es activar el sistema de amenaza del cuerpo.   Esto puede generar síntomas como palpitaciones, tensión, insomnio o dificultad para concentrarse, incluso sin que la situación temida haya ocurrido.   ',
-              },
-            ],
-          },
-          {
-            type: 'collapsible',
-            title: '¿Te suenan estas ideas?',
-            content: [
-              {
-                type: 'paragraph',
-                text: '“¿Y si digo algo ridículo en la reunión?” “¿Y si enfermo justo antes del viaje?” “¿Y si se decepcionan conmigo?”   Estas frases no son inofensivas: cuando se repiten con frecuencia, entrenan a tu cuerpo para vivir en modo defensa constante.',
-              },
-            ],
+                { type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. '},
+            ]
           },
           {
             type: 'collapsible',
@@ -183,14 +173,16 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. No anticipes el resultado. Haz la acción con conciencia.'}
           ]},
-           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
+           prompts: [
               '¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?',
               '¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?',
               '¿Qué tipo de pensamientos suelen aumentar mi ansiedad? ¿Puedo verlos como historias, no como verdades?',
               '¿He notado algún cambio en cómo me siento al no tener el control total?',
               '¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?',
            ]},
-          { type: 'title', text: 'Resumen Clave de la Semana' },
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3' },
           { type: 'list', items: [
               'El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.',
               'Técnicas como la respiración consciente, el escaneo corporal o el anclaje sensorial ayudan a activar el sistema de calma.',
@@ -282,18 +274,20 @@ export const uncertaintyPath: Path = {
             duration: '5–7 minutos',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3'
           },
-           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3',
+           prompts: [
               '¿Qué historia rígida me he contado esta semana que no se cumplió tal como la imaginaba?',
               '¿Qué descubrí al permitirme ver la situación desde más de un ángulo?',
               '¿Cuál de las frases “pero también…” sentí más mía o quiero recordarme más a menudo?',
               '¿En qué momento me sorprendí reaccionando con más flexibilidad de lo habitual?',
             ]},
-          { type: 'title', text: 'Resumen Clave de la Semana'},
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },
           { type: 'list', items: [
               'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.',
               'La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.',
               'Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.',
-              'Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista.',
+              'Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.',
               'Adaptarte no significa rendirte, sino moverte con inteligencia emocional ante lo incierto.'
           ]},
           { type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme.'}
@@ -361,19 +355,14 @@ export const uncertaintyPath: Path = {
             duration: '7–10 minutos'
           },
           {
-            type: 'exercise',
+            type: 'ritualDeEntregaConscienteExercise',
             title: 'Ejercicio 2: Mi ritual de entrega consciente',
             objective: 'Aprende a soltar la tensión mental o física cuando el control se vuelve agotador, a través de la escritura, la respiración o la gratitud.',
-            duration: '5–10 minutos por opción',
-            content: [
-                { type: 'paragraph', text: 'Cuando intentas controlarlo todo, tu mente se agota. Este ejercicio te propone soltar por un momento. Elige la forma que hoy más te ayude: Escribir y soltar, Respirar con intención o Cerrar el día con gratitud.'}
-            ]
+            duration: '5–10 minutos por opción'
           },
-          { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana', 
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
-            prompts: [
+           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
+           prompts: [
              '¿Qué parte de ti se suaviza cuando dejas de intentar controlarlo todo?',
              '¿Qué notas en tu cuerpo cuando sueltas la tensión de tener todas las respuestas?',
              '¿Qué cambia en tu mente cuando aceptas que no necesitas prever cada paso?',
@@ -394,7 +383,50 @@ export const uncertaintyPath: Path = {
           ]},
           { type: 'quote', text: 'Cuando dejo de controlar, abro espacio para estar presente… y responder con lo que tengo, no con lo que imagino.'}
         ]
-    }
+    },
+    {
+      id: 'incertidumbre_cierre',
+      title: 'Cierre de la Ruta',
+      type: 'summary',
+      estimatedTime: '10 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Reflexionfinalruta2.mp3',
+          prompts: [
+            'Te proponemos cerrar este proceso con algunas preguntas clave:',
+            '¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?',
+            '¿Qué recursos internos he descubierto o fortalecido?',
+            '¿Qué nuevas formas de pensar o actuar quiero seguir practicando?',
+            '¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?',
+          ],
+        },
+        {
+          type: 'title',
+          text: 'Resumen final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Resumenfinalruta2.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'La incertidumbre puede activar tu sistema de alerta, pero no tienes que vivir desde el miedo.',
+            'Comprender cómo funciona tu mente te ayuda a ganar claridad y no reaccionar de forma automática.',
+            'Tu cuerpo puede ser una brújula: calmarlo es una forma de recuperar el centro.',
+            'La rigidez mental intenta protegerte, pero limita tu capacidad de adaptación.',
+            'Entrenar la flexibilidad cognitiva te permite imaginar más de una historia y abrir nuevas posibilidades.',
+            'Confiar no es tener certezas, es avanzar con lo que tienes, desde donde estás.',
+            'Soltar el control no es rendirse, es un acto consciente de presencia y confianza.',
+          ],
+        },
+        {
+          type: 'quote',
+          text: '“No necesito saber qué pasará mañana. Necesito recordar que hoy… puedo sostenerme.”',
+        },
+      ],
+    },
   ],
 };
+
+
 
