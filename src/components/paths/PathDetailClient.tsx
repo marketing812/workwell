@@ -618,7 +618,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
