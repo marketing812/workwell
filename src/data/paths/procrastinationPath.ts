@@ -33,9 +33,7 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'El círculo de la procrastinación',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Elcirculodelaprocrastinacion.mp3',
-          content: [
-            { type: 'paragraph', text: 'Cuando postergas una tarea, tu cerebro experimenta un alivio inmediato. Y eso… le gusta.\nCada vez que evitas algo que te causa malestar, tu cerebro aprende:\n“¡Uy, esto me hizo sentir mejor! Vamos a repetirlo.”\nEste patrón se conoce como refuerzo negativo: no porque sea “malo”, sino porque refuerza una conducta al quitar algo desagradable (la ansiedad, el miedo, la tensión…).\nEs decir: te sientes mejor por evitar… y eso hace que sigas evitando.\nPero a la larga, ese círculo te atrapa:\nEvitas → Te sientes bien un rato → La tarea sigue pendiente → Te sientes peor → Vuelves a evitar…\nEl alivio es real, pero no soluciona el problema. Solo lo posterga… y lo agranda.' },
-          ],
+          content: [{ type: 'paragraph', text: 'Cuando postergas una tarea, tu cerebro experimenta un alivio inmediato. Y eso… le gusta.\nCada vez que evitas algo que te causa malestar, tu cerebro aprende:\n“¡Uy, esto me hizo sentir mejor! Vamos a repetirlo.”\nEste patrón se conoce como refuerzo negativo: no porque sea “malo”, sino porque refuerza una conducta al quitar algo desagradable (la ansiedad, el miedo, la tensión…).\nEs decir: te sientes mejor por evitar… y eso hace que sigas evitando.\nPero a la larga, ese círculo te atrapa:\nEvitas → Te sientes bien un rato → La tarea sigue pendiente → Te sientes peor → Vuelves a evitar…\nEl alivio es real, pero no soluciona el problema. Solo lo posterga… y lo agranda.' }]
         },
         {
           type: 'collapsible',
@@ -61,19 +59,17 @@ export const procrastinationPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
-          type: 'exercise',
+          type: 'blockageMapExercise',
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3',
-          content: [],
         },
         {
-          type: 'exercise',
+          type: 'compassionateReflectionExercise',
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
-          content: [],
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
             '¿Qué emociones intento evitar cuando postergo?',
