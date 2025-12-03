@@ -239,8 +239,14 @@ export const stressManagementPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
               content: [
                 { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'},
-                { type: 'list', items: ['1. Inhala por la nariz durante 4 segundos.', '2. Mantén el aire 2 segundos.', '3. Exhala lentamente por la boca durante 6 segundos.', '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'] }
-            ]},
+                { type: 'list', items: [
+                  '1. Inhala por la nariz durante 4 segundos.', 
+                  '2. Mantén el aire 2 segundos.', 
+                  '3. Exhala lentamente por la boca durante 6 segundos.', 
+                  '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
+                ] }
+              ]
+            },
             { 
               type: 'exercise', 
               title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
