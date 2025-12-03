@@ -28,6 +28,7 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'El círculo de la procrastinación',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Elcirculodelaprocrastinacion.mp3',
           content: [
             { type: 'paragraph', text: 'Cuando postergas una tarea, tu cerebro experimenta un alivio inmediato. Y eso… le gusta.\nCada vez que evitas algo que te causa malestar, tu cerebro aprende:\n“¡Uy, esto me hizo sentir mejor! Vamos a repetirlo.”\nEste patrón se conoce como refuerzo negativo: no porque sea “malo”, sino porque refuerza una conducta al quitar algo desagradable (la ansiedad, el miedo, la tensión…).\nEs decir: te sientes mejor por evitar… y eso hace que sigas evitando.\nPero a la larga, ese círculo te atrapa:\nEvitas → Te sientes bien un rato → La tarea sigue pendiente → Te sientes peor → Vuelves a evitar…\nEl alivio es real, pero no soluciona el problema. Solo lo posterga… y lo agranda.' },
           ],
@@ -321,3 +322,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
