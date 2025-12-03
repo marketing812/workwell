@@ -50,6 +50,7 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'No siempre es miedo: a veces es agotamiento',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Nosiempreesmiedoavecesesagotamiento.mp3',
           content: [
             { type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' },
           ],
