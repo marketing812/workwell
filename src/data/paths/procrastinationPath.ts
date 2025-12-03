@@ -36,6 +36,7 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'Pensamientos que te bloquean',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Pensamientosquetebloquean.mp3',
           content: [
             { type: 'paragraph', text: 'A menudo no procrastinamos por las tareas en sí, sino por los pensamientos que tenemos sobre ellas. Estos pensamientos actúan como barreras invisibles que paralizan tu acción. A veces son tan automáticos que ni te das cuenta de que te están frenando.\nAquí tienes algunos ejemplos comunes:' },
             { type: 'collapsible', title: '“O lo hago perfecto, o no sirve.”', content: [{ type: 'paragraph', text: 'Este pensamiento es una trampa del perfeccionismo. Te exige un resultado ideal desde el principio, y eso puede hacer que ni siquiera empieces. Si no puedes hacerlo perfecto, tu mente prefiere no hacerlo en absoluto.' }] },
@@ -322,5 +323,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
