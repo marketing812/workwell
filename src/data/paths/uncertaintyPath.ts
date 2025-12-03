@@ -150,8 +150,8 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},
               { type: 'collapsible', title: 'Exposición progresiva', content: [{type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},
-              { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como: “¿Esto que estoy pensando es un hecho o solo una posibilidad?” “¿Qué otras formas hay de interpretar esta situación?” “¿Cómo la vería alguien que me quiere?”'}]},
-              { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a: Observar tus pensamientos sin creer todo lo que dicen. Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato. Volver al cuerpo y al momento presente.'}]}
+              { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},
+              { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}
             ]
           },
           { type: 'title', text: 'Técnicas Específicas' },
@@ -163,11 +163,11 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'},
               { type: 'list', items: [
-                '1. Inhala por la nariz durante 4 segundos.',
-                '2. Mantén el aire 2 segundos.',
-                '3. Exhala lentamente por la boca durante 6 segundos.',
-                '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
-              ]}
+                '1. Inhala por la nariz durante 4 segundos.', 
+                '2. Mantén el aire 2 segundos.', 
+                '3. Exhala lentamente por la boca durante 6 segundos.', 
+                '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
+              ] }
             ]
           },
           { 
@@ -434,3 +434,15 @@ export const uncertaintyPath: Path = {
   ],
 };
 
+
+
+    
+
+    
+
+
+
+
+    
+
+    
