@@ -1,4 +1,3 @@
-
 import type { Path } from '../pathsData';
 
 export const stressManagementPath: Path = {
@@ -240,7 +239,7 @@ export const stressManagementPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
               content: [
                 { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'},
-                { type: 'list', items: ['Inhala por la nariz durante 4 segundos.', 'Mantén el aire 2 segundos.', 'Exhala lentamente por la boca durante 6 segundos.', 'Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.', 'Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'] }
+                { type: 'list', items: ['1. Inhala por la nariz durante 4 segundos.', '2. Mantén el aire 2 segundos.', '3. Exhala lentamente por la boca durante 6 segundos.', '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'] }
             ]},
             { 
               type: 'exercise', 
@@ -269,9 +268,12 @@ export const stressManagementPath: Path = {
         title: 'Semana 3: Reestructura tus Pensamientos de Sobrecarga',
         type: 'skill_practice',
         estimatedTime: '20-25 min',
-        audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3',
         content: [
-            { type: 'paragraph', text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.'},
+            {
+                type: 'paragraphWithAudio',
+                text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3',
+            },
             { type: 'title', text: 'Psicoeducación' },
             { type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.'},
             {
