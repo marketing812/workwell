@@ -20,7 +20,11 @@ export const procrastinationPath: Path = {
             text: '¿Te ha pasado que tienes claro lo que quieres hacer, pero algo dentro de ti te frena una y otra vez? Esta semana te acompaño a entender qué hay realmente detrás de la procrastinación —más allá de la pereza o la falta de voluntad— y cómo tu mente y tu cuerpo intentan protegerte del malestar emocional.\nVamos a observar ese ciclo con más claridad y menos juicio. Descubrirás que postergar no te hace débil, sino humano/a. Y que al comprenderlo, puedes empezar a transformarlo desde un lugar más amable y consciente.',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/INTRODUCCIONSEMANA1.mp3'
         },
-        { type: 'title', text: 'Psicoeducación', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3' },
+        { 
+            type: 'title', 
+            text: 'Psicoeducación',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3'
+        },
         { type: 'paragraph', text: '¿Te ha pasado que tienes una tarea pendiente —por importante que sea— y acabas haciendo cualquier otra cosa? No es pereza. Es una forma de protegerte de emociones incómodas.\nDesde la TCC, entendemos que la procrastinación es una estrategia de evitación emocional.' },
         {
           type: 'collapsible',
@@ -59,17 +63,19 @@ export const procrastinationPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
-          type: 'blockageMapExercise',
+          type: 'exercise',
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3',
+          content: [],
         },
         {
-          type: 'compassionateReflectionExercise',
+          type: 'exercise',
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
+          content: [],
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
             '¿Qué emociones intento evitar cuando postergo?',
