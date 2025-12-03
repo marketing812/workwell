@@ -64,7 +64,7 @@ import { UncertaintyMapExercise } from '@/components/paths/UncertaintyMapExercis
 import { ControlTrafficLightExercise } from '@/components/paths/ControlTrafficLightExercise';
 import { AlternativeStoriesExercise } from '@/components/paths/AlternativeStoriesExercise';
 import { MantraExercise } from '@/components/paths/MantraExercise';
-import { RitualDeEntregaConscienteExercise } from '@/components/paths/RitualDeEntregaConscienteExercise';
+import { RitualDeEntregaConscienteExercise } from './RitualDeEntregaConscienteExercise';
 // RUTA 3
 import { DelSabotajeALaAccionExercise } from '@/components/paths/DelSabotajeALaAccionExercise';
 // RUTA 4
@@ -158,6 +158,7 @@ import { QuestionYourIfsExercise } from './QuestionYourIfsExercise';
 import { ExposureLadderExercise } from './ExposureLadderExercise';
 import { CalmVisualizationExercise } from './CalmVisualizationExercise';
 import { ImaginedCrisisRehearsalExercise } from './ImaginedCrisisRehearsalExercise';
+import { ExposureToIntoleranceExercise } from './ExposureToIntoleranceExercise';
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -617,7 +618,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -897,6 +898,8 @@ function ContentItemRenderer({
       const crisisRehearsalContent = contentItem ;
       return <ImaginedCrisisRehearsalExercise key={index} content={crisisRehearsalContent} pathId={path.id} />;
     }
+    case 'exposureToIntoleranceExercise':
+      return <ExposureToIntoleranceExercise key={index} content={contentItem as any} pathId={path.id} />;
 
     // ...
     default:
