@@ -1050,11 +1050,6 @@ export function PathDetailClient({ path }: { path: Path }) {
                     </Badge>
                   )}
                 </div>
-                 {module.audioUrl && (
-                  <div className="pt-4">
-                    <audio src={module.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
-                  </div>
-                )}
               </CardHeader>
               <CardContent>
               {module.content.map((contentItem, i) => (

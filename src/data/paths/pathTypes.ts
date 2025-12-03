@@ -115,7 +115,6 @@ export type MantraExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type DelSabotajeALaAccionExerciseContent = {
@@ -829,7 +828,7 @@ export type ModuleContent =
   | CalmVisualizationExerciseContent
   // NUEVO
   | ImaginedCrisisRehearsalExerciseContent
-  | ExposureToIntoleranceExerciseContent; // Added
+  | ExposureToIntoleranceExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {

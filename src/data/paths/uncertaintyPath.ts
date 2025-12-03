@@ -162,14 +162,7 @@ export const uncertaintyPath: Path = {
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
             content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n' },
-                { type: 'list', items: [
-                    'Inhala por la nariz durante 4 segundos.',
-                    'Mantén el aire 2 segundos.',
-                    'Exhala lentamente por la boca durante 6 segundos.',
-                    'Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.',
-                    'Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
-                ]}
+                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\n1. Inhala por la nariz durante 4 segundos.\n2. Mantén el aire 2 segundos.\n3. Exhala lentamente por la boca durante 6 segundos.\n4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\n\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'}
             ]
           },
           { 
@@ -370,11 +363,12 @@ export const uncertaintyPath: Path = {
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
            prompts: [
-             '¿Qué parte de ti se suaviza cuando dejas de intentar controlarlo todo?',
-             '¿Qué notas en tu cuerpo cuando sueltas la tensión de tener todas las respuestas?',
-             '¿Qué cambia en tu mente cuando aceptas que no necesitas prever cada paso?',
-             '¿Qué te gustaría recordarte la próxima vez que intentes tenerlo todo bajo control?'
-          ]},
+              'Te proponemos cerrar este proceso con algunas preguntas clave:',
+              '¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?',
+              '¿Qué recursos internos he descubierto o fortalecido?',
+              '¿Qué nuevas formas de pensar o actuar quiero seguir practicando?',
+              '¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?',
+           ]},
           { 
             type: 'title', 
             text: 'Resumen Clave de la Semana',
@@ -434,14 +428,3 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
-
-
-
-    
-
-    
-
-
-
-
-    
