@@ -1,3 +1,5 @@
+
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -707,6 +709,14 @@ export type ImaginedCrisisRehearsalExerciseContent = {
     audioUrl?: string;
 };
 
+export type ExposureToIntoleranceExerciseContent = {
+    type: 'exposureToIntoleranceExercise';
+    title: 'EJERCICIO 2: PEQUEÑOS ACTOS DE EXPOSICIÓN A LO INCIERTO';
+    objective: string;
+    duration: string;
+    audioUrl?: string;
+};
+
 // A union type for all possible content block types within a module
 export type ModuleContent =
   | ParagraphContent
@@ -726,6 +736,7 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
+  | RitualDeEntregaConscienteExerciseContent // Added
   | DelSabotajeALaAccionExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
@@ -817,7 +828,8 @@ export type ModuleContent =
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
   // NUEVO
-  | ImaginedCrisisRehearsalExerciseContent;
+  | ImaginedCrisisRehearsalExerciseContent
+  | ExposureToIntoleranceExerciseContent; // Added
 
 // Defines a single module within a guided path
 export type PathModule = {
@@ -829,3 +841,20 @@ export type PathModule = {
   dataAiHint?: string; // For images if any
   audioUrl?: string; // Optional audio URL for the entire module
 };
+
+// Represents a single assessment dimension (e.g., "Emotional Regulation")
+export interface AssessmentDimension {
+  id: string;
+  name: string; // The user-facing name of the dimension
+  definition: string;
+  items: AssessmentItem[]; // The questions related to this dimension
+  recommendedPathId?: string; // Optional ID of a path recommended for this dimension
+}
+
+// Represents a single question/item within an assessment dimension
+export interface AssessmentItem {
+  id: string; // Unique identifier for the question item (e.g., "item1")
+  text: string; // The question text
+  weight: number; // The weight of the item for calculating scores
+  isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
+}
