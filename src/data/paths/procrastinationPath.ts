@@ -13,6 +13,7 @@ export const procrastinationPath: Path = {
       title: 'Semana 1: Comprende tu Procrastinación sin Juicio',
       type: 'introduction',
       estimatedTime: '20-25 min',
+      audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
       content: [
         { type: 'paragraph', text: '¿Te ha pasado que tienes claro lo que quieres hacer, pero algo dentro de ti te frena una y otra vez? Esta semana te acompaño a entender qué hay realmente detrás de la procrastinación —más allá de la pereza o la falta de voluntad— y cómo tu mente y tu cuerpo intentan protegerte del malestar emocional.\nVamos a observar ese ciclo con más claridad y menos juicio. Descubrirás que postergar no te hace débil, sino humano/a. Y que al comprenderlo, puedes empezar a transformarlo desde un lugar más amable y consciente.' },
         { type: 'title', text: 'Psicoeducación' },
