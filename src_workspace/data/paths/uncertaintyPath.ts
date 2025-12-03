@@ -18,7 +18,7 @@ export const uncertaintyPath: Path = {
         { 
             type: 'paragraphWithAudio', 
             text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.\nNo se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion1.mp3'
+            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/entiendequeeslaincertidumbreycomolavivo.mp3'
         },
         { 
           type: 'title', 
@@ -68,7 +68,7 @@ export const uncertaintyPath: Path = {
           content: [
             { type: 'list', items: [
               'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
-              'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
+              'Nuestro cuerpo y mente tienden a sobreprotegerernos cuando sentimos que no tenemos el control.',
               'La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.',
               'No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.',
               'Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'
@@ -100,7 +100,7 @@ export const uncertaintyPath: Path = {
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio10Ruta2Sesion1.mp3' },
         { type: 'list', items: [
             'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
-            'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
+            'Nuestro cuerpo y mente tienden a sobreprotegerernos cuando sentimos que no tenemos el control.',
             'La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.',
             'No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.',
             'Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'
@@ -432,3 +432,11 @@ export const uncertaintyPath: Path = {
 
 
 
+    
+
+    
+
+
+
+
+    
