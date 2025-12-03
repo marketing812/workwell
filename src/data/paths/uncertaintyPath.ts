@@ -17,7 +17,7 @@ export const uncertaintyPath: Path = {
       content: [
         { 
             type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.\nNo se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
+            text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.No se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/entiendequeeslaincertidumbreycomolavivo.mp3'
         },
         { 
@@ -27,6 +27,7 @@ export const uncertaintyPath: Path = {
         { 
             type: 'collapsible',
             title: '¿Qué es la incertidumbre?',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/queeslaincertidumbre.mp3',
             content: [
                 { type: 'paragraph', text: 'La incertidumbre es la ausencia de certezas. Es no saber qué va a pasar. Y aunque todos la experimentamos, no siempre sabemos sostenerla sin malestar. A veces hay un riesgo real, pero muchas otras veces lo que sentimos es ambigüedad, imprevisibilidad o simplemente falta de información clara.\nNuestro cerebro —diseñado para anticiparse y protegernos— interpreta esa falta de claridad como una posible amenaza. Y ahí empieza el malestar.' },
             ]
@@ -273,6 +274,7 @@ export const uncertaintyPath: Path = {
             title: 'Ejercicio 2: ¿Y si…? pero también…',
             objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.',
             duration: '5–7 minutos',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3'
           },
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3',
