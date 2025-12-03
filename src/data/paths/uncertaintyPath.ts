@@ -51,6 +51,7 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Cómo reacciona tu cuerpo?',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Cuando enfrentas una situación incierta, tu cuerpo reacciona: el corazón se acelerada, se tensan los músculos, la mente se agita.\nEsto es adaptativo: tu cerebro intenta protegerte anticipando lo peor. Pero si esa respuesta se vuelve constante, vives en modo alerta, con un “radar” emocional encendido todo el tiempo.' }
           ]
@@ -439,5 +440,6 @@ export const uncertaintyPath: Path = {
 
 
 
+    
 
     
