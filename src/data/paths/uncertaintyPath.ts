@@ -136,12 +136,30 @@ export const uncertaintyPath: Path = {
             title: '¿Qué activa mi sistema de amenaza?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
             content: [
-              { type: 'paragraph', text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:'},
-              { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}]},
-              { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'}]},
-              { type: 'collapsible', title: 'Neurocepción inconsciente', content: [{type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como:   El tono de voz de alguien   Una mirada o gesto   Un recuerdo doloroso   O simplemente un cambio en tu entorno   Y si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'}]}
+                { type: 'paragraph', text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:' },
+                { 
+                    type: 'collapsible', 
+                    title: 'Errores de pensamiento', 
+                    content: [
+                        {type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}
+                    ]
+                },
+                { 
+                    type: 'collapsible', 
+                    title: 'Creencias aprendidas', 
+                    content: [
+                        {type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'}
+                    ]
+                },
+                { 
+                    type: 'collapsible', 
+                    title: 'Neurocepción inconsciente', 
+                    content: [
+                        {type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como:   El tono de voz de alguien   Una mirada o gesto   Un recuerdo doloroso   O simplemente un cambio en tu entorno   Y si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'}
+                    ]
+                }
             ]
-          },
+        },
           {
             type: 'collapsible',
             title: 'Herramientas para regular el sistema de amenaza',
@@ -162,10 +180,10 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n' },
               { type: 'list', items: [
-                  '1. Inhala por la nariz durante 4 segundos.', 
-                  '2. Mantén el aire 2 segundos.', 
-                  '3. Exhala lentamente por la boca durante 6 segundos.', 
-                  '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. \nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
+                '1. Inhala por la nariz durante 4 segundos.',
+                '2. Mantén el aire 2 segundos.',
+                '3. Exhala lentamente por la boca durante 6 segundos.',
+                '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\n\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
               ] }
             ]
           },
@@ -440,7 +458,3 @@ export const uncertaintyPath: Path = {
 
 
 
-
-    
-
-    
