@@ -51,7 +51,9 @@ export const uncertaintyPath: Path = {
           type: 'collapsible',
           title: '¿Cómo reacciona tu cuerpo?',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion1.mp3',
-          content: [{ type: 'paragraph', text: 'Cuando enfrentas una situación incierta, tu cuerpo reacciona: el corazón se acelerada, se tensan los músculos, la mente se agita.\nEsto es adaptativo: tu cerebro intenta protegerte anticipando lo peor. Pero si esa respuesta se vuelve constante, vives en modo alerta, con un “radar” emocional encendido todo el tiempo.' }]
+          content: [
+            { type: 'paragraph', text: 'Cuando enfrentas una situación incierta, tu cuerpo reacciona: el corazón se acelerada, se tensan los músculos, la mente se agita.\nEsto es adaptativo: tu cerebro intenta protegerte anticipando lo peor. Pero si esa respuesta se vuelve constante, vives en modo alerta, con un “radar” emocional encendido todo el tiempo.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -159,7 +161,13 @@ export const uncertaintyPath: Path = {
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
             content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\n1. Inhala por la nariz durante 4 segundos.\n2. Mantén el aire 2 segundos.\n3. Exhala lentamente por la boca durante 6 segundos.\n\n4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }
+                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n' },
+                { type: 'list', items: [
+                    'Inhala por la nariz durante 4 segundos.',
+                    'Mantén el aire 2 segundos.',
+                    'Exhala lentamente por la boca durante 6 segundos.',
+                    'Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
+                ]}
             ]
           },
           { 
@@ -280,7 +288,7 @@ export const uncertaintyPath: Path = {
             ]},
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },
           { type: 'list', items: [
-              'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guión.',
+              'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.',
               'La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.',
               'Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.',
               'Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.',
@@ -424,5 +432,3 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
-
-    
