@@ -1,5 +1,4 @@
 
-
 import type { Path } from '../pathsData';
 
 export const uncertaintyPath: Path = {
@@ -160,21 +159,11 @@ export const uncertaintyPath: Path = {
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
             content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n' },
-                {
-                    type: 'list',
-                    items: [
-                      '1. Inhala por la nariz durante 4 segundos.',
-                      '2. Mantén el aire 2 segundos.',
-                      '3. Exhala lentamente por la boca durante 6 segundos.',
-                      '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.',
-                      'Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
-                    ]
-                }
+                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\n1. Inhala por la nariz durante 4 segundos.\n2. Mantén el aire 2 segundos.\n3. Exhala lentamente por la boca durante 6 segundos.\n\n4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }
             ]
           },
           { 
-            type: 'exposureToIntoleranceExercise',
+            type: 'exposureToIntoleranceExercise', 
             title: 'EJERCICIO 2: PEQUEÑOS ACTOS DE EXPOSICIÓN A LO INCIERTO',
             objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
             duration: '8-10 min',
@@ -291,7 +280,7 @@ export const uncertaintyPath: Path = {
             ]},
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },
           { type: 'list', items: [
-              'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.',
+              'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guión.',
               'La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.',
               'Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.',
               'Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.',
@@ -435,13 +424,5 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
-
-
-
-    
-
-    
-
-
 
     
