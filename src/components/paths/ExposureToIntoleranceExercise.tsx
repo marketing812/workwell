@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -78,7 +79,9 @@ ${realityReflection}
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">¿Y si no necesitas tenerlo todo bajo control?</h4>
-            <p className="text-sm text-muted-foreground">Cuando anticipas lo peor, tu cuerpo reacciona como si ya estuvieras en peligro. Este ejercicio te invita a exponerte, en dosis pequeñas, a lo que no puedes controlar, para entrenar tu confianza.</p>
+            <p className="text-sm text-muted-foreground">Cuando anticipas lo peor, tu cuerpo reacciona como si ya estuvieras en peligro. Pero esa percepción no siempre es real: muchas veces es solo una interpretación que tu mente hace ante la incertidumbre.</p>
+            <p className="text-sm text-muted-foreground">Para entrenarte a vivir con más calma, incluso cuando no tienes todas las respuestas, necesitas practicar algo clave: Exponerte, en dosis pequeñas, a lo que no puedes controlar.</p>
+            <p className="text-sm text-muted-foreground font-semibold">Este ejercicio te invita a hacerlo de forma segura y consciente.</p>
             <Button onClick={next}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -86,7 +89,7 @@ ${realityReflection}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Elige tu situación</h4>
-            <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar. Ejemplos: Enviar un mensaje sin revisar 3 veces, tomar una decisión sencilla sin pedir confirmación...</Label>
+            <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. Ejemplos: Enviar un mensaje sin revisar 3 veces, tomar una decisión sencilla sin pedir confirmación...</Label>
             <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} />
             <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next}>Siguiente</Button></div>
           </div>
@@ -139,6 +142,14 @@ ${realityReflection}
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>
