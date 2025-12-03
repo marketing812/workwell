@@ -1,5 +1,4 @@
 
-
 import type { Path } from '../pathsData';
 
 export const uncertaintyPath: Path = {
@@ -94,11 +93,7 @@ export const uncertaintyPath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
         audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion1.mp3',
-        prompts: [
-          '¿Qué intenté controlar esta semana que no estaba en mis manos?',
-          '¿Cómo me sentí al soltarlo?',
-          '¿Qué ideas me llevo sobre mi forma de vivir lo incierto?',
-        ]},
+        prompts: ['¿Qué intenté controlar esta semana que no estaba en mis manos?','¿Cómo me sentí al soltarlo?','¿Qué ideas me llevo sobre mi forma de vivir lo incierto?']},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio10Ruta2Sesion1.mp3' },
         { type: 'list', items: [
             'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
@@ -143,9 +138,9 @@ export const uncertaintyPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
             content: [
               { type: 'paragraph', text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:'},
-              { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}]},
-              { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.' }]},
-              { type: 'collapsible', title: 'Neurocepción inconsciente', content: [{type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como:   El tono de voz de alguien   Una mirada o gesto   Un recuerdo doloroso   O simplemente un cambio en tu entorno   Y si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'}]}
+              { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo: Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”. Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”. Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}]},
+              { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente. Algunas creencias comunes son: “No debo fallar nunca” → convierte cualquier error en un drama. “El mundo es peligroso” → te hace vivir en estado de alerta. “No puedo equivocarme” → te paraliza ante lo incierto.' }]},
+              { type: 'collapsible', title: 'Neurocepción inconsciente', content: [{type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como: El tono de voz de alguien. Una mirada o gesto. Un recuerdo doloroso. O simplemente un cambio en tu entorno. Y si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'}]}
             ]
           },
           {
@@ -155,8 +150,8 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},
               { type: 'collapsible', title: 'Exposición progresiva', content: [{type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},
-              { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},
-              { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}
+              { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como: “¿Esto que estoy pensando es un hecho o solo una posibilidad?” “¿Qué otras formas hay de interpretar esta situación?” “¿Cómo la vería alguien que me quiere?”'}]},
+              { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a: Observar tus pensamientos sin creer todo lo que dicen. Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato. Volver al cuerpo y al momento presente.'}]}
             ]
           },
           { type: 'title', text: 'Técnicas Específicas' },
@@ -166,8 +161,15 @@ export const uncertaintyPath: Path = {
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
             content: [
-              { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'}
-          ]},
+              { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'},
+              { type: 'list', items: [
+                '1. Inhala por la nariz durante 4 segundos.',
+                '2. Mantén el aire 2 segundos.',
+                '3. Exhala lentamente por la boca durante 6 segundos.',
+                '4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'
+              ]}
+            ]
+          },
           { 
             type: 'exercise', 
             title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
@@ -432,14 +434,3 @@ export const uncertaintyPath: Path = {
   ],
 };
 
-
-
-    
-
-    
-
-
-
-    
-
-    
