@@ -7,6 +7,7 @@ export const uncertaintyPath: Path = {
   title: 'Tolerar la Incertidumbre con Confianza',
   description: 'Aprende a convivir con lo incierto sin perder el equilibrio, transformando el control en confianza y la ansiedad en calma consciente.',
   dataAiHint: 'uncertainty trust mindfulness',
+  audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Introruta2.mp3',
   modules: [
     {
       id: 'incertidumbre_sem1',
@@ -120,7 +121,7 @@ export const uncertaintyPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3',
           },
           { type: 'title', text: 'Psicoeducación' },
-          {
+          { 
             type: 'collapsible',
             title: '¿Por qué imaginamos lo peor?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3',
@@ -358,7 +359,8 @@ export const uncertaintyPath: Path = {
             type: 'ritualDeEntregaConscienteExercise',
             title: 'Ejercicio 2: Mi ritual de entrega consciente',
             objective: 'Aprende a soltar la tensión mental o física cuando el control se vuelve agotador, a través de la escritura, la respiración o la gratitud.',
-            duration: '5–10 minutos por opción'
+            duration: '5–10 minutos por opción',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio6tecnica2.mp3',
           },
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
@@ -427,6 +429,3 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
-
-
-
