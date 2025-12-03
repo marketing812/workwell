@@ -6,6 +6,7 @@ export const procrastinationPath: Path = {
   title: 'Superar la Procrastinación y Crear Hábitos',
   description: 'Aprende a desbloquearte, a comenzar sin esperar la motivación perfecta y a sostener lo que empiezas, cultivando una constancia amable y flexible.',
   dataAiHint: 'procrastination habits focus',
+  audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/INTRODUCCIONRUTA.mp3',
   modules: [
     {
       id: 'procrast_sem1',
