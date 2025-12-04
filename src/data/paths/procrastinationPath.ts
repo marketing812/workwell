@@ -148,16 +148,14 @@ export const procrastinationPath: Path = {
               type: 'collapsible',
               title: 'Planificar con intención (no con presión)',
               audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3",
-              content: [
-                  { type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
-                  { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
-                  { type: 'list', items: [
-                      'Realista, no perfecta.',
-                      'Concreta, no ambigua.',
-                      'Flexible, no rígida.',
-                  ]},
-                  { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' },
-              ],
+              content: [{ type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
+              { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
+              { type: 'list', items: [
+                  'Realista, no perfecta.',
+                  'Concreta, no ambigua.',
+                  'Flexible, no rígida.',
+              ]},
+              { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' }],
           },
           { type: 'title', text: 'Técnicas Específicas' },
           {
@@ -165,14 +163,14 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: La Regla de los 2 Minutos',
             objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
             duration: '5 a 7 minutos',
-            audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3"
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
           },
           {
             type: 'microPlanExercise',
             title: 'Ejercicio 2: Tu Primer Microplan de Acción',
             objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
             duration: '5 a 8 minutos',
-            audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3"
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
           },
           { 
             type: 'therapeuticNotebookReflection', 
@@ -186,7 +184,7 @@ export const procrastinationPath: Path = {
               '¿Qué quiero reforzar?',
             ]
           },
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3'},
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' },
           { type: 'list', items: [
               'La motivación no llega antes: llega después de actuar.',
               'Las acciones pequeñas generan impulso real.',
@@ -261,7 +259,7 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: Del Sabotaje a la Acción',
             objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
             duration: '10 a 15 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3'
+            audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3"
           },
           {
             type: 'futureSelfVisualizationExercise',
@@ -276,7 +274,7 @@ export const procrastinationPath: Path = {
               '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
             ]
           },
-          { type: 'title', text: 'Resumen Clave de la Semana' },
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3' },
           { type: 'list', items: [
                 'Muchas excusas internas son formas de evitar emociones difíciles.',
                 'Tu diálogo interno no es enemigo: quiere protegerte, pero a veces te bloquea.',
@@ -353,4 +351,3 @@ export const procrastinationPath: Path = {
   ],
 };
 
-    
