@@ -21,7 +21,7 @@ import {
   X as XIcon,
   Minus as MinusIcon,
   CheckIcon,
-  Loader2, // Importación añadida
+  Loader2,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -390,14 +390,14 @@ function ContentItemRenderer({
       );
     case 'paragraphWithAudio':
       return (
-        <div key={index} className="space-y-2 mb-4">
+        <div key={index} className="space-y-4 mb-4">
+          {contentItem.audioUrl && (
+            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
+          )}
           <p
             className="text-base leading-relaxed whitespace-pre-line"
             dangerouslySetInnerHTML={{ __html: contentItem.text.replace(/\n/g, '<br />') }}
           />
-          {contentItem.audioUrl && (
-            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
-          )}
         </div>
       );
     case 'paragraph':
@@ -507,7 +507,7 @@ function ContentItemRenderer({
     case 'blockageMapExercise':
       return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
-      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} />;
     case 'mapOfUnsaidThingsExercise':
       return (
         <MapOfUnsaidThingsExercise
