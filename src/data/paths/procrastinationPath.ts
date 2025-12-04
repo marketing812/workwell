@@ -165,14 +165,14 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: La Regla de los 2 Minutos',
             objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
             duration: '5 a 7 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
+            audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3"
           },
           {
             type: 'microPlanExercise',
             title: 'Ejercicio 2: Tu Primer Microplan de Acción',
             objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
             duration: '5 a 8 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
+            audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3"
           },
           { 
             type: 'therapeuticNotebookReflection', 
@@ -270,7 +270,9 @@ export const procrastinationPath: Path = {
             duration: '10 a 15 minutos',
             audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
+            prompts: [
               '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
             ]
           },
@@ -305,7 +307,7 @@ export const procrastinationPath: Path = {
             content: [
               { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
-              { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.'}] },
+              { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
               { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
               { type: 'collapsible', title: '4. Refuerza una emoción positiva', content: [{ type: 'paragraph', text: 'Si al hacerlo sientes alivio, claridad o bienestar, será mucho más fácil que quieras repetirlo. No necesitas una gran recompensa. Basta con una sensación pequeña pero significativa. Ejemplo: Sentirte en paz tras escribir, orgulloso u orgullosa después de moverte.' }] },
               { type: 'collapsible', title: '5. Se alinea con tu identidad', content: [{ type: 'paragraph', text: 'Un hábito se consolida cuando no es solo “algo que haces”, sino una forma de ser o cuidarte. Cuando lo sientes como parte de tu manera de vivir, ya no necesitas motivación constante. Ejemplo: “No estoy haciendo yoga... soy alguien que se escucha y se cuida.”' }] },
@@ -350,3 +352,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
