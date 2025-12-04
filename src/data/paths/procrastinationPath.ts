@@ -84,7 +84,7 @@ export const procrastinationPath: Path = {
             'Lo que siento no me define, pero observarlo me transforma.',
           ]
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: [
             'La procrastinación no es pereza: es una forma aprendida de evitar emociones difíciles.',
             'El alivio que sentimos al evitar refuerza el bloqueo, pero es temporal.',
@@ -328,3 +328,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+  
