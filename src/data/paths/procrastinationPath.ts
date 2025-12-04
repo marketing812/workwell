@@ -166,16 +166,20 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: La Regla de los 2 Minutos',
             objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
             duration: '5 a 7 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
           },
           {
             type: 'microPlanExercise',
             title: 'Ejercicio 2: Tu Primer Microplan de Acción',
             objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
             duration: '5 a 8 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana: Rompe el Ciclo', prompts: [
+          { 
+            type: 'therapeuticNotebookReflection', 
+            title: 'Reflexión Final de la Semana: Rompe el Ciclo',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
+            prompts: [
               'Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte.',
               '¿Qué he podido activar?',
               '¿Cómo me sentí después?',
