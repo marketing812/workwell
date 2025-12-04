@@ -262,6 +262,7 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: Del Sabotaje a la Acción',
             objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
             duration: '10 a 15 minutos',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3'
           },
           {
             type: 'futureSelfVisualizationExercise',
@@ -303,9 +304,9 @@ export const procrastinationPath: Path = {
             type: 'collapsible',
             title: '¿Qué hace que un hábito perdure?',
             content: [
-              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
+              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del aprendizaje, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
-              { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
+              { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.'}] },
               { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
               { type: 'collapsible', title: '4. Refuerza una emoción positiva', content: [{ type: 'paragraph', text: 'Si al hacerlo sientes alivio, claridad o bienestar, será mucho más fácil que quieras repetirlo. No necesitas una gran recompensa. Basta con una sensación pequeña pero significativa. Ejemplo: Sentirte en paz tras escribir, orgulloso u orgullosa después de moverte.' }] },
               { type: 'collapsible', title: '5. Se alinea con tu identidad', content: [{ type: 'paragraph', text: 'Un hábito se consolida cuando no es solo “algo que haces”, sino una forma de ser o cuidarte. Cuando lo sientes como parte de tu manera de vivir, ya no necesitas motivación constante. Ejemplo: “No estoy haciendo yoga... soy alguien que se escucha y se cuida.”' }] },
@@ -350,5 +351,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
