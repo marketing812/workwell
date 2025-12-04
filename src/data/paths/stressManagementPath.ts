@@ -187,7 +187,7 @@ export const stressManagementPath: Path = {
             },
             {
                 type: 'collapsible',
-                title: 'No es solo una cuestión de pensar en positivo…',
+                title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
                 content: [
                     { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
                 ]
@@ -506,3 +506,4 @@ export const stressManagementPath: Path = {
   ],
 };
 
+    
