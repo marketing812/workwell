@@ -102,7 +102,11 @@ export const procrastinationPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-          { type: 'paragraph', text: '¿Te ha pasado que esperas a sentirte motivado para arrancar, pero la motivación nunca llega? Esta semana te acompaño a darle la vuelta a ese ciclo.\nDescubrirás que no necesitas energía para empezar… sino que empezar es lo que genera energía. Aprenderás a romper el bloqueo con acciones mínimas que activan tu sistema de recompensa, y a planificar sin exigencia desde tu realidad.\nEl primer paso no tiene que ser perfecto. Solo tiene que ser real.'},
+          { 
+            type: 'paragraphWithAudio', 
+            text: '¿Te ha pasado que esperas a sentirte motivado para arrancar, pero la motivación nunca llega? Esta semana te acompaño a darle la vuelta a ese ciclo.\nDescubrirás que no necesitas energía para empezar… sino que empezar es lo que genera energía. Aprenderás a romper el bloqueo con acciones mínimas que activan tu sistema de recompensa, y a planificar sin exigencia desde tu realidad.\nEl primer paso no tiene que ser perfecto. Solo tiene que ser real.',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'
+          },
           { type: 'title', text: 'Psicoeducación' },
           {
               type: 'collapsible',
@@ -328,5 +332,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-  
