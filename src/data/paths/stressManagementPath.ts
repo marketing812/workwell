@@ -21,18 +21,16 @@ export const stressManagementPath: Path = {
         },
         { 
             type: 'title', 
-            text: 'Psicoeducación',
-            audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Porquepostergoloquemeimporta.mp3'
+            text: 'Psicoeducación'
         },
-        { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
-        {
+        { 
           type: 'collapsible',
           title: '¿Qué es el estrés?',
           audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Queeselestresyporquenoestuenemigo.mp3',
           content: [
-            { type: 'paragraph', text: 'El estrés aparece cuando sentimos que las demandas del entorno —una tarea urgente, una discusión, un cambio inesperado— superan nuestros recursos. No es simplemente estar nervioso o tener prisa: es un conjunto de reacciones físicas, emocionales y mentales que se activan para intentar protegernos.\nAntiguamente, esta respuesta tenía mucho sentido. Si aparecía un depredador, el cuerpo se preparaba para luchar o huir: el corazón se aceleraba, los músculos se tensaban, el cerebro entraba en alerta. Hoy en día, nuestros “depredadores” son emails urgentes, facturas, críticas o nuestra propia autoexigencia. Y el cuerpo, que no distingue entre un tigre y una reunión complicada, reacciona igual.\nDesde la neurociencia sabemos que cuando estamos estresados, se activa un sistema de emergencia en el cerebro. Se liberan hormonas como la adrenalina y el cortisol, que nos preparan para actuar rápido. Esto puede ayudarnos en momentos puntuales, pero si se mantiene en el tiempo, empieza a desgastarnos: fatiga, insomnio, irritabilidad, dificultad para concentrarnos… Suena familiar, ¿verdad?' },
-          ],
-        },
+              { type: 'paragraph', text: 'El estrés aparece cuando sentimos que las demandas del entorno —una tarea urgente, una discusión, un cambio inesperado— superan nuestros recursos. No es simplemente estar nervioso o tener prisa: es un conjunto de reacciones físicas, emocionales y mentales que se activan para intentar protegernos.\nAntiguamente, esta respuesta tenía mucho sentido. Si aparecía un depredador, el cuerpo se preparaba para luchar o huir: el corazón se aceleraba, los músculos se tensaban, el cerebro entraba en alerta. Hoy en día, nuestros “depredadores” son emails urgentes, facturas, críticas o nuestra propia autoexigencia. Y el cuerpo, que no distingue entre un tigre y una reunión complicada, reacciona igual.\nDesde la neurociencia sabemos que cuando estamos estresados, se activa un sistema de emergencia en el cerebro. Se liberan hormonas como la adrenalina y el cortisol, que nos preparan para actuar rápido. Esto puede ayudarnos en momentos puntuales, pero si se mantiene en el tiempo, empieza a desgastarnos: fatiga, insomnio, irritabilidad, dificultad para concentrarnos… Suena familiar, ¿verdad?' },
+          ]
+      },
         {
             type: 'collapsible',
             title: 'No todas las personas viven el estrés igual',
@@ -154,7 +152,7 @@ export const stressManagementPath: Path = {
                 'Aprender a distinguir entre lo externo y lo interno te devuelve el poder sobre ti.',
             ]
         }
-      ],
+      ]
     },
     {
         id: 'estres_sem2',
@@ -168,12 +166,12 @@ export const stressManagementPath: Path = {
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/INTROSEMANA2.mp3',
             },
             { type: 'title', text: 'Psicoeducación' },
-            { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.' },
             {
                 type: 'collapsible',
                 title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Porque dentro de ti hay un sistema que trabaja sin que tú lo controles, llamado Sistema Nervioso Autónomo. Es como un piloto automático que regula tu respiración, el ritmo del corazón, la tensión de tus músculos… y lo hace todo sin que tengas que pensarlo.\nEste sistema tiene dos ramas principales:\n•\tUna te activa cuando hay peligro.\n•\tLa otra te ayuda a calmarte y recuperarte.\nCuando estas dos partes están en equilibrio, te sientes presente, tranquilo/a y con energía. Pero si la balanza se inclina demasiado hacia el lado de la activación… empiezas a vivir en modo alerta constante.' },
+                    { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.\nPorque dentro de ti hay un sistema que trabaja sin que tú lo controles, llamado Sistema Nervioso Autónomo. Es como un piloto automático que regula tu respiración, el ritmo del corazón, la tensión de tus músculos… y lo hace todo sin que tengas que pensarlo.\nEste sistema tiene dos ramas principales:\n•\tUna te activa cuando hay peligro.\n•\tLa otra te ayuda a calmarte y recuperarte.\nCuando estas dos partes están en equilibrio, te sientes presente, tranquilo/a y con energía. Pero si la balanza se inclina demasiado hacia el lado de la activación… empiezas a vivir en modo alerta constante.' },
                     { 
                         type: 'collapsible',
                         title: 'Rama simpática: tu sistema de alarma',
@@ -186,6 +184,12 @@ export const stressManagementPath: Path = {
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramaparasimpatica.mp3',
                         content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n•\tTu respiración se vuelve más lenta.\n•\tTus músculos se relajan.\n•\tSe reduce la tensión.\n•\tTu cuerpo recupera energía.\n•\tSe activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
                     },
+                ]
+            },
+            {
+                type: 'collapsible',
+                title: 'No es solo una cuestión de pensar en positivo…',
+                content: [
                     { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
                 ]
             },
@@ -218,6 +222,7 @@ export const stressManagementPath: Path = {
             {
                 type: 'collapsible',
                 title: '¿Por qué estas técnicas funcionan?',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3',
                 content: [
                     { type: 'paragraph', text: 'Cuando estás en modo alerta —con el corazón acelerado, el cuerpo tenso y la mente agitada— tu sistema nervioso está intentando protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
                 ]
@@ -503,3 +508,5 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
+    
