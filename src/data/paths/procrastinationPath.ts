@@ -73,7 +73,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
+          audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3",
         },
         { 
           type: 'therapeuticNotebookReflection', 
@@ -117,6 +117,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Movimiento primero, motivación después',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Movimientoprimeromotivaciondespues.mp3',
               content: [{ type: 'paragraph', text: 'Muchas veces esperamos a sentirnos motivados o motivadas para empezar una tarea. Pero desde la psicología conductual y la neurociencia, sabemos que la motivación no es lo que da lugar al movimiento… es al revés. Cuando realizas una acción, aunque sea muy pequeña, tu cerebro libera dopamina, una sustancia asociada al placer, la activación y el sistema de recompensa. Esa pequeña dosis de "logro" crea una sensación de avance que alimenta tu energía y tu confianza. No esperes a tener ganas para actuar: empieza con un pequeño paso, y las ganas vendrán después.' }],
           },
           {
@@ -286,7 +287,7 @@ export const procrastinationPath: Path = {
             type: 'collapsible',
             title: '¿Qué hace que un hábito perdure?',
             content: [
-              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
+              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del aprendizaje, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
               { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
               { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
@@ -333,3 +334,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
