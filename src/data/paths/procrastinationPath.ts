@@ -148,6 +148,7 @@ export const procrastinationPath: Path = {
            {
               type: 'collapsible',
               title: 'Planificar con intención (no con presión)',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
               content: [
                   { type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
                   { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
@@ -336,4 +337,3 @@ export const procrastinationPath: Path = {
   ],
 };
 
-    
