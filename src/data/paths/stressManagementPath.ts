@@ -19,7 +19,11 @@ export const stressManagementPath: Path = {
             text: 'Esta semana vas a descubrir qué es realmente el estrés, por qué no es tu enemigo y cómo se manifiesta en ti. El objetivo es que empieces a escucharlo sin miedo y comprendas que es una señal valiosa: algo en tu vida necesita atención, cuidado o un cambio.',
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/INTROSEMANA1.mp3'
         },
-        { type: 'title', text: 'Psicoeducación' },
+        { 
+            type: 'title', 
+            text: 'Psicoeducación',
+        },
+        { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
         {
           type: 'collapsible',
           title: '¿Qué es el estrés?',
@@ -166,18 +170,10 @@ export const stressManagementPath: Path = {
             { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.' },
             {
                 type: 'collapsible',
-                title: '¿Por qué ocurre esto?',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Porque dentro de ti hay un sistema que trabaja sin que tú lo controles, llamado Sistema Nervioso Autónomo. Es como un piloto automático que regula tu respiración, el ritmo del corazón, la tensión de tus músculos… y lo hace todo sin que tengas que pensarlo.\nEste sistema tiene dos ramas principales:\n•\tUna te activa cuando hay peligro.\n•\tLa otra te ayuda a calmarte y recuperarte.\nCuando estas dos partes están en equilibrio, te sientes presente, tranquilo/a y con energía. Pero si la balanza se inclina demasiado hacia el lado de la activación… empiezas a vivir en modo alerta constante.' },
-                ]
-            },
-             {
-                type: 'collapsible',
                 title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
                 content: [
-                    { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
-                     { 
+                    { type: 'paragraph', text: 'Porque dentro de ti hay un sistema que trabaja sin que tú lo controles, llamado Sistema Nervioso Autónomo. Es como un piloto automático que regula tu respiración, el ritmo del corazón, la tensión de tus músculos… y lo hace todo sin que tengas que pensarlo.\nEste sistema tiene dos ramas principales:\n•\tUna te activa cuando hay peligro.\n•\tLa otra te ayuda a calmarte y recuperarte.\nCuando estas dos partes están en equilibrio, te sientes presente, tranquilo/a y con energía. Pero si la balanza se inclina demasiado hacia el lado de la activación… empiezas a vivir en modo alerta constante.' },
+                    { 
                         type: 'collapsible',
                         title: 'Rama simpática: tu sistema de alarma',
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramasimpatica.mp3',
@@ -189,6 +185,7 @@ export const stressManagementPath: Path = {
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramaparasimpatica.mp3',
                         content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n•\tTu respiración se vuelve más lenta.\n•\tTus músculos se relajan.\n•\tSe reduce la tensión.\n•\tTu cuerpo recupera energía.\n•\tSe activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
                     },
+                    { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
                 ]
             },
             {
@@ -215,7 +212,7 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'Porque entender cómo funciona tu cuerpo te ayuda a dejar de luchar contra él. Si sientes ansiedad, no es que estés “exagerando” o que no sepas controlarte. Es tu sistema de defensa intentando protegerte. Lo que necesitas no es pelear con él, sino enseñarle que ya no hay peligro.\nY eso se hace desde lo corporal: con respiraciones, con movimientos suaves, con contacto reconfortante.\nEn esta semana, vas a practicar técnicas que activan tu sistema de calma:\n•\tRespiraciones que calman el sistema nervioso.\n•\tTécnicas para volver al presente con los sentidos.\n•\tGestos que le recuerdan a tu cuerpo que está a salvo.\nNo se trata de “calmarte a la fuerza”. Se trata de crear las condiciones para que tu cuerpo pueda hacerlo por sí mismo. Y eso, aunque parezca pequeño, es un acto profundo de cuidado.' }
                 ]
             },
-            { type: 'title', text: 'Técnicas Específicas' },
+            { type: 'title', text: 'Técnicas Específicas', audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3' },
             { type: 'paragraph', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario y también en momentos puntuales de ansiedad. Explora las que te proponemos y elige las que más se ajusten a ti. Practícalas a tu ritmo, sin prisa pero sin pausa.' },
             {
                 type: 'collapsible',
@@ -504,3 +501,4 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
