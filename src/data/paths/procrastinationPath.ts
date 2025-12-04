@@ -73,6 +73,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
             '¿Qué emociones intento evitar cuando postergo?',

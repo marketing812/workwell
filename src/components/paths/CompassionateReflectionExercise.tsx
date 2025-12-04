@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -15,9 +16,10 @@ import type { ModuleContent } from '@/data/paths/pathTypes';
 interface CompassionateReflectionExerciseProps {
   content: ModuleContent;
   pathId: string;
+  audioUrl?: string;
 }
 
-export function CompassionateReflectionExercise({ content, pathId }: CompassionateReflectionExerciseProps) {
+export function CompassionateReflectionExercise({ content, pathId, audioUrl }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [adviceToFriend, setAdviceToFriend] = useState('');
@@ -64,11 +66,19 @@ ${flexibleThought || 'No especificada.'}
     switch (step) {
       case 0:
         return (
-          <div className="text-center p-4">
+          <div className="text-center p-4 space-y-4">
             <p className="mb-4">
               Ahora, vamos a mirar dentro de ti, con respeto y sin crítica. No buscamos explicaciones perfectas, solo
               entender qué te estaba pasando.
             </p>
+            {audioUrl && (
+              <div className="mb-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
             <Button onClick={() => setStep(1)}>Empezar la reflexión <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );
@@ -221,5 +231,3 @@ ${flexibleThought || 'No especificada.'}
     </Card>
   );
 }
-
-    

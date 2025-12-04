@@ -1,6 +1,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -93,7 +94,6 @@ export type UncertaintyMapExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type ControlTrafficLightExerciseContent = {
@@ -760,6 +760,7 @@ export type CalmVisualizationExerciseContent = {
     audioUrl?: string;
 };
 
+// Nuevo tipo de ejercicio para el Ensayo de Crisis Imaginaria
 export type ImaginedCrisisRehearsalExerciseContent = {
     type: 'imaginedCrisisRehearsalExercise';
     title: 'Ejercicio 2: Ensayo de Crisis Imaginaria';

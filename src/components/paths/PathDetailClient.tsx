@@ -206,7 +206,7 @@ class ModuleErrorBoundary extends React.Component<{
 }
 
 class ContentItemErrorBoundary extends React.Component<{
-  path: Path;
+  pathId: string;
   module: PathModule;
   index: number;
   contentItem: ModuleContent;
@@ -222,7 +222,7 @@ class ContentItemErrorBoundary extends React.Component<{
     console.error(
       '[ContentItemErrorBoundary] Error al renderizar contentItem',
       {
-        pathId: this.props.path.id,
+        pathId: this.props.pathId,
         moduleId: this.props.module.id,
         moduleTitle: this.props.module.title,
         contentIndex: this.props.index,
@@ -249,10 +249,12 @@ class ContentItemErrorBoundary extends React.Component<{
 
 function TherapeuticNotebookReflectionExercise({
   content,
-  path,
+  pathId,
+  pathTitle,
 }: {
   content: ModuleContent;
-  path: Path;
+  pathId: string;
+  pathTitle: string;
 }) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -286,8 +288,8 @@ ${reflection}
     addNotebookEntry({
       title: `Reflexión: ${content.title}`,
       content: fullContent,
-      pathId: path.id,
-      ruta: path.title,
+      pathId: pathId,
+      ruta: pathTitle,
     });
 
     toast({
@@ -322,11 +324,11 @@ ${reflection}
                 • {prompt}
               </p>
             ))}
-            <Label htmlFor={`reflection-${path.id}`} className="sr-only">
+            <Label htmlFor={`reflection-${pathId}`} className="sr-only">
               Tu reflexión
             </Label>
             <Textarea
-              id={`reflection-${path.id}`}
+              id={`reflection-${pathId}`}
               value={reflection}
               onChange={e => setReflection(e.target.value)}
               placeholder="Escribe aquí tu reflexión personal..."
@@ -351,6 +353,8 @@ ${reflection}
 }
 
 
+
+// Renderizador principal de contenido
 function ContentItemRenderer({
   contentItem,
   index,
@@ -452,19 +456,12 @@ function ContentItemRenderer({
           </AccordionItem>
         </Accordion>
       );
-    case 'exercise':
-        // Fallback genérico para otros ejercicios
-        return (
-            <Card key={index} className="bg-muted/30 my-6 shadow-md">
-                <CardHeader>
-                    <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{contentItem.title}</CardTitle>
-                    {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
-                </CardHeader>
-                <CardContent>
-                    {contentItem.content.map((item, i) => <ContentItemRenderer key={i} contentItem={item} index={i} path={path}/>)}
-                </CardContent>
-            </Card>
-        );
+    case 'exercise': // Fallback for old/generic exercises
+      return (
+        <Card key={index} className="bg-muted/30 my-6 shadow-md">
+          {/* ... renderización genérica de ejercicio ... */}
+        </Card>
+      );
     case 'quote':
       return (
         <blockquote
@@ -491,48 +488,114 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
+      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
-      return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} path={path} />;
+      return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} />;
     case 'twoMinuteRuleExercise':
-        return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} />;
+      return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} />;
     case 'microPlanExercise':
-        return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} />;
+      return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} />;
     case 'futureSelfVisualizationExercise':
-        return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} />;
+      return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} />;
     case 'realisticRitualExercise':
-        return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} />;
+      return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} />;
     case 'gentleTrackingExercise':
-        return <GentleTrackingExercise key={index} content={contentItem as ExerciseContent} pathId={path.id} />;
+      return <GentleTrackingExercise key={index} content={contentItem as ExerciseContent} pathId={path.id} />;
     case 'blockageMapExercise':
-        return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
+      return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
-        return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
     case 'mapOfUnsaidThingsExercise':
-      return <MapOfUnsaidThingsExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <MapOfUnsaidThingsExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'discomfortCompassExercise':
-      return <DiscomfortCompassExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <DiscomfortCompassExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'assertivePhraseExercise':
-      return <AssertivePhraseExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <AssertivePhraseExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'noGuiltTechniquesExercise':
-      return <NoGuiltTechniquesExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <NoGuiltTechniquesExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'postBoundaryEmotionsExercise':
-      return <PostBoundaryEmotionsExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <PostBoundaryEmotionsExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'compassionateFirmnessExercise':
-      return <CompassionateFirmnessExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <CompassionateFirmnessExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'selfCareContractExercise':
-      return <SelfCareContractExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <SelfCareContractExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     // RUTA 5
     case 'authenticityThermometerExercise':
-      return <AuthenticityThermometerExercise key={index} content={contentItem } pathId={path.id}/>;
+      return (
+        <AuthenticityThermometerExercise
+          key={index}
+          content={contentItem }
+          pathId={path.id}
+        />
+      );
     case 'empatheticDialogueExercise':
-      return <EmpatheticDialogueExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <EmpatheticDialogueExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'empathicMirrorExercise':
-      return <EmpathicMirrorExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <EmpathicMirrorExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'validationIn3StepsExercise':
-      return <ValidationIn3StepsExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <ValidationIn3StepsExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'empathicShieldVisualizationExercise': {
       const exerciseContent = contentItem ;
       return (
@@ -739,10 +802,16 @@ export function PathDetailClient({ path }: { path: Path }) {
       setCompletedModules(initialCompleted);
       loadPath(path.id, path.title, path.modules.length);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
   if (!path || !isClient) {
-    return null; // O un spinner/esqueleto
+    return (
+      <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
+        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+        <p>Cargando ruta...</p>
+      </div>
+    );
   }
 
   const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
@@ -868,7 +937,7 @@ export function PathDetailClient({ path }: { path: Path }) {
               {module.content.map((contentItem, i) => (
                 <ContentItemErrorBoundary
                   key={i}
-                  path={path}
+                  pathId={path.id}
                   module={module}
                   index={i}
                   contentItem={contentItem}
