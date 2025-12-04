@@ -94,7 +94,8 @@ export const stressManagementPath: Path = {
         {
             type: 'collapsible',
             title: '¿Cómo saber si el estrés te está sobrepasando?',
-            audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Comosabersielestresteestasobrepasando.mp3',
+            audioUrl:
+            'https://workwellfut.com/audios/ruta1/semana1/Comosabersielestresteestasobrepasando.mp3',
             content: [
               { type: 'paragraph', text: 'A veces el cuerpo lo sabe antes que tú:' },
               { type: 'list', items: [
@@ -125,7 +126,8 @@ export const stressManagementPath: Path = {
         {
             type: 'triggerExercise',
             title: 'Ejercicio 2: Identifica tu disparador',
-            objective: 'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en automático.',
+            objective:
+              'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en automático.',
             duration: '5 a 8 minutos',
         },
         {
@@ -229,94 +231,24 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Algunas se basan en la respiración, otras en el movimiento, la atención plena o el contacto sensorial. Todas comparten un mismo propósito: ayudarte a regular tu sistema y conectar contigo desde un lugar de seguridad.\nPuedes usarlas:\n•\tEn el momento, si sientes ansiedad o bloqueo.\n•\tAntes de una situación desafiante.\n•\tComo rutina diaria para cultivar equilibrio.\n•\tPara conocerte mejor: observa cuáles te funcionan más.' },
                 ]
             },
-            { type: 'exercise', title: 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente', objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.', content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.' },
-                {
-                  type: 'collapsible',
-                  title: 'Respiración 4–2–6 con gesto de autocuidado',
-                  audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3',
-                  content: [
-                    {
-                      type: 'list',
-                      items: [
-                        'Inhala por la nariz durante 4 segundos.',
-                        'Mantén el aire 2 segundos.',
-                        'Exhala lentamente por la boca durante 6 segundos.',
-                        'Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.',
-                      ],
-                    },
-                    {
-                      type: 'paragraph',
-                      text: 'Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.',
-                    },
-                  ],
-                },
-                {
-                  type: 'collapsible',
-                  title: 'Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
-                  audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a',
-                  content: [
-                    {
-                      type: 'paragraph',
-                      text: 'Instrucciones (con respiración 6-2-4 previa):',
-                    },
-                    {
-                      type: 'list',
-                      items: [
-                        'Inhala 6 s – mantén 2 s – exhala 4 s (2 veces).',
-                        'Nombra mentalmente:\n    •\t5 cosas que ves.\n    •\t4 cosas que puedes tocar.\n    •\t3 sonidos que escuchas.\n    •\t2 olores que detectas o recuerdas.\n    •\t1 sabor presente en tu boca.',
-                      ],
-                    },
-                    {
-                      type: 'paragraph',
-                      text: 'Al terminar, haz una respiración profunda y siente cómo has interrumpido el piloto automático.',
-                    },
-                  ],
-                },
-                {
-                  type: 'collapsible',
-                  title: 'Escaneo corporal sin juicio (body scan)',
-                  audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3',
-                  content: [
-                    {
-                      type: 'paragraph',
-                      text: '🎧 A través de este audio guiado, recorrerás mentalmente tu cuerpo de pies a cabeza sin intentar cambiar nada. Solo observarás y acompañarás las sensaciones físicas con una actitud amable.',
-                    },
-                  ],
-                },
-                {
-                  type: 'collapsible',
-                  title: 'Relajación muscular progresiva (Jacobson)',
-                  audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3',
-                  content: [
-                    {
-                      type: 'paragraph',
-                      text: '🎧 A través de un audio o video guiado, irás tensando y soltando diferentes grupos musculares (piernas, abdomen, cara, hombros…).\nEste ejercicio te ayudará a sentir alivio físico y a reconocer cómo tu cuerpo acumula tensión.',
-                    },
-                  ],
-                },
-                {
-                  type: 'collapsible',
-                  title: 'Técnicas de presión profunda y balanceo corporal',
-                  content: [
-                    {
-                      type: 'paragraph',
-                      text: 'Opciones que puedes probar:\n•\tAutoabrazo firme: Cruza los brazos sobre tu pecho y mantén la presión mientras respiras.\n•\tBalanceo suave: Sentado/a o de pie, realiza un vaivén rítmico con el cuerpo.\n•\tManta con peso (o varias mantas dobladas): Cúbrete durante unos minutos para activar el sistema de regulación interna.\nEstas prácticas envían señales de seguridad al cerebro. Úsalas tras situaciones exigentes o como parte de tu rutina diaria.',
-                    },
-                  ],
-                },
-                {
-                  type: 'collapsible',
-                  title: 'Contacto frío breve (reset inmediato)',
-                  content: [
-                    {
-                      type: 'paragraph',
-                      text: 'Cómo aplicarlo:\n1.\tHumedece una toalla o paño con agua fría.\n2.\tAplícalo entre 10 y 20 segundos en:\no\tLa nuca\no\tLas muñecas\no\tLa parte interna de los brazos o las mejillas\n3.\tRespira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.',
-                    },
-                  ],
-                },
-              ],
-            },
+            { type: 'exercise', title: 'Respiración 4–2–6 con gesto de autocuidado', objective: 'Salir del modo estrés y activar el modo calma.', content: [
+                { type: 'paragraph', text: '1.\tInhala por la nariz durante 4 segundos.\n2.\tMantén el aire 2 segundos.\n3.\tExhala lentamente por la boca durante 6 segundos.\n4.\tMientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.\n' }
+            ], audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3'},
+            { type: 'exercise', title: 'Anclaje sensorial inmediato (Técnica 5-4-3-2-1)', objective: 'Salir del bucle mental ansioso y volver al momento presente.', content: [
+                { type: 'paragraph', text: 'Instrucciones (con respiración 6-2-4 previa):\n1.\tInhala 6 s – mantén 2 s – exhala 4 s (2 veces).\n2.\tNombra mentalmente:\no\t5 cosas que ves.\no\t4 cosas que puedes tocar.\no\t3 sonidos que escuchas.\no\t2 olores que detectas o recuerdas.\no\t1 sabor presente en tu boca.\nAl terminar, haz una respiración profunda y siente cómo has interrumpido el piloto automático.' }
+            ], audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a'},
+            { type: 'exercise', title: 'Escaneo corporal sin juicio (body scan)', objective: 'Observar tu cuerpo con amabilidad y disminuir la tensión acumulada. En esta técnica guiada, recorrerás mentalmente tu cuerpo de pies a cabeza sin intentar cambiar nada. Solo observarás y acompañarás las sensaciones físicas con una actitud amable.', content: [
+                { type: 'paragraph', text: '🎧 Disponible en formato audio.' }
+            ], audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3'},
+            { type: 'exercise', title: 'Relajación muscular progresiva (Jacobson)', objective: 'Liberar la tensión física generada por el estrés.', content: [
+                { type: 'paragraph', text: '🎧 A través de un audio o video guiado, irás tensando y soltando diferentes grupos musculares (piernas, abdomen, cara, hombros…).\nEste ejercicio te ayudará a sentir alivio físico y a reconocer cómo tu cuerpo acumula tensión.' }
+            ], audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3'},
+            { type: 'exercise', title: 'Técnicas de presión profunda y balanceo corporal', objective: 'Generar una sensación de seguridad y arraigo desde el cuerpo.', content: [
+                { type: 'paragraph', text: 'Opciones que puedes probar:\n•\tAutoabrazo firme: Cruza los brazos sobre tu pecho y mantén la presión mientras respiras.\n•\tBalanceo suave: Sentado/a o de pie, realiza un vaivén rítmico con el cuerpo.\n•\tManta con peso (o varias mantas dobladas): Cúbrete durante unos minutos para activar el sistema de regulación interna.\nEstas prácticas envían señales de seguridad al cerebro. Úsalas tras situaciones exigentes o como parte de tu rutina diaria.' }
+            ]},
+            { type: 'exercise', title: 'Contacto frío breve (reset inmediato)', objective: 'Interrumpir una activación emocional intensa.', content: [
+                { type: 'paragraph', text: 'Cómo aplicarlo:\n1.\tHumedece una toalla o paño con agua fría.\n2.\tAplícalo entre 10 y 20 segundos en:\no\tLa nuca\no\tLas muñecas\no\tLa parte interna de los brazos o las mejillas\n3.\tRespira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
+            ]},
             {
               type: 'therapeuticNotebookReflection',
               title: 'Reflexión Final de la Semana',
