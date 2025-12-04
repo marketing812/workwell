@@ -231,3 +231,5 @@ ${flexibleThought || 'No especificada.'}
     </Card>
   );
 }
+
+    
