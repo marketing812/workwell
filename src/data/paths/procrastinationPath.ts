@@ -142,6 +142,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Cada paso es una prueba de identidad',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
               content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
           },
            {
@@ -334,3 +335,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
