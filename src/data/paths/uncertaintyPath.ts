@@ -17,7 +17,7 @@ export const uncertaintyPath: Path = {
       content: [
         { 
             type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.No se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
+            text: '¿Te ha pasado que cuanto menos sabes sobre algo, más te preocupas? Esta semana te acompaño a comprender qué es la incertidumbre, por qué tu cuerpo y tu mente reaccionan con incomodidad cuando no tienes el control, y cómo puedes empezar a relacionarte con lo incierto desde un lugar más flexible y sereno.\nNo se trata de eliminar la incertidumbre, sino de aprender a sostenerla sin que dirija tu vida.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/entiendequeeslaincertidumbreycomolavivo.mp3'
         },
         { 
@@ -70,7 +70,7 @@ export const uncertaintyPath: Path = {
           content: [
             { type: 'list', items: [
               'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
-              'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
+              'Nuestro cuerpo y mente tienden a sobreprotegeros cuando sentimos que no tenemos el control.',
               'La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.',
               'No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.',
               'Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'
@@ -163,7 +163,7 @@ export const uncertaintyPath: Path = {
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
             content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\n1. Inhala por la nariz durante 4 segundos.\n2. Mantén el aire 2 segundos.\n3. Exhala lentamente por la boca durante 6 segundos.\n4. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\n\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.'}
+                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'}
             ]
           },
           { 
@@ -171,8 +171,9 @@ export const uncertaintyPath: Path = {
             title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
             objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
-            content: []
-          },
+            content: [
+              { type: 'paragraph', text: 'Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. No anticipes el resultado. Haz la acción con conciencia.'}
+          ]},
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
            prompts: [
@@ -365,9 +366,9 @@ export const uncertaintyPath: Path = {
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
            prompts: [
              '¿Qué parte de ti se suaviza cuando dejas de intentar controlarlo todo?',
-             '¿Qué notas en tu cuerpo cuando sueltas la tensión de tener todas las respuestas?',
+             '¿Cómo se siente tu cuerpo cuando te permites no saberlo todo?',
              '¿Qué cambia en tu mente cuando aceptas que no necesitas prever cada paso?',
-             '¿Qué te gustaría recordarme la próxima vez que intentes tenerlo todo bajo control?'
+             '¿Qué te gustaría recordarte la próxima vez que intentes tenerlo todo bajo control?'
           ]},
           { 
             type: 'title', 
@@ -437,7 +438,3 @@ export const uncertaintyPath: Path = {
 
 
 
-
-    
-
-    
