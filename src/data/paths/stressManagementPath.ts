@@ -22,6 +22,7 @@ export const stressManagementPath: Path = {
         { 
             type: 'title', 
             text: 'Psicoeducación',
+            audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Porquepostergoloquemeimporta.mp3'
         },
         { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
         {
@@ -212,7 +213,7 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'Porque entender cómo funciona tu cuerpo te ayuda a dejar de luchar contra él. Si sientes ansiedad, no es que estés “exagerando” o que no sepas controlarte. Es tu sistema de defensa intentando protegerte. Lo que necesitas no es pelear con él, sino enseñarle que ya no hay peligro.\nY eso se hace desde lo corporal: con respiraciones, con movimientos suaves, con contacto reconfortante.\nEn esta semana, vas a practicar técnicas que activan tu sistema de calma:\n•\tRespiraciones que calman el sistema nervioso.\n•\tTécnicas para volver al presente con los sentidos.\n•\tGestos que le recuerdan a tu cuerpo que está a salvo.\nNo se trata de “calmarte a la fuerza”. Se trata de crear las condiciones para que tu cuerpo pueda hacerlo por sí mismo. Y eso, aunque parezca pequeño, es un acto profundo de cuidado.' }
                 ]
             },
-            { type: 'title', text: 'Técnicas Específicas', audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3' },
+            { type: 'title', text: 'Técnicas Específicas', audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3'},
             { type: 'paragraph', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario y también en momentos puntuales de ansiedad. Explora las que te proponemos y elige las que más se ajusten a ti. Practícalas a tu ritmo, sin prisa pero sin pausa.' },
             {
                 type: 'collapsible',
@@ -224,6 +225,7 @@ export const stressManagementPath: Path = {
             {
                 type: 'collapsible',
                 title: '¿Qué cambia cuando las practicas?',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2quecambia.mp3',
                 content: [
                     { type: 'paragraph', text: 'En tu cuerpo:' },
                     { type: 'list', items: ['La respiración se vuelve más profunda y regular.', 'Se regula el CO₂ en sangre, reduciendo mareos y sensaciones de ahogo.', 'Se libera tensión muscular acumulada.', 'Aparece una sensación de alivio, calor o tranquilidad.'] },
@@ -501,4 +503,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
