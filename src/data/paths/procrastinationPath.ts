@@ -62,7 +62,7 @@ export const procrastinationPath: Path = {
           ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { 
+        {
           type: 'exercise',
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
@@ -75,6 +75,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
           content: [],
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
