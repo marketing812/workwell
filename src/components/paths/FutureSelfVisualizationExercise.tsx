@@ -27,7 +27,7 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
     const [steps, setSteps] = useState('');
     const [saved, setSaved] = useState(false);
 
-    if (content.type !== 'exercise') return null;
+    if (content.type !== 'futureSelfVisualizationExercise') return null;
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
@@ -69,7 +69,12 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
                     <div className="space-y-2"><Label htmlFor="thoughts">¿Qué pensamientos nuevos aparecieron?</Label><Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} disabled={saved} /></div>
                     <div className="space-y-2"><Label htmlFor="benefits">¿Qué beneficios viste en tu vida?</Label><Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={saved} /></div>
                     <div className="space-y-2"><Label htmlFor="steps">¿Qué pasos te ayudaron a llegar hasta ahí?</Label><Textarea id="steps" value={steps} onChange={e => setSteps(e.target.value)} disabled={saved} /></div>
-                    {!saved ? <Button type="submit" className="w-full">Guardar mi visualización</Button> : <p className="text-center text-green-600">¡Visualización guardada!</p>}
+                    {!saved ? <Button type="submit" className="w-full">Guardar mi visualización</Button> : 
+                    <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                        <CheckCircle className="mr-2 h-5 w-5" />
+                        <p className="font-medium">¡Visualización guardada!</p>
+                    </div>
+                    }
                 </form>
             </CardContent>
         </Card>

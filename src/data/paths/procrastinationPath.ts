@@ -25,7 +25,6 @@ export const procrastinationPath: Path = {
             text: 'Psicoeducación',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3'
         },
-        { type: 'paragraph', text: '¿Te ha pasado que tienes una tarea pendiente —por importante que sea— y acabas haciendo cualquier otra cosa? No es pereza. Es una forma de protegerte de emociones incómodas.\nDesde la TCC, entendemos que la procrastinación es una estrategia de evitación emocional.' },
         {
           type: 'collapsible',
           title: 'Procrastinar no es flojear: es evitar sentir',
@@ -67,6 +66,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3',
         },
         {
           type: 'compassionateReflectionExercise',

@@ -68,18 +68,27 @@ ${when}
           </div>
           <div className="space-y-2">
             <Label htmlFor="twoMin">¿Cuál sería su versión de 2 minutos?</Label>
-            <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} disabled={saved} />
+            <Textarea
+              id="twoMin"
+              value={twoMinVersion}
+              onChange={e => setTwoMinVersion(e.target.value)}
+              disabled={saved}
+            />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="when">¿Cuándo lo harás?</Label>
+            <Label>¿Cuándo lo harás?</Label>
             <RadioGroup value={when} onValueChange={setWhen} disabled={saved}>
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="Ahora" id="now" />
-                <Label htmlFor="now" className="font-normal">Ahora</Label>
+                <Label htmlFor="now" className="font-normal">
+                  Ahora
+                </Label>
               </div>
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="En los próximos 10 minutos" id="in10" />
-                <Label htmlFor="in10" className="font-normal">En los próximos 10 minutos</Label>
+                <Label htmlFor="in10" className="font-normal">
+                  En los próximos 10 minutos
+                </Label>
               </div>
             </RadioGroup>
           </div>
