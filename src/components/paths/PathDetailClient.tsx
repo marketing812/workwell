@@ -67,6 +67,13 @@ import { MantraExercise } from '@/components/paths/MantraExercise';
 import { RitualDeEntregaConscienteExercise } from './RitualDeEntregaConscienteExercise';
 // RUTA 3
 import { DelSabotajeALaAccionExercise } from '@/components/paths/DelSabotajeALaAccionExercise';
+import { TwoMinuteRuleExercise } from '@/components/paths/TwoMinuteRuleExercise';
+import { MicroPlanExercise } from '@/components/paths/MicroPlanExercise';
+import { FutureSelfVisualizationExercise } from '@/components/paths/FutureSelfVisualizationExercise';
+import { RealisticRitualExercise } from '@/components/paths/RealisticRitualExercise';
+import { GentleTrackingExercise } from '@/components/paths/GentleTrackingExercise';
+import { BlockageMapExercise } from '@/components/paths/BlockageMapExercise';
+import { CompassionateReflectionExercise } from '@/components/paths/CompassionateReflectionExercise';
 // RUTA 4
 import { MapOfUnsaidThingsExercise } from '@/components/paths/MapOfUnsaidThingsExercise';
 import { DiscomfortCompassExercise } from '@/components/paths/DiscomfortCompassExercise';
@@ -158,7 +165,6 @@ import { QuestionYourIfsExercise } from './QuestionYourIfsExercise';
 import { ExposureLadderExercise } from './ExposureLadderExercise';
 import { CalmVisualizationExercise } from './CalmVisualizationExercise';
 import { ImaginedCrisisRehearsalExercise } from './ImaginedCrisisRehearsalExercise';
-import { ExposureToIntoleranceExercise } from './ExposureToIntoleranceExercise';
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -167,6 +173,12 @@ class ModuleErrorBoundary extends React.Component<{
   module: PathModule;
   children: ReactNode;
 }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+
   componentDidCatch(error: any, info: any) {
     console.error(
       '[ModuleErrorBoundary] Error al renderizar módulo',
@@ -181,6 +193,14 @@ class ModuleErrorBoundary extends React.Component<{
   }
 
   render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-4 my-2 border border-destructive bg-destructive/10 rounded-md">
+            <p className="text-destructive font-semibold">Error al cargar este módulo.</p>
+            <p className="text-sm text-destructive/80">Se ha producido un error al mostrar el contenido del módulo "{this.props.module.title}". Por favor, revisa la consola para más detalles.</p>
+        </div>
+      );
+    }
     return this.props.children;
   }
 }
@@ -192,6 +212,12 @@ class ContentItemErrorBoundary extends React.Component<{
   contentItem: ModuleContent;
   children: ReactNode;
 }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+
   componentDidCatch(error: any, info: any) {
     console.error(
       '[ContentItemErrorBoundary] Error al renderizar contentItem',
@@ -209,13 +235,18 @@ class ContentItemErrorBoundary extends React.Component<{
   }
 
   render() {
+    if (this.state.hasError) {
+       return <div className="p-4 my-2 border border-destructive bg-destructive/10 rounded-md">
+        <p className="text-destructive font-semibold">Error al cargar este contenido.</p>
+        <p className="text-sm text-destructive/80">El elemento de contenido tipo "{(this.props.contentItem as any).type}" no se pudo mostrar. Revisa la consola.</p>
+      </div>;
+    }
     return this.props.children;
   }
 }
 
 // =================== COMPONENTES DE EJERCICIOS ===================
 
-// Componente para manejar las reflexiones del cuaderno terapéutico
 function TherapeuticNotebookReflectionExercise({
   content,
   path,
@@ -319,515 +350,6 @@ ${reflection}
   );
 }
 
-// ====================================================================
-// START OF RUTA 3 DYNAMIC COMPONENTS
-// ====================================================================
-
-function BlockageMapExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
-    const { toast } = useToast();
-    const { user } = useUser();
-    const [step, setStep] = useState(0);
-    const [avoidedTask, setAvoidedTask] = useState('');
-    const [blockingThoughts, setBlockingThoughts] = useState('');
-    const [avoidedEmotions, setAvoidedEmotions] = useState<Record<string, boolean>>({});
-    const [otherEmotion, setOtherEmotion] = useState('');
-    const [escapeBehaviors, setEscapeBehaviors] = useState('');
-    const [consequences, setConsequences] = useState('');
-
-    if (content.type !== 'exercise' && content.type !== 'blockageMapExercise') return null;
-
-    const emotionsOptions = [
-        { id: 'emo-anxiety', label: 'Ansiedad' },
-        { id: 'emo-insecurity', label: 'Inseguridad' },
-        { id: 'emo-judgment-fear', label: 'Miedo al juicio' },
-        { id: 'emo-shame', label: 'Vergüenza' },
-        { id: 'emo-guilt', label: 'Culpa' },
-        { id: 'emo-frustration', label: 'Frustración' },
-        { id: 'emo-apathy', label: 'Apatía o vacío emocional' },
-        { id: 'emo-sadness', label: 'Tristeza o desánimo' },
-        { id: 'emo-overwhelm', label: 'Agobio mental' },
-        { id: 'emo-resistance', label: 'Resistencia (“No quiero que me obliguen”)' },
-    ];
-
-    const handleSave = () => {
-        const selectedEmotions = emotionsOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
-        if (avoidedEmotions['emo-other'] && otherEmotion) {
-        selectedEmotions.push(otherEmotion);
-        }
-
-        const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Tarea evitada:*
-${avoidedTask || 'No especificada.'}
-
-*Pensamientos bloqueadores:*
-${blockingThoughts || 'No especificados.'}
-
-*Emociones evitadas:*
-${selectedEmotions.length > 0 ? selectedEmotions.map(e => `- ${e}`).join('\n') : 'No especificadas.'}
-
-*Conductas de escape:*
-${escapeBehaviors || 'No especificadas.'}
-
-*Consecuencias:*
-${consequences || 'No especificadas.'}
-        `;
-
-        addNotebookEntry({ title: 'Mi Mapa del Bloqueo Personal', content: notebookContent, pathId });
-        toast({ title: 'Mapa guardado', description: 'Tu Mapa del Bloqueo Personal se ha guardado en el cuaderno.' });
-        setStep(prev => prev + 1); // Move to final summary screen
-    };
-
-    const renderStep = () => {
-        switch (step) {
-        case 0:
-            return (
-            <div className="text-center p-4 space-y-4">
-                <div className="mt-4">
-                  <audio controls controlsList="nodownload" className="w-full">
-                      <source src="https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3" type="audio/mp3" />
-                      Tu navegador no soporta el elemento de audio.
-                  </audio>
-                </div>
-                <p className="mb-4">
-                ¿Tienes una tarea pendiente que sigues posponiendo? Este ejercicio te ayudará a identificar qué está
-                pasando dentro de ti. No hay respuestas correctas, solo pistas para entenderte mejor.
-                </p>
-                <Button onClick={() => setStep(1)}>
-                Comenzar mi mapa <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-            </div>
-            );
-        case 1:
-            return (
-            <div className="p-4 space-y-4">
-                <Label htmlFor="avoided-task">Piensa en una tarea concreta que llevas tiempo evitando.</Label>
-                <Textarea
-                id="avoided-task"
-                value={avoidedTask}
-                onChange={e => setAvoidedTask(e.target.value)}
-                placeholder="Ej: Escribir un email importante"
-                />
-                <Button onClick={() => setStep(2)} className="w-full">
-                Siguiente
-                </Button>
-            </div>
-            );
-        case 2:
-            return (
-            <div className="p-4 space-y-4">
-                <Label htmlFor="blocking-thoughts">¿Qué pensamientos aparecen cuando piensas en esa tarea?</Label>
-                <Textarea
-                id="blocking-thoughts"
-                value={blockingThoughts}
-                onChange={e => setBlockingThoughts(e.target.value)}
-                placeholder="Ej: Lo haré mal y me juzgarán"
-                />
-                <Button onClick={() => setStep(3)} className="w-full">
-                Siguiente
-                </Button>
-            </div>
-            );
-        case 3:
-            return (
-            <div className="p-4 space-y-4">
-                <Label>¿Qué emociones o sensaciones físicas intentas evitar?</Label>
-                {emotionsOptions.map(opt => (
-                <div key={opt.id} className="flex items-center space-x-2">
-                    <Checkbox
-                    id={opt.id}
-                    checked={avoidedEmotions[opt.id] || false}
-                    onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, [opt.id]: !!checked }))}
-                    />
-                    <Label htmlFor={opt.id} className="font-normal">
-                    {opt.label}
-                    </Label>
-                </div>
-                ))}
-                <div className="flex items-center space-x-2">
-                <Checkbox
-                    id="emo-other"
-                    checked={avoidedEmotions['emo-other'] || false}
-                    onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, 'emo-other': !!checked }))}
-                />
-                <Label htmlFor="emo-other" className="font-normal">
-                    Otra:
-                </Label>
-                </div>
-                {avoidedEmotions['emo-other'] && (
-                <Textarea
-                    value={otherEmotion}
-                    onChange={e => setOtherEmotion(e.target.value)}
-                    placeholder="Describe la otra emoción"
-                    className="ml-6"
-                />
-                )}
-                <Button onClick={() => setStep(4)} className="w-full">
-                Siguiente
-                </Button>
-            </div>
-            );
-        case 4:
-            return (
-            <div className="p-4 space-y-4">
-                <Label htmlFor="escape-behaviors">¿Qué haces para evitarla?</Label>
-                <Textarea
-                id="escape-behaviors"
-                value={escapeBehaviors}
-                onChange={e => setEscapeBehaviors(e.target.value)}
-                placeholder="Ej: Miro redes sociales, limpio compulsivamente..."
-                />
-                <Button onClick={() => setStep(5)} className="w-full">
-                Siguiente
-                </Button>
-            </div>
-            );
-        case 5:
-            return (
-            <div className="p-4 space-y-4">
-                <Label htmlFor="consequences">¿Qué consecuencias tiene para ti seguir evitándolo?</Label>
-                <Textarea
-                id="consequences"
-                value={consequences}
-                onChange={e => setConsequences(e.target.value)}
-                placeholder="Ej: Me siento culpable, pierdo oportunidades..."
-                />
-                <Button onClick={handleSave} className="w-full">
-                Ver mi mapa del bloqueo
-                </Button>
-            </div>
-            );
-        case 6:
-            // Summary screen
-            const selectedEmotions = emotionsOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
-            if (avoidedEmotions['emo-other'] && otherEmotion) selectedEmotions.push(otherEmotion);
-            return (
-            <div className="p-4 space-y-2">
-                <h4 className="font-bold text-center text-lg">Tu Mapa del Bloqueo</h4>
-                <p>
-                <strong>Tarea evitada:</strong> {avoidedTask || 'N/A'}
-                </p>
-                <p>
-                <strong>Pensamientos bloqueadores:</strong> {blockingThoughts || 'N/A'}
-                </p>
-                <p>
-                <strong>Emociones evitadas:</strong> {selectedEmotions.join(', ') || 'N/A'}
-                </p>
-                <p>
-                <strong>Conductas de escape:</strong> {escapeBehaviors || 'N/A'}
-                </p>
-                <p>
-                <strong>Consecuencias:</strong> {consequences || 'N/A'}
-                </p>
-                <p className="text-sm italic text-center pt-4">
-                Este mapa no es para juzgarte. Es para ayudarte a ver el ciclo completo con más claridad. Entenderlo es
-                el primer paso para liberarte.
-                </p>
-                <Button onClick={() => setStep(0)} variant="outline" className="w-full">
-                Comenzar de nuevo
-                </Button>
-            </div>
-            );
-        default:
-            return null;
-        }
-    };
-
-    return (
-        <Card className="bg-muted/30 my-6 shadow-md">
-        <CardHeader>
-            <CardTitle className="text-lg text-accent flex items-center">
-            <Edit3 className="mr-2" />
-            {content.title}
-            </CardTitle>
-            {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        </CardHeader>
-        <CardContent>{renderStep()}</CardContent>
-        </Card>
-    );
-}
-
-function CompassionateReflectionExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
-  const { toast } = useToast();
-  const { user } = useUser();
-  const [step, setStep] = useState(0);
-  const [adviceToFriend, setAdviceToFriend] = useState('');
-  const [selfJudgment, setSelfJudgment] = useState('');
-  const [avoidedEmotions, setAvoidedEmotions] = useState<Record<string, boolean>>({});
-  const [aftermathEmotion, setAftermathEmotion] = useState('');
-  const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
-  const [flexibleThought, setFlexibleThought] = useState('');
-
-  if (content.type !== 'exercise') return null;
-
-  const handleSave = () => {
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*A alguien que quiero le diría:*
-${adviceToFriend || 'No especificado.'}
-
-*En ese momento pensé que:*
-${selfJudgment || 'No especificado.'}
-
-*Emociones que intenté evitar:*
-${Object.keys(avoidedEmotions)
-  .filter(k => avoidedEmotions[k])
-  .join(', ') || 'No especificadas.'}
-
-*¿Qué sentí después de evitarlo?:*
-${aftermathEmotion || 'No especificado.'}
-
-*Exigencias detectadas:*
-${Object.keys(perfectionism)
-  .filter(k => perfectionism[k])
-  .join(', ') || 'Ninguna.'}
-
-*Nueva forma de pensarlo:*
-${flexibleThought || 'No especificada.'}
-        `;
-    addNotebookEntry({ title: 'Mi Reflexión Compasiva', content: notebookContent, pathId });
-    toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
-    setStep(prev => prev + 1);
-  };
-
-  const renderStep = () => {
-    switch (step) {
-      case 0:
-        return (
-          <div className="text-center p-4">
-            <p>
-              Ahora, vamos a mirar dentro de ti, con respeto y sin crítica. No buscamos explicaciones perfectas, solo
-              entender qué te estaba pasando.
-            </p>
-            <Button onClick={() => setStep(1)}>Empezar la reflexión</Button>
-          </div>
-        );
-      case 1:
-        return (
-          <div className="p-4 space-y-2">
-            <Label>Imagina que una persona a la que quieres mucho está en tu situación. ¿Qué le dirías?</Label>
-            <Textarea
-              value={adviceToFriend}
-              onChange={e => setAdviceToFriend(e.target.value)}
-              placeholder="Le diría que..."
-            />
-            <Button onClick={() => setStep(2)} className="w-full mt-2">
-              Continuar
-            </Button>
-          </div>
-        );
-      case 2:
-        return (
-          <div className="p-4 space-y-2">
-            <Label>Cuando te bloqueaste, ¿qué pensaste sobre ti?</Label>
-            <Textarea
-              value={selfJudgment}
-              onChange={e => setSelfJudgment(e.target.value)}
-              placeholder="Pensé que no valía para esto..."
-            />
-            <p className="text-sm text-center text-primary">Es solo un pensamiento. No eres ese pensamiento.</p>
-            <Button onClick={() => setStep(3)} className="w-full mt-2">
-              Siguiente
-            </Button>
-          </div>
-        );
-      case 3:
-        return (
-          <div className="p-4 space-y-2">
-            <Label>¿Qué emoción crees que intentabas evitar cuando procrastinaste?</Label>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="fear"
-                  onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, fear: !!c }))}
-                />
-                <Label htmlFor="fear" className="font-normal">
-                  Miedo al fallo
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="shame"
-                  onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, shame: !!c }))}
-                />
-                <Label htmlFor="shame" className="font-normal">
-                  Vergüenza
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="guilt"
-                  onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, guilt: !!c }))}
-                />
-                <Label htmlFor="guilt" className="font-normal">
-                  Culpa
-                </Label>
-              </div>
-            </div>
-            <Label htmlFor="aftermath">¿Y qué sentí después de evitarlo?</Label>
-            <Textarea
-              id="aftermath"
-              value={aftermathEmotion}
-              onChange={e => setAftermathEmotion(e.target.value)}
-              placeholder="Alivio momentáneo... y luego frustración."
-            />
-            <Button onClick={() => setStep(4)} className="w-full mt-2">
-              Siguiente
-            </Button>
-          </div>
-        );
-      case 4:
-        return (
-          <div className="p-4 space-y-2">
-            <Label>¿Te exigiste demasiado en ese momento?</Label>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="perfect"
-                  onCheckedChange={c => setPerfectionism(p => ({ ...p, perfect: !!c }))}
-                />
-                <Label htmlFor="perfect" className="font-normal">
-                  Pensé que, si no lo hacía perfecto, mejor no hacerlo.
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="energy"
-                  onCheckedChange={c => setPerfectionism(p => ({ ...p, energy: !!c }))}
-                />
-                <Label htmlFor="energy" className="font-normal">
-                  Sentí que tenía que estar con energía total.
-                </Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox
-                  id="no-error"
-                  onCheckedChange={c => setPerfectionism(p => ({ ...p, error: !!c }))}
-                />
-                <Label htmlFor="no-error" className="font-normal">
-                  Cualquier error me parecía inaceptable.
-                </Label>
-              </div>
-            </div>
-            <Label htmlFor="flexible-thought">¿Cómo podrías pensarlo hoy con más flexibilidad?</Label>
-            <Textarea
-              id="flexible-thought"
-              value={flexibleThought}
-              onChange={e => setFlexibleThought(e.target.value)}
-              placeholder="Aunque no salga perfecto, un pequeño paso ya es avanzar."
-            />
-            <Button onClick={handleSave} className="w-full mt-2">
-              Ver mi reflexión completa
-            </Button>
-          </div>
-        );
-      case 5:
-        return (
-          <div className="p-4 space-y-2">
-            <h4 className="font-bold text-center text-lg">Tu Mapa de Comprensión Emocional</h4>
-            <p className="text-sm italic text-center">
-              Has dado un paso valiente. Hablarte con amabilidad te ayuda a avanzar.
-            </p>
-            <Button onClick={() => setStep(0)} variant="outline" className="w-full">
-              Empezar de nuevo
-            </Button>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-  return (
-    <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center">
-          <Edit3 className="mr-2" />
-          {content.title}
-        </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-      </CardHeader>
-      <CardContent>{renderStep()}</CardContent>
-    </Card>
-  );
-}
-
-function TwoMinuteRuleExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
-    // ...el resto del componente
-    if (content.type !== 'exercise') return null;
-    // ...
-    const handleSave = (e: FormEvent) => {
-        // ...
-        addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: "...", pathId: pathId });
-        // ...
-    };
-    // ...
-    return <Card>...</Card>;
-}
-
-function MicroPlanExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
-    // ...el resto del componente
-    if (content.type !== 'exercise') return null;
-    // ...
-    const handleSave = () => {
-        // ...
-        addNotebookEntry({ title: 'Mi Microplan de Acción', content: "...", pathId: pathId });
-        // ...
-    };
-    // ...
-    return <Card>...</Card>;
-}
-
-function FutureSelfVisualizationExercise({
-  content,
-  pathId,
-  audioUrl,
-}: {
-  content: ModuleContent;
-  pathId: string;
-  audioUrl?: string;
-}) {
-  // ...el resto del componente
-  if (content.type !== 'exercise') return null;
-  // ...
-  const handleSave = (e: FormEvent) => {
-    // ...
-    addNotebookEntry({ title: 'Mi Visualización del Yo Futuro', content: "...", pathId: pathId });
-    // ...
-  };
-  // ...
-  return <Card>...</Card>;
-}
-
-function RealisticRitualExercise({ content, pathId }: { content: ModuleContent; pathId: string }) {
-    // ...el resto del componente
-    if (content.type !== 'exercise') return null;
-    // ...
-    const handleSave = (e: FormEvent) => {
-        // ...
-        addNotebookEntry({ title: 'Mi Ritual Realista', content: "...", pathId: pathId });
-        // ...
-    };
-    // ...
-    return <Card>...</Card>;
-}
-
-function GentleTrackingExercise({ content, pathId }: { content: ExerciseContent; pathId: string }) {
-  // ...el resto del componente
-  // ...
-  const handleSave = (e: FormEvent) => {
-    // ...
-    addNotebookEntry({ title: 'Mi Seguimiento Amable', content: "...", pathId: pathId });
-    // ...
-  };
-  // ...
-  return <Card>...</Card>;
-}
-
-// ====================================================================
-// END OF RUTA 3 DYNAMIC COMPONENTS
-// ====================================================================
 
 function ContentItemRenderer({
   contentItem,
@@ -931,71 +453,47 @@ function ContentItemRenderer({
         </Accordion>
       );
     case 'exercise':
-      if (contentItem.title === 'Ejercicio 2: Visualización del Yo Futuro') {
+        // RUTA 3 Ejercicios - Restaurados
+        if (contentItem.title === 'Ejercicio 1: Mi Mapa del Bloqueo Personal') {
+            return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 2: Reflexiona sin Culparte') {
+            return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 1: La Regla de los 2 Minutos') {
+            return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 2: Tu Primer Microplan de Acción') {
+            return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 1: Diseña tu Ritual Realista') {
+            return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual') {
+            return <GentleTrackingExercise key={index} content={contentItem as ExerciseContent} pathId={path.id} />;
+        }
+        if (contentItem.title === 'Ejercicio 2: Visualización del Yo Futuro') {
+          return (
+            <FutureSelfVisualizationExercise
+              key={index}
+              content={contentItem}
+              pathId={path.id}
+              audioUrl={contentItem.audioUrl}
+            />
+          );
+        }
+        // Fallback genérico para otros ejercicios
         return (
-          <FutureSelfVisualizationExercise
-            key={index}
-            content={contentItem}
-            pathId={path.id}
-            audioUrl={contentItem.audioUrl}
-          />
+            <Card key={index} className="bg-muted/30 my-6 shadow-md">
+                <CardHeader>
+                    <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{contentItem.title}</CardTitle>
+                    {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
+                </CardHeader>
+                <CardContent>
+                    {contentItem.content.map((item, i) => <ContentItemRenderer key={i} contentItem={item} index={i} path={path}/>)}
+                </CardContent>
+            </Card>
         );
-      }
-
-      // RUTA 3 Ejercicios
-      if (contentItem.title === 'Ejercicio 1: Mi Mapa del Bloqueo Personal') {
-        return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
-      }
-      if (contentItem.title === 'Ejercicio 2: Reflexiona sin Culparte') {
-        return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
-      }
-      if (contentItem.title === 'Ejercicio 1: La Regla de los 2 Minutos') {
-        return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} />;
-      }
-      if (contentItem.title === 'Ejercicio 2: Tu Primer Microplan de Acción') {
-        return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} />;
-      }
-      if (contentItem.title === 'Ejercicio 1: Diseña tu Ritual Realista') {
-        return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} />;
-      }
-      if (contentItem.title === 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual') {
-        return <GentleTrackingExercise key={index} content={contentItem as ExerciseContent} pathId={path.id} />;
-      }
-      return (
-        <Card key={index} className="bg-muted/30 my-6 shadow-md">
-          <CardHeader>
-            <CardTitle className="text-lg text-accent flex items-center">
-              <Edit3 className="mr-2" />
-              {contentItem.title}
-            </CardTitle>
-            {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
-            {contentItem.audioUrl && (
-              <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                  <source src={contentItem.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-                </audio>
-              </div>
-            )}
-          </CardHeader>
-          <CardContent>
-            {contentItem.content.map((item, i) => (
-               <ContentItemRenderer
-                 key={`${index}-child-${i}`}
-                 contentItem={item}
-                 index={i}
-                 path={path}
-               />
-            ))}
-          </CardContent>
-          {contentItem.duration && (
-            <CardFooter className="text-xs text-muted-foreground">
-              <Clock className="mr-2 h-3 w-3" />
-              Duración sugerida: {contentItem.duration}
-            </CardFooter>
-          )}
-        </Card>
-      );
     case 'quote':
       return (
         <blockquote
@@ -1022,141 +520,41 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
+      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} path={path} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
-      return (
-        <TherapeuticNotebookReflectionExercise
-          key={index}
-          content={contentItem}
-          path={path}
-        />
-      );
+      return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} path={path} />;
     case 'mapOfUnsaidThingsExercise':
-      return (
-        <MapOfUnsaidThingsExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <MapOfUnsaidThingsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'discomfortCompassExercise':
-      return (
-        <DiscomfortCompassExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <DiscomfortCompassExercise key={index} content={contentItem} pathId={path.id} />;
     case 'assertivePhraseExercise':
-      return (
-        <AssertivePhraseExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <AssertivePhraseExercise key={index} content={contentItem} pathId={path.id} />;
     case 'noGuiltTechniquesExercise':
-      return (
-        <NoGuiltTechniquesExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <NoGuiltTechniquesExercise key={index} content={contentItem} pathId={path.id} />;
     case 'postBoundaryEmotionsExercise':
-      return (
-        <PostBoundaryEmotionsExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <PostBoundaryEmotionsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateFirmnessExercise':
-      return (
-        <CompassionateFirmnessExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <CompassionateFirmnessExercise key={index} content={contentItem} pathId={path.id} />;
     case 'selfCareContractExercise':
-      return (
-        <SelfCareContractExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
-    // RUTA 5
+      return <SelfCareContractExercise key={index} content={contentItem} pathId={path.id} />;
     case 'authenticityThermometerExercise':
-      return (
-        <AuthenticityThermometerExercise
-          key={index}
-          content={contentItem }
-          pathId={path.id}
-        />
-      );
+      return <AuthenticityThermometerExercise key={index} content={contentItem } pathId={path.id}/>;
     case 'empatheticDialogueExercise':
-      return (
-        <EmpatheticDialogueExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <EmpatheticDialogueExercise key={index} content={contentItem} pathId={path.id} />;
     case 'empathicMirrorExercise':
-      return (
-        <EmpathicMirrorExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <EmpathicMirrorExercise key={index} content={contentItem} pathId={path.id} />;
     case 'validationIn3StepsExercise':
-      return (
-        <ValidationIn3StepsExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
-    case 'empathicShieldVisualizationExercise': {
-      const exerciseContent = contentItem ;
-      return (
-        <EmpathicShieldVisualizationExercise
-          key={index}
-          content={exerciseContent}
-          pathId={path.id}
-        />
-      );
-    }
+      return <ValidationIn3StepsExercise key={index} content={contentItem} pathId={path.id} />;
+    case 'empathicShieldVisualizationExercise':
+      return <EmpathicShieldVisualizationExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'emotionalInvolvementTrafficLightExercise':
-      return (
-        <EmotionalInvolvementTrafficLightExercise
-          key={index}
-          content={contentItem}
-          pathId={path.id}
-        />
-      );
+      return <EmotionalInvolvementTrafficLightExercise key={index} content={contentItem} pathId={path.id} />;
     case 'significantRelationshipsInventoryExercise':
-      return (
-        <SignificantRelationshipsInventoryExercise
-          key={index}
-          content={contentItem }
-          pathId={path.id}
-        />
-      );
+      return <SignificantRelationshipsInventoryExercise key={index} content={contentItem } pathId={path.id} />;
     case 'relationalCommitmentExercise':
-      return (
-        <RelationalCommitmentExercise
-          key={index}
-          content={contentItem }
-          pathId={path.id}
-        />
-      );
-    // RUTA 6
+      return <RelationalCommitmentExercise key={index} content={contentItem } pathId={path.id} />;
     case 'detectiveDeEmocionesExercise':
         return <DetectiveDeEmocionesExercise key={index} content={contentItem} pathId={path.id} />;
     case 'unaPalabraCadaDiaExercise':
@@ -1173,7 +571,6 @@ function ContentItemRenderer({
         return <MeditacionGuiadaSinJuicioExercise key={index} content={contentItem} pathId={path.id} />;
     case 'diarioMeDiCuentaExercise':
         return <DiarioMeDiCuentaExercise key={index} content={contentItem} pathId={path.id} />;
-    // RUTA 7
     case 'valuesCompassExercise':
         return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} />;
     case 'energySenseMapExercise':
@@ -1196,7 +593,6 @@ function ContentItemRenderer({
         return <EssentialReminderExercise key={index} content={contentItem} pathId={path.id} />;
     case 'thoughtsThatBlockPurposeExercise':
         return <ThoughtsThatBlockPurposeExercise key={index} content={contentItem} pathId={path.id} />;
-    // RUTA 8
     case 'resilienceTimelineExercise':
         return <ResilienceTimelineExercise key={index} content={contentItem} pathId={path.id} />;
     case 'personalDefinitionExercise':
@@ -1213,7 +609,6 @@ function ContentItemRenderer({
         return <ChangeTimelineExercise key={index} content={contentItem} pathId={path.id} />;
     case 'myPactExercise':
         return <MyPactExercise key={index} content={contentItem} pathId={path.id} />;
-    // RUTA 9
     case 'coherenceCompassExercise':
       return <CoherenceCompassExercise key={index} content={contentItem} pathId={path.id} />;
     case 'smallDecisionsLogExercise':
@@ -1230,17 +625,14 @@ function ContentItemRenderer({
       return <EnvironmentEvaluationExercise key={index} content={contentItem} pathId={path.id} />;
     case 'personalManifestoExercise':
       return <PersonalManifestoExercise key={index} content={contentItem} pathId={path.id} />;
-    // RUTA 10
     case 'complaintTransformationExercise':
       return <ComplaintTransformationExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'guiltRadarExercise':
       return <GuiltRadarExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'acceptanceWritingExercise':
       return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={path.id} />;
-    case 'selfAcceptanceAudioExercise': {
-        const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
-        return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} audioUrl={exerciseContent.audioUrl} />;
-    }
+    case 'selfAcceptanceAudioExercise':
+        return <SelfAcceptanceAudioExercise key={index} content={contentItem as SelfAcceptanceAudioExerciseContent} pathId={path.id} audioUrl={(contentItem as SelfAcceptanceAudioExerciseContent).audioUrl} />;
     case 'compassionateResponsibilityContractExercise':
       return <CompassionateResponsibilityContractExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'criticismToGuideExercise':
@@ -1249,7 +641,6 @@ function ContentItemRenderer({
       return <InfluenceWheelExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'personalCommitmentDeclarationExercise':
       return <PersonalCommitmentDeclarationExercise key={index} content={contentItem as any} pathId={path.id} />;
-    // RUTA 11
     case 'supportMapExercise':
       return <SupportMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'blockingThoughtsExercise':
@@ -1266,7 +657,6 @@ function ContentItemRenderer({
         return <MutualCareCommitmentExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'symbolicSupportCircleExercise':
         return <SymbolicSupportCircleExercise key={index} content={contentItem as any} pathId={pathId} />;
-    // RUTA 12
     case 'emotionalGratificationMapExercise':
         return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'dailyEnergyCheckExercise':
@@ -1283,7 +673,6 @@ function ContentItemRenderer({
         return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem} pathId={path.id} />;
     case 'positiveEmotionalFirstAidKitExercise':
         return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem} pathId={path.id} />;
-    // RUTA 13 (NUEVA)
     case 'ansiedadTieneSentidoExercise':
         return <AnsiedadTieneSentidoExercise key={index} content={contentItem} pathId={path.id} />;
     case 'visualizacionGuiadaCuerpoAnsiedadExercise':
@@ -1294,18 +683,13 @@ function ContentItemRenderer({
         return <QuestionYourIfsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'exposureLadderExercise':
         return <ExposureLadderExercise key={index} content={contentItem} pathId={path.id} />;
-    case 'calmVisualizationExercise': {
-        const calmVisContent = contentItem ;
-        return <CalmVisualizationExercise key={index} content={calmVisContent} pathId={path.id} />;
-    }
-    case 'imaginedCrisisRehearsalExercise': {
-      const crisisRehearsalContent = contentItem ;
-      return <ImaginedCrisisRehearsalExercise key={index} content={crisisRehearsalContent} pathId={path.id} />;
-    }
-    case 'exposureToIntoleranceExercise':
-        return <ExposureToIntoleranceExercise key={index} content={contentItem as any} pathId={path.id} />;
-    // ...
+    case 'calmVisualizationExercise':
+        return <CalmVisualizationExercise key={index} content={contentItem as any} pathId={path.id} />;
+    case 'imaginedCrisisRehearsalExercise':
+        return <ImaginedCrisisRehearsalExercise key={index} content={contentItem as any} pathId={path.id} />;
+
     default:
+      const exhaustiveCheck: never = contentItem;
       return null;
   }
 }
@@ -1328,7 +712,6 @@ export function PathDetailClient({ path }: { path: Path }) {
       setCompletedModules(initialCompleted);
       loadPath(path.id, path.title, path.modules.length);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
   if (!path || !isClient) {
@@ -1458,7 +841,7 @@ export function PathDetailClient({ path }: { path: Path }) {
               {module.content.map((contentItem, i) => (
                 <ContentItemErrorBoundary
                   key={i}
-                  path={path}
+                  pathId={path.id}
                   module={module}
                   index={i}
                   contentItem={contentItem}
@@ -1530,4 +913,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
