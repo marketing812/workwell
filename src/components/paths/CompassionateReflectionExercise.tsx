@@ -65,10 +65,6 @@ ${flexibleThought || 'No especificada.'}
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-            <p className="mb-4">
-              Ahora, vamos a mirar dentro de ti, con respeto y sin crítica. No buscamos explicaciones perfectas, solo
-              entender qué te estaba pasando.
-            </p>
             {content.audioUrl && (
               <div className="mb-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -77,6 +73,10 @@ ${flexibleThought || 'No especificada.'}
                 </audio>
               </div>
             )}
+            <p className="mb-4">
+              Ahora, vamos a mirar dentro de ti, con respeto y sin crítica. No buscamos explicaciones perfectas, solo
+              entender qué te estaba pasando.
+            </p>
             <Button onClick={() => setStep(1)}>Empezar la reflexión <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );
@@ -229,5 +229,3 @@ ${flexibleThought || 'No especificada.'}
     </Card>
   );
 }
-
-    
