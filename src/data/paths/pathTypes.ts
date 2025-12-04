@@ -100,6 +100,7 @@ export type ControlTrafficLightExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type AlternativeStoriesExerciseContent = {
@@ -115,6 +116,14 @@ export type MantraExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
+};
+
+export type RitualDeEntregaConscienteExerciseContent = {
+    type: 'ritualDeEntregaConscienteExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
 };
 
 export type DelSabotajeALaAccionExerciseContent = {
@@ -122,6 +131,58 @@ export type DelSabotajeALaAccionExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+};
+
+export type FutureSelfVisualizationExerciseContent = {
+    type: 'futureSelfVisualizationExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type TwoMinuteRuleExerciseContent = {
+    type: 'twoMinuteRuleExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type MicroPlanExerciseContent = {
+    type: 'microPlanExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type RealisticRitualExerciseContent = {
+    type: 'realisticRitualExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type GentleTrackingExerciseContent = {
+    type: 'gentleTrackingExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type BlockageMapExerciseContent = {
+  type: 'blockageMapExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
+};
+
+export type CompassionateReflectionExerciseContent = {
+  type: 'compassionateReflectionExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
 };
 
 export type MapOfUnsaidThingsExerciseContent = {
@@ -710,9 +771,9 @@ export type ImaginedCrisisRehearsalExerciseContent = {
 
 export type ExposureToIntoleranceExerciseContent = {
     type: 'exposureToIntoleranceExercise';
-    title: 'EJERCICIO 2: PEQUEÑOS ACTOS DE EXPOSICIÓN A LO INCIERTO';
+    title: string;
     objective: string;
-    duration: string;
+    duration?: string;
     audioUrl?: string;
 };
 
@@ -735,7 +796,6 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
-  | RitualDeEntregaConscienteExerciseContent // Added
   | DelSabotajeALaAccionExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
@@ -828,7 +888,12 @@ export type ModuleContent =
   | CalmVisualizationExerciseContent
   // NUEVO
   | ImaginedCrisisRehearsalExerciseContent
-  | ExposureToIntoleranceExerciseContent;
+  | TwoMinuteRuleExerciseContent
+  | MicroPlanExerciseContent
+  | RealisticRitualExerciseContent
+  | GentleTrackingExerciseContent
+  | BlockageMapExerciseContent
+  | CompassionateReflectionExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
