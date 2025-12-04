@@ -244,6 +244,7 @@ export const procrastinationPath: Path = {
           {
             type: 'collapsible',
             title: 'Lo que hay detrás de esas frases',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Loquehaydetrasdeesasfrases.mp3',
             content: [
               { type: 'paragraph', text: 'Estas frases actúan como máscaras. Detrás de ellas se esconden emociones reales que merecen ser escuchadas:'},
               { type: 'list', items: [
@@ -349,3 +350,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
