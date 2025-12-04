@@ -166,6 +166,7 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: La Regla de los 2 Minutos',
             objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
             duration: '5 a 7 minutos',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
           },
           {
             type: 'microPlanExercise',
@@ -336,4 +337,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
