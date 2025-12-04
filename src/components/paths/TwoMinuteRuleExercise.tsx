@@ -58,6 +58,14 @@ ${when}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
+        {content.audioUrl && (
+          <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+          </div>
+        )}
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
