@@ -111,6 +111,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'El mito de la motivación',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Elmitodelamotivacion.mp3',
               content: [{ type: 'paragraph', text: '¿Alguna vez te has dicho “lo haré cuando me sienta con ganas”? Es una idea muy extendida… pero poco útil. La motivación no siempre aparece antes de actuar. De hecho, casi siempre es al revés: actuar es lo que genera motivación.' }],
           },
           {
