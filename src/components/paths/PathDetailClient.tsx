@@ -1,6 +1,5 @@
 
 
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, type FormEvent } from 'react';
@@ -492,7 +491,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -534,14 +533,40 @@ function ContentItemRenderer({
       return <EmpathicMirrorExercise key={index} content={contentItem} pathId={path.id} />;
     case 'validationIn3StepsExercise':
       return <ValidationIn3StepsExercise key={index} content={contentItem} pathId={path.id} />;
-    case 'empathicShieldVisualizationExercise':
-      return <EmpathicShieldVisualizationExercise key={index} content={contentItem as any} pathId={path.id} />;
+    case 'empathicShieldVisualizationExercise': {
+      const exerciseContent = contentItem ;
+      return (
+        <EmpathicShieldVisualizationExercise
+          key={index}
+          content={exerciseContent}
+          pathId={path.id}
+        />
+      );
+    }
     case 'emotionalInvolvementTrafficLightExercise':
-      return <EmotionalInvolvementTrafficLightExercise key={index} content={contentItem} pathId={path.id} />;
+      return (
+        <EmotionalInvolvementTrafficLightExercise
+          key={index}
+          content={contentItem}
+          pathId={path.id}
+        />
+      );
     case 'significantRelationshipsInventoryExercise':
-      return <SignificantRelationshipsInventoryExercise key={index} content={contentItem } pathId={path.id} />;
+      return (
+        <SignificantRelationshipsInventoryExercise
+          key={index}
+          content={contentItem }
+          pathId={path.id}
+        />
+      );
     case 'relationalCommitmentExercise':
-      return <RelationalCommitmentExercise key={index} content={contentItem } pathId={path.id} />;
+      return (
+        <RelationalCommitmentExercise
+          key={index}
+          content={contentItem }
+          pathId={path.id}
+        />
+      );
     // RUTA 6
     case 'detectiveDeEmocionesExercise':
         return <DetectiveDeEmocionesExercise key={index} content={contentItem} pathId={path.id} />;
@@ -623,8 +648,10 @@ function ContentItemRenderer({
       return <GuiltRadarExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'acceptanceWritingExercise':
       return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={path.id} />;
-    case 'selfAcceptanceAudioExercise':
-        return <SelfAcceptanceAudioExercise key={index} content={contentItem as SelfAcceptanceAudioExerciseContent} pathId={path.id} audioUrl={(contentItem as SelfAcceptanceAudioExerciseContent).audioUrl} />;
+    case 'selfAcceptanceAudioExercise': {
+        const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
+        return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} audioUrl={exerciseContent.audioUrl} />;
+    }
     case 'compassionateResponsibilityContractExercise':
       return <CompassionateResponsibilityContractExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'criticismToGuideExercise':
@@ -678,11 +705,16 @@ function ContentItemRenderer({
         return <QuestionYourIfsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'exposureLadderExercise':
         return <ExposureLadderExercise key={index} content={contentItem} pathId={path.id} />;
-    case 'calmVisualizationExercise':
-        return <CalmVisualizationExercise key={index} content={contentItem as any} pathId={path.id} />;
-    case 'imaginedCrisisRehearsalExercise':
-        return <ImaginedCrisisRehearsalExercise key={index} content={contentItem as any} pathId={path.id} />;
+    case 'calmVisualizationExercise': {
+        const calmVisContent = contentItem ;
+        return <CalmVisualizationExercise key={index} content={calmVisContent} pathId={path.id} />;
+    }
+    case 'imaginedCrisisRehearsalExercise': {
+      const crisisRehearsalContent = contentItem ;
+      return <ImaginedCrisisRehearsalExercise key={index} content={crisisRehearsalContent} pathId={path.id} />;
+    }
 
+    // ...
     default:
       const exhaustiveCheck: never = contentItem;
       return null;
@@ -908,3 +940,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
