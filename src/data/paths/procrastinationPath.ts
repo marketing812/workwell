@@ -67,7 +67,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3',
+          audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3",
           content: [],
         },
         {
