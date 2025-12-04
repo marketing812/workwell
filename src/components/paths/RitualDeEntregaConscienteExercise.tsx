@@ -13,10 +13,10 @@ import type { Path, ModuleContent } from '@/data/pathsData';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
-  path: Path;
+  pathId: string; // Cambiado para recibir solo el ID
 }
 
-export function RitualDeEntregaConscienteExercise({ content, path }: RitualDeEntregaConscienteExerciseProps) {
+export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeEntregaConscienteExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0); // 0: initial choice, 1: write, 2: breathe, 3: gratitude
 
@@ -34,8 +34,8 @@ export function RitualDeEntregaConscienteExercise({ content, path }: RitualDeEnt
     addNotebookEntry({
       title: `Ritual de Entrega Consciente: ${option}`,
       content: entryContent,
-      pathId: path.id,
-      ruta: path.title,
+      pathId: pathId,
+      // La 'ruta' se puede añadir si es necesario, obteniéndola de alguna otra fuente de datos
     });
     toast({
       title: "Ritual Guardado",

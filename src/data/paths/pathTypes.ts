@@ -100,7 +100,6 @@ export type ControlTrafficLightExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type AlternativeStoriesExerciseContent = {
@@ -776,7 +775,12 @@ export type ExposureToIntoleranceExerciseContent = {
     duration?: string;
     audioUrl?: string;
 };
-
+export type RitualDeEntregaConscienteContent = {
+    type: 'ritualDeEntregaConscienteExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
 // A union type for all possible content block types within a module
 export type ModuleContent =
   | ParagraphContent
@@ -893,7 +897,8 @@ export type ModuleContent =
   | RealisticRitualExerciseContent
   | GentleTrackingExerciseContent
   | BlockageMapExerciseContent
-  | CompassionateReflectionExerciseContent;
+  | CompassionateReflectionExerciseContent
+  | RitualDeEntregaConscienteContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
