@@ -214,6 +214,7 @@ export const procrastinationPath: Path = {
           {
             type: 'collapsible',
             title: '¿Por qué postergas, si sabes lo que tienes que hacer?',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Porquepostergassisabesloquetienesquehacer.mp3',
             content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes perfectamente lo que “deberías” estar haciendo, pero aun así no te pones con ello? Esa distancia entre lo que quieres hacer y lo que finalmente haces no se debe a falta de voluntad. Muchas veces, en medio de esa brecha hay una voz silenciosa pero poderosa: tu diálogo interno. Frases que parecen lógicas o razonables, pero que en realidad te alejan de tus objetivos. Esta semana vamos a observar con más atención qué te dices por dentro cuando postergas, y a entrenar nuevas formas de responderte con más conciencia y amabilidad.' }],
           },
           {
@@ -346,3 +347,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
