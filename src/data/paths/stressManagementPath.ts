@@ -20,7 +20,6 @@ export const stressManagementPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/INTROSEMANA1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
         {
           type: 'collapsible',
           title: '¿Qué es el estrés?',
@@ -171,7 +170,14 @@ export const stressManagementPath: Path = {
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3',
                 content: [
                     { type: 'paragraph', text: 'Porque dentro de ti hay un sistema que trabaja sin que tú lo controles, llamado Sistema Nervioso Autónomo. Es como un piloto automático que regula tu respiración, el ritmo del corazón, la tensión de tus músculos… y lo hace todo sin que tengas que pensarlo.\nEste sistema tiene dos ramas principales:\n•\tUna te activa cuando hay peligro.\n•\tLa otra te ayuda a calmarte y recuperarte.\nCuando estas dos partes están en equilibrio, te sientes presente, tranquilo/a y con energía. Pero si la balanza se inclina demasiado hacia el lado de la activación… empiezas a vivir en modo alerta constante.' },
-                    { 
+                ]
+            },
+             {
+                type: 'collapsible',
+                title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
+                content: [
+                    { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
+                     { 
                         type: 'collapsible',
                         title: 'Rama simpática: tu sistema de alarma',
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramasimpatica.mp3',
@@ -183,13 +189,6 @@ export const stressManagementPath: Path = {
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramaparasimpatica.mp3',
                         content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n•\tTu respiración se vuelve más lenta.\n•\tTus músculos se relajan.\n•\tSe reduce la tensión.\n•\tTu cuerpo recupera energía.\n•\tSe activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
                     },
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
-                content: [
-                    { type: 'paragraph', text: 'Desde la neurociencia, sabemos que muchas respuestas del cuerpo al estrés no pasan por tu mente consciente. Es decir, no decides sentir ansiedad: tu cuerpo la genera porque interpreta que hay una amenaza, aunque no sea evidente.\nPor eso, técnicas como la respiración profunda, los ejercicios de anclaje sensorial o el movimiento suave no son trucos para relajarte: son formas reales de enseñarle a tu cuerpo que puede volver a un estado de calma.' },
                 ]
             },
             {
@@ -505,5 +504,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
-    
