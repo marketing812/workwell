@@ -90,7 +90,8 @@ export const uncertaintyPath: Path = {
           type: 'controlTrafficLightExercise',
           title: 'Ejercicio 2: El Semáforo del Control',
           objective: 'Diferencia entre lo que depende de ti, lo que puedes influir y lo que está fuera de tu control para enfocar tu energía en lo que sí puedes transformar.',
-          duration: '6 a 9 minutos'
+          duration: '6 a 9 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2Semana1Tecnica2.mp3',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
         audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion1.mp3',
@@ -166,11 +167,11 @@ export const uncertaintyPath: Path = {
             ]
           },
           { 
-            type: 'exposureToIntoleranceExercise', 
-            title: 'EJERCICIO 2: PEQUEÑOS ACTOS DE EXPOSICIÓN A LO INCIERTO',
+            type: 'exercise', 
+            title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
             objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
-            duration: '8-10 min',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
+            content: []
           },
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
@@ -339,10 +340,10 @@ export const uncertaintyPath: Path = {
             content: [
               { type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:' },
               { type: 'list', items: [
-                  'Dejar de intentar controlar lo incontrolable',
-                  'Aceptar lo que sientes, sin juzgarte',
-                  'Confiar en que puedes sostenerte, incluso sin certezas',
-                  'Avanzar paso a paso, sin perder de vista lo que te importa'
+                  '🔸 Dejar de intentar controlar lo incontrolable',
+                  '🔸 Aceptar lo que sientes, sin juzgarte',
+                  '🔸 Confiar en que puedes sostenerte, incluso sin certezas',
+                  '🔸 Avanzar paso a paso, sin perder de vista lo que te importa'
               ]}
             ]
           },
@@ -363,12 +364,11 @@ export const uncertaintyPath: Path = {
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3',
            prompts: [
-              'Te proponemos cerrar este proceso con algunas preguntas clave:',
-              '¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?',
-              '¿Qué recursos internos he descubierto o fortalecido?',
-              '¿Qué nuevas formas de pensar o actuar quiero seguir practicando?',
-              '¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?',
-           ]},
+             '¿Qué parte de ti se suaviza cuando dejas de intentar controlarlo todo?',
+             '¿Qué notas en tu cuerpo cuando sueltas la tensión de tener todas las respuestas?',
+             '¿Qué cambia en tu mente cuando aceptas que no necesitas prever cada paso?',
+             '¿Qué te gustaría recordarme la próxima vez que intentes tenerlo todo bajo control?'
+          ]},
           { 
             type: 'title', 
             text: 'Resumen Clave de la Semana',
@@ -428,3 +428,16 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
+
+
+
+    
+
+    
+
+
+
+
+    
+
+    
