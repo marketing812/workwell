@@ -21,6 +21,7 @@ import {
   X as XIcon,
   Minus as MinusIcon,
   CheckIcon,
+  Loader2, // Importación añadida
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -735,7 +736,7 @@ function ContentItemRenderer({
     case 'clearRequestMapExercise':
         return <ClearRequestMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'supportBankExercise':
-        return <SupportBankExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <SupportBankExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'mutualCareCommitmentExercise':
         return <MutualCareCommitmentExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'symbolicSupportCircleExercise':
