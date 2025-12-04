@@ -322,5 +322,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
