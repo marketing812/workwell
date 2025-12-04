@@ -77,7 +77,13 @@ ${consequences || 'No especificadas.'}
     switch (step) {
       case 0:
         return (
-          <div className="text-center p-4">
+          <div className="text-center p-4 space-y-4">
+             <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src="https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3" type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
             <p className="mb-4">
               ¿Tienes una tarea pendiente que sigues posponiendo? Este ejercicio te ayudará a identificar qué está
               pasando dentro de ti. No hay respuestas correctas, solo pistas para entenderte mejor.
@@ -229,14 +235,6 @@ ${consequences || 'No especificadas.'}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.audioUrl && (
-          <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-              <source src={content.audioUrl} type="audio/mp3" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-          </div>
-        )}
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>
