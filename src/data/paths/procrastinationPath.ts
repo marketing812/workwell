@@ -13,7 +13,6 @@ export const procrastinationPath: Path = {
       title: 'Semana 1: Comprende tu Procrastinación sin Juicio',
       type: 'introduction',
       estimatedTime: '20-25 min',
-      audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
       content: [
         { 
             type: 'paragraphWithAudio', 
@@ -73,7 +72,7 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
-          audioUrl: "https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3",
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
         },
         { 
           type: 'therapeuticNotebookReflection', 
@@ -84,7 +83,7 @@ export const procrastinationPath: Path = {
             'Lo que siento no me define, pero observarlo me transforma.',
           ]
         },
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMEN.mp3' },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMEN.mp3'},
         { type: 'list', items: [
             'La procrastinación no es pereza: es una forma aprendida de evitar emociones difíciles.',
             'El alivio que sentimos al evitar refuerza el bloqueo, pero es temporal.',
@@ -128,6 +127,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Microcomienzos: la clave para romper la inercia',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
               content: [
                   { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
                   { type: 'list', items: [
@@ -287,7 +287,7 @@ export const procrastinationPath: Path = {
             type: 'collapsible',
             title: '¿Qué hace que un hábito perdure?',
             content: [
-              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del aprendizaje, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
+              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
               { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
               { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
@@ -334,5 +334,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
