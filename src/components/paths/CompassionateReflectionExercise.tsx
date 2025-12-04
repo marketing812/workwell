@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -16,10 +15,9 @@ import type { ModuleContent } from '@/data/paths/pathTypes';
 interface CompassionateReflectionExerciseProps {
   content: ModuleContent;
   pathId: string;
-  audioUrl?: string;
 }
 
-export function CompassionateReflectionExercise({ content, pathId, audioUrl }: CompassionateReflectionExerciseProps) {
+export function CompassionateReflectionExercise({ content, pathId }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [adviceToFriend, setAdviceToFriend] = useState('');
@@ -71,10 +69,10 @@ ${flexibleThought || 'No especificada.'}
               Ahora, vamos a mirar dentro de ti, con respeto y sin crítica. No buscamos explicaciones perfectas, solo
               entender qué te estaba pasando.
             </p>
-            {audioUrl && (
+            {content.audioUrl && (
               <div className="mb-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src={audioUrl} type="audio/mp3" />
+                    <source src={content.audioUrl} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
               </div>
