@@ -31,7 +31,7 @@ export function CompassionateReflectionExercise({ content, pathId }: Compassiona
 
   const handleSave = () => {
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**Ejercicio: ${(content as any).title}**
 
 *A alguien que quiero le diría:*
 ${adviceToFriend || 'No especificado.'}
@@ -212,9 +212,9 @@ ${flexibleThought || 'No especificada.'}
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center">
           <Edit3 className="mr-2" />
-          {content.title}
+          {(content as any).title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {(content as any).objective && <CardDescription className="pt-2">{(content as any).objective}</CardDescription>}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>

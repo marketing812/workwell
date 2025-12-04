@@ -26,9 +26,8 @@ export function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProp
   const [otherEmotion, setOtherEmotion] = useState('');
   const [escapeBehaviors, setEscapeBehaviors] = useState('');
   const [consequences, setConsequences] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
 
-  if (content.type !== 'exercise') return null;
+  if (content.type !== 'blockageMapExercise') return null;
 
   const emotionsOptions = [
     { id: 'emo-anxiety', label: 'Ansiedad' },
@@ -78,12 +77,14 @@ ${consequences || 'No especificadas.'}
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-             <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3" type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
+             {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+            )}
             <p className="mb-4">
               ¿Tienes una tarea pendiente que sigues posponiendo? Este ejercicio te ayudará a identificar qué está
               pasando dentro de ti. No hay respuestas correctas, solo pistas para entenderte mejor.

@@ -1,5 +1,6 @@
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -759,7 +760,6 @@ export type CalmVisualizationExerciseContent = {
     audioUrl?: string;
 };
 
-// Nuevo tipo de ejercicio para el Ensayo de Crisis Imaginaria
 export type ImaginedCrisisRehearsalExerciseContent = {
     type: 'imaginedCrisisRehearsalExercise';
     title: 'Ejercicio 2: Ensayo de Crisis Imaginaria';
@@ -768,19 +768,13 @@ export type ImaginedCrisisRehearsalExerciseContent = {
     audioUrl?: string;
 };
 
-export type ExposureToIntoleranceExerciseContent = {
-    type: 'exposureToIntoleranceExercise';
-    title: string;
-    objective: string;
-    duration?: string;
-    audioUrl?: string;
-};
 export type RitualDeEntregaConscienteContent = {
     type: 'ritualDeEntregaConscienteExercise';
     title: string;
     objective?: string;
     duration?: string;
 };
+
 // A union type for all possible content block types within a module
 export type ModuleContent =
   | ParagraphContent
@@ -800,7 +794,15 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
+  | RitualDeEntregaConscienteExerciseContent
   | DelSabotajeALaAccionExerciseContent
+  | TwoMinuteRuleExerciseContent
+  | MicroPlanExerciseContent
+  | FutureSelfVisualizationExerciseContent
+  | RealisticRitualExerciseContent
+  | GentleTrackingExerciseContent
+  | BlockageMapExerciseContent
+  | CompassionateReflectionExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
   | AssertivePhraseExerciseContent
@@ -891,14 +893,7 @@ export type ModuleContent =
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
   // NUEVO
-  | ImaginedCrisisRehearsalExerciseContent
-  | TwoMinuteRuleExerciseContent
-  | MicroPlanExerciseContent
-  | RealisticRitualExerciseContent
-  | GentleTrackingExerciseContent
-  | BlockageMapExerciseContent
-  | CompassionateReflectionExerciseContent
-  | RitualDeEntregaConscienteContent;
+  | ImaginedCrisisRehearsalExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
