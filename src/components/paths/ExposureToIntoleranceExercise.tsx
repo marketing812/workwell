@@ -9,10 +9,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-import type { ExposureToIntoleranceExerciseContent } from '@/data/paths/pathTypes';
+import type { ModuleContent } from '@/data/paths/pathTypes';
 
 interface ExposureToIntoleranceExerciseProps {
-  content: ExposureToIntoleranceExerciseContent;
+  content: ModuleContent;
   pathId: string;
 }
 
@@ -42,7 +42,7 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
     }
 
     const notebookContent = `
-**${content.title} - Reflexión**
+**${(content as any).title} - Reflexión**
 
 *¿Qué pasó cuando no tuve todas las respuestas?*
 ${finalReflection}
@@ -140,12 +140,12 @@ ${realityReflection}
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.audioUrl && (
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{(content as any).title}</CardTitle>
+        {(content as any).objective && <CardDescription className="pt-2">{(content as any).objective}</CardDescription>}
+        {(content as any).audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
+                    <source src={(content as any).audioUrl} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
