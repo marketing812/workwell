@@ -75,7 +75,11 @@ export const procrastinationPath: Path = {
           duration: '8 a 12 minutos',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
+          prompts: [
             '¿Qué emociones intento evitar cuando postergo?',
             'Lo que siento no me define, pero observarlo me transforma.',
           ]
@@ -324,5 +328,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
