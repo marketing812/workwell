@@ -127,28 +127,27 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Microcomienzos: la clave para romper la inercia',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
-              content: [
-                  { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
-                  { type: 'list', items: [
-                      'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
-                      'En lugar de “limpiar la casa”, solo recoge tres cosas.',
-                      'En lugar de “escribir un informe”, solo abre el documento.',
-                      'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
-                  ]},
-                  { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
+              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3",
+              content: [{ type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
+              { type: 'list', items: [
+                  'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
+                  'En lugar de “limpiar la casa”, solo recoge tres cosas.',
+                  'En lugar de “escribir un informe”, solo abre el documento.',
+                  'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
+              ]},
+              { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
               ],
           },
           {
               type: 'collapsible',
               title: 'Cada paso es una prueba de identidad',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
+              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3",
               content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
           },
            {
               type: 'collapsible',
               title: 'Planificar con intención (no con presión)',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
+              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3",
               content: [
                   { type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
                   { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
@@ -269,7 +268,7 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 2: Visualización del Yo Futuro',
             objective: 'Este ejercicio te permite conectar con una imagen clara y emocionalmente poderosa de ti misma o de ti mismo sosteniendo el hábito que deseas. Te ayuda a motivarte desde la identidad, no solo desde la obligación. Visualizarte avanzando te impulsa a actuar hoy.',
             duration: '10 a 15 minutos',
-            audioUrl: 'https://workwellfut.com/audios/rm/R3_Visualizacion_del_yo_futuro.mp3',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
           },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
               '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
@@ -304,7 +303,7 @@ export const procrastinationPath: Path = {
             type: 'collapsible',
             title: '¿Qué hace que un hábito perdure?',
             content: [
-              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del aprendizaje, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
+              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
               { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.'}] },
               { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
