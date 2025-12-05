@@ -153,6 +153,7 @@ export type MicroPlanExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type RealisticRitualExerciseContent = {
@@ -160,6 +161,7 @@ export type RealisticRitualExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type GentleTrackingExerciseContent = {
@@ -167,6 +169,7 @@ export type GentleTrackingExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type BlockageMapExerciseContent = {
@@ -190,6 +193,7 @@ export type MapOfUnsaidThingsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type DiscomfortCompassExerciseContent = {
@@ -197,6 +201,7 @@ export type DiscomfortCompassExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type AssertivePhraseExerciseContent = {

@@ -124,7 +124,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                     <AccordionContent>
                     <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
-                        <p><strong>Situación:</strong> Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.</p>
+                        <p><strong>Situación:</strong> “Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.”</p>
                         <p><strong>Cuerpo:</strong> Tensión en la mandíbula, presión en el pecho.</p>
                         <p><strong>Emoción:</strong> Frustración (80%).</p>
                         <p><strong>Pensamiento:</strong> "Si digo que no, pensará que no me implico." (Creído al 85%).</p>
@@ -247,6 +247,14 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+          <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+          </div>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}
