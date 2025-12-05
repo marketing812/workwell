@@ -6,6 +6,7 @@ export const settingBoundariesPath: Path = {
   title: 'Poner Límites con Respeto y Firmeza',
   description: 'Aprende a decir “no” sin culpa y a proteger tu espacio emocional, construyendo relaciones más sanas y una conexión más auténtica contigo.',
   dataAiHint: 'boundaries respect communication',
+  audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Introruta4.mp3',
   modules: [
     {
       id: 'limites_sem1',
@@ -283,3 +284,6 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
+
+    
