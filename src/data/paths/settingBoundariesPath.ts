@@ -47,6 +47,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Enfoque terapéutico que vamos a usar',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual (TCC), la Terapia de Aceptación y Compromiso (ACT) y el mindfulness, te proponemos este camino:\n•\tAprenderás a identificar los pensamientos automáticos que te bloquean.\n•\tObservarás tus emociones difíciles sin juzgarlas ni reprimirlas.\n•\tEmpezarás a actuar desde tus valores, no desde el miedo.\nNo necesitas sentirte 100 % segura o seguro para empezar a expresarte.\nDe hecho, muchas veces la seguridad no viene antes de actuar, sino después de haberte atrevido a hacerlo.\nAquí no buscamos perfección. Buscamos coherencia.\nY eso se entrena paso a paso, con amabilidad hacia ti.' }
           ]
@@ -293,5 +294,6 @@ export const settingBoundariesPath: Path = {
 };
 
     
+
 
 
