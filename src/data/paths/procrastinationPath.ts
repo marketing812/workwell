@@ -310,6 +310,7 @@ export const procrastinationPath: Path = {
           {
             type: 'collapsible',
             title: '¿Qué hace que un hábito perdure?',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Quehacequeunhabitoperdure.mp3',
             content: [
               { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
               { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
