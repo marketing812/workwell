@@ -52,7 +52,7 @@ export const settingBoundariesPath: Path = {
           title: 'Ejercicio 1: Mapa de Mis No Dichos',
           objective: 'A veces eliges callar para evitar conflictos o proteger un vínculo. Este ejercicio te ayudará a observar cuándo y por qué eliges no expresarte, para que esas decisiones sean más libres y menos automáticas.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3'
+          audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3"
         },
         {
           type: 'discomfortCompassExercise',
@@ -73,7 +73,7 @@ export const settingBoundariesPath: Path = {
             '¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3'},
         {
           type: 'list',
           items: [
@@ -119,7 +119,6 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3',
           content: [
               {
                 type: 'collapsible',
@@ -140,6 +139,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Cierre motivador',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3',
           content: [
             { type: 'paragraph', text: 'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:\n➡️ Elegir cómo comunicarte desde un lugar de equilibrio, sin imponer ni ceder.\n➡️ Expresar lo que piensas, sientes y necesitas con claridad, cuidado y firmeza.\n➡️ Respetarte a ti y respetar al otro, incluso cuando haya desacuerdo.\nY sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:\n•\tEscucharte.\n•\tNombrar lo que necesitas.\n•\tY atreverte a comunicarte desde tu centro, con respeto, verdad y seguridad emocional.' }
           ]
@@ -311,3 +311,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
+    
