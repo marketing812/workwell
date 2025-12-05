@@ -77,7 +77,11 @@ export const settingBoundariesPath: Path = {
             '¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave' },
+        { 
+          type: 'title', 
+          text: 'Resumen Clave', 
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3'
+        },
         { type: 'list', items: [
             'Un límite sano no separa: organiza, protege y cuida.',
             'Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.',
@@ -87,7 +91,7 @@ export const settingBoundariesPath: Path = {
             'Empezar a expresarte con claridad es empezar a vivir con coherencia.',
           ]
         },
-        { type: 'quote', text: '“Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.”' },
+        { type: 'quote', text: '“Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.”' }
       ]
     },
     {
