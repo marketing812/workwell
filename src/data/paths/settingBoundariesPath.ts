@@ -109,6 +109,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Desde qué lugar te colocas cuando te comunicas?',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3',
           content: [
             { type: 'paragraph', text: 'Una forma sencilla de observar tu estilo de comunicación es preguntarte: ¿Desde qué lugar me estoy comunicando?:\no\t¿Desde abajo, callándome o cediendo para evitar conflictos?\no\t¿Desde arriba, imponiendo o descalificando?\no\t¿O desde un lugar de equilibrio, en el que me expreso con respeto mutuo?\nCada vez que hablas con alguien, consciente o no, te colocas en una posición relacional. Esa posición influye en cómo te sientes, cómo reacciona el otro y qué tipo de relación se construye entre ambos.\nAunque a veces usamos diferentes estilos según la situación, hay uno que ha demostrado ser el más saludable, tanto para ti como para tus vínculos: el estilo asertivo.\n¿Por qué?\nPorque te permite:\n✅ Defender lo que sientes, piensas y necesitas sin herir.\n✅ Comunicarte con claridad y firmeza, sin miedo ni culpa.\n✅ Cuidar el vínculo, sin dejarte a un lado.\n✅ Sostener tu autoestima y generar relaciones de confianza.\nEl estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.' }
           ]
@@ -297,6 +298,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
-
 
     
