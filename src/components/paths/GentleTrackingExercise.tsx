@@ -109,6 +109,14 @@ ${progressText || 'No se registraron días.'}
           {content.title}
         </CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+          <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+          </div>
+        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
