@@ -14,10 +14,10 @@ export const settingBoundariesPath: Path = {
       type: 'introduction',
       estimatedTime: '25-30 min',
       content: [
-        { 
-            type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-            audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -32,25 +32,19 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: 'Mitos y bloqueos más comunes',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion1.mp3',
-          content: [
-            { type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n“No quiero parecer exagerada/o”, “mejor no molesto”, “igual estoy siendo egoísta”...\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarnos, no incomodar…\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n•\tsin juicio,\n•\tcon herramientas concretas,\n•\ty al ritmo que tú elijas.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n“No quiero parecer exagerada/o”, “mejor no molesto”, “igual estoy siendo egoísta”...\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarnos, no incomodar…\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n•\tsin juicio,\n•\tcon herramientas concretas,\n•\ty al ritmo que tú elijas.' }]
         },
-         {
+        {
           type: 'collapsible',
           title: '¿Qué pasa cuando callas lo que necesitas?',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion1.mp3',
-          content: [
-            { type: 'paragraph', text: 'A veces no decir nada parece lo más fácil: evitamos una discusión, una incomodidad, un momento tenso…\nPero con el tiempo, ese silencio se acumula. Y lo que empieza como una “pequeña concesión” termina convirtiéndose en frustración, cansancio, tristeza o incluso en una sensación de desconexión contigo misma o contigo mismo.\nCuando callas lo que necesitas:\n•\tPuedes sentirte poco valorada/o o invisible.\n•\tEmpiezas a dudar de tus propias emociones.\n•\tTe desconectas de tu autenticidad.\n•\tTe agotas por dentro, aunque por fuera parezcas en calma.\nCallar para no incomodar a alguien puede parecer una forma de cuidar…\nPero si eso te hace traicionarte, el precio es demasiado alto.\nY a la larga, ese conflicto que intentaste evitar… termina estallando por dentro y, a veces, hacia fuera.' }
-          ]
+          content: [{ type: 'paragraph', text: 'A veces no decir nada parece lo más fácil: evitamos una discusión, una incomodidad, un momento tenso…\nPero con el tiempo, ese silencio se acumula. Y lo que empieza como una “pequeña concesión” termina convirtiéndose en frustración, cansancio, tristeza o incluso en una sensación de desconexión contigo misma o contigo mismo.\nCuando callas lo que necesitas:\n•\tPuedes sentirte poco valorada/o o invisible.\n•\tEmpiezas a dudar de tus propias emociones.\n•\tTe desconectas de tu autenticidad.\n•\tTe agotas por dentro, aunque por fuera parezcas en calma.\nCallar para no incomodar a alguien puede parecer una forma de cuidar…\nPero si eso te hace traicionarte, el precio es demasiado alto.\nY a la larga, ese conflicto que intentaste evitar… termina estallando por dentro y, a veces, hacia fuera.' }]
         },
         {
           type: 'collapsible',
           title: 'Enfoque terapéutico que vamos a usar',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion1.mp3',
-          content: [
-            { type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual (TCC), la Terapia de Aceptación y Compromiso (ACT) y el mindfulness, te proponemos este camino:\n•\tAprenderás a identificar los pensamientos automáticos que te bloquean.\n•\tObservarás tus emociones difíciles sin juzgarlas ni reprimirlas.\n•\tEmpezarás a actuar desde tus valores, no desde el miedo.\nNo necesitas sentirte 100 % segura o seguro para empezar a expresarte.\nDe hecho, muchas veces la seguridad no viene antes de actuar, sino después de haberte atrevido a hacerlo.\nAquí no buscamos perfección. Buscamos coherencia.\nY eso se entrena paso a paso, con amabilidad hacia ti.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual (TCC), la Terapia de Aceptación y Compromiso (ACT) y el mindfulness, te proponemos este camino:\n•\tAprenderás a identificar los pensamientos automáticos que te bloquean.\n•\tObservarás tus emociones difíciles sin juzgarlas ni reprimirlas.\n•\tEmpezarás a actuar desde tus valores, no desde el miedo.\nNo necesitas sentirte 100 % segura o seguro para empezar a expresarte.\nDe hecho, muchas veces la seguridad no viene antes de actuar, sino después de haberte atrevido a hacerlo.\nAquí no buscamos perfección. Buscamos coherencia.\nY eso se entrena paso a paso, con amabilidad hacia ti.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -65,7 +59,7 @@ export const settingBoundariesPath: Path = {
           title: 'Ejercicio 2: La Brújula del Malestar',
           objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3',
@@ -77,11 +71,7 @@ export const settingBoundariesPath: Path = {
             '¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?',
           ]
         },
-        { 
-          type: 'title', 
-          text: 'Resumen Clave', 
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3'
-        },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
         { type: 'list', items: [
             'Un límite sano no separa: organiza, protege y cuida.',
             'Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.',
@@ -100,7 +90,11 @@ export const settingBoundariesPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-         { type: 'paragraph', text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.' },
+         { 
+           type: 'paragraphWithAudio', 
+           text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
+           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'
+         },
          { type: 'title', text: 'Psicoeducación' },
          {
            type: 'collapsible',
@@ -300,5 +294,6 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
 
     
