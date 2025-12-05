@@ -39,6 +39,7 @@ export const settingBoundariesPath: Path = {
          {
           type: 'collapsible',
           title: '¿Qué pasa cuando callas lo que necesitas?',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'A veces no decir nada parece lo más fácil: evitamos una discusión, una incomodidad, un momento tenso…\nPero con el tiempo, ese silencio se acumula. Y lo que empieza como una “pequeña concesión” termina convirtiéndose en frustración, cansancio, tristeza o incluso en una sensación de desconexión contigo misma o contigo mismo.\nCuando callas lo que necesitas:\n•\tPuedes sentirte poco valorada/o o invisible.\n•\tEmpiezas a dudar de tus propias emociones.\n•\tTe desconectas de tu autenticidad.\n•\tTe agotas por dentro, aunque por fuera parezcas en calma.\nCallar para no incomodar a alguien puede parecer una forma de cuidar…\nPero si eso te hace traicionarte, el precio es demasiado alto.\nY a la larga, ese conflicto que intentaste evitar… termina estallando por dentro y, a veces, hacia fuera.' }
           ]
@@ -292,4 +293,5 @@ export const settingBoundariesPath: Path = {
 };
 
     
+
 
