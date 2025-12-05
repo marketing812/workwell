@@ -63,58 +63,6 @@ const API_KEY_FOR_ACTIVITY_SAVE = "4463";
 const API_TIMEOUT_MS_ACTIVITY = 10000;
 const NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD = 4;
 
-function RecommendedPathsCard({ assessment, dimensions }: { assessment: AssessmentRecord, dimensions: AssessmentDimension[] }) {
-    const t = useTranslations();
-
-    const recommendedPaths = useMemo(() => {
-        if (!assessment?.data?.priorityAreas) return [];
-        
-        return assessment.data.priorityAreas.map(areaName => {
-            const dimension = dimensions.find(d => d.name === areaName);
-            if (dimension && dimension.recommendedPathId) {
-                return pathsData.find(p => p.id === dimension.recommendedPathId);
-            }
-            return null;
-        }).filter((path): path is AppPathData => path !== null);
-    }, [assessment, dimensions]);
-    
-    const uniqueRecommendedPaths = useMemo(() => Array.from(new Map(recommendedPaths.map(p => [p.id, p])).values()), [recommendedPaths]);
-
-    return (
-        <Card className="shadow-lg flex flex-col lg:h-[450px]">
-            <CardHeader>
-                <div className="flex items-center gap-3">
-                    <Lightbulb className="h-7 w-7 text-primary" />
-                    <CardTitle className="text-xl">Rutas Recomendadas</CardTitle>
-                </div>
-                <CardDescription>Basado en tu última evaluación, te sugerimos empezar por aquí.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow flex flex-col justify-center p-6 space-y-4">
-                {uniqueRecommendedPaths.length > 0 ? (
-                    uniqueRecommendedPaths.map(path => (
-                        <Button key={path.id} asChild variant="outline" className="w-full justify-start">
-                            <Link href={`/paths/${path.id}`}>
-                                <ArrowRight className="mr-2 h-4 w-4" />
-                                {path.title}
-                            </Link>
-                        </Button>
-                    ))
-                ) : (
-                    <div className="text-center text-muted-foreground p-4">
-                        <p>No se han encontrado rutas recomendadas específicas. ¡Explora todas las disponibles!</p>
-                        <Button asChild variant="link" className="mt-2"><Link href="/paths">Ver todas las rutas</Link></Button>
-                    </div>
-                )}
-            </CardContent>
-             <CardFooter>
-                <Button asChild variant="ghost" size="sm" className="w-full">
-                    <Link href="/my-assessments">Ver historial de evaluaciones</Link>
-                </Button>
-            </CardFooter>
-        </Card>
-    );
-}
-
 export default function DashboardPage() {
   const t = useTranslations();
   const { user } = useUser();
@@ -494,34 +442,20 @@ export default function DashboardPage() {
 
       <section aria-labelledby="visualizations-heading">
         <h2 id="visualizations-heading" className="sr-only">Visualizaciones de Progreso</h2>
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-2">
             {latestAssessment ? (
-                <>
-                    <EmotionalProfileChart 
-                        results={latestAssessment.data}
-                        assessmentDimensions={assessmentDimensions}
-                        className="lg:h-[450px]"
-                    />
-                    <RecommendedPathsCard 
-                        assessment={latestAssessment}
-                        dimensions={assessmentDimensions}
-                    />
-                </>
+                <EmotionalProfileChart 
+                    results={latestAssessment.data}
+                    assessmentDimensions={assessmentDimensions}
+                    className="lg:h-[450px]"
+                />
             ) : (
-                <>
-                    <ChartPlaceholder
-                        title={t.myEmotionalProfile}
-                        description={t.myEmotionalProfileDescription}
-                        icon={Radar}
-                        className="lg:h-[450px]"
-                    />
-                    <ChartPlaceholder
-                        title="Rutas Recomendadas"
-                        description="Completa tu evaluación para ver tus rutas sugeridas."
-                        icon={Lightbulb}
-                        className="lg:h-[450px]"
-                    />
-                </>
+                <ChartPlaceholder
+                    title={t.myEmotionalProfile}
+                    description={t.myEmotionalProfileDescription}
+                    icon={Radar}
+                    className="lg:h-[450px]"
+                />
             )}
           <MoodEvolutionChart
             data={chartData}
