@@ -260,7 +260,7 @@ export const procrastinationPath: Path = {
             title: 'Ejercicio 1: Del Sabotaje a la Acción',
             objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
             duration: '10 a 15 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3'
+            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3',
           },
           {
             type: 'futureSelfVisualizationExercise',
@@ -275,7 +275,11 @@ export const procrastinationPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
             prompts: ['¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?']
           },
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3'},
+          { 
+            type: 'title', 
+            text: 'Resumen Clave de la Semana',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3',
+          },
           { type: 'list', items: [
                 'Muchas excusas internas son formas de evitar emociones difíciles.',
                 'Tu diálogo interno no es enemigo: quiere protegerte, pero a veces te bloquea.',
@@ -296,7 +300,7 @@ export const procrastinationPath: Path = {
           { 
             type: 'paragraphWithAudio', 
             text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3',
           },
           { type: 'title', text: 'Psicoeducación' },
           {
@@ -350,7 +354,11 @@ export const procrastinationPath: Path = {
               '¿Cómo me quiero hablar si un día fallo?',
             ]
           },
-           { type: 'title', text: 'Resumen Final de la Ruta' },
+          { 
+            type: 'title', 
+            text: 'Resumen Final de la Ruta',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/RESUMEN.mp3' 
+          },
           { type: 'list', items: [
               'Procrastinar no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
               'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
