@@ -73,7 +73,7 @@ export const settingBoundariesPath: Path = {
             '¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3'},
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
         {
           type: 'list',
           items: [
@@ -94,20 +94,20 @@ export const settingBoundariesPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-         {
-           type: 'paragraphWithAudio',
-           text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
-           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'
-         },
-         { type: 'title', text: 'Psicoeducación' },
-         {
-           type: 'collapsible',
-           title: '¿Qué es un estilo de comunicación?',
-           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3',
-           content: [
-             { type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n• Cómo pides las cosas.\n• Cómo reaccionas ante un conflicto.\n• Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }
-           ]
-         },
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: '¿Qué es un estilo de comunicación?',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3',
+          content: [
+            { type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n• Cómo pides las cosas.\n• Cómo reaccionas ante un conflicto.\n• Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }
+          ]
+        },
         {
           type: 'collapsible',
           title: '¿Desde qué lugar te colocas cuando te comunicas?',
@@ -119,11 +119,11 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
           content: [
               {
                 type: 'collapsible',
                 title: '1. Estilo Pasivo – “Tú importas más que yo”',
-                audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
                 content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','💔 Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','⚠️Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }]
               },
               { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','💔 Impacto en ti: Tensión, culpa, deterioro de vínculos.','⚠️Impacto en el otro: Rechazo, miedo, resentimiento.'] }] },
@@ -311,5 +311,3 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
-
-    
