@@ -17,7 +17,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -59,7 +59,7 @@ export const settingBoundariesPath: Path = {
           title: 'Ejercicio 2: La Brújula del Malestar',
           objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -74,7 +74,9 @@ export const settingBoundariesPath: Path = {
           ]
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
-        { type: 'list', items: [
+        {
+          type: 'list',
+          items: [
             'Un límite sano no separa: organiza, protege y cuida.',
             'Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.',
             'Detectar tu malestar es el primer aviso de que algo importante no está siendo dicho.',
@@ -92,8 +94,8 @@ export const settingBoundariesPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-         { 
-           type: 'paragraphWithAudio', 
+         {
+           type: 'paragraphWithAudio',
            text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
            audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'
          },
@@ -117,15 +119,21 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3',
           content: [
-              { 
-                type: 'collapsible', 
+              {
+                type: 'collapsible',
                 title: '1. Estilo Pasivo – “Tú importas más que yo”',
                 audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
-                content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','💔 Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','⚠️Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }] 
+                content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','💔 Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','⚠️Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }]
               },
               { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','💔 Impacto en ti: Tensión, culpa, deterioro de vínculos.','⚠️Impacto en el otro: Rechazo, miedo, resentimiento.'] }] },
-              { type: 'collapsible', title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.','Conductas comunes:\no\tEvitar el conflicto directo.\no\tUsar sarcasmo o indirectas.\no\tRetrasar o boicotear de forma encubierta.','Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”','Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.','💔 Impacto en ti: Resentimiento y frustración.','⚠️ Impacto en el otro: Inseguridad, desgaste emocional.'] }] },
+              {
+                type: 'collapsible',
+                title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”',
+                audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3',
+                content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.','Conductas comunes:\no\tEvitar el conflicto directo.\no\tUsar sarcasmo o indirectas.\no\tRetrasar o boicotear de forma encubierta.','Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”','Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.','💔 Impacto en ti: Resentimiento y frustración.','⚠️ Impacto en el otro: Inseguridad, desgaste emocional.'] }]
+              },
               { type: 'collapsible', title: '4. Estilo Asertivo – “Tú y yo importamos por igual” ✅', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas a la misma altura.','Conductas comunes:\no\tExpresas con claridad y respeto.\no\tEscuchas sin dejar de comunicarte.\no\tDices “no” sin culpa y “sí” con conciencia.','Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”','Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.','💚 Impacto en ti: Coherencia, autoestima, calma.','🤝 Impacto en el otro: Claridad, confianza, relaciones sanas.'] }] },
           ]
         },
