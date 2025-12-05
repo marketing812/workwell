@@ -67,7 +67,9 @@ export const settingBoundariesPath: Path = {
           duration: '10-15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3',
+          prompts: [
             '¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?',
             '¿Qué has comprendido sobre ti que antes no veías tan claro?',
             '¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?',
@@ -117,7 +119,7 @@ export const settingBoundariesPath: Path = {
               { type: 'collapsible', title: '1. Estilo Pasivo – “Tú importas más que yo”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','💔 Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','⚠️Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }] },
               { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','💔 Impacto en ti: Tensión, culpa, deterioro de vínculos.','⚠️Impacto en el otro: Rechazo, miedo, resentimiento.'] }] },
               { type: 'collapsible', title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.','Conductas comunes:\no\tEvitar el conflicto directo.\no\tUsar sarcasmo o indirectas.\no\tRetrasar o boicotear de forma encubierta.','Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”','Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.','💔 Impacto en ti: Resentimiento y frustración.','⚠️ Impacto en el otro: Inseguridad, desgaste emocional.'] }] },
-              { type: 'collapsible', title: '4. Estilo Asertivo – “Tú y yo importamos por igual” ✅', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas a la misma altura.','Conductas comunes:\no\tExpresas con claridad y respeto.\no\tEscuchas sin dejar de comunicarte.\no\tDices “no” sin culpa y “sí” con conciencia.','Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”','Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.','💚 Impacto en ti: Coherencia, autoestima, calma.','🤝 Impacto en el otro: Clarity, trust, and healthy relationships.'] }] },
+              { type: 'collapsible', title: '4. Estilo Asertivo – “Tú y yo importamos por igual” ✅', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas a la misma altura.','Conductas comunes:\no\tExpresas con claridad y respeto.\no\tEscuchas sin dejar de comunicarte.\no\tDices “no” sin culpa y “sí” con conciencia.','Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”','Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.','💚 Impacto en ti: Coherencia, autoestima, calma.','🤝 Impacto en el otro: Claridad, confianza, relaciones sanas.'] }] },
           ]
         },
         {
@@ -294,3 +296,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
+    
