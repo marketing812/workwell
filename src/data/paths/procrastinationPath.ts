@@ -294,7 +294,7 @@ export const procrastinationPath: Path = {
       estimatedTime: '15-20 min',
       content: [
           { 
-            type: 'paragraphWithAudio',
+            type: 'paragraphWithAudio', 
             text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
           },
@@ -339,7 +339,11 @@ export const procrastinationPath: Path = {
             duration: '3 a 5 minutos al día',
             audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3',
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+          { 
+            type: 'therapeuticNotebookReflection', 
+            title: 'Reflexión Final de la Semana',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
+            prompts: [
               '¿Qué hábito me gustaría mantener a largo plazo?',
               '¿Qué me ha ayudado a mantenerlo?',
               '¿Qué quiero ajustar para que me funcione mejor?',
