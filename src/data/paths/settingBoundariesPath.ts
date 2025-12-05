@@ -15,9 +15,9 @@ export const settingBoundariesPath: Path = {
       estimatedTime: '25-30 min',
       content: [
         { 
-          type: 'paragraphWithAudio', 
-          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
+            type: 'paragraphWithAudio', 
+            text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
+            audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -31,6 +31,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Mitos y bloqueos más comunes',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n“No quiero parecer exagerada/o”, “mejor no molesto”, “igual estoy siendo egoísta”...\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarnos, no incomodar…\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n•\tsin juicio,\n•\tcon herramientas concretas,\n•\ty al ritmo que tú elijas.' }
           ]
@@ -291,3 +292,4 @@ export const settingBoundariesPath: Path = {
 };
 
     
+
