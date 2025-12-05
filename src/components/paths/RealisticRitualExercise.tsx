@@ -57,7 +57,17 @@ ${reminder}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && (
+            <CardDescription className="pt-2">{content.objective}</CardDescription>
+        )}
+        {content.audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
@@ -67,7 +77,12 @@ ${reminder}
           </div>
           <div className="space-y-2">
             <Label htmlFor="min-version">¿Cuál es su versión mínima viable?</Label>
-            <Textarea id="min-version" value={minVersion} onChange={e => setMinVersion(e.target.value)} disabled={saved} />
+            <Textarea
+              id="min-version"
+              value={minVersion}
+              onChange={e => setMinVersion(e.target.value)}
+              disabled={saved}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="link">¿Cuándo o con qué lo vincularás?</Label>
@@ -75,7 +90,12 @@ ${reminder}
           </div>
           <div className="space-y-2">
             <Label htmlFor="reminder">¿Qué puedo hacer para recordarlo o facilitarlo?</Label>
-            <Textarea id="reminder" value={reminder} onChange={e => setReminder(e.target.value)} disabled={saved} />
+            <Textarea
+              id="reminder"
+              value={reminder}
+              onChange={e => setReminder(e.target.value)}
+              disabled={saved}
+            />
           </div>
           {!saved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar mi ritual</Button>
