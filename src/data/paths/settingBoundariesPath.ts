@@ -57,7 +57,8 @@ export const settingBoundariesPath: Path = {
           type: 'mapOfUnsaidThingsExercise',
           title: 'Ejercicio 1: Mapa de Mis No Dichos',
           objective: 'A veces eliges callar para evitar conflictos o proteger un vínculo. Este ejercicio te ayudará a observar cuándo y por qué eliges no expresarte, para que esas decisiones sean más libres y menos automáticas.',
-          duration: '15-20 min'
+          duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3'
         },
         {
           type: 'discomfortCompassExercise',
@@ -292,8 +293,3 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
-
-    
-
-
-
