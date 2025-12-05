@@ -323,6 +323,7 @@ export const procrastinationPath: Path = {
           {
             type: 'collapsible',
             title: 'No busques perfección: busca continuidad amable',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3',
             content: [{ type: 'paragraph', text: 'No pasa nada si fallas un día. Lo importante es que vuelvas al hábito sin culpa ni juicio. Como dice James Clear: “No se trata de no romper la cadena. Se trata de no romperla dos veces seguidas.”' }],
           },
           { type: 'title', text: 'Técnicas Específicas' },
@@ -359,6 +360,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-  
-
