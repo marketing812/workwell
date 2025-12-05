@@ -23,6 +23,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué es un límite personal?',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Un límite no es un rechazo. Tampoco es egoísmo, ni frialdad, ni falta de empatía.\nUn límite es una forma de autocuidado. Es decirle al mundo: esto es lo que necesito para estar bien.\nEs marcar dónde termina lo que puedes sostener sin dañarte, y dónde empieza lo que ya no es negociable para ti.\nPoner límites es una forma de proteger lo que te importa: tu energía, tu tiempo, tu dignidad, tu espacio interno.\nUn límite no siempre se expresa con un “no” tajante. A veces es un silencio interrumpido por una frase honesta. A veces es una distancia, una aclaración, un cambio de ritmo.\nLo importante no es la forma, sino la intención: cuidar de ti sin dañar al otro.\nCuando te atreves a marcar un límite:\n•\tTe haces visible en la relación.\n•\tEnseñas a los demás cómo deseas ser tratada o tratado.\n•\tPrevienes el desgaste emocional que viene de acumular malestar.\n•\tGanas coherencia interna, porque empiezas a vivir en sintonía con lo que sientes y valoras.' }
           ]
@@ -288,6 +289,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
-
 
     
