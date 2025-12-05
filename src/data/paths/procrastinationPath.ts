@@ -304,6 +304,7 @@ export const procrastinationPath: Path = {
           {
             type: 'collapsible',
             title: 'Un hábito no se impone: se construye',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Unhabitonoseimponeseconstruye.mp3',
             content: [{ type: 'paragraph', text: 'Ya diste varios pasos: reconociste bloqueos, te activaste, desarmaste pensamientos saboteadores. Ahora toca consolidar. Y eso no significa forzarte, sino encontrar un ritmo que puedas sostener desde tu realidad.' }],
           },
           {
@@ -359,3 +360,4 @@ export const procrastinationPath: Path = {
 };
 
   
+
