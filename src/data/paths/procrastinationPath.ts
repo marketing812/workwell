@@ -128,14 +128,15 @@ export const procrastinationPath: Path = {
               type: 'collapsible',
               title: 'Microcomienzos: la clave para romper la inercia',
               audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3",
-              content: [{ type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
-              { type: 'list', items: [
-                  'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
-                  'En lugar de “limpiar la casa”, solo recoge tres cosas.',
-                  'En lugar de “escribir un informe”, solo abre el documento.',
-                  'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
-              ]},
-              { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
+              content: [
+                  { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
+                  { type: 'list', items: [
+                      'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
+                      'En lugar de “limpiar la casa”, solo recoge tres cosas.',
+                      'En lugar de “escribir un informe”, solo abre el documento.',
+                      'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
+                  ]},
+                  { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
               ],
           },
           {
@@ -268,7 +269,9 @@ export const procrastinationPath: Path = {
             duration: '10 a 15 minutos',
             audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+          { 
+            type: 'therapeuticNotebookReflection', 
+            title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
             prompts: [
               '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
@@ -292,7 +295,11 @@ export const procrastinationPath: Path = {
       type: 'summary',
       estimatedTime: '15-20 min',
       content: [
-          { type: 'paragraph', text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.'},
+          {
+            type: 'paragraphWithAudio',
+            text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
+            audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3"
+          },
           { type: 'title', text: 'Psicoeducación' },
           {
             type: 'collapsible',
@@ -351,3 +358,4 @@ export const procrastinationPath: Path = {
   ],
 };
 
+  
