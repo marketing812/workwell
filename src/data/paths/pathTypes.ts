@@ -2,6 +2,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -101,6 +102,7 @@ export type ControlTrafficLightExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type AlternativeStoriesExerciseContent = {
@@ -146,6 +148,7 @@ export type TwoMinuteRuleExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MicroPlanExerciseContent = {
@@ -209,6 +212,7 @@ export type AssertivePhraseExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type NoGuiltTechniquesExerciseContent = {
@@ -800,7 +804,6 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
-  | RitualDeEntregaConscienteExerciseContent
   | DelSabotajeALaAccionExerciseContent
   | TwoMinuteRuleExerciseContent
   | MicroPlanExerciseContent
@@ -899,7 +902,8 @@ export type ModuleContent =
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
   // NUEVO
-  | ImaginedCrisisRehearsalExerciseContent;
+  | ImaginedCrisisRehearsalExerciseContent
+  | RitualDeEntregaConscienteExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
