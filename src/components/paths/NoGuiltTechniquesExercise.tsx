@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -89,6 +90,14 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
+        {content.audioUrl && (
+          <div className="mb-4">
+            <audio controls controlsList="nodownload" className="w-full h-10">
+              <source src={content.audioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        )}
         <p className="text-sm text-muted-foreground mb-4">Usa estas técnicas como inspiración. Adáptalas, hazlas tuyas y practica decirlas en voz alta para que te salgan con naturalidad.</p>
         <Accordion type="multiple" className="w-full space-y-3">
           {Object.entries(techniques).map(([key, tech]) => (

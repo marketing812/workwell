@@ -3,6 +3,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -121,13 +122,6 @@ export type MantraExerciseContent = {
     audioUrl?: string;
 };
 
-export type RitualDeEntregaConscienteExerciseContent = {
-    type: 'ritualDeEntregaConscienteExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-};
-
 export type DelSabotajeALaAccionExerciseContent = {
     type: 'delSabotajeALaAccionExercise';
     title: string;
@@ -220,6 +214,7 @@ export type NoGuiltTechniquesExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type PostBoundaryEmotionsExerciseContent = {
@@ -805,9 +800,9 @@ export type ModuleContent =
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
   | DelSabotajeALaAccionExerciseContent
+  | FutureSelfVisualizationExerciseContent
   | TwoMinuteRuleExerciseContent
   | MicroPlanExerciseContent
-  | FutureSelfVisualizationExerciseContent
   | RealisticRitualExerciseContent
   | GentleTrackingExerciseContent
   | BlockageMapExerciseContent
@@ -903,7 +898,7 @@ export type ModuleContent =
   | CalmVisualizationExerciseContent
   // NUEVO
   | ImaginedCrisisRehearsalExerciseContent
-  | RitualDeEntregaConscienteExerciseContent;
+  | RitualDeEntregaConscienteContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
