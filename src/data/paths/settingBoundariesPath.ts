@@ -78,38 +78,12 @@ export const settingBoundariesPath: Path = {
           ]
         },
          { type: 'title', text: 'Técnicas Específicas' },
-         {
-           type: 'assertivePhraseExercise',
-           title: 'Ejercicio 1: Tu Frase Asertiva en 4 Pasos',
-           objective: 'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.',
-           duration: '10-15 min',
-           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3'
-         },
-         {
-           type: 'noGuiltTechniquesExercise',
-           title: 'Ejercicio 2: Caja de herramientas extra: frases para decir "no" sin culpa',
-           objective: 'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
-           duration: '5-10 min por técnica',
-           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3',
-         },
-         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: "https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3", prompts: [
-            '¿Hubo alguna frase o situación que te haya resonado especialmente?',
-            '¿Cómo te sentiste al practicar tus frases de límite?',
-            '¿Notaste cambios en tu forma de expresarte o en tu sensación interna?',
-            '¿Qué te llevas de esta semana que te gustaría conservar?',
-          ]
-        },
-        { type: 'title', text: 'Resumen Clave', audioUrl: "https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3"},
-        { type: 'list', items: [
-            'Tu estilo de comunicación no es algo fijo: es aprendido, y puede transformarse.',
-            'Existen cuatro estilos comunes: pasivo, agresivo, pasivo-agresivo y asertivo.',
-            'Cada estilo refleja una posición relacional implícita: por debajo, por encima o a la misma altura.',
-            'La asertividad consciente es la capacidad de expresar lo que sentimos, pensamos y necesitamos desde un lugar de respeto hacia uno mismo y hacia los demás.',
-            'No se trata de ser perfecto, sino de ganar conciencia, entrenar nuevas formas y elegir cómo queremos comunicarnos.',
-            'Aprender a comunicar lo que sientes y necesitas es una forma profunda de autocuidado y construcción de vínculos sanos.',
-          ]
-        },
-        { type: 'quote', text: '“Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.”' },
+         { type: 'assertivePhraseExercise', title: 'Ejercicio 1: Tu Frase Asertiva en 4 Pasos', objective: 'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3' },
+         { type: 'noGuiltTechniquesExercise', title: 'Ejercicio 2: Caja de herramientas extra: frases para decir "no" sin culpa', objective: 'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.', duration: '5-10 min por técnica', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3'},
+         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: "https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3", prompts: ['¿Hubo alguna frase o situación que te haya resonado especialmente?','¿Cómo te sentiste al practicar tus frases de límite?','¿Notaste cambios en tu forma de expresarte o en tu sensación interna?','¿Qué te llevas de esta semana que te gustaría conservar?']},
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3' },
+        { type: 'list', items: ['Tu estilo de comunicación no es algo fijo: es aprendido, y puede transformarse.','Existen cuatro estilos comunes: pasivo, agresivo, pasivo-agresivo y asertivo.','Cada estilo refleja una posición relacional implícita: por debajo, por encima o a la misma altura.','La asertividad consciente es la capacidad de expresar lo que sentimos, pensamos y necesitamos desde un lugar de respeto hacia uno mismo y hacia los demás.','No se trata de ser perfecto, sino de ganar conciencia, entrenar nuevas formas y elegir cómo queremos comunicarnos.','Aprender a comunicar lo que sientes y necesitas es una forma profunda de autocuidado y construcción de vínculos sanos.']},
+        { type: 'quote', text: '“Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.”' }
       ]
     },
     {
@@ -118,7 +92,7 @@ export const settingBoundariesPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.' },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion3.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -242,4 +216,5 @@ export const settingBoundariesPath: Path = {
   ]
 };
 
+    
     
