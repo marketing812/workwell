@@ -42,7 +42,7 @@ export const settingBoundariesPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'mapOfUnsaidThingsExercise', title: 'Ejercicio 1: Mapa de Mis No Dichos', objective: 'A veces eliges callar para evitar conflictos o proteger un vínculo. Este ejercicio te ayudará a observar cuándo y por qué eliges no expresarte, para que esas decisiones sean más libres y menos automáticas.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3' },
-        { type: 'discomfortCompassExercise', title: 'Ejercicio 2: La Brújula del Malestar', objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3'},
+        { type: 'discomfortCompassExercise', title: 'Ejercicio 2: La Brújula del Malestar', objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3'},
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3', prompts: ['¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?','¿Qué has comprendido sobre ti que antes no veías tan claro?','¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?','¿Cómo sería tu vida si te expresaras con más firmeza y respeto?','¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
         { type: 'list', items: ['Un límite sano no separa: organiza, protege y cuida.','Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.','Detectar tu malestar es el primer aviso de que algo importante no está siendo dicho.','Poner límites no es egoísmo, es autorrespeto.','Todos tenemos bloqueos, pero también podemos elegir responder de otra forma.','Empezar a expresarte con claridad es empezar a vivir con coherencia.']},
@@ -62,7 +62,6 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
           content: [
               { type: 'collapsible', title: '1. Estilo Pasivo – “Tú importas más que yo”', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','💔 Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','⚠️Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }] },
               { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','💔 Impacto en ti: Tensión, culpa, deterioro de vínculos.','⚠️Impacto en el otro: Rechazo, miedo, resentimiento.'] }] },
@@ -91,16 +90,16 @@ export const settingBoundariesPath: Path = {
            title: 'Ejercicio 2: Caja de herramientas extra: frases para decir "no" sin culpa',
            objective: 'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
            duration: '5-10 min por técnica',
-           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3'
+           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3',
          },
-         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: "https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3", prompts: [
             '¿Hubo alguna frase o situación que te haya resonado especialmente?',
             '¿Cómo te sentiste al practicar tus frases de límite?',
             '¿Notaste cambios en tu forma de expresarte o en tu sensación interna?',
             '¿Qué te llevas de esta semana que te gustaría conservar?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: "https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3"},
         { type: 'list', items: [
             'Tu estilo de comunicación no es algo fijo: es aprendido, y puede transformarse.',
             'Existen cuatro estilos comunes: pasivo, agresivo, pasivo-agresivo y asertivo.',
@@ -242,3 +241,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
+    
