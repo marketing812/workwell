@@ -127,7 +127,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                         <p><strong>Situación:</strong> “Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.”</p>
                         <p><strong>Cuerpo:</strong> Tensión en la mandíbula, presión en el pecho.</p>
                         <p><strong>Emoción:</strong> Frustración (80%).</p>
-                        <p><strong>Pensamiento:</strong> "Si digo que no, pensará que no me implico." (Creído al 85%).</p>
+                        <p><strong>Pensamiento:</strong> "Si digo que no, pensará que no soy profesional". (Creído al 85%).</p>
                         <p><strong>Impulso:</strong> Aceptar sin discutir.</p>
                         <p><strong>Límite necesario:</strong> Sí, estaba sobrepasado/a.</p>
                         <p><strong>Respuesta alternativa:</strong> "Me encantaría, pero hoy no puedo. Mañana lo vemos." (Confianza: 65%).</p>
@@ -248,12 +248,12 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
         {content.audioUrl && (
-          <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-              </audio>
-          </div>
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
         )}
       </CardHeader>
       <CardContent>
