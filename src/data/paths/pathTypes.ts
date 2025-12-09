@@ -1,9 +1,4 @@
 
-
-
-
-
-
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -96,6 +91,7 @@ export type UncertaintyMapExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ControlTrafficLightExerciseContent = {
@@ -122,11 +118,19 @@ export type MantraExerciseContent = {
     audioUrl?: string;
 };
 
+export type RitualDeEntregaConscienteContent = {
+    type: 'ritualDeEntregaConscienteExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
 export type DelSabotajeALaAccionExerciseContent = {
     type: 'delSabotajeALaAccionExercise';
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type FutureSelfVisualizationExerciseContent = {
@@ -222,6 +226,7 @@ export type PostBoundaryEmotionsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type CompassionateFirmnessExerciseContent = {
@@ -229,6 +234,7 @@ export type CompassionateFirmnessExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SelfCareContractExerciseContent = {
@@ -773,13 +779,6 @@ export type ImaginedCrisisRehearsalExerciseContent = {
     audioUrl?: string;
 };
 
-export type RitualDeEntregaConscienteContent = {
-    type: 'ritualDeEntregaConscienteExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-};
-
 // A union type for all possible content block types within a module
 export type ModuleContent =
   | ParagraphContent
@@ -799,10 +798,11 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
+  | RitualDeEntregaConscienteContent
   | DelSabotajeALaAccionExerciseContent
-  | FutureSelfVisualizationExerciseContent
   | TwoMinuteRuleExerciseContent
   | MicroPlanExerciseContent
+  | FutureSelfVisualizationExerciseContent
   | RealisticRitualExerciseContent
   | GentleTrackingExerciseContent
   | BlockageMapExerciseContent
@@ -897,8 +897,7 @@ export type ModuleContent =
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
   // NUEVO
-  | ImaginedCrisisRehearsalExerciseContent
-  | RitualDeEntregaConscienteContent;
+  | ImaginedCrisisRehearsalExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
