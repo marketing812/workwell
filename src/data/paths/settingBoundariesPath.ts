@@ -132,7 +132,7 @@ export const settingBoundariesPath: Path = {
             '¿Qué sensaciones aparecen en ti cuando mantienes un límite que antes habrías retirado?',
           ]
         },
-        { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio8Ruta4Sesion3.mp3' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio8Ruta4Sesion3.mp3' },
         { type: 'list', items: [
             'Poner límites puede generar emociones incómodas, pero eso no significa que estés actuando mal.',
             'Diferenciar entre malestar sano (por crecer) y malestar por autoabandono (por no escucharte) es clave.',
@@ -182,7 +182,7 @@ export const settingBoundariesPath: Path = {
           title: 'Ejercicio 1: Tu Frase de Firmeza Compasiva',
           objective: 'Entrenar tu capacidad para sostener una decisión sin retroceder, incluso cuando el otro muestre incomodidad o decepción. Aprenderás a validar la emoción ajena sin anular tu necesidad.',
           duration: '5-10 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3'
         },
         {
           type: 'selfCareContractExercise',
