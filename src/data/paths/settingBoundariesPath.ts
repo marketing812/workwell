@@ -14,11 +14,7 @@ export const settingBoundariesPath: Path = {
       type: 'introduction',
       estimatedTime: '25-30 min',
       content: [
-        {
-          type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'
-        },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -61,11 +57,7 @@ export const settingBoundariesPath: Path = {
           duration: '10-15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3'
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3',
-          prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3', prompts: [
             '¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?',
             '¿Qué has comprendido sobre ti que antes no veías tan claro?',
             '¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?',
@@ -74,9 +66,7 @@ export const settingBoundariesPath: Path = {
           ]
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
-        {
-          type: 'list',
-          items: [
+        { type: 'list', items: [
             'Un límite sano no separa: organiza, protege y cuida.',
             'Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.',
             'Detectar tu malestar es el primer aviso de que algo importante no está siendo dicho.',
@@ -94,11 +84,7 @@ export const settingBoundariesPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        {
-          type: 'paragraphWithAudio',
-          text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'
-        },
+        { type: 'paragraphWithAudio', text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -149,7 +135,8 @@ export const settingBoundariesPath: Path = {
            type: 'assertivePhraseExercise',
            title: 'Ejercicio 1: Tu Frase Asertiva en 4 Pasos',
            objective: 'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.',
-           duration: '10-15 min'
+           duration: '10-15 min',
+           audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3'
          },
          {
            type: 'noGuiltTechniquesExercise',

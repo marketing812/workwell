@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -133,7 +134,15 @@ export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExer
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        <CardDescription className="pt-2">{content.objective}</CardDescription>
+        {content.audioUrl && (
+            <div className="mt-2">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}
