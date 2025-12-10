@@ -1,6 +1,6 @@
 
 import type { Metadata, Viewport } from 'next';
-import { Geist } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { UserProvider } from '@/contexts/UserContext';
 import { Toaster } from "@/components/ui/toaster";
@@ -8,10 +8,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+const geistSans = GeistSans;
 
 export const metadata: Metadata = {
   title: 'EMOTIVA',
