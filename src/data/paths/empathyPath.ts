@@ -59,6 +59,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Te reconoces tras una máscara?',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3',
           content: [
             { type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:\n• Más alegres de lo que estamos.\n• Más fuertes, comprensivos, funcionales...\n• O directamente nos callamos.\nEstas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }
           ]
@@ -297,5 +298,3 @@ export const empathyPath: Path = {
     },
   ]
 };
-
-    
