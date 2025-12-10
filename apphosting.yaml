@@ -8,3 +8,4 @@ runConfig:
 # Forzando reconstrucción para resolver problemas de despliegue.
 # Este comentario se añade para invalidar la caché de compilación del servidor.
 # Invalidando la caché de nuevo para asegurar una compilación limpia.
+# Comentario final para forzar la reconstrucción definitiva.
