@@ -5,7 +5,7 @@ import './globals.css';
 import { UserProvider } from '@/contexts/UserContext';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import { ActivePathProvider } from '@/contexts/ActivePathProvider';
+import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
 
 const geistSans = GeistSans;
