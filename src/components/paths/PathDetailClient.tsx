@@ -887,10 +887,10 @@ export function PathDetailClient({ path }: { path: Path }) {
         </div>
         <CardContent className="p-8">
           <p className="text-lg text-muted-foreground mt-2 text-center">{path.description}</p>
-          {path.audioUrl && (
+          {path.id === 'relaciones-autenticas' && (
             <div className="mt-4 flex justify-center">
               <audio
-                src={path.audioUrl}
+                src="https://workwellfut.com/audios/ruta5/descripciones/INTRODUCCIONRUTA.mp3"
                 controls
                 controlsList="nodownload"
                 className="w-full max-w-md h-10"
@@ -1010,5 +1010,7 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
 
     
