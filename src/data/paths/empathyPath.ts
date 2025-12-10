@@ -67,6 +67,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Esta semana entrenas…',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Estasemanaentrenas.mp3',
           content: [
             { type: 'list', items: [
                 'Detectar qué relaciones te alejan de tu autenticidad.',
@@ -298,3 +299,5 @@ export const empathyPath: Path = {
     },
   ]
 };
+
+    
