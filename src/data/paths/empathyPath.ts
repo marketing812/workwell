@@ -6,6 +6,7 @@ export const empathyPath: Path = {
   title: 'Relaciones Auténticas con Empatía',
   description: 'Aprende a expresarte con claridad, a cuidar tus vínculos sin perderte a ti y a construir relaciones más nutritivas, equilibradas y verdaderas.',
   dataAiHint: 'empathy authentic relationships',
+  audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/INTRODUCCIONRUTA.mp3',
   modules: [
     {
       id: 'empatia_sem1',
@@ -26,6 +27,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué es realmente la empatía?',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3',
           content: [
             { type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }
           ]
@@ -292,3 +294,5 @@ export const empathyPath: Path = {
     },
   ]
 };
+
+    
