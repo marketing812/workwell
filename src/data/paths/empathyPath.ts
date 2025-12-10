@@ -35,6 +35,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Lo que la empatía NO es',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3',
           content: [
             { type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:\n• “Bueno, no es para tanto…”\n• “Tienes que ser más fuerte.”\n• “Eso no debería afectarte así.”\nEstas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }
           ]
@@ -294,5 +295,3 @@ export const empathyPath: Path = {
     },
   ]
 };
-
-    
