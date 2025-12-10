@@ -3,13 +3,12 @@ import { pathsData } from '@/data/pathsData';
 import { PathDetailClient } from '@/components/paths/PathDetailClient';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-
-type PageProps = { params: { pathId: string } };
+import type { RoutePageProps } from '@/types/page-props';
 
 // Se añade esta línea para forzar el renderizado dinámico y evitar problemas de caché
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: RoutePageProps<{ pathId: string }>) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
@@ -21,7 +20,7 @@ export default async function Page({ params }: PageProps) {
 }
 
 export async function generateMetadata(
-  { params }: PageProps
+  { params }: RoutePageProps<{ pathId: string }>
 ): Promise<Metadata> {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
