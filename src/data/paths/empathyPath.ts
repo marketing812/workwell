@@ -97,7 +97,7 @@ export const empathyPath: Path = {
           objective: 'Antes de tener una conversación importante, ¿te detienes a escucharte o vas directo a complacer, defenderte o evitar el malestar? Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.',
           duration: '10-15 min',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: [
             '¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?',
             '¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?',
             '¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?',
@@ -299,5 +299,3 @@ export const empathyPath: Path = {
     },
   ]
 };
-
-    
