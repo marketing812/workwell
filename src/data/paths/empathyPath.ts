@@ -106,7 +106,7 @@ export const empathyPath: Path = {
             '¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/RESUMEN.mp3'},
         { type: 'list', items: [
             'Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.',
             'La empatía verdadera no es imaginarte en el lugar del otro, sino acompañar desde su realidad sin juicio.',
@@ -299,3 +299,5 @@ export const empathyPath: Path = {
     },
   ]
 };
+
+    
