@@ -12,3 +12,4 @@ export async function generateMetadata({ params }: RoutePageProps<{ assessmentId
   const { assessmentId } = params;
   return { title: `Resultados de Evaluación ${assessmentId}` };
 }
+
