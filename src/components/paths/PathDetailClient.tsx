@@ -507,7 +507,7 @@ function ContentItemRenderer({
     case 'blockageMapExercise':
       return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
-      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} />;
+      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
     case 'mapOfUnsaidThingsExercise':
       return (
         <MapOfUnsaidThingsExercise
