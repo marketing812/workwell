@@ -43,6 +43,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Empatía y autenticidad van juntas',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3',
           content: [
             { type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:\n• La empatía crea el espacio seguro.\n• La autenticidad lo habita.' }
           ]
@@ -295,3 +296,5 @@ export const empathyPath: Path = {
     },
   ]
 };
+
+    
