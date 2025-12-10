@@ -12,7 +12,8 @@ import type { RoutePageProps } from '@/types/page-props';
 export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }: RoutePageProps<{ slug: string }>) {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
 
   const post: ResourcePost | null = await getPostBySlug(slug);
 
@@ -67,7 +68,8 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
 }
 
 export async function generateMetadata({ params }: RoutePageProps<{ slug: string }>): Promise<Metadata> {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const post = await getPostBySlug(slug);
   return {
     title: post?.title.rendered || 'Artículo',

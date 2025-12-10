@@ -9,7 +9,8 @@ import type { RoutePageProps } from '@/types/page-props';
 export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }: RoutePageProps<{ pathId: string }>) {
-  const { pathId } = params;
+  const resolvedParams = await params;
+  const { pathId } = resolvedParams;
   const path = pathsData.find(p => p.id === pathId);
 
   if (!path) {
@@ -22,7 +23,8 @@ export default async function Page({ params }: RoutePageProps<{ pathId: string }
 export async function generateMetadata(
   { params }: RoutePageProps<{ pathId: string }>
 ): Promise<Metadata> {
-  const { pathId } = params;
+  const resolvedParams = await params;
+  const { pathId } = resolvedParams;
   const path = pathsData.find(p => p.id === pathId);
   return { title: path?.title || "Ruta de Desarrollo" };
 }
