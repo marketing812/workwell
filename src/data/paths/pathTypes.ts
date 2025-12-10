@@ -99,7 +99,6 @@ export type ControlTrafficLightExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type AlternativeStoriesExerciseContent = {
@@ -250,6 +249,7 @@ export type AuthenticityThermometerExerciseContent = {
     title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EmpatheticDialogueExerciseContent = {
