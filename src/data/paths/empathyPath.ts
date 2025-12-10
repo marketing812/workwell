@@ -18,6 +18,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué hace que una relación sea de verdad nutritiva?',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Quehacequeunarelacionseadeverdadnutritiva.mp3',
           content: [
             { type: 'paragraph', text: 'Las relaciones que realmente nos nutren no se construyen desde la perfección ni desde la obligación. Se construyen cuando podemos estar presentes de forma genuina, sin disfraces, y cuando nos sentimos vistos, escuchados y respetados en lo que realmente sentimos.\nPero para que eso sea posible, hay algo que debe estar en el centro: la empatía verdadera y la honestidad emocional.\nSin ellas, no hay espacio seguro para mostrarnos tal como somos.' }
           ]
