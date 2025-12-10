@@ -5,5 +5,5 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
-# Regenerating build config to solve fetch step issue.
-# This comment is added to force a clean build and invalidate the cache.
+# Forzando reconstrucción para resolver problemas de despliegue.
+# Este comentario se añade para invalidar la caché de compilación del servidor.
