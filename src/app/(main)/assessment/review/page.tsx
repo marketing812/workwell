@@ -8,7 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
-import { assessmentDimensions as assessmentDimensionsData } from '@/ai/flows/initial-assessment';
+import { assessmentDimensions as assessmentDimensionsData } from '@/data/assessmentDimensions';
 
 
 export default function AssessmentReviewPage() {

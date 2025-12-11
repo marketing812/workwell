@@ -129,7 +129,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     : [];
   
   const currentDimension = Array.isArray(assessmentDimensions) ? assessmentDimensions[currentDimensionIndex] : undefined;
-  const currentOverallIndex = Array.isArray(assessmentDimensions) && assessmentDimensions.length > 0 ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
+  const currentOverallIndex = Array.isArray(assessmentDimensions) && assessmentDimensions.length > 0 && currentDimensionIndex < assessmentDimensions.length ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
 
@@ -243,7 +243,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
         </Card>
        )
     }
-    return <div className="flex justify-center items-center h-64"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
+    return <div className="flex justify-center items-center h-64"><Loader2 className="h-8 w-8 animate-spin" /></div>;
   }
 
   const isFirstQuestion = currentDimensionIndex === 0 && currentItemIndexInDimension === 0;
@@ -255,7 +255,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
         <CardHeader>
           <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
           <CardTitle className="text-lg font-semibold text-center text-primary">
-            {t.assessmentTitle}
+            Cuestionario de Evaluación App: Personalidad, Estado de Ánimo y Ansiedad
           </CardTitle>
           {isGuided && (
             <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
