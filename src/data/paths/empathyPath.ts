@@ -50,59 +50,13 @@ export const empathyPath: Path = {
       title: 'Semana 3: Sé Empático sin Perderte a Ti',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado que, cuando alguien cercano se siente mal, tú también acabas agotado o desbordada?\nEsta semana vas a aprender a cuidar sin perderte. Ser empático no significa absorberlo todo. Vamos a entrenar una forma de estar presente desde el corazón, pero también desde tus propios límites.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/INTRODUCCIONSEMANA3.mp3' },
-        { type: 'title', text: 'Psicoeducación' },
-        {
-          type: 'collapsible',
-          title: 'Fusión emocional: cuando te pierdes por cuidar',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Fusionemocionalcuandotepierdesporcuidar.mp3',
-          content: [{ type: 'paragraph', text: 'La fusión emocional ocurre cuando la vivencia del otro te inunda completamente, dejas de escuchar tus propias necesidades y actúas desde la urgencia, el miedo o la culpa. Acompañas tanto que te abandonas a ti. Estás, pero sin estar contigo. Aprender a diferenciar entre empatía (conexión consciente) y fusión (confusión y sobrecarga) es clave para tu bienestar.' }]
-        },
-        {
-            type: 'collapsible',
-            title: '¿Por qué nos fundimos emocionalmente?',
-            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Porquenosfundimosemocionalmente.mp3',
-            content: [{ type: 'paragraph', text: 'Muchas veces lo aprendimos así. Desde pequeños nos premiaron por “ser buenos” o “no molestar”, y aprendimos que cuidar a los demás nos da valor, aunque implique dejarnos en último lugar. También influyen miedos como el miedo a decepcionar o a perder el amor si marcamos un límite.' }]
-        },
-        {
-            type: 'collapsible',
-            title: 'La empatía sana se entrena',
-            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Laempatiasanasiexiste.mp3',
-            content: [{ type: 'paragraph', text: 'La empatía sana es poder estar con el otro sin cargarlo todo. Respeta al otro y te respeta a ti. Acompaña sin invadir, y reconoce cuándo decir “basta por hoy”. Empatía no significa estar de acuerdo, sino estar presente con respeto.' }]
-        },
-        { type: 'title', text: 'Técnicas Específicas' },
-        {
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que, cuando alguien cercano se siente mal, tú también acabas agotado o desbordada?\nEsta semana vas a aprender a cuidar sin perderte. Ser empático no significa absorberlo todo. Vamos a entrenar una forma de estar presente desde el corazón, pero también desde tus propios límites.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/INTRODUCCIONSEMANA3.mp3' }, { type: 'title', text: 'Psicoeducación' }, { type: 'collapsible', title: 'Fusión emocional: cuando te pierdes por cuidar', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Fusionemocionalcuandotepierdesporcuidar.mp3', content: [{ type: 'paragraph', text: 'La fusión emocional ocurre cuando la vivencia del otro te inunda completamente, dejas de escuchar tus propias necesidades y actúas desde la urgencia, el miedo o la culpa. Acompañas tanto que te abandonas a ti. Estás, pero sin estar contigo. Aprender a diferenciar entre empatía (conexión consciente) y fusión (confusión y sobrecarga) es clave para tu bienestar.' }] }, { type: 'collapsible', title: '¿Por qué nos fundimos emocionalmente?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Porquenosfundimosemocionalmente.mp3', content: [{ type: 'paragraph', text: 'Muchas veces lo aprendimos así. Desde pequeños nos premiaron por “ser buenos” o “no molestar”, y aprendimos que cuidar a los demás nos da valor, aunque implique dejarnos en último lugar. También influyen miedos como el miedo a decepcionar o a perder el amor si marcamos un límite.' }] }, { type: 'collapsible', title: 'La empatía sana se entrena', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Laempatiasanasiexiste.mp3', content: [{ type: 'paragraph', text: 'La empatía sana es poder estar con el otro sin cargarlo todo. Respeta al otro y te respeta a ti. Acompaña sin invadir, y reconoce cuándo decir “basta por hoy”. Empatía no significa estar de acuerdo, sino estar presente con respeto.' }] }, { type: 'title', text: 'Técnicas Específicas' }, {
           type: 'empathicShieldVisualizationExercise',
           title: 'EJERCICIO 1: VISUALIZACIÓN GUIADA: EL ESCUDO EMPÁTICO',
           objective: 'Este ejercicio te ayudará a crear tu escudo emocional interno. No es una barrera, sino un filtro que te protege mientras sigues siendo tú, para que puedas escuchar sin absorber, acompañar sin fundirte y cuidar sin desaparecer.',
           duration: '6-8 min',
-          audioUrl: 'https://workwellfut.com/audios/rm/R5_visualizacion_guiada_el_escudo_empatico.mp3',
-        },
-        {
-          type: 'emotionalInvolvementTrafficLightExercise',
-          title: 'Ejercicio 2: Semáforo de implicación emocional',
-          objective: 'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
-          duration: '15-20 min',
-        },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/REFLEXION.mp3', prompts: [
-            '¿En qué momentos te has sentido fundido/a emocionalmente sin darte cuenta?',
-            '¿Qué cambios has notado al observar tus relaciones desde el semáforo emocional?',
-            '¿Qué frases o ideas de esta semana te gustaría recordar cuando vuelvas a estar con alguien que te necesita?',
-            '¿Qué pequeño paso puedes dar esta semana para cuidar tu llama sin apagarla por estar al lado de otra persona?',
-          ]
-        },
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/RESUMEN.mp3' },
-        { type: 'list', items: [
-            'La fusión emocional no es empatía: es perderte mientras intentas cuidar.',
-            'La empatía real es estar presente sin desaparecer, comprender sin absorber.',
-            'Cuidar desde la culpa o el miedo agota y genera autoabandono.',
-            'Puedes entender al otro sin compartir su opinión ni justificar su dolor.',
-            'Técnicas como el escudo empático o el semáforo emocional te ayudan a proteger tu energía sin dejar de vincularte.',
-          ]
-        },
-        { type: 'quote', text: 'Puedes estar con el otro sin dejar de estar contigo. La empatía que no te borra… es la que más alumbra.' },
-      ]
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3',
+        }, { type: 'emotionalInvolvementTrafficLightExercise', title: 'Ejercicio 2: Semáforo de implicación emocional', objective: 'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.', duration: '15-20 min' }, { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/REFLEXION.mp3', prompts: ['¿En qué momentos te has sentido fundido/a emocionalmente sin darte cuenta?', '¿Qué cambios has notado al observar tus relaciones desde el semáforo emocional?', '¿Qué frases o ideas de esta semana te gustaría recordar cuando vuelvas a estar con alguien que te necesita?', '¿Qué pequeño paso puedes dar esta semana para cuidar tu llama sin apagarla por estar al lado de otra persona?'] }, { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/RESUMEN.mp3' }, { type: 'list', items: ['La fusión emocional no es empatía: es perderte mientras intentas cuidar.', 'La empatía real es estar presente sin desaparecer, comprender sin absorber.', 'Cuidar desde la culpa o el miedo agota y genera autoabandono.', 'Puedes entender al otro sin compartir su opinión ni justificar su dolor.', 'Técnicas como el escudo empático o el semáforo emocional te ayudan a proteger tu energía sin dejar de vincularte.'] }, { type: 'quote', text: 'Puedes estar con el otro sin dejar de estar contigo. La empatía que no te borra… es la que más alumbra.' }]
     },
     {
       id: 'empatia_sem4',
@@ -161,5 +115,7 @@ export const empathyPath: Path = {
     },
   ]
 };
+
+    
 
     
