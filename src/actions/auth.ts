@@ -3,14 +3,13 @@
 
 import { z } from "zod";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   deleteUser,
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
-import { getFirebase } from "@/firebase/config"; // Usamos la configuración centralizada
+import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
 import type { EmotionalEntry } from "@/data/emotionalEntriesStore";
 import type { NotebookEntry } from "@/data/therapeuticNotebookStore";
@@ -84,7 +83,6 @@ export async function registerUser(
   } = validatedFields.data;
 
   try {
-    const { auth, db } = getFirebase();
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -92,7 +90,6 @@ export async function registerUser(
     );
     const user = userCredential.user;
 
-    // Guardar información adicional en Firestore
     await setDoc(doc(db, "users", user.uid), {
       name,
       email,
@@ -147,7 +144,6 @@ export async function loginUser(
   const { email, password } = validatedFields.data;
 
   try {
-    const { auth, db } = getFirebase();
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -220,7 +216,6 @@ export type DeleteAccountState = {
 export async function deleteUserAccount(
   prevState: DeleteAccountState
 ): Promise<DeleteAccountState> {
-  const { auth, db } = getFirebase();
   const user = auth.currentUser;
 
   if (!user) {
@@ -228,9 +223,7 @@ export async function deleteUserAccount(
   }
 
   try {
-    // Primero, borra los datos de Firestore
     await deleteDoc(doc(db, "users", user.uid));
-    // Luego, borra el usuario de Authentication
     await deleteUser(user);
 
     return { success: true, message: "Tu cuenta ha sido eliminada permanentemente." };
@@ -259,7 +252,6 @@ export async function resetPassword(email: string): Promise<{success: boolean, m
         return { success: false, message: "El email es requerido."};
     }
     try {
-        const { auth } = getFirebase();
         await sendPasswordResetEmail(auth, email);
         return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña."};
     } catch(error: any) {

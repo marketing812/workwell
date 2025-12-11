@@ -4,9 +4,9 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAuth, onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
+import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { getFirebase } from '@/firebase/config';
+import { auth, db } from '@/firebase/config';
 import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
 import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
 import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -46,7 +46,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const { auth, db } = getFirebase();
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
         setFirebaseUser(fbUser);
@@ -62,8 +61,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
             initialEmotionalState: userProfile.initialEmotionalState,
           });
         } else {
-            // Profile doesn't exist, maybe it's being created.
-            // For now, we can set a minimal user object.
              setUser({
                 id: fbUser.uid,
                 email: fbUser.email,
@@ -88,20 +85,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (loginData.notebookEntries) {
       overwriteNotebookEntries(loginData.notebookEntries);
     }
-    // No es necesario llamar a setLoading(false) aquí porque onAuthStateChanged se encargará.
   }, []);
 
   const logout = useCallback(async () => {
-    const { auth } = getFirebase();
     await signOut(auth);
     setUser(null);
     setFirebaseUser(null);
-    // Clear all local data on logout
     clearAllEmotionalEntries();
     clearAllNotebookEntries();
     clearAssessmentHistory();
     localStorage.removeItem('workwell-active-path-details');
-    // Consider a more robust way to clear all progress
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.startsWith('workwell-progress-')) {
@@ -113,14 +106,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
     if (!user) return;
-    const { db } = getFirebase();
     const newUser = { ...user, ...updatedData };
     setUser(newUser);
     try {
       await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
     } catch (error) {
       console.error("Error updating user profile in Firestore:", error);
-      // Optionally revert state or show error
     }
   }, [user]);
 
