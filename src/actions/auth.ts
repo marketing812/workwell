@@ -107,6 +107,7 @@ export async function registerUser(
     }
     return {
       errors: { _form: [errorMessage] },
+      message: errorMessage,
     };
   }
 }
