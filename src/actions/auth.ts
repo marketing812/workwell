@@ -9,6 +9,7 @@ import {
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
+import { fetchUserActivities, fetchNotebookEntries } from './user-data'; // Import moved functions
 
 export interface ActionUser {
   id: string;
@@ -34,65 +35,19 @@ export type LoginState = {
   user?: ActionUser | null;
 };
 
+// This action is now simplified and will not be used directly by the form.
+// It remains for potential future server-to-server auth needs.
+// The primary login logic is now in UserContext.tsx client-side.
 export async function loginUser(
   prevState: LoginState,
   formData: FormData
 ): Promise<LoginState> {
-  const validatedFields = loginSchema.safeParse(
-    Object.fromEntries(formData.entries())
-  );
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  const { email, password } = validatedFields.data;
-
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-
-    const userDoc = await getDoc(doc(db, "users", user.uid));
-    
-    if (!userDoc.exists()) {
-        throw new Error("No se encontró el perfil de usuario.");
-    }
-    
-    const userProfile = userDoc.data();
-
-    const clientUser: ActionUser = {
-      id: user.uid,
-      email: user.email!,
-      name: userProfile?.name || "Usuario",
-      ageRange: userProfile?.ageRange,
-      gender: userProfile?.gender,
-      initialEmotionalState: userProfile?.initialEmotionalState,
-    };
-
-    return {
-      message: t.loginSuccessMessage,
-      user: clientUser,
-    };
-
-  } catch (error: any) {
-    console.error("Login Error:", error);
-    let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
-        errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-    } else if (error.message === "No se encontró el perfil de usuario.") {
-        errorMessage = "El perfil de usuario no se encontró en la base de datos.";
-    }
-
-    return {
-      errors: { _form: [errorMessage] },
-    };
-  }
+  // This server action is being deprecated in favor of client-side auth
+  // to prevent serialization issues with Next.js.
+  // It returns a generic error if called.
+  return {
+    errors: { _form: ["La función de inicio de sesión del servidor está obsoleta. La autenticación ahora se maneja en el cliente."] },
+  };
 }
 
 export type DeleteAccountState = {

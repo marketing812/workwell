@@ -1,47 +1,37 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFormStatus } from "react-dom";
-import { useActionState } from "react";
+import { useEffect, useState, useActionState, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { loginUser, resetPassword, type LoginState } from "@/actions/auth";
-import { useUser, type User as ContextUser } from "@/contexts/UserContext";
-import { useRouter } from "next/navigation";
+import { resetPassword } from "@/actions/auth";
+import { useUser } from "@/contexts/UserContext";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
+import { useFirebase } from "@/firebase/provider";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
-
-const initialState: LoginState = {
-  message: null,
-  errors: {},
-  user: null,
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  const t = useTranslations();
-  return (
-    <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.login}
-    </Button>
-  );
-}
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const { user: contextUser, loading: userLoading, login: loginContext } = useUser();
+  const { auth, db } = useFirebase();
   const router = useRouter();
-  const [state, formAction] = useActionState(loginUser, initialState);
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+
   const [resetEmail, setResetEmail] = useState("");
   const [isResetting, setIsResetting] = useState(false);
 
@@ -62,21 +52,56 @@ export function LoginForm() {
     setIsResetting(false);
   }
 
-  useEffect(() => {
-    if (state?.user) {
-      loginContext({ user: state.user as ContextUser });
-      toast({
-        title: t.login,
-        description: state.message!,
-      });
-    } else if (state?.errors?._form) {
-      toast({
-        title: t.loginFailed,
-        description: state.errors._form[0],
-        variant: "destructive",
-      });
+  const handleLogin = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!auth || !db) {
+        toast({ title: "Error", description: "Servicios de autenticación no disponibles.", variant: "destructive" });
+        return;
     }
-  }, [state, toast, t, loginContext]);
+    setIsLoggingIn(true);
+    setLoginError(null);
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+    
+        if (!userDoc.exists()) {
+            throw new Error("No se encontró el perfil de usuario.");
+        }
+        
+        const userProfileData = userDoc.data();
+
+        loginContext({
+            user: {
+                id: user.uid,
+                email: user.email!,
+                name: userProfileData?.name || "Usuario",
+                ageRange: userProfileData?.ageRange,
+                gender: userProfileData?.gender,
+                initialEmotionalState: userProfileData?.initialEmotionalState,
+            }
+        });
+        
+        toast({
+            title: t.login,
+            description: t.loginSuccessMessage,
+        });
+
+    } catch (error: any) {
+        console.error("Login Error:", error);
+        let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+            errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+        } else if (error.message === "No se encontró el perfil de usuario.") {
+            errorMessage = "El perfil de usuario no se encontró en la base de datos.";
+        }
+        setLoginError(errorMessage);
+    } finally {
+        setIsLoggingIn(false);
+    }
+  }
 
   useEffect(() => {
     if (!userLoading && contextUser) {
@@ -104,11 +129,10 @@ export function LoginForm() {
         <CardDescription>{t.welcomeToWorkWell}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <Label htmlFor="email">{t.email}</Label>
-            <Input id="email" name="email" type="email" placeholder="tu@ejemplo.com" required onChange={(e) => setResetEmail(e.target.value)} />
-            {state?.errors?.email && <p className="text-sm text-destructive pt-1">{state.errors.email[0]}</p>}
+            <Input id="email" name="email" type="email" placeholder="tu@ejemplo.com" required value={email} onChange={(e) => {setEmail(e.target.value); setResetEmail(e.target.value);}} />
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -144,6 +168,8 @@ export function LoginForm() {
                 type={showPassword ? "text" : "password"}
                 required
                 className="pr-10"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <Button
                 type="button"
@@ -156,9 +182,11 @@ export function LoginForm() {
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </Button>
             </div>
-            {state?.errors?.password && <p className="text-sm text-destructive pt-1">{state.errors.password[0]}</p>}
           </div>
-          <SubmitButton />
+          {loginError && <p className="text-sm text-destructive pt-1">{loginError}</p>}
+          <Button type="submit" className="w-full" disabled={isLoggingIn}>
+              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.login}
+          </Button>
         </form>
       </CardContent>
       <CardFooter className="flex justify-center">

@@ -4,9 +4,9 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
+import { onAuthStateChanged, signOut, type User as FirebaseUser, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "@/firebase/config";
+import { useFirebase } from "@/firebase/provider"; // Corrected import
 import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -43,8 +43,14 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { auth, db } = useFirebase();
 
   const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
+    if (!db) {
+        console.warn("Firestore instance not ready in fetchAndSetUserData");
+        setLoading(false);
+        return;
+    }
     setLoading(true);
     setFirebaseUser(fbUser);
     const userDocRef = doc(db, "users", fbUser.uid);
@@ -78,25 +84,27 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser(userProfile);
 
     // After setting user, fetch their data
-    const [activitiesResult, notebookResult] = await Promise.all([
-      fetchUserActivities(fbUser.uid),
-      fetchNotebookEntries(fbUser.uid)
-    ]);
+    // These functions can remain as server actions, as they don't depend on the client-side firebase instance
+    // const [activitiesResult, notebookResult] = await Promise.all([
+    //   fetchUserActivities(fbUser.uid),
+    //   fetchNotebookEntries(fbUser.uid)
+    // ]);
     
-    if (activitiesResult.success && activitiesResult.entries) {
-      overwriteEmotionalEntries(activitiesResult.entries);
-    } else {
-      clearAllEmotionalEntries();
-    }
-    if (notebookResult.success && notebookResult.entries) {
-      overwriteNotebookEntries(notebookResult.entries);
-    } else {
-      clearAllNotebookEntries();
-    }
+    // if (activitiesResult.success && activitiesResult.entries) {
+    //   overwriteEmotionalEntries(activitiesResult.entries);
+    // } else {
+    //   clearAllEmotionalEntries();
+    // }
+    // if (notebookResult.success && notebookResult.entries) {
+    //   overwriteNotebookEntries(notebookResult.entries);
+    // } else {
+    //   clearAllNotebookEntries();
+    // }
     setLoading(false);
-  }, []);
+  }, [db]);
 
   useEffect(() => {
+    if (!auth) return;
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
         await fetchAndSetUserData(fbUser);
@@ -108,16 +116,17 @@ export function UserProvider({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [fetchAndSetUserData]);
+  }, [auth, fetchAndSetUserData]);
 
   const login = useCallback((loginData: LoginContextPayload) => {
-    // This is now primarily handled by the onAuthStateChanged listener,
-    // which calls fetchAndSetUserData.
-    // The form action redirects and the listener picks up the new auth state.
-    // We don't need to manually set the user here anymore as it could cause race conditions.
+      // This function is now mainly for compatibility.
+      // The onAuthStateChanged listener handles the user loading logic.
+      // We can still set the user here to speed up UI updates.
+      setUser(loginData.user);
   }, []);
 
   const logout = useCallback(async () => {
+    if (!auth) return;
     await signOut(auth);
     setUser(null);
     setFirebaseUser(null);
@@ -132,10 +141,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
     }
     router.push('/login');
-  }, [router]);
+  }, [auth, router]);
 
   const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
-    if (!user) return;
+    if (!user || !db) return;
     
     const updatedUser = { ...user, ...updatedData };
     setUser(updatedUser);
@@ -146,7 +155,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       console.error("Error updating user profile in Firestore:", error);
       // Optionally revert state or show toast
     }
-  }, [user]);
+  }, [user, db]);
 
   return (
     <UserContext.Provider value={{ user, firebaseUser, login, logout, loading, updateUser }}>

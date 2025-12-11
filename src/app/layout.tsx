@@ -1,4 +1,3 @@
-
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
@@ -7,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
+import { FirebaseProvider } from '@/firebase/provider'; // Import FirebaseProvider
 
 const geistSans = GeistSans;
 
@@ -43,14 +43,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <UserProvider>
-            <ActivePathProvider>
-              <FeatureFlagProvider>
-                {children}
-                <Toaster />
-              </FeatureFlagProvider>
-            </ActivePathProvider>
-          </UserProvider>
+          <FirebaseProvider>
+            <UserProvider>
+              <ActivePathProvider>
+                <FeatureFlagProvider>
+                  {children}
+                  <Toaster />
+                </FeatureFlagProvider>
+              </ActivePathProvider>
+            </UserProvider>
+          </FirebaseProvider>
         </ThemeProvider>
       </body>
     </html>
