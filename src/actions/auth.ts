@@ -11,9 +11,9 @@ import {
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
-import type { EmotionalEntry } from "@/data/emotionalEntriesStore";
-import type { NotebookEntry } from "@/data/therapeuticNotebookStore";
 import { fetchUserActivities, fetchNotebookEntries } from "./user-data";
+import { forceDecryptStringAES } from "@/lib/encryption";
+
 
 export interface ActionUser {
   id: string;
@@ -98,7 +98,7 @@ export async function registerUser(
       createdAt: new Date().toISOString(),
     });
 
-    return { message: t.registrationSuccessLoginPrompt };
+    return { message: t.registrationSuccessLoginPrompt, errors: {} };
   } catch (error: any) {
     let errorMessage = "Ocurrió un error durante el registro.";
     if (error.code === "auth/email-already-in-use") {
@@ -154,17 +154,21 @@ export async function loginUser(
     
     const userProfile = userDoc.data();
 
+    // The user object sent to the client should be clean and serializable
+    const clientUser: ActionUser = {
+      id: user.uid,
+      email: user.email!,
+      name: userProfile?.name || "Usuario",
+      ageRange: userProfile?.ageRange,
+      gender: userProfile?.gender,
+      initialEmotionalState: userProfile?.initialEmotionalState,
+    };
+
     return {
       message: t.loginSuccessMessage,
-      user: {
-        id: user.uid,
-        email: user.email!,
-        name: userProfile?.name || "Usuario",
-        ageRange: userProfile?.ageRange,
-        gender: userProfile?.gender,
-        initialEmotionalState: userProfile?.initialEmotionalState,
-      },
+      user: clientUser,
     };
+
   } catch (error: any) {
     console.error("Login Error:", error);
     let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
