@@ -9,6 +9,8 @@ export default function AssessmentPage() {
   return (
     <AssessmentPageClient
       assessmentDimensions={assessmentDimensions}
+      isGuided={true}
     />
   );
 }
+
