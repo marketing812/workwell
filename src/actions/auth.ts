@@ -367,26 +367,35 @@ export async function loginUser(prevState: LoginState, formData: FormData): Prom
           let actualEmail: string | null = null;
           let actualId: string | null = null;
 
-          // Decrypt name and email
-          const decryptField = (encryptedValue: string): string | null => {
-            const decryptedPayload = decryptDataAES(encryptedValue);
-            if (decryptedPayload && typeof decryptedPayload === 'object' && 'value' in decryptedPayload && typeof (decryptedPayload as { value: unknown }).value === 'string') {
-              return (decryptedPayload as { value: string }).value;
+          // Decrypt name and email, handling the nested JSON string
+          const decryptField = (wrappedValue: string): string | null => {
+            try {
+              // First, parse the outer JSON string inside 'value'
+              const encryptedPayload = JSON.parse(wrappedValue);
+              // Now, decrypt the data inside that payload
+              const decryptedPayload = decryptDataAES(JSON.stringify(encryptedPayload));
+              
+              if (decryptedPayload && typeof decryptedPayload === 'object' && 'value' in decryptedPayload && typeof (decryptedPayload as { value: unknown }).value === 'string') {
+                return (decryptedPayload as { value: string }).value;
+              }
+              return null;
+            } catch (error) {
+                console.error("LoginUser action: Error processing or decrypting field:", error);
+                // Fallback: maybe the value was not a nested JSON? Try decrypting directly.
+                const directDecrypted = decryptDataAES(wrappedValue);
+                 if (directDecrypted && typeof directDecrypted === 'object' && 'value' in directDecrypted && typeof (directDecrypted as { value: unknown }).value === 'string') {
+                    return (directDecrypted as { value: string }).value;
+                }
+                return null;
             }
-            return null;
           };
 
           actualName = decryptField(validatedApiUserData.data.name.value);
           actualEmail = decryptField(validatedApiUserData.data.email.value);
           
           // Decrypt ID
-          actualId = forceDecryptStringAES(validatedApiUserData.data.id);
-          if (!actualId) {
-             // Fallback if ID decryption fails, unlikely but safe
-             actualId = validatedApiUserData.data.id;
-          }
-
-
+          actualId = validatedApiUserData.data.id;
+          
           if (!actualName || !actualEmail || !actualId) {
             let errorDetail = "";
             if (!actualName) errorDetail += "nombre ";
