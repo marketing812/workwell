@@ -77,7 +77,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
 
 
   useEffect(() => {
-    if (assessmentDimensions.length === 0 || hasLoadedProgress) return;
+    if (!Array.isArray(assessmentDimensions) || assessmentDimensions.length === 0 || hasLoadedProgress) return;
 
     try {
       const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
@@ -125,11 +125,12 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     }
   };
 
-  const currentDimension = assessmentDimensions[currentDimensionIndex];
-  const allItems = assessmentDimensions.flatMap(dim => dim.items);
-  const currentOverallIndex = assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension;
+  const currentDimension = Array.isArray(assessmentDimensions) ? assessmentDimensions[currentDimensionIndex] : undefined;
+  const allItems = Array.isArray(assessmentDimensions) ? assessmentDimensions.flatMap(dim => dim.items) : [];
+  const currentOverallIndex = Array.isArray(assessmentDimensions) ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
-  const progressPercentage = (currentOverallIndex / allItems.length) * 100;
+  const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
+
 
   const handleAnswerChange = (item: AssessmentItem, value: string) => {
     const newAnswers = {
@@ -337,4 +338,3 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     </>
   );
 }
-
