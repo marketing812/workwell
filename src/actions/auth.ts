@@ -10,10 +10,12 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
-import { app, db } from "@/lib/firebase"; // Usamos la configuración centralizada
+import { getFirebase } from "@/firebase/config"; // Usamos la configuración centralizada
 import { t } from "@/lib/translations";
 import type { EmotionalEntry } from "@/data/emotionalEntriesStore";
 import type { NotebookEntry } from "@/data/therapeuticNotebookStore";
+import { forceDecryptStringAES } from "@/lib/encryption";
+import { fetchUserActivities, fetchNotebookEntries } from "./user-data";
 
 export interface ActionUser {
   id: string;
@@ -82,7 +84,7 @@ export async function registerUser(
   } = validatedFields.data;
 
   try {
-    const auth = getAuth(app);
+    const { auth, db } = getFirebase();
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -122,9 +124,10 @@ export type LoginState = {
   };
   message?: string | null;
   user?: ActionUser | null;
-  // Estos ya no se devuelven desde el login, se cargarán en el cliente
   fetchedEmotionalEntries?: EmotionalEntry[] | null;
   fetchedNotebookEntries?: NotebookEntry[] | null;
+  debugLoginApiUrl?: string;
+  debugFetchNotebookUrl?: string;
 };
 
 export async function loginUser(
@@ -144,7 +147,7 @@ export async function loginUser(
   const { email, password } = validatedFields.data;
 
   try {
-    const auth = getAuth(app);
+    const { auth, db } = getFirebase();
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -153,22 +156,55 @@ export async function loginUser(
     const user = userCredential.user;
 
     const userDoc = await getDoc(doc(db, "users", user.uid));
+    
+    if (!userDoc.exists()) {
+        throw new Error("No se encontró el perfil de usuario.");
+    }
+    
     const userProfile = userDoc.data();
+    
+    const finalUserId = user.uid;
+
+    const [activitiesResult, notebookResult] = await Promise.all([
+        fetchUserActivities(finalUserId),
+        fetchNotebookEntries(finalUserId)
+    ]);
+
+    let fetchedEmotionalEntries: EmotionalEntry[] | null = null;
+    if (activitiesResult.success && activitiesResult.entries) {
+      fetchedEmotionalEntries = activitiesResult.entries;
+    }
+
+    let fetchedNotebookEntries: NotebookEntry[] | null = null;
+    if (notebookResult.success && notebookResult.entries) {
+      fetchedNotebookEntries = notebookResult.entries;
+    }
 
     return {
       message: t.loginSuccessMessage,
       user: {
-        id: user.uid,
+        id: finalUserId,
         email: user.email!,
         name: userProfile?.name || "Usuario",
         ageRange: userProfile?.ageRange,
         gender: userProfile?.gender,
         initialEmotionalState: userProfile?.initialEmotionalState,
       },
+      fetchedEmotionalEntries,
+      fetchedNotebookEntries,
+      debugFetchNotebookUrl: notebookResult.debugApiUrl,
     };
   } catch (error: any) {
+    console.error("Login Error:", error);
+    let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+        errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+    } else if (error.message === "No se encontró el perfil de usuario.") {
+        errorMessage = "El perfil de usuario no se encontró en la base de datos.";
+    }
+
     return {
-      errors: { _form: ["Credenciales inválidas. Por favor, inténtalo de nuevo."] },
+      errors: { _form: [errorMessage] },
     };
   }
 }
@@ -184,7 +220,7 @@ export type DeleteAccountState = {
 export async function deleteUserAccount(
   prevState: DeleteAccountState
 ): Promise<DeleteAccountState> {
-  const auth = getAuth(app);
+  const { auth, db } = getFirebase();
   const user = auth.currentUser;
 
   if (!user) {
@@ -223,7 +259,7 @@ export async function resetPassword(email: string): Promise<{success: boolean, m
         return { success: false, message: "El email es requerido."};
     }
     try {
-        const auth = getAuth(app);
+        const { auth } = getFirebase();
         await sendPasswordResetEmail(auth, email);
         return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña."};
     } catch(error: any) {
