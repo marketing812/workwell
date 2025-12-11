@@ -64,7 +64,7 @@ export function RegisterForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSelectChange = (name: keyof RegisterFormData) => (value: string) => {
+  const handleSelectChange = (name: keyof Omit<RegisterFormData, 'agreeTerms'>) => (value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
