@@ -15,9 +15,9 @@ export function encryptDataAES(data: object): string {
     return JSON.stringify(data);
   }
 
-  // MODIFICADO: Usamos un IV estático derivado de la clave secreta para obtener siempre el mismo cifrado.
-  // Esto es necesario si el backend compara los strings cifrados directamente.
-  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Usamos los primeros 16 bytes de la clave como IV
+  // MODIFIED: Use a static IV derived from the secret key to always get the same encrypted string for the same input.
+  // This is necessary if the backend compares encrypted strings directly.
+  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Use the first 16 bytes of the key as IV
 
   const encrypted = CryptoJS.AES.encrypt(
     JSON.stringify(data), // Data to be encrypted is still the stringified object
@@ -26,7 +26,7 @@ export function encryptDataAES(data: object): string {
   );
 
   // Return a stringified JSON object containing both IV and encrypted data (Base64 encoded)
-  // Aunque el IV es estático, lo seguimos enviando por si el backend lo necesita para desencriptar.
+  // Although the IV is static, we continue to send it in case the backend needs it for decryption.
   return JSON.stringify({
     iv: CryptoJS.enc.Base64.stringify(iv),
     data: encrypted.toString(),
@@ -52,7 +52,12 @@ export function decryptDataAES(payloadString: string): object | string | null {
   try {
     parsedPayload = JSON.parse(payloadString);
   } catch (e) {
-    console.warn("AES Decryption (Global Encryption ON): Input string is not valid JSON. Cannot decrypt.", payloadString, e);
+    // It might be a simple string that's not JSON, which is a valid case in some scenarios (e.g. forceDecryptStringAES)
+    // We'll let the next block handle it. For decryptDataAES, we typically expect a JSON object.
+    console.warn("AES Decryption (Global Encryption ON): Input string is not valid JSON. Cannot decrypt as a structured payload.", payloadString, e);
+    // If we strictly expect a JSON payload, we should return null here.
+    // However, if it could be a raw encrypted string, we'd need a different handling path.
+    // Given the logic in login, it's safer to return null if the outer structure isn't JSON.
     return null;
   }
 
@@ -72,11 +77,11 @@ export function decryptDataAES(payloadString: string): object | string | null {
         return null;
       }
       try {
+        // The decrypted content itself is expected to be a JSON string
         return JSON.parse(decryptedString);
       } catch (jsonParseError) {
-        console.error("AES Decryption (Global Encryption ON): Failed to parse decrypted string as JSON.", decryptedString, jsonParseError);
-        // If it's not JSON, it might be a simple string, return as is.
-        // Or, if expecting JSON and it's not, return null or throw error based on stricter needs.
+        // This handles cases where the decrypted content is a plain string, like with forceDecryptStringAES
+        console.warn("AES Decryption (Global Encryption ON): Decrypted content is not JSON. Returning as plain string.", decryptedString);
         return decryptedString; 
       }
     } catch (decryptionProcessError) {
@@ -101,7 +106,7 @@ export function decryptDataAES(payloadString: string): object | string | null {
  * MODIFIED to use a static IV.
  */
 export function forceEncryptStringAES(value: string): string {
-  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Usamos un IV estático
+  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Use static IV
   const encrypted = CryptoJS.AES.encrypt(
     value, // Encrypt the raw string directly
     CryptoJS.enc.Utf8.parse(SECRET_KEY),
@@ -123,11 +128,13 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
   try {
     parsedPayload = JSON.parse(encryptedStringJson);
   } catch (e) {
-    // If parsing fails, it's not a JSON object, so it can't be our encrypted structure.
-    // It might be the unencrypted ID itself, so we return it. This handles legacy cases.
+    // If parsing fails, it's not a JSON object.
+    // It might be the unencrypted ID itself from a legacy state. Return it.
+    console.warn("forceDecryptStringAES: Input is not JSON. Returning original value as fallback.", encryptedStringJson);
     return encryptedStringJson;
   }
 
+  // If it parsed as JSON, it MUST have the iv and data structure.
   if (parsedPayload && typeof parsedPayload.iv === 'string' && typeof parsedPayload.data === 'string') {
     try {
       const iv = CryptoJS.enc.Base64.parse(parsedPayload.iv);
@@ -138,7 +145,6 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
       );
       const decryptedString = decrypted.toString(CryptoJS.enc.Utf8);
       if (!decryptedString) {
-        // This can happen if the key is wrong or data corrupted
         console.error("Force Decryption: Decrypted string is empty.");
         return null;
       }
@@ -148,11 +154,9 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
       return null;
     }
   } else {
-    // If it's a JSON object but doesn't have iv/data, it might be unencrypted data.
-    // However, since this function is for STRING decryption, we'll log an error.
-    // For object decryption, decryptDataAES should be used.
-    // We return the original input as it's the most likely intended fallback.
-    console.warn("Force Decryption: Payload is not an encrypted structure. Returning original value.");
-    return encryptedStringJson;
+    // It was a JSON object but not the expected structure. Could be an unencrypted object or just wrong format.
+    // Returning the original stringified JSON is not safe as it's not the decrypted ID. Best to return null.
+    console.error("Force Decryption: Payload is JSON but does not match expected encrypted structure {iv, data}.", parsedPayload);
+    return null;
   }
 }
