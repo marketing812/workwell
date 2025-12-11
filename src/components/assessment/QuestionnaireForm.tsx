@@ -20,7 +20,6 @@ import {
   AlertDialogTitle 
 } from '@/components/ui/alert-dialog';
 import { useRouter } from 'next/navigation';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 
 // Helper para asegurar que los iconos se cargan correctamente
@@ -130,7 +129,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     : [];
   
   const currentDimension = Array.isArray(assessmentDimensions) ? assessmentDimensions[currentDimensionIndex] : undefined;
-  const currentOverallIndex = Array.isArray(assessmentDimensions) ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
+  const currentOverallIndex = Array.isArray(assessmentDimensions) && assessmentDimensions.length > 0 ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
 
