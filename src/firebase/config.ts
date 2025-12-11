@@ -4,14 +4,7 @@ import {initializeApp, getApps, getApp, type FirebaseApp} from 'firebase/app';
 import {getAuth, type Auth} from 'firebase/auth';
 import {getFirestore, type Firestore} from 'firebase/firestore';
 
-const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
-};
+const firebaseConfig = {"apiKey":"FIREBASE_API_KEY","authDomain":"FIREBASE_AUTH_DOMAIN","projectId":"FIREBASE_PROJECT_ID","storageBucket":"FIREBASE_STORAGE_BUCKET","messagingSenderId":"FIREBASE_MESSAGING_SENDER_ID","appId":"FIREBASE_APP_ID"};
 
 function initializeFirebase() {
   if (getApps().length) {

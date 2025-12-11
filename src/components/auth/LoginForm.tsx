@@ -16,8 +16,6 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useFirebase } from "@/firebase/provider";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { overwriteEmotionalEntries } from "@/data/emotionalEntriesStore";
-import { overwriteNotebookEntries } from "@/data/therapeuticNotebookStore";
 import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
@@ -41,16 +39,21 @@ export function LoginForm() {
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
   const handlePasswordReset = async () => {
+    if (!auth) {
+        toast({ title: "Error", description: "Servicio de autenticación no disponible.", variant: "destructive" });
+        return;
+    }
     if (!resetEmail) {
       toast({ title: "Email requerido", description: "Por favor, introduce tu email.", variant: "destructive" });
       return;
     }
     setIsResetting(true);
-    const result = await resetPassword(resetEmail);
-    if (result.success) {
-      toast({ title: "Correo enviado", description: result.message });
-    } else {
-      toast({ title: "Error", description: result.message, variant: "destructive" });
+    try {
+        await resetPassword(resetEmail);
+        toast({ title: "Correo enviado", description: "Se ha enviado un correo para restablecer tu contraseña." });
+    } catch(error: any) {
+        console.error("Error sending password reset email:", error);
+        toast({ title: "Error", description: "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.", variant: "destructive"});
     }
     setIsResetting(false);
   }
