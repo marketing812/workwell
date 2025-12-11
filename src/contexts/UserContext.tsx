@@ -6,12 +6,11 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from '@/firebase/config';
-import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
+import { auth, db } from "@/firebase/config";
 import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
-import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
 import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
+import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
 
 export interface User {
   id: string;
@@ -24,8 +23,6 @@ export interface User {
 
 interface LoginContextPayload {
   user: User;
-  emotionalEntries?: EmotionalEntry[] | null;
-  notebookEntries?: NotebookEntry[] | null; 
 }
 
 interface UserContextType {
@@ -45,28 +42,51 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
+    setFirebaseUser(fbUser);
+    const userDoc = await getDoc(doc(db, "users", fbUser.uid));
+    let userProfile: User;
+    if (userDoc.exists()) {
+      const data = userDoc.data();
+      userProfile = {
+        id: fbUser.uid,
+        email: fbUser.email,
+        name: data.name,
+        ageRange: data.ageRange,
+        gender: data.gender,
+        initialEmotionalState: data.initialEmotionalState,
+      };
+    } else {
+      userProfile = {
+        id: fbUser.uid,
+        email: fbUser.email,
+        name: fbUser.displayName || 'Usuario',
+      };
+    }
+    setUser(userProfile);
+
+    // After setting user, fetch their data
+    const [activitiesResult, notebookResult] = await Promise.all([
+      fetchUserActivities(fbUser.uid),
+      fetchNotebookEntries(fbUser.uid)
+    ]);
+    
+    if (activitiesResult.success && activitiesResult.entries) {
+      overwriteEmotionalEntries(activitiesResult.entries);
+    } else {
+      clearAllEmotionalEntries();
+    }
+    if (notebookResult.success && notebookResult.entries) {
+      overwriteNotebookEntries(notebookResult.entries);
+    } else {
+      clearAllNotebookEntries();
+    }
+  }, []);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
-        setFirebaseUser(fbUser);
-        const userDoc = await getDoc(doc(db, "users", fbUser.uid));
-        if (userDoc.exists()) {
-          const userProfile = userDoc.data();
-          setUser({
-            id: fbUser.uid,
-            email: fbUser.email,
-            name: userProfile.name,
-            ageRange: userProfile.ageRange,
-            gender: userProfile.gender,
-            initialEmotionalState: userProfile.initialEmotionalState,
-          });
-        } else {
-             setUser({
-                id: fbUser.uid,
-                email: fbUser.email,
-                name: fbUser.displayName || 'Usuario',
-            });
-        }
+        await fetchAndSetUserData(fbUser);
       } else {
         setUser(null);
         setFirebaseUser(null);
@@ -75,17 +95,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [fetchAndSetUserData]);
 
-  const login = useCallback((loginData: LoginContextPayload) => {
-    setUser(loginData.user);
-    if (loginData.emotionalEntries) {
-      overwriteEmotionalEntries(loginData.emotionalEntries);
+  const login = useCallback(async (loginData: LoginContextPayload) => {
+    const fbUser = auth.currentUser;
+    if (fbUser && fbUser.uid === loginData.user.id) {
+       await fetchAndSetUserData(fbUser);
     }
-    if (loginData.notebookEntries) {
-      overwriteNotebookEntries(loginData.notebookEntries);
-    }
-  }, []);
+    // The onAuthStateChanged listener handles setting user state, so this function is mainly for compatibility.
+  }, [fetchAndSetUserData]);
 
   const logout = useCallback(async () => {
     await signOut(auth);
