@@ -119,7 +119,7 @@ export const empathyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         { 
           type: 'collapsible', 
@@ -172,7 +172,7 @@ export const empathyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Te ha pasado que, cuando alguien cercano se siente mal, tú también acabas agotado o desbordada?\nEsta semana vas a aprender a cuidar sin perderte. Ser empático no significa absorberlo todo. Vamos a entrenar una forma de estar presente desde el corazón, pero también desde tus propios límites.' },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado que, cuando alguien cercano se siente mal, tú también acabas agotado o desbordada?\nEsta semana vas a aprender a cuidar sin perderte. Ser empático no significa absorberlo todo. Vamos a entrenar una forma de estar presente desde el corazón, pero también desde tus propios límites.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
             type: 'collapsible',
@@ -281,3 +281,4 @@ export const empathyPath: Path = {
 };
 
   
+
