@@ -15,8 +15,10 @@ export function encryptDataAES(data: object): string {
     return JSON.stringify(data);
   }
 
-  // Original AES encryption logic (active if ENCRYPTION_ENABLED is true)
-  const iv = CryptoJS.lib.WordArray.random(16); // 16 bytes IV
+  // MODIFICADO: Usamos un IV estático derivado de la clave secreta para obtener siempre el mismo cifrado.
+  // Esto es necesario si el backend compara los strings cifrados directamente.
+  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Usamos los primeros 16 bytes de la clave como IV
+
   const encrypted = CryptoJS.AES.encrypt(
     JSON.stringify(data), // Data to be encrypted is still the stringified object
     CryptoJS.enc.Utf8.parse(SECRET_KEY),
@@ -24,6 +26,7 @@ export function encryptDataAES(data: object): string {
   );
 
   // Return a stringified JSON object containing both IV and encrypted data (Base64 encoded)
+  // Aunque el IV es estático, lo seguimos enviando por si el backend lo necesita para desencriptar.
   return JSON.stringify({
     iv: CryptoJS.enc.Base64.stringify(iv),
     data: encrypted.toString(),
@@ -95,9 +98,10 @@ export function decryptDataAES(payloadString: string): object | string | null {
 /**
  * Forces AES encryption for a given string value, regardless of ENCRYPTION_ENABLED.
  * Returns a JSON string: '{"iv":"<base64_iv>", "data":"<base64_ciphertext>"}'.
+ * MODIFIED to use a static IV.
  */
 export function forceEncryptStringAES(value: string): string {
-  const iv = CryptoJS.lib.WordArray.random(16); // 16 bytes IV
+  const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16)); // Usamos un IV estático
   const encrypted = CryptoJS.AES.encrypt(
     value, // Encrypt the raw string directly
     CryptoJS.enc.Utf8.parse(SECRET_KEY),
@@ -147,4 +151,3 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
     return null;
   }
 }
-
