@@ -5,8 +5,8 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { app, db } from '@/lib/firebase';
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirebase } from '@/firebase/config';
 import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
 import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
 import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -46,7 +46,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const auth = getAuth(app);
+    const { auth, db } = getFirebase();
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
         setFirebaseUser(fbUser);
@@ -81,18 +81,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = useCallback((loginData: LoginContextPayload) => {
-    // This function is now mostly a placeholder, as onAuthStateChanged handles user state.
-    // However, we can use it to populate local storage stores after login.
+    setUser(loginData.user);
     if (loginData.emotionalEntries) {
       overwriteEmotionalEntries(loginData.emotionalEntries);
     }
     if (loginData.notebookEntries) {
       overwriteNotebookEntries(loginData.notebookEntries);
     }
+    // No es necesario llamar a setLoading(false) aquí porque onAuthStateChanged se encargará.
   }, []);
 
   const logout = useCallback(async () => {
-    const auth = getAuth(app);
+    const { auth } = getFirebase();
     await signOut(auth);
     setUser(null);
     setFirebaseUser(null);
@@ -113,6 +113,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
     if (!user) return;
+    const { db } = getFirebase();
     const newUser = { ...user, ...updatedData };
     setUser(newUser);
     try {

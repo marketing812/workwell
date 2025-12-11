@@ -115,7 +115,7 @@ export function LoginForm() {
               <Label htmlFor="password">{t.password}</Label>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button variant="link" className="text-sm p-0 h-auto text-primary-foreground/80 hover:text-primary-foreground">
+                  <Button type="button" variant="link" className="text-sm p-0 h-auto text-primary-foreground/80 hover:text-primary-foreground">
                     {t.forgotPassword}
                   </Button>
                 </AlertDialogTrigger>
