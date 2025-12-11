@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import type { FirebaseApp } from 'firebase/app';
 import type { Auth } from 'firebase/auth';
 import type { Firestore } from 'firebase/firestore';
-import { initializeFirebase } from '.';
+import { app, auth, db } from './config'; // Import directly from the new config
 
 // Define the shape of the context
 interface FirebaseContextType {
@@ -19,13 +19,12 @@ const FirebaseContext = createContext<FirebaseContextType | undefined>(undefined
 
 // Define the provider component
 export function FirebaseProvider({ children }: { children: ReactNode }) {
-  const { app, auth, db } = initializeFirebase();
-
+  // The instances are now directly imported, no need to call a function
   const value = useMemo(() => ({
     app,
     auth,
     db
-  }), [app, auth, db]);
+  }), []); // Empty dependency array as instances are stable
 
   return (
     <FirebaseContext.Provider value={value}>

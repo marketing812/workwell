@@ -1,18 +1,14 @@
-
 "use client";
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged, signOut, type User as FirebaseUser, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useFirebase } from "@/firebase/provider"; // Corrected import
-import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { useFirebase } from "@/firebase/provider";
+import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
-import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
-import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
-import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
 
 export interface User {
   id: string;
@@ -23,17 +19,12 @@ export interface User {
   initialEmotionalState?: number | null;
 }
 
-interface LoginContextPayload {
-  user: User;
-}
-
 interface UserContextType {
   user: User | null;
   firebaseUser: FirebaseUser | null;
-  login: (loginData: LoginContextPayload) => void;
-  logout: () => void;
   loading: boolean;
-  updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
+  updateUser: (updatedData: Partial<Omit<User, 'id' | 'email'>>) => Promise<void>;
+  logout: () => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -51,63 +42,61 @@ export function UserProvider({ children }: { children: ReactNode }) {
         setLoading(false);
         return;
     }
-    setLoading(true);
     setFirebaseUser(fbUser);
     const userDocRef = doc(db, "users", fbUser.uid);
-    const userDoc = await getDoc(userDocRef);
-    let userProfile: User;
+    
+    try {
+      const userDoc = await getDoc(userDocRef);
+      let userProfile: User;
 
-    if (userDoc.exists()) {
-      const data = userDoc.data();
-      userProfile = {
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        userProfile = {
+          id: fbUser.uid,
+          email: fbUser.email,
+          name: data.name || 'Usuario',
+          ageRange: data.ageRange,
+          gender: data.gender,
+          initialEmotionalState: data.initialEmotionalState,
+        };
+      } else {
+        console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
+        userProfile = {
+          id: fbUser.uid,
+          email: fbUser.email,
+          name: fbUser.displayName || 'Usuario',
+        };
+        await setDoc(userDocRef, {
+          name: userProfile.name,
+          email: userProfile.email,
+          createdAt: new Date().toISOString(),
+        }, { merge: true });
+      }
+      setUser(userProfile);
+    } catch (error) {
+      console.error("Error fetching user document from Firestore:", error);
+      // Handle the error appropriately, maybe sign out the user
+      // or set a minimal user profile to prevent app crash
+      setUser({
         id: fbUser.uid,
         email: fbUser.email,
-        name: data.name || 'Usuario',
-        ageRange: data.ageRange,
-        gender: data.gender,
-        initialEmotionalState: data.initialEmotionalState,
-      };
-    } else {
-      console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
-      userProfile = {
-        id: fbUser.uid,
-        email: fbUser.email,
-        name: fbUser.displayName || 'Usuario',
-      };
-       await setDoc(userDocRef, {
-        name: userProfile.name,
-        email: userProfile.email,
-        createdAt: new Date().toISOString(),
-       }, { merge: true });
+        name: 'Usuario (Error)',
+      });
+    } finally {
+        setLoading(false);
     }
-    
-    setUser(userProfile);
-
-    // After setting user, fetch their data
-    // These functions can remain as server actions, as they don't depend on the client-side firebase instance
-    // const [activitiesResult, notebookResult] = await Promise.all([
-    //   fetchUserActivities(fbUser.uid),
-    //   fetchNotebookEntries(fbUser.uid)
-    // ]);
-    
-    // if (activitiesResult.success && activitiesResult.entries) {
-    //   overwriteEmotionalEntries(activitiesResult.entries);
-    // } else {
-    //   clearAllEmotionalEntries();
-    // }
-    // if (notebookResult.success && notebookResult.entries) {
-    //   overwriteNotebookEntries(notebookResult.entries);
-    // } else {
-    //   clearAllNotebookEntries();
-    // }
-    setLoading(false);
   }, [db]);
 
   useEffect(() => {
-    if (!auth) return;
-    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+    if (!auth) {
+      console.log("Auth not ready, skipping onAuthStateChanged setup.");
+      setLoading(false); // If auth isn't available, we're not loading a user
+      return;
+    };
+
+    const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
       if (fbUser) {
-        await fetchAndSetUserData(fbUser);
+        fetchAndSetUserData(fbUser);
       } else {
         setUser(null);
         setFirebaseUser(null);
@@ -118,32 +107,24 @@ export function UserProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, [auth, fetchAndSetUserData]);
 
-  const login = useCallback((loginData: LoginContextPayload) => {
-      // This function is now mainly for compatibility.
-      // The onAuthStateChanged listener handles the user loading logic.
-      // We can still set the user here to speed up UI updates.
-      setUser(loginData.user);
-  }, []);
-
   const logout = useCallback(async () => {
     if (!auth) return;
-    await signOut(auth);
-    setUser(null);
-    setFirebaseUser(null);
-    clearAllEmotionalEntries();
-    clearAllNotebookEntries();
-    clearAssessmentHistory();
-    localStorage.removeItem('workwell-active-path-details');
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('workwell-progress-')) {
-        localStorage.removeItem(key);
-      }
+    try {
+      await signOut(auth);
+      setUser(null);
+      setFirebaseUser(null);
+      // Clear all local data on logout
+      clearAllEmotionalEntries();
+      clearAllNotebookEntries();
+      clearAssessmentHistory();
+      localStorage.removeItem('workwell-active-path-details');
+      router.push('/login');
+    } catch (error) {
+      console.error("Error signing out: ", error);
     }
-    router.push('/login');
   }, [auth, router]);
 
-  const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
+  const updateUser = useCallback(async (updatedData: Partial<Omit<User, 'id' | 'email'>>) => {
     if (!user || !db) return;
     
     const updatedUser = { ...user, ...updatedData };
@@ -157,8 +138,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [user, db]);
 
+  // login function is not strictly needed anymore as onAuthStateChanged handles it,
+  // but can be kept for compatibility or explicit triggers.
+  const login = () => {};
+
   return (
-    <UserContext.Provider value={{ user, firebaseUser, login, logout, loading, updateUser }}>
+    <UserContext.Provider value={{ user, firebaseUser, loading, updateUser, logout }}>
       {children}
     </UserContext.Provider>
   );
