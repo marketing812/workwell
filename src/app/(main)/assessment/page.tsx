@@ -1,4 +1,3 @@
-
 "use client";
 import AssessmentPageClient from '@/components/assessment/AssessmentPageClient';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
@@ -12,4 +11,3 @@ export default function AssessmentPage() {
     />
   );
 }
-
