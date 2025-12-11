@@ -125,8 +125,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     }
   };
 
+  const allItems = Array.isArray(assessmentDimensions) && assessmentDimensions.length > 0
+    ? assessmentDimensions.flatMap(dim => dim.items)
+    : [];
+  
   const currentDimension = Array.isArray(assessmentDimensions) ? assessmentDimensions[currentDimensionIndex] : undefined;
-  const allItems = Array.isArray(assessmentDimensions) ? assessmentDimensions.flatMap(dim => dim.items) : [];
   const currentOverallIndex = Array.isArray(assessmentDimensions) ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
@@ -141,6 +144,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
     
     if (isGuided) {
       setTimeout(() => {
+        if (!currentDimension) return; // Guard clause
         const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
         if (isLastItemInDimension) {
             if (!isSubmitting) { 
@@ -194,7 +198,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   };
 
   const handleNextStep = () => {
-    if (!currentItem || !answers[currentItem.id]) return; // Prevent advancing if no answer is selected
+    if (!currentItem || !answers[currentItem.id] || !currentDimension) return; // Prevent advancing if no answer is selected
     const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
     if (isLastItemInDimension) {
       if (!isSubmitting) { 
@@ -208,6 +212,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions
   };
 
   const handleSaveForLater = () => {
+    if(!currentDimension) return;
     const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
     let dimToSave = currentDimensionIndex;
     let itemToSave = currentItemIndexInDimension;
