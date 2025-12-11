@@ -141,7 +141,8 @@ export const empathyPath: Path = {
         },
         { 
             type: 'collapsible', 
-            title: '¿Por qué nos cuesta tanto escuchar así?', 
+            title: '¿Por qué nos cuesta tanto escuchar así?',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Porquenoscuestatantoescucharasi.mp3',
             content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] 
         },
         { type: 'title', text: 'Técnicas Específicas' },
