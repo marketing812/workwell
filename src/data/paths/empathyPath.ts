@@ -87,7 +87,7 @@ export const empathyPath: Path = {
           title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO',
           objective: 'Antes de tener una conversación importante, ¿te detienes a escucharte o vas directo a complacer, defenderte o evitar el malestar? Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: [
             '¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?',
@@ -119,7 +119,11 @@ export const empathyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'},
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3',
+        },
         { type: 'title', text: 'Psicoeducación' },
         { 
           type: 'collapsible', 
@@ -177,6 +181,7 @@ export const empathyPath: Path = {
         {
             type: 'collapsible',
             title: 'Fusión emocional: cuando te pierdes por cuidar',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Fusionemocionalcuandotepierdesporcuidar.mp3',
             content: [{ type: 'paragraph', text: 'La fusión emocional ocurre cuando la vivencia del otro te inunda completamente, dejas de escuchar tus propias necesidades y actúas desde la urgencia, el miedo o la culpa. Acompañas tanto que te abandonas a ti. Estás, pero sin estar contigo. Aprender a diferenciar entre empatía (conexión consciente) y fusión (confusión y sobrecarga) es clave para tu bienestar.' }]
         },
         {
@@ -282,3 +287,5 @@ export const empathyPath: Path = {
 
   
 
+
+    
