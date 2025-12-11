@@ -3,16 +3,12 @@
 
 import { z } from "zod";
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  deleteUser,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
-import { forceDecryptStringAES } from "@/lib/encryption";
-
 
 export interface ActionUser {
   id: string;
@@ -23,94 +19,10 @@ export interface ActionUser {
   initialEmotionalState?: number | null;
 }
 
-const registerSchema = z.object({
-  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
-  email: z.string().email("Correo electrónico inválido."),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres."),
-  ageRange: z.string().optional(),
-  gender: z.string().optional(),
-  initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
-  agreeTerms: z.preprocess(
-    (val) => val === "on" || val === true,
-    z.boolean().refine((val) => val === true, {
-      message: "Debes aceptar los términos y condiciones para registrarte.",
-    })
-  ),
-});
-
 const loginSchema = z.object({
   email: z.string().email("Correo electrónico inválido."),
   password: z.string().min(1, "La contraseña es requerida."),
 });
-
-export type RegisterState = {
-  errors?: {
-    name?: string[];
-    email?: string[];
-    password?: string[];
-    ageRange?: string[];
-    gender?: string[];
-    initialEmotionalState?: string[];
-    agreeTerms?: string[];
-    _form?: string[];
-  };
-  message?: string | null;
-};
-
-export async function registerUser(
-  prevState: RegisterState,
-  formData: FormData
-): Promise<RegisterState> {
-  const validatedFields = registerSchema.safeParse(
-    Object.fromEntries(formData.entries())
-  );
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  const {
-    name,
-    email,
-    password,
-    ageRange,
-    gender,
-    initialEmotionalState,
-  } = validatedFields.data;
-
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-
-    await setDoc(doc(db, "users", user.uid), {
-      name,
-      email,
-      ageRange: ageRange || null,
-      gender: gender || null,
-      initialEmotionalState: initialEmotionalState || null,
-      createdAt: new Date().toISOString(),
-    });
-
-    return { message: t.registrationSuccessLoginPrompt, errors: {} };
-  } catch (error: any) {
-    let errorMessage = "Ocurrió un error durante el registro.";
-    if (error.code === "auth/email-already-in-use") {
-      errorMessage = "Este correo electrónico ya está en uso.";
-    } else if (error.code === "auth/weak-password") {
-      errorMessage = "La contraseña es demasiado débil.";
-    }
-    return {
-      errors: { _form: [errorMessage] },
-      message: errorMessage,
-    };
-  }
-}
 
 export type LoginState = {
   errors?: {
@@ -191,29 +103,8 @@ export type DeleteAccountState = {
   success?: boolean;
 };
 
-export async function deleteUserAccount(
-  prevState: DeleteAccountState
-): Promise<DeleteAccountState> {
-  const user = auth.currentUser;
-
-  if (!user) {
-    return { errors: { _form: ["Debes estar autenticado para borrar tu cuenta."] } };
-  }
-
-  try {
-    await deleteDoc(doc(db, "users", user.uid));
-    await deleteUser(user);
-
-    return { success: true, message: "Tu cuenta ha sido eliminada permanentemente." };
-  } catch (error: any) {
-    console.error("Error deleting user account:", error);
-    let errorMessage = "Ocurrió un error al eliminar tu cuenta.";
-    if (error.code === 'auth/requires-recent-login') {
-      errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, vuelve a iniciar sesión e inténtalo de nuevo.";
-    }
-    return { errors: { _form: [errorMessage] } };
-  }
-}
+// This function has been moved to src/actions/user.ts as it's a server-only database operation.
+// export async function deleteUserAccount...
 
 export type ChangePasswordState = {
   errors?: {
