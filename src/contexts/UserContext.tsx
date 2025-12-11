@@ -4,13 +4,14 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { encryptDataAES, decryptDataAES } from '@/lib/encryption'; 
+import { getAuth, onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { app, db } from '@/lib/firebase';
 import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
-import { overwriteEmotionalEntries, clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import type { NotebookEntry } from '@/data/therapeuticNotebookStore'; // Import NotebookEntry
-import { overwriteNotebookEntries, clearAllNotebookEntries } from '@/data/therapeuticNotebookStore'; // Import notebook store functions
-import { clearAssessmentHistory } from '@/data/assessmentHistoryStore'; // Import assessment history clear
-
+import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
+import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
+import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 
 export interface User {
   id: string;
@@ -21,8 +22,6 @@ export interface User {
   initialEmotionalState?: number | null;
 }
 
-const SIMULATED_USER_KEY = 'workwell-simulated-user';
-
 interface LoginContextPayload {
   user: User;
   emotionalEntries?: EmotionalEntry[] | null;
@@ -31,6 +30,7 @@ interface LoginContextPayload {
 
 interface UserContextType {
   user: User | null;
+  firebaseUser: FirebaseUser | null;
   login: (loginData: LoginContextPayload) => void;
   logout: () => void;
   loading: boolean;
@@ -41,151 +41,90 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // Start with loading true
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    console.log("UserContext MOUNT_EFFECT: Starting initial user load from localStorage.");
-    setLoading(true);
-    try {
-      const storedEncryptedUser = localStorage.getItem(SIMULATED_USER_KEY);
-      if (storedEncryptedUser) {
-        const decryptedUser = decryptDataAES(storedEncryptedUser);
-        if (decryptedUser && typeof decryptedUser === 'object' && 'id' in decryptedUser && typeof (decryptedUser as User).id === 'string' && (decryptedUser as User).id.trim() !== '') {
-          setUser(decryptedUser as User);
-          console.log("UserContext MOUNT_EFFECT: User loaded from localStorage:", decryptedUser);
+    const auth = getAuth(app);
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser) {
+        setFirebaseUser(fbUser);
+        const userDoc = await getDoc(doc(db, "users", fbUser.uid));
+        if (userDoc.exists()) {
+          const userProfile = userDoc.data();
+          setUser({
+            id: fbUser.uid,
+            email: fbUser.email,
+            name: userProfile.name,
+            ageRange: userProfile.ageRange,
+            gender: userProfile.gender,
+            initialEmotionalState: userProfile.initialEmotionalState,
+          });
         } else {
-          setUser(null);
-          localStorage.removeItem(SIMULATED_USER_KEY);
-          console.log("UserContext MOUNT_EFFECT: Invalid user data in localStorage or decryption failed. Cleared.");
+            // Profile doesn't exist, maybe it's being created.
+            // For now, we can set a minimal user object.
+             setUser({
+                id: fbUser.uid,
+                email: fbUser.email,
+                name: fbUser.displayName || 'Usuario',
+            });
         }
       } else {
         setUser(null);
-        console.log("UserContext MOUNT_EFFECT: No user found in localStorage.");
+        setFirebaseUser(null);
       }
-    } catch (error) {
-      setUser(null);
-      console.error("UserContext MOUNT_EFFECT: Error during initial user load from localStorage:", error);
-      localStorage.removeItem(SIMULATED_USER_KEY);
-    } finally {
       setLoading(false);
-      console.log("UserContext MOUNT_EFFECT: Initial user load finished. loading set to false.");
-    }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const login = useCallback((loginData: LoginContextPayload) => {
-    console.log("UserContext LOGIN_FUNC_START: Received loginData:", JSON.stringify(loginData).substring(0,500));
-    
-    if (!loginData || !loginData.user || typeof loginData.user.id !== 'string' || loginData.user.id.trim() === '') {
-      let reason = "loginData or loginData.user is null/undefined.";
-      if (loginData && loginData.user) {
-        if (typeof loginData.user.id !== 'string') reason = "loginData.user.id is not a string.";
-        else if (loginData.user.id.trim() === '') reason = "loginData.user.id is an empty string.";
-      }
-      console.error(`UserContext LOGIN_FUNC_GUARD: Invalid user data provided. Reason: ${reason} Aborting login. Received:`, loginData);
-      setLoading(false); // Ensure loading is false if login aborts early
-      return;
+    // This function is now mostly a placeholder, as onAuthStateChanged handles user state.
+    // However, we can use it to populate local storage stores after login.
+    if (loginData.emotionalEntries) {
+      overwriteEmotionalEntries(loginData.emotionalEntries);
     }
-
-    try {
-      const encryptedUserData = encryptDataAES(loginData.user);
-      localStorage.setItem(SIMULATED_USER_KEY, encryptedUserData);
-      setUser(loginData.user);
-      console.log("UserContext LOGIN_FUNC_TRY: setUser called with:", loginData.user);
-      
-      // Handle emotional entries
-      if (loginData.emotionalEntries && Array.isArray(loginData.emotionalEntries)) {
-        overwriteEmotionalEntries(loginData.emotionalEntries);
-        console.log("UserContext LOGIN_FUNC_TRY: Emotional entries overwritten from login data. Count:", loginData.emotionalEntries.length);
-      } else {
-        clearAllEmotionalEntries(); 
-        console.log("UserContext LOGIN_FUNC_TRY: Emotional entries cleared (none provided or fetch failed).");
-      }
-
-      // Handle notebook entries
-      if (loginData.notebookEntries && Array.isArray(loginData.notebookEntries)) {
-        overwriteNotebookEntries(loginData.notebookEntries);
-        console.log("UserContext LOGIN_FUNC_TRY: Notebook entries overwritten from login data. Count:", loginData.notebookEntries.length);
-      } else {
-        clearAllNotebookEntries();
-        console.log("UserContext LOGIN_FUNC_TRY: Notebook entries cleared (none provided or fetch failed).");
-      }
-
-      setLoading(false);
-      console.log("UserContext LOGIN_FUNC_TRY: setLoading(false) called. User state should be updated.");
-    } catch (error) {
-      console.error("UserContext LOGIN_FUNC_CATCH: Error during login process (encrypting/saving user or processing entries):", error);
-      // Attempt to set user even if localStorage fails, but log the error
-      setUser(loginData.user); 
-      console.log("UserContext LOGIN_FUNC_CATCH: setUser (fallback) called with:", loginData.user);
-      if (loginData.emotionalEntries && Array.isArray(loginData.emotionalEntries)) {
-         overwriteEmotionalEntries(loginData.emotionalEntries);
-      } else {
-         clearAllEmotionalEntries();
-      }
-      if (loginData.notebookEntries && Array.isArray(loginData.notebookEntries)) {
-        overwriteNotebookEntries(loginData.notebookEntries);
-      } else {
-        clearAllNotebookEntries();
-      }
-      setLoading(false);
-      console.log("UserContext LOGIN_FUNC_CATCH: setLoading(false) (fallback) called.");
+    if (loginData.notebookEntries) {
+      overwriteNotebookEntries(loginData.notebookEntries);
     }
   }, []);
 
-  const logout = useCallback(() => {
-    console.log("UserContext LOGOUT_FUNC: Logging out user.");
+  const logout = useCallback(async () => {
+    const auth = getAuth(app);
+    await signOut(auth);
     setUser(null);
-    setLoading(false); // Important to set loading to false so pages don't hang
-    try {
-      localStorage.removeItem(SIMULATED_USER_KEY);
-      clearAllEmotionalEntries();
-      clearAllNotebookEntries();
-      clearAssessmentHistory();
-      // Clear any other session/user related data here
-      localStorage.removeItem('workwell-active-path-details');
-      // Find all keys related to path progress and remove them
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('workwell-progress-')) {
-          localStorage.removeItem(key);
-        }
+    setFirebaseUser(null);
+    // Clear all local data on logout
+    clearAllEmotionalEntries();
+    clearAllNotebookEntries();
+    clearAssessmentHistory();
+    localStorage.removeItem('workwell-active-path-details');
+    // Consider a more robust way to clear all progress
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('workwell-progress-')) {
+        localStorage.removeItem(key);
       }
-      console.log("UserContext LOGOUT_FUNC: All user-related data cleared from localStorage.");
-    } catch (error) {
-      console.error("UserContext LOGOUT_FUNC: Error removing data from localStorage:", error);
     }
     router.push('/login');
   }, [router]);
 
   const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
-    console.log("UserContext UPDATE_USER_FUNC: Attempting to update user with data:", updatedData);
-    let finalUserToStore: User | null = null;
-    setUser(prevUser => {
-      if (prevUser) {
-        const newUser = { ...prevUser, ...updatedData };
-        finalUserToStore = newUser;
-        console.log("UserContext UPDATE_USER_FUNC: New user object for state:", newUser);
-        return newUser;
-      }
-      console.warn("UserContext UPDATE_USER_FUNC: No previous user to update.");
-      return null;
-    });
-
-    if (finalUserToStore) {
-      try {
-        const encryptedUser = encryptDataAES(finalUserToStore);
-        localStorage.setItem(SIMULATED_USER_KEY, encryptedUser);
-        console.log("UserContext UPDATE_USER_FUNC: Updated user saved to localStorage.");
-      } catch (error) {
-        console.error("UserContext UPDATE_USER_FUNC: Error encrypting/saving updated user in localStorage:", error);
-      }
+    if (!user) return;
+    const newUser = { ...user, ...updatedData };
+    setUser(newUser);
+    try {
+      await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
+    } catch (error) {
+      console.error("Error updating user profile in Firestore:", error);
+      // Optionally revert state or show error
     }
-    return Promise.resolve();
-  }, []);
+  }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, login, logout, loading, updateUser }}>
+    <UserContext.Provider value={{ user, firebaseUser, login, logout, loading, updateUser }}>
       {children}
     </UserContext.Provider>
   );

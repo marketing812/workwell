@@ -25,7 +25,6 @@ const initialState: DeleteAccountState = {
   message: null,
   errors: {},
   success: false,
-  debugDeleteApiUrl: undefined,
 };
 
 export function DeleteAccountForm() {
@@ -34,71 +33,46 @@ export function DeleteAccountForm() {
   const { user, logout, loading: userLoading } = useUser();
   const router = useRouter();
 
-  const deleteUserAccountWithEmail = deleteUserAccount.bind(null, user?.email || "");
-  
-  const [state, formAction] = useActionState(deleteUserAccountWithEmail, initialState);
+  const [state, formAction] = useActionState(deleteUserAccount, initialState);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const [isSubmittingAction, setIsSubmittingAction] = useState(false);
 
   useEffect(() => {
     if (!state) return;
-    setIsSubmittingAction(false); 
+    setIsSubmittingAction(false);
 
-    console.log("DeleteAccountForm: Received state from server action:", JSON.stringify(state, null, 2));
-    
-    if (state.debugDeleteApiUrl) {
-      sessionStorage.setItem('workwell-debug-delete-url', state.debugDeleteApiUrl);
-    }
-
-    if (state.success && state.message) {
+    if (state.success) {
       toast({
         title: t.deleteAccountSuccessTitle,
-        description: state.message,
+        description: state.message ?? "Cuenta eliminada.",
       });
       setTimeout(() => {
         logout(); 
         router.push('/login'); 
-      }, 2000); 
-    } else if (state.message && !state.success) { 
-      let errorTitle = t.deleteAccountErrorTitle;
-      let errorMessage = state.message;
-      if (state.errors?._form?.length) {
-        errorMessage = state.errors._form[0];
-      } else if (state.errors?.email?.length) { 
-         errorTitle = t.errorOccurred;
-         errorMessage = state.errors.email[0];
-      }
-      
+      }, 2000);
+    } else if (state.errors?._form) {
       toast({
-        title: errorTitle,
-        description: errorMessage,
+        title: t.deleteAccountErrorTitle,
+        description: state.errors._form[0],
         variant: "destructive",
       });
-    } else if (!state.success && state.errors && Object.keys(state.errors).length > 0 && !state.errors._form?.length) {
-      if (state.errors.email?.length) {
-          toast({ title: t.errorOccurred, description: state.errors.email[0], variant: "destructive" });
-      }
     }
   }, [state, logout, router, toast, t]);
-  
+
   const handleDialogTriggerClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault(); 
-    setIsAlertDialogOpen(true); 
+    event.preventDefault();
+    setIsAlertDialogOpen(true);
   };
 
   const handleConfirmDeleteAction = async () => {
-    if (!user?.email) {
-        toast({
-            title: "Error",
-            description: "No se pudo obtener el email del usuario.",
-            variant: "destructive",
-        });
-        setIsAlertDialogOpen(false);
-        return;
+    if (!user) {
+      toast({ title: "Error", description: "No estás autenticado.", variant: "destructive" });
+      setIsAlertDialogOpen(false);
+      return;
     }
     setIsSubmittingAction(true);
     // @ts-ignore
-    await formAction(); 
+    await formAction();
   };
   
   if (userLoading) {
@@ -106,7 +80,7 @@ export function DeleteAccountForm() {
   }
 
   if (!user) {
-    router.push('/login'); 
+    router.push('/login');
     return null;
   }
   
@@ -120,7 +94,7 @@ export function DeleteAccountForm() {
             className="w-full"
           >
             <Trash2 className="mr-2 h-4 w-4" />
-            {t.deleteAccountButtonLabel} 
+            {t.deleteAccountButtonLabel}
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -145,14 +119,6 @@ export function DeleteAccountForm() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-
-      {state.errors?._form && (
-        <p className="mt-4 text-sm font-medium text-destructive p-2 bg-destructive/10 rounded-md text-center">{state.errors._form[0]}</p>
-      )}
-      
-      {state.message && !state.success && !state.errors?._form?.length && (
-         <p className="mt-4 text-sm font-medium text-destructive p-2 bg-destructive/10 rounded-md text-center">{state.message}</p>
-      )}
     </>
   );
 }

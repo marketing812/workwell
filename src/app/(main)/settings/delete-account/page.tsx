@@ -7,9 +7,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useUser } from '@/contexts/UserContext';
+import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 
 export default function DeleteAccountPage() {
   const t = useTranslations();
+  const { user, loading } = useUser();
+  const router = useRouter();
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    router.push('/login');
+    return null;
+  }
 
   return (
     <div className="container mx-auto py-8 max-w-2xl">
@@ -46,5 +64,3 @@ export default function DeleteAccountPage() {
     </div>
   );
 }
-
-    

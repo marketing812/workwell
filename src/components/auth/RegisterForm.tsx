@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { useActionState } from "react";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { registerUser, type RegisterState } from "@/actions/auth"; 
+import { registerUser, type RegisterState } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/contexts/UserContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -19,18 +19,16 @@ import { Slider } from "@/components/ui/slider";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
-
-const initialState: RegisterState = { 
+const initialState: RegisterState = {
   message: null,
   errors: {},
-  user: null,
 };
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   const t = useTranslations();
   return (
-    <Button type="submit" className="w-full" disabled={pending} variant="secondary">
+    <Button type="submit" className="w-full" disabled={pending}>
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.register}
     </Button>
   );
@@ -46,63 +44,35 @@ export function RegisterForm() {
   const [localInitialEmotionalState, setLocalInitialEmotionalState] = useState(3);
   const [localAgreeTerms, setLocalAgreeTerms] = useState(false);
 
-
   useEffect(() => {
     if (!userLoading && contextUser) {
-      console.log("RegisterForm: User detected in UserContext, redirecting to /dashboard");
       router.push("/dashboard");
     }
   }, [contextUser, userLoading, router]);
 
   useEffect(() => {
-    console.log("RegisterForm: Received state from server action:", JSON.stringify(state, null, 2));
-    if (state.debugApiUrl) {
-      console.log("RegisterForm: Saving debugApiUrl to sessionStorage:", state.debugApiUrl);
-      sessionStorage.setItem('workwell-debug-register-url', state.debugApiUrl);
-    }
-
-    if (state.message) {
-      if (state.message === t.registrationSuccessLoginPrompt && !state.user && (!state.errors || Object.keys(state.errors).length === 0)) { 
-        toast({
-          title: t.registrationSuccessTitle,
-          description: state.message,
-        });
-        console.log("RegisterForm: Server action reported successful registration. Redirecting to login.");
-        router.push('/login'); 
-      } else if (state.errors && Object.keys(state.errors).length > 0 && state.message && !state.user) {
-        if (state.errors._form || (state.message !== "Error de validación en los datos ingresados." && state.message !== "Error de validación.")) {
-          toast({
-            title: t.errorOccurred,
-            description: state.errors._form ? state.errors._form[0] : state.message, 
-            variant: "destructive",
-          });
-        }
-        console.warn("RegisterForm: Server action reported errors. Message:", state.message, "Errors:", state.errors);
-      } else if (!state.user && state.message && state.message !== t.registrationSuccessLoginPrompt && (!state.errors || Object.keys(state.errors).length === 0)) { 
-        toast({
-          title: t.errorOccurred,
-          description: state.message, 
-          variant: "destructive",
-        });
-        console.warn("RegisterForm: Server action reported general error message. Message:", state.message);
-      }
-    }
-    
-    if (state.errors && (!state.errors._form || state.errors._form.length === 0)) { 
-      console.warn("RegisterForm: Server action reported validation errors:", state.errors);
-      Object.entries(state.errors).forEach(([key, fieldErrors]) => {
-        if (key !== '_form' && Array.isArray(fieldErrors)) {
-          fieldErrors.forEach(error => {
-            if (typeof error === 'string') { 
-              toast({
-                title: `Error en ${t[key as keyof typeof t] || key}`,
-                description: error,
-                variant: "destructive",
-              });
-            }
-          });
-        }
+    if (state.message === t.registrationSuccessLoginPrompt) {
+      toast({
+        title: t.registrationSuccessTitle,
+        description: state.message,
       });
+      router.push('/login');
+    } else if (state.errors?._form) {
+      toast({
+        title: t.errorOccurred,
+        description: state.errors._form[0],
+        variant: "destructive",
+      });
+    } else if (state.errors) {
+        Object.entries(state.errors).forEach(([key, fieldErrors]) => {
+            if (Array.isArray(fieldErrors) && fieldErrors.length > 0) {
+                toast({
+                    title: `Error en ${t[key as keyof typeof t] || key}`,
+                    description: fieldErrors[0],
+                    variant: "destructive",
+                });
+            }
+        });
     }
   }, [state, toast, router, t]);
 
@@ -124,18 +94,9 @@ export function RegisterForm() {
     { value: "prefer_not_to_say", label: t.gender_prefer_not_to_say },
   ];
 
-  if (userLoading && !contextUser) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-background">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
+  if (userLoading) {
+    return <Loader2 className="h-12 w-12 animate-spin text-primary" />;
   }
-  
-  if (!userLoading && contextUser) {
-    return null; 
-  }
-
 
   return (
     <Card className="w-full shadow-xl bg-card text-card-foreground">
@@ -161,13 +122,8 @@ export function RegisterForm() {
             {state.errors?.password && <p className="text-sm text-destructive pt-1">{state.errors.password[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="token">Token de Acceso (Opcional)</Label>
-            <Input id="token" name="token" />
-            {state.errors?.token && <p className="text-sm text-destructive pt-1">{state.errors.token[0]}</p>}
-          </div>
-          <div>
             <Label htmlFor="ageRange">{t.ageRange}</Label>
-            <Select name="ageRange" >
+            <Select name="ageRange">
               <SelectTrigger id="ageRange">
                 <SelectValue placeholder={t.ageRangePlaceholder} />
               </SelectTrigger>
@@ -175,7 +131,7 @@ export function RegisterForm() {
                 {ageRanges.map(range => <SelectItem key={range.value} value={range.value}>{range.label}</SelectItem>)}
               </SelectContent>
             </Select>
-             {state.errors?.ageRange && <p className="text-sm text-destructive pt-1">{state.errors.ageRange[0]}</p>}
+            {state.errors?.ageRange && <p className="text-sm text-destructive pt-1">{state.errors.ageRange[0]}</p>}
           </div>
           <div>
             <Label htmlFor="gender">{t.gender}</Label>
@@ -210,22 +166,15 @@ export function RegisterForm() {
             />
             <Label htmlFor="agreeTerms" className="text-sm font-normal text-muted-foreground">{t.agreeToTerms}</Label>
           </div>
-           {state.errors?.agreeTerms && <p className="text-sm text-destructive pt-1">{state.errors.agreeTerms[0]}</p>}
-           
-          {state.errors?._form && (
-            <p className="text-sm font-medium text-destructive p-2 bg-destructive/10 rounded-md">{state.errors._form[0]}</p>
-          )}
-          {state.message && state.message !== t.registrationSuccessLoginPrompt && !state.errors?.name && !state.errors?.email && !state.errors?.password && !state.errors?.ageRange && !state.errors?.gender && !state.errors?.initialEmotionalState && !state.errors?.agreeTerms && !state.errors?._form && (
-            <p className="text-sm font-medium text-destructive p-2 bg-destructive/10 rounded-md">{state.message}</p>
-          )}
-
+          {state.errors?.agreeTerms && <p className="text-sm text-destructive pt-1">{state.errors.agreeTerms[0]}</p>}
+          
           <SubmitButton />
         </form>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           {t.alreadyHaveAccount}{" "}
-          <Link href="/login" className="font-medium text-secondary hover:underline">
+          <Link href="/login" className="font-medium text-primary-foreground hover:underline">
             {t.login}
           </Link>
         </p>
@@ -233,8 +182,3 @@ export function RegisterForm() {
     </Card>
   );
 }
-
-    
-
-
-    
