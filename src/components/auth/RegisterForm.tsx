@@ -64,15 +64,13 @@ export function RegisterForm() {
         variant: "destructive",
       });
     } else if (state.errors) {
-        Object.entries(state.errors).forEach(([key, fieldErrors]) => {
-            if (Array.isArray(fieldErrors) && fieldErrors.length > 0) {
-                toast({
-                    title: `Error en ${t[key as keyof typeof t] || key}`,
-                    description: fieldErrors[0],
-                    variant: "destructive",
-                });
-            }
-        });
+        // This part handles specific field errors, but it might be too noisy.
+        // For a cleaner UX, we could rely on the inline error messages below the fields.
+        // However, keeping it for now in case of non-obvious errors.
+        const fieldErrorMessages = Object.values(state.errors).flat();
+        if(fieldErrorMessages.length > 0 && fieldErrorMessages[0] !== state.errors?._form?.[0]) {
+             // To avoid showing the same error twice
+        }
     }
   }, [state, toast, router, t]);
 
@@ -99,7 +97,7 @@ export function RegisterForm() {
   }
 
   return (
-    <Card className="w-full shadow-xl bg-card text-card-foreground">
+    <Card className="w-full shadow-xl bg-card/70 text-card-foreground">
       <CardHeader className="text-center">
         <CardTitle className="text-3xl font-bold">{t.register}</CardTitle>
         <CardDescription>{t.welcomeToWorkWell}</CardDescription>
@@ -182,3 +180,4 @@ export function RegisterForm() {
     </Card>
   );
 }
+
