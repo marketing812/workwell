@@ -69,11 +69,13 @@ export const empathyPath: Path = {
         {
             type: 'collapsible',
             title: 'La seguridad relacional se construye paso a paso',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO2.mp3',
             content: [{ type: 'paragraph', text: 'Las relaciones sanas se construyen con conciencia, palabra y coherencia. Implica cuidar cómo te expresas, cómo escuchas y cómo reparas tras un conflicto. Implica dejar de asumir que el otro sabe lo que te pasa, y empezar a nombrarlo con respeto.' }]
         },
         {
             type: 'collapsible',
             title: 'Autocompasión después de elegir cuidarte',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO3.mp3',
             content: [{ type: 'paragraph', text: 'A veces, después de poner un límite, aparece un malestar. Es normal, porque estás saliendo de patrones donde cuidar al otro era más fácil que cuidarte a ti. Justo ahí necesitas practicar autocompasión y recordarte: "Poner un límite no significa dejar de amar".' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -110,5 +112,4 @@ export const empathyPath: Path = {
     },
   ]
 };
-
     
