@@ -1,48 +1,57 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFormStatus } from "react-dom";
-import { useActionState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/config";
+import { useUser } from "@/contexts/UserContext";
+import { useTranslations } from "@/lib/translations";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { useTranslations } from "@/lib/translations";
-import { registerUser, type RegisterState } from "@/actions/auth";
-import { useRouter } from "next/navigation";
-import { useUser } from "@/contexts/UserContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import { z } from "zod";
+import { saveUser } from "@/actions/user";
 
-const initialState: RegisterState = {
-  message: null,
-  errors: {},
-};
+const registerSchema = z.object({
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
+  email: z.string().email("Correo electrónico inválido."),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres."),
+  ageRange: z.string().optional(),
+  gender: z.string().optional(),
+  initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
+  agreeTerms: z.boolean().refine((val) => val === true, {
+    message: "Debes aceptar los términos y condiciones.",
+  }),
+});
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  const t = useTranslations();
-  return (
-    <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.register}
-    </Button>
-  );
-}
+type RegisterFormData = z.infer<typeof registerSchema>;
 
 export function RegisterForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const router = useRouter();
   const { user: contextUser, loading: userLoading } = useUser();
-  const [state, formAction] = useActionState(registerUser, initialState);
 
-  const [localInitialEmotionalState, setLocalInitialEmotionalState] = useState(3);
-  const [localAgreeTerms, setLocalAgreeTerms] = useState(false);
+  const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms'>>({
+    name: '',
+    email: '',
+    password: '',
+    ageRange: '',
+    gender: '',
+    initialEmotionalState: 3,
+  });
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [errors, setErrors] = useState<z.ZodError<RegisterFormData> | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!userLoading && contextUser) {
@@ -50,29 +59,84 @@ export function RegisterForm() {
     }
   }, [contextUser, userLoading, router]);
 
-  useEffect(() => {
-    if (state.message === t.registrationSuccessLoginPrompt) {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name: keyof RegisterFormData) => (value: string) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleSliderChange = (value: number[]) => {
+      setFormData(prev => ({ ...prev, initialEmotionalState: value[0] }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrors(null);
+    setServerError(null);
+    setIsSubmitting(true);
+
+    const dataToValidate = { ...formData, agreeTerms };
+    const validationResult = registerSchema.safeParse(dataToValidate);
+
+    if (!validationResult.success) {
+      setErrors(validationResult.error);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // 1. Create user with Firebase Auth (Client-side)
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        validationResult.data.email,
+        validationResult.data.password
+      );
+      const firebaseUser = userCredential.user;
+
+      // 2. Save user profile to Firestore via Server Action
+      const userProfileData = {
+        userId: firebaseUser.uid,
+        name: validationResult.data.name,
+        email: validationResult.data.email,
+        ageRange: validationResult.data.ageRange || null,
+        gender: validationResult.data.gender || null,
+        initialEmotionalState: validationResult.data.initialEmotionalState || null,
+      };
+
+      const saveResult = await saveUser(userProfileData);
+
+      if (!saveResult.success) {
+        throw new Error(saveResult.error || "No se pudo guardar el perfil de usuario.");
+      }
+
       toast({
         title: t.registrationSuccessTitle,
-        description: state.message,
+        description: t.registrationSuccessLoginPrompt,
       });
-      router.push('/login');
-    } else if (state.errors?._form) {
+      router.push("/login");
+
+    } catch (error: any) {
+      let errorMessage = "Ocurrió un error durante el registro.";
+      if (error.code === "auth/email-already-in-use") {
+        errorMessage = "Este correo electrónico ya está en uso.";
+      } else if (error.code === "auth/weak-password") {
+        errorMessage = "La contraseña es demasiado débil.";
+      }
+      setServerError(errorMessage);
       toast({
         title: t.errorOccurred,
-        description: state.errors._form[0],
+        description: errorMessage,
         variant: "destructive",
       });
-    } else if (state.errors) {
-        // This part handles specific field errors, but it might be too noisy.
-        // For a cleaner UX, we could rely on the inline error messages below the fields.
-        // However, keeping it for now in case of non-obvious errors.
-        const fieldErrorMessages = Object.values(state.errors).flat();
-        if(fieldErrorMessages.length > 0 && fieldErrorMessages[0] !== state.errors?._form?.[0]) {
-             // To avoid showing the same error twice
-        }
+    } finally {
+      setIsSubmitting(false);
     }
-  }, [state, toast, router, t]);
+  };
+
+  const fieldErrors = errors?.flatten().fieldErrors;
 
   const ageRanges = [
     { value: "under_18", label: t.age_under_18 },
@@ -91,9 +155,11 @@ export function RegisterForm() {
     { value: "other", label: t.gender_other },
     { value: "prefer_not_to_say", label: t.gender_prefer_not_to_say },
   ];
-
-  if (userLoading) {
-    return <Loader2 className="h-12 w-12 animate-spin text-primary" />;
+  
+  if (userLoading || (!userLoading && contextUser)) {
+    return <div className="flex h-screen items-center justify-center bg-transparent">
+        <Loader2 className="h-12 w-12 animate-spin text-primary-foreground" />
+    </div>;
   }
 
   return (
@@ -103,70 +169,60 @@ export function RegisterForm() {
         <CardDescription>{t.welcomeToWorkWell}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <Label htmlFor="name">{t.name}</Label>
-            <Input id="name" name="name" required />
-            {state.errors?.name && <p className="text-sm text-destructive pt-1">{state.errors.name[0]}</p>}
+            <Input id="name" name="name" required value={formData.name} onChange={handleInputChange} />
+            {fieldErrors?.name && <p className="text-sm text-destructive pt-1">{fieldErrors.name[0]}</p>}
           </div>
           <div>
             <Label htmlFor="email">{t.email}</Label>
-            <Input id="email" name="email" type="email" required />
-            {state.errors?.email && <p className="text-sm text-destructive pt-1">{state.errors.email[0]}</p>}
+            <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} />
+            {fieldErrors?.email && <p className="text-sm text-destructive pt-1">{fieldErrors.email[0]}</p>}
           </div>
           <div>
             <Label htmlFor="password">{t.password}</Label>
-            <Input id="password" name="password" type="password" required />
-            {state.errors?.password && <p className="text-sm text-destructive pt-1">{state.errors.password[0]}</p>}
+            <Input id="password" name="password" type="password" required value={formData.password} onChange={handleInputChange} />
+            {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
           </div>
           <div>
             <Label htmlFor="ageRange">{t.ageRange}</Label>
-            <Select name="ageRange">
-              <SelectTrigger id="ageRange">
-                <SelectValue placeholder={t.ageRangePlaceholder} />
-              </SelectTrigger>
-              <SelectContent>
-                {ageRanges.map(range => <SelectItem key={range.value} value={range.value}>{range.label}</SelectItem>)}
-              </SelectContent>
+            <Select name="ageRange" onValueChange={handleSelectChange('ageRange')} value={formData.ageRange}>
+              <SelectTrigger id="ageRange"><SelectValue placeholder={t.ageRangePlaceholder} /></SelectTrigger>
+              <SelectContent>{ageRanges.map(range => <SelectItem key={range.value} value={range.value}>{range.label}</SelectItem>)}</SelectContent>
             </Select>
-            {state.errors?.ageRange && <p className="text-sm text-destructive pt-1">{state.errors.ageRange[0]}</p>}
+            {fieldErrors?.ageRange && <p className="text-sm text-destructive pt-1">{fieldErrors.ageRange[0]}</p>}
           </div>
           <div>
             <Label htmlFor="gender">{t.gender}</Label>
-            <Select name="gender">
-              <SelectTrigger id="gender">
-                <SelectValue placeholder={t.genderPlaceholder} />
-              </SelectTrigger>
-              <SelectContent>
-                {genders.map(gender => <SelectItem key={gender.value} value={gender.value}>{gender.label}</SelectItem>)}
-              </SelectContent>
+            <Select name="gender" onValueChange={handleSelectChange('gender')} value={formData.gender}>
+              <SelectTrigger id="gender"><SelectValue placeholder={t.genderPlaceholder} /></SelectTrigger>
+              <SelectContent>{genders.map(g => <SelectItem key={g.value} value={g.value}>{g.label}</SelectItem>)}</SelectContent>
             </Select>
-            {state.errors?.gender && <p className="text-sm text-destructive pt-1">{state.errors.gender[0]}</p>}
+            {fieldErrors?.gender && <p className="text-sm text-destructive pt-1">{fieldErrors.gender[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="initialEmotionalStateSlider">{t.initialEmotionalState}: {localInitialEmotionalState}</Label>
-            <input type="hidden" name="initialEmotionalState" value={localInitialEmotionalState} />
+            <Label htmlFor="initialEmotionalStateSlider">{t.initialEmotionalState}: {formData.initialEmotionalState}</Label>
             <Slider
               id="initialEmotionalStateSlider"
               min={1} max={5} step={1}
-              defaultValue={[localInitialEmotionalState]}
-              onValueChange={(value) => setLocalInitialEmotionalState(value[0])}
+              defaultValue={[formData.initialEmotionalState || 3]}
+              onValueChange={handleSliderChange}
               className="mt-2"
             />
-            {state.errors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{state.errors.initialEmotionalState[0]}</p>}
+            {fieldErrors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{fieldErrors.initialEmotionalState[0]}</p>}
           </div>
           <div className="flex items-center space-x-2">
-            <Checkbox
-              id="agreeTerms"
-              name="agreeTerms"
-              checked={localAgreeTerms}
-              onCheckedChange={(checked) => setLocalAgreeTerms(checked as boolean)}
-            />
+            <Checkbox id="agreeTerms" name="agreeTerms" checked={agreeTerms} onCheckedChange={(checked) => setAgreeTerms(checked as boolean)} />
             <Label htmlFor="agreeTerms" className="text-sm font-normal text-muted-foreground">{t.agreeToTerms}</Label>
           </div>
-          {state.errors?.agreeTerms && <p className="text-sm text-destructive pt-1">{state.errors.agreeTerms[0]}</p>}
+          {fieldErrors?.agreeTerms && <p className="text-sm text-destructive pt-1">{fieldErrors.agreeTerms[0]}</p>}
           
-          <SubmitButton />
+          {serverError && <p className="text-sm font-medium text-destructive">{serverError}</p>}
+          
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.register}
+          </Button>
         </form>
       </CardContent>
       <CardFooter className="flex justify-center">
@@ -180,4 +236,3 @@ export function RegisterForm() {
     </Card>
   );
 }
-
