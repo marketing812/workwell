@@ -64,7 +64,7 @@ export const empathyPath: Path = {
       type: 'summary',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: 'Esta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.' },
+        { type: 'paragraphWithAudio', text: 'Esta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         {
             type: 'collapsible',
