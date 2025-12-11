@@ -6,9 +6,12 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useFirebase } from "@/firebase/provider";
-import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
+import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
+import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
+import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
 
 export interface User {
   id: string;
@@ -25,6 +28,7 @@ interface UserContextType {
   loading: boolean;
   updateUser: (updatedData: Partial<Omit<User, 'id' | 'email'>>) => Promise<void>;
   logout: () => void;
+  setUserAndData: (data: { user: User, emotionalEntries?: EmotionalEntry[] | null, notebookEntries?: NotebookEntry[] | null }) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -36,11 +40,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { auth, db } = useFirebase();
 
+  const setUserAndData = useCallback(({ user, emotionalEntries, notebookEntries }: { user: User, emotionalEntries?: EmotionalEntry[] | null, notebookEntries?: NotebookEntry[] | null }) => {
+    setUser(user);
+    if (emotionalEntries) {
+      overwriteEmotionalEntries(emotionalEntries);
+    }
+    if (notebookEntries) {
+      overwriteNotebookEntries(notebookEntries);
+    }
+  }, []);
+
   const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
     if (!db) {
-        console.warn("Firestore instance not ready in fetchAndSetUserData");
-        setLoading(false);
-        return;
+      console.warn("Firestore instance not ready in fetchAndSetUserData");
+      setLoading(false);
+      return;
     }
     setFirebaseUser(fbUser);
     const userDocRef = doc(db, "users", fbUser.uid);
@@ -59,6 +73,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: data.gender,
           initialEmotionalState: data.initialEmotionalState,
         };
+        
+        const [activitiesResult, notebookResult] = await Promise.all([
+          fetchUserActivities(fbUser.uid),
+          fetchNotebookEntries(fbUser.uid)
+        ]);
+
+        setUserAndData({
+          user: userProfile,
+          emotionalEntries: activitiesResult.success ? activitiesResult.entries : [],
+          notebookEntries: notebookResult.success ? notebookResult.entries : [],
+        });
+
       } else {
         console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
         userProfile = {
@@ -71,12 +97,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
           email: userProfile.email,
           createdAt: new Date().toISOString(),
         }, { merge: true });
+        setUser(userProfile);
       }
-      setUser(userProfile);
     } catch (error) {
       console.error("Error fetching user document from Firestore:", error);
-      // Handle the error appropriately, maybe sign out the user
-      // or set a minimal user profile to prevent app crash
       setUser({
         id: fbUser.uid,
         email: fbUser.email,
@@ -85,12 +109,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
     } finally {
         setLoading(false);
     }
-  }, [db]);
+  }, [db, setUserAndData]);
 
   useEffect(() => {
     if (!auth) {
-      console.log("Auth not ready, skipping onAuthStateChanged setup.");
-      setLoading(false); // If auth isn't available, we're not loading a user
+      setLoading(false); 
       return;
     };
 
@@ -113,7 +136,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
       await signOut(auth);
       setUser(null);
       setFirebaseUser(null);
-      // Clear all local data on logout
       clearAllEmotionalEntries();
       clearAllNotebookEntries();
       clearAssessmentHistory();
@@ -134,12 +156,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
       await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
     } catch (error) {
       console.error("Error updating user profile in Firestore:", error);
-      // Optionally revert state or show toast
     }
   }, [user, db]);
 
   return (
-    <UserContext.Provider value={{ user, firebaseUser, loading, updateUser, logout }}>
+    <UserContext.Provider value={{ user, firebaseUser, loading, updateUser, logout, setUserAndData }}>
       {children}
     </UserContext.Provider>
   );
