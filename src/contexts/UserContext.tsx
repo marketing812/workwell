@@ -11,6 +11,8 @@ import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emot
 import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
+import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
+import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
 
 export interface User {
   id: string;
@@ -43,6 +45,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
+    setLoading(true);
     setFirebaseUser(fbUser);
     const userDocRef = doc(db, "users", fbUser.uid);
     const userDoc = await getDoc(userDocRef);
@@ -59,8 +62,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
         initialEmotionalState: data.initialEmotionalState,
       };
     } else {
-      // This might happen if a user is created in Auth but their Firestore doc fails to be created
-      // Or for users created before Firestore profiles were implemented
       console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
       userProfile = {
         id: fbUser.uid,
@@ -92,14 +93,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
     } else {
       clearAllNotebookEntries();
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
-        setLoading(true);
         await fetchAndSetUserData(fbUser);
-        setLoading(false);
       } else {
         setUser(null);
         setFirebaseUser(null);
@@ -111,12 +111,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [fetchAndSetUserData]);
 
   const login = useCallback((loginData: LoginContextPayload) => {
-    // The onAuthStateChanged listener will handle the user state update.
-    // This function is now mostly a bridge from the form action to the context system.
-    // We can still set the user state here for a slightly faster UI update.
-    if(loginData.user) {
-      setUser(loginData.user);
-    }
+    // This is now primarily handled by the onAuthStateChanged listener,
+    // which calls fetchAndSetUserData.
+    // The form action redirects and the listener picks up the new auth state.
+    // We don't need to manually set the user here anymore as it could cause race conditions.
   }, []);
 
   const logout = useCallback(async () => {

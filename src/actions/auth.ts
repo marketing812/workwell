@@ -11,7 +11,6 @@ import {
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
-import { fetchUserActivities, fetchNotebookEntries } from "./user-data";
 import { forceDecryptStringAES } from "@/lib/encryption";
 
 
@@ -154,7 +153,6 @@ export async function loginUser(
     
     const userProfile = userDoc.data();
 
-    // The user object sent to the client should be clean and serializable
     const clientUser: ActionUser = {
       id: user.uid,
       email: user.email!,
