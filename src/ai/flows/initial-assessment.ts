@@ -13,7 +13,7 @@ import {z} from 'genkit';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 
 // INCRUSTADO: Las preguntas de la evaluación están ahora directamente aquí.
-const assessmentDimensions: AssessmentDimension[] = [
+export const assessmentDimensions: AssessmentDimension[] = [
     {
       "id": "dim1",
       "name": "Regulación Emocional y Estrés",
@@ -192,8 +192,8 @@ export type InitialAssessmentInput = z.infer<typeof InitialAssessmentInputSchema
 const InitialAssessmentOutputSchema = z.object({
   emotionalProfile: z
     .record(z.string(), z.number().min(1).max(5)) // Dimension NAME to NUMERIC score (1-5)
-    .describe('A map of emotional dimension names to their numeric assessment score (1-5, e.g., "Calma en la Tormenta": 3.5).'),
-  priorityAreas: z.array(z.string()).min(3, "Debe haber al menos 3 áreas prioritarias.").max(3, "Debe haber exactamente 3 áreas prioritarias.").describe('An array of the top 3 priority dimension names for the user (e.g., ["Calma en la Tormenta (Regulación Emocional y Estrés)", "Mente Abierta, Cambio Ágil (Flexibilidad Mental y Adaptabilidad)"]).'),
+    .describe('A map of emotional dimension names to their numeric assessment score (1-5, e.g., "Regulación Emocional y Estrés": 3.5).'),
+  priorityAreas: z.array(z.string()).min(3, "Debe haber al menos 3 áreas prioritarias.").max(3, "Debe haber exactamente 3 áreas prioritarias.").describe('An array of the top 3 priority dimension names for the user (e.g., ["Regulación Emocional y Estrés", "Flexibilidad Mental y Adaptabilidad"]).'),
   feedback: z.string().min(1, "El feedback no puede estar vacío.").describe('A summary of the assessment results in Spanish.'),
 });
 export type InitialAssessmentOutput = z.infer<typeof InitialAssessmentOutputSchema>;
