@@ -1,11 +1,8 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase/config";
 import { useUser } from "@/contexts/UserContext";
 import { useTranslations } from "@/lib/translations";
 import { useToast } from "@/hooks/use-toast";
@@ -19,6 +16,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { saveUser } from "@/actions/user";
+import { useFirebase } from "@/firebase/provider";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -39,6 +38,7 @@ export function RegisterForm() {
   const { toast } = useToast();
   const router = useRouter();
   const { user: contextUser, loading: userLoading } = useUser();
+  const { auth } = useFirebase();
 
   const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms'>>({
     name: '',
@@ -74,6 +74,11 @@ export function RegisterForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!auth) {
+        toast({ title: "Error", description: "El servicio de autenticación no está listo.", variant: "destructive"});
+        return;
+    }
+
     setErrors(null);
     setServerError(null);
     setIsSubmitting(true);
