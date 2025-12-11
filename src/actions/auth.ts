@@ -120,10 +120,6 @@ export type LoginState = {
   };
   message?: string | null;
   user?: ActionUser | null;
-  fetchedEmotionalEntries?: EmotionalEntry[] | null;
-  fetchedNotebookEntries?: NotebookEntry[] | null;
-  debugLoginApiUrl?: string;
-  debugFetchNotebookUrl?: string;
 };
 
 export async function loginUser(
@@ -157,37 +153,17 @@ export async function loginUser(
     }
     
     const userProfile = userDoc.data();
-    
-    const finalUserId = user.uid;
-
-    const [activitiesResult, notebookResult] = await Promise.all([
-        fetchUserActivities(finalUserId),
-        fetchNotebookEntries(finalUserId)
-    ]);
-
-    let fetchedEmotionalEntries: EmotionalEntry[] | null = null;
-    if (activitiesResult.success && activitiesResult.entries) {
-      fetchedEmotionalEntries = activitiesResult.entries;
-    }
-
-    let fetchedNotebookEntries: NotebookEntry[] | null = null;
-    if (notebookResult.success && notebookResult.entries) {
-      fetchedNotebookEntries = notebookResult.entries;
-    }
 
     return {
       message: t.loginSuccessMessage,
       user: {
-        id: finalUserId,
+        id: user.uid,
         email: user.email!,
         name: userProfile?.name || "Usuario",
         ageRange: userProfile?.ageRange,
         gender: userProfile?.gender,
         initialEmotionalState: userProfile?.initialEmotionalState,
       },
-      fetchedEmotionalEntries,
-      fetchedNotebookEntries,
-      debugFetchNotebookUrl: notebookResult.debugApiUrl,
     };
   } catch (error: any) {
     console.error("Login Error:", error);
