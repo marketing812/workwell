@@ -123,8 +123,9 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
   try {
     parsedPayload = JSON.parse(encryptedStringJson);
   } catch (e) {
-    console.error("Force Decryption: Input string is not valid JSON.", encryptedStringJson, e);
-    return null;
+    // If parsing fails, it's not a JSON object, so it can't be our encrypted structure.
+    // It might be the unencrypted ID itself, so we return it. This handles legacy cases.
+    return encryptedStringJson;
   }
 
   if (parsedPayload && typeof parsedPayload.iv === 'string' && typeof parsedPayload.data === 'string') {
@@ -147,7 +148,11 @@ export function forceDecryptStringAES(encryptedStringJson: string): string | nul
       return null;
     }
   } else {
-    console.error("Force Decryption: Payload does not match expected encrypted structure {iv, data}.");
-    return null;
+    // If it's a JSON object but doesn't have iv/data, it might be unencrypted data.
+    // However, since this function is for STRING decryption, we'll log an error.
+    // For object decryption, decryptDataAES should be used.
+    // We return the original input as it's the most likely intended fallback.
+    console.warn("Force Decryption: Payload is not an encrypted structure. Returning original value.");
+    return encryptedStringJson;
   }
 }
