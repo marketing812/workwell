@@ -85,8 +85,8 @@ const API_KEY = "4463";
 const EmotionalEntrySchema = z.object({
   id: z.string(),
   situation: z.string(),
-  emotion: z.string(),
   thought: z.string(),
+  emotion: z.string(),
   timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Timestamp must be a valid ISO date string",
   }),
@@ -367,24 +367,23 @@ export async function loginUser(prevState: LoginState, formData: FormData): Prom
           let actualEmail: string | null = null;
           let actualId: string | null = null;
 
-          const rawNameFromApi = validatedApiUserData.data.name.value;
-          const decryptedNamePayload = decryptDataAES(rawNameFromApi);
-          if (decryptedNamePayload && typeof decryptedNamePayload === 'object' && 'value' in decryptedNamePayload && typeof (decryptedNamePayload as { value: unknown }).value === 'string') {
-            actualName = (decryptedNamePayload as { value: string }).value;
-          }
+          // Decrypt name and email
+          const decryptField = (encryptedValue: string): string | null => {
+            const decryptedPayload = decryptDataAES(encryptedValue);
+            if (decryptedPayload && typeof decryptedPayload === 'object' && 'value' in decryptedPayload && typeof (decryptedPayload as { value: unknown }).value === 'string') {
+              return (decryptedPayload as { value: string }).value;
+            }
+            return null;
+          };
 
-          const rawEmailFromApi = validatedApiUserData.data.email.value;
-          const decryptedEmailPayload = decryptDataAES(rawEmailFromApi);
-          if (decryptedEmailPayload && typeof decryptedEmailPayload === 'object' && 'value' in decryptedEmailPayload && typeof (decryptedEmailPayload as { value: unknown }).value === 'string') {
-            actualEmail = (decryptedEmailPayload as { value: string }).value;
-          }
+          actualName = decryptField(validatedApiUserData.data.name.value);
+          actualEmail = decryptField(validatedApiUserData.data.email.value);
           
-          const rawIdFromApi = validatedApiUserData.data.id;
-          const decryptedId = forceDecryptStringAES(rawIdFromApi); // ID is directly encrypted string
-          if (decryptedId) {
-            actualId = decryptedId;
-          } else {
-            actualId = rawIdFromApi; // Fallback if decryption fails, though unlikely if encryption was successful
+          // Decrypt ID
+          actualId = forceDecryptStringAES(validatedApiUserData.data.id);
+          if (!actualId) {
+             // Fallback if ID decryption fails, unlikely but safe
+             actualId = validatedApiUserData.data.id;
           }
 
 
