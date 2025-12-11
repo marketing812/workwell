@@ -44,25 +44,36 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
     setFirebaseUser(fbUser);
-    const userDoc = await getDoc(doc(db, "users", fbUser.uid));
+    const userDocRef = doc(db, "users", fbUser.uid);
+    const userDoc = await getDoc(userDocRef);
     let userProfile: User;
+
     if (userDoc.exists()) {
       const data = userDoc.data();
       userProfile = {
         id: fbUser.uid,
         email: fbUser.email,
-        name: data.name,
+        name: data.name || 'Usuario',
         ageRange: data.ageRange,
         gender: data.gender,
         initialEmotionalState: data.initialEmotionalState,
       };
     } else {
+      // This might happen if a user is created in Auth but their Firestore doc fails to be created
+      // Or for users created before Firestore profiles were implemented
+      console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
       userProfile = {
         id: fbUser.uid,
         email: fbUser.email,
         name: fbUser.displayName || 'Usuario',
       };
+       await setDoc(userDocRef, {
+        name: userProfile.name,
+        email: userProfile.email,
+        createdAt: new Date().toISOString(),
+       }, { merge: true });
     }
+    
     setUser(userProfile);
 
     // After setting user, fetch their data
@@ -86,24 +97,27 @@ export function UserProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
+        setLoading(true);
         await fetchAndSetUserData(fbUser);
+        setLoading(false);
       } else {
         setUser(null);
         setFirebaseUser(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
   }, [fetchAndSetUserData]);
 
-  const login = useCallback(async (loginData: LoginContextPayload) => {
-    const fbUser = auth.currentUser;
-    if (fbUser && fbUser.uid === loginData.user.id) {
-       await fetchAndSetUserData(fbUser);
+  const login = useCallback((loginData: LoginContextPayload) => {
+    // The onAuthStateChanged listener will handle the user state update.
+    // This function is now mostly a bridge from the form action to the context system.
+    // We can still set the user state here for a slightly faster UI update.
+    if(loginData.user) {
+      setUser(loginData.user);
     }
-    // The onAuthStateChanged listener handles setting user state, so this function is mainly for compatibility.
-  }, [fetchAndSetUserData]);
+  }, []);
 
   const logout = useCallback(async () => {
     await signOut(auth);
@@ -124,12 +138,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
     if (!user) return;
-    const newUser = { ...user, ...updatedData };
-    setUser(newUser);
+    
+    const updatedUser = { ...user, ...updatedData };
+    setUser(updatedUser);
+    
     try {
       await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
     } catch (error) {
       console.error("Error updating user profile in Firestore:", error);
+      // Optionally revert state or show toast
     }
   }, [user]);
 
