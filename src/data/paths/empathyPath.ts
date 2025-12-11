@@ -119,23 +119,23 @@ export const empathyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'},
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { 
           type: 'collapsible', 
-          title: '¿Escuchas para responder o para comprender?', 
+          title: '¿Escuchas para responder o para comprender?',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Escuchaspararesponderoparacomprender.mp3',
           content: [{ type: 'paragraph', text: 'A menudo, oímos sin escuchar profundamente. Escuchamos para corregir, para dar consejos, para aliviar el malestar… pero muy pocas veces escuchamos para comprender de verdad. La escucha empática es una presencia distinta: no exige, no interrumpe, no intenta arreglar. Solo está.' }] 
         },
         { 
             type: 'collapsible', 
-            title: '¿Qué bloquea nuestra escucha empática?', 
+            title: '¿Qué bloquea nuestra escucha empática?',
             audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3',
             content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.'}] 
         },
         { 
             type: 'collapsible', 
-            title: 'Validar no es justificar. Es comprender.', 
+            title: 'Validar no es justificar. Es comprender.',
             audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3',
             content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] 
         },
@@ -146,7 +146,13 @@ export const empathyPath: Path = {
             content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] 
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'empathicMirrorExercise', title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO', objective: 'Este ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', duration: '10-12 min' },
+        { 
+            type: 'empathicMirrorExercise', 
+            title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO', 
+            objective: 'Este ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', 
+            duration: '10-12 min',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica1.mp3'
+        },
         { type: 'validationIn3StepsExercise', title: 'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', objective: 'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', duration: '10 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/REFLEXION.mp3', prompts: ['¿Cuándo fue la última vez que alguien me escuchó de verdad, sin juicio ni prisa?','¿Qué hizo esa persona para que yo me sintiera tan visto/a y comprendido/a?','¿Qué impacto emocional tiene en mis vínculos cuando interrumpo, comparo o minimizo lo que el otro siente?','¿Qué me gustaría empezar a ofrecer más en mis relaciones: más silencio, más validación, más presencia...?','¿Qué me llevo esta semana como recordatorio para ser mejor compañía, para los demás y para mí?'] },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/RESUMEN.mp3'},
@@ -272,3 +278,6 @@ export const empathyPath: Path = {
 
     
 
+
+
+    
