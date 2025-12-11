@@ -51,7 +51,7 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: Em
     notebookContent += `\n**Reflexión guiada:**\n`;
     notebookContent += `- ¿Te ha sorprendido el color?: ${reflection.q1 || 'No respondido.'}\n`;
     notebookContent += `- ¿Notas patrones?: ${reflection.q2 || 'No respondido.'}\n`;
-    notebookContent += `- ¿Qué relación necesitas revisar?: ${reflection.q3 || 'No respondido.'}\n`;
+    notebookContent += `- ¿Qué relación sientes que necesitas revisar?: ${reflection.q3 || 'No respondido.'}\n`;
     notebookContent += `- ¿Qué vínculo te gustaría cuidar más?: ${reflection.q4 || 'No respondido.'}\n`;
 
     addNotebookEntry({ title: `Semáforo de Implicación Emocional`, content: notebookContent, pathId: pathId });
@@ -141,6 +141,14 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: Em
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+            <div className="mt-2">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}
