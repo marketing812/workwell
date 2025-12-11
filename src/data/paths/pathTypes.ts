@@ -1,4 +1,5 @@
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -264,6 +265,7 @@ export type EmpathicMirrorExerciseContent = {
     title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ValidationIn3StepsExerciseContent = {
@@ -798,15 +800,7 @@ export type ModuleContent =
   | ControlTrafficLightExerciseContent
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
-  | RitualDeEntregaConscienteContent
   | DelSabotajeALaAccionExerciseContent
-  | TwoMinuteRuleExerciseContent
-  | MicroPlanExerciseContent
-  | FutureSelfVisualizationExerciseContent
-  | RealisticRitualExerciseContent
-  | GentleTrackingExerciseContent
-  | BlockageMapExerciseContent
-  | CompassionateReflectionExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
   | AssertivePhraseExerciseContent
@@ -926,3 +920,6 @@ export interface AssessmentItem {
   weight: number; // The weight of the item for calculating scores
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
+
+
+    
