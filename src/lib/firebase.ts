@@ -3,24 +3,15 @@ import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
 import { getFirestore, type Firestore } from "firebase/firestore";
 
-// Define the NAMES of the environment variables your app expects
-const ENV_VAR_NAMES = {
-  apiKey: "NEXT_PUBLIC_FIREBASE_API_KEY",
-  authDomain: "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
-  projectId: "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
-  storageBucket: "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
-  messagingSenderId: "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
-  appId: "NEXT_PUBLIC_FIREBASE_APP_ID"
-};
-
-// Construct Firebase configuration using these environment variables
+// Your web app's Firebase configuration
+// These should be coming from your environment variables
 const firebaseConfig = {
-  apiKey: process.env[ENV_VAR_NAMES.apiKey],
-  authDomain: process.env[ENV_VAR_NAMES.authDomain],
-  projectId: process.env[ENV_VAR_NAMES.projectId],
-  storageBucket: process.env[ENV_VAR_NAMES.storageBucket],
-  messagingSenderId: process.env[ENV_VAR_NAMES.messagingSenderId],
-  appId: process.env[ENV_VAR_NAMES.appId],
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -30,12 +21,28 @@ let db: Firestore;
 
 // This check prevents re-initializing the app on every hot-reload
 if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
+  // Check if all required config values are present
+  if (
+    firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.storageBucket &&
+    firebaseConfig.messagingSenderId &&
+    firebaseConfig.appId
+  ) {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+  } else {
+    console.error("Firebase config is missing or incomplete. Please check your .env.local file and restart the development server.");
+    // We can't initialize Firebase, so we'll throw an error or handle it gracefully.
+    // For now, the app will likely fail elsewhere, but this log provides a clear reason.
+  }
 } else {
   app = getApps()[0]!;
+  auth = getAuth(app);
+  db = getFirestore(app);
 }
 
-auth = getAuth(app);
-db = getFirestore(app);
-
+// @ts-ignore
 export { app, auth, db };
