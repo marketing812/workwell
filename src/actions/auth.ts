@@ -13,7 +13,6 @@ import { auth, db } from "@/firebase/config";
 import { t } from "@/lib/translations";
 import type { EmotionalEntry } from "@/data/emotionalEntriesStore";
 import type { NotebookEntry } from "@/data/therapeuticNotebookStore";
-import { forceDecryptStringAES } from "@/lib/encryption";
 import { fetchUserActivities, fetchNotebookEntries } from "./user-data";
 
 export interface ActionUser {
