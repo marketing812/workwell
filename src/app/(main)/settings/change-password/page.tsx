@@ -19,7 +19,7 @@ export default function ChangePasswordPage() {
             {t.changePasswordTitle}
           </CardTitle>
           <CardDescription className="text-sm md:text-base mt-1">
-            Introduce tu nueva contraseña dos veces para confirmarla.
+            Enviaremos un enlace a tu correo electrónico para que puedas restablecer tu contraseña de forma segura.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8">
