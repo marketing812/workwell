@@ -92,7 +92,7 @@ export const empathyPath: Path = {
             '¿Qué pequeño paso puedes dar esta semana para cuidar tu llama sin apagarla por estar al lado de otra persona?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: [
             'La fusión emocional no es empatía: es perderte mientras intentas cuidar.',
             'La empatía real es estar presente sin desaparecer, comprender sin absorber.',
@@ -162,5 +162,4 @@ export const empathyPath: Path = {
   ]
 };
 
-    
     
