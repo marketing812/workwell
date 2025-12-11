@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useActionState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -16,13 +16,16 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useFirebase } from "@/firebase/provider";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import { overwriteEmotionalEntries } from "@/data/emotionalEntriesStore";
+import { overwriteNotebookEntries } from "@/data/therapeuticNotebookStore";
+import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { user: contextUser, loading: userLoading, login: loginContext } = useUser();
+  const { user: contextUser, loading: userLoading, setUserAndData } = useUser();
   const { auth, db } = useFirebase();
   const router = useRouter();
   
@@ -63,25 +66,33 @@ export function LoginForm() {
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+        const fbUser = userCredential.user;
 
-        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userDoc = await getDoc(doc(db, "users", fbUser.uid));
     
         if (!userDoc.exists()) {
             throw new Error("No se encontró el perfil de usuario.");
         }
         
         const userProfileData = userDoc.data();
+        const user = {
+            id: fbUser.uid,
+            email: fbUser.email!,
+            name: userProfileData?.name || "Usuario",
+            ageRange: userProfileData?.ageRange,
+            gender: userProfileData?.gender,
+            initialEmotionalState: userProfileData?.initialEmotionalState,
+        };
 
-        loginContext({
-            user: {
-                id: user.uid,
-                email: user.email!,
-                name: userProfileData?.name || "Usuario",
-                ageRange: userProfileData?.ageRange,
-                gender: userProfileData?.gender,
-                initialEmotionalState: userProfileData?.initialEmotionalState,
-            }
+        const [activitiesResult, notebookResult] = await Promise.all([
+          fetchUserActivities(fbUser.uid),
+          fetchNotebookEntries(fbUser.uid),
+        ]);
+
+        setUserAndData({
+          user,
+          emotionalEntries: activitiesResult.success ? activitiesResult.entries : [],
+          notebookEntries: notebookResult.success ? notebookResult.entries : [],
         });
         
         toast({

@@ -138,10 +138,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [user, db]);
 
-  // login function is not strictly needed anymore as onAuthStateChanged handles it,
-  // but can be kept for compatibility or explicit triggers.
-  const login = () => {};
-
   return (
     <UserContext.Provider value={{ user, firebaseUser, loading, updateUser, logout }}>
       {children}
