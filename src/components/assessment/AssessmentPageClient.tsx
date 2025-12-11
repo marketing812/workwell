@@ -40,7 +40,7 @@ interface AssessmentPageClientProps {
   isGuided?: boolean;
 }
 
-export default function AssessmentPageClient({ assessmentDimensions, isGuided = true }: AssessmentPageClientProps) {
+export default function AssessmentPageClient({ assessmentDimensions, isGuided = false }: AssessmentPageClientProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -50,12 +50,12 @@ export default function AssessmentPageClient({ assessmentDimensions, isGuided = 
   const [generatedSaveUrl, setGeneratedSaveUrl] = useState<string | null>(null);
   const [isProcessingModalVisible, setIsProcessingModalVisible] = useState(false);
 
-  // Si no hay dimensiones, muestra un estado de carga para evitar errores.
+  // Si no hay dimensiones, muestra un estado de error para evitar fallos.
   if (!assessmentDimensions || assessmentDimensions.length === 0) {
     return (
       <div className="flex h-64 items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="ml-4 text-muted-foreground">Cargando cuestionario...</p>
+        <p className="ml-4 text-muted-foreground">Error: No se encontraron las dimensiones de la evaluación.</p>
       </div>
     );
   }
