@@ -110,7 +110,7 @@ export const empathyPath: Path = {
             'La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera.',
           ]
         },
-        { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' },
+        { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }
       ]
     },
     {
@@ -148,11 +148,8 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'empathicMirrorExercise', title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO', objective: 'Este ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', duration: '10-12 min' },
         { type: 'validationIn3StepsExercise', title: 'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', objective: 'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Cuándo fue la última vez que alguien me escuchó de verdad, sin juicio ni prisa?','¿Qué hizo esa persona para que yo me sintiera tan visto/a y comprendido/a?','¿Qué impacto emocional tiene en mis vínculos cuando interrumpo, comparo o minimizo lo que el otro siente?','¿Qué me gustaría empezar a ofrecer más en mis relaciones: más silencio, más validación, más presencia...?','¿Qué me llevo esta semana como recordatorio para ser mejor compañía, para los demás y para mí?'] },
-        { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: ['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] },
-        { type: 'quote', text: 'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }
-      ]
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/REFLEXION.mp3', prompts: ['¿Cuándo fue la última vez que alguien me escuchó de verdad, sin juicio ni prisa?','¿Qué hizo esa persona para que yo me sintiera tan visto/a y comprendido/a?','¿Qué impacto emocional tiene en mis vínculos cuando interrumpo, comparo o minimizo lo que el otro siente?','¿Qué me gustaría empezar a ofrecer más en mis relaciones: más silencio, más validación, más presencia...?','¿Qué me llevo esta semana como recordatorio para ser mejor compañía, para los demás y para mí?'] },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/Audio10Ruta4Sesion2.mp3' },{ type: 'list', items: ['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] },{ type: 'quote', text: 'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }]
     },
     {
       id: 'empatia_sem3',
