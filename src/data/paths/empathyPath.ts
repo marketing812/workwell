@@ -28,41 +28,31 @@ export const empathyPath: Path = {
           type: 'collapsible',
           title: '¿Qué es realmente la empatía?',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3',
-          content: [
-            { type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }
-          ]
+          content: [{ type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }]
         },
         {
           type: 'collapsible',
           title: 'Lo que la empatía NO es',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3',
-          content: [
-            { type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:\n• “Bueno, no es para tanto…”\n• “Tienes que ser más fuerte.”\n• “Eso no debería afectarte así.”\nEstas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }
-          ]
+          content: [{ type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:\n• “Bueno, no es para tanto…”\n• “Tienes que ser más fuerte.”\n• “Eso no debería afectarte así.”\nEstas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }]
         },
         {
           type: 'collapsible',
           title: 'Empatía y autenticidad van juntas',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3',
-          content: [
-            { type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:\n• La empatía crea el espacio seguro.\n• La autenticidad lo habita.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:\n• La empatía crea el espacio seguro.\n• La autenticidad lo habita.' }]
         },
         {
           type: 'collapsible',
           title: 'La honestidad emocional se entrena',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Lahonestidademocionalseentrena.mp3',
-          content: [
-            { type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\nEs aprender a expresar lo esencial con respeto y claridad.\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\nEs aprender a expresar lo esencial con respeto y claridad.\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }]
         },
         {
           type: 'collapsible',
           title: '¿Te reconoces tras una máscara?',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3',
-          content: [
-            { type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:\n• Más alegres de lo que estamos.\n• Más fuertes, comprensivos, funcionales...\n• O directamente nos callamos.\nEstas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }
-          ]
+          content: [{ type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:\n• Más alegres de lo que estamos.\n• Más fuertes, comprensivos, funcionales...\n• O directamente nos callamos.\nEstas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }]
         },
         {
           type: 'collapsible',
@@ -143,8 +133,17 @@ export const empathyPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3',
             content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.'}] 
         },
-        { type: 'collapsible', title: 'Validar no es justificar. Es comprender.', content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] },
-        { type: 'collapsible', title: '¿Por qué nos cuesta tanto escuchar así?', content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] },
+        { 
+            type: 'collapsible', 
+            title: 'Validar no es justificar. Es comprender.', 
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3',
+            content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] 
+        },
+        { 
+            type: 'collapsible', 
+            title: '¿Por qué nos cuesta tanto escuchar así?', 
+            content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] 
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'empathicMirrorExercise', title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO', objective: 'Este ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', duration: '10-12 min' },
         { type: 'validationIn3StepsExercise', title: 'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', objective: 'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', duration: '10 min' },
@@ -269,3 +268,5 @@ export const empathyPath: Path = {
 };
 
   
+
+    
