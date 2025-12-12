@@ -7,12 +7,9 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useFirebase } from "@/firebase/provider";
-import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
-import { clearAssessmentHistory, overwriteAssessmentHistory } from '@/data/assessmentHistoryStore';
-import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
-import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
-import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
+import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 
 export interface User {
   id: string;
