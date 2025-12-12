@@ -144,24 +144,6 @@ export function RegisterForm() {
   };
 
   const fieldErrors = errors?.flatten().fieldErrors;
-
-  const ageRanges = [
-    { value: "under_18", label: t.age_under_18 },
-    { value: "18_24", label: t.age_18_24 },
-    { value: "25_34", label: t.age_25_34 },
-    { value: "35_44", label: t.age_35_44 },
-    { value: "45_54", label: t.age_45_54 },
-    { value: "55_64", label: t.age_55_64 },
-    { value: "65_plus", label: t.age_65_plus },
-  ];
-
-  const genders = [
-    { value: "male", label: t.gender_male },
-    { value: "female", label: t.gender_female },
-    { value: "non_binary", label: t.gender_non_binary },
-    { value: "other", label: t.gender_other },
-    { value: "prefer_not_to_say", label: t.gender_prefer_not_to_say },
-  ];
   
   if (userLoading || (!userLoading && contextUser)) {
     return <div className="flex h-screen items-center justify-center bg-transparent">
@@ -191,33 +173,6 @@ export function RegisterForm() {
             <Label htmlFor="password">{t.password}</Label>
             <Input id="password" name="password" type="password" required value={formData.password} onChange={handleInputChange} />
             {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
-          </div>
-          <div>
-            <Label htmlFor="ageRange">{t.ageRange}</Label>
-            <Select name="ageRange" onValueChange={handleSelectChange('ageRange')} value={formData.ageRange}>
-              <SelectTrigger id="ageRange"><SelectValue placeholder={t.ageRangePlaceholder} /></SelectTrigger>
-              <SelectContent>{ageRanges.map(range => <SelectItem key={range.value} value={range.value}>{range.label}</SelectItem>)}</SelectContent>
-            </Select>
-            {fieldErrors?.ageRange && <p className="text-sm text-destructive pt-1">{fieldErrors.ageRange[0]}</p>}
-          </div>
-          <div>
-            <Label htmlFor="gender">{t.gender}</Label>
-            <Select name="gender" onValueChange={handleSelectChange('gender')} value={formData.gender}>
-              <SelectTrigger id="gender"><SelectValue placeholder={t.genderPlaceholder} /></SelectTrigger>
-              <SelectContent>{genders.map(g => <SelectItem key={g.value} value={g.value}>{g.label}</SelectItem>)}</SelectContent>
-            </Select>
-            {fieldErrors?.gender && <p className="text-sm text-destructive pt-1">{fieldErrors.gender[0]}</p>}
-          </div>
-          <div>
-            <Label htmlFor="initialEmotionalStateSlider">{t.initialEmotionalState}: {formData.initialEmotionalState}</Label>
-            <Slider
-              id="initialEmotionalStateSlider"
-              min={1} max={5} step={1}
-              defaultValue={[formData.initialEmotionalState || 3]}
-              onValueChange={handleSliderChange}
-              className="mt-2"
-            />
-            {fieldErrors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{fieldErrors.initialEmotionalState[0]}</p>}
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="agreeTerms" name="agreeTerms" checked={agreeTerms} onCheckedChange={(checked) => setAgreeTerms(checked as boolean)} />
