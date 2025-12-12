@@ -49,82 +49,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (notebookEntries) {
       overwriteNotebookEntries(notebookEntries);
     }
+    setLoading(false);
   }, []);
-
-  const fetchAndSetUserData = useCallback(async (fbUser: FirebaseUser) => {
-    if (!db) {
-      console.warn("Firestore instance not ready in fetchAndSetUserData");
-      setLoading(false);
-      return;
-    }
-    setFirebaseUser(fbUser);
-    const userDocRef = doc(db, "users", fbUser.uid);
-    
-    try {
-      const userDoc = await getDoc(userDocRef);
-      let userProfile: User;
-
-      if (userDoc.exists()) {
-        const data = userDoc.data();
-        userProfile = {
-          id: fbUser.uid,
-          email: fbUser.email,
-          name: data.name || 'Usuario',
-          ageRange: data.ageRange,
-          gender: data.gender,
-          initialEmotionalState: data.initialEmotionalState,
-        };
-        
-        const [activitiesResult, notebookResult] = await Promise.all([
-          fetchUserActivities(fbUser.uid),
-          fetchNotebookEntries(fbUser.uid)
-        ]);
-
-        setUserAndData({
-          user: userProfile,
-          emotionalEntries: activitiesResult.success ? activitiesResult.entries : [],
-          notebookEntries: notebookResult.success ? notebookResult.entries : [],
-        });
-
-      } else {
-        console.warn(`No Firestore document found for user ${fbUser.uid}. Creating a basic profile.`);
-        userProfile = {
-          id: fbUser.uid,
-          email: fbUser.email,
-          name: fbUser.displayName || 'Usuario',
-        };
-        await setDoc(userDocRef, {
-          name: userProfile.name,
-          email: userProfile.email,
-          createdAt: new Date().toISOString(),
-        }, { merge: true });
-        setUser(userProfile);
-      }
-    } catch (error) {
-      console.error("Error fetching user document from Firestore:", error);
-      setUser({
-        id: fbUser.uid,
-        email: fbUser.email,
-        name: 'Usuario (Error)',
-      });
-    } finally {
-        setLoading(false);
-    }
-  }, [db, setUserAndData]);
 
   useEffect(() => {
     if (!auth) {
-      console.log("UserContext useEffect: Auth service not available yet.");
       setLoading(false); 
       return;
     };
 
-    console.log("UserContext useEffect: Setting up onAuthStateChanged listener.");
     const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
-      console.log("UserContext onAuthStateChanged: Auth state changed. User:", fbUser ? fbUser.uid : 'null');
       if (fbUser) {
-        setLoading(true);
-        fetchAndSetUserData(fbUser);
+        // We don't fetch data here anymore. The LoginForm does it upon successful login.
+        // We just keep the firebaseUser state in sync.
+        setFirebaseUser(fbUser);
       } else {
         setUser(null);
         setFirebaseUser(null);
@@ -132,11 +70,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    return () => {
-      console.log("UserContext useEffect: Cleaning up onAuthStateChanged listener.");
-      unsubscribe();
-    }
-  }, [auth, fetchAndSetUserData]);
+    return () => unsubscribe();
+    
+  }, [auth]);
 
   const logout = useCallback(async () => {
     if (!auth) return;
