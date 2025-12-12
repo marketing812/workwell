@@ -9,7 +9,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useFirebase } from "@/firebase/provider";
 import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
-import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
+import { clearAssessmentHistory, overwriteAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
 import type { EmotionalEntry } from '@/data/emotionalEntriesStore';
 import type { NotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -29,7 +29,6 @@ interface UserContextType {
   loading: boolean;
   updateUser: (updatedData: Partial<Omit<User, 'id' | 'email'>>) => Promise<void>;
   logout: () => void;
-  setUserAndData: (data: { user: User, emotionalEntries?: EmotionalEntry[] | null, notebookEntries?: NotebookEntry[] | null }) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -41,38 +40,56 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { auth, db } = useFirebase();
 
-  const setUserAndData = useCallback(({ user, emotionalEntries, notebookEntries }: { user: User, emotionalEntries?: EmotionalEntry[] | null, notebookEntries?: NotebookEntry[] | null }) => {
-    setUser(user);
-    if (emotionalEntries) {
-      overwriteEmotionalEntries(emotionalEntries);
-    }
-    if (notebookEntries) {
-      overwriteNotebookEntries(notebookEntries);
-    }
-    setLoading(false);
-  }, []);
-
   useEffect(() => {
-    if (!auth) {
-      setLoading(false); 
+    if (!auth || !db) {
+      setLoading(false);
       return;
-    };
+    }
 
-    const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
-        // We don't fetch data here anymore. The LoginForm does it upon successful login.
-        // We just keep the firebaseUser state in sync.
         setFirebaseUser(fbUser);
+        try {
+          const userDoc = await getDoc(doc(db, "users", fbUser.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            const userProfile: User = {
+              id: fbUser.uid,
+              email: fbUser.email,
+              name: data.name || 'Usuario',
+              ageRange: data.ageRange,
+              gender: data.gender,
+              initialEmotionalState: data.initialEmotionalState,
+            };
+            setUser(userProfile);
+          } else {
+             const userProfile: User = {
+                id: fbUser.uid,
+                email: fbUser.email,
+                name: 'Usuario',
+             };
+             setUser(userProfile);
+             console.warn(`No Firestore document found for user ${fbUser.uid}.`);
+          }
+        } catch (error) {
+          console.error("Error fetching user document from Firestore:", error);
+          // Create a minimal user object to keep the app functional
+          setUser({
+            id: fbUser.uid,
+            email: fbUser.email,
+            name: 'Usuario',
+          });
+        }
       } else {
         setUser(null);
         setFirebaseUser(null);
-        setLoading(false);
       }
+      setLoading(false);
     });
 
     return () => unsubscribe();
-    
-  }, [auth]);
+  }, [auth, db]);
+
 
   const logout = useCallback(async () => {
     if (!auth) return;
@@ -103,8 +120,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [user, db]);
 
+  // `setUserAndData` is no longer needed as data loading is handled by onAuthStateChanged
+  const contextValue = { user, firebaseUser, loading, updateUser, logout };
+
   return (
-    <UserContext.Provider value={{ user, firebaseUser, loading, updateUser, logout, setUserAndData }}>
+    <UserContext.Provider value={contextValue}>
       {children}
     </UserContext.Provider>
   );
