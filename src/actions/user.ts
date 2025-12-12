@@ -11,9 +11,9 @@ const userProfileSchema = z.object({
   userId: z.string().min(1),
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Correo electrónico inválido."),
-  ageRange: z.string().nullable(),
-  gender: z.string().nullable(),
-  initialEmotionalState: z.number().min(1).max(5).nullable(),
+  ageRange: z.string().nullable().optional(),
+  gender: z.string().nullable().optional(),
+  initialEmotionalState: z.number().min(1).max(5).nullable().optional(),
 });
 
 type UserProfileData = z.infer<typeof userProfileSchema>;
@@ -55,3 +55,5 @@ export async function saveUser(
     return { success: false, error: "No se pudo guardar el perfil de usuario en la base de datos." };
   }
 }
+
+    
