@@ -25,6 +25,7 @@ interface UserContextType {
   loading: boolean;
   setLoading: (loading: boolean) => void;
   logout: () => void;
+  updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -49,7 +50,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [router]);
 
-  const contextValue = { user, setUser, loading, setLoading, logout };
+ const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
+    setUser(prevUser => {
+        if (prevUser) {
+            const newUser = { ...prevUser, ...updatedData };
+            // Here you would also save the updated user to your backend/localStorage
+            return newUser;
+        }
+        return null;
+    });
+    // Add backend saving logic here if necessary
+    return Promise.resolve();
+  }, []);
+
+  const contextValue = { user, setUser, loading, setLoading, logout, updateUser };
 
   return (
     <UserContext.Provider value={contextValue}>
