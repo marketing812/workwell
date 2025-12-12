@@ -6,7 +6,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "@/firebase/client"; // Import directly from client
+import { auth, db } from "@/firebase/client";
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -50,7 +50,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             const userProfile: User = {
               id: fbUser.uid,
               email: fbUser.email,
-              name: data.name || 'Usuario',
+              name: data.name || fbUser.displayName || 'Usuario',
               ageRange: data.ageRange,
               gender: data.gender,
               initialEmotionalState: data.initialEmotionalState,
@@ -63,16 +63,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
                 email: fbUser.email,
                 name: fbUser.displayName || 'Usuario',
              };
+             // Let's create the document in Firestore
+             await setDoc(doc(db, "users", fbUser.uid), {
+                email: fbUser.email,
+                name: userProfile.name,
+                createdAt: new Date().toISOString(),
+             });
              setUser(userProfile);
-             console.warn(`No Firestore document for user ${fbUser.uid}, created basic profile.`);
+             console.warn(`No Firestore document for user ${fbUser.uid}, created a new one.`);
           }
         } catch (error) {
-          console.error("Error fetching user document from Firestore:", error);
-          // Fallback to a minimal user object to prevent app crash
+          console.error("Error fetching or creating user document from Firestore:", error);
           setUser({
             id: fbUser.uid,
             email: fbUser.email,
-            name: 'Usuario',
+            name: fbUser.displayName || 'Usuario',
           });
         }
       } else {
@@ -89,27 +94,25 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     try {
       await signOut(auth);
-      setUser(null);
-      setFirebaseUser(null);
-      // Clear all local data on logout
+      // onAuthStateChanged will handle setting user/firebaseUser to null
+      // and the global layout effect will handle the redirect.
       clearAllEmotionalEntries();
       clearAllNotebookEntries();
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
-      router.push('/login');
+      console.log("UserContext LOGOUT: Cleared all local data.");
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-  }, [router]);
+  }, []);
 
   const updateUser = useCallback(async (updatedData: Partial<Omit<User, 'id' | 'email'>>) => {
     if (!user) return;
     
-    const updatedUser = { ...user, ...updatedData };
-    setUser(updatedUser);
-    
+    const userDocRef = doc(db, "users", user.id);
     try {
-      await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
+      await setDoc(userDocRef, updatedData, { merge: true });
+      setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
     } catch (error) {
       console.error("Error updating user profile in Firestore:", error);
       // Optional: revert state or show toast
