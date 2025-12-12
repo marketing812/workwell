@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -9,15 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { resetPassword } from "@/actions/auth";
 import { useUser } from "@/contexts/UserContext";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { useFirebase } from "@/firebase/provider";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
@@ -69,36 +65,8 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const fbUser = userCredential.user;
-
-        const userDoc = await getDoc(doc(db, "users", fbUser.uid));
-    
-        if (!userDoc.exists()) {
-            throw new Error("No se encontró el perfil de usuario.");
-        }
-        
-        const userProfileData = userDoc.data();
-        const user = {
-            id: fbUser.uid,
-            email: fbUser.email!,
-            name: userProfileData?.name || "Usuario",
-            ageRange: userProfileData?.ageRange,
-            gender: userProfileData?.gender,
-            initialEmotionalState: userProfileData?.initialEmotionalState,
-        };
-
-        const [activitiesResult, notebookResult] = await Promise.all([
-          fetchUserActivities(fbUser.uid),
-          fetchNotebookEntries(fbUser.uid),
-        ]);
-
-        setUserAndData({
-          user,
-          emotionalEntries: activitiesResult.success ? activitiesResult.entries : [],
-          notebookEntries: notebookResult.success ? notebookResult.entries : [],
-        });
-        
+        await signInWithEmailAndPassword(auth, email, password);
+        // onAuthStateChanged en UserContext se encargará del resto
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
@@ -109,8 +77,6 @@ export function LoginForm() {
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
             errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-        } else if (error.message === "No se encontró el perfil de usuario.") {
-            errorMessage = "El perfil de usuario no se encontró en la base de datos.";
         }
         setLoginError(errorMessage);
     } finally {
@@ -200,7 +166,8 @@ export function LoginForm() {
           </div>
           {loginError && <p className="text-sm text-destructive pt-1">{loginError}</p>}
           <Button type="submit" className="w-full" disabled={isLoggingIn}>
-              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.login}
+              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {t.login}
           </Button>
         </form>
       </CardContent>

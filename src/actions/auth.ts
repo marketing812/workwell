@@ -5,7 +5,7 @@ import { z } from "zod";
 import {
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "@/firebase/config"; // Correct import
+import { auth } from "@/firebase/config"; 
 
 export async function resetPassword(email: string): Promise<{success: boolean, message: string}> {
     if (!email) {
