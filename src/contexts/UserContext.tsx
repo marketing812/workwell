@@ -44,6 +44,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      setLoading(true);
       if (fbUser) {
         setFirebaseUser(fbUser);
         try {
@@ -70,7 +71,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
           }
         } catch (error) {
           console.error("Error fetching user document from Firestore:", error);
-          // Create a minimal user object to keep the app functional
           setUser({
             id: fbUser.uid,
             email: fbUser.email,
@@ -117,7 +117,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [user, db]);
 
-  // `setUserAndData` is no longer needed as data loading is handled by onAuthStateChanged
   const contextValue = { user, firebaseUser, loading, updateUser, logout };
 
   return (

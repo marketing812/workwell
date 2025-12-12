@@ -4,13 +4,9 @@
 import { z } from "zod";
 import {
   sendPasswordResetEmail,
-  createUserWithEmailAndPassword,
   deleteUser as deleteFirebaseUser,
-  reauthenticateWithCredential,
-  EmailAuthProvider
 } from "firebase/auth";
-import { auth, db } from "@/firebase/config"; 
-import { doc, setDoc, deleteDoc } from "firebase/firestore";
+import { auth } from "@/firebase/config"; 
 import { t } from "@/lib/translations";
 
 export async function resetPassword(email: string): Promise<{success: boolean, message: string}> {
@@ -47,8 +43,6 @@ export async function deleteUserAccount(
   }
 
   try {
-    // This action would typically involve more, like deleting user data from Firestore/Storage,
-    // but for now, we just delete the auth user.
     await deleteFirebaseUser(user);
     return { success: true, message: "Tu cuenta ha sido eliminada exitosamente." };
   } catch (error: any) {
