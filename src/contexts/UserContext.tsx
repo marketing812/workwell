@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback } from 'react';
 import { signOut } from "firebase/auth";
-import { auth } from "@/firebase/client";
+import { useAuth } from "@/firebase/provider"; // Corregida la importación
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -34,8 +34,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const auth = useAuth(); // Se obtiene auth del hook
 
   const logout = useCallback(async () => {
+    if (!auth) {
+        console.error("Logout failed: auth instance is not available.");
+        return;
+    }
     try {
       await signOut(auth);
       setUser(null);
@@ -48,7 +53,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-  }, [router]);
+  }, [router, auth]);
 
  const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
     setUser(prevUser => {
