@@ -10,14 +10,15 @@ import { type ResourcePost } from '@/data/resourcesData';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useEffect, useState } from 'react';
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-
+// Componente cliente para manejar el estado y la carga de datos.
+function PostClientPage({ slug }: { slug: string }) {
   const [post, setPost] = useState<ResourcePost | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!slug) return;
+    
     async function fetchData() {
         setLoading(true);
         setError(null);
@@ -33,8 +34,8 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                 const data = await res.json();
                 setPost(data);
             }
-        } catch (e) {
-            setError("No se pudo cargar el artículo. Por favor, inténtalo de nuevo más tarde.");
+        } catch (e: any) {
+            setError(e.message || "No se pudo cargar el artículo. Por favor, inténtalo de nuevo más tarde.");
             console.error(`Error fetching post ${slug}:`, e);
         } finally {
             setLoading(false);
@@ -51,12 +52,12 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     );
   }
 
-  if (error) {
+  if (error || !post) {
     return (
         <div className="container mx-auto py-8 text-center">
             <Alert variant="destructive" className="max-w-2xl mx-auto">
             <AlertTriangle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
+            <AlertDescription>{error || 'Artículo no encontrado.'}</AlertDescription>
             </Alert>
              <div className="mt-8">
                 <Button variant="outline" asChild>
@@ -67,11 +68,6 @@ export default function PostPage({ params }: { params: { slug: string } }) {
             </div>
         </div>
     );
-  }
-
-  if (!post) {
-      // This state should ideally be covered by the error state now
-      return <div className="container mx-auto py-8 text-center">Artículo no encontrado.</div>
   }
 
   let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
@@ -118,4 +114,9 @@ export default function PostPage({ params }: { params: { slug: string } }) {
       </div>
     </div>
   );
+}
+
+// Componente de servidor que extrae el slug y lo pasa al componente cliente.
+export default function PostPage({ params }: { params: { slug: string } }) {
+    return <PostClientPage slug={params.slug} />;
 }

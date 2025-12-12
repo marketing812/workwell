@@ -6,32 +6,36 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, AlertTriangle, Loader2 } from 'lucide-react';
-import { getPostsByCategory, getCategoryBySlug, type ResourcePost, type ResourceCategory } from '@/data/resourcesData';
+import { type ResourcePost, type ResourceCategory } from '@/data/resourcesData';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useEffect, useState } from 'react';
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  
+// Este componente ahora es cliente y recibe `slug` como prop.
+function CategoryClientPage({ slug }: { slug: string }) {
   const [category, setCategory] = useState<ResourceCategory | null>(null);
   const [posts, setPosts] = useState<ResourcePost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!slug) return;
+
     async function fetchData() {
       setLoading(true);
       setError(null);
       try {
-        const catRes = await fetch(`/api/resources/category/${slug}`);
-        if (!catRes.ok) {
+        const res = await fetch(`/api/resources/category/${slug}`);
+        if (!res.ok) {
           throw new Error('No se pudo cargar la categoría');
         }
-        const { category, posts } = await catRes.json();
-        setCategory(category);
-        setPosts(posts);
-      } catch (e) {
-        setError("No se pudieron cargar los artículos de esta categoría.");
+        const data = await res.json();
+        if (!data.category) {
+            throw new Error('Categoría no encontrada');
+        }
+        setCategory(data.category);
+        setPosts(data.posts);
+      } catch (e: any) {
+        setError(e.message || "No se pudieron cargar los artículos de esta categoría.");
         console.error(`Error fetching data for category ${slug}:`, e);
       } finally {
         setLoading(false);
@@ -48,12 +52,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
     );
   }
 
-  if (error || !category) {
+  if (error) {
     return (
       <div className="container mx-auto py-8 text-center">
         <Alert variant="destructive" className="mb-8 max-w-2xl mx-auto">
           <AlertTriangle className="h-4 w-4" />
-          <AlertDescription>{error || 'Categoría no encontrada.'}</AlertDescription>
+          <AlertDescription>{error}</AlertDescription>
         </Alert>
         <Button asChild variant="outline">
           <Link href="/resources">
@@ -63,7 +67,23 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
       </div>
     );
   }
-  
+
+  if (!category) {
+      return (
+         <div className="container mx-auto py-8 text-center">
+            <Alert variant="destructive" className="mb-8 max-w-2xl mx-auto">
+                <AlertTriangle className="h-4 w-4" />
+                <AlertDescription>Categoría no encontrada.</AlertDescription>
+            </Alert>
+            <Button asChild variant="outline">
+            <Link href="/resources">
+                Ver todas las categorías
+            </Link>
+            </Button>
+      </div>
+      )
+  }
+
   return (
     <div className="container mx-auto py-8">
       <div className="text-center mb-12">
@@ -127,3 +147,8 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   );
 }
 
+
+// Este es el componente de servidor que extrae el slug y lo pasa al componente de cliente.
+export default function CategoryPage({ params }: { params: { slug: string } }) {
+    return <CategoryClientPage slug={params.slug} />;
+}
