@@ -19,7 +19,7 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Lightbulb, Edit, Radar, LineChart as LineChartIcon, NotebookPen, CheckCircle, Info, UserCircle2, Lock, KeyRound, ShieldQuestion, Trash2, Activity, Send, FileText, RefreshCw, Loader2, ArrowRight } from "lucide-react";
+import { Smile, TrendingUp, Target, Lightbulb, Edit, Radar, LineChart as LineChartIcon, NotebookPen, CheckCircle, Info, UserCircle2, Lock, KeyRound, ShieldQuestion, Trash2, Activity, Send, FileText, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
 import { getRecentEmotionalEntries, addEmotionalEntry, formatEntryTimestamp, type EmotionalEntry, getEmotionalEntries, overwriteEmotionalEntries } from "@/data/emotionalEntriesStore";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -182,7 +182,7 @@ export default function DashboardPage() {
     }
     const userIdFromContext = user.id;
 
-    addEmotionalEntry(data);
+    const newEntry = addEmotionalEntry(data);
     loadDataFromStorage();
 
     toast({
