@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "@/firebase/client"; // Importa directamente desde el cliente
+import { auth } from "@/firebase/client";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
@@ -76,6 +76,8 @@ export function LoginForm() {
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         if (error.code === 'auth/network-request-failed') {
             errorMessage = "Error de red. Por favor, revisa tu conexión a internet.";
+        } else if (error.code === 'auth/invalid-credential') {
+            errorMessage = "Credenciales incorrectas. Verifica tu email y contraseña."
         }
         setLoginError(errorMessage);
     } finally {
