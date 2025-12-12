@@ -9,17 +9,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { useUser } from "@/contexts/UserContext";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useFirebase } from "@/firebase/provider";
+import { doc, getDoc } from "firebase/firestore";
+import { useUser, type User } from "@/contexts/UserContext";
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { auth } = useFirebase();
+  const { auth, db } = useFirebase();
   const router = useRouter();
   
   const [email, setEmail] = useState('');
@@ -54,7 +55,7 @@ export function LoginForm() {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    if (!auth) {
+    if (!auth || !db) {
         toast({ title: "Error", description: "Servicios de Firebase no disponibles.", variant: "destructive" });
         return;
     }
@@ -62,13 +63,15 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        await signInWithEmailAndPassword(auth, email, password);
-        // El `onAuthStateChanged` en `UserContext` se encargará de la carga de datos y la redirección.
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const firebaseUser = userCredential.user;
+
+        // The onAuthStateChanged in UserContext will handle the redirect and global state update.
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
         });
-        // No redirigimos desde aquí, dejamos que el contexto lo haga.
+
     } catch (error: any) {
         console.error("Login Error:", error);
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
@@ -76,6 +79,7 @@ export function LoginForm() {
             errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         }
         setLoginError(errorMessage);
+    } finally {
         setIsLoggingIn(false);
     }
   }

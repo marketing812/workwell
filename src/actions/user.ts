@@ -33,7 +33,7 @@ export async function saveUser(
     await setDoc(doc(db, "users", userId), {
       ...profileData,
       createdAt: new Date().toISOString(),
-    });
+    }, { merge: true });
 
     console.log(`saveUser Action: Successfully saved profile for user ${userId}`);
     return { success: true };
