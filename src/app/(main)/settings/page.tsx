@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, type FormEvent } from 'react';
@@ -16,6 +17,8 @@ import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import Link from 'next/link';
 import { pathsData } from '@/data/pathsData';
 import type { Path } from '@/data/pathsData';
+import { saveUser } from '@/actions/user';
+
 
 export default function SettingsPage() {
   const t = useTranslations();
@@ -68,17 +71,38 @@ export default function SettingsPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!user) return;
     setIsSaving(true);
+    
     try {
-      await updateUser({ name, ageRange, gender });
-      toast({
-        title: "Configuración Guardada",
-        description: "Tus cambios han sido guardados exitosamente.",
-      });
+      const profileData = {
+        userId: user.id,
+        name,
+        email: user.email!,
+        ageRange,
+        gender,
+      };
+
+      const result = await saveUser(profileData);
+      
+      if (result.success) {
+        await updateUser({ name, ageRange, gender });
+        toast({
+          title: "Configuración Guardada",
+          description: "Tus cambios han sido guardados exitosamente.",
+        });
+      } else {
+         toast({
+          title: "Error al Guardar",
+          description: result.error || "No se pudieron guardar los cambios.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
-       toast({
-        title: "Error al Guardar",
-        description: (error as Error).message || "No se pudieron guardar los cambios.",
+      console.error("Error in handleSubmit:", error);
+      toast({
+        title: "Error Inesperado",
+        description: "Ocurrió un error inesperado al guardar.",
         variant: "destructive",
       });
     } finally {
