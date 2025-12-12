@@ -10,6 +10,7 @@ import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
+import { getUserProfile } from '@/actions/auth'; // Importar la acción
 
 export interface User {
   id: string;
@@ -25,6 +26,7 @@ interface UserContextType {
   loading: boolean;
   logout: () => void;
   updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
+  fetchUserProfile: (userId: string) => Promise<void>; // Nueva función para cargar el perfil
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -37,7 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   useEffect(() => {
-    if (!auth || !db) {
+    if (!auth) {
         setLoading(true);
         return;
     };
@@ -45,40 +47,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       console.log("onAuthStateChanged triggered. fbUser:", fbUser ? fbUser.uid : "null");
       if (fbUser) {
-        try {
-          const userDocRef = doc(db, "users", fbUser.uid);
-          const userDoc = await getDoc(userDocRef);
-
-          if (userDoc.exists()) {
-            const data = userDoc.data();
-            const appUser: User = {
-              id: fbUser.uid,
-              name: data.name || fbUser.displayName || 'Usuario',
-              email: data.email || fbUser.email,
-              ageRange: data.ageRange || null,
-              gender: data.gender || null,
-              initialEmotionalState: data.initialEmotionalState || null,
-            };
-            setUser(appUser);
-            console.log("User profile loaded from Firestore:", appUser);
-          } else {
-             const newUserProfile: User = {
-              id: fbUser.uid,
-              name: fbUser.displayName || 'Usuario',
-              email: fbUser.email,
-            };
-            // No creamos el documento aquí, solo establecemos un usuario mínimo
-            setUser(newUserProfile);
-            console.warn("User profile document does not exist for UID:", fbUser.uid, ". Using minimal user object.");
-          }
-        } catch (error) {
-          console.error("Error fetching user document from Firestore:", error);
-          setUser({
+          // Ya no intentamos leer de Firestore aquí.
+          // Establecemos un usuario mínimo con los datos de autenticación.
+          const minimalUser: User = {
             id: fbUser.uid,
+            name: fbUser.displayName || 'Usuario', // Usar lo que tengamos
             email: fbUser.email,
-            name: fbUser.displayName || 'Usuario',
-          });
-        }
+          };
+          setUser(minimalUser);
+          console.log("User object set from Auth state:", minimalUser);
       } else {
         setUser(null);
         console.log("No Firebase user. Setting context user to null.");
@@ -90,7 +67,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
         console.log("Unsubscribing from onAuthStateChanged.");
         unsubscribe();
     }
-  }, [auth, db]);
+  }, [auth]);
+
+  const fetchUserProfile = async (userId: string) => {
+    if (!db || !userId) return;
+    try {
+      const profile = await getUserProfile(userId);
+      if (profile) {
+        setUser(prevUser => ({...prevUser, ...profile}));
+        console.log("User profile data fetched and merged:", profile);
+      }
+    } catch (error) {
+      console.error("Error in fetchUserProfile:", error);
+    }
+  };
 
   const logout = useCallback(async () => {
     if (!auth) {
@@ -116,7 +106,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, loading, logout, updateUser }}>
+    <UserContext.Provider value={{ user, loading, logout, updateUser, fetchUserProfile }}>
       {children}
     </UserContext.Provider>
   );
