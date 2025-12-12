@@ -13,8 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "@/firebase/client"; // Direct import
-import { useUser } from "@/contexts/UserContext";
+import { auth } from "@/firebase/client"; // Importa directamente desde el cliente
 
 export function LoginForm() {
   const t = useTranslations();
@@ -42,7 +41,11 @@ export function LoginForm() {
         toast({ title: "Correo enviado", description: "Se ha enviado un correo para restablecer tu contraseña." });
     } catch(error: any) {
         console.error("Error sending password reset email:", error);
-        toast({ title: "Error", description: "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.", variant: "destructive"});
+        let errorMessage = "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.";
+        if (error.code === 'auth/invalid-email') {
+          errorMessage = "El formato del correo electrónico no es válido.";
+        }
+        toast({ title: "Error", description: errorMessage, variant: "destructive"});
     }
     setIsResetting(false);
   }
@@ -54,17 +57,19 @@ export function LoginForm() {
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        // The onAuthStateChanged in UserContext will handle the redirect and global state update.
+        // The onAuthStateChanged in UserContext will handle the redirect.
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
         });
-        // The redirect will happen via UserContext's effect
+        // The redirect will happen via the global layout's effect on user state change
     } catch (error: any) {
         console.error("Login Error:", error);
-        let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+        let errorMessage = "Credenciales inválidas o error de conexión. Por favor, inténtalo de nuevo.";
         if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
             errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+        } else if (error.code === 'auth/network-request-failed') {
+            errorMessage = "Error de red. Por favor, revisa tu conexión a internet.";
         }
         setLoginError(errorMessage);
     } finally {
