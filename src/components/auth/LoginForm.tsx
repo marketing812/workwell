@@ -13,14 +13,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { useFirebase } from "@/firebase/provider";
-import { doc, getDoc } from "firebase/firestore";
-import { useUser, type User } from "@/contexts/UserContext";
+import { auth } from "@/firebase/client"; // Direct import
+import { useUser } from "@/contexts/UserContext";
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { auth, db } = useFirebase();
   const router = useRouter();
   
   const [email, setEmail] = useState('');
@@ -34,10 +32,6 @@ export function LoginForm() {
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
   const handlePasswordReset = async () => {
-    if (!auth) {
-        toast({ title: "Error", description: "Servicio de autenticación no disponible.", variant: "destructive" });
-        return;
-    }
     if (!resetEmail) {
       toast({ title: "Email requerido", description: "Por favor, introduce tu email.", variant: "destructive" });
       return;
@@ -55,27 +49,21 @@ export function LoginForm() {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    if (!auth || !db) {
-        toast({ title: "Error", description: "Servicios de Firebase no disponibles.", variant: "destructive" });
-        return;
-    }
     setIsLoggingIn(true);
     setLoginError(null);
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const firebaseUser = userCredential.user;
-
         // The onAuthStateChanged in UserContext will handle the redirect and global state update.
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
         });
-
+        // The redirect will happen via UserContext's effect
     } catch (error: any) {
         console.error("Login Error:", error);
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
             errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         }
         setLoginError(errorMessage);

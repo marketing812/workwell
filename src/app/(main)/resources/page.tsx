@@ -1,22 +1,40 @@
 
+"use client";
+
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
-import { getResourceCategories, type ResourceCategory } from '@/data/resourcesData';
-import { ArrowRight, BookOpen, AlertTriangle } from 'lucide-react';
+import { type ResourceCategory } from '@/data/resourcesData';
+import { ArrowRight, BookOpen, AlertTriangle, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useEffect, useState } from 'react';
 
-export default async function ResourcesPage() {
+export default function ResourcesPage() {
   const t = useTranslations();
-  let categories: ResourceCategory[] = [];
-  let error: string | null = null;
+  const [categories, setCategories] = useState<ResourceCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  try {
-    categories = await getResourceCategories();
-  } catch (e) {
-    error = "No se pudieron cargar las categorías. Por favor, inténtalo de nuevo más tarde.";
-    console.error(e);
-  }
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch('/api/resources');
+        if (!res.ok) {
+          throw new Error('No se pudieron cargar las categorías');
+        }
+        const data = await res.json();
+        setCategories(data);
+      } catch (e: any) {
+        setError(e.message || "Error al cargar datos.");
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="container mx-auto py-8">
@@ -27,6 +45,12 @@ export default async function ResourcesPage() {
         </p>
       </div>
 
+      {loading && (
+        <div className="flex justify-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      )}
+
       {error && (
         <Alert variant="destructive" className="max-w-2xl mx-auto">
           <AlertTriangle className="h-4 w-4" />
@@ -34,13 +58,13 @@ export default async function ResourcesPage() {
         </Alert>
       )}
 
-      {!error && categories.length === 0 && (
+      {!loading && !error && categories.length === 0 && (
          <div className="text-center text-muted-foreground">
           <p>No se encontraron categorías con artículos publicados en este momento.</p>
         </div>
       )}
 
-      {!error && categories.length > 0 && (
+      {!loading && !error && categories.length > 0 && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category: ResourceCategory) => (
             <Link key={category.id} href={`/resources/category/${category.slug}`} legacyBehavior>

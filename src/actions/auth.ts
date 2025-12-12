@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   deleteUser as deleteFirebaseUser,
 } from "firebase/auth";
-import { auth } from "@/firebase/config"; 
+import { auth } from "@/firebase/client"; 
 import { t } from "@/lib/translations";
 
 export async function resetPassword(email: string): Promise<{success: boolean, message: string}> {
