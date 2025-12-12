@@ -114,12 +114,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!auth) {
+      console.log("UserContext useEffect: Auth service not available yet.");
       setLoading(false); 
       return;
     };
 
+    console.log("UserContext useEffect: Setting up onAuthStateChanged listener.");
     const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
+      console.log("UserContext onAuthStateChanged: Auth state changed. User:", fbUser ? fbUser.uid : 'null');
       if (fbUser) {
+        setLoading(true);
         fetchAndSetUserData(fbUser);
       } else {
         setUser(null);
@@ -128,7 +132,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    return () => unsubscribe();
+    return () => {
+      console.log("UserContext useEffect: Cleaning up onAuthStateChanged listener.");
+      unsubscribe();
+    }
   }, [auth, fetchAndSetUserData]);
 
   const logout = useCallback(async () => {

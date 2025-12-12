@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
-import { FirebaseProvider } from '@/firebase/provider'; // Import FirebaseProvider
+import { FirebaseProvider } from '@/firebase/provider'; 
 
 const geistSans = GeistSans;
 
