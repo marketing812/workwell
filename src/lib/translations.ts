@@ -1,4 +1,5 @@
 
+
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -25,7 +26,7 @@ export const t = {
   genderPlaceholder: "Selecciona tu género",
   initialEmotionalState: "Estado emocional inicial (1-5)",
   forgotPassword: "¿Olvidaste tu contraseña?",
-  noAccount: "¿No tienes cuenta? Regístrate",
+  noAccount: "¿No tienes cuenta?",
   alreadyHaveAccount: "¿Ya tienes cuenta? Inicia Sesión",
   agreeToTerms: "Acepto la política de privacidad y aviso legal.",
   registrationSuccessTitle: "¡Registro Exitoso!",
