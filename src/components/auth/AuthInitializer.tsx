@@ -4,18 +4,22 @@
 import { useEffect } from 'react';
 import { onAuthStateChanged, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "@/firebase/client";
 import { useUser, type User } from '@/contexts/UserContext';
 import { useToast } from '@/hooks/use-toast';
-import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
-import { overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { useAuth, useFirestore } from '@/firebase/provider'; // Usar los nuevos hooks
 
 export function AuthInitializer({ children }: { children: React.ReactNode }) {
   const { setUser, setLoading } = useUser();
   const { toast } = useToast();
+  const auth = useAuth();
+  const db = useFirestore();
 
   useEffect(() => {
+    if (!auth || !db) {
+      // Si la autenticación o la base de datos no están listas, no hacer nada todavía.
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       if (fbUser) {
         try {
@@ -69,7 +73,7 @@ export function AuthInitializer({ children }: { children: React.ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [setUser, setLoading, toast]);
+  }, [auth, db, setUser, setLoading, toast]);
 
   return <>{children}</>;
 }
