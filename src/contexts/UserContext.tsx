@@ -4,12 +4,12 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useAuth, useFirestore } from '@/firebase/provider';
+import { useAuth } from '@/firebase/provider';
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
+import { getUserProfile, saveUserProfile } from '@/actions/auth';
 
 export interface User {
   id: string;
@@ -22,9 +22,7 @@ export interface User {
 
 interface UserContextType {
   user: User | null;
-  setUser: (user: User | null) => void;
   loading: boolean;
-  setLoading: (loading: boolean) => void;
   logout: () => void;
   updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
 }
@@ -36,66 +34,52 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const auth = useAuth();
-  const db = useFirestore();
 
   useEffect(() => {
-    if (!auth || !db) {
-        setLoading(true); // Keep loading if firebase services are not ready
+    if (!auth) {
+        setLoading(true);
         return;
     };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       if (fbUser) {
+        // First, set a minimal user to stop the main loader
+        const minimalUser = {
+          id: fbUser.uid,
+          email: fbUser.email,
+          name: fbUser.displayName || 'Usuario',
+        };
+        setUser(minimalUser);
+        setLoading(false); // App is usable with basic auth info
+
+        // Then, fetch the full profile in the background
         try {
-          const userDocRef = doc(db, "users", fbUser.uid);
-          const userDoc = await getDoc(userDocRef);
-
-          let userProfile: User;
-
-          if (userDoc.exists()) {
-            const data = userDoc.data();
-            userProfile = {
-              id: fbUser.uid,
-              email: fbUser.email,
-              name: data.name || fbUser.displayName || 'Usuario',
-              ageRange: data.ageRange,
-              gender: data.gender,
-              initialEmotionalState: data.initialEmotionalState,
-            };
+          let userProfile = await getUserProfile(fbUser.uid);
+          
+          if (userProfile) {
+            setUser(userProfile);
           } else {
-            // Create a new user document if it doesn't exist
-            userProfile = {
+            // Profile doesn't exist in Firestore, create it
+            const newUserProfile: User = {
               id: fbUser.uid,
               email: fbUser.email,
               name: fbUser.displayName || 'Usuario',
             };
-            await setDoc(userDocRef, {
-              email: fbUser.email,
-              name: userProfile.name,
-              createdAt: new Date().toISOString(),
-            }, { merge: true });
+            await saveUserProfile(newUserProfile as any);
+            setUser(newUserProfile);
           }
-          
-          setUser(userProfile);
-
         } catch (error) {
-          console.error("Error fetching or creating user document from Firestore:", error);
-          // Fallback to a minimal user object to prevent app crash
-          setUser({
-            id: fbUser.uid,
-            email: fbUser.email,
-            name: fbUser.displayName || 'Usuario',
-          });
+          console.error("Error fetching/creating user profile:", error);
+          // Keep the minimal user if profile fetch fails
         }
       } else {
         setUser(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [auth, db]);
-
+  }, [auth]);
 
   const logout = useCallback(async () => {
     if (!auth) {
@@ -117,18 +101,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
  const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
     setUser(prevUser => {
-        if (prevUser) {
-            const newUser = { ...prevUser, ...updatedData };
-            // Here you would also save the updated user to your backend/localStorage
-            return newUser;
-        }
-        return null;
+        if (!prevUser) return null;
+        const newUser = { ...prevUser, ...updatedData };
+        // Save to backend
+        saveUserProfile(newUser as any);
+        return newUser;
     });
-    // Add backend saving logic here if necessary
-    return Promise.resolve();
   }, []);
 
-  const contextValue = { user, setUser, loading, setLoading, logout, updateUser };
+  // Removed the explicit `setUser` from context value to enforce updates via `updateUser`
+  const contextValue = { user, loading, logout, updateUser };
 
   return (
     <UserContext.Provider value={contextValue}>
