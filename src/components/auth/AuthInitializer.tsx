@@ -6,10 +6,10 @@ import { onAuthStateChanged, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/client";
 import { useUser, type User } from '@/contexts/UserContext';
+import { useToast } from '@/hooks/use-toast';
+import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
 import { overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
-import { fetchUserActivities, fetchNotebookEntries } from '@/actions/user-data';
-import { useToast } from '@/hooks/use-toast';
 
 export function AuthInitializer({ children }: { children: React.ReactNode }) {
   const { setUser, setLoading } = useUser();
@@ -44,34 +44,21 @@ export function AuthInitializer({ children }: { children: React.ReactNode }) {
               email: fbUser.email,
               name: userProfile.name,
               createdAt: new Date().toISOString(),
-            });
-            console.warn(`No Firestore document for user ${fbUser.uid}, created a new one.`);
+            }, { merge: true });
           }
           
           setUser(userProfile);
 
-          // Fetch user data from external API after setting user
-          const activitiesResult = await fetchUserActivities(fbUser.uid);
-          if (activitiesResult.success && activitiesResult.entries) {
-            overwriteEmotionalEntries(activitiesResult.entries);
-          } else {
-             console.warn("AuthInit: Failed to fetch emotional entries:", activitiesResult.error);
-          }
-          
-          const notebookResult = await fetchNotebookEntries(fbUser.uid);
-          if (notebookResult.success && notebookResult.entries) {
-            overwriteNotebookEntries(notebookResult.entries);
-          } else {
-             console.warn("AuthInit: Failed to fetch notebook entries:", notebookResult.error);
-          }
-
         } catch (error) {
-          console.error("Error during user data fetch in AuthInitializer:", error);
-          // Set a minimal user object to prevent app from breaking
-          setUser({ id: fbUser.uid, email: fbUser.email, name: 'Usuario' });
+          console.error("Error fetching or creating user document from Firestore:", error);
+          setUser({
+            id: fbUser.uid,
+            email: fbUser.email,
+            name: fbUser.displayName || 'Usuario',
+          });
           toast({
-            title: "Error de carga",
-            description: "No se pudieron cargar todos tus datos. Algunas funciones podrían no estar disponibles.",
+            title: "Error de Conexión",
+            description: "No se pudo cargar tu perfil. Algunas funciones pueden no estar disponibles.",
             variant: "destructive"
           });
         }
