@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from '@/firebase/provider';
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -38,14 +38,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!auth || !db) {
-        // Firebase services not ready yet. Keep loading.
         setLoading(true);
         return;
     };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       console.log("onAuthStateChanged triggered. fbUser:", fbUser ? fbUser.uid : "null");
-      setLoading(true);
       if (fbUser) {
         try {
           const userDocRef = doc(db, "users", fbUser.uid);
@@ -53,29 +51,28 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
           if (userDoc.exists()) {
             const data = userDoc.data();
-            setUser({
+            const appUser: User = {
               id: fbUser.uid,
               name: data.name || fbUser.displayName || 'Usuario',
               email: data.email || fbUser.email,
               ageRange: data.ageRange || null,
               gender: data.gender || null,
               initialEmotionalState: data.initialEmotionalState || null,
-            });
-            console.log("User profile loaded from Firestore:", userDoc.data());
+            };
+            setUser(appUser);
+            console.log("User profile loaded from Firestore:", appUser);
           } else {
-            console.warn("User profile document does not exist for UID:", fbUser.uid, ". Creating one.");
-            const newUserProfile: User = {
+             const newUserProfile: User = {
               id: fbUser.uid,
               name: fbUser.displayName || 'Usuario',
               email: fbUser.email,
             };
-            await setDoc(userDocRef, newUserProfile, { merge: true });
+            // No creamos el documento aquí, solo establecemos un usuario mínimo
             setUser(newUserProfile);
-            console.log("New user profile created in Firestore.");
+            console.warn("User profile document does not exist for UID:", fbUser.uid, ". Using minimal user object.");
           }
         } catch (error) {
-          console.error("Error fetching or creating user document from Firestore:", error);
-          // Fallback to a minimal user object to prevent app crash
+          console.error("Error fetching user document from Firestore:", error);
           setUser({
             id: fbUser.uid,
             email: fbUser.email,
@@ -87,7 +84,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
         console.log("No Firebase user. Setting context user to null.");
       }
       setLoading(false);
-      console.log("Finished auth state processing. Loading set to false.");
     });
 
     return () => {
@@ -108,7 +104,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
       clearAllNotebookEntries();
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
-      // No need to manually clear other localStorage, they will be overwritten on next login
       router.push('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
@@ -116,11 +111,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [router, auth]);
 
  const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
-    if (!user || !db) return;
-    const userDocRef = doc(db, "users", user.id);
-    await setDoc(userDocRef, updatedData, { merge: true });
+    if (!user) return;
     setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
-  }, [user, db]);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, loading, logout, updateUser }}>
