@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "@/firebase/client";
+import { useAuth } from "@/firebase/provider"; // Usar el hook
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
@@ -21,6 +21,7 @@ export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const router = useRouter();
+  const auth = useAuth(); // Obtener auth del provider
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +34,7 @@ export function LoginForm() {
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
   const handlePasswordReset = async () => {
-    if (!resetEmail) {
+    if (!resetEmail || !auth) {
       toast({ title: "Email requerido", description: "Por favor, introduce tu email.", variant: "destructive" });
       return;
     }
@@ -54,6 +55,11 @@ export function LoginForm() {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
+    if (!auth) {
+      setLoginError("El servicio de autenticación no está disponible. Inténtalo más tarde.");
+      return;
+    }
+
     setIsLoggingIn(true);
     setLoginError(null);
 

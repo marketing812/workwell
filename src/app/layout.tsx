@@ -10,13 +10,9 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
 import { AuthInitializer } from '@/components/auth/AuthInitializer';
+import { FirebaseProvider } from '@/firebase/provider'; // Importar el nuevo provider
 
 const geistSans = GeistSans;
-
-// Metadata and Viewport can remain in a client component if needed, or moved to a server component layout.
-// For simplicity, they are kept here.
-// export const metadata: Metadata = { ... };
-// export const viewport: Viewport = { ... };
 
 export default function RootLayout({
   children,
@@ -33,16 +29,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <UserProvider>
-            <AuthInitializer>
-              <ActivePathProvider>
-                <FeatureFlagProvider>
-                  {children}
-                  <Toaster />
-                </FeatureFlagProvider>
-              </ActivePathProvider>
-            </AuthInitializer>
-          </UserProvider>
+          <FirebaseProvider>
+            <UserProvider>
+              <AuthInitializer>
+                <ActivePathProvider>
+                  <FeatureFlagProvider>
+                    {children}
+                    <Toaster />
+                  </FeatureFlagProvider>
+                </ActivePathProvider>
+              </AuthInitializer>
+            </UserProvider>
+          </FirebaseProvider>
         </ThemeProvider>
       </body>
     </html>

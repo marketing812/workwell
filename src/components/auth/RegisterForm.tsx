@@ -18,7 +18,7 @@ import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { saveUser } from "@/actions/user";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase/client"; // Direct import
+import { useAuth } from "@/firebase/provider"; // Usar el hook
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -39,6 +39,7 @@ export function RegisterForm() {
   const { toast } = useToast();
   const router = useRouter();
   const { user: contextUser, loading: userLoading } = useUser();
+  const auth = useAuth();
 
   const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms'>>({
     name: '',
@@ -75,6 +76,11 @@ export function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!auth) {
+      setServerError("El servicio de autenticación no está disponible. Inténtalo más tarde.");
+      return;
+    }
+
     setErrors(null);
     setServerError(null);
     setIsSubmitting(true);
@@ -110,8 +116,6 @@ export function RegisterForm() {
       const saveResult = await saveUser(userProfileData);
 
       if (!saveResult.success) {
-        // NOTE: This could leave a user in Auth but not Firestore.
-        // A more robust solution might delete the auth user or have a retry mechanism.
         throw new Error(saveResult.error || "No se pudo guardar el perfil de usuario.");
       }
 
