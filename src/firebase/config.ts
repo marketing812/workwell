@@ -5,7 +5,7 @@ import {initializeApp, getApps, getApp, type FirebaseApp} from 'firebase/app';
 import {getAuth, type Auth} from 'firebase/auth';
 import {getFirestore, type Firestore} from 'firebase/firestore';
 
-const firebaseConfig = {"apiKey":"FIREBASE_API_KEY","authDomain":"FIREBASE_AUTH_DOMAIN","projectId":"FIREBASE_PROJECT_ID","storageBucket":"FIREBASE_STORAGE_BUCKET","messagingSenderId":"FIREBASE_MESSAGING_SENDER_ID","appId":"FIREBASE_APP_ID"};
+const firebaseConfig = {"apiKey":"AIzaSyB-On5YA8yDiRL53z3OV-QWaKzAThj7kQ4","authDomain":"workwell-c4rlk.firebaseapp.com","projectId":"workwell-c4rlk","storageBucket":"workwell-c4rlk.appspot.com","messagingSenderId":"1051738167084","appId":"1:1051738167084:web:db1c791c01876b69c5be89"};
 
 function initializeFirebase() {
   if (getApps().length) {
