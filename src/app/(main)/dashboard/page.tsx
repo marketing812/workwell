@@ -66,7 +66,7 @@ const NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD = 4;
 
 export default function DashboardPage() {
   const t = useTranslations();
-  const { user } = useUser();
+  const { user, fetchUserProfile } = useUser(); // Get fetchUserProfile from context
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
 
@@ -78,6 +78,14 @@ export default function DashboardPage() {
   const [isRefreshingEmotions, setIsRefreshingEmotions] = useState(false);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   
+  // Effect to fetch the full user profile when the component mounts
+  useEffect(() => {
+    if (user && user.id && !user.ageRange) { // Check if full profile is missing
+      fetchUserProfile(user.id);
+    }
+  }, [user, fetchUserProfile]);
+
+
   const generateUserActivityApiUrl = useCallback((newEntryData: EmotionalEntry, userIdForUrlParam?: string | null): string => {
     const activityPayload: SingleEmotionalEntryActivity = { entry: newEntryData };
     const jsonPayloadForDatosActividad = encryptDataAES(activityPayload);
