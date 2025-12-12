@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, FormEvent } from "react";
@@ -49,7 +50,7 @@ export function LoginForm() {
     }
     setIsResetting(true);
     try {
-        await resetPassword(resetEmail);
+        await sendPasswordResetEmail(auth, resetEmail);
         toast({ title: "Correo enviado", description: "Se ha enviado un correo para restablecer tu contraseña." });
     } catch(error: any) {
         console.error("Error sending password reset email:", error);
