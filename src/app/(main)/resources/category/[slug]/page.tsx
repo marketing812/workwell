@@ -1,28 +1,68 @@
 
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, AlertTriangle } from 'lucide-react';
+import { ArrowRight, AlertTriangle, Loader2 } from 'lucide-react';
 import { getPostsByCategory, getCategoryBySlug, type ResourcePost, type ResourceCategory } from '@/data/resourcesData';
-import { notFound } from 'next/navigation';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import type { Metadata } from 'next';
-import type { RoutePageProps } from '@/types/page-props';
+import { useEffect, useState } from 'react';
 
-export const dynamic = 'force-dynamic';
-
-export default async function Page({ params }: RoutePageProps<{ slug: string }>) {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
+export default function CategoryPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   
-  const category: ResourceCategory | null = await getCategoryBySlug(slug);
+  const [category, setCategory] = useState<ResourceCategory | null>(null);
+  const [posts, setPosts] = useState<ResourcePost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (!category) {
-    notFound();
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      setError(null);
+      try {
+        const catRes = await fetch(`/api/resources/category/${slug}`);
+        if (!catRes.ok) {
+          throw new Error('No se pudo cargar la categoría');
+        }
+        const { category, posts } = await catRes.json();
+        setCategory(category);
+        setPosts(posts);
+      } catch (e) {
+        setError("No se pudieron cargar los artículos de esta categoría.");
+        console.error(`Error fetching data for category ${slug}:`, e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+      </div>
+    );
   }
 
-  const posts: ResourcePost[] = await getPostsByCategory(slug);
+  if (error || !category) {
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <Alert variant="destructive" className="mb-8 max-w-2xl mx-auto">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertDescription>{error || 'Categoría no encontrada.'}</AlertDescription>
+        </Alert>
+        <Button asChild variant="outline">
+          <Link href="/resources">
+            Ver todas las categorías
+          </Link>
+        </Button>
+      </div>
+    );
+  }
   
   return (
     <div className="container mx-auto py-8">
@@ -87,11 +127,3 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
   );
 }
 
-export async function generateMetadata({ params }: RoutePageProps<{ slug: string }>): Promise<Metadata> {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
-  const category = await getCategoryBySlug(slug);
-  return {
-    title: `Recursos sobre ${category?.name || 'Categoría'}`,
-  };
-}

@@ -1,24 +1,77 @@
 
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, ArrowLeft } from 'lucide-react';
-import { getPostBySlug, type ResourcePost } from '@/data/resourcesData';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import type { RoutePageProps } from '@/types/page-props';
+import { Clock, ArrowLeft, AlertTriangle, Loader2 } from 'lucide-react';
+import { type ResourcePost } from '@/data/resourcesData';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useEffect, useState } from 'react';
 
-export const dynamic = 'force-dynamic';
+export default function PostPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
 
-export default async function Page({ params }: RoutePageProps<{ slug: string }>) {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
+  const [post, setPost] = useState<ResourcePost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const post: ResourcePost | null = await getPostBySlug(slug);
+  useEffect(() => {
+    async function fetchData() {
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await fetch(`/api/resources/post/${slug}`);
+            if (!res.ok) {
+                if (res.status === 404) {
+                    setError("Artículo no encontrado.");
+                } else {
+                    throw new Error('No se pudo cargar el artículo');
+                }
+            } else {
+                const data = await res.json();
+                setPost(data);
+            }
+        } catch (e) {
+            setError("No se pudo cargar el artículo. Por favor, inténtalo de nuevo más tarde.");
+            console.error(`Error fetching post ${slug}:`, e);
+        } finally {
+            setLoading(false);
+        }
+    }
+    fetchData();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+        <div className="container mx-auto py-8 text-center">
+            <Alert variant="destructive" className="max-w-2xl mx-auto">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertDescription>{error}</AlertDescription>
+            </Alert>
+             <div className="mt-8">
+                <Button variant="outline" asChild>
+                <Link href="/resources">
+                    <ArrowLeft className="mr-2 h-4 w-4" /> Volver a Recursos
+                </Link>
+                </Button>
+            </div>
+        </div>
+    );
+  }
 
   if (!post) {
-      notFound();
+      // This state should ideally be covered by the error state now
+      return <div className="container mx-auto py-8 text-center">Artículo no encontrado.</div>
   }
 
   let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
@@ -65,13 +118,4 @@ export default async function Page({ params }: RoutePageProps<{ slug: string }>)
       </div>
     </div>
   );
-}
-
-export async function generateMetadata({ params }: RoutePageProps<{ slug: string }>): Promise<Metadata> {
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
-  const post = await getPostBySlug(slug);
-  return {
-    title: post?.title.rendered || 'Artículo',
-  };
 }

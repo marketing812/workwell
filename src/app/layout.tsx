@@ -7,7 +7,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
-import { FirebaseProvider } from '@/firebase/provider'; 
 
 const geistSans = GeistSans;
 
@@ -44,7 +43,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FirebaseProvider>
             <UserProvider>
               <ActivePathProvider>
                 <FeatureFlagProvider>
@@ -53,9 +51,9 @@ export default function RootLayout({
                 </FeatureFlagProvider>
               </ActivePathProvider>
             </UserProvider>
-          </FirebaseProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

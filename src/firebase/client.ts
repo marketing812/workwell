@@ -1,4 +1,23 @@
-// This file is intentionally left blank. 
-// It was part of a previous architecture and is no longer needed.
-// Its presence is maintained to avoid breaking import statements during the transition,
-// but it should be considered deprecated and can be removed in a future cleanup.
+
+import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { firebaseConfig } from "./config";
+
+let app: FirebaseApp;
+let auth: Auth;
+let db: Firestore;
+
+// This code will only run on the client side
+if (typeof window !== 'undefined' && !getApps().length) {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+} else if (typeof window !== 'undefined') {
+  app = getApp();
+  auth = getAuth(app);
+  db = getFirestore(app);
+}
+
+// @ts-ignore - these will be initialized in the browser
+export { app, auth, db };

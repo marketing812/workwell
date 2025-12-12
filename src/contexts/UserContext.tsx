@@ -6,7 +6,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useFirebase } from "@/firebase/provider";
+import { auth, db } from "@/firebase/client"; // Import directly from client
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -35,20 +35,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const { auth, db } = useFirebase();
 
   useEffect(() => {
-    if (!auth || !db) {
-      setLoading(false);
-      return;
-    }
-
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       setLoading(true);
       if (fbUser) {
         setFirebaseUser(fbUser);
         try {
-          const userDoc = await getDoc(doc(db, "users", fbUser.uid));
+          const userDocRef = doc(db, "users", fbUser.uid);
+          const userDoc = await getDoc(userDocRef);
+          
           if (userDoc.exists()) {
             const data = userDoc.data();
             const userProfile: User = {
@@ -61,16 +57,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
             };
             setUser(userProfile);
           } else {
+             // If user exists in auth but not firestore, create a basic profile
              const userProfile: User = {
                 id: fbUser.uid,
                 email: fbUser.email,
-                name: 'Usuario',
+                name: fbUser.displayName || 'Usuario',
              };
              setUser(userProfile);
-             console.warn(`No Firestore document found for user ${fbUser.uid}.`);
+             console.warn(`No Firestore document for user ${fbUser.uid}, created basic profile.`);
           }
         } catch (error) {
           console.error("Error fetching user document from Firestore:", error);
+          // Fallback to a minimal user object to prevent app crash
           setUser({
             id: fbUser.uid,
             email: fbUser.email,
@@ -85,15 +83,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [auth, db]);
+  }, []);
 
 
   const logout = useCallback(async () => {
-    if (!auth) return;
     try {
       await signOut(auth);
       setUser(null);
       setFirebaseUser(null);
+      // Clear all local data on logout
       clearAllEmotionalEntries();
       clearAllNotebookEntries();
       clearAssessmentHistory();
@@ -102,10 +100,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-  }, [auth, router]);
+  }, [router]);
 
   const updateUser = useCallback(async (updatedData: Partial<Omit<User, 'id' | 'email'>>) => {
-    if (!user || !db) return;
+    if (!user) return;
     
     const updatedUser = { ...user, ...updatedData };
     setUser(updatedUser);
@@ -114,8 +112,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
       await setDoc(doc(db, "users", user.id), updatedData, { merge: true });
     } catch (error) {
       console.error("Error updating user profile in Firestore:", error);
+      // Optional: revert state or show toast
     }
-  }, [user, db]);
+  }, [user]);
 
   const contextValue = { user, firebaseUser, loading, updateUser, logout };
 
