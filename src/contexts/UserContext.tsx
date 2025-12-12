@@ -2,9 +2,10 @@
 "use client";
 
 import type { ReactNode } from 'react';
-import { createContext, useContext, useState, useCallback } from 'react';
-import { signOut } from "firebase/auth";
-import { useAuth } from "@/firebase/provider"; // Corregida la importación
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useAuth, useFirestore } from '@/firebase/provider';
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -34,7 +35,67 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const auth = useAuth(); // Se obtiene auth del hook
+  const auth = useAuth();
+  const db = useFirestore();
+
+  useEffect(() => {
+    if (!auth || !db) {
+        setLoading(true); // Keep loading if firebase services are not ready
+        return;
+    };
+
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
+      if (fbUser) {
+        try {
+          const userDocRef = doc(db, "users", fbUser.uid);
+          const userDoc = await getDoc(userDocRef);
+
+          let userProfile: User;
+
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            userProfile = {
+              id: fbUser.uid,
+              email: fbUser.email,
+              name: data.name || fbUser.displayName || 'Usuario',
+              ageRange: data.ageRange,
+              gender: data.gender,
+              initialEmotionalState: data.initialEmotionalState,
+            };
+          } else {
+            // Create a new user document if it doesn't exist
+            userProfile = {
+              id: fbUser.uid,
+              email: fbUser.email,
+              name: fbUser.displayName || 'Usuario',
+            };
+            await setDoc(userDocRef, {
+              email: fbUser.email,
+              name: userProfile.name,
+              createdAt: new Date().toISOString(),
+            }, { merge: true });
+          }
+          
+          setUser(userProfile);
+
+        } catch (error) {
+          console.error("Error fetching or creating user document from Firestore:", error);
+          // Fallback to a minimal user object to prevent app crash
+          setUser({
+            id: fbUser.uid,
+            email: fbUser.email,
+            name: fbUser.displayName || 'Usuario',
+          });
+        }
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [auth, db]);
+
 
   const logout = useCallback(async () => {
     if (!auth) {
@@ -49,7 +110,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
       router.push('/login');
-      console.log("UserContext LOGOUT: User signed out and all local data cleared.");
     } catch (error) {
       console.error("Error signing out: ", error);
     }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { ReactNode } from 'react';
@@ -9,8 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
-import { AuthInitializer } from '@/components/auth/AuthInitializer';
-import { FirebaseProvider } from '@/firebase/provider'; // Importar el nuevo provider
+import { FirebaseProvider } from '@/firebase/provider'; 
 
 const geistSans = GeistSans;
 
@@ -31,14 +29,12 @@ export default function RootLayout({
         >
           <FirebaseProvider>
             <UserProvider>
-              <AuthInitializer>
-                <ActivePathProvider>
-                  <FeatureFlagProvider>
-                    {children}
-                    <Toaster />
-                  </FeatureFlagProvider>
-                </ActivePathProvider>
-              </AuthInitializer>
+              <ActivePathProvider>
+                <FeatureFlagProvider>
+                  {children}
+                  <Toaster />
+                </FeatureFlagProvider>
+              </ActivePathProvider>
             </UserProvider>
           </FirebaseProvider>
         </ThemeProvider>
