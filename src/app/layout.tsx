@@ -1,5 +1,7 @@
 
-import type { Metadata, Viewport } from 'next';
+"use client";
+
+import type { ReactNode } from 'react';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { UserProvider } from '@/contexts/UserContext';
@@ -7,26 +9,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
+import { AuthInitializer } from '@/components/auth/AuthInitializer';
 
 const geistSans = GeistSans;
 
-export const metadata: Metadata = {
-  title: 'EMOTIVA',
-  description: 'Tu app de acompañamiento emocional',
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'EMOTIVA',
-  },
- 
-};
-
-export const viewport: Viewport = {
-  themeColor: '#64B5F6',
-  initialScale: 1,
-  width: 'device-width',
-};
+// Metadata and Viewport can remain in a client component if needed, or moved to a server component layout.
+// For simplicity, they are kept here.
+// export const metadata: Metadata = { ... };
+// export const viewport: Viewport = { ... };
 
 export default function RootLayout({
   children,
@@ -43,17 +33,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-            <UserProvider>
+          <UserProvider>
+            <AuthInitializer>
               <ActivePathProvider>
                 <FeatureFlagProvider>
                   {children}
                   <Toaster />
                 </FeatureFlagProvider>
               </ActivePathProvider>
-            </UserProvider>
+            </AuthInitializer>
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
-

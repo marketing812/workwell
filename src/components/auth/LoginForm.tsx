@@ -15,6 +15,8 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/firebase/client"; // Importa directamente desde el cliente
 
+const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
+
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
@@ -56,19 +58,23 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        // The onAuthStateChanged in UserContext will handle the redirect.
+        await signInWithEmailAndPassword(auth, email, password);
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
         });
-        // The redirect will happen via the global layout's effect on user state change
+
+        const welcomeSeen = localStorage.getItem(WELCOME_SEEN_KEY);
+        if (welcomeSeen) {
+          router.push('/dashboard');
+        } else {
+          router.push('/welcome');
+        }
+        
     } catch (error: any) {
         console.error("Login Error:", error);
-        let errorMessage = "Credenciales inválidas o error de conexión. Por favor, inténtalo de nuevo.";
-        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential' || error.code === 'auth/invalid-email') {
-            errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-        } else if (error.code === 'auth/network-request-failed') {
+        let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
+        if (error.code === 'auth/network-request-failed') {
             errorMessage = "Error de red. Por favor, revisa tu conexión a internet.";
         }
         setLoginError(errorMessage);

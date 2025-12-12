@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { ReactNode } from 'react';
@@ -35,11 +36,20 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
     }
   }, [user, loading, router]);
 
-  if (loading || !user) {
+  if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-background">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
+    );
+  }
+
+  if (!user) {
+    // Return null or a loader while redirecting to avoid flashing content
+    return (
+        <div className="flex h-screen items-center justify-center bg-background">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
     );
   }
 
@@ -59,4 +69,3 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
     </TooltipProvider>
   );
 }
-export const dynamic = 'force-dynamic';
