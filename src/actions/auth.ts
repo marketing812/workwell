@@ -83,3 +83,4 @@ export async function deleteUserAccount(
   // For now, it's a simulation.
   return { success: true, message: "Cuenta eliminada (simulado)." };
 }
+
