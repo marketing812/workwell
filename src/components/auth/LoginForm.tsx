@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -9,22 +9,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { useUser, type User as ContextUser } from "@/contexts/UserContext";
+import { useUser } from "@/contexts/UserContext";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
-import { useFirebase } from "@/firebase/provider";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { fetchUserActivities, fetchNotebookEntries } from "@/actions/user-data";
-
-const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
+import { useFirebase } from "@/firebase/provider";
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { user: contextUser, loading: userLoading, setUserAndData } = useUser();
-  const { auth, db } = useFirebase();
+  const { auth } = useFirebase();
   const router = useRouter();
   
   const [email, setEmail] = useState('');
@@ -32,7 +27,6 @@ export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
-
   const [resetEmail, setResetEmail] = useState("");
   const [isResetting, setIsResetting] = useState(false);
 
@@ -60,7 +54,7 @@ export function LoginForm() {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    if (!auth || !db) {
+    if (!auth) {
         toast({ title: "Error", description: "Servicios de Firebase no disponibles.", variant: "destructive" });
         return;
     }
@@ -68,64 +62,13 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const firebaseUser = userCredential.user;
-
-        console.log("LoginForm: Firebase sign-in successful for", firebaseUser.uid);
-
-        // Fetch user document from Firestore
-        const userDocRef = doc(db, "users", firebaseUser.uid);
-        const userDoc = await getDoc(userDocRef);
-
-        let userProfile: ContextUser;
-
-        if (userDoc.exists()) {
-            const data = userDoc.data();
-            userProfile = {
-              id: firebaseUser.uid,
-              email: firebaseUser.email,
-              name: data.name || 'Usuario',
-              ageRange: data.ageRange,
-              gender: data.gender,
-              initialEmotionalState: data.initialEmotionalState,
-            };
-        } else {
-             console.warn(`No Firestore document found for user ${firebaseUser.uid}. A basic profile will be used.`);
-             userProfile = {
-                id: firebaseUser.uid,
-                email: firebaseUser.email,
-                name: firebaseUser.displayName || 'Usuario',
-             };
-        }
-        
-        console.log("LoginForm: User profile loaded:", userProfile);
-        
-        const [activitiesResult, notebookResult] = await Promise.all([
-          fetchUserActivities(firebaseUser.uid),
-          fetchNotebookEntries(firebaseUser.uid)
-        ]);
-
-        console.log("LoginForm: Fetched activities and notebook entries.");
-
-        // Update the user context with all data
-        setUserAndData({
-            user: userProfile,
-            emotionalEntries: activitiesResult.success ? activitiesResult.entries : [],
-            notebookEntries: notebookResult.success ? notebookResult.entries : [],
-        });
-
+        await signInWithEmailAndPassword(auth, email, password);
+        // El `onAuthStateChanged` en `UserContext` se encargará de la carga de datos y la redirección.
         toast({
             title: t.login,
             description: t.loginSuccessMessage,
         });
-
-        const welcomeSeen = localStorage.getItem(WELCOME_SEEN_KEY);
-        if (welcomeSeen === 'true') {
-          router.push("/dashboard");
-        } else {
-          router.push("/welcome");
-        }
-
+        // No redirigimos desde aquí, dejamos que el contexto lo haga.
     } catch (error: any) {
         console.error("Login Error:", error);
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
@@ -133,28 +76,8 @@ export function LoginForm() {
             errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         }
         setLoginError(errorMessage);
-    } finally {
         setIsLoggingIn(false);
     }
-  }
-
-  useEffect(() => {
-    if (!userLoading && contextUser) {
-      const welcomeSeen = typeof window !== 'undefined' && localStorage.getItem(WELCOME_SEEN_KEY);
-      if (welcomeSeen === 'true') {
-        router.push("/dashboard");
-      } else {
-        router.push("/welcome");
-      }
-    }
-  }, [contextUser, userLoading, router]);
-
-  if (userLoading || (!userLoading && contextUser)) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-background">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
   }
 
   return (
