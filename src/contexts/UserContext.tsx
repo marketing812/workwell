@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
-import { useAuth, useFirestore } from '@/firebase/provider'; // Importar los hooks correctos
+import { useAuth, useFirestore } from '@/firebase/provider';
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
@@ -37,10 +37,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   useEffect(() => {
-    // Si auth aún no está inicializado, no hagas nada.
-    if (!auth || !db) return;
+    if (!auth || !db) {
+        // Firebase services not ready yet. Keep loading.
+        setLoading(true);
+        return;
+    };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
+      console.log("onAuthStateChanged triggered. fbUser:", fbUser ? fbUser.uid : "null");
+      setLoading(true);
       if (fbUser) {
         try {
           const userDocRef = doc(db, "users", fbUser.uid);
@@ -50,14 +55,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
             const data = userDoc.data();
             setUser({
               id: fbUser.uid,
-              name: data.name || null,
+              name: data.name || fbUser.displayName || 'Usuario',
               email: data.email || fbUser.email,
               ageRange: data.ageRange || null,
               gender: data.gender || null,
               initialEmotionalState: data.initialEmotionalState || null,
             });
+            console.log("User profile loaded from Firestore:", userDoc.data());
           } else {
-            // El perfil no existe, créalo
+            console.warn("User profile document does not exist for UID:", fbUser.uid, ". Creating one.");
             const newUserProfile: User = {
               id: fbUser.uid,
               name: fbUser.displayName || 'Usuario',
@@ -65,6 +71,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             };
             await setDoc(userDocRef, newUserProfile, { merge: true });
             setUser(newUserProfile);
+            console.log("New user profile created in Firestore.");
           }
         } catch (error) {
           console.error("Error fetching or creating user document from Firestore:", error);
@@ -72,17 +79,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
           setUser({
             id: fbUser.uid,
             email: fbUser.email,
-            name: 'Usuario',
+            name: fbUser.displayName || 'Usuario',
           });
         }
       } else {
         setUser(null);
+        console.log("No Firebase user. Setting context user to null.");
       }
       setLoading(false);
+      console.log("Finished auth state processing. Loading set to false.");
     });
 
-    return () => unsubscribe();
-  }, [auth, db]); // Se ejecutará cuando auth y db estén listos
+    return () => {
+        console.log("Unsubscribing from onAuthStateChanged.");
+        unsubscribe();
+    }
+  }, [auth, db]);
 
   const logout = useCallback(async () => {
     if (!auth) {
@@ -96,6 +108,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       clearAllNotebookEntries();
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
+      // No need to manually clear other localStorage, they will be overwritten on next login
       router.push('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
@@ -109,10 +122,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
   }, [user, db]);
 
-  const contextValue = { user, loading, logout, updateUser };
-
   return (
-    <UserContext.Provider value={contextValue}>
+    <UserContext.Provider value={{ user, loading, logout, updateUser }}>
       {children}
     </UserContext.Provider>
   );
