@@ -3,7 +3,9 @@
 
 import { z } from "zod";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "@/firebase/config"; // Asumimos una instancia 'db' de servidor
+import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { firebaseConfig } from "@/firebase/config"; // Asumimos una instancia 'db' de servidor
 import type { User } from "@/contexts/UserContext";
 
 // El schema del perfil, útil para validaciones
@@ -18,10 +20,19 @@ const userProfileSchema = z.object({
 
 /**
  * Obtiene el perfil de un usuario desde Firestore.
+ * Esta es una Server Action que puede ser llamada desde componentes de cliente.
  */
 export async function getUserProfile(userId: string): Promise<User | null> {
   if (!userId) return null;
   try {
+    let app;
+    if (!getApps().length) {
+      app = initializeApp(firebaseConfig);
+    } else {
+      app = getApp();
+    }
+    const db = getFirestore(app);
+
     const userDocRef = doc(db, "users", userId);
     const userDoc = await getDoc(userDocRef);
 
@@ -43,31 +54,8 @@ export async function getUserProfile(userId: string): Promise<User | null> {
   }
 }
 
-/**
- * Guarda o actualiza el perfil de un usuario en Firestore.
- */
-export async function saveUserProfile(userData: Omit<User, 'email'> & { email: string }): Promise<{ success: boolean; error?: string }> {
-  const { id, ...profileData } = userData;
-  if (!id) {
-    return { success: false, error: "User ID is required." };
-  }
-  try {
-    const userDocRef = doc(db, "users", id);
-    await setDoc(userDocRef, {
-        ...profileData,
-        lastLogin: new Date().toISOString(),
-    }, { merge: true });
-    return { success: true };
-  } catch (error: any) {
-    console.error("Error saving user profile:", error);
-    return { success: false, error: "Could not save user profile." };
-  }
-}
-
-
 // Las funciones de loginUser, registerUser, etc., se eliminan de aquí
-// porque la autenticación se manejará en el cliente.
-// Solo mantenemos las interacciones con la base de datos de perfiles.
+// porque la autenticación ahora se manejará en el cliente con los SDK de Firebase.
 
 export type DeleteAccountState = {
   errors?: { _form?: string[] };
@@ -84,3 +72,21 @@ export async function deleteUserAccount(
   return { success: true, message: "Cuenta eliminada (simulado)." };
 }
 
+export type ChangePasswordState = {
+  errors?: {
+    newPassword?: string[];
+    confirmNewPassword?: string[];
+    _form?: string[];
+  };
+  message?: string | null;
+  success?: boolean;
+};
+
+// Esta función se mantiene como ejemplo, pero la lógica de reset
+// se hará en el cliente para evitar problemas de inicialización.
+export async function resetPassword(email: string): Promise<{success: boolean; message: string}> {
+  // En una implementación real, aquí llamarías a la API de Firebase Admin
+  // o a un servicio externo. Para este ejemplo, simulamos el éxito.
+  console.log(`Simulating password reset for ${email}`);
+  return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña." };
+}
