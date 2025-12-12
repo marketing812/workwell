@@ -153,9 +153,9 @@ export function LoginForm() {
             </div>
           </div>
           {loginError && <p className="text-sm text-destructive pt-1">{loginError}</p>}
-          <Button type="submit" className="w-full" disabled={isLoggingIn}>
-              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {t.login}
+          <Button type="submit" className="w-full" disabled={isLoggingIn || !auth}>
+              {isLoggingIn || !auth ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {auth ? t.login : 'Inicializando...'}
           </Button>
         </form>
       </CardContent>

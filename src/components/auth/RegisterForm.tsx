@@ -11,22 +11,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
-import { saveUser } from "@/actions/user";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useAuth } from "@/firebase/provider"; // Usar el hook
+import { useAuth, useFirestore } from "@/firebase/provider"; // Usar el hook
+import { doc, setDoc } from "firebase/firestore";
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Correo electrónico inválido."),
   password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres."),
-  ageRange: z.string().optional(),
-  gender: z.string().optional(),
-  initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
   agreeTerms: z.boolean().refine((val) => val === true, {
     message: "Debes aceptar los términos y condiciones.",
   }),
@@ -40,14 +35,12 @@ export function RegisterForm() {
   const router = useRouter();
   const { user: contextUser, loading: userLoading } = useUser();
   const auth = useAuth();
+  const db = useFirestore();
 
   const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms'>>({
     name: '',
     email: '',
     password: '',
-    ageRange: '',
-    gender: '',
-    initialEmotionalState: 3,
   });
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [errors, setErrors] = useState<z.ZodError<RegisterFormData> | null>(null);
@@ -65,18 +58,10 @@ export function RegisterForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSelectChange = (name: keyof Omit<RegisterFormData, 'agreeTerms'>) => (value: string) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSliderChange = (value: number[]) => {
-      setFormData(prev => ({ ...prev, initialEmotionalState: value[0] }));
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!auth) {
+    if (!auth || !db) {
       setServerError("El servicio de autenticación no está disponible. Inténtalo más tarde.");
       return;
     }
@@ -103,21 +88,19 @@ export function RegisterForm() {
       );
       const firebaseUser = userCredential.user;
 
-      // 2. Save user profile to Firestore via Server Action
+      // 2. Save user profile to Firestore
       const userProfileData = {
-        userId: firebaseUser.uid,
+        id: firebaseUser.uid,
         name: validationResult.data.name,
         email: validationResult.data.email,
-        ageRange: validationResult.data.ageRange || null,
-        gender: validationResult.data.gender || null,
-        initialEmotionalState: validationResult.data.initialEmotionalState || null,
+        ageRange: null,
+        gender: null,
+        initialEmotionalState: null,
+        createdAt: new Date().toISOString(),
       };
-
-      const saveResult = await saveUser(userProfileData);
-
-      if (!saveResult.success) {
-        throw new Error(saveResult.error || "No se pudo guardar el perfil de usuario.");
-      }
+      
+      const userDocRef = doc(db, "users", firebaseUser.uid);
+      await setDoc(userDocRef, userProfileData);
 
       toast({
         title: t.registrationSuccessTitle,
@@ -182,8 +165,8 @@ export function RegisterForm() {
           
           {serverError && <p className="text-sm font-medium text-destructive">{serverError}</p>}
           
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.register}
+          <Button type="submit" className="w-full" disabled={isSubmitting || !auth}>
+            {isSubmitting || !auth ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : (auth ? t.register : 'Inicializando...')}
           </Button>
         </form>
       </CardContent>
