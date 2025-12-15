@@ -18,9 +18,6 @@ const userProfileSchema = z.object({
 
 type UserProfileData = z.infer<typeof userProfileSchema>;
 
-// This function might still be useful if you need to update profiles from the server in the future,
-// but it's not strictly necessary for the client-side registration flow anymore.
-// It's important that it initializes its own Firebase instance if it's a server action.
 export async function saveUser(
   data: UserProfileData
 ): Promise<{ success: boolean; error?: string }> {
@@ -55,5 +52,3 @@ export async function saveUser(
     return { success: false, error: "No se pudo guardar el perfil de usuario en la base de datos." };
   }
 }
-
-    

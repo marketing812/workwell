@@ -30,13 +30,7 @@ export function DashboardSummaryCard({
   
   // Specifically update the ctaLink for "Realizar Evaluación Inicial"
   let finalCtaLink = ctaLink;
-  if (ctaLabel === "Realizar Evaluación Inicial" && ctaLink === "/assessment") {
-    finalCtaLink = "/assessment/intro";
-  }
-  if (ctaLabel === "Ver detalles" && title === "Tu Bienestar Hoy" && ctaLink === "/assessment"){
-    finalCtaLink = "/assessment/intro";
-  }
-   if (ctaLabel === "Ver detalles" && title === "Tu Progreso" && ctaLink === "/assessment"){
+  if (ctaLabel === "Realizar Evaluación Inicial") {
     finalCtaLink = "/assessment/intro";
   }
 
