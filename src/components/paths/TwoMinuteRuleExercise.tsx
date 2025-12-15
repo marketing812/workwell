@@ -11,6 +11,8 @@ import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
@@ -19,12 +21,14 @@ interface TwoMinuteRuleExerciseProps {
 
 export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [task, setTask] = useState('');
   const [twoMinVersion, setTwoMinVersion] = useState('');
   const [when, setWhen] = useState('');
   const [saved, setSaved] = useState(false);
 
-  const handleSave = (e: FormEvent) => {
+  const handleSave = async (e: FormEvent) => {
     e.preventDefault();
     if (!task || !twoMinVersion || !when) {
       toast({
@@ -34,6 +38,11 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
       });
       return;
     }
+     if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+      return;
+    }
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -46,9 +55,22 @@ ${twoMinVersion}
 *Me comprometo a hacerlo:*
 ${when}
     `;
-    addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: notebookContent, pathId });
-    toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
-    setSaved(true);
+    
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Compromiso de 2 Minutos',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
+        setSaved(true);
+    } catch (error) {
+        console.error("Error saving Two Minute Rule exercise to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar el ejercicio.', variant: 'destructive'});
+    }
   };
 
   return (

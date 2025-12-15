@@ -9,8 +9,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 interface CompassionateReflectionExerciseProps {
   content: ModuleContent;
@@ -19,6 +21,8 @@ interface CompassionateReflectionExerciseProps {
 
 export function CompassionateReflectionExercise({ content, pathId }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [adviceToFriend, setAdviceToFriend] = useState('');
   const [selfJudgment, setSelfJudgment] = useState('');
@@ -29,7 +33,12 @@ export function CompassionateReflectionExercise({ content, pathId }: Compassiona
 
   if (content.type !== 'compassionateReflectionExercise') return null;
 
-  const handleSave = () => {
+  const handleSave = async () => {
+     if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+      return;
+    }
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -55,9 +64,22 @@ ${Object.keys(perfectionism)
 *Nueva forma de pensarlo:*
 ${flexibleThought || 'No especificada.'}
         `;
-    addNotebookEntry({ title: 'Mi Reflexión Compasiva', content: notebookContent, pathId });
-    toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
-    setStep(prev => prev + 1);
+    
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Reflexión Compasiva',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
+        setStep(prev => prev + 1);
+    } catch (error) {
+        console.error("Error saving compassionate reflection to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar la reflexión.', variant: 'destructive'});
+    }
   };
 
   const renderStep = () => {

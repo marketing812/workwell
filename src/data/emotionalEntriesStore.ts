@@ -16,12 +16,12 @@ export interface EmotionalEntry {
 // These functions are now deprecated as we move to a full Firestore implementation.
 // They will be removed in a future refactor.
 export function getEmotionalEntries(): EmotionalEntry[] {
-  console.warn("`getEmotionalEntries` is deprecated. Data is now fetched directly from Firestore in the component.");
+  console.warn("`getEmotionalEntries` from localStore is deprecated. Data is now fetched directly from Firestore in the component.");
   return [];
 }
 
 export function addEmotionalEntry(newEntryData: Omit<EmotionalEntry, 'id' | 'timestamp'>): EmotionalEntry {
-   console.warn("`addEmotionalEntry` is deprecated. Use Firestore `addDoc` in the component.");
+   console.warn("`addEmotionalEntry` from localStore is deprecated. Use Firestore `addDoc` in the component.");
    return {
     id: crypto.randomUUID(),
     ...newEntryData,

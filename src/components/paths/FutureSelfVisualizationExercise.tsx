@@ -8,8 +8,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 interface FutureSelfVisualizationExerciseProps {
   content: ModuleContent;
@@ -19,6 +21,8 @@ interface FutureSelfVisualizationExerciseProps {
 
 export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: FutureSelfVisualizationExerciseProps) {
     const { toast } = useToast();
+    const db = useFirestore();
+    const { user } = useUser();
     const [habit, setHabit] = useState('');
     const [futureSelf, setFutureSelf] = useState('');
     const [emotions, setEmotions] = useState('');
@@ -29,8 +33,13 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
 
     if (content.type !== 'futureSelfVisualizationExercise') return null;
 
-    const handleSave = (e: FormEvent) => {
+    const handleSave = async (e: FormEvent) => {
         e.preventDefault();
+        if (!user?.id || !db) {
+          toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+          return;
+        }
+
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -41,9 +50,22 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
 *Beneficios en mi vida:* ${benefits}
 *Pasos que me ayudaron:* ${steps}
         `;
-        addNotebookEntry({ title: 'Mi Visualización del Yo Futuro', content: notebookContent, pathId: pathId });
-        toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
-        setSaved(true);
+        
+        try {
+            const notebookRef = collection(db, "users", user.id, "notebook_entries");
+            await addDoc(notebookRef, {
+                title: 'Mi Visualización del Yo Futuro',
+                content: notebookContent,
+                pathId,
+                ruta: 'Superar la Procrastinación y Crear Hábitos',
+                timestamp: serverTimestamp(),
+            });
+            toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
+            setSaved(true);
+        } catch (error) {
+            console.error("Error saving Future Self exercise to Firestore:", error);
+            toast({ title: 'Error', description: 'No se pudo guardar la visualización.', variant: 'destructive'});
+        }
     };
 
     return (
