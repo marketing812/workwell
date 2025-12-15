@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
@@ -70,6 +70,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
         };
         await setDoc(userDocRef, basicProfile, { merge: true });
         setUser(basicProfile); // Set the newly created profile
+        console.log(`User document created for ${userId} as it was missing.`);
       } else {
          console.warn(`User document for ${userId} not found, and no matching auth user. Cannot create profile.`);
       }
@@ -82,46 +83,30 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
-    // Solo proceder si auth y db están listos
     if (!auth || !db) {
-        console.log("UserContext useEffect: auth or db not ready, returning.");
-        // Si no hay auth pero ya hemos dejado de cargar, ponemos el usuario a null.
-        if(!loading) {
-            setUser(null);
-        }
+        setLoading(true); // Keep loading if services aren't ready
         return; 
     };
 
-    console.log("UserContext useEffect: auth and db are ready. Setting up onAuthStateChanged listener.");
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       setLoading(true); 
       if (fbUser) {
-          console.log("UserContext onAuthStateChanged: User is logged in. UID:", fbUser.uid);
-          // Set a minimal user object immediately to update the UI
           const minimalUser: User = {
             id: fbUser.uid,
-            name: fbUser.displayName || 'Usuario', // Provisional name
+            name: fbUser.displayName || 'Usuario',
             email: fbUser.email,
           };
           setUser(minimalUser);
-          // Then fetch the full profile from Firestore. This will re-render with full data.
           await fetchUserProfile(fbUser.uid);
       } else {
-        console.log("UserContext onAuthStateChanged: User is logged out.");
         setUser(null);
-        setLoading(false); // User is definitively logged out, stop loading.
+        setLoading(false);
       }
     });
 
-    return () => {
-        console.log("UserContext useEffect: Cleaning up onAuthStateChanged listener.");
-        unsubscribe();
-    };
+    return () => unsubscribe();
     
-  // The dependency array is critical. We only want to re-run this effect if `auth` or `db` instances change.
-  // We've removed `fetchUserProfile` from deps to avoid re-subscribing on every render.
-  // eslint-disable-next-line react-hooks/exhaustive-deps 
-  }, [auth, db]);
+  }, [auth, db, fetchUserProfile]);
 
 
   const logout = useCallback(async () => {
@@ -144,7 +129,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     
     const userDocRef = doc(db, "users", user.id);
     try {
-      await setDoc(userDocRef, { ...updatedData, updatedAt: serverTimestamp() }, { merge: true });
+      await setDoc(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true });
       setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
     } catch (error) {
         console.error("Error updating user profile in Firestore:", error);
