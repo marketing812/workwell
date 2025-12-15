@@ -37,12 +37,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   const fetchUserProfile = useCallback(async (userId: string) => {
-    if (!db || !userId) {
-      console.warn("fetchUserProfile: db or userId not available. Aborting.");
-      setLoading(false);
-      return;
-    }
-
+    if (!db || !userId) return;
     try {
       const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
@@ -50,7 +45,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
-          ...(prevUser as User), // Keep the basic user object from auth
+          ...(prevUser as User),
           id: userId,
           name: userData.name || prevUser?.name || 'Usuario',
           email: userData.email || prevUser?.email,
@@ -58,8 +53,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: userData.gender || null,
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
-      } else if (auth?.currentUser && auth.currentUser.uid === userId) {
-        // This case handles a user that exists in Auth but not Firestore. Let's create their document.
+      } else if (auth?.currentUser?.uid === userId) {
         const fbUser = auth.currentUser;
         const basicProfile: User & { createdAt: string } = {
             id: fbUser.uid,
@@ -68,8 +62,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             createdAt: new Date().toISOString(),
         };
         await setDoc(userDocRef, basicProfile, { merge: true });
-        setUser(basicProfile); // Set the user state with the newly created profile
-        console.log(`User document created for ${userId} as it was missing.`);
+        setUser(basicProfile);
       }
     } catch (error) {
       console.error("Error in fetchUserProfile:", error);
@@ -80,10 +73,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
-    if (!auth || !db) {
-        setLoading(true); 
-        return; 
-    };
+    if (!auth || !db) return;
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       setLoading(true); 
@@ -111,12 +101,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
-      // Clear all local storage data on logout
       clearAllEmotionalEntries();
       clearAllNotebookEntries();
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
-      // Find all keys related to path progress and remove them
       Object.keys(localStorage).forEach(key => {
         if (key.startsWith('workwell-progress-')) {
           localStorage.removeItem(key);
@@ -137,7 +125,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
     } catch (error) {
         console.error("Error updating user profile in Firestore:", error);
-        throw error; // Re-throw so the calling component knows about the error
+        throw error;
     }
   }, [user, db]);
 

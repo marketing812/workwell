@@ -1,4 +1,3 @@
-
 "use client";
 import type { LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,9 +27,8 @@ export function DashboardSummaryCard({
   iconColorClass = 'text-primary',
 }: DashboardSummaryCardProps) {
   
-  // Specifically update the ctaLink for "Realizar Evaluación Inicial"
   let finalCtaLink = ctaLink;
-  if (ctaLabel === "Realizar Evaluación Inicial") {
+  if (title === "Área Prioritaria" && ctaLink === "/assessment") {
     finalCtaLink = "/assessment/intro";
   }
 

@@ -14,7 +14,8 @@ import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, setDoc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
 
@@ -83,7 +84,6 @@ export function RegisterForm() {
     }
 
     try {
-      // 1. Create user with Firebase Auth (Client-side)
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         validationResult.data.email,
@@ -91,7 +91,6 @@ export function RegisterForm() {
       );
       const firebaseUser = userCredential.user;
 
-      // 2. Save user profile to Firestore
       const { name, email, ageRange, gender, initialEmotionalState } = validationResult.data;
       const userProfileData = {
         id: firebaseUser.uid,
@@ -104,7 +103,7 @@ export function RegisterForm() {
       };
       
       const userDocRef = doc(db, "users", firebaseUser.uid);
-      await setDoc(userDocRef, userProfileData, { merge: true });
+      setDocumentNonBlocking(userDocRef, userProfileData, { merge: true });
 
       toast({
         title: t.registrationSuccessTitle,
