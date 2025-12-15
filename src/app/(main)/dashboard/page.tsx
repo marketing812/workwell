@@ -139,41 +139,24 @@ export default function DashboardPage() {
     }
     
     setIsEntryDialogOpen(false);
-    
-    const optimisticEntry: EmotionalEntry = {
-        id: crypto.randomUUID(),
-        timestamp: new Date().toISOString(),
-        ...data
-    };
-    
-    setAllEntriesForChart(prev => [optimisticEntry, ...prev]);
-    setRecentEntries(prev => [optimisticEntry, ...prev].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
-    const lastRegisteredEmotion = emotionOptions.find(e => e.value === optimisticEntry.emotion);
-    setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
-
 
     try {
       const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      const docRef = await addDoc(entriesRef, {
+      await addDoc(entriesRef, {
         ...data,
         timestamp: serverTimestamp() 
       });
       
-      // Update entry with permanent ID from server
-      setAllEntriesForChart(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
-      setRecentEntries(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
-
       toast({
         title: t.emotionalEntrySavedTitle,
         description: "Tu registro emocional ha sido guardado y sincronizado.",
       });
 
+      // After successful save, reload all entries
+      await loadEntries();
+
     } catch (error) {
        console.error("Error saving emotional entry to Firestore:", error);
-       // Revert optimistic update on error
-       setAllEntriesForChart(prev => prev.filter(e => e.id !== optimisticEntry.id));
-       setRecentEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
-
        toast({
         title: "Error al Guardar",
         description: "No se pudo guardar tu registro emocional en la nube.",
@@ -186,7 +169,7 @@ export default function DashboardPage() {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allEntriesForChart.filter(entry => new Date(entry.timestamp) > oneWeekAgo).length;
+    return allEntriesForChart.filter(entry => entry.timestamp && new Date(entry.timestamp) > oneWeekAgo).length;
   }, [isClient, allEntriesForChart]);
   
   const focusArea = useMemo(() => {

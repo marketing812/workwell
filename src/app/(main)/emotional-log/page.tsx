@@ -16,7 +16,8 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
@@ -71,35 +72,30 @@ export default function EmotionalLogPage() {
     }
     setIsEntryDialogOpen(false);
     
-    const optimisticEntry: EmotionalEntry = {
-        id: crypto.randomUUID(),
-        timestamp: new Date().toISOString(),
-        ...data
-    };
-    setAllEntries(prev => [optimisticEntry, ...prev]);
-
     try {
       const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      const docRef = await addDoc(entriesRef, {
+      await addDoc(entriesRef, {
         ...data,
         timestamp: serverTimestamp()
       });
       
-      setAllEntries(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
       toast({
         title: t.emotionalEntrySavedTitle,
         description: "Tu registro se ha guardado en la nube.",
       });
+
+      // Recargar entradas para mostrar la nueva
+      await loadEntries();
+
     } catch (error) {
        toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
-       setAllEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
     }
   };
 
   const chartData = useMemo(() => {
     if (!allEntries || allEntries.length === 0) return [];
     return allEntries
-      .map(entry => ({ ...entry, timestampDate: new Date(entry.timestamp) }))
+      .map(entry => ({ ...entry, timestampDate: entry.timestamp ? new Date(entry.timestamp) : new Date() }))
       .sort((a, b) => a.timestampDate.getTime() - b.timestampDate.getTime())
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
