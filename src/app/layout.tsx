@@ -1,6 +1,4 @@
 
-"use client";
-
 import type { ReactNode } from 'react';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
@@ -9,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
-import { FirebaseProvider } from '@/firebase/provider'; 
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 const geistSans = GeistSans;
 
@@ -28,7 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FirebaseProvider>
+          <FirebaseClientProvider>
             <UserProvider>
               <ActivePathProvider>
                 <FeatureFlagProvider>
@@ -37,7 +35,7 @@ export default function RootLayout({
                 </FeatureFlagProvider>
               </ActivePathProvider>
             </UserProvider>
-          </FirebaseProvider>
+          </FirebaseClientProvider>
         </ThemeProvider>
       </body>
     </html>

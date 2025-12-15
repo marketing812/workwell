@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
-import { useAuth, useFirestore } from '@/firebase/provider';
+import { useAuth, useFirestore } from "@/firebase/provider";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
@@ -39,7 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const fetchUserProfile = useCallback(async (userId: string) => {
     if (!db || !userId) return;
-    
+
     try {
       const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
@@ -47,7 +47,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
-          ...(prevUser as User), // fbUser is guaranteed to be present here
+          ...(prevUser as User),
           id: userId,
           name: userData.name || prevUser?.name || 'Usuario',
           email: userData.email || prevUser?.email,
@@ -77,8 +77,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
-    if (!auth) {
-        setLoading(true);
+    // Solo nos suscribimos si `auth` y `db` están listos.
+    // El nuevo FirebaseClientProvider se encarga de que esto ocurra de forma segura.
+    if (!auth || !db) {
+        setLoading(true); // Mantenemos el estado de carga si Firebase no está listo
         return;
     };
 
@@ -90,7 +92,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
             email: fbUser.email,
           };
           setUser(minimalUser);
-          // fetchUserProfile now handles setting loading to false
           await fetchUserProfile(fbUser.uid);
       } else {
         setUser(null);
@@ -98,10 +99,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    return () => {
-        unsubscribe();
-    }
-  }, [auth, fetchUserProfile]);
+    return () => unsubscribe();
+    
+  }, [auth, db, fetchUserProfile]);
 
 
   const logout = useCallback(async () => {
