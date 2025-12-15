@@ -1,0 +1,714 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user profile in the WorkWell application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user profile."
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address.",
+          "format": "email"
+        },
+        "hashedPassword": {
+          "type": "string",
+          "description": "Hashed password for user authentication. Note: Actual password storage is handled externally and securely."
+        },
+        "ageRange": {
+          "type": "string",
+          "description": "User's age range."
+        },
+        "gender": {
+          "type": "string",
+          "description": "User's gender (optional)."
+        },
+        "language": {
+          "type": "string",
+          "description": "User's preferred language."
+        },
+        "initialEmotionalState": {
+          "type": "number",
+          "description": "User's initial emotional state (scale)."
+        },
+        "isB2B": {
+          "type": "boolean",
+          "description": "Indicates if the user is a B2B (company) user."
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Reference to Company if the user is part of a B2B account. (Relationship: Company 1:N UserProfile)"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "hashedPassword",
+        "ageRange",
+        "language",
+        "initialEmotionalState"
+      ]
+    },
+    "Company": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Company",
+      "type": "object",
+      "description": "Represents a company using the WorkWell B2B service.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the company."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the company."
+        },
+        "adminUserIds": {
+          "type": "array",
+          "description": "References to UserProfiles who are administrators for this company. (Relationship: Company 1:N UserProfile)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "PsychologicalAssessment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PsychologicalAssessment",
+      "type": "object",
+      "description": "Represents a psychological assessment taken by a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the assessment."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to UserProfile who took the assessment. (Relationship: UserProfile 1:N PsychologicalAssessment)"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date the assessment was taken.",
+          "format": "date-time"
+        },
+        "dimensionResults": {
+          "type": "array",
+          "description": "Array of results for each psychological dimension.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "feedback": {
+          "type": "string",
+          "description": "Feedback generated based on the assessment results."
+        },
+        "suggestedRoutes": {
+          "type": "array",
+          "description": "Array of routeIds suggested for a given assessment.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "date",
+        "dimensionResults",
+        "feedback"
+      ]
+    },
+    "DimensionResult": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DimensionResult",
+      "type": "object",
+      "description": "Represents the result of a single dimension within a psychological assessment.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the dimension result."
+        },
+        "assessmentId": {
+          "type": "string",
+          "description": "Reference to PsychologicalAssessment this result belongs to. (Relationship: PsychologicalAssessment 1:N DimensionResult)"
+        },
+        "dimension": {
+          "type": "string",
+          "description": "The psychological dimension being evaluated (e.g., 'Stress', 'Autoestima')."
+        },
+        "score": {
+          "type": "number",
+          "description": "Numerical score for the dimension."
+        },
+        "interpretation": {
+          "type": "string",
+          "description": "Textual interpretation of the score."
+        }
+      },
+      "required": [
+        "id",
+        "assessmentId",
+        "dimension",
+        "score",
+        "interpretation"
+      ]
+    },
+    "DevelopmentRoute": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DevelopmentRoute",
+      "type": "object",
+      "description": "Represents a guided development path for a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the development route."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the development route (e.g., 'Resilience', 'Self-Esteem')."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the development route."
+        },
+        "moduleId": {
+          "type": "array",
+          "description": "References to Modules. (Relationship: DevelopmentRoute 1:N Module)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "UserRoute": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserRoute",
+      "type": "object",
+      "description": "Associates a user with a particular DevelopmentRoute and tracks their progress.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user route."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to UserProfile. (Relationship: UserProfile 1:N UserRoute)"
+        },
+        "routeId": {
+          "type": "string",
+          "description": "Reference to DevelopmentRoute. (Relationship: DevelopmentRoute 1:N UserRoute)"
+        },
+        "progress": {
+          "type": "number",
+          "description": "Progress of the user through the route (percentage)."
+        },
+        "activeModuleId": {
+          "type": "string",
+          "description": "Reference to active Module. (Relationship: Module 1:N UserRoute)"
+        },
+        "lastAccessed": {
+          "type": "string",
+          "description": "Date and time the route was last accessed.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "routeId",
+        "progress"
+      ]
+    },
+    "Module": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Module",
+      "type": "object",
+      "description": "Represents a module within a development route.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the module."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the module."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of module (e.g., 'text', 'audio', 'video', 'exercise')."
+        },
+        "content": {
+          "type": "string",
+          "description": "Content of the module (e.g., text, URL to audio/video)."
+        },
+        "order": {
+          "type": "number",
+          "description": "Order of the module within the route."
+        },
+        "unlockedBy": {
+          "type": "string",
+          "description": "Condition to unlock the module (e.g., previous module completion)."
+        },
+        "estimatedTime": {
+          "type": "number",
+          "description": "Estimated time to complete the module (in minutes)."
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "Reference to Resource content. (Relationship: Resource 1:N Module)"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "type",
+        "content",
+        "order"
+      ]
+    },
+    "JournalEntry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JournalEntry",
+      "type": "object",
+      "description": "Represents a user's journal entry.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the journal entry."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to UserProfile who created the entry. (Relationship: UserProfile 1:N JournalEntry)"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date the entry was created.",
+          "format": "date-time"
+        },
+        "situation": {
+          "type": "string",
+          "description": "Description of the situation that prompted the entry."
+        },
+        "thought": {
+          "type": "string",
+          "description": "Automatic thought associated with the situation."
+        },
+        "emotion": {
+          "type": "string",
+          "description": "Emotion felt in response to the situation."
+        },
+        "note": {
+          "type": "string",
+          "description": "Additional notes or reflections."
+        },
+        "isPrivate": {
+          "type": "boolean",
+          "description": "Indicates if the entry is private."
+        },
+        "isFavorite": {
+          "type": "boolean",
+          "description": "Indicates if the entry is a favorite."
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "date",
+        "situation",
+        "thought",
+        "emotion"
+      ]
+    },
+    "EmotionalCheckIn": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "EmotionalCheckIn",
+      "type": "object",
+      "description": "Represents a user's emotional check-in.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the check-in."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to UserProfile who performed the check-in. (Relationship: UserProfile 1:N EmotionalCheckIn)"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date the check-in was performed.",
+          "format": "date-time"
+        },
+        "predominantEmotion": {
+          "type": "string",
+          "description": "Predominant emotion felt during the week."
+        },
+        "energyLevel": {
+          "type": "number",
+          "description": "User's energy/motivation level."
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "What was the most difficult thing?"
+        },
+        "bestThing": {
+          "type": "string",
+          "description": "What was the best thing?"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Summary generated by AI or logic."
+        },
+        "suggestedExercise": {
+          "type": "string",
+          "description": "Suggested exercise based on the check-in."
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "date",
+        "predominantEmotion",
+        "energyLevel",
+        "difficulty",
+        "bestThing"
+      ]
+    },
+    "Resource": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Resource",
+      "type": "object",
+      "description": "Represents a resource available to the user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the resource."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the resource."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of resource (e.g., 'article', 'audio', 'visualization')."
+        },
+        "format": {
+          "type": "string",
+          "description": "Format of the resource (e.g., 'text', 'URL')."
+        },
+        "themeTags": {
+          "type": "array",
+          "description": "Theme tags associated with the resource.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "duration": {
+          "type": "number",
+          "description": "Duration of the resource (in minutes, if applicable)."
+        },
+        "difficultyLevel": {
+          "type": "string",
+          "description": "Difficulty level of the resource."
+        },
+        "bodyHtml": {
+          "type": "string",
+          "description": "HTML body of the resource."
+        },
+        "mediaLinks": {
+          "type": "array",
+          "description": "Links to associated media.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "type",
+        "format",
+        "themeTags"
+      ]
+    },
+    "UserPreference": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserPreference",
+      "type": "object",
+      "description": "Represents user-specific preferences.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user preference."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to UserProfile who owns the preferences. (Relationship: UserProfile 1:N UserPreference)"
+        },
+        "notificationsEnabled": {
+          "type": "boolean",
+          "description": "Indicates if notifications are enabled."
+        },
+        "language": {
+          "type": "string",
+          "description": "User's preferred language."
+        },
+        "visualTheme": {
+          "type": "string",
+          "description": "User's preferred visual theme (e.g., 'light', 'dark')."
+        },
+        "objectives": {
+          "type": "array",
+          "description": "User's selected objectives.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "consent": {
+          "type": "boolean",
+          "description": "Indicates user's consent to privacy policies."
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "notificationsEnabled",
+        "language",
+        "visualTheme",
+        "objectives",
+        "consent"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}/userProfiles/{profileId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores user profile data, private to each user. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "profileId",
+              "description": "The unique identifier of the profile."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/companies/{companyId}",
+        "definition": {
+          "entityName": "Company",
+          "schema": {
+            "$ref": "#/backend/entities/Company"
+          },
+          "description": "Stores company information. Includes 'adminUserIds' for managing admin access.",
+          "params": [
+            {
+              "name": "companyId",
+              "description": "The unique identifier of the company."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/psychologicalAssessments/{assessmentId}",
+        "definition": {
+          "entityName": "PsychologicalAssessment",
+          "schema": {
+            "$ref": "#/backend/entities/PsychologicalAssessment"
+          },
+          "description": "Stores psychological assessment data for each user. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "assessmentId",
+              "description": "The unique identifier of the assessment."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/psychologicalAssessments/{assessmentId}/dimensionResults/{dimensionResultId}",
+        "definition": {
+          "entityName": "DimensionResult",
+          "schema": {
+            "$ref": "#/backend/entities/DimensionResult"
+          },
+          "description": "Stores dimension results for each psychological assessment. Includes userId and assessmentId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "assessmentId",
+              "description": "The unique identifier of the assessment."
+            },
+            {
+              "name": "dimensionResultId",
+              "description": "The unique identifier of the dimension result."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/developmentRoutes/{developmentRouteId}",
+        "definition": {
+          "entityName": "DevelopmentRoute",
+          "schema": {
+            "$ref": "#/backend/entities/DevelopmentRoute"
+          },
+          "description": "Stores information about development routes.",
+          "params": [
+            {
+              "name": "developmentRouteId",
+              "description": "The unique identifier of the development route."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/userRoutes/{userRouteId}",
+        "definition": {
+          "entityName": "UserRoute",
+          "schema": {
+            "$ref": "#/backend/entities/UserRoute"
+          },
+          "description": "Associates a user with a development route and tracks progress. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "userRouteId",
+              "description": "The unique identifier of the user route."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/modules/{moduleId}",
+        "definition": {
+          "entityName": "Module",
+          "schema": {
+            "$ref": "#/backend/entities/Module"
+          },
+          "description": "Stores information about modules within a development route.",
+          "params": [
+            {
+              "name": "moduleId",
+              "description": "The unique identifier of the module."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/journalEntries/{journalEntryId}",
+        "definition": {
+          "entityName": "JournalEntry",
+          "schema": {
+            "$ref": "#/backend/entities/JournalEntry"
+          },
+          "description": "Stores user's journal entries. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "journalEntryId",
+              "description": "The unique identifier of the journal entry."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/emotionalCheckIns/{emotionalCheckInId}",
+        "definition": {
+          "entityName": "EmotionalCheckIn",
+          "schema": {
+            "$ref": "#/backend/entities/EmotionalCheckIn"
+          },
+          "description": "Stores user's emotional check-in data. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "emotionalCheckInId",
+              "description": "The unique identifier of the check-in."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/resources/{resourceId}",
+        "definition": {
+          "entityName": "Resource",
+          "schema": {
+            "$ref": "#/backend/entities/Resource"
+          },
+          "description": "Stores information about available resources.",
+          "params": [
+            {
+              "name": "resourceId",
+              "description": "The unique identifier of the resource."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/userPreferences/{userPreferenceId}",
+        "definition": {
+          "entityName": "UserPreference",
+          "schema": {
+            "$ref": "#/backend/entities/UserPreference"
+          },
+          "description": "Stores user-specific preferences. Includes userId for data integrity.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            },
+            {
+              "name": "userPreferenceId",
+              "description": "The unique identifier of the user preference."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to support WorkWell's emotional well-being app, focusing on security, scalability, and maintainability. The structure adheres to the principles of Authorization Independence, Clarity of Intent, DBAC (Database-Based Access Control), and QAPs (Rules are not Filters).\n\n**Authorization Independence:**\n\n*   User-owned data (e.g., `JournalEntry`, `EmotionalCheckIn`, `UserRoute`, `UserPreference`, `PsychologicalAssessment`, and `DimensionResult`) are stored under the `/users/{userId}` path, ensuring clear ownership. This eliminates the need for `get()` calls in security rules to verify ownership.  Authorization depends solely on `request.auth.uid` matching the `{userId}` path parameter. The `userId` field within the documents duplicates this information for data integrity.\n*   Company-related data utilizes a similar strategy. While `Company` documents reside at the root level (`/companies/{companyId}`), access to user profiles within a company is controlled by checking if the user's `companyId` matches the requested `companyId`.\n\n**Structural Segregation and QAPs:**\n\n*   Data requiring different access control levels are segregated into separate collections. User profiles (`/users/{userId}/userProfiles/{profileId}`) are kept private to the user. All documents within a single collection share the same security requirements, simplifying rule design.\n*   The `users/{userId}` hierarchy allows for secure `list` operations. Security rules can easily filter based on the `userId` path parameter, ensuring that users can only access their own data. For example, listing journal entries is secured by limiting access to `/users/{userId}/journalEntries`. Similarly, each Psychological Assessment has a userId to validate the logged user.\n*   B2B company related information has its own collection, `/companies/{companyId}`. All company data has to reside here. Then, the `UserProfile` will have a `companyId` to validate if the user belongs to that company or not. To list users from a company, the rule can simply check if the user's `companyId` matches the requested `companyId`.\n\n**Access Modeling:**\n\n*   Path-based ownership is employed for private data under `/users/{userId}`.\n*   The Membership Map pattern is not directly applicable in this specific scenario as there isn't a need for collaborative data access.  However, the `Company` entity includes `adminUserIds`, which can be used to manage administrator roles for company-specific data. This approach relies on checking the existence of the user's ID in the `adminUserIds` array within security rules.\n*   Global roles (DBAC) are not used in this design. All authorization is based on the `request.auth.uid` and the data stored in the database.\n\n**Data Clarity and Predictability:**\n\n*   The schema uses explicit state modeling through dedicated fields like `status` where applicable (though not explicitly defined in these entities, it is recommended to be added where state is relevant).\n*   Consistent naming conventions (e.g., `userId`, `companyId`) and descriptive wildcards (`{userId}`, `{companyId}`) enhance clarity and maintainability."
+  }
+}
