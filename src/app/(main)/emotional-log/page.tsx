@@ -95,8 +95,7 @@ export default function EmotionalLogPage() {
   const chartData = useMemo(() => {
     if (!allEntries || allEntries.length === 0) return [];
     return allEntries
-      .map(entry => ({ ...entry, timestampDate: entry.timestamp ? new Date(entry.timestamp) : new Date() }))
-      .sort((a, b) => a.timestampDate.getTime() - b.timestampDate.getTime())
+      .filter(entry => entry.timestamp) // **FIX**: Exclude entries without a timestamp
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
         const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
@@ -107,7 +106,7 @@ export default function EmotionalLogPage() {
           emotionLabel: emotionLabel,
           fullDate: formatEntryTimestamp(entry.timestamp),
         };
-      });
+      }).reverse();
   }, [allEntries, t]);
 
   return (
