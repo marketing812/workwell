@@ -33,13 +33,14 @@ export function DeleteAccountForm() {
   const { user, logout, loading: userLoading } = useUser();
   const router = useRouter();
 
-  const [state, formAction] = useActionState(deleteUserAccount, initialState);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
-  const [isSubmittingAction, setIsSubmittingAction] = useState(false);
+  
+  // Asocia la acción con el email del usuario.
+  const deleteUserAccountWithEmail = deleteUserAccount.bind(null, user?.email || "");
+  const [state, formAction] = useActionState(deleteUserAccountWithEmail, initialState);
 
   useEffect(() => {
     if (!state) return;
-    setIsSubmittingAction(false);
 
     if (state.success) {
       toast({
@@ -59,22 +60,6 @@ export function DeleteAccountForm() {
     }
   }, [state, logout, router, toast, t]);
 
-  const handleDialogTriggerClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsAlertDialogOpen(true);
-  };
-
-  const handleConfirmDeleteAction = async () => {
-    if (!user) {
-      toast({ title: "Error", description: "No estás autenticado.", variant: "destructive" });
-      setIsAlertDialogOpen(false);
-      return;
-    }
-    setIsSubmittingAction(true);
-    // @ts-ignore
-    await formAction();
-  };
-  
   if (userLoading) {
     return <div className="flex justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
   }
@@ -85,13 +70,13 @@ export function DeleteAccountForm() {
   }
   
   return (
-    <>
+    <form action={formAction}>
       <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
         <AlertDialogTrigger asChild>
           <Button
-            onClick={handleDialogTriggerClick}
             variant="destructive"
             className="w-full"
+            onClick={(e) => { e.preventDefault(); setIsAlertDialogOpen(true); }}
           >
             <Trash2 className="mr-2 h-4 w-4" />
             {t.deleteAccountButtonLabel}
@@ -107,18 +92,20 @@ export function DeleteAccountForm() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setIsAlertDialogOpen(false)} disabled={isSubmittingAction}>{t.cancelDeleteAccountButton}</AlertDialogCancel>
-            <AlertDialogAction 
-              onClick={handleConfirmDeleteAction} 
-              disabled={isSubmittingAction}
-              className="bg-destructive hover:bg-destructive/90 text-destructive-foreground"
+            <AlertDialogCancel>
+              {t.cancelDeleteAccountButton}
+            </AlertDialogCancel>
+            {/* Este botón ahora envía el formulario */}
+            <Button 
+              type="submit"
+              className={cn("bg-destructive hover:bg-destructive/90 text-destructive-foreground")}
             >
-              {isSubmittingAction ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Trash2 className="mr-2 h-4 w-4" />}
-              {t.confirmDeleteAccountButton}
-            </AlertDialogAction>
+               <Trash2 className="mr-2 h-4 w-4" />
+               {t.confirmDeleteAccountButton}
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+    </form>
   );
 }
