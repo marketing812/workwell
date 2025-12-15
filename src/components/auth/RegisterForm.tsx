@@ -234,7 +234,7 @@ export function RegisterForm() {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           {t.alreadyHaveAccount}{" "}
-          <Link href="/login" className="font-medium text-[#444444] hover:underline">
+          <Link href="/login" className="font-medium text-primary hover:underline">
             {t.login}
           </Link>
         </p>
