@@ -9,7 +9,7 @@ export interface EmotionalEntry {
   situation: string;
   thought: string;
   emotion: string; // e.g., "alegria"
-  timestamp: string; // ISO string
+  timestamp: string | { toDate: () => Date } | null; // ISO string or Firestore Timestamp
 }
 
 const EMOTIONAL_ENTRIES_KEY = "workwell-emotional-entries";
@@ -24,7 +24,12 @@ export function getEmotionalEntries(): EmotionalEntry[] {
   try {
     const item = localStorage.getItem(EMOTIONAL_ENTRIES_KEY);
     const entries = item ? (JSON.parse(item) as EmotionalEntry[]) : [];
-    return entries.sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
+    return entries.sort((a, b) => {
+        if (!a.timestamp || !b.timestamp) return 0;
+        const dateA = typeof a.timestamp === 'string' ? parseISO(a.timestamp) : (a.timestamp as any).toDate();
+        const dateB = typeof b.timestamp === 'string' ? parseISO(b.timestamp) : (b.timestamp as any).toDate();
+        return dateB.getTime() - dateA.getTime();
+    });
   } catch (error) {
     console.error("Error reading emotional entries from localStorage:", error);
     return [];
@@ -58,7 +63,12 @@ export function overwriteEmotionalEntries(entries: EmotionalEntry[]): void {
   if (typeof window === "undefined") return;
   console.warn("`overwriteEmotionalEntries` is deprecated and operates on localStorage. Use Firestore actions instead.");
   try {
-    const sortedEntries = [...entries].sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
+    const sortedEntries = [...entries].sort((a, b) => {
+        if (!a.timestamp || !b.timestamp) return 0;
+        const dateA = typeof a.timestamp === 'string' ? parseISO(a.timestamp) : (a.timestamp as any).toDate();
+        const dateB = typeof b.timestamp === 'string' ? parseISO(b.timestamp) : (b.timestamp as any).toDate();
+        return dateB.getTime() - dateA.getTime();
+    });
     const entriesToStore = sortedEntries.slice(0, MAX_ENTRIES_TO_STORE);
     localStorage.setItem(EMOTIONAL_ENTRIES_KEY, JSON.stringify(entriesToStore));
     window.dispatchEvent(new CustomEvent('emotional-entries-updated'));
@@ -71,7 +81,10 @@ export function getRecentEmotionalEntries(count: number = MAX_ENTRIES_TO_DISPLAY
     return getEmotionalEntries().slice(0, count);
 }
 
-export function formatEntryTimestamp(timestamp: string | { toDate: () => Date }): string {
+export function formatEntryTimestamp(timestamp: string | { toDate: () => Date } | null): string {
+  if (!timestamp) {
+    return "Fecha pendiente...";
+  }
   try {
     const date = typeof timestamp === 'string' ? parseISO(timestamp) : timestamp.toDate();
     if (isNaN(date.getTime())) {
