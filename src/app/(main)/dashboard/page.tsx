@@ -19,34 +19,16 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Lightbulb, Edit, Radar, LineChart as LineChartIcon, NotebookPen, CheckCircle, Info, UserCircle2, Lock, KeyRound, ShieldQuestion, Trash2, Activity, Send, FileText, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
-import { getRecentEmotionalEntries, addEmotionalEntry, formatEntryTimestamp, type EmotionalEntry, getEmotionalEntries, overwriteEmotionalEntries } from "@/data/emotionalEntriesStore";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
+import { formatEntryTimestamp, type EmotionalEntry } from "@/data/emotionalEntriesStore";
 import { Separator } from "@/components/ui/separator";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { encryptDataAES, decryptDataAES, forceEncryptStringAES } from "@/lib/encryption";
 import { useActivePath } from "@/contexts/ActivePathContext";
-import type { ActivePathDetails as StoredActivePathDetails} from "@/lib/progressStore";
-import { pathsData, type Path as AppPathData } from "@/data/pathsData";
-import { fetchUserActivities } from "@/actions/user-data";
+import { fetchEmotionalEntries, addEmotionalEntryToFirestore } from "@/actions/user-data";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
-import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
-
-
-interface ProcessedChartDataPoint {
-  date: string;
-  moodScore: number;
-  emotionLabel: string;
-  fullDate: string;
-}
-
-interface SingleEmotionalEntryActivity {
-  entry: EmotionalEntry;
-}
-
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -59,14 +41,11 @@ const moodScoreMapping: Record<string, number> = {
   asco: 1,
 };
 
-const API_BASE_URL_FOR_ACTIVITY_SAVE = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
-const API_KEY_FOR_ACTIVITY_SAVE = "4463";
-const API_TIMEOUT_MS_ACTIVITY = 10000;
 const NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD = 4;
 
 export default function DashboardPage() {
   const t = useTranslations();
-  const { user, fetchUserProfile } = useUser(); // Get fetchUserProfile from context
+  const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
 
@@ -77,104 +56,71 @@ export default function DashboardPage() {
   const [allEntriesForChart, setAllEntriesForChart] = useState<EmotionalEntry[]>([]);
   const [isRefreshingEmotions, setIsRefreshingEmotions] = useState(false);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
-  
-  // Effect to fetch the full user profile when the component mounts
+
   useEffect(() => {
-    if (user && user.id && !user.ageRange) { // Check if full profile is missing
+    setIsClient(true);
+    if (user?.id) {
+      handleRefreshEmotions();
+      const assessmentHistory = getAssessmentHistory();
+      if (assessmentHistory.length > 0) {
+        setLatestAssessment(assessmentHistory[0]);
+      }
+    }
+  }, [user?.id]);
+  
+  useEffect(() => {
+    if (user && user.id && !user.ageRange) { 
       fetchUserProfile(user.id);
     }
   }, [user, fetchUserProfile]);
-
-
-  const generateUserActivityApiUrl = useCallback((newEntryData: EmotionalEntry, userIdForUrlParam?: string | null): string => {
-    const activityPayload: SingleEmotionalEntryActivity = { entry: newEntryData };
-    const jsonPayloadForDatosActividad = encryptDataAES(activityPayload);
-    let url = `${API_BASE_URL_FOR_ACTIVITY_SAVE}?apikey=${API_KEY_FOR_ACTIVITY_SAVE}&tipo=guardaractividad&datosactividad=${encodeURIComponent(jsonPayloadForDatosActividad)}`;
-    
-    if (userIdForUrlParam && typeof userIdForUrlParam === 'string' && userIdForUrlParam.trim() !== '') {
-      try {
-        const encryptedDirectUserId = forceEncryptStringAES(userIdForUrlParam);
-        url += `&userID=${encodeURIComponent(encryptedDirectUserId)}`;
-      } catch (encError) {
-         console.error("DashboardPage (generateUserActivityApiUrl): Error encriptando userIdForUrlParam con forceEncryptStringAES:", encError);
-      }
-    }
-    return url;
-  }, []);
-
-
-  const loadDataFromStorage = useCallback(() => {
-    const loadedRecentEntries = getRecentEmotionalEntries(NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD);
-    const loadedAllEntries = getEmotionalEntries(); 
-    const assessmentHistory = getAssessmentHistory();
-    
-    if (assessmentHistory.length > 0) {
-        setLatestAssessment(assessmentHistory[0]);
-    } else {
-        setLatestAssessment(null);
-    }
-
-    setRecentEntries(loadedRecentEntries);
-    setAllEntriesForChart(loadedAllEntries);
-
-    if (loadedRecentEntries.length > 0) {
-        const lastRegisteredEmotion = emotionOptions.find(e => e.value === loadedRecentEntries[0].emotion);
-        if (lastRegisteredEmotion) {
-            setLastEmotion(t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value);
-        } else {
-            setLastEmotion(null);
-        }
-    } else {
+  
+  const handleRefreshEmotions = useCallback(async () => {
+    if (!user || !user.id) return;
+    setIsRefreshingEmotions(true);
+    try {
+      const entries = await fetchEmotionalEntries(user.id);
+      setAllEntriesForChart(entries);
+      setRecentEntries(entries.slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
+      if (entries.length > 0) {
+        const lastRegisteredEmotion = emotionOptions.find(e => e.value === entries[0].emotion);
+        setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
+      } else {
         setLastEmotion(null);
+      }
+      toast({
+        title: "Emociones Actualizadas",
+        description: "Se han cargado tus últimos registros emocionales desde la nube.",
+      });
+    } catch (error) {
+      console.error("Error refreshing emotions:", error);
+      toast({
+        title: "Error al Refrescar",
+        description: "No se pudieron obtener las emociones desde la nube.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsRefreshingEmotions(false);
     }
-  }, [t]);
-
-  useEffect(() => {
-    // This effect runs only on the client
-    setIsClient(true);
-    loadDataFromStorage();
-
-    const handleStorageChange = () => loadDataFromStorage();
-
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('emotional-entries-updated', handleStorageChange);
-    window.addEventListener('assessment-history-updated', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('emotional-entries-updated', handleStorageChange);
-      window.removeEventListener('assessment-history-updated', handleStorageChange);
-    };
-  }, [loadDataFromStorage]);
+  }, [user, t, toast]);
 
 
   const chartData = useMemo(() => {
     if (!isClient || !allEntriesForChart || allEntriesForChart.length === 0) {
       return [];
     }
-
-    const processedData = allEntriesForChart
-      .map(entry => ({
-        ...entry,
-        timestampDate: new Date(entry.timestamp),
-      }))
-      .sort((a, b) => a.timestampDate.getTime() - b.timestampDate.getTime())
-      .slice(-15)
+    return allEntriesForChart
+      .slice(0, 15) // Limit to last 15 entries for performance
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
         const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
         const moodScore = moodScoreMapping[entry.emotion] ?? 0;
-        if (moodScoreMapping[entry.emotion] === undefined) {
-            console.warn(`MoodEvolutionChart Data Prep: Emotion string "${entry.emotion}" not found in moodScoreMapping. Defaulting to score 0.`);
-        }
         return {
           date: formatEntryTimestamp(entry.timestamp).split(',')[0],
           moodScore: moodScore,
           emotionLabel: emotionLabel,
           fullDate: formatEntryTimestamp(entry.timestamp),
         };
-      });
-    return processedData;
+      }).reverse(); // reverse to show oldest to newest
   }, [isClient, allEntriesForChart, t]);
 
 
@@ -185,125 +131,27 @@ export default function DashboardPage() {
         description: "No se pudo identificar al usuario. Intenta recargar la página o iniciar sesión de nuevo.",
         variant: "destructive",
       });
-      console.warn("DashboardPage (handleEmotionalEntrySubmit): User or user.id not available. Cannot submit entry or send to API.");
       return;
     }
-    const userIdFromContext = user.id;
-
-    const newEntry = addEmotionalEntry(data);
-    loadDataFromStorage();
-
-    toast({
-      title: t.emotionalEntrySavedTitle,
-      description: t.emotionalEntrySavedMessage,
-    });
+    
     setIsEntryDialogOpen(false);
-
-    const currentEncryptedActivityApiUrl = generateUserActivityApiUrl(newEntry, userIdFromContext);
-
-    if (currentEncryptedActivityApiUrl) {
-      console.log("DashboardPage (handleEmotionalEntrySubmit): Sending NEW emotional entry to API:", currentEncryptedActivityApiUrl.substring(0,150) + "...");
-      try {
-        const signal = AbortSignal.timeout(API_TIMEOUT_MS_ACTIVITY);
-        const response = await fetch(currentEncryptedActivityApiUrl, { signal });
-        const responseText = await response.text();
-        if (response.ok) {
-          let apiResult;
-          try {
-            apiResult = JSON.parse(responseText);
-            if (apiResult.status === "OK") {
-              console.log("DashboardPage (handleEmotionalEntrySubmit): New entry saved successfully to API. Response:", apiResult);
-              toast({
-                title: "Emoción Sincronizada",
-                description: "Tu última entrada emocional ha sido guardada en el servidor.",
-                className: "bg-green-50 dark:bg-green-900/30 border-green-500",
-                duration: 3000,
-              });
-            } else {
-              console.warn("DashboardPage (handleEmotionalEntrySubmit): API reported 'NOOK' for new entry save. Message:", apiResult.message, "Full Response:", apiResult);
-              toast({
-                title: "Error de Sincronización",
-                description: `La API indicó un problema al guardar la emoción: ${apiResult.message || 'Error desconocido.'}`,
-                variant: "destructive",
-              });
-            }
-          } catch (jsonError) {
-             console.warn("DashboardPage (handleEmotionalEntrySubmit): Failed to parse JSON response from new entry save API. Raw text:", responseText, jsonError);
-             toast({
-                title: "Respuesta de Sincronización Inválida",
-                description: "La API de actividad devolvió una respuesta inesperada.",
-                variant: "destructive",
-              });
-          }
-        } else {
-          console.warn("DashboardPage (handleEmotionalEntrySubmit): Failed to save new entry to API. Status:", response.status, "Response Text:", responseText);
-          toast({
-            title: "Error al Guardar Emoción",
-            description: `No se pudo guardar la emoción en el servidor (HTTP ${response.status}).`,
-            variant: "destructive",
-          });
-        }
-      } catch (error: any) {
-        let errorMessage = "Error de red al guardar la emoción. Verifica la consola del navegador para más detalles.";
-        let errorType = "NetworkError";
-
-        if (error.name === 'AbortError' || (error.cause && error.cause.code === 'UND_ERR_CONNECT_TIMEOUT')) {
-            errorMessage = "Tiempo de espera agotado al guardar la emoción en el servidor.";
-            errorType = "TimeoutError";
-        } else if (error instanceof TypeError && error.message.toLowerCase().includes('failed to fetch')) {
-            errorMessage = "Fallo al contactar el servidor (Failed to fetch). Posible problema de CORS o red. Revisa la consola del navegador.";
-            errorType = "FetchSetupOrCORSError";
-        }
-
-        console.error(`DashboardPage (handleEmotionalEntrySubmit): Error during API call to save new entry. Type: ${errorType}`);
-        console.error("Error Name:", error.name);
-        console.error("Error Message:", error.message);
-        if (error.stack) {
-          console.error("Error Stack:", error.stack);
-        }
-        console.error("Full Error Object:", error);
-        console.error("URL attempted:", currentEncryptedActivityApiUrl);
-
-        toast({
-          title: "Error de Conexión con API",
-          description: errorMessage,
-          variant: "destructive",
-        });
-      }
-    } else {
-      console.warn("DashboardPage (handleEmotionalEntrySubmit): No API URL generated for saving new entry. Skipping fetch.");
-    }
-  };
-
-  const handleRefreshEmotions = async () => {
-    if (!user || !user.id) {
+    
+    try {
+      await addEmotionalEntryToFirestore(user.id, data);
       toast({
-        title: "Error de Usuario",
-        description: "No se puede refrescar sin un usuario identificado.",
-        variant: "destructive",
+        title: t.emotionalEntrySavedTitle,
+        description: "Tu registro emocional ha sido guardado en la nube.",
       });
-      return;
-    }
-    setIsRefreshingEmotions(true);
-    console.log("DashboardPage (handleRefreshEmotions): Fetching activities for user:", user.id);
-    const result = await fetchUserActivities(user.id);
-    if (result.success && result.entries) {
-      console.log("DashboardPage (handleRefreshEmotions): Successfully fetched activities. Entries count:", result.entries.length);
-      overwriteEmotionalEntries(result.entries);
-      loadDataFromStorage();
-      toast({
-        title: "Emociones Actualizadas",
-        description: "Se han cargado tus últimos registros emocionales.",
-      });
-    } else {
-      console.warn("DashboardPage (handleRefreshEmotions): Failed to fetch activities. Error:", result.error);
-      toast({
-        title: "Error al Refrescar",
-        description: result.error || "No se pudieron obtener las emociones.",
+      // Refresh entries after saving
+      handleRefreshEmotions();
+    } catch (error) {
+       console.error("Error saving emotional entry to Firestore:", error);
+       toast({
+        title: "Error al Guardar",
+        description: "No se pudo guardar tu registro emocional en la nube.",
         variant: "destructive",
       });
     }
-    setIsRefreshingEmotions(false);
   };
   
   const weeklyEntryCount = useMemo(() => {
@@ -328,7 +176,6 @@ export default function DashboardPage() {
   }, [isClient, currentActivePath]);
 
   if (!isClient) {
-    // Render a skeleton or loading state on the server to avoid hydration errors
     return (
       <div className="container mx-auto py-8">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
