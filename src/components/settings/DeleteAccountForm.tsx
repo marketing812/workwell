@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { useUser, useAuth } from "@/contexts/UserContext";
+import { useUser, useAuth } from "@/firebase/provider"; // Corrected import
 import { useRouter } from "next/navigation";
 import { Loader2, Trash2 } from "lucide-react";
 import {
@@ -24,7 +24,7 @@ import { deleteUser } from "firebase/auth";
 export function DeleteAccountForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { user: contextUser, logout, loading: userLoading } = useUser();
+  const { user, logout, loading: userLoading } = useUser();
   const auth = useAuth();
   const router = useRouter();
 
@@ -46,12 +46,10 @@ export function DeleteAccountForm() {
         title: t.deleteAccountSuccessTitle,
         description: "Tu cuenta ha sido eliminada permanentemente.",
       });
-      // The logout function already handles cleaning local storage and redirecting
       logout();
     } catch (error: any) {
       console.error("Error deleting user account:", error);
       let errorMessage = t.deleteAccountErrorMessage;
-      // Firebase provides specific error codes that can be handled
       if (error.code === 'auth/requires-recent-login') {
         errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, cierra sesión y vuelve a iniciarla antes de intentarlo de nuevo.";
       }
@@ -70,7 +68,7 @@ export function DeleteAccountForm() {
     return <div className="flex justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
   }
 
-  if (!contextUser) {
+  if (!user) {
     router.push('/login');
     return null;
   }

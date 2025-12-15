@@ -7,6 +7,11 @@ import { getFirestore } from "firebase/firestore";
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { firebaseConfig } from "@/firebase/config";
 
+// This file is now deprecated for saving user data,
+// as this is handled on the client-side within the UserContext.
+// It can be kept for other server-side user-related actions in the future,
+// but for now its main save function is no longer called.
+
 const userProfileSchema = z.object({
   userId: z.string().min(1),
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -21,6 +26,8 @@ type UserProfileData = z.infer<typeof userProfileSchema>;
 export async function saveUser(
   data: UserProfileData
 ): Promise<{ success: boolean; error?: string }> {
+  
+  console.warn("DEPRECATED: `saveUser` server action was called, but this logic has been moved to the client-side UserContext. The operation will still be attempted, but this action should be removed.");
   
   const validation = userProfileSchema.safeParse(data);
   if (!validation.success) {
@@ -42,13 +49,13 @@ export async function saveUser(
 
     await setDoc(doc(serverDb, "users", userId), {
       ...profileData,
-      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(), // Use updatedAt to show it's an update
     }, { merge: true });
 
-    console.log(`saveUser Action: Successfully saved profile for user ${userId}`);
+    console.log(`saveUser Action (DEPRECATED): Successfully saved profile for user ${userId}`);
     return { success: true };
   } catch (error: any) {
-    console.error(`saveUser Action: Error writing to Firestore for user ${userId}`, error);
+    console.error(`saveUser Action (DEPRECATED): Error writing to Firestore for user ${userId}`, error);
     return { success: false, error: "No se pudo guardar el perfil de usuario en la base de datos." };
   }
 }
