@@ -15,8 +15,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
@@ -54,29 +53,15 @@ export default function DashboardPage() {
   const [recentEntries, setRecentEntries] = useState<EmotionalEntry[]>([]);
   const [lastEmotion, setLastEmotion] = useState<string | null>(null);
   const [allEntriesForChart, setAllEntriesForChart] = useState<EmotionalEntry[]>([]);
-  const [isRefreshingEmotions, setIsRefreshingEmotions] = useState(false);
+  const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
-
-  useEffect(() => {
-    setIsClient(true);
-    if (user?.id) {
-      handleRefreshEmotions();
-      const assessmentHistory = getAssessmentHistory();
-      if (assessmentHistory.length > 0) {
-        setLatestAssessment(assessmentHistory[0]);
-      }
-    }
-  }, [user?.id]);
   
-  useEffect(() => {
-    if (user && user.id && !user.ageRange) { 
-      fetchUserProfile(user.id);
-    }
-  }, [user, fetchUserProfile]);
-  
-  const handleRefreshEmotions = useCallback(async () => {
-    if (!user || !user.id) return;
-    setIsRefreshingEmotions(true);
+  const loadEntries = useCallback(async () => {
+    if (!user?.id) {
+        setIsLoadingEntries(false);
+        return;
+    };
+    setIsLoadingEntries(true);
     try {
       const entries = await fetchEmotionalEntries(user.id);
       setAllEntriesForChart(entries);
@@ -87,21 +72,33 @@ export default function DashboardPage() {
       } else {
         setLastEmotion(null);
       }
-      toast({
-        title: "Emociones Actualizadas",
-        description: "Se han cargado tus últimos registros emocionales desde la nube.",
-      });
     } catch (error) {
-      console.error("Error refreshing emotions:", error);
+      console.error("Error loading initial emotions:", error);
       toast({
-        title: "Error al Refrescar",
-        description: "No se pudieron obtener las emociones desde la nube.",
+        title: "Error al Cargar Emociones",
+        description: "No se pudieron obtener los registros emocionales.",
         variant: "destructive",
       });
     } finally {
-      setIsRefreshingEmotions(false);
+      setIsLoadingEntries(false);
     }
-  }, [user, t, toast]);
+  }, [user?.id, t, toast]);
+
+  useEffect(() => {
+    setIsClient(true);
+    if (user?.id) {
+      loadEntries();
+      const assessmentHistory = getAssessmentHistory();
+      if (assessmentHistory.length > 0) {
+        setLatestAssessment(assessmentHistory[0]);
+      }
+    } else {
+        setIsLoadingEntries(false);
+    }
+     if (user && user.id && !user.ageRange) { 
+      fetchUserProfile(user.id);
+    }
+  }, [user, fetchUserProfile, loadEntries]);
 
 
   const chartData = useMemo(() => {
@@ -128,7 +125,7 @@ export default function DashboardPage() {
     if (!user || !user.id) {
       toast({
         title: "Error de Usuario",
-        description: "No se pudo identificar al usuario. Intenta recargar la página o iniciar sesión de nuevo.",
+        description: "No se pudo identificar al usuario. Intenta recargar la página.",
         variant: "destructive",
       });
       return;
@@ -136,16 +133,37 @@ export default function DashboardPage() {
     
     setIsEntryDialogOpen(false);
     
+    // Optimistic UI update
+    const newEntry: EmotionalEntry = {
+        id: crypto.randomUUID(), // Temporary ID
+        timestamp: new Date().toISOString(),
+        ...data
+    };
+    
+    setAllEntriesForChart(prev => [newEntry, ...prev]);
+    setRecentEntries(prev => [newEntry, ...prev].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
+    const lastRegisteredEmotion = emotionOptions.find(e => e.value === newEntry.emotion);
+    setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
+
+
     try {
-      await addEmotionalEntryToFirestore(user.id, data);
+      const savedEntryId = await addEmotionalEntryToFirestore(user.id, data);
+      
+      // Update entry with permanent ID from server
+      setAllEntriesForChart(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
+      setRecentEntries(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
+
       toast({
         title: t.emotionalEntrySavedTitle,
-        description: "Tu registro emocional ha sido guardado en la nube.",
+        description: "Tu registro emocional ha sido guardado y sincronizado.",
       });
-      // Refresh entries after saving
-      handleRefreshEmotions();
+
     } catch (error) {
        console.error("Error saving emotional entry to Firestore:", error);
+       // Revert optimistic update on error
+       setAllEntriesForChart(prev => prev.filter(e => e.id !== newEntry.id));
+       setRecentEntries(prev => prev.filter(e => e.id !== newEntry.id));
+
        toast({
         title: "Error al Guardar",
         description: "No se pudo guardar tu registro emocional en la nube.",
@@ -266,11 +284,11 @@ export default function DashboardPage() {
                         <Button
                           variant="outline"
                           size="icon"
-                          onClick={handleRefreshEmotions}
-                          disabled={!user || !user.id || isRefreshingEmotions}
+                          onClick={loadEntries}
+                          disabled={!user || !user.id || isLoadingEntries}
                           aria-label="Refrescar emociones"
                         >
-                          {isRefreshingEmotions ? (
+                          {isLoadingEntries ? (
                             <Loader2 className="h-4 w-4 animate-spin" />
                           ) : (
                             <RefreshCw className="h-4 w-4" />
@@ -285,7 +303,9 @@ export default function DashboardPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                {recentEntries.length > 0 ? (
+                {isLoadingEntries ? (
+                   <div className="flex justify-center items-center h-40"><Loader2 className="h-8 w-8 animate-spin" /></div>
+                ) : recentEntries.length > 0 ? (
                   <ul className="space-y-4">
                     {recentEntries.map((entry, index) => {
                       const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
@@ -347,3 +367,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    

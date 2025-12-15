@@ -16,8 +16,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
@@ -37,7 +36,10 @@ export default function EmotionalLogPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const loadEntries = useCallback(async () => {
-    if (!user?.id) return;
+    if (!user?.id) {
+        setIsLoading(false);
+        return;
+    }
     setIsLoading(true);
     try {
       const entries = await fetchEmotionalEntries(user.id);
@@ -63,15 +65,25 @@ export default function EmotionalLogPage() {
       return;
     }
     setIsEntryDialogOpen(false);
+    
+    // Optimistic UI update
+    const newEntry: EmotionalEntry = {
+        id: crypto.randomUUID(), // Temporary ID
+        timestamp: new Date().toISOString(),
+        ...data
+    };
+    setAllEntries(prev => [newEntry, ...prev]);
+
     try {
-      await addEmotionalEntryToFirestore(user.id, data);
+      const savedEntryId = await addEmotionalEntryToFirestore(user.id, data);
+      setAllEntries(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
       toast({
         title: t.emotionalEntrySavedTitle,
         description: "Tu registro se ha guardado en la nube.",
       });
-      loadEntries(); // Refresh entries
     } catch (error) {
        toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
+       setAllEntries(prev => prev.filter(e => e.id !== newEntry.id));
     }
   };
 
@@ -174,3 +186,5 @@ export default function EmotionalLogPage() {
     </div>
   );
 }
+
+    
