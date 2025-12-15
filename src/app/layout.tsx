@@ -1,4 +1,3 @@
-
 import type { ReactNode } from 'react';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
