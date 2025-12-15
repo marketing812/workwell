@@ -177,7 +177,11 @@ export default function DashboardPage() {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allEntries.filter(entry => entry.timestamp && (typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : (entry.timestamp as any).toDate()) > oneWeekAgo).length;
+    return allEntries.filter(entry => {
+        if (!entry.timestamp) return false;
+        const entryDate = typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : entry.timestamp.toDate();
+        return entryDate > oneWeekAgo;
+    }).length;
   }, [isClient, allEntries]);
   
   const focusArea = useMemo(() => {
@@ -368,5 +372,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
