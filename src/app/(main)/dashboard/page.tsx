@@ -23,12 +23,13 @@ import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, Re
 import { formatEntryTimestamp, type EmotionalEntry } from "@/data/emotionalEntriesStore";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
-import { fetchEmotionalEntries, addEmotionalEntryToFirestore } from "@/actions/user-data";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
+import { useFirestore } from "@/firebase/provider";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -48,6 +49,7 @@ export default function DashboardPage() {
   const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
+  const db = useFirestore();
 
   const [isClient, setIsClient] = useState(false);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
@@ -58,13 +60,17 @@ export default function DashboardPage() {
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   
   const loadEntries = useCallback(async () => {
-    if (!user?.id) {
+    if (!user?.id || !db) {
         setIsLoadingEntries(false);
         return;
     };
     setIsLoadingEntries(true);
     try {
-      const entries = await fetchEmotionalEntries(user.id);
+      const entriesRef = collection(db, "users", user.id, "emotional_entries");
+      const q = query(entriesRef, orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+      const entries = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as EmotionalEntry));
+
       setAllEntriesForChart(entries);
       setRecentEntries(entries.slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
       if (entries.length > 0) {
@@ -83,11 +89,11 @@ export default function DashboardPage() {
     } finally {
       setIsLoadingEntries(false);
     }
-  }, [user?.id, t, toast]);
+  }, [user?.id, db, t, toast]);
 
   useEffect(() => {
     setIsClient(true);
-    if (user?.id) {
+    if (user?.id && db) {
       loadEntries();
       const assessmentHistory = getAssessmentHistory();
       if (assessmentHistory.length > 0) {
@@ -96,10 +102,10 @@ export default function DashboardPage() {
     } else {
         setIsLoadingEntries(false);
     }
-     if (user && user.id && !user.ageRange) { 
+     if (user && user.id && !user.ageRange && db) { 
       fetchUserProfile(user.id);
     }
-  }, [user, fetchUserProfile, loadEntries]);
+  }, [user, fetchUserProfile, loadEntries, db]);
 
 
   const chartData = useMemo(() => {
@@ -123,10 +129,10 @@ export default function DashboardPage() {
 
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
-    if (!user || !user.id) {
+    if (!user || !user.id || !db) {
       toast({
-        title: "Error de Usuario",
-        description: "No se pudo identificar al usuario. Intenta recargar la página.",
+        title: "Error de Usuario o Conexión",
+        description: "No se pudo identificar al usuario o la conexión con la base de datos. Intenta recargar la página.",
         variant: "destructive",
       });
       return;
@@ -134,25 +140,28 @@ export default function DashboardPage() {
     
     setIsEntryDialogOpen(false);
     
-    // Optimistic UI update
-    const newEntry: EmotionalEntry = {
-        id: crypto.randomUUID(), // Temporary ID
+    const optimisticEntry: EmotionalEntry = {
+        id: crypto.randomUUID(),
         timestamp: new Date().toISOString(),
         ...data
     };
     
-    setAllEntriesForChart(prev => [newEntry, ...prev]);
-    setRecentEntries(prev => [newEntry, ...prev].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
-    const lastRegisteredEmotion = emotionOptions.find(e => e.value === newEntry.emotion);
+    setAllEntriesForChart(prev => [optimisticEntry, ...prev]);
+    setRecentEntries(prev => [optimisticEntry, ...prev].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
+    const lastRegisteredEmotion = emotionOptions.find(e => e.value === optimisticEntry.emotion);
     setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
 
 
     try {
-      const savedEntryId = await addEmotionalEntryToFirestore(user.id, data);
+      const entriesRef = collection(db, "users", user.id, "emotional_entries");
+      const docRef = await addDoc(entriesRef, {
+        ...data,
+        timestamp: serverTimestamp() 
+      });
       
       // Update entry with permanent ID from server
-      setAllEntriesForChart(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
-      setRecentEntries(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
+      setAllEntriesForChart(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
+      setRecentEntries(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
 
       toast({
         title: t.emotionalEntrySavedTitle,
@@ -162,8 +171,8 @@ export default function DashboardPage() {
     } catch (error) {
        console.error("Error saving emotional entry to Firestore:", error);
        // Revert optimistic update on error
-       setAllEntriesForChart(prev => prev.filter(e => e.id !== newEntry.id));
-       setRecentEntries(prev => prev.filter(e => e.id !== newEntry.id));
+       setAllEntriesForChart(prev => prev.filter(e => e.id !== optimisticEntry.id));
+       setRecentEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
 
        toast({
         title: "Error al Guardar",
@@ -368,7 +377,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
-
-    

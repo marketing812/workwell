@@ -1,5 +1,4 @@
 
-
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -27,7 +26,7 @@ export const t = {
   initialEmotionalState: "Estado emocional inicial (1-5)",
   forgotPassword: "¿Olvidaste tu contraseña?",
   noAccount: "¿No tienes cuenta?",
-  alreadyHaveAccount: "¿Ya tienes cuenta?",
+  alreadyHaveAccount: "¿Ya tienes cuenta? Inicia Sesión",
   agreeToTerms: "Acepto la política de privacidad y aviso legal.",
   registrationSuccessTitle: "¡Registro Exitoso!",
   registrationSuccessMessage: "Serás redirigido en breve.", // Original message, can be deprecated if not used.
@@ -246,7 +245,7 @@ export const t = {
   quickSummary: "Resumen Rápido",
   currentWellbeing: "Tu Bienestar Hoy",
   wellbeingPlaceholder: "Estable",
-  wellbeingDescription: "Basado en tu último registro.",
+  wellbeingDescription: "Basado en tu último registro emocional.",
   progressSinceLast: "Ruta en Curso",
   progressPlaceholder: "Ninguna",
   progressDescription: "Inicia una ruta desde la sección de Rutas",
