@@ -38,7 +38,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   const fetchUserProfile = useCallback(async (userId: string) => {
-    if (!db || !userId) return;
+    if (!db || !userId) {
+      console.warn("fetchUserProfile: db or userId not available.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const userDocRef = doc(db, "users", userId);
@@ -66,6 +70,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
             };
             await setDoc(userDocRef, basicProfile, { merge: true });
             setUser(basicProfile);
+        } else {
+           console.warn(`User document for ${userId} not found, and no matching auth user. Cannot create profile.`);
         }
       }
     } catch (error) {
@@ -77,14 +83,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
-    // Solo nos suscribimos si `auth` y `db` están listos.
-    // El nuevo FirebaseClientProvider se encarga de que esto ocurra de forma segura.
     if (!auth || !db) {
-        setLoading(true); // Mantenemos el estado de carga si Firebase no está listo
         return;
     };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
+      setLoading(true); // Set loading true at the start of auth state change
       if (fbUser) {
           const minimalUser: User = {
             id: fbUser.uid,
@@ -93,6 +97,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           };
           setUser(minimalUser);
           await fetchUserProfile(fbUser.uid);
+          // setLoading(false) is now handled inside fetchUserProfile
       } else {
         setUser(null);
         setLoading(false);
