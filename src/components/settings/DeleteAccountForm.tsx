@@ -1,12 +1,11 @@
 
 "use client";
 
-import { useActionState, useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { deleteUserAccount, type DeleteAccountState } from "@/actions/auth";
-import { useUser } from "@/contexts/UserContext";
+import { useUser, useAuth } from "@/contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { Loader2, Trash2 } from "lucide-react";
 import {
@@ -20,92 +19,91 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-
-const initialState: DeleteAccountState = {
-  message: null,
-  errors: {},
-  success: false,
-};
+import { deleteUser } from "firebase/auth";
 
 export function DeleteAccountForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { user, logout, loading: userLoading } = useUser();
+  const { user: contextUser, logout, loading: userLoading } = useUser();
+  const auth = useAuth();
   const router = useRouter();
 
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
-  
-  // Asocia la acción con el email del usuario.
-  const deleteUserAccountWithEmail = deleteUserAccount.bind(null, user?.email || "");
-  const [state, formAction] = useActionState(deleteUserAccountWithEmail, initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (!state) return;
+  const handleConfirmDelete = async () => {
+    const currentUser = auth?.currentUser;
 
-    if (state.success) {
+    if (!currentUser) {
+      toast({ title: "Error", description: "No se ha podido identificar al usuario para la baja.", variant: "destructive" });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await deleteUser(currentUser);
       toast({
         title: t.deleteAccountSuccessTitle,
-        description: state.message ?? "Cuenta eliminada.",
+        description: "Tu cuenta ha sido eliminada permanentemente.",
       });
-      setTimeout(() => {
-        logout(); 
-        router.push('/login'); 
-      }, 2000);
-    } else if (state.errors?._form) {
+      // The logout function already handles cleaning local storage and redirecting
+      logout();
+    } catch (error: any) {
+      console.error("Error deleting user account:", error);
+      let errorMessage = t.deleteAccountErrorMessage;
+      // Firebase provides specific error codes that can be handled
+      if (error.code === 'auth/requires-recent-login') {
+        errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, cierra sesión y vuelve a iniciarla antes de intentarlo de nuevo.";
+      }
       toast({
         title: t.deleteAccountErrorTitle,
-        description: state.errors._form[0],
+        description: errorMessage,
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
+      setIsAlertDialogOpen(false);
     }
-  }, [state, logout, router, toast, t]);
-
+  };
+  
   if (userLoading) {
     return <div className="flex justify-center"><Loader2 className="h-6 w-6 animate-spin text-primary" /></div>;
   }
 
-  if (!user) {
+  if (!contextUser) {
     router.push('/login');
     return null;
   }
   
   return (
-    <form action={formAction}>
-      <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
-        <AlertDialogTrigger asChild>
-          <Button
-            variant="destructive"
-            className="w-full"
-            onClick={(e) => { e.preventDefault(); setIsAlertDialogOpen(true); }}
+    <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive" className="w-full">
+          <Trash2 className="mr-2 h-4 w-4" />
+          {t.deleteAccountButtonLabel}
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{t.deleteAccountPageTitle}</AlertDialogTitle>
+          <AlertDialogDescription>
+            {t.deleteAccountWarningMessage}
+            <br/><br/>
+            <strong>{t.deleteAccountConfirmationPrompt}</strong>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel disabled={isSubmitting}>{t.cancelDeleteAccountButton}</AlertDialogCancel>
+          <AlertDialogAction 
+            onClick={handleConfirmDelete} 
+            disabled={isSubmitting}
+            className="bg-destructive hover:bg-destructive/90"
           >
-            <Trash2 className="mr-2 h-4 w-4" />
-            {t.deleteAccountButtonLabel}
-          </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>{t.deleteAccountPageTitle}</AlertDialogTitle>
-            <AlertDialogDescription className="w-full max-h-[calc(100vh-20rem)] overflow-y-auto pr-2 break-words">
-              {t.deleteAccountWarningMessage}
-              <br/><br/>
-              <strong>{t.deleteAccountConfirmationPrompt}</strong>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>
-              {t.cancelDeleteAccountButton}
-            </AlertDialogCancel>
-            {/* Este botón ahora envía el formulario */}
-            <Button 
-              type="submit"
-              className={cn("bg-destructive hover:bg-destructive/90 text-destructive-foreground")}
-            >
-               <Trash2 className="mr-2 h-4 w-4" />
-               {t.confirmDeleteAccountButton}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </form>
+            {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Trash2 className="mr-2 h-4 w-4" />}
+            {t.confirmDeleteAccountButton}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

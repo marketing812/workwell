@@ -19,7 +19,6 @@ interface EmotionalEntryFormProps {
   onSubmit: (data: { situation: string; thought: string; emotion: string }) => void;
 }
 
-// Moved emotions here to be exportable and usable by dashboard page
 export const emotions = [
   { value: "alegria", labelKey: "emotionJoy" },
   { value: "tristeza", labelKey: "emotionSadness" },
@@ -49,7 +48,7 @@ export function EmotionalEntryForm({ onSubmit }: EmotionalEntryFormProps) {
       return;
     }
     onSubmit({ situation, thought, emotion: selectedEmotion });
-    // Reset form fields after successful submission
+    // Reset form fields after successful submission is handled by the parent
     setSituation("");
     setThought("");
     setSelectedEmotion("");

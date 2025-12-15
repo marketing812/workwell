@@ -1,53 +1,52 @@
 
 "use client";
 
-import { useActionState, useState, useEffect } from "react";
-import { useFormStatus } from "react-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { useTranslations } from "@/lib/translations";
-import { Eye, EyeOff, Loader2, Save } from "lucide-react";
-import { resetPassword } from "@/actions/auth";
-import { useUser } from "@/contexts/UserContext";
+import { Loader2, Save } from "lucide-react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { useAuth, useUser } from "@/firebase/provider";
 import { useRouter } from "next/navigation"; 
 
 export function ChangePasswordForm() {
-  const t = useTranslations();
   const { toast } = useToast();
-  const { user, loading: userLoading } = useUser(); 
+  const { user, loading: userLoading } = useUser();
+  const auth = useAuth();
   const router = useRouter(); 
   
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleResetPassword = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!user?.email) {
-      toast({ title: "Error", description: "No se ha encontrado el email del usuario.", variant: "destructive" });
+    if (!user?.email || !auth) {
+      toast({ title: "Error", description: "No se ha encontrado el email del usuario o el servicio de autenticación no está disponible.", variant: "destructive" });
       return;
     }
     setIsSubmitting(true);
-    const result = await resetPassword(user.email);
-    if (result.success) {
+    try {
+      await sendPasswordResetEmail(auth, user.email);
       toast({
         title: "Correo enviado",
-        description: result.message,
+        description: "Se ha enviado un correo para restablecer tu contraseña.",
       });
       router.push("/settings");
-    } else {
-      toast({
-        title: "Error",
-        description: result.message,
-        variant: "destructive",
-      });
+    } catch (error: any) {
+      console.error("Error sending password reset email:", error);
+      let errorMessage = "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.";
+      if (error.code === 'auth/invalid-email') {
+        errorMessage = "El formato del correo electrónico no es válido.";
+      }
+      toast({ title: "Error", description: errorMessage, variant: "destructive"});
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
   
   if (userLoading) {
     return <div className="flex justify-center items-center h-full"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
   }
+  
   if (!user) { 
     router.push('/login');
     return null;

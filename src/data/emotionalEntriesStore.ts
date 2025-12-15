@@ -13,91 +13,71 @@ export interface EmotionalEntry {
 }
 
 const EMOTIONAL_ENTRIES_KEY = "workwell-emotional-entries";
-const MAX_ENTRIES_TO_STORE = 50; // Limit to avoid localStorage bloat
+const MAX_ENTRIES_TO_STORE = 50;
 const MAX_ENTRIES_TO_DISPLAY = 5;
 
+// LEGACY: Estas funciones operan en localStorage y serán reemplazadas por acciones de Firestore.
+// Se mantienen por ahora para no romper la compilación, pero su uso debería ser eliminado.
 
 export function getEmotionalEntries(): EmotionalEntry[] {
   if (typeof window === "undefined") return [];
   try {
     const item = localStorage.getItem(EMOTIONAL_ENTRIES_KEY);
     const entries = item ? (JSON.parse(item) as EmotionalEntry[]) : [];
-    // Sort by timestamp descending (newest first) before returning
-    const sortedEntries = entries.sort((a, b) => {
-        try {
-            return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime()
-        } catch (e) {
-            return 0; // Return 0 if dates are invalid
-        }
-    });
-    return sortedEntries;
+    return entries.sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
   } catch (error) {
     console.error("Error reading emotional entries from localStorage:", error);
     return [];
   }
 }
 
-export function addEmotionalEntry(newEntryData: { situation: string; thought: string; emotion: string }): EmotionalEntry {
-  if (typeof window === "undefined") {
-    const placeholderEntry: EmotionalEntry = {
-        id: crypto.randomUUID(),
-        ...newEntryData,
-        timestamp: new Date().toISOString()
-    };
-    console.warn("Attempted to add emotional entry in non-browser environment. Returning placeholder:", placeholderEntry);
-    return placeholderEntry;
-  }
-
-  const newEntry: EmotionalEntry = {
+export function addEmotionalEntry(newEntryData: Omit<EmotionalEntry, 'id' | 'timestamp'>): EmotionalEntry {
+   console.warn("`addEmotionalEntry` is deprecated and operates on localStorage. Use Firestore actions instead.");
+   const newEntry: EmotionalEntry = {
     id: crypto.randomUUID(),
-    situation: newEntryData.situation,
-    thought: newEntryData.thought,
-    emotion: newEntryData.emotion,
+    ...newEntryData,
     timestamp: new Date().toISOString(),
   };
 
+  if (typeof window === "undefined") {
+    return newEntry;
+  }
+  
   try {
     const currentEntries = getEmotionalEntries();
     const updatedEntries = [newEntry, ...currentEntries].slice(0, MAX_ENTRIES_TO_STORE);
     localStorage.setItem(EMOTIONAL_ENTRIES_KEY, JSON.stringify(updatedEntries));
-    console.log("emotionalEntriesStore (addEmotionalEntry): Saved new entry. Total entries now:", updatedEntries.length);
     window.dispatchEvent(new CustomEvent('emotional-entries-updated'));
-    return newEntry;
   } catch (error) {
     console.error("Error saving emotional entry to localStorage:", error);
-    return newEntry;
   }
+  return newEntry;
 }
 
 export function overwriteEmotionalEntries(entries: EmotionalEntry[]): void {
   if (typeof window === "undefined") return;
+  console.warn("`overwriteEmotionalEntries` is deprecated and operates on localStorage. Use Firestore actions instead.");
   try {
-    console.log("emotionalEntriesStore (overwriteEmotionalEntries): Attempting to overwrite with entries (first 5):", JSON.stringify(entries.slice(0,5)));
-    // Sort by timestamp descending (newest first) before storing
-    const sortedEntries = [...entries].sort((a, b) => {
-        try {
-            return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
-        } catch(e) {
-            return 0;
-        }
-    });
+    const sortedEntries = [...entries].sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
     const entriesToStore = sortedEntries.slice(0, MAX_ENTRIES_TO_STORE);
     localStorage.setItem(EMOTIONAL_ENTRIES_KEY, JSON.stringify(entriesToStore));
-    console.log("emotionalEntriesStore (overwriteEmotionalEntries): Emotional entries overwritten in localStorage with", entriesToStore.length, "entries.");
     window.dispatchEvent(new CustomEvent('emotional-entries-updated'));
   } catch (error) {
     console.error("Error overwriting emotional entries in localStorage:", error);
   }
 }
 
-
 export function getRecentEmotionalEntries(count: number = MAX_ENTRIES_TO_DISPLAY): EmotionalEntry[] {
     return getEmotionalEntries().slice(0, count);
 }
 
-export function formatEntryTimestamp(isoTimestamp: string): string {
+export function formatEntryTimestamp(timestamp: string | { toDate: () => Date }): string {
   try {
-    return format(parseISO(isoTimestamp), "dd MMM yyyy, HH:mm", { locale: es });
+    const date = typeof timestamp === 'string' ? parseISO(timestamp) : timestamp.toDate();
+    if (isNaN(date.getTime())) {
+      return "Fecha inválida";
+    }
+    return format(date, "dd MMM yyyy, HH:mm", { locale: es });
   } catch (error) {
     console.error("Error formatting timestamp:", error);
     return "Fecha inválida";
@@ -108,7 +88,6 @@ export function clearAllEmotionalEntries(): void {
   if (typeof window === "undefined") return;
   try {
     localStorage.removeItem(EMOTIONAL_ENTRIES_KEY);
-    console.log("Emotional entries cleared from localStorage.");
     window.dispatchEvent(new CustomEvent('emotional-entries-updated'));
   } catch (error) {
     console.error("Error clearing emotional entries from localStorage:", error);

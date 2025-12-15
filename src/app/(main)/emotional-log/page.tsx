@@ -1,17 +1,16 @@
 
 "use client";
 
-import { useState, useEffect, useMemo, useCallback, type FormEvent } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "@/lib/translations";
 import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { EmotionalEntryForm, emotions as emotionOptions } from "@/components/dashboard/EmotionalEntryForm";
-import { getEmotionalEntries, formatEntryTimestamp, addEmotionalEntry, type EmotionalEntry } from "@/data/emotionalEntriesStore";
-import { ArrowLeft, NotebookPen, LineChart as LineChartIcon, Edit } from "lucide-react";
+import { formatEntryTimestamp, type EmotionalEntry } from "@/data/emotionalEntriesStore";
+import { ArrowLeft, NotebookPen, LineChart as LineChartIcon, Edit, Loader2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-// ScrollArea import is removed as it's no longer used
 import {
   Dialog,
   DialogContent,
@@ -22,21 +21,12 @@ import {
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
-import { encryptDataAES, forceEncryptStringAES } from "@/lib/encryption";
+import { fetchEmotionalEntries, addEmotionalEntryToFirestore } from "@/actions/user-data";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5, confianza: 5, sorpresa: 4, anticipacion: 4,
   enfado: 2, miedo: 2, tristeza: 1, asco: 1,
 };
-
-const API_BASE_URL_FOR_DEBUG = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
-const API_KEY_FOR_DEBUG = "4463";
-const API_TIMEOUT_MS_ACTIVITY = 10000;
-
-interface SingleEmotionalEntryActivity {
-  entry: EmotionalEntry;
-}
-
 
 export default function EmotionalLogPage() {
   const t = useTranslations();
@@ -44,82 +34,44 @@ export default function EmotionalLogPage() {
   const { user } = useUser();
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const loadEntries = useCallback(async () => {
+    if (!user?.id) return;
+    setIsLoading(true);
+    try {
+      const entries = await fetchEmotionalEntries(user.id);
+      setAllEntries(entries);
+    } catch (error) {
+      toast({ title: "Error", description: "No se pudieron cargar los registros emocionales.", variant: "destructive" });
+    } finally {
+      setIsLoading(false);
+    }
+  }, [user?.id, toast]);
 
   useEffect(() => {
-    setAllEntries(getEmotionalEntries());
-  }, []);
+    loadEntries();
+  }, [loadEntries]);
 
-  const generateUserActivityApiUrl = useCallback((newEntryData: EmotionalEntry, userIdForUrlParam?: string | null): string => {
-    const activityPayload: SingleEmotionalEntryActivity = { entry: newEntryData };
-    const jsonPayloadForDatosActividad = encryptDataAES(activityPayload);
-    let url = `${API_BASE_URL_FOR_DEBUG}?apikey=${API_KEY_FOR_DEBUG}&tipo=guardaractividad&datosactividad=${encodeURIComponent(jsonPayloadForDatosActividad)}`;
-
-    if (userIdForUrlParam && typeof userIdForUrlParam === 'string' && userIdForUrlParam.trim() !== '') {
-      try {
-        const encryptedDirectUserId = forceEncryptStringAES(userIdForUrlParam);
-        url += `&userID=${encodeURIComponent(encryptedDirectUserId)}`;
-      } catch (encError) {
-         console.error("EmotionalLogPage (generateUserActivityApiUrl): Error encrypting userIdForUrlParam:", encError);
-      }
-    }
-    return url;
-  }, []);
-
-  const handleEmotionalEntrySubmit = async (data: { situation: string; emotion: string }) => {
+  const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
     if (!user || !user.id) {
       toast({
         title: "Error de Usuario",
-        description: "No se pudo identificar al usuario. Intenta recargar la página o iniciar sesión de nuevo.",
+        description: "No se pudo identificar al usuario.",
         variant: "destructive",
       });
       return;
     }
-    const userIdFromContext = user.id;
-    const newEntry = addEmotionalEntry(data);
-
-    setAllEntries(prevAllEntries => [newEntry, ...prevAllEntries].sort((a,b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()));
-    
-    toast({
-      title: t.emotionalEntrySavedTitle,
-      description: t.emotionalEntrySavedMessage,
-    });
     setIsEntryDialogOpen(false);
-
-    const currentEncryptedActivityApiUrl = generateUserActivityApiUrl(newEntry, userIdFromContext);
-    if (currentEncryptedActivityApiUrl) {
-      console.log("EmotionalLogPage (handleEmotionalEntrySubmit): Sending NEW emotional entry to API:", currentEncryptedActivityApiUrl.substring(0,150) + "...");
-      try {
-        const signal = AbortSignal.timeout(API_TIMEOUT_MS_ACTIVITY);
-        const response = await fetch(currentEncryptedActivityApiUrl, { signal });
-        const responseText = await response.text();
-        if (response.ok) {
-          let apiResult;
-          try {
-            apiResult = JSON.parse(responseText);
-            if (apiResult.status === "OK") {
-              console.log("EmotionalLogPage (handleEmotionalEntrySubmit): New entry saved successfully to API. Response:", apiResult);
-              toast({
-                title: "Emoción Sincronizada",
-                description: "Tu última entrada emocional ha sido guardada en el servidor.",
-                className: "bg-green-50 dark:bg-green-900/30 border-green-500",
-                duration: 3000,
-              });
-            } else {
-              console.warn("EmotionalLogPage (handleEmotionalEntrySubmit): API reported 'NOOK'. Message:", apiResult.message);
-              toast({ title: "Error de Sincronización", description: `API: ${apiResult.message || 'Error desconocido.'}`, variant: "destructive"});
-            }
-          } catch (jsonError) {
-             console.warn("EmotionalLogPage (handleEmotionalEntrySubmit): Failed to parse API JSON. Text:", responseText, jsonError);
-             toast({ title: "Respuesta de Sincronización Inválida", variant: "destructive"});
-          }
-        } else {
-          console.warn("EmotionalLogPage (handleEmotionalEntrySubmit): Failed to save new entry to API. Status:", response.status, "Text:", responseText);
-          toast({ title: "Error al Guardar Emoción en Servidor", description: `HTTP ${response.status}`, variant: "destructive" });
-        }
-      } catch (error: any) {
-        console.error(`EmotionalLogPage (handleEmotionalEntrySubmit): API call error:`, error);
-        toast({ title: "Error de Conexión con API de Actividad", description: error.message, variant: "destructive" });
-      }
+    try {
+      await addEmotionalEntryToFirestore(user.id, data);
+      toast({
+        title: t.emotionalEntrySavedTitle,
+        description: "Tu registro se ha guardado en la nube.",
+      });
+      loadEntries(); // Refresh entries
+    } catch (error) {
+       toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
     }
   };
 
@@ -132,9 +84,6 @@ export default function EmotionalLogPage() {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
         const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
         const moodScore = moodScoreMapping[entry.emotion] ?? 0;
-        if (moodScoreMapping[entry.emotion] === undefined) {
-            console.warn(`EmotionalLogPage Data Prep: Emotion string "${entry.emotion}" not found in moodScoreMapping. Defaulting to score 0.`);
-        }
         return {
           date: formatEntryTimestamp(entry.timestamp).split(',')[0],
           moodScore: moodScore,
@@ -196,7 +145,11 @@ export default function EmotionalLogPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {allEntries.length > 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center items-center h-40">
+              <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
+          ) : allEntries.length > 0 ? (
             <ul className="space-y-4">
               {allEntries.map((entry, index) => {
                 const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);

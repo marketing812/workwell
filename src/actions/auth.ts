@@ -5,10 +5,9 @@ import { z } from "zod";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { firebaseConfig } from "@/firebase/config"; // Asumimos una instancia 'db' de servidor
+import { firebaseConfig } from "@/firebase/config"; 
 import type { User } from "@/contexts/UserContext";
 
-// El schema del perfil, útil para validaciones
 const userProfileSchema = z.object({
   id: z.string(),
   name: z.string().nullable(),
@@ -38,14 +37,18 @@ export async function getUserProfile(userId: string): Promise<User | null> {
 
     if (userDoc.exists()) {
       const data = userDoc.data();
-      return {
-        id: userId,
-        name: data.name || null,
-        email: data.email || null,
-        ageRange: data.ageRange || null,
-        gender: data.gender || null,
-        initialEmotionalState: data.initialEmotionalState || null,
-      };
+      // Validar datos con Zod es una buena práctica aquí
+      const profile = userProfileSchema.safeParse({ id: userId, ...data });
+      if (profile.success) {
+        return profile.data;
+      } else {
+        console.warn("User profile data from Firestore is invalid:", profile.error);
+        return { // Devolver un perfil mínimo si la validación falla
+            id: userId,
+            name: data.name || null,
+            email: data.email || null,
+        }
+      }
     }
     return null;
   } catch (error) {
@@ -54,8 +57,6 @@ export async function getUserProfile(userId: string): Promise<User | null> {
   }
 }
 
-// Las funciones de loginUser, registerUser, etc., se eliminan de aquí
-// porque la autenticación ahora se manejará en el cliente con los SDK de Firebase.
 
 export type DeleteAccountState = {
   errors?: { _form?: string[] };
@@ -67,8 +68,6 @@ export async function deleteUserAccount(
   prevState: DeleteAccountState,
   formData: FormData
 ): Promise<DeleteAccountState> {
-  // This function would call the external API for user deletion
-  // For now, it's a simulation.
   return { success: true, message: "Cuenta eliminada (simulado)." };
 }
 
@@ -82,11 +81,7 @@ export type ChangePasswordState = {
   success?: boolean;
 };
 
-// Esta función se mantiene como ejemplo, pero la lógica de reset
-// se hará en el cliente para evitar problemas de inicialización.
 export async function resetPassword(email: string): Promise<{success: boolean; message: string}> {
-  // En una implementación real, aquí llamarías a la API de Firebase Admin
-  // o a un servicio externo. Para este ejemplo, simulamos el éxito.
   console.log(`Simulating password reset for ${email}`);
   return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña." };
 }
