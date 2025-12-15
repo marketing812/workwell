@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { ReactNode } from 'react';
@@ -38,7 +37,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   const fetchUserProfile = useCallback(async (userId: string) => {
-    // The provider now ensures db is ready, but we keep the guard for safety.
     if (!db || !userId) {
       console.warn("fetchUserProfile: db or userId not available. Aborting.");
       setLoading(false);
@@ -61,6 +59,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
       } else if (auth?.currentUser && auth.currentUser.uid === userId) {
+        // This case handles a user that exists in Auth but not Firestore. Let's create their document.
         const fbUser = auth.currentUser;
         const basicProfile: User & { createdAt: string } = {
             id: fbUser.uid,
@@ -69,7 +68,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             createdAt: new Date().toISOString(),
         };
         await setDoc(userDocRef, basicProfile, { merge: true });
-        setUser(basicProfile);
+        setUser(basicProfile); // Set the user state with the newly created profile
         console.log(`User document created for ${userId} as it was missing.`);
       }
     } catch (error) {
@@ -81,7 +80,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
-    // This now waits until both auth and db are definitely ready from the context
     if (!auth || !db) {
         setLoading(true); 
         return; 
@@ -113,10 +111,17 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
+      // Clear all local storage data on logout
       clearAllEmotionalEntries();
       clearAllNotebookEntries();
       clearAssessmentHistory();
       localStorage.removeItem('workwell-active-path-details');
+      // Find all keys related to path progress and remove them
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('workwell-progress-')) {
+          localStorage.removeItem(key);
+        }
+      });
       router.push('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
