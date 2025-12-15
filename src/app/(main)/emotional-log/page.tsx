@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -59,6 +58,7 @@ export default function EmotionalLogPage() {
       });
       setAllEntries(entries);
     } catch (error) {
+      console.error("Error loading emotional entries from Firestore:", error);
       toast({ title: "Error", description: "No se pudieron cargar los registros emocionales.", variant: "destructive" });
     } finally {
       setIsLoading(false);
@@ -103,7 +103,7 @@ export default function EmotionalLogPage() {
   const chartData = useMemo(() => {
     if (!allEntries || allEntries.length === 0) return [];
     return allEntries
-      .filter(entry => entry.timestamp) // Exclude entries without a timestamp
+      .filter(entry => entry.timestamp)
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
         const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
@@ -185,6 +185,11 @@ export default function EmotionalLogPage() {
                     <p className="text-sm text-foreground mt-1 whitespace-pre-wrap break-words">
                       {entry.situation}
                     </p>
+                     {entry.thought && (
+                        <p className="text-sm text-muted-foreground mt-2 italic border-l-2 pl-2">
+                           "{entry.thought}"
+                        </p>
+                    )}
                     {index < allEntries.length - 1 && <Separator className="my-4" />}
                   </li>
                 );
