@@ -9,8 +9,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 interface BlockageMapExerciseProps {
   content: ModuleContent;
@@ -19,6 +21,8 @@ interface BlockageMapExerciseProps {
 
 export function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [avoidedTask, setAvoidedTask] = useState('');
   const [blockingThoughts, setBlockingThoughts] = useState('');
@@ -42,7 +46,11 @@ export function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProp
     { id: 'emo-resistance', label: 'Resistencia (“No quiero que me obliguen”)' },
   ];
 
-  const handleSave = () => {
+  const handleSave = async () => {
+     if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+      return;
+    }
     const selectedEmotions = emotionsOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
     if (avoidedEmotions['emo-other'] && otherEmotion) {
       selectedEmotions.push(otherEmotion);
@@ -67,9 +75,21 @@ ${escapeBehaviors || 'No especificadas.'}
 ${consequences || 'No especificadas.'}
     `;
 
-    addNotebookEntry({ title: 'Mi Mapa del Bloqueo Personal', content: notebookContent, pathId });
-    toast({ title: 'Mapa guardado', description: 'Tu Mapa del Bloqueo Personal se ha guardado en el cuaderno.' });
-    setStep(prev => prev + 1);
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Mapa del Bloqueo Personal',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({ title: 'Mapa guardado', description: 'Tu Mapa del Bloqueo Personal se ha guardado en el cuaderno.' });
+        setStep(prev => prev + 1);
+    } catch (error) {
+        console.error("Error saving Blockage Map to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar el mapa de bloqueo.', variant: 'destructive'});
+    }
   };
 
   const renderStep = () => {

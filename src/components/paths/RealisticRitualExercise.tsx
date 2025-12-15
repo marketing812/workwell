@@ -7,9 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import type { RealisticRitualExerciseContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 interface RealisticRitualExerciseProps {
   content: RealisticRitualExerciseContent;
@@ -18,16 +20,22 @@ interface RealisticRitualExerciseProps {
 
 export function RealisticRitualExercise({ content, pathId }: RealisticRitualExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [habit, setHabit] = useState('');
   const [minVersion, setMinVersion] = useState('');
   const [link, setLink] = useState('');
   const [reminder, setReminder] = useState('');
   const [saved, setSaved] = useState(false);
 
-  const handleSave = (e: FormEvent) => {
+  const handleSave = async (e: FormEvent) => {
     e.preventDefault();
     if (!habit || !minVersion || !link || !reminder) {
       toast({ title: 'Campos incompletos', description: 'Por favor, rellena todos los campos.', variant: 'destructive' });
+      return;
+    }
+     if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
       return;
     }
     const notebookContent = `
@@ -45,9 +53,22 @@ ${link}
 *Para recordarlo o facilitarlo, voy a:*
 ${reminder}
     `;
-    addNotebookEntry({ title: 'Mi Ritual Realista', content: notebookContent, pathId });
-    toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
-    setSaved(true);
+    
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Ritual Realista',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
+        setSaved(true);
+    } catch (error) {
+        console.error("Error saving realistic ritual to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar el ritual.', variant: 'destructive'});
+    }
   };
 
   return (

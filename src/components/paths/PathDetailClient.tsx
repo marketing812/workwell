@@ -53,6 +53,9 @@ import { es } from 'date-fns/locale';
 import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
+import { useFirestore } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 // RUTA 1
 import { StressMapExercise } from '@/components/paths/StressMapExercise';
@@ -259,6 +262,7 @@ function TherapeuticNotebookReflectionExercise({
 }) {
   const { toast } = useToast();
   const { user } = useUser();
+  const db = useFirestore();
   const [reflection, setReflection] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
@@ -266,7 +270,7 @@ function TherapeuticNotebookReflectionExercise({
     return null;
   }
 
-  const handleSaveReflection = (e: FormEvent) => {
+  const handleSaveReflection = async (e: FormEvent) => {
     e.preventDefault();
     if (!reflection.trim()) {
       toast({
@@ -274,6 +278,10 @@ function TherapeuticNotebookReflectionExercise({
         description: 'Por favor, escribe tu reflexión antes de guardar.',
         variant: 'destructive',
       });
+      return;
+    }
+    if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
       return;
     }
 
@@ -284,20 +292,27 @@ ${content.prompts.join('\n')}
 
 **Mi reflexión:**
 ${reflection}
-        `;
+    `;
 
-    addNotebookEntry({
-      title: `Reflexión: ${content.title}`,
-      content: fullContent,
-      pathId: pathId,
-      ruta: pathTitle,
-    });
-
-    toast({
-      title: 'Reflexión Guardada',
-      description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
-    });
-    setIsSaved(true);
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: `Reflexión: ${content.title}`,
+            content: fullContent,
+            pathId: pathId,
+            ruta: pathTitle,
+            timestamp: serverTimestamp(),
+        });
+        
+        toast({
+          title: 'Reflexión Guardada',
+          description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
+        });
+        setIsSaved(true);
+    } catch (error) {
+        console.error("Error saving notebook entry to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar la reflexión.', variant: 'destructive'});
+    }
   };
 
   return (
@@ -732,7 +747,7 @@ function ContentItemRenderer({
     case 'nutritiveDrainingSupportMapExercise':
       return <NutritiveDrainingSupportMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'nourishingConversationExercise':
-      return <NourishingConversationExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <NourishingConversationExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'clearRequestMapExercise':
         return <ClearRequestMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'supportBankExercise':
@@ -887,10 +902,10 @@ export function PathDetailClient({ path }: { path: Path }) {
         </div>
         <CardContent className="p-8">
           <p className="text-lg text-muted-foreground mt-2 text-center">{path.description}</p>
-          {path.id === 'relaciones-autenticas' && (
+          {path.audioUrl && (
             <div className="mt-4 flex justify-center">
               <audio
-                src="https://workwellfut.com/audios/ruta5/descripciones/INTRODUCCIONRUTA.mp3"
+                src={path.audioUrl}
                 controls
                 controlsList="nodownload"
                 className="w-full max-w-md h-10"
@@ -1011,6 +1026,3 @@ export function PathDetailClient({ path }: { path: Path }) {
   );
 }
 
-    
-
-    

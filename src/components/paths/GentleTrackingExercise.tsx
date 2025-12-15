@@ -8,11 +8,13 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar } from '@/components/ui/calendar';
 import { useToast } from '@/hooks/use-toast';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Edit3, Save, CheckIcon, MinusIcon, XIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { GentleTrackingExerciseContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 
 interface GentleTrackingExerciseProps {
   content: GentleTrackingExerciseContent;
@@ -26,6 +28,8 @@ type DailyProgress = {
 
 export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [weekWord, setWeekWord] = useState('');
   const [saved, setSaved] = useState(false);
   const [progress, setProgress] = useState<Record<string, DailyProgress>>({});
@@ -43,7 +47,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     }
   }, [storageKey]);
 
-  const saveProgress = (newProgress: Record<string, DailyProgress>) => {
+  const saveProgressToLocal = (newProgress: Record<string, DailyProgress>) => {
     try {
       localStorage.setItem(storageKey, JSON.stringify(newProgress));
     } catch (error) {
@@ -56,11 +60,16 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     const dateKey = format(selectedDate, 'yyyy-MM-dd');
     const newProgress = { ...progress, [dateKey]: { ...progress[dateKey], status } };
     setProgress(newProgress);
-    saveProgress(newProgress);
+    saveProgressToLocal(newProgress);
   };
 
-  const handleSave = (e: FormEvent) => {
+  const handleSave = async (e: FormEvent) => {
     e.preventDefault();
+    if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+      return;
+    }
+
     const progressText = Object.entries(progress)
       .map(([date, data]) => {
         const statusSymbol = data.status === 'done' ? '✔' : data.status === 'partial' ? '~' : 'X';
@@ -77,12 +86,25 @@ ${progressText || 'No se registraron días.'}
 *Mi palabra de la semana para este hábito ha sido:*
 **${weekWord || 'No especificada.'}**
     `;
-    addNotebookEntry({ title: 'Mi Seguimiento Amable', content: notebookContent, pathId });
-    toast({
-      title: 'Seguimiento Guardado',
-      description: 'Tu progreso y palabra de la semana se han guardado.',
-    });
-    setSaved(true);
+
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Seguimiento Amable',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({
+          title: 'Seguimiento Guardado',
+          description: 'Tu progreso y palabra de la semana se han guardado.',
+        });
+        setSaved(true);
+    } catch (error) {
+        console.error("Error saving Gentle Tracking exercise to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar el seguimiento.', variant: 'destructive'});
+    }
   };
 
   const renderDayContent = (day: Date) => {

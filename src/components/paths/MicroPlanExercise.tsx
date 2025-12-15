@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
+import { useFirestore, useUser } from '@/firebase/provider';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
@@ -18,11 +19,13 @@ interface MicroPlanExerciseProps {
 
 export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
   const { toast } = useToast();
+  const db = useFirestore();
+  const { user } = useUser();
   const [moment, setMoment] = useState('');
   const [action, setAction] = useState('');
   const [step, setStep] = useState(0);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!moment || !action) {
       toast({
         title: 'Faltan datos',
@@ -31,15 +34,33 @@ export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
       });
       return;
     }
+     if (!user?.id || !db) {
+      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
+      return;
+    }
+    
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
 *Mi microplan de acción es:*
 Cuando ${moment}, voy a ${action}.
     `;
-    addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId });
-    toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
-    setStep(3);
+
+    try {
+        const notebookRef = collection(db, "users", user.id, "notebook_entries");
+        await addDoc(notebookRef, {
+            title: 'Mi Microplan de Acción',
+            content: notebookContent,
+            pathId,
+            ruta: 'Superar la Procrastinación y Crear Hábitos',
+            timestamp: serverTimestamp(),
+        });
+        toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
+        setStep(3);
+    } catch (error) {
+        console.error("Error saving Micro-plan to Firestore:", error);
+        toast({ title: 'Error', description: 'No se pudo guardar el microplan.', variant: 'destructive'});
+    }
   };
 
   return (

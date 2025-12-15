@@ -29,7 +29,7 @@ import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHi
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
 import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp, limit } from "firebase/firestore";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -179,8 +179,9 @@ export default function DashboardPage() {
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     return allEntries.filter(entry => {
         if (!entry.timestamp) return false;
-        const entryDate = typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : entry.timestamp.toDate();
-        return entryDate > oneWeekAgo;
+        const entryDate = typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : entry.timestamp;
+        const dateToCompare = typeof entryDate === 'string' ? new Date(entryDate) : entryDate;
+        return dateToCompare > oneWeekAgo;
     }).length;
   }, [isClient, allEntries]);
   
@@ -331,7 +332,7 @@ export default function DashboardPage() {
                   <p className="text-muted-foreground italic text-center py-4">{t.noRecentEntries}</p>
                 )}
               </CardContent>
-               {recentEntries.length > 0 && (
+               {allEntries.length > 0 && (
                  <CardFooter className="justify-center pt-4">
                     <Button variant="link" asChild>
                         <Link href="/emotional-log">
