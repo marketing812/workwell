@@ -8,11 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
 import { useFirestore, useUser } from '@/firebase/provider';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
@@ -28,7 +28,7 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
   const [when, setWhen] = useState('');
   const [saved, setSaved] = useState(false);
 
-  const handleSave = async (e: FormEvent) => {
+  const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!task || !twoMinVersion || !when) {
       toast({
@@ -42,35 +42,20 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
       toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
       return;
     }
-
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Tarea que pospongo:*
-${task}
-
-*Mi versión de 2 minutos es:*
-${twoMinVersion}
-
-*Me comprometo a hacerlo:*
-${when}
-    `;
     
-    try {
-        const notebookRef = collection(db, "users", user.id, "notebook_entries");
-        await addDoc(notebookRef, {
-            title: 'Mi Compromiso de 2 Minutos',
-            content: notebookContent,
-            pathId,
-            ruta: 'Superar la Procrastinación y Crear Hábitos',
-            timestamp: serverTimestamp(),
-        });
-        toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
-        setSaved(true);
-    } catch (error) {
-        console.error("Error saving Two Minute Rule exercise to Firestore:", error);
-        toast({ title: 'Error', description: 'No se pudo guardar el ejercicio.', variant: 'destructive'});
-    }
+    const notebookContent = {
+        title: 'Mi Compromiso de 2 Minutos',
+        content: `**Tarea que pospongo:**\n${task}\n\n**Mi versión de 2 minutos es:**\n${twoMinVersion}\n\n**Me comprometo a hacerlo:**\n${when}`,
+        pathId,
+        ruta: 'Superar la Procrastinación y Crear Hábitos',
+        timestamp: serverTimestamp(),
+    };
+    
+    const notebookRef = collection(db, "users", user.id, "notebook_entries");
+    addDocumentNonBlocking(notebookRef, notebookContent);
+
+    toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
+    setSaved(true);
   };
 
   return (

@@ -10,36 +10,81 @@ export interface EmotionalEntry {
   situation: string;
   thought: string;
   emotion: string; // e.g., "alegria"
-  timestamp: string | Timestamp | null; // ISO string, Firestore Timestamp, or null for optimistic UI
+  timestamp: string; // Always ISO string for consistency
 }
 
-// These functions are now deprecated as we move to a full Firestore implementation.
-// They will be removed in a future refactor.
+const EMOTIONAL_ENTRIES_KEY = "workwell-emotional-entries";
+const MAX_ENTRIES_TO_STORE = 50;
+
+// DEPRECATED WARNING: The functions in this file manage a local-only copy of emotional
+// entries. They are being phased out in favor of direct Firestore integration within
+// the application components (e.g., DashboardPage, EmotionalLogPage).
+// These functions will be removed in a future refactor.
+
+
 export function getEmotionalEntries(): EmotionalEntry[] {
-  console.warn("`getEmotionalEntries` from localStore is deprecated. Data is now fetched directly from Firestore in the component.");
-  return [];
+  console.warn("`getEmotionalEntries` from localStore is deprecated. Data is now fetched directly from Firestore.");
+  if (typeof window === "undefined") return [];
+  try {
+    const item = localStorage.getItem(EMOTIONAL_ENTRIES_KEY);
+    const entries = item ? (JSON.parse(item) as EmotionalEntry[]) : [];
+    return entries.sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
+  } catch (error) {
+    console.error("Error reading emotional entries from localStorage:", error);
+    return [];
+  }
 }
 
 export function addEmotionalEntry(newEntryData: Omit<EmotionalEntry, 'id' | 'timestamp'>): EmotionalEntry {
-   console.warn("`addEmotionalEntry` from localStore is deprecated. Use Firestore `addDoc` in the component.");
-   return {
+   console.warn("`addEmotionalEntry` is deprecated. Use Firestore `addDoc` in components.");
+   const newEntry: EmotionalEntry = {
     id: crypto.randomUUID(),
     ...newEntryData,
     timestamp: new Date().toISOString(),
   };
+
+  if (typeof window !== "undefined") {
+    try {
+      const currentEntries = getEmotionalEntries();
+      const updatedEntries = [newEntry, ...currentEntries].slice(0, MAX_ENTRIES_TO_STORE);
+      localStorage.setItem(EMOTIONAL_ENTRIES_KEY, JSON.stringify(updatedEntries));
+      window.dispatchEvent(new Event('emotional-entries-updated'));
+    } catch (error) {
+      console.error("Error saving emotional entry to localStorage:", error);
+    }
+  }
+  return newEntry;
 }
+
 
 export function overwriteEmotionalEntries(entries: EmotionalEntry[]): void {
   console.warn("`overwriteEmotionalEntries` is deprecated. Local storage is no longer the source of truth.");
+  if (typeof window === "undefined") return;
+  try {
+    const sortedEntries = [...entries].sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
+    localStorage.setItem(EMOTIONAL_ENTRIES_KEY, JSON.stringify(sortedEntries.slice(0, MAX_ENTRIES_TO_STORE)));
+    window.dispatchEvent(new Event('emotional-entries-updated'));
+  } catch (error) {
+    console.error("Error overwriting emotional entries in localStorage:", error);
+  }
 }
+
 
 export function getRecentEmotionalEntries(count: number = 5): EmotionalEntry[] {
     console.warn("`getRecentEmotionalEntries` is deprecated.");
-    return [];
+    return getEmotionalEntries().slice(0, count);
 }
+
 
 export function clearAllEmotionalEntries(): void {
   console.warn("`clearAllEmotionalEntries` is deprecated.");
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.removeItem(EMOTIONAL_ENTRIES_KEY);
+    window.dispatchEvent(new Event('emotional-entries-updated'));
+  } catch (error) {
+    console.error("Error clearing emotional entries from localStorage:", error);
+  }
 }
 
 

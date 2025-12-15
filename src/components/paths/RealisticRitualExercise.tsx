@@ -11,6 +11,7 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import type { RealisticRitualExerciseContent } from '@/data/paths/pathTypes';
 import { useFirestore, useUser } from '@/firebase/provider';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 
 interface RealisticRitualExerciseProps {
@@ -38,37 +39,19 @@ export function RealisticRitualExercise({ content, pathId }: RealisticRitualExer
       toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Hábito que quiero mantener:*
-${habit}
-
-*Mi versión mínima viable:*
-${minVersion}
-
-*Lo vincularé a:*
-${link}
-
-*Para recordarlo o facilitarlo, voy a:*
-${reminder}
-    `;
+    const notebookContent = {
+        title: 'Mi Ritual Realista',
+        content: `**Hábito que quiero mantener:**\n${habit}\n\n**Mi versión mínima viable:**\n${minVersion}\n\n**Lo vincularé a:**\n${link}\n\n**Para recordarlo o facilitarlo, voy a:**\n${reminder}`,
+        pathId,
+        ruta: 'Superar la Procrastinación y Crear Hábitos',
+        timestamp: serverTimestamp(),
+    };
     
-    try {
-        const notebookRef = collection(db, "users", user.id, "notebook_entries");
-        await addDoc(notebookRef, {
-            title: 'Mi Ritual Realista',
-            content: notebookContent,
-            pathId,
-            ruta: 'Superar la Procrastinación y Crear Hábitos',
-            timestamp: serverTimestamp(),
-        });
-        toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
-        setSaved(true);
-    } catch (error) {
-        console.error("Error saving realistic ritual to Firestore:", error);
-        toast({ title: 'Error', description: 'No se pudo guardar el ritual.', variant: 'destructive'});
-    }
+    const notebookRef = collection(db, "users", user.id, "notebook_entries");
+    addDocumentNonBlocking(notebookRef, notebookContent);
+
+    toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
+    setSaved(true);
   };
 
   return (

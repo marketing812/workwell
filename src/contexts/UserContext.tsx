@@ -12,6 +12,10 @@ import { useToast } from '@/hooks/use-toast';
 import { t } from '@/lib/translations';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
+import { setDocumentNonBlocking, deleteDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+
 
 export interface User {
   id: string;
@@ -58,23 +62,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: userData.gender || null,
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
-      } else if (auth?.currentUser?.uid === userId) {
-        const fbUser = auth.currentUser;
-        const basicProfile: User & { createdAt: string } = {
-            id: fbUser.uid,
-            email: fbUser.email,
-            name: fbUser.displayName || 'Usuario',
-            createdAt: new Date().toISOString(),
-        };
-        setDoc(userDocRef, basicProfile, { merge: true })
-          .then(() => setUser(basicProfile))
-          .catch(error => {
-            errorEmitter.emit('permission-error', new FirestorePermissionError({
-              path: userDocRef.path,
-              operation: 'create',
-              requestResourceData: basicProfile,
-            }));
-          });
       }
     }).catch(error => {
         errorEmitter.emit('permission-error', new FirestorePermissionError({
@@ -84,7 +71,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }).finally(() => {
         setLoading(false);
     });
-  }, [db, auth]);
+  }, [db]);
 
 
   useEffect(() => {
@@ -119,12 +106,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
-      // Clear all local storage data
       if (typeof window !== 'undefined') {
         localStorage.clear();
         sessionStorage.clear();
       }
-      console.log("UserContext LOGOUT: All user-related data cleared.");
       router.push('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
@@ -135,19 +120,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (!user || !user.id || !db) return;
     
     const userDocRef = doc(db, "users", user.id);
-    setDoc(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true })
-      .then(() => {
-        setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
-      })
-      .catch(error => {
-        errorEmitter.emit('permission-error', new FirestorePermissionError({
-          path: userDocRef.path,
-          operation: 'update',
-          requestResourceData: updatedData
-        }));
-        // We can optionally throw the error here if we want calling components to know about it
-        // For now, we let the global handler manage it.
-      });
+    setDocumentNonBlocking(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true });
+    
+    setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
+
   }, [user, db]);
 
   const deleteUserAccount = useCallback(async (): Promise<{ success: boolean; error?: string }> => {
@@ -162,7 +138,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const userId = currentUser.uid;
 
     try {
-      const collectionsToDelete = ["emotional_entries", "notebook_entries", "user_assessments"];
+      const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries"];
       const batch = writeBatch(db);
 
       for (const collectionName of collectionsToDelete) {
@@ -181,7 +157,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       await deleteFirebaseUser(currentUser);
 
       toast({ title: t.deleteAccountSuccessTitle, description: t.deleteAccountSuccessMessage });
-      logout(); // Logout will handle clearing local storage and redirecting
+      logout();
       return { success: true };
 
     } catch (error: any) {
@@ -210,5 +186,3 @@ export function useUser() {
   }
   return context;
 }
-
-    

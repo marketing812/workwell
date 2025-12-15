@@ -27,7 +27,7 @@ service cloud.firestore {
      * Used to protect against updates or deletes on non-existent documents.
      */
     function isExistingDocument() {
-      return getAfter(resource).data != null;
+      return existsAfter(/databases/$(database)/documents/$(resource.name));
     }
 
     /**
@@ -55,62 +55,45 @@ service cloud.firestore {
 
     // =====================================================================
     // User Data Collections
-    // All paths under /users/{userId} are private to that user.
     // =====================================================================
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create, update: if isOwner(userId);
+      allow delete: if isOwner(userId);
 
-    match /users/{userId}/userProfiles/{profileId} {
-      allow get, list, create, update, delete: if isOwner(userId);
-    }
+      match /psychologicalAssessments/{assessmentId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+        
+        match /dimensionResults/{dimensionResultId} {
+          allow get, list, create, update, delete: if isOwner(userId);
+        }
+      }
 
-    match /users/{userId}/psychologicalAssessments/{assessmentId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
+      match /userRoutes/{userRouteId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+      }
 
-      match /dimensionResults/{dimensionResultId} {
-        allow get, list: if isOwner(userId);
-        allow create: if isOwner(userId);
-        allow update: if isExistingOwner(userId);
-        allow delete: if isExistingOwner(userId);
+      match /journalEntries/{journalEntryId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+      }
+
+      match /emotional_entries/{emotionalEntryId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+      }
+      
+      match /notebook_entries/{notebookEntryId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+      }
+
+      match /emotionalCheckIns/{emotionalCheckInId} {
+        allow get, list, create, update, delete: if isOwner(userId);
+      }
+
+      match /userPreferences/{userPreferenceId} {
+        allow get, list, create, update, delete: if isOwner(userId);
       }
     }
 
-    match /users/{userId}/userRoutes/{userRouteId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
-    }
-
-    match /users/{userId}/journalEntries/{journalEntryId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
-    }
-
-    match /users/{userId}/emotional_entries/{emotionalEntryId} {
-      allow get, list, create, update, delete: if isOwner(userId);
-    }
-    
-    match /users/{userId}/notebook_entries/{notebookEntryId} {
-      allow get, list, create, update, delete: if isOwner(userId);
-    }
-
-    match /users/{userId}/emotionalCheckIns/{emotionalCheckInId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
-    }
-
-    match /users/{userId}/userPreferences/{userPreferenceId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
-    }
 
     // =====================================================================
     // Company (B2B) Collections
@@ -129,23 +112,17 @@ service cloud.firestore {
 
     match /developmentRoutes/{developmentRouteId} {
       allow get, list: if isSignedIn();
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
     }
 
     match /modules/{moduleId} {
       allow get, list: if isSignedIn();
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
     }
 
     match /resources/{resourceId} {
       allow get, list: if isSignedIn();
-      allow create: if false;
-      allow update: if false;
-      allow delete: if false;
+      allow create, update, delete: if false;
     }
   }
 }
