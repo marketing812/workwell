@@ -169,7 +169,7 @@ export default function DashboardPage() {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allEntriesForChart.filter(entry => entry.timestamp && new Date(entry.timestamp) > oneWeekAgo).length;
+    return allEntriesForChart.filter(entry => entry.timestamp && (typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : (entry.timestamp as any).toDate()) > oneWeekAgo).length;
   }, [isClient, allEntriesForChart]);
   
   const focusArea = useMemo(() => {
