@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -103,7 +104,8 @@ export function RegisterForm() {
       };
       
       const userDocRef = doc(db, "users", firebaseUser.uid);
-      setDocumentNonBlocking(userDocRef, userProfileData, { merge: true });
+      // Usamos la función no bloqueante para crear el documento de perfil.
+      setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
 
       toast({
         title: t.registrationSuccessTitle,

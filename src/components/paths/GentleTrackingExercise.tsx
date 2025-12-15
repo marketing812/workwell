@@ -14,6 +14,7 @@ import { es } from 'date-fns/locale';
 import type { GentleTrackingExerciseContent } from '@/data/paths/pathTypes';
 import { useFirestore, useUser } from '@/firebase/provider';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 
 interface GentleTrackingExerciseProps {
@@ -63,7 +64,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     saveProgressToLocal(newProgress);
   };
 
-  const handleSave = async (e: FormEvent) => {
+  const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!user?.id || !db) {
       toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
@@ -77,34 +78,22 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       })
       .join('\n');
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = {
+        title: 'Mi Seguimiento Amable',
+        content: `**Seguimiento del Hábito:**\n${progressText || 'No se registraron días.'}\n\n*Mi palabra de la semana para este hábito ha sido:*\n**${weekWord || 'No especificada.'}**`,
+        pathId,
+        ruta: 'Superar la Procrastinación y Crear Hábitos',
+        timestamp: serverTimestamp(),
+    };
 
-*Seguimiento del Hábito:*
-${progressText || 'No se registraron días.'}
-
-*Mi palabra de la semana para este hábito ha sido:*
-**${weekWord || 'No especificada.'}**
-    `;
-
-    try {
-        const notebookRef = collection(db, "users", user.id, "notebook_entries");
-        await addDoc(notebookRef, {
-            title: 'Mi Seguimiento Amable',
-            content: notebookContent,
-            pathId,
-            ruta: 'Superar la Procrastinación y Crear Hábitos',
-            timestamp: serverTimestamp(),
-        });
-        toast({
-          title: 'Seguimiento Guardado',
-          description: 'Tu progreso y palabra de la semana se han guardado.',
-        });
-        setSaved(true);
-    } catch (error) {
-        console.error("Error saving Gentle Tracking exercise to Firestore:", error);
-        toast({ title: 'Error', description: 'No se pudo guardar el seguimiento.', variant: 'destructive'});
-    }
+    const notebookRef = collection(db, "users", user.id, "notebook_entries");
+    addDocumentNonBlocking(notebookRef, notebookContent);
+    
+    toast({
+      title: 'Seguimiento Guardado',
+      description: 'Tu progreso y palabra de la semana se han guardado.',
+    });
+    setSaved(true);
   };
 
   const renderDayContent = (day: Date) => {
