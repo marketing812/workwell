@@ -1,14 +1,17 @@
+
 "use client";
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
+import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as deleteFirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { doc, getDoc, setDoc, getDocs, collection, query, orderBy, writeBatch } from "firebase/firestore";
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
+import { t } from '@/lib/translations';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
 export interface User {
   id: string;
@@ -25,6 +28,7 @@ interface UserContextType {
   logout: () => void;
   updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
   fetchUserProfile: (userId: string) => Promise<void>;
+  deleteUserAccount: () => Promise<{ success: boolean; error?: string }>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -35,13 +39,14 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const auth = useAuth();
   const db = useFirestore();
+  const { toast } = useToast();
 
   const fetchUserProfile = useCallback(async (userId: string) => {
     if (!db || !userId) return;
-    try {
-      const userDocRef = doc(db, "users", userId);
-      const userDoc = await getDoc(userDocRef);
 
+    const userDocRef = doc(db, "users", userId);
+    
+    getDoc(userDocRef).then(userDoc => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
@@ -61,19 +66,32 @@ export function UserProvider({ children }: { children: ReactNode }) {
             name: fbUser.displayName || 'Usuario',
             createdAt: new Date().toISOString(),
         };
-        await setDoc(userDocRef, basicProfile, { merge: true });
-        setUser(basicProfile);
+        setDoc(userDocRef, basicProfile, { merge: true })
+          .then(() => setUser(basicProfile))
+          .catch(error => {
+            errorEmitter.emit('permission-error', new FirestorePermissionError({
+              path: userDocRef.path,
+              operation: 'create',
+              requestResourceData: basicProfile,
+            }));
+          });
       }
-    } catch (error) {
-      console.error("Error in fetchUserProfile:", error);
-    } finally {
+    }).catch(error => {
+        errorEmitter.emit('permission-error', new FirestorePermissionError({
+          path: userDocRef.path,
+          operation: 'get',
+        }));
+    }).finally(() => {
         setLoading(false);
-    }
+    });
   }, [db, auth]);
 
 
   useEffect(() => {
-    if (!auth || !db) return;
+    if (!auth || !db) {
+        setLoading(false);
+        return;
+    };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
       setLoading(true); 
@@ -101,15 +119,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
-      clearAllEmotionalEntries();
-      clearAllNotebookEntries();
-      clearAssessmentHistory();
-      localStorage.removeItem('workwell-active-path-details');
-      Object.keys(localStorage).forEach(key => {
-        if (key.startsWith('workwell-progress-')) {
-          localStorage.removeItem(key);
-        }
-      });
+      // Clear all local storage data
+      if (typeof window !== 'undefined') {
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+      console.log("UserContext LOGOUT: All user-related data cleared.");
       router.push('/login');
     } catch (error) {
       console.error("Error signing out: ", error);
@@ -120,17 +135,69 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (!user || !user.id || !db) return;
     
     const userDocRef = doc(db, "users", user.id);
-    try {
-      await setDoc(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true });
-      setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
-    } catch (error) {
-        console.error("Error updating user profile in Firestore:", error);
-        throw error;
-    }
+    setDoc(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true })
+      .then(() => {
+        setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
+      })
+      .catch(error => {
+        errorEmitter.emit('permission-error', new FirestorePermissionError({
+          path: userDocRef.path,
+          operation: 'update',
+          requestResourceData: updatedData
+        }));
+        // We can optionally throw the error here if we want calling components to know about it
+        // For now, we let the global handler manage it.
+      });
   }, [user, db]);
 
+  const deleteUserAccount = useCallback(async (): Promise<{ success: boolean; error?: string }> => {
+    const currentUser = auth?.currentUser;
+
+    if (!currentUser || !db) {
+      const errorMsg = "Usuario no autenticado o base de datos no disponible.";
+      toast({ title: t.deleteAccountErrorTitle, description: errorMsg, variant: "destructive" });
+      return { success: false, error: errorMsg };
+    }
+    
+    const userId = currentUser.uid;
+
+    try {
+      const collectionsToDelete = ["emotional_entries", "notebook_entries", "user_assessments"];
+      const batch = writeBatch(db);
+
+      for (const collectionName of collectionsToDelete) {
+        const userSubCollectionRef = collection(db, "users", userId, collectionName);
+        const querySnapshot = await getDocs(userSubCollectionRef);
+        querySnapshot.forEach(doc => {
+          batch.delete(doc.ref);
+        });
+      }
+      
+      const userDocRef = doc(db, "users", userId);
+      batch.delete(userDocRef);
+      
+      await batch.commit();
+      
+      await deleteFirebaseUser(currentUser);
+
+      toast({ title: t.deleteAccountSuccessTitle, description: t.deleteAccountSuccessMessage });
+      logout(); // Logout will handle clearing local storage and redirecting
+      return { success: true };
+
+    } catch (error: any) {
+      console.error("Error deleting user account:", error);
+      let errorMessage = t.deleteAccountErrorMessage;
+      if (error.code === 'auth/requires-recent-login') {
+        errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, cierra sesión y vuelve a iniciarla antes de intentarlo de nuevo.";
+      }
+      toast({ title: t.deleteAccountErrorTitle, description: errorMessage, variant: "destructive" });
+      return { success: false, error: errorMessage };
+    }
+
+  }, [auth, db, logout, toast, t]);
+
   return (
-    <UserContext.Provider value={{ user, loading, logout, updateUser, fetchUserProfile }}>
+    <UserContext.Provider value={{ user, loading, logout, updateUser, fetchUserProfile, deleteUserAccount }}>
       {children}
     </UserContext.Provider>
   );
@@ -143,3 +210,5 @@ export function useUser() {
   }
   return context;
 }
+
+    
