@@ -105,7 +105,7 @@ export function RegisterForm() {
       };
       
       const userDocRef = doc(db, "users", firebaseUser.uid);
-      await setDoc(userDocRef, userProfileData);
+      await setDoc(userDocRef, userProfileData, { merge: true });
 
       toast({
         title: t.registrationSuccessTitle,
