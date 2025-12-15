@@ -14,7 +14,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useAuth, useFirestore } from "@/firebase/provider"; // Usar el hook
+import { useAuth, useFirestore } from "@/firebase/provider";
 import { doc, setDoc } from "firebase/firestore";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
@@ -226,8 +226,8 @@ export function RegisterForm() {
           
           {serverError && <p className="text-sm font-medium text-destructive">{serverError}</p>}
           
-          <Button type="submit" className="w-full" disabled={isSubmitting || !auth}>
-            {isSubmitting || !auth ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : (auth ? t.register : 'Inicializando...')}
+          <Button type="submit" className="w-full" disabled={isSubmitting || !auth || !db}>
+            {isSubmitting || !auth || !db ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.register}
           </Button>
         </form>
       </CardContent>
