@@ -1,15 +1,15 @@
-
 "use client";
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from '@/firebase/provider';
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
+import { fetchUserActivities, fetchNotebookEntries } from '@/actions/auth';
 
 export interface User {
   id: string;
@@ -39,6 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const fetchUserProfile = useCallback(async (userId: string) => {
     if (!db || !userId) return;
+    setLoading(true);
     try {
       const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
@@ -46,7 +47,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
-          ...prevUser, // Keep auth data
+          ...prevUser,
           id: userId,
           name: userData.name || prevUser?.name || 'Usuario',
           email: userData.email || prevUser?.email,
@@ -54,13 +55,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: userData.gender || null,
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
-        console.log("User profile data fetched from Firestore and merged:", userData);
+        
+        const activitiesResult = await fetchUserActivities(userId);
+        if (activitiesResult.success && activitiesResult.entries) {
+          overwriteEmotionalEntries(activitiesResult.entries);
+        }
+        
+        const notebookResult = await fetchNotebookEntries(userId);
+        if (notebookResult.success && notebookResult.entries) {
+          overwriteNotebookEntries(notebookResult.entries);
+        }
+
       } else {
-        console.warn(`User profile document not found in Firestore for user ID: ${userId}. A basic profile will be created if possible.`);
-        // If the user is authenticated but has no profile, create a basic one
         if (auth?.currentUser && auth.currentUser.uid === userId) {
             const fbUser = auth.currentUser;
-            const basicProfile: User = {
+            const basicProfile: User & { createdAt: string } = {
                 id: fbUser.uid,
                 email: fbUser.email,
                 name: fbUser.displayName || 'Usuario',
@@ -68,52 +77,44 @@ export function UserProvider({ children }: { children: ReactNode }) {
             };
             await setDoc(userDocRef, basicProfile, { merge: true });
             setUser(basicProfile);
-            console.log("Created basic user profile in Firestore for logged-in user.");
         }
       }
     } catch (error) {
       console.error("Error in fetchUserProfile:", error);
+    } finally {
+        setLoading(false);
     }
   }, [db, auth]);
 
   useEffect(() => {
-    if (!auth) {
+    if (!auth || !db) {
         setLoading(true);
         return;
     };
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
-      console.log("onAuthStateChanged triggered. fbUser:", fbUser ? fbUser.uid : "null");
       if (fbUser) {
-          // Primero, establece un usuario mínimo para que la app no espere
           const minimalUser: User = {
             id: fbUser.uid,
             name: fbUser.displayName || 'Usuario',
             email: fbUser.email,
           };
           setUser(minimalUser);
-          
-          // Luego, intenta cargar el perfil completo desde Firestore
           await fetchUserProfile(fbUser.uid);
-
       } else {
         setUser(null);
-        console.log("No Firebase user. Setting context user to null.");
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => {
-        console.log("Unsubscribing from onAuthStateChanged.");
         unsubscribe();
     }
-  }, [auth, fetchUserProfile]);
+  }, [auth, db, fetchUserProfile]);
+
 
   const logout = useCallback(async () => {
-    if (!auth) {
-        console.error("Logout failed: auth instance is not available.");
-        return;
-    }
+    if (!auth) return;
     try {
       await signOut(auth);
       setUser(null);
@@ -132,9 +133,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     
     const userDocRef = doc(db, "users", user.id);
     try {
-      await setDoc(userDocRef, updatedData, { merge: true });
+      await setDoc(userDocRef, { ...updatedData, updatedAt: serverTimestamp() }, { merge: true });
       setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
-      console.log("User profile updated in Firestore and local state.");
     } catch (error) {
         console.error("Error updating user profile in Firestore:", error);
         throw error;
