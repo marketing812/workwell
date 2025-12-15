@@ -38,8 +38,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const db = useFirestore();
 
   const fetchUserProfile = useCallback(async (userId: string) => {
+    // The provider now ensures db is ready, but we keep the guard for safety.
     if (!db || !userId) {
-      console.warn("fetchUserProfile: db or userId not available.");
+      console.warn("fetchUserProfile: db or userId not available. Aborting.");
       setLoading(false);
       return;
     }
@@ -60,7 +61,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
       } else if (auth?.currentUser && auth.currentUser.uid === userId) {
-        // If the document doesn't exist but we have an authenticated user, create it.
         const fbUser = auth.currentUser;
         const basicProfile: User & { createdAt: string } = {
             id: fbUser.uid,
@@ -69,10 +69,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
             createdAt: new Date().toISOString(),
         };
         await setDoc(userDocRef, basicProfile, { merge: true });
-        setUser(basicProfile); // Set the newly created profile
+        setUser(basicProfile);
         console.log(`User document created for ${userId} as it was missing.`);
-      } else {
-         console.warn(`User document for ${userId} not found, and no matching auth user. Cannot create profile.`);
       }
     } catch (error) {
       console.error("Error in fetchUserProfile:", error);
@@ -83,8 +81,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
+    // This now waits until both auth and db are definitely ready from the context
     if (!auth || !db) {
-        setLoading(true); // Keep loading if services aren't ready
+        setLoading(true); 
         return; 
     };
 

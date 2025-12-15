@@ -33,6 +33,8 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
   const [isFirebaseReady, setIsFirebaseReady] = useState(false);
 
   useEffect(() => {
+    if (isFirebaseReady) return;
+
     const checkFirestoreConnection = async () => {
       try {
         await enablePersistence(db);
@@ -45,29 +47,36 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
         }
       }
 
+      // Check connection by listening to a dummy document. 
+      // The listener will immediately fire with `fromCache: true` if offline,
+      // and then fire again with `fromCache: false` once a connection is established.
       const unsubscribe = onSnapshot(doc(db, "healthCheck", "status"), { includeMetadataChanges: true }, 
         (snapshot) => {
             const isOnline = !snapshot.metadata.fromCache;
-            console.log("FirebaseClientProvider: Firestore online status:", isOnline);
+            console.log(`FirebaseClientProvider: Firestore online status check. Is online: ${isOnline}`);
             if (isOnline) {
-                setIsFirebaseReady(true);
+                if (!isFirebaseReady) {
+                    setIsFirebaseReady(true);
+                    console.log("FirebaseClientProvider: Connection confirmed. Firebase is ready.");
+                }
                 unsubscribe(); 
             }
         },
         (error) => {
-            console.error("FirebaseClientProvider: Error checking Firestore connection:", error);
-            setIsFirebaseReady(true);
+            console.error("FirebaseClientProvider: Error checking Firestore connection. Proceeding but might be offline.", error);
+            if (!isFirebaseReady) setIsFirebaseReady(true);
             unsubscribe();
         }
       );
 
+      // Timeout to prevent getting stuck if the network call never completes.
       const timeoutId = setTimeout(() => {
         if (!isFirebaseReady) {
-          console.warn("FirebaseClientProvider: Timeout waiting for Firestore online status. Proceeding anyway.");
+          console.warn("FirebaseClientProvider: Timeout waiting for Firestore online status. Proceeding, but operations might fail if offline.");
           setIsFirebaseReady(true);
           unsubscribe();
         }
-      }, 5000); // 5 segundos de espera
+      }, 7000); // 7-second timeout
 
       return () => {
         unsubscribe();
@@ -77,7 +86,7 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
 
     checkFirestoreConnection();
 
-  }, [isFirebaseReady]); // Dependencia en isFirebaseReady para evitar re-ejecuciones innecesarias
+  }, [isFirebaseReady]); // Re-run only if isFirebaseReady changes from false to true elsewhere
 
   if (!isFirebaseReady) {
     return (
