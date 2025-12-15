@@ -3,13 +3,14 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
+import type { Timestamp } from 'firebase/firestore';
 
 export interface EmotionalEntry {
   id: string;
   situation: string;
   thought: string;
   emotion: string; // e.g., "alegria"
-  timestamp: string | { toDate: () => Date } | null; // ISO string or Firestore Timestamp
+  timestamp: string | Timestamp | null; // ISO string, Firestore Timestamp, or null for optimistic UI
 }
 
 const EMOTIONAL_ENTRIES_KEY = "workwell-emotional-entries";
@@ -81,7 +82,7 @@ export function getRecentEmotionalEntries(count: number = MAX_ENTRIES_TO_DISPLAY
     return getEmotionalEntries().slice(0, count);
 }
 
-export function formatEntryTimestamp(timestamp: string | { toDate: () => Date } | null): string {
+export function formatEntryTimestamp(timestamp: string | Timestamp | null): string {
   if (!timestamp) {
     return "Fecha pendiente...";
   }

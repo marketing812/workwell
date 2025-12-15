@@ -29,7 +29,7 @@ import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHi
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
 import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -55,7 +55,7 @@ export default function DashboardPage() {
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   const [recentEntries, setRecentEntries] = useState<EmotionalEntry[]>([]);
   const [lastEmotion, setLastEmotion] = useState<string | null>(null);
-  const [allEntriesForChart, setAllEntriesForChart] = useState<EmotionalEntry[]>([]);
+  const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   
@@ -69,9 +69,18 @@ export default function DashboardPage() {
       const entriesRef = collection(db, "users", user.id, "emotional_entries");
       const q = query(entriesRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as EmotionalEntry));
+      const entries = querySnapshot.docs.map(doc => {
+          const data = doc.data();
+          const timestamp = data.timestamp as Timestamp | null;
+          return { 
+              id: doc.id, 
+              ...data,
+              // Convert Firestore Timestamp to ISO string for consistency
+              timestamp: timestamp ? timestamp.toDate().toISOString() : new Date().toISOString() 
+          } as EmotionalEntry
+      });
 
-      setAllEntriesForChart(entries);
+      setAllEntries(entries);
       setRecentEntries(entries.slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
       if (entries.length > 0 && entries[0].emotion) {
         const lastRegisteredEmotion = emotionOptions.find(e => e.value === entries[0].emotion);
@@ -109,11 +118,11 @@ export default function DashboardPage() {
 
 
   const chartData = useMemo(() => {
-    if (!isClient || !allEntriesForChart || allEntriesForChart.length === 0) {
+    if (!isClient || !allEntries || allEntries.length === 0) {
       return [];
     }
-    return allEntriesForChart
-      .filter(entry => entry.timestamp) // **FIX**: Exclude entries without a timestamp
+    return allEntries
+      .filter(entry => entry.timestamp) // Exclude entries without a timestamp
       .slice(0, 15) // Limit to last 15 entries for performance
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
@@ -126,7 +135,7 @@ export default function DashboardPage() {
           fullDate: formatEntryTimestamp(entry.timestamp),
         };
       }).reverse(); // reverse to show oldest to newest
-  }, [isClient, allEntriesForChart, t]);
+  }, [isClient, allEntries, t]);
 
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
@@ -140,10 +149,23 @@ export default function DashboardPage() {
     }
     
     setIsEntryDialogOpen(false);
+    
+    // Optimistic UI Update
+    const optimisticEntry: EmotionalEntry = {
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(), // Use client time for immediate display
+      ...data,
+    };
+
+    setRecentEntries(prev => [optimisticEntry, ...prev].slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
+    setAllEntries(prev => [optimisticEntry, ...prev]);
+    const lastRegisteredEmotion = emotionOptions.find(e => e.value === optimisticEntry.emotion);
+    setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
+
 
     try {
       const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      await addDoc(entriesRef, {
+      const docRef = await addDoc(entriesRef, {
         ...data,
         timestamp: serverTimestamp() 
       });
@@ -153,11 +175,16 @@ export default function DashboardPage() {
         description: "Tu registro emocional ha sido guardado y sincronizado.",
       });
 
-      // After successful save, reload all entries
-      await loadEntries();
+      // Update the optimistic entry with the real ID and server timestamp once available.
+      // This is a more advanced step, for now, a full reload is simpler and more reliable.
+      await loadEntries(); // Reload to get server timestamp and ensure consistency
 
     } catch (error) {
        console.error("Error saving emotional entry to Firestore:", error);
+       // Revert optimistic update on error
+       setAllEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
+       setRecentEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
+
        toast({
         title: "Error al Guardar",
         description: "No se pudo guardar tu registro emocional en la nube.",
@@ -170,8 +197,8 @@ export default function DashboardPage() {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allEntriesForChart.filter(entry => entry.timestamp && (typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : (entry.timestamp as any).toDate()) > oneWeekAgo).length;
-  }, [isClient, allEntriesForChart]);
+    return allEntries.filter(entry => entry.timestamp && (typeof entry.timestamp === 'string' ? new Date(entry.timestamp) : (entry.timestamp as any).toDate()) > oneWeekAgo).length;
+  }, [isClient, allEntries]);
   
   const focusArea = useMemo(() => {
     if (!isClient) return "Autoconocimiento";
