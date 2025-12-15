@@ -82,7 +82,7 @@ export function LoginForm() {
         let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
         if (error.code === 'auth/network-request-failed') {
             errorMessage = "Error de red. Por favor, revisa tu conexión a internet.";
-        } else if (error.code === 'auth/invalid-credential') {
+        } else if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
             errorMessage = "Credenciales incorrectas. Verifica tu email y contraseña."
         }
         setLoginError(errorMessage);
@@ -108,7 +108,7 @@ export function LoginForm() {
               <Label htmlFor="password">{t.password}</Label>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button type="button" variant="link" className="text-sm p-0 h-auto text-[#444444] hover:text-foreground">
+                  <Button type="button" variant="link" className="text-sm p-0 h-auto text-muted-foreground hover:text-foreground">
                     {t.forgotPassword}
                   </Button>
                 </AlertDialogTrigger>
@@ -154,7 +154,7 @@ export function LoginForm() {
           </div>
           {loginError && <p className="text-sm text-destructive pt-1">{loginError}</p>}
           <Button type="submit" className="w-full" disabled={isLoggingIn || !auth}>
-              {isLoggingIn || !auth ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
               {auth ? t.login : 'Inicializando...'}
           </Button>
         </form>
@@ -162,7 +162,7 @@ export function LoginForm() {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           {t.noAccount}{" "}
-          <Link href="/register" className="font-medium text-[#444444] hover:text-foreground hover:underline">
+          <Link href="/register" className="font-medium text-primary hover:underline">
             {t.register}
           </Link>
         </p>

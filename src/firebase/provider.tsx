@@ -1,11 +1,10 @@
 
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
-import { getAuth, type Auth } from "firebase/auth";
-import { getFirestore, type Firestore } from "firebase/firestore";
-import { firebaseConfig } from "./config";
+import { createContext, useContext, type ReactNode } from "react";
+import type { FirebaseApp } from "firebase/app";
+import type { Auth } from "firebase/auth";
+import type { Firestore } from "firebase/firestore";
 
 interface FirebaseContextType {
   app: FirebaseApp | null;
@@ -15,23 +14,15 @@ interface FirebaseContextType {
 
 const FirebaseContext = createContext<FirebaseContextType | undefined>(undefined);
 
-export function FirebaseProvider({ children }: { children: ReactNode }) {
-  const [firebase, setFirebase] = useState<FirebaseContextType>({ app: null, auth: null, db: null });
-
-  useEffect(() => {
-    let app: FirebaseApp;
-    if (!getApps().length) {
-      app = initializeApp(firebaseConfig);
-    } else {
-      app = getApp();
-    }
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    setFirebase({ app, auth, db });
-  }, []);
-
+export function FirebaseProvider({ 
+    children, 
+    value 
+}: { 
+    children: ReactNode, 
+    value: FirebaseContextType 
+}) {
   return (
-    <FirebaseContext.Provider value={firebase}>
+    <FirebaseContext.Provider value={value}>
       {children}
     </FirebaseContext.Provider>
   );
