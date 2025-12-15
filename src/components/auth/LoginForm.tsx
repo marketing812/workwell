@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { useAuth } from "@/firebase/provider"; // Usar el hook
+import { useAuth } from "@/firebase/provider"; 
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
@@ -21,7 +21,7 @@ export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const router = useRouter();
-  const auth = useAuth(); // Obtener auth del provider
+  const auth = useAuth();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

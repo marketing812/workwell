@@ -59,20 +59,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: userData.gender || null,
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
+      } else if (auth?.currentUser && auth.currentUser.uid === userId) {
+        const fbUser = auth.currentUser;
+        const basicProfile: User & { createdAt: string } = {
+            id: fbUser.uid,
+            email: fbUser.email,
+            name: fbUser.displayName || 'Usuario',
+            createdAt: new Date().toISOString(),
+        };
+        await setDoc(userDocRef, basicProfile, { merge: true });
+        setUser(basicProfile);
       } else {
-         if (auth?.currentUser && auth.currentUser.uid === userId) {
-            const fbUser = auth.currentUser;
-            const basicProfile: User & { createdAt: string } = {
-                id: fbUser.uid,
-                email: fbUser.email,
-                name: fbUser.displayName || 'Usuario',
-                createdAt: new Date().toISOString(),
-            };
-            await setDoc(userDocRef, basicProfile, { merge: true });
-            setUser(basicProfile);
-        } else {
-           console.warn(`User document for ${userId} not found, and no matching auth user. Cannot create profile.`);
-        }
+         console.warn(`User document for ${userId} not found, and no matching auth user. Cannot create profile.`);
       }
     } catch (error) {
       console.error("Error in fetchUserProfile:", error);
@@ -83,13 +81,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
 
   useEffect(() => {
+    // Solo proceder si auth y db están listos
     if (!auth || !db) {
+        console.log("UserContext useEffect: auth or db not ready, returning.");
+        // Si no hay auth pero ya hemos dejado de cargar, ponemos el usuario a null.
+        if(!loading) {
+            setUser(null);
+        }
         return;
     };
 
+    console.log("UserContext useEffect: auth and db are ready. Setting up onAuthStateChanged listener.");
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
-      setLoading(true); // Set loading true at the start of auth state change
+      setLoading(true); 
       if (fbUser) {
+          console.log("UserContext onAuthStateChanged: User is logged in. UID:", fbUser.uid);
           const minimalUser: User = {
             id: fbUser.uid,
             name: fbUser.displayName || 'Usuario',
@@ -97,16 +103,19 @@ export function UserProvider({ children }: { children: ReactNode }) {
           };
           setUser(minimalUser);
           await fetchUserProfile(fbUser.uid);
-          // setLoading(false) is now handled inside fetchUserProfile
       } else {
+        console.log("UserContext onAuthStateChanged: User is logged out.");
         setUser(null);
         setLoading(false);
       }
     });
 
-    return () => unsubscribe();
+    return () => {
+        console.log("UserContext useEffect: Cleaning up onAuthStateChanged listener.");
+        unsubscribe();
+    };
     
-  }, [auth, db, fetchUserProfile]);
+  }, [auth, db, fetchUserProfile, loading]);
 
 
   const logout = useCallback(async () => {

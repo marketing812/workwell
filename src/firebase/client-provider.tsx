@@ -8,7 +8,6 @@ import {
   getFirestore, 
   type Firestore,
   enablePersistence,
-  terminate,
   onSnapshot,
   doc,
 } from "firebase/firestore";
@@ -20,7 +19,6 @@ interface FirebaseClientProviderProps {
   children: ReactNode;
 }
 
-// Única instancia de Firebase para evitar reinicializaciones
 let firebaseApp: FirebaseApp;
 if (!getApps().length) {
   firebaseApp = initializeApp(firebaseConfig);
@@ -37,7 +35,6 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
   useEffect(() => {
     const checkFirestoreConnection = async () => {
       try {
-        // Habilitar persistencia (offline)
         await enablePersistence(db);
         console.log("FirebaseClientProvider: Firestore persistence enabled.");
       } catch (error: any) {
@@ -48,26 +45,22 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
         }
       }
 
-      // La forma más fiable de saber si Firestore está online es escuchar los metadatos.
-      // Hacemos una escucha a un documento que no tiene por qué existir.
       const unsubscribe = onSnapshot(doc(db, "healthCheck", "status"), { includeMetadataChanges: true }, 
         (snapshot) => {
             const isOnline = !snapshot.metadata.fromCache;
             console.log("FirebaseClientProvider: Firestore online status:", isOnline);
             if (isOnline) {
                 setIsFirebaseReady(true);
-                unsubscribe(); // Nos desuscribimos una vez confirmada la conexión.
+                unsubscribe(); 
             }
         },
         (error) => {
             console.error("FirebaseClientProvider: Error checking Firestore connection:", error);
-            // Incluso si hay un error (ej. permisos), lo marcamos como listo
-            // para que la app no se quede colgada, y los errores se manejarán en su contexto.
             setIsFirebaseReady(true);
             unsubscribe();
         }
       );
-       // Timeout por si la conexión no se establece
+
       const timeoutId = setTimeout(() => {
         if (!isFirebaseReady) {
           console.warn("FirebaseClientProvider: Timeout waiting for Firestore online status. Proceeding anyway.");
@@ -84,7 +77,7 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
 
     checkFirestoreConnection();
 
-  }, []);
+  }, [isFirebaseReady]); // Dependencia en isFirebaseReady para evitar re-ejecuciones innecesarias
 
   if (!isFirebaseReady) {
     return (
