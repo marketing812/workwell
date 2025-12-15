@@ -22,7 +22,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
 import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5, confianza: 5, sorpresa: 4, anticipacion: 4,
@@ -48,7 +48,15 @@ export default function EmotionalLogPage() {
       const entriesRef = collection(db, "users", user.id, "emotional_entries");
       const q = query(entriesRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as EmotionalEntry));
+      const entries = querySnapshot.docs.map(doc => {
+          const data = doc.data();
+          const timestamp = data.timestamp as Timestamp | null;
+          return {
+            id: doc.id,
+            ...data,
+            timestamp: timestamp ? timestamp.toDate().toISOString() : new Date().toISOString()
+          } as EmotionalEntry
+      });
       setAllEntries(entries);
     } catch (error) {
       toast({ title: "Error", description: "No se pudieron cargar los registros emocionales.", variant: "destructive" });
@@ -95,7 +103,7 @@ export default function EmotionalLogPage() {
   const chartData = useMemo(() => {
     if (!allEntries || allEntries.length === 0) return [];
     return allEntries
-      .filter(entry => entry.timestamp) // **FIX**: Exclude entries without a timestamp
+      .filter(entry => entry.timestamp) // Exclude entries without a timestamp
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
         const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
