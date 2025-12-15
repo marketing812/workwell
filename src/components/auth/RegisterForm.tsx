@@ -1,10 +1,9 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/contexts/UserContext";
 import { useTranslations } from "@/lib/translations";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -38,7 +37,6 @@ export function RegisterForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const router = useRouter();
-  const { user: contextUser, loading: userLoading } = useUser();
   const auth = useAuth();
   const db = useFirestore();
 
@@ -54,12 +52,6 @@ export function RegisterForm() {
   const [errors, setErrors] = useState<z.ZodError<RegisterFormData> | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!userLoading && contextUser) {
-      router.push("/dashboard");
-    }
-  }, [contextUser, userLoading, router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -141,12 +133,6 @@ export function RegisterForm() {
 
   const fieldErrors = errors?.flatten().fieldErrors;
   
-  if (userLoading || (!userLoading && contextUser)) {
-    return <div className="flex h-screen items-center justify-center bg-transparent">
-        <Loader2 className="h-12 w-12 animate-spin text-primary-foreground" />
-    </div>;
-  }
-
   const ageRanges = [
     { value: "under_18", label: t.age_under_18 },
     { value: "18_24", label: t.age_18_24 },
@@ -226,7 +212,15 @@ export function RegisterForm() {
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="agreeTerms" name="agreeTerms" checked={agreeTerms} onCheckedChange={(checked) => setAgreeTerms(checked as boolean)} />
-            <Label htmlFor="agreeTerms" className="text-sm font-normal text-muted-foreground">{t.agreeToTerms}</Label>
+            <div className="text-sm text-muted-foreground">
+              <Label htmlFor="agreeTerms" className="font-normal">
+                Acepto la{' '}
+                <Link href="/settings/legal" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">
+                  política de privacidad y aviso legal
+                </Link>
+                .
+              </Label>
+            </div>
           </div>
           {fieldErrors?.agreeTerms && <p className="text-sm text-destructive pt-1">{fieldErrors.agreeTerms[0]}</p>}
           
@@ -240,7 +234,7 @@ export function RegisterForm() {
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
           {t.alreadyHaveAccount}{" "}
-          <Link href="/login" className="font-medium text-primary-foreground hover:underline">
+          <Link href="/login" className="font-medium text-[#444444] hover:underline">
             {t.login}
           </Link>
         </p>
@@ -248,5 +242,3 @@ export function RegisterForm() {
     </Card>
   );
 }
-
-    

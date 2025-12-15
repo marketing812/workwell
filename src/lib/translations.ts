@@ -27,7 +27,7 @@ export const t = {
   initialEmotionalState: "Estado emocional inicial (1-5)",
   forgotPassword: "¿Olvidaste tu contraseña?",
   noAccount: "¿No tienes cuenta?",
-  alreadyHaveAccount: "¿Ya tienes cuenta? Inicia Sesión",
+  alreadyHaveAccount: "¿Ya tienes cuenta?",
   agreeToTerms: "Acepto la política de privacidad y aviso legal.",
   registrationSuccessTitle: "¡Registro Exitoso!",
   registrationSuccessMessage: "Serás redirigido en breve.", // Original message, can be deprecated if not used.
