@@ -20,7 +20,8 @@ import {
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
-import { fetchEmotionalEntries, addEmotionalEntryToFirestore } from "@/actions/user-data";
+import { useFirestore } from "@/firebase/provider";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5, confianza: 5, sorpresa: 4, anticipacion: 4,
@@ -31,59 +32,67 @@ export default function EmotionalLogPage() {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
+  const db = useFirestore();
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const loadEntries = useCallback(async () => {
-    if (!user?.id) {
+    if (!user?.id || !db) {
         setIsLoading(false);
         return;
     }
     setIsLoading(true);
     try {
-      const entries = await fetchEmotionalEntries(user.id);
+      const entriesRef = collection(db, "users", user.id, "emotional_entries");
+      const q = query(entriesRef, orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+      const entries = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as EmotionalEntry));
       setAllEntries(entries);
     } catch (error) {
       toast({ title: "Error", description: "No se pudieron cargar los registros emocionales.", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
-  }, [user?.id, toast]);
+  }, [user?.id, db, toast]);
 
   useEffect(() => {
     loadEntries();
   }, [loadEntries]);
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
-    if (!user || !user.id) {
+    if (!user || !user.id || !db) {
       toast({
-        title: "Error de Usuario",
-        description: "No se pudo identificar al usuario.",
+        title: "Error de Usuario o Conexión",
+        description: "No se pudo identificar al usuario o la base de datos.",
         variant: "destructive",
       });
       return;
     }
     setIsEntryDialogOpen(false);
     
-    // Optimistic UI update
-    const newEntry: EmotionalEntry = {
-        id: crypto.randomUUID(), // Temporary ID
+    const optimisticEntry: EmotionalEntry = {
+        id: crypto.randomUUID(),
         timestamp: new Date().toISOString(),
         ...data
     };
-    setAllEntries(prev => [newEntry, ...prev]);
+    setAllEntries(prev => [optimisticEntry, ...prev]);
 
     try {
-      const savedEntryId = await addEmotionalEntryToFirestore(user.id, data);
-      setAllEntries(prev => prev.map(e => e.id === newEntry.id ? { ...e, id: savedEntryId } : e));
+      const entriesRef = collection(db, "users", user.id, "emotional_entries");
+      const docRef = await addDoc(entriesRef, {
+        ...data,
+        timestamp: serverTimestamp()
+      });
+      
+      setAllEntries(prev => prev.map(e => e.id === optimisticEntry.id ? { ...e, id: docRef.id } : e));
       toast({
         title: t.emotionalEntrySavedTitle,
         description: "Tu registro se ha guardado en la nube.",
       });
     } catch (error) {
        toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
-       setAllEntries(prev => prev.filter(e => e.id !== newEntry.id));
+       setAllEntries(prev => prev.filter(e => e.id !== optimisticEntry.id));
     }
   };
 
@@ -186,5 +195,3 @@ export default function EmotionalLogPage() {
     </div>
   );
 }
-
-    
