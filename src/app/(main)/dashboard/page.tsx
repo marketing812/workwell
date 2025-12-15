@@ -73,7 +73,7 @@ export default function DashboardPage() {
 
       setAllEntriesForChart(entries);
       setRecentEntries(entries.slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
-      if (entries.length > 0) {
+      if (entries.length > 0 && entries[0].emotion) {
         const lastRegisteredEmotion = emotionOptions.find(e => e.value === entries[0].emotion);
         setLastEmotion(lastRegisteredEmotion ? t[lastRegisteredEmotion.labelKey as keyof typeof t] || lastRegisteredEmotion.value : null);
       } else {
@@ -113,6 +113,7 @@ export default function DashboardPage() {
       return [];
     }
     return allEntriesForChart
+      .filter(entry => entry.timestamp) // **FIX**: Exclude entries without a timestamp
       .slice(0, 15) // Limit to last 15 entries for performance
       .map(entry => {
         const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
@@ -307,8 +308,8 @@ export default function DashboardPage() {
                         <li key={entry.id} className="p-4 border rounded-lg bg-muted/30 shadow-sm">
                           <p className="text-xs text-muted-foreground">{formatEntryTimestamp(entry.timestamp)}</p>
                           <p className="font-semibold text-primary mt-1">{emotionLabel}</p>
-                          <p className="text-sm text-foreground mt-1 truncate" title={entry.situation}>
-                            {entry.situation}
+                          <p className="text-sm text-foreground mt-1 truncate" title={entry.thought}>
+                            {entry.thought}
                           </p>
                            {index < recentEntries.length - 1 && <Separator className="my-4" />}
                         </li>
