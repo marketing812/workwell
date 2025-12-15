@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { ReactNode } from 'react';
@@ -5,11 +6,10 @@ import { createContext, useContext, useState, useCallback, useEffect } from 'rea
 import { onAuthStateChanged, signOut, type User as FirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from '@/firebase/provider';
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
-import { clearAllEmotionalEntries, overwriteEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries, overwriteNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
+import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
-import { fetchUserActivities, fetchNotebookEntries } from '@/actions/auth';
 
 export interface User {
   id: string;
@@ -39,7 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const fetchUserProfile = useCallback(async (userId: string) => {
     if (!db || !userId) return;
-    setLoading(true);
+    
     try {
       const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
@@ -47,7 +47,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
-          ...prevUser,
+          ...(prevUser as User), // fbUser is guaranteed to be present here
           id: userId,
           name: userData.name || prevUser?.name || 'Usuario',
           email: userData.email || prevUser?.email,
@@ -55,19 +55,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
           gender: userData.gender || null,
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
-        
-        const activitiesResult = await fetchUserActivities(userId);
-        if (activitiesResult.success && activitiesResult.entries) {
-          overwriteEmotionalEntries(activitiesResult.entries);
-        }
-        
-        const notebookResult = await fetchNotebookEntries(userId);
-        if (notebookResult.success && notebookResult.entries) {
-          overwriteNotebookEntries(notebookResult.entries);
-        }
-
       } else {
-        if (auth?.currentUser && auth.currentUser.uid === userId) {
+         if (auth?.currentUser && auth.currentUser.uid === userId) {
             const fbUser = auth.currentUser;
             const basicProfile: User & { createdAt: string } = {
                 id: fbUser.uid,
@@ -86,8 +75,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }, [db, auth]);
 
+
   useEffect(() => {
-    if (!auth || !db) {
+    if (!auth) {
         setLoading(true);
         return;
     };
@@ -100,6 +90,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             email: fbUser.email,
           };
           setUser(minimalUser);
+          // fetchUserProfile now handles setting loading to false
           await fetchUserProfile(fbUser.uid);
       } else {
         setUser(null);
@@ -110,7 +101,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     return () => {
         unsubscribe();
     }
-  }, [auth, db, fetchUserProfile]);
+  }, [auth, fetchUserProfile]);
 
 
   const logout = useCallback(async () => {
