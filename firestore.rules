@@ -1,3 +1,4 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -58,51 +59,56 @@ service cloud.firestore {
     // =====================================================================
 
     match /users/{userId}/userProfiles/{profileId} {
-      allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId) ;//&& request.resource.data.id == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.id == resource.data.id;
-      allow delete: if isExistingOwner(userId);
+      allow get, list, create, update, delete: if isOwner(userId);
     }
 
     match /users/{userId}/psychologicalAssessments/{assessmentId} {
       allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);// && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.userId == resource.data.userId;
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
       allow delete: if isExistingOwner(userId);
 
       match /dimensionResults/{dimensionResultId} {
         allow get, list: if isOwner(userId);
-        allow create: if isOwner(userId);// && request.resource.data.assessmentId == assessmentId;
-        allow update: if isExistingOwner(userId);// && request.resource.data.assessmentId == resource.data.assessmentId;
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
         allow delete: if isExistingOwner(userId);
       }
     }
 
     match /users/{userId}/userRoutes/{userRouteId} {
       allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);// && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.userId == resource.data.userId;
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
       allow delete: if isExistingOwner(userId);
     }
 
     match /users/{userId}/journalEntries/{journalEntryId} {
       allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);// && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.userId == resource.data.userId;
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
       allow delete: if isExistingOwner(userId);
+    }
+
+    match /users/{userId}/emotional_entries/{emotionalEntryId} {
+      allow get, list, create, update, delete: if isOwner(userId);
+    }
+    
+    match /users/{userId}/notebook_entries/{notebookEntryId} {
+      allow get, list, create, update, delete: if isOwner(userId);
     }
 
     match /users/{userId}/emotionalCheckIns/{emotionalCheckInId} {
       allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);// && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.userId == resource.data.userId;
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
       allow delete: if isExistingOwner(userId);
     }
 
     match /users/{userId}/userPreferences/{userPreferenceId} {
       allow get, list: if isOwner(userId);
-      allow create: if isOwner(userId);// && request.resource.data.userId == userId;
-      allow update: if isExistingOwner(userId);// && request.resource.data.userId == resource.data.userId;
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
       allow delete: if isExistingOwner(userId);
     }
 
