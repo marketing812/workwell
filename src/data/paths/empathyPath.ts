@@ -91,6 +91,7 @@ export const empathyPath: Path = {
           objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
         },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', prompts: ['¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?', '¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?', '¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?', '¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?'] },
       ]
     },
     {
@@ -109,17 +110,22 @@ export const empathyPath: Path = {
             'No se trata de hacerlo perfecto, sino de hacerlo más consciente.',
             'Tómate un momento para conectar con lo que ha cambiado en ti.',
             'Y para escribir —sin juicio— desde tu verdad actual.',
-            '• Preguntas para tu cuaderno emocional:',
+            'Preguntas para tu cuaderno emocional:',
             '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
             '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
             '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
             '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
-            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
-          ],
+            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]'
+          ]
         },
         {
           type: 'title',
           text: 'RESUMEN CLAVE DE LA RUTA',
+        },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/RESUMENRUTA.mp3'
         },
         {
           type: 'list',
@@ -129,13 +135,18 @@ export const empathyPath: Path = {
             'Poner límites con firmeza y cuidado no rompe los vínculos, los fortalece.',
             'Es sano sostener la incomodidad emocional tras decir “no”.',
             'Los vínculos más valiosos se construyen con presencia, escucha y coherencia.',
-            'Puedes elegir con quién construir… y también cómo deseas estar tú en esa relación.',
+            'Puedes elegir con quién construir… y también cómo deseas estar tú en esa relación.'
           ]
         },
-      ],
-    },
+        {
+          type: 'quote',
+          text: '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”'
+        }
+      ]
+    }
   ]
 };
     
+
 
 
