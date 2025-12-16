@@ -38,6 +38,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué emoción estoy sintiendo realmente?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'A veces es evidente. Otras veces, no tanto. Podemos sentir varias emociones al mismo tiempo, incluso emociones opuestas. Por ejemplo:\n•\tAlegría por una oportunidad nueva… y miedo por lo desconocido.\n•\tAmor por alguien… y rabia por lo que ha hecho.\nReconocer esta mezcla no te hace contradictorio o contradictoria, te hace humano.\nEmociones primarias: Son universales y aparecen de forma automática ante ciertas situaciones. Las más reconocidas son:\n•\tAlegría\n•\tMiedo\n•\tTristeza\n•\tIra\n•\tSorpresa\n•\tAsco\nEmociones secundarias: Son más complejas, están influenciadas por tu historia personal, tus creencias y tu contexto. Por ejemplo:\n•\tCulpa\n•\tVergüenza\n•\tOrgullo\n•\tResentimiento\n•\tAnsiedad\nA veces confundimos la emoción secundaria con la primaria. Por ejemplo, podemos reaccionar con rabia (secundaria), pero en el fondo hay tristeza (primaria) porque nos sentimos ignorados o heridas.\nEl trabajo emocional empieza cuando nos preguntamos:\n¿Qué estoy sintiendo realmente? ¿Y qué hay debajo?' }
           ]
