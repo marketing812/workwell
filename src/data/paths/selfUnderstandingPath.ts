@@ -126,7 +126,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
                 '¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?',
             ]},
-            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
+            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3'},
             { type: 'list', items: [
                 'Las emociones no son errores, son mensajes valiosos sobre lo que nos importa.',
                 'Toda emoción desagradable suele señalar una necesidad emocional no cubierta.',
@@ -157,7 +157,7 @@ export const selfUnderstandingPath: Path = {
                 audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion3.mp3',
                 content: [{ type: 'paragraph', text: 'Todos tenemos “botones emocionales”: temas que nos tocan con más fuerza.\nTal vez te afecta más el rechazo, o sentir que no te tienen en cuenta, o que pierdes el control.\nNo es casualidad: son puntos sensibles que se formaron con el tiempo.\nEstos botones emocionales son como alarmas que se activan cuando algo “se parece” a lo que te dolió antes.\nY como cualquier alarma, buscan protegerte… aunque a veces te dejen atrapado o atrapada en reacciones que ya no necesitas.\nEntender cuáles son tus botones no te hace más vulnerable. Te da poder para anticiparlos y cuidarte mejor.' }]
             },
-             {
+            {
               type: 'collapsible',
               title: 'El papel de los pensamientos',
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion3.mp3',
@@ -222,7 +222,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué suele ocurrirme cuando una emoción me desborda?',
                 '¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?',
             ]},
-            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3' },
+            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3'},
             { type: 'list', items: [
                 'Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.',
                 'Todos tenemos esquemas emocionales o heridas antiguas que, cuando se activan, generan reacciones automáticas.',
@@ -246,17 +246,13 @@ export const selfUnderstandingPath: Path = {
               type: 'collapsible',
               title: 'Habitarme con conciencia y sin juicio',
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio2Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte?\nEso es autoconciencia plena:\nAprender a estar presente con lo que sientes, tal y como es.\nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.' }
-              ]
+              content: [{ type: 'paragraph', text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte?\nEso es autoconciencia plena:\nAprender a estar presente con lo que sientes, tal y como es.\nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.' }]
             },
             {
               type: 'collapsible',
               title: '¿Qué significa tener autoconciencia plena?',
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo…\nen el momento en que ocurre.\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante.\nNo se trata de perfección, sino de presencia y aceptación.\nEs estar contigo de forma amable, instante a instante.' }
-              ]
+              content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo…\nen el momento en que ocurre.\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante.\nNo se trata de perfección, sino de presencia y aceptación.\nEs estar contigo de forma amable, instante a instante.' }]
             },
             {
               type: 'collapsible',
@@ -302,7 +298,6 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: 'La curiosidad como medicina emocional',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
               content: [
                 { type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.' }
               ]
@@ -310,7 +305,6 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: 'No necesitas tener todas las respuestas',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
               content: [
                 { type: 'paragraph', text: 'Lo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n🌀 ¿Qué estoy sintiendo ahora mismo?\n🌀 ¿Qué necesita esta emoción?\n🌀 ¿Qué historia estoy contándome?\n🌀 ¿Cómo puedo cuidarme un poco mejor ahora?' }
               ]
@@ -318,7 +312,6 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: '¿Y si me cuesta observarme con calma?',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion4.mp3',
               content: [
                 { type: 'paragraph', text: 'Es totalmente normal.\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.' }
               ]
@@ -326,7 +319,6 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion4.mp3',
               content: [
                 { type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:\n🔵 Estado de seguridad: calma, conexión, reflexión.\n🔴 Estado de alarma: lucha o huida.\n⚫ Estado de colapso: bloqueo o desconexión.\nCuando estás en seguridad, puedes observarte sin pelear contigo. Por eso es tan importante cultivar ese estado interno.' }
               ]
@@ -334,16 +326,13 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: 'Cómo generar seguridad dentro de ti',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio13Ruta6Sesion4.mp3',
               content: [
-                { type: 'paragraph', text: 'Aquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n🌬️ Respirar de forma consciente.\n🌍 Sentir tus pies firmes en el suelo.\n💬 Hablarte con amabilidad.\n🤝 Rodearte de personas que te respetan.\n🧠 Recordarte: lo que sientes no es un error.' },
-                { type: 'paragraph', text: 'La seguridad no se impone. Se entrena poco a poco.' }
+                { type: 'paragraph', text: 'Aquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n🌬️ Respirar de forma consciente.\n🌍 Sentir tus pies firmes en el suelo.\n💬 Hablarte con amabilidad.\n🤝 Rodearte de personas que te respetan.\n🧠 Recordarte: lo que sientes no es un error.\nLa seguridad no se impone. Se entrena poco a poco.' }
               ]
             },
             {
               type: 'collapsible',
               title: 'El poder de tu voz interior',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio14Ruta6Sesion4.mp3',
               content: [
                 { type: 'paragraph', text: 'Tu cuerpo escucha cómo te hablas.\n🫀 Una frase amable puede calmar tu corazón.\n🔥 Una crítica interna puede alterarte sin que te des cuenta.\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }
               ]
@@ -351,7 +340,6 @@ export const selfUnderstandingPath: Path = {
             {
               type: 'collapsible',
               title: 'En resumen',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio15Ruta6Sesion4.mp3',
               content: [
                 { type: 'list', items: ['💠 La autoconciencia plena es el primer paso para cambiar de verdad.', '💠 Observarte con curiosidad te transforma más que criticarte.', '💠 Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.', '💠 La metacognición te ayuda a elegir mejor.', '💠 No tienes que corregirte. Solo aprender a acompañarte con respeto.' ] },
                 { type: 'paragraph', text: 'Desde esa base… todo empieza a cambiar, con más claridad y compasión' }
@@ -409,3 +397,4 @@ export const selfUnderstandingPath: Path = {
 
 
   
+
