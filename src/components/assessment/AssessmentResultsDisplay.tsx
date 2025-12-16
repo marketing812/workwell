@@ -146,26 +146,24 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                                    " Los puntos en el gráfico se colorean según la puntuación: Rojo (1.0-2.49), Naranja (2.5-3.99), Verde (4.0-5.0), Azul (< 1.0 o no evaluado).";
   
   const CustomRadarDot = (props: DotProps & { payload?: any, value?: number }) => {
-    const { cx, cy, payload, value: valueFromProps } = props;
+    const { cx, cy, payload } = props;
     const value = payload?.score;
-
+  
     if (typeof cx !== 'number' || typeof cy !== 'number' || isNaN(cx) || isNaN(cy)) {
       console.error(`CustomRadarDot: cx (${cx}) or cy (${cy}) is not a valid number for dimension ${payload?.dimension || 'Unknown'}. Cannot render dot.`);
       return null;
     }
-
-    const scoreValue = typeof value === 'number' && !isNaN(value) ? Math.max(0, Math.min(5, value)) : 0;
-    if (typeof value !== 'number' || isNaN(value)) {
-    }
-
-    let dotColor = "hsl(var(--chart-2))"; 
+  
+    const scoreValue = typeof value === 'number' && !isNaN(value) ? value : 0;
+  
+    let dotColor = "hsl(var(--chart-2))"; // Azul (por defecto para < 1.0)
     
     if (scoreValue >= 4.0) {
-      dotColor = "hsl(var(--primary))"; 
+      dotColor = "hsl(var(--primary))"; // Verde
     } else if (scoreValue >= 2.5) {
-      dotColor = "hsl(var(--chart-5))"; 
+      dotColor = "hsl(var(--chart-5))"; // Naranja
     } else if (scoreValue >= 1.0) {
-      dotColor = "hsl(var(--destructive))";
+      dotColor = "hsl(var(--destructive))"; // Rojo
     }
         
     return <circle cx={cx} cy={cy} r={5} fill={dotColor} stroke="hsl(var(--background))" strokeWidth={1.5} />;
