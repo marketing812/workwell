@@ -127,6 +127,7 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO',
                 objective: 'Traduce una emoción en una necesidad, y luego, transforma esa necesidad en una acción real que te cuide.',
                 duration: '5-10 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3'
             },
             {
                 type: 'cartaDesdeLaEmocionExercise',
