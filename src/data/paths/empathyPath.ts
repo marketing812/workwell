@@ -84,14 +84,12 @@ export const empathyPath: Path = {
           title: 'EJERCICIO1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
           objective: 'En este ejercicio vas a crear tu propio mapa de apoyo emocional, identificando a esas personas que cumplen tres funciones clave para tu bienestar: te sostienen, te inspiran y respetan tu proceso.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3'
         },
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
           objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3'
         },
       ]
     },
@@ -103,14 +101,15 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL DE LA RUTA 5',
+          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3',
           prompts: [
             'Has llegado al final de un recorrido profundo.',
             'Durante estas semanas has explorado cómo te vinculas, cómo expresas lo que sientes, cómo pones límites y cómo eliges cuidar los vínculos que realmente importan.',
             'No se trata de hacerlo perfecto, sino de hacerlo más consciente.',
             'Tómate un momento para conectar con lo que ha cambiado en ti.',
             'Y para escribir —sin juicio— desde tu verdad actual.',
-            '✍️ Preguntas para tu cuaderno emocional:',
+            '• Preguntas para tu cuaderno emocional:',
             '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
             '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
             '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
@@ -138,4 +137,5 @@ export const empathyPath: Path = {
   ]
 };
     
+
 
