@@ -46,6 +46,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'collapsible',
           title: '¿Por qué ponerle nombre a una emoción nos ayuda tanto?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Porque cuando lo haces, tu cerebro cambia. Literalmente.\nSegún un estudio de Lieberman (2007), etiquetar con precisión una emoción activa zonas del córtex prefrontal, la parte del cerebro que nos ayuda a calmar, pensar y regular. Al mismo tiempo, disminuye la activación de la amígdala, la zona que reacciona con intensidad emocional.\nEs decir, ponerle nombre a una emoción es como encender una luz en una habitación oscura: te orienta, te calma, te permite actuar con más claridad.\nY algo aún más importante:\nNo hay emociones buenas o malas.\nHay emociones con una vivencia agradable (como la alegría o el amor) y otras con vivencia desagradable (como el miedo o la tristeza). Pero todas tienen una función. Todas informan. Todas merecen ser escuchadas.\nSentirse mal no significa estar mal.\nLa tristeza te dice que algo te importa.\nLa rabia te señala que hubo un límite cruzado.\nLa culpa puede recordarte un valor.\nComo decía alguien:\n“La emoción no es el problema. El problema es no saber qué hacer con ella.”' }
           ]
@@ -76,7 +77,7 @@ export const selfUnderstandingPath: Path = {
             'Toda emoción tiene una función adaptativa, incluso si es incómoda.',
             'Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.',
             'Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.',
-            'Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.',
+            'Nombrar una emoción con precisión reducesu intensidad y mejora la autorregulación.',
             'No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.',
           ]
         },
@@ -251,3 +252,5 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
+
+    
