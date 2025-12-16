@@ -726,7 +726,7 @@ function ContentItemRenderer({
     case 'guiltRadarExercise':
       return <GuiltRadarExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'acceptanceWritingExercise':
-      return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'selfAcceptanceAudioExercise': {
         const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
         return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} audioUrl={exerciseContent.audioUrl} />;
@@ -745,7 +745,7 @@ function ContentItemRenderer({
     case 'blockingThoughtsExercise':
       return <BlockingThoughtsExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'nutritiveDrainingSupportMapExercise':
-      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'nourishingConversationExercise':
       return <NourishingConversationExercise key={index} content={contentItem as any} pathId={pathId} />;
     case 'clearRequestMapExercise':
@@ -808,11 +808,8 @@ export function PathDetailClient({ path }: { path: Path }) {
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
-
 
   useEffect(() => {
-    setIsClient(true);
     if (path) {
       const initialCompleted = getCompletedModules(path.id);
       setCompletedModules(initialCompleted);
@@ -821,11 +818,15 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path || !isClient) {
+  if (!path) {
+    // This case should ideally be handled by the server component with notFound()
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
-        <p>Cargando ruta...</p>
+        <AlertTriangle className="w-12 h-12 text-destructive" />
+        {t.errorOccurred} Ruta no encontrada.
+        <Button asChild variant="outline">
+          <Link href="/paths">{t.allPaths}</Link>
+        </Button>
       </div>
     );
   }
@@ -951,20 +952,20 @@ export function PathDetailClient({ path }: { path: Path }) {
               </CardHeader>
               <CardContent>
               {module.content.map((contentItem, i) => (
-                <ContentItemErrorBoundary
-                  key={i}
-                  pathId={path.id}
-                  module={module}
-                  index={i}
-                  contentItem={contentItem}
-                >
-                  <ContentItemRenderer
-                    contentItem={contentItem}
-                    index={i}
-                    path={path}
-                  />
-                </ContentItemErrorBoundary>
-              ))}
+  <ContentItemErrorBoundary
+    key={i}
+    pathId={path.id}
+    module={module}
+    index={i}
+    contentItem={contentItem}
+  >
+    <ContentItemRenderer
+      contentItem={contentItem}
+      index={i}
+      path={path}
+    />
+  </ContentItemErrorBoundary>
+))}
 
               </CardContent>
               <CardFooter>
@@ -1025,4 +1026,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
 
