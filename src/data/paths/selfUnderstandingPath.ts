@@ -6,6 +6,7 @@ export const selfUnderstandingPath: Path = {
   title: 'Comprenderme Mejor Cada Día',
   description: 'Aprende a nombrar lo que sientes, conectar con tus necesidades, detectar patrones emocionales y observarte con más conciencia y compasión.',
   dataAiHint: 'self understanding emotion journal',
+  audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/IntroRuta6.mp3',
   modules: [
     {
       id: 'comp_sem1',
@@ -244,3 +245,4 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
+
