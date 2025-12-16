@@ -19,12 +19,22 @@ interface MeditacionGuiadaSinJuicioExerciseProps {
 
 export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: MeditacionGuiadaSinJuicioExerciseProps) {
   const { toast } = useToast();
-  const [mode, setMode] = useState<'audio' | 'text'>(content.audioUrl ? 'audio' : 'text');
   const [reflection, setReflection] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
-  const handleSave = () => {
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    if (!reflection.trim()) {
+      toast({
+        title: "Reflexión vacía",
+        description: "Escribe algo en tu reflexión para guardarla.",
+        variant: "destructive"
+      });
+      return;
+    }
     addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: reflection, pathId: pathId });
     toast({ title: 'Reflexión guardada' });
+    setIsSaved(true);
   };
   
   const meditationText = "Lleva tu atención a la respiración. Inhala… exhala lentamente. Siente el aire entrar y salir de tu cuerpo. Permite que cualquier sensación, pensamiento o emoción esté presente. No tienes que luchar. Solo observar. Di mentalmente: “Esto es lo que siento ahora… y está bien.” Si te distraes, vuelve suavemente a la frase y la respiración. Quédate ahí unos minutos. Simplemente presente contigo.";
@@ -36,26 +46,24 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: Meditacio
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
-        <div className="flex justify-center gap-2 mb-4">
-            <Button onClick={() => setMode('audio')} variant={mode === 'audio' ? 'default' : 'outline'}><PlayCircle className="mr-2 h-4 w-4"/>Audio</Button>
-            <Button onClick={() => setMode('text')} variant={mode === 'text' ? 'default' : 'outline'}><BookOpen className="mr-2 h-4 w-4"/>Texto</Button>
-        </div>
-        {mode === 'audio' && (
-            content.audioUrl ? (
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
+          <div className="p-4 border rounded-lg bg-background text-center">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica1.mp3" type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+          </div>
+        <form onSubmit={handleSave} className="mt-4 space-y-2">
+            <Label htmlFor="reflection-meditation">¿Cómo fue esta experiencia para ti?</Label>
+            <Textarea id="reflection-meditation" value={reflection} onChange={e => setReflection(e.target.value)} disabled={isSaved} />
+            {!isSaved ? (
+                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar Reflexión</Button>
             ) : (
-                <div className="p-4 border rounded-lg bg-background text-center"><p>Audio no disponible en la demo. Cambia a la versión de texto.</p></div>
-            )
-        )}
-        {mode === 'text' && <div className="p-4 border rounded-lg bg-background"><p className="whitespace-pre-line">{meditationText}</p></div>}
-        <div className="mt-4 space-y-2">
-            <Label>¿Cómo fue esta experiencia para ti?</Label>
-            <Textarea value={reflection} onChange={e => setReflection(e.target.value)} />
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar Reflexión</Button>
-        </div>
+                 <div className="flex items-center justify-center p-3 mt-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                    <CheckCircle className="mr-2 h-5 w-5" />
+                    <p className="font-medium">Guardado.</p>
+                </div>
+            )}
+        </form>
       </CardContent>
     </Card>
   );
