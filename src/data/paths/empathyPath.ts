@@ -84,32 +84,58 @@ export const empathyPath: Path = {
           title: 'EJERCICIO1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
           objective: 'En este ejercicio vas a crear tu propio mapa de apoyo emocional, identificando a esas personas que cumplen tres funciones clave para tu bienestar: te sostienen, te inspiran y respetan tu proceso.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3'
         },
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
           objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', prompts: [
-            '¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?',
-            '¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?',
-            '¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?',
-            '¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?',
-          ]
+      ]
+    },
+    {
+      id: 'empatia_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'REFLEXIÓN FINAL DE LA RUTA 5',
+          prompts: [
+            'Has llegado al final de un recorrido profundo.',
+            'Durante estas semanas has explorado cómo te vinculas, cómo expresas lo que sientes, cómo pones límites y cómo eliges cuidar los vínculos que realmente importan.',
+            'No se trata de hacerlo perfecto, sino de hacerlo más consciente.',
+            'Tómate un momento para conectar con lo que ha cambiado en ti.',
+            'Y para escribir —sin juicio— desde tu verdad actual.',
+            '✍️ Preguntas para tu cuaderno emocional:',
+            '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
+            '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
+            '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
+            '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
+            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
+          ],
         },
-        { type: 'title', text: 'Resumen Clave de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3' },
-        { type: 'list', items: [
+        {
+          type: 'title',
+          text: 'RESUMEN CLAVE DE LA RUTA',
+        },
+        {
+          type: 'list',
+          items: [
             'La autenticidad es la base de cualquier relación que nutre de verdad.',
             'La empatía se entrena: no es adivinar, es escuchar y validar sin juzgar.',
             'Poner límites con firmeza y cuidado no rompe los vínculos, los fortalece.',
             'Es sano sostener la incomodidad emocional tras decir “no”.',
             'Los vínculos más valiosos se construyen con presencia, escucha y coherencia.',
+            'Puedes elegir con quién construir… y también cómo deseas estar tú en esa relación.',
           ]
         },
-        { type: 'quote', text: 'Ser tú en los vínculos no es un riesgo. Es el único camino hacia relaciones que de verdad te hagan bien.' },
-      ]
+      ],
     },
   ]
 };
     
+
