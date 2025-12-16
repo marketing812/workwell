@@ -23,7 +23,7 @@ interface UnaPalabraCadaDiaExerciseProps {
 export function UnaPalabraCadaDiaExercise({ content, pathId }: UnaPalabraCadaDiaExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
-
+  
   const [step, setStep] = useState(0);
   const [selectedEmotion, setSelectedEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
@@ -36,7 +36,7 @@ export function UnaPalabraCadaDiaExercise({ content, pathId }: UnaPalabraCadaDia
         toast({ title: 'Reflexión Guardada' });
     }
   };
-
+  
   const renderStep = () => {
     switch(step) {
       case 0: return <div className="p-4 space-y-4"><Label>¿Qué emoción resume mejor tu día hasta ahora?</Label><Select value={selectedEmotion} onValueChange={v => {setSelectedEmotion(v); if(v !== 'otra') setOtherEmotion('')}}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{selectedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe tu emoción..." className="mt-2" />}<Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
@@ -49,7 +49,20 @@ export function UnaPalabraCadaDiaExercise({ content, pathId }: UnaPalabraCadaDia
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}</CardHeader>
+      <CardHeader>
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        {content.objective && (
+          <CardDescription className="pt-2">
+            {content.objective}
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica2.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+          </CardDescription>
+        )}
+      </CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>
   );
