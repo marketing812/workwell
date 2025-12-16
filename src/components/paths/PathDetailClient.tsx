@@ -504,7 +504,7 @@ function ContentItemRenderer({
     case 'mantraExercise':
       return <MantraExercise key={index} content={contentItem} />;
     case 'ritualDeEntregaConscienteExercise':
-      return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
+        return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
@@ -1026,5 +1026,4 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
 
