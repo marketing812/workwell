@@ -15,9 +15,9 @@ export const selfUnderstandingPath: Path = {
       estimatedTime: '20-25 min',
       content: [
         { 
-          type: 'paragraphWithAudio', 
-          text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.',
-          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'
+            type: 'paragraphWithAudio', 
+            text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.',
+            audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -30,6 +30,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'collapsible',
           title: 'Emoción, pensamiento e impulso: ¿cómo se diferencian?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio2Ruta6Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Cuando estamos muy activados emocionalmente, todo se mezcla: lo que sentimos, lo que pensamos, lo que queremos hacer. Pero entender la diferencia entre emoción, pensamiento e impulso es clave para poder autorregularnos.\nVamos con un ejemplo:\nImagina que alguien cercano no te devuelve una llamada importante.\n•\tPensamiento: “No le importo nada.”\n•\tEmoción: tristeza… o quizás enfado.\n•\tImpulso: escribir un mensaje duro… o desaparecer por completo.\nLa emoción es el sentir profundo.\nEl pensamiento es la interpretación que haces.\nEl impulso es lo que querrías hacer justo después.\n💡 Muchas veces, no podemos cambiar lo que sentimos… pero sí cómo pensamos sobre ello y qué hacemos con eso.\nSeparar estos tres niveles es como desenredar una madeja. Nos da claridad, espacio interno y capacidad de elegir.' }
           ]
