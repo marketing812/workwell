@@ -82,7 +82,7 @@ export const selfUnderstandingPath: Path = {
             'Toda emoción tiene una función adaptativa, incluso si es incómoda.',
             'Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.',
             'Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.',
-            'Nombrar una emoción con precisión reducesu intensidad y mejora la autorregulación.',
+            'Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.',
             'No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.',
           ]
         },
@@ -95,7 +95,7 @@ export const selfUnderstandingPath: Path = {
         type: 'skill_practice',
         estimatedTime: '15-20 min',
         content: [
-            { type: 'paragraph', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.' },
+            { type: 'paragraphWithAudio', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introruta6Sesioon2.mp3', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.' },
             { type: 'title', text: 'Psicoeducación' },
             {
                 type: 'collapsible',
@@ -257,5 +257,4 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
-
     
