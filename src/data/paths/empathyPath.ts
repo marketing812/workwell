@@ -91,14 +91,14 @@ export const empathyPath: Path = {
           objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', prompts: [
             '¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?',
             '¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?',
             '¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?',
             '¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?',
           ]
         },
-        { type: 'title', text: 'Resumen Clave de la Ruta' },
+        { type: 'title', text: 'Resumen Clave de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3' },
         { type: 'list', items: [
             'La autenticidad es la base de cualquier relación que nutre de verdad.',
             'La empatía se entrena: no es adivinar, es escuchar y validar sin juzgar.',
