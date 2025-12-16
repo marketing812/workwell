@@ -37,8 +37,6 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: Meditacio
     setIsSaved(true);
   };
   
-  const meditationText = "Lleva tu atención a la respiración. Inhala… exhala lentamente. Siente el aire entrar y salir de tu cuerpo. Permite que cualquier sensación, pensamiento o emoción esté presente. No tienes que luchar. Solo observar. Di mentalmente: “Esto es lo que siento ahora… y está bien.” Si te distraes, vuelve suavemente a la frase y la respiración. Quédate ahí unos minutos. Simplemente presente contigo.";
-
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
@@ -46,7 +44,7 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: Meditacio
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
-          <div className="p-4 border rounded-lg bg-background text-center">
+          <div className="text-center">
               <audio controls controlsList="nodownload" className="w-full">
                   <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica1.mp3" type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
@@ -68,3 +66,4 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: Meditacio
     </Card>
   );
 }
+
