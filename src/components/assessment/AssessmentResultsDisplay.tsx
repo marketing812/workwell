@@ -26,7 +26,7 @@ import {
   Cell,
   type DotProps,
 } from "recharts"
-import type { AssessmentDimension } from '@/data/paths/pathTypes'; // Cambiamos la importación
+import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { assessmentInterpretations, type InterpretationLevels } from '@/data/assessmentInterpretations';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useRouter } from 'next/navigation';
@@ -40,7 +40,7 @@ interface AssessmentResultsDisplayProps {
   userId?: string | null;
   onRetake: () => void;
   assessmentTimestamp?: string;
-  assessmentDimensions: AssessmentDimension[]; // Ahora es una prop requerida
+  assessmentDimensions: AssessmentDimension[];
 }
 
 interface CategorizedDimension extends AssessmentDimension {
@@ -88,7 +88,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
 
   if (!results || !results.emotionalProfile || Object.keys(results.emotionalProfile).length === 0 ||
       Object.values(results.emotionalProfile).some(score => typeof score !== 'number') ||
-      !results.priorityAreas || !Array.isArray(results.priorityAreas)) { // Added Array.isArray check
+      !results.priorityAreas || !Array.isArray(results.priorityAreas)) { 
     return (
       <div className="container mx-auto py-8 text-center">
         <AlertTriangle className="mx-auto h-12 w-12 text-destructive" />
@@ -102,7 +102,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   }
   
   const payloadForDebug = rawAnswers && userId && results ? {
-    assessmentId: "current-session-id", // Placeholder for current session
+    assessmentId: "current-session-id", 
     userId: userId,
     rawAnswers: rawAnswers,
     aiInterpretation: results,
@@ -158,14 +158,14 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     if (typeof value !== 'number' || isNaN(value)) {
     }
 
-    let dotColor = "hsl(var(--chart-2))"; // Default Blue (for 0 or < 1.0 or not evaluated)
+    let dotColor = "hsl(var(--chart-2))"; 
     
     if (scoreValue >= 4.0) {
-      dotColor = "hsl(var(--primary))"; // Green
+      dotColor = "hsl(var(--primary))"; 
     } else if (scoreValue >= 2.5) {
-      dotColor = "hsl(var(--chart-5))"; // Orange/Yellow
+      dotColor = "hsl(var(--chart-5))"; 
     } else if (scoreValue >= 1.0) {
-      dotColor = "hsl(var(--destructive))"; // Red
+      dotColor = "hsl(var(--destructive))";
     }
         
     return <circle cx={cx} cy={cy} r={5} fill={dotColor} stroke="hsl(var(--background))" strokeWidth={1.5} />;

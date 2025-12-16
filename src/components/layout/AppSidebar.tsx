@@ -12,9 +12,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
-  useSidebar, // Importar el hook
+  useSidebar,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
 import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, List } from "lucide-react";
 import { useTranslations } from "@/lib/translations";
 import { useUser } from "@/contexts/UserContext";
@@ -28,7 +27,6 @@ const navItems = [
   { href: "/emotional-log", labelKey: "navMyEmotions", icon: HeartPulse },
   { href: "/therapeutic-notebook", labelKey: "navTherapeuticNotebook", icon: NotebookText },
   { href: "/chatbot", labelKey: "navChatbot", icon: Bot },
-  // { href: "/knowledge-assistant", labelKey: "navKnowledgeAssistant", icon: FileQuestion },
   { href: "/resources", labelKey: "navResources", icon: Library },
 ];
 
@@ -40,11 +38,10 @@ export function AppSidebar() {
   const t = useTranslations();
   const pathname = usePathname();
   const { logout } = useUser();
-  const { setOpenMobile, isMobile } = useSidebar(); // Usar el hook para acceder al estado y la función
+  const { setOpenMobile, isMobile } = useSidebar();
 
   const isActive = (href: string) => {
     if (href === "/assessment/intro" || href === "/assessment/guided") {
-      // Highlights for any page under /assessment except history and review
       return pathname.startsWith("/assessment") && !pathname.startsWith('/assessment/history-results') && !pathname.startsWith('/assessment/review'); 
     }
     if (href === "/my-assessments") {
@@ -62,7 +59,6 @@ export function AppSidebar() {
     return pathname === href;
   }
 
-  // Función que se llamará al hacer clic en un enlace del menú
   const handleLinkClick = () => {
     if (isMobile) {
       setOpenMobile(false);
@@ -76,7 +72,6 @@ export function AppSidebar() {
     logout();
   };
 
-
   return (
     <Sidebar variant="sidebar" collapsible="icon" side="left">
       <SidebarHeader className="p-4">
@@ -86,17 +81,17 @@ export function AppSidebar() {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={isActive(item.href)}
-                tooltip={t[item.labelKey as keyof typeof t]}
-                onClick={handleLinkClick} // Añadir onClick a cada botón
-              >
-                <Link href={item.href}>
+              <Link href={item.href} passHref legacyBehavior>
+                <SidebarMenuButton
+                  as="a"
+                  isActive={isActive(item.href)}
+                  tooltip={t[item.labelKey as keyof typeof t]}
+                  onClick={handleLinkClick}
+                >
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
-                </Link>
-              </SidebarMenuButton>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
@@ -105,17 +100,17 @@ export function AppSidebar() {
          <SidebarMenu>
           {settingsNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={isActive(item.href)}
-                tooltip={t[item.labelKey as keyof typeof t]}
-                onClick={handleLinkClick} // Añadir onClick a cada botón
-              >
-                <Link href={item.href}>
+              <Link href={item.href} passHref legacyBehavior>
+                <SidebarMenuButton
+                  as="a"
+                  isActive={isActive(item.href)}
+                  tooltip={t[item.labelKey as keyof typeof t]}
+                  onClick={handleLinkClick}
+                >
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
-                </Link>
-              </SidebarMenuButton>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           ))}
           <SidebarSeparator />
