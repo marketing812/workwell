@@ -62,23 +62,10 @@ export const selfUnderstandingPath: Path = {
           duration: '2–3 min',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
-          prompts: [
-            '¿Qué he descubierto de mí esta semana al detenerme a sentir?',
-            '¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?',
-            '¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?',
-            '¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?',
-            '¿Qué quiero seguir entrenando en mí a partir de ahora?'
-          ]
-        },
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
+          prompts: ['¿Qué he descubierto de mí esta semana al detenerme a sentir?','¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?','¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?','¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?','¿Qué quiero seguir entrenando en mí a partir de ahora?']},
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: [
-            'Toda emoción tiene una función adaptativa, incluso si es incómoda.',
-            'Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.',
-            'Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.',
-            'Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.',
-            'No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.',
-          ]
-        },
+        { type: 'list', items: ['Toda emoción tiene una función adaptativa, incluso si es incómoda.','Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.','Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.','Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.','No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.']},
         { type: 'quote', text: '“Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.”' }
       ]
     },
@@ -88,7 +75,7 @@ export const selfUnderstandingPath: Path = {
         type: 'skill_practice',
         estimatedTime: '15-20 min',
         content: [
-            { type: 'paragraphWithAudio', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introruta6Sesioon2.mp3'},
+            { type: 'paragraphWithAudio', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introruta6Sesioon2.mp3', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.' },
             { type: 'title', text: 'Psicoeducación' },
             {
                 type: 'collapsible',
@@ -120,6 +107,7 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO',
                 objective: 'Traduce una emoción en una necesidad, y luego, transforma esa necesidad en una acción real que te cuide.',
                 duration: '5-10 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3'
             },
             {
                 type: 'cartaDesdeLaEmocionExercise',
@@ -135,7 +123,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
                 '¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?',
             ]},
-            { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
+            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
             { type: 'list', items: [
                 'Las emociones no son errores, son mensajes valiosos sobre lo que nos importa.',
                 'Toda emoción desagradable suele señalar una necesidad emocional no cubierta.',
@@ -212,14 +200,18 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
                 objective: 'Identifica situaciones que te remueven, reconoce qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta.',
                 duration: '15–20 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3'
             },
             {
                 type: 'semaforoEmocionalExercise',
                 title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
                 objective: 'Aprende a identificar si estás en calma, activándote o al borde del desborde, y elige cómo cuidarte en cada momento.',
                 duration: '5–10 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3'
             },
-             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3',
+               prompts: [
                 '¿Qué emoción se ha repetido más en mí últimamente?',
                 '¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?',
                 '¿Qué patrón emocional reconozco como más habitual?',
