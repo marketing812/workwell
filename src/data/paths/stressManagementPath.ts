@@ -203,13 +203,6 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\n•\tTu respiración se regula sola.\n•\tTu expresión facial se relaja.\n•\tTu cuerpo se afloja.\n•\tTu mente se siente más presente.\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
                 ]
             },
-            {
-                type: 'collapsible',
-                title: '¿Por qué es importante todo esto?',
-                content: [
-                    { type: 'paragraph', text: 'Porque entender cómo funciona tu cuerpo te ayuda a dejar de luchar contra él. Si sientes ansiedad, no es que estés “exagerando” o que no sepas controlarte. Es tu sistema de defensa intentando protegerte. Lo que necesitas no es pelear con él, sino enseñarle que ya no hay peligro.\nY eso se hace desde lo corporal: con respiraciones, con movimientos suaves, con contacto reconfortante.\nEn esta semana, vas a practicar técnicas que activan tu sistema de calma:\n•\tRespiraciones que calman el sistema nervioso.\n•\tTécnicas para volver al presente con los sentidos.\n•\tGestos que le recuerdan a tu cuerpo que está a salvo.\nNo se trata de “calmarte a la fuerza”. Se trata de crear las condiciones para que tu cuerpo pueda hacerlo por sí mismo. Y eso, aunque parezca pequeño, es un acto profundo de cuidado.' }
-                ]
-            },
             { type: 'title', text: 'Técnicas Específicas', audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3'},
             {
                 type: 'collapsible',
@@ -505,3 +498,4 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
