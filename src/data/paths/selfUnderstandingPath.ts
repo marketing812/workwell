@@ -220,8 +220,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué suele ocurrirme cuando una emoción me desborda?',
                 '¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?',
             ]},
-            { type: 'title', text: 'Resumen Clave' },
-            { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3' },
+            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3' },
             { type: 'list', items: [
                 'Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.',
                 'Todos tenemos esquemas emocionales o heridas antiguas que, cuando se activan, generan reacciones automáticas.',
@@ -239,7 +238,7 @@ export const selfUnderstandingPath: Path = {
         type: 'summary',
         estimatedTime: '20-25 min',
         content: [
-            { type: 'paragraph', text: '¿Y si no tuvieras que corregirte todo el tiempo?\n¿Y si pudieras observar lo que sientes sin pelear contigo?\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente.\nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio.\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable.\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro.\nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.' },
+            { type: 'paragraphWithAudio', text: '¿Y si no tuvieras que corregirte todo el tiempo?\n¿Y si pudieras observar lo que sientes sin pelear contigo?\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente.\nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio.\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable.\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro.\nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introsesion4Ruta6.mp3' },
             { type: 'title', text: 'Psicoeducación' },
             {
                 type: 'collapsible',
@@ -303,5 +302,8 @@ export const selfUnderstandingPath: Path = {
 
 
   
+
+  
+
 
   
