@@ -114,6 +114,7 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 2: CARTA DESDE LA EMOCIÓN',
                 objective: 'Permite que tu emoción se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.',
                 duration: '10 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3'
             },
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
@@ -154,7 +155,7 @@ export const selfUnderstandingPath: Path = {
                 audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion3.mp3',
                 content: [{ type: 'paragraph', text: 'Todos tenemos “botones emocionales”: temas que nos tocan con más fuerza.\nTal vez te afecta más el rechazo, o sentir que no te tienen en cuenta, o que pierdes el control.\nNo es casualidad: son puntos sensibles que se formaron con el tiempo.\nEstos botones emocionales son como alarmas que se activan cuando algo “se parece” a lo que te dolió antes.\nY como cualquier alarma, buscan protegerte… aunque a veces te dejen atrapado o atrapada en reacciones que ya no necesitas.\nEntender cuáles son tus botones no te hace más vulnerable. Te da poder para anticiparlos y cuidarte mejor.' }]
             },
-            {
+             {
               type: 'collapsible',
               title: 'El papel de los pensamientos',
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion3.mp3',
@@ -220,6 +221,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?',
             ]},
             { type: 'title', text: 'Resumen Clave' },
+            { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3' },
             { type: 'list', items: [
                 'Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.',
                 'Todos tenemos esquemas emocionales o heridas antiguas que, cuando se activan, generan reacciones automáticas.',
