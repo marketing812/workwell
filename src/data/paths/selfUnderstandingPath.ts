@@ -91,7 +91,7 @@ export const selfUnderstandingPath: Path = {
         type: 'skill_practice',
         estimatedTime: '15-20 min',
         content: [
-            { type: 'paragraphWithAudio', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introruta6Sesioon2.mp3', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.' },
+            { type: 'paragraphWithAudio', text: 'A veces sentimos tristeza, ansiedad, frustración… y tratamos de taparlas, ignorarlas o juzgarlas.\nPero ¿qué pasaría si esas emociones fueran mensajes que traen necesidades?\nEsta semana vas a practicar una forma distinta de escucharte: vas a conectar con lo que realmente necesitas cuando sientes una emoción intensa.\nDescubrirás que tus emociones no son el problema. El verdadero malestar aparece cuando te desconectas de lo que necesitan expresar.\nCon ayuda de la Comunicación No Violenta y ejercicios prácticos, empezarás a traducir tus emociones en cuidados. Porque cuando entiendes qué te duele, también puedes descubrir cómo sostenerte con más respeto.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introruta6Sesioon2.mp3'},
             { type: 'title', text: 'Psicoeducación' },
             {
                 type: 'collapsible',
@@ -140,7 +140,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
                 '¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?',
             ]},
-            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
+            { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
             { type: 'list', items: [
                 'Las emociones no son errores, son mensajes valiosos sobre lo que nos importa.',
                 'Toda emoción desagradable suele señalar una necesidad emocional no cubierta.',
@@ -170,6 +170,46 @@ export const selfUnderstandingPath: Path = {
                 title: 'Tus botones emocionales',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion3.mp3',
                 content: [{ type: 'paragraph', text: 'Todos tenemos “botones emocionales”: temas que nos tocan con más fuerza.\nTal vez te afecta más el rechazo, o sentir que no te tienen en cuenta, o que pierdes el control.\nNo es casualidad: son puntos sensibles que se formaron con el tiempo.\nEstos botones emocionales son como alarmas que se activan cuando algo “se parece” a lo que te dolió antes.\nY como cualquier alarma, buscan protegerte… aunque a veces te dejen atrapado o atrapada en reacciones que ya no necesitas.\nEntender cuáles son tus botones no te hace más vulnerable. Te da poder para anticiparlos y cuidarte mejor.' }]
+            },
+            {
+              type: 'collapsible',
+              title: 'El papel de los pensamientos',
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion3.mp3',
+              content: [
+                { type: 'paragraph', text: '¿Y qué pasa con lo que pensamos cuando sentimos?\nLas emociones no surgen directamente de lo que ocurre, sino de cómo lo interpretamos.\nEn psicología lo explicamos así:\nAcontecimiento → Creencia → Consecuencia emocional\nPor ejemplo:\nAlguien no responde tu mensaje → “No le importo” → tristeza.\nCometes un error → “Soy un fracaso” → culpa o rabia.\nUna mirada te incomoda → “Se están burlando de mí” → ansiedad o vergüenza.\nEstos pensamientos aparecen automáticamente, sin que los elijas. Vienen de esquemas internos formados hace mucho… pero que aún hoy pueden moldear cómo sientes y cómo actúas.' }
+              ]
+            },
+            {
+              type: 'collapsible',
+              title: 'Las heridas que aún duelen',
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion3.mp3',
+              content: [
+                { type: 'paragraph', text: 'Aquí es donde entran las heridas emocionales.\nNo todas las heridas son visibles, ni vienen de un solo hecho traumático. A veces son el resultado de años sintiéndote poco valorado/a, exigido/a, ignorado/a o criticado/a.\nEstas experiencias dejan huellas.\nY esas huellas se transforman en creencias como:\n“Tengo que esforzarme siempre para que me quieran”,\n“Si muestro lo que siento, me van a rechazar”,\n“No puedo fallar”.\nCuando una herida se activa, la emoción es más intensa, el pensamiento más negativo… y la reacción más automática.' }
+              ]
+            },
+            {
+              type: 'collapsible',
+              title: '¿Por qué repito siempre lo mismo?',
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion3.mp3',
+              content: [
+                { type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.\nEl cerebro automatiza lo que se repite.\nSi llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.\nBuscamos lo familiar, incluso si duele.\nSi creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.\nEvitamos lo incómodo.\nTapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.' }
+              ]
+            },
+            {
+              type: 'collapsible',
+              title: 'Cuando las emociones se sienten demasiado',
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion3.mp3',
+              content: [
+                { type: 'paragraph', text: '¿Y por qué algunas emociones parecen tan grandes que nos arrastran?\nPorque tocan algo importante y personal.\nUna crítica cualquiera no duele igual que una crítica que activa tu herida de desvalorización.\nPorque están teñidas de pensamientos distorsionados.\nComo “todo o nada”, “esto siempre me pasa”, “no hay salida”.\nPorque reaccionamos antes de pensar.\nEl cerebro emocional (amígdala) se activa antes de que lo racional entre en juego. Por eso a veces gritas o te cierras sin saber por qué.\nPorque el cuerpo también recuerda.\nLa ansiedad se siente en el estómago, la tristeza en el pecho, la rabia en la mandíbula. Tu cuerpo guarda memoria emocional… y te avisa cuando algo no está bien.' }
+              ]
+            },
+            {
+              type: 'collapsible',
+              title: 'Entonces, ¿qué puedo hacer?',
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion3.mp3',
+              content: [
+                { type: 'paragraph', text: 'No se trata de dejar de sentir, sino de empezar a entenderte.\nObservarte sin juicio.\nTodo lo que sientes tiene una razón. No lo censures: escúchalo.\nNombrar lo que sientes.\n“Estoy sintiendo tristeza”, “Estoy frustrado/a” → solo con eso, ya estás empezando a regular tu sistema emocional.\nBuscar el mensaje detrás.\n¿Qué necesidad hay debajo de esta emoción? ¿Qué parte de mí necesita atención o cuidado?\nInterrumpir el piloto automático.\nEsta semana aprenderás dos técnicas para hacerlo:\nMapa emocional repetido\nSemáforo emocional\nAmbas te ayudarán a crear espacio antes de reaccionar… y a elegir desde la conciencia.' }
+              ]
             },
             { type: 'title', text: 'Técnicas Específicas' },
             {
@@ -272,5 +312,7 @@ export const selfUnderstandingPath: Path = {
 
 
 
+
+  
 
   
