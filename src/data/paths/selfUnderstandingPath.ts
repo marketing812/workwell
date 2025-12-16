@@ -1,4 +1,5 @@
 
+
 import type { Path } from '../pathsData';
 
 export const selfUnderstandingPath: Path = {
@@ -53,18 +54,14 @@ export const selfUnderstandingPath: Path = {
           title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”',
           objective: 'Aprende a distinguir emoción, pensamiento e impulso, para empezar a entenderte con más claridad y menos juicio.',
           duration: '5–10 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3'
         },
         {
           type: 'unaPalabraCadaDiaExercise',
           title: 'EJERCICIO 2: “UNA PALABRA CADA DÍA”',
           objective: 'Entrena el hábito de chequear cómo te sientes cada día con honestidad y respeto, creando una relación más amable contigo.',
           duration: '2–3 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
           prompts: [
             '¿Qué he descubierto de mí esta semana al detenerme a sentir?',
             '¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?',
@@ -123,14 +120,12 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO',
                 objective: 'Traduce una emoción en una necesidad, y luego, transforma esa necesidad en una acción real que te cuide.',
                 duration: '5-10 min',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3'
             },
             {
                 type: 'cartaDesdeLaEmocionExercise',
                 title: 'EJERCICIO 2: CARTA DESDE LA EMOCIÓN',
                 objective: 'Permite que tu emoción se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.',
                 duration: '10 min',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3'
             },
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
