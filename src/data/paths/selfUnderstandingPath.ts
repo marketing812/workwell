@@ -130,6 +130,7 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 2: CARTA DESDE LA EMOCIÓN',
                 objective: 'Permite que tu emoción se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.',
                 duration: '10 min',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3'
             },
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
@@ -161,6 +162,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'collapsible',
                 title: '¿Por qué a veces reacciono “de más”?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio2Ruta6Sesion3.mp3',
                 content: [{ type: 'paragraph', text: 'No todo lo que sentimos viene solo del presente.\nA veces, una situación cotidiana activa una emoción muy intensa…\nY no es que estés exagerando: puede que algo más profundo se haya activado.\nDesde la Terapia de Esquemas sabemos que muchas personas llevan dentro creencias emocionales muy arraigadas:\n“Me van a abandonar”, “Si fallo, no valgo”, “No puedo confiar en nadie”.\nEstas creencias, llamadas esquemas emocionales, pueden dispararse sin que lo notes. Y cuando lo hacen, la reacción es fuerte… porque no estás reaccionando solo/a a lo que pasa hoy, sino a lo que una parte de ti recuerda de antes.'}]
             },
             {
@@ -265,5 +267,6 @@ export const selfUnderstandingPath: Path = {
   
 
     
+
 
 
