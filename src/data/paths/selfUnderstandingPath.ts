@@ -201,16 +201,9 @@ export const selfUnderstandingPath: Path = {
                 duration: '5–10 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3'
             },
-             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
-               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3',
-               prompts: [
-                '¿Qué emoción se ha repetido más en mí últimamente?',
-                '¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?',
-                '¿Qué patrón emocional reconozco como más habitual?',
-                '¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?',
-                '¿Qué suele ocurrirme cuando una emoción me desborda?',
-                '¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?',
-            ]},
+            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3',
+              prompts: ['¿Qué emoción se ha repetido más en mí últimamente?','¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?','¿Qué patrón emocional reconozco como más habitual?','¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?','¿Qué suele ocurrirme cuando una emoción me desborda?','¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?']},
             { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3'},
             { type: 'list', items: [
                 'Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.',
@@ -238,100 +231,71 @@ export const selfUnderstandingPath: Path = {
               content: [{ type: 'paragraph', text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte?\nEso es autoconciencia plena:\nAprender a estar presente con lo que sientes, tal y como es.\nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.' }]
             },
             {
-              type: 'collapsible',
-              title: '¿Qué significa tener autoconciencia plena?',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
-              content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo…\nen el momento en que ocurre.\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante.\nNo se trata de perfección, sino de presencia y aceptación.\nEs estar contigo de forma amable, instante a instante.' }]
+                type: 'collapsible',
+                title: '¿Qué significa tener autoconciencia plena?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… en el momento en que ocurre. Y hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. No se trata de perfección, sino de presencia y aceptación. Es estar contigo de forma amable, instante a instante.' }]
             },
             {
-              type: 'collapsible',
-              title: '¿De dónde viene este enfoque?',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: 'Este tipo de conciencia se basa en dos caminos terapéuticos:\nMindfulness: prestar atención al presente con amabilidad.\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones…\neres quien los observa.\nAprender esto te permite tomar distancia y elegir mejor.' }
-              ]
+                type: 'collapsible',
+                title: '¿De dónde viene este enfoque?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Este tipo de conciencia se basa en dos caminos terapéuticos:\nMindfulness: prestar atención al presente con amabilidad.\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… eres quien los observa.\nAprender esto te permite tomar distancia y elegir mejor.' }]
             },
             {
-              type: 'collapsible',
-              title: 'Observarte no es una debilidad',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: 'Al contrario: es una fuerza emocional.\nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”.\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar.\nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.' }
-              ]
+                type: 'collapsible',
+                title: 'Observarte no es una debilidad',
+                content: [{ type: 'paragraph', text: 'Al contrario: es una fuerza emocional.\nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”.\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar.\nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.' }]
             },
             {
-              type: 'collapsible',
-              title: 'Metacognición: el arte de observar tu mente',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera.\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti.\nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder.\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }
-              ]
+                type: 'collapsible',
+                title: 'Metacognición: el arte de observar tu mente',
+                content: [{ type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera.\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti.\nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder.\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }]
             },
             {
-              type: 'collapsible',
-              title: 'Del juicio a la curiosidad',
-              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion4.mp3',
-              content: [
-                { type: 'paragraph', text: 'Muchas veces nos decimos cosas como:\n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…”\nPero hablarte así no ayuda a cambiar lo que sientes.\nSolo lo hace más difícil.\nEn cambio, si te preguntas con amabilidad:\n“¿Qué me está pasando en realidad?”\nse abre un espacio de comprensión y calma dentro de ti.' }
-              ]
+                type: 'collapsible',
+                title: 'Del juicio a la curiosidad',
+                content: [{ type: 'paragraph', text: 'Muchas veces nos decimos cosas como:\n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…”\nPero hablarte así no ayuda a cambiar lo que sientes.\nSolo lo hace más difícil.\nEn cambio, si te preguntas con amabilidad:\n“¿Qué me está pasando en realidad?”\nse abre un espacio de comprensión y calma dentro de ti.' }]
             },
             {
-              type: 'collapsible',
-              title: '¿Qué cambia cuando me observo con curiosidad?',
-              content: [
-                { type: 'list', items: ['Empiezas a conocerte mejor.', 'Dejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”).', 'Descubres qué necesitas de verdad.', 'Reaccionas menos y eliges mejor.', 'Te tratas con más empatía.'] },
-                { type: 'paragraph', text: 'No tienes que cambiar lo que sientes.\nSolo cambiar la manera en la que te acompañas cuando lo sientes.' }
-              ]
+                type: 'collapsible',
+                title: '¿Qué cambia cuando me observo con curiosidad?',
+                content: [{ type: 'list', items: ['Empiezas a conocerte mejor.','Dejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”).','Descubres qué necesitas de verdad.','Reaccionas menos y eliges mejor.','Te tratas con más empatía.'] }, { type: 'paragraph', text: 'No tienes que cambiar lo que sientes.\nSolo cambiar la manera en la que te acompañas cuando lo sientes.' }]
             },
             {
-              type: 'collapsible',
-              title: 'La curiosidad como medicina emocional',
-              content: [
-                { type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.' }
-              ]
+                type: 'collapsible',
+                title: 'La curiosidad como medicina emocional',
+                content: [{ type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.' }]
             },
             {
-              type: 'collapsible',
-              title: 'No necesitas tener todas las respuestas',
-              content: [
-                { type: 'paragraph', text: 'Lo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n🌀 ¿Qué estoy sintiendo ahora mismo?\n🌀 ¿Qué necesita esta emoción?\n🌀 ¿Qué historia estoy contándome?\n🌀 ¿Cómo puedo cuidarme un poco mejor ahora?' }
-              ]
+                type: 'collapsible',
+                title: 'No necesitas tener todas las respuestas',
+                content: [{ type: 'paragraph', text: 'Lo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n🌀 ¿Qué estoy sintiendo ahora mismo?\n🌀 ¿Qué necesita esta emoción?\n🌀 ¿Qué historia estoy contándome?\n🌀 ¿Cómo puedo cuidarme un poco mejor ahora?' }]
             },
             {
-              type: 'collapsible',
-              title: '¿Y si me cuesta observarme con calma?',
-              content: [
-                { type: 'paragraph', text: 'Es totalmente normal.\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.' }
-              ]
+                type: 'collapsible',
+                title: '¿Y si me cuesta observarme con calma?',
+                content: [{ type: 'paragraph', text: 'Es totalmente normal.\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.' }]
             },
             {
-              type: 'collapsible',
-              title: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)',
-              content: [
-                { type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:\n🔵 Estado de seguridad: calma, conexión, reflexión.\n🔴 Estado de alarma: lucha o huida.\n⚫ Estado de colapso: bloqueo o desconexión.\nCuando estás en seguridad, puedes observarte sin pelear contigo. Por eso es tan importante cultivar ese estado interno.' }
-              ]
+                type: 'collapsible',
+                title: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)',
+                content: [{ type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:\n🔵 Estado de seguridad: calma, conexión, reflexión.\n🔴 Estado de alarma: lucha o huida.\n⚫ Estado de colapso: bloqueo o desconexión.\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.' }]
             },
             {
-              type: 'collapsible',
-              title: 'Cómo generar seguridad dentro de ti',
-              content: [
-                { type: 'paragraph', text: 'Aquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n🌬️ Respirar de forma consciente.\n🌍 Sentir tus pies firmes en el suelo.\n💬 Hablarte con amabilidad.\n🤝 Rodearte de personas que te respetan.\n🧠 Recordarte: lo que sientes no es un error.\nLa seguridad no se impone. Se entrena poco a poco.' }
-              ]
+                type: 'collapsible',
+                title: 'Cómo generar seguridad dentro de ti',
+                content: [{ type: 'list', items: ['🌬️ Respirar de forma consciente.','🌍 Sentir tus pies firmes en el suelo.','💬 Hablarte con amabilidad.','🤝 Rodearte de personas que te respetan.','🧠 Recordarte: lo que sientes no es un error.','La seguridad no se impone. Se entrena poco a poco.'] }]
             },
             {
-              type: 'collapsible',
-              title: 'El poder de tu voz interior',
-              content: [
-                { type: 'paragraph', text: 'Tu cuerpo escucha cómo te hablas.\n🫀 Una frase amable puede calmar tu corazón.\n🔥 Una crítica interna puede alterarte sin que te des cuenta.\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }
-              ]
+                type: 'collapsible',
+                title: 'El poder de tu voz interior',
+                content: [{ type: 'paragraph', text: 'Tu cuerpo escucha cómo te hablas.\n🫀 Una frase amable puede calmar tu corazón.\n🔥 Una crítica interna puede alterarte sin que te des cuenta.\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }]
             },
             {
-              type: 'collapsible',
-              title: 'En resumen',
-              content: [
-                { type: 'list', items: ['💠 La autoconciencia plena es el primer paso para cambiar de verdad.', '💠 Observarte con curiosidad te transforma más que criticarte.', '💠 Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.', '💠 La metacognición te ayuda a elegir mejor.', '💠 No tienes que corregirte. Solo aprender a acompañarte con respeto.' ] },
-                { type: 'paragraph', text: 'Desde esa base… todo empieza a cambiar, con más claridad y compasión' }
-              ]
+                type: 'collapsible',
+                title: 'En resumen',
+                content: [{ type: 'list', items: ['💠 La autoconciencia plena es el primer paso para cambiar de verdad.', '💠 Observarte con curiosidad te transforma más que criticarte.', '💠 Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.', '💠 La metacognición te ayuda a elegir mejor.', '💠 No tienes que corregirte. Solo aprender a acompañarte con respeto.'] }, { type: 'paragraph', text: 'Desde esa base… todo empieza a cambiar, con más claridad y compasión' }]
             },
             { type: 'title', text: 'Técnicas Específicas' },
             {
@@ -363,7 +327,7 @@ export const selfUnderstandingPath: Path = {
             'Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas.',
             'Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.',
             'Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti.',
-            '✍️ Escribe con honestidad y sin exigencias:',
+            'Escribe con honestidad y sin exigencias:',
             '¿Qué he aprendido sobre mí que antes no veía con claridad?',
             '¿Qué emociones o patrones he comenzado a entender mejor?',
             '¿Cómo ha cambiado la forma en que me hablo y me observo?',
@@ -373,7 +337,10 @@ export const selfUnderstandingPath: Path = {
             'y seguir acompañándote cada día, desde la conciencia y la compasión.'
           ]
         },
-        { type: 'title', text: 'Resumen Final de la Ruta' },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+        },
         {
           type: 'list',
           items: [
@@ -399,20 +366,3 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
-    
-
-  
-
-    
-
-
-
-
-
-  
-
-  
-
-
-  
-
