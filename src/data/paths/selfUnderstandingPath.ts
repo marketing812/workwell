@@ -168,6 +168,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'collapsible',
                 title: 'Tus botones emocionales',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion3.mp3',
                 content: [{ type: 'paragraph', text: 'Todos tenemos “botones emocionales”: temas que nos tocan con más fuerza.\nTal vez te afecta más el rechazo, o sentir que no te tienen en cuenta, o que pierdes el control.\nNo es casualidad: son puntos sensibles que se formaron con el tiempo.\nEstos botones emocionales son como alarmas que se activan cuando algo “se parece” a lo que te dolió antes.\nY como cualquier alarma, buscan protegerte… aunque a veces te dejen atrapado o atrapada en reacciones que ya no necesitas.\nEntender cuáles son tus botones no te hace más vulnerable. Te da poder para anticiparlos y cuidarte mejor.' }]
             },
             { type: 'title', text: 'Técnicas Específicas' },
@@ -270,3 +271,6 @@ export const selfUnderstandingPath: Path = {
 
 
 
+
+
+  
