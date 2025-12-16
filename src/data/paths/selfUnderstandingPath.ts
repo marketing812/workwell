@@ -143,7 +143,7 @@ export const selfUnderstandingPath: Path = {
                 '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
                 '¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?',
             ]},
-            { type: 'title', text: 'Resumen Clave' },
+            { type: 'paragraphWithAudio', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3' },
             { type: 'list', items: [
                 'Las emociones no son errores, son mensajes valiosos sobre lo que nos importa.',
                 'Toda emoción desagradable suele señalar una necesidad emocional no cubierta.',
