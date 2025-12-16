@@ -14,7 +14,11 @@ export const selfUnderstandingPath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.' },
+        { 
+          type: 'paragraphWithAudio', 
+          text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'
+        },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -245,4 +249,3 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
-
