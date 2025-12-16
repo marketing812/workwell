@@ -14,11 +14,7 @@ export const selfUnderstandingPath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { 
-            type: 'paragraphWithAudio', 
-            text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.',
-            audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'
-        },
+        { type: 'paragraphWithAudio', text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -160,7 +156,7 @@ export const selfUnderstandingPath: Path = {
         type: 'skill_practice',
         estimatedTime: '20-25 min',
         content: [
-            { type: 'paragraph', text: '¿Notas que a veces reaccionas igual ante ciertas personas o situaciones, aunque sean distintas?\n¿O que ciertas emociones se repiten una y otra vez?\nEsta semana vas a mirar más de cerca tus patrones emocionales repetidos: esos botones que se activan una y otra vez, sin que siempre lo elijas.\nCon ayuda de herramientas visuales y mapas emocionales, identificarás qué situaciones suelen activarte, qué emociones surgen y qué creencias hay detrás. También aprenderás a distinguir si están conectadas con antiguos esquemas emocionales no resueltos.\nNo se trata de culparte por reaccionar así. Se trata de recuperar el poder de elegir cómo quieres responder.'},
+            { type: 'paragraphWithAudio', text: '¿Notas que a veces reaccionas igual ante ciertas personas o situaciones, aunque sean distintas?\n¿O que ciertas emociones se repiten una y otra vez?\nEsta semana vas a mirar más de cerca tus patrones emocionales repetidos: esos botones que se activan una y otra vez, sin que siempre lo elijas.\nCon ayuda de herramientas visuales y mapas emocionales, identificarás qué situaciones suelen activarte, qué emociones surgen y qué creencias hay detrás. También aprenderás a distinguir si están conectadas con antiguos esquemas emocionales no resueltos.\nNo se trata de culparte por reaccionar así. Se trata de recuperar el poder de elegir cómo quieres responder.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introsemana3.mp3'},
             { type: 'title', text: 'Psicoeducación' },
             {
                 type: 'collapsible',
@@ -269,3 +265,5 @@ export const selfUnderstandingPath: Path = {
   
 
     
+
+
