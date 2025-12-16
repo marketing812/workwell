@@ -397,6 +397,7 @@ export const stressManagementPath: Path = {
             {
                 type: 'collapsible',
                 title: 'De la teoría a la práctica: tu plan personal para sostenerte',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/Delateoriaalapracticatuplanpersonal.mp3',
                 content: [
                     { type: 'paragraph', text: 'El estrés no desaparece para siempre. Vuelve en forma de tareas acumuladas, expectativas, interrupciones o pensamientos exigentes. Por eso, el objetivo de esta semana es ayudarte a crear tu propio plan de acción: un mapa de recursos, señales de alerta y estrategias que te ayuden a cuidarte cuando lo necesites.\nMás adelante, en la Técnica 1, empezarás a diseñar tu plan personalizado.\nPero antes, necesitas entender para qué sirve, cuáles son sus partes y cómo te ayuda a sostenerte en los momentos difíciles. Este contexto será tu base para crear algo realmente útil y tuyo.\nEste plan no es un protocolo rígido. Es una herramienta viva, ajustada a tu realidad y fortalecida por todo lo que has aprendido. Aquí no buscamos perfección, sino continuidad. Porque prevenir recaídas no es evitar el estrés, sino prepararte para responder con mayor conciencia cuando vuelva a aparecer.'},
                 ]
@@ -499,3 +500,6 @@ export const stressManagementPath: Path = {
   ],
 };
 
+
+
+    
