@@ -100,6 +100,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'collapsible',
                 title: '¿Y si tu emoción estuviera intentando ayudarte?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio2Ruta6Sesion2.mp3',
                 content: [{ type: 'paragraph', text: 'Las emociones no son errores del sistema. Son respuestas automáticas, complejas y profundamente humanas que surgen cuando algo significativo está ocurriendo. Aparecen para alertarte, protegerte o empujarte a actuar, aunque a veces lo hagan de forma incómoda o desconcertante.\nLa neurociencia y la terapia cognitivo-conductual (TCC) han demostrado que lo que sentimos no depende solo de los hechos externos, sino también del significado subjetivo que les damos: nuestras experiencias previas, valores, creencias y, sobre todo, nuestras necesidades emocionales.\nPor ejemplo: si una persona no responde tus mensajes, puedes sentir tristeza si necesitas conexión, o rabia si esperabas respeto. Lo que activa la emoción no es solo lo que pasa… sino lo que eso representa para ti.\nCuando una necesidad interna —como sentirte valorado/a, segura/o o libre— se ve amenazada, la emoción aparece para ayudarte a mirar hacia dentro.'}]
             },
             {
@@ -258,3 +259,5 @@ export const selfUnderstandingPath: Path = {
   ]
 };
     
+
+  
