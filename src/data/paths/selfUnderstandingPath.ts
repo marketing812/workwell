@@ -57,14 +57,19 @@ export const selfUnderstandingPath: Path = {
           title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”',
           objective: 'Aprende a distinguir emoción, pensamiento e impulso, para empezar a entenderte con más claridad y menos juicio.',
           duration: '5–10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3'
         },
         {
           type: 'unaPalabraCadaDiaExercise',
           title: 'EJERCICIO 2: “UNA PALABRA CADA DÍA”',
           objective: 'Entrena el hábito de chequear cómo te sientes cada día con honestidad y respeto, creando una relación más amable contigo.',
           duration: '2–3 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
+          prompts: [
             '¿Qué he descubierto de mí esta semana al detenerme a sentir?',
             '¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?',
             '¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?',
@@ -81,8 +86,8 @@ export const selfUnderstandingPath: Path = {
             'No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.',
           ]
         },
-        { type: 'quote', text: '“Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.”' },
-      ],
+        { type: 'quote', text: '“Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.”' }
+      ]
     },
     {
         id: 'comp_sem2',
