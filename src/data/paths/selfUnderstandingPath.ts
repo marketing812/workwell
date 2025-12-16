@@ -106,16 +106,19 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'collapsible',
                 title: 'Las emociones como señales de necesidades no cubiertas',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion2.mp3',
                 content: [{ type: 'paragraph', text: 'Desde el enfoque de la Comunicación No Violenta (CNV), toda emoción desagradable está ligada a una necesidad emocional insatisfecha.\nNo estás siendo débil por sentir. Estás siendo honesta u honesto con lo que tu interior necesita.\nEjemplos:\n•\tSiento ira → Puede que necesite respeto, justicia o ser tenida en cuenta.\n•\tSiento tristeza → Quizá necesito acompañamiento, descanso o expresar una pérdida.\n•\tSiento ansiedad → Tal vez necesito claridad, estabilidad o contención.\nReconocer esta relación te permite salir del juicio interno (“no debería sentir esto”) y entrar en una actitud de autocuidado:\n“Mi emoción me está diciendo que algo me importa. ¿Qué está necesitando atención en mí?”' }]
             },
             {
                 type: 'collapsible',
                 title: '¿Por qué duele tanto no escuchar lo que sentimos?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion2.mp3',
                 content: [{ type: 'paragraph', text: 'Cuando no entendemos lo que sentimos ni lo que necesitamos, es fácil caer en un bucle de malestar. Esto se conoce como desregulación emocional, y suele manifestarse así:\n•\tSientes con mucha intensidad, pero no sabes por qué.\n•\tTe cuesta calmarte después de un pico emocional.\n•\tTe juzgas por lo que sientes.\n•\tReaccionas sin entender lo que te ha activado.\nLa TCC explica que los pensamientos automáticos (como “no puedo con esto” o “soy un desastre”) y los esquemas mentales disfuncionales (“si no lo hago perfecto, no valgo”) amplifican el sufrimiento. Estos pensamientos distorsionan la realidad y dificultan la conexión con lo que realmente necesitas.\nAprender a distinguir entre emoción, pensamiento y necesidad no es solo una técnica psicológica. Es una forma de autocompasión activa.' }]
             },
              {
                 type: 'collapsible',
                 title: '¿Por qué a veces siento tanto... y no entiendo por qué?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion2.mp3',
                 content: [{ type: 'paragraph', text: 'Tus emociones actuales no nacen en el vacío. Están moldeadas por tus vivencias anteriores, especialmente por la forma en que fueron acogidas tus emociones en la infancia o adolescencia.\n•\tSi aprendiste que llorar era un signo de debilidad, hoy puedes bloquear la tristeza.\n•\tSi te enseñaron que enojarse era peligroso, quizás reprimes la ira hasta que explota.\n•\tSi creciste sin ser escuchada o escuchado, hoy tal vez te cueste identificar qué necesitas.\nEstudios sobre el apego y el desarrollo emocional confirman que cuando nuestras necesidades no fueron vistas ni validadas de forma consistente, podemos desarrollar una gran dificultad para identificar, expresar y cuidar nuestras emociones.\nPero eso no significa que estés condenada o condenado a repetir ese patrón.\nLa buena noticia es que el cerebro es plástico (puede cambiar). Y el cuidado también se puede aprender en la adultez.\nEscuchar lo que sientes ahora, con curiosidad y sin juicio, es el primer paso para sanar desde dentro.' }]
             },
             { type: 'title', text: 'Técnicas Específicas' },
@@ -131,7 +134,9 @@ export const selfUnderstandingPath: Path = {
                 objective: 'Permite que tu emoción se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.',
                 duration: '10 min',
             },
-            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+              audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
+              prompts: [
                 '¿Qué emoción ha aparecido con más fuerza esta semana?',
                 '¿Qué crees que esa emoción intentaba proteger o señalar?',
                 '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
@@ -261,3 +266,5 @@ export const selfUnderstandingPath: Path = {
     
 
   
+
+    
