@@ -24,15 +24,13 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Lo urgente no siempre es lo importante',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/LOURGENTENOSIEMPREESLOIMPORTANTE.mp3',
-          content: [
-            { type: 'paragraph', text: 'Muchas veces sentimos que vivimos apagando fuegos. El correo, los mensajes, las tareas pendientes… Todo parece urgente y nos atrapa. Pero si lo pensamos bien, no siempre lo urgente es lo que da sentido a nuestra vida.\nEn psicología se habla de tres niveles:\n•\tUrgente: lo inmediato, lo que exige tu atención ya (responder un mensaje, entregar un informe).\n•\tNecesario: lo que mantiene tu vida en marcha (comer, descansar, trabajar).\n•\tValioso: lo que de verdad nutre y da dirección (cuidar tu salud, tu familia, tu propósito).\nLa neurociencia muestra que el cerebro tiende a priorizar lo inmediato porque está diseñado para sobrevivir (sistema límbico y amígdala). Sin embargo, para crecer y encontrar sentido necesitamos activar el córtex prefrontal, que nos permite reflexionar, planificar y conectar con lo importante (Goleman, 2013).\nEjemplo: Resolver un email puede darte tranquilidad momentánea. Pero jugar con tu hijo o tu hija, aunque no sea urgente, fortalece un vínculo que durará toda la vida.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Muchas veces sentimos que vivimos apagando fuegos. El correo, los mensajes, las tareas pendientes… Todo parece urgente y nos atrapa. Pero si lo pensamos bien, no siempre lo urgente es lo que da sentido a nuestra vida.\nEn psicología se habla de tres niveles:\n•\tUrgente: lo inmediato, lo que exige tu atención ya (responder un mensaje, entregar un informe).\n•\tNecesario: lo que mantiene tu vida en marcha (comer, descansar, trabajar).\n•\tValioso: lo que de verdad nutre y da dirección (cuidar tu salud, tu familia, tu propósito).\nLa neurociencia muestra que el cerebro tiende a priorizar lo inmediato porque está diseñado para sobrevivir (sistema límbico y amígdala). Sin embargo, para crecer y encontrar sentido necesitamos activar el córtex prefrontal, que nos permite reflexionar, planificar y conectar con lo importante (Goleman, 2013).\nEjemplo: Resolver un email puede darte tranquilidad momentánea. Pero jugar con tu hijo o tu hija, aunque no sea urgente, fortalece un vínculo que durará toda la vida.' }]
         },
         {
           type: 'collapsible',
           title: 'El piloto automático que nos aleja del propósito',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/ELPILOTOAUTOMATICOQUENOSALEJADELPROPOSITO.mp3',
-          content: [{ type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.' }]
+          content: [{ type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.'}]
         },
         {
           type: 'collapsible',
@@ -212,18 +210,79 @@ export const purposePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elruidodelpilotoautomatico.mp3',
           content: [{ type: 'paragraph', text: 'A veces sentimos que actuamos en “piloto automático”: decimos que sí a algo que no queremos, aplazamos lo que nos importa o reaccionamos sin pensar. \nNo es un fallo personal, es un mecanismo de nuestro cerebro que busca ahorrar energía y evitar esfuerzo inmediato.\nLa neurocientífica Tali Sharot explica que esta tendencia nos empuja a priorizar lo fácil y lo rápido, aunque eso signifique alejarnos de lo que realmente valoramos. Seguro que lo has vivido: aceptar un compromiso por inercia, aunque por dentro sientas que te sobrecargas.' }]
         },
-        { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }] },
-        { type: 'collapsible', title: 'Valores como brújula interna', content: [{ type: 'paragraph', text: 'Aquí es donde entran los valores: no como normas rígidas, sino como direcciones que te orientan. \nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la autenticidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
-        { type: 'collapsible', title: 'El costo de oportunidad emocional', content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }] },
-        { type: 'collapsible', title: 'Disonancia cognitiva: cuando algo no encaja', content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }] },
-        { type: 'collapsible', title: 'Elegir con conciencia: tu poder interno', content: [{ type: 'paragraph', text: 'La clave no es ser perfectos ni acertar siempre, sino practicar pequeñas elecciones coherentes. \nLa investigadora Kristin Neff recuerda que la autocompasión es esencial en este proceso: acompañarte cuando no lo haces como te gustaría, sin castigarte, porque cada intento cuenta como aprendizaje.\nUn ejemplo simple: darte permiso para descansar sin sentirte culpable. Ese gesto no significa debilidad, sino responsabilidad hacia tu salud y hacia lo que valoras de verdad.' }] },
+        {
+          type: 'collapsible',
+          title: 'Del piloto automático a la elección consciente',
+          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Valores como brújula interna',
+          content: [{ type: 'paragraph', text: 'Aquí es donde entran los valores: no como normas rígidas, sino como direcciones que te orientan. \nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la autenticidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'El costo de oportunidad emocional',
+          content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Disonancia cognitiva: cuando algo no encaja',
+          content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Elegir con conciencia: tu poder interno',
+          content: [{ type: 'paragraph', text: 'La clave no es ser perfectos ni acertar siempre, sino practicar pequeñas elecciones coherentes. \nLa investigadora Kristin Neff recuerda que la autocompasión es esencial en este proceso: acompañarte cuando no lo haces como te gustaría, sin castigarte, porque cada intento cuenta como aprendizaje.\nUn ejemplo simple: darte permiso para descansar sin sentirte culpable. Ese gesto no significa debilidad, sino responsabilidad hacia tu salud y hacia lo que valoras de verdad.' }]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'directedDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN', objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.', duration: '10–15 min' },
-        { type: 'senseChecklistExercise', title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO', objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.', duration: '5 min' },
-        { type: 'unfulfilledNeedsExercise', title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA', objective: 'Este ejercicio te ayudará a tomar conciencia del costo emocional de decisiones automáticas. Identificar lo que dejamos de lado (y nos nutriría) permite reequilibrar elecciones futuras.', duration: '3–5 min diarios' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto esta semana sobre la forma en la que tomo decisiones?','¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?','¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?','¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?','¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?'] },
+        {
+          type: 'directedDecisionsExercise',
+          title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN',
+          objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.',
+          duration: '10–15 min'
+        },
+        {
+          type: 'senseChecklistExercise',
+          title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO',
+          objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.',
+          duration: '5 min'
+        },
+        {
+          type: 'unfulfilledNeedsExercise',
+          title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA',
+          objective: 'Este ejercicio te ayudará a tomar conciencia del costo emocional de decisiones automáticas. Identificar lo que dejamos de lado (y nos nutriría) permite reequilibrar elecciones futuras.',
+          duration: '3–5 min diarios'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/REFLEXION.mp3',
+          prompts: [
+            '¿Qué he descubierto esta semana sobre la forma en la que tomo decisiones?',
+            '¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?',
+            '¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?',
+            '¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?',
+            '¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: ['El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.','Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.','Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.','Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.','La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.','Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'] },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/RESUMEN.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
+            'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
+            'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
+            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
+            'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
+            'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
+          ]
+        },
         { type: 'quote', text: '“Vivir con dirección no es hacerlo todo perfecto. Es elegir lo que tiene sentido, paso a paso.”' }
       ]
     },
@@ -233,18 +292,76 @@ export const purposePath: Path = {
       type: 'summary',
       estimatedTime: '15-20 min',
       content: [
-        { type: 'paragraph', text: 'Tener un mapa es útil, pero lo que realmente te lleva a destino son los pasos que das cada día. Esta semana vamos a transformar tus valores —eso que de verdad te importa— en acciones concretas que caben en tu semana.\nVivir con propósito no significa descubrir una gran misión única, sino sostener pequeños hábitos con sentido que, repetidos, construyen la vida que deseas. Para ello, diseñarás tu hoja de ruta valiente con tres acciones reales y alcanzables, crearás un ancla visual que te recuerde lo esencial y entrenarás la flexibilidad para ajustar el rumbo cuando la vida cambie.\nLa ciencia lo respalda: actuar con propósito aumenta el bienestar, refuerza la resiliencia y reduce el ruido mental. En otras palabras, menos dispersión, más dirección.\nTu cierre de esta semana será un plan simple, vivo y completamente tuyo, pensado para que sigas avanzando sin prisa, pero con norte.' },
+        {
+          type: 'paragraphWithAudio',
+          text: 'Tener un mapa es útil, pero lo que realmente te lleva a destino son los pasos que das cada día. Esta semana vamos a transformar tus valores —eso que de verdad te importa— en acciones concretas que caben en tu semana.\nVivir con propósito no significa descubrir una gran misión única, sino sostener pequeños hábitos con sentido que, repetidos, construyen la vida que deseas. Para ello, diseñarás tu hoja de ruta valiente con tres acciones reales y alcanzables, crearás un ancla visual que te recuerde lo esencial y entrenarás la flexibilidad para ajustar el rumbo cuando la vida cambie.\nLa ciencia lo respalda: actuar con propósito aumenta el bienestar, refuerza la resiliencia y reduce el ruido mental. En otras palabras, menos dispersión, más dirección.\nTu cierre de esta semana será un plan simple, vivo y completamente tuyo, pensado para que sigas avanzando sin prisa, pero con norte.',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
+        },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: '¿Qué significa vivir con propósito?', content: [{ type: 'paragraph', text: 'Muchas personas creen que tener propósito es descubrir una gran “misión de vida” o lograr un ideal de éxito. Pero en realidad, vivir con propósito significa avanzar con dirección interna: elegir desde lo que de verdad te importa y dar pasos que construyan sentido, incluso en lo pequeño.\nTu propósito es como una brújula: no te exige perfección, te orienta. Cuando lo sigues, experimentas más claridad, motivación y bienestar, incluso en medio de la incertidumbre.\nEsta semana no se trata de resolverlo todo, sino de empezar a elegir con más conciencia lo que sí quieres sostener en tu vida.' }] },
-        { type: 'collapsible', title: 'Propósito, valores e identidad', content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”." }] },
-        { type: 'collapsible', title: 'Metas con sentido: claridad sin rigidez', content: [{ type: 'paragraph', text: 'Tener metas claras ayuda a que tu propósito no quede en teoría. Pero más importante que el destino es el camino: los sistemas y hábitos que sostienes.\n•\tUna meta sin pasos intermedios puede ser frustrante.\n•\tEn cambio, un hábito diario —aunque sea simple— te acerca con constancia a la persona que quieres ser.\nPregunta práctica: ¿Este hábito que repito cada día me acerca o me aleja de la vida que quiero habitar?\nRecuerda: lo valioso no siempre es lo espectacular, sino lo sostenido y auténtico.' }] },
+        {
+          type: 'collapsible',
+          title: '¿Qué significa vivir con propósito?',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/Quesignificavivirconproposito.mp3',
+          content: [{ type: 'paragraph', text: 'Muchas personas creen que tener propósito es descubrir una gran “misión de vida” o lograr un ideal de éxito. Pero en realidad, vivir con propósito significa avanzar con dirección interna: elegir desde lo que de verdad te importa y dar pasos que construyan sentido, incluso en lo pequeño.\nTu propósito es como una brújula: no te exige perfección, te orienta. Cuando lo sigues, experimentas más claridad, motivación y bienestar, incluso en medio de la incertidumbre.\nEsta semana no se trata de resolverlo todo, sino de empezar a elegir con más conciencia lo que sí quieres sostener en tu vida.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Propósito, valores e identidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/Propositovaloreseidentidad.mp3',
+          content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño.”' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Metas con sentido: claridad sin rigidez',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/Metasconsentidoclaridadsinrigidez.mp3',
+          content: [{ type: 'paragraph', text: 'Tener metas claras ayuda a que tu propósito no quede en teoría. Pero más importante que el destino es el camino: los sistemas y hábitos que sostienes.\n•\tUna meta sin pasos intermedios puede ser frustrante.\n•\tEn cambio, un hábito diario —aunque sea simple— te acerca con constancia a la persona que quieres ser.\nPregunta práctica: ¿Este hábito que repito cada día me acerca o me aleja de la vida que quiero habitar?\nRecuerda: lo valioso no siempre es lo espectacular, sino lo sostenido y auténtico.' }]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min' },
-        { type: 'essentialReminderExercise', title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL', objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.', duration: '10-15 min' },
-        { type: 'thoughtsThatBlockPurposeExercise', title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?', objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?','¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?','¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?','¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?','¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'] },
+        {
+          type: 'braveRoadmapExercise',
+          title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE',
+          objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.',
+          duration: '15-20 min'
+        },
+        {
+          type: 'essentialReminderExercise',
+          title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL',
+          objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.',
+          duration: '10-15 min'
+        },
+        {
+          type: 'thoughtsThatBlockPurposeExercise',
+          title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?',
+          objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.',
+          duration: '10 min'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3',
+          prompts: [
+            '¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?',
+            '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?',
+            '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?',
+            '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
+            '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
+          ]
+        },
         { type: 'title', text: 'Resumen Final de la Ruta' },
-        { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.','Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.','No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.','Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/RESUMEN.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.',
+            'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.',
+            'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.',
+            'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'
+          ]
+        },
         { type: 'quote', text: '“No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.”' }
       ]
     },
@@ -293,7 +410,7 @@ export const purposePath: Path = {
             'Tu sistema nervioso necesita cuidado, no presión.',
             'La metacognición te permite salir del piloto automático y actuar con conciencia.',
             'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
-            'Comprenderte mejor no es un destino, sino acompañarte cada día con más verdad.',
+            'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
           ]
         },
         {
@@ -305,7 +422,3 @@ export const purposePath: Path = {
   ]
 };
   
-
-    
-
-    
