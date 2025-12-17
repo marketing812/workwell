@@ -60,12 +60,14 @@ export const purposePath: Path = {
           title: 'EJERCICIO 1: MI BRÚJULA DE VALORES',
           objective: 'Ayudarte a identificar las áreas de tu vida que son verdaderamente significativas para ti (como relaciones, salud, crecimiento personal o contribución), para que puedas empezar a tomar decisiones alineadas con tu dirección vital, no solo con lo urgente. Al hacerlo, fortaleces tu identidad, desarrollas claridad emocional y empiezas a construir una vida más coherente y plena.',
           duration: '10–15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana1tecnica1.mp3'
         },
         {
           type: 'energySenseMapExercise',
           title: 'EJERCICIO 2: MAPA DE ENERGÍA VS. SENTIDO',
           objective: 'Ayudarte a tomar conciencia de cómo distribuyes tu energía diaria entre tareas que simplemente “te ocupan” y aquellas que realmente te conectan con tus valores. El objetivo es detectar desequilibrios y redirigir parte de tu energía hacia lo que te hace sentir viva, presente y en coherencia contigo misma.',
           duration: '10–12 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana1tecnica2.mp3'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: "https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3", prompts: [
           '¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?',
@@ -74,6 +76,7 @@ export const purposePath: Path = {
           '¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?'
         ]},
         { type: 'title', text: 'Resumen Clave' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: [
             'No todo lo urgente es importante. Aprender a distinguir entre lo valioso, lo necesario y lo inmediato es un acto de autoliderazgo.',
             'Vivir en piloto automático puede alejarnos de lo que realmente nos importa. Detenernos y observar es el primer paso para volver a lo esencial.',
@@ -183,6 +186,7 @@ export const purposePath: Path = {
             '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
             '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
         ]},
+        { type: 'title', text: 'Técnicas Específicas' },
         { type: 'title', text: 'Resumen Final de la Ruta' },
         { type: 'list', items: [
             'Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.',
@@ -249,4 +253,6 @@ export const purposePath: Path = {
     }
   ]
 };
+
+    
     
