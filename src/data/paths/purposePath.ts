@@ -55,9 +55,19 @@ export const purposePath: Path = {
           content: [{ type: 'paragraph', text: 'Lejos de ser ideas abstractas, los valores son una herramienta práctica y poderosa para tu bienestar:\n•\tSirven de brújula cuando hay confusión.\n•\tRefuerzan tu identidad más allá de los logros o fracasos.\n•\tFavorecen la resiliencia: te ayudan a seguir adelante incluso en tiempos difíciles.\n•\tTe permiten regularte: decir “no” a lo que no nutre.\n•\tMejoran tus relaciones, porque actúas desde la autenticidad.\n•\tRefuerzan autoestima y confianza.\nEjemplo: Si valoras la conexión, en un momento de estrés puedes dejar un compromiso no esencial y priorizar una tarde compartida con tu hijo o hija. Ese acto sencillo está alineado con lo que de verdad importa.\nLa ciencia muestra que las personas que actúan en coherencia con sus valores reportan niveles más altos de satisfacción vital y salud mental (Schwartz, 2012).' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'valuesCompassExercise', title: 'EJERCICIO 1: MI BRÚJULA DE VALORES', objective: 'Ayudarte a identificar las áreas de tu vida que son verdaderamente significativas para ti (como relaciones, salud, crecimiento personal o contribución), para que puedas empezar a tomar decisiones alineadas con tu dirección vital, no solo con lo urgente. Al hacerlo, fortaleces tu identidad, desarrollas claridad emocional y empiezas a construir una vida más coherente y plena.', duration: '10–15 min' },
-        { type: 'energySenseMapExercise', title: 'EJERCICIO 2: MAPA DE ENERGÍA VS. SENTIDO', objective: 'Ayudarte a tomar conciencia de cómo distribuyes tu energía diaria entre tareas que simplemente “te ocupan” y aquellas que realmente te conectan con tus valores. El objetivo es detectar desequilibrios y redirigir parte de tu energía hacia lo que te hace sentir viva, presente y en coherencia contigo misma.', duration: '10–12 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        {
+          type: 'valuesCompassExercise',
+          title: 'EJERCICIO 1: MI BRÚJULA DE VALORES',
+          objective: 'Ayudarte a identificar las áreas de tu vida que son verdaderamente significativas para ti (como relaciones, salud, crecimiento personal o contribución), para que puedas empezar a tomar decisiones alineadas con tu dirección vital, no solo con lo urgente. Al hacerlo, fortaleces tu identidad, desarrollas claridad emocional y empiezas a construir una vida más coherente y plena.',
+          duration: '10–15 min',
+        },
+        {
+          type: 'energySenseMapExercise',
+          title: 'EJERCICIO 2: MAPA DE ENERGÍA VS. SENTIDO',
+          objective: 'Ayudarte a tomar conciencia de cómo distribuyes tu energía diaria entre tareas que simplemente “te ocupan” y aquellas que realmente te conectan con tus valores. El objetivo es detectar desequilibrios y redirigir parte de tu energía hacia lo que te hace sentir viva, presente y en coherencia contigo misma.',
+          duration: '10–12 min',
+        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: "https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3", prompts: [
           '¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?',
           '¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?',
           '¿Qué 3 valores personales quiero tener más presentes en mi día a día?',
@@ -171,7 +181,7 @@ export const purposePath: Path = {
             '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?',
             '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?',
             '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
-            '¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?'
+            '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
         ]},
         { type: 'title', text: 'Resumen Final de la Ruta' },
         { type: 'list', items: [
@@ -228,7 +238,7 @@ export const purposePath: Path = {
             'Tu sistema nervioso necesita cuidado, no presión.',
             'La metacognición te permite salir del piloto automático y actuar con conciencia.',
             'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
-            'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
+            'Comprenderte mejor no es un destino, sino acompañarte cada día con más verdad.',
           ],
         },
         {
@@ -239,5 +249,4 @@ export const purposePath: Path = {
     }
   ]
 };
-
     
