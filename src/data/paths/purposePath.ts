@@ -30,7 +30,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'El piloto automático que nos aleja del propósito',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/ELPILOTOAUTOMATICOQUENOSALEJADELPROPOSITO.mp3',
-          content: [{ type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.'}]
+          content: [{ type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.' }]
         },
         {
           type: 'collapsible',
@@ -221,7 +221,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Del piloto automático a la elección consciente',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Vivirconsentido.mp3',
-          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }]
+          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”' }]
         },
         {
           type: 'collapsible',
@@ -252,13 +252,14 @@ export const purposePath: Path = {
           type: 'directedDecisionsExercise',
           title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN',
           objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.',
-          duration: '10–15 min'
+          duration: '10–15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3'
         },
         {
           type: 'senseChecklistExercise',
           title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO',
           objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.',
-          duration: '5 min'
+          duration: '5 min',
         },
         {
           type: 'unfulfilledNeedsExercise',
@@ -434,5 +435,3 @@ export const purposePath: Path = {
   ]
 };
   
-
-    
