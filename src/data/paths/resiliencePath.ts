@@ -20,13 +20,13 @@ export const resiliencePath: Path = {
           title: '¿Qué es realmente la resiliencia?',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion1ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.' },
-            { type: 'paragraph', text: 'La resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, en casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
+            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.\nLa resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, en casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
           ]
         },
         {
           type: 'collapsible',
           title: 'No, la resiliencia no es lo que siempre te han contado…',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio3sesion1ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\n❌ Mito\t✅ Realidad\n“Las personas resilientes no se rompen nunca”\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\n“Es una cualidad con la que se nace”\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\n“Ser resiliente es mantener una actitud positiva siempre”\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\n“Si recaigo o me vuelvo a sentir mal, es que no soy resiliente”\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.'}
           ]
@@ -291,3 +291,4 @@ export const resiliencePath: Path = {
   ]
 };
     
+
