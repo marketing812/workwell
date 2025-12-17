@@ -1,3 +1,4 @@
+
 import type { Path } from '../pathsData';
 
 export const resiliencePath: Path = {
@@ -17,6 +18,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué es realmente la resiliencia?',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion1ruta8.mp3',
           content: [{ type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.' }]
         },
         {
@@ -292,3 +294,5 @@ export const resiliencePath: Path = {
     }
   ]
 };
+
+    
