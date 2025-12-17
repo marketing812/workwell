@@ -213,6 +213,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Del piloto automático a la elección consciente',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Vivirconsentido.mp3',
           content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }]
         },
         {
@@ -308,7 +309,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Propósito, valores e identidad',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/Propositovaloreseidentidad.mp3',
-          content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño.”' }]
+          content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”.' }]
         },
         {
           type: 'collapsible',
@@ -410,7 +411,7 @@ export const purposePath: Path = {
             'Tu sistema nervioso necesita cuidado, no presión.',
             'La metacognición te permite salir del piloto automático y actuar con conciencia.',
             'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
-            'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
+            'Comprenderte mejor no es un destino, sino acompañarte cada día con más verdad.',
           ]
         },
         {
