@@ -201,7 +201,7 @@ export const purposePath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.',
-          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -231,6 +231,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Disonancia cognitiva: cuando algo no encaja',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Cuandoalgonoencaja.mp3',
           content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }]
         },
         {
@@ -425,5 +426,3 @@ export const purposePath: Path = {
   ]
 };
   
-
-
