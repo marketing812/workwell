@@ -1,5 +1,6 @@
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -118,75 +119,11 @@ export type MantraExerciseContent = {
     audioUrl?: string;
 };
 
-export type RitualDeEntregaConscienteContent = {
-    type: 'ritualDeEntregaConscienteExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-};
-
 export type DelSabotajeALaAccionExerciseContent = {
     type: 'delSabotajeALaAccionExercise';
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
-};
-
-export type FutureSelfVisualizationExerciseContent = {
-    type: 'futureSelfVisualizationExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type TwoMinuteRuleExerciseContent = {
-    type: 'twoMinuteRuleExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type MicroPlanExerciseContent = {
-    type: 'microPlanExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type RealisticRitualExerciseContent = {
-    type: 'realisticRitualExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type GentleTrackingExerciseContent = {
-    type: 'gentleTrackingExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type BlockageMapExerciseContent = {
-  type: 'blockageMapExercise';
-  title: string;
-  objective?: string;
-  duration?: string;
-  audioUrl?: string;
-};
-
-export type CompassionateReflectionExerciseContent = {
-  type: 'compassionateReflectionExercise';
-  title: string;
-  objective?: string;
-  duration?: string;
-  audioUrl?: string;
 };
 
 export type MapOfUnsaidThingsExerciseContent = {
@@ -194,7 +131,6 @@ export type MapOfUnsaidThingsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type DiscomfortCompassExerciseContent = {
@@ -202,7 +138,6 @@ export type DiscomfortCompassExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type AssertivePhraseExerciseContent = {
@@ -210,7 +145,6 @@ export type AssertivePhraseExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type NoGuiltTechniquesExerciseContent = {
@@ -218,7 +152,6 @@ export type NoGuiltTechniquesExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type PostBoundaryEmotionsExerciseContent = {
@@ -226,7 +159,6 @@ export type PostBoundaryEmotionsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type CompassionateFirmnessExerciseContent = {
@@ -234,7 +166,6 @@ export type CompassionateFirmnessExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type SelfCareContractExerciseContent = {
@@ -250,7 +181,6 @@ export type AuthenticityThermometerExerciseContent = {
     title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD';
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type EmpatheticDialogueExerciseContent = {
@@ -265,7 +195,6 @@ export type EmpathicMirrorExerciseContent = {
     title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO';
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type ValidationIn3StepsExerciseContent = {
@@ -426,6 +355,7 @@ export type BraveRoadmapExerciseContent = {
     title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EssentialReminderExerciseContent = {
@@ -433,6 +363,7 @@ export type EssentialReminderExerciseContent = {
     title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ThoughtsThatBlockPurposeExerciseContent = {
@@ -695,7 +626,7 @@ export type DailyWellbeingPlanExerciseContent = {
 
 export type MorningRitualExerciseContent = {
   type: 'morningRitualExercise';
-  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE Y CONSCIENTE';
+  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE';
   objective?: string;
   duration?: string;
 };
