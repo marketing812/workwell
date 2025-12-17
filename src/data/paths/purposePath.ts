@@ -165,7 +165,7 @@ export const purposePath: Path = {
           title: 'EJERCICIO 2: VISUALIZACIÓN DEL YO PRESENTE VS. YO ESENCIAL',
           objective: 'Observar desde una posición compasiva cómo estás viviendo hoy y cómo te gustaría vivir si actuaras desde tus valores. Esta visualización te permite recuperar una imagen inspiradora de tu esencia.',
           duration: '10–15 min',
-          audioUrl: 'https://workwellfut.com/audios/rm/R7_visualizacion_del_yo_presente.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana2tecnica2.mp3'
         },
         {
           type: 'mentalNoiseTrafficLightExercise',
@@ -322,3 +322,4 @@ export const purposePath: Path = {
 };
   
 
+    
