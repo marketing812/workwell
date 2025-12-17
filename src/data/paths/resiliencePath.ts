@@ -19,12 +19,8 @@ export const resiliencePath: Path = {
           type: 'collapsible',
           title: '¿Qué es realmente la resiliencia?',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.' }]
-        },
-        {
-          type: 'collapsible',
-          title: '¿Y para qué sirve?',
           content: [
+            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.' },
             { type: 'paragraph', text: 'La resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, en casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
           ]
         },
@@ -294,5 +290,4 @@ export const resiliencePath: Path = {
     }
   ]
 };
-
     
