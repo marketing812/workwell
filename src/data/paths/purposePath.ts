@@ -23,6 +23,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Lo urgente no siempre es lo importante',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/LOURGENTENOSIEMPREESLOIMPORTANTE.mp3',
           content: [
             { type: 'paragraph', text: 'Muchas veces sentimos que vivimos apagando fuegos. El correo, los mensajes, las tareas pendientes… Todo parece urgente y nos atrapa. Pero si lo pensamos bien, no siempre lo urgente es lo que da sentido a nuestra vida.\nEn psicología se habla de tres niveles:\n•\tUrgente: lo inmediato, lo que exige tu atención ya (responder un mensaje, entregar un informe).\n•\tNecesario: lo que mantiene tu vida en marcha (comer, descansar, trabajar).\n•\tValioso: lo que de verdad nutre y da dirección (cuidar tu salud, tu familia, tu propósito).\nLa neurociencia muestra que el cerebro tiende a priorizar lo inmediato porque está diseñado para sobrevivir (sistema límbico y amígdala). Sin embargo, para crecer y encontrar sentido necesitamos activar el córtex prefrontal, que nos permite reflexionar, planificar y conectar con lo importante (Goleman, 2013).\nEjemplo: Resolver un email puede darte tranquilidad momentánea. Pero jugar con tu hijo o tu hija, aunque no sea urgente, fortalece un vínculo que durará toda la vida.' }
           ]
@@ -52,7 +53,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: '¿Para qué sirven los valores?',
           content: [
-            { type: 'paragraph', text: 'Lejos de ser ideas abstractas, los valores son una herramienta práctica y poderosa para tu bienestar:\n•\tSirven de brújula cuando hay confusión.\n•\tRefuerzan tu identidad más allá de los logros o fracasos.\n•\tFavorecen la resiliencia: te ayudan a seguir adelante incluso en tiempos difíciles.\n•\tTe permiten regularte: decir “no” a lo que no nutre.\n•\tMejoran tus relaciones, porque actúas desde la autenticidad.\n•\tRefuerzan autoestima y confianza.\nEjemplo: Si valoras la conexión, en un momento de estrés puedes dejar un compromiso no esencial y priorizar una tarde compartida con tu hijo o tu hija. Ese acto sencillo está alineado con lo que de verdad importa.\nLa ciencia muestra que las personas que actúan en coherencia con sus valores reportan niveles más altos de satisfacción vital y salud mental (Schwartz, 2012).' }
+            { type: 'paragraph', text: 'Lejos de ser ideas abstractas, los valores son una herramienta práctica y poderosa para tu bienestar:\n•\tSirven de brújula cuando hay confusión.\n•\tRefuerzan tu identidad más allá de los logros o fracasos.\n•\tFavorecen la resiliencia: te ayudan a seguir adelante incluso en tiempos difíciles.\n•\tTe permiten regularte: decir “no” a lo que no nutre.\n•\tMejoran tus relaciones, porque actúas desde la autenticidad.\n•\tRefuerzan autoestima y confianza.\nEjemplo: Si valoras la conexión, en un momento de estrés puedes dejar un compromiso no esencial y priorizar una tarde compartida con tu hijo o hija. Ese acto sencillo está alineado con lo que de verdad importa.\nLa ciencia muestra que las personas que actúan en coherencia con sus valores reportan niveles más altos de satisfacción vital y salud mental (Schwartz, 2012).' }
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -145,7 +146,7 @@ export const purposePath: Path = {
             'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
             'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
             'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
-            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
+            'Vivir sin dirección tiene un costo emocional: lo que dejamos de lado cuando atendemos lo urgente.',
             'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
             'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
         ]},
@@ -187,8 +188,15 @@ export const purposePath: Path = {
   ]
 };
 
+```
+- src_workspace/types/page-props.ts:
+```ts
 
+// Definiendo un tipo genérico para las propiedades de las páginas
+// Esto ayuda a manejar tanto las propiedades estáticas como las dinámicas de Next.js
+export type RoutePageProps<T = Record<string, string>> = {
+  params: T;
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-    
-
-  
+```
