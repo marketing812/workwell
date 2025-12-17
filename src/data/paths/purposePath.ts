@@ -214,7 +214,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Del piloto automático a la elección consciente',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Vivirconsentido.mp3',
-          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }]
+          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”' }]
         },
         {
           type: 'collapsible',
@@ -225,6 +225,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'El costo de oportunidad emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elcostoemocionaldelainercia.mp3',
           content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }]
         },
         {
@@ -424,4 +425,5 @@ export const purposePath: Path = {
   ]
 };
   
+
 
