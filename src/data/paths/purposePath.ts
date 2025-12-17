@@ -46,16 +46,13 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: '¿De dónde nacen mis valores?',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/DEDONDENACENMISVALORES.mp3',
-          content: [
-            { type: 'paragraph', text: 'A veces pensamos que nuestros valores son “naturales”, pero en realidad se forman de distintas fuentes:\n•\tBiología y evolución: como especie, necesitamos seguridad, conexión y pertenencia.\n•\tExperiencias de dolor: muchas veces, de lo que más sufrimos nacen valores fuertes (quien sufrió rechazo, aprende a valorar la aceptación).\n•\tEntorno y cultura: lo que vimos en casa, en la escuela o en la sociedad marca lo que creemos que “debe importar”.\n•\tProcesos internos: al reflexionar, nos damos cuenta de nuestras necesidades más auténticas (libertad, expresión, contribución).\nEjemplo: Puede que creas que “ser productivo/a” es un valor tuyo. Pero si miras más a fondo, quizás provenga de un entorno exigente. Al revisarlo, descubres que lo que realmente valoras es “crear con libertad”.\nViktor Frankl, psiquiatra y superviviente del Holocausto, decía: “Quien tiene un porqué, puede soportar casi cualquier cómo”. Tus valores son ese “porqué”.' }
-          ]
+          content: [{ type: 'paragraph', text: 'A veces pensamos que nuestros valores son “naturales”, pero en realidad se forman de distintas fuentes:\n•\tBiología y evolución: como especie, necesitamos seguridad, conexión y pertenencia.\n•\tExperiencias de dolor: muchas veces, de lo que más sufrimos nacen valores fuertes (quien sufrió rechazo, aprende a valorar la aceptación).\n•\tEntorno y cultura: lo que vimos en casa, en la escuela o en la sociedad marca lo que creemos que “debe importar”.\n•\tProcesos internos: al reflexionar, nos damos cuenta de nuestras necesidades más auténticas (libertad, expresión, contribución).\nEjemplo: Puede que creas que “ser productivo/a” es un valor tuyo. Pero si miras más a fondo, quizás provenga de un entorno exigente. Al revisarlo, descubres que lo que realmente valoras es “crear con libertad”.\nViktor Frankl, psiquiatra y superviviente del Holocausto, decía: “Quien tiene un porqué, puede soportar casi cualquier cómo”. Tus valores son ese “porqué”.' }]
         },
         {
           type: 'collapsible',
           title: '¿Para qué sirven los valores?',
-          content: [
-            { type: 'paragraph', text: 'Lejos de ser ideas abstractas, los valores son una herramienta práctica y poderosa para tu bienestar:\n•\tSirven de brújula cuando hay confusión.\n•\tRefuerzan tu identidad más allá de los logros o fracasos.\n•\tFavorecen la resiliencia: te ayudan a seguir adelante incluso en tiempos difíciles.\n•\tTe permiten regularte: decir “no” a lo que no nutre.\n•\tMejoran tus relaciones, porque actúas desde la autenticidad.\n•\tRefuerzan autoestima y confianza.\nEjemplo: Si valoras la conexión, en un momento de estrés puedes dejar un compromiso no esencial y priorizar una tarde compartida con tu hijo o hija. Ese acto sencillo está alineado con lo que de verdad importa.\nLa ciencia muestra que las personas que actúan en coherencia con sus valores reportan niveles más altos de satisfacción vital y salud mental (Schwartz, 2012).' }
-          ]
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/PARAQUESIRVENLOSVALORES.mp3',
+          content: [{ type: 'paragraph', text: 'Lejos de ser ideas abstractas, los valores son una herramienta práctica y poderosa para tu bienestar:\n•\tSirven de brújula cuando hay confusión.\n•\tRefuerzan tu identidad más allá de los logros o fracasos.\n•\tFavorecen la resiliencia: te ayudan a seguir adelante incluso en tiempos difíciles.\n•\tTe permiten regularte: decir “no” a lo que no nutre.\n•\tMejoran tus relaciones, porque actúas desde la autenticidad.\n•\tRefuerzan autoestima y confianza.\nEjemplo: Si valoras la conexión, en un momento de estrés puedes dejar un compromiso no esencial y priorizar una tarde compartida con tu hijo o hija. Ese acto sencillo está alineado con lo que de verdad importa.\nLa ciencia muestra que las personas que actúan en coherencia con sus valores reportan niveles más altos de satisfacción vital y salud mental (Schwartz, 2012).' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'valuesCompassExercise', title: 'EJERCICIO 1: MI BRÚJULA DE VALORES', objective: 'Ayudarte a identificar las áreas de tu vida que son verdaderamente significativas para ti (como relaciones, salud, crecimiento personal o contribución), para que puedas empezar a tomar decisiones alineadas con tu dirección vital, no solo con lo urgente. Al hacerlo, fortaleces tu identidad, desarrollas claridad emocional y empiezas a construir una vida más coherente y plena.', duration: '10–15 min' },
@@ -126,7 +123,7 @@ export const purposePath: Path = {
         { type: 'paragraph', text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Por qué nos cuesta elegir desde el sentido?', content: [{ type: 'paragraph', text: 'A veces sentimos que actuamos en “piloto automático”: decimos que sí a algo que no queremos, aplazamos lo que nos importa o reaccionamos sin pensar. \nNo es un fallo personal, es un mecanismo de nuestro cerebro que busca ahorrar energía y evitar esfuerzo inmediato.\nLa neurocientífica Tali Sharot explica que esta tendencia nos empuja a priorizar lo fácil y lo rápido, aunque eso signifique alejarnos de lo que realmente valoramos. Seguro que lo has vivido: aceptar un compromiso por inercia, aunque por dentro sientas que te sobrecargas.' }] },
-        { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”' }] },
+        { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }] },
         { type: 'collapsible', title: 'Valores como brújula interna', content: [{ type: 'paragraph', text: 'Aquí es donde entran los valores: no como normas rígidas, sino como direcciones que te orientan. \nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la autenticidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
         { type: 'collapsible', title: 'El costo de oportunidad emocional', content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }] },
         { type: 'collapsible', title: 'Disonancia cognitiva: cuando algo no encaja', content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }] },
@@ -147,7 +144,7 @@ export const purposePath: Path = {
             'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
             'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
             'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
-            'Vivir sin dirección tiene un costo emocional: lo que dejamos de lado cuando atendemos lo urgente.',
+            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
             'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
             'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
         ]},
@@ -174,7 +171,7 @@ export const purposePath: Path = {
             '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?',
             '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?',
             '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
-            '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
+            '¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?'
         ]},
         { type: 'title', text: 'Resumen Final de la Ruta' },
         { type: 'list', items: [
@@ -213,9 +210,9 @@ export const purposePath: Path = {
           ],
         },
         {
-          type: 'paragraphWithAudio',
-          text: 'Resumen Final de la Ruta',
-          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3',
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: "https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3"
         },
         {
           type: 'list',
@@ -243,4 +240,4 @@ export const purposePath: Path = {
   ]
 };
 
-  
+    
