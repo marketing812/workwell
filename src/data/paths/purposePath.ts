@@ -45,6 +45,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: '¿De dónde nacen mis valores?',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/DEDONDENACENMISVALORES.mp3',
           content: [
             { type: 'paragraph', text: 'A veces pensamos que nuestros valores son “naturales”, pero en realidad se forman de distintas fuentes:\n•\tBiología y evolución: como especie, necesitamos seguridad, conexión y pertenencia.\n•\tExperiencias de dolor: muchas veces, de lo que más sufrimos nacen valores fuertes (quien sufrió rechazo, aprende a valorar la aceptación).\n•\tEntorno y cultura: lo que vimos en casa, en la escuela o en la sociedad marca lo que creemos que “debe importar”.\n•\tProcesos internos: al reflexionar, nos damos cuenta de nuestras necesidades más auténticas (libertad, expresión, contribución).\nEjemplo: Puede que creas que “ser productivo/a” es un valor tuyo. Pero si miras más a fondo, quizás provenga de un entorno exigente. Al revisarlo, descubres que lo que realmente valoras es “crear con libertad”.\nViktor Frankl, psiquiatra y superviviente del Holocausto, decía: “Quien tiene un porqué, puede soportar casi cualquier cómo”. Tus valores son ese “porqué”.' }
           ]
@@ -146,7 +147,7 @@ export const purposePath: Path = {
             'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
             'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
             'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
-            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
+            'Vivir sin dirección tiene un costo emocional: lo que dejamos de lado cuando atendemos lo urgente.',
             'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
             'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
         ]},
@@ -184,10 +185,62 @@ export const purposePath: Path = {
         ]},
         { type: 'quote', text: '“No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.”' }
       ]
+    },
+    {
+      id: 'purpose_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/REFLEXIONFINALRUTA.mp3',
+          prompts: [
+            'Has hecho un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad.',
+            'Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.',
+            'Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas.',
+            'Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.',
+            'Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti.',
+            'Escribe con honestidad y sin exigencias:',
+            '¿Qué he aprendido sobre mí que antes no veía con claridad?',
+            '¿Qué emociones o patrones he comenzado a entender mejor?',
+            '¿Cómo ha cambiado la forma en que me hablo y me observo?',
+            '¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?',
+            '¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?',
+            'No hace falta tener respuestas perfectas. Solo abrir un espacio donde puedas escucharte con respeto…',
+            'y seguir acompañándote cada día, desde la conciencia y la compasión.',
+          ],
+        },
+        {
+          type: 'paragraphWithAudio',
+          text: 'Resumen Final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3',
+        },
+        {
+          type: 'list',
+          items: [
+            'Nombrar lo que sientes te ayuda a comprenderte y a regularte.',
+            'Toda emoción encierra una necesidad que merece atención.',
+            'Tus patrones emocionales repetidos no son errores: son puertas a tu historia.',
+            'La autoconciencia no es autoexigencia, es presencia sin juicio.',
+            'Observarte con curiosidad abre espacio para elegir, no solo reaccionar.',
+            'No eres lo que sientes ni lo que piensas: eres quien observa.',
+            'El juicio interno alimenta el malestar; la compasión lo transforma.',
+            'La seguridad interna es la base para poder mirarte sin miedo.',
+            'Tu sistema nervioso necesita cuidado, no presión.',
+            'La metacognición te permite salir del piloto automático y actuar con conciencia.',
+            'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
+            'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
+          ],
+        },
+        {
+          type: 'quote',
+          text: '“Cada vez que me observo con presencia y sin juicio, doy un paso hacia mi versión más consciente, más libre… y más compasiva.”',
+        },
+      ],
     }
   ]
 };
 
   
-
-    
