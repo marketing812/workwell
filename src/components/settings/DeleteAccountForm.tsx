@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
-import { useUser, useAuth } from "@/firebase/provider"; // Corrected import
+import { useUser } from "@/contexts/UserContext"; 
 import { useRouter } from "next/navigation";
 import { Loader2, Trash2 } from "lucide-react";
 import {
@@ -18,49 +19,24 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { deleteUser } from "firebase/auth";
 
 export function DeleteAccountForm() {
   const t = useTranslations();
   const { toast } = useToast();
-  const { user, logout, loading: userLoading } = useUser();
-  const auth = useAuth();
+  const { user, loading: userLoading, deleteUserAccount } = useUser();
   const router = useRouter();
 
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleConfirmDelete = async () => {
-    const currentUser = auth?.currentUser;
-
-    if (!currentUser) {
-      toast({ title: "Error", description: "No se ha podido identificar al usuario para la baja.", variant: "destructive" });
-      return;
-    }
-
     setIsSubmitting(true);
-    try {
-      await deleteUser(currentUser);
-      toast({
-        title: t.deleteAccountSuccessTitle,
-        description: "Tu cuenta ha sido eliminada permanentemente.",
-      });
-      logout();
-    } catch (error: any) {
-      console.error("Error deleting user account:", error);
-      let errorMessage = t.deleteAccountErrorMessage;
-      if (error.code === 'auth/requires-recent-login') {
-        errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, cierra sesión y vuelve a iniciarla antes de intentarlo de nuevo.";
-      }
-      toast({
-        title: t.deleteAccountErrorTitle,
-        description: errorMessage,
-        variant: "destructive",
-      });
-    } finally {
+    const result = await deleteUserAccount();
+    if (!result.success) {
+      // El toast de error ya se muestra en el context, así que no es necesario duplicarlo aquí
       setIsSubmitting(false);
-      setIsAlertDialogOpen(false);
     }
+    // El éxito ya se maneja en el context (logout y redirect)
   };
   
   if (userLoading) {
