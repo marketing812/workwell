@@ -136,6 +136,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Cuando tus pensamientos exageran la realidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/Cuandotuspensamientosexageranlarealidad.mp3',
           content: [
             { type: 'paragraph', text: 'No todo lo que piensas refleja la realidad. La mente humana tiende a caer en distorsiones cognitivas: catastrofismo, pensamiento “todo o nada”, autoexigencia desmedida.\nEjemplo: cometes un error menor en el trabajo y piensas “Soy un desastre”. \nLa neurociencia ha comprobado que este tipo de pensamientos negativos se fijan más fácilmente en la memoria, porque el cerebro está entrenado para detectar peligros.\nEl problema no es tener estas distorsiones, sino creerlas sin cuestionarlas.' }
           ]
@@ -288,7 +289,7 @@ export const purposePath: Path = {
             '¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?',
             '¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?',
             'No hace falta tener respuestas perfectas. Solo abrir un espacio donde puedas escucharte con respeto…',
-            'y seguir acompañándote cada día, desde la conciencia y la compasión.'
+            'y seguir acompañándote cada día, desde la conciencia y la compasión.',
           ]
         },
         {
@@ -310,7 +311,7 @@ export const purposePath: Path = {
             'Tu sistema nervioso necesita cuidado, no presión.',
             'La metacognición te permite salir del piloto automático y actuar con conciencia.',
             'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
-            'Comprenderte mejor no es un destino, sino acompañarte cada día con más verdad.'
+            'Comprenderte mejor no es un destino, sino acompañarte cada día con más verdad.',
           ]
         },
         {
@@ -321,5 +322,6 @@ export const purposePath: Path = {
     }
   ]
 };
-
   
+
+    
