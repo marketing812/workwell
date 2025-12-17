@@ -128,7 +128,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'El miedo a no estar a la altura',
-          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/ELMIEDOANOESTAR.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/Elmiedoanoestaralaaltura.mp3',
           content: [
             { type: 'paragraph', text: 'Otra gran fuente de ruido es el miedo al juicio y al fracaso. Pensamientos como:\n•\t“¿Y si me equivoco?”\n•\t“¿Y si me juzgan?”\n•\t“¿Y si descubren que no soy suficiente?”\nSteven Hayes, creador de la Terapia de Aceptación y Compromiso (ACT), explica que el problema no es sentir miedo, sino dejar que ese miedo decida por ti.\nQuerer cambiar de trabajo, pero quedarte en un lugar que no te nutre por temor al rechazo, es un ejemplo de cómo el miedo nos paraliza y nos aleja de lo que valoramos.' }
           ]
@@ -174,22 +174,16 @@ export const purposePath: Path = {
           objective: 'Esta micropráctica te ayudará a identificar en qué momentos del día se activa más ese ruido y a usar esas señales como un recordatorio para frenar, respirar y reconectar contigo.',
           duration: '5–7 min'
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
             '¿Qué has descubierto sobre el ruido mental en tu vida?',
             '¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?',
             '¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?',
             '¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?',
             '¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?',
             '¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?'
-          ]
-        },
+        ]},
         { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'list',
-          items: [
+        { type: 'list', items: [
             'El ruido mental es todo aquello que interfiere con tus decisiones conscientes: miedos, exigencias, creencias heredadas o pensamientos repetitivos.',
             'Vivir en modo automático nos desconecta de nuestras verdaderas prioridades.',
             'La presión externa activa el sistema de amenaza y nos lleva a actuar desde la urgencia, no desde el deseo.',
@@ -198,8 +192,7 @@ export const purposePath: Path = {
             'Visualizar el contraste entre nuestro “yo actual” y nuestro “yo esencial” nos ayuda a orientarnos sin juicio.',
             'Pequeños gestos coherentes con nuestros valores pueden marcar el inicio de un cambio real.',
             'Escuchar lo que nos desvía no es debilidad: es el primer paso hacia una vida más alineada.'
-          ]
-        },
+        ]},
         { type: 'quote', text: '“Cada vez que eliges soltar el ruido para volver a lo que te importa, te estás acercando a tu versión más auténtica.”' }
       ]
     },
@@ -212,7 +205,7 @@ export const purposePath: Path = {
         { type: 'paragraph', text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Por qué nos cuesta elegir desde el sentido?', content: [{ type: 'paragraph', text: 'A veces sentimos que actuamos en “piloto automático”: decimos que sí a algo que no queremos, aplazamos lo que nos importa o reaccionamos sin pensar. \nNo es un fallo personal, es un mecanismo de nuestro cerebro que busca ahorrar energía y evitar esfuerzo inmediato.\nLa neurocientífica Tali Sharot explica que esta tendencia nos empuja a priorizar lo fácil y lo rápido, aunque eso signifique alejarnos de lo que realmente valoramos. Seguro que lo has vivido: aceptar un compromiso por inercia, aunque por dentro sientas que te sobrecargas.' }] },
-        { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”' }] },
+        { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }] },
         { type: 'collapsible', title: 'Valores como brújula interna', content: [{ type: 'paragraph', text: 'Aquí es donde entran los valores: no como normas rígidas, sino como direcciones que te orientan. \nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la autenticidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
         { type: 'collapsible', title: 'El costo de oportunidad emocional', content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }] },
         { type: 'collapsible', title: 'Disonancia cognitiva: cuando algo no encaja', content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }] },
@@ -249,7 +242,7 @@ export const purposePath: Path = {
         { type: 'paragraph', text: 'Tener un mapa es útil, pero lo que realmente te lleva a destino son los pasos que das cada día. Esta semana vamos a transformar tus valores —eso que de verdad te importa— en acciones concretas que caben en tu semana.\nVivir con propósito no significa descubrir una gran misión única, sino sostener pequeños hábitos con sentido que, repetidos, construyen la vida que deseas. Para ello, diseñarás tu hoja de ruta valiente con tres acciones reales y alcanzables, crearás un ancla visual que te recuerde lo esencial y entrenarás la flexibilidad para ajustar el rumbo cuando la vida cambie.\nLa ciencia lo respalda: actuar con propósito aumenta el bienestar, refuerza la resiliencia y reduce el ruido mental. En otras palabras, menos dispersión, más dirección.\nTu cierre de esta semana será un plan simple, vivo y completamente tuyo, pensado para que sigas avanzando sin prisa, pero con norte.' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Qué significa vivir con propósito?', content: [{ type: 'paragraph', text: 'Muchas personas creen que tener propósito es descubrir una gran “misión de vida” o lograr un ideal de éxito. Pero en realidad, vivir con propósito significa avanzar con dirección interna: elegir desde lo que de verdad te importa y dar pasos que construyan sentido, incluso en lo pequeño.\nTu propósito es como una brújula: no te exige perfección, te orienta. Cuando lo sigues, experimentas más claridad, motivación y bienestar, incluso en medio de la incertidumbre.\nEsta semana no se trata de resolverlo todo, sino de empezar a elegir con más conciencia lo que sí quieres sostener en tu vida.' }] },
-        { type: 'collapsible', title: 'Propósito, valores e identidad', content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”' }] },
+        { type: 'collapsible', title: 'Propósito, valores e identidad', content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”.' }] },
         { type: 'collapsible', title: 'Metas con sentido: claridad sin rigidez', content: [{ type: 'paragraph', text: 'Tener metas claras ayuda a que tu propósito no quede en teoría. Pero más importante que el destino es el camino: los sistemas y hábitos que sostienes.\n•\tUna meta sin pasos intermedios puede ser frustrante.\n•\tEn cambio, un hábito diario —aunque sea simple— te acerca con constancia a la persona que quieres ser.\nPregunta práctica: ¿Este hábito que repito cada día me acerca o me aleja de la vida que quiero habitar?\nRecuerda: lo valioso no siempre es lo espectacular, sino lo sostenido y auténtico.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min' },
@@ -329,4 +322,4 @@ export const purposePath: Path = {
   ]
 };
 
-    
+  
