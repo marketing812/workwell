@@ -120,6 +120,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'El ruido interno: esa niebla que confunde',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/ELRUIDOINTERNO.mp3',
           content: [
             { type: 'paragraph', text: '¿Has sentido alguna vez que tienes claro lo que quieres, pero algo dentro te empuja en otra dirección? Esa fuerza se parece a una niebla mental: pensamientos repetitivos, miedos o exigencias que no dejan ver con claridad.\nNo significa que haya “algo mal” en ti; es simplemente la manera en que tu cerebro, diseñado para sobrevivir, trata de anticipar y protegerte. Como explica Daniel Goleman, nuestra mente tiende a estar “secuestrada” por la alarma emocional, aun cuando no hay un peligro real.\nEl reto no es eliminar ese ruido, sino reconocerlo para recuperar el timón de tus decisiones.' }
           ]
@@ -127,6 +128,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Vivir en piloto automático',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/VIVIRENMODOPILOTO.mp3',
           content: [
             { type: 'paragraph', text: 'Muchas veces no decides tú, decide el “tengo que”. Entre obligaciones, expectativas externas y comparaciones, entramos en modo piloto automático.\nLa neurociencia muestra que en este estado predomina la amígdala (sistema de amenaza), reduciendo la actividad de la corteza prefrontal, que es la parte encargada de planear y elegir con calma.\nEl resultado: actuamos por inercia, no por elección. Nos desconectamos de lo que nos da sentido.\nSi alguna vez has cancelado un plan que te hacía ilusión por algo “más urgente”, ya sabes lo que es dejar que el piloto automático tome el control.' }
           ]
@@ -134,6 +136,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'El miedo a no estar a la altura',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/ELMIEDOANOESTAR.mp3',
           content: [
             { type: 'paragraph', text: 'Otra gran fuente de ruido es el miedo al juicio y al fracaso. Pensamientos como:\n•\t“¿Y si me equivoco?”\n•\t“¿Y si me juzgan?”\n•\t“¿Y si descubren que no soy suficiente?”\nSteven Hayes, creador de la Terapia de Aceptación y Compromiso (ACT), explica que el problema no es sentir miedo, sino dejar que ese miedo decida por ti.\nQuerer cambiar de trabajo, pero quedarte en un lugar que no te nutre por temor al rechazo, es un ejemplo de cómo el miedo nos paraliza y nos aleja de lo que valoramos.' }
           ]
@@ -254,7 +257,7 @@ export const purposePath: Path = {
         { type: 'paragraph', text: 'Tener un mapa es útil, pero lo que realmente te lleva a destino son los pasos que das cada día. Esta semana vamos a transformar tus valores —eso que de verdad te importa— en acciones concretas que caben en tu semana.\nVivir con propósito no significa descubrir una gran misión única, sino sostener pequeños hábitos con sentido que, repetidos, construyen la vida que deseas. Para ello, diseñarás tu hoja de ruta valiente con tres acciones reales y alcanzables, crearás un ancla visual que te recuerde lo esencial y entrenarás la flexibilidad para ajustar el rumbo cuando la vida cambie.\nLa ciencia lo respalda: actuar con propósito aumenta el bienestar, refuerza la resiliencia y reduce el ruido mental. En otras palabras, menos dispersión, más dirección.\nTu cierre de esta semana será un plan simple, vivo y completamente tuyo, pensado para que sigas avanzando sin prisa, pero con norte.' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Qué significa vivir con propósito?', content: [{ type: 'paragraph', text: 'Muchas personas creen que tener propósito es descubrir una gran “misión de vida” o lograr un ideal de éxito. Pero en realidad, vivir con propósito significa avanzar con dirección interna: elegir desde lo que de verdad te importa y dar pasos que construyan sentido, incluso en lo pequeño.\nTu propósito es como una brújula: no te exige perfección, te orienta. Cuando lo sigues, experimentas más claridad, motivación y bienestar, incluso en medio de la incertidumbre.\nEsta semana no se trata de resolverlo todo, sino de empezar a elegir con más conciencia lo que sí quieres sostener en tu vida.' }] },
-        { type: 'collapsible', title: 'Propósito, valores e identidad', content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”." }] },
+        { type: 'collapsible', title: 'Propósito, valores e identidad', content: [{ type: 'paragraph', text: 'Cada decisión diaria puede ser un reflejo de tus valores: respeto, autenticidad, cuidado, justicia…\nCuando eliges en esa dirección:\n•\tTu vida adquiere coherencia y sentido.\n•\tTus acciones refuerzan tu identidad.\nPor ejemplo: si valoras la autenticidad y decides hablar con honestidad en una reunión, no solo actúas con coherencia, también refuerzas la idea de ti misma o ti mismo como alguien genuino.\nJames Clear (2018) lo describe así: “No somos lo que decimos que valoramos, sino lo que elegimos sostener cada día, incluso en lo pequeño”.' }] },
         { type: 'collapsible', title: 'Metas con sentido: claridad sin rigidez', content: [{ type: 'paragraph', text: 'Tener metas claras ayuda a que tu propósito no quede en teoría. Pero más importante que el destino es el camino: los sistemas y hábitos que sostienes.\n•\tUna meta sin pasos intermedios puede ser frustrante.\n•\tEn cambio, un hábito diario —aunque sea simple— te acerca con constancia a la persona que quieres ser.\nPregunta práctica: ¿Este hábito que repito cada día me acerca o me aleja de la vida que quiero habitar?\nRecuerda: lo valioso no siempre es lo espectacular, sino lo sostenido y auténtico.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min' },
@@ -267,7 +270,6 @@ export const purposePath: Path = {
             '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
             '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
         ]},
-        { type: 'title', text: 'Técnicas Específicas' },
         { type: 'title', text: 'Resumen Final de la Ruta' },
         { type: 'list', items: [
             'Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.',
@@ -334,3 +336,6 @@ export const purposePath: Path = {
     }
   ]
 };
+
+
+  
