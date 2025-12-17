@@ -25,7 +25,7 @@ const lifeAreas = [
     { id: 'cuidado_emocional', label: 'Cuidado emocional y mental' },
     { id: 'desarrollo_personal', label: 'Desarrollo personal o espiritual' },
     { id: 'aprendizaje', label: 'Aprendizaje y conocimiento' },
-    { id: 'trabajo', label: 'Trabajo y vocación' },
+    { id: 'trabajo', label: 'Vida laboral y vocación' },
     { id: 'ocio', label: 'Tiempo libre y disfrute' },
     { id: 'contribucion', label: 'Contribución y servicio a los demás' },
     { id: 'creatividad', label: 'Creatividad y expresión personal' },
@@ -72,7 +72,7 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="p-4 text-center space-y-4">
             <p>Muchas veces actuamos en piloto automático. Este ejercicio te ayuda a detectar cuáles son los valores que realmente te importan, para que esa pregunta tenga una respuesta clara.</p>
             <Button onClick={() => setStep(1)}>Empezar mi brújula</Button>
           </div>
@@ -135,7 +135,17 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && (
+            <CardDescription className="pt-2">
+                {content.objective}
+                 <div className="mt-4">
+                    <audio controls controlsList="nodownload" className="w-full">
+                        <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana1tecnica1.mp3" type="audio/mp3" />
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+            </CardDescription>
+        )}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>
