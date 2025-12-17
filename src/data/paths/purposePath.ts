@@ -121,13 +121,17 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Vivir en piloto automático',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/Vivirenpilotoautomatico.mp3',
-          content: [{ type: 'paragraph', text: 'Muchas veces no decides tú, decide el “tengo que”. Entre obligaciones, expectativas externas y comparaciones, entramos en modo piloto automático.\nLa neurociencia muestra que en este estado predomina la amígdala (sistema de amenaza), reduciendo la actividad de la corteza prefrontal, que es la parte encargada de planear y elegir con calma.\nEl resultado: actuamos por inercia, no por elección. Nos desconectamos de lo que nos da sentido.\nSi alguna vez has cancelado un plan que te hacía ilusión por algo “más urgente”, ya sabes lo que es dejar que el piloto automático tome el control.' }]
+          content: [
+            { type: 'paragraph', text: 'Muchas veces no decides tú, decide el “tengo que”. Entre obligaciones, expectativas externas y comparaciones, entramos en modo piloto automático.\nLa neurociencia muestra que en este estado predomina la amígdala (sistema de amenaza), reduciendo la actividad de la corteza prefrontal, que es la parte encargada de planear y elegir con calma.\nEl resultado: actuamos por inercia, no por elección. Nos desconectamos de lo que nos da sentido.\nSi alguna vez has cancelado un plan que te hacía ilusión por algo “más urgente”, ya sabes lo que es dejar que el piloto automático tome el control.' }
+          ]
         },
         {
           type: 'collapsible',
           title: 'El miedo a no estar a la altura',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/Elmiedoanoestaralaaltura.mp3',
-          content: [{ type: 'paragraph', text: 'Otra gran fuente de ruido es el miedo al juicio y al fracaso. Pensamientos como:\n•\t“¿Y si me equivoco?”\n•\t“¿Y si me juzgan?”\n•\t“¿Y si descubren que no soy suficiente?”\nSteven Hayes, creador de la Terapia de Aceptación y Compromiso (ACT), explica que el problema no es sentir miedo, sino dejar que ese miedo decida por ti.\nQuerer cambiar de trabajo, pero quedarte en un lugar que no te nutre por temor al rechazo, es un ejemplo de cómo el miedo nos paraliza y nos aleja de lo que valoramos.' }]
+          content: [
+            { type: 'paragraph', text: 'Otra gran fuente de ruido es el miedo al juicio y al fracaso. Pensamientos como:\n•\t“¿Y si me equivoco?”\n•\t“¿Y si me juzgan?”\n•\t“¿Y si descubren que no soy suficiente?”\nSteven Hayes, creador de la Terapia de Aceptación y Compromiso (ACT), explica que el problema no es sentir miedo, sino dejar que ese miedo decida por ti.\nQuerer cambiar de trabajo, pero quedarte en un lugar que no te nutre por temor al rechazo, es un ejemplo de cómo el miedo nos paraliza y nos aleja de lo que valoramos.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -174,19 +178,20 @@ export const purposePath: Path = {
           objective: 'Esta micropráctica te ayudará a identificar en qué momentos del día se activa más ese ruido y a usar esas señales como un recordatorio para frenar, respirar y reconectar contigo.',
           duration: '5–7 min'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/REFLEXION.mp3',
-          prompts: [
-            '¿Qué has descubierto sobre el ruido mental en tu vida?',
-            '¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?',
-            '¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?',
-            '¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?',
-            '¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?',
-            '¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?'
-        ]},
+        { type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana', 
+          prompts: ['¿Qué has descubierto sobre el ruido mental en tu vida?','¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?','¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?','¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?','¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?','¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?'] ,
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/REFLEXION.mp3'
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/RESUMEN.mp3'},
-        { type: 'list', items: [
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/RESUMEN.mp3'
+        },
+        {
+          type: 'list',
+          items: [
             'El ruido mental es todo aquello que interfiere con tus decisiones conscientes: miedos, exigencias, creencias heredadas o pensamientos repetitivos.',
             'Vivir en modo automático nos desconecta de nuestras verdaderas prioridades.',
             'La presión externa activa el sistema de amenaza y nos lleva a actuar desde la urgencia, no desde el deseo.',
@@ -195,7 +200,8 @@ export const purposePath: Path = {
             'Visualizar el contraste entre nuestro “yo actual” y nuestro “yo esencial” nos ayuda a orientarnos sin juicio.',
             'Pequeños gestos coherentes con nuestros valores pueden marcar el inicio de un cambio real.',
             'Escuchar lo que nos desvía no es debilidad: es el primer paso hacia una vida más alineada.'
-        ]},
+          ]
+        },
         { type: 'quote', text: '“Cada vez que eliges soltar el ruido para volver a lo que te importa, te estás acercando a tu versión más auténtica.”' }
       ]
     },
@@ -205,7 +211,11 @@ export const purposePath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        { type: 'paragraph', text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.' },
+        {
+          type: 'paragraphWithAudio',
+          text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'
+        },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Por qué nos cuesta elegir desde el sentido?', content: [{ type: 'paragraph', text: 'A veces sentimos que actuamos en “piloto automático”: decimos que sí a algo que no queremos, aplazamos lo que nos importa o reaccionamos sin pensar. \nNo es un fallo personal, es un mecanismo de nuestro cerebro que busca ahorrar energía y evitar esfuerzo inmediato.\nLa neurocientífica Tali Sharot explica que esta tendencia nos empuja a priorizar lo fácil y lo rápido, aunque eso signifique alejarnos de lo que realmente valoramos. Seguro que lo has vivido: aceptar un compromiso por inercia, aunque por dentro sientas que te sobrecargas.' }] },
         { type: 'collapsible', title: 'Del piloto automático a la elección consciente', content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }] },
@@ -217,22 +227,9 @@ export const purposePath: Path = {
         { type: 'directedDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN', objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.', duration: '10–15 min' },
         { type: 'senseChecklistExercise', title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO', objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.', duration: '5 min' },
         { type: 'unfulfilledNeedsExercise', title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA', objective: 'Este ejercicio te ayudará a tomar conciencia del costo emocional de decisiones automáticas. Identificar lo que dejamos de lado (y nos nutriría) permite reequilibrar elecciones futuras.', duration: '3–5 min diarios' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
-            '¿Qué he descubierto esta semana sobre la forma en la que tomo decisiones?',
-            '¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?',
-            '¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?',
-            '¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?',
-            '¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?'
-        ]},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto esta semana sobre la forma en la que tomo decisiones?','¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?','¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?','¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?','¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?'] },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: [
-            'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
-            'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
-            'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
-            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
-            'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
-            'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
-        ]},
+        { type: 'list', items: ['El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.','Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.','Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.','Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.','La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.','Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'] },
         { type: 'quote', text: '“Vivir con dirección no es hacerlo todo perfecto. Es elegir lo que tiene sentido, paso a paso.”' }
       ]
     },
@@ -251,20 +248,9 @@ export const purposePath: Path = {
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min' },
         { type: 'essentialReminderExercise', title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL', objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.', duration: '10-15 min' },
         { type: 'thoughtsThatBlockPurposeExercise', title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?', objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
-            '¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?',
-            '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?',
-            '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?',
-            '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?',
-            '¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'
-        ]},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?','¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?','¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?','¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?','¿Qué compromiso quiero asumir ahora conmigo misma/o para avanzar en esta dirección?'] },
         { type: 'title', text: 'Resumen Final de la Ruta' },
-        { type: 'list', items: [
-            'Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.',
-            'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.',
-            'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.',
-            'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'
-        ]},
+        { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.','Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.','No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.','Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
         { type: 'quote', text: '“No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.”' }
       ]
     },
