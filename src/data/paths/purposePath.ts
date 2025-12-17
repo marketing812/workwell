@@ -5,6 +5,7 @@ export const purposePath: Path = {
   title: 'Volver a lo Importante',
   description: 'Distingue entre lo urgente y lo valioso, reduce el ruido mental y crea una hoja de ruta alineada con tus valores para vivir con más sentido y dirección.',
   dataAiHint: 'purpose values focus',
+  audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/INTRODUCCIONRUTA7.mp3',
   modules: [
     {
       id: 'purpose_sem1',
@@ -139,7 +140,7 @@ export const purposePath: Path = {
             'El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.',
             'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.',
             'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.',
-            'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.',
+            'Vivir sin dirección tiene un costo emocional: lo que dejamos de lado cuando atendemos lo urgente.',
             'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.',
             'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'
         ]},
