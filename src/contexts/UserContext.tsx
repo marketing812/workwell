@@ -138,7 +138,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const userId = currentUser.uid;
 
     try {
-      const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries"];
+      const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
       const batch = writeBatch(db);
 
       for (const collectionName of collectionsToDelete) {

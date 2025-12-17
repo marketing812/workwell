@@ -57,30 +57,6 @@ export async function getUserProfile(userId: string): Promise<User | null> {
   }
 }
 
-
-export type DeleteAccountState = {
-  errors?: { _form?: string[] };
-  message?: string | null;
-  success?: boolean;
-};
-
-export async function deleteUserAccount(
-  prevState: DeleteAccountState,
-  formData: FormData
-): Promise<DeleteAccountState> {
-  return { success: true, message: "Cuenta eliminada (simulado)." };
-}
-
-export type ChangePasswordState = {
-  errors?: {
-    newPassword?: string[];
-    confirmNewPassword?: string[];
-    _form?: string[];
-  };
-  message?: string | null;
-  success?: boolean;
-};
-
 export async function resetPassword(email: string): Promise<{success: boolean; message: string}> {
   console.log(`Simulating password reset for ${email}`);
   return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña." };
