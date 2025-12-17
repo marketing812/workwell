@@ -168,7 +168,14 @@ export const purposePath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/REFLEXION.mp3',
-          prompts: ['¿Qué has descubierto sobre el ruido mental en tu vida?','¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?','¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?','¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?','¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?','¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?']
+          prompts: [
+            '¿Qué has descubierto sobre el ruido mental en tu vida?',
+            '¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?',
+            '¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?',
+            '¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?',
+            '¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?',
+            '¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         {
@@ -214,7 +221,7 @@ export const purposePath: Path = {
           type: 'collapsible',
           title: 'Del piloto automático a la elección consciente',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Vivirconsentido.mp3',
-          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”' }]
+          content: [{ type: 'paragraph', text: 'La buena noticia es que el cerebro también cuenta con un “modo reflexivo” que te permite parar y pensar. \nEl psicólogo Daniel Kahneman lo llamó Sistema 1 (rápido, automático) y Sistema 2 (lento, deliberado). \nMás recientemente, el neurocientífico Shane O’Mara ha mostrado cómo la corteza prefrontal es clave para frenar impulsos y conectar con decisiones más alineadas.\nImagina que alguien te pide un favor en un momento en que ya vas a tope. Tu Sistema 1 respondería de inmediato: “Claro, no pasa nada”. Pero si activas ese freno prefrontal, quizás logres darte un segundo para pensar: “¿Puedo realmente asumir esto?”.' }]
         },
         {
           type: 'collapsible',
@@ -237,6 +244,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Elegir con conciencia: tu poder interno',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elegirconconciencia.mp3',
           content: [{ type: 'paragraph', text: 'La clave no es ser perfectos ni acertar siempre, sino practicar pequeñas elecciones coherentes. \nLa investigadora Kristin Neff recuerda que la autocompasión es esencial en este proceso: acompañarte cuando no lo haces como te gustaría, sin castigarte, porque cada intento cuenta como aprendizaje.\nUn ejemplo simple: darte permiso para descansar sin sentirte culpable. Ese gesto no significa debilidad, sino responsabilidad hacia tu salud y hacia lo que valoras de verdad.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -426,3 +434,5 @@ export const purposePath: Path = {
   ]
 };
   
+
+    
