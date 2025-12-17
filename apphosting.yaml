@@ -10,3 +10,4 @@ runConfig:
 # Comentario final para forzar la reconstrucción definitiva.
 # Invalidando la caché por última vez para corregir el error de react-day-picker.
 # Forzando reconstrucción para resolver ChunkLoadError y asegurar la estabilidad.
+# Forzando reconstrucción para resolver un nuevo ChunkLoadError.
