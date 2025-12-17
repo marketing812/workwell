@@ -201,7 +201,7 @@ export const purposePath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Esta semana vamos a entrenar un gesto muy sencillo pero poderoso: la micro-pausa. Ese pequeño respiro antes de responder es como abrir una ventana para dejar entrar aire fresco en medio del ruido del día.\nEn lugar de vivir en “piloto automático”, aprenderás a activar tu modo reflexivo —ese que te permite decidir con calma y claridad— para que tus elecciones nazcan de lo que valoras y no del miedo o la presión externa.\nDescubrirás también algo clave: cada vez que dices sí a lo urgente pero poco importante, en realidad estás diciendo no a lo que de verdad te importa. Ese “costo oculto” genera disonancia interna (“esto no encaja conmigo”), y la buena noticia es que se reduce en cuanto eliges coherencia con tus valores.\nPara practicarlo, trabajarás con dos herramientas exprés y muy prácticas:\n•\tDecisiones con dirección: un recurso rápido para detenerte, mirar y responder desde tu brújula personal.\n•\tChecklist del sentido: una guía breve para comprobar si tus microdecisiones diarias te acercan o te alejan de la vida que quieres construir.\nAl final de la semana habrás entrenado una nueva habilidad: dar menos “sí” automáticos y más “sí” con sentido.',
-          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -219,6 +219,7 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Valores como brújula interna',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Losvalorescomobrujulainterna.mp3',
           content: [{ type: 'paragraph', text: 'Aquí es donde entran los valores: no como normas rígidas, sino como direcciones que te orientan. \nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la autenticidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }]
         },
         {
@@ -423,3 +424,4 @@ export const purposePath: Path = {
   ]
 };
   
+
