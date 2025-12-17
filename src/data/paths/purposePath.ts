@@ -31,9 +31,8 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'El piloto automático que nos aleja del propósito',
-          content: [
-            { type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.' }
-          ]
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/ELPILOTOAUTOMATICOQUENOSALEJADELPROPOSITO.mp3',
+          content: [{ type: 'paragraph', text: 'Cuando nos dejamos llevar por la rutina y hacemos las cosas sin pensar, entramos en lo que llamamos “modo automático”. Este modo es útil para tareas mecánicas, pero si lo extendemos a toda la vida, perdemos conexión con lo que realmente importa.\nEn mindfulness se habla de que este piloto automático nos aleja de la conciencia y nos deja atrapados en la prisa. Según estudios de Harvard, pasamos casi el 47% del tiempo con la mente divagando, lo que se asocia con menor bienestar emocional (Killingsworth & Gilbert, 2010).\nEjemplo: Puedes terminar un día entero lleno de reuniones y sentir vacío porque no hubo nada alineado con tus valores, como cuidar tu salud o compartir un rato auténtico con un amigo o amiga.' }]
         },
         {
           type: 'collapsible',
@@ -184,19 +183,8 @@ export const purposePath: Path = {
         ]},
         { type: 'quote', text: '“No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.”' }
       ]
-    },
+    }
   ]
 };
 
-```
-- src_workspace/types/page-props.ts:
-```ts
-
-// Definiendo un tipo genérico para las propiedades de las páginas
-// Esto ayuda a manejar tanto las propiedades estáticas como las dinámicas de Next.js
-export type RoutePageProps<T = Record<string, string>> = {
-  params: T;
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-```
+  
