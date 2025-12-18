@@ -1,4 +1,3 @@
-
 import type { Path } from '../pathsData';
 
 export const resiliencePath: Path = {
@@ -175,7 +174,7 @@ export const resiliencePath: Path = {
         type: 'summary',
         estimatedTime: '15-20 min',
         content: [
-          { type: 'paragraph', text: 'No eres la misma persona que empezó esta ruta. Has atravesado cosas, y mereces darte cuenta de ello.\nEn esta última semana vas a mirar hacia atrás con honestidad y hacia adelante con intención. Te propongo integrar lo vivido, recoger lo que te ha servido, dejar atrás lo que ya no necesitas y escribir un cierre que te acompañe.\nAquí no termina tu camino. Solo cierras una etapa para caminar con más claridad, más herramientas y más confianza.\nPorque la resiliencia no es solo resistir. Es crecer desde lo vivido.' },
+          { type: 'paragraphWithAudio', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Introsesion4ruta8.mp3', text: 'No eres la misma persona que empezó esta ruta. Has atravesado cosas, y mereces darte cuenta de ello.\nEn esta última semana vas a mirar hacia atrás con honestidad y hacia adelante con intención. Te propongo integrar lo vivido, recoger lo que te ha servido, dejar atrás lo que ya no necesitas y escribir un cierre que te acompañe.\nAquí no termina tu camino. Solo cierras una etapa para caminar con más claridad, más herramientas y más confianza.\nPorque la resiliencia no es solo resistir. Es crecer desde lo vivido.' },
           { type: 'title', text: 'Psicoeducación' },
           { type: 'collapsible', title: 'Bienvenida a esta última semana', content: [{ type: 'paragraph', text: 'Llegaste a la última semana de esta ruta. Y aunque pueda parecer el final, en realidad es solo el principio de una forma nueva de estar contigo.\nHas entrenado tu resiliencia paso a paso. Has aprendido a sostenerte cuando parecía que todo se caía.\nAhora, toca integrar.\nNo para que todo esté “resuelto”, sino para poder seguir caminando con más claridad, fuerza y confianza.' }] },
           { type: 'collapsible', title: 'La resiliencia se entrena, no se hereda', content: [{ type: 'paragraph', text: 'Es fácil pensar que hay personas que “ya son fuertes” por naturaleza.\nPero la verdad es que la resiliencia no es un rasgo con el que naces, sino una capacidad que se cultiva.\nY tú la has estado entrenando.\n\tCada vez que elegiste respirar en lugar de reaccionar.\n\tCada vez que te hablaste con amabilidad en lugar de exigencia.\n\tCada vez que dijiste: “No puedo con todo… pero puedo con este paso”.\nEso es practicar resiliencia.' }] },
@@ -221,5 +220,3 @@ export const resiliencePath: Path = {
     }
   ]
 };
-
-    
