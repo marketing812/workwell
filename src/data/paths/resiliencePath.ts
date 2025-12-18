@@ -20,7 +20,7 @@ export const resiliencePath: Path = {
           title: '¿Qué es realmente la resiliencia?',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion1ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.\nLa resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, en casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
+            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.\nLa resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, в casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
           ]
         },
         {
@@ -68,7 +68,7 @@ export const resiliencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'] },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3'},
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.']},
         { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
       ]
@@ -92,6 +92,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Tu cuerpo reacciona antes que tú',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio3sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Tu cuerpo tiene memoria. Y cuando detecta amenaza, activa su sistema de defensa… incluso antes de que seas consciente.\nEsta reacción forma parte de tu sistema nervioso autónomo, y suele tomar tres formas:\n•\tLucha: tensión muscular, explosiones de rabia, necesidad de “hacer algo ya”.\n•\tHuida: evasión, hiperactividad, sobrepensar, “mejor no sentir”.\n•\tCongelación: bloqueo mental, fatiga emocional, sensación de no poder moverte o decidir.\nEjemplo: María tenía que hablar con su jefe sobre una sobrecarga de tareas. Pero al pensarlo, su cuerpo se congelaba, se le cerraba la garganta. ¿Qué sentido tiene hablar si no puedo ni respirar bien?, pensaba. Antes de tener esa conversación, necesitaba regular su cuerpo, no solo ensayar argumentos.\nClaves para identificar tu estado:\n•\tEscucha tu cuerpo: ¿respiras con normalidad? ¿Estás tenso o tensa?\n•\tObserva tus impulsos: ¿quieres salir corriendo? ¿gritar? ¿evadirte?\n•\tReconoce tu estado dominante: lucha, huida o congelación.' }
           ]
@@ -266,5 +267,7 @@ export const resiliencePath: Path = {
     
 
   
+
+    
 
     
