@@ -83,6 +83,7 @@ export const resiliencePath: Path = {
           '¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'
         ]},
         { type: 'title', text: 'Resumen Clave' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
         { type: 'list', items: [
           'La resiliencia no es perfección, ni aguantar sin sentir.',
           'Se compone de habilidades que se pueden entrenar.',
@@ -299,3 +300,6 @@ export const resiliencePath: Path = {
     
 
 
+
+
+  
