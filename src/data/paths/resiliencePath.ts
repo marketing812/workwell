@@ -68,7 +68,7 @@ export const resiliencePath: Path = {
           duration: '10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]']},
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3'},
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
@@ -199,7 +199,7 @@ export const resiliencePath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        { type: 'paragraph', text: 'Entre el miedo y el valor… no hay un muro, hay un camino. Y tú puedes aprender a recorrerlo.\nEsta semana trabajaremos cómo tomar decisiones cuando el miedo aparece. No para eliminarlo, sino para reconocerlo, entenderlo y no dejar que decida por ti.\nVas a practicar cómo ampliar tu mirada, cómo generar alternativas, cómo reconectar con tus valores y responder desde lo que quieres construir, no desde lo que temes evitar.\nElegir desde el valor no es ausencia de miedo: es presencia de propósito.' },
+        { type: 'paragraphWithAudio', text: 'Entre el miedo y el valor… no hay un muro, hay un camino. Y tú puedes aprender a recorrerlo.\nEsta semana trabajaremos cómo tomar decisiones cuando el miedo aparece. No para eliminarlo, sino para reconocerlo, entenderlo y no dejar que decida por ti.\nVas a practicar cómo ampliar tu mirada, cómo generar alternativas, cómo reconectar con tus valores y responder desde lo que quieres construir, no desde lo que temes evitar.\nElegir desde el valor no es ausencia de miedo: es presencia de propósito.', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Introsesion3ruta8.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Cuando hay que decidir… y todo dentro de ti tiembla', content: [{ type: 'paragraph', text: 'Hay decisiones que no se sienten fáciles. A veces no hay una opción que lo resuelva todo. Otras veces, elegir implica perder algo, decepcionar a alguien o asumir un riesgo. Es ahí donde entra esta pregunta clave: ¿desde dónde vas a decidir?\nEsta semana vamos a trabajar una capacidad esencial para tu resiliencia: tomar decisiones difíciles con valentía, no desde la urgencia del miedo, sino desde la claridad de lo que valoras y necesitas.\nPorque decidir con miedo es actuar desde el pánico o la evitación.\nPero decidir con valor no significa “no tener miedo”…\nSignifica poder avanzar incluso cuando sientes miedo, pero ya no lo dejas decidir por ti.' }] },
         { type: 'collapsible', title: 'El miedo no es tu enemigo: es una señal que puedes aprender a leer', content: [{ type: 'paragraph', text: 'El miedo no es una emoción negativa. De hecho, es una emoción sabia. Está ahí para protegerte, para avisarte de que algo importante está en juego. Pero si no lo sabes regular, puede volverse ruidoso, invasivo, paralizante.\n¿Cómo se manifiesta el miedo cuando no está gestionado?\n•\tTe bloqueas y evitas decidir.\n•\tTomas decisiones precipitadas solo para aliviar el malestar.\n•\tTe convences de que no eres capaz, que va a salir mal, que es mejor no hacer nada.\nPero puedes cambiar esta dinámica.\nEl primer paso es dejar de pelearte con el miedo y empezar a escucharlo con curiosidad:\n•\t¿Qué parte de mí se siente amenazada?\n•\t¿Qué necesidad hay detrás de este miedo?\n•\t¿Qué quiere proteger?' }] },
@@ -279,3 +279,5 @@ export const resiliencePath: Path = {
     }
   ]
 };
+
+    
