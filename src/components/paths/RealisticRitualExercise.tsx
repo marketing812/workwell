@@ -8,11 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RealisticRitualExerciseContent } from '@/data/paths/pathTypes';
-import { useFirestore, useUser } from '@/firebase/provider';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
-
 
 interface RealisticRitualExerciseProps {
   content: RealisticRitualExerciseContent;
@@ -21,35 +18,34 @@ interface RealisticRitualExerciseProps {
 
 export function RealisticRitualExercise({ content, pathId }: RealisticRitualExerciseProps) {
   const { toast } = useToast();
-  const db = useFirestore();
-  const { user } = useUser();
   const [habit, setHabit] = useState('');
   const [minVersion, setMinVersion] = useState('');
   const [link, setLink] = useState('');
   const [reminder, setReminder] = useState('');
   const [saved, setSaved] = useState(false);
 
-  const handleSave = async (e: FormEvent) => {
+  const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!habit || !minVersion || !link || !reminder) {
       toast({ title: 'Campos incompletos', description: 'Por favor, rellena todos los campos.', variant: 'destructive' });
       return;
     }
-     if (!user?.id || !db) {
-      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
-      return;
-    }
-    const notebookContent = {
-        title: 'Mi Ritual Realista',
-        content: `**Hábito que quiero mantener:**\n${habit}\n\n**Mi versión mínima viable:**\n${minVersion}\n\n**Lo vincularé a:**\n${link}\n\n**Para recordarlo o facilitarlo, voy a:**\n${reminder}`,
-        pathId,
-        ruta: 'Superar la Procrastinación y Crear Hábitos',
-        timestamp: serverTimestamp(),
-    };
-    
-    const notebookRef = collection(db, "users", user.id, "notebook_entries");
-    addDocumentNonBlocking(notebookRef, notebookContent);
+    const notebookContent = `
+**Ejercicio: ${content.title}**
 
+*Hábito que quiero mantener:*
+${habit}
+
+*Mi versión mínima viable:*
+${minVersion}
+
+*Lo vincularé a:*
+${link}
+
+*Para recordarlo o facilitarlo, voy a:*
+${reminder}
+    `;
+    addNotebookEntry({ title: 'Mi Ritual Realista', content: notebookContent, pathId });
     toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
     setSaved(true);
   };
@@ -61,17 +57,7 @@ export function RealisticRitualExercise({ content, pathId }: RealisticRitualExer
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && (
-            <CardDescription className="pt-2">{content.objective}</CardDescription>
-        )}
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
+        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">

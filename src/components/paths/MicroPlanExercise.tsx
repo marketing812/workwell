@@ -7,10 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
-import { useFirestore, useUser } from '@/firebase/provider';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
@@ -19,13 +18,11 @@ interface MicroPlanExerciseProps {
 
 export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
   const { toast } = useToast();
-  const db = useFirestore();
-  const { user } = useUser();
   const [moment, setMoment] = useState('');
   const [action, setAction] = useState('');
   const [step, setStep] = useState(0);
 
-  const handleSave = async () => {
+  const handleSave = () => {
     if (!moment || !action) {
       toast({
         title: 'Faltan datos',
@@ -34,33 +31,15 @@ export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
       });
       return;
     }
-     if (!user?.id || !db) {
-      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
-      return;
-    }
-    
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
 *Mi microplan de acción es:*
 Cuando ${moment}, voy a ${action}.
     `;
-
-    try {
-        const notebookRef = collection(db, "users", user.id, "notebook_entries");
-        await addDoc(notebookRef, {
-            title: 'Mi Microplan de Acción',
-            content: notebookContent,
-            pathId,
-            ruta: 'Superar la Procrastinación y Crear Hábitos',
-            timestamp: serverTimestamp(),
-        });
-        toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
-        setStep(3);
-    } catch (error) {
-        console.error("Error saving Micro-plan to Firestore:", error);
-        toast({ title: 'Error', description: 'No se pudo guardar el microplan.', variant: 'destructive'});
-    }
+    addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId });
+    toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
+    setStep(3); // Go to final confirmation
   };
 
   return (
@@ -70,14 +49,6 @@ Cuando ${moment}, voy a ${action}.
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>

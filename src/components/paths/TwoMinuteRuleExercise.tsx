@@ -9,10 +9,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
-import { useFirestore, useUser } from '@/firebase/provider';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
@@ -21,8 +19,6 @@ interface TwoMinuteRuleExerciseProps {
 
 export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExerciseProps) {
   const { toast } = useToast();
-  const db = useFirestore();
-  const { user } = useUser();
   const [task, setTask] = useState('');
   const [twoMinVersion, setTwoMinVersion] = useState('');
   const [when, setWhen] = useState('');
@@ -38,22 +34,19 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
       });
       return;
     }
-     if (!user?.id || !db) {
-      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
-      return;
-    }
-    
-    const notebookContent = {
-        title: 'Mi Compromiso de 2 Minutos',
-        content: `**Tarea que pospongo:**\n${task}\n\n**Mi versión de 2 minutos es:**\n${twoMinVersion}\n\n**Me comprometo a hacerlo:**\n${when}`,
-        pathId,
-        ruta: 'Superar la Procrastinación y Crear Hábitos',
-        timestamp: serverTimestamp(),
-    };
-    
-    const notebookRef = collection(db, "users", user.id, "notebook_entries");
-    addDocumentNonBlocking(notebookRef, notebookContent);
+    const notebookContent = `
+**Ejercicio: ${content.title}**
 
+*Tarea que pospongo:*
+${task}
+
+*Mi versión de 2 minutos es:*
+${twoMinVersion}
+
+*Me comprometo a hacerlo:*
+${when}
+    `;
+    addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: notebookContent, pathId });
     toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
     setSaved(true);
   };
@@ -65,14 +58,6 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.audioUrl && (
-          <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-              </audio>
-          </div>
-        )}
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
@@ -113,8 +98,8 @@ export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExercise
             </Button>
           ) : (
             <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">¡Compromiso guardado!</p>
+                <CheckCircle className="mr-2 h-5 w-5" />
+                <p className="font-medium">¡Compromiso guardado!</p>
             </div>
           )}
         </form>
