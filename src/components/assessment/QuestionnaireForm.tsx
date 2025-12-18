@@ -59,11 +59,10 @@ interface InProgressData {
 interface QuestionnaireFormProps {
   onSubmit: (answers: Record<string, { score: number; weight: number }>) => Promise<void>;
   isSubmitting: boolean;
-  assessmentDimensions: AssessmentDimension[];
   isGuided?: boolean;
 }
 
-export function QuestionnaireForm({ onSubmit, isSubmitting, assessmentDimensions, isGuided = true }: QuestionnaireFormProps) {
+export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: QuestionnaireFormProps) {
   const t = useTranslations();
   const router = useRouter();
   const { toast } = useToast();
