@@ -743,21 +743,21 @@ function ContentItemRenderer({
         return <SymbolicSupportCircleExercise key={index} content={contentItem as any} pathId={pathId} />;
     // RUTA 12
     case 'emotionalGratificationMapExercise':
-        return <EmotionalGratificationMapExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'dailyEnergyCheckExercise':
-        return <DailyEnergyCheckExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <DailyEnergyCheckExercise key={index} content={contentItem} pathId={path.id} />;
     case 'dailyWellbeingPlanExercise':
-        return <DailyWellbeingPlanExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <DailyWellbeingPlanExercise key={index} content={contentItem} pathId={path.id} />;
     case 'morningRitualExercise':
-        return <MorningRitualExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <MorningRitualExercise key={index} content={contentItem} pathId={path.id} />;
     case 'motivationIn3LayersExercise':
-        return <MotivationIn3LayersExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <MotivationIn3LayersExercise key={index} content={contentItem} pathId={path.id} />;
     case 'visualizeDayExercise':
-        return <VisualizeDayExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <VisualizeDayExercise key={index} content={contentItem} pathId={path.id} />;
     case 'illuminatingMemoriesAlbumExercise':
-        return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem} pathId={path.id} />;
     case 'positiveEmotionalFirstAidKitExercise':
-        return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem} pathId={path.id} />;
     // RUTA 13 (NUEVA)
     case 'ansiedadTieneSentidoExercise':
         return <AnsiedadTieneSentidoExercise key={index} content={contentItem as any} pathId={path.id} />;
@@ -780,7 +780,6 @@ function ContentItemRenderer({
 
     // ...
     default:
-      const exhaustiveCheck: never = contentItem;
       return null;
   }
 }
@@ -793,8 +792,11 @@ export function PathDetailClient({ path }: { path: Path }) {
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
 
   useEffect(() => {
+    setIsClient(true);
     if (path) {
       const initialCompleted = getCompletedModules(path.id);
       setCompletedModules(initialCompleted);
@@ -803,15 +805,11 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path) {
-    // This case should ideally be handled by the server component with notFound()
+  if (!path || !isClient) {
     return (
       <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <AlertTriangle className="w-12 h-12 text-destructive" />
-        {t.errorOccurred} Ruta no encontrada.
-        <Button asChild variant="outline">
-          <Link href="/paths">{t.allPaths}</Link>
-        </Button>
+        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+        <p>Cargando ruta...</p>
       </div>
     );
   }
