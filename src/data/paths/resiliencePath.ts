@@ -42,6 +42,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'El estrés no siempre es malo',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion1ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Otro gran mito: “el estrés es nuestro enemigo”.\nLa verdad: no todo el estrés es negativo. Existe también el llamado eustrés: un tipo de activación saludable que nos empuja a actuar, a crecer y a conectar con los demás.\nEl problema no es sentir estrés.\nEl problema es no saber cómo gestionarlo o interpretarlo.\n•\tCuando entendemos el estrés como una señal de alarma, podemos:\no\tEscuchar lo que está pidiendo.\no\tSoltar lo que nos daña.\no\tRecuperar nuestro poder de elegir cómo actuar.' }
           ]
@@ -293,4 +294,4 @@ export const resiliencePath: Path = {
 };
     
 
-
+    
