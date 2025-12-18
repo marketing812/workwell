@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { saveAssessmentToHistory } from '@/data/assessmentHistoryStore';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { saveAssessment as saveAssessmentToServer } from '@/actions/client-assessment';
+import { assessmentDimensions } from '@/data/assessmentDimensions';
 
 const DEVELOPER_EMAIL = 'jpcampa@example.com';
 const SESSION_STORAGE_ASSESSMENT_RESULTS_KEY = 'workwell-assessment-results';
@@ -178,7 +179,6 @@ export default function AssessmentPageClient({ assessmentDimensions, isGuided = 
       <QuestionnaireForm
         onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
-        assessmentDimensions={assessmentDimensions}
         isGuided={isGuided}
       />
         
