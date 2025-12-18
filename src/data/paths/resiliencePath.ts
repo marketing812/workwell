@@ -27,13 +27,13 @@ export const resiliencePath: Path = {
           type: 'collapsible',
           title: 'No, la resiliencia no es lo que siempre te han contado…',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio3sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\n❌ Mito\t✅ Realidad\n“Las personas resilientes no se rompen nunca”\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\n“Es una cualidad con la que se nace”\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\n“Ser resiliente es mantener una actitud positiva siempre”\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\n“Si recaigo o me vuelvo a sentir mal, es que no soy resiliente”\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.'}]
+          content: [{ type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\n❌ Mito\t✅ Realidad\n“Las personas resilientes no se rompen nunca”\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\n“Es una cualidad con la que se nace”\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\n“Ser resiliente es mantener una actitud positiva siempre”\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\n“Si recaigo o me vuelvo a sentir mal, es que no soy resiliente”\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.' }]
         },
         {
           type: 'collapsible',
           title: 'Recaer no es lo contrario de ser resiliente',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio4sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: '¿Y si te dijera que una recaída emocional no es el final, sino una señal para ajustar el rumbo?\nMuchas personas piensan que, si vuelven a sentirse mal o repiten un patrón, están fallando.\nPero no es así.\nEn psicología lo sabemos: el cambio real no es lineal.\nTiene curvas, pausas, a veces retrocesos.\n•\tUna recaída puede ser la forma en que el cuerpo o la mente piden ayuda o descanso.\n•\tA veces reactivamos antiguas heridas, no porque estemos fracasando, sino porque estamos profundizando en nuestro proceso.\nResiliente no es quien nunca cae. Es quien se levanta sabiendo cómo cuidarse mejor.'}]
+          content: [{ type: 'paragraph', text: '¿Y si te dijera que una recaída emocional no es el final, sino una señal para ajustar el rumbo?\nMuchas personas piensan que, si vuelven a sentirse mal o repiten un patrón, están fallando.\nPero no es así.\nEn psicología lo sabemos: el cambio real no es lineal.\nTiene curvas, pausas, a veces retrocesos.\n•\tUna recaída puede ser la forma en que el cuerpo o la mente piden ayuda o descanso.\n•\tA veces reactivamos antiguas heridas, no porque estemos fracasando, sino porque estamos profundizando en nuestro proceso.\nResiliente no es quien nunca cae. Es quien se levanta sabiendo cómo cuidarse mejor.' }]
         },
         {
           type: 'collapsible',
@@ -51,7 +51,7 @@ export const resiliencePath: Path = {
           type: 'collapsible',
           title: 'En resumen…',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: 'Ser resiliente no es resistir como una roca.\nEs adaptarte como el agua, transformarte como el fuego, volver a florecer como un árbol podado.\nNo se trata de “ser fuerte”. Se trata de saber reconstruirte con cuidado, conciencia y recursos.\nY tú ya has sido resiliente más veces de las que recuerdas.'}]
+          content: [{ type: 'paragraph', text: 'Ser resiliente no es resistir como una roca.\nEs adaptarte como el agua, transformarte como el fuego, volver a florecer como un árbol podado.\nNo se trata de “ser fuerte”. Se trata de saber reconstruirte con cuidado, conciencia y recursos.\nY tú ya has sido resiliente más veces de las que recuerdas.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -71,7 +71,7 @@ export const resiliencePath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3'},
-        { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.']},
+        { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
         { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
       ]
     },
@@ -161,6 +161,7 @@ export const resiliencePath: Path = {
           title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA',
           objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.',
           duration: '10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3'
         },
         {
           type: 'intensityScaleExercise',
@@ -168,7 +169,7 @@ export const resiliencePath: Path = {
           objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.',
           duration: '15-20 min',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: [
             '¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional? […]',
             '¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme? […]',
             '¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme? […]',
@@ -176,6 +177,11 @@ export const resiliencePath: Path = {
             '¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional? […]'
         ]},
         { type: 'title', text: 'Resumen Clave' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion2ruta8.mp3'
+        },
         { type: 'list', items: [
             'Antes de resolver, es necesario sostenerte por dentro.',
             'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.',
@@ -273,5 +279,3 @@ export const resiliencePath: Path = {
     }
   ]
 };
-
-    

@@ -355,7 +355,6 @@ export type BraveRoadmapExerciseContent = {
     title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE';
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type EssentialReminderExerciseContent = {
@@ -363,7 +362,6 @@ export type EssentialReminderExerciseContent = {
     title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL';
     objective?: string;
     duration?: string;
-    audioUrl?: string;
 };
 
 export type ThoughtsThatBlockPurposeExerciseContent = {
@@ -379,6 +377,7 @@ export type ResilienceTimelineExerciseContent = {
     title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type PersonalDefinitionExerciseContent = {
@@ -386,6 +385,7 @@ export type PersonalDefinitionExerciseContent = {
     title: 'Técnica 2: Mi definición personal de resiliencia';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type AnchorInStormExerciseContent = {
@@ -393,6 +393,7 @@ export type AnchorInStormExerciseContent = {
     title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type IntensityScaleExerciseContent = {
@@ -626,7 +627,7 @@ export type DailyWellbeingPlanExerciseContent = {
 
 export type MorningRitualExerciseContent = {
   type: 'morningRitualExercise';
-  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE';
+  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE Y CONSCIENTE';
   objective?: string;
   duration?: string;
 };
@@ -851,6 +852,3 @@ export interface AssessmentItem {
   weight: number; // The weight of the item for calculating scores
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
-
-
-    
