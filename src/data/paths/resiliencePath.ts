@@ -50,6 +50,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: '¿De qué está hecha la resiliencia?',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion1ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'La resiliencia emocional se construye con muchos ingredientes. Aquí tienes algunos de los más importantes:\n1.\tRegulación emocional\n➤ Saber calmarte sin negar lo que sientes.\n2.\tFlexibilidad mental\n➤ Salir del “todo o nada” y abrirte a nuevas formas de ver y hacer.\n3.\tPropósito vital\n➤ Conectar con algo que dé sentido a tu vida incluso en el dolor.\n4.tRed de apoyo\n➤ No caminar sola ni solo. Pedir y recibir ayuda también es resiliencia.' }
           ]
