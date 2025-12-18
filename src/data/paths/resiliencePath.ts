@@ -99,7 +99,7 @@ export const resiliencePath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        { type: 'paragraph', text: 'Cuando todo fuera parece tambalearse, ¿cómo sostenernos por dentro?\nEsta semana aprenderás a gestionar tus emociones en momentos de tensión, colapso o sobrecarga. No es magia. Es una habilidad que se entrena, y que comienza por observarte con honestidad, reconectar con tu cuerpo y crear tus propios recursos de autorregulación.\nNo siempre podrás resolver todo al instante. Pero sí puedes aprender a calmarte, a hacer una pausa, a encontrar un ancla que te devuelva a ti.\nPorque regularte no es rendirte. Es preparar el terreno para actuar con más conciencia y menos caos.' },
+        { type: 'paragraphWithAudio', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio1sesion2ruta8.mp3', text: 'Cuando todo fuera parece tambalearse, ¿cómo sostenernos por dentro?\nEsta semana aprenderás a gestionar tus emociones en momentos de tensión, colapso o sobrecarga. No es magia. Es una habilidad que se entrena, y que comienza por observarte con honestidad, reconectar con tu cuerpo y crear tus propios recursos de autorregulación.\nNo siempre podrás resolver todo al instante. Pero sí puedes aprender a calmarte, a hacer una pausa, a encontrar un ancla que te devuelva a ti.\nPorque regularte no es rendirte. Es preparar el terreno para actuar con más conciencia y menos caos.' },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -296,10 +296,5 @@ export const resiliencePath: Path = {
   ]
 };
     
-
-    
-
-
-
 
   
