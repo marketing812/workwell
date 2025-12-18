@@ -34,6 +34,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Recaer no es lo contrario de ser resiliente',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio4sesion1ruta8.mp3',
           content: [
             { type: 'paragraph', text: '¿Y si te dijera que una recaída emocional no es el final, sino una señal para ajustar el rumbo?\nMuchas personas piensan que, si vuelven a sentirse mal o repiten un patrón, están fallando.\nPero no es así.\nEn psicología lo sabemos: el cambio real no es lineal.\nTiene curvas, pausas, a veces retrocesos.\n•\tUna recaída puede ser la forma en que el cuerpo o la mente piden ayuda o descanso.\n•\tA veces reactivamos antiguas heridas, no porque estemos fracasando, sino porque estamos profundizando en nuestro proceso.\nResiliente no es quien nunca cae. Es quien se levanta sabiendo cómo cuidarse mejor.' }
           ]
@@ -291,4 +292,5 @@ export const resiliencePath: Path = {
   ]
 };
     
+
 
