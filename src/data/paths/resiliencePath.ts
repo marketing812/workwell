@@ -76,7 +76,7 @@ export const resiliencePath: Path = {
           objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.',
           duration: '10 min',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: [
           '¿Qué es realmente la resiliencia? […]',
           '¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]',
           '¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]',
@@ -297,4 +297,5 @@ export const resiliencePath: Path = {
     
 
     
+
 
