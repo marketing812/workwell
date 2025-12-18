@@ -20,7 +20,7 @@ export const resiliencePath: Path = {
           title: '¿Qué es realmente la resiliencia?',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion1ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.\nLa resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, в casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
+            { type: 'paragraph', text: 'Imagina un bambú: se dobla con el viento, pero no se rompe.\nAsí es la resiliencia: no se trata de aguantar sin sentir ni de volver a ser la misma persona de antes…\nSe trata de adaptarte, reconstruirte y seguir caminando con sentido, aunque algo dentro de ti haya cambiado.\nEn psicología, la resiliencia es la capacidad para afrontar situaciones difíciles, recuperarte emocionalmente y aprender de la experiencia. No es una cualidad fija. Es una habilidad que se entrena y que puedes desarrollar con práctica.\nLa resiliencia no elimina el dolor, pero sí te da herramientas para sostenerlo sin que te arrastre.\nTe permite:\n•\tRegular tus emociones en medio del caos.\n•\tTomar decisiones cuando nada es seguro.\n•\tVolver a sentirte tú después de un golpe emocional.\n•\tMantener tu bienestar (y tu salud mental) cuando la vida te pone a prueba.\nEn el trabajo, en casa, en tus relaciones…\nCuanta más resiliencia tienes, más libertad tienes para actuar desde tu centro, no desde el miedo.' }
           ]
         },
         {
@@ -59,12 +59,14 @@ export const resiliencePath: Path = {
           title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE',
           objective: 'Con este ejercicio descubrirás los recursos internos que ya has usado (aunque no fueras consciente) en momentos difíciles. Te ayudará a recordar que no partes de cero, y que ya has sido resiliente más veces de las que crees.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica1.mp3'
         },
         {
           type: 'personalDefinitionExercise',
           title: 'Técnica 2: Mi definición personal de resiliencia',
           objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.',
           duration: '10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'] },
         { type: 'title', text: 'Resumen Clave' },
@@ -100,6 +102,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Observar no es controlar… es comprender',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio4sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Regularte no comienza con hacer. Comienza con mirarte sin juicio.\nA veces nos perdemos en el intento de controlar lo que sentimos. Pero la clave está en observarlo con honestidad.\nImagina que eres un explorador o exploradora interna: no estás para juzgar lo que ves, sino para reconocer qué te está pasando y desde dónde estás viviendo este momento.\nPreguntas que ayudan:\n•\t¿Qué siento ahora en mi cuerpo? ¿Dónde?\n•\t¿Qué emoción predomina? ¿Hay otras más sutiles?\n•\t¿Qué pensamientos automáticos surgen?\n•\t¿Qué impulso tengo? ¿Quiero escapar, atacar, rendirme?\nConsejo terapéutico:\nLleva un mini registro diario (puede ser mental o escrito):\nSituación → Emoción → Pensamiento → Conducta.\nEste simple gesto te devuelve claridad y poder.' }
           ]
@@ -107,6 +110,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Tu mente también necesita cuidados',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'No basta con calmar el cuerpo si la mente sigue gritándote que todo va a salir mal.\nEl desborde emocional muchas veces viene acompañado de pensamientos como:\n•\t“Esto es insoportable.”\n•\t“Voy a fracasar otra vez.”\n•\t“No debería sentirme así.”\nEstos pensamientos, aunque comprensibles, alimentan el malestar si los tomas como verdades absolutas.\nPor eso, una estrategia clave es la reestructuración cognitiva, que no significa pensar “en positivo”, sino pensar con más equilibrio.\nPreguntas clave:\n•\t¿Qué pruebas tengo de que esto sucederá así?\n•\t¿Hay otra forma de interpretar esta situación?\n•\t¿Cómo lo vería alguien de fuera con más calma?\n•\t¿Qué parte de esto sí puedo manejar?\nEjemplo: “No soy capaz” → “Estoy aprendiendo a manejarlo. Hoy me siento desbordado, pero eso no define mi capacidad general.”' }
           ]
@@ -114,6 +118,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'El estrés no es tu enemigo',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'El estrés no significa que estés roto o rota.\nSignifica que estás en alerta… y que algo necesita ser escuchado.\nEl eustrés, o estrés positivo, puede ayudarte a actuar, a moverte, a resolver. Pero cuando no lo reconoces ni lo gestionas, se convierte en ansiedad o colapso.\nCambiar tu relación con el estrés es esencial para la resiliencia.\nPrácticas útiles:\n•\tNombra el estrés: “Estoy estresado porque estoy sosteniendo demasiado.”\n•\tAgradece el aviso: “Gracias, cuerpo, por avisarme de que algo no va bien.”\n•\tPregúntate: “¿Qué necesidad no estoy atendiendo?” “¿Qué puedo soltar hoy?”\nFrase para anclar:\n“Esto me estresa, sí… pero también puede enseñarme algo valioso.”' }
           ]
@@ -121,6 +126,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Tu respiración es tu botón de reinicio',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Cuando no sepas qué hacer… respira.\nDe verdad: es lo más directo que puedes hacer para calmar tu sistema nervioso.\nTu respiración conecta con el sistema nervioso parasimpático, encargado de restaurar el equilibrio interno.\nTécnica sencilla:\nInhala 5 – Pausa 2 – Exhala 5 – Pausa 2\nHazlo durante 2 minutos, y luego vuelve a observar cómo estás.\nOtras formas de usar la respiración como ancla:\n•\tRespirar contando hacia atrás del 10 al 1.\n•\tPoner una mano en el pecho y otra en el abdomen.\n•\tAsociar cada exhalación a una palabra que calme (ej. “soltar”, “paz”).\nEjemplo: Puedes usar esta técnica justo antes de una conversación difícil o después de recibir una mala noticia. No resuelve el problema, pero te devuelve a ti.' }
           ]
@@ -128,6 +134,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Contener es sostener, no reprimir',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio8sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Hay una gran diferencia entre “tragarme lo que siento” y sostenerlo con presencia.\nA veces sentimos miedo de desbordarnos. Pensamos que, si empezamos a llorar o enfadarnos, no podremos parar. Pero lo cierto es que la emoción que se permite, también se transforma.\nEstrategias para sostener emociones intensas:\n•\tPosponer su expresión si no estás en lugar seguro (ej. “Esta rabia la voy a escribir esta noche, no ahora en el trabajo.”)\n•\tUsar la distracción de forma puntual (música, paseo, hablar con alguien)\n•\tDividir el problema: “Hoy solo voy a abordar esto. Lo demás puede esperar.”\nFrase para recordarte:\n“Puedo sentir esta emoción… y seguir estando a salvo.”' }
           ]
@@ -135,6 +142,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Regularte también se entrena',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio9sesion2ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'La regulación emocional no es un botón mágico.\nEs una práctica diaria de cuidado, como cepillarte los dientes o beber agua.\nCada pequeño hábito que te conecta contigo —aunque parezca mínimo— fortalece tu sistema emocional para los momentos críticos.\nRutinas que regulan:\n•\tDormir 7-8h reales, no solo estar en la cama.\n•\tComer con consciencia, sin pantallas.\n•\tTener al menos una pausa real al día: sin producir, solo estar.\n•\tHacer ejercicio suave o caminar con intención.\n•\tEstablecer tu “mínimo no negociable” (ej. 10 min de silencio diario, 1 contacto positivo al día, etc.)\nEjemplo realista: Marta empezó a regular su ansiedad no con meditaciones largas, sino dejando el móvil fuera del baño y respirando 5 veces antes de salir. Pequeño gesto, gran cambio.' }
           ]
@@ -142,6 +150,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'En resumen…',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3',
           content: [
             { type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Regularte no te quita fuerza: te da dirección y presencia para actuar con más claridad.'] }
           ]
@@ -264,10 +273,5 @@ export const resiliencePath: Path = {
     }
   ]
 };
-    
-
-  
-
-    
 
     
