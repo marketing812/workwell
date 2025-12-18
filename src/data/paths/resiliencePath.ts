@@ -58,6 +58,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'En resumen…',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion1ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Ser resiliente no es resistir como una roca.\nEs adaptarte como el agua, transformarte como el fuego, volver a florecer como un árbol podado.\nNo se trata de “ser fuerte”. Se trata de saber reconstruirte con cuidado, conciencia y recursos.\nY tú ya has sido resiliente más veces de las que recuerdas.' }
           ]
@@ -296,3 +297,4 @@ export const resiliencePath: Path = {
     
 
     
+
