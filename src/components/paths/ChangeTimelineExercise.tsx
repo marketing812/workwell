@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
 import type { ChangeTimelineExerciseContent } from '@/data/paths/pathTypes';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 
 interface ChangeTimelineExerciseProps {
   content: ChangeTimelineExerciseContent;
@@ -39,6 +40,30 @@ export function ChangeTimelineExercise({ content, pathId }: ChangeTimelineExerci
   const next = () => setStep(prev => prev + 1);
 
   const handleComplete = () => {
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**Punto de Partida:**
+- Sentimientos: ${startPoint.feelings}
+- Pensamientos: ${startPoint.thoughts}
+- Creencias: ${startPoint.beliefs}
+- Dificultades: ${startPoint.struggles}
+
+**Momentos de Inflexión:**
+${inflectionPoints}
+
+**Momento Presente:**
+- Pensamientos ahora: ${presentMoment.thoughts}
+- Cómo me hablo ahora: ${presentMoment.talk}
+- Recursos desarrollados: ${presentMoment.resources}
+- Lo que valoro de mí: ${presentMoment.values}
+
+**Símbolo de Evolución:**
+- Imagen: ${symbol.image}
+- Porqué: ${symbol.why}
+    `;
+
+    addNotebookEntry({ title: 'Mi Línea del Cambio', content: notebookContent, pathId });
     setIsCompleted(true);
     toast({ title: 'Línea de Cambio Finalizada', description: 'Has integrado tu camino de resiliencia.' });
   };
@@ -100,7 +125,17 @@ export function ChangeTimelineExercise({ content, pathId }: ChangeTimelineExerci
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && (
+          <CardDescription className="pt-2">
+            {content.objective}
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         {!isCompleted ? renderStep() : (
