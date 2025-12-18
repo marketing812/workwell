@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { assessmentDimensions } from '@/data/assessmentDimensions';
 
 // Helper para asegurar que los iconos se cargan correctamente
 const FrownIcon = require('lucide-react').Frown;

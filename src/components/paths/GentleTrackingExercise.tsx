@@ -12,10 +12,7 @@ import { Edit3, Save, CheckIcon, MinusIcon, XIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { GentleTrackingExerciseContent } from '@/data/paths/pathTypes';
-import { useFirestore, useUser } from '@/firebase/provider';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
-
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 
 interface GentleTrackingExerciseProps {
   content: GentleTrackingExerciseContent;
@@ -29,8 +26,6 @@ type DailyProgress = {
 
 export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerciseProps) {
   const { toast } = useToast();
-  const db = useFirestore();
-  const { user } = useUser();
   const [weekWord, setWeekWord] = useState('');
   const [saved, setSaved] = useState(false);
   const [progress, setProgress] = useState<Record<string, DailyProgress>>({});
@@ -66,11 +61,6 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!user?.id || !db) {
-      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
-      return;
-    }
-
     const progressText = Object.entries(progress)
       .map(([date, data]) => {
         const statusSymbol = data.status === 'done' ? '✔' : data.status === 'partial' ? '~' : 'X';
@@ -83,11 +73,9 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
         content: `**Seguimiento del Hábito:**\n${progressText || 'No se registraron días.'}\n\n*Mi palabra de la semana para este hábito ha sido:*\n**${weekWord || 'No especificada.'}**`,
         pathId,
         ruta: 'Superar la Procrastinación y Crear Hábitos',
-        timestamp: serverTimestamp(),
     };
-
-    const notebookRef = collection(db, "users", user.id, "notebook_entries");
-    addDocumentNonBlocking(notebookRef, notebookContent);
+    
+    addNotebookEntry(notebookContent);
     
     toast({
       title: 'Seguimiento Guardado',
@@ -120,14 +108,6 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
           {content.title}
         </CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.audioUrl && (
-          <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-              </audio>
-          </div>
-        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">

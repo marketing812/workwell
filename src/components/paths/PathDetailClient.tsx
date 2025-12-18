@@ -53,9 +53,6 @@ import { es } from 'date-fns/locale';
 import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
-import { useFirestore } from '@/firebase/provider';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-
 
 // RUTA 1
 import { StressMapExercise } from '@/components/paths/StressMapExercise';
@@ -262,7 +259,6 @@ function TherapeuticNotebookReflectionExercise({
 }) {
   const { toast } = useToast();
   const { user } = useUser();
-  const db = useFirestore();
   const [reflection, setReflection] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
@@ -280,11 +276,7 @@ function TherapeuticNotebookReflectionExercise({
       });
       return;
     }
-    if (!user?.id || !db) {
-      toast({ title: 'Error', description: 'No se pudo guardar, usuario o DB no disponible.', variant: 'destructive'});
-      return;
-    }
-
+    
     const fullContent = `
 **${content.title}**
 
@@ -294,25 +286,18 @@ ${content.prompts.join('\n')}
 ${reflection}
     `;
 
-    try {
-        const notebookRef = collection(db, "users", user.id, "notebook_entries");
-        await addDoc(notebookRef, {
-            title: `Reflexión: ${content.title}`,
-            content: fullContent,
-            pathId: pathId,
-            ruta: pathTitle,
-            timestamp: serverTimestamp(),
-        });
-        
-        toast({
-          title: 'Reflexión Guardada',
-          description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
-        });
-        setIsSaved(true);
-    } catch (error) {
-        console.error("Error saving notebook entry to Firestore:", error);
-        toast({ title: 'Error', description: 'No se pudo guardar la reflexión.', variant: 'destructive'});
-    }
+    addNotebookEntry({
+      title: `Reflexión: ${content.title}`,
+      content: fullContent,
+      pathId: pathId,
+      ruta: pathTitle
+    });
+    
+    toast({
+      title: 'Reflexión Guardada',
+      description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
+    });
+    setIsSaved(true);
   };
 
   return (
@@ -1026,5 +1011,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-
