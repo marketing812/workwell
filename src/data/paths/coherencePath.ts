@@ -1,3 +1,4 @@
+
 import type { Path } from '../pathsData';
 
 export const coherencePath: Path = {
@@ -5,6 +6,7 @@ export const coherencePath: Path = {
   title: 'Vivir con Coherencia Personal',
   description: 'Aprende a alinear tus pensamientos, emociones y acciones con lo que realmente valoras, sin perder flexibilidad ni adaptabilidad.',
   dataAiHint: 'coherence integrity values',
+  audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/INTRODUCCIONRUTA.mp3',
   modules: [
     {
       id: 'coherencia_sem1',
@@ -292,5 +294,7 @@ export const coherencePath: Path = {
     }
   ]
 };
+
+    
 
     
