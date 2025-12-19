@@ -69,9 +69,8 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'Una práctica, no un ideal',
-          content: [
-            { type: 'paragraph', text: 'La coherencia no es un estado perfecto al que se llega y ya. Es una práctica diaria. Una conversación contigo misma o contigo mismo que se renueva a cada paso.\nNo se trata de acertar siempre. Se trata de darte cuenta cuando algo no encaja… y tener la valentía de hacer pequeños ajustes con amabilidad.\nHoy puede que estés más conectada/o con lo que necesitas. Mañana puede que te confundas. Y pasado vuelvas a ti. Ese es el ritmo real de vivir en coherencia.\nAquí no buscamos exigencias. Buscamos autenticidad, práctica consciente y respeto por ti.' }
-          ]
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/Unapracticanounideal.mp3',
+          content: [{ type: 'paragraph', text: 'La coherencia no es un estado perfecto al que se llega y ya. Es una práctica diaria. Una conversación contigo misma o contigo mismo que se renueva a cada paso.\nNo se trata de acertar siempre. Se trata de darte cuenta cuando algo no encaja… y tener la valentía de hacer pequeños ajustes con amabilidad.\nHoy puede que estés más conectada/o con lo que necesitas. Mañana puede que te confundas. Y pasado vuelvas a ti. Ese es el ritmo real de vivir en coherencia.\nAquí no buscamos exigencias. Buscamos autenticidad, práctica consciente y respeto por ti.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
