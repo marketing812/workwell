@@ -54,6 +54,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'Coherencia y salud emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/Coherenciaysaludemocional.mp3',
           content: [
             { type: 'paragraph', text: 'Vivir en coherencia no solo nos alinea internamente: también nos fortalece emocionalmente.\nCuando tomas decisiones que están en sintonía con lo que sientes y valoras:' },
             { type: 'list', items: [
