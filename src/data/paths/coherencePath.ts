@@ -46,6 +46,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'La incoherencia no es un fallo: es una señal',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/Laincoherencianoesunfalloesunasenal.mp3',
           content: [
             { type: 'paragraph', text: 'La incoherencia interna no te convierte en una mala persona. Tampoco significa que seas débil o inconstante. Significa que hay un choque entre partes de ti que necesitan diálogo.\nA veces actuamos en contra de nuestros valores o emociones por miedo, por necesidad de agradar, por hábito o por falta de claridad.\nEn lugar de castigarte por eso, puedes empezar a verlo como una señal de que algo dentro necesita ser escuchado. Es como un semáforo en ámbar que te avisa: “Detente un momento, algo no está encajando.”\nY ese es un gran paso hacia la coherencia.' }
           ]
@@ -61,14 +62,14 @@ export const coherencePath: Path = {
                 'Ganas claridad y autoconfianza.',
                 'Mejoras tu energía física y mental.',
             ]},
-            { type: 'paragraph', text: 'Ser coherente contigo no siempre es cómodo… pero casi siempre es sanador.\nY lo mejor es que es una habilidad que se entrena, paso a paso, como lo estás haciendo tú ahora.' },
+            { type: 'paragraph', text: 'Ser coherente contigo no siempre es cómodo… pero casi siempre es sanador.\nY lo mejor es que es una habilidad que se entrena, paso a paso, como lo estás haciendo tú ahora.' }
           ]
         },
         {
           type: 'collapsible',
           title: 'Una práctica, no un ideal',
           content: [
-            { type: 'paragraph', text: 'La coherencia no es un estado perfecto al que se llega y ya. Es una práctica diaria. Una conversación contigo misma o contigo mismo que se renueva a cada paso.\nNo se trata de acertar siempre. Se trata de darte cuenta cuando algo no encaja… y tener la valentía de hacer pequeños ajustes con amabilidad.\nHoy puede que estés más conectada/o con lo que necesitas. Mañana puede que te confundas. Y pasado vuelvas a ti. Ese es el ritmo real de vivir en coherencia.\nAquí no buscamos exigencias. Buscamos autenticidad, práctica consciente y respeto por ti.' },
+            { type: 'paragraph', text: 'La coherencia no es un estado perfecto al que se llega y ya. Es una práctica diaria. Una conversación contigo misma o contigo mismo que se renueva a cada paso.\nNo se trata de acertar siempre. Se trata de darte cuenta cuando algo no encaja… y tener la valentía de hacer pequeños ajustes con amabilidad.\nHoy puede que estés más conectada/o con lo que necesitas. Mañana puede que te confundas. Y pasado vuelvas a ti. Ese es el ritmo real de vivir en coherencia.\nAquí no buscamos exigencias. Buscamos autenticidad, práctica consciente y respeto por ti.' }
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -109,7 +110,7 @@ export const coherencePath: Path = {
           type: 'collapsible',
           title: 'Las tres fuerzas que más nos alejan de nuestra coherencia',
           content: [
-            { type: 'paragraph', text: '1. Miedo\n- Distorsiona tu visión: imagina que quieres expresar algo en el trabajo, pero piensas “¿y si me miran raro?”. Ese pensamiento activa una alarma que exagera el riesgo.\n- Te lleva a evitar: para no sentir incomodidad, eliges callar… y luego te quedas con la sensación de que no fuiste fiel a ti mismo/a.\n- A veces te hace depender de la aprobación ajena porque temes perder vínculos o estatus.\n\n2. Necesidad de aprobación\n- Si tu valor personal depende de la opinión de los demás, empiezas a actuar para encajar, aunque eso signifique decir “sí” cuando quieres decir “no”.\n- Terminas proyectando una imagen “agradable” pero alejada de lo que realmente eres.\n- Esto debilita tu confianza interna: con el tiempo, dudas de tu propio criterio.\n\n3. Automatismos\n- Son como el “piloto automático” del cerebro: reacciones rápidas que aprendiste hace años y que repites sin pensar.\n- Funcionan bien para tareas simples, pero en decisiones importantes pueden dejarte atrapado/a en rutinas que no te representan.\n- Por ejemplo: responder con “todo bien” aunque por dentro estés agotado/a y necesites apoyo.' },
+            { type: 'paragraph', text: '1. Miedo\n- Distorsiona tu visión: imagina que quieres expresar algo en el trabajo, pero piensas “¿y si me miran raro?”. Ese pensamiento activa una alarma que exagera el riesgo.\n- Te lleva a evitar: para no sentir incomodidad, eliges callar… y luego te quedas con la sensación de que no fuiste fiel a ti mismo/a.\n- A veces te hace depender de la aprobación ajena porque temes perder vínculos o estatus.\n\n2. Necesidad de aprobación\n- Si tu valor personal depende de la opinión de los demás, empiezas a actuar para encajar, aunque eso signifique decir “sí” cuando quieres decir “no”.\n- Terminas proyectando una imagen “agradable” pero alejada de lo que realmente eres.\n- Esto debilita tu confianza interna: con el tiempo, dudas de tu propio criterio.\n\n3. Automatismos\n- Son como el “piloto automático” del cerebro: reacciones rápidas que aprendiste hace años y que repites sin pensar.\n- Funcionan bien para tareas simples, pero en decisiones importantes pueden dejarte atrapado/a en rutinas que no te representan.\n- Por ejemplo: responder con “todo bien” aunque por dentro estés agotado/a y necesites apoyo.' }
           ]
         },
         {
@@ -230,7 +231,7 @@ export const coherencePath: Path = {
             type: 'collapsible',
             title: 'Cuando el mundo no va en tu misma dirección',
             content: [
-              { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' },
+              { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' }
             ]
           },
           {
