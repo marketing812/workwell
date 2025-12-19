@@ -89,6 +89,7 @@ export const coherencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
@@ -161,8 +162,7 @@ export const coherencePath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'list', items: ['Detectar tus puntos de desconexión interna te da información valiosa sobre tus necesidades y límites.','Pensamiento, emoción y acción funcionan como un equipo: si uno se descuida, todo el equilibrio se resiente.','La coherencia no significa rigidez: a veces elegir lo contrario a lo que sientes es válido, si responde a un valor importante para ti.','Observarte sin juicio abre espacio para el cambio y la autoaceptación.']},
-        { type: 'quote', text: '“La coherencia no es perfección, es respeto hacia lo que eres. Cada vez que piensas, sientes y actúas en la misma dirección, fortaleces tu brújula interna.”' }
-      ]
+        { type: 'quote', text: '“La coherencia no es perfección, es respeto hacia lo que eres. Cada vez que piensas, sientes y actúas en la misma dirección, fortaleces tu brújula interna.”' }]
     },
     {
       id: 'coherencia_sem3',
@@ -193,7 +193,7 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'environmentEvaluationExercise', title: 'EJERCICIO 1: EVALUACIÓN DE ENTORNOS CLAVE', objective: 'Observa qué entornos te apoyan y cuáles te drenan para poder elegir dónde y con quién invertir tu energía.', duration: '8-10 min' },
         { type: 'personalManifestoExercise', title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA', objective: 'Redacta un texto breve que sea tu brújula para tomar decisiones alineadas contigo.', duration: '10-15 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?','¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?','¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?','¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?','¿Qué idea, frase o herramienta quiero quedarme como brújula personal?','¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?','¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?','¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?','¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?','¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?','¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
         { type: 'title', text: 'Resumen Final de la Ruta'},
         { type: 'list', items: ['La coherencia personal es la armonía entre lo que piensas, sientes y haces.','No es rigidez: implica flexibilidad consciente sin perder el eje de tus valores.','Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes.','El entorno influye: identificar qué lo facilita o dificulta te da margen de acción.','La coherencia se construye con actos cotidianos, no con grandes discursos.','Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.','Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad.']},
         { type: 'quote', text: '“Vivir con coherencia no es un destino, es un camino que recorres cada día… y ese camino empieza siempre en ti.”' }]
