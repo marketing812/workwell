@@ -23,6 +23,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué es la coherencia personal?',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/Queeslacoherenciapersonal.mp3',
           content: [
             { type: 'paragraph', text: 'La coherencia personal ocurre cuando lo que piensas, sientes y haces están en la misma dirección.\nEs cuando tus acciones reflejan tus valores, tus emociones no son silenciadas, y tus pensamientos no se contradicen con lo que haces cada día.\nPero atención: no se trata de estar siempre en equilibrio ni de acertar todo el tiempo. Ser coherente es un acto de atención diaria.\nEs preguntarte: “¿Esto que estoy haciendo me representa? ¿Estoy en paz con esta decisión?”' },
             { type: 'paragraph', text: 'Ejemplo realista: Imagina que valoras profundamente el descanso, pero aceptas reuniones fuera de tu horario por no quedar mal. Aunque lo hagas con la mejor intención, eso genera un pequeño conflicto interno. Al final del día, puedes sentirte agotado/a, irritado/a o confundido/a sin saber muy bien por qué.' },
