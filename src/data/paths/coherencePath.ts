@@ -78,12 +78,14 @@ export const coherencePath: Path = {
           title: 'EJERCICIO 1: MI BRÚJULA DE COHERENCIA',
           objective: 'Descubre en qué partes de tu vida estás alineado o alineada contigo, y en cuáles sientes que hay una desconexión.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica1.mp3'
         },
         {
           type: 'smallDecisionsLogExercise',
           title: 'EJERCICIO 2: REGISTRO DE DECISIONES PEQUEÑAS',
           objective: 'Observa cómo eliges en tu día a día, si actúas desde lo que realmente quieres o desde lo que crees que “debes” hacer.',
           duration: '5-10 min diarios',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
@@ -96,22 +98,18 @@ export const coherencePath: Path = {
       title: 'Semana 2: Detecta tus Puntos de Desconexión',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraph', text: 'Tomar decisiones que te representen no es siempre lo más fácil… pero sí lo más auténtico. Esta semana aprenderás a identificar los valores que quieres sostener y a usarlos como brújula para decidir, incluso cuando haya dudas o presiones externas. Porque cuando sabes qué es importante para ti, es más fácil decir ‘sí’ o ‘no’ sin sentirte en deuda contigo mismo o contigo misma.' },
+      content: [{ type: 'paragraph', text: 'Tomar decisiones que te representen no es siempre lo más fácil… pero sí lo más auténtico. Esta semana aprenderás a identificar los valores que quieres sostener y a usarlos como brújula para decidir, incluso cuando haya dudas o presiones externas. Porque cuando sabes qué es importante para ti, es más fácil decir ‘sí’ o ‘no’ sin sentirte en deuda contigo mismo o contigo misma.' },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Qué es realmente la incoherencia interna',
-          content: [
-            { type: 'paragraph', text: 'La incoherencia no significa que “seas una mala persona” o que “no tengas remedio”. Significa que, en ese momento, lo que piensas, sientes y haces no van de la mano.\nA veces, es como si dentro de ti hubiera varias voces hablando al mismo tiempo… y cada una quisiera ir en una dirección distinta.\nEsto ocurre por muchas razones: creencias que nunca revisaste, miedos antiguos, costumbres que se han vuelto automáticas… Reconocerlo no es debilidad, es un acto de valentía y lucidez.' },
-          ]
+          content: [{ type: 'paragraph', text: 'La incoherencia no significa que “seas una mala persona” o que “no tengas remedio”. Significa que, en ese momento, lo que piensas, sientes y haces no van de la mano.\nA veces, es como si dentro de ti hubiera varias voces hablando al mismo tiempo… y cada una quisiera ir en una dirección distinta.\nEsto ocurre por muchas razones: creencias que nunca revisaste, miedos antiguos, costumbres que se han vuelto automáticas… Reconocerlo no es debilidad, es un acto de valentía y lucidez.' }]
         },
         {
           type: 'collapsible',
           title: 'Las tres fuerzas que más nos alejan de nuestra coherencia',
           content: [
-            { type: 'paragraph', text: '1. Miedo\n- Distorsiona tu visión: imagina que quieres expresar algo en el trabajo, pero piensas “¿y si me miran raro?”. Ese pensamiento activa una alarma que exagera el riesgo.\n- Te lleva a evitar: para no sentir incomodidad, eliges callar… y luego te quedas con la sensación de que no fuiste fiel a ti mismo/a.\n- A veces te hace depender de la aprobación ajena porque temes perder vínculos o estatus.\n\n2. Necesidad de aprobación\n- Si tu valor personal depende de la opinión de los demás, empiezas a actuar para encajar, aunque eso signifique decir “sí” cuando quieres decir “no”.\n- Terminas proyectando una imagen “agradable” pero alejada de lo que realmente eres.\n- Esto debilita tu confianza interna: con el tiempo, dudas de tu propio criterio.\n\n3. Automatismos\n- Son como el “piloto automático” del cerebro: reacciones rápidas que aprendiste hace años y que repites sin pensar.\n- Funcionan bien para tareas simples, pero en decisiones importantes pueden dejarte atrapado/a en rutinas que no te representan.\n- Por ejemplo: responder con “todo bien” aunque por dentro estés agotado/a y necesites apoyo.' }
-          ]
+            { type: 'paragraph', text: '1. Miedo\n- Distorsiona tu visión: imagina que quieres expresar algo en el trabajo, pero piensas “¿y si me miran raro?”. Ese pensamiento activa una alarma que exagera el riesgo.\n- Te lleva a evitar: para no sentir incomodidad, eliges callar… y luego te quedas con la sensación de que no fuiste fiel a ti mismo/a.\n- A veces te hace depender de la aprobación ajena porque temes perder vínculos o estatus.\n\n2. Necesidad de aprobación\n- Si tu valor personal depende de la opinión de los demás, empiezas a actuar para encajar, aunque eso signifique decir “sí” cuando quieres decir “no”.\n- Terminas proyectando una imagen “agradable” pero alejada de lo que realmente eres.\n- Esto debilita tu confianza interna: con el tiempo, dudas de tu propio criterio.\n\n3. Automatismos\n- Son como el “piloto automático” del cerebro: reacciones rápidas que aprendiste hace años y que repites sin pensar.\n- Funcionan bien para tareas simples, pero en decisiones importantes pueden dejarte atrapado/a en rutinas que no te representan.\n- Por ejemplo: responder con “todo bien” aunque por dentro estés agotado/a y necesites apoyo.' }]
         },
         {
           type: 'collapsible',
@@ -178,8 +176,7 @@ export const coherencePath: Path = {
           type: 'collapsible',
           title: 'Coherencia ≠ Rigidez',
           content: [
-            { type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' },
-          ]
+            { type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }]
         },
         {
           type: 'collapsible',
