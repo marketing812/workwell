@@ -6,6 +6,7 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
+  audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Introruta8.mp3',
   modules: [
     {
       id: 'res_sem1',
@@ -59,7 +60,7 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Tu respiración es tu botón de reinicio', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion2ruta8.mp3', content: [{ type: 'paragraph', text: 'Cuando no sepas qué hacer… respira.\nDe verdad: es lo más directo que puedes hacer para calmar tu sistema nervioso.\nTu respiración conecta con el sistema nervioso parasimpático, encargado de restaurar el equilibrio interno.\nTécnica sencilla:\nInhala 5 – Pausa 2 – Exhala 5 – Pausa 2\nHazlo durante 2 minutos, y luego vuelve a observar cómo estás.\nOtras formas de usar la respiración como ancla:\n•\tRespirar contando hacia atrás del 10 al 1.\n•\tPoner una mano en el pecho y otra en el abdomen.\n•\tAsociar cada exhalación a una palabra que calme (ej. “soltar”, “paz”).\nEjemplo: Puedes usar esta técnica justo antes de una conversación difícil o después de recibir una mala noticia. No resuelve el problema, pero te devuelve a ti.' }] },
         { type: 'collapsible', title: 'Contener es sostener, no reprimir', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio8sesion2ruta8.mp3', content: [{ type: 'paragraph', text: 'Hay una gran diferencia entre “tragarme lo que siento” y sostenerlo con presencia.\nA veces sentimos miedo de desbordarnos. Pensamos que, si empezamos a llorar o enfadarnos, no podremos parar. Pero lo cierto es que la emoción que se permite, también se transforma.\nEstrategias para sostener emociones intensas:\n•\tPosponer su expresión si no estás en lugar seguro (ej. “Esta rabia la voy a escribir esta noche, no ahora en el trabajo.”)\n•\tUsar la distracción de forma puntual (música, paseo, hablar con alguien)\n•\tDividir el problema: “Hoy solo voy a abordar esto. Lo demás puede esperar.”\nFrase para recordarte:\n“Puedo sentir esta emoción… y seguir estando a salvo.”' }] },
         { type: 'collapsible', title: 'Regularte también se entrena', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio9sesion2ruta8.mp3', content: [{ type: 'paragraph', text: 'La regulación emocional no es un botón mágico.\nEs una práctica diaria de cuidado, como cepillarte los dientes o beber agua.\nCada pequeño hábito que te conecta contigo —aunque parezca mínimo— fortalece tu sistema emocional para los momentos críticos.\nRutinas que regulan:\n•\tDormir 7-8h reales, no solo estar en la cama.\n•\tComer con consciencia, sin pantallas.\n•\tTener al menos una pausa real al día: sin producir, solo estar.\n•\tHacer ejercicio suave o caminar con intención.\n•\tEstablecer tu “mínimo no negociable” (ej. 10 min de silencio diario, 1 contacto positivo al día, etc.)\nEjemplo realista: Marta empezó a regular su ansiedad no con meditaciones largas, sino dejando el móvil fuera del baño y respirando 5 veces antes de salir. Pequeño gesto, gran cambio.' }] },
-        { type: 'collapsible', title: 'En resumen…', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3', content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Regularte no te quita fuerza: te da dirección y presencia para actuar con más claridad.'] }] },
+        { type: 'collapsible', title: 'En resumen…', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3', content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3' },
         { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3' },
@@ -117,12 +118,14 @@ export const resiliencePath: Path = {
               title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO',
               objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.',
               duration: '15-20 min',
+              audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3'
           },
           {
               type: 'myPactExercise',
               title: 'EJERCICIO 2: MI PACTO CONMIGO',
               objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.',
               duration: '10-15 min',
+              audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3'
           },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: [
               '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma? […]',
@@ -148,4 +151,5 @@ export const resiliencePath: Path = {
   ]
 };
 
+    
     
