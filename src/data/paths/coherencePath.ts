@@ -32,6 +32,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'Autenticidad, integridad y perfección: diferencias clave',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/Autenticidadintegridadyperfeccion.mp3',
           content: [
             { type: 'paragraph', text: 'Muchas veces se confunden estos conceptos, pero es fundamental diferenciarlos para que puedas avanzar sin enredos ni autoexigencias.' },
             { type: 'list', items: [
@@ -46,7 +47,7 @@ export const coherencePath: Path = {
           type: 'collapsible',
           title: 'La incoherencia no es un fallo: es una señal',
           content: [
-            { type: 'paragraph', text: 'La incoherencia interna no te convierte en una mala persona. Tampoco significa que seas débil o inconstante. Significa que hay un choque entre partes de ti que necesitan diálogo.\nA veces actuamos en contra de nuestros valores o emociones por miedo, por necesidad de agradar, por hábito o por falta de claridad.\nEn lugar de castigarte por eso, puedes empezar a verlo como una señal de que algo dentro necesita ser escuchado. Es como un semáforo en ámbar que te avisa: “Detente un momento, algo no está encajando.”\nY ese es un gran paso hacia la coherencia.' },
+            { type: 'paragraph', text: 'La incoherencia interna no te convierte en una mala persona. Tampoco significa que seas débil o inconstante. Significa que hay un choque entre partes de ti que necesitan diálogo.\nA veces actuamos en contra de nuestros valores o emociones por miedo, por necesidad de agradar, por hábito o por falta de claridad.\nEn lugar de castigarte por eso, puedes empezar a verlo como una señal de que algo dentro necesita ser escuchado. Es como un semáforo en ámbar que te avisa: “Detente un momento, algo no está encajando.”\nY ese es un gran paso hacia la coherencia.' }
           ]
         },
         {
@@ -83,20 +84,9 @@ export const coherencePath: Path = {
           objective: 'Observa cómo eliges en tu día a día, si actúas desde lo que realmente quieres o desde lo que crees que “debes” hacer.',
           duration: '5-10 min diarios',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
-          'Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)',
-          'Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)',
-          'Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)',
-          'Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)',
-        ]},
-        { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: [
-            'La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.',
-            'No es perfección, es práctica diaria y ajustes constantes.',
-            'La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.',
-            'Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.',
-            'Se construye con decisiones cotidianas, no solo con grandes cambios.',
-        ]},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
+        { type: 'title', text: 'Resumen Clave'},
+        { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
     },
@@ -133,7 +123,7 @@ export const coherencePath: Path = {
                 'Autojustificación excesiva: dar mil razones para convencerte de que “no estuvo tan mal” lo que hiciste, aunque en el fondo sabes que no es lo que querías.',
                 'Sensación de estancamiento: la impresión de vivir en un bucle, repitiendo las mismas decisiones y errores sin avanzar.',
             ]},
-            { type: 'paragraph', text: 'Si reconoces alguna de estas señales, no te alarmes. No indican que “estés roto/a”, sino que hay un desajuste entre tu brújula interna y tu dirección actual. Y la buena noticia es que puedes recalibrarla.' },
+            { type: 'paragraph', text: 'Si reconoces alguna de estas señales, no te alarmes. No indican que “estés roto/a”, sino que hay un desajuste entre tu brújula interna y tu dirección actual. Y la buena noticia es que puedes recalibrarla.' }
           ]
         },
         {
@@ -146,14 +136,14 @@ export const coherencePath: Path = {
               'Esquemas aprendidos en entornos invalidantes: si de pequeño/a te hicieron sentir que tus emociones no importaban (“no llores”, “no exageres”), quizá hoy te cueste reconocer y priorizar lo que sientes.',
               'Falta de claridad en tus metas y valores: sin un mapa interno, es fácil dejarse llevar por lo urgente o por lo que otros esperan, aunque no te acerque a lo que realmente quieres.',
             ]},
-             { type: 'paragraph', text: 'Ejemplo: Es como navegar sin rumbo fijo: cualquier viento te arrastra, incluso si te aleja de la orilla que quieres alcanzar.\nY aquí llega el punto clave: detectar estas raíces no es para culparte, sino para entender por qué actúas como actúas y poder decidir con más libertad.' },
+             { type: 'paragraph', text: 'Ejemplo: Es como navegar sin rumbo fijo: cualquier viento te arrastra, incluso si te aleja de la orilla que quieres alcanzar.\nY aquí llega el punto clave: detectar estas raíces no es para culparte, sino para entender por qué actúas como actúas y poder decidir con más libertad.' }
           ]
         },
         {
           type: 'collapsible',
           title: 'Por qué detectar la incoherencia es clave',
           content: [
-            { type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' },
+            { type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -170,13 +160,8 @@ export const coherencePath: Path = {
           duration: '10-12 min',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…']},
-        { type: 'title', text: 'Resumen Clave' },
-        { type: 'list', items: [
-          'Detectar tus puntos de desconexión interna te da información valiosa sobre tus necesidades y límites.',
-          'Pensamiento, emoción y acción funcionan como un equipo: si uno se descuida, todo el equilibrio se resiente.',
-          'La coherencia no significa rigidez: a veces elegir lo contrario a lo que sientes es válido, si responde a un valor importante para ti.',
-          'Observarte sin juicio abre espacio para el cambio y la autoaceptación.',
-        ]},
+        { type: 'title', text: 'Resumen Clave'},
+        { type: 'list', items: ['Detectar tus puntos de desconexión interna te da información valiosa sobre tus necesidades y límites.','Pensamiento, emoción y acción funcionan como un equipo: si uno se descuida, todo el equilibrio se resiente.','La coherencia no significa rigidez: a veces elegir lo contrario a lo que sientes es válido, si responde a un valor importante para ti.','Observarte sin juicio abre espacio para el cambio y la autoaceptación.']},
         { type: 'quote', text: '“La coherencia no es perfección, es respeto hacia lo que eres. Cada vez que piensas, sientes y actúas en la misma dirección, fortaleces tu brújula interna.”' }
       ]
     },
@@ -199,7 +184,7 @@ export const coherencePath: Path = {
           type: 'collapsible',
           title: 'Tus valores como brújula interna',
           content: [
-            { type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' },
+            { type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }
           ]
         },
          { type: 'title', text: 'Técnicas Específicas' },
@@ -222,7 +207,7 @@ export const coherencePath: Path = {
           '¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?',
           '¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?',
         ]},
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'list', items: [
           'La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.',
           'Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.',
@@ -252,7 +237,7 @@ export const coherencePath: Path = {
             type: 'collapsible',
             title: 'El papel del entorno',
             content: [
-              { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\n- Facilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\n- Saboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\n- Facilitador → Un compañero de trabajo que respeta tus descansos y horarios.\n- Saboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' },
+              { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\n- Facilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\n- Saboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\n- Facilitador → Un compañero de trabajo que respeta tus descansos y horarios.\n- Saboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' }
             ]
           },
           { type: 'title', text: 'Técnicas Específicas' },
@@ -295,3 +280,4 @@ export const coherencePath: Path = {
     
 
     
+
