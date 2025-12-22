@@ -126,7 +126,7 @@ export const responsibilityPath: Path = {
           objective:
             'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.',
           duration: '10 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3',
         },
         {
           type: 'guiltRadarExercise',
@@ -134,7 +134,7 @@ export const responsibilityPath: Path = {
           objective:
             'Quiero ayudarte a detectar cuándo la culpa que sientes es una señal útil y cuándo es una carga que no te corresponde. Con este ejercicio vas a calibrar tu radar interno para diferenciar entre una culpa que te guía y una que solo te pesa.',
           duration: '5–7 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -147,8 +147,12 @@ export const responsibilityPath: Path = {
             '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3' },
+        { type: 'title', text: 'Resumen Clave de la Semana' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3',
+        },
         {
           type: 'list',
           items: [
@@ -169,8 +173,9 @@ export const responsibilityPath: Path = {
       estimatedTime: '15-20 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: '¿Notas que a veces, por más que pienses y repienses algo, no llegas a ninguna solución?\nEsta semana vas a practicar cómo cortar el circuito de la culpa improductiva, cómo cuestionar pensamientos rígidos y cómo abrir espacio para respuestas más constructivas.\nLa clave estará en pasar de rumiar a actuar con claridad y autocompasión.',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Introsesion2ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
