@@ -12,10 +12,12 @@ import { useToast } from '@/hooks/use-toast';
 import { t } from '@/lib/translations';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
-import { setDocumentNonBlocking, deleteDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
+import { deleteLegacyData } from '@/data/userUtils'; // Importar la nueva función
 
+const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
 
 export interface User {
   id: string;
@@ -138,6 +140,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const userId = currentUser.uid;
 
     try {
+      // Primero, se realiza la llamada para borrar de la plataforma antigua
+      const { debugUrl } = await deleteLegacyData(userId, 'borrarusuario');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem(DEBUG_DELETE_FETCH_URL_KEY, debugUrl);
+      }
+
+      // Luego, se procede a borrar los datos de Firestore
       const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
       const batch = writeBatch(db);
 
@@ -154,6 +163,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       
       await batch.commit();
       
+      // Finalmente, se borra el usuario de Firebase Auth
       await deleteFirebaseUser(currentUser);
 
       toast({ title: t.deleteAccountSuccessTitle, description: t.deleteAccountSuccessMessage });

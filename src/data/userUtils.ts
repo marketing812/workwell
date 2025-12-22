@@ -17,7 +17,7 @@ export async function sendLegacyData(
     const departmentCode = data.department_code || '';
 
     // Create a new object for encryption that excludes the unencrypted fields
-    const { id, department_code, ...encryptedData } = data;
+    const { id, name, email, department_code, ...encryptedData } = data;
     
     // Encrypt the rest of the data
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(encryptedData));
@@ -45,5 +45,35 @@ export async function sendLegacyData(
   } catch (error) {
     console.error(`Error preparing legacy data for sending (type: ${type}):`, error);
     return { success: false, debugUrl: "Error creating URL" };
+  }
+}
+
+export async function deleteLegacyData(
+  userId: string,
+  type: 'borrarusuario'
+): Promise<{ success: boolean; debugUrl: string }> {
+  try {
+    // Build the URL for deletion, userId is not encrypted
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}`;
+
+    console.log(`Sending delete request for user '${userId}' to legacy URL...`);
+
+    // "Fire and forget" call
+    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
+      .then(response => {
+        if (!response.ok) {
+          console.warn(`Legacy user deletion failed with status: ${response.status}`);
+        } else {
+          console.log(`Legacy user deletion for user '${userId}' initiated successfully.`);
+        }
+      })
+      .catch(error => {
+        console.error(`Error sending legacy delete request for user '${userId}':`, error);
+      });
+
+    return { success: true, debugUrl: url };
+  } catch (error) {
+    console.error(`Error preparing legacy delete request for user '${userId}':`, error);
+    return { success: false, debugUrl: "Error creating delete URL" };
   }
 }
