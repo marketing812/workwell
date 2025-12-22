@@ -19,6 +19,9 @@ import { doc } from "firebase/firestore";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
+import { sendLegacyData } from "@/data/userUtils";
+
+const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -104,8 +107,13 @@ export function RegisterForm() {
       };
       
       const userDocRef = doc(db, "users", firebaseUser.uid);
-      // Usamos la función no bloqueante para crear el documento de perfil.
       setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
+
+      // Send data to legacy URL and store debug URL
+      const { debugUrl } = await sendLegacyData(userProfileData, 'usuario');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem(DEBUG_REGISTER_FETCH_URL_KEY, debugUrl);
+      }
 
       toast({
         title: t.registrationSuccessTitle,
