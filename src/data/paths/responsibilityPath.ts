@@ -5,6 +5,7 @@ export const responsibilityPath: Path = {
   title: 'Ni Culpa Ni Queja: Responsabilidad Activa',
   description: 'Aprende a distinguir lo que depende de ti, a transformar la queja en acción y a elegir la responsabilidad activa sin caer en el autoabandono.',
   dataAiHint: 'responsibility guilt action',
+  audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Introruta10.mp3',
   modules: [
     {
       id: 'resp_sem1',
