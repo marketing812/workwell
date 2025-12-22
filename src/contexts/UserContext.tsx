@@ -140,30 +140,51 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const userId = currentUser.uid;
 
     try {
-      // Primero, se realiza la llamada para borrar de la plataforma antigua
+      // First, call to delete from the old platform
       const { debugUrl } = await deleteLegacyData(userId, 'borrarusuario');
       if (typeof window !== 'undefined') {
         sessionStorage.setItem(DEBUG_DELETE_FETCH_URL_KEY, debugUrl);
       }
 
-      // Luego, se procede a borrar los datos de Firestore
+      // Then, proceed to delete Firestore data
       const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
       const batch = writeBatch(db);
 
       for (const collectionName of collectionsToDelete) {
         const userSubCollectionRef = collection(db, "users", userId, collectionName);
-        const querySnapshot = await getDocs(userSubCollectionRef);
-        querySnapshot.forEach(doc => {
-          batch.delete(doc.ref);
-        });
+        try {
+          const querySnapshot = await getDocs(userSubCollectionRef);
+          querySnapshot.forEach(doc => {
+            batch.delete(doc.ref);
+          });
+        } catch (error) {
+            // If listing subcollections fails, emit a contextual error
+            errorEmitter.emit('permission-error', new FirestorePermissionError({
+                path: userSubCollectionRef.path,
+                operation: 'list',
+            }));
+            // We need to stop the process here as we can't guarantee a clean deletion.
+            return { success: false, error: "Error listing user sub-collections for deletion." };
+        }
       }
       
       const userDocRef = doc(db, "users", userId);
       batch.delete(userDocRef);
       
-      await batch.commit();
+      // The batch write itself is a permission-sensitive operation.
+      await batch.commit().catch(error => {
+          // This catch block handles if the batch.commit() fails due to permissions.
+          // Since a batch can contain multiple operations, we emit a general 'write' error
+          // on the user's root document as the most likely point of failure.
+          errorEmitter.emit('permission-error', new FirestorePermissionError({
+              path: `users/${userId}`,
+              operation: 'delete', // The intent is to delete
+          }));
+          // We must throw to prevent the user from being deleted from Auth if Firestore data remains.
+          throw error; 
+      });
       
-      // Finalmente, se borra el usuario de Firebase Auth
+      // Finally, if all Firestore operations succeed, delete the user from Firebase Auth
       await deleteFirebaseUser(currentUser);
 
       toast({ title: t.deleteAccountSuccessTitle, description: t.deleteAccountSuccessMessage });
@@ -171,12 +192,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
       return { success: true };
 
     } catch (error: any) {
-      console.error("Error deleting user account:", error);
+      // This generic catch will now handle re-thrown batch commit errors or other unexpected errors.
+      // Firebase Auth errors (like requires-recent-login) will also be caught here.
       let errorMessage = t.deleteAccountErrorMessage;
       if (error.code === 'auth/requires-recent-login') {
         errorMessage = "Esta operación es sensible y requiere una autenticación reciente. Por favor, cierra sesión y vuelve a iniciarla antes de intentarlo de nuevo.";
       }
-      toast({ title: t.deleteAccountErrorTitle, description: errorMessage, variant: "destructive" });
+      // Avoid showing a generic toast if a specific one was already emitted by the permission error handler
+      if (error.name !== 'FirebaseError') {
+          toast({ title: t.deleteAccountErrorTitle, description: errorMessage, variant: "destructive" });
+      }
       return { success: false, error: errorMessage };
     }
 
