@@ -117,14 +117,6 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Introducción: Cuando el mundo no va en tu misma dirección',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Cuandoelmundonovaentumismadireccion.mp3',
-          content: [
-            { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' },
-          ]
-        },
-        {
-          type: 'collapsible',
           title: 'Coherencia ≠ Rigidez',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3',
           content: [
@@ -223,6 +215,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'La coherencia no es lineal',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/Lacoherencianoeslineal.mp3',
           content: [
             { type: 'paragraph', text: 'Mantener la coherencia no significa que nunca te equivoques o cedas. En realidad, la coherencia se practica con humildad, revisión y propósito.\nPiensa en ella como un músculo: cuanto más lo entrenas, más fuerte se hace… pero si un día fallas, no pasa nada: lo importante es volver a entrenar.\nEjemplo: puedes tener una semana muy alineada con tus valores y otra en la que, por cansancio o presión, tomas decisiones que no lo están tanto. Lo que cuenta es aprender de esas situaciones y reajustar.' }
           ]
@@ -264,10 +257,6 @@ export const coherencePath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?','¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?','¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?','¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?','¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?','¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
         { type: 'title', text: 'Resumen Final de la Ruta' },
         { type: 'list', items: ['La coherencia personal es la armonía entre lo que piensas, sientes y haces.','No es rigidez: implica flexibilidad consciente sin perder el eje de tus valores.','Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes.','El entorno influye: identificar qué lo facilita o dificulta te da margen de acción.','La coherencia se construye con actos cotidianos, no con grandes discursos.','Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.','Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad.'] },
-        { type: 'quote', text: '“Vivir con coherencia no es un destino, es un camino que recorres cada día… y ese camino empieza siempre en ti.”' }
-      ]
-    }
-  ]
+        { type: 'quote', text: '“Vivir con coherencia no es un destino, es un camino que recorres cada día… y ese camino empieza siempre en ti.”' }]
+    }]
 };
-
-    
