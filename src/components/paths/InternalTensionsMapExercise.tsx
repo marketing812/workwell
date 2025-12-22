@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -7,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { emotions } from '@/components/dashboard/EmotionalEntryForm';
+import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 import type { InternalTensionsMapExerciseContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -46,17 +47,23 @@ export function InternalTensionsMapExercise({ content, pathId }: InternalTension
 
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
-            <CardHeader>
-                <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-            </CardHeader>
+            <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{content.objective}
+                {content.audioUrl && (
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src={content.audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
+            </CardDescription>}</CardHeader>
             <CardContent className="space-y-4">
                 <div className="space-y-2"><Label>¿Qué ocurrió?</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /></div>
                 <div className="space-y-2"><Label>¿Qué te dijiste?</Label><Textarea value={thought} onChange={e => setThought(e.target.value)} /></div>
                 <div className="space-y-2"><Label>Identifica la emoción dominante</Label>
                     <Select value={emotion} onValueChange={setEmotion}>
                         <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
-                        <SelectContent>{emotions.map(e => <SelectItem key={e.value} value={e.labelKey}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
+                        <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.labelKey}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
                     </Select>
                 </div>
                 <div className="space-y-2"><Label>¿Qué hiciste finalmente?</Label><Textarea value={action} onChange={e => setAction(e.target.value)} /></div>
