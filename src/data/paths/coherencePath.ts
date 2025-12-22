@@ -118,43 +118,49 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'Introducción: Cuando el mundo no va en tu misma dirección',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Cuandoelmundonovaentumismadireccion.mp3',
           content: [
             { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' },
           ]
         },
         {
           type: 'collapsible',
-          title: 'El papel del entorno',
+          title: 'Coherencia ≠ Rigidez',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3',
           content: [
-            { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\nFacilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\nSaboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\nFacilitador → Un compañero de trabajo que respeta tus descansos y horarios.\nSaboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' }
+            { type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }
           ]
         },
         {
           type: 'collapsible',
-          title: 'La coherencia no es lineal',
+          title: 'Tus valores como brújula interna',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3',
           content: [
-            { type: 'paragraph', text: 'Mantener la coherencia no significa que nunca te equivoques o cedas. En realidad, la coherencia se practica con humildad, revisión y propósito.\nPiensa en ella como un músculo: cuanto más lo entrenas, más fuerte se hace… pero si un día fallas, no pasa nada: lo importante es volver a entrenar.\nEjemplo: puedes tener una semana muy alineada con tus valores y otra en la que, por cansancio o presión, tomas decisiones que no lo están tanto. Lo que cuenta es aprender de esas situaciones y reajustar.' }
+            { type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }
           ]
         },
         {
           type: 'collapsible',
-          title: 'Flexibilidad consciente vs. incoherencia',
+          title: 'El arte de adaptarse sin perderte',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3',
           content: [
-            { type: 'paragraph', text: 'Aquí está la clave: adaptarte no es traicionarte… siempre que lo hagas desde una elección consciente.\nFlexibilidad consciente → Decido ajustar mi comportamiento porque sé que no compromete lo esencial para mí.\nIncoherencia → Actúo de forma contraria a lo que creo o siento, sin ser fiel a mis valores, por miedo, presión o costumbre.\nEjemplo: Si tu valor es “salud” y decides saltarte un entrenamiento para cuidar a un amigo enfermo, eso es flexibilidad consciente. Pero si lo haces porque temes que se enfade si no vas a un plan, ahí estás entrando en incoherencia.' }
+            { type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }
           ]
         },
         {
           type: 'collapsible',
-          title: 'Revisión práctica',
+          title: 'Decisiones difíciles con paz interior',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3',
           content: [
-            { type: 'paragraph', text: 'Antes de actuar en un entorno que pueda ponerte a prueba, pregúntate:\n¿Esto que voy a hacer está en línea con mis valores esenciales?\nSi adapto mi decisión, ¿sigo sintiéndome fiel a mí mismo/a?\n¿Este cambio responde a un acto de cuidado o a un miedo?\nEste pequeño “semáforo interno” te ayudará a sostener tu coherencia día a día.' }
+            { type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }
           ]
         },
         {
           type: 'collapsible',
-          title: 'Lo que vamos a trabajar esta semana',
+          title: 'Lo que vamos a trabajar',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3',
           content: [
-            { type: 'paragraph', text: 'En esta última semana de la ruta:\nAnalizarás tus entornos clave y cómo influyen en tu coherencia.\nDetectarás ajustes necesarios para que tu entorno te apoye más.\nRedactarás tu propio Manifiesto personal de coherencia: un texto breve que será tu brújula para tomar decisiones alineadas contigo.\nPorque la coherencia no se predica: se vive… y empieza por cómo te tratas a ti mismo/a cuando te sales del camino.' }
+            { type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -184,9 +190,7 @@ export const coherencePath: Path = {
           text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3'
         },
-        { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
-        { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }
-      ]
+        { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] }, { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }]
     },
     {
       id: 'coherencia_sem4',
@@ -211,6 +215,7 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'El papel del entorno',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/Elpapeldelentorno.mp3',
           content: [
             { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\nFacilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\nSaboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\nFacilitador → Un compañero de trabajo que respeta tus descansos y horarios.\nSaboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' }
           ]
@@ -264,3 +269,5 @@ export const coherencePath: Path = {
     }
   ]
 };
+
+    
