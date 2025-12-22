@@ -180,31 +180,100 @@ export const responsibilityPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Del “¿por qué pasó?” al “¿qué hago ahora?”',
+          title: 'El punto de partida: del “¿por qué pasó?” al “¿qué hago ahora?”',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio1sesion2ruta10.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Aceptar activamente no es resignarse, es reconocer los hechos para poder actuar con claridad. La resignación bloquea, la aceptación abre caminos.',
+              text: 'En la semana anterior entrenaste a reconocer tres caminos ante un problema: culpa, queja y responsabilidad activa. Hoy vamos a dar un paso más: dejar de pelear con lo que ya pasó para enfocar tu energía en lo que puedes decidir y hacer hoy. Esto implica practicar lo que llamamos aceptación activa: mirar la realidad de frente, sin quedarte atrapado o atrapada en el pasado. Aceptar no es rendirse. Es soltar la lucha inútil contra lo que ya ocurrió, para abrir espacio a lo que sí puedes construir ahora.',
             },
           ],
         },
         {
           type: 'collapsible',
-          title: 'Separar pasado y presente',
+          title: 'Aceptación activa ≠ resignación',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio2sesion2ruta10.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'El pasado informa, pero no debe dirigir el presente. Al separar hechos de interpretaciones (modelo ABC de la TCC), frenas la rumiación y activas el modo solución.',
+              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con resignarse. Pero no son lo mismo. Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad. Resignarse es decir “no hay nada que hacer” y quedarse inmóvil. Idea clave: la aceptación activa abre caminos, la resignación los bloquea. Ejemplo: Resignación → “Fallé en mi presentación, mejor no vuelvo a exponer.” Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.” En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Separar pasado y presente: dos niveles distintos',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio3sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Aceptar implica reconocer lo ocurrido y dar al presente su propia oportunidad. El pasado nos aporta información, pero si lo dejamos dirigir el presente, actuaremos por miedo, culpa o costumbre, repitiendo patrones que ya no nos sirven. Ejemplo: “Hace un año no me seleccionaron para un proyecto” → Hoy, en lugar de callarme por miedo, puedo pedir feedback, ajustar mi propuesta y volver a intentarlo. En TCC trabajamos con esta separación porque ayuda a frenar la rumiación y a activar el modo solución en lugar del modo problema.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Del automático a lo consciente (Modelo ABC)',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones. Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO): SITUACIÓN: lo que pasó, sin interpretaciones. PIENSO: la interpretación que haces. SIENTO: la emoción que surge. ACTÚO: lo que haces a partir de ahí. Ejemplo: SITUACIÓN: “No respondieron mi correo en 24 horas.” PIENSO: “Les molesté / no me valoran.” SIENTO: ansiedad, culpa. ACTÚO: dejo de escribirles. Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'De rumiar a decidir: cuestionamiento + solución de problemas',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio5sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. Técnica combinada: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) ¿Me ayuda este pensamiento a avanzar? ¿Qué parte depende de mí y cuál no? (Atribución realista) Si pasara lo que temo, ¿qué haría? (Descatastrofización) Definir un paso pequeño y concreto. Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Experimentos conductuales y acción opuesta',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio6sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Para cambiar creencias limitantes, no basta con pensarlo: hay que ponerlo a prueba. Experimento conductual: acción pequeña para verificar si tu creencia es cierta. Acción opuesta: hacer lo contrario a lo que la emoción te impulsa. Ejemplo: Creencia: “Si hablo, molesto.” Experimento: pedir turno de palabra una vez y observar la reacción real. Según la neurociencia, este tipo de exposición rompe asociaciones miedo–acción y refuerza redes neuronales más adaptativas.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Soltar la culpa del pasado',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio7sesion2ruta10.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Para transformar la culpa improductiva en aprendizaje: acepta el hecho, separa la conducta de tu identidad ("no eres tu error"), repara si es posible, define qué harás diferente y suelta lo que no depende de ti.',
+              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Mindfulness y defusión cognitiva',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio8sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'El mindfulness te ayuda a observar pensamientos como eventos mentales pasajeros. Ejemplo: en vez de “Arruiné todo”, decirte: “Estoy teniendo el pensamiento de que arruiné todo.” Esto crea distancia psicológica (defusión) y reduce la intensidad emocional. Solo 3–5 minutos diarios de respiración consciente y etiquetado emocional fortalecen esta habilidad.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Cierre y puente a la práctica',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio9sesion2ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Aceptar lo que fue no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.',
             },
           ],
         },
@@ -374,3 +443,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+    
