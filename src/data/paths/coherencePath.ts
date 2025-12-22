@@ -167,7 +167,7 @@ export const coherencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?'] },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] }, { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }]
     },
     {
@@ -238,19 +238,21 @@ export const coherencePath: Path = {
           type: 'environmentEvaluationExercise',
           title: 'EJERCICIO 1: EVALUACIÓN DE ENTORNOS CLAVE',
           objective: 'Observa qué entornos te apoyan y cuáles te drenan para poder elegir dónde y con quién invertir tu energía.',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica1.mp3',
           duration: '8-10 min'
         },
         {
           type: 'personalManifestoExercise',
           title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA',
           objective: 'Redacta un texto breve que sea tu brújula para tomar decisiones alineadas contigo.',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3',
           duration: '10-15 min'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?', '¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?', '¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?', '¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?', '¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?', '¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', 
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
+          prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?','¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?','¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?','¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?','¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?','¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
         { type: 'title', text: 'Resumen Final de la Ruta' },
-        { type: 'list', items: ['La coherencia personal es la armonía entre lo que piensas, sientes y haces.', 'No es rigidez: implica flexibilidad consciente sin perder el eje de tus valores.', 'Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes.', 'El entorno influye: identificar qué lo facilita o dificulta te da margen de acción.', 'La coherencia se construye con actos cotidianos, no con grandes discursos.', 'Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.', 'Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad.'] },
+        { type: 'list', items: ['La coherencia personal es la armonía entre lo que piensas, sientes y haces.','No es rigidez: implica flexibilidad consciente sin perder el eje de tus valores.','Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes.','El entorno influye: identificar qué lo facilita o dificulta te da margen de acción.','La coherencia se construye con actos cotidianos, no con grandes discursos.','Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.','Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad.'] },
         { type: 'quote', text: '“Vivir con coherencia no es un destino, es un camino que recorres cada día… y ese camino empieza siempre en ti.”' }]
     }]
 };
-
-    
