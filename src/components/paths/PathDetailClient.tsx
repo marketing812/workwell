@@ -711,7 +711,7 @@ function ContentItemRenderer({
     case 'guiltRadarExercise':
       return <GuiltRadarExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'acceptanceWritingExercise':
-      return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={pathId} />;
+      return <AcceptanceWritingExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'selfAcceptanceAudioExercise': {
         const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
         return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} audioUrl={exerciseContent.audioUrl} />;
@@ -730,17 +730,17 @@ function ContentItemRenderer({
     case 'blockingThoughtsExercise':
       return <BlockingThoughtsExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'nutritiveDrainingSupportMapExercise':
-      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem as any} pathId={pathId} />;
+      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'nourishingConversationExercise':
-      return <NourishingConversationExercise key={index} content={contentItem as any} pathId={pathId} />;
+      return <NourishingConversationExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'clearRequestMapExercise':
         return <ClearRequestMapExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'supportBankExercise':
-        return <SupportBankExercise key={index} content={contentItem as any} pathId={pathId} />;
+        return <SupportBankExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'mutualCareCommitmentExercise':
-        return <MutualCareCommitmentExercise key={index} content={contentItem as any} pathId={pathId} />;
+        return <MutualCareCommitmentExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'symbolicSupportCircleExercise':
-        return <SymbolicSupportCircleExercise key={index} content={contentItem as any} pathId={pathId} />;
+        return <SymbolicSupportCircleExercise key={index} content={contentItem as any} pathId={path.id} />;
     // RUTA 12
     case 'emotionalGratificationMapExercise':
         return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
