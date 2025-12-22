@@ -16,7 +16,6 @@ interface SelfAcceptanceAudioExerciseProps {
 
 export function SelfAcceptanceAudioExercise({ content, pathId, audioUrl }: SelfAcceptanceAudioExerciseProps) {
   const { toast } = useToast();
-  const [viewMode, setViewMode] = useState<'audio' | 'text'>(audioUrl ? 'audio' : 'text');
   const [isCompleted, setIsCompleted] = useState(false);
 
   const handleComplete = () => {
@@ -35,21 +34,6 @@ export function SelfAcceptanceAudioExercise({ content, pathId, audioUrl }: SelfA
       <CardContent>
         {!isCompleted ? (
             <>
-                <div className="p-4 border rounded-lg bg-background text-center">
-                    {audioUrl ? (
-                         <audio controls controlsList="nodownload" className="w-full">
-                            <source src={audioUrl} type="audio/mp3" />
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                    ) : (
-                        <>
-                            <PlayCircle className="h-16 w-16 text-primary mx-auto mb-4" />
-                            <p className="font-semibold">Práctica de Autoaceptación Guiada</p>
-                            <p className="text-sm text-muted-foreground">Audio no disponible.</p>
-                        </>
-                    )}
-                </div>
-                
                 <Button onClick={handleComplete} className="w-full mt-6">
                     <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
                 </Button>
