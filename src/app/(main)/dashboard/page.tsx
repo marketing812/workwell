@@ -19,7 +19,7 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList } from "lucide-react";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, FileJson } from "lucide-react";
 import { formatEntryTimestamp, type EmotionalEntry } from "@/data/emotionalEntriesStore";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
@@ -29,7 +29,9 @@ import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHi
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
 import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp, limit } from "firebase/firestore";
+import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
+
+const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -58,6 +60,7 @@ export default function DashboardPage() {
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
+  const [debugUrl, setDebugUrl] = useState<string | null>(null);
   
   const loadEntries = useCallback(async () => {
     if (!user?.id || !db) {
@@ -101,6 +104,12 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsClient(true);
+    if (typeof window !== 'undefined') {
+        const storedDebugUrl = sessionStorage.getItem(DEBUG_REGISTER_FETCH_URL_KEY);
+        if (storedDebugUrl) {
+            setDebugUrl(storedDebugUrl);
+        }
+    }
     if (user?.id && db) {
       loadEntries();
       const assessmentHistory = getAssessmentHistory();
@@ -215,6 +224,25 @@ export default function DashboardPage() {
         </h1>
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
+
+       {debugUrl && (
+        <Card className="shadow-md border-amber-500 bg-amber-50 dark:bg-amber-900/30">
+          <CardHeader>
+            <CardTitle className="text-lg text-amber-700 dark:text-amber-300 flex items-center">
+              <FileJson className="mr-2 h-5 w-5" />
+              Información de Depuración (Registro de Usuario)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-muted-foreground mb-2">
+              Esta es la URL que se utilizó para enviar los datos de tu perfil al sistema antiguo durante el registro. Puedes copiarla y pegarla en una nueva pestaña del navegador para ver la respuesta directa de la API.
+            </p>
+            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
+              <code>{debugUrl}</code>
+            </pre>
+          </CardContent>
+        </Card>
+      )}
 
       <section aria-labelledby="quick-summary-heading">
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>
@@ -373,3 +401,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
