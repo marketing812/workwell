@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useEffect, type FormEvent } from 'react';
@@ -26,9 +27,9 @@ export default function SettingsPage() {
   const { toast } = useToast();
   const { theme, setTheme } = useTheme();
 
-  const [name, setName] = useState('');
-  const [ageRange, setAgeRange] = useState('');
-  const [gender, setGender] = useState('');
+  const [name, setName] = useState(user?.name || '');
+  const [ageRange, setAgeRange] = useState(user?.ageRange || '');
+  const [gender, setGender] = useState(user?.gender || '');
   const [language, setLanguage] = useState('es');
 
   const [dailyCheckIn, setDailyCheckIn] = useState(true);
