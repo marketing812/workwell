@@ -35,33 +35,20 @@ export function SelfAcceptanceAudioExercise({ content, pathId, audioUrl }: SelfA
       <CardContent>
         {!isCompleted ? (
             <>
-                <div className="flex justify-center gap-2 mb-4">
-                    <Button onClick={() => setViewMode('audio')} variant={viewMode === 'audio' ? 'default' : 'outline'} disabled={!audioUrl}><PlayCircle className="mr-2 h-4 w-4" /> Audio</Button>
-                    <Button onClick={() => setViewMode('text')} variant={viewMode === 'text' ? 'default' : 'outline'}><BookOpen className="mr-2 h-4 w-4" /> Texto</Button>
+                <div className="p-4 border rounded-lg bg-background text-center">
+                    {audioUrl ? (
+                         <audio controls controlsList="nodownload" className="w-full">
+                            <source src={audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    ) : (
+                        <>
+                            <PlayCircle className="h-16 w-16 text-primary mx-auto mb-4" />
+                            <p className="font-semibold">Práctica de Autoaceptación Guiada</p>
+                            <p className="text-sm text-muted-foreground">Audio no disponible.</p>
+                        </>
+                    )}
                 </div>
-                
-                {viewMode === 'audio' && (
-                    <div className="p-4 border rounded-lg bg-background text-center">
-                        {audioUrl ? (
-                             <audio controls controlsList="nodownload" className="w-full">
-                                <source src={audioUrl} type="audio/mp3" />
-                                Tu navegador no soporta el elemento de audio.
-                            </audio>
-                        ) : (
-                            <>
-                                <PlayCircle className="h-16 w-16 text-primary mx-auto mb-4" />
-                                <p className="font-semibold">Práctica de Autoaceptación Guiada</p>
-                                <p className="text-sm text-muted-foreground">Audio no disponible. Cambia a la versión de texto para leer la guía.</p>
-                            </>
-                        )}
-                    </div>
-                )}
-
-                {viewMode === 'text' && (
-                    <div className="space-y-4 p-4 border rounded-lg bg-background animate-in fade-in-0 duration-500 max-h-60 overflow-y-auto">
-                      <p className="text-sm whitespace-pre-line">{meditationText}</p>
-                    </div>
-                )}
                 
                 <Button onClick={handleComplete} className="w-full mt-6">
                     <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
