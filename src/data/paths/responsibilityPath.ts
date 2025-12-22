@@ -148,6 +148,7 @@ export const responsibilityPath: Path = {
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3' },
         {
           type: 'list',
           items: [
