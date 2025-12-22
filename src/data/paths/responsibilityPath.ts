@@ -281,9 +281,9 @@ export const responsibilityPath: Path = {
         {
           type: 'acceptanceWritingExercise',
           title: 'EJERCICIO 1: ESO PASÓ. ¿Y AHORA QUÉ?',
-          objective:
-            'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
+          objective: 'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
           duration: '10–12 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3',
         },
         {
           type: 'selfAcceptanceAudioExercise',
@@ -291,7 +291,6 @@ export const responsibilityPath: Path = {
           objective:
             'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
           duration: '7–10 min',
-          audioUrl: 'https://workwellfut.com/audios/rm/R10_practica_auto_aceptación_Guiada.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -302,6 +301,14 @@ export const responsibilityPath: Path = {
             '¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?',
           ],
         },
+        { type: 'title', text: 'Resumen Clave de la Semana' },
+        { type: 'list', items: [
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
+            'Separar pasado y presente te da libertad para decidir.',
+            'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
+            'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
+            'Mindfulness y defusión ayudan a reducir la rumiación y elegir mejor.',
+        ]},
         { type: 'quote', text: 'Lo que pasó no define lo que harás ahora. Eso lo eliges tú.' },
       ],
     },
@@ -443,5 +450,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    
