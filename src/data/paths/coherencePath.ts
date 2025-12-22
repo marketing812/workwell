@@ -76,14 +76,13 @@ export const coherencePath: Path = {
           duration: '5-10 min diarios',
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3'
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3',
-          prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)', 'Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)', 'Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)', 'Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']
-        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3'
+        },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
@@ -93,8 +92,7 @@ export const coherencePath: Path = {
       title: 'Semana 2: Detecta tus Puntos de Desconexión',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraphWithAudio', text: 'Tomar decisiones que te representen no es siempre lo más fácil… pero sí lo más auténtico. Esta semana aprenderás a identificar los valores que quieres sostener y a usarlos como brújula para decidir, incluso cuando haya dudas o presiones externas. Porque cuando sabes qué es importante para ti, es más fácil decir ‘sí’ o ‘no’ sin sentirte en deuda contigo mismo o contigo misma.', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' },
+      content: [{ type: 'paragraphWithAudio', text: 'Tomar decisiones que te representen no es siempre lo más fácil… pero sí lo más auténtico. Esta semana aprenderás a identificar los valores que quieres sostener y a usarlos como brújula para decidir, incluso cuando haya dudas o presiones externas. Porque cuando sabes qué es importante para ti, es más fácil decir ‘sí’ o ‘no’ sin sentirte en deuda contigo mismo o contigo misma.', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Qué es realmente la incoherencia interna', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Queesrealmentelaincoherenciainterna.mp3', content: [{ type: 'paragraph', text: 'La incoherencia no significa que “seas una mala persona” o que “no tengas remedio”. Significa que, en ese momento, lo que piensas, sientes y haces no van de la mano.\nA veces, es como si dentro de ti hubiera varias voces hablando al mismo tiempo… y cada una quisiera ir en una dirección distinta.\nEsto ocurre por muchas razones: creencias que nunca revisaste, miedos antiguos, costumbres que se han vuelto automáticas… Reconocerlo no es debilidad, es un acto de valentía y lucidez.' }] },
         { type: 'collapsible', title: 'Las tres fuerzas que más nos alejan de nuestra coherencia', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Lastresfuerzasquemasnosalejandenuestracoherencia.mp3', content: [{ type: 'paragraph', text: '1. Miedo\n- Distorsiona tu visión: imagina que quieres expresar algo en el trabajo, pero piensas “¿y si me miran raro?”. Ese pensamiento activa una alarma que exagera el riesgo.\n- Te lleva a evitar: para no sentir incomodidad, eliges callar… y luego te quedas con la sensación de que no fuiste fiel a ti mismo/a.\n- A veces te hace depender de la aprobación ajena porque temes perder vínculos o estatus.\n\n2. Necesidad de aprobación\n- Si tu valor personal depende de la opinión de los demás, empiezas a actuar para encajar, aunque eso signifique decir “sí” cuando quieres decir “no”.\n- Terminas proyectando una imagen “agradable” pero alejada de lo que realmente eres.\n- Esto debilita tu confianza interna: con el tiempo, dudas de tu propio criterio.\n\n3. Automatismos\n- Son como el “piloto automático” del cerebro: reacciones rápidas que aprendiste hace años y que repites sin pensar.\n- Funcionan bien para tareas simples, pero en decisiones importantes pueden dejarte atrapado/a en rutinas que no te representan.\n- Por ejemplo: responder con “todo bien” aunque por dentro estés agotado/a y necesites apoyo.' }] },
@@ -112,7 +110,7 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Por qué detectar la incoherencia es clave', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3', content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', 'duration': '15 min' },
-        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.', duration: '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3' },
+        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3', 'duration': '10-12 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3'},
@@ -124,10 +122,38 @@ export const coherencePath: Path = {
       title: 'Semana 3: Actúa con Integridad sin Perder la Flexibilidad',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [{ type: 'paragraph', text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte.' },
+      content: [
+        { 
+          type: 'collapsible',
+          title: 'Bienvenida a la semana',
+          content: [{ type: 'paragraph', text: '¿Alguna vez has sentido que querías mantenerte fiel a lo que crees… pero al mismo tiempo la situación te pedía adaptarte? Esa tensión interna puede dejarte agotado o agotada, con la sensación de que hagas lo que hagas, pierdes algo. Esta semana vamos a aprender que la coherencia no significa encerrarte en un molde rígido. Significa elegir de forma consciente cómo actuar, de manera que lo que piensas, sientes y haces estén alineados… pero con espacio para adaptarte cuando la vida lo requiera.' }]
+        },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: 'Coherencia ≠ Rigidez', content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] },
-        { type: 'collapsible', title: 'Tus valores como brújula interna', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }] },
+        { 
+          type: 'collapsible',
+          title: 'Coherencia ≠ Rigidez',
+          content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] 
+        },
+        { 
+          type: 'collapsible',
+          title: 'Tus valores como brújula interna',
+          content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'El arte de adaptarse sin perderte',
+          content: [{ type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Decisiones difíciles con paz interior',
+          content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Lo que vamos a trabajar',
+          content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.','duration': '15-20 min' },
         { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
