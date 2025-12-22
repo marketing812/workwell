@@ -260,24 +260,6 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-                <CardTitle className="text-xl flex items-center text-amber-600 dark:text-amber-500">
-                    <AlertTriangle className="mr-2 h-5 w-5" />
-                    {t.devUtilitiesTitle}
-                </CardTitle>
-                <CardDescription>
-                    Estas opciones son para fines de desarrollo y pueden afectar tu experiencia. Úsalas con precaución.
-                </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <Button variant="outline" onClick={handleClearEntries} className="border-amber-500 text-amber-600 hover:bg-amber-50 hover:text-amber-700">
-                <Trash2 className="mr-2 h-4 w-4" />
-                {t.clearEmotionalEntriesButton}
-              </Button>
-            </CardContent>
-          </Card>
-
           <Card className="border-destructive">
             <CardHeader className="bg-destructive/5 dark:bg-destructive/10">
                 <CardTitle className="text-xl flex items-center text-destructive">
