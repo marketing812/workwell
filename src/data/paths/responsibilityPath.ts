@@ -21,28 +21,48 @@ export const responsibilityPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Tres caminos ante un mismo problema',
-          content: [{ type: 'paragraph', text: 'Cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. En psicología, observamos que esas reacciones suelen ser:\n• Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\n• Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\n• Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\nLas dos primeras parecen distintas, pero nos dejan atascados. La tercera nos impulsa a avanzar.' }]
+          title: 'Pantalla 1 – El punto de partida: tres caminos ante un mismo problema',
+          content: [{ type: 'paragraph', text: 'Todos y todas, cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. Es como si tuviéramos tres carreteras delante y, sin pensar mucho, eligiéramos una de ellas.\n\nEn psicología, observamos que esas “carreteras” suelen ser:\n\n• Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\n• Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\n• Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\n\nLas dos primeras parecen distintas, pero tienen algo en común: nos dejan atascados. La tercera, en cambio, nos impulsa a avanzar… siempre que sepamos cómo aplicarla.\n\nEsta semana vamos a entrenar ese tercer camino. No se trata de cargar con todo, sino de asumir tu parte con claridad, soltar lo que no es tuyo y dar pasos reales.' }]
         },
         {
           type: 'collapsible',
-          title: 'La culpa: cuando ayuda y cuando nos hunde',
-          content: [{ type: 'paragraph', text: 'La culpa útil te motiva a reparar o aprender. La culpa improductiva te paraliza con autoataques. Es importante diferenciarla de la vergüenza: la culpa se centra en una acción ("he hecho algo mal"), mientras que la vergüenza se centra en la identidad ("soy malo/a").' }]
+          title: 'Pantalla 2 – La culpa: cuando ayuda y cuando nos hunde',
+          content: [{ type: 'paragraph', text: 'Imagina que la culpa es como una alarma. Suena cuando percibes que has hecho algo mal o que no has hecho lo suficiente.\n\nSi está bien calibrada, es útil: te motiva a reparar el daño, pedir perdón o aprender algo nuevo.\n\nSi está desajustada, suena constantemente, incluso por cosas que no dependen de ti. Ahí deja de ayudarte y empieza a hundirte.\n\nEn psicología distinguimos dos formas de culpa:\n\n• Culpa útil: centrada en la acción reparadora. Ejemplo: “Me equivoqué en el informe, lo corregiré y avisaré.”\n• Culpa improductiva: centrada en el ataque personal. Ejemplo: “Soy un desastre, siempre fallo.”\n\nEs importante diferenciarla de la vergüenza:\n\n• Culpa = “He hecho algo mal” (foco en la conducta).\n• Vergüenza = “Soy malo/a” (foco en la identidad).\n\nCuando distingues hecho de identidad y pones nombre a la emoción, tu cerebro activa regiones de autorregulación (Lieberman, 2007), lo que reduce la intensidad emocional y mejora tu claridad mental.' }]
         },
         {
           type: 'collapsible',
-          title: 'La queja: alivio rápido, bloqueo largo',
-          content: [{ type: 'paragraph', text: 'Quejarse alivia momentáneamente, pero si no se acompaña de acción, no cambia nada. La queja nos coloca en un papel pasivo, esperando que otros cambien o que la situación se arregle sola. El objetivo es transformar la queja en un paso concreto.' }]
+          title: 'Pantalla 3 – La queja: alivio rápido, bloqueo largo',
+          content: [{ type: 'paragraph', text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, no cambia nada.\n\nMuchas quejas se alimentan de distorsiones cognitivas como:\n\n• Sobregeneralización: “Siempre me pasa lo mismo.”\n• Pensamiento dicotómico: “Nunca me tienen en cuenta.”\n• Deberías rígidos: “Esto no debería ser así.”\n\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\n\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.' }]
         },
         {
           type: 'collapsible',
-          title: 'La responsabilidad activa: el punto medio que funciona',
-          content: [{ type: 'paragraph', text: 'La responsabilidad activa es reconocer tu parte, distinguir lo que está bajo tu control y actuar. La pregunta clave es: “¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”. Esto fortalece tu autoeficacia (Bandura, 1977), la confianza en que tus acciones pueden producir cambios.' }]
+          title: 'Pantalla 4 – La responsabilidad activa: el punto medio que funciona',
+          content: [{ type: 'paragraph', text: 'La responsabilidad activa es la carretera central, la que combina realismo con acción.\n\nConsiste en reconocer tu parte, distinguir lo que está bajo tu control y actuar de manera proporcional. Ni perfeccionismo inalcanzable, ni resignación pasiva.\n\nLa pregunta clave aquí es:\n\n“¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”\n\nTrabajar así fortalece tu autoeficacia (Bandura, 1977), es decir, la confianza en que tus acciones pueden producir cambios reales.' }]
         },
         {
           type: 'collapsible',
-          title: 'Las dos trampas: hiperexigencia e hiperresponsabilidad',
-          content: [{ type: 'paragraph', text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\n• Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”).\n• Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.' }]
+          title: 'Pantalla 5 – Las dos trampas que roban energía: hiperexigencia e hiperresponsabilidad',
+          content: [{ type: 'paragraph', text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\n\n• Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”), miedo extremo al error y comparación constante con los demás.\n• Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\n\nAunque a veces parecen virtudes, en exceso agotan y llevan al bloqueo. El antídoto es simple en teoría, pero poderoso en la práctica:\n\n“¿Qué parte de esto sí depende de mí y qué parte no?”\n\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Pantalla 6 – Pasar de la queja a la acción: un método en 6 pasos',
+          content: [{ type: 'paragraph', text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\n\n1. Describe la situación: solo hechos, sin juicios.\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra? (Cuestionamiento socrático).\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\n5. Define un paso pequeño: algo que dependa solo de ti.\n6. Ponlo en práctica y revisa el resultado.\n\nEjemplo:\n\n• Queja: “Nunca tengo tiempo para mí.”\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Pantalla 7 – Auto-chequeo rápido: ¿Dónde estoy ahora?',
+          content: [{ type: 'paragraph', text: 'Este ejercicio express te ayuda a ubicarte:\n\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\n\nTruco rápido:\n\n“De todo esto, ¿qué 10–20% sí depende de mí?”\n\nEse porcentaje es tu punto de partida para la acción.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Pantalla 8 – Regularte para poder elegir mejor',
+          content: [{ type: 'paragraph', text: 'Cuando la emoción es muy intensa, el cerebro activa el sistema de amenaza (amígdala) y limita tu capacidad de pensar con claridad. Antes de decidir, regula:\n\n• Ponle nombre a la emoción: “Esto es frustración” o “Esto es culpa.”\n• Acepta su presencia: sin luchar contra ella.\n• Acción opuesta: si te apetece aislarte, da un paso para conectar; si quieres gritar, prueba a hablar más lento y bajo.\n• Convierte la queja en petición: en vez de “Siempre me interrumpes”, di “Necesito 10 minutos para explicar mi idea sin interrupciones.”' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Pantalla 9 – Cierre: preparando el terreno para la práctica',
+          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\n\n• Sabes diferenciar culpa, queja y responsabilidad.\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n• Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\n\nRecuerda no cargarte nada por favor.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'complaintTransformationExercise', title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”', objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.', duration: '10 min' },
