@@ -17,7 +17,7 @@ export const responsibilityPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Te has pillado quejándote una y otra vez de lo mismo, o castigándote mentalmente por algo que hiciste hace tiempo?\nEsta semana aprenderás a diferenciar la culpa que te impulsa a reparar de la que solo te paraliza, a entender qué papel juega la queja en tu vida y a descubrir que la responsabilidad activa es el camino para recuperar tu poder de acción.',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Introsesion1ruta10.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Introsesion1ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -60,7 +60,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Auto-chequeo rápido: ¿Dónde estoy ahora?',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio7sesion1ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Este ejercicio express te ayuda a ubicarte:\n\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\n\nTruco rápido:\n\n“De todo esto, ¿qué 10–20% sí depende de mí?”\n\nEse porcentaje es tu punto de partida para la acción.' }]
+          content: [{ type: 'paragraph', text: 'Este ejercicio express te ayuda a ubicarte:\n\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\n\nTruco rápido:\n\n“De todo esto, ¿qué 10–20% sí depende de mí?”\nEse porcentaje es tu punto de partida para la acción.' }]
         },
         {
           type: 'collapsible',
@@ -72,12 +72,29 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre: preparando el terreno para la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\n\n• Sabes diferenciar culpa, queja y responsabilidad.\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n• Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\n\nRecuerda no cargarte nada por favor.' }]
+          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\n\n• Sabes diferenciar culpa, queja y responsabilidad.\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n• Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\n\nRecuerda no cargarte nada por favor' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'complaintTransformationExercise', title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”', objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3' },
-        { type: 'guiltRadarExercise', title: 'EJERCICIO 2: MI RADAR DE CULPA', objective: 'Quiero ayudarte a detectar cuándo la culpa que sientes es una señal útil y cuándo es una carga que no te corresponde. Con este ejercicio vas a calibrar tu radar interno para diferenciar entre una culpa que te guía y una que solo te pesa.', duration: '5–7 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Cuál fue el descubrimiento más importante para ti y por qué?', '¿En qué situación lograste pasar de la queja o la culpa a la acción?', '¿Qué culpa identificaste como “no mía” y pudiste soltar?', '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?'] },
+        {
+          type: 'complaintTransformationExercise',
+          title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”',
+          objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.',
+          duration: '10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3'
+        },
+        {
+          type: 'guiltRadarExercise',
+          title: 'EJERCICIO 2: MI RADAR DE CULPA',
+          objective: 'Quiero ayudarte a detectar cuándo la culpa que sientes es una señal útil y cuándo es una carga que no te corresponde. Con este ejercicio vas a calibrar tu radar interno para diferenciar entre una culpa que te guía y una que solo te pesa.',
+          duration: '5–7 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Reflexionsesion1ruta10.mp3',
+          prompts: ['¿Cuál fue el descubrimiento más importante para ti y por qué?', '¿En qué situación lograste pasar de la queja o la culpa a la acción?', '¿Qué culpa identificaste como “no mía” y pudiste soltar?', '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?']
+        },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' }
       ]
     },
