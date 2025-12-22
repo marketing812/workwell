@@ -133,17 +133,17 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
 
-
-  const handleAnswerChange = (item: AssessmentItem, value: string) => {
-    const newAnswers = {
-      ...answers,
-      [item.id]: { score: parseInt(value), weight: item.weight }
-    };
-    setAnswers(newAnswers);
+  const goToNextQuestion = () => {
+    if (!currentDimension) return; // Guard clause
     
+    const isLastItem = currentOverallIndex >= allItems.length - 1;
+
+    if (isLastItem) {
+        submitFullAssessment(answers);
+        return;
+    }
+
     if (isGuided) {
-      setTimeout(() => {
-        if (!currentDimension) return; // Guard clause
         const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
         if (isLastItemInDimension) {
             if (!isSubmitting) { 
@@ -152,10 +152,32 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
         } else {
             const nextItemIndex = currentItemIndexInDimension + 1;
             setCurrentItemIndexInDimension(nextItemIndex);
-            saveProgress(currentDimensionIndex, nextItemIndex, newAnswers);
+            saveProgress(currentDimensionIndex, nextItemIndex, answers);
         }
-      }, 250); 
+    } else { // Not guided, flat progression
+        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+        if (isLastItemInDimension) {
+            if (currentDimensionIndex < assessmentDimensions.length - 1) {
+                setCurrentDimensionIndex(prev => prev + 1);
+                setCurrentItemIndexInDimension(0);
+            }
+        } else {
+            setCurrentItemIndexInDimension(prev => prev + 1);
+        }
     }
+  };
+
+  const handleAnswerChange = (item: AssessmentItem, value: string) => {
+    const newAnswers = {
+      ...answers,
+      [item.id]: { score: parseInt(value), weight: item.weight }
+    };
+    setAnswers(newAnswers);
+    
+    // Auto-advance after a short delay
+    setTimeout(() => {
+      goToNextQuestion();
+    }, 250); 
   };
   
   const handleGoBack = () => {
@@ -197,17 +219,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   };
 
   const handleNextStep = () => {
-    if (!currentItem || !answers[currentItem.id] || !currentDimension) return; // Prevent advancing if no answer is selected
-    const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-    if (isLastItemInDimension) {
-      if (!isSubmitting) { 
-        setShowDimensionCompletedDialog(true);
-      }
-    } else {
-      const nextItemIndex = currentItemIndexInDimension + 1;
-      setCurrentItemIndexInDimension(nextItemIndex);
-      saveProgress(currentDimensionIndex, nextItemIndex, answers);
-    }
+    goToNextQuestion();
   };
 
   const handleSaveForLater = () => {
