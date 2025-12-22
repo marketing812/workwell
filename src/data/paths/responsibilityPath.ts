@@ -147,20 +147,15 @@ export const responsibilityPath: Path = {
             '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?',
           ],
         },
+        { type: 'title', text: 'Resumen Clave de la Semana'},
         {
-          type: 'collapsible',
-          title: 'Resumen Clave de la Semana',
-          content: [
-            {
-              type: 'list',
-              items: [
-                'La culpa útil impulsa a reparar; la improductiva te paraliza.',
-                'La queja alivia un momento, pero si no hay acción, nada cambia.',
-                'La responsabilidad activa se enfoca en lo que sí depende de ti.',
-                'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-                'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
-              ],
-            },
+          type: 'list',
+          items: [
+            'La culpa útil impulsa a reparar; la improductiva te paraliza.',
+            'La queja alivia un momento, pero si no hay acción, nada cambia.',
+            'La responsabilidad activa se enfoca en lo que sí depende de ti.',
+            'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
