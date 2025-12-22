@@ -12,8 +12,18 @@ export async function sendLegacyData(
   type: 'usuario' | 'otro_tipo'
 ): Promise<{ success: boolean; debugUrl: string }> {
   try {
-    const encryptedPayload = forceEncryptStringAES(JSON.stringify(data));
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // Extract id and department_code to be sent unencrypted
+    const userId = data.id;
+    const departmentCode = data.department_code || '';
+
+    // Remove them from the main data object to avoid sending them twice
+    const { id, department_code, ...encryptedData } = data;
+    
+    // Encrypt the rest of the data
+    const encryptedPayload = forceEncryptStringAES(JSON.stringify(encryptedData));
+
+    // Build the URL with unencrypted id and department_code, and the encrypted data
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(departmentCode)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log(`Sending legacy data of type '${type}' to old URL...`);
 
@@ -37,5 +47,3 @@ export async function sendLegacyData(
     return { success: false, debugUrl: "Error creating URL" };
   }
 }
-
-    
