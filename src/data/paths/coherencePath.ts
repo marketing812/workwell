@@ -36,7 +36,7 @@ export const coherencePath: Path = {
           content: [
             { type: 'paragraph', text: 'Muchas veces se confunden estos conceptos, pero es fundamental diferenciarlos para que puedas avanzar sin enredos ni autoexigencias.' },
             { type: 'list', items: ['Autenticidad: Mostrarte tal y como eres, sin disfraces emocionales. Es permitirte decir: “Esto es lo que siento”, aunque no sea cómodo.','Integridad: Actuar desde tus principios, incluso cuando nadie te ve. Es elegir lo que te parece justo o correcto, aunque no sea lo más fácil.','Perfección: Es la trampa que nos hace creer que para ser coherentes tenemos que hacerlo todo bien. Y no. La coherencia real se construye con errores, ajustes y valentía.']},
-            { type: 'paragraph', text: "Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”." }
+            { type: 'paragraph', text: 'Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”.' }
           ]
         },
         {
@@ -78,7 +78,7 @@ export const coherencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3'},
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
@@ -169,10 +169,16 @@ export const coherencePath: Path = {
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.','duration': '15-20 min' },
+        {
+          type: 'integrityDecisionsExercise',
+          title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD',
+          objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.',
+          duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3'
+        },
         { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?']},
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
         { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }]
     },
