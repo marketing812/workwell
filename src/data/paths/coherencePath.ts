@@ -78,7 +78,7 @@ export const coherencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
@@ -102,18 +102,8 @@ export const coherencePath: Path = {
             { type: 'paragraph', text: 'Si reconoces alguna de estas señales, no te alarmes. No indican que “estés roto/a”, sino que hay un desajuste entre tu brújula interna y tu dirección actual. Y la buena noticia es que puedes recalibrarla.' }
           ]
         },
-        {
-          type: 'collapsible',
-          title: 'Lo que hay detrás del conflicto',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Loquehaydetrasdelconflicto.mp3',
-          content: [{ type: 'paragraph', text: 'La incoherencia no aparece de la nada: se alimenta de raíces profundas que, muchas veces, ni siquiera identificamos.' }, { type: 'list', items: ['Creencias rígidas y pensamiento dicotómico: ver el mundo en blanco o negro (“o es perfecto o no vale nada”). Esto hace que cualquier error parezca una catástrofe y te lleve a actuar para “evitar fallar” más que para ser fiel a ti mismo/a.','Esquemas aprendidos en entornos invalidantes: si de pequeño/a te hicieron sentir que tus emociones no importaban (“no llores”, “no exageres”), quizá hoy te cueste reconocer y priorizar lo que sientes.','Falta de claridad en tus metas y valores: sin un mapa interno, es fácil dejarse llevar por lo urgente o por lo que otros esperan, aunque no te acerque a lo que realmente quieres.'] }, { type: 'paragraph', text: 'Ejemplo: Es como navegar sin rumbo fijo: cualquier viento te arrastra, incluso si te aleja de la orilla que quieres alcanzar.\nY aquí llega el punto clave: detectar estas raíces no es para culparte, sino para entender por qué actúas como actúas y poder decidir con más libertad.' }]
-        },
-        {
-          type: 'collapsible',
-          title: 'Por qué detectar la incoherencia es clave',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3',
-          content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }]
-        },
+        { type: 'collapsible', title: 'Lo que hay detrás del conflicto', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Loquehaydetrasdelconflicto.mp3', content: [{ type: 'paragraph', text: 'La incoherencia no aparece de la nada: se alimenta de raíces profundas que, muchas veces, ni siquiera identificamos.' }, { type: 'list', items: ['Creencias rígidas y pensamiento dicotómico: ver el mundo en blanco o negro (“o es perfecto o no vale nada”). Esto hace que cualquier error parezca una catástrofe y te lleve a actuar para “evitar fallar” más que para ser fiel a ti mismo/a.','Esquemas aprendidos en entornos invalidantes: si de pequeño/a te hicieron sentir que tus emociones no importaban (“no llores”, “no exageres”), quizá hoy te cueste reconocer y priorizar lo que sientes.','Falta de claridad en tus metas y valores: sin un mapa interno, es fácil dejarse llevar por lo urgente o por lo que otros esperan, aunque no te acerque a lo que realmente quieres.'] }, { type: 'paragraph', text: 'Ejemplo: Es como navegar sin rumbo fijo: cualquier viento te arrastra, incluso si te aleja de la orilla que quieres alcanzar.\nY aquí llega el punto clave: detectar estas raíces no es para culparte, sino para entender por qué actúas como actúas y poder decidir con más libertad.' }] },
+        { type: 'collapsible', title: 'Por qué detectar la incoherencia es clave', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3', content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', 'duration': '15 min' },
         { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3', 'duration': '10-12 min' },
@@ -129,8 +119,8 @@ export const coherencePath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        {
-          type: 'paragraphWithAudio',
+        { 
+          type: 'paragraphWithAudio', 
           text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte.',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'
         },
@@ -163,13 +153,10 @@ export const coherencePath: Path = {
         {
           type: 'collapsible',
           title: 'Decisiones difíciles con paz interior',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3',
           content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }]
         },
-        {
-          type: 'collapsible',
-          title: 'Lo que vamos a trabajar',
-          content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }]
-        },
+        { type: 'collapsible', title: 'Lo que vamos a trabajar', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.','duration': '15-20 min' },
         { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
