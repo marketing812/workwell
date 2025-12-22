@@ -451,6 +451,7 @@ export type InternalTensionsMapExerciseContent = {
     title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EthicalMirrorExerciseContent = {
@@ -852,3 +853,5 @@ export interface AssessmentItem {
   weight: number; // The weight of the item for calculating scores
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
+
+    

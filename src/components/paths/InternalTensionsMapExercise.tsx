@@ -80,3 +80,5 @@ export function InternalTensionsMapExercise({ content, pathId }: InternalTension
         </Card>
     );
 }
+
+    
