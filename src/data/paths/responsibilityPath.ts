@@ -75,7 +75,7 @@ export const responsibilityPath: Path = {
           content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\n\n• Sabes diferenciar culpa, queja y responsabilidad.\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n• Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\n\nRecuerda no cargarte nada por favor.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'complaintTransformationExercise', title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”', objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.', duration: '10 min' },
+        { type: 'complaintTransformationExercise', title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”', objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3' },
         { type: 'guiltRadarExercise', title: 'EJERCICIO 2: MI RADAR DE CULPA', objective: 'Quiero ayudarte a detectar cuándo la culpa que sientes es una señal útil y cuándo es una carga que no te corresponde. Con este ejercicio vas a calibrar tu radar interno para diferenciar entre una culpa que te guía y una que solo te pesa.', duration: '5–7 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Cuál fue el descubrimiento más importante para ti y por qué?', '¿En qué situación lograste pasar de la queja o la culpa a la acción?', '¿Qué culpa identificaste como “no mía” y pudiste soltar?', '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?'] },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' }
@@ -137,5 +137,3 @@ export const responsibilityPath: Path = {
     }
   ]
 };
-
-    

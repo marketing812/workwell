@@ -495,6 +495,7 @@ export type ComplaintTransformationExerciseContent = {
     title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type GuiltRadarExerciseContent = {
