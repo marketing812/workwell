@@ -36,7 +36,7 @@ export const coherencePath: Path = {
           content: [
             { type: 'paragraph', text: 'Muchas veces se confunden estos conceptos, pero es fundamental diferenciarlos para que puedas avanzar sin enredos ni autoexigencias.' },
             { type: 'list', items: ['Autenticidad: Mostrarte tal y como eres, sin disfraces emocionales. Es permitirte decir: “Esto es lo que siento”, aunque no sea cómodo.','Integridad: Actuar desde tus principios, incluso cuando nadie te ve. Es elegir lo que te parece justo o correcto, aunque no sea lo más fácil.','Perfección: Es la trampa que nos hace creer que para ser coherentes tenemos que hacerlo todo bien. Y no. La coherencia real se construye con errores, ajustes y valentía.']},
-            { type: 'paragraph', text: "Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”." }
+            { type: 'paragraph', text: 'Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”.' }
           ]
         },
         {
@@ -121,19 +121,55 @@ export const coherencePath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte.',
+          text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte. ',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: 'Bienvenida a la semana', content: [{ type: 'paragraph', text: '¿Alguna vez has sentido que querías mantenerte fiel a lo que crees… pero al mismo tiempo la situación te pedía adaptarte? Esa tensión interna puede dejarte agotado o agotada, con la sensación de que hagas lo que hagas, pierdes algo.\nEsta semana vamos a aprender que la coherencia no significa encerrarte en un molde rígido. Significa elegir de forma consciente cómo actuar, de manera que lo que piensas, sientes y haces estén alineados… pero con espacio para adaptarte cuando la vida lo requiera.' }] },
-        { type: 'collapsible', title: 'Coherencia ≠ Rigidez', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3', content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] },
-        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }] },
-        { type: 'collapsible', title: 'El arte de adaptarse sin perderte', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3', content: [{ type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }] },
-        { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3', content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
-        { type: 'collapsible', title: 'Lo que vamos a trabajar', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
+        {
+          type: 'collapsible',
+          title: 'Introducción: Cuando el mundo no va en tu misma dirección',
+          content: [
+            { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'El papel del entorno',
+          content: [
+            { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\nFacilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\nSaboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\nFacilitador → Un compañero de trabajo que respeta tus descansos y horarios.\nSaboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'La coherencia no es lineal',
+          content: [
+            { type: 'paragraph', text: 'Mantener la coherencia no significa que nunca te equivoques o cedas. En realidad, la coherencia se practica con humildad, revisión y propósito.\nPiensa en ella como un músculo: cuanto más lo entrenas, más fuerte se hace… pero si un día fallas, no pasa nada: lo importante es volver a entrenar.\nEjemplo: puedes tener una semana muy alineada con tus valores y otra en la que, por cansancio o presión, tomas decisiones que no lo están tanto. Lo que cuenta es aprender de esas situaciones y reajustar.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Flexibilidad consciente vs. incoherencia',
+          content: [
+            { type: 'paragraph', text: 'Aquí está la clave: adaptarte no es traicionarte… siempre que lo hagas desde una elección consciente.\nFlexibilidad consciente → Decido ajustar mi comportamiento porque sé que no compromete lo esencial para mí.\nIncoherencia → Actúo de forma contraria a lo que creo o siento, sin ser fiel a mis valores, por miedo, presión o costumbre.\nEjemplo: Si tu valor es “salud” y decides saltarte un entrenamiento para cuidar a un amigo enfermo, eso es flexibilidad consciente. Pero si lo haces porque temes que se enfade si no vas a un plan, ahí estás entrando en incoherencia.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Revisión práctica',
+          content: [
+            { type: 'paragraph', text: 'Antes de actuar en un entorno que pueda ponerte a prueba, pregúntate:\n¿Esto que voy a hacer está en línea con mis valores esenciales?\nSi adapto mi decisión, ¿sigo sintiéndome fiel a mí mismo/a?\n¿Este cambio responde a un acto de cuidado o a un miedo?\nEste pequeño “semáforo interno” te ayudará a sostener tu coherencia día a día.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Lo que vamos a trabajar esta semana',
+          content: [
+            { type: 'paragraph', text: 'En esta última semana de la ruta:\nAnalizarás tus entornos clave y cómo influyen en tu coherencia.\nDetectarás ajustes necesarios para que tu entorno te apoye más.\nRedactarás tu propio Manifiesto personal de coherencia: un texto breve que será tu brújula para tomar decisiones alineadas contigo.\nPorque la coherencia no se predica: se vive… y empieza por cómo te tratas a ti mismo/a cuando te sales del camino.' },
+          ],
+        },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3' },
-        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3' },
+        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3', duration: '15-20 min' },
+        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3', duration: '10-15 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3' },
@@ -145,10 +181,51 @@ export const coherencePath: Path = {
       title: 'Semana 4: Sostén tu Coherencia en la Vida Cotidiana',
       type: 'summary',
       estimatedTime: '15-20 min',
-      content: [{ type: 'paragraph', text: 'El verdadero reto no es descubrir lo que valoras, sino vivirlo día a día. Esta semana aprenderás a detectar si tu entorno te impulsa o te sabotea, y a crear un compromiso personal que te recuerde quién eres y qué quieres sostener, incluso en momentos de presión o incertidumbre. Porque la coherencia se fortalece en lo pequeño… y eso la hace grande.' },
+      content: [
+        { type: 'paragraph', text: 'El verdadero reto no es descubrir lo que valoras, sino vivirlo día a día. Esta semana aprenderás a detectar si tu entorno te impulsa o te sabotea, y a crear un compromiso personal que te recuerde quién eres y qué quieres sostener, incluso en momentos de presión o incertidumbre. Porque la coherencia se fortalece en lo pequeño… y eso la hace grande.' },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: 'Cuando el mundo no va en tu misma dirección', content: [{ type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' }] },
-        { type: 'collapsible', title: 'El papel del entorno', content: [{ type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\n- Facilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\n- Saboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\n- Facilitador → Un compañero de trabajo que respeta tus descansos y horarios.\n- Saboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.'}] },
+        {
+          type: 'collapsible',
+          title: 'Introducción: Cuando el mundo no va en tu misma dirección',
+          content: [
+            { type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'El papel del entorno',
+          content: [
+            { type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\nFacilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\nSaboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\nEjemplo:\nFacilitador → Un compañero de trabajo que respeta tus descansos y horarios.\nSaboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'La coherencia no es lineal',
+          content: [
+            { type: 'paragraph', text: 'Mantener la coherencia no significa que nunca te equivoques o cedas. En realidad, la coherencia se practica con humildad, revisión y propósito.\nPiensa en ella como un músculo: cuanto más lo entrenas, más fuerte se hace… pero si un día fallas, no pasa nada: lo importante es volver a entrenar.\nEjemplo: puedes tener una semana muy alineada con tus valores y otra en la que, por cansancio o presión, tomas decisiones que no lo están tanto. Lo que cuenta es aprender de esas situaciones y reajustar.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Flexibilidad consciente vs. incoherencia',
+          content: [
+            { type: 'paragraph', text: 'Aquí está la clave: adaptarte no es traicionarte… siempre que lo hagas desde una elección consciente.\nFlexibilidad consciente → Decido ajustar mi comportamiento porque sé que no compromete lo esencial para mí.\nIncoherencia → Actúo de forma contraria a lo que creo o siento, sin ser fiel a mis valores, por miedo, presión o costumbre.\nEjemplo: Si tu valor es “salud” y decides saltarte un entrenamiento para cuidar a un amigo enfermo, eso es flexibilidad consciente. Pero si lo haces porque temes que se enfade si no vas a un plan, ahí estás entrando en incoherencia.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Revisión práctica',
+          content: [
+            { type: 'paragraph', text: 'Antes de actuar en un entorno que pueda ponerte a prueba, pregúntate:\n¿Esto que voy a hacer está en línea con mis valores esenciales?\nSi adapto mi decisión, ¿sigo sintiéndome fiel a mí mismo/a?\n¿Este cambio responde a un acto de cuidado o a un miedo?\nEste pequeño “semáforo interno” te ayudará a sostener tu coherencia día a día.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Lo que vamos a trabajar esta semana',
+          content: [
+            { type: 'paragraph', text: 'En esta última semana de la ruta:\nAnalizarás tus entornos clave y cómo influyen en tu coherencia.\nDetectarás ajustes necesarios para que tu entorno te apoye más.\nRedactarás tu propio Manifiesto personal de coherencia: un texto breve que será tu brújula para tomar decisiones alineadas contigo.\nPorque la coherencia no se predica: se vive… y empieza por cómo te tratas a ti mismo/a cuando te sales del camino.' },
+          ],
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'environmentEvaluationExercise', title: 'EJERCICIO 1: EVALUACIÓN DE ENTORNOS CLAVE', objective: 'Observa qué entornos te apoyan y cuáles te drenan para poder elegir dónde y con quién invertir tu energía.','duration': '8-10 min' },
         { type: 'personalManifestoExercise', title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA', objective: 'Redacta un texto breve que sea tu brújula para tomar decisiones alineadas contigo.','duration': '10-15 min' },
