@@ -114,10 +114,11 @@ export function RegisterForm() {
 
       // Prepare data for the legacy platform
       const idToken = await firebaseUser.getIdToken();
+      // CORRECTED: Payload for legacy system excludes name and email, includes token.
       const legacyPayload = {
         id: firebaseUser.uid,
         token: idToken,
-        department_code: userProfileData.token, // send the department code as 'department_code'
+        department_code: userProfileData.token,
         ageRange: userProfileData.ageRange,
         gender: userProfileData.gender,
         initialEmotionalState: userProfileData.initialEmotionalState,
@@ -199,7 +200,7 @@ export function RegisterForm() {
           </div>
           <div>
             <Label htmlFor="token">Código de Departamento (opcional)</Label>
-            <Input id="token" name="token" value={formData.token} onChange={handleInputChange} />
+            <Input id="token" name="token" value={formData.token || ''} onChange={handleInputChange} />
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
           <div>
