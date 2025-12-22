@@ -16,7 +16,7 @@ export async function sendLegacyData(
     const userId = data.id;
     const departmentCode = data.department_code || '';
 
-    // Remove them from the main data object to avoid sending them twice
+    // Create a new object for encryption that excludes the unencrypted fields
     const { id, department_code, ...encryptedData } = data;
     
     // Encrypt the rest of the data
