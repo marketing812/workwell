@@ -29,6 +29,7 @@ const registerSchema = z.object({
   password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres."),
   ageRange: z.string().optional(),
   gender: z.string().optional(),
+  token: z.string().optional(), // New field for department code
   initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
   agreeTerms: z.boolean().refine((val) => val === true, {
     message: "Debes aceptar los términos y condiciones.",
@@ -50,6 +51,7 @@ export function RegisterForm() {
     password: '',
     ageRange: '',
     gender: '',
+    token: '',
   });
   const [initialEmotionalState, setInitialEmotionalState] = useState(3);
   const [agreeTerms, setAgreeTerms] = useState(false);
@@ -95,13 +97,14 @@ export function RegisterForm() {
       );
       const firebaseUser = userCredential.user;
 
-      const { name, email, ageRange, gender, initialEmotionalState } = validationResult.data;
+      const { name, email, ageRange, gender, initialEmotionalState, token } = validationResult.data;
       const userProfileData = {
         id: firebaseUser.uid,
         name,
         email,
         ageRange: ageRange || null,
         gender: gender || null,
+        token: token || null,
         initialEmotionalState: initialEmotionalState || null,
         createdAt: new Date().toISOString(),
       };
@@ -110,14 +113,15 @@ export function RegisterForm() {
       setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
 
       // Prepare data for the legacy platform
-      const token = await firebaseUser.getIdToken();
+      const idToken = await firebaseUser.getIdToken();
       const legacyPayload = {
         id: firebaseUser.uid,
-        token: token,
-        ageRange: ageRange || null,
-        gender: gender || null,
-        initialEmotionalState: initialEmotionalState || null,
-        createdAt: new Date().toISOString(),
+        token: idToken,
+        department_code: userProfileData.token, // send the department code as 'department_code'
+        ageRange: userProfileData.ageRange,
+        gender: userProfileData.gender,
+        initialEmotionalState: userProfileData.initialEmotionalState,
+        createdAt: userProfileData.createdAt,
       };
 
       // Send data to legacy URL and store debug URL
@@ -192,6 +196,11 @@ export function RegisterForm() {
             <Label htmlFor="password">{t.password}</Label>
             <Input id="password" name="password" type="password" required value={formData.password} onChange={handleInputChange} />
             {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
+          </div>
+          <div>
+            <Label htmlFor="token">Código de Departamento (opcional)</Label>
+            <Input id="token" name="token" value={formData.token} onChange={handleInputChange} />
+            {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
           <div>
             <Label htmlFor="ageRange">{t.ageRange}</Label>
