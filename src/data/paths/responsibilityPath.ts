@@ -288,13 +288,13 @@ export const responsibilityPath: Path = {
         {
           type: 'selfAcceptanceAudioExercise',
           title: 'EJERCICIO 2: PRÁCTICA DE AUTOACEPTACIÓN GUIADA',
-          objective:
-            'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
+          objective: 'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
           duration: '7–10 min',
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3',
           prompts: [
             '¿Qué culpa del pasado has soltado o disminuido?',
             '¿Qué has descubierto sobre ti al separar hechos de juicios?',
@@ -302,13 +302,21 @@ export const responsibilityPath: Path = {
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana' },
-        { type: 'list', items: [
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Resumensesion2ruta10.mp3',
+        },
+        {
+          type: 'list',
+          items: [
             'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
             'Mindfulness y defusión ayudan a reducir la rumiación y elegir mejor.',
-        ]},
+          ],
+        },
         { type: 'quote', text: 'Lo que pasó no define lo que harás ahora. Eso lo eliges tú.' },
       ],
     },
