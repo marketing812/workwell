@@ -113,12 +113,10 @@ export function RegisterForm() {
       setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
 
       // Prepare data for the legacy platform
-      const idToken = await firebaseUser.getIdToken();
-      // CORRECTED: Payload for legacy system excludes name and email, includes token.
       const legacyPayload = {
         id: firebaseUser.uid,
-        token: idToken,
-        department_code: userProfileData.token,
+        department_code: userProfileData.token, // This is the department code from the form
+        // Other profile data can be sent here, excluding name and email as requested
         ageRange: userProfileData.ageRange,
         gender: userProfileData.gender,
         initialEmotionalState: userProfileData.initialEmotionalState,
