@@ -109,8 +109,19 @@ export function RegisterForm() {
       const userDocRef = doc(db, "users", firebaseUser.uid);
       setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
 
+      // Prepare data for the legacy platform
+      const token = await firebaseUser.getIdToken();
+      const legacyPayload = {
+        id: firebaseUser.uid,
+        token: token,
+        ageRange: ageRange || null,
+        gender: gender || null,
+        initialEmotionalState: initialEmotionalState || null,
+        createdAt: new Date().toISOString(),
+      };
+
       // Send data to legacy URL and store debug URL
-      const { debugUrl } = await sendLegacyData(userProfileData, 'usuario');
+      const { debugUrl } = await sendLegacyData(legacyPayload, 'usuario');
       if (typeof window !== 'undefined') {
         sessionStorage.setItem(DEBUG_REGISTER_FETCH_URL_KEY, debugUrl);
       }
