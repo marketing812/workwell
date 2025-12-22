@@ -36,7 +36,7 @@ export const coherencePath: Path = {
           content: [
             { type: 'paragraph', text: 'Muchas veces se confunden estos conceptos, pero es fundamental diferenciarlos para que puedas avanzar sin enredos ni autoexigencias.' },
             { type: 'list', items: ['Autenticidad: Mostrarte tal y como eres, sin disfraces emocionales. Es permitirte decir: “Esto es lo que siento”, aunque no sea cómodo.','Integridad: Actuar desde tus principios, incluso cuando nadie te ve. Es elegir lo que te parece justo o correcto, aunque no sea lo más fácil.','Perfección: Es la trampa que nos hace creer que para ser coherentes tenemos que hacerlo todo bien. Y no. La coherencia real se construye con errores, ajustes y valentía.']},
-            { type: 'paragraph', text: 'Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”.' }
+            { type: 'paragraph', text: "Ejemplo: Si ayudas a alguien a pesar de que no tienes energía, porque “deberías” hacerlo, quizá estés actuando desde el perfeccionismo, no desde tu integridad. Ser coherente aquí sería permitirte decir: “Hoy no puedo, pero te acompaño de otra forma”." }
           ]
         },
         {
@@ -121,64 +121,17 @@ export const coherencePath: Path = {
       content: [
         { type: 'paragraphWithAudio', text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte.', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/INTRODUCCIONSEMANA3.mp3' },
         { type: 'title', text: 'Psicoeducación' },
-        {
-          type: 'collapsible',
-          title: 'Bienvenida a la semana',
-          content: [
-            { type: 'paragraph', text: '¿Alguna vez has sentido que querías mantenerte fiel a lo que crees… pero al mismo tiempo la situación te pedía adaptarte? Esa tensión interna puede dejarte agotado o agotada, con la sensación de que hagas lo que hagas, pierdes algo.\nEsta semana vamos a aprender que la coherencia no significa encerrarte en un molde rígido. Significa elegir de forma consciente cómo actuar, de manera que lo que piensas, sientes y haces estén alineados… pero con espacio para adaptarte cuando la vida lo requiera.' }
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Coherencia ≠ Rigidez',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3',
-          content: [
-            { type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Tus valores como brújula interna',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3',
-          content: [
-            { type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'El arte de adaptarse sin perderte',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3',
-          content: [
-            { type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Decisiones difíciles con paz interior',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3',
-          content: [
-            { type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Lo que vamos a trabajar',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3',
-          content: [
-            { type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }
-          ]
-        },
+        { type: 'collapsible', title: 'Bienvenida a la semana', content: [{ type: 'paragraph', text: '¿Alguna vez has sentido que querías mantenerte fiel a lo que crees… pero al mismo tiempo la situación te pedía adaptarte? Esa tensión interna puede dejarte agotado o agotada, con la sensación de que hagas lo que hagas, pierdes algo.\nEsta semana vamos a aprender que la coherencia no significa encerrarte en un molde rígido. Significa elegir de forma consciente cómo actuar, de manera que lo que piensas, sientes y haces estén alineados… pero con espacio para adaptarte cuando la vida lo requiera.' }] },
+        { type: 'collapsible', title: 'Coherencia ≠ Rigidez', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3', content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] },
+        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }] },
+        { type: 'collapsible', title: 'El arte de adaptarse sin perderte', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3', content: [{ type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }] },
+        { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3', content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
+        { type: 'collapsible', title: 'Lo que vamos a trabajar', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        {
-          type: 'integrityDecisionsExercise',
-          title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD',
-          objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.',
-          duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3'
-        },
-        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?']},
-        { type: 'title', text: 'Resumen Clave'},
+        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3' },
+        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3' },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?']},
+        { type: 'title', text: 'Resumen Clave' },
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
         { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }]
     },
