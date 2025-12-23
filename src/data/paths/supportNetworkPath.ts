@@ -87,7 +87,7 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -220,12 +220,14 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 1: MAPA DE APOYOS NUTRITIVOS Y DRENANTES',
           objective: 'Dibuja un mapa claro de quiénes en tu vida te suman y quiénes te restan, para que puedas cuidar mejor tu energía emocional.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3',
         },
         {
           type: 'nourishingConversationExercise',
           title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE',
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
         },
       ],
     },
