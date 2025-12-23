@@ -49,7 +49,7 @@ ${places || 'No especificado.'}
         return (
           <div className="text-center p-4">
             <p className="mb-4">Este ejercicio te ayudará a reconectar con esas fuentes de bienestar que a veces olvidas. Al final, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.</p>
-            <Button onClick={() => setStep(1)}>Empezar</Button>
+            <Button onClick={() => setStep(1)}>Empezar mi mapa</Button>
           </div>
         );
       case 1:
@@ -99,7 +99,14 @@ ${places || 'No especificado.'}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription className="pt-2">{content.objective}
+        <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        </CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStepContent()}
