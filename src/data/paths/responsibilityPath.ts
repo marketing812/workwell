@@ -281,14 +281,16 @@ export const responsibilityPath: Path = {
         {
           type: 'acceptanceWritingExercise',
           title: 'EJERCICIO 1: ESO PASÓ. ¿Y AHORA QUÉ?',
-          objective: 'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
+          objective:
+            'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
           duration: '10–12 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3',
         },
         {
           type: 'selfAcceptanceAudioExercise',
           title: 'EJERCICIO 2: PRÁCTICA DE AUTOACEPTACIÓN GUIADA',
-          objective: 'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
+          objective:
+            'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
           duration: '7–10 min',
         },
         {
@@ -310,7 +312,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -402,14 +404,16 @@ export const responsibilityPath: Path = {
         {
           type: 'compassionateResponsibilityContractExercise',
           title: 'EJERCICIO 1: MI CONTRATO DE AUTORRESPONSABILIDAD COMPASIVA',
-          objective: 'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
+          objective:
+            'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
           duration: '10–15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica1.mp3',
         },
         {
           type: 'criticismToGuideExercise',
           title: 'EJERCICIO 2: TRANSFORMA TU CRÍTICA EN GUÍA',
-          objective: 'Convertir tu voz crítica en una guía útil que te ayude a mejorar sin hundirte, manteniendo la exigencia sana pero eliminando el castigo.',
+          objective:
+            'Convertir tu voz crítica en una guía útil que te ayude a mejorar sin hundirte, manteniendo la exigencia sana pero eliminando el castigo.',
           duration: '8–10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3',
         },
@@ -423,10 +427,7 @@ export const responsibilityPath: Path = {
             '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
           ],
         },
-        {
-          type: 'title',
-          text: 'Resumen Clave de la Semana',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana' },
         {
           type: 'paragraphWithAudio',
           text: '',
@@ -564,10 +565,20 @@ export const responsibilityPath: Path = {
             '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?',
           ],
         },
-        { type: 'quote', text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.' },
+        { type: 'title', text: 'Resumen Clave de la Semana'},
+        { type: 'list', items: [
+            'Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.',
+            'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.',
+            'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.',
+            'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.',
+            'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.'
+        ]},
+        { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
+        {
+          type: 'quote',
+          text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.',
+        },
       ],
     },
   ],
 };
-
-    
