@@ -87,7 +87,7 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -278,11 +278,31 @@ export const supportNetworkPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
+          title: 'Pedir ayuda no es “molestar”',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Seguro que alguna vez has pensado: “Si pido esto, voy a molestar” o “van a pensar que soy una carga”. No estás solo o sola: muchas personas sienten lo mismo.   La realidad es que pedir ayuda es algo profundamente humano. Desde que nacemos, dependemos de otros para sobrevivir, y nuestro cerebro está diseñado para buscar conexión y apoyo (como explica el investigador Matthew Lieberman, especialista en neurociencia social).    Cuando pedimos, no estamos robando tiempo ni energía: estamos invitando a otra persona a formar parte de nuestra historia.   Piensa en cómo te sientes cuando alguien que quieres te pide ayuda y puedes hacerlo. ¿Verdad que te gusta poder estar ahí? Pues al revés también funciona igual.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
           title: 'Necesidad legítima ≠ deuda emocional',
           content: [
             {
               type: 'paragraph',
-              text: 'Necesitar algo no significa que tengas que devolverlo multiplicado por diez. Pedir ayuda no es como pedir un préstamo: es compartir una necesidad para que otro pueda decidir si quiere y puede apoyarte.',
+              text: 'Aquí va una idea que puede liberarte mucho: necesitar algo no significa que tengas que devolverlo multiplicado por diez.   A veces, esta creencia viene de la infancia (“si te ayudan, tienes que compensar”) o de vivir en entornos donde pedir estaba mal visto. Pero pedir ayuda no es como pedir un préstamo: es compartir una necesidad para que otro u otra pueda decidir si quiere y puede apoyarte.   Imagina que tu amiga necesita que la lleves al médico. La ayudas, y no esperas que te devuelva la gasolina o que se ofrezca a llevarte a ti tres veces más. Lo hiciste porque pudiste y quisiste. Esa es la misma lógica que puedes aplicar cuando tú pides algo.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Cuanto más claro, más fácil decir “sí”',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Cuando pedimos algo de forma vaga, dejamos a la otra persona en un limbo: no sabe si puede, no sabe cómo ayudarte y eso genera incomodidad.   Ser claro o clara no es exigir, es facilitar la decisión.   Ejemplo: En vez de decir “necesitaría algo de ayuda con la mudanza”, prueba con “¿podrías venir el sábado de 10 a 12 para ayudarme a cargar cajas?”.    Así la persona sabe exactamente lo que pides y puede decirte “sí” o “no” con tranquilidad.',
             },
           ],
         },
@@ -292,7 +312,17 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Vivir bajo la idea de la autosuficiencia total puede dejarte agotado y aislado. Recibir ayuda no te quita valor, te conecta con lo que eres: una persona capaz… y también parte de una red de cuidado.',
+              text: 'Vivir bajo la idea de la autosuficiencia total puede dejarte agotado y aislado.   Los estudios sobre resiliencia (Southwick y Charney, 2018) muestran que quienes aceptan apoyo se recuperan antes de momentos difíciles. No es debilidad: es inteligencia emocional.   Recibir ayuda no te quita valor, te conecta con lo que eres: una persona capaz… y también parte de una red de cuidado.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Recibir sin culpa, dar valor a lo que llega',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'El último paso es aceptar lo que te dan sin sentir que tienes que justificarte o disculparte.    La culpa suele venir de pensamientos como “no me lo merezco” o “me verán como débil”.   Pero cada vez que recibes algo con gratitud, estás enviando un mensaje muy poderoso: “Esto que me das importa y lo aprecio”. Y eso fortalece la relación, igual que cuando eres tú quien da.',
             },
           ],
         },
