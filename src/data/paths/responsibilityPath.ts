@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
             'La queja alivia un momento, pero si no hay acción, nada cambia.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”."',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -281,14 +281,16 @@ export const responsibilityPath: Path = {
         {
           type: 'acceptanceWritingExercise',
           title: 'EJERCICIO 1: ESO PASÓ. ¿Y AHORA QUÉ?',
-          objective: 'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
+          objective:
+            'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
           duration: '10–12 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3',
         },
         {
           type: 'selfAcceptanceAudioExercise',
           title: 'EJERCICIO 2: PRÁCTICA DE AUTOACEPTACIÓN GUIADA',
-          objective: 'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
+          objective:
+            'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
           duration: '7–10 min',
         },
         {
@@ -327,8 +329,9 @@ export const responsibilityPath: Path = {
       estimatedTime: '15-20 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
