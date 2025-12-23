@@ -87,7 +87,7 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -228,6 +228,39 @@ export const supportNetworkPath: Path = {
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/REFLEXION.mp3',
+          prompts: [
+            '¿Qué he descubierto sobre quiénes me suman y quiénes me restan energía?',
+            '¿Qué señales me ayudan a reconocer a una persona que me sostiene de verdad?',
+            '¿Cómo me he sentido al tomar más conciencia de mis vínculos?',
+            'A lo largo de la semana, ¿qué he aprendido sobre mis creencias acerca de quién merece estar en mi red de apoyo?',
+          ],
+        },
+        {
+          type: 'title',
+          text: 'Resumen Clave',
+        },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3',
+        },
+        {
+          type: 'list',
+          items: [
+            'No toda ayuda es nutritiva: lo importante es que sea genuina, respetuosa y recíproca.',
+            'Una red segura no es la más grande, sino la más honesta y estable.',
+            'Identificar a tus personas refugio fortalece tu sensación de seguridad y confianza.',
+            'Cuidar tus vínculos es también una forma de cuidarte a ti mismo/a.',
+          ],
+        },
+        {
+          type: 'quote',
+          text: '“Hay personas que no te salvan, pero te acompañan mientras tú te reconstruyes. Y eso, a veces, es lo más valioso que puedes recibir.”',
         },
       ],
     },
