@@ -6,6 +6,7 @@ export const wellbeingPath: Path = {
   title: 'Volver a lo que me hace sentir bien',
   description: 'Reconecta con tus fuentes de bienestar, recupera rutinas que te sostienen y aprende a activar tu motivación incluso en los días más grises.',
   dataAiHint: 'wellbeing motivation energy',
+  audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Introruta12.mp3',
   modules: [
     {
       id: 'bienestar_sem1',
@@ -36,15 +37,15 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'De dónde viene el estado de ánimo bajo',
             content: [
-              { type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:\n• Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.\n• Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.\n• Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.\n• Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.\n• Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada.\nAdemás, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' },
-            ],
+              { type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:\n• Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.\n• Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.\n• Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.\n• Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.\n• Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada.\nAdemás, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' }
+            ]
         },
         {
             type: 'collapsible',
             title: 'Qué ocurre en tu cuerpo y tu mente',
             content: [
-              { type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar positivo”.\n• Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.\n• Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.\n• Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”.\nSegún la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' },
-            ],
+              { type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar positivo”.\n• Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.\n• Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.\n• Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”.\nSegún la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' }
+            ]
         },
         {
             type: 'collapsible',
@@ -57,7 +58,7 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'El espejismo de la gratificación inmediata',
             content: [
-                { type: 'paragraph', text: 'Cuando la batería está baja, buscamos enchufes rápidos: comer algo dulce, mirar redes, ver series sin parar…\nEsto es gratificación inmediata: placer rápido, pero que dura lo que un sorbo de café en un día frío.\nEl bienestar sostenido, en cambio, es como encender una estufa que mantiene el calor mucho después: caminar, retomar un hobby, hablar con alguien que te importa.\nComo recuerda la Terapia Cognitivo-Conductual, las acciones que más levantan el ánimo suelen ser las que menos apetece hacer al principio.'}
+                { type: 'paragraph', text: 'Cuando la batería está baja, buscamos enchufes rápidos: comer algo dulce, mirar redes, ver series sin parar…\nEsto es gratificación inmediata: placer rápido, pero que dura lo que un sorbo de café en un día de frío.\nEl bienestar sostenido, en cambio, es como encender una estufa que mantiene el calor mucho después: caminar, retomar un hobby, hablar con alguien que te importa.\nComo recuerda la Terapia Cognitivo-Conductual, las acciones que más levantan el ánimo suelen ser las que menos apetece hacer al principio.'}
             ]
         },
         {
@@ -110,7 +111,7 @@ export const wellbeingPath: Path = {
           type: 'list',
           items: [
             'El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.',
-            'Nuestra energía vital necesita tres ingredientes: combustible físico, chispa emocional y aire mental.',
+            'Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.',
             'Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.',
             'Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.',
             'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.',
@@ -134,7 +135,7 @@ export const wellbeingPath: Path = {
                  {type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad.'}
              ]
          },
-         {
+        {
             type: 'collapsible',
             title: 'El papel de las rutinas en tu equilibrio emocional',
             content: [
@@ -248,7 +249,7 @@ export const wellbeingPath: Path = {
         {
           type: 'list',
           items: [
-            'La motivación no siempre precede a la acción; a menudo aparece después de dar el primer paso.',
+            'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.',
             'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.',
             'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.',
             'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.',
@@ -329,3 +330,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
