@@ -119,10 +119,7 @@ export const supportNetworkPath: Path = {
             'Aceptar apoyo no resta autonomía: la optimiza y nos permite avanzar con más recursos y energía.',
           ],
         },
-        {
-          type: 'quote',
-          text: '“Dejarte sostener no es caer. Es permitir que alguien más camine contigo un tramo.”',
-        },
+        { type: 'quote', text: '“Dejarte sostener no es caer. Es permitir que alguien más camine contigo un tramo.”' },
       ],
     },
     {
@@ -184,8 +181,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El acompañamiento genuino: un faro en la oscuridad',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
           content: [
             {
               type: 'paragraph',
@@ -256,10 +252,7 @@ export const supportNetworkPath: Path = {
             'Cuidar tus vínculos es también una forma de cuidarte a ti mismo/a.',
           ],
         },
-        {
-          type: 'quote',
-          text: '“Hay personas que no te salvan, pero te acompañan mientras tú te reconstruyes. Y eso, a veces, es lo más valioso que puedes recibir.”',
-        },
+        { type: 'quote', text: '“Hay personas que no te salvan, pero te acompañan mientras tú te reconstruyes. Y eso, a veces, es lo más valioso que puedes recibir.”' },
       ],
     },
     {
@@ -383,8 +376,9 @@ export const supportNetworkPath: Path = {
       estimatedTime: '15-20 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: 'Las redes de apoyo no se improvisan: se cultivan con gestos pequeños y constantes. Esta semana trabajaremos cómo fortalecer vínculos desde la conciencia, el respeto y la reciprocidad. Diseñarás tu propio “círculo de sostén” y un plan simple para mantenerlo vivo.',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/INTRODUCCIONSEMANA4.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -437,5 +431,3 @@ export const supportNetworkPath: Path = {
     },
   ],
 };
-
-    
