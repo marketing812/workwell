@@ -144,7 +144,11 @@ export const wellbeingPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-         { type: 'paragraph', text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.'},
+         { 
+            type: 'paragraphWithAudio', 
+            text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.',
+            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3',
+        },
          { type: 'title', text: 'Psicoeducación' },
          {
              type: 'collapsible',
@@ -348,3 +352,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
