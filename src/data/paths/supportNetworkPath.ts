@@ -140,7 +140,8 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'La diferencia entre sentirte ligero/a o drenado/a',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
           content: [
             {
               type: 'paragraph',
@@ -162,7 +163,8 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tres caras del apoyo: dependencia, exigencia y acompañamiento',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
           content: [
             {
               type: 'paragraph',
@@ -184,7 +186,8 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El acompañamiento genuino: un faro en la oscuridad',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
           content: [
             {
               type: 'paragraph',
@@ -240,10 +243,7 @@ export const supportNetworkPath: Path = {
             'A lo largo de la semana, ¿qué he aprendido sobre mis creencias acerca de quién merece estar en mi red de apoyo?',
           ],
         },
-        {
-          type: 'title',
-          text: 'Resumen Clave',
-        },
+        { type: 'title', text: 'Resumen Clave' },
         {
           type: 'paragraphWithAudio',
           text: '',
@@ -271,8 +271,9 @@ export const supportNetworkPath: Path = {
       estimatedTime: '15-20 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: 'Pedir no es suplicar ni imponer, es comunicar lo que necesitas de forma sencilla y respetuosa. Esta semana entrenaremos cómo hacerlo: qué decir, cómo decirlo y en qué momento. Descubrirás que cuando pides con claridad, das a la otra persona la oportunidad de decidir libremente.',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -371,3 +372,5 @@ export const supportNetworkPath: Path = {
     },
   ],
 };
+
+    
