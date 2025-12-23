@@ -161,10 +161,7 @@ export const responsibilityPath: Path = {
             'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
           ],
         },
-        {
-          type: 'quote',
-          text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.',
-        },
+        { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
       ],
     },
     {
@@ -252,7 +249,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”.',
+              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”.".',
             },
           ],
         },
@@ -311,7 +308,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -424,9 +421,10 @@ export const responsibilityPath: Path = {
             '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
           ],
         },
+        { type: 'title', text: 'Resumen Clave de la Semana' },
         {
-          type: 'title',
-          text: 'Resumen Clave de la Semana',
+          type: 'paragraphWithAudio',
+          text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3',
         },
         {
@@ -442,10 +440,7 @@ export const responsibilityPath: Path = {
             'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.',
           ],
         },
-        {
-          type: 'quote',
-          text: 'Hablarme con respeto no me debilita, me prepara para avanzar con fuerza y claridad.',
-        },
+        { type: 'quote', text: 'Hablarme con respeto no me debilita, me prepara para avanzar con fuerza y claridad.' },
       ],
     },
     {
@@ -577,17 +572,4 @@ export const responsibilityPath: Path = {
       ],
     },
   ],
-}>
-
-with the text content:
-
-    "Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista."
-
-Relevant files:
-
-    - src/components/paths/PathDetailClient.tsx
-    - src/components/paths/PathDetailClient.tsx
-
-And change it as follows:
-  
-el tipo de elemento paragraphWithAudio del resumen de la semana, cámbialo a title
+};
