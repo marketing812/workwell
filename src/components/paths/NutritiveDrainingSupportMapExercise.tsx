@@ -55,7 +55,7 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
         {content.objective && <CardDescription className="pt-2">{content.objective}
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3" type="audio/mp3" />
+                    <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3" type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
