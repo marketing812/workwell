@@ -121,6 +121,11 @@ export const wellbeingPath: Path = {
         },
         { type: 'title', text: 'Resumen Clave' },
         {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3',
+        },
+        {
           type: 'list',
           items: [
             'El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.',
@@ -343,5 +348,3 @@ export const wellbeingPath: Path = {
     },
   ],
 };
-
-    
