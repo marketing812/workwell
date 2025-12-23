@@ -67,6 +67,7 @@ export const supportNetworkPath: Path = {
         {
             type: 'therapeuticNotebookReflection',
             title: 'Reflexión Final de la Semana',
+            audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/REFLEXION.mp3',
             prompts: [
               'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
               'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? […]',
@@ -200,5 +201,4 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
-
     
