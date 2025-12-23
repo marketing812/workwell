@@ -98,16 +98,19 @@ export const wellbeingPath: Path = {
           title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL',
           objective: 'Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien. Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.',
           duration: '7-10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3'
         },
         {
           type: 'dailyEnergyCheckExercise',
           title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA',
           objective: 'Este ejercicio te ayudará a identificar qué actividades, personas y entornos recargan tu batería y cuáles la gastan más rápido, para que puedas elegir más de lo que te suma y reducir lo que te drena.',
           duration: '3-5 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3',
           prompts: [
             '¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?',
             '¿Hubo algo que me sorprendiera al observar mi energía día a día?',
@@ -340,3 +343,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
