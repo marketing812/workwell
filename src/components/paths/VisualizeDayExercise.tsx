@@ -43,7 +43,7 @@ export function VisualizeDayExercise({ content, pathId }: VisualizeDayExercisePr
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3" type="audio/mp3" />
+                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3" type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
