@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
             'La queja alivia un momento, pero si no hay acción, nada cambia.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -310,7 +310,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -328,7 +328,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?Esta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
+          text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -423,8 +423,15 @@ export const responsibilityPath: Path = {
             '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3'},
+        {
+          type: 'title',
+          text: 'Resumen Clave de la Semana',
+        },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3',
+        },
         {
           type: 'list',
           items: [
@@ -537,6 +544,7 @@ export const responsibilityPath: Path = {
           objective:
             'Diferenciar lo que depende de ti de lo que no, para que inviertas tu tiempo y fuerza en lo que realmente puedes transformar. Así reduces frustración y recuperas foco.',
           duration: '10–15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana4tecnica1.mp3',
         },
         {
           type: 'personalCommitmentDeclarationExercise',
@@ -544,10 +552,12 @@ export const responsibilityPath: Path = {
           objective:
             'Definir en tres frases clave cómo quieres vivir desde la responsabilidad activa, con equilibrio y autocuidado. Serán tu ancla emocional y tu guía diaria.',
           duration: '5–10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana4tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
           prompts: [
             '¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?',
             '¿Cuál ha sido tu mayor descubrimiento sobre ti en relación con la responsabilidad?',
