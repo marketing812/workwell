@@ -1,4 +1,3 @@
-
 import type { Path } from '../pathsData';
 
 export const supportNetworkPath: Path = {
@@ -139,11 +138,31 @@ export const supportNetworkPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
+          title: 'La diferencia entre sentirte ligero/a o drenado/a',
+          content: [
+            {
+              type: 'paragraph',
+              text: '¿Has notado que, con ciertas personas, basta una conversación para sentirte más ligero/a, con las ideas más claras… mientras que con otras parece que te quedas sin energía, como si te hubieran drenado la batería interna?   No es casualidad. Nuestro cerebro está programado para responder de manera distinta según la calidad de la interacción. Según la neurociencia social (Eisenberger & Cole, 2012), las relaciones de apoyo sincero activan en el cerebro zonas que generan calma y seguridad, mientras que los vínculos conflictivos o invasivos pueden activar los mismos circuitos que responden al dolor físico.   Esta semana vamos a descubrir cómo reconocer esos apoyos que son como un buen té caliente en un día de frío… y cómo evitar quedarnos enganchados a relaciones que, aunque se presenten como “ayuda”, en realidad nos desgastan.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'No toda ayuda es nutritiva',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Antes de avanzar, quiero contarte algo importante: no toda ayuda es nutritiva.   A veces, alguien puede estar muy presente, pero de una forma que nos resta fuerza en vez de dárnosla.   La ayuda nutritiva es como un buen entrenador: te acompaña, te anima y te respeta, pero sabe que el partido lo juegas tú.   En cambio, la ayuda que no nutre puede parecer útil al principio, pero luego te deja más dependiente, inseguro/a o incluso confundido/a.   Piensa en el agua: limpia y fresca, te hidrata y te revitaliza. Turbia, puede calmarte un momento… pero dañarte después.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
           title: 'Tres caras del apoyo: dependencia, exigencia y acompañamiento',
           content: [
             {
               type: 'paragraph',
-              text: '1. Dependencia patológica: Creer que sin el otro no puedes afrontar nada.\n2. Exigencia: Se basa en “deberías” y “tienes que”, a veces con chantaje emocional.\n3. Acompañamiento genuino: Respeto, escucha y validación que impulsa a crecer.',
+              text: 'Vamos a ponerle nombre a tres formas comunes de “apoyo”:   Dependencia patológica – Cuando una persona cree que sin el otro no puede afrontar nada. Se instala un miedo constante al abandono y la autonomía queda bloqueada. En TCC se ve como un patrón que refuerza inseguridad y baja autoestima.   Exigencia – Se basa en “deberías” y “tienes que”, a veces con chantaje emocional incluido. Esto no es apoyo: es control con otro nombre.   Acompañamiento genuino – El que todos merecemos: respeta, escucha, valida, y a la vez te impulsa a crecer. Como decía Bowlby (1988), un vínculo seguro es esa base estable desde la que nos atrevemos a explorar.',
             },
           ],
         },
@@ -152,13 +171,38 @@ export const supportNetworkPath: Path = {
           title: 'Señales de un vínculo nutritivo',
           content: [
             {
-              type: 'list',
-              items: [
-                'Puedes mostrarte como eres, sin miedo a ser juzgado/a.',
-                'Hay empatía y validación emocional.',
-                'El apoyo fluye en ambas direcciones.',
-                'Respetan tus decisiones.',
-              ],
+              type: 'paragraph',
+              text: 'Ahora que ya tienes claro qué tipos de apoyo existen, pasemos a las señales que te ayudarán a reconocer si un vínculo es sano y nutritivo:   Puedes mostrarte como eres, sin miedo a ser juzgado/a.   Hay empatía y validación emocional.   Se comparte información personal e íntima.   Hay muestras de cariño y calidez.   Hay coherencia entre lo que la persona dice y lo que hace.   El apoyo fluye en ambas direcciones: a veces das, a veces recibes.   Respetan tus decisiones, incluso cuando no coinciden con ellas.   Pista rápida: si después de estar con alguien te sientes en calma y con ideas claras, probablemente sea un vínculo nutritivo. Si sales con tensión o dudas, quizá toque poner límites.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'El acompañamiento genuino: un faro en la oscuridad',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'El acompañamiento genuino combina presencia, respeto y fomento de tu autonomía.   Se parece a tener un faro en medio de una noche oscura: no camina por ti, pero ilumina el camino para que tú avances.   Incluye:   Escuchar sin prisas, sin interrumpir y sin hacer de tu historia la suya.   Validar lo que sientes, aunque no esté de acuerdo.   Decirte la verdad con respeto, no con dureza.   Apoyarte sin sobreprotegerte.   Mantener límites claros que cuiden la relación.   Según Feeney y Collins (2015), este tipo de apoyo aumenta la resiliencia y ayuda a que las personas afronten mejor los retos.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Cómo cultivar apoyos seguros',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Una vez que sabes reconocer un buen apoyo, toca cultivarlo. Esto implica cuidar lo que das y lo que recibes.    La neurociencia afectiva (Porges, 2011) muestra que los vínculos seguros activan el sistema nervioso parasimpático, favoreciendo calma y bienestar.   Para fortalecer estos vínculos:   Cumple tus promesas.   Valida emociones, incluso si no piensas igual.   Respeta ritmos y decisiones.   Busca equilibrio: tan importante es dar como recibir.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Mapa de tu red de apoyo',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Identificar quién te nutre no significa cortar con todo lo demás, sino dar prioridad a lo que te fortalece y protegerte de lo que te drena.   En las siguientes pantallas trabajaremos con dos ejercicios prácticos para que mapees tu red de apoyo y descubras quiénes son tus verdaderas personas refugio.  Te sorprenderá ver que, al ponerlo por escrito, la imagen de tu red social cambia… y mucho.  RECUERDA no romper nada',
             },
           ],
         },
@@ -166,15 +210,13 @@ export const supportNetworkPath: Path = {
         {
           type: 'nutritiveDrainingSupportMapExercise',
           title: 'EJERCICIO 1: MAPA DE APOYOS NUTRITIVOS Y DRENANTES',
-          objective:
-            'Dibuja un mapa claro de quiénes en tu vida te suman y quiénes te restan, para que puedas cuidar mejor tu energía emocional.',
+          objective: 'Dibuja un mapa claro de quiénes en tu vida te suman y quiénes te restan, para que puedas cuidar mejor tu energía emocional.',
           duration: '10-15 min',
         },
         {
           type: 'nourishingConversationExercise',
           title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE',
-          objective:
-            'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
+          objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
         },
       ],
@@ -260,8 +302,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'mutualCareCommitmentExercise',
           title: 'EJERCICIO 1: MI COMPROMISO CON EL CUIDADO MUTUO',
-          objective:
-            'Elige tres acciones concretas para fortalecer las relaciones que te nutren. Son pequeños actos que, repetidos en el tiempo, construyen confianza y conexión.',
+          objective: 'Elige tres acciones concretas para fortalecer las relaciones que te nutren. Son pequeños actos que, repetidos en el tiempo, construyen confianza y conexión.',
           duration: '8-10 min',
         },
         {
