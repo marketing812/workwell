@@ -49,7 +49,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, no cambia nada.\n\nMuchas quejas se alimentan de distorsiones cognitivas como:\n\n• Sobregeneralización: “Siempre me pasa lo mismo.”\n• Pensamiento dicotómico: “Nunca me tienen en cuenta.”\n• Deberías rígidos: “Esto no debería ser así.”\n\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\n\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
+              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, nada cambia.\n\nMuchas quejas se alimentan de distorsiones cognitivas como:\n\n• Sobregeneralización: “Siempre me pasa lo mismo.”\n• Pensamiento dicotómico: “Nunca me tienen en cuenta.”\n• Deberías rígidos: “Esto no debería ser así.”\n\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\n\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
             },
           ],
         },
@@ -328,77 +328,65 @@ export const responsibilityPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        {
-          type: 'paragraphWithAudio',
+        { 
+          type: 'paragraphWithAudio', 
           text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Pantalla 1 – De la culpa al impulso: el poder de tu voz interna',
+          title: 'De la culpa al impulso: el poder de tu voz interna',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio1sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En las semanas anteriores aprendiste a diferenciar entre culpa, queja y responsabilidad, y a aceptar lo que fue para elegir lo que sigue. Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta. Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo. En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido. No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'En las semanas anteriores aprendiste a diferenciar entre culpa, queja y responsabilidad, y a aceptar lo que fue para elegir lo que sigue. Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.'
+          }]
         },
         {
           type: 'collapsible',
-          title: 'Pantalla 2 – ¿Por qué a veces somos tan duros con nosotros mismos?',
+          title: '¿Por qué a veces somos tan duros con nosotros mismos?',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio2sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Esa voz crítica interna no aparece por casualidad. Suele formarse a partir de experiencias pasadas, mensajes que recibimos de figuras importantes o incluso expectativas sociales que hemos interiorizado. En TCC llamamos a estos patrones pensamientos automáticos: surgen de forma rápida y sin filtro, muchas veces repitiendo creencias aprendidas sin cuestionarlas. Ejemplo: si en el colegio te decían “podrías hacerlo mejor” cada vez que cometías un error, es posible que hoy tu mente te repita algo parecido cuando las cosas no salen como esperabas. El problema no es detectar un error, sino cómo lo hacemos. Una crítica dura y global (“soy un desastre”) no deja espacio para mejorar; una observación específica y constructiva (“esta vez no salió como quería, voy a probar otra forma”) abre la puerta al cambio.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'Esa voz crítica interna no aparece por casualidad. Suele formarse a partir de experiencias pasadas, mensajes que recibimos de figuras importantes o incluso expectativas sociales que hemos interiorizado.   En TCC llamamos a estos patrones pensamientos automáticos: surgen de forma rápida y sin filtro, muchas veces repitiendo creencias aprendidas sin cuestionarlas.   Ejemplo: si en el colegio te decían “podrías hacerlo mejor” cada vez que cometías un error, es posible que hoy tu mente te repita algo parecido cuando las cosas no salen como esperabas.   El problema no es detectar un error, sino cómo lo hacemos. Una crítica dura y global (“soy un desastre”) no deja espacio para mejorar; una observación específica y constructiva (“esta vez no salió como quería, voy a probar otra forma”) abre la puerta al cambio.'
+          }]
         },
         {
           type: 'collapsible',
-          title: 'Pantalla 3 – La diferencia entre responsabilidad y autoexigencia destructiva',
+          title: 'La diferencia entre responsabilidad y autoexigencia destructiva',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio3sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Asumir responsabilidades es reconocer nuestra parte en una situación y decidir actuar para mejorar. La autoexigencia destructiva, en cambio, es exigirse sin tener en cuenta los propios límites, castigándose por no alcanzar estándares poco realistas. La investigación en psicología motivacional muestra que la autocompasión —entendida como tratarnos con la misma comprensión que a un amigo— favorece el aprendizaje y la persistencia mucho más que la autocrítica severa. Kristin Neff, referente en este campo, lo resume así: “La autocompasión es el antídoto contra la autocrítica que paraliza”. Piensa en esto: Responsabilidad: “Me equivoqué en la presentación. Voy a repasar el material para la próxima vez.” Autoexigencia destructiva: “Siempre lo hago mal. No sirvo para esto.” La primera frase abre posibilidades; la segunda te encierra.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'Asumir responsabilidades es reconocer nuestra parte en una situación y decidir actuar para mejorar. La autoexigencia destructiva, en cambio, es exigirse sin tener en cuenta los propios límites, castigándose por no alcanzar estándares poco realistas.   La investigación en psicología motivacional muestra que la autocompasión —entendida como tratarnos con la misma comprensión que a un amigo— favorece el aprendizaje y la persistencia mucho más que la autocrítica severa. Kristin Neff, referente en este campo, lo resume así: “La autocompasión es el antídoto contra la autocrítica que paraliza”.   Piensa en esto:   Responsabilidad: “Me equivoqué en la presentación. Voy a repasar el material para la próxima vez.”   Autoexigencia destructiva: “Siempre lo hago mal. No sirvo para esto.”   La primera frase abre posibilidades; la segunda te encierra.'
+          }]
         },
         {
           type: 'collapsible',
-          title: 'Pantalla 4 – El impacto real del diálogo interno en tu cerebro y tu cuerpo',
+          title: 'El impacto real del diálogo interno en tu cerebro y tu cuerpo',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio4sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La neurociencia ha comprobado que las palabras que nos decimos activan distintas redes neuronales: Un lenguaje interno amenazante estimula la amígdala, generando respuesta de estrés y aumentando cortisol. Un lenguaje interno amable activa el córtex prefrontal, facilitando la autorregulación y la toma de decisiones. Esto significa que no es solo un tema emocional: es físico. Hablarte mal no solo te desalienta, también reduce tu capacidad de pensar con claridad. En cambio, un tono interno responsable y compasivo no ignora los errores, pero los aborda desde la calma, favoreciendo soluciones más efectivas.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'La neurociencia ha comprobado que las palabras que nos decimos activan distintas redes neuronales:   Un lenguaje interno amenazante estimula la amígdala, generando respuesta de estrés y aumentando cortisol.   Un lenguaje interno amable activa el córtex prefrontal, facilitando la autorregulación y la toma de decisiones.   Esto significa que no es solo un tema emocional: es físico. Hablarte mal no solo te desalienta, también reduce tu capacidad de pensar con claridad. En cambio, un tono interno responsable y compasivo no ignora los errores, pero los aborda desde la calma, favoreciendo soluciones más efectivas.'
+          }]
         },
         {
           type: 'collapsible',
-          title: 'Pantalla 5 – De juez a guía: el cambio que necesitas',
+          title: 'De juez a guía: el cambio que necesitas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio5sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Imagina que tienes un entrenador personal que te acompaña cada día. Si te gritara y te humillara cada vez que fallas, ¿cuánto tardarías en perder motivación? Ahora imagina que ese entrenador te corrige, pero también reconoce tus avances y te anima a intentarlo de nuevo. Ese entrenador eres tú. Y hoy vamos a entrenar tu voz interna para que pase de juez severo a guía firme y alentador. No se trata de evitar la responsabilidad ni de “endulzarlo todo”, sino de decir las cosas de forma que te ayuden a actuar.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'Imagina que tienes un entrenador personal que te acompaña cada día. Si te gritara y te humillara cada vez que fallas, ¿cuánto tardarías en perder motivación? Ahora imagina que ese entrenador te corrige, pero también reconoce tus avances y te anima a intentarlo de nuevo.   Ese entrenador eres tú. Y hoy vamos a entrenar tu voz interna para que pase de juez severo a guía firme y alentador. No se trata de evitar la responsabilidad ni de “endulzarlo todo”, sino de decir las cosas de forma que te ayuden a actuar.'
+          }]
         },
         {
           type: 'collapsible',
-          title: 'Pantalla 6 – Cierre y puente hacia las técnicas',
+          title: 'Cierre y puente hacia las técnicas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio6sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En esta semana aprenderás a identificar cuándo tu voz interna está frenando tu crecimiento y a transformarla en una aliada. Descubrirás que ser responsable no significa castigarte, y que puedes exigirte sin perder el respeto por ti mismo o por ti misma. Ahora pasaremos a las técnicas, donde pondrás en práctica estrategias concretas para: Definir cómo quieres hablarte cuando las cosas no salgan como esperabas. Reformular críticas internas en guías constructivas que te impulsen.',
-            },
-          ],
+          content: [{
+            type: 'paragraph',
+            text: 'En esta semana aprenderás a identificar cuándo tu voz interna está frenando tu crecimiento y a transformarla en una aliada. Descubrirás que ser responsable no significa castigarte, y que puedes exigirte sin perder el respeto por ti mismo o por ti misma.   Ahora pasaremos a las técnicas, donde pondrás en práctica estrategias concretas para:   Definir cómo quieres hablarte cuando las cosas no salgan como esperabas.   Reformular críticas internas en guías constructivas que te impulsen.'
+          }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -497,3 +485,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+    
