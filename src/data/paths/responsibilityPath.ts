@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
             'La queja alivia un momento, pero si no hay acción, nada cambia.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”."',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -395,6 +395,7 @@ export const responsibilityPath: Path = {
           objective:
             'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
           duration: '10–15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica1.mp3'
         },
         {
           type: 'criticismToGuideExercise',
@@ -485,5 +486,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    
