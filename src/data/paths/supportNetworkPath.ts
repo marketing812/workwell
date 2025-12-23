@@ -383,21 +383,67 @@ export const supportNetworkPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Estar para otros sin perderte',
+          title: 'Introducción: Las relaciones se entrenan',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO1.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Acompañar a alguien no significa desdibujarte. Si siempre estás disponible para todos, pero nunca para ti, tu energía se vacía. El cuidado genuino nace de cuidarte primero.',
+              text: 'Igual que un músculo no se fortalece con una sola sesión en el gimnasio, una relación no crece de un día para otro. Requiere presencia, pequeños gestos constantes y la intención de cuidarla.   Esta semana vamos a trabajar la idea de que tu red de apoyo emocional no es algo que simplemente “tienes” o “no tienes”, sino algo que puedes construir, cultivar y fortalecer como parte de tu autocuidado.   Verás cómo cada conversación, cada límite sano y cada acto de reciprocidad son “nutrientes” para tus vínculos.   Ejemplo: pensar que una amistad de años se mantendrá fuerte sin contacto es como esperar que una planta viva meses sin agua.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Estar para otros sin perderte',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO2.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Acompañar a alguien no significa desdibujarte ni dejar de atenderte. Es estar presente, escuchar y ofrecer apoyo… pero sin abandonar tus propios espacios, descanso o necesidades.   Si siempre estás disponible para todo el mundo, pero nunca para ti, tu energía se vacía. Y cuando eso pasa, el cuidado deja de ser genuino y se convierte en obligación o agotamiento.   Carl Rogers, uno de los grandes referentes de la psicología humanista, recordaba que “solo puedo ayudar desde la autenticidad”. Esa autenticidad nace de cuidarte primero para luego poder cuidar.   Ejemplo: puedes escuchar a tu amiga después de un mal día, pero si esa conversación interfiere con tu descanso cada noche, es momento de poner límites amables y claros.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Fitness relacional: entrenar los vínculos',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO3.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Piensa en tus relaciones como si fueran tu salud física. Para fortalecer los músculos, no basta con saber que existen: hay que entrenarlos. Lo mismo pasa con los vínculos.   El fitness relacional consiste en practicar habilidades que mantienen viva la conexión: la escucha activa, la empatía, la comunicación honesta y el tiempo compartido de calidad.   Cada vez que te interesas genuinamente por alguien, que expresas gratitud o que compartes un momento de verdad, estás haciendo una “repetición” que fortalece esa relación. Y si dejas de entrenar, poco a poco ese vínculo se debilita.   Ejemplo: un mensaje que diga “Hoy me acordé de ti, ¿cómo estás?” puede ser más valioso que un regalo caro. Es una repetición simple, pero efectiva.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Reciprocidad y cuidado mutuo',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Dar y recibir son las dos caras de la misma moneda en las relaciones sanas. El equilibrio no significa que las aportaciones sean idénticas, sino que exista la sensación de que ambos están presentes y comprometidos.',
+              text: 'Dar y recibir son las dos caras de la misma moneda en las relaciones sanas. Si siempre das más de lo que recibes o si solo recibes sin aportar, el equilibrio se rompe y la conexión se resiente.   La investigación de Holt-Lunstad et al. (2010) muestra que las personas que sienten reciprocidad en su red de apoyo tienen menos estrés, mejor salud física y viven más años.   El cuidado mutuo no significa que las aportaciones sean siempre idénticas, sino que exista la sensación de que ambos lados están presentes y comprometidos.   Ejemplo: si hoy tú ayudas a tu hermano a mudarse, y mañana él te acompaña a una cita médica, aunque las acciones sean diferentes, ambas sostienen el vínculo.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Tu red como autocuidado emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO5.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Cuidar de tus relaciones no es un extra opcional: es parte de tu salud emocional.   Las personas con vínculos positivos tienen menos ansiedad, menos depresión y más capacidad de recuperación después de momentos difíciles.   La clave no es la cantidad, sino la calidad: rodearte de personas que te acepten tal como eres, que te respeten y que también se atrevan a decirte verdades incómodas cuando lo necesites.   Invertir tiempo y energía en tu red de apoyo es una forma de cuidarte tanto como hacer ejercicio o comer bien.   Ejemplo: una sola amistad que te escuche de verdad puede marcar la diferencia en un momento de crisis, más que diez conocidos que solo aparecen en tus buenos momentos.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Construir con conciencia',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO6.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'No todas las relaciones merecen la misma dedicación.    Construir con conciencia es decidir en qué vínculos vas a invertir tu energía, y cuáles requieren límites claros.   Pregúntate:   ¿Qué relaciones me aportan calma, inspiración o alegría?   ¿Cuáles me generan tensión, cansancio o me alejan de mis valores?   Esto no es egoísmo: es respeto por ti mismo/a y por tu salud emocional. Igual que cuidas tu alimentación para nutrir tu cuerpo, selecciona las relaciones que nutren tu mente y tu corazón.   Recuerda: a veces, cuidar un vínculo también es saber soltarlo.   Ejemplo: si notas que tras cada encuentro con alguien te sientes drenado/a o cuestionado/a, es una señal para reflexionar sobre la energía que pones en esa relación.',
             },
           ],
         },
@@ -423,11 +469,10 @@ export const supportNetworkPath: Path = {
             '¿Qué compromisos quiero mantener para cuidar mi red?',
           ],
         },
-        {
-          type: 'quote',
-          text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.',
-        },
+        { type: 'quote', text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.' },
       ],
     },
   ],
 };
+
+    
