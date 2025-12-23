@@ -328,8 +328,8 @@ export const responsibilityPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        { 
-          type: 'paragraphWithAudio', 
+        {
+          type: 'paragraphWithAudio',
           text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3'
         },
@@ -403,6 +403,7 @@ export const responsibilityPath: Path = {
           objective:
             'Convertir tu voz crítica en una guía útil que te ayude a mejorar sin hundirte, manteniendo la exigencia sana pero eliminando el castigo.',
           duration: '8–10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
