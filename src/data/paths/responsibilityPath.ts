@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
             'La queja alivia un momento, pero si no hay acción, nada cambia.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -402,16 +402,14 @@ export const responsibilityPath: Path = {
         {
           type: 'compassionateResponsibilityContractExercise',
           title: 'EJERCICIO 1: MI CONTRATO DE AUTORRESPONSABILIDAD COMPASIVA',
-          objective:
-            'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
+          objective: 'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
           duration: '10–15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica1.mp3',
         },
         {
           type: 'criticismToGuideExercise',
           title: 'EJERCICIO 2: TRANSFORMA TU CRÍTICA EN GUÍA',
-          objective:
-            'Convertir tu voz crítica en una guía útil que te ayude a mejorar sin hundirte, manteniendo la exigencia sana pero eliminando el castigo.',
+          objective: 'Convertir tu voz crítica en una guía útil que te ayude a mejorar sin hundirte, manteniendo la exigencia sana pero eliminando el castigo.',
           duration: '8–10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3',
         },
@@ -425,12 +423,8 @@ export const responsibilityPath: Path = {
             '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3'},
         {
           type: 'list',
           items: [
@@ -455,44 +449,86 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Sientes que a veces asumes demasiado y terminas agotado o agotada?Esta semana vas a aprender a comprometerte con lo que sí depende de ti, sin cargar con lo que no. Trabajarás en proteger tu energía, definir tu zona de influencia y mantener tu responsabilidad como una elección que te impulsa, no como una carga que te rompe.',
+          text: '¿Sientes que a veces asumes demasiado y terminas agotado o agotada?\nEsta semana vas a aprender a comprometerte con lo que sí depende de ti, sin cargar con lo que no. Trabajarás en proteger tu energía, definir tu zona de influencia y mantener tu responsabilidad como una elección que te impulsa, no como una carga que te rompe.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Introsesion4ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
-            type: 'collapsible',
-            title: 'De cargar con todo a elegir con intención',
-            content: [{ type: 'paragraph', text: 'En semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”' }],
+          type: 'collapsible',
+          title: 'De cargar con todo a elegir con intención',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio1sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'En semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'La sostenibilidad emocional de la responsabilidad',
-            content: [{ type: 'paragraph', text: 'La responsabilidad mal entendida puede llevar al agotamiento, la frustración y el resentimiento. Para que sea sostenible, necesitamos un equilibrio entre implicarnos y cuidarnos.   La neurociencia muestra que el cerebro necesita alternar periodos de activación y descanso para mantener la motivación y la claridad mental (Peters et al., 2017). Cuando nos hacemos cargo de todo, el sistema nervioso entra en estrés crónico y eso afecta al juicio, a la memoria y a la regulación emocional.   Idea clave: Responsabilidad no es cargar con más, es actuar mejor.' }],
+          type: 'collapsible',
+          title: 'La sostenibilidad emocional de la responsabilidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio2sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'La responsabilidad mal entendida puede llevar al agotamiento, la frustración y el resentimiento. Para que sea sostenible, necesitamos un equilibrio entre implicarnos y cuidarnos.   La neurociencia muestra que el cerebro necesita alternar periodos de activación y descanso para mantener la motivación y la claridad mental (Peters et al., 2017). Cuando nos hacemos cargo de todo, el sistema nervioso entra en estrés crónico y eso afecta al juicio, a la memoria y a la regulación emocional.   Idea clave: Responsabilidad no es cargar con más, es actuar mejor.',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Esto no me corresponde / Esto sí lo puedo transformar',
-            content: [{ type: 'paragraph', text: 'Un error común es pensar que ser responsables significa asumir cualquier problema cercano.   La realidad es que hay cosas que no dependen de nosotros y que, si intentamos controlarlas, solo generamos desgaste y frustración.   Separar lo que sí y lo que no te corresponde es un acto de autocuidado y de claridad mental.   Ejemplo:   No me corresponde: las decisiones ajenas, el clima, las emociones que otros no quieren trabajar.   Sí puedo transformar: mi forma de comunicarme, mis hábitos, mi manera de responder a lo que ocurre.' }],
+          type: 'collapsible',
+          title: 'Esto no me corresponde / Esto sí lo puedo transformar',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio3sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Un error común es pensar que ser responsables significa asumir cualquier problema cercano.   La realidad es que hay cosas que no dependen de nosotros y que, si intentamos controlarlas, solo generamos desgaste y frustración.   Separar lo que sí y lo que no te corresponde es un acto de autocuidado y de claridad mental.   Ejemplo:   No me corresponde: las decisiones ajenas, el clima, las emociones que otros no quieren trabajar.   Sí puedo transformar: mi forma de comunicarme, mis hábitos, mi manera de responder a lo que ocurre.',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'El mapa de la influencia real',
-            content: [{ type: 'paragraph', text: 'Imagina tu vida como tres círculos concéntricos:   Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos).   Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo).   Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas).   Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía.   Ejemplo:  Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes:   Comunicar plazos claros.   Pedir reuniones de seguimiento.   Ajustar tu parte para prevenir retrasos.' }],
+          type: 'collapsible',
+          title: 'El mapa de la influencia real',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Imagina tu vida como tres círculos concéntricos:   Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos).   Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo).   Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas).   Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía.   Ejemplo:  Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes:   Comunicar plazos claros.   Pedir reuniones de seguimiento.   Ajustar tu parte para prevenir retrasos.',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Compromiso con una vida elegida, no impuesta',
-            content: [{ type: 'paragraph', text: 'Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras.   Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro.   Ejemplo:   Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”   Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.”' }],
+          type: 'collapsible',
+          title: 'Compromiso con una vida elegida, no impuesta',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras.   Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro.   Ejemplo:   Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”   Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.”',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Cuidarte también es tu responsabilidad',
-            content: [{ type: 'paragraph', text: 'La autorresponsabilidad también implica proteger tu energía física, mental y emocional.   En TCC y psicología positiva, el autocuidado no es un lujo: es la base para responder con claridad y sostener tus compromisos a largo plazo.   Cuando te pierdes de vista, la responsabilidad se vuelve una carga que agota y bloquea; cuando te cuidas, se convierte en una elección que impulsa y da estabilidad.   Ejemplos:   Asumir un reto durmiendo poco → más estrés y menos rendimiento.   Priorizar descanso y pausas → más energía, enfoque y mejores decisiones.   Cuidarte es asegurar que podrás seguir eligiendo y actuando mañana.   Recuerda: si te pierdes de vista, tu responsabilidad se convierte en una carga que te rompe, no en una elección que te impulsa.' }],
+          type: 'collapsible',
+          title: 'Cuidarte también es tu responsabilidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio6sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'La autorresponsabilidad también implica proteger tu energía física, mental y emocional.   En TCC y psicología positiva, el autocuidado no es un lujo: es la base para responder con claridad y sostener tus compromisos a largo plazo.   Cuando te pierdes de vista, la responsabilidad se vuelve una carga que agota y bloquea; cuando te cuidas, se convierte en una elección que impulsa y da estabilidad.   Ejemplos:   Asumir un reto durmiendo poco → más estrés y menos rendimiento.   Priorizar descanso y pausas → más energía, enfoque y mejores decisiones.   Cuidarte es asegurar que podrás seguir eligiendo y actuando mañana.   Recuerda: si te pierdes de vista, tu responsabilidad se convierte en una carga que te rompe, no en una elección que te impulsa.',
+            },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Cierre y puente a la práctica',
-            content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:   Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde.   Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso.   La responsabilidad que eliges es más ligera que la culpa que arrastras.  Ahora vamos a entrenarla.' }],
+          type: 'collapsible',
+          title: 'Cierre y puente a la práctica',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:   Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde.   Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso.   La responsabilidad que eliges es más ligera que la culpa que arrastras.  Ahora vamos a entrenarla.',
+            },
+          ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -523,3 +559,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+    
