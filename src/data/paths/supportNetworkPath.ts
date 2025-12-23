@@ -238,11 +238,7 @@ export const supportNetworkPath: Path = {
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3',
-        },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3' },
         {
           type: 'list',
           items: [
@@ -499,5 +495,53 @@ export const supportNetworkPath: Path = {
         },
       ],
     },
+    {
+      id: 'apoyo_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'REFLEXIÓN FINAL DE LA RUTA PARA EL CUADERNO',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/REFLEXIONRUTA.mp3',
+          prompts: [
+            'Has llegado al final de esta ruta. Durante estas semanas te has detenido a observar tu red de apoyo con más claridad, descubriendo qué vínculos te fortalecen y cuáles quizás te restan energía.',
+            'No es un camino fácil, porque mirar de cerca nuestras relaciones también toca fibras sensibles. Aun así, cada paso que has dado te ha acercado a una vida más consciente, sostenida y enraizada en lo que de verdad importa.',
+            'Hoy te invito a hacer una pausa, respirar hondo y mirar atrás con gratitud: ¿qué aprendizajes quieres llevar contigo y cómo vas a ponerlos en práctica? Esta es tu oportunidad para darle forma a tus descubrimientos y comprometerte con lo que deseas cuidar a partir de ahora.',
+            'Pregúntate:',
+            '¿Eras consciente de la importancia de tu red de apoyo? […]',
+            '¿Qué has descubierto sobre las personas que realmente te sostienen y nutren tu vida? […]',
+            '¿Qué cambios has notado en ti cuando priorizas vínculos que te dan calma, respeto y energía? […]',
+            '¿De qué manera te relacionas ahora con esos apoyos que antes no reconocías o que dabas por sentado? […]',
+            '¿Qué compromisos quieres asumir para cuidar mejor tu red y también para ser tú un apoyo nutritivo para quienes quieres? […]',
+            'Escribe libremente tus respuestas. Recuerda: cultivar una red de apoyo es un proceso dinámico y vivo, igual que un jardín. ¿Qué semillas vas a seguir regando de aquí en adelante?',
+          ]
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN CLAVE DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/RESUMENRUTA.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'Las relaciones influyen directamente en nuestro bienestar emocional y físico: un buen apoyo calma, uno tóxico desgasta.',
+            'No toda ayuda es nutritiva: el verdadero acompañamiento respeta, valida y fomenta autonomía.',
+            'Aprendimos a distinguir entre dependencia, exigencia y acompañamiento genuino.',
+            'Reconocer señales de un vínculo sano: coherencia, empatía, respeto, equilibrio entre dar y recibir.',
+            'La neurociencia confirma que los vínculos seguros activan nuestro sistema de calma y resiliencia.',
+            'Cuidar la red de apoyo implica tanto elegir bien lo que recibimos como ser un apoyo nutritivo para los demás.',
+            'Mapear la red y priorizar vínculos nutritivos fortalece la capacidad de afrontar la vida con más seguridad y confianza.',
+          ]
+        },
+        {
+          type: 'quote',
+          text: '“Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.”'
+        }
+      ]
+    }
   ],
 };
+
+    
