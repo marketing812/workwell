@@ -249,7 +249,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”.".',
+              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”."',
             },
           ],
         },
@@ -308,7 +308,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -571,5 +571,46 @@ export const responsibilityPath: Path = {
         { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
       ],
     },
+    {
+      id: 'resp_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          prompts: [
+            'A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.',
+            'Piensa ahora:',
+            '¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta? […]',
+            '¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad? […]',
+            '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria? […]',
+          ],
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL',
+        },
+        {
+          type: 'list',
+          items: [
+            'La culpa útil impulsa a reparar; la improductiva te paraliza.',
+            'La queja sin acción desgasta y no resuelve.',
+            'La responsabilidad activa te conecta con tu poder de influencia.',
+            'El cuestionamiento socrático y la acción opuesta rompen la rumiación.',
+            'Transformar la autocrítica en guía fortalece la confianza y la resiliencia.',
+            'Cuidar tu energía es parte de la responsabilidad contigo.',
+            'Definir tu zona de influencia te ayuda a no cargar con lo que no te corresponde.',
+          ],
+        },
+        {
+          type: 'quote',
+          text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.',
+        },
+      ],
+    },
   ],
 };
+
+    
