@@ -308,7 +308,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -580,6 +580,7 @@ export const responsibilityPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
           prompts: [
             'A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.',
             'Piensa ahora:',
@@ -612,5 +613,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    
