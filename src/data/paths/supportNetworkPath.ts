@@ -55,13 +55,46 @@ export const supportNetworkPath: Path = {
             title: 'EJERCICIO1: MAPA DE RELACIONES Y APOYO',
             objective: 'Visualiza de forma clara tu red de apoyo y reflexiona sobre cómo te relacionas con las personas que la forman.',
             duration: '10-15 min',
+            audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3'
         },
         {
             type: 'blockingThoughtsExercise',
             title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
             objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
             duration: '8-12 min',
+            audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3'
         },
+        {
+            type: 'therapeuticNotebookReflection',
+            title: 'Reflexión Final de la Semana',
+            prompts: [
+              'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
+              'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? […]',
+              'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? […]',
+              '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) […]',
+              'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? […]',
+              'Si hoy pudiera revivir esa situación, ¿qué haría diferente? […]',
+              '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí? […]',
+            ],
+          },
+          {
+            type: 'title',
+            text: 'Resumen Clave',
+          },
+          {
+            type: 'list',
+            items: [
+              'Pedir ayuda no es debilidad, es una habilidad social y emocional que fortalece vínculos y mejora el bienestar.',
+              'El ser humano está diseñado para la conexión: el apoyo social de calidad reduce estrés, mejora la salud física y aumenta la resiliencia.',
+              'Las creencias y miedos que bloquean la petición de ayuda pueden identificarse y reformularse con práctica y consciencia.',
+              'Calidad es mejor que cantidad: una red pequeña y nutritiva es más valiosa que muchos contactos superficiales.',
+              'Aceptar apoyo no resta autonomía: la optimiza y nos permite avanzar con más recursos y energía.',
+            ],
+          },
+          {
+            type: 'quote',
+            text: '“Dejarte sostener no es caer. Es permitir que alguien más camine contigo un tramo.”',
+          },
       ]
     },
     {
@@ -167,3 +200,5 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
+
+    
