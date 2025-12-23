@@ -308,7 +308,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -579,7 +579,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          title: 'Reflexión Final de la Ruta',
           prompts: [
             'A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.',
             'Piensa ahora:',
@@ -606,7 +606,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'quote',
-          text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.',
+          text: '“Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista”.',
         },
       ],
     },
