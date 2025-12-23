@@ -140,8 +140,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'La diferencia entre sentirte ligero/a o drenado/a',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
           content: [
             {
               type: 'paragraph',
@@ -230,7 +229,6 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE',
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -279,6 +277,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Pedir ayuda no es “molestar”',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Pedirayudanoesmolestar.mp3',
           content: [
             {
               type: 'paragraph',
@@ -289,6 +288,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Necesidad legítima ≠ deuda emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Necesidadlegitimadeudaemocional.mp3',
           content: [
             {
               type: 'paragraph',
@@ -299,6 +299,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Cuanto más claro, más fácil decir “sí”',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Cuantomasclaromasfacildecirsi.mp3',
           content: [
             {
               type: 'paragraph',
@@ -309,6 +310,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El mito de “puedo con todo”',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Elmitodepuedocontodo.mp3',
           content: [
             {
               type: 'paragraph',
@@ -319,6 +321,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Recibir sin culpa, dar valor a lo que llega',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Recibirsincupadarvaloralquellegue.mp3',
           content: [
             {
               type: 'paragraph',
