@@ -15,8 +15,9 @@ export const wellbeingPath: Path = {
       estimatedTime: '20-25 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: 'El ánimo bajo se alimenta de un círculo difícil: haces menos cosas que disfrutas → recibes menos placer → tu ánimo baja más. En esta primera semana aprenderás a romper ese ciclo recordando qué cosas, personas y lugares te recargan. Crearás tu propio mapa de gratificación emocional y empezarás a observar qué te da energía y qué te la quita en tu día a día. Así tendrás un punto de partida claro: saber a qué recurrir cuando tu batería se queda en rojo.',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Introsesion1ruta12.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -30,8 +31,8 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
             content: [
-              { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n• ☁ Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n• 🌥 Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n• 🌩 Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.' },
-            ],
+              { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n• ☁ Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n• 🌥 Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n• 🌩 Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.' }
+            ]
         },
         {
             type: 'collapsible',
@@ -268,12 +269,12 @@ export const wellbeingPath: Path = {
          { type: 'paragraph', text: 'El ánimo bajo reduce los momentos agradables y aumenta la presencia de lo negativo. Para equilibrar la balanza, necesitas crear tu propia mochila de recursos positivos: recuerdos, hábitos, apoyos y actitudes que te sostengan en los días grises. Esta semana aprenderás a entrenar tu mente para capturar lo bueno, revivir recuerdos positivos y diseñar un botiquín emocional con recursos listos para usar cuando lo necesites.'},
          { type: 'title', text: 'Psicoeducación' },
          {
-            type: 'collapsible',
-            title: 'Qué es la reserva emocional positiva',
-            content: [
-                {type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles. Se alimenta de hábitos, relaciones y actitudes. No se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido.'}
-            ]
-        },
+             type: 'collapsible',
+             title: 'Qué es la reserva emocional positiva',
+             content: [
+                 {type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles. Se alimenta de hábitos, relaciones y actitudes. No se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido.'}
+             ]
+         },
         {
             type: 'collapsible',
             title: 'Por qué es clave en la recuperación',
@@ -330,5 +331,3 @@ export const wellbeingPath: Path = {
     },
   ],
 };
-
-    
