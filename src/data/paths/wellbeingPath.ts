@@ -144,75 +144,59 @@ export const wellbeingPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-        { 
-            type: 'paragraphWithAudio', 
+        {
+            type: 'paragraphWithAudio',
             text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3',
         },
-         { type: 'title', text: 'Psicoeducación' },
-         {
-             type: 'collapsible',
-             title: 'Cuando lo básico empieza a fallar',
-             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3',
-             content: [
-                 {type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?  Dormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.   Esta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.'}
-             ]
-         },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+            type: 'collapsible',
+            title: 'Cuando lo básico empieza a fallar',
+            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3',
+            content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?  Dormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.   Esta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.' }]
+        },
         {
             type: 'collapsible',
             title: 'Rutinas que son anclas',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad.   Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.'}
-            ]
+            content: [{ type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' }]
         },
         {
             type: 'collapsible',
             title: 'El papel de las rutinas en tu equilibrio emocional',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.'}
-            ]
+            content: [{ type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' }]
         },
         {
             type: 'collapsible',
             title: 'Cuando las rutinas se rompen',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:   Dormimos peor.   Nos movemos menos.   Comemos rápido o poco nutritivo.   Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.   Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.'}
-            ]
+            content: [{ type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:   Dormimos peor.   Nos movemos menos.   Comemos rápido o poco nutritivo.   Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.   Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }]
         },
         {
             type: 'collapsible',
             title: 'La fuerza de los pequeños pasos',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.  Los pequeños pasos tienen un efecto acumulativo enorme:   Moverte 10 minutos al día.   Preparar un desayuno nutritivo.   Reservar un rato para algo que disfrutas.   Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.'}
-            ]
+            content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.  Los pequeños pasos tienen un efecto acumulativo enorme:   Moverte 10 minutos al día.   Preparar un desayuno nutritivo.   Reservar un rato para algo que disfrutas.   Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }]
         },
         {
             type: 'collapsible',
             title: 'Rutina rígida vs. ritual de cuidado',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.   • Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.   • Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.   Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.'}
-            ]
+            content: [{ type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.   • Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.   • Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.   Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' }]
         },
-         {
+        {
             type: 'collapsible',
             title: 'Ideas para tus rituales de cuidado',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:   Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.   Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.   Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).   Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.   Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.'}
-            ]
+            content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:   Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.   Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.   Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).   Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.   Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
         },
-         {
+        {
             type: 'collapsible',
             title: 'Tu misión esta semana',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio8sesion2ruta12.mp3',
-            content: [
-                {type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.  No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.   En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.'}
-            ]
+            content: [{ type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.  No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.   En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -235,7 +219,8 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
           prompts: ["En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?","Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?","¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?","¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?"]
         },
-        { type: 'title', text: 'Resumen Clave'},
+        { type: 'title', text: 'Resumen Clave' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3' },
         { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]},
         { type: 'quote', text: '“El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.”'}
       ]
