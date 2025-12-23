@@ -565,20 +565,32 @@ export const responsibilityPath: Path = {
             '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana'},
-        { type: 'list', items: [
+        { type: 'title', text: 'Resumen Clave de la Semana' },
+        {
+          type: 'list',
+          items: [
             'Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.',
             'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.',
             'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.',
             'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.',
-            'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.'
-        ]},
-        { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
-        {
-          type: 'quote',
-          text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.',
+            'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.',
+          ],
         },
+        { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
       ],
     },
   ],
 };
+
+with the text content:
+
+    "Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista."
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+añade antes del texto el Resumen de la semana. Este es el contenido: Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.   Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.   La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.   La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.   Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.      FRASE DE CIERRE   “La responsabilidad que eliges es más ligera que la culpa que arrastras.”
