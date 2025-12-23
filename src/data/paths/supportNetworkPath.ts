@@ -87,7 +87,7 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -162,8 +162,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tres caras del apoyo: dependencia, exigencia y acompañamiento',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
           content: [
             {
               type: 'paragraph',
@@ -229,6 +228,7 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE',
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -314,7 +314,7 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Vivir bajo la idea de la autosuficiencia total puede dejarte agotado y aislado.   Los estudios sobre resiliencia (Southwick y Charney, 2018) muestran que quienes aceptan apoyo se recuperan antes de momentos difíciles. No es debilidad: es inteligencia emocional.   Recibir ayuda no te quita valor, te conecta con lo que eres: una persona capaz… y también parte de una red de cuidado.',
+              text: 'Vivimos en un mundo que aplaude la autosuficiencia. “Ser fuerte” muchas veces se traduce en “no necesito a nadie”. Pero llevar eso al extremo nos puede dejar agotados y aislados.   Los estudios sobre resiliencia (Southwick y Charney, 2018) muestran que quienes aceptan apoyo se recuperan antes de momentos difíciles. No es debilidad: es inteligencia emocional.   Recibir ayuda no te quita valor, te conecta con lo que eres: una persona capaz… y también parte de una red de cuidado.',
             },
           ],
         },
@@ -335,13 +335,45 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 1: EL MAPA DE PETICIONES CLARAS',
           objective: 'Aprende a formular peticiones tan claras que la otra persona sabrá exactamente qué hacer para apoyarte.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana3tecnica1.mp3',
         },
         {
           type: 'supportBankExercise',
           title: 'EJERCICIO 2: EL BANCO DE APOYOS',
           objective: 'Crea tu propio mapa de apoyos para saber a quién pedir ayuda según el momento y la necesidad.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana3tecnica2.mp3',
         },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/REFLEXION.mp3',
+          prompts: [
+            'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
+            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? […]',
+            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? […]',
+            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) […]',
+            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? […]',
+            'Si hoy pudiera revivir esa situación, ¿qué haría diferente? […]',
+            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí? […]',
+          ],
+        },
+        { type: 'title', text: 'Resumen Clave' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/RESUMEN.mp3',
+        },
+        {
+          type: 'list',
+          items: [
+            'Pedir ayuda no es debilidad, es un acto de conexión humana.',
+            'Entrenar en lo pequeño nos prepara para lo grande.',
+            'Las creencias sobre “molestar” o “ser una carga” pueden transformarse con experiencias positivas.',
+            'Observar nuestra reacción es parte del aprendizaje.',
+          ],
+        },
+        { type: 'quote', text: '“Cuando pides ayuda, no pierdes independencia: ganas apoyo y conexión.”' },
       ],
     },
     {
