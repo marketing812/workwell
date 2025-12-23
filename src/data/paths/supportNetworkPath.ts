@@ -1,3 +1,4 @@
+
 import type { Path } from '../pathsData';
 
 export const supportNetworkPath: Path = {
@@ -139,6 +140,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'La diferencia entre sentirte ligero/a o drenado/a',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
           content: [
             {
               type: 'paragraph',
@@ -149,6 +151,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'No toda ayuda es nutritiva',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Notodaayudaesnutritiva.mp3',
           content: [
             {
               type: 'paragraph',
@@ -159,6 +162,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tres caras del apoyo: dependencia, exigencia y acompañamiento',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
           content: [
             {
               type: 'paragraph',
@@ -169,6 +173,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Señales de un vínculo nutritivo',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Senalesdeunvinculonutritivo.mp3',
           content: [
             {
               type: 'paragraph',
@@ -179,6 +184,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El acompañamiento genuino: un faro en la oscuridad',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
           content: [
             {
               type: 'paragraph',
@@ -189,6 +195,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Cómo cultivar apoyos seguros',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Comocultivarapoyosseguros.mp3',
           content: [
             {
               type: 'paragraph',
@@ -199,6 +206,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Mapa de tu red de apoyo',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Mapadetureddeapoyo.mp3',
           content: [
             {
               type: 'paragraph',
