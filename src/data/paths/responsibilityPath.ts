@@ -594,6 +594,11 @@ export const responsibilityPath: Path = {
           text: 'RESUMEN FINAL',
         },
         {
+            type: 'paragraphWithAudio',
+            text: '',
+            audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumenfinalruta10.mp3'
+        },
+        {
           type: 'list',
           items: [
             'La culpa útil impulsa a reparar; la improductiva te paraliza.',
