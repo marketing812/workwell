@@ -16,7 +16,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Cuántas veces has pensado “mejor no digo nada, no quiero molestar”? Esta semana vamos a romper con esa idea. Pedir ayuda no te resta valor, te humaniza. Descubrirás por qué a veces nos cuesta tanto pedir y cómo esos miedos nacen de creencias aprendidas (como “si pido, soy una carga”). Juntos/as vamos a darle la vuelta: aprenderás a ver el apoyo como un recurso legítimo y valioso.',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/INTRODUCCIONSEMANA1.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -132,8 +132,9 @@ export const supportNetworkPath: Path = {
       estimatedTime: '20-25 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: 'No todas las personas que “ayudan” lo hacen de forma que te fortalece. Esta semana aprenderás a reconocer esas diferencias y a identificar tus relaciones nutritivas. Piensa en ello como elegir alimentos: algunos te nutren, otros solo te llenan… o incluso te hacen daño.',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/INTRODUCCIONSEMANA2.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
