@@ -17,16 +17,14 @@ export const wellbeingPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'El ánimo bajo se alimenta de un círculo difícil: haces menos cosas que disfrutas → recibes menos placer → tu ánimo baja más. En esta primera semana aprenderás a romper ese ciclo recordando qué cosas, personas y lugares te recargan. Crearás tu propio mapa de gratificación emocional y empezarás a observar qué te da energía y qué te la quita en tu día a día. Así tendrás un punto de partida claro: saber a qué recurrir cuando tu batería se queda en rojo.',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Introsesion1ruta12.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Introsesion1ruta12.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Cuando tu batería se queda en rojo',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio1sesion1ruta12.mp3',
-          content: [
-            { type: 'paragraph', text: '¿Has tenido días en los que te sientes como un móvil con la batería al 5%? No importa cuánto descanses, parece que nada te recarga del todo. Estar bajo de ánimo es parecido: tu energía física, mental y emocional se apagan un poco. Lo que antes te motivaba ahora cuesta más, y hasta las cosas simples pueden parecer un esfuerzo enorme. Esta semana vamos a explorar cómo recargar esa batería sin depender de chispazos momentáneos, sino construyendo energía que dure.' },
-          ],
+          content: [{ type: 'paragraph', text: '¿Has tenido días en los que te sientes como un móvil con la batería al 5%? No importa cuánto descanses, parece que nada te recarga del todo. Estar bajo de ánimo es parecido: tu energía física, mental y emocional se apagan un poco. Lo que antes te motivaba ahora cuesta más, y hasta las cosas simples pueden parecer un esfuerzo enorme. Esta semana vamos a explorar cómo recargar esa batería sin depender de chispazos momentáneos, sino construyendo energía que dure.' }]
         },
         {
             type: 'collapsible',
@@ -132,7 +130,7 @@ export const wellbeingPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -144,60 +142,60 @@ export const wellbeingPath: Path = {
           ],
         },
         {
-            type: 'collapsible',
-            title: 'Rutinas que son anclas',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' }
-            ]
+          type: 'collapsible',
+          title: 'Rutinas que son anclas',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'El papel de las rutinas en tu equilibrio emocional',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' }
-            ]
+          type: 'collapsible',
+          title: 'El papel de las rutinas en tu equilibrio emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Cuando las rutinas se rompen',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:   Dormimos peor.   Nos movemos menos.   Comemos rápido o poco nutritivo.   Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.   Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }
-            ]
+          type: 'collapsible',
+          title: 'Cuando las rutinas se rompen',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:   Dormimos peor.   Nos movemos menos.   Comemos rápido o poco nutritivo.   Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.   Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'La fuerza de los pequeños pasos',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.  Los pequeños pasos tienen un efecto acumulativo enorme:   Moverte 10 minutos al día.   Preparar un desayuno nutritivo.   Reservar un rato para algo que disfrutas.   Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.'}
-            ]
+          type: 'collapsible',
+          title: 'La fuerza de los pequeños pasos',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.  Los pequeños pasos tienen un efecto acumulativo enorme:   Moverte 10 minutos al día.   Preparar un desayuno nutritivo.   Reservar un rato para algo que disfrutas.   Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Rutina rígida vs. ritual de cuidado',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.   • Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.   • Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.   Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.'}
-            ]
+          type: 'collapsible',
+          title: 'Rutina rígida vs. ritual de cuidado',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.   • Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.   • Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.   Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Ideas para tus rituales de cuidado',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:   Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.   Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.   Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).   Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.   Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.'}
-            ]
+          type: 'collapsible',
+          title: 'Ideas para tus rituales de cuidado',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:   Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.   Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.   Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).   Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.   Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Tu misión esta semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio8sesion2ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.  No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.   En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.'}
-            ]
+          type: 'collapsible',
+          title: 'Tu misión esta semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio8sesion2ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.  No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.   En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.' },
+          ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -218,15 +216,20 @@ export const wellbeingPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
-          prompts: ["En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?","Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?","¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?","¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?"],
+          prompts: [
+            'En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?',
+            'Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?',
+            '¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?',
+            '¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?',
+          ],
         },
-        { type: 'title', text: 'Resumen Clave'},
+        { type: 'title', text: 'Resumen Clave' },
         {
           type: 'paragraphWithAudio',
           text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3',
         },
-        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]},
+        { type: 'list', items: ['Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.','Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.','Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.','La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.','Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.'] },
         { type: 'quote', text: '“El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.”' }
       ]
     },
@@ -239,7 +242,7 @@ export const wellbeingPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Uno de los síntomas más comunes del ánimo bajo es la falta de ganas. Sabes lo que deberías hacer, pero el impulso no llega. La clave está en no esperar a tener ganas para empezar: muchas veces, la motivación aparece después de la acción. Esta semana entrenarás cómo dar el primer paso incluso sin motivación, conectando cada acción con tus valores y con la vida que quieres construir.',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Introsesion3ruta12.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Introsesion3ruta12.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -312,28 +315,32 @@ export const wellbeingPath: Path = {
           title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS',
           objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.',
           duration: '7 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3'
         },
         {
           type: 'visualizeDayExercise',
           title: 'EJERCICIO 2: VISUALIZACIÓN DEL DÍA QUE QUIERO VIVIR',
           objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.',
           duration: '5-7 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionsesion3ruta12.mp3',
-          prompts: ["¿Qué has descubierto sobre la motivación y las ganas esta semana?","¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?","¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?"],
+          prompts: [
+            '¿Qué has descubierto sobre la motivación y las ganas esta semana?',
+            '¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?',
+            '¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?',
+          ],
         },
-        { type: 'title', text: 'Resumen Clave'},
+        { type: 'title', text: 'Resumen Clave' },
         {
           type: 'paragraphWithAudio',
           text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3',
         },
-        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.","Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.","Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.","La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.","La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención."]},
+        { type: 'list', items: ['La motivación no siempre precede a la acción; a menudo, la acción genera motivación.','Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.','Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.','La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.','La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.'] },
         { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' }
       ]
     },
@@ -346,35 +353,79 @@ export const wellbeingPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'El ánimo bajo reduce los momentos agradables y aumenta la presencia de lo negativo. Para equilibrar la balanza, necesitas crear tu propia mochila de recursos positivos: recuerdos, hábitos, apoyos y actitudes que te sostengan en los días grises. Esta semana aprenderás a entrenar tu mente para capturar lo bueno, revivir recuerdos positivos y diseñar un botiquín emocional con recursos listos para usar cuando lo necesites.',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Introsesion4ruta12.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Introsesion4ruta12.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Qué es la reserva emocional positiva',
+          title: 'Gancho emocional: tu “mochila de reserva” para los días grises',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio1sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles. Se alimenta de hábitos, relaciones y actitudes. No se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido.' },
+            { type: 'paragraph', text: 'Imagina que cada gesto amable, cada momento de calma o cada risa que compartes, fuera como una moneda que guardas en una mochila invisible. \n\nEn los días soleados casi no notas que la llevas… pero cuando llega una tormenta emocional, esa reserva te sostiene y te ayuda a seguir. \n\nA esta mochila la llamamos reserva emocional positiva.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Qué es la reserva emocional positiva',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio2sesion4ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles. \n\nNo se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido, para poder usarlo cuando más lo necesitamos. \n\nEsta reserva se alimenta de tres fuentes principales: \n\nHábitos: acciones diarias que favorecen el bienestar. \nRelaciones: vínculos que nos sostienen y nos nutren emocionalmente. \nActitudes: la forma en que interpretamos y respondemos a lo que ocurre.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Conexión con el ánimo bajo y la depresión',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio3sesion4ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Cuando el ánimo está bajo o hay depresión, no solo aumentan las emociones negativas: también disminuyen los momentos agradables y placenteros. \n\nEsto provoca un desequilibrio que alimenta el malestar y la llamada anhedonia: la dificultad para disfrutar o interesarse por lo que antes nos gustaba. \n\nImportante: al principio, cultivar emociones positivas no siempre se siente natural. Puede que parezca forzado o que no tengas ganas, y eso es completamente normal. \n\nCon práctica y repetición, los circuitos cerebrales de motivación y recompensa se reactivan.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'Por qué es clave en la recuperación',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables”. Cumplen un papel activo en la recuperación del ánimo bajo: amplían la perspectiva, equilibran la balanza emocional y sostienen la resiliencia. No es un optimismo ingenuo, sino un realismo que reconoce lo que sí funciona.' },
+            { type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. \n\nCuando están presentes de forma regular: \n\nAmplían la perspectiva: te permiten ver más ángulos de la misma situación, no quedarte solo en la parte dolorosa o negativa. Esto facilita la creatividad, el pensamiento flexible y la capacidad de encontrar soluciones que antes no veías. \n\nEjemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora. \n\nEquilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental. \n\nSostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen. \n\nRecuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'Principios de activación conductual',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio5sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad. Por eso, en psicología usamos el principio acción → emoción: primero actúas, incluso sin ganas, y luego, con la repetición, el estado de ánimo empieza a mejorar. Esto se logra programando actividades agradables (placer) y de logro (propósito).' },
+            { type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad, y esta inactividad alimenta más el malestar. \n\nPor eso, en psicología usamos el principio acción → emoción: \n\nPrimero actúas, incluso sin ganas. \n\nLuego, con la repetición, el estado de ánimo empieza a mejorar. \n\nClaves para aplicarlo: \n\nProgramar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota. \n\nIncluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve. \n\nCombinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida. \n\nEjemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'Qué dice la neurociencia',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio6sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Las emociones positivas activan el sistema dopaminérgico (motivación y recompensa), calman la hiperactividad de la amígdala (alarma de miedo) y favorecen la neuroplasticidad, creando “caminos” neuronales que facilitan que esas emociones vuelvan a aparecer. Tienen un efecto acumulativo: regar una planta con pequeñas dosis constantes la mantiene fuerte.' },
+            { type: 'paragraph', text: 'Las emociones positivas no solo “se sienten”, también producen cambios reales en el cerebro: \n\nActivan el sistema dopaminérgico: este circuito de motivación y recompensa nos impulsa a repetir conductas que nos hacen sentir bien. Con la práctica, aumenta la probabilidad de buscar y generar más de esos momentos. \n\nCalman la hiperactividad de la amígdala: en el ánimo bajo, la amígdala puede estar sobreactivada, amplificando el miedo, la preocupación y la visión negativa. Las emociones positivas actúan como un “freno” que reduce esta intensidad. \n\nFavorecen la neuroplasticidad: cada vez que entrenas una emoción positiva, refuerzas conexiones neuronales que facilitan que aparezca de nuevo. Es como crear un “camino” más transitado en tu cerebro, que luego se recorre de forma más automática. \n\nEfecto acumulativo: un momento positivo aislado puede levantar el ánimo de forma breve, pero repetirlo a diario construye una base más estable y resistente frente a futuros bajones. \n\nIdea para llevarte: piensa en las emociones positivas como en regar una planta: no basta con un gran riego un día, necesita pequeñas dosis constantes para crecer y mantenerse fuerte.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Estrategias para llenar tu reserva emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio7sesion4ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Registro de momentos agradables: anota incluso los más pequeños. \n\nRecuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones. \n\nMicroacciones sociales: saludar, enviar un mensaje, compartir algo breve. \n\nAnclajes sensoriales: olores, música o texturas que evoquen calma o alegría. \n\nHumor y juego: integrar pequeñas dosis de ligereza cada día. \n\nPaciencia: aceptar que los resultados se acumulan con el tiempo.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Prevención de recaídas',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio8sesion4ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Mantener tu reserva emocional llena no significa que no tendrás problemas, pero sí que tendrás más fuerza, flexibilidad y recursos para afrontarlos.  \n\nInvertir en ella es una forma de cuidarte hoy y protegerte para el futuro.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Mensaje motivador final',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio9sesion4ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma. \n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena. \n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' },
           ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -415,3 +466,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
