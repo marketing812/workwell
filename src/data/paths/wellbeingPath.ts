@@ -148,7 +148,7 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'Cuando lo básico empieza a fallar',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3',
-            content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?  Dormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.   Esta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.' }]
+            content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?  Dormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.   Esta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.'}]
         },
         {
             type: 'collapsible',
@@ -160,7 +160,7 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'El papel de las rutinas en tu equilibrio emocional',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' }]
+            content: [{ type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.'}]
         },
         {
             type: 'collapsible',
@@ -207,15 +207,21 @@ export const wellbeingPath: Path = {
           duration: '8-10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3'
         },
-        { 
-          type: 'therapeuticNotebookReflection', 
+        {
+          type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
           prompts: ["En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?","Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?","¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?","¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?"]
         },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3' },
-        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]},
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3',
+        },
+        {
+          type: 'list',
+          items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]},
         { type: 'quote', text: '“El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.”'}
       ]
     },
@@ -235,49 +241,49 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'Gancho emocional: Cuando las ganas no aparecen',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio1sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes exactamente lo que deberías hacer… pero no encuentras el impulso para empezar?   Las “ganas” y la motivación están muy conectadas: las ganas son como la chispa inicial y la motivación, el motor que mantiene la acción en marcha. La buena noticia es que, según la ciencia —desde la Terapia Cognitivo-Conductual (TCC) hasta la neurociencia afectiva— no siempre tenemos que esperar a que aparezcan las ganas: muchas veces la motivación llega después de ponernos en movimiento.   Para saber cómo lograrlo, primero vamos a entender qué es realmente la motivación y de dónde surge.'}]
+            content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes exactamente lo que deberías hacer… pero no encuentras el impulso para empezar?   Las “ganas” y la motivación están muy conectadas: las ganas son como la chispa inicial y la motivación, el motor que mantiene la acción en marcha. La buena noticia es que, según la ciencia —desde la Terapia Cognitivo-Conductual (TCC) hasta la neurociencia afectiva— no siempre tenemos que esperar a que aparezcan las ganas: muchas veces la motivación llega después de ponernos en movimiento.   Para saber cómo lograrlo, primero vamos a entender qué es realmente la motivación y de dónde surge.' }]
         },
         {
             type: 'collapsible',
             title: 'La motivación: algo más que ganas',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio2sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.   Puede nacer de:   Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).   Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.   La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar.   En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.'}]
+            content: [{ type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.   Puede nacer de:   Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).   Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.   La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar.   En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }]
         },
         {
             type: 'collapsible',
             title: 'Por qué a veces las ganas no llegan',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio3sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'En etapas de ánimo bajo o depresión, es común perder la motivación positiva: sabemos lo que hay que hacer, pero sentimos que no tenemos energía.   Esto puede deberse a:   Pensamientos que desaniman (“es inútil intentarlo”, “no soy capaz”).   Cansancio físico o mental.   No tener claro cuándo, cómo o dónde empezar.   Perfeccionismo: esperar el momento o las condiciones perfectas para actuar.   Falta de conexión emocional con la tarea.   Estrés o entornos poco estimulantes que reducen la motivación.   Estos bloqueos pueden sentirse como un muro… pero, como todo muro, se puede saltar, rodear o derribar.   El primer paso es saber que sí se puede actuar incluso sin ganas, y que existen estrategias para lograrlo.'}]
+            content: [{ type: 'paragraph', text: 'En etapas de ánimo bajo o depresión, es común perder la motivación positiva: sabemos lo que hay que hacer, pero sentimos que no tenemos energía.   Esto puede deberse a:   Pensamientos que desaniman (“es inútil intentarlo”, “no soy capaz”).   Cansancio físico o mental.   No tener claro cuándo, cómo o dónde empezar.   Perfeccionismo: esperar el momento o las condiciones perfectas para actuar.   Falta de conexión emocional con la tarea.   Estrés o entornos poco estimulantes que reducen la motivación.   Estos bloqueos pueden sentirse como un muro… pero, como todo muro, se puede saltar, rodear o derribar.   El primer paso es saber que sí se puede actuar incluso sin ganas, y que existen estrategias para lograrlo.' }]
         },
         {
             type: 'collapsible',
             title: 'Acción sin ganas: cómo es posible',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio4sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'Si esperamos a “tener ganas” para movernos, podemos quedarnos atrapados en la inacción.   La clave está en aprender a actuar incluso cuando la motivación está baja, usando tres apoyos:   Disciplina: seguir adelante por compromiso con nuestros objetivos, no por un impulso momentáneo.   Planificación clara: decidir de antemano cuándo y dónde haremos algo reduce las dudas y evita que lo posterguemos.   Facilidad: ponértelo tan fácil que sea casi imposible no empezar (en terapia lo llamamos “bajar la rampa”).   Así, el primer paso requiere muy poca energía y es más probable que lo des.   Pero tan importante como cómo te pones en marcha, es desde dónde lo haces.'}]
+            content: [{ type: 'paragraph', text: 'Si esperamos a “tener ganas” para movernos, podemos quedarnos atrapados en la inacción.   La clave está en aprender a actuar incluso cuando la motivación está baja, usando tres apoyos:   Disciplina: seguir adelante por compromiso con nuestros objetivos, no por un impulso momentáneo.   Planificación clara: decidir de antemano cuándo y dónde haremos algo reduce las dudas y evita que lo posterguemos.   Facilidad: ponértelo tan fácil que sea casi imposible no empezar (en terapia lo llamamos “bajar la rampa”).   Así, el primer paso requiere muy poca energía y es más probable que lo des.   Pero tan importante como cómo te pones en marcha, es desde dónde lo haces.' }]
         },
         {
             type: 'collapsible',
             title: 'Del “tengo que” al “quiero elegir”',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:   “Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.   “Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia.   Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.   Este cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.   Y para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.'}]
+            content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:   “Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.   “Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia.   Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.   Este cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.   Y para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }]
         },
         {
             type: 'collapsible',
             title: 'Las capas de la motivación',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio6sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'La motivación tiene varias capas, como una cebolla:   Acción concreta: lo que harás hoy.   Valor personal: por qué eso es importante para ti.   Sentido mayor: cómo encaja con la vida que quieres construir.  Por ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.   Cuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.  Incluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.'}]
+            content: [{ type: 'paragraph', text: 'La motivación tiene varias capas, como una cebolla:   Acción concreta: lo que harás hoy.   Valor personal: por qué eso es importante para ti.   Sentido mayor: cómo encaja con la vida que quieres construir.  Por ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.   Cuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.  Incluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.' }]
         },
         {
             type: 'collapsible',
             title: 'El círculo de la activación',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando.   Aquí entra un principio clave: la acción puede venir antes que las ganas.  La acción y la motivación se alimentan mutuamente:   Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.   Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción.   Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.'}]
+            content: [{ type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando.   Aquí entra un principio clave: la acción puede venir antes que las ganas.  La acción y la motivación se alimentan mutuamente:   Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.   Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción.   Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' }]
         },
         {
             type: 'collapsible',
             title: 'Lo que vamos a entrenar esta semana',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:   Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.   Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día.   El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.'}]
+            content: [{ type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:   Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.   Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día.   El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -285,36 +291,25 @@ export const wellbeingPath: Path = {
           title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS',
           objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.',
           duration: '7 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3'
         },
         {
           type: 'visualizeDayExercise',
           title: 'EJERCICIO 2: VISUALIZACIÓN DEL DÍA QUE QUIERO VIVIR',
           objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.',
           duration: '5-7 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          prompts: [
-            '¿Qué has descubierto sobre la motivación y las ganas esta semana?',
-            '¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?',
-            '¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?',
-          ],
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionsesion3ruta12.mp3',
+          prompts: ["¿Qué has descubierto sobre la motivación y las ganas esta semana?","¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?","¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?"],
         },
         { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'list',
-          items: [
-            'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.',
-            'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.',
-            'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.',
-            'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.',
-            'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.',
-          ],
-        },
-        { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' },
-      ],
+        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.","Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.","Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.","La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.","La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención."]},
+        { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' }
+      ]
     },
     {
       id: 'bienestar_sem4',
