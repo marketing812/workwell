@@ -93,7 +93,14 @@ export function DailyEnergyCheckExercise({ content, pathId }: DailyEnergyCheckEx
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription className="pt-2">{content.objective}
+        <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3" type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+        </CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStepContent()}
