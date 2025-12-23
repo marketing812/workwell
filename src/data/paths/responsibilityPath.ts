@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
             'La queja alivia un momento, pero si no hay acción, nada cambia.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -312,7 +312,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los cierra.',
+            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -427,9 +427,25 @@ export const responsibilityPath: Path = {
             '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3'},
-        { type: 'list', items: ['La aceptación activa abre posibilidades; la resignación las bloquea.','Separar pasado y presente permite actuar desde el ahora con más conciencia (modelo ABC).','Cuestionar y resolver problemas rompe la rumiación y facilita acciones concretas.','Los experimentos conductuales reducen la evitación y ponen a prueba creencias.','La culpa útil repara; distinguir conducta de identidad evita el autoetiquetado.','Mindfulness y defusión bajan la intensidad emocional.','La autocrítica puede ayudarte si la transformas en guía responsable y empática.','Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.']},
+        { type: 'title', text: 'Resumen Clave de la Semana' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3',
+        },
+        {
+          type: 'list',
+          items: [
+            'La aceptación activa abre posibilidades; la resignación las bloquea.',
+            'Separar pasado y presente permite actuar desde el ahora con más conciencia (modelo ABC).',
+            'Cuestionar y resolver problemas rompe la rumiación y facilita acciones concretas.',
+            'Los experimentos conductuales reducen la evitación y ponen a prueba creencias.',
+            'La culpa útil repara; distinguir conducta de identidad evita el autoetiquetado.',
+            'Mindfulness y defusión bajan la intensidad emocional.',
+            'La autocrítica puede ayudarte si la transformas en guía responsable y empática.',
+            'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.',
+          ],
+        },
         { type: 'quote', text: 'Hablarme con respeto no me debilita, me prepara para avanzar con fuerza y claridad.' },
       ],
     },
@@ -440,8 +456,9 @@ export const responsibilityPath: Path = {
       estimatedTime: '15-20 min',
       content: [
         {
-          type: 'paragraph',
+          type: 'paragraphWithAudio',
           text: '¿Sientes que a veces asumes demasiado y terminas agotado o agotada?\nEsta semana vas a aprender a comprometerte con lo que sí depende de ti, sin cargar con lo que no. Trabajarás en proteger tu energía, definir tu zona de influencia y mantener tu responsabilidad como una elección que te impulsa, no como una carga que te rompe.',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Introsesion4ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
