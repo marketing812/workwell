@@ -384,7 +384,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Introducción: Las relaciones se entrenan',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Lasrelacionesseentrenan.mp3',
           content: [
             {
               type: 'paragraph',
@@ -395,7 +395,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Estar para otros sin perderte',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Estarparaotrossinperderte.mp3',
           content: [
             {
               type: 'paragraph',
@@ -406,7 +406,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Fitness relacional: entrenar los vínculos',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO3.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Fitnessrelacionalentrenarlosvinculos.mp3',
           content: [
             {
               type: 'paragraph',
@@ -417,7 +417,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Reciprocidad y cuidado mutuo',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Reciprocidadycuidadomutuo.mp3',
           content: [
             {
               type: 'paragraph',
@@ -428,7 +428,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tu red como autocuidado emocional',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO5.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Turedcomoautocuidadoemocional.mp3',
           content: [
             {
               type: 'paragraph',
@@ -439,7 +439,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Construir con conciencia',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/AUDIO6.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Construirconconciencia.mp3',
           content: [
             {
               type: 'paragraph',
@@ -474,5 +474,3 @@ export const supportNetworkPath: Path = {
     },
   ],
 };
-
-    
