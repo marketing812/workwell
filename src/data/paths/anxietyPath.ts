@@ -155,7 +155,7 @@ export const anxietyPath: Path = {
           content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
         },
         { type: 'title', text: 'Técnicas Específicas de Relajación'},
-        { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/Ruta13semana2tecnica1.mp3' },
+        { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica1.mp3' },
         { 
             type: 'collapsible', 
             title: 'Exhalación Prolongada (1:2)',
@@ -213,62 +213,37 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'El bucle mental: dar vueltas y vueltas sin llegar a ninguna parte',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt3BucleMental.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Y luego están los bucles de pensamiento. Empiezan como una pequeña idea (“¿y si…?”), pero cuanto más giras sobre ella, más grande se hace.\n\nEs como una bola de nieve que rueda cuesta abajo: empieza pequeña, pero con cada vuelta arrastra más y más hasta que parece enorme e imparable. O como un disco rayado que repite la misma frase una y otra vez sin dejarte avanzar.\n\nLa neurociencia del pensamiento rumiativo muestra que, en esos momentos, la red neuronal por defecto (Default Mode Network) se activa de forma excesiva, alimentando la repetición de pensamientos en lugar de la resolución de problemas.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Y luego están los bucles de pensamiento. Empiezan como una pequeña idea (“¿y si…?”), pero cuanto más giras sobre ella, más grande se hace.\n\nEs como una bola de nieve que rueda cuesta abajo: empieza pequeña, pero con cada vuelta arrastra más y más hasta que parece enorme e imparable. O como un disco rayado que repite la misma frase una y otra vez sin dejarte avanzar.\n\nLa neurociencia del pensamiento rumiativo muestra que, en esos momentos, la red neuronal por defecto (Default Mode Network) se activa de forma excesiva, alimentando la repetición de pensamientos en lugar de la resolución de problemas.' }],
         },
         {
           type: 'collapsible',
           title: 'El secuestro emocional: cuando manda la amígdala',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt4SecuestroEmocional.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En un pico de ansiedad, ocurre lo que Daniel Goleman (1995) llamó el “secuestro emocional”: la amígdala, ese detector de humo interno, se enciende con tanta fuerza que casi apaga tu corteza prefrontal (la parte racional del cerebro).\n\nResultado: piensas en bucle, sientes que te bloqueas y cuesta recordar incluso lo más sencillo. Es como si la alarma de incendios estuviera tan alta que no escuchas ninguna otra voz.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En un pico de ansiedad, ocurre lo que Daniel Goleman (1995) llamó el “secuestro emocional”: la amígdala, ese detector de humo interno, se enciende con tanta fuerza que casi apaga tu corteza prefrontal (la parte racional del cerebro).\n\nResultado: piensas en bucle, sientes que te bloqueas y cuesta recordar incluso lo más sencillo. Es como si la alarma de incendios estuviera tan alta que no escuchas ninguna otra voz.' }],
         },
         {
           type: 'collapsible',
           title: 'No se trata de luchar, sino de observar',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt5NoLuchar.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Aquí está la clave: no se trata de controlar ni eliminar lo que piensas. Eso sería como intentar parar las olas del mar con las manos.\n\nLo que sí puedes aprender es a observar sin engancharte. Imagina que tus pensamientos son coches pasando por una carretera: puedes elegir quedarte en la acera y mirarlos, en lugar de subirte a cada coche y dejar que te lleve.\n\nEsto es lo que en TCC se llama desfusión cognitiva (Hayes, 2011): dejar de creer que todo lo que pasa por tu mente es cierto o que tienes que reaccionar a ello.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Aquí está la clave: no se trata de controlar ni eliminar lo que piensas. Eso sería como intentar parar las olas del mar con las manos.\n\nLo que sí puedes aprender es a observar sin engancharte. Imagina que tus pensamientos son coches pasando por una carretera: puedes elegir quedarte en la acera y mirarlos, en lugar de subirte a cada coche y dejar que te lleve.\n\nEsto es lo que en TCC se llama desfusión cognitiva (Hayes, 2011): dejar de creer que todo lo que pasa por tu mente es cierto o que tienes que reaccionar a ello.' }],
         },
         {
           type: 'collapsible',
           title: 'Entrenar la mente como un músculo',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt6EntrenarMente.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Cada vez que practicas observar, cuestionar y soltar un pensamiento ansioso, estás entrenando tu cerebro como si hicieras ejercicio en un gimnasio.\n\nAl principio cuesta.\n\nDespués de repetirlo, se vuelve más natural.\n\nCon el tiempo, tu “músculo mental” se fortalece y la ansiedad pierde poder sobre ti.\n\nLa neurociencia lo llama neuroplasticidad: tus circuitos cerebrales cambian con la práctica, igual que los músculos cambian con el entrenamiento.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Cada vez que practicas observar, cuestionar y soltar un pensamiento ansioso, estás entrenando tu cerebro como si hicieras ejercicio en un gimnasio.\n\nAl principio cuesta.\n\nDespués de repetirlo, se vuelve más natural.\n\nCon el tiempo, tu “músculo mental” se fortalece y la ansiedad pierde poder sobre ti.\n\nLa neurociencia lo llama neuroplasticidad: tus circuitos cerebrales cambian con la práctica, igual que los músculos cambian con el entrenamiento.' }],
         },
         {
           type: 'collapsible',
           title: 'Preparándote para la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt7Preparandote.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Ahora que entiendes mejor cómo funcionan los pensamientos ansiosos (anticipatorios, catastrofistas, bucles) y cómo la amígdala puede secuestrar tu mente, pasamos a lo más importante: las técnicas que te ayudarán a no engancharte a esos pensamientos.\n\nRecuerda: no buscamos que dejen de aparecer, sino que aprendas a mirarlos de frente, sin miedo, hasta que dejen de arrastrarte.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Ahora que entiendes mejor cómo funcionan los pensamientos ansiosos (anticipatorios, catastrofistas, bucles) y cómo la amígdala puede secuestrar tu mente, pasamos a lo más importante: las técnicas que te ayudarán a no engancharte a esos pensamientos.\n\nRecuerda: no buscamos que dejen de aparecer, sino que aprendas a mirarlos de frente, sin miedo, hasta que dejen de arrastrarte.' }],
         },
         {
           type: 'collapsible',
           title: 'Resumen clave:',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3',
-          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }],
+          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -276,24 +251,20 @@ export const anxietyPath: Path = {
           title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático',
           objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.',
           duration: '2-3 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3'
         },
         {
           type: 'questionYourIfsExercise',
           title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad',
           objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.',
           duration: '7-9 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3',
-          prompts: [
-            '¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?',
-            '¿Qué me pasa cuando confundo posibilidad con probabilidad?',
-            '¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?',
-          ],
+          prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?'],
         },
         { type: 'title', text: 'Resumen Clave' },
         {
@@ -332,67 +303,37 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'La trampa de la evitación',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc1.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Cuando algo nos genera ansiedad, la reacción más natural es evitarlo. Y claro, al principio parece una solución: si no me acerco a esa situación, el malestar baja. El problema es que ese alivio dura muy poco. La próxima vez que aparezca, la ansiedad volverá igual de intensa… o incluso más fuerte. La evitación es como echar gasolina al fuego: cuanto más evito, más confirmo a mi cerebro la idea de que “ese peligro es real”. Aunque en la práctica no lo sea. Ejemplo: si evito entrar en un ascensor porque me da ansiedad, cada vez que tomo las escaleras estoy diciéndole a mi cerebro que el ascensor es efectivamente peligroso y que subir por las escaleras es lo más seguro. Así, el miedo nunca tiene ocasión de reducirse. Mas adelante veremos qué ocurre cuando hacemos justo lo contrario: acercarnos poco a poco a lo que tememos.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Cuando algo nos genera ansiedad, la reacción más natural es evitarlo. Y claro, al principio parece una solución: si no me acerco a esa situación, el malestar baja. El problema es que ese alivio dura muy poco. La próxima vez que aparezca, la ansiedad volverá igual de intensa… o incluso más fuerte. La evitación es como echar gasolina al fuego: cuanto más evito, más confirmo a mi cerebro la idea de que “ese peligro es real”. Aunque en la práctica no lo sea. Ejemplo: si evito entrar en un ascensor porque me da ansiedad, cada vez que tomo las escaleras estoy diciéndole a mi cerebro que el ascensor es efectivamente peligroso y que subir por las escaleras es lo más seguro. Así, el miedo nunca tiene ocasión de reducirse. Mas adelante veremos qué ocurre cuando hacemos justo lo contrario: acercarnos poco a poco a lo que tememos.' }]
         },
         {
           type: 'collapsible',
           title: 'La ansiedad se reduce enfrentándola',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc2.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La neurociencia lo explica con claridad: cuando te expones gradualmente a lo que temes, tu cerebro aprende que la alarma estaba exagerando. Esa alarma está en la amígdala, una parte del cerebro encargada de detectar peligros. Al exponerme, mi cuerpo comprueba que la señal era desproporcionada, y el volumen de esa alarma baja. Este proceso se llama desensibilización. Es como descubrir que una sirena suena fuerte, aunque no haya fuego: si me quedo en el lugar y observo, con el tiempo mi cerebro deja de reaccionar como si todo ardiera. Dicho de forma simple: la única manera de que la ansiedad se reduzca de verdad es atravesándola, no esquivándola.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'La neurociencia lo explica con claridad: cuando te expones gradualmente a lo que temes, tu cerebro aprende que la alarma estaba exagerando. Esa alarma está en la amígdala, una parte del cerebro encargada de detectar peligros. Al exponerme, mi cuerpo comprueba que la señal era desproporcionada, y el volumen de esa alarma baja. Este proceso se llama desensibilización. Es como descubrir que una sirena suena fuerte, aunque no haya fuego: si me quedo en el lugar y observo, con el tiempo mi cerebro deja de reaccionar como si todo ardiera. Dicho de forma simple: la única manera de que la ansiedad se reduzca de verdad es atravesándola, no esquivándola.' }]
         },
         {
           type: 'collapsible',
           title: 'Exposición progresiva: avanzar sin forzarte',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc3.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En TCC usamos la técnica de la exposición progresiva. No consiste en lanzarse a lo más difícil de golpe, sino en entrenar el sistema nervioso con pasos pequeños y repetidos. Es como subir una escalera: no saltamos hasta arriba en un solo movimiento, vamos peldaño a peldaño. Incluso podemos descansar en un escalón antes de seguir avanzando. Ejemplo: si hablar en público me produce ansiedad, el proceso puede empezar hablándome frente al espejo, luego grabándome en el móvil, después contándole algo a una persona de confianza, luego en un grupo pequeño… y así hasta llegar al auditorio. La clave no es la rapidez, sino la constancia: ir avanzando sin dejar de practicar.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En TCC usamos la técnica de la exposición progresiva. No consiste en lanzarse a lo más difícil de golpe, sino en entrenar el sistema nervioso con pasos pequeños y repetidos. Es como subir una escalera: no saltamos hasta arriba en un solo movimiento, vamos peldaño a peldaño. Incluso podemos descansar en un escalón antes de seguir avanzando. Ejemplo: si hablar en público me produce ansiedad, el proceso puede empezar hablándome frente al espejo, luego grabándome en el móvil, después contándole algo a una persona de confianza, luego en un grupo pequeño… y así hasta llegar al auditorio. La clave no es la rapidez, sino la constancia: ir avanzando sin dejar de practicar.' }]
         },
         {
           type: 'collapsible',
           title: 'El efecto de la repetición',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc4.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Cada vez que te expones y eliges quedarte en la situación, tu cuerpo aprende un mensaje muy poderoso: “puedo estar aquí y no pasa nada terrible”. Ese es el proceso de habituación. Al principio, la ansiedad puede subir mucho, como una ola que parece demasiado grande. Pero si no huyes, la ola rompe y baja sola. Y la siguiente vez suele ser un poco más pequeña. Este aprendizaje es acumulativo: tu sistema nervioso va entendiendo, con pruebas reales, que ese contexto no es una amenaza. La confianza aparece poco a poco, con la repetición.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Cada vez que te expones y eliges quedarte en la situación, tu cuerpo aprende un mensaje muy poderoso: “puedo estar aquí y no pasa nada terrible”. Ese es el proceso de habituación. Al principio, la ansiedad puede subir mucho, como una ola que parece demasiado grande. Pero si no huyes, la ola rompe y baja sola. Y la siguiente vez suele ser un poco más pequeña. Este aprendizaje es acumulativo: tu sistema nervioso va entendiendo, con pruebas reales, que ese contexto no es una amenaza. La confianza aparece poco a poco, con la repetición.' }]
         },
         {
           type: 'collapsible',
           title: 'La clave: avanzar con cuidado',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc5.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional. En la siguiente pantalla veremos cómo este proceso va alimentando tu seguridad interna.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional. En la siguiente pantalla veremos cómo este proceso va alimentando tu seguridad interna.' }]
         },
         {
           type: 'collapsible',
           title: 'La confianza se entrena',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc6.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste”.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste”.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -413,29 +354,30 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4reflexion.mp3',
-          prompts: [
-            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
-            '¿Qué estrategias has comprobado que te ayudan más a calmarte?',
-            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
+          prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?','¿Qué estrategias has comprobado que te ayudan más a calmarte?','¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?']
+        },
+        { type: 'title', text: 'RESUMEN CLAVE'},
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4resumenclave.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'La evitación alivia la ansiedad a corto plazo, pero la alimenta a largo plazo.',
+            'La neurociencia muestra que la ansiedad disminuye al exponerte de forma gradual: el cerebro aprende que no hay un peligro real.',
+            'La exposición progresiva es como subir una escalera: un peldaño tras otro, con repeticiones, paciencia y descansos cuando lo necesites.',
+            'La repetición genera habituación: tu cuerpo se acostumbra y la ansiedad pierde fuerza.',
+            'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.',
+            'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.',
+            'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.',
+            'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.',
           ],
         },
-        { type: 'title', text: 'Resumen Clave'},
         {
-            type: 'list',
-            items: [
-                'La evitación alivia la ansiedad a corto plazo, pero la alimenta a largo plazo.',
-                'La neurociencia muestra que la ansiedad disminuye al exponerte de forma gradual: el cerebro aprende que no hay un peligro real.',
-                'La exposición progresiva es como subir una escalera: un peldaño tras otro, con repeticiones, paciencia y descansos cuando lo necesites.',
-                'La repetición genera habituación: tu cuerpo se acostumbra y la ansiedad pierde fuerza.',
-                'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.',
-                'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.',
-                'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.',
-                'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.',
-            ]
-        },
-        {
-            type: 'quote',
-            text: '“No tienes que eliminar la ansiedad para avanzar. Solo necesitas dar un paso pequeño, constante y consciente en dirección a lo que valoras. Cada vez que lo haces, tu fuerza crece y tu libertad también.”',
+          type: 'quote',
+          text: '“No tienes que eliminar la ansiedad para avanzar. Solo necesitas dar un paso pequeño, constante y consciente en dirección a lo que valoras. Cada vez que lo haces, tu fuerza crece y tu libertad también.”',
         },
         {
           type: 'quote',
@@ -445,5 +387,3 @@ export const anxietyPath: Path = {
     },
   ],
 };
-
-    
