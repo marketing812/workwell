@@ -69,15 +69,22 @@ export const anxietyPath: Path = {
             title: 'MI ANSIEDAD TIENE SENTIDO CUANDO…',
             objective: 'Aprender a diferenciar cuándo tu ansiedad tiene un sentido adaptativo y a identificar cuándo se vuelve excesiva, reconociendo cómo el miedo a la ansiedad alimenta el círculo.',
             duration: '8-10 min',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana1tecnica1.mp3'
         },
         {
             type: 'visualizacionGuiadaCuerpoAnsiedadExercise',
             title: 'VISUALIZACIÓN GUIADA DEL CUERPO EN ANSIEDAD',
             objective: 'Reconocer las sensaciones de la ansiedad sin luchar contra ellas, comprendiendo que aunque son incómodas, no son peligrosas.',
             duration: '10-12 min',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana1tecnica2.mp3'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']},
         { type: 'title', text: 'Resumen Clave'},
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13resumenclave.mp3'
+        },
         { type: 'list', items: [
             'La ansiedad es molesta pero no es tu enemiga: es una señal de alarma que a veces se desajusta.',
             'Distinguir entre ansiedad adaptativa y disfuncional ayuda a no pelearte con ella.',
@@ -175,3 +182,6 @@ export const anxietyPath: Path = {
     
 
   
+
+
+    
