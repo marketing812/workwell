@@ -108,7 +108,7 @@ export const anxietyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
-          { type: 'paragraph', text: 'Cuando la ansiedad llega, parece que no hay botón de pausa. El cuerpo se acelera y la mente se llena de pensamientos catastróficos. Esta semana vas a descubrir que sí existe una forma de frenar: aprenderás técnicas sencillas para interrumpir la escalada, bajar la activación y recuperar el control. Como un piloto que activa el freno de emergencia para estabilizar el avión, tú también puedes activar tus recursos internos para volver a sentir seguridad.'},
+          { type: 'paragraphWithAudio', text: 'Cuando la ansiedad llega, parece que no hay botón de pausa. El cuerpo se acelera y la mente se llena de pensamientos catastróficos. Esta semana vas a descubrir que sí existe una forma de frenar: aprenderás técnicas sencillas para interrumpir la escalada, bajar la activación y recuperar el control. Como un piloto que activa el freno de emergencia para estabilizar el avión, tú también puedes activar tus recursos internos para volver a sentir seguridad.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2introducc.mp3'},
           { type: 'title', text: 'Psicoeducación' },
           {
             type: 'collapsible',
@@ -190,3 +190,4 @@ export const anxietyPath: Path = {
 
 
     
+
