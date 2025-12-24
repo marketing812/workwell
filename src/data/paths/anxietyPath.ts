@@ -172,11 +172,7 @@ export const anxietyPath: Path = {
             type: 'therapeuticNotebookReflection',
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2reflexion.mp3',
-            prompts: [
-              '¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?',
-              '¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?',
-              '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?',
-            ],
+            prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?']
           },
           { type: 'title', text: 'Resumen Clave'},
           { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2resumen.mp3' },
@@ -198,7 +194,7 @@ export const anxietyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-          { type: 'paragraph', text: 'La ansiedad suele engañarnos con un truco: confunde lo posible con lo probable. “¿Y si…?” se convierte en un túnel sin salida. Esta semana aprenderás a dar un paso atrás, a mirar tus pensamientos sin creerlos al 100% y a abrir la puerta a alternativas más realistas. Se trata de entrenar tu mente para no quedar atrapada en el catastrofismo y encontrar nuevas formas de interpretar lo que pasa.' },
+          { type: 'paragraphWithAudio', text: 'La ansiedad suele engañarnos con un truco: confunde lo posible con lo probable. “¿Y si…?” se convierte en un túnel sin salida. Esta semana aprenderás a dar un paso atrás, a mirar tus pensamientos sin creerlos al 100% y a abrir la puerta a alternativas más realistas. Se trata de entrenar tu mente para no quedar atrapada en el catastrofismo y encontrar nuevas formas de interpretar lo que pasa.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sen3introduccion.mp3' },
           { type: 'title', text: 'Psicoeducación' },
           { type: 'collapsible', title: 'El invitado pesado de tu mente: los pensamientos anticipatorios', content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como “¿Y si me pasa algo malo?”. Estos pensamientos no hablan de lo que ocurre ahora, sino de lo que podría pasar. El cerebro los crea para protegerte, pero a menudo exagera la amenaza.' }] },
           { type: 'collapsible', title: 'El secuestro emocional: cuando manda la amígdala', content: [{ type: 'paragraph', text: 'En un pico de ansiedad, ocurre el “secuestro emocional”: la amígdala, tu detector de humo interno, se enciende con tanta fuerza que casi apaga tu parte racional. Resultado: piensas en bucle y sientes que te bloqueas.' }] },
