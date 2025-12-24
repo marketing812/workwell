@@ -38,6 +38,7 @@ export const anxietyPath: Path = {
         {
             type: 'collapsible',
             title: 'Tu sistema nervioso en acción',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1pant3tusistnervioso.mp3',
             content: [
                 { type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:\n•\tLa rama simpático pisa el acelerador 🚗💨 (sube la frecuencia cardíaca, la respiración, la tensión muscular).\n•\tLa rama parasimpático actúa como freno 🚦 (calma, ayuda a la digestión y al descanso).\nCuando la ansiedad aparece, es como si tu pedal del acelerador se quedara atascado, incluso en situaciones normales. Por eso sientes palpitaciones, respiración corta, mareo o tensión. No es que estés “loco/a”: es que tu cuerpo está reaccionando como si hubiera un peligro real.\nAdemás, tu cuerpo libera adrenalina y cortisol, las hormonas del estrés. A corto plazo te ponen en alerta, pero cuando se repiten demasiadas veces, te dejan agotado/a.' }
             ]
@@ -52,9 +53,7 @@ export const anxietyPath: Path = {
         {
             type: 'collapsible',
             title: 'La ansiedad tiene un lenguaje',
-            content: [
-                { type: 'paragraph', text: 'La ansiedad se comunica contigo a través de síntomas. Algunos son más físicos (palpitaciones, sudor, tensión muscular) y otros más mentales (preocupaciones, pensamientos de “y si…”).\nPiensa en ella como un mensajero pesado: insiste en llamar a tu puerta, aunque no siempre traiga noticias importantes.\n•\tSi le cierras de golpe, insiste más.\n•\tSi le escuchas con calma, puedes decidir qué hacer con el mensaje.\nEste proceso suele convertirse en un círculo de la ansiedad:\n1.\tAparece un síntoma (ej. taquicardia).\n2.\tTu mente lo interpreta como peligro (“me va a dar algo”).\n3.\tEsa interpretación dispara más síntomas.\n4. \tY así se forma la bola de nieve.\nLo que rompe el círculo no es evitar, sino aprender a interpretar de otra forma lo que ocurre.' }
-            ]
+            content: [{ type: 'paragraph', text: 'La ansiedad se comunica contigo a través de síntomas. Algunos son más físicos (palpitaciones, sudor, tensión muscular) y otros más mentales (preocupaciones, pensamientos de “y si…”).\nPiensa en ella como un mensajero pesado: insiste en llamar a tu puerta, aunque no siempre traiga noticias importantes.\n•\tSi le cierras de golpe, insiste más.\n•\tSi le escuchas con calma, puedes decidir qué hacer con el mensaje.\nEste proceso suele convertirse en un círculo de la ansiedad:\n1.\tAparece un síntoma (ej. taquicardia).\n2.\tTu mente lo interpreta como peligro (“me va a dar algo”).\n3.\tEsa interpretación dispara más síntomas.\n4. \tY así se forma la bola de nieve.\nLo que rompe el círculo no es evitar, sino aprender a interpretar de otra forma lo que ocurre.' }]
         },
         {
             type: 'collapsible',
@@ -170,3 +169,6 @@ export const anxietyPath: Path = {
 
     
 
+
+
+    
