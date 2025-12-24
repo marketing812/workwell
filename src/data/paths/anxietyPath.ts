@@ -279,16 +279,14 @@ export const anxietyPath: Path = {
         {
           type: 'stopExercise',
           title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático',
-          objective:
-            'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.',
+          objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.',
           duration: '2-3 min',
           audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3',
         },
         {
           type: 'questionYourIfsExercise',
           title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad',
-          objective:
-            'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.',
+          objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.',
           duration: '7-9 min',
           audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3',
         },
@@ -332,7 +330,7 @@ export const anxietyPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'El gran reto de la ansiedad no es pensar menos, sino evitar menos. Cuanto más esquivamos lo que tememos, más fuerte se hace el miedo. Esta última semana vas a aprender a enfrentarte de manera progresiva y cuidada, paso a paso, sin forzarte. Será como subir una escalera: cada peldaño te acerca a la libertad, y no hace falta correr para llegar arriba. Lo importante es avanzar, aunque sea despacio, y comprobar con tus propios ojos que puedes sostener la ansiedad y seguir adelante.',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4introduccion.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4introduccion.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -414,7 +412,7 @@ export const anxietyPath: Path = {
           title: 'EJERCICIO 2: “ME VEO HACIÉNDOLO CON CALMA”',
           objective: 'Usa tu imaginación como herramienta. Cuando visualizas que te enfrentas a una situación temida de forma calmada, entrenas a tu sistema nervioso para responder con menos alarma en la vida real.',
           duration: '8-10 min',
-          audioUrl: 'https://workwellfut.com/audios/rm/R13_me_veo.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana4tecnica2.mp3',
         },
         {
           type: 'therapeuticNotebookReflection',
