@@ -169,7 +169,12 @@ export const anxietyPath: Path = {
             title: 'Exhalación Prolongada (1:2)',
             audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica13exhalacionprolongada.mp3',
             content: [{ type: 'paragraph', text: 'Alarga más la exhalación que la inhalación (ej: inhala 3, exhala 6). Este gesto activa el nervio vago y baja la frecuencia cardíaca de forma rápida.' }] },
-          { type: 'collapsible', title: 'Relajación Muscular Progresiva (Jacobson)', content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] },
+          { 
+              type: 'collapsible', 
+              title: 'Relajación Muscular Progresiva (Jacobson)', 
+              audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica14Jacobson.mp3',
+              content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] 
+          },
           { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
           { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
@@ -206,13 +211,7 @@ export const anxietyPath: Path = {
           { type: 'collapsible', title: 'La confianza se entrena', content: [{ type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste”. No buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma.' }] },
           { type: 'title', text: 'Técnicas Específicas' },
           { type: 'exposureLadderExercise', title: 'EJERCICIO 1: ESCALERA DE EXPOSICIÓN PERSONAL', objective: 'Construye, peldaño a peldaño, un camino seguro hacia esas situaciones que hoy parecen demasiado grandes. Diseñarás tu propio plan progresivo para entrenar a tu cerebro y a tu cuerpo a confiar más en ti.', duration: '10-15 min' },
-          {
-            type: 'calmVisualizationExercise',
-            title: 'EJERCICIO 2: “ME VEO HACIÉNDOLO CON CALMA”',
-            objective: 'Usa tu imaginación como herramienta. Cuando visualizas que te enfrentas a una situación temida de forma calmada, entrenas a tu sistema nervioso para responder con menos alarma en la vida real.',
-            duration: '8-10 min',
-            audioUrl: 'https://workwellfut.com/audios/rm/R13_me_veo.mp3'
-          },
+          { type: 'calmVisualizationExercise', title: 'EJERCICIO 2: “ME VEO HACIÉNDOLO CON CALMA”', objective: 'Usa tu imaginación como herramienta. Cuando visualizas que te enfrentas a una situación temida de forma calmada, entrenas a tu sistema nervioso para responder con menos alarma en la vida real.', duration: '8-10 min', audioUrl: 'https://workwellfut.com/audios/rm/R13_me_veo.mp3' },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?','¿Qué estrategias has comprobado que te ayudan más a calmarte?','¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?'] },
           { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' }
       ]
@@ -243,3 +242,4 @@ export const anxietyPath: Path = {
   
 
     
+
