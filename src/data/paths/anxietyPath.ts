@@ -260,6 +260,21 @@ export const anxietyPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3',
             prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']
           },
+          { type: 'title', text: 'Resumen Clave'},
+          {
+            type: 'paragraphWithAudio',
+            text: '',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'
+          },
+          { type: 'list', items: [
+            'Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.',
+            'La ansiedad tiende a confundir posibilidad con probabilidad, exagerando riesgos poco realistas.',
+            'En un pico fuerte puede producirse el secuestro emocional: la amígdala toma el control y bloquea la parte racional.',
+            'La clave no está en eliminar pensamientos, sino en dejar de fusionarnos con ellos: observarlos como hipótesis, no como verdades.',
+            'La técnica STOP ayuda a frenar el piloto automático ansioso, regular el cuerpo con la respiración, observar con perspectiva y permitir avanzar.',
+            'El cuestionamiento socrático permite desafiar los “¿y si…?” explorando evidencias, alternativas y consecuencias reales.',
+            'Con práctica, la neurociencia demuestra que se refuerza la neuroplasticidad: tu cerebro aprende a frenar antes, reducir la intensidad de la ansiedad y elegir respuestas más sanas.'
+          ]},
           { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.'}
       ]
     },
@@ -312,6 +327,7 @@ export const anxietyPath: Path = {
 
 
     
+
 
 
 
