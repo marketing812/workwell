@@ -175,7 +175,7 @@ export const anxietyPath: Path = {
             prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?']
           },
           { type: 'title', text: 'Resumen Clave'},
-          { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2resumen.mp3' },
+          { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2resumen.mp3'},
           { type: 'list', items: [
             'La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.',
             'El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.',
@@ -196,10 +196,60 @@ export const anxietyPath: Path = {
       content: [
           { type: 'paragraphWithAudio', text: 'La ansiedad suele engañarnos con un truco: confunde lo posible con lo probable. “¿Y si…?” se convierte en un túnel sin salida. Esta semana aprenderás a dar un paso atrás, a mirar tus pensamientos sin creerlos al 100% y a abrir la puerta a alternativas más realistas. Se trata de entrenar tu mente para no quedar atrapada en el catastrofismo y encontrar nuevas formas de interpretar lo que pasa.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sen3introduccion.mp3' },
           { type: 'title', text: 'Psicoeducación' },
-          { type: 'collapsible', title: 'El invitado pesado de tu mente: los pensamientos anticipatorios', content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como “¿Y si me pasa algo malo?”. Estos pensamientos no hablan de lo que ocurre ahora, sino de lo que podría pasar. El cerebro los crea para protegerte, pero a menudo exagera la amenaza.' }] },
-          { type: 'collapsible', title: 'El secuestro emocional: cuando manda la amígdala', content: [{ type: 'paragraph', text: 'En un pico de ansiedad, ocurre el “secuestro emocional”: la amígdala, tu detector de humo interno, se enciende con tanta fuerza que casi apaga tu parte racional. Resultado: piensas en bucle y sientes que te bloqueas.' }] },
-          { type: 'collapsible', title: 'No se trata de luchar, sino de observar', content: [{ type: 'paragraph', text: 'La clave es dejar de creer que todo lo que pasa por tu mente es cierto. Imagina que tus pensamientos son coches pasando por una carretera: puedes elegir quedarte en la acera y mirarlos, en lugar de subirte a cada uno y dejar que te lleve.' }] },
-          { type: 'title', text: 'Técnicas Específicas' },
+          { 
+              type: 'collapsible',
+              title: 'El invitado pesado de tu mente: los pensamientos anticipatorios',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant1ganchoemoc.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como:\n\n“¿Y si me da un ataque en medio del trabajo?”\n“¿Y si pierdo el control delante de todos?”\n“¿Y si me pasa algo malo?”\n\nEstos se llaman pensamientos anticipatorios: no hablan de lo que ocurre ahora, sino de lo que podría pasar mañana o dentro de unos minutos. Son como un “adelanto de cine” donde tu cerebro solo te enseña las escenas de terror.\n\nLa neurociencia ha demostrado que el cerebro humano está diseñado para anticipar, porque así aumenta las posibilidades de supervivencia (LeDoux, 2015). El problema es que, en la ansiedad, ese mecanismo se dispara y todo se percibe como amenaza.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'El catastrofismo: cuando la mente imagina lo peor',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant2cuerporegulDor.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'El segundo invitado es el pensamiento catastrofista. No basta con que tu mente imagine lo que puede pasar: además lo pinta con el peor final posible.\n\nEjemplo:\n\nTe duele el pecho → la mente dice “seguro es un infarto”.\nNotas mareo → “me voy a desmayar en plena calle y nadie me ayudará”.\n\nEs como si tu cerebro tuviera un noticiero interno que siempre da la peor versión de los hechos.\n\nLa psicología cognitivo-conductual (TCC) ha estudiado esto durante décadas y lo llama sesgo atencional hacia la amenaza: tu mente se queda atrapada en la posibilidad más negativa, ignorando todo lo demás.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'El bucle mental: dar vueltas y vueltas sin llegar a ninguna parte',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant3porqEmpezXcorpo.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'Y luego están los bucles de pensamiento. Empiezan como una pequeña idea (“¿y si…?”), pero cuanto más giras sobre ella, más grande se hace.\n\nEs como una bola de nieve que rueda cuesta abajo: empieza pequeña, pero con cada vuelta arrastra más y más hasta que parece enorme e imparable. O como un disco rayado que repite la misma frase una y otra vez sin dejarte avanzar.\n\nLa neurociencia del pensamiento rumiativo muestra que, en esos momentos, la red neuronal por defecto (Default Mode Network) se activa de forma excesiva, alimentando la repetición de pensamientos en lugar de la resolución de problemas.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'El secuestro emocional: cuando manda la amígdala',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant4frenoVagal.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'En un pico de ansiedad, ocurre lo que Daniel Goleman (1995) llamó el “secuestro emocional”: la amígdala, ese detector de humo interno, se enciende con tanta fuerza que casi apaga tu corteza prefrontal (la parte racional del cerebro).\n\nResultado: piensas en bucle, sientes que te bloqueas y cuesta recordar incluso lo más sencillo. Es como si la alarma de incendios estuviera tan alta que no escuchas ninguna otra voz.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'No se trata de luchar, sino de observar',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant5cerebroCalma.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'Aquí está la clave: no se trata de controlar ni eliminar lo que piensas. Eso sería como intentar parar las olas del mar con las manos.\n\nLo que sí puedes aprender es a observar sin engancharte. Imagina que tus pensamientos son coches pasando por una carretera: puedes elegir quedarte en la acera y mirarlos, en lugar de subirte a cada coche y dejar que te lleve.\n\nEsto es lo que en TCC se llama desfusión cognitiva (Hayes, 2011): dejar de creer que todo lo que pasa por tu mente es cierto o que tienes que reaccionar a ello.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'Entrenar la mente como un músculo',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant6Interocepcion.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'Cada vez que practicas observar, cuestionar y soltar un pensamiento ansioso, estás entrenando tu cerebro como si hicieras ejercicio en un gimnasio.\n\nAl principio cuesta.\n\nDespués de repetirlo, se vuelve más natural.\n\nCon el tiempo, tu “músculo mental” se fortalece y la ansiedad pierde poder sobre ti.\n\nLa neurociencia lo llama neuroplasticidad: tus circuitos cerebrales cambian con la práctica, igual que los músculos cambian con el entrenamiento.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'Preparándote para la práctica',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant7entrenamConstanc.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'paragraph', text: 'Ahora que entiendes mejor cómo funcionan los pensamientos ansiosos (anticipatorios, catastrofistas, bucles) y cómo la amígdala puede secuestrar tu mente, pasamos a lo más importante: las técnicas que te ayudarán a no engancharte a esos pensamientos.\n\nRecuerda: no buscamos que dejen de aparecer, sino que aprendas a mirarlos de frente, sin miedo, hasta que dejen de arrastrarte.'}]
+          },
+          { 
+              type: 'collapsible',
+              title: 'Resumen clave:',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant8cierrePsicoeduc.mp3', // Note: Placeholder, needs correct URL
+              content: [{ type: 'list', items: [
+                  'Los pensamientos ansiosos suelen anticipar, exagerar y repetir.',
+                  'Tu cerebro los fabrica para protegerte, pero muchas veces exagera.',
+                  'No necesitas luchar con ellos, sino observarlos y dejarlos pasar.',
+                  'Con práctica, tu mente aprende a soltar y recuperar la calma'
+              ]}]
+          },
+          { type: 'title', text: 'Técnicas Específicas'},
           { type: 'stopExercise', title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático', objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.', duration: '2-3 min' },
           { type: 'questionYourIfsExercise', title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad', objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.', duration: '7-9 min' },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']},
