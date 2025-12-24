@@ -175,7 +175,7 @@ export const anxietyPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica14Jacobson.mp3',
               content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] 
           },
-          { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
+          { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica15bodyscan.mp3', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
           { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
       ]
@@ -242,4 +242,5 @@ export const anxietyPath: Path = {
   
 
     
+
 
