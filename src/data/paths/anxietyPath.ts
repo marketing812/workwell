@@ -155,7 +155,7 @@ export const anxietyPath: Path = {
           content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
         },
         { type: 'title', text: 'Técnicas Específicas de Relajación'},
-        { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica1.mp3' },
+        { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/Ruta13semana2tecnica1.mp3' },
         { 
             type: 'collapsible', 
             title: 'Exhalación Prolongada (1:2)',
@@ -419,7 +419,28 @@ export const anxietyPath: Path = {
             '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
           ],
         },
-        { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' },
+        { type: 'title', text: 'Resumen Clave'},
+        {
+            type: 'list',
+            items: [
+                'La evitación alivia la ansiedad a corto plazo, pero la alimenta a largo plazo.',
+                'La neurociencia muestra que la ansiedad disminuye al exponerte de forma gradual: el cerebro aprende que no hay un peligro real.',
+                'La exposición progresiva es como subir una escalera: un peldaño tras otro, con repeticiones, paciencia y descansos cuando lo necesites.',
+                'La repetición genera habituación: tu cuerpo se acostumbra y la ansiedad pierde fuerza.',
+                'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.',
+                'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.',
+                'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.',
+                'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.',
+            ]
+        },
+        {
+            type: 'quote',
+            text: '“No tienes que eliminar la ansiedad para avanzar. Solo necesitas dar un paso pequeño, constante y consciente en dirección a lo que valoras. Cada vez que lo haces, tu fuerza crece y tu libertad también.”',
+        },
+        {
+          type: 'quote',
+          text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”',
+        },
       ],
     },
   ],
