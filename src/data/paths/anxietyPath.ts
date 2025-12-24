@@ -57,7 +57,7 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'No luches contra la ansiedad',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant6noluchescontraNsied.mp3',
-            content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, lo primero que solemos pensar es: “¡Quiero que se vaya ya!”. Pero aquí ocurre algo paradójico: cuanto más intentas forzarla a desaparecer, más se intensifica. Es como si tu cerebro interpretara: “Esto es tan peligroso que necesito luchar con todas mis fuerzas”.\nY entonces, en lugar de calmarse, tu sistema nervioso se activa aún más.\nLa ciencia —desde la psicología cognitivo-conductual hasta la neurociencia— nos muestra otra vía mucho más eficaz:\n•\tObservar sin juzgar → como si vieras pasar una nube en el cielo, que se desplaza sola sin que tengas que empujarla.\n•\tDarle un espacio controlado → dejar que esté ahí, pero sin que ocupe todo tu campo de visión.\n•\tUsar técnicas corporales y mentales → tu respiración, tu atención y tus recursos internos actúan como anclas que ayudan a que la ola de ansiedad suba… y después vuelva a bajar, como siempre lo hace.\nEjemplo: imagina un globo que intentas meter bajo el agua. Cuanto más lo fuerzas hacia abajo, más salta hacia arriba. Pero si lo sueltas, el globo se queda flotando. Lo mismo pasa con la ansiedad: si dejas de pelearte con ella, pierde fuerza y tú recuperas la capacidad de decidir cómo sostenerla.\nImportante: muchas veces recurrimos a la evitación para lidiar con la ansiedad (no ir a un sitio, no hacer algo). Eso da alivio inmediato, pero refuerza el miedo: tu cerebro aprende que “menos mal que lo esquivé, porque era peligroso”. Con el tiempo, la evitación se convierte en gasolina para la ansiedad.\nNo se trata de eliminar la ansiedad, sino de recuperar el mando. Tú puedes estar en el asiento del conductor, incluso cuando la ansiedad viaja de copiloto.' }]
+            content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, lo primero que solemos pensar es: “¡Quiero que se vaya ya!”. Pero aquí ocurre algo paradójico: cuanto más intentas forzarla a desaparecer, más se intensifica. Es como si tu cerebro interpretara: “Esto es tan peligroso que necesito luchar con todas mis fuerzas”.\nY entonces, en lugar de calmarse, tu sistema nervioso se activa aún más.\nLa ciencia —desde la psicología cognitivo-conductual hasta la neurociencia— nos muestra otra vía mucho más eficaz:\n•\tObservar sin juzgar → como si vieras pasar una nube en el cielo, que se desplaza sola sin que tengas que empujarla.\n•\tDarle un espacio controlado → dejar que esté ahí, pero sin que ocupe todo tu campo de visión.\n•\tUsar técnicas corporales y mentales → tu respiración, tu atención y tus recursos internos actúan como anclas que ayudan a que la ola de ansiedad suba… y después vuelva a bajar, como siempre lo hace.\nEjemplo: imagina un globo que intentas meter bajo el agua. Cuanto más lo fuerzas hacia abajo, más salta hacia arriba. Pero si lo sueltas, el globo se queda flotando. Lo mismo pasa con la ansiedad: si dejas de pelearte con ella, pierde fuerza y tú recuperas la capacidad de decidir cómo sostenerla.\nImportante: muchas veces recurrimos a la evitación para lidiar con la ansiedad (no ir a un sitio, no hacer algo). Eso da alivio inmediato, pero refuerza el miedo: tu cerebro aprende que “menos mal que lo esquivé, porque era peligroso”. Con el tiempo, la evitación se convierte en gasolina para la ansiedad.\nNo se trata de eliminar la ansiedad, sino de recuperar el mando. Tú puedes estar en el asiento del conductor, incluso cuando la ansiedad viaja de copiloto.'}]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
@@ -184,7 +184,7 @@ export const anxietyPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'La ansiedad suele engañarnos con un truco: confunde lo posible con lo probable. “¿Y si…?” se convierte en un túnel sin salida. Esta semana aprenderás a dar un paso atrás, a mirar tus pensamientos sin creerlos al 100% y a abrir la puerta a alternativas más realistas. Se trata de entrenar tu mente para no quedar atrapada en el catastrofismo y encontrar nuevas formas de interpretar lo que pasa.',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sen3introduccion.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sen3introduccion.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -271,12 +271,7 @@ export const anxietyPath: Path = {
           content: [
             {
               type: 'list',
-              items: [
-                'Los pensamientos ansiosos suelen anticipar, exagerar y repetir.',
-                'Tu cerebro los fabrica para protegerte, pero muchas veces exagera.',
-                'No necesitas luchar con ellos, sino observarlos y dejarlos pasar.',
-                'Con práctica, tu mente aprende a soltar y recuperar la calma',
-              ],
+              items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'],
             },
           ],
         },
@@ -307,8 +302,12 @@ export const anxietyPath: Path = {
             '¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'},
+        { type: 'title', text: 'Resumen Clave' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3',
+        },
         {
           type: 'list',
           items: [
@@ -408,6 +407,7 @@ export const anxietyPath: Path = {
           title: 'EJERCICIO 1: ESCALERA DE EXPOSICIÓN PERSONAL',
           objective: 'Construye, peldaño a peldaño, un camino seguro hacia esas situaciones que hoy parecen demasiado grandes. Diseñarás tu propio plan progresivo para entrenar a tu cerebro y a tu cuerpo a confiar más en ti.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana4tecnica1.mp3'
         },
         {
           type: 'calmVisualizationExercise',
@@ -433,5 +433,3 @@ export const anxietyPath: Path = {
     },
   ],
 };
-
-    
