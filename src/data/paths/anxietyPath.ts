@@ -254,8 +254,8 @@ export const anxietyPath: Path = {
               ]}]
           },
           { type: 'title', text: 'Técnicas Específicas'},
-          { type: 'stopExercise', title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático', objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.', duration: '2-3 min' },
-          { type: 'questionYourIfsExercise', title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad', objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.', duration: '7-9 min' },
+          { type: 'stopExercise', title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático', objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.', duration: '2-3 min', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3' },
+          { type: 'questionYourIfsExercise', title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad', objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.', duration: '7-9 min', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3' },
           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']},
           { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.'}
       ]
@@ -309,5 +309,6 @@ export const anxietyPath: Path = {
 
 
     
+
 
 

@@ -766,7 +766,7 @@ function ContentItemRenderer({
     case 'stopExercise':
         return <StopExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'questionYourIfsExercise':
-        return <QuestionYourIfsExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <QuestionYourIfsExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'exposureLadderExercise':
         return <ExposureLadderExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'calmVisualizationExercise': {
@@ -935,20 +935,20 @@ export function PathDetailClient({ path }: { path: Path }) {
               </CardHeader>
               <CardContent>
               {module.content.map((contentItem, i) => (
-  <ContentItemErrorBoundary
-    key={i}
-    pathId={path.id}
-    module={module}
-    index={i}
-    contentItem={contentItem}
-  >
-    <ContentItemRenderer
-      contentItem={contentItem}
-      index={i}
-      path={path}
-    />
-  </ContentItemErrorBoundary>
-))}
+                <ContentItemErrorBoundary
+                  key={i}
+                  pathId={path.id}
+                  module={module}
+                  index={i}
+                  contentItem={contentItem}
+                >
+                  <ContentItemRenderer
+                    contentItem={contentItem}
+                    index={i}
+                    path={path}
+                  />
+                </ContentItemErrorBoundary>
+              ))}
 
               </CardContent>
               <CardFooter>
