@@ -54,6 +54,7 @@ export const anxietyPath: Path = {
         {
             type: 'collapsible',
             title: 'La ansiedad tiene un lenguaje',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant5ansiedadlenguaje.mp3',
             content: [{ type: 'paragraph', text: 'La ansiedad se comunica contigo a través de síntomas. Algunos son más físicos (palpitaciones, sudor, tensión muscular) y otros más mentales (preocupaciones, pensamientos de “y si…”).\nPiensa en ella como un mensajero pesado: insiste en llamar a tu puerta, aunque no siempre traiga noticias importantes.\n•\tSi le cierras de golpe, insiste más.\n•\tSi le escuchas con calma, puedes decidir qué hacer con el mensaje.\nEste proceso suele convertirse en un círculo de la ansiedad:\n1.\tAparece un síntoma (ej. taquicardia).\n2.\tTu mente lo interpreta como peligro (“me va a dar algo”).\n3.\tEsa interpretación dispara más síntomas.\n4. \tY así se forma la bola de nieve.\nLo que rompe el círculo no es evitar, sino aprender a interpretar de otra forma lo que ocurre.' }]
         },
         {
@@ -75,7 +76,7 @@ export const anxietyPath: Path = {
             duration: '10-12 min',
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']},
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'list', items: [
             'La ansiedad es molesta pero no es tu enemiga: es una señal de alarma que a veces se desajusta.',
             'Distinguir entre ansiedad adaptativa y disfuncional ayuda a no pelearte con ella.',
@@ -171,3 +172,5 @@ export const anxietyPath: Path = {
     
 
     
+
+  
