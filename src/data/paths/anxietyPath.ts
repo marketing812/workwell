@@ -78,7 +78,12 @@ export const anxietyPath: Path = {
             duration: '10-12 min',
             audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']},
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13reflexioncuaderno.mp3',
+          prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']
+        },
         { type: 'title', text: 'Resumen Clave'},
         {
           type: 'paragraphWithAudio',
