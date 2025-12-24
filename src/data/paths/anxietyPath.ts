@@ -30,6 +30,7 @@ export const anxietyPath: Path = {
         { 
             type: 'collapsible',
             title: 'Ansiedad adaptativa vs. ansiedad disfuncional',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3',
             content: [
                 { type: 'paragraph', text: 'No toda ansiedad es mala, aunque lo parezca.\n🔹 Ansiedad adaptativa\n•\tTe mantiene alerta y enfocado/a.\n•\tPor ejemplo, esos nervios antes de un examen que te ayudan a estudiar con más energía.\n🔹 Ansiedad disfuncional\n•\tSe enciende sin motivo claro o de forma desproporcionada.\n•\tEn lugar de ayudarte, te bloquea: no duermes, evitas situaciones, piensas sin parar en lo peor.\n•\tEs como una alarma que suena cada dos por tres, incluso sin fuego.\nLa clave no es luchar contra la ansiedad, sino distinguir cuándo te está ayudando y cuándo te está saboteando.\nPiensa en tu ansiedad como un detector de humo demasiado sensible: no distingue entre el vapor de la ducha y un incendio real. El problema no eres tú, es que tu sistema de alarma está calibrado demasiado alto.' }
             ]
@@ -115,7 +116,7 @@ export const anxietyPath: Path = {
           { type: 'collapsible', title: 'Exhalación Prolongada (1:2)', content: [{ type: 'paragraph', text: 'Alarga más la exhalación que la inhalación (ej: inhala 3, exhala 6). Este gesto activa el nervio vago y baja la frecuencia cardíaca de forma rápida.' }] },
           { type: 'collapsible', title: 'Relajación Muscular Progresiva (Jacobson)', content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] },
           { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [ '¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?', '¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?', '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?', '¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?', '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
           { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
       ]
     },
@@ -168,3 +169,4 @@ export const anxietyPath: Path = {
     
 
     
+
