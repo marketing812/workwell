@@ -39,9 +39,7 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'Tu sistema nervioso en acción',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1pant3tusistnervioso.mp3',
-            content: [
-                { type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:\n•\tLa rama simpático pisa el acelerador 🚗💨 (sube la frecuencia cardíaca, la respiración, la tensión muscular).\n•\tLa rama parasimpático actúa como freno 🚦 (calma, ayuda a la digestión y al descanso).\nCuando la ansiedad aparece, es como si tu pedal del acelerador se quedara atascado, incluso en situaciones normales. Por eso sientes palpitaciones, respiración corta, mareo o tensión. No es que estés “loco/a”: es que tu cuerpo está reaccionando como si hubiera un peligro real.\nAdemás, tu cuerpo libera adrenalina y cortisol, las hormonas del estrés. A corto plazo te ponen en alerta, pero cuando se repiten demasiadas veces, te dejan agotado/a.' }
-            ]
+            content: [{ type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:\n•\tLa rama simpático pisa el acelerador 🚗💨 (sube la frecuencia cardíaca, la respiración, la tensión muscular).\n•\tLa rama parasimpático actúa como freno 🚦 (calma, ayuda a la digestión y al descanso).\nCuando la ansiedad aparece, es como si tu pedal del acelerador se quedara atascado, incluso en situaciones normales. Por eso sientes palpitaciones, respiración corta, mareo o tensión. No es que estés “loco/a”: es que tu cuerpo está reaccionando como si hubiera un peligro real.\nAdemás, tu cuerpo libera adrenalina y cortisol, las hormonas del estrés. A corto plazo te ponen en alerta, pero cuando se repiten demasiadas veces, te dejan agotado/a.' }]
         },
         {
             type: 'collapsible',
@@ -157,7 +155,7 @@ export const anxietyPath: Path = {
             content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
           },
           { type: 'title', text: 'Técnicas Específicas de Relajación'},
-          { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/Ruta13semana2tecnica1.mp3'},
+          { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica1.mp3' },
           { 
             type: 'collapsible', 
             title: 'Exhalación Prolongada (1:2)',
@@ -180,19 +178,17 @@ export const anxietyPath: Path = {
               '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?',
             ],
           },
-          { type: 'title', text: 'Resumen Clave' },
-          {
-            type: 'list',
-            items: [
-              'La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.',
-              'El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.',
-              'En ansiedad intensa, la amígdala “secuestra” la razón; al relajar el cuerpo, devuelves el control a tu parte racional.',
-              'Las sensaciones físicas (palpitaciones, mareo, nudo en el estómago) pueden ser molestas pero no son peligrosas: aprender a observarlas sin miedo reduce su impacto.',
-              'La práctica constante entrena tu sistema nervioso para responder con más equilibrio y recuperarse antes del estrés.',
-              'Las técnicas más eficaces (coherencia cardíaca, diafragmática, exhalación, RMP) ayudan a modular el sistema nervioso de forma sostenida; otras (anclaje, frío, balanceo) son recursos rápidos en picos de ansiedad.',
-              'Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia.'
-            ]
-          },
+          { type: 'title', text: 'Resumen Clave'},
+          { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2resumen.mp3' },
+          { type: 'list', items: [
+            'La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.',
+            'El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.',
+            'En ansiedad intensa, la amígdala “secuestra” la razón; al relajar el cuerpo, devuelves el control a tu parte racional.',
+            'Las sensaciones físicas (palpitaciones, mareo, nudo en el estómago) pueden ser molestas pero no son peligrosas: aprender a observarlas sin miedo reduce su impacto.',
+            'La práctica constante entrena tu sistema nervioso para responder con más equilibrio y recuperarse antes del estrés.',
+            'Las técnicas más eficaces (coherencia cardíaca, diafragmática, exhalación, RMP) ayudan a modular el sistema nervioso de forma sostenida; otras (anclaje, frío, balanceo) son recursos rápidos en picos de ansiedad.',
+            'Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia.'
+          ]},
           { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
       ]
     },
@@ -263,3 +259,4 @@ export const anxietyPath: Path = {
 
 
     
+
