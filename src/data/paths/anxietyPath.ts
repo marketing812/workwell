@@ -46,6 +46,7 @@ export const anxietyPath: Path = {
         {
             type: 'collapsible',
             title: 'Ansiedad, trastorno de ansiedad y ataque de pánico',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3',
             content: [
                 { type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\n🔹 Ansiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\n🔹 Trastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\n🔹 Ataque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.' }
             ]
@@ -73,11 +74,7 @@ export const anxietyPath: Path = {
             objective: 'Reconocer las sensaciones de la ansiedad sin luchar contra ellas, comprendiendo que aunque son incómodas, no son peligrosas.',
             duration: '10-12 min',
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: [
-            '¿Qué he descubierto sobre mi manera de interpretar la ansiedad?',
-            '¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?',
-            '¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?'
-        ]},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']},
         { type: 'title', text: 'Resumen Clave' },
         { type: 'list', items: [
             'La ansiedad es molesta pero no es tu enemiga: es una señal de alarma que a veces se desajusta.',
@@ -170,5 +167,7 @@ export const anxietyPath: Path = {
     
 
 
+
+    
 
     
