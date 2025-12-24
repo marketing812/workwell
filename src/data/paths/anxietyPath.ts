@@ -268,12 +268,7 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'Resumen clave:',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3',
-          content: [
-            {
-              type: 'list',
-              items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'],
-            },
-          ],
+          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -330,7 +325,7 @@ export const anxietyPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'El gran reto de la ansiedad no es pensar menos, sino evitar menos. Cuanto más esquivamos lo que tememos, más fuerte se hace el miedo. Esta última semana vas a aprender a enfrentarte de manera progresiva y cuidada, paso a paso, sin forzarte. Será como subir una escalera: cada peldaño te acerca a la libertad, y no hace falta correr para llegar arriba. Lo importante es avanzar, aunque sea despacio, y comprobar con tus propios ojos que puedes sostener la ansiedad y seguir adelante.',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4introduccion.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4introduccion.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
@@ -417,17 +412,17 @@ export const anxietyPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4reflexion.mp3',
           prompts: [
             '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
             '¿Qué estrategias has comprobado que te ayudan más a calmarte?',
             '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
           ],
         },
-        {
-          type: 'quote',
-          text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”',
-        },
+        { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' },
       ],
     },
   ],
 };
+
+    
