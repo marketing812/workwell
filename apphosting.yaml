@@ -12,3 +12,4 @@ runConfig:
 # Forzando reconstrucción para resolver ChunkLoadError y asegurar la estabilidad.
 # Forzando reconstrucción para resolver un nuevo ChunkLoadError.
 # Forzando reconstrucción para intentar solucionar el error de carga de chunks (ChunkLoadError).
+# Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
