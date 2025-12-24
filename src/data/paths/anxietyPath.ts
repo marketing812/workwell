@@ -157,11 +157,7 @@ export const anxietyPath: Path = {
             content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
           },
           { type: 'title', text: 'Técnicas Específicas de Relajación'},
-          {
-            type: 'paragraphWithAudio',
-            text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.',
-            audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica1.mp3'
-          },
+          { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/Ruta13semana2tecnica1.mp3'},
           { 
             type: 'collapsible', 
             title: 'Exhalación Prolongada (1:2)',
@@ -184,7 +180,21 @@ export const anxietyPath: Path = {
               '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?',
             ],
           },
-          { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}]
+          { type: 'title', text: 'Resumen Clave' },
+          {
+            type: 'list',
+            items: [
+              'La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.',
+              'El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.',
+              'En ansiedad intensa, la amígdala “secuestra” la razón; al relajar el cuerpo, devuelves el control a tu parte racional.',
+              'Las sensaciones físicas (palpitaciones, mareo, nudo en el estómago) pueden ser molestas pero no son peligrosas: aprender a observarlas sin miedo reduce su impacto.',
+              'La práctica constante entrena tu sistema nervioso para responder con más equilibrio y recuperarse antes del estrés.',
+              'Las técnicas más eficaces (coherencia cardíaca, diafragmática, exhalación, RMP) ayudan a modular el sistema nervioso de forma sostenida; otras (anclaje, frío, balanceo) son recursos rápidos en picos de ansiedad.',
+              'Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia.'
+            ]
+          },
+          { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
+      ]
     },
     {
       id: 'ansiedad_sem3',
