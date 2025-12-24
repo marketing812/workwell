@@ -159,11 +159,15 @@ export const anxietyPath: Path = {
             content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
           },
           { type: 'title', text: 'Técnicas Específicas de Relajación'},
-          { type: 'paragraph', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.' },
+          {
+            type: 'paragraphWithAudio',
+            text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica1.mp3'
+          },
           { type: 'collapsible', title: 'Exhalación Prolongada (1:2)', content: [{ type: 'paragraph', text: 'Alarga más la exhalación que la inhalación (ej: inhala 3, exhala 6). Este gesto activa el nervio vago y baja la frecuencia cardíaca de forma rápida.' }] },
           { type: 'collapsible', title: 'Relajación Muscular Progresiva (Jacobson)', content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] },
           { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?', '¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?', '¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?'] },
           { type: 'quote', text: 'Tu cuerpo puede ser tu mejor aliado contra la ansiedad: cuando lo calmas, tu mente vuelve a encontrar claridad y equilibrio.'}
       ]
     },
@@ -181,7 +185,7 @@ export const anxietyPath: Path = {
           { type: 'title', text: 'Técnicas Específicas' },
           { type: 'stopExercise', title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático', objective: 'Con esta técnica aprenderás un “botón de pausa mental” que interrumpe el bucle ansioso y te devuelve al presente en menos de un minuto.', duration: '2-3 min' },
           { type: 'questionYourIfsExercise', title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad', objective: 'Aprende a poner tus preguntas ansiosas bajo una lupa, en lugar de darlas por hechas. Así tu mente pasa de la catástrofe a un análisis más realista.', duration: '7-9 min' },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?', '¿Qué me pasa cuando confundo posibilidad con probabilidad?', '¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?'] },
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?'] },
           { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.'}
       ]
     },
@@ -205,7 +209,7 @@ export const anxietyPath: Path = {
             duration: '8-10 min',
             audioUrl: 'https://workwellfut.com/audios/rm/R13_me_veo.mp3'
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?', '¿Qué estrategias has comprobado que te ayudan más a calmarte?', '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?'] },
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?','¿Qué estrategias has comprobado que te ayudan más a calmarte?','¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?'] },
           { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' }
       ]
     }
@@ -233,3 +237,5 @@ export const anxietyPath: Path = {
 
 
   
+
+    
