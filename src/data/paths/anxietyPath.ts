@@ -113,6 +113,7 @@ export const anxietyPath: Path = {
           {
             type: 'collapsible',
             title: 'Gancho emocional: “Cuando el cuerpo corre, la mente corre”',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant1ganchoemoc.mp3',
             content: [{ type: 'paragraph', text: '¿Has notado que la ansiedad empieza en el cuerpo antes de que te des cuenta en la cabeza?\n\nDe repente, el corazón se acelera, el estómago se encoge o la respiración se agita… y ahí, como por arte de magia, aparecen los pensamientos: “¿y si me pasa algo malo? ¿y si no lo controlo? ¿y si me da algo aquí mismo?”.\n\nEsto ocurre porque cuerpo y mente son como dos bailarines atados con la misma cuerda: cuando uno se acelera, arrastra al otro.\n\nLa buena noticia es que este vínculo también funciona en positivo: si aprendes a calmar tu cuerpo, tu mente se relaja automáticamente.\n\nEsta semana vas a entrenar esa palanca: empezar por el cuerpo para que tu mente tenga un lugar donde descansar.' }]
           },
           {
@@ -219,5 +220,6 @@ export const anxietyPath: Path = {
 
 
     
+
 
 
