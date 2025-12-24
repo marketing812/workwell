@@ -112,17 +112,46 @@ export const anxietyPath: Path = {
           { type: 'title', text: 'Psicoeducación' },
           {
             type: 'collapsible',
+            title: 'Gancho emocional: “Cuando el cuerpo corre, la mente corre”',
+            content: [{ type: 'paragraph', text: '¿Has notado que la ansiedad empieza en el cuerpo antes de que te des cuenta en la cabeza?\n\nDe repente, el corazón se acelera, el estómago se encoge o la respiración se agita… y ahí, como por arte de magia, aparecen los pensamientos: “¿y si me pasa algo malo? ¿y si no lo controlo? ¿y si me da algo aquí mismo?”.\n\nEsto ocurre porque cuerpo y mente son como dos bailarines atados con la misma cuerda: cuando uno se acelera, arrastra al otro.\n\nLa buena noticia es que este vínculo también funciona en positivo: si aprendes a calmar tu cuerpo, tu mente se relaja automáticamente.\n\nEsta semana vas a entrenar esa palanca: empezar por el cuerpo para que tu mente tenga un lugar donde descansar.' }]
+          },
+          {
+            type: 'collapsible',
             title: 'El cuerpo como regulador directo',
-            content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, lo que pasa es que el acelerador (sistema nervioso simpático) se queda pisado, aunque no haya peligro real. Lo que aprenderás aquí es a tocar el freno (sistema nervioso parasimpático) de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.' }]
+            content: [{ type: 'paragraph', text: 'Dentro de ti funciona un sistema automático que no eliges de forma consciente: el sistema nervioso autónomo.\n\nComo explicamos también en la semana 1, puedes imaginarlo como un coche con dos pedales:\n\nEl acelerador (la rama simpática): te activa, sube el pulso, la tensión muscular y la respiración.\n\nEl freno (la rama parasimpática): te calma, baja la activación y devuelve al cuerpo el equilibrio.\n\nCuando la ansiedad aparece, lo que pasa es que el acelerador se queda pisado, aunque no haya tráfico ni peligro real. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\n\nLo que aprenderás aquí es a tocar el freno de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.' }]
+          },
+          {
+            type: 'collapsible',
+            title: 'Por qué empezar por el cuerpo antes que por la mente',
+            content: [{ type: 'paragraph', text: 'La ansiedad funciona como un círculo que se alimenta a sí mismo:\n\nSientes un síntoma (ej. taquicardia).\n\nLo interpretas como peligro (“me va a dar algo”).\n\nEsa interpretación te asusta más y provoca más síntomas. Sin querer, hace que la ansiedad y el miedo suban más.\n\nEs como si tu cuerpo encendiera la alarma y tu mente cogiera el micrófono para amplificarla.\n\nMuchas veces intentamos romper este círculo solo con pensamientos positivos: “tranquilo, no pasa nada”. Pero cuando el cuerpo ya está disparado, a veces la mente no lo cree.\n\nPor eso, esta semana, empezamos por el cuerpo: al bajar la respiración, soltar los músculos o enfriar el cuerpo, el cerebro recibe una señal poderosa de calma que corta el círculo.' }]
           },
           {
             type: 'collapsible',
             title: 'El freno vagal: tu sistema de calma natural',
-            content: [{ type: 'paragraph', text: 'Hay un “cable maestro” que conecta tu cuerpo con tu cerebro: el nervio vago. Puedes imaginarlo como un freno interno que, cuando lo activas, manda el mensaje a tu cerebro de: “no hay peligro, puedes bajar la guardia”. Se activa con cosas muy sencillas: respirar lento y profundo o alargar la exhalación más que la inhalación.' }]
+            content: [{ type: 'paragraph', text: 'Hay un “cable maestro” que conecta tu cuerpo con tu cerebro: el nervio vago.\n\nPuedes imaginarlo como un freno interno que, cuando lo activas, manda el mensaje a tu cerebro de: “no hay peligro, puedes bajar la guardia”.\n\n¿Cómo se activa? Con cosas muy sencillas:\n\nRespirar lento y profundo.\n\nAlargar la exhalación más que la inhalación.\n\nHacer pausas de calma en el cuerpo.\n\nCuando lo entrenas, tu corazón se desacelera, la respiración se regula y la sensación de alarma baja.\n\nEn neurociencia se ha visto que este “tono vagal alto” está asociado a más resiliencia emocional y mayor capacidad de mantener la calma en momentos difíciles. El tono vagal alto significa que tu nervio vago funciona bien y se activa con facilidad.\n\nHoy en día sabemos que las personas con tono vagal alto, suelen recuperarse antes del estrés, tener un corazón más estable y sentirse más equilibradas emocionalmente.' }]
           },
-          { type: 'title', text: 'Técnicas Específicas de Relajación' },
+          {
+            type: 'collapsible',
+            title: 'El cerebro bajo calma y bajo ansiedad',
+            content: [{ type: 'paragraph', text: 'Tu cerebro tiene dos modos principales de funcionamiento, que se activan según percibas amenaza o seguridad:\n\nModo alarma: la amígdala (tu detector de humo interno) grita: “¡cuidado, cuidado!”. Tu cuerpo se prepara para huir o luchar y la parte racional de tu cerebro se apaga un poco.\n\nModo calma: la corteza prefrontal (tu parte racional, pensante y reflexiva) recupera el mando, analiza la situación y decide con claridad.\n\nEn un pico de ansiedad, la amígdala es tan ruidosa que apenas escuchas a tu parte racional. Por eso piensas en bucle o sientes que te bloqueas. A esto se le llama secuestro emocional: la parte más instintiva y emocional de tu cerebro toma el mando y “apaga” temporalmente a la parte racional, como si la alarma interna se adueñara de todo el sistema. \n\nLa buena noticia es que, al calmar el cuerpo, ese secuestro pierde fuerza y tu mente pensante puede recuperar el control.\n\nEl resultado: menos caos, más claridad y más sensación de control real.' }]
+          },
+          {
+            type: 'collapsible',
+            title: 'La interocepción: escuchar sin miedo',
+            content: [{ type: 'paragraph', text: 'La interocepción es la capacidad de sentir tu propio cuerpo por dentro: tu pulso, tu respiración, el nudo en el estómago, el calor en la cara…\n\nEn la ansiedad, lo difícil no son esas sensaciones en sí, sino cómo las interpretamos:\n\n“Me late fuerte el corazón → seguro es un infarto.”\n\n“Me mareo → me voy a caer.”\n\n“Me tiembla el cuerpo → voy a perder el control.”\n\nPero en realidad, son respuestas normales de un cuerpo que está en alarma. No son peligrosas, aunque si son molestas.\n\nPracticar a observarlas sin juzgarlas te permite comprobar que esas sensaciones, aunque incómodas, siempre suben y bajan.\n\nEs como mirar cómo pasa una nube por el cielo: no necesitas empujarla, se moverá sola.' }]
+          },
+          {
+            type: 'collapsible',
+            title: 'Entrenamiento y constancia: el cerebro también se entrena',
+            content: [{ type: 'paragraph', text: 'Aquí entra en juego la neuroplasticidad, la capacidad del cerebro de aprender y cambiar con la práctica.\n\nCada vez que respiras de forma calmada, relajas tus músculos o haces un ejercicio de anclaje, tu cerebro registra una nueva asociación: “cuando siento ansiedad, también puedo encontrar calma.”\n\nSi lo repites una y otra vez, esas conexiones se fortalecen. Con el tiempo, tu cuerpo empezará a responder con menos alarma de forma más automática.\n\nNo se trata de hacerlo perfecto, sino de volver una y otra vez al entrenamiento, como quien ejercita un músculo. 5–10 minutos diarios son más potentes que una práctica larga de vez en cuando.' }]
+          },
+          {
+            type: 'collapsible',
+            title: 'Cierre de la psicoeducación',
+            content: [{ type: 'paragraph', text: 'En resumen:\n\nLa ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.\n\nTu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.\n\nCuando calmas el cuerpo, tu cerebro recupera claridad.\n\nLas sensaciones no son peligrosas: observarlas sin miedo es clave para que pierdan fuerza.\n\nCon práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.\n\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }]
+          },
+          { type: 'title', text: 'Técnicas Específicas de Relajación'},
           { type: 'paragraph', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia.' },
-         
           { type: 'collapsible', title: 'Exhalación Prolongada (1:2)', content: [{ type: 'paragraph', text: 'Alarga más la exhalación que la inhalación (ej: inhala 3, exhala 6). Este gesto activa el nervio vago y baja la frecuencia cardíaca de forma rápida.' }] },
           { type: 'collapsible', title: 'Relajación Muscular Progresiva (Jacobson)', content: [{ type: 'paragraph', text: 'Tensa y suelta diferentes grupos musculares (piernas, abdomen, cara...). Ayuda a liberar la tensión física acumulada y a reconocer cuándo estás tenso/a.' }] },
           { type: 'collapsible', title: 'Body Scan Breve (Escaneo Corporal)', content: [{ type: 'paragraph', text: 'Recorre mentalmente tu cuerpo de pies a cabeza, observando lo que sientes sin juzgar. Aumenta la tolerancia a los síntomas de ansiedad.' }] },
@@ -190,4 +219,5 @@ export const anxietyPath: Path = {
 
 
     
+
 
