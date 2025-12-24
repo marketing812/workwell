@@ -199,49 +199,42 @@ export const anxietyPath: Path = {
           { 
               type: 'collapsible',
               title: 'El invitado pesado de tu mente: los pensamientos anticipatorios',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant1ganchoemoc.mp3', // Note: Placeholder, needs correct URL
+              audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3pant1invitadopesado.mp3',
               content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como:\n\n“¿Y si me da un ataque en medio del trabajo?”\n“¿Y si pierdo el control delante de todos?”\n“¿Y si me pasa algo malo?”\n\nEstos se llaman pensamientos anticipatorios: no hablan de lo que ocurre ahora, sino de lo que podría pasar mañana o dentro de unos minutos. Son como un “adelanto de cine” donde tu cerebro solo te enseña las escenas de terror.\n\nLa neurociencia ha demostrado que el cerebro humano está diseñado para anticipar, porque así aumenta las posibilidades de supervivencia (LeDoux, 2015). El problema es que, en la ansiedad, ese mecanismo se dispara y todo se percibe como amenaza.'}]
           },
           { 
               type: 'collapsible',
               title: 'El catastrofismo: cuando la mente imagina lo peor',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant2cuerporegulDor.mp3', // Note: Placeholder, needs correct URL
-              content: [{ type: 'paragraph', text: 'El segundo invitado es el pensamiento catastrofista. No basta con que tu mente imagine lo que puede pasar: además lo pinta con el peor final posible.\n\nEjemplo:\n\nTe duele el pecho → la mente dice “seguro es un infarto”.\nNotas mareo → “me voy a desmayar en plena calle y nadie me ayudará”.\n\nEs como si tu cerebro tuviera un noticiero interno que siempre da la peor versión de los hechos.\n\nLa psicología cognitivo-conductual (TCC) ha estudiado esto durante décadas y lo llama sesgo atencional hacia la amenaza: tu mente se queda atrapada en la posibilidad más negativa, ignorando todo lo demás.'}]
+              content: [{ type: 'paragraph', text: 'El segundo invitado es el pensamiento catastrofista. No basta con que tu mente imagine lo que puede pasar: además lo pinta con el peor final posible.\n\nEjemplo:\n\nTe duele el pecho → la mente dice “seguro es un infarto”.\nNotas mareo → “me voy a desmayar en plena calle y nadie me ayudará”.\n\nEs como si tu cerebro tuviera un noticiero interno que siempre da la peor versión de los hechos.\n\nLa psicología cognitivo-conductual (TCC) ha estudiado esto durante décadas y lo llama sesgo atencional hacia la amenaza: tu mente se queda atrapada en la posibilidad más negativa, ignorando todo lo demás.' }]
           },
-          { 
-              type: 'collapsible',
-              title: 'El bucle mental: dar vueltas y vueltas sin llegar a ninguna parte',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant3porqEmpezXcorpo.mp3', // Note: Placeholder, needs correct URL
-              content: [{ type: 'paragraph', text: 'Y luego están los bucles de pensamiento. Empiezan como una pequeña idea (“¿y si…?”), pero cuanto más giras sobre ella, más grande se hace.\n\nEs como una bola de nieve que rueda cuesta abajo: empieza pequeña, pero con cada vuelta arrastra más y más hasta que parece enorme e imparable. O como un disco rayado que repite la misma frase una y otra vez sin dejarte avanzar.\n\nLa neurociencia del pensamiento rumiativo muestra que, en esos momentos, la red neuronal por defecto (Default Mode Network) se activa de forma excesiva, alimentando la repetición de pensamientos en lugar de la resolución de problemas.'}]
+          {
+            type: 'collapsible',
+            title: 'El bucle mental: dar vueltas y vueltas sin llegar a ninguna parte',
+            content: [{ type: 'paragraph', text: 'Y luego están los bucles de pensamiento. Empiezan como una pequeña idea (“¿y si…?”), pero cuanto más giras sobre ella, más grande se hace.\n\nEs como una bola de nieve que rueda cuesta abajo: empieza pequeña, pero con cada vuelta arrastra más y más hasta que parece enorme e imparable. O como un disco rayado que repite la misma frase una y otra vez sin dejarte avanzar.\n\nLa neurociencia del pensamiento rumiativo muestra que, en esos momentos, la red neuronal por defecto (Default Mode Network) se activa de forma excesiva, alimentando la repetición de pensamientos en lugar de la resolución de problemas.' }]
           },
           { 
               type: 'collapsible',
               title: 'El secuestro emocional: cuando manda la amígdala',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant4frenoVagal.mp3', // Note: Placeholder, needs correct URL
               content: [{ type: 'paragraph', text: 'En un pico de ansiedad, ocurre lo que Daniel Goleman (1995) llamó el “secuestro emocional”: la amígdala, ese detector de humo interno, se enciende con tanta fuerza que casi apaga tu corteza prefrontal (la parte racional del cerebro).\n\nResultado: piensas en bucle, sientes que te bloqueas y cuesta recordar incluso lo más sencillo. Es como si la alarma de incendios estuviera tan alta que no escuchas ninguna otra voz.'}]
           },
           { 
               type: 'collapsible',
               title: 'No se trata de luchar, sino de observar',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant5cerebroCalma.mp3', // Note: Placeholder, needs correct URL
               content: [{ type: 'paragraph', text: 'Aquí está la clave: no se trata de controlar ni eliminar lo que piensas. Eso sería como intentar parar las olas del mar con las manos.\n\nLo que sí puedes aprender es a observar sin engancharte. Imagina que tus pensamientos son coches pasando por una carretera: puedes elegir quedarte en la acera y mirarlos, en lugar de subirte a cada coche y dejar que te lleve.\n\nEsto es lo que en TCC se llama desfusión cognitiva (Hayes, 2011): dejar de creer que todo lo que pasa por tu mente es cierto o que tienes que reaccionar a ello.'}]
           },
           { 
               type: 'collapsible',
               title: 'Entrenar la mente como un músculo',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant6Interocepcion.mp3', // Note: Placeholder, needs correct URL
               content: [{ type: 'paragraph', text: 'Cada vez que practicas observar, cuestionar y soltar un pensamiento ansioso, estás entrenando tu cerebro como si hicieras ejercicio en un gimnasio.\n\nAl principio cuesta.\n\nDespués de repetirlo, se vuelve más natural.\n\nCon el tiempo, tu “músculo mental” se fortalece y la ansiedad pierde poder sobre ti.\n\nLa neurociencia lo llama neuroplasticidad: tus circuitos cerebrales cambian con la práctica, igual que los músculos cambian con el entrenamiento.'}]
           },
           { 
               type: 'collapsible',
               title: 'Preparándote para la práctica',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant7entrenamConstanc.mp3', // Note: Placeholder, needs correct URL
               content: [{ type: 'paragraph', text: 'Ahora que entiendes mejor cómo funcionan los pensamientos ansiosos (anticipatorios, catastrofistas, bucles) y cómo la amígdala puede secuestrar tu mente, pasamos a lo más importante: las técnicas que te ayudarán a no engancharte a esos pensamientos.\n\nRecuerda: no buscamos que dejen de aparecer, sino que aprendas a mirarlos de frente, sin miedo, hasta que dejen de arrastrarte.'}]
           },
           { 
               type: 'collapsible',
               title: 'Resumen clave:',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2pant8cierrePsicoeduc.mp3', // Note: Placeholder, needs correct URL
               content: [{ type: 'list', items: [
                   'Los pensamientos ansiosos suelen anticipar, exagerar y repetir.',
                   'Tu cerebro los fabrica para protegerte, pero muchas veces exagera.',
