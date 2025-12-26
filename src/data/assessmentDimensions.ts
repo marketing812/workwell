@@ -180,6 +180,39 @@ export interface AssessmentItem {
         { "id": "dim13_item5", "text": "Reacciono con irritabilidad ante pequeñas molestias.", "weight": 1 },
         { "id": "dim13_item6", "text": "Siento que pierdo el control fácilmente sobre mis emociones.", "weight": 1 }
       ]
+    },
+    {
+      "id": "dim14",
+      "name": "Rendimiento Autopercibido",
+      "definition": "Evaluación de la satisfacción personal con el propio rendimiento laboral.",
+      "items": [
+        { "id": "dim14_item1", "text": "¿Estoy satisfecho/a con mi rendimiento laboral actual?", "weight": 1 }
+      ]
+    },
+    {
+      "id": "dim15",
+      "name": "Eficacia Laboral",
+      "definition": "Capacidad para completar tareas de manera eficiente y sin agotamiento excesivo.",
+      "items": [
+        { "id": "dim15_item1", "text": "Me siento capaz de completar mis tareas sin distraerme o agotarme en exceso.", "weight": 1 }
+      ]
+    },
+    {
+      "id": "dim16",
+      "name": "Engagement",
+      "definition": "Nivel de compromiso y sentimiento de valor dentro del equipo y la empresa.",
+      "items": [
+        { "id": "dim16_item1", "text": "Me siento comprometido/a con la empresa.", "weight": 1 },
+        { "id": "dim16_item2", "text": "Siento que mi trabajo tiene valor para el equipo.", "weight": 1 }
+      ]
+    },
+    {
+      "id": "dim17",
+      "name": "Permanencia",
+      "definition": "Intención de continuar en la empresa a medio plazo.",
+      "items": [
+        { "id": "dim17_item1", "text": "Tengo intención de continuar en esta empresa en el próximo año.", "weight": 1 }
+      ]
     }
   ];
   
