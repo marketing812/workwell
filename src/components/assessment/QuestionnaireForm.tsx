@@ -269,7 +269,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
           </CardTitle>
           {isGuided && (
             <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
-                {currentDimension.name}
+                
             </CardDescription>
           )}
         </CardHeader>
