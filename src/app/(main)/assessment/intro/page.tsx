@@ -79,12 +79,12 @@ export default function AssessmentIntroPage() {
           </div>
 
           <p className="text-center font-semibold text-lg md:text-xl text-accent pt-6 whitespace-pre-line">
-            {t.assessmentIntroPageFinalWords}
+            {t.assessmentIntroPageFinalWords.replace(/\\n/g, '\n')}
           </p>
         </CardContent>
         <CardFooter className="flex-col items-center gap-4 pt-8 pb-8">
           <Button asChild size="lg" className="w-full sm:w-auto sm:max-w-md text-base py-3 shadow-lg hover:shadow-primary/40 transition-shadow">
-            <Link href="/assessment">
+            <Link href="/assessment/guided">
               {t.assessmentIntroPageStartButton}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
