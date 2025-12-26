@@ -109,10 +109,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
       console.error("Error loading in-progress assessment:", error);
       setHasLoadedProgress(true);
     }
-  }, [toast, assessmentDimensions, hasLoadedProgress]);
+  }, [toast, hasLoadedProgress]);
   
   const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
-    if (!isGuided) return;
     try {
       const dataToSave: InProgressData = {
         answers: currentAnswers,
@@ -137,32 +136,30 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     if (!currentDimension) return; // Guard clause
     
     const isLastItem = currentOverallIndex >= allItems.length - 1;
-
+    const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
+    
     if (isLastItem) {
         submitFullAssessment(answers);
         return;
     }
 
-    if (isGuided) {
-        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-        if (isLastItemInDimension) {
-            if (!isSubmitting) { 
-                setShowDimensionCompletedDialog(true);
-            }
-        } else {
-            const nextItemIndex = currentItemIndexInDimension + 1;
-            setCurrentItemIndexInDimension(nextItemIndex);
-            saveProgress(currentDimensionIndex, nextItemIndex, answers);
+    if (isGuided && isLastItemInDimension) {
+      if (!isSubmitting) { 
+        setShowDimensionCompletedDialog(true);
+      }
+    } else { // Not guided or not last item in dimension
+        let nextDimIndex = currentDimensionIndex;
+        let nextItemIndex = currentItemIndexInDimension + 1;
+
+        if (nextItemIndex >= currentDimension.items.length) {
+            nextDimIndex++;
+            nextItemIndex = 0;
         }
-    } else { // Not guided, flat progression
-        const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-        if (isLastItemInDimension) {
-            if (currentDimensionIndex < assessmentDimensions.length - 1) {
-                setCurrentDimensionIndex(prev => prev + 1);
-                setCurrentItemIndexInDimension(0);
-            }
-        } else {
-            setCurrentItemIndexInDimension(prev => prev + 1);
+
+        setCurrentDimensionIndex(nextDimIndex);
+        setCurrentItemIndexInDimension(nextItemIndex);
+        if (isGuided) {
+          saveProgress(nextDimIndex, nextItemIndex, answers);
         }
     }
   };
@@ -227,6 +224,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
     let dimToSave = currentDimensionIndex;
     let itemToSave = currentItemIndexInDimension;
+    // If we are at the end of a dimension, save the position for the start of the next one
     if (currentItemIndexInDimension === currentDimension.items.length - 1 && !isLastDimension) {
       dimToSave = currentDimensionIndex + 1;
       itemToSave = 0;
