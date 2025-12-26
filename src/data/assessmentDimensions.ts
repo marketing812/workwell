@@ -186,7 +186,7 @@ export interface AssessmentItem {
       "name": "Rendimiento Autopercibido",
       "definition": "Evaluación de la satisfacción personal con el propio rendimiento laboral.",
       "items": [
-        { "id": "dim14_item1", "text": "¿Estoy satisfecho/a con mi rendimiento laboral actual?", "weight": 1 }
+        { "id": "dim14_item1", "text": "En las últimas semanas, siento que estoy rindiendo bien en mi trabajo.", "weight": 1 }
       ]
     },
     {
