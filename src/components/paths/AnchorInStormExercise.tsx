@@ -23,9 +23,11 @@ export function AnchorInStormExercise({ content, pathId }: AnchorInStormExercise
   const [anchorType, setAnchorType] = useState('');
   const [anchorDesc, setAnchorDesc] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const storageKey = `exercise-progress-${pathId}-anchorInStorm`;
 
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -41,13 +43,14 @@ export function AnchorInStormExercise({ content, pathId }: AnchorInStormExercise
   }, [storageKey]);
 
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { emotionalState, anchorType, anchorDesc, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [emotionalState, anchorType, anchorDesc, isSaved, storageKey]);
+  }, [emotionalState, anchorType, anchorDesc, isSaved, storageKey, isClient]);
 
 
   const handleSave = (e: FormEvent) => {
@@ -72,6 +75,10 @@ ${anchorDesc}
     toast({ title: 'Ancla Guardada', description: 'Tu ancla emocional ha sido guardada.' });
     setIsSaved(true);
   };
+  
+  if (!isClient) {
+    return null; // O un componente de carga
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">

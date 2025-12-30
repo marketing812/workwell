@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -29,10 +30,12 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   const [otherEmotion, setOtherEmotion] = useState('');
   const [anchorAction, setAnchorAction] = useState('');
   const [reflection, setReflection] = useState('');
+  const [isClient, setIsClient] = useState(false);
   const storageKey = `exercise-progress-${pathId}-${content.type}`;
 
   // Cargar estado guardado al iniciar
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -50,13 +53,14 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
 
   // Guardar estado en cada cambio
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, reflection };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, selectedEmotion, otherEmotion, anchorAction, reflection, storageKey]);
+  }, [step, selectedEmotion, otherEmotion, anchorAction, reflection, storageKey, isClient]);
 
 
   const handleSaveReflection = () => {
@@ -70,6 +74,10 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+
+  if (!isClient) {
+    return null; // O un componente de carga
+  }
   
   const renderStep = () => {
     switch(step) {

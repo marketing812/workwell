@@ -27,10 +27,12 @@ export function AlternativeStoriesExercise({ content }: AlternativeStoriesExerci
   const [anticipationReason, setAnticipationReason] = useState('');
   const [newPossibilities, setNewPossibilities] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   
   const storageKey = `exercise-progress-tolerar-incertidumbre-alternativeStories`;
 
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -50,13 +52,14 @@ export function AlternativeStoriesExercise({ content }: AlternativeStoriesExerci
   }, [storageKey]);
 
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { situation, negativeStory, neutralStory, positiveStory, usualAnticipation, anticipationReason, newPossibilities, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [situation, negativeStory, neutralStory, positiveStory, usualAnticipation, anticipationReason, newPossibilities, isSaved, storageKey]);
+  }, [situation, negativeStory, neutralStory, positiveStory, usualAnticipation, anticipationReason, newPossibilities, isSaved, storageKey, isClient]);
 
 
   const handleSubmit = (e: FormEvent) => {
@@ -100,6 +103,10 @@ ${newPossibilities}
     });
     setIsSaved(true);
   };
+  
+  if (!isClient) {
+    return null; // O un componente de carga
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">

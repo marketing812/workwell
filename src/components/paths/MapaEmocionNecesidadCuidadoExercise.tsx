@@ -53,11 +53,13 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
   const [careAction, setCareAction] = useState('');
   const [otherCareAction, setOtherCareAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   const storageKey = `exercise-progress-${pathId}-${content.type}`;
 
   // Cargar estado guardado al iniciar
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -77,13 +79,14 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
 
   // Guardar estado en cada cambio
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction, storageKey]);
+  }, [step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction, storageKey, isClient]);
 
 
   const handleSave = () => {
@@ -108,6 +111,10 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+
+  if (!isClient) {
+    return null; // O un componente de carga
+  }
 
   const renderStep = () => {
     switch(step) {
