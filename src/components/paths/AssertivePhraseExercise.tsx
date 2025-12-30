@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -26,6 +26,34 @@ export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExer
   const [feeling, setFeeling] = useState('');
   const [need, setNeed] = useState('');
   const [request, setRequest] = useState('');
+  
+  const storageKey = `exercise-progress-${pathId}-assertivePhrase`;
+
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setCurrentStep(data.currentStep || 0);
+        setFact(data.fact || '');
+        setFeeling(data.feeling || '');
+        setNeed(data.need || '');
+        setRequest(data.request || '');
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      const stateToSave = { currentStep, fact, feeling, need, request };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [currentStep, fact, feeling, need, request, storageKey]);
+
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
 
