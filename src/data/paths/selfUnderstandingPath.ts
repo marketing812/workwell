@@ -1,4 +1,5 @@
 
+
 import type { Path } from '../pathsData';
 
 export const selfUnderstandingPath: Path = {
@@ -265,6 +266,3 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
-
-
-    

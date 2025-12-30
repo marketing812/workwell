@@ -8,13 +8,14 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DiarioMeDiCuentaExerciseContent } from '@/data/paths/pathTypes';
 
 interface DiarioMeDiCuentaExerciseProps {
   content: DiarioMeDiCuentaExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const messages = [
@@ -24,7 +25,7 @@ const messages = [
     "El simple hecho de mirarte con respeto… ya es transformación."
 ];
 
-export function DiarioMeDiCuentaExercise({ content, pathId }: DiarioMeDiCuentaExerciseProps) {
+export function DiarioMeDiCuentaExercise({ content, pathId, onComplete }: DiarioMeDiCuentaExerciseProps) {
   const { toast } = useToast();
   
   const [step, setStep] = useState(0);
@@ -32,6 +33,9 @@ export function DiarioMeDiCuentaExercise({ content, pathId }: DiarioMeDiCuentaEx
   const [howNoticed, setHowNoticed] = useState('');
   const [whatINeed, setWhatINeed] = useState('');
   
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSave = () => {
     const notebookContent = `
 **Ejercicio: ${content.title}**
@@ -47,16 +51,17 @@ ${whatINeed}
 `;
     addNotebookEntry({ title: 'Mi "Me di cuenta" del día', content: notebookContent, pathId: pathId });
     toast({ title: 'Entrada Guardada' });
+    onComplete();
     setStep(prev => prev + 1);
   };
   
   const renderStep = () => {
     switch (step) {
-      case 0: return <div className="p-4 space-y-4"><p className="text-center">Registra uno o dos momentos de autoconciencia del día.</p><Button onClick={() => setStep(1)} className="w-full">Comenzar</Button></div>;
-      case 1: return <div className="p-4 space-y-4"><Label>¿Qué noté en mí hoy?</Label><Textarea value={noticed} onChange={e => setNoticed(e.target.value)} /><Button onClick={() => setStep(2)} className="w-full">Siguiente</Button></div>;
-      case 2: return <div className="p-4 space-y-4"><Label>¿Qué me ayudó a notarlo?</Label><Textarea value={howNoticed} onChange={e => setHowNoticed(e.target.value)} /><Button onClick={() => setStep(3)} className="w-full">Siguiente</Button></div>;
-      case 3: return <div className="p-4 space-y-4"><Label>¿Qué necesito ahora que me he dado cuenta de esto?</Label><Textarea value={whatINeed} onChange={e => setWhatINeed(e.target.value)} /><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button></div>;
-      case 4: return <div className="p-4 text-center space-y-4"><p className="italic">"{messages[Math.floor(Math.random() * messages.length)]}"</p><Button onClick={() => setStep(0)} variant="outline">Registrar otro "Me di cuenta"</Button></div>;
+      case 0: return <div className="p-4 space-y-4"><p className="text-center">Registra uno o dos momentos de autoconciencia del día.</p><Button onClick={nextStep} className="w-full">Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 1: return <div className="p-4 space-y-4"><Label>¿Qué noté en mí hoy?</Label><Textarea value={noticed} onChange={e => setNoticed(e.target.value)} /><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!noticed}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 2: return <div className="p-4 space-y-4"><Label>¿Qué me ayudó a notarlo?</Label><Textarea value={howNoticed} onChange={e => setHowNoticed(e.target.value)} /><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!howNoticed}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 3: return <div className="p-4 space-y-4"><Label>¿Qué necesito ahora que me he dado cuenta de esto?</Label><Textarea value={whatINeed} onChange={e => setWhatINeed(e.target.value)} /><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto" disabled={!whatINeed}><Save className="mr-2 h-4 w-4"/>Guardar</Button></div></div>;
+      case 4: return <div className="p-4 text-center space-y-4"><CheckCircle className="h-10 w-10 text-primary mx-auto" /><p className="italic">"{messages[Math.floor(Math.random() * messages.length)]}"</p><Button onClick={() => setStep(0)} variant="outline">Registrar otro "Me di cuenta"</Button></div>;
       default: return null;
     }
   };

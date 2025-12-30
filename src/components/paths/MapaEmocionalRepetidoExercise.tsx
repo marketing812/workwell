@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MapaEmocionalRepetidoExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
@@ -18,6 +18,7 @@ import { useTranslations } from '@/lib/translations';
 interface MapaEmocionalRepetidoExerciseProps {
   content: MapaEmocionalRepetidoExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const schemaOptions = [
@@ -28,7 +29,7 @@ const schemaOptions = [
     { value: 'no_pertenecer', label: 'No pertenecer' },
 ];
 
-export function MapaEmocionalRepetidoExercise({ content, pathId }: MapaEmocionalRepetidoExerciseProps) {
+export function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: MapaEmocionalRepetidoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   
@@ -40,6 +41,9 @@ export function MapaEmocionalRepetidoExercise({ content, pathId }: MapaEmocional
   const [isRepeated, setIsRepeated] = useState('');
   const [schema, setSchema] = useState('');
   
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSave = () => {
     const notebookContent = `
 **Ejercicio: ${content.title}**
@@ -52,18 +56,19 @@ Esquema Activado: ${schema}
 `;
     addNotebookEntry({ title: 'Mi Mapa Emocional Repetido', content: notebookContent, pathId: pathId });
     toast({ title: 'Mapa Guardado' });
+    onComplete();
     setStep(prev => prev + 1);
   };
 
   const renderStep = () => {
     switch(step) {
-      case 0: return <div className="p-4 space-y-4"><Label>Describe una situación reciente con una emoción fuerte:</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /><Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
-      case 1: return <div className="p-4 space-y-4"><Label>Nombra la emoción principal:</Label><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent></Select><Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
-      case 2: return <div className="p-4 space-y-4"><Label>¿Qué fue lo primero que pensaste?</Label><Textarea value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} /><Button onClick={() => setStep(3)} className="w-full mt-2">Siguiente</Button></div>;
-      case 3: return <div className="p-4 space-y-4"><Label>¿Qué hiciste después?</Label><Textarea value={behavior} onChange={e => setBehavior(e.target.value)} /><Button onClick={() => setStep(4)} className="w-full mt-2">Siguiente</Button></div>;
-      case 4: return <div className="p-4 space-y-4"><Label>¿Te suena esta reacción?</Label><RadioGroup value={isRepeated} onValueChange={setIsRepeated}><div className="flex items-center gap-2"><RadioGroupItem value="si" id="r_si"/><Label htmlFor="r_si" className="font-normal">Sí, me pasa a menudo</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="no" id="r_no"/><Label htmlFor="r_no" className="font-normal">No, fue algo nuevo</Label></div></RadioGroup><Button onClick={() => setStep(5)} className="w-full mt-2">Siguiente</Button></div>;
-      case 5: return <div className="p-4 space-y-4"><Label>¿Qué patrón crees que se activó?</Label><Select value={schema} onValueChange={setSchema}><SelectTrigger><SelectValue placeholder="Elige un patrón..." /></SelectTrigger><SelectContent>{schemaOptions.map(s=><SelectItem key={s.value} value={s.label}>{s.label}</SelectItem>)}</SelectContent></Select><Button onClick={handleSave} className="w-full mt-2">Ver Resumen</Button></div>;
-      case 6: return <div className="p-4 space-y-2"><h4 className="font-bold text-center">Tu Mapa Emocional</h4><p>Situación: {situation}</p><p>Emoción: {emotion}</p><p>Pensamiento: {automaticThought}</p><p>Esquema: {schema}</p><p>Conducta: {behavior}</p><Button onClick={() => setStep(0)} variant="outline" className="w-full mt-4">Registrar otro</Button></div>;
+      case 0: return <div className="p-4 space-y-4"><Label>Describe una situación reciente con una emoción fuerte:</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /><Button onClick={nextStep} className="w-full mt-2">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 1: return <div className="p-4 space-y-4"><Label>Nombra la emoción principal:</Label><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent></Select><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 2: return <div className="p-4 space-y-4"><Label>¿Qué fue lo primero que pensaste?</Label><Textarea value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!automaticThought}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 3: return <div className="p-4 space-y-4"><Label>¿Qué hiciste después?</Label><Textarea value={behavior} onChange={e => setBehavior(e.target.value)} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!behavior}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 4: return <div className="p-4 space-y-4"><Label>¿Te suena esta reacción?</Label><RadioGroup value={isRepeated} onValueChange={setIsRepeated}><div className="flex items-center gap-2"><RadioGroupItem value="si" id="r_si"/><Label htmlFor="r_si" className="font-normal">Sí, me pasa a menudo</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="no" id="r_no"/><Label htmlFor="r_no" className="font-normal">No, fue algo nuevo</Label></div></RadioGroup><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!isRepeated}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 5: return <div className="p-4 space-y-4"><Label>¿Qué patrón crees que se activó?</Label><Select value={schema} onValueChange={setSchema}><SelectTrigger><SelectValue placeholder="Elige un patrón..." /></SelectTrigger><SelectContent>{schemaOptions.map(s=><SelectItem key={s.value} value={s.label}>{s.label}</SelectItem>)}</SelectContent></Select><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto" disabled={!schema}>Ver Resumen</Button></div></div>;
+      case 6: return <div className="p-4 space-y-2 text-center"><CheckCircle className="h-10 w-10 mx-auto text-primary" /><h4 className="font-bold text-center">Tu Mapa Emocional</h4><p>Situación: {situation}</p><p>Emoción: {emotion}</p><p>Pensamiento: {automaticThought}</p><p>Esquema: {schema}</p><p>Conducta: {behavior}</p><Button onClick={() => setStep(0)} variant="outline" className="w-full mt-4">Registrar otro</Button></div>;
       default: return null;
     }
   };
