@@ -6,7 +6,7 @@ import { QuestionnaireForm } from '@/components/assessment/QuestionnaireForm';
 import { submitAssessment, type ServerAssessmentResult } from '@/actions/assessment';
 import { useTranslations } from '@/lib/translations';
 import { useToast } from '@/hooks/use-toast';
-import { type InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
+import type { InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TestTube2, ShieldQuestion, Loader2 } from 'lucide-react';
@@ -37,11 +37,10 @@ export interface StoredAssessmentResults {
 }
 
 interface AssessmentPageClientProps {
-  assessmentDimensions: AssessmentDimension[];
   isGuided?: boolean;
 }
 
-export default function AssessmentPageClient({ assessmentDimensions, isGuided = false }: AssessmentPageClientProps) {
+export default function AssessmentPageClient({ isGuided = false }: AssessmentPageClientProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();

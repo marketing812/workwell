@@ -133,34 +133,36 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
 
   const goToNextQuestion = () => {
-    if (!currentDimension) return; // Guard clause
-    
+    if (!currentDimension) return;
+
     const isLastItem = currentOverallIndex >= allItems.length - 1;
     const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
-    
+
     if (isLastItem) {
-        submitFullAssessment(answers);
-        return;
+      submitFullAssessment(answers);
+      return;
     }
 
     if (isGuided && isLastItemInDimension) {
-      if (!isSubmitting) { 
+      if (!isSubmitting) {
         setShowDimensionCompletedDialog(true);
       }
-    } else { // Not guided or not last item in dimension
-        let nextDimIndex = currentDimensionIndex;
-        let nextItemIndex = currentItemIndexInDimension + 1;
+    } else {
+      let nextDimIndex = currentDimensionIndex;
+      let nextItemIndex = currentItemIndexInDimension + 1;
 
-        if (nextItemIndex >= currentDimension.items.length) {
-            nextDimIndex++;
-            nextItemIndex = 0;
-        }
-
-        setCurrentDimensionIndex(nextDimIndex);
-        setCurrentItemIndexInDimension(nextItemIndex);
-        if (isGuided) {
-          saveProgress(nextDimIndex, nextItemIndex, answers);
-        }
+      if (nextItemIndex >= currentDimension.items.length) {
+        nextDimIndex++;
+        nextItemIndex = 0;
+      }
+      
+      setCurrentDimensionIndex(nextDimIndex);
+      setCurrentItemIndexInDimension(nextItemIndex);
+      
+      // Save progress if guided or when moving to the next dimension.
+      if (isGuided || nextDimIndex > currentDimensionIndex) {
+        saveProgress(nextDimIndex, nextItemIndex, answers);
+      }
     }
   };
 
@@ -171,10 +173,12 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     };
     setAnswers(newAnswers);
     
-    // Auto-advance after a short delay
-    setTimeout(() => {
-      goToNextQuestion();
-    }, 250); 
+    // Auto-advance after a short delay only in guided mode
+    if (isGuided) {
+      setTimeout(() => {
+        goToNextQuestion();
+      }, 250); 
+    }
   };
   
   const handleGoBack = () => {
@@ -265,7 +269,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
         <CardHeader>
           <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
           <CardTitle className="text-lg font-semibold text-center text-primary">
-            Cuestionario de Evaluación App: Personalidad, Estado de Ánimo y Ansiedad
+            {isGuided ? currentDimension?.name : 'Cuestionario de Autoevaluación'}
           </CardTitle>
           {isGuided && (
             <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
@@ -319,9 +323,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
           <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
             <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
-            Siguiente <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          {!isGuided && (
+            <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
+                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </CardFooter>
       </Card>
       
