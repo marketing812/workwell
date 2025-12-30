@@ -252,10 +252,12 @@ function TherapeuticNotebookReflectionExercise({
   content,
   pathId,
   pathTitle,
+  onComplete,
 }: {
   content: ModuleContent;
   pathId: string;
   pathTitle: string;
+  onComplete: () => void;
 }) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -298,6 +300,7 @@ ${reflection}
       description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
     });
     setIsSaved(true);
+    onComplete();
   };
 
   return (
@@ -360,10 +363,12 @@ function ContentItemRenderer({
   contentItem,
   index,
   path,
+  onExerciseComplete,
 }: {
   contentItem: ModuleContent;
   index: number;
   path: Path;
+  onExerciseComplete: () => void;
 }) {
   if (!contentItem) {
     console.error(`ContentItemRenderer: contentItem at index ${index} is undefined.`);
@@ -450,6 +455,7 @@ function ContentItemRenderer({
                     contentItem={item}
                     index={i}
                     path={path}
+                    onExerciseComplete={onExerciseComplete}
                   />
                 ))}
               </div>
@@ -493,7 +499,7 @@ function ContentItemRenderer({
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':
-      return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} />;
+      return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={onExerciseComplete} />;
     case 'twoMinuteRuleExercise':
       return <TwoMinuteRuleExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'microPlanExercise':
@@ -805,24 +811,7 @@ export function PathDetailClient({ path }: { path: Path }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
 
-  if (!path || !isClient) {
-    return (
-      <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
-        <Loader2 className="w-12 h-12 text-primary animate-spin" />
-        <p>Cargando ruta...</p>
-      </div>
-    );
-  }
-
-  const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
-    if (completedModules.has(moduleId)) {
-      setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
-    } else {
-      completeModule(moduleId, moduleTitle); // Directly complete it
-    }
-  };
-
-  const completeModule = (moduleId: string, moduleTitle: string) => {
+  const completeModule = useCallback((moduleId: string, moduleTitle: string) => {
     const newCompletedModules = new Set(completedModules);
     newCompletedModules.add(moduleId);
     
@@ -839,6 +828,15 @@ export function PathDetailClient({ path }: { path: Path }) {
     const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
     if (allModulesCompleted) {
       setShowPathCongratsDialog(true);
+    }
+  }, [completedModules, path.id, path.modules, contextUpdateModuleCompletion, t, toast]);
+
+
+  const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
+    if (completedModules.has(moduleId)) {
+      setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
+    } else {
+      completeModule(moduleId, moduleTitle); // Directly complete it
     }
   };
 
@@ -864,6 +862,15 @@ export function PathDetailClient({ path }: { path: Path }) {
         return <BookOpen className="h-6 w-6 text-primary" />;
     }
   };
+
+  if (!path || !isClient) {
+    return (
+      <div className="container mx-auto py-8 text-center text-xl flex flex-col items-center gap-4">
+        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+        <p>Cargando ruta...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto py-8">
@@ -946,6 +953,7 @@ export function PathDetailClient({ path }: { path: Path }) {
                     contentItem={contentItem}
                     index={i}
                     path={path}
+                    onExerciseComplete={() => completeModule(module.id, module.title)}
                   />
                 </ContentItemErrorBoundary>
               ))}
