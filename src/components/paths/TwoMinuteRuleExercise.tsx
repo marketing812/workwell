@@ -15,9 +15,10 @@ import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function TwoMinuteRuleExercise({ content, pathId }: TwoMinuteRuleExerciseProps) {
+export function TwoMinuteRuleExercise({ content, pathId, onComplete }: TwoMinuteRuleExerciseProps) {
   const { toast } = useToast();
   const [task, setTask] = useState('');
   const [twoMinVersion, setTwoMinVersion] = useState('');
@@ -49,6 +50,7 @@ ${when}
     addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: notebookContent, pathId });
     toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
     setSaved(true);
+    onComplete();
   };
 
   return (
@@ -59,6 +61,7 @@ ${when}
           {content.title}
         </CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">

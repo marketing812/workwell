@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 interface WellbeingPlanExerciseProps {
   content: WellbeingPlanExerciseContent;
+  onComplete: () => void;
 }
 
 const planSections = {
@@ -110,7 +111,7 @@ const planSections = {
 };
 
 
-export function WellbeingPlanExercise({ content }: WellbeingPlanExerciseProps) {
+export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const [selections, setSelections] = useState<Record<string, boolean>>({});
   const [notes, setNotes] = useState<Record<string, string>>({});
@@ -167,6 +168,7 @@ export function WellbeingPlanExercise({ content }: WellbeingPlanExerciseProps) {
       description: "Tu Plan de Bienestar Emocional ha sido guardado en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
+    onComplete();
   };
 
   return (
@@ -174,6 +176,7 @@ export function WellbeingPlanExercise({ content }: WellbeingPlanExerciseProps) {
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
