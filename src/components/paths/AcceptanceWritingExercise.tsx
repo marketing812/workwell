@@ -29,9 +29,11 @@ export function AcceptanceWritingExercise({ content, pathId }: AcceptanceWriting
   const [response, setResponse] = useState('');
   const [compassionPhrase, setCompassionPhrase] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const storageKey = `exercise-progress-${pathId}-acceptanceWriting`;
 
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -50,13 +52,14 @@ export function AcceptanceWritingExercise({ content, pathId }: AcceptanceWriting
   }, [storageKey]);
 
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved, storageKey]);
+  }, [fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved, storageKey, isClient]);
 
 
   const handleSave = (e: FormEvent) => {
@@ -86,6 +89,10 @@ ${response}
     toast({ title: 'Ejercicio Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });
     setIsSaved(true);
   };
+
+  if (!isClient) {
+    return null; // O un componente de carga
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
