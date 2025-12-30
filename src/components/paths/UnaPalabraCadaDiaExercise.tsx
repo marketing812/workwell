@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -30,9 +29,35 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   const [otherEmotion, setOtherEmotion] = useState('');
   const [anchorAction, setAnchorAction] = useState('');
   const [reflection, setReflection] = useState('');
+  const storageKey = `exercise-progress-${pathId}-${content.type}`;
 
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  // Cargar estado guardado al iniciar
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const { step, selectedEmotion, otherEmotion, anchorAction, reflection } = JSON.parse(savedState);
+        setStep(step || 0);
+        setSelectedEmotion(selectedEmotion || '');
+        setOtherEmotion(otherEmotion || '');
+        setAnchorAction(anchorAction || '');
+        setReflection(reflection || '');
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  // Guardar estado en cada cambio
+  useEffect(() => {
+    try {
+      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, reflection };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, selectedEmotion, otherEmotion, anchorAction, reflection, storageKey]);
+
 
   const handleSaveReflection = () => {
     if (reflection.trim()) {
@@ -40,7 +65,11 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
         toast({ title: 'Reflexión Guardada' });
     }
     onComplete();
+    setStep(4); // Move to a final confirmation step
   };
+  
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
   
   const renderStep = () => {
     switch(step) {
@@ -48,6 +77,7 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
       case 1: return <div className="p-4 space-y-4"><p>Has sentido: <strong>{selectedEmotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === selectedEmotion)?.labelKey ? t[emotionOptions.find(e => e.value === selectedEmotion)!.labelKey as keyof typeof t] : selectedEmotion)}</strong>.</p><p>Reconócelo con respeto: "Me permito reconocerlo, sin juzgarlo y con aceptación"</p><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 2: return <div className="p-4 space-y-4"><Label>Elige una microacción para anclar el ejercicio:</Label><div className="space-y-1"><div className="flex items-center gap-2"><Checkbox id="a1" onCheckedChange={c => c && setAnchorAction('Respirar')} checked={anchorAction === 'Respirar'} /><Label htmlFor="a1" className="font-normal">Respirar con esta emoción durante 3 ciclos</Label></div><div className="flex items-center gap-2"><Checkbox id="a2" onCheckedChange={c => c && setAnchorAction('Llevar')} checked={anchorAction === 'Llevar'} /><Label htmlFor="a2" className="font-normal">Llevar esta frase conmigo como una compañera</Label></div></div><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!anchorAction}>Finalizar</Button></div></div>;
       case 3: return <div className="p-4 space-y-4"><h4 className="font-semibold">Práctica reflexiva opcional (Días 5-7)</h4><Label>Mis tres emociones más repetidas o significativas de la semana y qué necesitaba al sentirlas:</Label><Textarea value={reflection} onChange={e => setReflection(e.target.value)} /><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar y Completar</Button></div></div>;
+      case 4: return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-lg">¡Práctica Guardada!</h4><p className="text-muted-foreground">Tu reflexión ha sido guardada en el cuaderno.</p><Button onClick={() => setStep(0)} variant="outline">Hacer otro registro</Button></div>;
       default: return null;
     }
   };
