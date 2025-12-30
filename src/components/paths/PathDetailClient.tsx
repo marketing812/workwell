@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { type ReactNode, useState, useEffect, type FormEvent } from 'react';
+import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
 
 import { Path, PathModule, ModuleContent } from '@/data/pathsData';
 import { useTranslations } from '@/lib/translations';
