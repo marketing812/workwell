@@ -294,7 +294,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                         dataKey="dimension"
                         tick={({ x, y, payload }) => (
                           <text x={x} y={y} dy={4} textAnchor="middle" fill="hsl(var(--foreground))" fontSize={9}>
-                            {payload.value.split('(')[0].trim().substring(0,12)}
+                            {payload.value.split('(')[0].trim()}
                           </text>
                         )}
                     />
