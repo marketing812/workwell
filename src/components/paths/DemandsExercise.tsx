@@ -15,6 +15,7 @@ import type { DemandsExerciseContent } from '@/data/paths/pathTypes';
 
 interface DemandsExerciseProps {
   content: DemandsExerciseContent;
+  onComplete: () => void;
 }
 
 const originOptions = [
@@ -25,7 +26,7 @@ const originOptions = [
     { id: 'origin-insecurity', label: 'Inseguridad personal' },
 ];
 
-export function DemandsExercise({ content }: DemandsExerciseProps) {
+export function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
 
@@ -59,6 +60,7 @@ export function DemandsExercise({ content }: DemandsExerciseProps) {
       description: "Tu registro de 'Exigencias vs. Deseos' ha sido guardado.",
     });
     setIsSaved(true);
+    onComplete();
   };
 
   const handleSaveReflection = (e: FormEvent) => {
@@ -84,6 +86,7 @@ export function DemandsExercise({ content }: DemandsExerciseProps) {
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -139,7 +142,7 @@ export function DemandsExercise({ content }: DemandsExerciseProps) {
           )}
         </form>
 
-         {isSaved && (
+        {isSaved && (
           <form onSubmit={handleSaveReflection} className="mt-8 pt-6 border-t">
             <h4 className="font-semibold text-md text-primary mb-4 flex items-center">
               <NotebookText className="mr-2 h-5 w-5" />

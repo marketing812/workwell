@@ -16,6 +16,7 @@ import type { DetectiveExerciseContent } from '@/data/paths/pathTypes';
 
 interface DetectiveExerciseProps {
   content: DetectiveExerciseContent;
+  onComplete: () => void;
 }
 
 const cognitiveDistortions = [
@@ -30,7 +31,7 @@ const cognitiveDistortions = [
     { value: 'magnification_minimization', label: 'Maximizar lo negativo / Minimizar lo positivo' },
 ];
 
-export function DetectiveExercise({ content }: DetectiveExerciseProps) {
+export function DetectiveExercise({ content, onComplete }: DetectiveExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   
@@ -63,6 +64,7 @@ export function DetectiveExercise({ content }: DetectiveExerciseProps) {
       description: "Tu registro del 'Detective de Pensamientos' ha sido guardado.",
     });
     setIsSaved(true);
+    onComplete();
   };
 
   const handleSaveReflection = (e: FormEvent) => {
@@ -88,6 +90,7 @@ export function DetectiveExercise({ content }: DetectiveExerciseProps) {
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">

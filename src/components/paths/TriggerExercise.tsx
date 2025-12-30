@@ -21,9 +21,10 @@ import { StressCompass } from './StressCompass';
 
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
+  onComplete: () => void;
 }
 
-export function TriggerExercise({ content }: TriggerExerciseProps) {
+export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
 
@@ -65,6 +66,7 @@ export function TriggerExercise({ content }: TriggerExerciseProps) {
     });
     
     setIsSaved(true);
+    onComplete(); // Llama a la función para marcar el módulo como completado
   };
   
   const handleSaveReflection = (e: FormEvent) => {
@@ -125,6 +127,7 @@ export function TriggerExercise({ content }: TriggerExerciseProps) {
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -353,7 +356,6 @@ export function TriggerExercise({ content }: TriggerExerciseProps) {
         )}
 
       </CardContent>
-      {content.duration && <CardFooter className="text-xs text-muted-foreground">Duración sugerida: {content.duration}</CardFooter>}
     </Card>
   );
 }

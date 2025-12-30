@@ -17,9 +17,10 @@ import type { StressMapExerciseContent } from '@/data/paths/pathTypes';
 
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
+  onComplete: () => void;
 }
 
-export function StressMapExercise({ content }: StressMapExerciseProps) {
+export function StressMapExercise({ content, onComplete }: StressMapExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
 
@@ -61,6 +62,7 @@ export function StressMapExercise({ content }: StressMapExerciseProps) {
     });
     
     setIsSaved(true);
+    onComplete();
   };
 
   return (
@@ -68,6 +70,7 @@ export function StressMapExercise({ content }: StressMapExerciseProps) {
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -177,7 +180,6 @@ export function StressMapExercise({ content }: StressMapExerciseProps) {
 
         </form>
       </CardContent>
-      {content.duration && <CardFooter className="text-xs text-muted-foreground">Duración sugerida: {content.duration}</CardFooter>}
     </Card>
   );
 }
