@@ -271,11 +271,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
           <CardTitle className="text-lg font-semibold text-center text-primary">
             {isGuided ? currentDimension?.name : 'Cuestionario de Autoevaluación'}
           </CardTitle>
-          {isGuided && (
-            <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
+          <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
                 
-            </CardDescription>
-          )}
+          </CardDescription>
         </CardHeader>
         <CardContent className="pt-2 px-2 sm:px-6">
             <div 
