@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -10,7 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MapaEmocionNecesidadCuidadoExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
@@ -19,6 +19,7 @@ import { useTranslations } from '@/lib/translations';
 interface MapaEmocionNecesidadCuidadoExerciseProps {
   content: MapaEmocionNecesidadCuidadoExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const needOptions = [
@@ -41,7 +42,7 @@ const careActions = {
     ]
 };
 
-export function MapaEmocionNecesidadCuidadoExercise({ content, pathId }: MapaEmocionNecesidadCuidadoExerciseProps) {
+export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplete }: MapaEmocionNecesidadCuidadoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const [step, setStep] = useState(0);
@@ -51,6 +52,39 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId }: MapaEmo
   const [otherNeed, setOtherNeed] = useState('');
   const [careAction, setCareAction] = useState('');
   const [otherCareAction, setOtherCareAction] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
+
+  const storageKey = `exercise-progress-${pathId}-${content.type}`;
+
+  // Cargar estado guardado al iniciar
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const { step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction } = JSON.parse(savedState);
+        setStep(step || 0);
+        setEmotion(emotion || '');
+        setOtherEmotion(otherEmotion || '');
+        setNeeds(needs || {});
+        setOtherNeed(otherNeed || '');
+        setCareAction(careAction || '');
+        setOtherCareAction(otherCareAction || '');
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  // Guardar estado en cada cambio
+  useEffect(() => {
+    try {
+      const stateToSave = { step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction, storageKey]);
+
 
   const handleSave = () => {
     const selectedNeeds = needOptions.filter(n => needs[n.id]).map(n => n.label);
@@ -68,14 +102,19 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId }: MapaEmo
 
     addNotebookEntry({ title: 'Mi Mapa Emoción-Necesidad-Cuidado', content: notebookContent, pathId: pathId });
     toast({ title: 'Registro Guardado' });
+    setIsSaved(true);
+    onComplete();
   };
   
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const renderStep = () => {
     switch(step) {
-      case 0: return <div className="p-4 space-y-4"><Label>Elige la emoción que sientes con más intensidad:</Label><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
-      case 1: return <div className="p-4 space-y-4"><Label>¿Qué podrías estar necesitando?</Label>{needOptions.map(n => <div key={n.id} className="flex items-center gap-2"><Checkbox id={n.id} onCheckedChange={c => setNeeds(p => ({...p, [n.id]: !!c}))} /><Label htmlFor={n.id} className="font-normal">{n.label}</Label></div>)}<div className="flex items-center gap-2"><Checkbox id="otra" onCheckedChange={c => setNeeds(p => ({...p, otra: !!c}))} /><Label htmlFor="otra" className="font-normal">Otra:</Label></div>{needs.otra && <Textarea value={otherNeed} onChange={e => setOtherNeed(e.target.value)} />}<Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
-      case 2: return <div className="p-4 space-y-4"><Label>¿Qué acción pequeña y amable podrías hacer hoy?</Label><RadioGroup value={careAction} onValueChange={setCareAction}>{Object.values(careActions).flat().map(a => <div key={a.id} className="flex items-center gap-2"><RadioGroupItem value={a.label} id={a.id}/><Label htmlFor={a.id} className="font-normal">{a.label}</Label></div>)}</RadioGroup><Textarea value={otherCareAction} onChange={e => setOtherCareAction(e.target.value)} placeholder="Otra acción específica..." /><Button onClick={() => setStep(3)} className="w-full mt-2">Ver Síntesis</Button></div>;
-      case 3: return <div className="p-4 space-y-4 text-center"><p>Hoy sentí: {emotion==='otra' ? otherEmotion : emotion}. Porque estoy necesitando: {needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}. Me propongo cuidarme así: {otherCareAction || careAction}.</p><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button></div>
+      case 0: return <div className="p-4 space-y-4"><Label>Elige la emoción que sientes con más intensidad:</Label><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={nextStep} className="w-full mt-2" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 1: return <div className="p-4 space-y-4"><Label>¿Qué podrías estar necesitando?</Label>{needOptions.map(n => <div key={n.id} className="flex items-center gap-2"><Checkbox id={n.id} checked={needs[n.id] || false} onCheckedChange={c => setNeeds(p => ({...p, [n.id]: !!c}))} /><Label htmlFor={n.id} className="font-normal">{n.label}</Label></div>)}<div className="flex items-center gap-2"><Checkbox id="otra" checked={needs['otra'] || false} onCheckedChange={c => setNeeds(p => ({...p, otra: !!c}))} /><Label htmlFor="otra" className="font-normal">Otra:</Label></div>{needs.otra && <Textarea value={otherNeed} onChange={e => setOtherNeed(e.target.value)} />}<div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 2: return <div className="p-4 space-y-4"><Label>¿Qué acción pequeña y amable podrías hacer hoy?</Label><RadioGroup value={careAction} onValueChange={setCareAction}>{Object.values(careActions).flat().map(a => <div key={a.id} className="flex items-center gap-2"><RadioGroupItem value={a.label} id={a.id}/><Label htmlFor={a.id} className="font-normal">{a.label}</Label></div>)}</RadioGroup><Textarea value={otherCareAction} onChange={e => setOtherCareAction(e.target.value)} placeholder="Otra acción específica..." /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!careAction && !otherCareAction}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 3: return <div className="p-4 space-y-4 text-center"><p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>. Me propongo cuidarme así: <strong>{otherCareAction || careAction}</strong>.</p><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button><Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button></div>
       default: return null;
     }
   }
@@ -96,7 +135,19 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId }: MapaEmo
             </CardDescription>
         }
       </CardHeader>
-      <CardContent>{renderStep()}</CardContent>
+      <CardContent>
+        {isSaved ? (
+          <div className="p-4 text-center space-y-4">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
+            <p className="text-muted-foreground">Tu mapa ha sido guardado en el cuaderno. Puedes revisarlo cuando quieras.</p>
+            <Button onClick={() => {
+              setIsSaved(false);
+              setStep(0);
+            }} variant="outline">Hacer otro registro</Button>
+          </div>
+        ) : renderStep()}
+      </CardContent>
     </Card>
   );
 }
