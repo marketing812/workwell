@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -23,6 +23,32 @@ export function AnchorInStormExercise({ content, pathId }: AnchorInStormExercise
   const [anchorType, setAnchorType] = useState('');
   const [anchorDesc, setAnchorDesc] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const storageKey = `exercise-progress-${pathId}-anchorInStorm`;
+
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setEmotionalState(data.emotionalState || '');
+        setAnchorType(data.anchorType || '');
+        setAnchorDesc(data.anchorDesc || '');
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      const stateToSave = { emotionalState, anchorType, anchorDesc, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [emotionalState, anchorType, anchorDesc, isSaved, storageKey]);
+
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();

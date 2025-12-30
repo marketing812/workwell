@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -29,6 +29,35 @@ export function AcceptanceWritingExercise({ content, pathId }: AcceptanceWriting
   const [response, setResponse] = useState('');
   const [compassionPhrase, setCompassionPhrase] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const storageKey = `exercise-progress-${pathId}-acceptanceWriting`;
+
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const { fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved } = JSON.parse(savedState);
+        setFact(fact || '');
+        setEmotion(emotion || '');
+        setDialogue(dialogue || '');
+        setJudgment(judgment || '');
+        setResponse(response || '');
+        setCompassionPhrase(compassionPhrase || '');
+        setIsSaved(isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      const stateToSave = { fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [fact, emotion, dialogue, judgment, response, compassionPhrase, isSaved, storageKey]);
+
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
