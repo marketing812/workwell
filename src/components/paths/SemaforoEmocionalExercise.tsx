@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save, TrafficCone } from 'lucide-react';
+import { Edit3, CheckCircle, Save, TrafficCone, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SemaforoEmocionalExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
@@ -16,18 +16,23 @@ import { cn } from '@/lib/utils';
 interface SemaforoEmocionalExerciseProps {
   content: SemaforoEmocionalExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function SemaforoEmocionalExercise({ content, pathId }: SemaforoEmocionalExerciseProps) {
+export function SemaforoEmocionalExercise({ content, pathId, onComplete }: SemaforoEmocionalExerciseProps) {
   const { toast } = useToast();
   
   const [step, setStep] = useState(0);
   const [light, setLight] = useState<'verde' | 'ambar' | 'rojo' | ''>('');
   const [action, setAction] = useState('');
 
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSave = () => {
     addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: `Estado: ${light}. Acción de cuidado: ${action}`, pathId: pathId });
     toast({ title: 'Registro Guardado' });
+    onComplete();
   };
   
   const renderStep = () => {
@@ -50,13 +55,13 @@ export function SemaforoEmocionalExercise({ content, pathId }: SemaforoEmocional
               'text-amber-600 dark:text-amber-300': color === 'ambar',
               'text-red-600 dark:text-red-300': color === 'rojo',
           })} />
-      </Label>)}</RadioGroup><Button onClick={() => setStep(1)} className="w-full" disabled={!light}>Siguiente</Button></div>;
+      </Label>)}</RadioGroup><Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
       case 1:
         let suggestions, title;
         if(light === 'verde') { title='Bienestar emocional presente'; suggestions = 'Agradece algo, regálate un momento consciente.'; }
         else if(light === 'ambar') { title='Activación emocional leve'; suggestions = 'Haz una respiración profunda, conecta con tus sentidos.'; }
         else { title='Desborde o activación intensa'; suggestions = 'Aléjate del estímulo, usa una técnica de grounding.'; }
-        return <div className="p-4 space-y-4"><h4 className="font-semibold text-center">{title}</h4><p className="text-sm text-center">{suggestions}</p><Label>¿Qué harás ahora para ayudarte?</Label><Textarea value={action} onChange={e => setAction(e.target.value)} /><Button onClick={handleSave} className="w-full mt-2"><Save className="mr-2 h-4 w-4"/>Guardar</Button></div>;
+        return <div className="p-4 space-y-4"><h4 className="font-semibold text-center">{title}</h4><p className="text-sm text-center">{suggestions}</p><Label>¿Qué harás ahora para ayudarte?</Label><Textarea value={action} onChange={e => setAction(e.target.value)} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar</Button></div></div>;
       default: return null;
     }
   };
