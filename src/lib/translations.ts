@@ -1,4 +1,5 @@
 
+
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -106,7 +107,7 @@ export const t = {
   // Assessment Intro Page
   assessmentIntroPageTitle: "Bienvenido/a a tu primer paso",
   assessmentIntroPageTagline: "Este cuestionario no es solo una evaluación. Es un momento contigo. Una invitación a mirar hacia dentro con honestidad, curiosidad y sin juicio.",
-  assessmentIntroPageMainText1: "Vas a encontrar frases que hablan de ti: cómo sueles sentirte, pensar, actuar… y cómo estás viviendo tu presente emocional.\\nAlgunas te resultarán fáciles. Otras te harán parar y reflexionar. Y eso está bien.\\nCada respuesta es un paso más hacia tu bienestar.",
+  assessmentIntroPageMainText1: "Vas a encontrar frases que hablan de ti: cómo sueles sentirte, pensar, actuar… y cómo estás viviendo tu presente emocional.\nAlgunas te resultarán fáciles. Otras te harán parar y reflexionar. Y eso está bien.\nCada respuesta es un paso más hacia tu bienestar.",
   assessmentIntroPagePurposeTitle: "¿Para qué sirve?",
   assessmentIntroPagePurpose1: "Conocerte mejor.",
   assessmentIntroPagePurpose2: "Detectar tus necesidades actuales.",
@@ -124,7 +125,7 @@ export const t = {
   assessmentIntroPageWhatToKnowPrivacyText: "Tus respuestas son confidenciales y no se comparten.",
   assessmentIntroPageImportantLabel: "Importante:",
   assessmentIntroPageImportantText: "Esta evaluación no es un diagnóstico formal ni sustituye un proceso terapéutico clínico.",
-  assessmentIntroPageFinalWords: "Tómate tu tiempo. Respira. Responde con sinceridad.\\nEste camino empieza en ti. Y no estarás solo/a.",
+  assessmentIntroPageFinalWords: "Tómate tu tiempo. Respira. Responde con sinceridad.\nEste camino empieza en ti. Y no estarás solo/a.",
   assessmentIntroPageStartButton: "Comenzar Evaluación",
 
   // Assessment Results Intro Page
@@ -134,7 +135,7 @@ export const t = {
   assessmentResultsIntroListItem1: "Un resumen visual claro.",
   assessmentResultsIntroListItem2: "Una lectura profesional de tus fortalezas y ámbitos en desarrollo.",
   assessmentResultsIntroListItem3: "Sugerencias prácticas para cuidarte desde dentro.",
-  assessmentResultsIntroMainText3: "Este perfil no te etiqueta ni te limita.\\nEs una guía flexible para avanzar con más consciencia, claridad y dirección.",
+  assessmentResultsIntroMainText3: "Este perfil no te etiqueta ni te limita. Es una guía flexible para avanzar con más consciencia, claridad y dirección.",
   assessmentResultsIntroMainText4: "Además, hemos activado para ti rutas personalizadas basadas en tu estilo emocional.",
   assessmentResultsIntroViewProfileButton: "Ver mi perfil emocional",
 
