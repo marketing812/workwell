@@ -28,7 +28,8 @@ export async function POST(request: Request) {
     
     const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    console.log(`API Route (save-notebook-entry): Sending entry for user ${userId}...`);
+    // Log the full URL to the server console for tracing
+    console.log(`API Route (save-notebook-entry): Calling external URL: ${saveUrl}`);
 
     // Await the fetch call to the external service
     const saveResponse = await fetch(saveUrl, { 
