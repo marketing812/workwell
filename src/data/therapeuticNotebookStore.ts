@@ -17,6 +17,8 @@ export interface NotebookEntry {
 const NOTEBOOK_ENTRIES_KEY = "workwell-therapeutic-notebook";
 const MAX_NOTEBOOK_ENTRIES = 100;
 const API_PROXY_URL = "/api/save-notebook-entry"; // The internal API route that proxies to the external service
+const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
+
 
 // This async function sends the data to the internal API route
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
@@ -27,11 +29,17 @@ async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry)
             body: JSON.stringify({ userId, entryData: entry }),
         });
 
+        const result = await response.json();
+        
+        if (result.debugUrl && typeof window !== 'undefined') {
+            sessionStorage.setItem(DEBUG_SAVE_NOTEBOOK_URL_KEY, result.debugUrl);
+            window.dispatchEvent(new Event('notebook-save-url-updated')); // Dispatch a specific event
+        }
+
         if (!response.ok) {
-            const errorResult = await response.json();
-            console.error(`[Client] Notebook sync failed with status: ${response.status}.`, errorResult);
+            console.error(`[Client] Notebook sync failed with status: ${response.status}.`, result);
         } else {
-            console.log(`[Client] Notebook entry for user '${userId}' synced successfully.`);
+            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully.`);
         }
     } catch (error) {
         console.error("[Client] Error calling internal notebook sync API:", error);

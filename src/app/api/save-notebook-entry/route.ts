@@ -23,17 +23,11 @@ export async function POST(request: Request) {
 
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
-    // The user ID should be sent unencrypted in the body for POST requests, same as the logic for `getcuaderno`
     const requestBody = new URLSearchParams();
     requestBody.append('apikey', API_KEY);
     requestBody.append('tipo', 'guardarcuaderno');
     requestBody.append('idusuario', userId); 
     requestBody.append('datos', encryptedPayload);
-
-    console.log("[SERVER LOG] Calling external notebook service...");
-    console.log("URL:", API_BASE_URL);
-    console.log("METHOD: POST");
-    console.log("BODY:", requestBody.toString().substring(0, 200) + "..."); // Log first 200 chars of body
 
     const saveResponse = await fetch(API_BASE_URL, {
       method: 'POST',
@@ -46,10 +40,12 @@ export async function POST(request: Request) {
     
     const saveResponseText = await saveResponse.text();
 
+    const debugUrl = `${API_BASE_URL}?${requestBody.toString()}`;
+
     if (!saveResponse.ok) {
       console.warn(`API Route (save-notebook-entry): External API call failed. Status: ${saveResponse.status}, Text: ${saveResponseText}`);
       return NextResponse.json(
-        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}` },
+        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}`, debugUrl },
         { status: 502 }
       );
     }
@@ -57,13 +53,13 @@ export async function POST(request: Request) {
     try {
         const finalApiResult = JSON.parse(saveResponseText);
         if (finalApiResult.status === 'OK') {
-           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo." });
+           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo.", debugUrl });
         } else {
-           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error." }, { status: 400 });
+           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error.", debugUrl }, { status: 400 });
         }
     } catch (e) {
         console.warn("API Route (save-notebook-entry): External API response was not valid JSON, but status was OK. Raw text:", saveResponseText);
-        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON." });
+        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON.", debugUrl });
     }
 
   } catch (error: any) {
@@ -76,7 +72,7 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json(
-      { success: false, message: errorMessage },
+      { success: false, message: errorMessage, debugUrl: "Error creating URL" },
       { status: 500 }
     );
   }
