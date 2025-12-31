@@ -21,7 +21,6 @@ const API_PROXY_URL = "/api/save-notebook-entry"; // The internal API route that
 // This async function sends the data to the internal API route
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
-        console.log(`[Client] Initiating sync for notebook entry for user ${userId}...`);
         const response = await fetch(API_PROXY_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,8 +31,7 @@ async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry)
             const errorResult = await response.json();
             console.error(`[Client] Notebook sync failed with status: ${response.status}.`, errorResult);
         } else {
-            const result = await response.json();
-            console.log(`[Client] Notebook entry sync for user '${userId}' initiated successfully. Server says: ${result.message}`);
+            console.log(`[Client] Notebook entry for user '${userId}' synced successfully.`);
         }
     } catch (error) {
         console.error("[Client] Error calling internal notebook sync API:", error);
