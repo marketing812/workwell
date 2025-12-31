@@ -78,22 +78,39 @@ export async function deleteLegacyData(
   }
 }
 
+// RESTORED: Function to send notebook entries to the legacy service.
+// This function will be called by `addNotebookEntry` in therapeuticNotebookStore.ts
 export async function sendLegacyNotebookEntry(
   userId: string,
   entryData: Record<string, any>
 ): Promise<{ success: boolean; debugUrl: string }> {
   try {
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    
+    // Base64 encode the user ID separately as per legacy system requirements
+    const base64UserId = Buffer.from(userId).toString('base64');
+    
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    // "Fire and forget" call
-    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) }).catch(error => {
-        console.error("Error in fire-and-forget legacy notebook sync:", error);
-    });
+    console.log(`Sending notebook entry for user ${userId} to legacy URL...`);
+
+    // We can make this a "fire and forget" call to not block the UI.
+    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
+        .then(async response => {
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.warn(`Legacy notebook sync failed with status: ${response.status}. Body: ${errorText}`);
+            } else {
+                console.log(`Legacy notebook entry for user '${userId}' initiated successfully.`);
+            }
+        })
+        .catch(error => {
+            console.error(`Error sending legacy notebook entry for user '${userId}':`, error);
+        });
 
     return { success: true, debugUrl: url };
   } catch (error) {
-    console.error("Error preparing legacy notebook data for sending:", error);
-    return { success: false, debugUrl: "Error creating legacy notebook URL" };
+    console.error(`Error preparing legacy notebook entry for sending for user '${userId}':`, error);
+    return { success: false, debugUrl: "Error creating legacy notebook entry URL" };
   }
 }

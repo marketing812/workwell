@@ -40,6 +40,7 @@ export function getNotebookEntryById(id: string): NotebookEntry | undefined {
 export function addNotebookEntry(
   newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'> & { userId?: string }
 ): NotebookEntry {
+  // IMPORTANT: This function now handles both local storage and external sync.
   const { userId, ...entryData } = newEntryData;
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
@@ -60,6 +61,7 @@ export function addNotebookEntry(
 
   // Also send to the external service if userId is provided
   if (userId) {
+    console.log("Syncing notebook entry with external service for user:", userId);
     sendLegacyNotebookEntry(userId, newEntry).catch(error => {
       console.error("Failed to sync notebook entry with external service:", error);
     });
