@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -17,6 +18,10 @@ const EmotionalChatbotInputSchema = z.object({
     .string()
     .optional()
     .describe('Previous messages in the conversation to maintain context.'),
+  userName: z
+    .string()
+    .optional()
+    .describe("The user's name."),
 });
 export type EmotionalChatbotInput = z.infer<typeof EmotionalChatbotInputSchema>;
 
@@ -38,8 +43,9 @@ const prompt = ai.definePrompt({
   You are not a substitute for a therapist, so do not give definitive advice.
   
   **IMPORTANT INSTRUCTIONS:**
-  1.  **Language and Tone:** Respond exclusively in Spanish. Use a gender-neutral and inclusive language (e.g., use "persona", "ser humano", or rephrase to avoid specific gender markers like "cansado/a").
-  2.  **Character Encoding:** Ensure all responses are properly encoded in UTF-8 to correctly display special characters like accents (á, é, í, ó, ú) and ñ. Do not use escaped unicode characters.
+  1.  **Language and Tone:** Respond exclusively in Spanish.
+  2.  **Gender Personalization:** The user's name is {{userName}}. Infer their gender from the name (e.g., 'Andrea' is likely female, 'Andrés' is likely male). Use gender-specific adjectives and pronouns accordingly (e.g., 'abrumada' for female, 'abrumado' for male). If the name is ambiguous (e.g., 'Alex') or not provided, use gender-neutral language (e.g., "persona", "ser humano", or rephrase to avoid gender markers).
+  3.  **Character Encoding:** Ensure all responses are properly encoded in UTF-8 to correctly display special characters like accents (á, é, í, ó, ú) and ñ. Do not use escaped unicode characters.
 
   Previous conversation context:
   {{context}}

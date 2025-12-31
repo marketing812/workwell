@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from 'react';
@@ -77,7 +78,11 @@ export function ChatInterface() {
       .map(msg => `${msg.sender === 'user' ? 'User' : 'Bot'}: ${msg.text}`)
       .join('\n');
 
-    const result: ServerChatbotResult = await sendMessageToChatbot({ message: userMessage.text, context });
+    const result: ServerChatbotResult = await sendMessageToChatbot({ 
+        message: userMessage.text, 
+        context,
+        userName: currentUser?.name || undefined,
+    });
 
     setIsLoading(false);
     if (result.success) {
