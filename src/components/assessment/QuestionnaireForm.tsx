@@ -131,15 +131,30 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const currentOverallIndex = Array.isArray(assessmentDimensions) && assessmentDimensions.length > 0 && currentDimensionIndex < assessmentDimensions.length ? assessmentDimensions.slice(0, currentDimensionIndex).reduce((acc, dim) => acc + dim.items.length, 0) + currentItemIndexInDimension : 0;
   const currentItem = currentDimension?.items[currentItemIndexInDimension];
   const progressPercentage = allItems.length > 0 ? (currentOverallIndex / allItems.length) * 100 : 0;
-
-  const goToNextQuestion = () => {
+  
+  const submitFullAssessment = async (finalAnswers: Record<string, { score: number; weight: number }>) => {
+    const allAnswered = allItems.every(item => finalAnswers.hasOwnProperty(item.id));
+    if (!allAnswered) {
+       toast({
+         title: "Cuestionario Incompleto",
+         description: "Por favor, responde a todas las preguntas antes de finalizar.",
+         variant: "destructive"
+       });
+       return;
+    }
+    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
+    await onSubmit(finalAnswers);
+  };
+  
+  const goToNextQuestion = (currentAnswers?: Record<string, { score: number; weight: number }>) => {
+    const finalAnswers = currentAnswers || answers;
     if (!currentDimension) return;
 
     const isLastItem = currentOverallIndex >= allItems.length - 1;
     const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
 
     if (isLastItem) {
-      submitFullAssessment(answers);
+      submitFullAssessment(finalAnswers);
       return;
     }
 
@@ -159,9 +174,8 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
       setCurrentDimensionIndex(nextDimIndex);
       setCurrentItemIndexInDimension(nextItemIndex);
       
-      // Save progress if guided or when moving to the next dimension.
       if (isGuided || nextDimIndex > currentDimensionIndex) {
-        saveProgress(nextDimIndex, nextItemIndex, answers);
+        saveProgress(nextDimIndex, nextItemIndex, finalAnswers);
       }
     }
   };
@@ -173,10 +187,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     };
     setAnswers(newAnswers);
     
-    // Auto-advance after a short delay only in guided mode
     if (isGuided) {
       setTimeout(() => {
-        goToNextQuestion();
+        goToNextQuestion(newAnswers);
       }, 250); 
     }
   };
@@ -192,19 +205,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     }
   };
 
-  const submitFullAssessment = async (finalAnswers: Record<string, { score: number; weight: number }>) => {
-    const allAnswered = allItems.every(item => finalAnswers.hasOwnProperty(item.id));
-    if (!allAnswered) {
-       toast({
-         title: "Cuestionario Incompleto",
-         description: "Por favor, responde a todas las preguntas antes de finalizar.",
-         variant: "destructive"
-       });
-       return;
-    }
-    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
-    await onSubmit(finalAnswers);
-  };
   
   const handleDialogContinue = () => {
     setShowDimensionCompletedDialog(false);
@@ -228,7 +228,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
     let dimToSave = currentDimensionIndex;
     let itemToSave = currentItemIndexInDimension;
-    // If we are at the end of a dimension, save the position for the start of the next one
     if (currentItemIndexInDimension === currentDimension.items.length - 1 && !isLastDimension) {
       dimToSave = currentDimensionIndex + 1;
       itemToSave = 0;
