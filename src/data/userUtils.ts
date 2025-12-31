@@ -78,12 +78,6 @@ export async function deleteLegacyData(
   }
 }
 
-/**
- * @deprecated Esta función representa la forma antigua en que las entradas del cuaderno se enviaban a un servicio externo.
- * En la versión actual, las entradas del cuaderno se guardan ÚNICAMENTE en el localStorage del navegador del usuario
- * a través de `addNotebookEntry` en `therapeuticNotebookStore.ts`.
- * Esta función se mantiene aquí solo con fines de documentación histórica.
- */
 export async function sendLegacyNotebookEntry(
   userId: string,
   entryData: Record<string, any>
@@ -92,10 +86,10 @@ export async function sendLegacyNotebookEntry(
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    console.log("DEPRECATED: This function to save notebook entries to an external server is no longer in use.");
-
-    // This is a "fire and forget" call and would not be awaited in a real scenario.
-    // fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) });
+    // "Fire and forget" call
+    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) }).catch(error => {
+        console.error("Error in fire-and-forget legacy notebook sync:", error);
+    });
 
     return { success: true, debugUrl: url };
   } catch (error) {

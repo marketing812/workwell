@@ -14,10 +14,12 @@ import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
 import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { clearAllNotebookEntries } from '@/data/therapeuticNotebookStore';
-import { deleteLegacyData } from '@/data/userUtils'; // Importar la nueva función
+import { overwriteNotebookEntries, clearAllNotebookEntries, type NotebookEntry } from '@/data/therapeuticNotebookStore';
+import { deleteLegacyData, sendLegacyData } from '@/data/userUtils'; // Importar la nueva función
+import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
 
 const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
+const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
 
 export interface User {
   id: string;
@@ -38,6 +40,40 @@ interface UserContextType {
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
+
+const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+const API_KEY = "4463";
+
+async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[], debugUrl: string}> {
+  const clave = "SJDFgfds788sdfs8888KLLLL";
+  const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
+  const raw = `${clave}|${fecha}`;
+  const token = Buffer.from(raw).toString('base64');
+  const encryptedUserId = forceEncryptStringAES(userId);
+  const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getcuaderno&usuario=${encodeURIComponent(encryptedUserId)}&token=${encodeURIComponent(token)}`;
+
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    const responseText = await res.text();
+
+    if (!res.ok) {
+        console.error("Error fetching notebook:", responseText);
+        return { entries: [], debugUrl: url };
+    }
+    
+    const decryptedData = decryptDataAES(responseText);
+    
+    if (Array.isArray(decryptedData)) {
+      // Assuming decryptedData is an array of objects that match NotebookEntry structure
+      return { entries: decryptedData as NotebookEntry[], debugUrl: url };
+    }
+    return { entries: [], debugUrl: url };
+
+  } catch (error) {
+    console.error("Failed to fetch or decrypt notebook:", error);
+    return { entries: [], debugUrl: url };
+  }
+}
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -92,6 +128,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
           };
           setUser(minimalUser);
           await fetchUserProfile(fbUser.uid);
+          
+          // Fetch and sync notebook entries
+          const { entries, debugUrl } = await fetchNotebook(fbUser.uid);
+          overwriteNotebookEntries(entries);
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem(DEBUG_NOTEBOOK_FETCH_URL_KEY, debugUrl);
+            window.dispatchEvent(new Event('notebook-url-updated'));
+          }
+
       } else {
         setUser(null);
         setLoading(false);
