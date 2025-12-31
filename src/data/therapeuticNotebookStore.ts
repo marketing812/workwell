@@ -3,7 +3,6 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
-// No importamos sendLegacyNotebookEntry porque ahora se llamará a una API interna
 
 export interface NotebookEntry {
   id: string;
@@ -12,12 +11,14 @@ export interface NotebookEntry {
   content: string; // The user's full written reflection
   pathId?: string; // Optional: ID of the path this reflection is associated with
   ruta?: string; // The name of the path (route)
+  userId?: string; // Optional: include userId for sync purposes
 }
 
 const NOTEBOOK_ENTRIES_KEY = "workwell-therapeutic-notebook";
 const MAX_NOTEBOOK_ENTRIES = 100;
-const API_PROXY_URL = "/api/save-notebook-entry"; // Nueva ruta de API interna
+const API_PROXY_URL = "/api/save-notebook-entry"; // The internal API route that proxies to the external service
 
+// This async function sends the data to the internal API route
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
         console.log(`Syncing notebook entry for user ${userId} via internal API proxy...`);
@@ -68,7 +69,7 @@ export function addNotebookEntry(
     ...entryData,
   };
 
-  // Guardado local inmediato
+  // 1. Save to local storage for immediate UI update
   try {
     if (typeof window !== "undefined") {
       const currentEntries = getNotebookEntries();
@@ -80,8 +81,9 @@ export function addNotebookEntry(
     console.error("Error saving notebook entry to localStorage:", error);
   }
 
-  // Sincronización con el servidor externo a través de la API interna
+  // 2. Sync with the external server via our internal API route (non-blocking)
   if (userId) {
+    // We don't await this call, so it's "fire and forget" and doesn't block the UI
     syncNotebookEntryWithServer(userId, newEntry);
   } else {
     console.warn("addNotebookEntry: userId not provided, skipping external sync.");
@@ -94,7 +96,19 @@ export function addNotebookEntry(
 export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
   if (typeof window === "undefined") return;
   try {
-    const sortedEntries = [...entries].sort((a, b) => parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime());
+    const sortedEntries = [...entries].sort((a, b) => {
+        try {
+            return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
+        } catch(e) {
+             try {
+                // Fallback for non-ISO dates from legacy system
+                return new Date(b.timestamp.replace(' ', 'T')).getTime() - new Date(a.timestamp.replace(' ', 'T')).getTime();
+             } catch (e2) {
+                 console.warn("Could not parse timestamps for sorting in overwriteNotebookEntries:", b.timestamp, a.timestamp);
+                 return 0;
+             }
+        }
+    });
     const entriesToStore = sortedEntries.slice(0, MAX_NOTEBOOK_ENTRIES);
     localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(entriesToStore));
     window.dispatchEvent(new Event('notebook-updated'));
