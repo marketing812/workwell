@@ -30,12 +30,10 @@ export async function POST(request: Request) {
     requestBody.append('idusuario', userId); 
     requestBody.append('datos', encryptedPayload);
 
-    // --- CONSOLE LOG FOR DEBUGGING ---
     console.log("[SERVER LOG] Calling external notebook service...");
     console.log("URL:", API_BASE_URL);
     console.log("METHOD: POST");
     console.log("BODY:", requestBody.toString().substring(0, 200) + "..."); // Log first 200 chars of body
-    // --- END CONSOLE LOG ---
 
     const saveResponse = await fetch(API_BASE_URL, {
       method: 'POST',

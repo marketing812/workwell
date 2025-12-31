@@ -30,9 +30,9 @@ async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry)
 
         if (!response.ok) {
             const errorResult = await response.json();
-            console.error(`Legacy notebook sync failed with status: ${response.status}.`, errorResult);
+            console.error(`Notebook sync failed with status: ${response.status}.`, errorResult);
         } else {
-            console.log(`Legacy notebook entry sync for user '${userId}' initiated successfully via proxy.`);
+            console.log(`Notebook entry sync for user '${userId}' initiated successfully via proxy.`);
         }
     } catch (error) {
         console.error("Error calling internal notebook sync API:", error);
