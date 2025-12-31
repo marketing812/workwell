@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
@@ -191,6 +192,12 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
       }
     }
   });
+
+  // Sort dimensions within each category
+  highStrengthDimensions.sort((a, b) => b.score - a.score);
+  functionalDimensions.sort((a, b) => b.score - a.score);
+  priorityImprovementDimensions.sort((a, b) => a.score - b.score);
+
 
   const renderDimensionGroup = (title: string, dimensions: CategorizedDimension[], icon: React.ElementType) => {
     if (dimensions.length === 0) return null;
