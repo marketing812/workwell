@@ -23,6 +23,7 @@ const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
 // This async function sends the data to the internal API route
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
+        console.log(`[Client] Preparing to sync notebook entry for user '${userId}'...`);
         const response = await fetch(API_PROXY_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

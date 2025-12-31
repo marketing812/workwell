@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
@@ -20,6 +21,7 @@ interface TwoMinuteRuleExerciseProps {
 
 export function TwoMinuteRuleExercise({ content, pathId, onComplete }: TwoMinuteRuleExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [task, setTask] = useState('');
   const [twoMinVersion, setTwoMinVersion] = useState('');
   const [when, setWhen] = useState('');
@@ -47,7 +49,7 @@ ${twoMinVersion}
 *Me comprometo a hacerlo:*
 ${when}
     `;
-    addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Compromiso de 2 Minutos', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
     setSaved(true);
     onComplete();
