@@ -20,16 +20,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Faltan datos en la petición (userId o entryData)." }, { status: 400 });
     }
 
-    // El ID de usuario se codifica en Base64 para la URL, como en el sistema anterior.
+    // El ID de usuario se codifica en Base64 para la URL, como en el sistema antiguo.
+    // ESTE ERA EL ERROR: El ID no debe ser encriptado, solo codificado en Base64.
     const base64UserId = Buffer.from(userId).toString('base64');
     
     // Los datos de la entrada del cuaderno se encriptan como un objeto JSON.
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
     const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
-
-    // Log the full URL to the server console for tracing
-    console.log(`API Route (save-notebook-entry): Calling external URL: ${saveUrl}`);
 
     // Await the fetch call to the external service
     const saveResponse = await fetch(saveUrl, { 
