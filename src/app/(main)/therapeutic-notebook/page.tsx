@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -19,18 +18,13 @@ export default function TherapeuticNotebookPage() {
   const [debugUrl, setDebugUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    // Cuando el componente se monta, busca la URL de depuración
-    if (typeof window !== 'undefined') {
-      const storedUrl = sessionStorage.getItem(DEBUG_NOTEBOOK_FETCH_URL_KEY);
-      if (storedUrl) setDebugUrl(storedUrl);
-    }
-    
-    // Y si el usuario ya está cargado, intenta refrescar las entradas del cuaderno.
+    // Cuando el componente se monta y el usuario está disponible,
+    // se inicia la carga de las entradas del cuaderno.
     if (user && user.id && !isNotebookLoading) {
         fetchAndSetNotebook(user.id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]); // Se ejecuta cuando el usuario cambia
+  }, [user, fetchAndSetNotebook]); // Depende del usuario y de la función de carga
 
   useEffect(() => {
     // Listener para actualizar la URL de depuración si cambia en otra parte
@@ -39,6 +33,8 @@ export default function TherapeuticNotebookPage() {
             setDebugUrl(sessionStorage.getItem(DEBUG_NOTEBOOK_FETCH_URL_KEY));
         }
     };
+    // Llamada inicial para establecer la URL al cargar
+    handleUrlUpdate();
     window.addEventListener('notebook-url-updated', handleUrlUpdate);
     return () => window.removeEventListener('notebook-url-updated', handleUrlUpdate);
   }, []);
