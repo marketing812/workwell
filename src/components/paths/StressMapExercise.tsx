@@ -50,12 +50,12 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
     }
     
     addNotebookEntry({
-      title: 'Mapa del Estrés Personal',
-      content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmoción: ${selectedEmotion} (${emotionIntensity}%)\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
-      pathId: 'gestion-estres',
-      userId: user?.id
+        title: 'Mapa del Estrés Personal',
+        content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmoción: ${selectedEmotion} (${emotionIntensity}%)\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
+        pathId: 'gestion-estres',
+        userId: user?.id
     });
-
+    
     toast({
       title: "Registro Guardado",
       description: "Tu 'Mapa del Estrés' ha sido guardado exitosamente.",

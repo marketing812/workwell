@@ -53,8 +53,9 @@ export async function deleteLegacyData(
   type: 'borrarusuario'
 ): Promise<{ success: boolean; debugUrl: string }> {
   try {
+    const encryptedUserId = forceEncryptStringAES(userId);
     // Build the URL for deletion, userId is not encrypted
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}`;
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(encryptedUserId)}`;
 
     console.log(`Sending delete request for user '${userId}' to legacy URL...`);
 
