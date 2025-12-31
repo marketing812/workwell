@@ -23,14 +23,19 @@ export async function POST(request: Request) {
 
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
-    // The user ID is sent unencrypted in the body, as per the working `getcuaderno` logic review.
+    // The user ID should be sent unencrypted in the body for POST requests, same as the logic for `getcuaderno`
     const requestBody = new URLSearchParams();
     requestBody.append('apikey', API_KEY);
     requestBody.append('tipo', 'guardarcuaderno');
-    requestBody.append('idusuario', userId);
+    requestBody.append('idusuario', userId); 
     requestBody.append('datos', encryptedPayload);
 
-    console.log(`API Route (save-notebook-entry): Sending POST request to external URL for user ${userId}`);
+    // --- CONSOLE LOG FOR DEBUGGING ---
+    console.log("[SERVER LOG] Calling external notebook service...");
+    console.log("URL:", API_BASE_URL);
+    console.log("METHOD: POST");
+    console.log("BODY:", requestBody.toString().substring(0, 200) + "..."); // Log first 200 chars of body
+    // --- END CONSOLE LOG ---
 
     const saveResponse = await fetch(API_BASE_URL, {
       method: 'POST',
