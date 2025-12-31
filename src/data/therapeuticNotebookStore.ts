@@ -3,8 +3,6 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
-import type { User } from '@/contexts/UserContext';
-import { useFirestore, addDoc, collection, serverTimestamp } from '@/firebase/provider'; // Esto no funcionará, es una simulación
 
 export interface NotebookEntry {
   id: string;
@@ -39,8 +37,9 @@ export function getNotebookEntryById(id: string): NotebookEntry | undefined {
 }
 
 export function addNotebookEntry(newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'>): NotebookEntry {
-   // This function remains synchronous for immediate UI update, but the actual save will be async
-   // Firestore logic should be handled in the component calling this.
+  // CLARIFICATION: This function saves the notebook entry ONLY to the browser's localStorage.
+  // It does NOT make any external web service call to an endpoint like "guardarcuaderno".
+  // The therapeutic notebook is currently a local-only, private feature.
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
     timestamp: new Date().toISOString(),
