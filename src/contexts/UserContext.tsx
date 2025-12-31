@@ -67,8 +67,25 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
     const decryptedData = decryptDataAES(responseText);
     
     if (Array.isArray(decryptedData)) {
-      // Assuming decryptedData is an array of objects that match NotebookEntry structure
-      return { entries: decryptedData as NotebookEntry[], debugUrl: url };
+      // The API returns an array of arrays: [["id", "timestamp", "userId", "title", "content", "pathId"], ...]
+      // We need to map this to an array of NotebookEntry objects.
+      const entries = decryptedData.map((item: any[]): NotebookEntry | null => {
+        if (Array.isArray(item) && item.length >= 5) {
+          return {
+            id: item[0],
+            timestamp: item[1],
+            // item[2] is userId, which we don't store directly in the entry object
+            title: item[3],
+            content: item[4],
+            pathId: item[5] || undefined, // pathId is optional
+            ruta: item[5] ? (item[5].replace(/-/g, ' ').charAt(0).toUpperCase() + item[5].slice(1).replace(/-/g, ' ')) : undefined, // Also map pathId to ruta
+          };
+        }
+        console.warn("Invalid item format in notebook data:", item);
+        return null;
+      }).filter((item): item is NotebookEntry => item !== null); // Filter out any null entries from mapping
+      
+      return { entries, debugUrl: url };
     }
     return { entries: [], debugUrl: url };
 
