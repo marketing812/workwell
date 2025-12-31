@@ -11,6 +11,7 @@ interface NotebookEntryPayload {
   entryData: Record<string, any>;
 }
 
+// This is the API route that acts as a proxy to the external service
 export async function POST(request: Request) {
   try {
     const body: NotebookEntryPayload = await request.json();
@@ -20,19 +21,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Faltan datos en la petición (userId o entryData)." }, { status: 400 });
     }
 
-    // El ID de usuario se codifica en Base64 para la URL, como en el sistema antiguo.
-    // ESTE ERA EL ERROR: El ID no debe ser encriptado, solo codificado en Base64.
-    const base64UserId = Buffer.from(userId).toString('base64');
-    
-    // Los datos de la entrada del cuaderno se encriptan como un objeto JSON.
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
-    const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // The user ID is sent unencrypted in the body, as per the working `getcuaderno` logic review.
+    const requestBody = new URLSearchParams();
+    requestBody.append('apikey', API_KEY);
+    requestBody.append('tipo', 'guardarcuaderno');
+    requestBody.append('idusuario', userId);
+    requestBody.append('datos', encryptedPayload);
 
-    // Await the fetch call to the external service
-    const saveResponse = await fetch(saveUrl, { 
-      method: 'GET', // o 'POST' si el servicio lo requiere
-      signal: AbortSignal.timeout(API_TIMEOUT_MS) 
+    console.log(`API Route (save-notebook-entry): Sending POST request to external URL for user ${userId}`);
+
+    const saveResponse = await fetch(API_BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: requestBody.toString(),
+      signal: AbortSignal.timeout(API_TIMEOUT_MS),
     });
     
     const saveResponseText = await saveResponse.text();
@@ -41,7 +47,7 @@ export async function POST(request: Request) {
       console.warn(`API Route (save-notebook-entry): External API call failed. Status: ${saveResponse.status}, Text: ${saveResponseText}`);
       return NextResponse.json(
         { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}` },
-        { status: 502 } // Bad Gateway
+        { status: 502 }
       );
     }
     
