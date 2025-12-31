@@ -40,6 +40,8 @@ export function addNotebookEntry(newEntryData: Omit<NotebookEntry, 'id' | 'times
   // CLARIFICATION: This function saves the notebook entry ONLY to the browser's localStorage.
   // It does NOT make any external web service call to an endpoint like "guardarcuaderno".
   // The therapeutic notebook is currently a local-only, private feature.
+  // A previous version of the app might have included this call, but it has been removed
+  // in favor of local, private storage for user reflections.
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
     timestamp: new Date().toISOString(),
@@ -47,10 +49,13 @@ export function addNotebookEntry(newEntryData: Omit<NotebookEntry, 'id' | 'times
   };
 
   try {
-    const currentEntries = getNotebookEntries();
-    const updatedEntries = [newEntry, ...currentEntries].slice(0, MAX_NOTEBOOK_ENTRIES);
-    localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(updatedEntries));
-    window.dispatchEvent(new Event('notebook-updated'));
+    if (typeof window !== "undefined") {
+      const currentEntries = getNotebookEntries();
+      const updatedEntries = [newEntry, ...currentEntries].slice(0, MAX_NOTEBOOK_ENTRIES);
+      localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(updatedEntries));
+      // Dispatch a custom event to notify other parts of the app that the notebook has been updated.
+      window.dispatchEvent(new Event('notebook-updated'));
+    }
   } catch (error) {
     console.error("Error saving notebook entry to localStorage:", error);
   }
