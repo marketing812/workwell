@@ -32,6 +32,8 @@ import { useFirestore } from "@/firebase/provider";
 import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
 
 const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
+const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
+
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -60,7 +62,8 @@ export default function DashboardPage() {
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
-  const [debugUrl, setDebugUrl] = useState<string | null>(null);
+  const [debugRegisterUrl, setDebugRegisterUrl] = useState<string | null>(null);
+  const [debugSaveNotebookUrl, setDebugSaveNotebookUrl] = useState<string | null>(null);
   
   const loadEntries = useCallback(async () => {
     if (!user?.id || !db) {
@@ -102,14 +105,20 @@ export default function DashboardPage() {
     }
   }, [user?.id, db, t, toast]);
 
+  const updateDebugUrls = useCallback(() => {
+    if (typeof window !== 'undefined') {
+        setDebugRegisterUrl(sessionStorage.getItem(DEBUG_REGISTER_FETCH_URL_KEY));
+        setDebugSaveNotebookUrl(sessionStorage.getItem(DEBUG_SAVE_NOTEBOOK_URL_KEY));
+    }
+  }, []);
+
+
   useEffect(() => {
     setIsClient(true);
-    if (typeof window !== 'undefined') {
-        const storedDebugUrl = sessionStorage.getItem(DEBUG_REGISTER_FETCH_URL_KEY);
-        if (storedDebugUrl) {
-            setDebugUrl(storedDebugUrl);
-        }
-    }
+    updateDebugUrls();
+    
+    window.addEventListener('notebook-save-url-updated', updateDebugUrls);
+
     if (user?.id && db) {
       loadEntries();
       const assessmentHistory = getAssessmentHistory();
@@ -122,7 +131,11 @@ export default function DashboardPage() {
      if (user && user.id && !user.ageRange && db) { 
       fetchUserProfile(user.id);
     }
-  }, [user, fetchUserProfile, loadEntries, db]);
+
+    return () => {
+        window.removeEventListener('notebook-save-url-updated', updateDebugUrls);
+    };
+  }, [user, fetchUserProfile, loadEntries, db, updateDebugUrls]);
 
 
   const chartData = useMemo(() => {
@@ -225,7 +238,7 @@ export default function DashboardPage() {
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
 
-       {debugUrl && (
+       {debugRegisterUrl && (
         <Card className="shadow-md border-amber-500 bg-amber-50 dark:bg-amber-900/30">
           <CardHeader>
             <CardTitle className="text-lg text-amber-700 dark:text-amber-300 flex items-center">
@@ -235,10 +248,29 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-xs text-muted-foreground mb-2">
-              Esta es la URL que se utilizó para enviar los datos de tu perfil al sistema antiguo durante el registro. Puedes copiarla y pegarla en una nueva pestaña del navegador para ver la respuesta directa de la API.
+              URL utilizada para enviar los datos de perfil al sistema antiguo durante el registro.
             </p>
             <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
-              <code>{debugUrl}</code>
+              <code>{debugRegisterUrl}</code>
+            </pre>
+          </CardContent>
+        </Card>
+      )}
+
+      {debugSaveNotebookUrl && (
+        <Card className="shadow-md border-blue-500 bg-blue-50 dark:bg-blue-900/30">
+          <CardHeader>
+            <CardTitle className="text-lg text-blue-700 dark:text-blue-300 flex items-center">
+              <FileJson className="mr-2 h-5 w-5" />
+              Información de Depuración (Guardar Cuaderno)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-muted-foreground mb-2">
+              Última URL utilizada para guardar una entrada del cuaderno en el sistema antiguo.
+            </p>
+            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
+              <code>{debugSaveNotebookUrl}</code>
             </pre>
           </CardContent>
         </Card>
