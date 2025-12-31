@@ -6,7 +6,7 @@ import { t } from '@/lib/translations';
 
 // La URL de la API ahora apunta a nuestra ruta interna
 const API_PROXY_URL = "/api/save-assessment"; 
-const API_SAVE_TIMEOUT_MS = 20000; // Aumentamos un poco el timeout
+const API_SAVE_TIMEOUT_MS = 35000; // Aumentamos el timeout a 35 segundos
 
 interface AssessmentSavePayload {
   assessmentId: string;
