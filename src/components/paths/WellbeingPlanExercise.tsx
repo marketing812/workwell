@@ -12,6 +12,7 @@ import { Edit3, Save, CheckCircle, NotebookText, AlertCircle, Sparkles, Heart, Z
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { WellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface WellbeingPlanExerciseProps {
   content: WellbeingPlanExerciseContent;
@@ -113,6 +114,7 @@ const planSections = {
 
 export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [selections, setSelections] = useState<Record<string, boolean>>({});
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [isSaved, setIsSaved] = useState(false);
@@ -161,6 +163,7 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
       title: content.title,
       content: notebookContent,
       pathId: 'gestion-estres',
+      userId: user?.id,
     });
 
     toast({
@@ -254,5 +257,3 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
     </Card>
   );
 }
-
-    

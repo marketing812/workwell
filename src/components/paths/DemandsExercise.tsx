@@ -12,6 +12,7 @@ import { useTranslations } from '@/lib/translations';
 import { Edit3, Save, CheckCircle, NotebookText } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DemandsExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface DemandsExerciseProps {
   content: DemandsExerciseContent;
@@ -29,6 +30,7 @@ const originOptions = [
 export function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
 
   const [demand, setDemand] = useState('');
   const [origins, setOrigins] = useState<Record<string, boolean>>({});
@@ -55,6 +57,14 @@ export function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
       });
       return;
     }
+    
+    addNotebookEntry({
+      title: `Registro: ${content.title}`,
+      content: `Exigencia: ${demand}\nConsecuencias: ${consequences}\nNecesidad real: ${realNeed}`,
+      pathId: 'gestion-estres',
+      userId: user?.id,
+    });
+    
     toast({
       title: "Ejercicio Guardado",
       description: "Tu registro de 'Exigencias vs. Deseos' ha sido guardado.",
@@ -73,6 +83,7 @@ export function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
       title: `Reflexión: ${content.title}`,
       content: `**¿Qué exigencias me están pesando más? ¿Cómo puedo transformarlas en necesidades reales que sí quiero cuidar?**\n\n${reflection}`,
       pathId: 'gestion-estres',
+      userId: user?.id,
     });
     toast({
       title: "Reflexión Guardada",

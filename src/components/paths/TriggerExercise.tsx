@@ -8,16 +8,15 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from '@/lib/translations';
 import { Edit3, Save, CheckCircle, NotebookText, Compass } from 'lucide-react';
 import { emotions } from '@/components/dashboard/EmotionalEntryForm';
 import type { TriggerExerciseContent } from '@/data/paths/pathTypes';
-import { Separator } from '../ui/separator';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
+import { useUser } from '@/contexts/UserContext';
 
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
@@ -27,6 +26,7 @@ interface TriggerExerciseProps {
 export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
 
   const [emotion, setEmotion] = useState('');
   const [situation, setSituation] = useState('');
@@ -60,13 +60,20 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
       return;
     }
     
+    addNotebookEntry({
+        title: 'Registro de Disparador',
+        content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}`,
+        pathId: 'gestion-estres',
+        userId: user?.id,
+    });
+    
     toast({
       title: "Ejercicio Guardado",
       description: "Tu registro de 'Identifica tu disparador' ha sido guardado exitosamente.",
     });
     
     setIsSaved(true);
-    onComplete(); // Llama a la función para marcar el módulo como completado
+    onComplete();
   };
   
   const handleSaveReflection = (e: FormEvent) => {
@@ -96,7 +103,8 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
     addNotebookEntry({
         title: `Reflexión: ${content.title}`,
         content: reflectionEntry,
-        pathId: 'gestion-estres', // Hardcoded for now, could be dynamic
+        pathId: 'gestion-estres',
+        userId: user?.id,
     });
 
     toast({
