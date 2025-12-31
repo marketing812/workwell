@@ -1,3 +1,4 @@
+
 "use server";
 
 import { emotionalChatbot, type EmotionalChatbotInput, type EmotionalChatbotOutput } from '@/ai/flows/emotional-chatbot';
@@ -6,6 +7,7 @@ import { z } from 'zod';
 const chatbotMessageSchema = z.object({
   message: z.string().min(1, "El mensaje no puede estar vacío."),
   context: z.string().optional(),
+  userName: z.string().optional(),
 });
 
 export type ServerChatbotResult =
@@ -13,7 +15,7 @@ export type ServerChatbotResult =
   | { success: false; error: string };
 
 export async function sendMessageToChatbot(
-  userInput: { message: string; context?: string }
+  userInput: { message: string; context?: string; userName?: string }
 ): Promise<ServerChatbotResult> {
   try {
     const validatedInput = chatbotMessageSchema.parse(userInput);
@@ -21,6 +23,7 @@ export async function sendMessageToChatbot(
     const input: EmotionalChatbotInput = {
       message: validatedInput.message,
       context: validatedInput.context,
+      userName: validatedInput.userName,
     };
 
     const result = await emotionalChatbot(input);
