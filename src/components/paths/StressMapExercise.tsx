@@ -12,8 +12,9 @@ import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from '@/lib/translations';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { emotions } from '@/components/dashboard/EmotionalEntryForm';
-import { addEmotionalEntry } from '@/data/emotionalEntriesStore';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StressMapExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
@@ -23,6 +24,7 @@ interface StressMapExerciseProps {
 export function StressMapExercise({ content, onComplete }: StressMapExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
 
   const [situation, setSituation] = useState('');
   const [thoughts, setThoughts] = useState('');
@@ -30,7 +32,7 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
   const [emotionIntensity, setEmotionIntensity] = useState(50);
   const [physicalReactions, setPhysicalReactions] = useState('');
   const [responseAction, setResponseAction] = useState('');
-  const [reflections, setReflections] = useState(''); // Nuevo estado para reflexiones
+  const [reflections, setReflections] = useState('');
   const [isSaved, setIsSaved] = useState(false);
   const audioUrl = "https://workwellfut.com/audios/r1_desc/Tecnica-1-mapa-del-estres-personal.mp3";
 
@@ -47,13 +49,11 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
       return;
     }
     
-    // For simplicity, we can save the main emotion and situation to the existing emotional log.
-    // The full context can be saved to a different store or extended in the future.
-    addEmotionalEntry({
-      situation: situation,
-      thought: thoughts, // Asegurarse de que el thought se guarda
-      emotion: selectedEmotion,
-      // You could extend the store to save intensity, thoughts, etc.
+    addNotebookEntry({
+      title: 'Mapa del Estrés Personal',
+      content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmoción: ${selectedEmotion} (${emotionIntensity}%)\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
+      pathId: 'gestion-estres',
+      userId: user?.id
     });
 
     toast({
