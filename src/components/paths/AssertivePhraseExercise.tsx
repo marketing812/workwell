@@ -15,11 +15,12 @@ import { useUser } from '@/contexts/UserContext';
 interface AssertivePhraseExerciseProps {
   content: AssertivePhraseExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const steps = ['intro', 'step1', 'step2', 'step3', 'step4', 'summary'];
 
-export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExerciseProps) {
+export function AssertivePhraseExercise({ content, pathId, onComplete }: AssertivePhraseExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   
@@ -94,6 +95,7 @@ export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExer
       title: "Frase Guardada",
       description: "Tu frase asertiva se ha guardado en el Cuaderno Terapéutico.",
     });
+    onComplete(); // Marcar módulo como completado al guardar
   };
 
   const renderStep = () => {
