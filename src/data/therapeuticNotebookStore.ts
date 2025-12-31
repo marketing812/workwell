@@ -3,7 +3,7 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { sendLegacyNotebookEntry } from './userUtils';
+// No importamos sendLegacyNotebookEntry porque ahora se llamará a una API interna
 
 export interface NotebookEntry {
   id: string;
@@ -11,11 +11,32 @@ export interface NotebookEntry {
   title: string; // e.g., "Reflexión: Identifica tu disparador"
   content: string; // The user's full written reflection
   pathId?: string; // Optional: ID of the path this reflection is associated with
-  ruta?: string; // NEW: The name of the path (route)
+  ruta?: string; // The name of the path (route)
 }
 
 const NOTEBOOK_ENTRIES_KEY = "workwell-therapeutic-notebook";
 const MAX_NOTEBOOK_ENTRIES = 100;
+const API_PROXY_URL = "/api/save-notebook-entry"; // Nueva ruta de API interna
+
+async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
+    try {
+        console.log(`Syncing notebook entry for user ${userId} via internal API proxy...`);
+        const response = await fetch(API_PROXY_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, entryData: entry }),
+        });
+
+        if (!response.ok) {
+            const errorResult = await response.json();
+            console.error(`Legacy notebook sync failed with status: ${response.status}.`, errorResult);
+        } else {
+            console.log(`Legacy notebook entry sync for user '${userId}' initiated successfully via proxy.`);
+        }
+    } catch (error) {
+        console.error("Error calling internal notebook sync API:", error);
+    }
+}
 
 
 export function getNotebookEntries(): NotebookEntry[] {
@@ -40,7 +61,6 @@ export function getNotebookEntryById(id: string): NotebookEntry | undefined {
 export function addNotebookEntry(
   newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'> & { userId?: string }
 ): NotebookEntry {
-  // IMPORTANT: This function now handles both local storage and external sync.
   const { userId, ...entryData } = newEntryData;
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
@@ -48,6 +68,7 @@ export function addNotebookEntry(
     ...entryData,
   };
 
+  // Guardado local inmediato
   try {
     if (typeof window !== "undefined") {
       const currentEntries = getNotebookEntries();
@@ -59,12 +80,9 @@ export function addNotebookEntry(
     console.error("Error saving notebook entry to localStorage:", error);
   }
 
-  // Also send to the external service if userId is provided
+  // Sincronización con el servidor externo a través de la API interna
   if (userId) {
-    console.log("Syncing notebook entry with external service for user:", userId);
-    sendLegacyNotebookEntry(userId, newEntry).catch(error => {
-      console.error("Failed to sync notebook entry with external service:", error);
-    });
+    syncNotebookEntryWithServer(userId, newEntry);
   } else {
     console.warn("addNotebookEntry: userId not provided, skipping external sync.");
   }
