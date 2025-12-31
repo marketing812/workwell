@@ -33,10 +33,13 @@ export interface User {
 interface UserContextType {
   user: User | null;
   loading: boolean;
+  notebookEntries: NotebookEntry[];
+  isNotebookLoading: boolean;
   logout: () => void;
   updateUser: (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => Promise<void>;
   fetchUserProfile: (userId: string) => Promise<void>;
   deleteUserAccount: () => Promise<{ success: boolean; error?: string }>;
+  fetchAndSetNotebook: (userId: string) => Promise<void>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -78,10 +81,25 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [notebookEntries, setNotebookEntries] = useState<NotebookEntry[]>([]);
+  const [isNotebookLoading, setIsNotebookLoading] = useState(false);
   const router = useRouter();
   const auth = useAuth();
   const db = useFirestore();
   const { toast } = useToast();
+
+  const fetchAndSetNotebook = useCallback(async (userId: string) => {
+    if (!userId) return;
+    setIsNotebookLoading(true);
+    const { entries, debugUrl } = await fetchNotebook(userId);
+    overwriteNotebookEntries(entries);
+    setNotebookEntries(entries); // Actualizar el estado del contexto
+    if (typeof window !== 'undefined') {
+        sessionStorage.setItem(DEBUG_NOTEBOOK_FETCH_URL_KEY, debugUrl);
+        window.dispatchEvent(new Event('notebook-url-updated'));
+    }
+    setIsNotebookLoading(false);
+  }, []);
 
   const fetchUserProfile = useCallback(async (userId: string) => {
     if (!db || !userId) return;
@@ -128,24 +146,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
           };
           setUser(minimalUser);
           await fetchUserProfile(fbUser.uid);
-          
-          // Fetch and sync notebook entries
-          const { entries, debugUrl } = await fetchNotebook(fbUser.uid);
-          overwriteNotebookEntries(entries);
-          if (typeof window !== 'undefined') {
-            sessionStorage.setItem(DEBUG_NOTEBOOK_FETCH_URL_KEY, debugUrl);
-            window.dispatchEvent(new Event('notebook-url-updated'));
-          }
+          await fetchAndSetNotebook(fbUser.uid);
 
       } else {
         setUser(null);
+        setNotebookEntries([]); // Limpiar entradas al cerrar sesión
         setLoading(false);
       }
     });
 
     return () => unsubscribe();
     
-  }, [auth, db, fetchUserProfile]);
+  }, [auth, db, fetchUserProfile, fetchAndSetNotebook]);
 
 
   const logout = useCallback(async () => {
@@ -153,6 +165,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
+      setNotebookEntries([]);
       if (typeof window !== 'undefined') {
         localStorage.clear();
         sessionStorage.clear();
@@ -253,7 +266,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [auth, db, logout, toast, t]);
 
   return (
-    <UserContext.Provider value={{ user, loading, logout, updateUser, fetchUserProfile, deleteUserAccount }}>
+    <UserContext.Provider value={{ user, loading, logout, updateUser, fetchUserProfile, deleteUserAccount, notebookEntries, fetchAndSetNotebook, isNotebookLoading }}>
       {children}
     </UserContext.Provider>
   );
