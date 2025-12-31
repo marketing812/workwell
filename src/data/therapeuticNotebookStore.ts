@@ -3,6 +3,7 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { sendLegacyNotebookEntry } from './userUtils';
 
 export interface NotebookEntry {
   id: string;
@@ -36,16 +37,14 @@ export function getNotebookEntryById(id: string): NotebookEntry | undefined {
   return entries.find(entry => entry.id === id);
 }
 
-export function addNotebookEntry(newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'>): NotebookEntry {
-  // CLARIFICATION: This function saves the notebook entry ONLY to the browser's localStorage.
-  // It does NOT make any external web service call to an endpoint like "guardarcuaderno".
-  // The therapeutic notebook is currently a local-only, private feature.
-  // A previous version of the app might have included this call, but it has been removed
-  // in favor of local, private storage for user reflections.
+export function addNotebookEntry(
+  newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'> & { userId?: string }
+): NotebookEntry {
+  const { userId, ...entryData } = newEntryData;
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
     timestamp: new Date().toISOString(),
-    ...newEntryData,
+    ...entryData,
   };
 
   try {
@@ -53,14 +52,24 @@ export function addNotebookEntry(newEntryData: Omit<NotebookEntry, 'id' | 'times
       const currentEntries = getNotebookEntries();
       const updatedEntries = [newEntry, ...currentEntries].slice(0, MAX_NOTEBOOK_ENTRIES);
       localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(updatedEntries));
-      // Dispatch a custom event to notify other parts of the app that the notebook has been updated.
-      window.dispatchEvent(new Event('notebook-updated'));
+      window.dispatchEvent(new CustomEvent('notebook-updated'));
     }
   } catch (error) {
     console.error("Error saving notebook entry to localStorage:", error);
   }
+
+  // Also send to the external service if userId is provided
+  if (userId) {
+    sendLegacyNotebookEntry(userId, newEntry).catch(error => {
+      console.error("Failed to sync notebook entry with external service:", error);
+    });
+  } else {
+    console.warn("addNotebookEntry: userId not provided, skipping external sync.");
+  }
+
   return newEntry;
 }
+
 
 export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
   if (typeof window === "undefined") return;

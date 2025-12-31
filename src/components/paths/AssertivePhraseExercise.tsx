@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AssertivePhraseExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface AssertivePhraseExerciseProps {
   content: AssertivePhraseExerciseContent;
@@ -20,39 +21,46 @@ const steps = ['intro', 'step1', 'step2', 'step3', 'step4', 'summary'];
 
 export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [currentStep, setCurrentStep] = useState(0);
   const [fact, setFact] = useState('');
   const [feeling, setFeeling] = useState('');
   const [need, setNeed] = useState('');
   const [request, setRequest] = useState('');
+  const [isClient, setIsClient] = useState(false);
   
   const storageKey = `exercise-progress-${pathId}-assertivePhrase`;
 
   useEffect(() => {
-    try {
-      const savedState = localStorage.getItem(storageKey);
-      if (savedState) {
-        const data = JSON.parse(savedState);
-        setCurrentStep(data.currentStep || 0);
-        setFact(data.fact || '');
-        setFeeling(data.feeling || '');
-        setNeed(data.need || '');
-        setRequest(data.request || '');
-      }
-    } catch (error) {
-      console.error("Error loading exercise state:", error);
+    setIsClient(true);
+    if (typeof window !== 'undefined') {
+        try {
+        const savedState = localStorage.getItem(storageKey);
+        if (savedState) {
+            const data = JSON.parse(savedState);
+            setCurrentStep(data.currentStep || 0);
+            setFact(data.fact || '');
+            setFeeling(data.feeling || '');
+            setNeed(data.need || '');
+            setRequest(data.request || '');
+        }
+        } catch (error) {
+        console.error("Error loading exercise state:", error);
+        }
     }
   }, [storageKey]);
 
   useEffect(() => {
-    try {
-      const stateToSave = { currentStep, fact, feeling, need, request };
-      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
-    } catch (error) {
-      console.error("Error saving exercise state:", error);
+    if (isClient) {
+        try {
+            const stateToSave = { currentStep, fact, feeling, need, request };
+            localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+        } catch (error) {
+            console.error("Error saving exercise state:", error);
+        }
     }
-  }, [currentStep, fact, feeling, need, request, storageKey]);
+  }, [currentStep, fact, feeling, need, request, storageKey, isClient]);
 
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
@@ -79,6 +87,7 @@ export function AssertivePhraseExercise({ content, pathId }: AssertivePhraseExer
       title: "Mi Frase Asertiva en 4 Pasos",
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id
     });
 
     toast({
