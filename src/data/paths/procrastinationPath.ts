@@ -66,10 +66,10 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
           content: [
             { type: 'list', items: [
-                'La procrastinación es una forma de calmar emociones incómodas.',
-                'El alivio que ofrece es breve, pero refuerza el problema.',
-                'Comprenderla es el primer paso para transformarla.',
-                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez.'
+                'La procrastinación es una forma de calmar emociones incómodas',
+                'El alivio que ofrece es breve, pero refuerza el problema',
+                'Comprenderla es el primer paso para transformarla',
+                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez',
             ]}
           ]
         },
@@ -136,6 +136,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Tu cerebro necesita arrancar',
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Tucerebronecesitaarrancar.mp3',
               content: [{ type: 'paragraph', text: 'Imagina que estás en una cuesta arriba con una bicicleta parada. Al principio, moverla parece imposible. Pero si logras impulsarla un poco… empieza a rodar. Tu mente funciona igual. Cuando estás bloqueado o bloqueada, lo difícil no es continuar: lo difícil es arrancar. Y por eso, necesitas un impulso inicial que rompa la inercia. No tienes que tener todo resuelto para empezar. Solo tienes que dar el primer paso.' }],
           },
           {
@@ -386,5 +387,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
