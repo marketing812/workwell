@@ -57,8 +57,8 @@ export const procrastinationPath: Path = {
           title: 'No siempre es miedo: a veces es agotamiento',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Nosiempreesmiedoavecesesagotamiento.mp3',
           content: [
-            { type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' },
-          ],
+            { type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -69,7 +69,7 @@ export const procrastinationPath: Path = {
                 'La procrastinación es una forma de calmar emociones incómodas',
                 'El alivio que ofrece es breve, pero refuerza el problema',
                 'Comprenderla es el primer paso para transformarla',
-                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez',
+                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez'
             ]}
           ]
         },
@@ -142,7 +142,7 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Microcomienzos: la clave para romper la inercia',
-              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3",
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
               content: [
                   { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
                   { type: 'list', items: [
@@ -157,13 +157,13 @@ export const procrastinationPath: Path = {
           {
               type: 'collapsible',
               title: 'Cada paso es una prueba de identidad',
-              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3",
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
               content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
           },
            {
               type: 'collapsible',
               title: 'Planificar con intención (no con presión)',
-              audioUrl: "https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3",
+              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
               content: [{ type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
               { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
               { type: 'list', items: [
@@ -220,7 +220,7 @@ export const procrastinationPath: Path = {
       content: [
           { 
             type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.\nTe proponemos un momento para integrar lo que has trabajado.',
+            text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
           },
           { type: 'title', text: 'Psicoeducación' },
@@ -288,7 +288,7 @@ export const procrastinationPath: Path = {
             type: 'therapeuticNotebookReflection', 
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
-            prompts: ['¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?']
+            prompts: ['Te proponemos un momento para integrar lo que has trabajado.', '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?']
           },
           { 
             type: 'title', 
@@ -389,3 +389,4 @@ export const procrastinationPath: Path = {
 };
 
     
+
