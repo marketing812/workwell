@@ -279,6 +279,7 @@ function TherapeuticNotebookReflectionExercise({
       return;
     }
     
+    // Combine title and prompts into a single content block for the notebook
     const fullContent = `
 **${content.title}**
 
@@ -302,6 +303,10 @@ ${reflection}
     setIsSaved(true);
     onComplete();
   };
+  
+  // Custom rendering logic for prompts
+  const firstPrompt = content.prompts.length > 0 ? content.prompts[0] : '';
+  const listPrompts = content.prompts.slice(1);
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -322,12 +327,14 @@ ${reflection}
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            {content.prompts.map((prompt, index) => (
-              <p key={index} className="text-sm text-foreground/80 italic">
-                {' '}
-                • {prompt}
-              </p>
-            ))}
+            {firstPrompt && <p className="text-sm text-foreground/80 italic">{firstPrompt}</p>}
+            {listPrompts.length > 0 && (
+              <ul className="list-disc list-inside pl-4 space-y-1">
+                {listPrompts.map((prompt, index) => (
+                   <li key={index} className="text-sm text-foreground/80 italic">{prompt}</li>
+                ))}
+              </ul>
+            )}
             <Label htmlFor={`reflection-${pathId}`} className="sr-only">
               Tu reflexión
             </Label>
@@ -495,9 +502,9 @@ function ContentItemRenderer({
     case 'controlTrafficLightExercise':
       return <ControlTrafficLightExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'alternativeStoriesExercise':
-      return <AlternativeStoriesExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <AlternativeStoriesExercise key={index} content={contentItem as any} onComplete={handleComplete} />;
     case 'mantraExercise':
-      return <MantraExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <MantraExercise key={index} content={contentItem as any} onComplete={handleComplete} />;
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
