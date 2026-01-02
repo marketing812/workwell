@@ -60,6 +60,19 @@ export const procrastinationPath: Path = {
             { type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' },
           ],
         },
+        {
+          type: 'collapsible',
+          title: 'En resumen',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
+          content: [
+            { type: 'list', items: [
+                'La procrastinación es una forma de calmar emociones incómodas.',
+                'El alivio que ofrece es breve, pero refuerza el problema.',
+                'Comprenderla es el primer paso para transformarla.',
+                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez.'
+            ]}
+          ]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'blockageMapExercise',
