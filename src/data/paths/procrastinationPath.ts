@@ -193,7 +193,7 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana: Rompe el Ciclo',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
             prompts: [
-              'Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte.',
+              'Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte',
               '¿Qué he podido activar?',
               '¿Cómo me sentí después?',
               '¿Qué descubrí sobre mí?',
@@ -387,3 +387,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
