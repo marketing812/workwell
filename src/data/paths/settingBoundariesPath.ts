@@ -88,20 +88,18 @@ export const settingBoundariesPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA PARA TU CUADERNO',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
           prompts: [
-            'Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz.',
-            'Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado.',
-            '✍️ Escribe con sinceridad:',
-            '¿Qué he descubierto sobre mí a lo largo de esta ruta?',
-            '¿Qué tipo de relaciones deseo seguir construyendo desde ahora?',
-            '¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?',
-            '¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?',
-            '¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?',
-            'No importa si las respuestas son claras o confusas. Lo importante es que te escuches… y te trates con la misma firmeza amorosa que has empezado a cultivar.',
+            'Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz.\nAhora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado.\nEscribe con honestidad y sin exigencias:',
+            'Preguntas para tu cuaderno emocional:',
+            '• ¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
+            '• ¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
+            '• ¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
+            '• ¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
+            '• ¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
           ]
         },
         {
           type: 'title',
-          text: 'RESUMEN POR PUNTOS CLAVE DE TODA LA RUTA',
+          text: 'RESUMEN FINAL DE LA RUTA',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Resumenfinalruta4.mp3'
         },
         {
