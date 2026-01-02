@@ -127,13 +127,13 @@ export const empathyPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA PARA TU CUADERNO',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
-            'Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz.\nAhora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado.\nEscribe con honestidad y sin exigencias:',
+            'Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:',
             'Preguntas para tu cuaderno emocional:',
-            '• ¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
-            '• ¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
-            '• ¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
-            '• ¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
-            '• ¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
+            '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? ',
+            '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?',
+            '¿Qué quiero empezar a hacer diferente en mis relaciones?',
+            '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?',
+            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?',
           ]
         },
         {
@@ -163,4 +163,5 @@ export const empathyPath: Path = {
     
 
     
+
 
