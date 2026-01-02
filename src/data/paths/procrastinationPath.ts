@@ -56,22 +56,13 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'No siempre es miedo: a veces es agotamiento',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Nosiempreesmiedoavecesesagotamiento.mp3',
-          content: [
-            { type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' }
-          ]
+          content: [{ type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' }]
         },
         {
           type: 'collapsible',
           title: 'En resumen',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
-          content: [
-            { type: 'list', items: [
-                'La procrastinación es una forma de calmar emociones incómodas',
-                'El alivio que ofrece es breve, pero refuerza el problema',
-                'Comprenderla es el primer paso para transformarla',
-                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez'
-            ]}
-          ]
+          content: [{ type: 'list', items: ['La procrastinación es una forma de calmar emociones incómodas','El alivio que ofrece es breve, pero refuerza el problema','Comprenderla es el primer paso para transformarla','No se trata de hacerlo perfecto, sino de empezar. Una y otra vez'] }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -288,7 +279,11 @@ export const procrastinationPath: Path = {
             type: 'therapeuticNotebookReflection', 
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
-            prompts: ['Te proponemos un momento para integrar lo que has trabajado.', '¿Qué frases me sabotean más? ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?']
+            prompts: [
+                'Te proponemos un momento para integrar lo que has trabajado.',
+                '• ¿Qué frases me sabotean más?',
+                '• ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
+            ]
           },
           { 
             type: 'title', 
@@ -389,4 +384,5 @@ export const procrastinationPath: Path = {
 };
 
     
+
 
