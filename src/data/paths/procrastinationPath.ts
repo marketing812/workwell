@@ -220,8 +220,8 @@ export const procrastinationPath: Path = {
       content: [
           { 
             type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'
+            text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.\nTe proponemos un momento para integrar lo que has trabajado.',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
           },
           { type: 'title', text: 'Psicoeducación' },
           {
