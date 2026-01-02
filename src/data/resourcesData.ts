@@ -39,9 +39,9 @@ const API_BASE_URL = "https://workwellfut.com/wp-json/wp/v2";
  * Si falla, devuelve un array vacío en lugar de lanzar un error.
  */
 export async function getResourceCategories(): Promise<ResourceCategory[]> {
-    noStore(); // Asegura que los datos se obtienen dinámicamente en cada petición en modo desarrollo
+    noStore(); // Asegura que los datos se obtienen dinámicamente en cada petición
     try {
-        const res = await fetch(`${API_BASE_URL}/categories?per_page=100&_fields=id,name,slug,count`, { next: { revalidate: 3600 } }); // Cache por 1 hora
+        const res = await fetch(`${API_BASE_URL}/categories?per_page=100&_fields=id,name,slug,count`, { cache: 'no-store' });
         if (!res.ok) {
             console.error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
             return []; // Devuelve array vacío en caso de error de red o de API
@@ -62,7 +62,7 @@ export async function getResourceCategories(): Promise<ResourceCategory[]> {
 export async function getResources(): Promise<ResourcePost[]> {
     noStore();
     try {
-        const res = await fetch(`${API_BASE_URL}/posts?per_page=100&_embed&_fields=id,slug,title,excerpt,content,date,categories,featured_media,_embedded`, { next: { revalidate: 3600 } });
+        const res = await fetch(`${API_BASE_URL}/posts?per_page=100&_embed&_fields=id,slug,title,excerpt,content,date,categories,featured_media,_embedded`, { cache: 'no-store' });
         if (!res.ok) {
              console.error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
             return [];
@@ -100,7 +100,7 @@ export async function getPostsByCategory(categorySlug: string): Promise<Resource
 export async function getPostBySlug(slug: string): Promise<ResourcePost | null> {
     noStore();
      try {
-        const res = await fetch(`${API_BASE_URL}/posts?slug=${slug}&_embed&_fields=id,slug,title,excerpt,content,date,categories,featured_media,_embedded`, { next: { revalidate: 3600 } });
+        const res = await fetch(`${API_BASE_URL}/posts?slug=${slug}&_embed&_fields=id,slug,title,excerpt,content,date,categories,featured_media,_embedded`, { cache: 'no-store' });
         if (!res.ok) {
              console.error(`Failed to fetch post by slug ${slug}: ${res.status} ${res.statusText}`);
              return null;

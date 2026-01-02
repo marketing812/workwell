@@ -5,44 +5,61 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
 import { type ResourceCategory } from '@/data/resourcesData';
-import { ArrowRight, BookOpen, AlertTriangle, Loader2 } from 'lucide-react';
+import { ArrowRight, BookOpen, AlertTriangle, Loader2, RefreshCw } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function ResourcesPage() {
   const t = useTranslations();
+  const router = useRouter();
   const [categories, setCategories] = useState<ResourceCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = await fetch('/api/resources');
-        if (!res.ok) {
-          throw new Error('No se pudieron cargar las categorías');
-        }
-        const data = await res.json();
-        setCategories(data);
-      } catch (e: any) {
-        setError(e.message || "Error al cargar datos.");
-        console.error(e);
-      } finally {
-        setLoading(false);
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/resources');
+      if (!res.ok) {
+        throw new Error('No se pudieron cargar las categorías');
       }
+      const data = await res.json();
+      setCategories(data);
+    } catch (e: any) {
+      setError(e.message || "Error al cargar datos.");
+      console.error(e);
+    } finally {
+      setLoading(false);
     }
-    fetchData();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  
+  const handleRefresh = () => {
+    // Simplemente volvemos a llamar a fetchData, que ya tiene noStore
+    fetchData();
+  };
+
 
   return (
     <div className="container mx-auto py-8">
-      <div className="text-center mb-12">
+      <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-primary mb-4">{t.resourcesTitle}</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           {t.resourcesIntro}
         </p>
+      </div>
+
+       <div className="mb-8 text-center">
+        <Button onClick={handleRefresh} variant="outline" disabled={loading}>
+          <RefreshCw className={`mr-2 h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+          Refrescar Recursos
+        </Button>
       </div>
 
       {loading && (
