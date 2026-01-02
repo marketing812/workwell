@@ -66,8 +66,7 @@ export const settingBoundariesPath: Path = {
       title: 'Semana 4: Construye Relaciones más Honestas',
       type: 'summary',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3' },
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Qué pasa cuando empiezo a poner límites?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion4.mp3', content: [{ type: 'paragraph', text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.' }] },
         { type: 'collapsible', title: '¿Actúo desde mi verdad o para evitar el malestar del otro?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3', content: [{ type: 'paragraph', text: 'Muchas veces, actuamos con buena intención… pero desde el miedo. Miedo a que el otro se enfade, se aleje o deje de querernos. Y ese miedo puede llevarte a silenciarte o a sostener más de lo que puedes. Esta pantalla te invita a hacer una pausa honesta: ¿te estás eligiendo, o estás eligiendo agradar?\nUna pregunta clave esta semana es:\n¿Estoy siendo yo… o estoy actuando para evitar el malestar del otro?\nLa complacencia a veces se disfraza de amabilidad, pero muchas veces nace del miedo:\n•\tMiedo al enfado del otro.\n•\tMiedo al conflicto.\n•\tMiedo a que me dejen de querer.\nCuando actúas desde ese lugar, tus relaciones pierden autenticidad… y tú te desgastas.\nEn cambio, cuando te expresas con firmeza y cuidado, fortaleces la confianza en ti… y das al otro la oportunidad de responder desde la suya.' }] },
@@ -88,13 +87,13 @@ export const settingBoundariesPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA PARA TU CUADERNO',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
           prompts: [
-            "Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:",
-            'Preguntas para tu cuaderno emocional:',
-            '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
-            '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
-            '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
-            '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
-            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
+            "Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz.\nAhora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado.\nEscribe con honestidad y sin exigencias:",
+            "Preguntas para tu cuaderno emocional:",
+            "¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]",
+            "¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]",
+            "¿Qué quiero empezar a hacer diferente en mis relaciones? […]",
+            "¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]",
+            "¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]"
           ]
         },
         {
