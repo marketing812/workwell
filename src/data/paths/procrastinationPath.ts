@@ -94,7 +94,7 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
             '¿Qué emociones intento evitar cuando postergo?',
-            'Lo que siento no me define, pero observarlo me transforma.',
+            'Lo que siento no me define, pero observarlo me transforma',
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -386,3 +386,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
