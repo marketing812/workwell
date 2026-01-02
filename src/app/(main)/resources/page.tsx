@@ -41,8 +41,16 @@ export default function ResourcesPage() {
   }, [fetchData]);
   
   const handleRefresh = () => {
-    // Simplemente volvemos a llamar a fetchData, que ya tiene noStore
-    fetchData();
+    // router.refresh() le dice a Next.js que vuelva a buscar los datos
+    // para esta página en el servidor, invalidando la caché para esta visita.
+    setLoading(true);
+    router.refresh();
+    // Volvemos a llamar a fetchData para actualizar el estado del componente
+    // una vez que los nuevos datos estén disponibles tras el refresh.
+    // Damos un pequeño margen para que el refresh del servidor se complete.
+    setTimeout(() => {
+       fetchData();
+    }, 500);
   };
 
 
