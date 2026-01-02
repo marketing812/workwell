@@ -280,9 +280,9 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
             prompts: [
-                'Te proponemos un momento para integrar lo que has trabajado.',
-                '• ¿Qué frases me sabotean más?',
-                '• ¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
+              'Te proponemos un momento para integrar lo que has trabajado.',
+              '¿Qué frases me sabotean más?',
+              '¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
             ]
           },
           { 
@@ -386,3 +386,6 @@ export const procrastinationPath: Path = {
     
 
 
+
+
+    
