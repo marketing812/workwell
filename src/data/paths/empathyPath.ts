@@ -36,7 +36,7 @@ export const empathyPath: Path = {
         { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Antes de tener una conversación importante, ¿te detienes a escucharte o vas directo a complacer, defenderte o evitar el malestar? Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: ['¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?', '¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?', '¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?', '¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?', '¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?', '¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?'] },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3' },
-        { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.', 'La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.', 'Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.', 'La autenticidad florece cuando hay espacio seguro creado por la empatía.', 'Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.', 'Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.', 'Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.', 'La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
+        { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.', 'La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.', 'Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.', 'La autenticidad florece cuando hay espacio seguro creado por la empatía.', 'Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.', 'Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.', 'Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.', 'La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
     },
     {
       id: 'empatia_sem2',
@@ -101,11 +101,7 @@ export const empathyPath: Path = {
         },
         {
           type: 'title',
-          text: 'Resumen Clave de la Semana',
-        },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
+          text: 'Resumen Clave',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3',
         },
         {
@@ -115,7 +111,7 @@ export const empathyPath: Path = {
             'Poner límites con firmeza también es una forma de cuidar los vínculos reales.',
             'Una relación segura se basa en respeto mutuo, comunicación clara y presencia emocional.',
             'Es válido elegir con quién te relacionas… y también cómo eliges estar tú en ese vínculo.',
-            'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.',
+            'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.',
           ]
         },
       ]
@@ -131,13 +127,13 @@ export const empathyPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA PARA TU CUADERNO',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
-            'Has llegado al final de un recorrido profundo.\nDurante estas semanas has explorado cómo te vinculas, cómo expresas lo que sientes, cómo pones límites y cómo eliges cuidar los vínculos que realmente importan.\nNo se trata de hacerlo perfecto, sino de hacerlo más consciente.\nTómate un momento para conectar con lo que ha cambiado en ti.\nY para escribir —sin juicio— desde tu verdad actual.',
+            'Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz.\nAhora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado.\nEscribe con honestidad y sin exigencias:',
             'Preguntas para tu cuaderno emocional:',
-            '¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
-            '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
-            '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
-            '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
-            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
+            '• ¿Qué me ha revelado esta ruta sobre mi forma de relacionarme? […]',
+            '• ¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
+            '• ¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
+            '• ¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
+            '• ¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
           ]
         },
         {
@@ -167,3 +163,4 @@ export const empathyPath: Path = {
     
 
     
+
