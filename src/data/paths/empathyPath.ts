@@ -58,7 +58,7 @@ export const empathyPath: Path = {
       type: 'summary',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: 'Esta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         {
             type: 'collapsible',
@@ -84,14 +84,36 @@ export const empathyPath: Path = {
           title: 'EJERCICIO1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
           objective: 'En este ejercicio vas a crear tu propio mapa de apoyo emocional, identificando a esas personas que cumplen tres funciones clave para tu bienestar: te sostienen, te inspiran y respetan tu proceso.',
           duration: '10-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3'
         },
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
           objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', prompts: ['¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?', '¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?', '¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?', '¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?'] },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', 
+          prompts: ['¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?', '¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?', '¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?', '¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?'] 
+        },
+        {
+          type: 'title',
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3',
+        },
+        {
+          type: 'list',
+          items: [
+            'Las relaciones más nutritivas no son perfectas, sino honestas y coherentes.',
+            'Poner límites con firmeza también es una forma de cuidar los vínculos reales.',
+            'Una relación segura se basa en respeto mutuo, comunicación clara y presencia emocional.',
+            'Es válido elegir con quién te relacionas… y también cómo eliges estar tú en ese vínculo.',
+            'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.'
+          ]
+        },
       ]
     },
     {
@@ -102,8 +124,8 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3',
+          title: 'REFLEXIÓN FINAL DE LA RUTA PARA TU CUADERNO',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
             'Has llegado al final de un recorrido profundo.',
             'Durante estas semanas has explorado cómo te vinculas, cómo expresas lo que sientes, cómo pones límites y cómo eliges cuidar los vínculos que realmente importan.',
@@ -115,16 +137,12 @@ export const empathyPath: Path = {
             '¿Qué barreras me he atrevido a cruzar para ser más auténtico/a? […]',
             '¿Qué quiero empezar a hacer diferente en mis relaciones? […]',
             '¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo? […]',
-            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]'
+            '¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy? […]',
           ]
         },
         {
           type: 'title',
           text: 'RESUMEN CLAVE DE LA RUTA',
-        },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/RESUMENRUTA.mp3'
         },
         {
@@ -148,5 +166,4 @@ export const empathyPath: Path = {
 };
     
 
-
-
+    
