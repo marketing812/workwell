@@ -62,7 +62,14 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'En resumen',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
-          content: [{ type: 'list', items: ['La procrastinación es una forma de calmar emociones incómodas','El alivio que ofrece es breve, pero refuerza el problema','Comprenderla es el primer paso para transformarla','No se trata de hacerlo perfecto, sino de empezar. Una y otra vez'] }]
+          content: [
+            { type: 'list', items: [
+                'La procrastinación es una forma de calmar emociones incómodas',
+                'El alivio que ofrece es breve, pero refuerza el problema',
+                'Comprenderla es el primer paso para transformarla',
+                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez',
+            ]}
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -280,7 +287,7 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
             prompts: [
-              'Te proponemos un momento para integrar lo que has trabajado.',
+              'Te proponemos un momento para integrar lo que has trabajado',
               '¿Qué frases me sabotean más?',
               '¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
             ]
@@ -338,6 +345,12 @@ export const procrastinationPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3',
             content: [{ type: 'paragraph', text: 'No pasa nada si fallas un día. Lo importante es que vuelvas al hábito sin culpa ni juicio. Como dice James Clear: “No se trata de no romper la cadena. Se trata de no romperla dos veces seguidas.”' }],
           },
+          {
+            type: 'collapsible',
+            title: 'Tu hábito no tiene que ser perfecto',
+            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Tuhabitonotienequeserperfectosolotienequeestarvivo.mp3',
+            content: [{ type: 'paragraph', text: 'Muchos hábitos fallan porque los diseñamos como si fueran mandatos. Queremos cumplirlos todos los días, sin errores, sin fallos, como si solo sirvieran si se hacen al 100%. Pero <b>un hábito realista y vivo vale más que uno perfecto e inalcanzable</b>.'}]
+          },
           { type: 'title', text: 'Técnicas Específicas' },
           {
             type: 'realisticRitualExercise',
@@ -382,10 +395,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
-
-
-
-
-    
