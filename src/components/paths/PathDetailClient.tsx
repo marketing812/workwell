@@ -279,7 +279,6 @@ function TherapeuticNotebookReflectionExercise({
       return;
     }
     
-    // Combine title and prompts into a single content block for the notebook
     const fullContent = `
 **${content.title}**
 
@@ -304,9 +303,10 @@ ${reflection}
     onComplete();
   };
   
-  // Custom rendering logic for prompts
-  const firstPrompt = content.prompts.length > 0 ? content.prompts[0] : '';
-  const listPrompts = content.prompts.slice(1);
+  const introPrompts = content.prompts.filter(p => !p.startsWith('¿') && p !== 'Preguntas para tu cuaderno emocional:');
+  const questionHeader = content.prompts.find(p => p === 'Preguntas para tu cuaderno emocional:');
+  const questionPrompts = content.prompts.filter(p => p.startsWith('¿'));
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -327,10 +327,13 @@ ${reflection}
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            {firstPrompt && <p className="text-sm text-foreground/80 italic">{firstPrompt}</p>}
-            {listPrompts.length > 0 && (
+            {introPrompts.map((prompt, index) => (
+              <p key={index} className="text-sm text-foreground/80 italic">{prompt}</p>
+            ))}
+            {questionHeader && <p className="text-sm text-foreground/80 italic mt-2">{questionHeader}</p>}
+            {questionPrompts.length > 0 && (
               <ul className="list-disc list-inside pl-4 space-y-1">
-                {listPrompts.map((prompt, index) => (
+                {questionPrompts.map((prompt, index) => (
                    <li key={index} className="text-sm text-foreground/80 italic">{prompt}</li>
                 ))}
               </ul>
