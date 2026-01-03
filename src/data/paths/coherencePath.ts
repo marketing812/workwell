@@ -201,10 +201,10 @@ export const coherencePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3',
           duration: '10-15 min'
         },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión final de la semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3', 
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión final de la semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
           prompts: [
             'Dedica unos minutos a mirar hacia atrás y conectar con lo que has descubierto esta semana. No busques respuestas perfectas, busca honestidad y claridad. ',
             'Preguntas para tu cuaderno emocional:',
@@ -213,18 +213,35 @@ export const coherencePath: Path = {
             '¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia? ',
             '¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación? ',
             'Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo? '
-          ]
+          ],
         },
         { type: 'title', text: 'Resumen semana 4' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3' },
-        { type: 'list', items: [
-          'La coherencia se fortalece cuando la practicas en tu vida real, no solo en teoría. ',
-          'El entorno puede ser un aliado o un obstáculo: observarlo te ayuda a decidir cómo interactuar con él. ',
-          'No se trata de rigidez: la coherencia incluye adaptarse sin traicionarte. ',
-          'Pequeños actos diarios coherentes generan confianza interna y consistencia.',
-          'Revisar, ajustar y perdonarte cuando te desvías es parte del proceso. '
-        ]},
-        { type: 'quote', text: '“Cada vez que eliges actuar en coherencia, aunque nadie más lo vea, siembras respeto por ti mismo/a.”' }
+        {
+          type: 'list',
+          items: [
+            'La coherencia se fortalece cuando la practicas en tu vida real, no solo en teoría.',
+            'El entorno puede ser un aliado o un obstáculo: observarlo te ayuda a decidir cómo interactuar con él.',
+            'No se trata de rigidez: la coherencia incluye adaptarse sin traicionarte.',
+            'Pequeños actos diarios coherentes generan confianza interna y consistencia.',
+            'Revisar, ajustar y perdonarte cuando te desvías es parte del proceso.',
+          ],
+        },
+        { type: 'quote', text: 'Cada vez que eliges actuar en coherencia, aunque nadie más lo vea, siembras respeto por ti mismo/a.' },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión final ruta 9',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA.mp3',
+          prompts: [
+            'Este es un buen momento para mirar el camino recorrido. No se trata de evaluar si lo hiciste ‘bien o mal’, sino de descubrir cómo ha cambiado tu manera de verte y de actuar.',
+            'Preguntas para tu cuaderno emocional:',
+            '- ¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?',
+            '- ¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?',
+            '- ¿Qué quiero empezar a hacer diferente en mis relaciones?',
+            '- ¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?',
+            '- ¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?',
+          ],
+        },
       ]
     }
   ]
