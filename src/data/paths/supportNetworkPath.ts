@@ -196,7 +196,7 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Una vez que sabes reconocer un buen apoyo, toca cultivarlo. Esto implica cuidar lo que das y lo que recibes.    La neurociencia afectiva (Porges, 2011) muestra que los vínculos seguros activan el sistema nervioso parasimpático, favoreciendo calma y bienestar.   Para fortalecer estos vínculos:   Cumple tus promesas.   Valida emociones, incluso si no piensas igual.   Respeta ritmos y decisiones.   Busca equilibrio: tan importante es dar como recibir.',
+              text: 'Una vez que sabes reconocer un buen apoyo, toca cultivarlo. Esto implica cuidar lo que das y lo que recibes.    La neurociencia afectiva (Porges, 2011) muestra que los vínculos seguros activan nuestro sistema nervioso parasimpático, favoreciendo calma y bienestar.   Para fortalecer estos vínculos:   Cumple tus promesas.   Valida emociones, incluso si no piensas igual.   Respeta ritmos y decisiones.   Busca equilibrio: tan importante es dar como recibir.',
             },
           ],
         },
@@ -238,7 +238,11 @@ export const supportNetworkPath: Path = {
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3',
+        },
         {
           type: 'list',
           items: [
@@ -310,7 +314,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Recibir sin culpa, dar valor a lo que llega',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Recibirsincupadarvaloralquellegue.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Recibirsinculpadarvaloraloquellega.mp3',
           content: [
             {
               type: 'paragraph',
@@ -338,7 +342,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/REFLEXION.mp3',
           prompts: [
-            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li> ¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>'
+            `<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li> ¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>`,
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -528,11 +532,10 @@ export const supportNetworkPath: Path = {
             'Mapear la red y priorizar vínculos nutritivos fortalece la capacidad de afrontar la vida con más seguridad y confianza.',
           ]
         },
-        {
-          type: 'quote',
-          text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.',
-        }
+        { type: 'quote', text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.' }
       ]
     }
-  ],
+  ]
 };
+
+    
