@@ -197,41 +197,16 @@ export const coherencePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3',
           duration: '10-15 min'
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión final de la semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
-          prompts: [
-            'Dedica unos minutos a mirar hacia atrás y conectar con lo que has descubierto esta semana. No busques respuestas perfectas, busca honestidad y claridad. ',
-            'Preguntas para tu cuaderno emocional:',
-            '¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan? ',
-            '¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso? ',
-            '¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia? ',
-            '¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación? ',
-            'Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo? '
-          ],
-        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión final de la semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3', prompts: ["Dedica unos minutos a mirar hacia atrás y conectar con lo que has descubierto esta semana. No busques respuestas perfectas, busca honestidad y claridad. ","Preguntas para tu cuaderno emocional:","¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan? ","¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso? ","¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia? ","¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación? ","Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo? "] },
         { type: 'title', text: 'Resumen semana 4' },
         {
           type: 'paragraphWithAudio',
           text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3'
         },
-        {
-          type: 'list',
-          items: [
-            'La coherencia se fortalece cuando la practicas en tu vida real, no solo en teoría.',
-            'El entorno puede ser un aliado o un obstáculo: observarlo te ayuda a decidir cómo interactuar con él.',
-            'No se trata de rigidez: la coherencia incluye adaptarse sin traicionarte.',
-            'Pequeños actos diarios coherentes generan confianza interna y consistencia.',
-            'Revisar, ajustar y perdonarte cuando te desvías es parte del proceso.',
-          ],
-        },
-        {
-          type: 'quote',
-          text: '“Cada vez que eliges actuar en coherencia, aunque nadie más lo vea, siembras respeto por ti mismo/a.”',
-        },
-      ],
+        { type: 'list', items: ['La coherencia se fortalece cuando la practicas en tu vida real, no solo en teoría.','El entorno puede ser un aliado o un obstáculo: observarlo te ayuda a decidir cómo interactuar con él.','No se trata de rigidez: la coherencia incluye adaptarse sin traicionarte.','Pequeños actos diarios coherentes generan confianza interna y consistencia.','Revisar, ajustar y perdonarte cuando te desvías es parte del proceso.'] },
+        { type: 'quote', text: '“Cada vez que eliges actuar en coherencia, aunque nadie más lo vea, siembras respeto por ti mismo/a.”' }
+      ]
     },
     {
       id: 'coherencia_cierre',
@@ -241,23 +216,23 @@ export const coherencePath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión final de la ruta',
+          title: 'Reflexión final ruta 9',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
-            'Este es un buen momento para mirar el camino recorrido. No se trata de evaluar si lo hiciste ‘bien o mal’, sino de descubrir cómo ha cambiado tu manera de verte y de actuar.',
-            'Puedes escribir libremente sobre lo que surja, pero si lo necesitas, aquí tienes algunas preguntas para guiar tu reflexión:',
-            '¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?',
-            '¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?',
-            '¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?',
-            '¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?',
-            '¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?',
-            '¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?',
+            "Este es un buen momento para mirar el camino recorrido. No se trata de evaluar si lo hiciste ‘bien o mal’, sino de descubrir cómo ha cambiado tu manera de verte y de actuar.",
+            "Puedes escribir libremente sobre lo que surja, pero si lo necesitas, aquí tienes algunas preguntas para guiar tu reflexión:",
+            "¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?",
+            "¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?",
+            "¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?",
+            "¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?",
+            "¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?",
+            "¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?",
           ],
         },
         {
           type: 'title',
           text: 'Resumen final ruta 9',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/RESUMENRUTA.mp3'
+          audioUrl: "https://workwellfut.com/audios/ruta9/descripciones/RESUMENRUTA.mp3"
         },
         {
           type: 'list',
@@ -267,9 +242,9 @@ export const coherencePath: Path = {
             'Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes. ',
             'El entorno influye: identificar qué lo facilita o dificulta te da margen de acción. ',
             'La coherencia se construye con actos cotidianos, no con grandes discursos. ',
-            'Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad. ',
-            'Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad ',
-          ],
+            'Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.',
+            '  Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad ',
+          ]
         },
         {
           type: 'quote',
