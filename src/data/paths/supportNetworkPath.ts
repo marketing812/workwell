@@ -95,12 +95,12 @@ export const supportNetworkPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/REFLEXION.mp3',
           prompts: [
             'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
-            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? […]',
-            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? […]',
-            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) […]',
-            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? […]',
-            'Si hoy pudiera revivir esa situación, ¿qué haría diferente? […]',
-            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí? […]',
+            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?',
+            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?',
+            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)',
+            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?',
+            'Si hoy pudiera revivir esa situación, ¿qué haría diferente?',
+            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -339,12 +339,12 @@ export const supportNetworkPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/REFLEXION.mp3',
           prompts: [
             'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
-            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? […]',
-            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? […]',
-            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) […]',
-            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? […]',
-            'Si hoy pudiera revivir esa situación, ¿qué haría diferente? […]',
-            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí? […]',
+            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?',
+            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?',
+            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)',
+            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?',
+            'Si hoy pudiera revivir esa situación, ¿qué haría diferente?',
+            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -466,10 +466,10 @@ export const supportNetworkPath: Path = {
             'Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen.',
             'Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad.',
             'Ahora es momento de parar un instante y mirar lo que has descubierto sobre tu forma de construir, cuidar y nutrir tu red de apoyo.',
-            '¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones? […]',
-            '¿En qué momentos sentí que estaba presente de verdad para otra persona? […]',
-            '¿Qué gestos de cuidado recibí que me hicieron sentir bien? […]',
-            '¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor? […]',
+            '¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?',
+            '¿En qué momentos sentí que estaba presente de verdad para otra persona?',
+            '¿Qué gestos de cuidado recibí que me hicieron sentir bien?',
+            '¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?',
             '¿Qué he aprendido sobre el equilibrio entre dar y recibir?',
           ],
         },
@@ -503,20 +503,19 @@ export const supportNetworkPath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL DE LA RUTA PARA EL CUADERNO',
+          title: 'Reflexión final de la ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
             'Has llegado al final de esta ruta. Durante estas semanas te has detenido a observar tu red de apoyo con más claridad, descubriendo qué vínculos te fortalecen y cuáles quizás te restan energía.',
             'No es un camino fácil, porque mirar de cerca nuestras relaciones también toca fibras sensibles. Aun así, cada paso que has dado te ha acercado a una vida más consciente, sostenida y enraizada en lo que de verdad importa.',
             'Hoy te invito a hacer una pausa, respirar hondo y mirar atrás con gratitud: ¿qué aprendizajes quieres llevar contigo y cómo vas a ponerlos en práctica? Esta es tu oportunidad para darle forma a tus descubrimientos y comprometerte con lo que deseas cuidar a partir de ahora.',
             'Pregúntate:',
-            '¿Eras consciente de la importancia de tu red de apoyo? […]',
-            '¿Qué has descubierto sobre las personas que realmente te sostienen y nutren tu vida? […]',
-            '¿Qué cambios has notado en ti cuando priorizas vínculos que te dan calma, respeto y energía? […]',
-            '¿De qué manera te relacionas ahora con esos apoyos que antes no reconocías o que dabas por sentado? […]',
-            '¿Qué compromisos quieres asumir para cuidar mejor tu red y también para ser tú un apoyo nutritivo para quienes quieres? […]',
-            'Escribe libremente tus respuestas. Recuerda: cultivar una red de apoyo es un proceso dinámico y vivo, igual que un jardín. ¿Qué semillas vas a seguir regando de aquí en adelante?',
-          ]
+            '¿Eras consciente de la importancia de tu red de apoyo?',
+            '¿Qué has descubierto sobre las personas que realmente te sostienen y nutren tu vida?',
+            '¿Qué cambios has notado en ti cuando priorizas vínculos que te dan calma, respeto y energía?',
+            '¿De qué manera te relacionas ahora con esos apoyos que antes no reconocías o que dabas por sentado?',
+            '¿Qué compromisos quieres asumir para cuidar mejor tu red y también para ser tú un apoyo nutritivo para quienes quieres?',
+          ],
         },
         {
           type: 'title',
@@ -537,11 +536,9 @@ export const supportNetworkPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.”'
+          text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.',
         }
       ]
     }
   ],
 };
-
-    
