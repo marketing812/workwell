@@ -78,7 +78,7 @@ export const coherencePath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['Lo que he aprendido sobre mí: (Escribe aquí 2-3 ideas clave que te lleves de esta semana)','Consecuencias de no cuidar mi coherencia: (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)','Ventajas de vivir con coherencia personal: (Enumera los beneficios que te inspira buscar esta alineación)','Mi compromiso para esta semana: (Define un gesto concreto para acercarte a tu coherencia)']},
         { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3'},
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
         { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
@@ -97,7 +97,7 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Por qué detectar la incoherencia es clave', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3', content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', 'duration': '15 min' },
-        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3', 'duration': '10-12 min' },
+        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.','duration': '10-12 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
@@ -155,14 +155,12 @@ export const coherencePath: Path = {
           type: 'integrityDecisionsExercise',
           title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD',
           objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3',
           duration: '15-20 min'
         },
         {
           type: 'nonNegotiablesExercise',
           title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES',
           objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3',
           duration: '10-15 min'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', prompts: ['¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?','¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?','¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?','¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?','¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?'] },
@@ -248,10 +246,15 @@ export const coherencePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3',
           duration: '10-15 min'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', 
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
-          prompts: ['¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?','¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?','¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?','¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?','¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?','¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?'] },
-        { type: 'title', text: 'Resumen Final de la Ruta' },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión final de la semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3', prompts: [
+          'Dedica unos minutos a mirar hacia atrás y conectar con lo que has descubierto esta semana. No busques respuestas perfectas, busca honestidad y claridad.',
+          '¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan?',
+          '¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso?',
+          '¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia?',
+          '¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación?',
+          'Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo?',
+        ]},
+        { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal es la armonía entre lo que piensas, sientes y haces.','No es rigidez: implica flexibilidad consciente sin perder el eje de tus valores.','Conocer y priorizar tus valores te da un norte en decisiones pequeñas y grandes.','El entorno influye: identificar qué lo facilita o dificulta te da margen de acción.','La coherencia se construye con actos cotidianos, no con grandes discursos.','Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.','Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad.'] },
         { type: 'quote', text: '“Vivir con coherencia no es un destino, es un camino que recorres cada día… y ese camino empieza siempre en ti.”' }]
