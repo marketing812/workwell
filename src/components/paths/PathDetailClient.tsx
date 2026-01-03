@@ -303,10 +303,7 @@ ${reflection}
     onComplete();
   };
   
-  const introPrompts = content.prompts.filter(p => !p.startsWith('¿') && p !== 'Preguntas para tu cuaderno emocional:');
-  const questionHeader = content.prompts.find(p => p === 'Preguntas para tu cuaderno emocional:');
-  const questionPrompts = content.prompts.filter(p => p.startsWith('¿'));
-
+  const formattedPrompts = content.prompts.map(p => p.replace(/<p>|<\/p>|<ul>|<\/ul>|<li>|<\/li>/g, '\n')).join('');
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -327,17 +324,7 @@ ${reflection}
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            {introPrompts.map((prompt, index) => (
-              <p key={index} className="text-sm text-foreground/80 italic">{prompt}</p>
-            ))}
-            {questionHeader && <p className="text-sm text-foreground/80 italic mt-2">{questionHeader}</p>}
-            {questionPrompts.length > 0 && (
-              <ul className="list-disc list-inside pl-4 space-y-1">
-                {questionPrompts.map((prompt, index) => (
-                   <li key={index} className="text-sm text-foreground/80 italic">{prompt}</li>
-                ))}
-              </ul>
-            )}
+            <div className="prose prose-sm dark:prose-invert" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
             <Label htmlFor={`reflection-${pathId}`} className="sr-only">
               Tu reflexión
             </Label>
@@ -488,7 +475,8 @@ function ContentItemRenderer({
         <blockquote
           key={index}
           className="mt-6 border-l-2 pl-6 italic text-accent-foreground/80"
-        >{`"${contentItem.text}"`}</blockquote>
+          dangerouslySetInnerHTML={{ __html: contentItem.text }}
+        />
       );
     case 'stressMapExercise':
       return <StressMapExercise key={index} content={contentItem} onComplete={handleComplete} />;
@@ -503,7 +491,7 @@ function ContentItemRenderer({
     case 'uncertaintyMapExercise':
       return <UncertaintyMapExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'controlTrafficLightExercise':
-      return <ControlTrafficLightExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <ControlTrafficLightExercise key={index} content={contentItem as any} onComplete={handleComplete} />;
     case 'alternativeStoriesExercise':
       return <AlternativeStoriesExercise key={index} content={contentItem as any} onComplete={handleComplete} />;
     case 'mantraExercise':
@@ -511,7 +499,7 @@ function ContentItemRenderer({
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
-      return <DelSabotajeALaAccionExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <DelSabotajeALaAccionExercise key={index} content={contentItem as any} onComplete={handleComplete} />;
     case 'therapeuticNotebookReflection':
       return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={handleComplete} />;
     case 'twoMinuteRuleExercise':
