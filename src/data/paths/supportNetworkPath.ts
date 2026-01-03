@@ -25,9 +25,7 @@ export const supportNetworkPath: Path = {
           title: 'Pedir ayuda no es debilidad, es inteligencia emocional',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Pedirayudanoesdebilidadesinteligenciaemocional.mp3',
           content: [
-            { type: 'paragraph', text: 'Pedir ayuda no te hace frágil, te hace humano. Y saber hacerlo con claridad y equilibrio es una forma avanzada de inteligencia emocional. El ser humano es una especie profundamente social. Nuestro cerebro está literalmente diseñado para la conexión.' },
-            { type: 'paragraph', text: 'Según la neurociencia social (Lieberman, 2013), las mismas áreas que se activan cuando sentimos dolor físico también se activan cuando nos sentimos rechazados o desconectados.' },
-            { type: 'paragraph', text: 'En cambio, cuando vivimos relaciones positivas y de apoyo, se encienden circuitos neuronales vinculados al bienestar, la recompensa y la seguridad.' }
+            { type: 'paragraph', text: '<p>Pedir ayuda no te hace frágil, te hace humano. Y saber hacerlo con claridad y equilibrio es una forma avanzada de inteligencia emocional. El ser humano es una especie profundamente social. Nuestro cerebro está literalmente diseñado para la conexión.</p><p> Según la neurociencia social (Lieberman, 2013), las mismas áreas que se activan cuando sentimos dolor físico también se activan cuando nos sentimos rechazados o desconectados.</p><p>En cambio, cuando vivimos relaciones positivas y de apoyo, se encienden circuitos neuronales vinculados al bienestar, la recompensa y la seguridad. </p>' }
           ],
         },
         {
@@ -105,7 +103,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/REFLEXION.mp3',
           prompts: [
-            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
+            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice?¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -236,10 +234,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/REFLEXION.mp3',
           prompts: [
-            '¿Qué he descubierto sobre quiénes me suman y quiénes me restan energía?',
-            '¿Qué señales me ayudan a reconocer a una persona que me sostiene de verdad?',
-            '¿Cómo me he sentido al tomar más conciencia de mis vínculos?',
-            'A lo largo de la semana, ¿qué he aprendido sobre mis creencias acerca de quién merece estar en mi red de apoyo?',
+            '<ul><li>¿Qué he descubierto sobre quiénes me suman y quiénes me restan energía?</li><li>¿Qué señales me ayudan a reconocer a una persona que me sostiene de verdad?</li><li>¿Cómo me he sentido al tomar más conciencia de mis vínculos?</li><li>A lo largo de la semana, ¿qué he aprendido sobre mis creencias acerca de quién merece estar en mi red de apoyo?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -546,4 +541,5 @@ export const supportNetworkPath: Path = {
     
 
     
+
 
