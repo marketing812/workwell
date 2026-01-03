@@ -97,9 +97,9 @@ export const supportNetworkPath: Path = {
             'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
             'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?',
             'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?',
-            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)',
             'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?',
             'Si hoy pudiera revivir esa situación, ¿qué haría diferente?',
+            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)',
             '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?',
           ],
         },
@@ -338,13 +338,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/REFLEXION.mp3',
           prompts: [
-            'Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:',
-            'A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?',
-            'Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?',
-            '¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)',
-            'Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?',
-            'Si hoy pudiera revivir esa situación, ¿qué haría diferente?',
-            '¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?',
+            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li> ¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>'
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -379,7 +373,7 @@ export const supportNetworkPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Introducción: Las relaciones se entrenan',
+          title: 'Las relaciones se entrenan',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Lasrelacionesseentrenan.mp3',
           content: [
             {
