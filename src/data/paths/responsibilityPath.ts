@@ -82,7 +82,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\n\n1. Describe la situación: solo hechos, sin juicios.\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra? (Cuestionamiento socrático).\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\n5. Define un paso pequeño: algo que dependa solo de ti.\n6. Ponlo en práctica y revisa el resultado.\n\nEjemplo:\n\n• Queja: “Nunca tengo tiempo para mí.”\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”',
+              text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\n\n1. Describe la situación: solo hechos, sin juicios.\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\n5. Define un paso pequeño: algo que dependa solo de ti.\n6. Ponlo en práctica y revisa el resultado.\n\nEjemplo:\n\n• Queja: “Nunca tengo tiempo para mí.”\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”',
             },
           ],
         },
@@ -110,7 +110,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'collapsible',
-          title: 'Cierre: preparando el terreno para la práctica',
+          title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3',
           content: [
             {
@@ -139,7 +139,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Reflexionsesion1ruta10.mp3',
           prompts: [
-            '¿Cuál fue el descubrimiento más importante para ti y por qué?',
+            '¿Qué descubrimiento ha tenido más impacto en ti y por qué?',
             '¿En qué situación lograste pasar de la queja o la culpa a la acción?',
             '¿Qué culpa identificaste como “no mía” y pudiste soltar?',
             '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?',
@@ -155,10 +155,10 @@ export const responsibilityPath: Path = {
           type: 'list',
           items: [
             'La culpa útil impulsa a reparar; la improductiva te paraliza.',
-            'La queja alivia un momento, pero si no hay acción, nada cambia.',
+            'La queja sin acción desgasta y no resuelve.',
             'La responsabilidad activa se enfoca en lo que sí depende de ti.',
             'La hiperexigencia y la hiperresponsabilidad son trampas que desgastan.',
-            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”.".',
+            'El cambio empieza preguntándote: “¿Qué parte de esto sí depende de mí?”',
           ],
         },
         { type: 'quote', text: 'Asumir tu parte no es cargar con todo. Es empezar a caminar con claridad.' },
@@ -337,7 +337,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'En las semanas anteriores aprendiste a diferenciar entre culpa, queja y responsabilidad, y a aceptar lo que fue para elegir lo que sigue. Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.',
+              text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.',
             },
           ],
         },
@@ -431,10 +431,9 @@ export const responsibilityPath: Path = {
           type: 'list',
           items: [
             'La aceptación activa abre posibilidades; la resignación las bloquea.',
-            'Separar pasado y presente permite actuar desde el ahora con más conciencia (modelo ABC).',
-            'Cuestionar y resolver problemas rompe la rumiación y facilita acciones concretas.',
-            'Los experimentos conductuales reducen la evitación y ponen a prueba creencias.',
-            'La culpa útil repara; distinguir conducta de identidad evita el autoetiquetado.',
+            'Separar pasado y presente te da libertad para decidir.',
+            'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
+            'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
             'Mindfulness y defusión bajan la intensidad emocional.',
             'La autocrítica puede ayudarte si la transformas en guía responsable y empática.',
             'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.',
@@ -462,7 +461,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'En semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”',
+              text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”',
             },
           ],
         },
@@ -549,7 +548,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Ruta',
+          title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
           prompts: [
             '¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?',
