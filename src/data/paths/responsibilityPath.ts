@@ -192,11 +192,12 @@ export const responsibilityPath: Path = {
           title: 'Aceptación activa ≠ resignación',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio2sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo. <ul><li> Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad. </li><li>Resignarse es decir “no hay nada que hacer” y quedarse inmóvil. </li></ul> <p> Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:  <ul><li> Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.” </li><li> Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.” </li></ul></p> <p>En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.  </p>',
-            },
-          ],
+            { type: 'paragraph', text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.' },
+            { type: 'list', items: ['Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.','Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.']},
+            { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:'},
+            { type: 'list', items: ['Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”', 'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”']},
+            { type: 'paragraph', text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.'},
+          ]
         },
         {
           type: 'collapsible',
@@ -214,11 +215,13 @@ export const responsibilityPath: Path = {
           title: 'Del automático a lo consciente (Modelo ABC)',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: '<p>Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.   <p>Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO): </p> <ul><li>SITUACIÓN: lo que pasó, sin interpretaciones. </li><li> PIENSO: la interpretación que haces. </li><li>SIENTO: la emoción que surge. </li><li> ACTÚO: lo que haces a partir de ahí. </li></ul> <p> Ejemplo:  <ul><li> SITUACIÓN: “No respondieron mi correo en 24 horas.”  </li><li> PIENSO: “Les molesté / no me valoran.”  </li><li> SIENTO: ansiedad, culpa.  </li><li> ACTÚO: dejo de escribirles.  </li></ul> <p>Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza. </p>',
-            },
-          ],
+            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.'},
+            { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):'},
+            { type: 'list', items: ['SITUACIÓN: lo que pasó, sin interpretaciones.','PIENSO: la interpretación que haces.','SIENTO: la emoción que surge.','ACTÚO: lo que haces a partir de ahí.']},
+            { type: 'paragraph', text: 'Ejemplo:'},
+            { type: 'list', items: ['SITUACIÓN: “No respondieron mi correo en 24 horas.”','PIENSO: “Les molesté / no me valoran.”','SIENTO: ansiedad, culpa.','ACTÚO: dejo de escribirles.']},
+            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.'}
+          ]
         },
         {
           type: 'collapsible',
