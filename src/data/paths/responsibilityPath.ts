@@ -216,7 +216,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones. Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO): SITUACIÓN: lo que pasó, sin interpretaciones. PIENSO: la interpretación que haces. SIENTO: la emoción que surge. ACTÚO: lo que haces a partir de ahí. Ejemplo: SITUACIÓN: “No respondieron mi correo en 24 horas.” PIENSO: “Les molesté / no me valoran.” SIENTO: ansiedad, culpa. ACTÚO: dejo de escribirles. Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.',
+              text: '<p>Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.   <p>Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO): </p> <ul><li>SITUACIÓN: lo que pasó, sin interpretaciones. </li><li> PIENSO: la interpretación que haces. </li><li>SIENTO: la emoción que surge. </li><li> ACTÚO: lo que haces a partir de ahí. </li></ul> <p> Ejemplo:  <ul><li> SITUACIÓN: “No respondieron mi correo en 24 horas.”  </li><li> PIENSO: “Les molesté / no me valoran.”  </li><li> SIENTO: ansiedad, culpa.  </li><li> ACTÚO: dejo de escribirles.  </li></ul> <p>Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza. </p>',
             },
           ],
         },
