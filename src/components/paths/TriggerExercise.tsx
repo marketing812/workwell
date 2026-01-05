@@ -40,6 +40,7 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
   const [otherCopingResponse, setOtherCopingResponse] = useState('');
   const [isSaved, setIsSaved] = useState(false);
   const [showCompass, setShowCompass] = useState(false);
+  const [reflections, setReflections] = useState('');
 
   const [reflectionSituations, setReflectionSituations] = useState('');
   const [reflectionActions, setReflectionActions] = useState('');
@@ -62,7 +63,7 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
     
     addNotebookEntry({
         title: 'Registro de Disparador',
-        content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}`,
+        content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}\nReflexión: ${reflections}`,
         pathId: 'gestion-estres',
         userId: user?.id,
     });
@@ -276,6 +277,17 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
                     className="ml-6 mt-2"
                 />
             )}
+          </div>
+          
+          <div>
+            <Label htmlFor="reflections" className="font-semibold">8. Reflexión final del ejercicio</Label>
+            <Textarea
+              id="reflections"
+              value={reflections}
+              onChange={(e) => setReflections(e.target.value)}
+              placeholder="¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?   ¿Qué hice en esos momentos?   ¿Qué podría probar diferente la próxima vez? "
+              disabled={isSaved}
+            />
           </div>
 
           {!isSaved ? (
