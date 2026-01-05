@@ -204,14 +204,11 @@ export const responsibilityPath: Path = {
               ],
             },
             { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:' },
+            { type: 'list', items: ['Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”', 'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”'] },
             {
-              type: 'list',
-              items: [
-                'Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”',
-                'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”',
-              ],
+              type: 'paragraph',
+              text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.',
             },
-            { type: 'paragraph', text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.' },
           ],
         },
         {
@@ -230,7 +227,10 @@ export const responsibilityPath: Path = {
           title: 'Del automático a lo consciente (Modelo ABC)',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
           content: [
-            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.' },
+            {
+              type: 'paragraph',
+              text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.',
+            },
             { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):' },
             {
               type: 'list',
@@ -251,7 +251,10 @@ export const responsibilityPath: Path = {
                 'ACTÚO: dejo de escribirles.',
               ],
             },
-            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.' },
+            {
+              type: 'paragraph',
+              text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.',
+            },
           ],
         },
         {
@@ -259,10 +262,7 @@ export const responsibilityPath: Path = {
           title: 'De rumiar a decidir: cuestionamiento + solución de problemas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio5sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles.',
-            },
+            { type: 'paragraph', text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles.' },
             { type: 'paragraph', text: 'Técnica combinada:' },
             {
               type: 'list',
@@ -636,10 +636,6 @@ export const responsibilityPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL',
-        },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumenfinalruta10.mp3',
         },
         {
@@ -656,7 +652,9 @@ export const responsibilityPath: Path = {
         },
         { type: 'quote', text: '“Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista”.' },
       ],
-    }]}>
+    },
+  ],
+}>
 
 with the text content:
 
@@ -670,4 +668,4 @@ Relevant files:
 
 And change it as follows:
   
-que ponga esto"<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada: </p> <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol>"
+quiero exactamente este texto "<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada: </p> <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol>"
