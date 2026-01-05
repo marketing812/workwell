@@ -192,12 +192,27 @@ export const responsibilityPath: Path = {
           title: 'Aceptación activa ≠ resignación',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio2sesion2ruta10.mp3',
           content: [
-            { type: 'paragraph', text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.' },
-            { type: 'list', items: ['Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.','Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.']},
-            { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:'},
-            { type: 'list', items: ['Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”', 'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”']},
-            { type: 'paragraph', text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.'},
-          ]
+            {
+              type: 'paragraph',
+              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.',
+                'Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.',
+              ],
+            },
+            { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:' },
+            {
+              type: 'list',
+              items: [
+                'Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”',
+                'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”',
+              ],
+            },
+            { type: 'paragraph', text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.' },
+          ],
         },
         {
           type: 'collapsible',
@@ -215,13 +230,29 @@ export const responsibilityPath: Path = {
           title: 'Del automático a lo consciente (Modelo ABC)',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
           content: [
-            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.'},
-            { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):'},
-            { type: 'list', items: ['SITUACIÓN: lo que pasó, sin interpretaciones.','PIENSO: la interpretación que haces.','SIENTO: la emoción que surge.','ACTÚO: lo que haces a partir de ahí.']},
-            { type: 'paragraph', text: 'Ejemplo:'},
-            { type: 'list', items: ['SITUACIÓN: “No respondieron mi correo en 24 horas.”','PIENSO: “Les molesté / no me valoran.”','SIENTO: ansiedad, culpa.','ACTÚO: dejo de escribirles.']},
-            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.'}
-          ]
+            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.' },
+            { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):' },
+            {
+              type: 'list',
+              items: [
+                'SITUACIÓN: lo que pasó, sin interpretaciones.',
+                'PIENSO: la interpretación que haces.',
+                'SIENTO: la emoción que surge.',
+                'ACTÚO: lo que haces a partir de ahí.',
+              ],
+            },
+            { type: 'paragraph', text: 'Ejemplo:' },
+            {
+              type: 'list',
+              items: [
+                'SITUACIÓN: “No respondieron mi correo en 24 horas.”',
+                'PIENSO: “Les molesté / no me valoran.”',
+                'SIENTO: ansiedad, culpa.',
+                'ACTÚO: dejo de escribirles.',
+              ],
+            },
+            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.' },
+          ],
         },
         {
           type: 'collapsible',
@@ -230,7 +261,18 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. Técnica combinada: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) ¿Me ayuda este pensamiento a avanzar? ¿Qué parte depende de mí y cuál no? (Atribución realista) Si pasara lo que temo, ¿qué haría? (Descatastrofización) Definir un paso pequeño y concreto. Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”',
+              text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles.',
+            },
+            { type: 'paragraph', text: 'Técnica combinada:' },
+            {
+              type: 'list',
+              items: [
+                '¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático)',
+                '¿Me ayuda este pensamiento a avanzar?',
+                '¿Qué parte depende de mí y cuál no? (Atribución realista)',
+                'Si pasara lo que temo, ¿qué haría? (Descatastrofización)',
+                'Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”',
+              ],
             },
           ],
         },
@@ -596,9 +638,9 @@ export const responsibilityPath: Path = {
           text: 'RESUMEN FINAL',
         },
         {
-            type: 'paragraphWithAudio',
-            text: '',
-            audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumenfinalruta10.mp3'
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumenfinalruta10.mp3',
         },
         {
           type: 'list',
@@ -612,11 +654,20 @@ export const responsibilityPath: Path = {
             'Definir tu zona de influencia te ayuda a no cargar con lo que no te corresponde.',
           ],
         },
-        {
-          type: 'quote',
-          text: '“Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista”.',
-        },
+        { type: 'quote', text: '“Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista”.' },
       ],
-    },
-  ],
-};
+    }]}>
+
+with the text content:
+
+    Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. Técnica combinada:  ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) ¿Me ayuda este pensamiento a avanzar? ¿Qué parte depende de mí y cuál no? (Atribución realista) Si pasara lo que temo, ¿qué haría? (Descatastrofización) Definir un paso pequeño y concreto. Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+que ponga esto"<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada: </p> <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol>"
