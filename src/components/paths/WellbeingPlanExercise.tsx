@@ -26,7 +26,7 @@ const planSections = {
     prompt: "¿Qué me indica que estoy empezando a sobrecargarme?",
     categories: {
       cognitive: {
-        title: "Cognitivas / Mentales",
+        title: "Señales cognitivas / Señales mentales",
         options: [
           { id: 'cog-concentration', label: 'Me cuesta concentrarme' },
           { id: 'cog-loop', label: 'Tengo pensamientos en bucle' },
@@ -36,7 +36,7 @@ const planSections = {
         ],
       },
       behavioral: {
-        title: "Conductuales",
+        title: "Señales conductuales",
         options: [
           { id: 'beh-avoidance', label: 'Evito tareas, conversaciones o compromisos' },
           { id: 'beh-procrastination', label: 'Empiezo a procrastinar más de lo habitual' },
@@ -46,7 +46,7 @@ const planSections = {
         ]
       },
        emotional: {
-        title: "Emocionales",
+        title: "Señales emocionales",
         options: [
           { id: 'emo-irritability', label: 'Me siento más irritable, ansioso/a o frustrado/a' },
           { id: 'emo-apathy', label: 'Me noto más apático/a o desconectado/a' },
@@ -56,7 +56,7 @@ const planSections = {
         ]
       },
       physical: {
-        title: "Físicas / Fisiológicas",
+        title: "Señales físicas / Señales fisiológicas",
         options: [
             { id: 'phy-sleep', label: 'Duermo mal o me cuesta conciliar el sueño' },
             { id: 'phy-tired', label: 'Me levanto ya cansado/a o sin energía' },
