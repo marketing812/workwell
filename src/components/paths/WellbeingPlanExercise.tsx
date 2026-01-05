@@ -149,6 +149,10 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                     notebookContent += `  - Otras: ${otherNote}\n`;
                 }
             });
+            const customSignalsNote = notes['signals-custom-free-text'];
+            if(customSignalsNote) {
+                notebookContent += `\n*Mis señales propias reconocidas:*\n${customSignalsNote}\n`;
+            }
              notebookContent += `\n`;
         } else if ('options' in section) {
             const selectedOptions = section.options.filter(opt => selections[opt.id]).map(opt => `  - ${opt.label}`).join('\n');
@@ -232,6 +236,16 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                                                 )}
                                             </div>
                                         ))}
+                                         <div className="space-y-2 pt-4 border-t mt-4">
+                                            <Label htmlFor="signals-custom-free-text" className="font-medium">¿Qué señales propias reconoces en ti cuando estás empezando a sobrecargarte?</Label>
+                                            <Textarea 
+                                                id="signals-custom-free-text" 
+                                                value={notes['signals-custom-free-text'] || ''} 
+                                                onChange={e => handleNoteChange('signals-custom-free-text', e.target.value)}
+                                                placeholder="Ejemplos: “Empiezo a dormir mal”, “Me desconecto emocionalmente”, “Evito tareas o conversaciones”." 
+                                                disabled={isSaved}
+                                            />
+                                        </div>
                                     </div>
                                 )}
                                 { 'options' in section && (
@@ -275,5 +289,3 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
     </Card>
   );
 }
-
-    
