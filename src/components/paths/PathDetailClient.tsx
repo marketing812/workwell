@@ -282,7 +282,7 @@ function TherapeuticNotebookReflectionExercise({
     const fullContent = `
 **${content.title}**
 
-${content.prompts.join('\n')}
+<div class="prose prose-sm dark:prose-invert max-w-none">${content.prompts.join('')}</div>
 
 **Mi reflexión:**
 ${reflection}
@@ -303,8 +303,6 @@ ${reflection}
     onComplete();
   };
   
-  const formattedPrompts = content.prompts.map(p => p.replace(/<p>|<\/p>|<ul>|<\/ul>|<li>|<\/li>/g, '\n')).join('');
-
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
@@ -465,11 +463,7 @@ function ContentItemRenderer({
         </Accordion>
       );
     case 'exercise': // Fallback for old/generic exercises
-      return (
-        <Card key={index} className="bg-muted/30 my-6 shadow-md">
-          {/* ... renderización genérica de ejercicio ... */}
-        </Card>
-      );
+      return null;
     case 'quote':
       return (
         <blockquote
