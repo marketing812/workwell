@@ -28,8 +28,14 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
 
   const [situation, setSituation] = useState('');
   const [thoughts, setThoughts] = useState('');
-  const [selectedEmotion, setSelectedEmotion] = useState('');
-  const [emotionIntensity, setEmotionIntensity] = useState(50);
+  
+  const [selectedEmotion1, setSelectedEmotion1] = useState('');
+  const [emotionIntensity1, setEmotionIntensity1] = useState(50);
+  const [selectedEmotion2, setSelectedEmotion2] = useState('');
+  const [emotionIntensity2, setEmotionIntensity2] = useState(0);
+  const [selectedEmotion3, setSelectedEmotion3] = useState('');
+  const [emotionIntensity3, setEmotionIntensity3] = useState(0);
+
   const [physicalReactions, setPhysicalReactions] = useState('');
   const [responseAction, setResponseAction] = useState('');
   const [reflections, setReflections] = useState('');
@@ -40,7 +46,7 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if (!situation.trim() || !thoughts.trim() || !selectedEmotion || !physicalReactions.trim() || !responseAction.trim()) {
+    if (!situation.trim() || !thoughts.trim() || !selectedEmotion1 || !physicalReactions.trim() || !responseAction.trim()) {
       toast({
         title: "Campos Incompletos",
         description: "Por favor, completa todos los campos del ejercicio para guardar tu registro.",
@@ -49,9 +55,17 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
       return;
     }
     
+    let emotionsText = `${selectedEmotion1} (${emotionIntensity1}%)`;
+    if (selectedEmotion2 && emotionIntensity2 > 0) {
+      emotionsText += `, ${selectedEmotion2} (${emotionIntensity2}%)`;
+    }
+    if (selectedEmotion3 && emotionIntensity3 > 0) {
+      emotionsText += `, ${selectedEmotion3} (${emotionIntensity3}%)`;
+    }
+
     addNotebookEntry({
         title: 'Mapa del Estrés Personal',
-        content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmoción: ${selectedEmotion} (${emotionIntensity}%)\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
+        content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmociones: ${emotionsText}\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
         pathId: 'gestion-estres',
         userId: user?.id
     });
@@ -82,6 +96,8 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+          <p className="text-sm text-foreground/80 italic">Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
+          
           <div>
             <Label htmlFor="situation" className="font-semibold">1. Situación (Qué ocurrió)</Label>
             <Textarea
@@ -104,34 +120,101 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
             />
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <Label className="font-semibold">3. Emociones (Cómo te sentiste)</Label>
-            <Select value={selectedEmotion} onValueChange={setSelectedEmotion} disabled={isSaved}>
-              <SelectTrigger>
-                <SelectValue placeholder="Selecciona la emoción principal" />
-              </SelectTrigger>
-              <SelectContent>
-                {emotions.map((emo) => (
-                  <SelectItem key={emo.value} value={emo.value}>
-                    {t[emo.labelKey as keyof typeof t] || emo.value}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {selectedEmotion && (
-              <div className="space-y-2">
-                <Label htmlFor="intensity">Intensidad: {emotionIntensity}%</Label>
-                <Slider
-                  id="intensity"
-                  min={0}
-                  max={100}
-                  step={10}
-                  defaultValue={[emotionIntensity]}
-                  onValueChange={(value) => setEmotionIntensity(value[0])}
-                  disabled={isSaved}
-                />
-              </div>
-            )}
+            
+            {/* Emotion 1 */}
+            <div className="space-y-2 border-l-2 pl-4">
+              <Label htmlFor="emotion1" className="text-sm font-medium">Emoción Principal</Label>
+              <Select value={selectedEmotion1} onValueChange={setSelectedEmotion1} disabled={isSaved}>
+                <SelectTrigger id="emotion1">
+                  <SelectValue placeholder="Selecciona la emoción principal" />
+                </SelectTrigger>
+                <SelectContent>
+                  {emotions.map((emo) => (
+                    <SelectItem key={emo.value} value={emo.value}>
+                      {t[emo.labelKey as keyof typeof t] || emo.value}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {selectedEmotion1 && (
+                <div className="space-y-2 pt-1">
+                  <Label htmlFor="intensity1">Intensidad: {emotionIntensity1}%</Label>
+                  <Slider
+                    id="intensity1"
+                    min={0}
+                    max={100}
+                    step={10}
+                    defaultValue={[emotionIntensity1]}
+                    onValueChange={(value) => setEmotionIntensity1(value[0])}
+                    disabled={isSaved}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Emotion 2 */}
+            <div className="space-y-2 border-l-2 pl-4">
+              <Label htmlFor="emotion2" className="text-sm font-medium">Emoción Secundaria (opcional)</Label>
+              <Select value={selectedEmotion2} onValueChange={setSelectedEmotion2} disabled={isSaved}>
+                <SelectTrigger id="emotion2">
+                  <SelectValue placeholder="Selecciona otra emoción" />
+                </SelectTrigger>
+                <SelectContent>
+                  {emotions.map((emo) => (
+                    <SelectItem key={emo.value} value={emo.value}>
+                      {t[emo.labelKey as keyof typeof t] || emo.value}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {selectedEmotion2 && (
+                <div className="space-y-2 pt-1">
+                  <Label htmlFor="intensity2">Intensidad: {emotionIntensity2}%</Label>
+                  <Slider
+                    id="intensity2"
+                    min={0}
+                    max={100}
+                    step={10}
+                    defaultValue={[emotionIntensity2]}
+                    onValueChange={(value) => setEmotionIntensity2(value[0])}
+                    disabled={isSaved}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Emotion 3 */}
+            <div className="space-y-2 border-l-2 pl-4">
+              <Label htmlFor="emotion3" className="text-sm font-medium">Tercera Emoción (opcional)</Label>
+              <Select value={selectedEmotion3} onValueChange={setSelectedEmotion3} disabled={isSaved}>
+                <SelectTrigger id="emotion3">
+                  <SelectValue placeholder="Selecciona otra emoción" />
+                </SelectTrigger>
+                <SelectContent>
+                  {emotions.map((emo) => (
+                    <SelectItem key={emo.value} value={emo.value}>
+                      {t[emo.labelKey as keyof typeof t] || emo.value}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {selectedEmotion3 && (
+                <div className="space-y-2 pt-1">
+                  <Label htmlFor="intensity3">Intensidad: {emotionIntensity3}%</Label>
+                  <Slider
+                    id="intensity3"
+                    min={0}
+                    max={100}
+                    step={10}
+                    defaultValue={[emotionIntensity3]}
+                    onValueChange={(value) => setEmotionIntensity3(value[0])}
+                    disabled={isSaved}
+                  />
+                </div>
+              )}
+            </div>
           </div>
           
           <div>
