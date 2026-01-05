@@ -194,7 +194,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con resignarse. Pero no son lo mismo. Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad. Resignarse es decir “no hay nada que hacer” y quedarse inmóvil. Idea clave: la aceptación activa abre caminos, la resignación los bloquea. Ejemplo: Resignación → “Fallé en mi presentación, mejor no vuelvo a exponer.” Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.” En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.',
+              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo. <ul><li> Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad. </li><li>Resignarse es decir “no hay nada que hacer” y quedarse inmóvil. </li></ul> <p> Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:  <ul><li> Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.” </li><li> Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.” </li></ul></p> <p>En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.  </p>',
             },
           ],
         },
@@ -430,7 +430,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'La aceptación activa abre posibilidades; la resignación las bloquea.',
+            'Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
