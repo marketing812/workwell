@@ -21,6 +21,8 @@ export function ComplaintTransformationExercise({ content, pathId }: ComplaintTr
   const [complaint, setComplaint] = useState('');
   const [controllable, setControllable] = useState('');
   const [action, setAction] = useState('');
+  const [registration, setRegistration] = useState('');
+  const [finalReview, setFinalReview] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
   const handleSave = (e: FormEvent) => {
@@ -40,6 +42,12 @@ ${controllable}
 
 *Lo que sí puedo hacer es:*
 ${action}
+
+*Registro del plan:*
+${registration}
+
+*Revisión final:*
+${finalReview}
     `;
     addNotebookEntry({ title: 'Transformación de Queja a Acción', content: notebookContent, pathId });
     toast({ title: 'Ejercicio Guardado', description: 'Tu transformación de queja a acción ha sido guardada.' });
@@ -67,16 +75,29 @@ ${action}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="complaint">Escribe aquí tu queja</Label>
-            <Textarea id="complaint" value={complaint} onChange={e => setComplaint(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="complaint">Elige tu queja</Label>
+            <p className="text-sm text-muted-foreground">Piensa en algo que te haya molestado en las últimas 24–48 horas. Escríbelo tal cual lo dirías.</p>
+            <Textarea id="complaint" value={complaint} onChange={e => setComplaint(e.target.value)} placeholder="Escribe aquí tu queja" disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="controllable">Describe la parte que sí depende de ti</Label>
-            <Textarea id="controllable" value={controllable} onChange={e => setControllable(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="controllable">Detecta lo que está bajo tu control</Label>
+            <p className="text-sm text-muted-foreground">Pregúntate: “¿Qué parte de esta situación depende de mí?"</p>
+            <Textarea id="controllable" value={controllable} onChange={e => setControllable(e.target.value)} placeholder="Describe la parte que sí depende de ti" disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="action">Escribe tu acción concreta</Label>
-            <Textarea id="action" value={action} onChange={e => setAction(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="action">Redefine en modo acción</Label>
+            <p className="text-sm text-muted-foreground">Cambia la queja por un paso concreto que puedas dar. Ejemplo: Queja-&gt;Nunca me valoran en el trabajo., Acción-&gt; Voy a pedir feedback a mi jefe esta semana para saber qué estoy haciendo bien y qué puedo mejorar.</p>
+            <Textarea id="action" value={action} onChange={e => setAction(e.target.value)} placeholder="Escribe tu acción concreta" disabled={isSaved} />
+          </div>
+           <div className="space-y-2">
+            <Label htmlFor="registration">Registra tu plan</Label>
+            <p className="text-sm text-muted-foreground">En la tabla “Me quejo de… / Lo que sí puedo hacer es…”, anota de nuevo tu queja y la acción que has definido.</p>
+            <Textarea id="registration" value={registration} onChange={e => setRegistration(e.target.value)} placeholder="Escribe tu queja y la acción" disabled={isSaved} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="final-review">Revisión final</Label>
+            <p className="text-sm text-muted-foreground">Lee tus acciones y elige la primera que pondrás en práctica hoy mismo.</p>
+            <Textarea id="final-review" value={finalReview} onChange={e => setFinalReview(e.target.value)} placeholder="Escribe la acción que harás hoy" disabled={isSaved} />
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Transformación</Button>
