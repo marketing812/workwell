@@ -1,5 +1,4 @@
 
-
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -286,8 +285,6 @@ export const t = {
   emotionAnger: "Ira",
   emotionDisgust: "Asco",
   emotionSurprise: "Sorpresa",
-  emotionTrust: "Confianza",
-  emotionAnticipation: "Anticipación",
   emotionStress: "Estrés",
   emotionAnxiety: "Ansiedad",
   emotionOverwhelm: "Agobio",
@@ -301,6 +298,7 @@ export const t = {
   emotionHopefulness: "Esperanza",
   emotionFrustration: "Frustración",
   emotionLove: "Amor",
+  emotionTrust: "Confianza",
   emotionRejection: "Rechazo",
   emotionLoneliness: "Soledad",
   emotionJealousy: "Celos",
