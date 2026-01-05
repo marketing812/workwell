@@ -245,7 +245,7 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
               id="reflections"
               value={reflections}
               onChange={(e) => setReflections(e.target.value)}
-              placeholder="Anota aquí cualquier idea, descubrimiento o aprendizaje que te lleves de este mapa..."
+              placeholder="¿Qué patrón reconoces? Por ejemplo: &quot;Siempre que me hacen un comentario crítico, pienso que no valgo, siento ansiedad y me sobreexijo&quot;.   Este ejercicio te ayuda a tomar distancia, ver tus reacciones con claridad, y empezar a transformar automatismos en elecciones conscientes. Tus emociones tienen sentido, y también pueden regularse. "
               disabled={isSaved}
             />
           </div>
