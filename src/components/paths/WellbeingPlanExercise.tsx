@@ -134,27 +134,33 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
 
     let notebookContent = `**${content.title}**\n\n`;
 
-    Object.values(planSections).forEach(section => {
+    Object.entries(planSections).forEach(([sectionKey, section]) => {
         notebookContent += `**${section.title}**\n`;
         notebookContent += `*${section.prompt}*\n\n`;
 
         if ('categories' in section) {
-            Object.values(section.categories).forEach(cat => {
-                notebookContent += `*${cat.title}:*\n`;
-                const selectedInCategory = cat.options.filter(opt => selections[opt.id]).map(opt => `  - ${opt.label}`).join('\n');
+            Object.entries(section.categories).forEach(([catKey, category]) => {
+                notebookContent += `*${category.title}:*\n`;
+                const selectedInCategory = category.options.filter(opt => selections[opt.id]).map(opt => `  - ${opt.label}`).join('\n');
                 if (selectedInCategory) notebookContent += `${selectedInCategory}\n`;
-                const note = notes[`${cat.title.toLowerCase().replace(/\s/g, '-')}-note`];
-                if (note) notebookContent += `  - Mis señales propias: ${note}\n`;
+                const otherNoteKey = `${catKey}-other`;
+                const otherNote = notes[otherNoteKey];
+                if (selections[otherNoteKey] && otherNote) {
+                    notebookContent += `  - Otras: ${otherNote}\n`;
+                }
             });
              notebookContent += `\n`;
         } else if ('options' in section) {
             const selectedOptions = section.options.filter(opt => selections[opt.id]).map(opt => `  - ${opt.label}`).join('\n');
             if (selectedOptions) notebookContent += `${selectedOptions}\n`;
-            const note = notes[`${section.title.toLowerCase().replace(/\s/g, '-')}-note`];
-            if (note) notebookContent += `  - Otra: ${note}\n`;
+            const otherNoteKey = `${sectionKey}-other-note`;
+            const otherNote = notes[otherNoteKey];
+            if (selections[`${sectionKey}-other`] && otherNote) {
+                 notebookContent += `  - Otra/s: ${otherNote}\n`;
+            }
             notebookContent += `\n`;
         } else { // Critical Plan
-            const note = notes['critical-plan-note'];
+            const note = notes['criticalPlan-note'];
             if (note) notebookContent += `${note}\n\n`;
         }
     });
@@ -192,10 +198,10 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
             <Accordion type="multiple" className="w-full space-y-4">
-                {Object.entries(planSections).map(([key, section]) => {
+                {Object.entries(planSections).map(([sectionKey, section]) => {
                     const SectionIcon = section.icon;
                     return (
-                        <AccordionItem value={key} key={key} className="border rounded-lg shadow-sm bg-background">
+                        <AccordionItem value={sectionKey} key={sectionKey} className="border rounded-lg shadow-sm bg-background">
                             <AccordionTrigger className="p-4 font-semibold hover:no-underline text-left text-primary">
                                 <div className="flex items-center gap-3">
                                     <SectionIcon className="h-5 w-5"/>
@@ -216,8 +222,14 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                                                             <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                                                         </div>
                                                     ))}
+                                                    <div className="flex items-center space-x-2 pt-1">
+                                                        <Checkbox id={`${catKey}-other`} checked={selections[`${catKey}-other`] || false} onCheckedChange={(checked) => handleCheckboxChange(`${catKey}-other`, checked as boolean)} disabled={isSaved} />
+                                                        <Label htmlFor={`${catKey}-other`} className="font-normal">Otras:</Label>
+                                                    </div>
                                                 </div>
-                                                <Textarea value={notes[`${catKey}-note`] || ''} onChange={e => handleNoteChange(`${catKey}-note`, e.target.value)} placeholder="Mis señales propias..." disabled={isSaved} className="mt-2 text-sm" />
+                                                {selections[`${catKey}-other`] && (
+                                                    <Textarea value={notes[`${catKey}-other`] || ''} onChange={e => handleNoteChange(`${catKey}-other`, e.target.value)} placeholder="Describe tus otras señales..." disabled={isSaved} className="mt-2 ml-6 text-sm" />
+                                                )}
                                             </div>
                                         ))}
                                     </div>
@@ -230,11 +242,17 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                                                 <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                                             </div>
                                         ))}
-                                        <Textarea value={notes[`${key}-note`] || ''} onChange={e => handleNoteChange(`${key}-note`, e.target.value)} placeholder="Otra/s..." disabled={isSaved} className="mt-2 text-sm" />
+                                         <div className="flex items-center space-x-2 pt-1">
+                                            <Checkbox id={`${sectionKey}-other`} checked={selections[`${sectionKey}-other`] || false} onCheckedChange={(checked) => handleCheckboxChange(`${sectionKey}-other`, checked as boolean)} disabled={isSaved} />
+                                            <Label htmlFor={`${sectionKey}-other`} className="font-normal">Otra/s:</Label>
+                                        </div>
+                                        {selections[`${sectionKey}-other`] && (
+                                            <Textarea value={notes[`${sectionKey}-other-note`] || ''} onChange={e => handleNoteChange(`${sectionKey}-other-note`, e.target.value)} placeholder="Añade aquí tus propias ideas..." disabled={isSaved} className="mt-2 text-sm ml-6" />
+                                        )}
                                     </div>
                                 )}
-                                 { key === 'criticalPlan' && (
-                                    <Textarea value={notes['critical-plan-note'] || ''} onChange={e => handleNoteChange('critical-plan-note', e.target.value)} placeholder="Ej: Si noto que me desbordo, me daré 5 minutos de pausa, escribiré lo que siento, usaré una técnica de respiración y hablaré con alguien antes de decidir o actuar." disabled={isSaved} rows={4} />
+                                 { sectionKey === 'criticalPlan' && (
+                                    <Textarea value={notes['criticalPlan-note'] || ''} onChange={e => handleNoteChange('criticalPlan-note', e.target.value)} placeholder="Ej: Si noto que me desbordo, me daré 5 minutos de pausa, escribiré lo que siento, usaré una técnica de respiración y hablaré con alguien antes de decidir o actuar." disabled={isSaved} rows={4} />
                                 )}
                             </AccordionContent>
                         </AccordionItem>
@@ -257,3 +275,5 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
     </Card>
   );
 }
+
+    
