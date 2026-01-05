@@ -229,68 +229,46 @@ export const responsibilityPath: Path = {
           ],
         },
         {
-            type: 'collapsible',
-            title: 'Del automático a lo consciente (Modelo ABC)',
-            audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
-            content: [
-                {
-                    type: 'paragraph',
-                    text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.',
-                },
-                { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):' },
-                {
-                    type: 'list',
-                    items: [
-                        'SITUACIÓN: lo que pasó, sin interpretaciones.',
-                        'PIENSO: la interpretación que haces.',
-                        'SIENTO: la emoción que surge.',
-                        'ACTÚO: lo que haces a partir de ahí.',
-                    ],
-                },
-                { type: 'paragraph', text: 'Ejemplo:' },
-                {
-                    type: 'list',
-                    items: [
-                        'SITUACIÓN: “No respondieron mi correo en 24 horas.”',
-                        'PIENSO: “Les molesté / no me valoran.”',
-                        'SIENTO: ansiedad, culpa.',
-                        'ACTÚO: dejo de escribirles.',
-                    ],
-                },
-                {
-                    type: 'paragraph',
-                    text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.',
-                },
-            ]
+          type: 'collapsible',
+          title: 'Del automático a lo consciente (Modelo ABC)',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
+          content: [
+            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.' },
+            { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):' },
+            {
+              type: 'list',
+              items: [
+                'SITUACIÓN: lo que pasó, sin interpretaciones.',
+                'PIENSO: la interpretación que haces.',
+                'SIENTO: la emoción que surge.',
+                'ACTÚO: lo que haces a partir de ahí.',
+              ],
+            },
+            { type: 'paragraph', text: 'Ejemplo:' },
+            { type: 'list', items: ['SITUACIÓN: “No respondieron mi correo en 24 horas.”', 'PIENSO: “Les molesté / no me valoran.”', 'SIENTO: ansiedad, culpa.', 'ACTÚO: dejo de escribirles.'] },
+            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.' }
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'De rumiar a decidir: cuestionamiento + solución de problemas',
-            audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio5sesion2ruta10.mp3',
-            content: [
-                { type: 'paragraph', text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles.' },
-                { type: 'paragraph', text: 'Técnica combinada:' },
-                {
-                    type: 'list',
-                    items: [
-                        '¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático)',
-                        '¿Me ayuda este pensamiento a avanzar?',
-                        '¿Qué parte depende de mí y cuál no? (Atribución realista)',
-                        'Si pasara lo que temo, ¿qué haría? (Descatastrofización)',
-                        'Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”',
-                    ],
-                },
-            ]
+          type: 'collapsible',
+          title: 'De rumiar a decidir: cuestionamiento + solución de problemas',
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio5sesion2ruta10.mp3',
+          content: [
+            { type: 'paragraph', text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. ' },
+            { type: 'paragraph', text: 'Técnica combinada:' },
+            { type: 'list', items: ['¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático)', '¿Me ayuda este pensamiento a avanzar?', '¿Qué parte depende de mí y cuál no? (Atribución realista)', 'Si pasara lo que temo, ¿qué haría? (Descatastrofización)', 'Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”'] }
+          ],
         },
         {
           type: 'collapsible',
           title: 'Experimentos conductuales y acción opuesta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio6sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Para cambiar creencias limitantes, no basta con pensarlo: hay que ponerlo a prueba. Experimento conductual: acción pequeña para verificar si tu creencia es cierta. Acción opuesta: hacer lo contrario a lo que la emoción te impulsa. Ejemplo: Creencia: “Si hablo, molesto.” Experimento: pedir turno de palabra una vez y observar la reacción real. Según la neurociencia, este tipo de exposición rompe asociaciones miedo–acción y refuerza redes neuronales más adaptativas.',
-            },
+            { type: 'paragraph', text: 'Para cambiar creencias limitantes, no basta con pensarlo: <b>hay que ponerlo a prueba.</b>' },
+            { type: 'paragraph', text: '<b>Experimento conductual</b>: acción pequeña para verificar si tu creencia es cierta.' },
+            { type: 'paragraph', text: '<b>Acción opuesta</b>: hacer lo contrario a lo que la emoción te impulsa.' },
+            { type: 'paragraph', text: 'Ejemplo: <br>Creencia: “Si hablo, molesto.” <br>Experimento: pedir turno de palabra una vez y observar la reacción real.' },
+            { type: 'paragraph', text: 'Según la neurociencia, este tipo de exposición rompe asociaciones miedo–acción y refuerza redes neuronales más adaptativas.' }
           ],
         },
         {
@@ -298,10 +276,9 @@ export const responsibilityPath: Path = {
           title: 'Soltar la culpa del pasado',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio7sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Pasos para transformar culpa improductiva en aprendizaje: Aceptar el hecho: ocurrió. Separar conducta de identidad: no eres tu error. Reparar si es posible. Aprender: definir qué harás diferente. Soltar lo que no depende de ti. Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”."',
-            },
+            { type: 'paragraph', text: 'Pasos para transformar culpa improductiva en aprendizaje:' },
+            { type: 'list', items: [ 'Aceptar el hecho: ocurrió.', 'Separar conducta de identidad: no eres tu error.', 'Reparar si es posible.', 'Aprender: definir qué harás diferente.', 'Soltar lo que no depende de ti.' ] },
+            { type: 'paragraph', text: 'Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”.' }
           ],
         },
         {
@@ -661,5 +638,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    
