@@ -79,7 +79,6 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
           </div>
           
           <div className="space-y-4">
-            <p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si: <br/>- Depende de mí. <br/>- No depende de mí. <br/>- Depende parcialmente de mí. <p>Ejemplo: Preparar una presentación importante → Depende de mí. <br/>Que mi pareja esté de mal humor → No depende de mí. </p></p>
             {situations.map((sit, index) => (
               <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                 <Label htmlFor={`sit-${index}`}>Situación {index + 1}</Label>
