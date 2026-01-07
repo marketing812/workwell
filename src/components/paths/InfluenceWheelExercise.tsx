@@ -25,7 +25,6 @@ interface Situation {
 
 export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
-  const [step, setStep] = useState(0);
   const [situations, setSituations] = useState<Situation[]>(() => Array(5).fill({ name: '', control: '' }));
   const [isSaved, setIsSaved] = useState(false);
 
@@ -77,6 +76,24 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p>
+          
+          <div className="space-y-4">
+              {situations.map((sit, index) => (
+                  <div key={index} className="space-y-2">
+                    <Label htmlFor={`sit-text-initial-${index}`}>Situación {index + 1}:</Label>
+                    <Input
+                      id={`sit-text-initial-${index}`}
+                      value={sit.name}
+                      onChange={e => handleSituationChange(index, 'name', e.target.value)}
+                      placeholder={`Describe la situación ${index + 1}`}
+                      disabled={isSaved}
+                    />
+                  </div>
+              ))}
+          </div>
+
+          <p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. </p>
+          
           {situations.map((sit, index) => (
             <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
               <Label htmlFor={`sit-text-${index}`}>Situación {index + 1}:</Label>
@@ -103,6 +120,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
               </RadioGroup>
             </div>
           ))}
+
           {!isSaved ? (
             <Button type="submit" className="w-full">
               <Save className="mr-2 h-4 w-4" /> Guardar Rueda
