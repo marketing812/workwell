@@ -180,99 +180,44 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'El punto de partida: del “¿por qué pasó?” al “¿qué hago ahora?”',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio1sesion2ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En la semana anterior entrenaste a reconocer tres caminos ante un problema: culpa, queja y responsabilidad activa. Hoy vamos a dar un paso más: dejar de pelear con lo que ya pasó para enfocar tu energía en lo que puedes decidir y hacer hoy. Esto implica practicar lo que llamamos aceptación activa: mirar la realidad de frente, sin quedarte atrapado o atrapada en el pasado. Aceptar no es rendirse. Es soltar la lucha inútil contra lo que ya ocurrió, para abrir espacio a lo que sí puedes construir ahora.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En la semana anterior entrenaste a reconocer tres caminos ante un problema: culpa, queja y responsabilidad activa. Hoy vamos a dar un paso más: dejar de pelear con lo que ya pasó para enfocar tu energía en lo que puedes decidir y hacer hoy. Esto implica practicar lo que llamamos aceptación activa: mirar la realidad de frente, sin quedarte atrapado o atrapada en el pasado. Aceptar no es rendirse. Es soltar la lucha inútil contra lo que ya ocurrió, para abrir espacio a lo que sí puedes construir ahora.' }],
         },
         {
           type: 'collapsible',
           title: 'Aceptación activa ≠ resignación',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio2sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.',
-            },
-            {
-              type: 'list',
-              items: [
-                'Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.',
-                'Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.',
-              ],
-            },
+            { type: 'paragraph', text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.' },
+            { type: 'list', items: ['Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.', 'Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.'] },
             { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:' },
-            {
-              type: 'list',
-              items: [
-                'Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”',
-                'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”',
-              ],
-            },
-            {
-              type: 'paragraph',
-              text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.',
-            },
+            { type: 'list', items: ['Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”', 'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”'] },
+            { type: 'paragraph', text: 'En términos de neurociencia, aceptar activa regiones del córtex prefrontal implicadas en la regulación emocional, mientras que la resignación deja la respuesta emocional más en manos de la amígdala, que reacciona con miedo o bloqueo.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'Separar pasado y presente: dos niveles distintos',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio3sesion2ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Aceptar implica reconocer lo ocurrido y dar al presente su propia oportunidad. El pasado nos aporta información, pero si lo dejamos dirigir el presente, actuaremos por miedo, culpa o costumbre, repitiendo patrones que ya no nos sirven. Ejemplo: “Hace un año no me seleccionaron para un proyecto” → Hoy, en lugar de callarme por miedo, puedo pedir feedback, ajustar mi propuesta y volver a intentarlo. En TCC trabajamos con esta separación porque ayuda a frenar la rumiación y a activar el modo solución en lugar del modo problema.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Aceptar implica reconocer lo ocurrido y dar al presente su propia oportunidad. El pasado nos aporta información, pero si lo dejamos dirigir el presente, actuaremos por miedo, culpa o costumbre, repitiendo patrones que ya no nos sirven. Ejemplo: “Hace un año no me seleccionaron para un proyecto” → Hoy, en lugar de callarme por miedo, puedo pedir feedback, ajustar mi propuesta y volver a intentarlo. En TCC trabajamos con esta separación porque ayuda a frenar la rumiación y a activar el modo solución en lugar del modo problema.' }],
         },
         {
           type: 'collapsible',
           title: 'Del automático a lo consciente (Modelo ABC)',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio4sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.',
-            },
+            { type: 'paragraph', text: 'Muchos de nuestros bloqueos se mantienen porque respondemos en “piloto automático”, sin distinguir entre hechos y opiniones.' },
             { type: 'paragraph', text: 'Modelo ABC (SITUACIÓN – PIENSO – SIENTO – ACTÚO):' },
-            {
-              type: 'list',
-              items: [
-                'SITUACIÓN: lo que pasó, sin interpretaciones.',
-                'PIENSO: la interpretación que haces.',
-                'SIENTO: la emoción que surge.',
-                'ACTÚO: lo que haces a partir de ahí.',
-              ],
-            },
+            { type: 'list', items: ['SITUACIÓN: lo que pasó, sin interpretaciones.', 'PIENSO: la interpretación que haces.', 'SIENTO: la emoción que surge.', 'ACTÚO: lo que haces a partir de ahí.'] },
             { type: 'paragraph', text: 'Ejemplo:' },
-            {
-              type: 'list',
-              items: [
-                'SITUACIÓN: “No respondieron mi correo en 24 horas.”',
-                'PIENSO: “Les molesté / no me valoran.”',
-                'SIENTO: ansiedad, culpa.',
-                'ACTÚO: dejo de escribirles.',
-              ],
-            },
-            {
-              type: 'paragraph',
-              text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.',
-            },
+            { type: 'list', items: ['SITUACIÓN: “No respondieron mi correo en 24 horas.”', 'PIENSO: “Les molesté / no me valoran.”', 'SIENTO: ansiedad, culpa.', 'ACTÚO: dejo de escribirles.'] },
+            { type: 'paragraph', text: 'Este modelo, validado en TCC, ayuda a activar el córtex prefrontal para evaluar opciones, en vez de reaccionar solo desde el sistema de amenaza.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'De rumiar a decidir: cuestionamiento + solución de problemas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio5sesion2ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: '<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada:  <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol> </p>',
-            },
-          ],
+          content: [{ type: 'paragraph', text: '<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada:  <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol> </p>' }],
         },
         {
           type: 'collapsible',
@@ -301,22 +246,14 @@ export const responsibilityPath: Path = {
           title: 'Mindfulness y defusión cognitiva',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio8sesion2ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'El mindfulness te ayuda a observar pensamientos como eventos mentales pasajeros. Ejemplo: en vez de “Arruiné todo”, decirte: “Estoy teniendo el pensamiento de que arruiné todo.” Esto crea distancia psicológica (defusión) y reduce la intensidad emocional. Solo 3–5 minutos diarios de respiración consciente y etiquetado emocional fortalecen esta habilidad.',
-            },
+            { type: 'paragraph', text: 'El mindfulness te ayuda a observar pensamientos como eventos mentales pasajeros. Ejemplo: en vez de “Arruiné todo”, decirte: “Estoy teniendo el pensamiento de que arruiné todo.” Esto crea distancia psicológica (defusión) y reduce la intensidad emocional. Solo 3–5 minutos diarios de respiración consciente y etiquetado emocional fortalecen esta habilidad.' },
           ],
         },
         {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio9sesion2ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Aceptar lo que fue no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Aceptar lo que fue no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -336,11 +273,7 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3',
-          prompts: [
-            '¿Qué culpa del pasado has soltado o disminuido?',
-            '¿Qué has descubierto sobre ti al separar hechos de juicios?',
-            '¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?',
-          ],
+          prompts: ['¿Qué culpa del pasado has soltado o disminuido?', '¿Qué has descubierto sobre ti al separar hechos de juicios?', '¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?'],
         },
         { type: 'title', text: 'Resumen Clave de la Semana' },
         {
@@ -350,13 +283,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'list',
-          items: [
-            'Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación los bloquea.',
-            'Separar pasado y presente te da libertad para decidir.',
-            'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
-            'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
-            'Mindfulness y defusión bajan la intensidad emocional.',
-          ],
+          items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación los bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.'],
         },
         { type: 'quote', text: 'Lo que pasó no define lo que harás ahora. Eso lo eliges tú.' },
       ],
@@ -377,67 +304,37 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'De la culpa al impulso: el poder de tu voz interna',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio1sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.' }],
         },
         {
           type: 'collapsible',
           title: '¿Por qué a veces somos tan duros con nosotros mismos?',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio2sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Esa voz crítica interna no aparece por casualidad. Suele formarse a partir de experiencias pasadas, mensajes que recibimos de figuras importantes o incluso expectativas sociales que hemos interiorizado.   En TCC llamamos a estos patrones pensamientos automáticos: surgen de forma rápida y sin filtro, muchas veces repitiendo creencias aprendidas sin cuestionarlas.   Ejemplo: si en el colegio te decían “podrías hacerlo mejor” cada vez que cometías un error, es posible que hoy tu mente te repita algo parecido cuando las cosas no salen como esperabas.   El problema no es detectar un error, sino cómo lo hacemos. Una crítica dura y global (“soy un desastre”) no deja espacio para mejorar; una observación específica y constructiva (“esta vez no salió como quería, voy a probar otra forma”) abre la puerta al cambio.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Esa voz crítica interna no aparece por casualidad. Suele formarse a partir de experiencias pasadas, mensajes que recibimos de figuras importantes o incluso expectativas sociales que hemos interiorizado.   En TCC llamamos a estos patrones pensamientos automáticos: surgen de forma rápida y sin filtro, muchas veces repitiendo creencias aprendidas sin cuestionarlas.   Ejemplo: si en el colegio te decían “podrías hacerlo mejor” cada vez que cometías un error, es posible que hoy tu mente te repita algo parecido cuando las cosas no salen como esperabas.   El problema no es detectar un error, sino cómo lo hacemos. Una crítica dura y global (“soy un desastre”) no deja espacio para mejorar; una observación específica y constructiva (“esta vez no salió como quería, voy a probar otra forma”) abre la puerta al cambio.' }],
         },
         {
           type: 'collapsible',
           title: 'La diferencia entre responsabilidad y autoexigencia destructiva',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio3sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Asumir responsabilidades es reconocer nuestra parte en una situación y decidir actuar para mejorar. La autoexigencia destructiva, en cambio, es exigirse sin tener en cuenta los propios límites, castigándose por no alcanzar estándares poco realistas.   La investigación en psicología motivacional muestra que la autocompasión —entendida como tratarnos con la misma comprensión que a un amigo— favorece el aprendizaje y la persistencia mucho más que la autocrítica severa. Kristin Neff, referente en este campo, lo resume así: “La autocompasión es el antídoto contra la autocrítica que paraliza”.   Piensa en esto:   Responsabilidad: “Me equivoqué en la presentación. Voy a repasar el material para la próxima vez.”   Autoexigencia destructiva: “Siempre lo hago mal. No sirvo para esto.”   La primera frase abre posibilidades; la segunda te encierra.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Asumir responsabilidades es reconocer nuestra parte en una situación y decidir actuar para mejorar. La autoexigencia destructiva, en cambio, es exigirse sin tener en cuenta los propios límites, castigándose por no alcanzar estándares poco realistas.   La investigación en psicología motivacional muestra que la autocompasión —entendida como tratarnos con la misma comprensión que a un amigo— favorece el aprendizaje y la persistencia mucho más que la autocrítica severa. Kristin Neff, referente en este campo, lo resume así: “La autocompasión es el antídoto contra la autocrítica que paraliza”.   Piensa en esto:   Responsabilidad: “Me equivoqué en la presentación. Voy a repasar el material para la próxima vez.”   Autoexigencia destructiva: “Siempre lo hago mal. No sirvo para esto.”   La primera frase abre posibilidades; la segunda te encierra.' }],
         },
         {
           type: 'collapsible',
           title: 'El impacto real del diálogo interno en tu cerebro y tu cuerpo',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio4sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La neurociencia ha comprobado que las palabras que nos decimos activan distintas redes neuronales:   Un lenguaje interno amenazante estimula la amígdala, generando respuesta de estrés y aumentando cortisol.   Un lenguaje interno amable activa el córtex prefrontal, facilitando la autorregulación y la toma de decisiones.   Esto significa que no es solo un tema emocional: es físico. Hablarte mal no solo te desalienta, también reduce tu capacidad de pensar con claridad. En cambio, un tono interno responsable y compasivo no ignora los errores, pero los aborda desde la calma, favoreciendo soluciones más efectivas.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'La neurociencia ha comprobado que las palabras que nos decimos activan distintas redes neuronales:   Un lenguaje interno amenazante estimula la amígdala, generando respuesta de estrés y aumentando cortisol.   Un lenguaje interno amable activa el córtex prefrontal, facilitando la autorregulación y la toma de decisiones.   Esto significa que no es solo un tema emocional: es físico. Hablarte mal no solo te desalienta, también reduce tu capacidad de pensar con claridad. En cambio, un tono interno responsable y compasivo no ignora los errores, pero los aborda desde la calma, favoreciendo soluciones más efectivas.' }],
         },
         {
           type: 'collapsible',
           title: 'De juez a guía: el cambio que necesitas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio5sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Imagina que tienes un entrenador personal que te acompaña cada día. Si te gritara y te humillara cada vez que fallas, ¿cuánto tardarías en perder motivación? Ahora imagina que ese entrenador te corrige, pero también reconoce tus avances y te anima a intentarlo de nuevo.   Ese entrenador eres tú. Y hoy vamos a entrenar tu voz interna para que pase de juez severo a guía firme y alentador. No se trata de evitar la responsabilidad ni de “endulzarlo todo”, sino de decir las cosas de forma que te ayuden a actuar.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Imagina que tienes un entrenador personal que te acompaña cada día. Si te gritara y te humillara cada vez que fallas, ¿cuánto tardarías en perder motivación? Ahora imagina que ese entrenador te corrige, pero también reconoce tus avances y te anima a intentarlo de nuevo.   Ese entrenador eres tú. Y hoy vamos a entrenar tu voz interna para que pase de juez severo a guía firme y alentador. No se trata de evitar la responsabilidad ni de “endulzarlo todo”, sino de decir las cosas de forma que te ayuden a actuar.' }],
         },
         {
           type: 'collapsible',
           title: 'Cierre y puente hacia las técnicas',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Audio6sesion3ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En esta semana aprenderás a identificar cuándo tu voz interna está frenando tu crecimiento y a transformarla en una aliada. Descubrirás que ser responsable no significa castigarte, y que puedes exigirte sin perder el respeto por ti mismo o por ti misma.   Ahora pasaremos a las técnicas, donde pondrás en práctica estrategias concretas para:   Definir cómo quieres hablarte cuando las cosas no salgan como esperabas.   Reformular críticas internas en guías constructivas que te impulsen.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En esta semana aprenderás a identificar cuándo tu voz interna está frenando tu crecimiento y a transformarla en una aliada. Descubrirás que ser responsable no significa castigarte, y que puedes exigirte sin perder el respeto por ti mismo o por ti misma.   Ahora pasaremos a las técnicas, donde pondrás en práctica estrategias concretas para:   Definir cómo quieres hablarte cuando las cosas no salgan como esperabas.   Reformular críticas internas en guías constructivas que te impulsen.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -458,11 +355,7 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Reflexionsesion3ruta10.mp3',
-          prompts: [
-            '¿Qué descubrimiento ha tenido más impacto en ti?',
-            '¿Cómo cambió tu forma de actuar al suavizar la crítica interna?',
-            '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?',
-          ],
+          prompts: ['¿Qué descubrimiento ha tenido más impacto en ti?', '¿Cómo cambió tu forma de actuar al suavizar la crítica interna?', '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?'],
         },
         { type: 'title', text: 'Resumen Clave de la Semana' },
         {
@@ -472,15 +365,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'list',
-          items: [
-            'Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.',
-            'Separar pasado y presente te da libertad para decidir.',
-            'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
-            'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
-            'Mindfulness y defusión bajan la intensidad emocional.',
-            'La autocrítica puede ayudarte si la transformas en guía responsable y empática.',
-            'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.',
-          ],
+          items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.', 'La autocrítica puede ayudarte si la transformas en guía responsable y empática.', 'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.'],
         },
         { type: 'quote', text: 'Hablarme con respeto no me debilita, me prepara para avanzar con fuerza y claridad.' },
       ],
@@ -501,78 +386,43 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'De cargar con todo a elegir con intención',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio1sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'En las semanas anteriores, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora vamos a integrar todo para dar un paso clave: hacernos cargo sin perdernos de vista.   Esto significa actuar desde la responsabilidad activa —lo que depende de ti— sin absorber culpas, tareas o problemas que no te pertenecen.   La clave está en elegir dónde pones tu energía, en lugar de repartirla de forma automática.   Ejemplo:   Cargar con todo: “Si no me ocupo de esto, nadie lo hará, así que lo hago, aunque esté agotado/a.”   Elegir con intención: “Esto sí lo puedo transformar, y esto otro no me corresponde. Decido dónde actuar y dónde soltar.”' }],
         },
         {
           type: 'collapsible',
           title: 'La sostenibilidad emocional de la responsabilidad',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio2sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La responsabilidad mal entendida puede llevar al agotamiento, la frustración y el resentimiento. Para que sea sostenible, necesitamos un equilibrio entre implicarnos y cuidarnos.   La neurociencia muestra que el cerebro necesita alternar periodos de activación y descanso para mantener la motivación y la claridad mental (Peters et al., 2017). Cuando nos hacemos cargo de todo, el sistema nervioso entra en estrés crónico y eso afecta al juicio, a la memoria y a la regulación emocional.   Idea clave: Responsabilidad no es cargar con más, es actuar mejor.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'La responsabilidad mal entendida puede llevar al agotamiento, la frustración y el resentimiento. Para que sea sostenible, necesitamos un equilibrio entre implicarnos y cuidarnos.   La neurociencia muestra que el cerebro necesita alternar periodos de activación y descanso para mantener la motivación y la claridad mental (Peters et al., 2017). Cuando nos hacemos cargo de todo, el sistema nervioso entra en estrés crónico y eso afecta al juicio, a la memoria y a la regulación emocional.   Idea clave: Responsabilidad no es cargar con más, es actuar mejor.' }],
         },
         {
           type: 'collapsible',
           title: 'Esto no me corresponde / Esto sí lo puedo transformar',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio3sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Un error común es pensar que ser responsables significa asumir cualquier problema cercano.   La realidad es que hay cosas que no dependen de nosotros y que, si intentamos controlarlas, solo generamos desgaste y frustración.   Separar lo que sí y lo que no te corresponde es un acto de autocuidado y de claridad mental.   Ejemplo:   No me corresponde: las decisiones ajenas, el clima, las emociones que otros no quieren trabajar.   Sí puedo transformar: mi forma de comunicarme, mis hábitos, mi manera de responder a lo que ocurre.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Un error común es pensar que ser responsables significa asumir cualquier problema cercano.   La realidad es que hay cosas que no dependen de nosotros y que, si intentamos controlarlas, solo generamos desgaste y frustración.   Separar lo que sí y lo que no te corresponde es un acto de autocuidado y de claridad mental.   Ejemplo:   No me corresponde: las decisiones ajenas, el clima, las emociones que otros no quieren trabajar.   Sí puedo transformar: mi forma de comunicarme, mis hábitos, mi manera de responder a lo que ocurre.' }],
         },
         {
           type: 'collapsible',
           title: 'El mapa de la influencia real',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: '<p>Imagina tu vida como tres círculos concéntricos: </p> <ol><li>Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos). </li><li> Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). </li><li> Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). </li></ol> <p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. </p>  <p>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p> <ul><li>Comunicar plazos claros. </li><li>Pedir reuniones de seguimiento. </li><li>Ajustar tu parte para prevenir retrasos. </li></ul>',
-            },
-          ],
+          content: [{ "type": "paragraph", "text": "<p>Imagina tu vida como tres círculos concéntricos: </p>\n1- Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos). <br>\n2 - Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>\n3- Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br>\n<p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. </p>\n\n<p>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p>\n- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>" }]
         },
         {
           type: 'collapsible',
           title: 'Compromiso con una vida elegida, no impuesta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras.   Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro.   Ejemplo:   Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”   Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.”',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras.   Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro.   Ejemplo:   Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”   Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.”' }],
         },
         {
           type: 'collapsible',
           title: 'Cuidarte también es tu responsabilidad',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio6sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La autorresponsabilidad también implica proteger tu energía física, mental y emocional.   En TCC y psicología positiva, el autocuidado no es un lujo: es la base para responder con claridad y sostener tus compromisos a largo plazo.   Cuando te pierdes de vista, la responsabilidad se vuelve una carga que agota y bloquea; cuando te cuidas, se convierte en una elección que impulsa y da estabilidad.   Ejemplos:   Asumir un reto durmiendo poco → más estrés y menos rendimiento.   Priorizar descanso y pausas → más energía, enfoque y mejores decisiones.   Cuidarte es asegurar que podrás seguir eligiendo y actuando mañana.   Recuerda: si te pierdes de vista, tu responsabilidad se convierte en una carga que te rompe, no en una elección que te impulsa.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'La autorresponsabilidad también implica proteger tu energía física, mental y emocional.   En TCC y psicología positiva, el autocuidado no es un lujo: es la base para responder con claridad y sostener tus compromisos a largo plazo.   Cuando te pierdes de vista, la responsabilidad se vuelve una carga que agota y bloquea; cuando te cuidas, se convierte en una elección que impulsa y da estabilidad.   Ejemplos:   Asumir un reto durmiendo poco → más estrés y menos rendimiento.   Priorizar descanso y pausas → más energía, enfoque y mejores decisiones.   Cuidarte es asegurar que podrás seguir eligiendo y actuando mañana.   Recuerda: si te pierdes de vista, tu responsabilidad se convierte en una carga que te rompe, no en una elección que te impulsa.' }],
         },
         {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:   Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde.   Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso.   La responsabilidad que eliges es más ligera que la culpa que arrastras.  Ahora vamos a entrenarla.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:   Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde.   Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso.   La responsabilidad que eliges es más ligera que la culpa que arrastras.  Ahora vamos a entrenarla.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -593,22 +443,12 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
-          prompts: [
-            '¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?',
-            '¿Cuál ha sido tu mayor descubrimiento sobre ti en relación con la responsabilidad?',
-            '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?',
-          ],
+          prompts: ['¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?', '¿Cuál ha sido tu mayor descubrimiento sobre ti en relación con la responsabilidad?', '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?'],
         },
         { type: 'title', text: 'Resumen Clave de la Semana' },
         {
           type: 'list',
-          items: [
-            'Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.',
-            'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.',
-            'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.',
-            'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.',
-            'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.',
-          ],
+          items: ['Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.', 'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.', 'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.', 'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.', 'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.'],
         },
         { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
       ],
