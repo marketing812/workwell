@@ -40,7 +40,7 @@ export function PersonalCommitmentDeclarationExercise({ content, pathId }: Perso
 **Ejercicio: ${content.title}**
 
 *Valores inspiradores:*
-${Object.keys(selectedValues).filter(k => selectedValues[k]).join(', ')}${selectedValues['other'] ? `, ${otherValue}`: ''}
+${Object.keys(selectedValues).filter(k => selectedValues[k] && k !== 'other').join(', ')}${selectedValues['other'] && otherValue ? `, ${otherValue}`: ''}
 
 *Declaración de compromiso:*
 - Elijo: ${commitments.elijo}
@@ -74,7 +74,8 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label>Paso 1: Inspírate en tus valores</Label>
+            <Label className="font-semibold" dangerouslySetInnerHTML={{ __html: "<b>Paso 1: Inspírate en tus valores </b>" }} />
+            <p className="text-sm text-muted-foreground">Piensa en momentos donde actuaste alineado/a contigo mismo/a y te sentiste orgulloso/a. ¿Qué valores estaban presentes?   Selecciona los que mejor te representen. (Puedes elegir más de uno)</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
               {valuesList.map(v => (
                 <div key={v} className="flex items-center space-x-2">
@@ -92,13 +93,13 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
             )}
           </div>
           <div className="space-y-2">
-            <Label>Paso 2: Redacta tus frases</Label>
+            <Label className="font-semibold">Paso 2: Redacta tus frases</Label>
             <Textarea value={commitments.elijo} onChange={e => setCommitments(p => ({ ...p, elijo: e.target.value }))} placeholder="Elijo..." disabled={isSaved} />
             <Textarea value={commitments.meComprometo} onChange={e => setCommitments(p => ({ ...p, meComprometo: e.target.value }))} placeholder="Me comprometo a..." disabled={isSaved} />
             <Textarea value={commitments.decido} onChange={e => setCommitments(p => ({ ...p, decido: e.target.value }))} placeholder="Decido..." disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label>Paso 3: Plan de recordatorio</Label>
+            <Label className="font-semibold">Paso 3: Plan de recordatorio</Label>
             <Select onValueChange={v => setReminder(p => ({ ...p, type: v }))} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Elige un recordatorio..." /></SelectTrigger>
               <SelectContent>
