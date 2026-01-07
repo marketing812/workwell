@@ -97,7 +97,10 @@ ${signature}
             <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} placeholder="Firma aquí con tu nombre o iniciales para sellar tu compromiso..." disabled={isSaved} className="mt-2" />
           </div>
           {!isSaved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Contrato</Button>
+            <>
+              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Contrato</Button>
+              <p className="text-xs text-muted-foreground text-center mt-2">Recuerda: este contrato no es un castigo ni una lista de exigencias, sino una guía.</p>
+            </>
           ) : (
             <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
               <div className="flex items-center">
