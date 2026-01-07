@@ -84,7 +84,7 @@ ${hiddenObjective}
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="hidden-objective">Identifica el objetivo oculto</Label>
+            <Label htmlFor="hidden-objective">Identifica el objetivo oculto </Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien. </li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
@@ -105,7 +105,7 @@ ${hiddenObjective}
           </div>
           <div className="space-y-2">
             <Label htmlFor="reformulation-blocking">Reformula en guía</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos:  <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li>  <li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos:  <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li><li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
           </div>
            <div className="space-y-2">
