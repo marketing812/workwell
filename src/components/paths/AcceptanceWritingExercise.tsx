@@ -126,8 +126,9 @@ ${response}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dialogue">Escribe tu diálogo interno</Label>
-            <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="dialogue">Reconoce tu diálogo interno</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
+            <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} placeholder="Escribe tu diálogo interno" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="judgment">Anota qué partes son hechos y cuáles son juicios</Label>
