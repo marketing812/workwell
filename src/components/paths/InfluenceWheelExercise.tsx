@@ -24,20 +24,20 @@ interface Situation {
 
 export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
-  const [situations, setSituations] = useState<Situation[]>(Array(5).fill({ text: '', control: '' }));
+  const [situations, setSituations] = useState<Situation[]>(() => Array(5).fill({ text: '', control: '' }));
   const [actions, setActions] = useState<Record<number, string>>({});
   const [release, setRelease] = useState<Record<number, string>>({});
   const [isSaved, setIsSaved] = useState(false);
 
   const handleSituationTextChange = (index: number, text: string) => {
     const newSituations = [...situations];
-    newSituations[index].text = text;
+    newSituations[index] = { ...newSituations[index], text: text };
     setSituations(newSituations);
   };
   
   const handleControlChange = (index: number, value: 'mine' | 'not_mine' | 'partial') => {
     const newSituations = [...situations];
-    newSituations[index].control = value;
+    newSituations[index] = { ...newSituations[index], control: value };
     setSituations(newSituations);
   };
 
@@ -79,7 +79,9 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm">Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.</p>
+          <div className="space-y-2">
+            <Label htmlFor="sit-0"><b>Paso 1: Lista de situaciones</b><br/>Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable. Ejemplo: Preparar una presentación importante. La actitud negativa de un compañero/a. Que mi pareja esté de mal humor.</Label>
+          </div>
           {situations.map((sit, index) => (
             <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
               <Label htmlFor={`sit-${index}`}>Situación {index + 1}</Label>
