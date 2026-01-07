@@ -72,8 +72,9 @@ ${signature}
             <Textarea id="initial-commitment" value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase de compromiso inicial…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="how-to-talk">Describe aquí cómo quieres hablarte cuando cometas un error</Label>
-            <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="how-to-talk">Cómo quiero hablarme cuando me equivoque</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
+            <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="how-to-respond">Escribe aquí cómo quieres responder ante tus decisiones</Label>
