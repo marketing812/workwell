@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -84,12 +84,12 @@ ${hiddenObjective}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="critical-phrase">Detecta tu frase crítica</Label>
+            <Label htmlFor="critical-phrase" className="font-semibold">Detecta tu frase crítica</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  <br>Ejemplos de frases críticas: <ul><li>Nunca hago nada bien.</li><li>Tendría que haberlo hecho perfecto.</li><li>Soy un desastre.</li></ul>" }} />
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="hidden-objective">Identifica el objetivo oculto </Label>
+            <Label htmlFor="hidden-objective" className="font-semibold">Identifica el objetivo oculto </Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien.</li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
@@ -109,12 +109,12 @@ ${hiddenObjective}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="reformulation-blocking">Reformula en guía</Label>
+            <Label htmlFor="reformulation-blocking" className="font-semibold">Reformula en guía</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos: <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li><li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
           </div>
            <div className="space-y-2">
-              <Label>Revisión y anclaje</Label>
+              <Label className="font-semibold">Revisión y anclaje</Label>
               <p className="text-sm text-muted-foreground">Lee tu frase reformulada y reflexiona:</p>
               <div className="flex items-center space-x-2">
                   <Checkbox id="check-helps" checked={checklist.helps} onCheckedChange={(checked) => handleChecklistChange('helps', !!checked)} disabled={isSaved} />
@@ -138,7 +138,7 @@ ${hiddenObjective}
             </div>
           )}
           {isSaved && (
-              <p className="text-xs text-center text-muted-foreground mt-4">Convertir tu crítica en guía es un acto de liderazgo interno: eliges ser una voz que impulsa, no que derriba. Cuanto más practiques, más natural será tratarte con firmeza y respeto al mismo tiempo.</p>
+              <p className="text-xs text-center text-muted-foreground mt-4" dangerouslySetInnerHTML={{ __html: "Convertir tu crítica en guía es un acto de liderazgo interno: eliges ser una voz que <b>impulsa</b>, no que <b>derriba</b>. Cuanto más practiques, más natural será tratarte con firmeza y respeto al mismo tiempo." }} />
           )}
         </form>
       </CardContent>
