@@ -113,8 +113,9 @@ ${response}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="fact">Describe objetivamente lo que pasó</Label>
-            <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="fact">Describe el hecho con honestidad</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Escribe lo que ocurrió, centrándote en los hechos y evitando juicios o interpretaciones.<br> Ejemplo: En la reunión de equipo, interrumpí a un compañero y me di cuenta después." }} />
+            <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} disabled={isSaved} placeholder="Describe objetivamente lo que pasó. Céntrate solo en los hechos" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="emotion-acceptance">Selecciona la emoción que sentiste</Label>
