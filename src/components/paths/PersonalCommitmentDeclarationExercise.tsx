@@ -115,10 +115,13 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Declaración</Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">Guardado.</p>
-            </div>
+            <>
+              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                <CheckCircle className="mr-2 h-5 w-5" />
+                <p className="font-medium">Guardado.</p>
+              </div>
+              <p className="text-sm text-muted-foreground text-center mt-4" dangerouslySetInnerHTML={{ __html: "Tu declaración puede evolucionar contigo. Lo importante es que te recuerde cada día que <b>tu responsabilidad es una elección consciente, no una carga impuesta.</b>" }} />
+            </>
           )}
         </form>
       </CardContent>
