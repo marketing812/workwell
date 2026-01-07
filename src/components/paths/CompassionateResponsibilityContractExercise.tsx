@@ -73,7 +73,7 @@ ${signature}
           </div>
           <div className="space-y-2">
             <Label htmlFor="how-to-talk">Cómo quiero hablarme cuando me equivoque</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br> Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
             <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
@@ -88,10 +88,10 @@ ${signature}
                 <p><strong>Mi compromiso inicial:</strong></p>
                 <Textarea value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Tu compromiso..."/>
 
-                <p><strong>Quiero hablarme así:</strong></p>
+                <p className="mt-4"><strong>Quiero hablarme así:</strong></p>
                 <Textarea value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Cómo te hablarás..."/>
                 
-                <p><strong>Quiero responderme ante mis decisiones así:</strong></p>
+                <p className="mt-4"><strong>Quiero responderme ante mis decisiones así:</strong></p>
                 <Textarea value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Cómo responderás..."/>
             </div>
             <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} placeholder="Firma aquí con tu nombre o iniciales para sellar tu compromiso..." disabled={isSaved} className="mt-2" />
@@ -99,9 +99,14 @@ ${signature}
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Contrato</Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">Guardado.</p>
+            <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+              <div className="flex items-center">
+                <CheckCircle className="mr-2 h-5 w-5" />
+                <p className="font-medium">Guardado.</p>
+              </div>
+              <p className="text-sm text-center mt-2">
+                Recuerda: este contrato no es un castigo ni una lista de exigencias, sino una guía viva para acompañarte en tus errores y aprendizajes. Puedes volver a él siempre que necesites reorientarte.
+              </p>
             </div>
           )}
         </form>
