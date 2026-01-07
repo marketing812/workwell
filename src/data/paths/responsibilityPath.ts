@@ -406,9 +406,7 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3',
-          prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><p>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?<br>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?  <br>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?  <br>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti? </p>',
-          ],
+          prompts: ["<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><p>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?<br>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?  <br>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?  <br>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti? </p>"],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumensesion4ruta10.mp3' },
         {
@@ -428,13 +426,7 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
-          prompts: [
-            'A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.',
-            'Piensa ahora:',
-            '¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta? […]',
-            '¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad? […]',
-            '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria? […]',
-          ],
+          prompts: ["<p>A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.</p><p> Piensa ahora: ¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?  ¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad?  ¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria? </p>"],
         },
         {
           type: 'title',
@@ -453,7 +445,7 @@ export const responsibilityPath: Path = {
             'Definir tu zona de influencia te ayuda a no cargar con lo que no te corresponde.',
           ],
         },
-        { type: 'quote', text: '“Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista”.' },
+        { type: 'quote', text: 'Cuando eliges responder con responsabilidad activa, dejas de ser espectador o espectadora de tu vida y te conviertes en su protagonista.' },
       ],
     },
   ],
