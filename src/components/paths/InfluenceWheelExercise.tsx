@@ -150,14 +150,14 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4">
-             <Button onClick={nextStep} className="w-full">Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4"/></Button>
+          <div className="p-4 space-y-4 text-center">
+            <Button onClick={nextStep} className="w-full">Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );
       case 1:
         return (
             <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold"><b>Paso 1: Lista de situaciones</b><br/>Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable. Ejemplo: Preparar una presentación importante. La actitud negativa de un compañero/a. Que mi pareja esté de mal humor.</h4>
+                <h4 className="font-semibold" dangerouslySetInnerHTML={{ __html: "<b>Paso 1: Lista de situaciones</b><br>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. " }}/>
                 {situations.map((sit, index) => (
                     <div key={index}>
                         <Label htmlFor={`sit-text-${index}`} className="sr-only">Situación {index + 1}:</Label>
@@ -179,7 +179,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 2:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold"><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si: <br/>- Depende de mí. <br/>- No depende de mí. <br/>- Depende parcialmente de mí. <p>Ejemplo: Preparar una presentación importante → Depende de mí. <br/>Que mi pareja esté de mal humor → No depende de mí. </p></h4>
+            <h4 className="font-semibold" dangerouslySetInnerHTML={{__html: "<b>Paso 2: Clasificación</b><br> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. "}}/>
             {situations.filter(sit => sit.name.trim() !== '').map((sit, index) => (
               <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                 <p className="font-semibold text-muted-foreground">{sit.name}</p>
@@ -208,7 +208,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 3:
         return (
            <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold"><b>Paso 3: Mi rueda de influencia</b></h4><p>Indica para cada situación su lugar: <br/>Círculo interno: lo que depende de ti (acciones, actitudes, elecciones). <br/>Círculo externo: lo que no depende de ti (conductas ajenas, pasado, azar). </p>
+            <h4 className="font-semibold" dangerouslySetInnerHTML={{__html:"<b>Paso 3: Mi rueda de influencia</b></p><p>Indica para cada situación su lugar: <br>Círculo interno: lo que depende de ti (acciones, actitudes, elecciones). <br>Círculo externo: lo que no depende de ti (conductas ajenas, pasado, azar). </p>"}}/>
              {situations.filter(sit => sit.name.trim() !== '').map((sit, index) => (
               <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                 <p className="font-semibold text-muted-foreground">{sit.name}</p>
@@ -235,7 +235,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 4:
          return (
             <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold"><b>Paso 4: Plan de acción</b></h4><p>Para las que dependen de ti → indica 1 acción concreta que puedas hacer esta semana.<br/>Para las que no dependen de ti → elige una forma de soltarlas.</p>
+                <h4 className="font-semibold" dangerouslySetInnerHTML={{__html:"<b>Paso 4: Plan de acción </b><p>Para las que dependen de ti → indica1 acción concreta que puedas hacer esta semana.<br>Para las que no dependen de ti → elige una forma de soltarlas.  </p>"}}/>
                 {situations.filter(sit => sit.name.trim() && sit.circle).map((sit, index) => (
                     <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                         <p className="font-semibold text-muted-foreground">{sit.name}</p>
@@ -274,9 +274,10 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
          );
       case 5:
         return (
-             <div className="flex flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
-                <CheckCircle className="mr-2 h-8 w-8 text-green-600 mb-2" />
-                <p className="font-medium">Guardado. Puedes ver el registro en tu cuaderno.</p>
+             <div className="flex flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 rounded-lg text-center space-y-3">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+                <p className="font-medium text-green-800 dark:text-green-200">Guardado. Puedes ver el registro en tu cuaderno.</p>
+                <p className="text-sm text-muted-foreground italic" dangerouslySetInnerHTML={{ __html: "Soltar lo que no depende de ti <b>no es rendirse</b>, es liberar espacio para lo que sí puedes cambiar. Cuanto más claro tengas tu círculo de influencia, más ligera será tu carga." }}/>
                 <Button onClick={() => { setStep(0); setIsSaved(false); setSituations(Array(5).fill({ name: '', control: '', circle: '' })); setActionPlans({}); setOtherActionPlans({}); }} variant="link" className="mt-4">
                     Hacer otro ejercicio
                 </Button>
