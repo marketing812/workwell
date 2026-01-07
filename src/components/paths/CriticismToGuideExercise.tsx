@@ -90,7 +90,7 @@ ${hiddenObjective}
           </div>
           <div className="space-y-2">
             <Label htmlFor="hidden-objective">Identifica el objetivo oculto </Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien. </li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien.</li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
               <SelectContent>
@@ -115,7 +115,7 @@ ${hiddenObjective}
           </div>
            <div className="space-y-2">
               <Label>Revisión y anclaje</Label>
-              <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Lee tu frase reformulada y reflexiona: <br><ul><li>¿Me ayuda a mejorar? </li><li>¿Me habla con respeto? </li><li>¿Me deja con energía para actuar? </li></ul>" }} />
+              <p className="text-sm text-muted-foreground">Lee tu frase reformulada y reflexiona:</p>
               <div className="flex items-center space-x-2">
                   <Checkbox id="check-helps" checked={checklist.helps} onCheckedChange={(checked) => handleChecklistChange('helps', !!checked)} disabled={isSaved} />
                   <Label htmlFor="check-helps" className="font-normal">Me ayuda a mejorar.</Label>
@@ -136,6 +136,9 @@ ${hiddenObjective}
               <CheckCircle className="mr-2 h-5 w-5" />
               <p className="font-medium">Guardado.</p>
             </div>
+          )}
+          {isSaved && (
+              <p className="text-xs text-center text-muted-foreground mt-4">Convertir tu crítica en guía es un acto de liderazgo interno: eliges ser una voz que impulsa, no que derriba. Cuanto más practiques, más natural será tratarte con firmeza y respeto al mismo tiempo.</p>
           )}
         </form>
       </CardContent>
