@@ -77,8 +77,9 @@ ${signature}
             <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="how-to-respond">Escribe aquí cómo quieres responder ante tus decisiones</Label>
-            <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="how-to-respond">Cómo quiero responder ante mis decisiones</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Tanto si las cosas salen bien como si no, tu forma de responderte puede marcar la diferencia. Define qué actitudes y acciones quieres mantener después de tomar una decisión, evitando quedarte atrapado/a en la duda o el arrepentimiento. <br> Ejemplo: <br>Revisaré si la decisión estaba alineada con mis valores y aprenderé lo que pueda, en lugar de castigarme. " }} />
+            <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} placeholder="Escribe aquí cómo quieres responder ante tus decisiones…" disabled={isSaved} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="signature">Escribe tu firma o iniciales para sellar tu contrato</Label>
