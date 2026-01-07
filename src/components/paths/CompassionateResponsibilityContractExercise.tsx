@@ -73,17 +73,23 @@ ${signature}
           </div>
           <div className="space-y-2">
             <Label htmlFor="how-to-talk">Cómo quiero hablarme cuando me equivoque</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br> Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
             <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="how-to-respond">Cómo quiero responder ante mis decisiones</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Tanto si las cosas salen bien como si no, tu forma de responderte puede marcar la diferencia. Define qué actitudes y acciones quieres mantener después de tomar una decisión, evitando quedarte atrapado/a en la duda o el arrepentimiento. <br> Ejemplo: <br>Revisaré si la decisión estaba alineada con mis valores y aprenderé lo que pueda, en lugar de castigarme. " }} />
-            <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} placeholder="Escribe aquí cómo quieres responder ante tus decisiones…" disabled={isSaved} />
+            <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Escribe aquí cómo quieres responder ante tus decisiones…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="signature">Escribe tu firma o iniciales para sellar tu contrato</Label>
-            <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="signature">Firma y compromiso</Label>
+            <div className="text-sm text-muted-foreground space-y-2" dangerouslySetInnerHTML={{ __html: "Cuando termines, lee tu contrato completo en voz alta. Si te suena demasiado duro, ajústalo. Si te suena realista y motivador, fírmalo (puedes escribir tu nombre o solo tus iniciales).<br><b>Mi contrato:</b><br>" }} />
+            <div className="p-4 border rounded-md bg-background/50 space-y-3 text-sm">
+                <p><strong>Mi compromiso inicial:</strong> {initialCommitment || "..."}</p>
+                <p><strong>Quiero hablarme así:</strong> {howToTalk || "..."}</p>
+                <p><strong>Quiero responderme ante mis decisiones así:</strong> {howToRespond || "..."}</p>
+            </div>
+            <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} placeholder="Firma aquí con tu nombre o iniciales para sellar tu compromiso..." disabled={isSaved} className="mt-2" />
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Contrato</Button>
