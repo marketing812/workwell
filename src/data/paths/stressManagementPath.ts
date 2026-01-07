@@ -117,27 +117,27 @@ export const stressManagementPath: Path = {
         },
         { type: 'quote', text: 'Tu cuerpo no está en tu contra. Te está hablando. La clave está en aprender a escucharlo con compasión.' },
         { type: 'title', text: 'Técnicas Específicas' },
-        { 
+        {
           type: 'stressMapExercise',
           title: 'Ejercicio 1: Mapa del Estrés Personal',
           objective: 'Con este ejercicio empezarás a reconocer cómo se manifiesta el estrés en ti. Al explorar tus pensamientos, emociones, sensaciones físicas y comportamientos cuando te sientes bajo presión, podrás comprender mejor lo que te ocurre y dar los primeros pasos para recuperar el equilibrio y sentirte más en calma.',
           duration: '5 a 10 minutos',
         },
         {
-            type: 'triggerExercise',
-            title: 'Ejercicio 2: Identifica tu disparador',
-            objective:
-              'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en automático.',
-            duration: '5 a 8 minutos',
+          type: 'triggerExercise',
+          title: 'Ejercicio 2: Identifica tu disparador',
+          objective:
+            'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en automático.',
+          duration: '5 a 8 minutos',
         },
         {
-            type: 'therapeuticNotebookReflection',
-            title: 'Reflexión Final de la Semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/REFLEXION.mp3',
-            prompts: [
-              'Tómate un momento para integrar todo lo aprendido:',
-              '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
-            ],
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/REFLEXION.mp3',
+          prompts: [
+            'Tómate un momento para integrar todo lo aprendido:',
+            '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
+          ],
         },
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/RESUMENYCIERRE.mp3'},
         {
@@ -280,7 +280,7 @@ export const stressManagementPath: Path = {
                 type: 'therapeuticNotebookReflection',
                 title: 'Reflexión Final de la Semana',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3',
-                prompts: ['¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?   Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.'],
+                prompts: ['<b>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</b>   Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.'],
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
             { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
@@ -530,5 +530,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
-    
