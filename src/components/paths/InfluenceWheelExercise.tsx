@@ -5,13 +5,13 @@ import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InfluenceWheelExerciseContent } from '@/data/paths/pathTypes';
-import { Input } from '../ui/input';
 
 interface InfluenceWheelExerciseProps {
   content: InfluenceWheelExerciseContent;
@@ -25,12 +25,15 @@ interface Situation {
 
 export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
-  const [situations, setSituations] = useState<Situation[]>(() => Array(5).fill({ name: '', control: '' }));
+  // Initialize state with unique objects for each situation
+  const [situations, setSituations] = useState<Situation[]>(() => 
+    Array(5).fill(null).map(() => ({ name: '', control: '' }))
+  );
   const [isSaved, setIsSaved] = useState(false);
 
   const handleSituationChange = <K extends keyof Situation>(index: number, field: K, value: Situation[K]) => {
     const newSituations = [...situations];
-    (newSituations[index] as any)[field] = value;
+    newSituations[index] = { ...newSituations[index], [field]: value };
     setSituations(newSituations);
   };
 
@@ -75,51 +78,44 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p>
-          
           <div className="space-y-4">
+              <p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p>
               {situations.map((sit, index) => (
-                  <div key={index} className="space-y-2">
-                    <Label htmlFor={`sit-text-initial-${index}`}>Situación {index + 1}:</Label>
-                    <Input
-                      id={`sit-text-initial-${index}`}
-                      value={sit.name}
-                      onChange={e => handleSituationChange(index, 'name', e.target.value)}
-                      placeholder={`Describe la situación ${index + 1}`}
-                      disabled={isSaved}
-                    />
+                  <div key={index}>
+                      <Label htmlFor={`sit-text-initial-${index}`} className="sr-only">Situación {index + 1}:</Label>
+                      <Input
+                        id={`sit-text-initial-${index}`}
+                        value={sit.name}
+                        onChange={e => handleSituationChange(index, 'name', e.target.value)}
+                        placeholder={`Describe la situación ${index + 1}`}
+                        disabled={isSaved}
+                      />
                   </div>
               ))}
           </div>
 
-          <p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. </p>
-          
-          {situations.map((sit, index) => (
-            <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
-              <Label htmlFor={`sit-text-${index}`}>Situación {index + 1}:</Label>
-              <Input
-                id={`sit-text-${index}`}
-                value={sit.name}
-                onChange={e => handleSituationChange(index, 'name', e.target.value)}
-                placeholder={`Describe la situación ${index + 1}`}
-                disabled={isSaved}
-              />
-              <RadioGroup value={sit.control} onValueChange={v => handleSituationChange(index, 'control', v as any)} className="flex flex-wrap gap-4 pt-2" disabled={isSaved}>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="mine" id={`c-${index}-m`} />
-                    <Label htmlFor={`c-${index}-m`} className="font-normal">Depende de mí</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="not_mine" id={`c-${index}-n`} />
-                    <Label htmlFor={`c-${index}-n`} className="font-normal">No depende de mí</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="partial" id={`c-${index}-p`} />
-                    <Label htmlFor={`c-${index}-p`} className="font-normal">Depende parcialmente</Label>
-                  </div>
-              </RadioGroup>
-            </div>
-          ))}
+          <div className="space-y-4">
+            <p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si: <br/>- Depende de mí. <br/>- No depende de mí. <br/>- Depende parcialmente de mí. <p>Ejemplo: Preparar una presentación importante → Depende de mí. <br/>Que mi pareja esté de mal humor → No depende de mí. </p></p>
+            {situations.filter(sit => sit.name.trim() !== '').map((sit, index) => (
+                <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
+                    <p className="font-semibold text-muted-foreground">{sit.name}</p>
+                    <RadioGroup value={sit.control} onValueChange={v => handleSituationChange(index, 'control', v as any)} className="flex flex-wrap gap-4 pt-2" disabled={isSaved}>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="mine" id={`c-${index}-m`} />
+                            <Label htmlFor={`c-${index}-m`} className="font-normal">Depende de mí</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="not_mine" id={`c-${index}-n`} />
+                            <Label htmlFor={`c-${index}-n`} className="font-normal">No depende de mí</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="partial" id={`c-${index}-p`} />
+                            <Label htmlFor={`c-${index}-p`} className="font-normal">Depende parcialmente</Label>
+                        </div>
+                    </RadioGroup>
+                </div>
+            ))}
+          </div>
 
           {!isSaved ? (
             <Button type="submit" className="w-full">
