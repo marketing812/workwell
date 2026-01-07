@@ -93,7 +93,8 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
             )}
           </div>
           <div className="space-y-2">
-            <Label className="font-semibold">Paso 2: Redacta tus frases</Label>
+            <Label className="font-semibold" dangerouslySetInnerHTML={{__html: "<b>Paso 2: Redacta tus frases</b>"}} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{__html: 'Escribe tres frases que empiecen por: “Elijo…”, “Me comprometo a…” , “Decido…” <p>Ejemplos: <br>Elijo hacerme cargo de lo que siento, sin culparme por sentirlo.<br>Me comprometo a no intentar con todo, sino con lo que elijo priorizar. <br>Decido respetar mis límites y actuar desde mi energía disponible. </p>'}} />
             <Textarea value={commitments.elijo} onChange={e => setCommitments(p => ({ ...p, elijo: e.target.value }))} placeholder="Elijo..." disabled={isSaved} />
             <Textarea value={commitments.meComprometo} onChange={e => setCommitments(p => ({ ...p, meComprometo: e.target.value }))} placeholder="Me comprometo a..." disabled={isSaved} />
             <Textarea value={commitments.decido} onChange={e => setCommitments(p => ({ ...p, decido: e.target.value }))} placeholder="Decido..." disabled={isSaved} />
