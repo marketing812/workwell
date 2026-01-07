@@ -270,7 +270,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada:  <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol> </p>',
+              text: '<p>Aceptar lo que pasó es el primer paso; el siguiente es tomar decisiones útiles. </p>  <p>Técnica combinada:  <ol><li>¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> ¿Me ayuda este pensamiento a avanzar? </li><li> ¿Qué parte depende de mí y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol> </p>',
             },
           ],
         },
@@ -351,7 +351,7 @@ export const responsibilityPath: Path = {
         {
           type: 'list',
           items: [
-            'Aceptar no es resignarse: la aceptación activa abre caminos; la resignación los bloquea.',
+            'Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación los bloquea.',
             'Separar pasado y presente te da libertad para decidir.',
             'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.',
             'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.',
@@ -537,7 +537,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Imagina tu vida como tres círculos concéntricos:   Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos).   Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo).   Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas).   Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía.   Ejemplo:  Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes:   Comunicar plazos claros.   Pedir reuniones de seguimiento.   Ajustar tu parte para prevenir retrasos.',
+              text: '<p>Imagina tu vida como tres círculos concéntricos: </p> <ol><li>Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos). </li><li> Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). </li><li> Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). </li></ol> <p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. </p>  <p>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p> <ul><li>Comunicar plazos claros. </li><li>Pedir reuniones de seguimiento. </li><li>Ajustar tu parte para prevenir retrasos. </li></ul>',
             },
           ],
         },
