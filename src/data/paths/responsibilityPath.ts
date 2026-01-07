@@ -79,42 +79,25 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Pasar de la queja a la acción: un método en 6 pasos',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio6sesion1ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\\n\\n1. Describe la situación: solo hechos, sin juicios.\\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\\n5. Define un paso pequeño: algo que dependa solo de ti.\\n6. Ponlo en práctica y revisa el resultado.\\n\\nEjemplo:\\n\\n• Queja: “Nunca tengo tiempo para mí.”\\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\\n\\n1. Describe la situación: solo hechos, sin juicios.\\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\\n5. Define un paso pequeño: algo que dependa solo de ti.\\n6. Ponlo en práctica y revisa el resultado.\\n\\nEjemplo:\\n\\n• Queja: “Nunca tengo tiempo para mí.”\\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”' }],
         },
         {
           type: 'collapsible',
           title: 'Auto-chequeo rápido: ¿Dónde estoy ahora?',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio7sesion1ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Este ejercicio express te ayuda a ubicarte:\\n\\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\\n\\nTruco rápido:\\n\\n“De todo esto, ¿qué 10–20% sí depende de mí?”\\nEse porcentaje es tu punto de partida para la acción.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Este ejercicio express te ayuda a ubicarte:\\n\\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\\n\\nTruco rápido:\\n\\n“De todo esto, ¿qué 10–20% sí depende de mí?”\\nEse porcentaje es tu punto de partida para la acción.' }],
         },
         {
           type: 'collapsible',
           title: 'Regularte para poder elegir mejor',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio8sesion1ruta10.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Cuando la emoción es muy intensa, el cerebro activa el sistema de amenaza (amígdala) y limita tu capacidad de pensar con claridad. Antes de decidir, regula:\\n\\n• Ponle nombre a la emoción: “Esto es frustración” o “Esto es culpa.”\\n• Acepta su presencia: sin luchar contra ella.\\n• Acción opuesta: si te apetece aislarte, da un paso para conectar; si quieres gritar, prueba a hablar más lento y bajo.\\n• Convierte la queja en petición: en vez de “Siempre me interrumpes”, di “Necesito 10 minutos para explicar mi idea sin interrupciones.”',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Cuando la emoción es muy intensa, el cerebro activa el sistema de amenaza (amígdala) y limita tu capacidad de pensar con claridad. Antes de decidir, regula:\\n\\n• Ponle nombre a la emoción: “Esto es frustración” o “Esto es culpa.”\\n• Acepta su presencia: sin luchar contra ella.\\n• Acción opuesta: si te apetece aislarte, da un paso para conectar; si quieres gritar, prueba a hablar más lento y bajo.\\n• Convierte la queja en petición: en vez de “Siempre me interrumpes”, di “Necesito 10 minutos para explicar mi idea sin interrupciones.”' }],
         },
         {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3',
-          content: [
-            { type: 'paragraph', text: 'Ahora ya tienes un mapa:\\n\\n• Sabes diferenciar culpa, queja y responsabilidad.\\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\\n• Cuentas con un método para pasar de la queja a la acción.\\n\\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\\n\\nRecuerda no cargarte nada por favor' },
-          ],
+          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\\n\\n• Sabes diferenciar culpa, queja y responsabilidad.\\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\\n• Cuentas con un método para pasar de la queja a la acción.\\n\\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\\n\\nRecuerda no cargarte nada por favor' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -142,12 +125,7 @@ export const responsibilityPath: Path = {
             '¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3' },
         {
           type: 'list',
           items: [
@@ -242,9 +220,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Mindfulness y defusión cognitiva',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Audio8sesion2ruta10.mp3',
-          content: [
-            { type: 'paragraph', text: 'El mindfulness te ayuda a observar pensamientos como eventos mentales pasajeros. Ejemplo: en vez de “Arruiné todo”, decirte: “Estoy teniendo el pensamiento de que arruiné todo.” Esto crea distancia psicológica (defusión) y reduce la intensidad emocional. Solo 3–5 minutos diarios de respiración consciente y etiquetado emocional fortalecen esta habilidad.' },
-          ],
+          content: [{ type: 'paragraph', text: 'El mindfulness te ayuda a observar pensamientos como eventos mentales pasajeros. Ejemplo: en vez de “Arruiné todo”, decirte: “Estoy teniendo el pensamiento de que arruiné todo.” Esto crea distancia psicológica (defusión) y reduce la intensidad emocional. Solo 3–5 minutos diarios de respiración consciente y etiquetado emocional fortalecen esta habilidad.' }],
         },
         {
           type: 'collapsible',
@@ -272,12 +248,7 @@ export const responsibilityPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3',
           prompts: ['¿Qué culpa del pasado has soltado o disminuido?', '¿Qué has descubierto sobre ti al separar hechos de juicios?', '¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?'],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Resumensesion2ruta10.mp3',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Resumensesion2ruta10.mp3' },
         {
           type: 'list',
           items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.'],
@@ -354,12 +325,7 @@ export const responsibilityPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Reflexionsesion3ruta10.mp3',
           prompts: ['¿Qué descubrimiento ha tenido más impacto en ti?', '¿Cómo cambió tu forma de actuar al suavizar la crítica interna?', '¿En qué momento reciente aplicaste una respuesta más compasiva contigo?'],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Resumensesion3ruta10.mp3' },
         {
           type: 'list',
           items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.', 'La autocrítica puede ayudarte si la transformas en guía responsable y empática.', 'Identificar la intención oculta de tu crítica interna fortalece la autorresponsabilidad compasiva y tu resiliencia.'],
@@ -444,7 +410,7 @@ export const responsibilityPath: Path = {
             '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><p>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?<br>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?  <br>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?  <br>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti? </p>',
           ],
         },
-        { type: 'title', text: 'Resumen Clave de la Semana' },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumensesion4ruta10.mp3' },
         {
           type: 'list',
           items: ['Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.', 'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.', 'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.', 'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.', 'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.'],
