@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -67,8 +67,9 @@ ${signature}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="initial-commitment">Escribe aquí tu frase de compromiso inicial</Label>
-            <Textarea id="initial-commitment" value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="initial-commitment">El contrato comienza con tus propias palabras</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Quiero que empieces escribiendo una frase que marque la intención general de tu contrato. Piensa en algo que resuma cómo quieres tratarte a partir de ahora.  <br>Ejemplo: Me comprometo a hablarme con respeto, aunque me equivoque, y a buscar siempre un aprendizaje en cada decisión." }} />
+            <Textarea id="initial-commitment" value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase de compromiso inicial…" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="how-to-talk">Describe aquí cómo quieres hablarte cuando cometas un error</Label>
