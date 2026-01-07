@@ -85,9 +85,14 @@ ${signature}
             <Label htmlFor="signature">Firma y compromiso</Label>
             <div className="text-sm text-muted-foreground space-y-2" dangerouslySetInnerHTML={{ __html: "Cuando termines, lee tu contrato completo en voz alta. Si te suena demasiado duro, ajústalo. Si te suena realista y motivador, fírmalo (puedes escribir tu nombre o solo tus iniciales).<br><b>Mi contrato:</b><br>" }} />
             <div className="p-4 border rounded-md bg-background/50 space-y-3 text-sm">
-                <p><strong>Mi compromiso inicial:</strong> {initialCommitment || "..."}</p>
-                <p><strong>Quiero hablarme así:</strong> {howToTalk || "..."}</p>
-                <p><strong>Quiero responderme ante mis decisiones así:</strong> {howToRespond || "..."}</p>
+                <p><strong>Mi compromiso inicial:</strong></p>
+                <Textarea value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Tu compromiso..."/>
+
+                <p><strong>Quiero hablarme así:</strong></p>
+                <Textarea value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Cómo te hablarás..."/>
+                
+                <p><strong>Quiero responderme ante mis decisiones así:</strong></p>
+                <Textarea value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Cómo responderás..."/>
             </div>
             <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} placeholder="Firma aquí con tu nombre o iniciales para sellar tu compromiso..." disabled={isSaved} className="mt-2" />
           </div>
