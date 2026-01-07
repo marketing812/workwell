@@ -136,8 +136,9 @@ ${response}
             <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} placeholder="Anota qué partes son hechos y cuáles son juicios" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="response">Escribe tu respuesta o acción actual</Label>
-            <Textarea id="response" value={response} onChange={e => setResponse(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="response">Elige tu respuesta actual</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Pregúntate: “Si volviera a pasar, ¿qué podría hacer diferente?”. Escríbelo como una acción concreta. <br> Ejemplo: Pedir disculpas y dejar que termine de hablar. " }} />
+            <Textarea id="response" value={response} onChange={e => setResponse(e.target.value)} disabled={isSaved} placeholder="Escribe tu respuesta o acción actual " />
           </div>
           <div className="space-y-2">
             <Label htmlFor="compassion-phrase">Escribe tu frase de cierre compasivo</Label>
