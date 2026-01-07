@@ -29,6 +29,7 @@ const valuesList = [
 export function PersonalCommitmentDeclarationExercise({ content, pathId }: PersonalCommitmentDeclarationExerciseProps) {
   const { toast } = useToast();
   const [selectedValues, setSelectedValues] = useState<Record<string, boolean>>({});
+  const [otherValue, setOtherValue] = useState('');
   const [commitments, setCommitments] = useState({ elijo: '', meComprometo: '', decido: '' });
   const [reminder, setReminder] = useState({ type: '', custom: '' });
   const [isSaved, setIsSaved] = useState(false);
@@ -39,7 +40,7 @@ export function PersonalCommitmentDeclarationExercise({ content, pathId }: Perso
 **Ejercicio: ${content.title}**
 
 *Valores inspiradores:*
-${Object.keys(selectedValues).filter(k => selectedValues[k]).join(', ')}
+${Object.keys(selectedValues).filter(k => selectedValues[k]).join(', ')}${selectedValues['other'] ? `, ${otherValue}`: ''}
 
 *Declaración de compromiso:*
 - Elijo: ${commitments.elijo}
@@ -81,7 +82,14 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
                   <Label htmlFor={`val-${v}`} className="font-normal text-xs">{v}</Label>
                 </div>
               ))}
+               <div className="flex items-center space-x-2">
+                  <Checkbox id="val-other" checked={!!selectedValues['other']} onCheckedChange={c => setSelectedValues(p => ({ ...p, ['other']: !!c }))} disabled={isSaved} />
+                  <Label htmlFor="val-other" className="font-normal text-xs">Otros</Label>
+                </div>
             </div>
+             {selectedValues['other'] && (
+                <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Especifica otros valores" className="mt-2" disabled={isSaved} />
+            )}
           </div>
           <div className="space-y-2">
             <Label>Paso 2: Redacta tus frases</Label>
