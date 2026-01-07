@@ -118,9 +118,10 @@ ${response}
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} disabled={isSaved} placeholder="Describe objetivamente lo que pasó. Céntrate solo en los hechos" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="emotion-acceptance">Selecciona la emoción que sentiste</Label>
+            <Label htmlFor="emotion-acceptance">Ponle nombre a lo que sentiste entonces</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
             <Select onValueChange={setEmotion} value={emotion} disabled={isSaved}>
-              <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Selecciona la emoción que sentiste" /></SelectTrigger>
               <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
             </Select>
           </div>
