@@ -80,8 +80,13 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="sit-0"><b>Paso 1: Lista de situaciones</b><br/>Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable. Ejemplo: Preparar una presentación importante. La actitud negativa de un compañero/a. Que mi pareja esté de mal humor.</Label>
+            <Label htmlFor="sit-0"><p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p></Label>
           </div>
+          
+          <div className="space-y-2">
+             <Label><p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. </p></Label>
+          </div>
+          
           {situations.map((sit, index) => (
             <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
               <Label htmlFor={`sit-${index}`}>Situación {index + 1}</Label>
