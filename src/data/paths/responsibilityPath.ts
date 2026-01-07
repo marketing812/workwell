@@ -426,11 +426,13 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
-          prompts: ["<p>A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.</p><p> Piensa ahora: ¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?  ¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad?  ¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria? </p>"],
+          prompts: [
+            '<p>A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.</p><p>Piensa ahora:<br>¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?<br>¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad?<br>¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?</p>',
+          ],
         },
         {
           type: 'title',
-          text: 'RESUMEN FINAL',
+          text: 'RESUMEN FINAL DE LA RUTA',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumenfinalruta10.mp3',
         },
         {
