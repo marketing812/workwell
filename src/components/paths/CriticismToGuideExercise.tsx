@@ -85,7 +85,7 @@ ${hiddenObjective}
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="critical-phrase">Detecta tu frase crítica</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  <br>Ejemplos de frases críticas: Nunca hago nada bien, Tendría que haberlo hecho perfecto, Soy un desastre." }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  <br>Ejemplos de frases críticas: <ul><li>Nunca hago nada bien.</li><li>Tendría que haberlo hecho perfecto.</li><li>Soy un desastre.</li></ul>" }} />
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
