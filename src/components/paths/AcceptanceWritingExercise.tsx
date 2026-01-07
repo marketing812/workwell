@@ -131,8 +131,9 @@ ${response}
             <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} placeholder="Escribe tu diálogo interno" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="judgment">Anota qué partes son hechos y cuáles son juicios</Label>
-            <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="judgment">Distingue hechos de juicios</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
+            <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} placeholder="Anota qué partes son hechos y cuáles son juicios" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="response">Escribe tu respuesta o acción actual</Label>
