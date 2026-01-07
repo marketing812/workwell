@@ -141,8 +141,9 @@ ${response}
             <Textarea id="response" value={response} onChange={e => setResponse(e.target.value)} disabled={isSaved} placeholder="Escribe tu respuesta o acción actual " />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="compassion-phrase">Escribe tu frase de cierre compasivo</Label>
-            <Textarea id="compassion-phrase" value={compassionPhrase} onChange={e => setCompassionPhrase(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="compassion-phrase">Cierra con compasión</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Escribe una frase que te ayude a dejar ir lo que pasó, reconociendo que eres más que ese momento. <br>Ejemplo: Eso pasó, aprendí y ahora sigo adelante." }} />
+            <Textarea id="compassion-phrase" value={compassionPhrase} onChange={e => setCompassionPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe tu frase de cierre compasivo" />
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Autorregistro</Button>
