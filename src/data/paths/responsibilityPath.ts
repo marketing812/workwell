@@ -296,7 +296,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
+          text: '¿Tu voz interna suele sonar más como un juez que como un entrenador?\\nEsta semana aprenderás a escuchar lo que tu crítica interna intenta lograr y a traducirlo en un lenguaje responsable y empático. Descubrirás que la autorresponsabilidad compasiva no se trata de exigirte más, sino de motivarte mejor.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion3/Introsesion3ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -378,7 +378,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Sientes que a veces asumes demasiado y terminas agotado o agotada?\nEsta semana vas a aprender a comprometerte con lo que sí depende de ti, sin cargar con lo que no. Trabajarás en proteger tu energía, definir tu zona de influencia y mantener tu responsabilidad como una elección que te impulsa, no como una carga que te rompe.',
+          text: '¿Sientes que a veces asumes demasiado y terminas agotado o agotada?\\nEsta semana vas a aprender a comprometerte con lo que sí depende de ti, sin cargar con lo que no. Trabajarás en proteger tu energía, definir tu zona de influencia y mantener tu responsabilidad como una elección que te impulsa, no como una carga que te rompe.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Introsesion4ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -404,13 +404,13 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'El mapa de la influencia real',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3',
-          content: [{ "type": "paragraph", "text": "<p>Imagina tu vida como tres círculos concéntricos: </p>\n1- Zona de control directo – Lo que depende solo de ti (acciones, palabras, hábitos). <br>\n2 - Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>\n3- Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br>\n<p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. </p>\n\n<p>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p>\n- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>" }]
+          content: [{ type: 'paragraph', text: "<p>Imagina tu vida como tres círculos concéntricos: </p>1 - <b>Zona de control directo</b> – Lo que depende solo de ti (acciones, palabras, hábitos). <br>2 - <b>Zona de influencia</b> – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>3 - <b>Zona fuera de tu control</b> – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br><p>Concentrarte en la <b>zona de control directo</b> y parte de tu <b>zona de influencia</b> multiplica tu eficacia y protege tu energía. <br>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí <b>puedes</b>: </p>- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>" }],
         },
         {
           type: 'collapsible',
           title: 'Compromiso con una vida elegida, no impuesta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras.   Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro.   Ejemplo:   Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”   Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.”' }],
+          content: [{ type: 'paragraph', text: '<p>Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es <b>diseñar una vida en la que tus acciones reflejen lo que valoras</b>. </p><p>Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro. </p> <p>Ejemplo: <br>- Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.” - Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.” </p>.' }],
         },
         {
           type: 'collapsible',
@@ -422,7 +422,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:   Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde.   Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso.   La responsabilidad que eliges es más ligera que la culpa que arrastras.  Ahora vamos a entrenarla.' }],
+          content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:<br><b>Rueda de mi zona de influencia</b> – para visualizar y delimitar lo que sí y lo que no te corresponde. <br><b>Mi declaración de compromiso personal</b> – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso. <br>La responsabilidad que eliges es más ligera que la culpa que arrastras. \nAhora vamos a entrenarla. ' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
