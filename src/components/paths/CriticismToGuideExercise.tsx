@@ -11,6 +11,7 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Checkbox } from '../ui/checkbox';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
@@ -30,8 +31,12 @@ export function CriticismToGuideExercise({ content, pathId }: CriticismToGuideEx
   const [hiddenObjective, setHiddenObjective] = useState('');
   const [distortion, setDistortion] = useState('');
   const [reformulation, setReformulation] = useState('');
-  const [nextStep, setNextStep] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [checklist, setChecklist] = useState({ helps: false, respects: false, energizes: false });
+
+  const handleChecklistChange = (key: keyof typeof checklist, checked: boolean) => {
+    setChecklist(prev => ({...prev, [key]: checked}));
+  };
 
   const objectiveOptions = [
     'Mejorar un resultado.', 'Evitar un error.', 'Ganar aprobación o reconocimiento.', 'Cumplir con mis valores o principios.',
@@ -85,7 +90,7 @@ ${hiddenObjective}
           </div>
           <div className="space-y-2">
             <Label htmlFor="hidden-objective">Identifica el objetivo oculto </Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien.</li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien. </li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
               <SelectContent>
@@ -109,8 +114,20 @@ ${hiddenObjective}
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
           </div>
            <div className="space-y-2">
-            <Label htmlFor="next-step-blocking">¿Cómo podrías aplicarlo la próxima vez?</Label>
-            <Textarea id="next-step-blocking" value={nextStep} onChange={e => setNextStep(e.target.value)} disabled={isSaved} />
+              <Label>Revisión y anclaje</Label>
+              <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Lee tu frase reformulada y reflexiona: <br><ul><li>¿Me ayuda a mejorar? </li><li>¿Me habla con respeto? </li><li>¿Me deja con energía para actuar? </li></ul>" }} />
+              <div className="flex items-center space-x-2">
+                  <Checkbox id="check-helps" checked={checklist.helps} onCheckedChange={(checked) => handleChecklistChange('helps', !!checked)} disabled={isSaved} />
+                  <Label htmlFor="check-helps" className="font-normal">Me ayuda a mejorar.</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                  <Checkbox id="check-respects" checked={checklist.respects} onCheckedChange={(checked) => handleChecklistChange('respects', !!checked)} disabled={isSaved} />
+                  <Label htmlFor="check-respects" className="font-normal">Me habla con respeto.</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                  <Checkbox id="check-energizes" checked={checklist.energizes} onCheckedChange={(checked) => handleChecklistChange('energizes', !!checked)} disabled={isSaved} />
+                  <Label htmlFor="check-energizes" className="font-normal">Me deja con energía para actuar.</Label>
+              </div>
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Frase Guía</Button>
