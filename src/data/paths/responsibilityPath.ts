@@ -16,7 +16,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te has pillado quejándote una y otra vez de lo mismo, o castigándote mentalmente por algo que hiciste hace tiempo?\nEsta semana aprenderás a diferenciar la culpa que te impulsa a reparar de la que solo te paraliza, a entender qué papel juega la queja en tu vida y a descubrir que la responsabilidad activa es el camino para recuperar tu poder de acción.',
+          text: '¿Te has pillado quejándote una y otra vez de lo mismo, o castigándote mentalmente por algo que hiciste hace tiempo?\\nEsta semana aprenderás a diferenciar la culpa que te impulsa a reparar de la que solo te paraliza, a entender qué papel juega la queja en tu vida y a descubrir que la responsabilidad activa es el camino para recuperar tu poder de acción.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Introsesion1ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -27,7 +27,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Todos y todas, cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. Es como si tuviéramos tres carreteras delante y, sin pensar mucho, eligiéramos una de ellas.\n\nEn psicología, observamos que esas “carreteras” suelen ser:\n\n• Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\n• Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\n• Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\n\nLas dos primeras parecen distintas, pero tienen algo en común: nos dejan atascados. La tercera, en cambio, nos impulsa a avanzar… siempre que sepamos cómo aplicarla.\n\nEsta semana vamos a entrenar ese tercer camino. No se trata de cargar con todo, sino de asumir tu parte con claridad, soltar lo que no es tuyo y dar pasos reales.',
+              text: 'Todos y todas, cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. Es como si tuviéramos tres carreteras delante y, sin pensar mucho, eligiéramos una de ellas.\\n\\nEn psicología, observamos que esas “carreteras” suelen ser:\\n\\n• Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\\n• Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\\n• Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\\n\\nLas dos primeras parecen distintas, pero tienen algo en común: nos dejan atascados. La tercera, en cambio, nos impulsa a avanzar… siempre que sepamos cómo aplicarla.\\n\\nEsta semana vamos a entrenar ese tercer camino. No se trata de cargar con todo, sino de asumir tu parte con claridad, soltar lo que no es tuyo y dar pasos reales.',
             },
           ],
         },
@@ -38,7 +38,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Imagina que la culpa es como una alarma. Suena cuando percibes que has hecho algo mal o que no has hecho lo suficiente.\n\nSi está bien calibrada, es útil: te motiva a reparar el daño, pedir perdón o aprender algo nuevo.\n\nSi está desajustada, suena constantemente, incluso por cosas que no dependen de ti. Ahí deja de ayudarte y empieza a hundirte.\n\nEn psicología distinguimos dos formas de culpa:\n\n• Culpa útil: centrada en la acción reparadora. Ejemplo: “Me equivoqué en el informe, lo corregiré y avisaré.”\n• Culpa improductiva: centrada en el ataque personal. Ejemplo: “Soy un desastre, siempre fallo.”\n\nEs importante diferenciarla de la vergüenza:\n\n• Culpa = “He hecho algo mal” (foco en la conducta).\n• Vergüenza = “Soy malo/a” (foco en la identidad).\n\nCuando distingues hecho de identidad y pones nombre a la emoción, tu cerebro activa regiones de autorregulación (Lieberman, 2007), lo que reduce la intensidad emocional y mejora tu claridad mental.',
+              text: 'Imagina que la culpa es como una alarma. Suena cuando percibes que has hecho algo mal o que no has hecho lo suficiente.\\n\\nSi está bien calibrada, es útil: te motiva a reparar el daño, pedir perdón o aprender algo nuevo.\\n\\nSi está desajustada, suena constantemente, incluso por cosas que no dependen de ti. Ahí deja de ayudarte y empieza a hundirte.\\n\\nEn psicología distinguimos dos formas de culpa:\\n\\n• Culpa útil: centrada en la acción reparadora. Ejemplo: “Me equivoqué en el informe, lo corregiré y avisaré.”\\n• Culpa improductiva: centrada en el ataque personal. Ejemplo: “Soy un desastre, siempre fallo.”\\n\\nEs importante diferenciarla de la vergüenza:\\n\\n• Culpa = “He hecho algo mal” (foco en la conducta).\\n• Vergüenza = “Soy malo/a” (foco en la identidad).\\n\\nCuando distingues hecho de identidad y pones nombre a la emoción, tu cerebro activa regiones de autorregulación (Lieberman, 2007), lo que reduce la intensidad emocional y mejora tu claridad mental.',
             },
           ],
         },
@@ -49,7 +49,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, nada cambia.\n\nMuchas quejas se alimentan de distorsiones cognitivas como:\n\n• Sobregeneralización: “Siempre me pasa lo mismo.”\n• Pensamiento dicotómico: “Nunca me tienen en cuenta.”\n• Deberías rígidos: “Esto no debería ser así.”\n\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\n\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
+              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, nada cambia.\\n\\nMuchas quejas se alimentan de distorsiones cognitivas como:\\n\\n• Sobregeneralización: “Siempre me pasa lo mismo.”\\n• Pensamiento dicotómico: “Nunca me tienen en cuenta.”\\n• Deberías rígidos: “Esto no debería ser así.”\\n\\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\\n\\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
             },
           ],
         },
@@ -60,7 +60,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La responsabilidad activa es la carretera central, la que combina realismo con acción.\n\nConsiste en reconocer tu parte, distinguir lo que está bajo tu control y actuar de manera proporcional. Ni perfeccionismo inalcanzable, ni resignación pasiva.\n\nLa pregunta clave aquí es:\n\n“¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”\n\nTrabajar así fortalece tu autoeficacia (Bandura, 1977), es decir, la confianza en que tus acciones pueden producir cambios reales.',
+              text: 'La responsabilidad activa es la carretera central, la que combina realismo con acción.\\n\\nConsiste en reconocer tu parte, distinguir lo que está bajo tu control y actuar de manera proporcional. Ni perfeccionismo inalcanzable, ni resignación pasiva.\\n\\nLa pregunta clave aquí es:\\n\\n“¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”\\n\\nTrabajar así fortalece tu autoeficacia (Bandura, 1977), es decir, la confianza en que tus acciones pueden producir cambios reales.',
             },
           ],
         },
@@ -71,7 +71,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\n\n• Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”), miedo extremo al error y comparación constante con los demás.\n• Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\n\nAunque a veces parecen virtudes, en exceso agotan y llevan al bloqueo. El antídoto es simple en teoría, pero poderoso en la práctica:\n\n“¿Qué parte de esto sí depende de mí y qué parte no?”\n\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.',
+              text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\\n\\n• Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”), miedo extremo al error y comparación constante con los demás.\\n• Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\\n\\nAunque a veces parecen virtudes, en exceso agotan y llevan al bloqueo. El antídoto es simple en teoría, pero poderoso en la práctica:\\n\\n“¿Qué parte de esto sí depende de mí y qué parte no?”\\n\\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.',
             },
           ],
         },
@@ -82,7 +82,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\n\n1. Describe la situación: solo hechos, sin juicios.\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\n5. Define un paso pequeño: algo que dependa solo de ti.\n6. Ponlo en práctica y revisa el resultado.\n\nEjemplo:\n\n• Queja: “Nunca tengo tiempo para mí.”\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”',
+              text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\\n\\n1. Describe la situación: solo hechos, sin juicios.\\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\\n5. Define un paso pequeño: algo que dependa solo de ti.\\n6. Ponlo en práctica y revisa el resultado.\\n\\nEjemplo:\\n\\n• Queja: “Nunca tengo tiempo para mí.”\\n• Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”',
             },
           ],
         },
@@ -93,7 +93,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Este ejercicio express te ayuda a ubicarte:\n\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\n\nTruco rápido:\n\n“De todo esto, ¿qué 10–20% sí depende de mí?”\nEse porcentaje es tu punto de partida para la acción.',
+              text: 'Este ejercicio express te ayuda a ubicarte:\\n\\n• En culpa: me repito “es todo por mi culpa” y me castigo mentalmente.\\n• En queja: me enfoco solo en lo que otros hacen mal o en lo injusta que es la situación.\\n• En responsabilidad activa: identifico mi parte, pienso en soluciones y actúo.\\n\\nTruco rápido:\\n\\n“De todo esto, ¿qué 10–20% sí depende de mí?”\\nEse porcentaje es tu punto de partida para la acción.',
             },
           ],
         },
@@ -104,7 +104,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Cuando la emoción es muy intensa, el cerebro activa el sistema de amenaza (amígdala) y limita tu capacidad de pensar con claridad. Antes de decidir, regula:\n\n• Ponle nombre a la emoción: “Esto es frustración” o “Esto es culpa.”\n• Acepta su presencia: sin luchar contra ella.\n• Acción opuesta: si te apetece aislarte, da un paso para conectar; si quieres gritar, prueba a hablar más lento y bajo.\n• Convierte la queja en petición: en vez de “Siempre me interrumpes”, di “Necesito 10 minutos para explicar mi idea sin interrupciones.”',
+              text: 'Cuando la emoción es muy intensa, el cerebro activa el sistema de amenaza (amígdala) y limita tu capacidad de pensar con claridad. Antes de decidir, regula:\\n\\n• Ponle nombre a la emoción: “Esto es frustración” o “Esto es culpa.”\\n• Acepta su presencia: sin luchar contra ella.\\n• Acción opuesta: si te apetece aislarte, da un paso para conectar; si quieres gritar, prueba a hablar más lento y bajo.\\n• Convierte la queja en petición: en vez de “Siempre me interrumpes”, di “Necesito 10 minutos para explicar mi idea sin interrupciones.”',
             },
           ],
         },
@@ -113,10 +113,7 @@ export const responsibilityPath: Path = {
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Ahora ya tienes un mapa:\n\n• Sabes diferenciar culpa, queja y responsabilidad.\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n• Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\n\nRecuerda no cargarte nada por favor',
-            },
+            { type: 'paragraph', text: 'Ahora ya tienes un mapa:\\n\\n• Sabes diferenciar culpa, queja y responsabilidad.\\n• Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\\n• Cuentas con un método para pasar de la queja a la acción.\\n\\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\\n\\nRecuerda no cargarte nada por favor' },
           ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -172,7 +169,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Notas que a veces, por más que pienses y repienses algo, no llegas a ninguna solución?\nEsta semana vas a practicar cómo cortar el circuito de la culpa improductiva, cómo cuestionar pensamientos rígidos y cómo abrir espacio para respuestas más constructivas.\nLa clave estará en pasar de rumiar a actuar con claridad y autocompasión.',
+          text: '¿Notas que a veces, por más que pienses y repienses algo, no llegas a ninguna solución?\\nEsta semana vas a practicar cómo cortar el circuito de la culpa improductiva, cómo cuestionar pensamientos rígidos y cómo abrir espacio para respuestas más constructivas.\\nLa clave estará en pasar de rumiar a actuar con claridad y autocompasión.',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion2/Introsesion2ruta10.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -283,7 +280,7 @@ export const responsibilityPath: Path = {
         },
         {
           type: 'list',
-          items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación los bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.'],
+          items: ['Aceptar no es resignarse: la aceptación activa abre posibilidades; la resignación las bloquea.', 'Separar pasado y presente te da libertad para decidir.', 'Los hechos y los juicios no son lo mismo: detectarlos cambia tu forma de actuar.', 'Soltar la culpa implica reparar cuando se puede, aprender y dejar ir lo que no depende de ti.', 'Mindfulness y defusión bajan la intensidad emocional.'],
         },
         { type: 'quote', text: 'Lo que pasó no define lo que harás ahora. Eso lo eliges tú.' },
       ],
@@ -422,7 +419,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:<br><b>Rueda de mi zona de influencia</b> – para visualizar y delimitar lo que sí y lo que no te corresponde. <br><b>Mi declaración de compromiso personal</b> – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso. <br>La responsabilidad que eliges es más ligera que la culpa que arrastras. \nAhora vamos a entrenarla. ' }],
+          content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:<br><b>Rueda de mi zona de influencia</b> – para visualizar y delimitar lo que sí y lo que no te corresponde. <br><b>Mi declaración de compromiso personal</b> – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso. <br>La responsabilidad que eliges es más ligera que la culpa que arrastras. \\nAhora vamos a entrenarla. ' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -442,8 +439,10 @@ export const responsibilityPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Reflexionfinalruta10.mp3',
-          prompts: ['¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?', '¿Cuál ha sido tu mayor descubrimiento sobre ti en relación con la responsabilidad?', '¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?'],
+          audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3',
+          prompts: [
+            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><p>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?<br>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?  <br>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?  <br>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti? </p>',
+          ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana' },
         {
