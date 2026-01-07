@@ -11,7 +11,6 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { Checkbox } from '../ui/checkbox';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
@@ -29,8 +28,9 @@ export function CriticismToGuideExercise({ content, pathId }: CriticismToGuideEx
   const { toast } = useToast();
   const [criticalPhrase, setCriticalPhrase] = useState('');
   const [hiddenObjective, setHiddenObjective] = useState('');
-  const [reformulatedPhrase, setReformulatedPhrase] = useState('');
-  const [checklist, setChecklist] = useState({ helps: false, respects: false, energizes: false });
+  const [distortion, setDistortion] = useState('');
+  const [reformulation, setReformulation] = useState('');
+  const [nextStep, setNextStep] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
   const objectiveOptions = [
@@ -42,6 +42,10 @@ export function CriticismToGuideExercise({ content, pathId }: CriticismToGuideEx
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
+    if (!criticalPhrase || !hiddenObjective || !reformulation) {
+        toast({ title: 'Campos incompletos', variant: 'destructive' });
+        return;
+    }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -52,7 +56,7 @@ export function CriticismToGuideExercise({ content, pathId }: CriticismToGuideEx
 ${hiddenObjective}
 
 *Mi frase reformulada como guía:*
-"${reformulatedPhrase}"
+"${reformulation}"
     `;
     addNotebookEntry({ title: 'Transformación de Crítica a Guía', content: notebookContent, pathId: pathId });
     toast({ title: 'Ejercicio Guardado', description: 'Tu transformación ha sido guardada.' });
@@ -76,7 +80,7 @@ ${hiddenObjective}
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="critical-phrase">Detecta tu frase crítica</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla. <br>Ejemplos de frases críticas: Nunca hago nada bien, Tendría que haberlo hecho perfecto, Soy un desastre." }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  <br>Ejemplos de frases críticas: Nunca hago nada bien, Tendría que haberlo hecho perfecto, Soy un desastre." }} />
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
@@ -91,14 +95,22 @@ ${hiddenObjective}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="reformulated-phrase">Escribe aquí tu frase reformulada</Label>
-            <Textarea id="reformulated-phrase" value={reformulatedPhrase} onChange={e => setReformulatedPhrase(e.target.value)} disabled={isSaved} />
+            <Label htmlFor="distortion-select">Identifica la distorsión</Label>
+            <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
+                <SelectTrigger><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
+                <SelectContent>
+                    {distortionOptions.map(opt => <SelectItem key={opt.value} value={opt.label}>{opt.label}</SelectItem>)}
+                </SelectContent>
+            </Select>
           </div>
           <div className="space-y-2">
-            <Label>Revisión y anclaje</Label>
-            <div className="flex items-center space-x-2"><Checkbox id="c1" onCheckedChange={c => setChecklist(p => ({...p, helps: !!c}))} disabled={isSaved} /><Label htmlFor="c1" className="font-normal">Me ayuda a mejorar</Label></div>
-            <div className="flex items-center space-x-2"><Checkbox id="c2" onCheckedChange={c => setChecklist(p => ({...p, respects: !!c}))} disabled={isSaved} /><Label htmlFor="c2" className="font-normal">Me habla con respeto</Label></div>
-            <div className="flex items-center space-x-2"><Checkbox id="c3" onCheckedChange={c => setChecklist(p => ({...p, energizes: !!c}))} disabled={isSaved} /><Label htmlFor="c3" className="font-normal">Me deja con energía para actuar</Label></div>
+            <Label htmlFor="reformulation-blocking">Reformula en guía</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos:  <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li>  <li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
+            <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
+          </div>
+           <div className="space-y-2">
+            <Label htmlFor="next-step-blocking">¿Cómo podrías aplicarlo la próxima vez?</Label>
+            <Textarea id="next-step-blocking" value={nextStep} onChange={e => setNextStep(e.target.value)} disabled={isSaved} />
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Frase Guía</Button>
