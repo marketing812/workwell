@@ -404,13 +404,13 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'El mapa de la influencia real',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3',
-          content: [{ type: 'paragraph', text: "<p>Imagina tu vida como tres círculos concéntricos: </p>1 - <b>Zona de control directo</b> – Lo que depende solo de ti (acciones, palabras, hábitos). <br>2 - <b>Zona de influencia</b> – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>3 - <b>Zona fuera de tu control</b> – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br><p>Concentrarte en la <b>zona de control directo</b> y parte de tu <b>zona de influencia</b> multiplica tu eficacia y protege tu energía. <br>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí <b>puedes</b>: </p>- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>" }],
+          content: [{ type: 'paragraph', text: '<p>Imagina tu vida como tres círculos concéntricos: </p>1 - <b>Zona de control directo</b> – Lo que depende solo de ti (acciones, palabras, hábitos). <br>2 - <b>Zona de influencia</b> – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>3 - <b>Zona fuera de tu control</b> – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br><p>Concentrarte en la <b>zona de control directo</b> y parte de tu <b>zona de influencia</b> multiplica tu eficacia y protege tu energía. <br>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí <b>puedes</b>: </p>- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>' }],
         },
         {
           type: 'collapsible',
           title: 'Compromiso con una vida elegida, no impuesta',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3',
-          content: [{ type: 'paragraph', text: '<p>Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es <b>diseñar una vida en la que tus acciones reflejen lo que valoras</b>. </p><p>Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro. </p> <p>Ejemplo: <br>- Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.” - Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.” </p>.' }],
+          content: [{ type: 'paragraph', text: '<p>Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es <b>diseñar una vida en la que tus acciones reflejen lo que valoras</b>. </p><p>Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro. </p><p>Ejemplo: <br>- Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”<br>- Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.” </p>' }],
         },
         {
           type: 'collapsible',
