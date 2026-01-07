@@ -25,37 +25,32 @@ interface Situation {
 export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
   const [situations, setSituations] = useState<Situation[]>(() => Array(5).fill({ text: '', control: '' }));
-  const [actions, setActions] = useState<Record<number, string>>({});
-  const [release, setRelease] = useState<Record<number, string>>({});
   const [isSaved, setIsSaved] = useState(false);
 
-  const handleSituationTextChange = (index: number, text: string) => {
+  const handleSituationChange = (index: number, field: keyof Situation, value: Situation[keyof Situation]) => {
     const newSituations = [...situations];
-    newSituations[index] = { ...newSituations[index], text: text };
-    setSituations(newSituations);
-  };
-  
-  const handleControlChange = (index: number, value: 'mine' | 'not_mine' | 'partial') => {
-    const newSituations = [...situations];
-    newSituations[index] = { ...newSituations[index], control: value };
+    (newSituations[index] as any)[field] = value;
     setSituations(newSituations);
   };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
+    const filledSituations = situations.filter(sit => sit.text.trim() && sit.control);
+    
+    if (filledSituations.length < 3) {
+      toast({
+        title: 'Ejercicio Incompleto',
+        description: 'Por favor, completa al menos 3 situaciones con su clasificación antes de guardar.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
-    situations.forEach((sit, index) => {
-      if (sit.text.trim()) {
-        notebookContent += `**Situación ${index + 1}:** ${sit.text} (Control: ${sit.control})\n`;
-        if (sit.control === 'mine' || sit.control === 'partial') {
-          notebookContent += `- Acción concreta: ${actions[index] || 'No especificada.'}\n`;
-        }
-        if (sit.control === 'not_mine' || sit.control === 'partial') {
-          notebookContent += `- Forma de soltar: ${release[index] || 'No especificada.'}\n`;
-        }
-        notebookContent += '\n';
-      }
+    filledSituations.forEach((sit, index) => {
+      notebookContent += `**Situación ${index + 1}:** ${sit.text} (Control: ${sit.control})\n\n`;
     });
+
     addNotebookEntry({ title: 'Mi Rueda de Influencia', content: notebookContent, pathId });
     toast({ title: 'Ejercicio Guardado', description: 'Tu rueda de influencia ha sido guardada.' });
     setIsSaved(true);
@@ -80,30 +75,24 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="sit-0"><p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p></Label>
+            <p><b>Paso 1: Lista de situaciones</b><br/>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. </p>
           </div>
           
-          <div className="space-y-2">
-             <Label><p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. </p></Label>
+          <div className="space-y-4">
+            <p><b>Paso 2: Clasificación</b><br/> Para cada situación, selecciona si: <br/>- Depende de mí. <br/>- No depende de mí. <br/>- Depende parcialmente de mí. <p>Ejemplo: Preparar una presentación importante → Depende de mí. <br/>Que mi pareja esté de mal humor → No depende de mí. </p></p>
+            {situations.map((sit, index) => (
+              <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
+                <Label htmlFor={`sit-${index}`}>Situación {index + 1}</Label>
+                <Textarea id={`sit-${index}`} value={sit.text} onChange={e => handleSituationChange(index, 'text', e.target.value)} disabled={isSaved} />
+                <RadioGroup value={sit.control} onValueChange={v => handleSituationChange(index, 'control', v as any)} disabled={isSaved}>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="mine" id={`c-${index}-m`} /><Label htmlFor={`c-${index}-m`} className="font-normal">Depende de mí</Label></div>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="not_mine" id={`c-${index}-n`} /><Label htmlFor={`c-${index}-n`} className="font-normal">No depende de mí</Label></div>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="partial" id={`c-${index}-p`} /><Label htmlFor={`c-${index}-p`} className="font-normal">Depende parcialmente</Label></div>
+                </RadioGroup>
+              </div>
+            ))}
           </div>
-          
-          {situations.map((sit, index) => (
-            <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
-              <Label htmlFor={`sit-${index}`}>Situación {index + 1}</Label>
-              <Textarea id={`sit-${index}`} value={sit.text} onChange={e => handleSituationTextChange(index, e.target.value)} disabled={isSaved} />
-              <RadioGroup value={sit.control} onValueChange={v => handleControlChange(index, v as any)} disabled={isSaved}>
-                <div className="flex items-center space-x-2"><RadioGroupItem value="mine" id={`c-${index}-m`} /><Label htmlFor={`c-${index}-m`} className="font-normal">Depende de mí</Label></div>
-                <div className="flex items-center space-x-2"><RadioGroupItem value="not_mine" id={`c-${index}-n`} /><Label htmlFor={`c-${index}-n`} className="font-normal">No depende de mí</Label></div>
-                <div className="flex items-center space-x-2"><RadioGroupItem value="partial" id={`c-${index}-p`} /><Label htmlFor={`c-${index}-p`} className="font-normal">Depende parcialmente</Label></div>
-              </RadioGroup>
-              {(sit.control === 'mine' || sit.control === 'partial') && (
-                <div><Label>Acción concreta:</Label><Textarea value={actions[index] || ''} onChange={e => setActions(p => ({...p, [index]: e.target.value}))} /></div>
-              )}
-              {(sit.control === 'not_mine' || sit.control === 'partial') && (
-                <div><Label>Forma de soltar:</Label><Textarea value={release[index] || ''} onChange={e => setRelease(p => ({...p, [index]: e.target.value}))} /></div>
-              )}
-            </div>
-          ))}
+
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Rueda</Button>
           ) : (
