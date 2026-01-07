@@ -203,7 +203,11 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\\n•\tTu respiración se regula sola.\\n•\tTu expresión facial se relaja.\\n•\tTu cuerpo se afloja.\\n•\tTu mente se siente más presente.\\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
                 ]
             },
-            { type: 'title', text: 'Técnicas Específicas', audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3'},
+            { 
+              type: 'title', 
+              text: 'Técnicas Específicas', 
+              audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3'
+            },
             {
                 type: 'collapsible',
                 title: '¿Por qué estas técnicas funcionan?',
@@ -273,13 +277,13 @@ export const stressManagementPath: Path = {
               ]
             },
             {
-              type: 'therapeuticNotebookReflection',
-              title: 'Reflexión Final de la Semana',
-              audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3',
-              prompts: [
-                'Tómate un momento para integrar todo lo aprendido:',
-                '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
-              ],
+                type: 'therapeuticNotebookReflection',
+                title: 'Reflexión Final de la Semana',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3',
+                prompts: [
+                  'Tómate un momento para integrar todo lo aprendido:',
+                  '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
+                ],
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
             { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
@@ -529,5 +533,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
-    
