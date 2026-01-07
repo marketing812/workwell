@@ -280,10 +280,7 @@ export const stressManagementPath: Path = {
                 type: 'therapeuticNotebookReflection',
                 title: 'Reflexión Final de la Semana',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3',
-                prompts: [
-                  'Tómate un momento para integrar todo lo aprendido:',
-                  '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
-                ],
+                prompts: ['¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?   Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.'],
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
             { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
@@ -533,3 +530,5 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
+    
