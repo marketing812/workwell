@@ -76,13 +76,14 @@ ${hiddenObjective}
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="critical-phrase">Detecta tu frase crítica</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  &lt;br&gt;Ejemplos de frases críticas: Nunca hago nada bien, Tendría que haberlo hecho perfecto, Soy un desastre." }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla. <br>Ejemplos de frases críticas: Nunca hago nada bien, Tendría que haberlo hecho perfecto, Soy un desastre." }} />
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="hidden-objective">Selecciona cuál crees que es el objetivo oculto</Label>
+            <Label htmlFor="hidden-objective">Identifica el objetivo oculto</Label>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien. </li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
-              <SelectTrigger><SelectValue placeholder="Elige un objetivo..." /></SelectTrigger>
+              <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
               <SelectContent>
                 {objectiveOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                 <SelectItem value="otro">Otro...</SelectItem>
