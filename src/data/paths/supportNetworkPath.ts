@@ -87,7 +87,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'supportMapExercise',
           title: 'EJERCICIO1: MAPA DE RELACIONES Y APOYO',
-          objective: 'Visualiza de forma clara tu red de apoyo y reflexiona sobre cómo te relacionas con las personas que la forman.',
+          objective: 'Esta técnica te ayudará a visualizar de forma clara tu red de apoyo y reflexionar sobre cómo te relacionas con las personas que forman parte de ella. Comprenderás qué tipo de apoyo te ofrece cada una (emocional, práctico, validación, consejo…) y si estás aprovechando ese recurso. Esto aumenta la conciencia y el uso activo de tu red, algo que según Holt-Lunstad et al. (2015) se asocia con mejor salud mental y física.',
           duration: '10-15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
         },
@@ -103,7 +103,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/REFLEXION.mp3',
           prompts: [
-            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice?¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
+            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -531,11 +531,3 @@ export const supportNetworkPath: Path = {
   ]
 };
 
-    
-
-    
-
-
-
-
-    
