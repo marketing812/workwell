@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,6 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NutritiveDrainingSupportMapExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
+import { cn } from '@/lib/utils';
 
 interface NutritiveDrainingSupportMapExerciseProps {
   content: NutritiveDrainingSupportMapExerciseContent;
@@ -113,14 +115,30 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Clasificación visual</h4>
-            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde) o Apoyo drenante (rojo), según la sensación que predomina.</p>
+            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde), Neutral (ámbar) o Apoyo drenante (rojo), según la sensación que predomina.</p>
             {relations.filter(r => r.name.trim()).map((rel, index) => (
               <div key={index} className="flex items-center justify-between p-3 border rounded-md bg-background">
                 <Label className="font-semibold">{rel.name}</Label>
-                <div className="flex gap-2">
-                  <Button size="sm" variant={rel.sensation === 'nutritivo' ? 'default' : 'outline'} className="bg-green-500 hover:bg-green-600 text-white" onClick={() => handleRelationChange(index, 'sensation', 'nutritivo')}>Verde</Button>
-                  <Button size="sm" variant={rel.sensation === 'drenante' ? 'destructive' : 'outline'} onClick={() => handleRelationChange(index, 'sensation', 'drenante')}>Rojo</Button>
-                </div>
+                <RadioGroup
+                  value={rel.sensation}
+                  onValueChange={(value) => handleRelationChange(index, 'sensation', value as any)}
+                  className="flex gap-2"
+                >
+                  <Label htmlFor={`s-${index}-nutritivo`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'nutritivo' ? 'bg-green-600 text-white border-green-800' : 'bg-green-200 text-green-800 hover:bg-green-300')}>
+                    Verde
+                  </Label>
+                  <RadioGroupItem value="nutritivo" id={`s-${index}-nutritivo`} className="sr-only" />
+                  
+                  <Label htmlFor={`s-${index}-neutral`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'neutral' ? 'bg-amber-500 text-white border-amber-700' : 'bg-amber-200 text-amber-800 hover:bg-amber-300')}>
+                    Ámbar
+                  </Label>
+                  <RadioGroupItem value="neutral" id={`s-${index}-neutral`} className="sr-only" />
+
+                  <Label htmlFor={`s-${index}-drenante`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'drenante' ? 'bg-red-600 text-white border-red-800' : 'bg-red-200 text-red-800 hover:bg-red-300')}>
+                    Rojo
+                  </Label>
+                  <RadioGroupItem value="drenante" id={`s-${index}-drenante`} className="sr-only" />
+                </RadioGroup>
               </div>
             ))}
             <div className="flex justify-between w-full mt-4">
