@@ -234,7 +234,7 @@ export const stressManagementPath: Path = {
               objective: 'Salir del modo estrés y activar el modo calma.',
               audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3',
               content: [
-                { type: 'paragraph', text: '1.\tInhala por la nariz durante 4 segundos.\n2.\tMantén el aire 2 segundos.\n3.\tExhala lentamente por la boca durante 6 segundos.\n4.\tMientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }
+                { type: 'paragraph', text: '1.\tInhala por la nariz durante 4 segundos.\\n2.\tMantén el aire 2 segundos.\\n3.\tExhala lentamente por la boca durante 6 segundos.\\n4.\tMientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }
               ]
             },
             {
@@ -243,7 +243,7 @@ export const stressManagementPath: Path = {
               objective: 'Salir del bucle mental ansioso y volver al momento presente.',
               audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a',
               content: [
-                { type: 'paragraph', text: 'Instrucciones (con respiración 6-2-4 previa):\n1.\tInhala 6 s – mantén 2 s – exhala 4 s (2 veces).\n2.\tNombra mentalmente:\n\to\t5 cosas que ves.\n\to\t4 cosas que puedes tocar.\n\to\t3 sonidos que escuchas.\n\to\t2 olores que detectas o recuerdas.\n\to\t1 sabor presente en tu boca.\nAl terminar, haz una respiración profunda y siente cómo has interrumpido el piloto automático.' }
+                { type: 'paragraph', text: 'Instrucciones (con respiración 6-2-4 previa):\\n1.\tInhala 6 s – mantén 2 s – exhala 4 s (2 veces).\\n2.\tNombra mentalmente:\\n\to\t5 cosas que ves.\\n\to\t4 cosas que puedes tocar.\\n\to\t3 sonidos que escuchas.\\n\to\t2 olores que detectas o recuerdas.\\n\to\t1 sabor presente en tu boca.\\nAl terminar, haz una respiración profunda y siente cómo has interrumpido el piloto automático.' }
               ]
             },
             {
@@ -261,19 +261,20 @@ export const stressManagementPath: Path = {
               content: [{ type: 'paragraph', text: '🎧 A través de un audio o video guiado, irás tensando y soltando diferentes grupos musculares (piernas, abdomen, cara, hombros…). Este ejercicio te ayudará a sentir alivio físico y a reconocer cómo tu cuerpo acumula tensión.' }]
             },
             {
-              type: 'collapsible',
-              title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
-              objective: 'Generar una sensación de seguridad y arraigo desde el cuerpo.',
-              content: [
-                { type: 'paragraph', text: 'Opciones que puedes probar:\n•\tAutoabrazo firme: Cruza los brazos sobre tu pecho y mantén la presión mientras respiras.\n•\tBalanceo suave: Sentado/a o de pie, realiza un vaivén rítmico con el cuerpo.\n•\tManta con peso (o varias mantas dobladas): Cúbrete durante unos minutos para activar el sistema de regulación interna.\nEstas prácticas envían señales de seguridad al cerebro. Úsalas tras situaciones exigentes o como parte de tu rutina diaria.' }
-              ]
+                type: 'collapsible',
+                title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
+                audioUrl: 'https://workwellfut.com/audios/rm/R16balanceocorporal.mp3',
+                objective: 'Generar una sensación de seguridad y arraigo desde el cuerpo.',
+                content: [
+                  { type: 'paragraph', text: 'Opciones que puedes probar:\n•\tAutoabrazo firme: Cruza los brazos sobre tu pecho y mantén la presión mientras respiras.\n•\tBalanceo suave: Sentado/a o de pie, realiza un vaivén rítmico con el cuerpo.\n•\tManta con peso (o varias mantas dobladas): Cúbrete durante unos minutos para activar el sistema de regulación interna.\nEstas prácticas envían señales de seguridad al cerebro. Úsalas tras situaciones exigentes o como parte de tu rutina diaria.' }
+                ]
             },
             {
               type: 'collapsible',
               title: 'Técnica 6: Contacto frío breve (reset inmediato)',
               objective: 'Interrumpir una activación emocional intensa.',
               content: [
-                { type: 'paragraph', text: 'Cómo aplicarlo:\n1.\tHumedece una toalla o paño con agua fría.\n2.\tAplícalo entre 10 y 20 segundos en:\n\to\tLa nuca\n\to\tLas muñecas\n\to\tLa parte interna de los brazos o las mejillas\n3.\tRespira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
+                { type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\tHumedece una toalla o paño con agua fría.\\n2.\tAplícalo entre 10 y 20 segundos en:\\n\to\tLa nuca\\n\to\tLas muñecas\\n\to\tLa parte interna de los brazos o las mejillas\\n3.\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
               ]
             },
             {
