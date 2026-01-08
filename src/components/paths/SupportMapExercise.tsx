@@ -6,12 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, PlusCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SupportMapExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '../ui/slider';
 
 interface SupportMapExerciseProps {
@@ -32,8 +32,9 @@ interface Relation {
 const supportTypes = [
     { id: 'emocional', label: 'Emocional: te escucha, valida tus sentimientos, te acompaña.' },
     { id: 'practico', label: 'Práctico: te ayuda con tareas, gestiones o recursos.' },
-    { id: 'validacion', label: 'Validación/Consejo: te orienta o comparte experiencias.' },
+    { id: 'validacion', label: 'Validación/Consejo: te orienta o comparte experiencias que te sirven de guía.' },
 ];
+
 
 export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps) {
   const { toast } = useToast();
@@ -48,6 +49,10 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
     const newRelations = [...relations];
     newRelations[index].name = value;
     setRelations(newRelations);
+  };
+  
+  const addRelationField = () => {
+    setRelations(prev => [...prev, { name: '', supportType: { emocional: false, practico: false, validacion: false }, quality: 3 }]);
   };
 
   const handleSupportTypeChange = (relationIndex: number, typeId: keyof Relation['supportType'], checked: boolean) => {
@@ -106,10 +111,19 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Identifica a tus personas clave</h4>
             <p className="text-sm text-muted-foreground">Piensa en familiares, amistades, compañeros/as de trabajo, o cualquier persona con quien tengas un vínculo significativo.</p>
-            {relations.map((rel, index) => (
-              <Input key={index} value={rel.name} onChange={e => handleRelationNameChange(index, e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, María)`} />
-            ))}
-            <div className="flex justify-end"><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
+             <div className="space-y-3">
+              {relations.map((rel, index) => (
+                <Input key={index} value={rel.name} onChange={e => handleRelationNameChange(index, e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, María)`} />
+              ))}
+            </div>
+            <Button onClick={addRelationField} variant="outline" className="w-full">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Añadir otra persona
+            </Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 2:
@@ -169,7 +183,7 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                     <h4 className="font-bold text-lg">Mapa Guardado</h4>
                     <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-                    <Button onClick={() => setStep(0)} variant="outline">Hacer otro mapa</Button>
+                    <Button onClick={() => { setStep(0); setRelations(Array(5).fill(null).map(() => ({ name: '', supportType: { emocional: false, practico: false, validacion: false }, quality: 3 }))); setReflection(''); setIsSaved(false); }} variant="outline">Hacer otro mapa</Button>
                 </div>
             );
       default: return null;
