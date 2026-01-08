@@ -94,7 +94,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'blockingThoughtsExercise',
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
-          objective: 'Aprende a detectar y reformular los pensamientos que te frenan al pedir ayuda.',
+          objective: 'Con esta técnica aprenderás a detectar y reformular los pensamientos que te frenan al pedir ayuda. La Terapia Cognitivo-Conductual (Beck, 2011) demuestra que cuestionar creencias disfuncionales reduce la ansiedad y mejora la disposición a buscar apoyo.',
           duration: '8-12 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
         },
@@ -531,3 +531,4 @@ export const supportNetworkPath: Path = {
   ]
 };
 
+    
