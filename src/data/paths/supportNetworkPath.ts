@@ -96,14 +96,13 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Con esta técnica aprenderás a detectar y reformular los pensamientos que te frenan al pedir ayuda.    La Terapia Cognitivo-Conductual (Beck, 2011) demuestra que cuestionar creencias disfuncionales reduce la ansiedad y mejora la disposición a buscar apoyo.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
         },
         { 
-          type: 'exercise', 
-          title: 'Microprácticas (opcionales)', 
-          objective: 'Pequeñas acciones diarias para entrenar el músculo de pedir y recibir apoyo.',
-          duration: '1-2 min al día',
+          type: 'collapsible', 
+          title: 'Microprácticas (opcionales)',
           content: [
+            { type: 'paragraph', text: 'Pequeñas acciones diarias para entrenar el músculo de pedir y recibir apoyo.' },
             { type: 'list', items: [
                 'Microagradecimiento diario: Durante 7 días, envía un mensaje corto a alguien de tu red agradeciendo algo que haya hecho por ti, aunque sea pequeño.',
                 'Pide algo sencillo: Una vez al día, pide un favor simple (ej. “¿Me pasas la sal?”, “¿Puedes enviarme ese archivo?”) para entrenar el acto de pedir sin carga emocional.',
