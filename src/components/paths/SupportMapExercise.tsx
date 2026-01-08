@@ -1,22 +1,24 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, PlusCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SupportMapExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { Slider } from '../ui/slider';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface SupportMapExerciseProps {
   content: SupportMapExerciseContent;
   pathId: string;
+  pathTitle: string; // Título de la ruta
+  moduleTitle: string; // Título del módulo/semana
 }
 
 interface Relation {
@@ -31,12 +33,12 @@ interface Relation {
 
 const supportTypes = [
     { id: 'emocional', label: 'Emocional: te escucha, valida tus sentimientos, te acompaña.' },
-    { id: 'practico', label: 'Práctico: te ayuda con tareas, gestiones o recursos.' },
+    { id: 'practico', label: 'Práctico: te ayuda con tareas, gestiones o recursos materiales.' },
     { id: 'validacion', label: 'Validación/Consejo: te orienta o comparte experiencias que te sirven de guía.' },
 ];
 
 
-export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps) {
+export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: SupportMapExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [relations, setRelations] = useState<Relation[]>(() => 
@@ -67,18 +69,29 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
       setRelations(newRelations);
   };
 
-  const nextStep = () => setStep(prev => prev + 1);
+  const nextStep = () => {
+    if (step === 1 && relations.filter(r => r.name.trim() !== '').length < 1) {
+      toast({
+        title: 'Ejercicio Incompleto',
+        description: 'Por favor, anota al menos una persona para continuar.',
+        variant: 'destructive',
+      });
+      return;
+    }
+    setStep(prev => prev + 1);
+  };
+
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     const filledRelations = relations.filter(r => r.name.trim() !== '');
     if (filledRelations.length === 0) {
-      toast({ title: "Mapa vacío", description: "Añade al menos una persona para guardar tu mapa.", variant: 'destructive' });
+      toast({ title: "Mapa vacío", description: "Añade al menos una persona para guardar tu mapa.", variant: "destructive" });
       return;
     }
 
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    let notebookContent = `**Ruta:** ${pathTitle}\n**Semana:** ${moduleTitle}\n**Ejercicio:** ${content.title}\n\n`;
     filledRelations.forEach(r => {
         const selectedSupport = Object.entries(r.supportType)
             .filter(([, checked]) => checked)
@@ -90,41 +103,47 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
     });
     notebookContent += `**Reflexión:**\n${reflection || 'Sin reflexión.'}`;
     
-    addNotebookEntry({ title: 'Mi Mapa de Relaciones y Apoyo', content: notebookContent, pathId });
+    addNotebookEntry({ 
+      title: 'Mi Mapa de Relaciones y Apoyo', 
+      content: notebookContent, 
+      pathId: pathId,
+      ruta: pathTitle
+    });
+    
     toast({ title: 'Mapa Guardado', description: 'Tu mapa de relaciones se ha guardado en el cuaderno.' });
     setIsSaved(true);
     nextStep();
   };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:
         return (
-          <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
-            <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          <div className="p-4 space-y-4 text-center">
+             <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
+             <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );
       case 1:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Identifica a tus personas clave</h4>
-            <p className="text-sm text-muted-foreground">Piensa en familiares, amistades, compañeros/as de trabajo, o cualquier persona con quien tengas un vínculo significativo.</p>
-             <div className="space-y-3">
-              {relations.map((rel, index) => (
-                <Input key={index} value={rel.name} onChange={e => handleRelationNameChange(index, e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, María)`} />
-              ))}
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg">Paso 1: Identifica a tus personas clave</h4>
+                <p className="text-sm text-muted-foreground">Piensa en familiares, amistades, compañeros/as de trabajo, o cualquier persona con quien tengas un vínculo significativo.</p>
+                 <div className="space-y-3">
+                  {relations.map((rel, index) => (
+                    <Input key={index} value={rel.name} onChange={e => handleRelationNameChange(index, e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, María)`} />
+                  ))}
+                </div>
+                <Button onClick={addRelationField} variant="outline" className="w-full">
+                  <PlusCircle className="mr-2 h-4 w-4" />
+                  Añadir otra persona
+                </Button>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                 </div>
             </div>
-            <Button onClick={addRelationField} variant="outline" className="w-full">
-              <PlusCircle className="mr-2 h-4 w-4" />
-              Añadir otra persona
-            </Button>
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
-          </div>
         );
       case 2:
         return (
@@ -210,3 +229,4 @@ export function SupportMapExercise({ content, pathId }: SupportMapExerciseProps)
     </Card>
   );
 }
+

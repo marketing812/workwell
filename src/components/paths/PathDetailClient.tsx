@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -358,11 +357,13 @@ function ContentItemRenderer({
   contentItem,
   index,
   path,
+  module,
   onExerciseComplete,
 }: {
   contentItem: ModuleContent;
   index: number;
   path: Path;
+  module: PathModule;
   onExerciseComplete: () => void;
 }) {
   if (!contentItem) {
@@ -454,6 +455,7 @@ function ContentItemRenderer({
                     contentItem={item}
                     index={i}
                     path={path}
+                    module={module}
                     onExerciseComplete={onExerciseComplete}
                   />
                 ))}
@@ -729,7 +731,7 @@ function ContentItemRenderer({
       return <PersonalCommitmentDeclarationExercise key={index} content={contentItem as any} pathId={path.id} />;
     // RUTA 11
     case 'supportMapExercise':
-      return <SupportMapExercise key={index} content={contentItem as any} pathId={path.id} />;
+        return <SupportMapExercise key={index} content={contentItem as any} pathId={path.id} pathTitle={path.title} moduleTitle={module.title} />;
     case 'blockingThoughtsExercise':
       return <BlockingThoughtsExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'nutritiveDrainingSupportMapExercise':
@@ -950,6 +952,7 @@ export function PathDetailClient({ path }: { path: Path }) {
                     contentItem={contentItem}
                     index={i}
                     path={path}
+                    module={module}
                     onExerciseComplete={() => completeModule(module.id, module.title)}
                   />
                 </ContentItemErrorBoundary>
@@ -1014,3 +1017,4 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
