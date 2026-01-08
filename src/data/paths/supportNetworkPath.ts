@@ -98,17 +98,19 @@ export const supportNetworkPath: Path = {
           duration: '8-12 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
         },
-        {
-          type: 'title',
-          text: 'Microprácticas (opcionales)',
-        },
-        {
-          type: 'list',
-          items: [
-              'Microagradecimiento diario: Durante 7 días, envía un mensaje corto a alguien de tu red agradeciendo algo que haya hecho por ti, aunque sea pequeño.',
-              'Pide algo sencillo: Una vez al día, pide un favor simple (ej. “¿Me pasas la sal?”, “¿Puedes enviarme ese archivo?”) para entrenar el acto de pedir sin carga emocional.',
-              'Mini chequeo de apoyo: Antes de dormir, piensa: ¿Hoy recibí o pedí apoyo? y anota en tu mente (o en una nota) cómo te sentiste.',
-              'Observa a otros pedir ayuda: Fíjate en cómo lo hacen, cómo se siente la interacción y qué sensaciones despierta en ti.'
+        { 
+          type: 'exercise', 
+          title: 'Microprácticas (opcionales)', 
+          objective: 'Pequeñas acciones diarias para entrenar el músculo de pedir y recibir apoyo.',
+          duration: '1-2 min al día',
+          content: [
+            { type: 'list', items: [
+                'Microagradecimiento diario: Durante 7 días, envía un mensaje corto a alguien de tu red agradeciendo algo que haya hecho por ti, aunque sea pequeño.',
+                'Pide algo sencillo: Una vez al día, pide un favor simple (ej. “¿Me pasas la sal?”, “¿Puedes enviarme ese archivo?”) para entrenar el acto de pedir sin carga emocional.',
+                'Mini chequeo de apoyo: Antes de dormir, piensa: ¿Hoy recibí o pedí apoyo? y anota en tu mente (o en una nota) cómo te sentiste.',
+                'Observa a otros pedir ayuda: Fíjate en cómo lo hacen, cómo se siente la interacción y qué sensaciones despierta en ti.'
+              ]
+            }
           ]
         },
         {
@@ -545,4 +547,3 @@ export const supportNetworkPath: Path = {
 };
 
     
-
