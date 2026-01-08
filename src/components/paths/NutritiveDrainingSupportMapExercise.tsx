@@ -26,7 +26,7 @@ interface Relation {
 export function NutritiveDrainingSupportMapExercise({ content, pathId }: NutritiveDrainingSupportMapExerciseProps) {
   const { toast } = useToast();
   const [relations, setRelations] = useState<Relation[]>(Array(5).fill({ name: '', sensation: '' }));
-  const [reflection, setReflection] = useState({ approach: '', distance: '' });
+  const [reflection, setReflection] = useState({ step2: '', approach: '', distance: '' });
   const [isSaved, setIsSaved] = useState(false);
 
   const handleRelationChange = <K extends keyof Relation>(index: number, field: K, value: Relation[K]) => {
@@ -41,6 +41,7 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
     relations.filter(r => r.name).forEach(r => {
         notebookContent += `- ${r.name}: ${r.sensation}\n`;
     });
+    notebookContent += `\n**Reflexión (Paso 2):**\n${reflection.step2 || 'No especificado.'}`;
     notebookContent += `\n**Reflexión:**\n- Quiero acercarme a: ${reflection.approach}\n- Necesito tomar distancia de: ${reflection.distance}`;
     
     addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId });
@@ -71,6 +72,7 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
           </div>
           <div className="space-y-2">
             <Label>Paso 2: ¿Cómo te sientes después de interactuar con cada una?</Label>
+            <Textarea value={reflection.step2} onChange={e => setReflection(p => ({...p, step2: e.target.value}))} placeholder="Anota aquí tus reflexiones generales de este paso..." disabled={isSaved} />
             {relations.filter(r => r.name).map((rel, index) => (
                 <div key={index} className="p-2 border-t">
                     <p className="font-semibold">{rel.name}</p>
