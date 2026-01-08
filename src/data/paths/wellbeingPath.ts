@@ -30,9 +30,7 @@ export const wellbeingPath: Path = {
             type: 'collapsible',
             title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
             audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n• ☁ Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n• 🌥 Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n• 🌩 Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.' }
-            ]
+            content: [{ type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.' }]
         },
         {
             type: 'collapsible',
@@ -273,7 +271,7 @@ export const wellbeingPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionsesion3ruta12.mp3',
-          prompts: ['¿Qué has descubierto sobre la motivación y las ganas esta semana?', '¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?', '¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?'],
+          prompts: ['¿Qué has descubierto sobre la motivación y las ganas esta semana?','¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?','¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?'],
         },
         { type: 'title', text: 'Resumen Clave' },
         {
@@ -282,8 +280,8 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3',
         },
         { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.","Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.","Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.","La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.","La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención."]},
-        { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' },
-      ],
+        { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' }
+      ]
     },
     {
       id: 'bienestar_sem4',
