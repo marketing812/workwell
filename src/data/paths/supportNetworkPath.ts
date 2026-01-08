@@ -98,9 +98,9 @@ export const supportNetworkPath: Path = {
           duration: '8-12 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
         },
-        { 
-          type: 'collapsible', 
-          title: 'Microprácticas (opcionales)',
+        {
+          type: 'collapsible',
+          title: 'Microprácticas opcionales para Semana 1',
           content: [
             { type: 'paragraph', text: 'Pequeñas acciones diarias para entrenar el músculo de pedir y recibir apoyo.' },
             { type: 'list', items: [
@@ -110,7 +110,7 @@ export const supportNetworkPath: Path = {
                 'Observa a otros pedir ayuda: Fíjate en cómo lo hacen, cómo se siente la interacción y qué sensaciones despierta en ti.'
               ]
             }
-          ]
+          ],
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -242,6 +242,16 @@ export const supportNetworkPath: Path = {
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
+        },
+        {
+          type: 'collapsible',
+          title: 'Micropráctica opcional: "Mi momento vitamina"',
+          content: [
+            { type: 'paragraph', text: 'Objetivo: entrenar la atención para detectar y reforzar microvínculos positivos en el día a día.' },
+            { type: 'paragraph', text: 'Cada noche, antes de dormir, recuerda un momento del día en el que alguien te haya hecho sentir escuchado/a, acompañado/a o simplemente bien. Puede ser un mensaje, una sonrisa, una llamada o un gesto.' },
+            { type: 'paragraph', text: 'Anótalo en una frase en tu cuaderno o en la sección de notas de la app.' },
+            { type: 'paragraph', text: 'Beneficio: refuerza tu percepción de que sí tienes apoyos y ayuda a tu cerebro a fijar las experiencias positivas (según la neurociencia, dedicar unos segundos extra a saborear el recuerdo fortalece las conexiones neuronales asociadas a la gratitud y la seguridad emocional)' },
+          ],
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -537,12 +547,14 @@ export const supportNetworkPath: Path = {
             'La neurociencia confirma que los vínculos seguros activan nuestro sistema de calma y resiliencia.',
             'Cuidar la red de apoyo implica tanto elegir bien lo que recibimos como ser un apoyo nutritivo para los demás.',
             'Mapear la red y priorizar vínculos nutritivos fortalece la capacidad de afrontar la vida con más seguridad y confianza.',
-          ]
+          ],
         },
         { type: 'quote', text: 'Una red de apoyo no se mide por la cantidad de personas, sino por la calidad de los vínculos que te sostienen y te hacen crecer.' }
       ]
     }
   ]
 };
+
+    
 
     
