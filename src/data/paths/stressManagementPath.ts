@@ -273,6 +273,7 @@ export const stressManagementPath: Path = {
               type: 'collapsible',
               title: 'Técnica 6: Contacto frío breve (reset inmediato)',
               objective: 'Interrumpir una activación emocional intensa.',
+              audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
               content: [
                 { type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\tHumedece una toalla o paño con agua fría.\\n2.\tAplícalo entre 10 y 20 segundos en:\\n\to\tLa nuca\\n\to\tLas muñecas\\n\to\tLa parte interna de los brazos o las mejillas\\n3.\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
               ]
