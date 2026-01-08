@@ -15,3 +15,4 @@ runConfig:
 # Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
 # Forzando reconstrucción para resolver el último ChunkLoadError.
 # Forzando reconstrucción de nuevo para resolver ChunkLoadError.
+# Forzando la reconstrucción para corregir el error de carga de chunks de la página de rutas.
