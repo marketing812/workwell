@@ -19,6 +19,32 @@ interface AcceptanceWritingExerciseProps {
   pathId: string;
 }
 
+const acceptanceEmotionOptions = [
+  { value: "tristeza", labelKey: "emotionSadness" },
+  { value: "miedo", labelKey: "emotionFear" },
+  { value: "ira", labelKey: "emotionAnger" },
+  { value: "asco", labelKey: "emotionDisgust" },
+  { value: "estres", labelKey: "emotionStress" },
+  { value: "ansiedad", labelKey: "emotionAnxiety" },
+  { value: "agobio", labelKey: "emotionOverwhelm" },
+  { value: "tension", labelKey: "emotionTension" },
+  { value: "alarma", labelKey: "emotionAlarm" },
+  { value: "cansancio_emocional", labelKey: "emotionEmotionalTiredness" },
+  { value: "desaliento", labelKey: "emotionDiscouragement" },
+  { value: "vacio", labelKey: "emotionEmptiness" },
+  { value: "frustracion", labelKey: "emotionFrustration" },
+  { value: "rechazo", labelKey: "emotionRejection" },
+  { value: "soledad", labelKey: "emotionLoneliness" },
+  { value: "celos", labelKey: "emotionJealousy" },
+  { value: "envidia", labelKey: "emotionEnvy" },
+  { value: "verguenza", labelKey: "emotionShame" },
+  { value: "culpa", labelKey: "emotionGuilt" },
+  { value: "inseguridad", labelKey: "emotionInsecurity" },
+  { value: "confusion", labelKey: "emotionConfusion" },
+  { value: "ambivalencia", labelKey: "emotionAmbivalence" },
+];
+
+
 export function AcceptanceWritingExercise({ content, pathId }: AcceptanceWritingExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
@@ -122,7 +148,7 @@ ${response}
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
             <Select onValueChange={setEmotion} value={emotion} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona la emoción que sentiste" /></SelectTrigger>
-              <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
+              <SelectContent>{acceptanceEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
