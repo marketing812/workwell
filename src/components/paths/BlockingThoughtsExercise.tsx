@@ -77,7 +77,7 @@ export function BlockingThoughtsExercise({ content, pathId }: BlockingThoughtsEx
             <Textarea id="thought-blocking" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="distortion-select">Identifica la distorsión</Label>
+            <Label htmlFor="distortion-select">Detecta la distorsión cognitiva</Label>
             <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
                 <SelectTrigger><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
                 <SelectContent>
