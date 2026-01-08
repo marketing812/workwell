@@ -20,12 +20,10 @@ interface EmotionalEntryFormProps {
 }
 
 export const emotions = [
-  { value: "alegria", labelKey: "emotionJoy" },
   { value: "tristeza", labelKey: "emotionSadness" },
   { value: "miedo", labelKey: "emotionFear" },
   { value: "ira", labelKey: "emotionAnger" },
   { value: "asco", labelKey: "emotionDisgust" },
-  { value: "sorpresa", labelKey: "emotionSurprise" },
   { value: "estres", labelKey: "emotionStress" },
   { value: "ansiedad", labelKey: "emotionAnxiety" },
   { value: "agobio", labelKey: "emotionOverwhelm" },
@@ -34,12 +32,7 @@ export const emotions = [
   { value: "cansancio_emocional", labelKey: "emotionEmotionalTiredness" },
   { value: "desaliento", labelKey: "emotionDiscouragement" },
   { value: "vacio", labelKey: "emotionEmptiness" },
-  { value: "ilusion", labelKey: "emotionHope" },
-  { value: "entusiasmo", labelKey: "emotionEnthusiasm" },
-  { value: "esperanza", labelKey: "emotionHopefulness" },
   { value: "frustracion", labelKey: "emotionFrustration" },
-  { value: "amor", labelKey: "emotionLove" },
-  { value: "confianza", labelKey: "emotionTrust" },
   { value: "rechazo", labelKey: "emotionRejection" },
   { value: "soledad", labelKey: "emotionLoneliness" },
   { value: "celos", labelKey: "emotionJealousy" },
@@ -47,9 +40,16 @@ export const emotions = [
   { value: "verguenza", labelKey: "emotionShame" },
   { value: "culpa", labelKey: "emotionGuilt" },
   { value: "inseguridad", labelKey: "emotionInsecurity" },
-  { value: "orgullo", labelKey: "emotionPride" },
   { value: "confusion", labelKey: "emotionConfusion" },
   { value: "ambivalencia", labelKey: "emotionAmbivalence" },
+  { value: "alegria", labelKey: "emotionJoy" },
+  { value: "sorpresa", labelKey: "emotionSurprise" },
+  { value: "ilusion", labelKey: "emotionHope" },
+  { value: "entusiasmo", labelKey: "emotionEnthusiasm" },
+  { value: "esperanza", labelKey: "emotionHopefulness" },
+  { value: "amor", labelKey: "emotionLove" },
+  { value: "confianza", labelKey: "emotionTrust" },
+  { value: "orgullo", labelKey: "emotionPride" },
 ];
 
 
