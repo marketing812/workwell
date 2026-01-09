@@ -1,41 +1,104 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, BatteryFull, BatteryMedium, BatteryLow } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DailyEnergyCheckExerciseContent } from '@/data/paths/pathTypes';
+import { cn } from '@/lib/utils';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Input } from '../ui/input';
 
 interface DailyEnergyCheckExerciseProps {
   content: DailyEnergyCheckExerciseContent;
   pathId: string;
 }
 
+const rechargeOptions = [
+    'Actividad física', 'Alimentación equilibrada', 'Sueño reparador',
+    'Tiempo en la naturaleza', 'Conversación positiva', 'Tiempo a solas de calidad',
+    'Escuchar música que me gusta',
+];
+
+const drainOptions = [
+    'Estrés laboral o académico', 'Discusiones o tensiones', 'Falta de descanso',
+    'Uso excesivo de pantallas', 'Alimentación poco nutritiva', 'Sobrecarga de tareas',
+    'Espacios ruidosos o caóticos',
+];
+
+
 export function DailyEnergyCheckExercise({ content, pathId }: DailyEnergyCheckExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [energyLevel, setEnergyLevel] = useState<'alta' | 'media' | 'baja' | ''>('');
+  const [energyNuance, setEnergyNuance] = useState('');
   const [rechargedBy, setRechargedBy] = useState('');
   const [drainedBy, setDrainedBy] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const storageKey = `exercise-progress-${pathId}-dailyEnergyCheck`;
+
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setEnergyLevel(data.energyLevel || '');
+        setEnergyNuance(data.energyNuance || '');
+        setRechargedBy(data.rechargedBy || '');
+        setDrainedBy(data.drainedBy || '');
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      const stateToSave = { step, energyLevel, energyNuance, rechargedBy, drainedBy, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, energyLevel, energyNuance, rechargedBy, drainedBy, isSaved, storageKey]);
+
 
   const handleSave = () => {
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Nivel de energía de hoy:** ${energyLevel}
-**Me recargó:** ${rechargedBy}
-**Me drenó:** ${drainedBy}
+**Nivel de energía de hoy:** ${energyLevel} ${energyNuance ? `(${energyNuance})` : ''}
+**Me recargó:**
+${rechargedBy || 'No especificado.'}
+
+**Me drenó:**
+${drainedBy || 'No especificado.'}
     `;
-    addNotebookEntry({ title: 'Mi Mini-Check de Energía Diaria', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Balance de Energía Diario', content: notebookContent, pathId: pathId });
     toast({ title: 'Registro Guardado', description: 'Tu registro de energía ha sido guardado.' });
     setIsSaved(true);
+    setStep(4);
+  };
+  
+  const resetExercise = () => {
+    setStep(0);
+    setEnergyLevel('');
+    setEnergyNuance('');
+    setRechargedBy('');
+    setDrainedBy('');
+    setIsSaved(false);
+  };
+  
+  const appendToList = (setter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
+    if (value && value !== 'Otro') {
+      setter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+    }
   };
 
   const renderStepContent = () => {
@@ -50,40 +113,95 @@ export function DailyEnergyCheckExercise({ content, pathId }: DailyEnergyCheckEx
       case 1:
         return (
           <div className="p-4 space-y-4">
-            <Label>Paso 1: Evalúa tu energía de hoy</Label>
-            <RadioGroup value={energyLevel} onValueChange={(value) => setEnergyLevel(value as any)}>
-              <div className="flex items-center space-x-2"><RadioGroupItem value="alta" id="energy-high" /><Label htmlFor="energy-high">Alta</Label></div>
-              <div className="flex items-center space-x-2"><RadioGroupItem value="media" id="energy-medium" /><Label htmlFor="energy-medium">Media</Label></div>
-              <div className="flex items-center space-x-2"><RadioGroupItem value="baja" id="energy-low" /><Label htmlFor="energy-low">Baja</Label></div>
-            </RadioGroup>
-            <Button onClick={() => setStep(2)} className="w-full">Continuar</Button>
+            <h4 className="font-semibold">Paso 1: Evalúa tu energía de hoy</h4>
+             <p className="text-sm text-muted-foreground">Imagina que tu energía es como la batería de un móvil. ¿Cómo describirías tu energía al final del día?</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <Button variant="outline" onClick={() => setEnergyLevel('alta')} className={cn("h-auto p-4 flex-col gap-2", energyLevel === 'alta' && 'border-primary ring-2 ring-primary')}>
+                    <BatteryFull className="h-8 w-8 text-green-500"/>
+                    <span className="font-semibold">Alta</span>
+                    <span className="text-xs text-muted-foreground font-normal">Me siento con fuerza, motivación y claridad.</span>
+                </Button>
+                <Button variant="outline" onClick={() => setEnergyLevel('media')} className={cn("h-auto p-4 flex-col gap-2", energyLevel === 'media' && 'border-primary ring-2 ring-primary')}>
+                    <BatteryMedium className="h-8 w-8 text-amber-500"/>
+                    <span className="font-semibold">Media</span>
+                    <span className="text-xs text-muted-foreground font-normal">Puedo seguir, pero noto cansancio o dispersión.</span>
+                </Button>
+                <Button variant="outline" onClick={() => setEnergyLevel('baja')} className={cn("h-auto p-4 flex-col gap-2", energyLevel === 'baja' && 'border-primary ring-2 ring-primary')}>
+                    <BatteryLow className="h-8 w-8 text-red-500"/>
+                    <span className="font-semibold">Baja</span>
+                    <span className="text-xs text-muted-foreground font-normal">Tengo poca energía, me cuesta concentrarme.</span>
+                </Button>
+            </div>
+            <div className="space-y-2 pt-2">
+                <Label htmlFor="energy-nuance">Si quieres, cuéntame un poco más sobre cómo te sientes (opcional)</Label>
+                <Input id="energy-nuance" value={energyNuance} onChange={e => setEnergyNuance(e.target.value)} maxLength={200} />
+            </div>
+            <Button onClick={() => setStep(2)} className="w-full mt-4" disabled={!energyLevel}>Continuar</Button>
           </div>
         );
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="recharged">Paso 2: Lo que me recargó hoy</Label>
-            <Textarea id="recharged" value={rechargedBy} onChange={e => setRechargedBy(e.target.value)} placeholder="Ej: Salir a caminar al sol, reír con un amigo..." />
+            <h4 className="font-semibold">Paso 2: Lo que me recargó hoy</h4>
+            <p className="text-sm text-muted-foreground">Piensa en actividades, personas o momentos que te dieron energía física, emocional o mental.</p>
+            <Textarea value={rechargedBy} onChange={e => setRechargedBy(e.target.value)} placeholder="Ej: Salir a caminar al sol, reír con un amigo, desayunar sin prisas..." rows={4}/>
+            <div className="space-y-2">
+                <Label className="text-xs">O elige de esta lista para inspirarte:</Label>
+                <Select onValueChange={(value) => appendToList(setRechargedBy, value)}>
+                    <SelectTrigger><SelectValue placeholder="Selecciona un factor común..."/></SelectTrigger>
+                    <SelectContent>
+                        {rechargeOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    </SelectContent>
+                </Select>
+            </div>
             <Button onClick={() => setStep(3)} className="w-full">Continuar</Button>
           </div>
         );
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="drained">Paso 3: Lo que me drenó hoy</Label>
-            <Textarea id="drained" value={drainedBy} onChange={e => setDrainedBy(e.target.value)} placeholder="Ej: Reunión tensa, dormir poco..." />
-            <Button onClick={() => { handleSave(); setStep(4); }} className="w-full">Guardar Balance</Button>
+            <h4 className="font-semibold">Paso 3: Lo que me drenó hoy</h4>
+            <p className="text-sm text-muted-foreground">Identifica las cosas que te restaron energía o te dejaron con sensación de desgaste.</p>
+            <Textarea value={drainedBy} onChange={e => setDrainedBy(e.target.value)} placeholder="Ej: Reunión tensa, dormir poco, pasar horas frente al ordenador..." rows={4}/>
+             <div className="space-y-2">
+                <Label className="text-xs">O elige de esta lista:</Label>
+                <Select onValueChange={(value) => appendToList(setDrainedBy, value)}>
+                    <SelectTrigger><SelectValue placeholder="Selecciona un factor común..."/></SelectTrigger>
+                    <SelectContent>
+                        {drainOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    </SelectContent>
+                </Select>
+            </div>
+            <Button onClick={handleSave} className="w-full">Guardar Balance</Button>
           </div>
         );
-        case 4:
-            return (
-               <div className="p-4 text-center space-y-4">
-                   <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-                   <h4 className="font-semibold text-lg">Balance Guardado</h4>
-                   <p className="text-muted-foreground">Hoy has protegido tu energía. Mañana puedes probar a sumar más de lo que te recarga.</p>
-                   <Button onClick={() => { setStep(0); setIsSaved(false); }} variant="outline" className="w-full">Hacer otro registro</Button>
+      case 4:
+        const rechargeCount = rechargedBy.split('\n').filter(Boolean).length;
+        const drainCount = drainedBy.split('\n').filter(Boolean).length;
+        const balanceMessage = rechargeCount > drainCount
+          ? "¡Buen trabajo! Hoy has protegido tu energía. Mantén y repite lo que te ha funcionado."
+          : "Hoy tu energía ha bajado, pero ya sabes qué la ha afectado. Mañana puedes probar a sumar más de lo que te recarga.";
+        return (
+           <div className="p-4 text-center space-y-4">
+               <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
+               <h4 className="font-semibold text-lg">Mi balance de energía de hoy</h4>
+                <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
+                    <div>
+                        <h5 className="font-semibold text-green-600">Me recargó:</h5>
+                        <pre className="text-sm whitespace-pre-wrap font-sans">{rechargedBy || 'Sin definir'}</pre>
+                    </div>
+                     <div>
+                        <h5 className="font-semibold text-red-600">Me drenó:</h5>
+                        <pre className="text-sm whitespace-pre-wrap font-sans">{drainedBy || 'Sin definir'}</pre>
+                    </div>
+                </div>
+               <p className="text-sm italic text-primary">{balanceMessage}</p>
+               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+                    <Button onClick={() => setStep(1)} variant="outline">Editar mi registro</Button>
+                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
                </div>
-            );
+           </div>
+        );
       default:
         return null;
     }
@@ -94,11 +212,11 @@ export function DailyEnergyCheckExercise({ content, pathId }: DailyEnergyCheckEx
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         <CardDescription className="pt-2">
-          ¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?
-          <br/><br/>
-          Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y otros que la gastan más rápido.
-          <br/><br/>
-          Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.
+            ¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?
+            <br/><br/>
+            Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y otros que la gastan más rápido.
+            <br/><br/>
+            Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.
           <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
                 <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3" type="audio/mp3" />
