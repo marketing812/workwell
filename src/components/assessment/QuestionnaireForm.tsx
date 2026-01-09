@@ -267,9 +267,6 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
       <Card className="w-full max-w-2xl mx-auto shadow-xl overflow-hidden">
         <CardHeader>
           <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
-          <CardTitle className="text-lg font-semibold text-center text-primary">
-            {isGuided ? currentDimension?.name : 'Cuestionario de Autoevaluación'}
-          </CardTitle>
           <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
                 
           </CardDescription>
