@@ -106,7 +106,6 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
               <SelectContent>
                 <SelectItem value="Nota en el móvil">Nota en el móvil</SelectItem>
                 <SelectItem value="Post-it en tu escritorio">Post-it en tu escritorio</SelectItem>
-                <SelectItem value="Recordatorio automático en la app">Recordatorio automático en la app</SelectItem>
                 <SelectItem value="Otro">Otro</SelectItem>
               </SelectContent>
             </Select>
