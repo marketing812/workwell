@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -99,14 +99,21 @@ ${places || 'No especificado.'}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        </CardDescription>}
+        <CardDescription className="pt-2 whitespace-pre-line">
+          ¿Has notado que a veces olvidas lo que te hacía sentir bien?
+
+          Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.
+          
+          Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.
+          
+          Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.
+          <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3" type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+          </div>
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {renderStepContent()}
