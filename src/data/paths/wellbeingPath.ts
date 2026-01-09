@@ -27,68 +27,62 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: '¿Has tenido días en los que te sientes como un móvil con la batería al 5%? No importa cuánto descanses, parece que nada te recarga del todo. Estar bajo de ánimo es parecido: tu energía física, mental y emocional se apagan un poco. Lo que antes te motivaba ahora cuesta más, y hasta las cosas simples pueden parecer un esfuerzo enorme. Esta semana vamos a explorar cómo recargar esa batería sin depender de chispazos momentáneos, sino construyendo energía que dure.' }]
         },
         {
-            type: 'collapsible',
-            title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
-            content: [{ type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo: Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo. Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute. Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional. En esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique. Ahora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.' }]
+          type: 'collapsible',
+          title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
+          content: [
+            { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:' },
+            { type: 'list', items: [
+                'Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.',
+                'Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.',
+                'Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.'
+            ]},
+            { type: 'paragraph', text: 'En esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.'}
+          ]
         },
         {
-            type: 'collapsible',
-            title: 'De dónde viene el estado de ánimo bajo',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio3sesion1ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:\n• Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.\n• Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.\n• Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.\n• Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.\n• Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada.\nAdemás, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' }
-            ]
+          type: 'collapsible',
+          title: 'De dónde viene el estado de ánimo bajo',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio3sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:\n• Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.\n• Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.\n• Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.\n• Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.\n• Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada.\nAdemás, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' }]
         },
         {
-            type: 'collapsible',
-            title: 'Qué ocurre en tu cuerpo y tu mente',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio4sesion1ruta12.mp3',
-            content: [
-              { type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar positivo”.\n• Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.\n• Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.\n• Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”.\nSegún la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' }
-            ]
+          type: 'collapsible',
+          title: 'Qué ocurre en tu cuerpo y tu mente',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio4sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar positivo”.\n• Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.\n• Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.\n• Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”.\nSegún la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' }]
         },
         {
-            type: 'collapsible',
-            title: 'La energía vital: mucho más que no estar cansado/a',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio5sesion1ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Piensa en tu energía como en un fuego:\n• Se alimenta de combustible físico (descanso, alimentación, movimiento).\n• Necesita chispa emocional (momentos que te hagan sentir vivo/a).\n• Y se mantiene con aire mental (propósitos, curiosidad, retos alcanzables).\nSin alguno de estos elementos, la llama se reduce y el ánimo baja.\nIncluso acciones de solo 10 minutos —como salir a la luz natural o tener una conversación agradable— pueden avivar ese fuego.'}
-            ]
+          type: 'collapsible',
+          title: 'La energía vital: mucho más que no estar cansado/a',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio5sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'Piensa en tu energía como en un fuego:\n• Se alimenta de combustible físico (descanso, alimentación, movimiento).\n• Necesita chispa emocional (momentos que te hagan sentir vivo/a).\n• Y se mantiene con aire mental (propósitos, curiosidad, retos alcanzables).\nSin alguno de estos elementos, la llama se reduce y el ánimo baja.\nIncluso acciones de solo 10 minutos —como salir a la luz natural o tener una conversación agradable— pueden avivar ese fuego.' }]
         },
         {
-            type: 'collapsible',
-            title: 'El espejismo de la gratificación inmediata',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio6sesion1ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Cuando la batería está baja, buscamos enchufes rápidos: comer algo dulce, mirar redes, ver series sin parar…\nEsto es gratificación inmediata: placer rápido, pero que dura lo que un sorbo de café en un día de frío.\nEl bienestar sostenido, en cambio, es como encender una estufa que mantiene el calor mucho después: caminar, retomar un hobby, hablar con alguien que te importa.\nComo recuerda la Terapia Cognitivo-Conductual, las acciones que más levantan el ánimo suelen ser las que menos apetece hacer al principio.'}
-            ]
+          type: 'collapsible',
+          title: 'El espejismo de la gratificación inmediata',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio6sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'Cuando la batería está baja, buscamos enchufes rápidos: comer algo dulce, mirar redes, ver series sin parar…\nEsto es gratificación inmediata: placer rápido, pero que dura lo que un sorbo de café en un día de frío.\nEl bienestar sostenido, en cambio, es como encender una estufa que mantiene el calor mucho después: caminar, retomar un hobby, hablar con alguien que te importa.\nComo recuerda la Terapia Cognitivo-Conductual, las acciones que más levantan el ánimo suelen ser las que menos apetece hacer al principio.' }]
         },
         {
-            type: 'collapsible',
-            title: 'Tu cerebro también busca recompensas',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio7sesion1ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Dentro de tu cabeza hay un sistema de recompensa que se activa no solo cuando consigues algo, sino también cuando lo anticipas.\n• Dopamina: la chispa que te mueve a actuar.\n• Núcleo accumbens: el radar de lo que puede hacerte sentir bien.\n• Corteza prefrontal: la que decide si vas hacia lo que de verdad importa o hacia lo que solo alivia un rato.\nCuando eliges conscientemente actividades con sentido, entrenas a tu cerebro para pedir más de eso.\nY ese es el camino para reconectar con lo que antes te hacía bien.'}
-            ]
+          type: 'collapsible',
+          title: 'Tu cerebro también busca recompensas',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio7sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'Dentro de tu cabeza hay un sistema de recompensa que se activa no solo cuando consigues algo, sino también cuando lo anticipas.\n• Dopamina: la chispa que te mueve a actuar.\n• Núcleo accumbens: el radar de lo que puede hacerte sentir bien.\n• Corteza prefrontal: la que decide si vas hacia lo que de verdad importa o hacia lo que solo alivia un rato.\nCuando eliges conscientemente actividades con sentido, entrenas a tu cerebro para pedir más de eso.\nY ese es el camino para reconectar con lo que antes te hacía bien.' }]
         },
         {
-            type: 'collapsible',
-            title: 'Por qué reconectar con lo que te hacía bien es clave',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio8sesion1ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'El estado de ánimo bajo te empuja a hacer menos → recibes menos placer → el ánimo baja más.\nRomper ese círculo no siempre empieza con ganas; muchas veces empieza con acción consciente:\n• Retomar algo que antes disfrutabas.\n• Probar una versión más pequeña de una actividad que te gustaba.\n• Buscar compañía que te aporte calma o risa.\n“No esperes a tener ganas para empezar; empieza, y las ganas llegarán después.” — Principio de activación conductual.'}
-            ]
+          type: 'collapsible',
+          title: 'Por qué reconectar con lo que te hacía bien es clave',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio8sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'El estado de ánimo bajo te empuja a hacer menos → recibes menos placer → el ánimo baja más.\nRomper ese círculo no siempre empieza con ganas; muchas veces empieza con acción consciente:\n• Retomar algo que antes disfrutabas.\n• Probar una versión más pequeña de una actividad que te gustaba.\n• Buscar compañía que te aporte calma o risa.\n“No esperes a tener ganas para empezar; empieza, y las ganas llegarán después.” — Principio de activación conductual.' }]
         },
         {
-            type: 'collapsible',
-            title: 'Empezar por las actividades: un primer paso probado por la ciencia',
-            audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio9sesion1ruta12.mp3',
-            content: [
-                { type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente suele decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.'}
-            ]
+          type: 'collapsible',
+          title: 'Empezar por las actividades: un primer paso probado por la ciencia',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio9sesion1ruta12.mp3',
+          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente suele decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
         },
-        { type: 'title', text: 'Técnicas Específicas'},
+        { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'emotionalGratificationMapExercise',
           title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL',
@@ -103,10 +97,10 @@ export const wellbeingPath: Path = {
           duration: '3-5 min',
           audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3', prompts: ["¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?","¿Hubo algo que me sorprendiera al observar mi energía día a día?","¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?","Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?","¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?"]},
-        { type: 'title', text: 'Resumen Clave'},
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3'},
-        { type: 'list', items: ["El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.","Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.","Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.","Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.","Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo."]},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3', prompts: ["¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?","¿Hubo algo que me sorprendiera al observar mi energía día a día?","¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?","Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?","¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?"] },
+        { type: 'title', text: 'Resumen Clave' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3' },
+        { type: 'list', items: ["El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.","Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.","Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.","Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.","Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo."] },
         { type: 'quote', text: '“Cada paso que das para cuidar tu energía es una inversión en tu bienestar. No importa si es grande o pequeño: lo importante es que sigues encendiendo tu propia luz.”' }
       ]
     },
@@ -188,7 +182,7 @@ export const wellbeingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3', prompts: ["En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?","Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?","¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?","¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3' },
-        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]},
+        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.","Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.","Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.","La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.","Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."] },
         { type: 'quote', text: '“El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.”' }
       ]
     },
@@ -370,7 +364,7 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3',
           prompts: ["¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?","¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?","¿Qué recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?"]
         },
-        { type: 'title', text: 'Resumen Clave'},
+        { type: 'title', text: 'Resumen Clave' },
         {
           type: 'paragraphWithAudio',
           text: '',
@@ -430,3 +424,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
