@@ -1,77 +1,182 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { VisualizeDayExerciseContent } from '@/data/paths/pathTypes';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
+import { Input } from '../ui/input';
 
 interface VisualizeDayExerciseProps {
   content: VisualizeDayExerciseContent;
   pathId: string;
 }
 
+const intentionOptions = ['Confianza', 'Calma', 'Energía', 'Gratitud', 'Apertura', 'Foco', 'Alegría', 'Cuidado personal', 'Fortaleza', 'Otro'];
+const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuchar música que me guste', 'Hacer ejercicio', 'Comer sano', 'Pasar tiempo con familia o amistades', 'Avanzar en un proyecto importante', 'Dedicar tiempo a un hobby', 'Meditar o practicar respiración consciente', 'Otro'];
+
 export function VisualizeDayExercise({ content, pathId }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
+  const [step, setStep] = useState(0);
   const [intention, setIntention] = useState('');
+  const [otherIntention, setOtherIntention] = useState('');
   const [idealDay, setIdealDay] = useState('');
+  const [otherActivity, setOtherActivity] = useState('');
   const [keyGesture, setKeyGesture] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+  
+  const handleSelectChange = (setter: React.Dispatch<React.SetStateAction<string>>, otherSetter: React.Dispatch<React.SetStateAction<string>>, mainSetter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
+    setter(value);
+    if (value !== 'Otro') {
+        otherSetter('');
+        mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+    }
+  };
+
   const handleSave = () => {
+    const finalIntention = intention === 'Otro' ? otherIntention : intention;
+    if (!finalIntention || !idealDay || !keyGesture) {
+      toast({ title: 'Campos Incompletos', description: 'Por favor, completa todos los pasos para guardar.', variant: 'destructive' });
+      return;
+    }
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Intención para hoy:** ${intention}
+**Intención para hoy:** ${finalIntention}
 **Mi día ideal:** ${idealDay}
 **Gesto clave:** ${keyGesture}
     `;
     addNotebookEntry({ title: 'Mi Visualización del Día', content: notebookContent, pathId: pathId });
     toast({ title: 'Visualización Guardada', description: 'Tu visualización del día ha sido guardada.' });
     setIsSaved(true);
+    setStep(4);
   };
+  
+  const resetExercise = () => {
+    setStep(0);
+    setIntention('');
+    setOtherIntention('');
+    setIdealDay('');
+    setOtherActivity('');
+    setKeyGesture('');
+    setIsSaved(false);
+  };
+
+  const renderStep = () => {
+    const finalIntention = intention === 'Otro' ? otherIntention : intention;
+
+    switch(step) {
+      case 0: // Intro
+        return (
+          <div className="text-center p-4 space-y-4">
+            <p className="text-sm text-muted-foreground">La visualización es una herramienta muy utilizada en psicología y neurociencia porque activa en el cerebro las mismas redes que usamos al ejecutar una acción real. Con este ejercicio vas a diseñar mentalmente el día que quieres vivir.</p>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          </div>
+        );
+      case 1: // Paso 1: Intención
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 1: Elige tu intención para hoy</h4>
+            <p className="text-sm text-muted-foreground">¿Qué actitud o estado emocional quieres que te acompañe?</p>
+            <div className="space-y-2">
+                <Select onValueChange={setIntention} value={intention}>
+                    <SelectTrigger><SelectValue placeholder="Elige una intención..."/></SelectTrigger>
+                    <SelectContent>
+                        {intentionOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    </SelectContent>
+                </Select>
+                {intention === 'Otro' && <Input value={otherIntention} onChange={e => setOtherIntention(e.target.value)} placeholder="Escribe otra intención..." className="mt-2" />}
+            </div>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!finalIntention.trim()}>Continuar</Button>
+            </div>
+          </div>
+        );
+      case 2: // Paso 2: Día Ideal
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 2: Visualiza tu día ideal</h4>
+            <p className="text-sm text-muted-foreground">Imagina y escribe cómo transcurre tu día. Incluye acciones, sensaciones y personas o entornos.</p>
+            <Textarea value={idealDay} onChange={e => setIdealDay(e.target.value)} placeholder="Ej: Desayuno tranquilo escuchando música, camino al trabajo disfrutando del aire..." rows={5}/>
+             <div className="space-y-2">
+                <Label className="text-xs">O inspírate con esta lista:</Label>
+                <Select onValueChange={(value) => handleSelectChange(setIdealDay, setOtherActivity, setIdealDay, value)}>
+                    <SelectTrigger><SelectValue placeholder="Selecciona una actividad para añadir..."/></SelectTrigger>
+                    <SelectContent>
+                        {activityOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                    </SelectContent>
+                </Select>
+            </div>
+             <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!idealDay.trim()}>Continuar</Button>
+            </div>
+          </div>
+        );
+      case 3: // Paso 3: Gesto Clave
+         return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 3: Un gesto clave para mantener tu intención</h4>
+            <p className="text-sm text-muted-foreground">Piensa en una acción sencilla que puedas repetir hoy para sostener el estado emocional que has elegido.</p>
+            <Textarea value={keyGesture} onChange={e => setKeyGesture(e.target.value)} placeholder="Ej: Hacer 3 respiraciones profundas antes de una reunión."/>
+             <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={handleSave} disabled={!keyGesture.trim()}>Guardar mi visualización</Button>
+            </div>
+          </div>
+        );
+      case 4: // Pantalla final
+        return (
+           <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+              <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
+              <h4 className="font-semibold text-lg">Mi visualización para hoy</h4>
+              <div className="text-left p-4 border rounded-md bg-background/50 space-y-2 text-sm">
+                  <p><strong>Intención:</strong> {finalIntention}</p>
+                  <p><strong>Mi día ideal:</strong> {idealDay}</p>
+                  <p><strong>Gesto clave:</strong> {keyGesture}</p>
+              </div>
+              <p className="text-xs italic text-muted-foreground pt-2">Tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas.</p>
+              <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+                   <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
+                   <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio</Button>
+                   <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+              </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        </CardDescription>}
+        <CardDescription className="pt-2">
+          {content.objective}
+          {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="intention">Paso 1: Elige tu intención para hoy</Label>
-            <Textarea id="intention" value={intention} onChange={e => setIntention(e.target.value)} placeholder="Ej: Hoy quiero vivir con calma y foco" disabled={isSaved}/>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="ideal-day">Paso 2: Visualiza tu día ideal</Label>
-            <Textarea id="ideal-day" value={idealDay} onChange={e => setIdealDay(e.target.value)} placeholder="Ej: Desayuno tranquilo, voy al trabajo caminando..." disabled={isSaved}/>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="key-gesture">Paso 3: Un gesto clave para mantener tu intención</Label>
-            <Textarea id="key-gesture" value={keyGesture} onChange={e => setKeyGesture(e.target.value)} placeholder="Ej: Hacer 3 respiraciones profundas antes de una reunión" disabled={isSaved}/>
-          </div>
-          {!isSaved ? (
-            <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar mi visualización</Button>
-          ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">Visualización guardada.</p>
-            </div>
-          )}
-        </div>
+        {renderStep()}
       </CardContent>
     </Card>
   );
