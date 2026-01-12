@@ -7,12 +7,17 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, CalendarIcon, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DailyWellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { cn } from '@/lib/utils';
 
 interface DailyWellbeingPlanExerciseProps {
   content: DailyWellbeingPlanExerciseContent;
@@ -51,6 +56,68 @@ const mentalHabits = [
 
 const timeOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios', 'Otro'];
 const reminderOptions = ['Poner una alarma en el móvil', 'Dejar una nota visible', 'Vincularlo a otra acción (ej. después de lavarme los dientes)', 'Aviso en la app', 'Otro'];
+
+const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext }: any) => {
+    return (
+        <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">{title}</h4>
+            <p className="text-sm text-muted-foreground">{description}</p>
+            <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
+                <Accordion type="single" collapsible className="w-full">
+                    {options.map((opt: any) => (
+                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
+                            <div className="flex items-center justify-between py-2">
+                                <div className="flex items-center space-x-3">
+                                    <RadioGroupItem value={opt.label} id={opt.id} />
+                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">
+                                        {opt.label}
+                                    </Label>
+                                </div>
+                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5">
+                                    <Info className="h-4 w-4 text-muted-foreground" />
+                                </AccordionTrigger>
+                            </div>
+                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">
+                                {opt.importance}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </RadioGroup>
+            <div className="flex items-center space-x-2 pt-4">
+                <RadioGroup value={selected} onValueChange={setSelected} className="flex items-center space-x-2">
+                    <RadioGroupItem value="Otro" id="other-habit" />
+                    <Label htmlFor="other-habit" className="font-normal">Otro:</Label>
+                </RadioGroup>
+            </div>
+            {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
+            <Button onClick={onNext} className="w-full mt-4" disabled={!selected}>Continuar</Button>
+        </div>
+    );
+};
+
+const SchedulingStep = ({ title, description, habit, habitKey, schedule, setSchedule, otherSchedule, setOtherSchedule, options }: any) => {
+  if (!habit) return null;
+  return (
+    <div className="space-y-3">
+      {title && <h4 className="font-semibold text-lg">{title}</h4>}
+      {description && <p className="text-sm text-muted-foreground">{description}</p>}
+      <div className="p-3 border rounded-md bg-background">
+        <p className="font-medium text-primary">{habit}</p>
+        <RadioGroup value={schedule[habitKey]} onValueChange={v => setSchedule((p: any) => ({...p, [habitKey]: v}))} className="mt-2 space-y-1">
+          {options.map((opt: string) => (
+            <div key={opt} className="flex items-center space-x-2">
+              <RadioGroupItem value={opt} id={`${habitKey}-${opt.replace(/\s+/g, '-')}`} />
+              <Label htmlFor={`${habitKey}-${opt.replace(/\s+/g, '-')}`} className="font-normal">{opt}</Label>
+            </div>
+          ))}
+        </RadioGroup>
+        {schedule[habitKey] === 'Otro' && <Input value={otherSchedule[habitKey]} onChange={e => setOtherSchedule((p:any) => ({...p, [habitKey]: e.target.value}))} placeholder="Especifica..." className="mt-2 ml-6" />}
+      </div>
+    </div>
+  );
+};
+
 
 export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
@@ -108,23 +175,22 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
     // Reset all states
   };
 
-  const renderStep = () => {
-    switch (step) {
-      case 0: // Intro
+  const renderStepContent = () => {
+    switch(step) {
+      case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles. Estos serán tus anclas: puntos fijos que mantendrán tu bienestar estable sin importar lo que pase fuera.</p>
-            <p className="text-xs text-muted-foreground">Tiempo estimado: 6-8 minutos. Hazlo al inicio de la semana y repite siempre que sientas que has perdido tus rutinas.</p>
-            <Button onClick={() => setStep(1)}>Empezar</Button>
+          <div className="text-center p-4 space-y-4">
+             <p className="mb-4">Este ejercicio te ayudará a identificar qué actividades, personas y entornos recargan tu batería y cuáles la gastan más rápido.</p>
+            <Button onClick={() => setStep(1)}>Empezar mi registro de energía</Button>
           </div>
         );
-      case 1: // Physical
+      case 1:
         return <HabitStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={() => setStep(2)} />;
-      case 2: // Emotional
+      case 2:
         return <HabitStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={() => setStep(3)} />;
-      case 3: // Mental
+      case 3:
         return <HabitStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={() => setStep(4)} />;
-      case 4: // Schedule & Reminders (Combined from original Step 4, 5, 6)
+      case 4:
         return (
           <div className="p-4 space-y-6">
             <SchedulingStep title="Paso 4: Cuándo lo harás" description="Cuanto más los vincules a un momento concreto, más fácil será que se conviertan en parte natural de tu día." habit={finalPhysicalHabit} habitKey="physical" schedule={schedule} setSchedule={setSchedule} otherSchedule={otherSchedule} setOtherSchedule={setOtherSchedule} options={timeOptions} />
@@ -140,7 +206,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
             <Button onClick={handleSave} className="w-full mt-6"><Save className="mr-2 h-4 w-4"/> Guardar mi plan diario</Button>
           </div>
         );
-      case 5: // Confirmation
+      case 5:
         return (
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -154,72 +220,29 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
       default:
         return null;
     }
-  };
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
+        <CardDescription className="pt-2 whitespace-pre-line">
+          Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
+          {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        {renderStep()}
+        {renderStepContent()}
       </CardContent>
     </Card>
   );
 }
 
-const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext }: any) => {
-    return (
-        <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">{title}</h4>
-            <p className="text-sm text-muted-foreground">{description}</p>
-            <RadioGroup value={selected} onValueChange={setSelected}>
-                <Accordion type="single" collapsible className="w-full">
-                    {options.map((opt: any) => (
-                        <AccordionItem value={opt.id} key={opt.id}>
-                            <AccordionTrigger className="hover:no-underline py-2">
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value={opt.label} id={opt.id} />
-                                    <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
-                                </div>
-                            </AccordionTrigger>
-                            <AccordionContent className="text-sm text-muted-foreground p-2 ml-6 border-l-2 border-border">
-                                {opt.importance}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-            </RadioGroup>
-            <div className="flex items-center space-x-2 mt-4">
-                <RadioGroup value={selected} onValueChange={setSelected}>
-                    <RadioGroupItem value="Otro" id="other-habit" />
-                </RadioGroup>
-                <Label htmlFor="other-habit" className="font-normal">Otro:</Label>
-            </div>
-            {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
-            <Button onClick={onNext} className="w-full mt-4" disabled={!selected}>Continuar</Button>
-        </div>
-    );
-};
-
-const SchedulingStep = ({ title, description, habit, habitKey, schedule, setSchedule, otherSchedule, setOtherSchedule, options }: any) => {
-  if (!habit) return null;
-  return (
-    <div className="space-y-3">
-      {title && <h4 className="font-semibold text-lg">{title}</h4>}
-      {description && <p className="text-sm text-muted-foreground">{description}</p>}
-      <div className="p-3 border rounded-md bg-background">
-        <p className="font-medium text-primary">{habit}</p>
-        <RadioGroup value={schedule[habitKey]} onValueChange={v => setSchedule((p: any) => ({...p, [habitKey]: v}))} className="mt-2 space-y-1">
-          {options.map((opt: string) => (
-            <div key={opt} className="flex items-center space-x-2">
-              <RadioGroupItem value={opt} id={`${habitKey}-${opt}`} />
-              <Label htmlFor={`${habitKey}-${opt}`} className="font-normal">{opt}</Label>
-            </div>
-          ))}
-        </RadioGroup>
-        {schedule[habitKey] === 'Otro' && <Input value={otherSchedule[habitKey]} onChange={e => setOtherSchedule((p:any) => ({...p, [habitKey]: e.target.value}))} placeholder="Especifica..." className="mt-2 ml-6" />}
-      </div>
-    </div>
-  );
-};
+    
