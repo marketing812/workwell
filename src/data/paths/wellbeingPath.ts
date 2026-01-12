@@ -31,11 +31,11 @@ export const wellbeingPath: Path = {
           title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\n\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.',
-            },
-          ],
+            { 
+              type: 'paragraph', 
+              text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\n\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.' 
+            }
+          ]
         },
         {
           type: 'collapsible',
@@ -103,11 +103,7 @@ export const wellbeingPath: Path = {
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3',
-        },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3' },
         {
           type: 'list',
           items: [
@@ -155,7 +151,12 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Cuando las rutinas se rompen',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:   Dormimos peor.   Nos movemos menos.   Comemos rápido o poco nutritivo.   Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.   Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }],
+          content: [
+            { type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:' },
+            { type: 'list', items: ['Dormimos peor.', 'Nos movemos menos.', 'Comemos rápido o poco nutritivo.'] },
+            { type: 'paragraph', text: 'Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.' },
+            { type: 'paragraph', text: 'Volver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }
+          ],
         },
         {
           type: 'collapsible',
@@ -200,7 +201,12 @@ export const wellbeingPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
-          prompts: ['En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?','Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?','¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?','¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?'],
+          prompts: [
+            'En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?',
+            'Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?',
+            '¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?',
+            '¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?',
+          ],
         },
         { type: 'title', text: 'Resumen Clave' },
         {
@@ -218,7 +224,7 @@ export const wellbeingPath: Path = {
             'Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.',
           ],
         },
-        { type: 'quote', text: '*El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.*' },
+        { type: 'quote', text: 'El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.' },
       ],
     },
     {
@@ -436,7 +442,7 @@ export const wellbeingPath: Path = {
             'Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia.',
           ],
         },
-        { type: 'quote', text: 'Cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' },
+        { type: 'quote', text: 'Cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte.' },
       ],
     },
     {
@@ -486,5 +492,3 @@ export const wellbeingPath: Path = {
     },
   ],
 };
-
-    
