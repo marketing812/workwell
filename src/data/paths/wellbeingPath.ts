@@ -143,12 +143,42 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente suele decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'emotionalGratificationMapExercise', title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL', objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.', duration: '7-10 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3' },
-        { type: 'dailyEnergyCheckExercise', title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA', objective: '¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?    Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y cuáles la gastan más rápido.   Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.', duration: '3-5 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3', prompts: ['<p>Esta semana hemos explorado de dónde viene nuestra energía y cómo podemos recargarla de forma más sostenible. Ahora es momento de parar, mirar atrás y anotar lo que descubriste en tu propio camino.</p><p><b>Preguntas para reflexionar y escribir:</b></p><ul><li>¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?</li><li>¿Hubo algo que me sorprendiera al observar mi energía día a día?</li><li>¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?</li><li>Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?</li><li>¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?</li></ul>'] },
+        {
+          type: 'emotionalGratificationMapExercise',
+          title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL',
+          objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.',
+          duration: '7-10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3'
+        },
+        {
+          type: 'dailyEnergyCheckExercise',
+          title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA',
+          objective: '¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?    Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y cuáles la gastan más rápido.   Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.',
+          duration: '3-5 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3',
+          prompts: ['<p>Esta semana hemos explorado de dónde viene nuestra energía y cómo podemos recargarla de forma más sostenible. Ahora es momento de parar, mirar atrás y anotar lo que descubriste en tu propio camino.</p><p><b>Preguntas para reflexionar y escribir:</b></p><ul><li>¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?</li><li>¿Hubo algo que me sorprendiera al observar mi energía día a día?</li><li>¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?</li><li>Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?</li><li>¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?</li></ul>']
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3' },
-        { type: 'list', items: ['El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.', 'Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.', 'Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.', 'Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.', 'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.'] },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.',
+            'Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.',
+            'Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.',
+            'Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.',
+            'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.'
+          ]
+        },
         { type: 'quote', text: 'Cada paso que das para cuidar tu energía es una inversión en tu bienestar. No importa si es grande o pequeño: lo importante es que sigues encendiendo tu propia luz.' }
       ]
     },
@@ -188,7 +218,10 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3',
           content: [
             { type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:' },
-            { type: 'list', items: ['Dormimos peor.', 'Nos movemos menos.', 'Comemos rápido o poco nutritivo.'] },
+            {
+              type: 'list',
+              items: ['Dormimos peor.', 'Nos movemos menos.', 'Comemos rápido o poco nutritivo.']
+            },
             { type: 'paragraph', text: 'Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes. \n\nVolver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }
           ]
         },
@@ -198,7 +231,10 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3',
           content: [
             { type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' },
-            { type: 'list', items: ['Moverte 10 minutos al día.', 'Preparar un desayuno nutritivo.', 'Reservar un rato para algo que disfrutas.'] },
+            {
+              type: 'list',
+              items: ['Moverte 10 minutos al día.', 'Preparar un desayuno nutritivo.', 'Reservar un rato para algo que disfrutas.']
+            },
             { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }
           ]
         },
@@ -221,12 +257,42 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.  No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.   En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'dailyWellbeingPlanExercise', title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE', objective: 'Este ejercicio te ayudará a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.', duration: '6-8 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3' },
-        { type: 'morningRitualExercise', title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE', objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', duration: '8-10 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3', prompts: ['<p>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</p><ul><li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>'] },
+        {
+          type: 'dailyWellbeingPlanExercise',
+          title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE',
+          objective: 'Este ejercicio te ayudará a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.',
+          duration: '6-8 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3'
+        },
+        {
+          type: 'morningRitualExercise',
+          title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE',
+          objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.',
+          duration: '8-10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
+          prompts: ['<p>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</p><ul><li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>']
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3' },
-        { type: 'list', items: ['Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.', 'Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.', 'Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.', 'La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.', 'Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.'] },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.',
+            'Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.',
+            'Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.',
+            'La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.',
+            'Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.'
+          ]
+        },
         { type: 'quote', text: 'El autocuidado no es un premio que te das cuando has sido productivo; es el punto de partida para poder serlo.' }
       ]
     },
@@ -271,7 +337,17 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio3sesion3ruta12.mp3',
           content: [
             { type: 'paragraph', text: 'En etapas de ánimo bajo o depresión, es común perder la motivación positiva: sabemos lo que hay que hacer, pero sentimos que no tenemos energía. Esto puede deberse a:' },
-            { type: 'list', items: ['Pensamientos que desaniman (“es inútil intentarlo”, “no soy capaz”).', 'Cansancio físico o mental.', 'No tener claro cuándo, cómo o dónde empezar.', 'Perfeccionismo: esperar el momento o las condiciones perfectas para actuar.', 'Falta de conexión emocional con la tarea.', 'Estrés o entornos poco estimulantes que reducen la motivación.'] },
+            {
+              type: 'list',
+              items: [
+                'Pensamientos que desaniman (“es inútil intentarlo”, “no soy capaz”).',
+                'Cansancio físico o mental.',
+                'No tener claro cuándo, cómo o dónde empezar.',
+                'Perfeccionismo: esperar el momento o las condiciones perfectas para actuar.',
+                'Falta de conexión emocional con la tarea.',
+                'Estrés o entornos poco estimulantes que reducen la motivación.'
+              ]
+            },
             { type: 'paragraph', text: 'Estos bloqueos pueden sentirse como un muro… pero, como todo muro, se puede saltar, rodear o derribar. El primer paso es saber que sí se puede actuar incluso sin ganas, y que existen estrategias para lograrlo.' }
           ]
         },
@@ -296,7 +372,17 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Del “tengo que” al “quiero elegir”',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:   “Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.   “Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia.   Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.   Este cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.   Y para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }]
+          content: [
+            { type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:' },
+            {
+              type: 'list',
+              items: [
+                '“Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.',
+                '“Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia.'
+              ]
+            },
+            { type: 'paragraph', text: 'Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.\n\nEste cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.\nY para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -310,7 +396,13 @@ export const wellbeingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3',
           content: [
             { type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando. Aquí entra un principio clave: la acción puede venir antes que las ganas. La acción y la motivación se alimentan mutuamente:' },
-            { type: 'list', items: ['Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.', 'Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción.'] },
+            {
+              type: 'list',
+              items: [
+                'Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.',
+                'Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción.'
+              ]
+            },
             { type: 'paragraph', text: 'Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' }
           ]
         },
@@ -321,12 +413,42 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:   Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.   Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día.   El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'motivationIn3LayersExercise', title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS', objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.', duration: '7 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3' },
-        { type: 'visualizeDayExercise', title: 'EJERCICIO 2: Visualización: El Día que Elijo Vivir', objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.', duration: '5-7 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3', prompts: ['¿Qué has descubierto sobre la motivación y las ganas esta semana?', '¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?', '¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?'] },
+        {
+          type: 'motivationIn3LayersExercise',
+          title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS',
+          objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.',
+          duration: '7 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3'
+        },
+        {
+          type: 'visualizeDayExercise',
+          title: 'EJERCICIO 2: Visualización: El Día que Elijo Vivir',
+          objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.',
+          duration: '5-7 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionsesion3ruta12.mp3',
+          prompts: ['¿Qué has descubierto sobre la motivación y las ganas esta semana?', '¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?', '¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?']
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3' },
-        { type: 'list', items: ['La motivación no siempre precede a la acción; a menudo, la acción genera motivación.', 'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.', 'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.', 'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.', 'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.'] },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.',
+            'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.',
+            'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.',
+            'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.',
+            'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.'
+          ]
+        },
         { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' }
       ]
     },
@@ -374,7 +496,9 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Por qué es clave en la recuperación',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. \n\nCuando están presentes de forma regular: \n\nAmplían la perspectiva: te permiten ver más ángulos de la misma situación, no quedarte solo en la parte dolorosa o negativa. Esto facilita la creatividad, el pensamiento flexible y la capacidad de encontrar soluciones que antes no veías. \n\nEjemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora. \n\nEquilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental. \n\nSostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen. \n\nRecuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' }]
+          content: [
+            { type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. \n\nCuando están presentes de forma regular: \n\nAmplían la perspectiva: te permiten ver más ángulos de la misma situación, no quedarte solo en la parte dolorosa o negativa. Esto facilita la creatividad, el pensamiento flexible y la capacidad de encontrar soluciones que antes no veías. \n\nEjemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora. \n\nEquilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental. \n\nSostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen. \n\nRecuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -430,11 +554,32 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma. \n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena. \n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'illuminatingMemoriesAlbumExercise', title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN', objective: 'Este ejercicio te ayudará a entrenar tu mente para equilibrar el “sesgo negativo” natural del cerebro, capturando y conservando los momentos que te nutren para que puedas revivirlos en días difíciles.', duration: '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3' },
-        { type: 'positiveEmotionalFirstAidKitExercise', title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO', objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.', duration: '12-15 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3', prompts: ['¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?', '¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?', '¿Qué recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?'] },
+        {
+          type: 'illuminatingMemoriesAlbumExercise',
+          title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN',
+          objective: 'Este ejercicio te ayudará a entrenar tu mente para equilibrar el “sesgo negativo” natural del cerebro, capturando y conservando los momentos que te nutren para que puedas revivirlos en días difíciles.',
+          duration: '10-12 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3'
+        },
+        {
+          type: 'positiveEmotionalFirstAidKitExercise',
+          title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO',
+          objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.',
+          duration: '12-15 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3'
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3',
+          prompts: ['¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?', '¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?', '¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?']
+        },
         { type: 'title', text: 'Resumen Clave' },
-        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3' },
+        {
+          type: 'paragraphWithAudio',
+          text: '',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3'
+        },
         {
           type: 'list',
           items: [
@@ -495,3 +640,5 @@ export const wellbeingPath: Path = {
     }
   ]
 };
+
+    
