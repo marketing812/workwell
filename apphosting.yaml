@@ -5,12 +5,10 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
-# Forzando reconstrucción para resolver problemas de despliegue.
-# Invalidando la caché de nuevo para asegurar una compilación limpia.
-# Comentario final para forzar la reconstrucción definitiva.
-# Invalidando la caché por última vez para corregir el error de react-day-picker.
-# Forzando reconstrucción para resolver ChunkLoadError y asegurar la estabilidad.
+# Regenerating build config to solve fetch step issue.
+# This comment is added to force a clean build and invalidate the cache.
 # Forzando reconstrucción para resolver un nuevo ChunkLoadError.
+# Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
 # Forzando reconstrucción para intentar solucionar el error de carga de chunks (ChunkLoadError).
 # Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
 # Forzando reconstrucción para resolver el último ChunkLoadError.
@@ -18,3 +16,5 @@ runConfig:
 # Forzando la reconstrucción para corregir el error de carga de chunks de la página de rutas.
 # Forzando reconstrucción una vez más para resolver el ChunkLoadError.
 # Forzando una nueva reconstrucción para resolver el error ChunkLoadError.
+# Rebuilding to clear potential cache issues from dependency conflicts.
+# Force rebuild to use ADC instead of API Key for Genkit.
