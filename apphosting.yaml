@@ -20,3 +20,4 @@ runConfig:
 # Force rebuild to use ADC instead of API Key for Genkit.
 # Force rebuild to use Application Default Credentials.
 # Forcing another rebuild to ensure ADC is used and API key is cleared from the environment.
+# Forcing one more rebuild to fix the ChunkLoadError.
