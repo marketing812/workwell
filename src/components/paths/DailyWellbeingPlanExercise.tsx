@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -42,7 +42,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && (
           <CardDescription className="pt-2">
-            {content.objective}
+            Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
                 <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3" type="audio/mp3" />
@@ -78,7 +78,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
           </div>
           <div className="space-y-2">
             <Label>Paso 3: Microhábito mental</Label>
-             <Select onValueChange={setMentalHabit} disabled={isSaved}>
+             <Select onValueChange={setMentalPrep} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Elige una preparación..." /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="Respiración consciente 5 minutos">Respiración consciente 5 minutos</SelectItem>
