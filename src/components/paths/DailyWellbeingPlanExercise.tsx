@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -40,8 +39,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && (
-          <CardDescription className="pt-2">
+        {content.objective && <CardDescription className="pt-2">
             Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
@@ -49,8 +47,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
-          </CardDescription>
-        )}
+          </CardDescription>}
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -78,7 +75,7 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
           </div>
           <div className="space-y-2">
             <Label>Paso 3: Microhábito mental</Label>
-             <Select onValueChange={setMentalPrep} disabled={isSaved}>
+             <Select onValueChange={setMentalHabit} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Elige una preparación..." /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="Respiración consciente 5 minutos">Respiración consciente 5 minutos</SelectItem>
