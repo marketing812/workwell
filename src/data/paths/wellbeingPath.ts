@@ -31,7 +31,10 @@ export const wellbeingPath: Path = {
           title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\n\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.' }
+            {
+              type: 'paragraph',
+              text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\n\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.'
+            }
           ]
         },
         {
@@ -105,7 +108,13 @@ export const wellbeingPath: Path = {
         },
         {
           type: 'list',
-          items: ['El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.', 'Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.', 'Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.', 'Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.', 'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.']
+          items: [
+            'El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.',
+            'Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.',
+            'Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.',
+            'Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.',
+            'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.'
+          ]
         },
         { type: 'quote', text: 'Cada paso que das para cuidar tu energía es una inversión en tu bienestar. No importa si es grande o pequeño: lo importante es que sigues encendiendo tu propia luz.' }
       ]
@@ -164,13 +173,21 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Rutina rígida vs. ritual de cuidado',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.   • Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.   • Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.   Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' }]
+          content: [
+            { type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.' },
+            { type: 'list', items: ['Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.', 'Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.'] },
+            { type: 'paragraph', text: 'Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.'}
+            ]
         },
         {
           type: 'collapsible',
           title: 'Ideas para tus rituales de cuidado',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:   Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.   Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.   Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).   Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.   Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
+          content: [
+            { type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' },
+            { type: 'list', items: ['Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.','Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.','Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).','Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas.'] },
+            { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }
+            ]
         },
         {
           type: 'collapsible',
@@ -188,7 +205,7 @@ export const wellbeingPath: Path = {
         },
         {
           type: 'morningRitualExercise',
-          title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE',
+          title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE Y CONSCIENTE',
           objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.',
           duration: '8-10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3'
@@ -196,8 +213,10 @@ export const wellbeingPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionssesion2ruta12.mp3',
-          prompts: ['<p>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</p><ul><li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>']
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3',
+          prompts: [
+            '<p>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</p><ul><li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         {
@@ -207,7 +226,13 @@ export const wellbeingPath: Path = {
         },
         {
           type: 'list',
-          items: ['Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.', 'Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.', 'Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.', 'La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.', 'Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.']
+          items: [
+            'Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.',
+            'Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.',
+            'Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.',
+            'La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.',
+            'Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada.'
+          ]
         },
         { type: 'quote', text: 'El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.' }
       ]
@@ -234,7 +259,11 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'La motivación: algo más que ganas',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio2sesion3ruta12.mp3',
-          content: [{ type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.   Puede nacer de:   Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).   Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.   La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar.   En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }]
+          content: [
+            { type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.' },
+            { type: 'list', items: ['Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).', 'Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.', 'La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar.'] },
+            { type: 'paragraph', text: 'En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -301,7 +330,13 @@ export const wellbeingPath: Path = {
         },
         {
           type: 'list',
-          items: ['La motivación no siempre precede a la acción; a menudo, la acción genera motivación.', 'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.', 'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.', 'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.', 'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.']
+          items: [
+            'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.',
+            'Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.',
+            'Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.',
+            'La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.',
+            'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.'
+          ]
         },
         { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' }
       ]
@@ -390,7 +425,7 @@ export const wellbeingPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionssesion4ruta12.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3',
           prompts: ['¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?', '¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?', '¿Qué recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?']
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -401,7 +436,13 @@ export const wellbeingPath: Path = {
         },
         {
           type: 'list',
-          items: ['El ánimo bajo se puede regular con estrategias concretas y sostenibles.', 'Tu energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.', 'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.', 'Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.', 'Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia.']
+          items: [
+            'El ánimo bajo se puede regular con estrategias concretas y sostenibles.',
+            'Tu energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.',
+            'La motivación no siempre precede a la acción; a menudo, la acción genera motivación.',
+            'Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.',
+            'Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia.'
+          ]
         },
         { type: 'quote', text: 'Cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' }
       ]
@@ -452,6 +493,18 @@ export const wellbeingPath: Path = {
       ]
     }
   ]
-};
+} module={"id":"bienestar_cierre","title":"Cierre de la Ruta: Integración y Próximos Pasos","type":"summary","estimatedTime":"10-15 min","content":[{"type":"therapeuticNotebookReflection","title":"REFLEXIÓN FINAL PARA EL CUADERNO","audioUrl":"https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3","prompts":["A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.","Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:","Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.","Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.","Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.","Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.","Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.","Ahora, tomate unos minutos para reflexionar:","¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía? […]","¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas? […]","¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles? […]","¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora? […]"]},{"type":"title","text":"RESUMEN FINAL DE LA RUTA","audioUrl":"https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenfinalruta12.mp3"},{"type":"list","items":["El ánimo bajo no es debilidad: es un estado que surge de factores físicos, emocionales y mentales, y que se puede regular con estrategias concretas.","Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.","Las rutinas y microhábitos son anclas de cuidado: pequeños gestos diarios que estabilizan cuerpo, mente y emociones.","La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.","Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.","Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.","Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio."]},{"type":"quote","text":"Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti."}]}>
 
-    
+with the text content:
+
+    El cuidado de ti no depende de grandes gestos, sino de los pequeños actos que repites con intención, incluso en los días más difíciles.
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/data/paths/wellbeingPath.ts
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+por favor, elimina el texto sobrante del fichero wellbeingPath.ts
