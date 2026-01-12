@@ -91,6 +91,10 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .prose ul li, .prose ol li {
+    @apply text-base;
+  }
 }
 
 @layer base {
