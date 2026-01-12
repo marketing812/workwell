@@ -118,7 +118,7 @@ export const wellbeingPath: Path = {
             'Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo.',
           ],
         },
-        { type: 'quote', text: '*Cada paso que das para cuidar tu energía es una inversión en tu bienestar. No importa si es grande o pequeño: lo importante es que sigues encendiendo tu propia luz.*' },
+        { type: 'quote', text: 'Cada paso que das para cuidar tu energía es una inversión en tu bienestar. No importa si es grande o pequeño: lo importante es que sigues encendiendo tu propia luz.' },
       ],
     },
     {
@@ -324,7 +324,7 @@ export const wellbeingPath: Path = {
             'La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.',
           ],
         },
-        { type: 'quote', text: '*Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.*' },
+        { type: 'quote', text: '“Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.”' },
       ],
     },
     {
@@ -436,7 +436,7 @@ export const wellbeingPath: Path = {
             'Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia.',
           ],
         },
-        { type: 'quote', text: '*Cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte*' },
+        { type: 'quote', text: 'Cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' },
       ],
     },
     {
@@ -481,11 +481,10 @@ export const wellbeingPath: Path = {
             'Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio.',
           ],
         },
-        {
-          type: 'quote',
-          text: '*Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.*',
-        },
+        { type: 'quote', text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.' },
       ],
     },
   ],
 };
+
+    
