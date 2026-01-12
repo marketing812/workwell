@@ -146,55 +146,49 @@ export const wellbeingPath: Path = {
         { type: 'collapsible', title: 'La motivación: algo más que ganas', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio2sesion3ruta12.mp3', content: [{ type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.' }, { type: 'list', items: ["Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).", "Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.", "La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar."] }, { type: 'paragraph', text: 'En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }] },
         { type: 'collapsible', title: 'Por qué a veces las ganas no llegan', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio3sesion3ruta12.mp3', content: [{ type: 'paragraph', text: 'En etapas de ánimo bajo o depresión, es común perder la motivación positiva: sabemos lo que hay que hacer, pero sentimos que no tenemos energía. Esto puede deberse a:' }, { type: 'list', items: ["Pensamientos que desaniman (“es inútil intentarlo”, “no soy capaz”).", "Cansancio físico o mental.", "No tener claro cuándo, cómo o dónde empezar.", "Perfeccionismo: esperar el momento o las condiciones perfectas para actuar.", "Falta de conexión emocional con la tarea.", "Estrés o entornos poco estimulantes que reducen la motivación."] }, { type: 'paragraph', text: 'Estos bloqueos pueden sentirse como un muro… pero, como todo muro, se puede saltar, rodear o derribar. El primer paso es saber que sí se puede actuar incluso sin ganas, y que existen estrategias para lograrlo.' }] },
         { type: 'collapsible', title: 'Acción sin ganas: cómo es posible', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio4sesion3ruta12.mp3', content: [{ type: 'paragraph', text: 'Si esperamos a “tener ganas” para movernos, podemos quedarnos atrapados en la inacción. La clave está en aprender a actuar incluso cuando la motivación está baja, usando tres apoyos:' }, { type: 'list', items: ["Disciplina: seguir adelante por compromiso con nuestros objetivos, no por un impulso momentáneo.", "Planificación clara: decidir de antemano cuándo y dónde haremos algo reduce las dudas y evita que lo posterguemos.", "Facilidad: ponértelo tan fácil que sea casi imposible no empezar (en terapia lo llamamos “bajar la rampa”)."] }, { type: 'paragraph', text: 'Así, el primer paso requiere muy poca energía y es más probable que lo des. Pero tan importante como cómo te pones en marcha, es desde dónde lo haces.' }] },
-        { 
-          type: 'collapsible', 
-          title: 'Del “tengo que” al “quiero elegir”', 
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3', 
+        { type: 'collapsible', title: 'Del “tengo que” al “quiero elegir”', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3', content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:' }, { type: 'list', items: ["“Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.", "“Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia."] }, { type: 'paragraph', text: 'Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.\n\nEste cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.\nY para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }] },
+        {
+          type: 'collapsible',
+          title: 'Las capas de la motivación',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio6sesion3ruta12.mp3',
           content: [
-            { 
-              type: 'paragraph', 
-              text: 'La forma en la que te hablas cambia cómo percibes una tarea:\n\n- **“Tengo que”**: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.\n- **“Quiero” o “elijo”**: conecta con lo que valoras y despierta motivación propia.\n\nEjemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.\n\nEste cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.\nY para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' 
-            }
-          ] 
-        },
-        { 
-          type: 'collapsible', 
-          title: 'Las capas de la motivación', 
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio6sesion3ruta12.mp3', 
-          content: [
-            {
-              type: 'paragraph',
-              text: 'La motivación tiene varias capas, como una cebolla:\n\n- **Acción concreta**: lo que harás hoy.\n- **Valor personal**: por qué eso es importante para ti.\n- **Sentido mayor**: cómo encaja con la vida que quieres construir.\n\nPor ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.\n\nCuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.\n\nIncluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.'
-            }
+            { type: 'paragraph', text: 'La motivación tiene varias capas, como una cebolla:' },
+            { type: 'list', items: [
+                'Acción concreta: lo que harás hoy.',
+                'Valor personal: por qué eso es importante para ti.',
+                'Sentido mayor: cómo encaja con la vida que quieres construir.'
+            ]},
+            { type: 'paragraph', text: 'Por ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.\n\nCuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.\n\nIncluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.' }
           ]
         },
         { type: 'collapsible', title: 'El círculo de la activación', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3', content: [{ type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando. Aquí entra un principio clave: la acción puede venir antes que las ganas. La acción y la motivación se alimentan mutuamente:' }, { type: 'list', items: ["Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.", "Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción."] }, { type: 'paragraph', text: 'Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' }] },
-        { 
-          type: 'collapsible', 
-          title: 'Lo que vamos a entrenar esta semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3', 
+        {
+          type: 'collapsible',
+          title: 'Lo que vamos a entrenar esta semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3',
           content: [
-            { 
-              type: 'paragraph', 
-              text: 'Esta semana trabajaremos con dos herramientas clave:' 
-            },
+            { type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:' },
             {
               type: 'list',
               items: [
-                '**Motivación en 3 capas**: para que cada acción esté conectada con un valor y un sentido que realmente te importen.',
-                '**Visualización del día que quiero vivir**: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día.'
+                'Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.',
+                'Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día.'
               ]
             },
-            {
-              type: 'paragraph',
-              text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.'
-            }
-          ] 
+            { type: 'paragraph', text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'motivationIn3LayersExercise', title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS', objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.', duration: '7 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3' },
         { type: 'visualizeDayExercise', title: 'EJERCICIO 2: Visualización: El Día que Elijo Vivir', objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.', duration: '5-7 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3', prompts: ["¿Qué has descubierto sobre la motivación y las ganas esta semana?", "¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?", "¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?"] },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3',
+          prompts: [
+            '<p>Tómate un momento para integrar lo que has trabajado:</p><ul><li>¿Qué has descubierto sobre la motivación y las ganas esta semana?</li><li>¿Qué conclusiones sacas sobre tu manera habitual de hacerte cargo de tu motivación y qué mejorarías?</li><li>¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?</li><li>¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?</li><li>¿En qué situaciones de esta semana sentiste que la motivación aumentó después de ponerte en marcha?</li><li>¿Qué compromiso concreto puedes asumir para seguir practicando la activación conductual y no depender solo de las ganas?</li></ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3' },
         { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da profundidad y dirección.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención."] },
@@ -221,7 +215,7 @@ export const wellbeingPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'illuminatingMemoriesAlbumExercise', title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN', objective: 'Este ejercicio te ayudará a entrenar tu mente para equilibrar el “sesgo negativo” natural del cerebro, capturando y conservando los momentos que te nutren para que puedas revivirlos en días difíciles.', duration: '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3' },
         { type: 'positiveEmotionalFirstAidKitExercise', title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO', objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.', duration: '12-15 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3', prompts: ["¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?", "¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?", "¿Qué recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?"] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionsesion4ruta12.mp3', prompts: ["¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?", "¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?", "¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3' },
         { type: 'list', items: ["El ánimo bajo se puede regular con estrategias concretas y sostenibles.", "Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.", "La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.", "Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia."] },
