@@ -18,3 +18,4 @@ runConfig:
 # Forzando una nueva reconstrucción para resolver el error ChunkLoadError.
 # Rebuilding to clear potential cache issues from dependency conflicts.
 # Force rebuild to use ADC instead of API Key for Genkit.
+# Force rebuild to use Application Default Credentials.
