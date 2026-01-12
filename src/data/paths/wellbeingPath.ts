@@ -31,13 +31,7 @@ export const wellbeingPath: Path = {
           title: 'No todo malestar es igual: tristeza, ánimo bajo y depresión',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio2sesion1ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:' },
-            { type: 'list', items: [
-                'Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.',
-                'Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.',
-                'Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.'
-            ]},
-            { type: 'paragraph', text: 'En esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.'}
+            { type: 'paragraph', text: 'Imagina tres intensidades de “nubes” que pueden tapar tu cielo:\n\n• Tristeza: nube pasajera, suele aparecer tras una pérdida o decepción. Se disipa con el tiempo o con apoyo.\n\n• Estado de ánimo bajo: nubosidad persistente; no hay tormenta, pero el sol apenas asoma. Hay apatía, baja energía y menos disfrute.\n\n• Depresión: tormenta prolongada e intensa; afecta a tu forma de pensar, sentir y actuar, e interfiere en tu vida diaria. Requiere intervención profesional.\n\nEn esta ruta trabajaremos el estado de ánimo bajo, esa fase intermedia que muchas veces pasa desapercibida… pero que, si la cuidamos, podemos revertir antes de que se intensifique.\n\nAhora que tienes claro de qué estamos hablando, vamos a ver de dónde suele venir este estado.' }
           ]
         },
         {
@@ -86,18 +80,31 @@ export const wellbeingPath: Path = {
         {
           type: 'emotionalGratificationMapExercise',
           title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL',
-          objective: 'Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien. Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.',
+          objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.',
           duration: '7-10 min',
           audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3'
         },
         {
           type: 'dailyEnergyCheckExercise',
           title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA',
-          objective: 'Este ejercicio te ayudará a identificar qué actividades, personas y entornos recargan tu batería y cuáles la gastan más rápido, para que puedas elegir más de lo que te suma y reducir lo que te drena.',
+          objective: '¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?    Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y otros que la gastan más rápido.   Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.',
           duration: '3-5 min',
           audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3', prompts: ["¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?","¿Hubo algo que me sorprendiera al observar mi energía día a día?","¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?","Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?","¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?"] },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Reflexionsesion1ruta12.mp3',
+          prompts: [
+            "Esta semana hemos explorado de dónde viene nuestra energía y cómo podemos recargarla de forma más sostenible. Ahora es momento de parar, mirar atrás y anotar lo que descubriste en tu propio camino.",
+            "Preguntas para reflexionar y escribir:",
+            "¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?",
+            "¿Hubo algo que me sorprendiera al observar mi energía día a día?",
+            "¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?",
+            "Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?",
+            "¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?"
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Resumensesion1ruta12.mp3' },
         { type: 'list', items: ["El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.","Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.","Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.","Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.","Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo."] },
@@ -425,4 +432,5 @@ export const wellbeingPath: Path = {
   ],
 };
 
+    
     
