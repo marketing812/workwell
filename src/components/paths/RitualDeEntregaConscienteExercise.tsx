@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, Book, Feather, Wind } from 'lucide-react';
+import { Edit3, CheckCircle, Save, PlayCircle, BookOpen, Feather, Wind } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-import type { Path, ModuleContent } from '@/data/pathsData';
+import type { ModuleContent } from '@/data/pathsData';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
