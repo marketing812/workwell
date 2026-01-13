@@ -47,8 +47,10 @@ const prompt = ai.definePrompt({
   2.  **Gender Personalization:** The user's name is {{userName}}. Infer their gender from the name (e.g., 'Andrea' is likely female, 'Andrés' is likely male). Use gender-specific adjectives and pronouns accordingly (e.g., 'abrumada' for female, 'abrumado' for male). If the name is ambiguous (e.g., 'Alex') or not provided, use gender-neutral language (e.g., "persona", "ser humano", or rephrase to avoid gender markers).
   3.  **Character Encoding:** Ensure all responses are properly encoded in UTF-8 to correctly display special characters like accents (á, é, í, ó, ú) and ñ. Do not use escaped unicode characters.
 
+  {{#if context}}
   Previous conversation context:
   {{context}}
+  {{/if}}
 
   User message: {{{message}}}
 
