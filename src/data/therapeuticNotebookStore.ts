@@ -125,19 +125,29 @@ export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
   }
 }
 
-export function formatEntryTimestamp(isoTimestamp: string): string {
+export function formatEntryTimestamp(isoTimestamp: string | null | undefined): string {
+  if (!isoTimestamp) {
+    return "Fecha no disponible";
+  }
   try {
+    // Primero, intentar parsear como si fuera un ISO string estándar.
     const date = parseISO(isoTimestamp);
-    if (isNaN(date.getTime())) {
-      const flexibleDate = new Date(isoTimestamp.replace(' ', 'T'));
-      if (isNaN(flexibleDate.getTime())) {
-        throw new Error('Invalid date string provided');
-      }
+    if (!isNaN(date.getTime())) {
+       return format(date, "dd MMM yyyy, HH:mm", { locale: es });
+    }
+    
+    // Si falla, probar con el formato que podría venir de la API (YYYY-MM-DD HH:MM:SS)
+    const flexibleDate = new Date(isoTimestamp.replace(' ', 'T'));
+    if (!isNaN(flexibleDate.getTime())) {
       return format(flexibleDate, "dd MMM yyyy, HH:mm", { locale: es });
     }
-    return format(date, "dd MMM yyyy, HH:mm", { locale: es });
+    
+    // Si ambos fallan, es una fecha inválida.
+    console.error("Error critical formatting entry timestamp: Invalid date string provided -", isoTimestamp);
+    return "Fecha inválida";
+
   } catch (error) {
-    console.error("Error formatting timestamp:", error, "Input:", isoTimestamp);
+    console.error("Error formatting entry timestamp:", error, "Input:", isoTimestamp);
     return "Fecha inválida";
   }
 }

@@ -81,22 +81,30 @@ export function getAssessmentById(id: string): AssessmentRecord | undefined {
   return history.find(record => record.id === id);
 }
 
-export function formatAssessmentTimestamp(isoTimestamp: string): string {
+export function formatAssessmentTimestamp(isoTimestamp: string | null | undefined): string {
+  // Comprobación de robustez: si el timestamp es nulo o indefinido, devuelve un texto alternativo.
+  if (!isoTimestamp) {
+    return "Fecha no disponible";
+  }
+
   try {
-    // Attempt to parse, ensuring it's a valid date object before formatting
+    // Primero, intentar parsear como si fuera un ISO string estándar.
     const dateObj = parseISO(isoTimestamp);
-    if (isNaN(dateObj.getTime())) {
-        // If parseISO results in an invalid date, try new Date() as a fallback for "YYYY-MM-DD HH:MM:SS"
-        const fallbackDateObj = new Date(isoTimestamp.replace(' ', 'T') + (isoTimestamp.includes('Z') ? '' : 'Z')); // Try to make it more ISO-like for broader compatibility
-        if (isNaN(fallbackDateObj.getTime())) {
-            console.error("Error formatting assessment timestamp: Invalid date string provided -", isoTimestamp);
-            return "Fecha inválida";
-        }
-        return format(fallbackDateObj, "dd MMM yyyy, HH:mm", { locale: es });
+    if (!isNaN(dateObj.getTime())) {
+      return format(dateObj, "dd MMM yyyy, HH:mm", { locale: es });
     }
-    return format(dateObj, "dd MMM yyyy, HH:mm", { locale: es });
+
+    // Si falla, probar con el formato que podría venir de la API (YYYY-MM-DD HH:MM:SS)
+    const fallbackDateObj = new Date(isoTimestamp.replace(' ', 'T') + (isoTimestamp.includes('Z') ? '' : 'Z'));
+    if (!isNaN(fallbackDateObj.getTime())) {
+      return format(fallbackDateObj, "dd MMM yyyy, HH:mm", { locale: es });
+    }
+
+    // Si ambos fallan, es una fecha inválida.
+    console.error("Error formatting assessment timestamp: Invalid date string provided -", isoTimestamp);
+    return "Fecha inválida";
   } catch (error) {
-    console.error("Error formatting assessment timestamp for input:", isoTimestamp, error);
+    console.error("Error critical formatting assessment timestamp for input:", isoTimestamp, error);
     return "Fecha inválida";
   }
 }
