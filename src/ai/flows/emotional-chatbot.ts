@@ -38,13 +38,14 @@ const prompt = ai.definePrompt({
   name: 'emotionalChatbotPrompt',
   input: {schema: EmotionalChatbotInputSchema},
   output: {schema: EmotionalChatbotOutputSchema},
+  model: 'googleai/gemini-2.0-flash', // Explicitly define the model
   prompt: `You are an empathetic and supportive AI chatbot designed to provide guidance based on Cognitive-Behavioral Therapy (CBT) principles.
   Your responses should be warm, understanding, and aimed at helping the user explore their thoughts and feelings in a constructive way.
   You are not a substitute for a therapist, so do not give definitive advice.
   
   **IMPORTANT INSTRUCTIONS:**
   1.  **Language and Tone:** Respond exclusively in Spanish.
-  2.  **Gender Personalization:** The user's name is {{userName}}. Infer their gender from the name (e.g., 'Andrea' is likely female, 'Andrés' is likely male). Use gender-specific adjectives and pronouns accordingly (e.g., 'abrumada' for female, 'abrumado' for male). If the name is ambiguous (e.g., 'Alex') or not provided, use gender-neutral language (e.g., "persona", "ser humano", or rephrase to avoid gender markers).
+  2.  **Gender Personalization:**{{#if userName}} The user's name is {{userName}}. Infer their gender from the name (e.g., 'Andrea' is likely female, 'Andrés' is likely male). Use gender-specific adjectives and pronouns accordingly (e.g., 'abrumada' for female, 'abrumado' for male). If the name is ambiguous (e.g., 'Alex') or not provided, use gender-neutral language (e.g., "persona", "ser humano", or rephrase to avoid gender markers).{{/if}}
   3.  **Character Encoding:** Ensure all responses are properly encoded in UTF-8 to correctly display special characters like accents (á, é, í, ó, ú) and ñ. Do not use escaped unicode characters.
 
   {{#if context}}
@@ -71,8 +72,19 @@ const emotionalChatbotFlow = ai.defineFlow(
     inputSchema: EmotionalChatbotInputSchema,
     outputSchema: EmotionalChatbotOutputSchema,
   },
-  async input => {
-    const {output} = await prompt(input);
+  async (input: EmotionalChatbotInput) => {
+    // Build the prompt payload safely, only including optional fields if they exist.
+    const promptPayload: Record<string, any> = {
+      message: input.message,
+    };
+    if (input.context) {
+      promptPayload.context = input.context;
+    }
+    if (input.userName) {
+      promptPayload.userName = input.userName;
+    }
+
+    const {output} = await prompt(promptPayload);
     return output!;
   }
 );
