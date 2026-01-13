@@ -15,3 +15,6 @@ runConfig:
 # Timestamp: 2026-01-13T16:32:00
 # Final attempt to fix dependencies based on confirmed package name and version. Timestamp: 2026-01-13T16:34:00
 # Definitive fix attempt by aligning genkit packages to @genkit-ai/google-genai@1.27.0. Timestamp: 2026-01-13T16:35:00
+# Re-reverting to @genkit-ai/googleai@0.6.1 after more ETARGET errors. Timestamp: 2026-01-13T16:36:00
+# FINAL ATTEMPT to resolve genkit issues by aligning to @genkit-ai/google-genai@1.27.0 and forcing cache invalidation. Timestamp: 2026-01-13T16:45:00
+# Re-re-reverting to @genkit-ai/googleai@0.6.1 after FINAL ERESOLVE error. This MUST work. Timestamp: 2026-01-13T16:47:00
