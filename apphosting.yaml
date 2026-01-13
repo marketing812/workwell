@@ -21,4 +21,4 @@ runConfig:
 # Force rebuild to use Application Default Credentials.
 # Forcing another rebuild to ensure ADC is used and API key is cleared from the environment.
 # Forcing one more rebuild to fix the ChunkLoadError.
-# Forcing rebuild to use the correct Genkit Google AI package.
+# Forcing one final rebuild to clear the cache after dependency changes.
