@@ -31,6 +31,24 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
   const [calmMoment, setCalmMoment] = useState('');
 
   const handleSave = (option: string, entryContent: string) => {
+    // FIX: Add validation to ensure content is not empty before saving.
+    if (!writtenInquietud.trim() && !writtenReflection.trim() && !writtenReformulation.trim() && option === "Escribir y Soltar") {
+        toast({
+            title: "Ejercicio Incompleto",
+            description: "Por favor, escribe al menos en uno de los campos para guardar tu reflexión.",
+            variant: "destructive"
+        });
+        return;
+    }
+    if (!gratitude.trim() && !advancement.trim() && !calmMoment.trim() && option === "Cierre con Gratitud") {
+        toast({
+            title: "Ejercicio Incompleto",
+            description: "Por favor, completa al menos un campo de gratitud para guardar.",
+            variant: "destructive"
+        });
+        return;
+    }
+
     addNotebookEntry({
       title: `Ritual de Entrega Consciente: ${option}`,
       content: entryContent,
