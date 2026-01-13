@@ -24,3 +24,5 @@ runConfig:
 # Forcing one final rebuild to clear the cache after dependency changes.
 # Final attempt to force ADC by removing apiKey config from Genkit initialization.
 # Forcing rebuild after confirming apiKey is removed from Genkit initialization.
+# Forcing rebuild after switching to @genkit-ai/google-genai.
+# Reverting Genkit package changes to fix build error.
