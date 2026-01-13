@@ -22,3 +22,4 @@ runConfig:
 # Forcing another rebuild to ensure ADC is used and API key is cleared from the environment.
 # Forcing one more rebuild to fix the ChunkLoadError.
 # Forcing one final rebuild to clear the cache after dependency changes.
+# Final attempt to force ADC by removing apiKey config from Genkit initialization.
