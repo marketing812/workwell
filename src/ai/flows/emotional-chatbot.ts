@@ -9,7 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {z} from 'zod';
 
 const EmotionalChatbotInputSchema = z.object({
   message: z.string().describe('The user message to the chatbot.'),
@@ -33,11 +33,11 @@ export async function emotionalChatbot(input: EmotionalChatbotInput): Promise<Em
   return emotionalChatbotFlow(input);
 }
 
-const prompt = ai.definePrompt({
+const emotionalChatbotPrompt = ai.definePrompt({
   name: 'emotionalChatbotPrompt',
-  input: {schema: EmotionalChatbotInputSchema},
-  output: {schema: EmotionalChatbotOutputSchema},
-  model: 'googleai/gemini-2.0-flash', // Explicitly define the model
+  inputSchema: EmotionalChatbotInputSchema,
+  outputSchema: EmotionalChatbotOutputSchema,
+  model: 'googleai/gemini-2.0-flash',
   prompt: `You are an empathetic and supportive AI chatbot designed to provide guidance based on Cognitive-Behavioral Therapy (CBT) principles.
   Your responses should be warm, understanding, and aimed at helping the user explore their thoughts and feelings in a constructive way.
   You are not a substitute for a therapist, so do not give definitive advice.
@@ -62,7 +62,9 @@ const prompt = ai.definePrompt({
 
   Please keep responses brief and focused and offer support and guidance.
   If the user expresses a crisis or suicidal thoughts, respond with: "Lamento que estés pasando por esto. No estás solo/a. Por favor, considera contactar con un/a profesional de salud mental."
-  Response: `,
+  
+  Devuelve SOLO un JSON válido con esta forma exacta:
+  {"response":"..."}`,
 });
 
 const emotionalChatbotFlow = ai.defineFlow(
@@ -71,19 +73,30 @@ const emotionalChatbotFlow = ai.defineFlow(
     inputSchema: EmotionalChatbotInputSchema,
     outputSchema: EmotionalChatbotOutputSchema,
   },
-  async (input: EmotionalChatbotInput) => {
-    // Build the prompt payload safely, only including optional fields if they exist.
-    const promptPayload: Record<string, any> = {
+  async (rawInput) => {
+    // 1. Validate the input explicitly to catch errors early.
+    const input = EmotionalChatbotInputSchema.parse(rawInput);
+
+    // 2. Build the payload for the prompt safely.
+    const promptPayload: { message: string; context?: string; userName?: string } = {
       message: input.message,
     };
-    if (input.context) {
+
+    if (typeof input.context === "string" && input.context.trim() !== "") {
       promptPayload.context = input.context;
     }
-    if (input.userName) {
+    if (typeof input.userName === "string" && input.userName.trim() !== "") {
       promptPayload.userName = input.userName;
     }
 
-    const {output} = await prompt(promptPayload);
-    return output!;
+    // 3. Call the prompt with the validated and constructed payload.
+    const {output} = await emotionalChatbotPrompt(promptPayload);
+
+    // 4. Ensure the output is not empty before returning.
+    if (!output?.response) {
+      throw new Error("Genkit devolvió un 'output' vacío o sin la propiedad 'response'.");
+    }
+
+    return output;
   }
 );

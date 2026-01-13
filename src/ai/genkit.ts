@@ -1,10 +1,8 @@
-import { genkit } from "genkit";
-import { googleAI } from "@genkit-ai/googleai";
+'use client';
+
+import { genkit } from 'genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 export const ai = genkit({
-  plugins: [
-    googleAI({
-      models: [{ name: 'gemini-2.0-flash' }],
-    }),
-  ],
+  plugins: [googleAI({ apiKey: process.env.GEMINI_API_KEY! })],
 });
