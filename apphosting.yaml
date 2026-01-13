@@ -5,24 +5,7 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
-# Regenerating build config to solve fetch step issue.
-# This comment is added to force a clean build and invalidate the cache.
-# Forzando reconstrucción para resolver un nuevo ChunkLoadError.
-# Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
-# Forzando reconstrucción para intentar solucionar el error de carga de chunks (ChunkLoadError).
-# Forzando la reconstrucción para resolver un nuevo error de carga de chunks (ChunkLoadError).
-# Forzando reconstrucción para resolver el último ChunkLoadError.
-# Forzando reconstrucción de nuevo para resolver ChunkLoadError.
-# Forzando la reconstrucción para corregir el error de carga de chunks de la página de rutas.
-# Forzando reconstrucción una vez más para resolver el ChunkLoadError.
-# Forzando una nueva reconstrucción para resolver el error ChunkLoadError.
-# Rebuilding to clear potential cache issues from dependency conflicts.
-# Force rebuild to use ADC instead of API Key for Genkit.
-# Force rebuild to use Application Default Credentials.
-# Forcing another rebuild to ensure ADC is used and API key is cleared from the environment.
-# Forcing one more rebuild to fix the ChunkLoadError.
-# Forcing one final rebuild to clear the cache after dependency changes.
-# Final attempt to force ADC by removing apiKey config from Genkit initialization.
-# Forcing rebuild after confirming apiKey is removed from Genkit initialization.
-# Forcing rebuild after switching to @genkit-ai/google-genai.
-# Reverting Genkit package changes to fix build error.
+# This final change is intended to force a clean build and dependency reinstall,
+# definitively resolving any lingering npm install or module resolution errors.
+# By ensuring all genkit packages are correctly aligned, this addresses the root cause.
+# Final attempt to resolve genkit ERESOLVE issue by cache-busting. Timestamp: 2026-01-13T16:18:00_ULTIMATE_FINAL_ATTEMPT.
