@@ -12,6 +12,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import { assessmentDimensions } from '@/data/assessmentDimensions';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
+import { googleAI } from '@genkit-ai/google-genai';
 
 
 const InitialAssessmentInputSchema = z.object({
@@ -95,6 +96,7 @@ export async function initialAssessment(input: InitialAssessmentInput): Promise<
 
 const prompt = ai.definePrompt({
   name: 'initialAssessmentPrompt',
+  model: googleAI.model('gemini-1.5-flash-latest'),
   input: {schema: PromptHandlebarsInputSchema},
   output: {schema: AIResponseSchema},
   prompt: `You are an AI assistant specialized in interpreting psychological assessment results to provide a personalized profile.
@@ -171,3 +173,5 @@ const initialAssessmentFlow = ai.defineFlow(
     return finalOutput;
   }
 );
+
+    
