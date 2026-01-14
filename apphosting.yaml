@@ -18,3 +18,4 @@ runConfig:
 # Re-reverting to @genkit-ai/googleai@0.6.1 after more ETARGET errors. Timestamp: 2026-01-13T16:36:00
 # FINAL ATTEMPT to resolve genkit issues by aligning to @genkit-ai/google-genai@1.27.0 and forcing cache invalidation. Timestamp: 2026-01-13T16:45:00
 # Re-re-reverting to @genkit-ai/googleai@0.6.1 after FINAL ERESOLVE error. This MUST work. Timestamp: 2026-01-13T16:47:00
+# Force a clean build to resolve ChunkLoadError. Timestamp: 2026-01-13T17:00:00
