@@ -9,7 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'zod';
+import {z} from 'genkit';
 
 const EmotionalChatbotInputSchema = z.object({
   message: z.string().describe('The user message to the chatbot.'),
