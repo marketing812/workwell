@@ -1,5 +1,5 @@
 import { genkit } from "genkit";
-import { googleAI } from "@genkit-ai/googleai";
+import { googleAI } from "@genkit-ai/google-genai";
 
 // Al inicializar el plugin sin una apiKey, Genkit intentará usar las 
 // credenciales del entorno de aplicación (Application Default Credentials),
