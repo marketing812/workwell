@@ -37,7 +37,7 @@ const emotionalChatbotPrompt = ai.definePrompt({
   name: 'emotionalChatbotPrompt',
   inputSchema: EmotionalChatbotInputSchema,
   outputSchema: EmotionalChatbotOutputSchema,
-  model: 'googleai/gemini-2.0-flash',
+  model: 'googleai/gemini-2.5-flash',
   prompt: `You are an empathetic and supportive AI chatbot designed to provide guidance based on Cognitive-Behavioral Therapy (CBT) principles.
   Your responses should be warm, understanding, and aimed at helping the user explore their thoughts and feelings in a constructive way.
   You are not a substitute for a therapist, so do not give definitive advice.
