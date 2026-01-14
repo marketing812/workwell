@@ -96,7 +96,7 @@ export async function initialAssessment(input: InitialAssessmentInput): Promise<
 
 const prompt = ai.definePrompt({
   name: 'initialAssessmentPrompt',
-  model: googleAI.model('gemini-1.5-flash-latest'),
+  model: googleAI.model('gemini-1.5-flash'),
   input: {schema: PromptHandlebarsInputSchema},
   output: {schema: AIResponseSchema},
   prompt: `You are an AI assistant specialized in interpreting psychological assessment results to provide a personalized profile.
