@@ -40,11 +40,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'De dónde viene el estado de ánimo bajo',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio3sesion1ruta12.mp3',
-          content: [
-            { type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:' },
-            { type: 'list', items: ["Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.", "Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.", "Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.", "Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.", "Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada."] },
-            { type: 'paragraph', text: 'Además, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' }
-          ]
+          content: [{ type: 'paragraph', text: 'El ánimo no baja “porque sí”. Suele ser el resultado de varios hilos que se entrelazan:' }, { type: 'list', items: ["Eventos de vida y estrés: pérdidas, cambios importantes, problemas continuos.", "Manera de pensar: creencias aprendidas y patrones de pensamiento que amplifican lo negativo y minimizan lo positivo.", "Relaciones: entornos críticos, poco apoyo o vínculos que drenan tu energía.", "Factores biológicos: cambios en neurotransmisores como la serotonina o la dopamina, que afectan tu motivación y capacidad de disfrutar.", "Hábitos y estilo de vida: falta de sueño, poca actividad física, alimentación desequilibrada."] }, { type: 'paragraph', text: 'Además, el estado de ánimo bajo se alimenta de un doble vacío:\n• La sensación de poco dominio sobre tu vida: cuando sientes que no puedes influir en lo que pasa, tu motivación se apaga.\n• La falta de gratificaciones reales: cuando apenas hay momentos de disfrute o satisfacción, el cerebro recibe pocas señales de “esto vale la pena repetirlo”, y se instala la apatía.' }]
         },
         {
           type: 'collapsible',
@@ -60,11 +56,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'La energía vital: mucho más que no estar cansado/a',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio5sesion1ruta12.mp3',
-          content: [
-            { type: 'paragraph', text: 'Piensa en tu energía como en un fuego:' },
-            { type: 'list', items: ["Se alimenta de combustible físico (descanso, alimentación, movimiento).", "Necesita chispa emocional (momentos que te hagan sentir vivo/a).", "Y se mantiene con aire mental (propósitos, curiosidad, retos alcanzables)."] },
-            { type: 'paragraph', text: 'Sin alguno de estos elementos, la llama se reduce y el ánimo baja.\nIncluso acciones de solo 10 minutos —como salir a la luz natural o tener una conversación agradable— pueden avivar ese fuego.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Piensa en tu energía como en un fuego:' }, { type: 'list', items: ["Se alimenta de combustible físico (descanso, alimentación, movimiento).", "Necesita chispa emocional (momentos que te hagan sentir vivo/a).", "Y se mantiene con aire mental (propósitos, curiosidad, retos alcanzables)."] }, { type: 'paragraph', text: 'Sin alguno de estos elementos, la llama se reduce y el ánimo baja.\nIncluso acciones de solo 10 minutos —como salir a la luz natural o tener una conversación agradable— pueden avivar ese fuego.' }]
         },
         {
           type: 'collapsible',
@@ -76,21 +68,13 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Tu cerebro también busca recompensas',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio7sesion1ruta12.mp3',
-          content: [
-            { type: 'paragraph', text: 'Dentro de tu cabeza hay un sistema de recompensa que se activa no solo cuando consigues algo, sino también cuando lo anticipas.' },
-            { type: 'list', items: ["Dopamina: la chispa que te mueve a actuar.", "Núcleo accumbens: el radar de lo que puede hacerte sentir bien.", "Corteza prefrontal: la que decide si vas hacia lo que de verdad importa o hacia lo que solo alivia un rato."] },
-            { type: 'paragraph', text: 'Cuando eliges conscientemente actividades con sentido, entrenas a tu cerebro para pedir más de eso.\nY ese es el camino para reconectar con lo que antes te hacía bien.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Dentro de tu cabeza hay un sistema de recompensa que se activa no solo cuando consigues algo, sino también cuando lo anticipas.' }, { type: 'list', items: ["Dopamina: la chispa que te mueve a actuar.", "Núcleo accumbens: el radar de lo que puede hacerte sentir bien.", "Corteza prefrontal: la que decide si vas hacia lo que de verdad importa o hacia lo que solo alivia un rato."] }, { type: 'paragraph', text: 'Cuando eliges conscientemente actividades con sentido, entrenas a tu cerebro para pedir más de eso.\nY ese es el camino para reconectar con lo que antes te hacía bien.' }]
         },
         {
           type: 'collapsible',
           title: 'Por qué reconectar con lo que te hacía bien es clave',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion1/Audio8sesion1ruta12.mp3',
-          content: [
-            { type: 'paragraph', text: 'El estado de ánimo bajo te empuja a hacer menos → recibes menos placer → tu ánimo baja más.\nRomper ese círculo no siempre empieza con ganas; muchas veces empieza con acción consciente:' },
-            { type: 'list', items: ["Retomar algo que antes disfrutabas.", "Probar una versión más pequeña de una actividad que te gustaba.", "Buscar compañía que te aporte calma o risa."] },
-            { type: 'paragraph', text: '“No esperes a tener ganas para empezar; empieza, y las ganas llegarán después.” — Principio de activación conductual.' }
-          ]
+          content: [{ type: 'paragraph', text: 'El estado de ánimo bajo te empuja a hacer menos → recibes menos placer → tu ánimo baja más.\nRomper ese círculo no siempre empieza con ganas; muchas veces empieza con acción consciente:' }, { type: 'list', items: ["Retomar algo que antes disfrutabas.", "Probar una versión más pequeña de una actividad que te gustaba.", "Buscar compañía que te aporte calma o risa."] }, { type: 'paragraph', text: '“No esperes a tener ganas para empezar; empieza, y las ganas llegarán después.” — Principio de activación conductual.' }]
         },
         {
           type: 'collapsible',
@@ -113,8 +97,7 @@ export const wellbeingPath: Path = {
       title: 'Semana 2: Recupera Rutinas que te Nutran',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [
-        { type: 'paragraphWithAudio', text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3' },
+      content: [{ type: 'paragraphWithAudio', text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Cuando lo básico empieza a fallar', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3', content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?\nDormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.\nEsta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.' }] },
         { type: 'collapsible', title: 'Rutinas que son anclas', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3', content: [{ type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' }] },
@@ -175,14 +158,23 @@ export const wellbeingPath: Path = {
           title: 'Por qué es clave en la recuperación',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría.' },
-            { type: 'paragraph', text: 'La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.' },
-            { type: 'paragraph', text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar:' },
-            { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.", "Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.", "Sostienen tu resiliencia, dándote energía para seguir en días difíciles."] },
-            { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala).' },
-            { type: 'paragraph', text: 'El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto), y después aparece la emoción.' },
-            { type: 'paragraph', text: 'Estrategias sencillas que nutren tu reserva:' },
-            { type: 'list', items: ["Recordar momentos agradables y revivirlos con detalle.", "Realizar microacciones sociales (mandar un mensaje, tomar un café).", "Usar música, humor y gestos como la sonrisa.", "Cuidar hábitos básicos: descanso, movimiento, alimentación, contacto con la naturaleza."] }
+            { type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría.'},
+            { type: 'paragraph', text: 'La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.'},
+            { type: 'paragraph', text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar:'},
+            { type: 'list', items: [
+                'Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.',
+                'Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.',
+                'Sostienen tu resiliencia, dándote energía para seguir en días difíciles.'
+            ]},
+            { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala).'},
+            { type: 'paragraph', text: 'El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto), y después aparece la emoción.'},
+            { type: 'paragraph', text: 'Estrategias sencillas que nutren tu reserva:'},
+            { type: 'list', items: [
+                'Recordar momentos agradables y revivirlos con detalle.',
+                'Realizar microacciones sociales (mandar un mensaje, tomar un café).',
+                'Usar música, humor y gestos como la sonrisa.',
+                'Cuidar hábitos básicos: descanso, movimiento, alimentación, contacto con la naturaleza.'
+            ]}
           ]
         },
         { type: 'collapsible', title: 'Principios de activación conductual', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio5sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad, y esta inactividad alimenta más el malestar.\n\nPor eso, en psicología usamos el principio acción → emoción:\n\nPrimero actúas, incluso sin ganas.\n\nLuego, con la repetición, el estado de ánimo empieza a mejorar.\n\nClaves para aplicarlo: ' }, { type: 'list', items: ["Programar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota.", "Incluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve.", "Combinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida."] }, { type: 'paragraph', text: 'Ejemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' }] },
@@ -196,7 +188,7 @@ export const wellbeingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionssesion4ruta12.mp3', prompts: ["<p>Esta semana has explorado el poder de cultivar emociones positivas como una forma de cuidar tu bienestar a largo plazo.</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3' },
-        { type: 'list', items: ["El ánimo bajo se puede regular con estrategias concretas y sostenibles.", "Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.", "La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.", "Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia."] },
+        { type: 'list', items: ["El ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales que podemos aprender a cuidar.", "Nuestra energía vital se sostiene en hábitos básicos, chispa emocional y dirección mental.", "Las gratificaciones rápidas (como redes, azúcar o maratones de series) alivian a corto plazo, pero no recargan a largo plazo.", "Reconectar con lo que antes nos hacía bien es una de las formas más potentes de romper el ciclo de ánimo bajo.", "Planificar y hacer actividades gratificantes, aunque no haya ganas al principio, es una estrategia validada por la ciencia para recuperar el ánimo."] },
         { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' }
       ]
     },
@@ -211,25 +203,14 @@ export const wellbeingPath: Path = {
           title: 'REFLEXIÓN FINAL PARA EL CUADERNO',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3',
           prompts: [
-            '<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p>',
-            '<p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p>',
-            '<ul>',
-            '<li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li>',
-            '<li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li>',
-            '<li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li>',
-            '<li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li>',
-            '</ul>',
-            '<p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p>',
-            '<p>Ahora, tomate unos minutos para reflexionar:</p>',
-            '<ul>',
-            '<li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li>',
-            '<li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li>',
-            '<li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li>',
-            '<li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li>',
-            '</ul>',
-          ],
+            '<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>'
+          ]
         },
-        { type: 'title', text: 'RESUMEN FINAL DE LA RUTA', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenfinalruta12.mp3' },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenfinalruta12.mp3'
+        },
         {
           type: 'list',
           items: [
@@ -239,10 +220,13 @@ export const wellbeingPath: Path = {
             'La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.',
             'Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.',
             'Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.',
-            'Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio.',
-          ],
+            'Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio.'
+          ]
         },
-        { type: 'quote', text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.' }
+        {
+          type: 'quote',
+          text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.'
+        }
       ]
     }
   ]
