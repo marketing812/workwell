@@ -178,7 +178,29 @@ export const wellbeingPath: Path = {
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3' },
-        { type: 'list', items: ["El ánimo bajo se puede regular con estrategias concretas y sostenibles.", "Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.", "La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.", "Cultivar una reserva emocional positiva protege tu bienestar y fortalece tu resiliencia."] },
+        
+        
+        
+        { type: 'list', items: [
+          "Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría.",
+          "La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos. ",
+          "Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar:",
+        
+            "- Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.",
+            "- Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.",
+            "- Sostienen tu resiliencia, dándote energía para seguir en días difíciles.",
+
+         
+          "Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). ",
+          "El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto), y después aparece la emoción. ",
+        
+            "- Estrategias sencillas que nutren tu reserva:", 
+            "- Recordar momentos agradables y revivirlos con detalle.", 
+            "- Realizar microacciones sociales (mandar un mensaje, tomar un café).", 
+            "- Usar música, humor y gestos como la sonrisa.",
+            "- Cuidar hábitos básicos: descanso, movimiento, alimentación, contacto con la naturaleza.",
+
+        ] },
         { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' }
       ]
     },
