@@ -278,10 +278,23 @@ function TherapeuticNotebookReflectionExercise({
       return;
     }
     
+    // Convert prompts array into a formatted HTML string
+    const promptsHtml = content.prompts.map(p => {
+        if (p.startsWith('¿') && p.endsWith('?')) {
+            return `<p><strong>${p}</strong></p>`;
+        }
+        if (p.startsWith('•') || p.startsWith('-') || p.startsWith('*')) {
+            return `<li>${p.substring(1).trim()}</li>`;
+        }
+        return `<p>${p}</p>`;
+    }).join('');
+    
     const fullContent = `
 **${content.title}**
 
-<div class="prose prose-sm dark:prose-invert max-w-none">${content.prompts.join('')}</div>
+<div class="prose prose-sm dark:prose-invert max-w-none">
+    ${promptsHtml.includes('<li>') ? `<ul>${promptsHtml}</ul>` : promptsHtml}
+</div>
 
 **Mi reflexión:**
 ${reflection}
@@ -1017,4 +1030,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
