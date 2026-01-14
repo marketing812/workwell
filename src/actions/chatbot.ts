@@ -1,8 +1,11 @@
-
 "use server";
 
-import { emotionalChatbot, type EmotionalChatbotInput, type EmotionalChatbotOutput } from '@/ai/flows/emotional-chatbot';
-import { z } from 'zod';
+import {
+  emotionalChatbot,
+  type EmotionalChatbotInput,
+  type EmotionalChatbotOutput,
+} from "@/ai/flows/emotional-chatbot";
+import { z } from "zod";
 
 const chatbotMessageSchema = z.object({
   message: z.string().min(1, "El mensaje no puede estar vacío."),
@@ -14,9 +17,31 @@ export type ServerChatbotResult =
   | { success: true; data: EmotionalChatbotOutput }
   | { success: false; error: string };
 
+function buildEnvDebug() {
+  return {
+    hasGeminiKey: Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY),
+    keyUsed: process.env.GEMINI_API_KEY
+      ? "GEMINI_API_KEY"
+      : process.env.GOOGLE_API_KEY
+      ? "GOOGLE_API_KEY"
+      : null,
+    googleGenaiUseVertex: process.env.GOOGLE_GENAI_USE_VERTEXAI ?? null,
+    hasAdc: Boolean(process.env.GOOGLE_APPLICATION_CREDENTIALS),
+
+    // Estos 3 suelen empujar a “modo Vertex/OAuth” sin querer
+    googleCloudProject: process.env.GOOGLE_CLOUD_PROJECT ?? null,
+    gcloudProject: process.env.GCLOUD_PROJECT ?? null,
+    googleCloudLocation: process.env.GOOGLE_CLOUD_LOCATION ?? null,
+
+    nodeEnv: process.env.NODE_ENV ?? null,
+  };
+}
+
 export async function sendMessageToChatbot(
   userInput: { message: string; context?: string; userName?: string }
 ): Promise<ServerChatbotResult> {
+  const envDebug = buildEnvDebug();
+
   try {
     const validatedInput = chatbotMessageSchema.parse(userInput);
 
@@ -34,10 +59,13 @@ export async function sendMessageToChatbot(
 
     return { success: true, data: result };
   } catch (error) {
-    console.error("Error sending message to chatbot:", error);
-    if (error instanceof z.ZodError) {
-      return { success: false, error: "Datos de mensaje inválidos: " + error.message };
-    }
-    return { success: false, error: error instanceof Error ? error.message : "Error al comunicarse con el chatbot." };
+    // 👇 Fuerza que el error devuelto incluya el debug del entorno
+    const baseMsg =
+      error instanceof Error ? error.message : "Error al comunicarse con el chatbot.";
+
+    const debugMsg = "ENV_DEBUG=" + JSON.stringify(envDebug);
+
+    // Esto hace que incluso si tu UI pone un “UNKNOWN: ...”, dentro venga ENV_DEBUG
+    return { success: false, error: baseMsg + " | " + debugMsg };
   }
 }
