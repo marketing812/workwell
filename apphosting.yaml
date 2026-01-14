@@ -5,18 +5,4 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
-# This final change is intended to force a clean build and dependency reinstall,
-# definitively resolving any lingering npm install or module resolution errors.
-# By ensuring all genkit packages are correctly aligned, this addresses the root cause.
-# Final attempt to resolve genkit ERESOLVE issue by cache-busting. Timestamp: 2026-01-13T16:18:00_ULTIMATE_FINAL_ATTEMPT.
-# Reverting to @genkit-ai/googleai based on user feedback to resolve module not found error.
-# Timestamp: 2026-01-13T16:20:00
-# Re-attempting fix by aligning all genkit packages to 0.6.1 and forcing cache invalidation.
-# Timestamp: 2026-01-13T16:32:00
-# Final attempt to fix dependencies based on confirmed package name and version. Timestamp: 2026-01-13T16:34:00
-# Definitive fix attempt by aligning genkit packages to @genkit-ai/google-genai@1.27.0. Timestamp: 2026-01-13T16:35:00
-# Re-reverting to @genkit-ai/googleai@0.6.1 after more ETARGET errors. Timestamp: 2026-01-13T16:36:00
-# FINAL ATTEMPT to resolve genkit issues by aligning to @genkit-ai/google-genai@1.27.0 and forcing cache invalidation. Timestamp: 2026-01-13T16:45:00
-# Re-re-reverting to @genkit-ai/googleai@0.6.1 after FINAL ERESOLVE error. This MUST work. Timestamp: 2026-01-13T16:47:00
-# Force a clean build to resolve ChunkLoadError. Timestamp: 2026-01-13T17:00:00
-# Force a clean build to resolve ChunkLoadError. Timestamp: 2026-01-13T18:00:00
+# Force rebuild with correct Genkit dependencies to resolve auth issues. Timestamp: 2026-01-13T19:00:00.
