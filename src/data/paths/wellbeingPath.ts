@@ -205,7 +205,11 @@ export const wellbeingPath: Path = {
       content: [
         { type: 'paragraphWithAudio', text: 'El ánimo bajo reduce los momentos agradables y aumenta la presencia de lo negativo. Para equilibrar la balanza, necesitas crear tu propia mochila de recursos positivos: recuerdos, hábitos, apoyos y actitudes que te sostengan en los días grises. Esta semana aprenderás a entrenar tu mente para capturar lo bueno, revivir recuerdos positivos y diseñar un botiquín emocional con recursos listos para usar cuando lo necesites.', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Introsesion4ruta12.mp3' },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: 'Gancho emocional: tu “mochila de reserva” para los días grises', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio1sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Imagina que cada gesto amable, cada momento de calma o cada risa que compartes, fuera como una moneda que guardas en una mochila invisible.\nEn los días soleados casi no notas que la llevas… pero cuando llega una tormenta emocional, esa reserva te sostiene y te ayuda a seguir.\nA esta mochila la llamamos reserva emocional positiva.' }] },
+        {
+          type: 'collapsible', title: 'Gancho emocional: tu “mochila de reserva” para los días grises', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio1sesion4ruta12.mp3', content: [
+            { type: 'paragraph', text: 'Imagina que cada gesto amable, cada momento de calma o cada risa que compartes, fuera como una moneda que guardas en una mochila invisible.\nEn los días soleados casi no notas que la llevas… pero cuando llega una tormenta emocional, esa reserva te sostiene y te ayuda a seguir.\nA esta mochila la llamamos reserva emocional positiva.' }
+          ]
+        },
         {
           type: 'collapsible', title: 'Qué es la reserva emocional positiva', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio2sesion4ruta12.mp3', content: [
             { type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles.\nNo se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido, para poder usarlo cuando más lo necesitamos.\nEsta reserva se alimenta de tres fuentes principales: ' },
@@ -236,9 +240,21 @@ export const wellbeingPath: Path = {
             { type: 'paragraph', text: 'Idea para llevarte: piensa en las emociones positivas como en regar una planta: no basta con un gran riego un día, necesita pequeñas dosis constantes para crecer y mantenerse fuerte.' }
           ]
         },
-        { type: 'collapsible', title: 'Estrategias para llenar tu reserva emocional', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio7sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Registro de momentos agradables: anota incluso los más pequeños.\n\nRecuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.\n\nMicroacciones sociales: saludar, enviar un mensaje, compartir algo breve.\n\nAnclajes sensoriales: olores, música o texturas que evoquen calma o alegría.\n\nHumor y juego: integrar pequeñas dosis de ligereza cada día.\n\nPaciencia: aceptar que los resultados se acumulan con el tiempo.' }] },
-        { type: 'collapsible', title: 'Prevención de recaídas', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio8sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Mantener tu reserva emocional llena no significa que no tendrás problemas, pero sí que tendrás más fuerza, flexibilidad y recursos para afrontarlos.\n\nInvertir en ella es una forma de cuidarte hoy y protegerte para el futuro.' }] },
-        { type: 'collapsible', title: 'Mensaje motivador final', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio9sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma.\n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena.\n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' }] },
+        {
+          type: 'collapsible', title: 'Estrategias para llenar tu reserva emocional', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio7sesion4ruta12.mp3', content: [
+            { type: 'paragraph', text: 'Registro de momentos agradables: anota incluso los más pequeños.\n\nRecuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.\n\nMicroacciones sociales: saludar, enviar un mensaje, compartir algo breve.\n\nAnclajes sensoriales: olores, música o texturas que evoquen calma o alegría.\n\nHumor y juego: integrar pequeñas dosis de ligereza cada día.\n\nPaciencia: aceptar que los resultados se acumulan con el tiempo.' }
+          ]
+        },
+        {
+          type: 'collapsible', title: 'Prevención de recaídas', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio8sesion4ruta12.mp3', content: [
+            { type: 'paragraph', text: 'Mantener tu reserva emocional llena no significa que no tendrás problemas, pero sí que tendrás más fuerza, flexibilidad y recursos para afrontarlos.\n\nInvertir en ella es una forma de cuidarte hoy y protegerte para el futuro.' }
+          ]
+        },
+        {
+          type: 'collapsible', title: 'Mensaje motivador final', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio9sesion4ruta12.mp3', content: [
+            { type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma.\n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena.\n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' }
+          ]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'illuminatingMemoriesAlbumExercise', title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN', objective: 'Este ejercicio te ayudará a entrenar tu mente para equilibrar el “sesgo negativo” natural del cerebro, capturando y conservando los momentos que te nutren para que puedas revivirlos en días difíciles.', duration: '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3' },
         { type: 'positiveEmotionalFirstAidKitExercise', title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO', objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.', duration: '12-15 min', audioUrl: 'https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3' },
