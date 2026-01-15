@@ -59,7 +59,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">S: STOP / Para</h4>
             <p className="text-sm text-muted-foreground">Interrumpe el piloto automático. Detente físicamente. Suelta los hombros, planta los pies en el suelo.</p>
             <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
+                <audio key="audio-step-1" controls controlsList="nodownload" className="w-full">
                     <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3" type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
@@ -73,7 +73,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">T: Toma una respiración</h4>
             <p className="text-sm text-muted-foreground">Activa tu freno natural. Inhala por la nariz... y exhala lento por la boca. Repite 3-5 veces.</p>
             <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
+              <audio key="audio-step-2" controls controlsList="nodownload" className="w-full">
                 <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3" type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
@@ -87,7 +87,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">O: Observa</h4>
             <p className="text-sm text-muted-foreground">Mira tus pensamientos y sensaciones desde fuera. ¿Qué estás pensando? ¿Qué sientes en el cuerpo?</p>
             <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
+              <audio key="audio-step-3" controls controlsList="nodownload" className="w-full">
                   <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semN3tecnica1observa.mp3" type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
@@ -102,7 +102,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">P: Permite / Prosigue</h4>
             <p className="text-sm text-muted-foreground">Acepta lo que sientes sin luchar. Ahora, elige el siguiente paso, por pequeño que sea.</p>
             <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
+              <audio key="audio-step-4" controls controlsList="nodownload" className="w-full">
                   <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3" type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
