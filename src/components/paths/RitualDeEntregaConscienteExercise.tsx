@@ -65,7 +65,7 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
     <div className="text-center p-4 space-y-4">
         <p className="text-sm text-muted-foreground">Cuando intentas controlarlo todo, tu mente se agota. Este ejercicio te propone soltar por un momento. Elige la forma que hoy más te ayude:</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Button variant="outline" className="h-24 flex-col" onClick={() => setStep(1)}><Book className="mb-2"/>Escribir y soltar</Button>
+            <Button variant="outline" className="h-24 flex-col" onClick={() => setStep(1)}><BookOpen className="mb-2"/>Escribir y soltar</Button>
             <Button variant="outline" className="h-24 flex-col" onClick={() => setStep(2)}><Wind className="mb-2"/>Respirar con intención</Button>
             <Button variant="outline" className="h-24 flex-col" onClick={() => setStep(3)}><Feather className="mb-2"/>Cerrar el día con gratitud</Button>
         </div>
