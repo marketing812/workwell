@@ -4,7 +4,7 @@ import type { Path } from '../pathsData';
 export const anxietyPath: Path = {
   id: 'regular-ansiedad-paso-a-paso',
   title: 'Regular la Ansiedad Paso a Paso',
-  description: '¿Has sentido alguna vez que la ansiedad se apodera de ti sin darte respiro? Ese nudo en el estómago, el corazón acelerado, la mente repitiendo “¿y si pasa lo peor”?\n\nLa ansiedad es una respuesta natural del cuerpo y la mente ante posibles amenazas. Su función es protegerte, pero cuando se vuelve intensa, frecuente o difícil de manejar, puede convertirse en una trampa que limita tu vida.\n\nEn esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.\n\nAl final de estas 4 semanas, tendrás un mapa claro y personal de regulación para no dejar que la ansiedad te paralice, sino aprender a caminar junto a ella con confianza.',
+  description: 'En esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.',
   dataAiHint: 'anxiety mindfulness calm',
   modules: [
     {
@@ -238,7 +238,11 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3',
-          prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']
+          prompts: [
+            '¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?',
+            '¿Qué me pasa cuando confundo posibilidad con probabilidad?',
+            '¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?',
+          ]
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'},
@@ -253,7 +257,7 @@ export const anxietyPath: Path = {
       estimatedTime: '20-25 min',
       content: [
         { type: 'paragraphWithAudio', text: 'El gran reto de la ansiedad no es pensar menos, sino evitar menos. Cuanto más esquivamos lo que tememos, más fuerte se hace el miedo. Esta última semana vas a aprender a enfrentarte de manera progresiva y cuidada, paso a paso, sin forzarte. Será como subir una escalera: cada peldaño te acerca a la libertad, y no hace falta correr para llegar arriba. Lo importante es avanzar, aunque sea despacio, y comprobar con tus propios ojos que puedes sostener la ansiedad y seguir adelante.', audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4introduccion.mp3'},
-        { type: 'title', text: 'Psicoeducación'},
+        { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'La trampa de la evitación',
@@ -393,7 +397,8 @@ export const anxietyPath: Path = {
         content: [
             {
                 type: 'therapeuticNotebookReflection',
-                title: 'REFLEXIÓN FINAL DE LA RUTA',
+                title: 'Reflexión final de la ruta',
+                audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Reflexionfinalruta13.mp3',
                 prompts: [
                     'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
                     '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo? […]',
@@ -407,7 +412,7 @@ export const anxietyPath: Path = {
             {
                 type: 'title',
                 text: 'RESUMEN FINAL DE LA RUTA',
-                audioUrl: "https://workwellfut.com/audios/ruta13/semana4/Ruta13sem4resumenfinal.mp3"
+                audioUrl: "https://workwellfut.com/audios/ruta13/semana4/Resumenfinalruta13.mp3"
             },
             {
                 type: 'list',
@@ -428,6 +433,3 @@ export const anxietyPath: Path = {
 };
 
     
-    
-
-  
