@@ -10,6 +10,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, ArrowRight, BookOpen, Camera, Sun, Music, Ear } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IlluminatingMemoriesAlbumExerciseContent } from '@/data/paths/pathTypes';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 
 interface IlluminatingMemoriesAlbumExerciseProps {
   content: IlluminatingMemoriesAlbumExerciseContent;
@@ -26,6 +28,7 @@ const activityChips = [
     'Dar un paseo de 5–10 min', 'Escuchar mi canción favorita', 'Cocinar algo que disfruto',
     'Tomar un café/infusión con calma', 'Llamar/enviar audio a alguien especial',
     'Asomarme a la ventana y respirar 1 min', 'Leer 1 página', 'Estirar 2 minutos',
+    'Otro'
 ];
 
 export function IlluminatingMemoriesAlbumExercise({ content, pathId }: IlluminatingMemoriesAlbumExerciseProps) {
@@ -83,19 +86,12 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
       case 0: // Pantalla 1: Captura tus momentos
         return (
           <div className="p-4 space-y-4">
-            <p className="text-sm text-muted-foreground">La mente tiene un “sesgo negativo”: recuerda con más facilidad lo que te dolió. Este ejercicio es un antídoto. Aquí vas a decidir qué momentos guardar intencionalmente.</p>
-            <div className="text-xs text-muted-foreground space-x-1 space-y-1">
-                <span className="font-semibold">Inspiración:</span>
-                {inspirationChips.map(chip => <Button key={chip} size="sm" variant="outline" className="h-auto py-1 px-2 text-xs" onClick={() => {
-                    const firstEmpty = moments.findIndex(m => m === '');
-                    if (firstEmpty !== -1) handleMomentChange(firstEmpty, chip);
-                }}>{chip}</Button>)}
-            </div>
+            <p className="text-sm text-muted-foreground">Elige 3 momentos que te hicieron sentir bien. Pueden ser sencillos o significativos. Añade detalles sensoriales para que el recuerdo cobre vida.</p>
             <div className="space-y-3">
               {moments.map((moment, index) => (
                 <div key={index}>
                     <Label htmlFor={`moment-${index}`}>Momento {index + 1}</Label>
-                    <Textarea id={`moment-${index}`} value={moment} onChange={e => handleMomentChange(index, e.target.value)} placeholder={`Ej: ${inspirationChips[index]}`}/>
+                    <Textarea id={`moment-${index}`} value={moment} onChange={e => handleMomentChange(index, e.target.value)} />
                     <Label htmlFor={`sensory-${index}`} className="text-xs text-muted-foreground">Añade detalles sensoriales (lo que viste, oíste, sentiste...)</Label>
                     <Textarea id={`sensory-${index}`} value={sensoryDetails[index]} onChange={e => handleSensoryChange(index, e.target.value)} rows={2}/>
                 </div>
@@ -109,7 +105,7 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">Paso 2: Dale vida a tu galería</h4>
             <p className="text-sm text-muted-foreground">Al revivir un buen recuerdo, tu cerebro reacciona como si lo estuvieras viviendo de nuevo.</p>
-            <p className="font-medium p-3 border rounded-md bg-background">Cierra los ojos. Imagínate dentro de cada momento: observa colores, sonidos, olores. Quédate ahí el tiempo que desees.</p>
+            <p className="font-medium p-3 border rounded-md bg-background">Cierra los ojos… Imagínate dentro de cada momento: observa colores, sonidos, olores, la temperatura, la emoción que sentías. Quédate ahí, en ese recuerdo, el tiempo que desees.</p>
             <Button onClick={nextStep} className="w-full">Continuar</Button>
           </div>
         );
@@ -122,7 +118,9 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
                     <Label>Actividad:</Label>
                     <Select onValueChange={setSelectedActivity}>
                         <SelectTrigger><SelectValue placeholder="Elige una actividad..." /></SelectTrigger>
-                        <SelectContent>{activityChips.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}</SelectContent>
+                        <SelectContent>
+                            {activityChips.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                        </SelectContent>
                     </Select>
                 </div>
                 <Button onClick={nextStep} className="w-full">Continuar</Button>
