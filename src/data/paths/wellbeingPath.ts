@@ -152,15 +152,33 @@ export const wellbeingPath: Path = {
           title: 'Por qué es clave en la recuperación',
           audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3',
           content: [
-            { type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría.' },
-            { type: 'paragraph', text: 'La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.' },
-            { type: 'paragraph', text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar:' },
-            { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.", "Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.", "Sostienen tu resiliencia, dándote energía para seguir en días difíciles."] },
-            { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala).' },
-            { type: 'paragraph', text: 'El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto), y después aparece la emoción.' },
-            { type: 'paragraph', text: 'Estrategias sencillas que nutren tu reserva:' },
-            { type: 'list', items: ["Recordar momentos agradables y revivirlos con detalle.", "Realizar microacciones sociales (mandar un mensaje, tomar un café).", "Usar música, humor y gestos como la sonrisa.", "Cuidar hábitos básicos: descanso, movimiento, alimentación, contacto con la naturaleza."] }
-          ]
+              {type: 'paragraph',text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría. La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.'
+              },
+              {type: 'paragraph',text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar.'
+              },
+              {type: 'list',
+                items: ['Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.',
+                  'Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.',
+                  'Sostienen tu resiliencia, dándote energía para seguir en días difíciles.']
+              },
+              {type: 'paragraph',
+                text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.'
+              },
+              { type: 'paragraph',
+                text: 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar tu ánimo en momentos difíciles?'
+              },
+              {
+                type: 'paragraph',
+                text: 'Estrategias sencillas que nutren tu reserva emocional:'
+              },
+              {
+                type: 'list',
+                items: ['Recordar momentos agradables y revivirlos con detalle.',
+                  'Realizar microacciones sociales (mandar un mensaje, tomar un café).',
+                  'Usar música, humor y gestos como la sonrisa.',
+                  'Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza.']
+              }
+                   ]
         },
         { type: 'collapsible', title: 'Principios de activación conductual', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio5sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad, y esta inactividad alimenta más el malestar.\n\nPor eso, en psicología usamos el principio acción → emoción:\n\nPrimero actúas, incluso sin ganas.\n\nLuego, con la repetición, el estado de ánimo empieza a mejorar.\n\nClaves para aplicarlo: ' }, { type: 'list', items: ["Programar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota.", "Incluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve.", "Combinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida."] }, { type: 'paragraph', text: 'Ejemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' }] },
         { type: 'collapsible', title: 'Qué dice la neurociencia', audioUrl: 'https://workwellfut.com/audios/ruta12/descripciones/sesion4/Audio6sesion4ruta12.mp3', content: [{ type: 'paragraph', text: 'Las emociones positivas no solo “se sienten”, también producen cambios reales en el cerebro:' }, { type: 'list', items: ["Activan el sistema dopaminérgico: este circuito de motivación y recompensa nos impulsa a repetir conductas que nos hacen sentir bien. Con la práctica, aumenta la probabilidad de buscar y generar más de esos momentos.", "Calman la hiperactividad de la amígdala: en el ánimo bajo, la amígdala puede estar sobreactivada, amplificando el miedo, la preocupación y la visión negativa. Las emociones positivas actúan como un “freno” que reduce esta intensidad.", "Favorecen la neuroplasticidad: cada vez que entrenas una emoción positiva, refuerzas conexiones neuronales que facilitan que aparezca de nuevo. Es como crear un “camino” más transitado en tu cerebro, que luego se recorre de forma más automática.", "Efecto acumulativo: un momento positivo aislado puede levantar el ánimo de forma breve, pero repetirlo a diario construye una base más estable y resistente frente a futuros bajones."] }, { type: 'paragraph', text: 'Idea para llevarte: piensa en las emociones positivas como en regar una planta: no basta con un gran riego un día, necesita pequeñas dosis constantes para crecer y mantenerse fuerte.' }] },
@@ -181,26 +199,32 @@ export const wellbeingPath: Path = {
         
         
         
-        { type: 'list', items: [
-          "Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría.",
-          "La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos. ",
-          "Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar:",
-        
-            "- Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.",
-            "- Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.",
-            "- Sostienen tu resiliencia, dándote energía para seguir en días difíciles.",
-
-         
-          "Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). ",
-          "El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto), y después aparece la emoción. ",
-        
-            "- Estrategias sencillas que nutren tu reserva:", 
-            "- Recordar momentos agradables y revivirlos con detalle.", 
-            "- Realizar microacciones sociales (mandar un mensaje, tomar un café).", 
-            "- Usar música, humor y gestos como la sonrisa.",
-            "- Cuidar hábitos básicos: descanso, movimiento, alimentación, contacto con la naturaleza.",
-
-        ] },
+        {type: 'paragraph',text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría. La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.'
+        },
+        {type: 'paragraph',text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar.'
+        },
+        {type: 'list',
+          items: ['Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.',
+            'Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.',
+            'Sostienen tu resiliencia, dándote energía para seguir en días difíciles.']
+        },
+        {type: 'paragraph',
+          text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.'
+        },
+        { type: 'paragraph',
+          text: 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar tu ánimo en momentos difíciles?'
+        },
+        {
+          type: 'paragraph',
+          text: 'Estrategias sencillas que nutren tu reserva emocional:'
+        },
+        {
+          type: 'list',
+          items: ['Recordar momentos agradables y revivirlos con detalle.',
+            'Realizar microacciones sociales (mandar un mensaje, tomar un café).',
+            'Usar música, humor y gestos como la sonrisa.',
+            'Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza.']
+        },
         { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' }
       ]
     },
