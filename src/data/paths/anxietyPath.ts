@@ -301,9 +301,7 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'La confianza se entrena',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc6.mp3',
-            content: [
-              { type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste.”'}
-            ]
+            content: [{ type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste.”' }]
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { 
@@ -367,7 +365,7 @@ export const anxietyPath: Path = {
         },
         {
           type: 'title',
-          text: 'RESUMEN FINAL',
+          text: 'RESUMEN FINAL'
         },
         {
           type: 'list',
@@ -425,36 +423,4 @@ export const anxietyPath: Path = {
       ]
     }
   ]
-}
-
-Relevant files:
-
-    - src/components/paths/PathDetailClient.tsx
-    - src/components/paths/PathDetailClient.tsx
-    - src/components/paths/PathDetailClient.tsx
-
-And change it as follows:
-  
-el texto correcto es: Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:
-
-🔹 Ansiedad normal o adaptativa
-•	Surge ante un reto real (ej. entrevista, examen).
-•	Es pasajera y baja sola cuando pasa la situación.
-
-🔹 Trastorno de ansiedad
-•	La activación es excesiva, frecuente o sin causa clara.
-•	Afecta tu vida diaria: trabajo, descanso, relaciones.
-•	Puede llevarte a evitar lugares o situaciones.
-•	Necesita abordaje terapéutico para recuperar equilibrio.
-
-🔹 Ataque de pánico
-•	Irrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.
-•	Aunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.
-•	Puede aparecer dentro de un trastorno de pánico o de forma aislada.
-
-Ejemplo sencillo:
-•	Ansiedad → nervios antes de una charla.
-•	Trastorno de ansiedad → semanas sin dormir porque temes no dar la charla.
-•	Ataque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.
-
-No es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.
+};
