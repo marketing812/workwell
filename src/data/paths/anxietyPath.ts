@@ -49,7 +49,7 @@ export const anxietyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3',
           content: [{
               "type": "paragraph",
-              "text": "Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar."
+              "text": "Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\n\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\n\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\n\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\n\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar."
           }]
         },
         {
@@ -218,11 +218,18 @@ export const anxietyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt7Preparandote.mp3',
           content: [{ type: 'paragraph', text: 'Ahora que entiendes mejor cómo funcionan los pensamientos ansiosos (anticipatorios, catastrofistas, bucles) y cómo la amígdala puede secuestrar tu mente, pasamos a lo más importante: las técnicas que te ayudarán a no engancharte a esos pensamientos.\n\nRecuerda: no buscamos que dejen de aparecer, sino que aprendas a mirarlos de frente, sin miedo, hasta que dejen de arrastrarte.' }]
         },
-        {
-          type: 'collapsible',
-          title: 'Resumen clave:',
-          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3',
-          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma']}]
+        { 
+          type: 'title', 
+          text: 'Resumen Clave'
+        },
+        { 
+          type: 'paragraphWithAudio', 
+          text: '', 
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3'
+        },
+        { 
+          type: 'list', 
+          items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma']
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { 
@@ -293,9 +300,7 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'La clave: avanzar con cuidado',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc5.mp3',
-            content: [
-              { type: 'paragraph', text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional.' }
-            ]
+            content: [{ type: 'paragraph', text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional.' }]
         },
         {
             type: 'collapsible',
@@ -343,7 +348,7 @@ export const anxietyPath: Path = {
             'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.',
             'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.',
             'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.',
-            'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.'
+            'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”."'
           ]
         },
         { 
