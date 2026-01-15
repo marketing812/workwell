@@ -4,7 +4,7 @@ import type { Path } from '../pathsData';
 export const anxietyPath: Path = {
   id: 'regular-ansiedad-paso-a-paso',
   title: 'Regular la Ansiedad Paso a Paso',
-  description: 'Aprende a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente y a dar pequeños pasos hacia aquello que hoy evitas.',
+  description: '¿Has sentido alguna vez que la ansiedad se apodera de ti sin darte respiro? Ese nudo en el estómago, el corazón acelerado, la mente repitiendo “¿y si pasa lo peor?”.    La ansiedad es una respuesta natural del cuerpo y la mente ante posibles amenazas. Su función es protegerte, pero cuando se vuelve intensa, frecuente o difícil de manejar, puede convertirse en una trampa que limita tu vida.   En esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.   Al final de estas 4 semanas, tendrás un mapa claro y personal de regulación para no dejar que la ansiedad te paralice, sino aprender a caminar junto a ella con confianza.',
   dataAiHint: 'anxiety mindfulness calm',
   modules: [
     {
@@ -217,7 +217,7 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'Resumen clave:',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3',
-          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen anticipar, exagerar y repetir.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }]
+          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }]
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { 
@@ -242,7 +242,7 @@ export const anxietyPath: Path = {
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'},
-        { type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','La ansiedad tiende a confundir posibilidad con probabilidad, exagerando riesgos poco realistas.','En un pico fuerte puede producirse el secuestro emocional: la amígdala toma el control y bloquea la parte racional.','La clave no está en eliminar pensamientos, sino en dejar de fusionarnos con ellos: observarlos como hipótesis, no como verdades.','La técnica STOP ayuda a frenar el piloto automático ansioso, regular el cuerpo con la respiración, observar con perspectiva y permitir avanzar.','El cuestionamiento socrático permite desafiar los “¿y si…?” explorando evidencias, alternativas y consecuencias reales.','Con práctica, la neurociencia demuestra que se refuerza la neuroplasticidad: tu cerebro aprende a frenar antes, reducir la intensidad de la ansiedad y elegir respuestas más sanas.']},
+        { type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','La técnica STOP ayuda a frenar el piloto automático ansioso, regular el cuerpo con la respiración, observar con perspectiva y permitir avanzar.','El cuestionamiento socrático permite desafiar los “¿y si…?” explorando evidencias, alternativas y consecuencias reales.','Con práctica, la neurociencia demuestra que se refuerza la neuroplasticidad: tu cerebro aprende a frenar antes, reducir la intensidad de la ansiedad y elegir respuestas más sanas.']},
         { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.'}
       ]
     },
@@ -299,7 +299,7 @@ export const anxietyPath: Path = {
             title: 'La confianza se entrena',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc6.mp3',
             content: [
-              { type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste”.'}
+              { type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste.'}
             ]
         },
         { type: 'title', text: 'Técnicas Específicas'},
@@ -420,13 +420,11 @@ export const anxietyPath: Path = {
                     'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice.'
                 ]
             },
-            {
-                type: 'quote',
-                text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”'
-            }
+            { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' }
         ]
     }
   ]
 };
 
+    
     
