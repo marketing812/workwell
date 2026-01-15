@@ -34,7 +34,7 @@ export const anxietyPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3',
             content: [{
                 "type": "paragraph",
-                "text": "No toda ansiedad es mala, aunque lo parezca.\n\nAnsiedad adaptativa\n•\tTe mantiene alerta y enfocado/a.\n•\tPor ejemplo, esos nervios antes de un examen que te ayudan a estudiar con más energía.\nAnsiedad disfuncional\n•\tSe enciende sin motivo claro o de forma desproporcionada.\n•\tEn lugar de ayudarte, te bloquea: no duermes, evitas situaciones, piensas sin parar en lo peor.\n•\tEs como una alarma que suena cada dos por tres, incluso sin fuego.\nLa clave no es luchar contra la ansiedad, sino distinguir cuándo te está ayudando y cuándo te está saboteando.\nPiensa en tu ansiedad como un detector de humo demasiado sensible: no distingue entre el vapor de la ducha y un incendio real. El problema no eres tú, es que tu sistema de alarma está calibrado demasiado alto."
+                "text": "No toda ansiedad es mala, aunque lo parezca.\n\nAnsiedad adaptativa\n•\tTe mantiene alerta y enfocado/a.\n•\tPor ejemplo, esos nervios antes de un examen que te ayudan a estudiar con más energía.\n\nAnsiedad disfuncional\n•\tSe enciende sin motivo claro o de forma desproporcionada.\n•\tEn lugar de ayudarte, te bloquea: no duermes, evitas situaciones, piensas sin parar en lo peor.\n•\tEs como una alarma que suena cada dos por tres, incluso sin fuego.\nLa clave no es luchar contra la ansiedad, sino distinguir cuándo te está ayudando y cuándo te está saboteando.\nPiensa en tu ansiedad como un detector de humo demasiado sensible: no distingue entre el vapor de la ducha y un incendio real. El problema no eres tú, es que tu sistema de alarma está calibrado demasiado alto."
             }]
         },
         {
@@ -47,7 +47,10 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'Ansiedad, trastorno de ansiedad y ataque de pánico',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3',
-            content: [{ type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.'}]
+            content: [{
+                "type": "paragraph",
+                "text": "Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar."
+            }]
         },
         {
             type: 'collapsible',
@@ -219,7 +222,7 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'Resumen clave:',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/Ruta13Sem3Pnt8Resumen.mp3',
-          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma'] }]
+          content: [{ type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','Con práctica, tu mente aprende a soltar y recuperar la calma']}]
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { 
@@ -240,11 +243,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3',
-          prompts: [
-            '¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?',
-            '¿Qué me pasa cuando confundo posibilidad con probabilidad?',
-            '¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?',
-          ]
+          prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'},
@@ -325,11 +324,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4reflexion.mp3',
-          prompts: [
-            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
-            '¿Qué estrategias has comprobado que te ayudan más a calmarte?',
-            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
-          ]
+          prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?','¿Qué estrategias has comprobado que te ayudan más a calmarte?','¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?']
         },
         { 
           type: 'title', 
@@ -390,47 +385,76 @@ export const anxietyPath: Path = {
       ]
     },
     {
-        id: 'ansiedad_cierre',
-        title: 'Cierre de la Ruta: Integración y Próximos Pasos',
-        type: 'summary',
-        estimatedTime: '10-15 min',
-        content: [
-            {
-                type: 'therapeuticNotebookReflection',
-                title: 'Reflexión final de la ruta',
-                audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Reflexionfinalruta13.mp3',
-                prompts: [
-                    'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
-                    '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
-                    '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
-                    '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
-                    '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
-                    'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
-                    'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
-                ]
-            },
-            {
-                type: 'title',
-                text: 'RESUMEN FINAL DE LA RUTA',
-                audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Resumenfinalruta13.mp3'
-            },
-            {
-                type: 'list',
-                items: [
-                    'La ansiedad es una alarma interna que se activa aunque no haya un peligro real.',
-                    'El cuerpo y la mente pueden entrenarse para interpretar las sensaciones sin catastrofizar.',
-                    'Técnicas como el registro de pensamientos ansiosos, el recorrido por el cuerpo y la respiración regulada ayudan a reducir la intensidad inmediata de los síntomas.',
-                    'La exposición progresiva es la clave para que la ansiedad baje de forma duradera: cuanto más evitamos, más crece; cuanto más nos enfrentamos poco a poco, más confianza ganamos.',
-                    'La repetición fortalece la autoeficacia: cada paso superado demuestra que eres capaz de sostener la ansiedad y avanzar.',
-                    'La visualización calmada es un recurso extra que prepara al cerebro y al sistema nervioso para afrontar mejor la situación real.',
-                    'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice.'
-                ]
-            },
-            { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' }
-        ]
+      id: 'ansiedad_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión final de la ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Reflexionfinalruta13.mp3',
+          prompts: [
+            'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
+            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
+            '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
+            '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
+            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
+            'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
+            'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
+          ]
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Resumenfinalruta13.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'La ansiedad es una alarma interna que se activa aunque no haya un peligro real.',
+            'El cuerpo y la mente pueden entrenarse para interpretar las sensaciones sin catastrofizar.',
+            'Técnicas como el registro de pensamientos ansiosos, el recorrido por el cuerpo y la respiración regulada ayudan a reducir la intensidad inmediata de los síntomas.',
+            'La exposición progresiva es la clave para que la ansiedad baje de forma duradera: cuanto más evitamos, más crece; cuanto más nos enfrentamos poco a poco, más confianza ganamos.',
+            'La repetición fortalece la autoeficacia: cada paso superado demuestra que eres capaz de sostener la ansiedad y avanzar.',
+            'La visualización calmada es un recurso extra que prepara al cerebro y al sistema nervioso para afrontar mejor la situación real.',
+            'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice.'
+          ]
+        },
+        { type: 'quote', text: '“La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.”' }
+      ]
     }
   ]
-};
+}
 
-    
-    
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+el texto correcto es: Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:
+
+🔹 Ansiedad normal o adaptativa
+•	Surge ante un reto real (ej. entrevista, examen).
+•	Es pasajera y baja sola cuando pasa la situación.
+
+🔹 Trastorno de ansiedad
+•	La activación es excesiva, frecuente o sin causa clara.
+•	Afecta tu vida diaria: trabajo, descanso, relaciones.
+•	Puede llevarte a evitar lugares o situaciones.
+•	Necesita abordaje terapéutico para recuperar equilibrio.
+
+🔹 Ataque de pánico
+•	Irrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.
+•	Aunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.
+•	Puede aparecer dentro de un trastorno de pánico o de forma aislada.
+
+Ejemplo sencillo:
+•	Ansiedad → nervios antes de una charla.
+•	Trastorno de ansiedad → semanas sin dormir porque temes no dar la charla.
+•	Ataque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.
+
+No es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.
