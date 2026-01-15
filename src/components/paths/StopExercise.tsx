@@ -86,6 +86,12 @@ ${nextAction}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2">O: Observa</h4>
             <p className="text-sm text-muted-foreground">Mira tus pensamientos y sensaciones desde fuera. ¿Qué estás pensando? ¿Qué sientes en el cuerpo?</p>
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semN3tecnica1observa.mp3" type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: 'Pienso que no podré y siento un nudo en el estómago'"/>
             <Button onClick={next} className="w-full" disabled={!observedState.trim()}>Siguiente</Button>
           </div>
@@ -95,6 +101,12 @@ ${nextAction}
           <form onSubmit={handleSave} className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2">P: Permite / Prosigue</h4>
             <p className="text-sm text-muted-foreground">Acepta lo que sientes sin luchar. Ahora, elige el siguiente paso, por pequeño que sea.</p>
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1permite.mp3" type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
             <Textarea value={nextAction} onChange={e => setNextAction(e.target.value)} placeholder="Ej: 'Doy tres pasos y entro a la sala'"/>
             <Button type="submit" className="w-full" disabled={!nextAction.trim()}><Save className="mr-2 h-4 w-4"/>Guardar mi frase permisiva</Button>
           </form>
