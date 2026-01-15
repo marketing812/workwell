@@ -1,6 +1,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -26,6 +27,7 @@ export type ListContent = {
 export type QuoteContent = {
   type: 'quote';
   text: string;
+  align?: 'center' | 'left' | 'right';
 };
 
 export type CollapsibleContent = {
@@ -706,6 +708,14 @@ export type CalmVisualizationExerciseContent = {
     audioUrl?: string;
 };
 
+export type AnxietyReframingExerciseContent = {
+    type: 'anxietyReframingExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
 // Nuevo tipo de ejercicio para el Ensayo de Crisis Imaginaria
 export type ImaginedCrisisRehearsalExerciseContent = {
     type: 'imaginedCrisisRehearsalExercise';
@@ -824,6 +834,7 @@ export type ModuleContent =
   | QuestionYourIfsExerciseContent
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
+  | AnxietyReframingExerciseContent
   // NUEVO
   | ImaginedCrisisRehearsalExerciseContent;
 

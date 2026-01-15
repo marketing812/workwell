@@ -53,6 +53,7 @@ import { es } from 'date-fns/locale';
 import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 // RUTA 1
 import { StressMapExercise } from '@/components/paths/StressMapExercise';
@@ -166,6 +167,7 @@ import { QuestionYourIfsExercise } from './QuestionYourIfsExercise';
 import { ExposureLadderExercise } from './ExposureLadderExercise';
 import { CalmVisualizationExercise } from './CalmVisualizationExercise';
 import { ImaginedCrisisRehearsalExercise } from './ImaginedCrisisRehearsalExercise';
+import { AnxietyReframingExercise } from './AnxietyReframingExercise';
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -484,7 +486,12 @@ function ContentItemRenderer({
       return (
         <blockquote
           key={index}
-          className="mt-6 border-l-2 pl-6 italic text-accent-foreground/80"
+          className={cn(
+            "mt-6 italic",
+            (contentItem as any).align === 'center' 
+              ? "text-center border-none p-4" 
+              : "border-l-2 pl-6 text-accent-foreground/80"
+          )}
           dangerouslySetInnerHTML={{ __html: contentItem.text }}
         />
       );
@@ -796,6 +803,8 @@ function ContentItemRenderer({
       const crisisRehearsalContent = contentItem as any ;
       return <ImaginedCrisisRehearsalExercise key={index} content={crisisRehearsalContent} pathId={path.id} />;
     }
+    case 'anxietyReframingExercise':
+        return <AnxietyReframingExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
 
     // ...
     default:

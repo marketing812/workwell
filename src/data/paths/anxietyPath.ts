@@ -20,7 +20,7 @@ export const anxietyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1introduccion.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
-        { 
+        {
             type: 'collapsible',
             title: 'La ansiedad: molesta, pero con sentido',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1psicoeducpantalla1la%20ansiedad%20molesta.mp3',
@@ -47,10 +47,7 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'Ansiedad, trastorno de ansiedad y ataque de pánico',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3',
-          content: [{
-              "type": "paragraph",
-              "text": "Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\n\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\n\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\n\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\n\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar."
-          }]
+          content: [{ type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\nAnsiedad normal o adaptativa\n•\tSurge ante un reto real (ej. entrevista, examen).\n•\tEs pasajera y baja sola cuando pasa la situación.\nTrastorno de ansiedad\n•\tLa activación es excesiva, frecuente o sin causa clara.\n•\tAfecta tu vida diaria: trabajo, descanso, relaciones.\n•\tPuede llevarte a evitar lugares o situaciones.\n•\tNecesita abordaje terapéutico para recuperar equilibrio.\nAtaque de pánico\n•\tIrrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n•\tAunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n•\tPuede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n•\tAnsiedad → nervios antes de una charla.\n•\tTrastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n•\tAtaque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.' }]
         },
         {
           type: 'collapsible',
@@ -247,15 +244,14 @@ export const anxietyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3'
         },
         { 
-          type: 'therapeuticNotebookReflection', 
+          type: 'anxietyReframingExercise', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3',
-          prompts: ['¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?','¿Qué me pasa cuando confundo posibilidad con probabilidad?','¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?']
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3reflexion.mp3'
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana3/R13sem3resumen.mp3'},
         { type: 'list', items: ['Los pensamientos ansiosos suelen aparecer en tres formas: anticipatorios, catastrofistas o en bucle.','Tu cerebro los fabrica para protegerte, pero muchas veces exagera.','No necesitas luchar con ellos, sino observarlos y dejarlos pasar.','La técnica STOP ayuda a frenar el piloto automático ansioso, regular el cuerpo con la respiración, observar con perspectiva y permitir avanzar.','El cuestionamiento socrático permite desafiar los “¿y si…?” explorando evidencias, alternativas y consecuencias reales.','Con práctica, la neurociencia demuestra que se refuerza la neuroplasticidad: tu cerebro aprende a frenar antes, reducir la intensidad de la ansiedad y elegir respuestas más sanas.']},
-        { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.'}
+        { type: 'quote', text: 'No tienes que apagar cada pensamiento ansioso; basta con aprender a no dejar que te arrastre.', align: 'center'}
       ]
     },
     {
@@ -428,4 +424,4 @@ export const anxietyPath: Path = {
       ]
     }
   ]
-}
+};
