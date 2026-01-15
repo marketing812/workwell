@@ -4,7 +4,7 @@ import type { Path } from '../pathsData';
 export const anxietyPath: Path = {
   id: 'regular-ansiedad-paso-a-paso',
   title: 'Regular la Ansiedad Paso a Paso',
-  description: '¿Has sentido alguna vez que la ansiedad se apodera de ti sin darte respiro? Ese nudo en el estómago, el corazón acelerado, la mente repitiendo “¿y si pasa lo peor?”.    La ansiedad es una respuesta natural del cuerpo y la mente ante posibles amenazas. Su función es protegerte, pero cuando se vuelve intensa, frecuente o difícil de manejar, puede convertirse en una trampa que limita tu vida.   En esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.   Al final de estas 4 semanas, tendrás un mapa claro y personal de regulación para no dejar que la ansiedad te paralice, sino aprender a caminar junto a ella con confianza.',
+  description: '¿Has sentido alguna vez que la ansiedad se apodera de ti sin darte respiro? Ese nudo en el estómago, el corazón acelerado, la mente repitiendo “¿y si pasa lo peor”?\n\nLa ansiedad es una respuesta natural del cuerpo y la mente ante posibles amenazas. Su función es protegerte, pero cuando se vuelve intensa, frecuente o difícil de manejar, puede convertirse en una trampa que limita tu vida.\n\nEn esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.\n\nAl final de estas 4 semanas, tendrás un mapa claro y personal de regulación para no dejar que la ansiedad te paralice, sino aprender a caminar junto a ella con confianza.',
   dataAiHint: 'anxiety mindfulness calm',
   modules: [
     {
@@ -38,7 +38,7 @@ export const anxietyPath: Path = {
         {
             type: 'collapsible',
             title: 'Tu sistema nervioso en acción',
-            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1pant3tusistnervioso.mp3',
+            audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13sem1pant3tusistnervioso.mp3',
             content: [{ type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:\n•\tLa rama simpático pisa el acelerador 🚗💨 (sube la frecuencia cardíaca, la respiración, la tensión muscular).\n•\tLa rama parasimpático actúa como freno 🚦 (calma, ayuda a la digestión y al descanso).\nCuando la ansiedad aparece, es como si tu pedal del acelerador se quedara atascado, incluso en situaciones normales. Por eso sientes palpitaciones, respiración corta, mareo o tensión. No es que estés “loco/a”: es que tu cuerpo está reaccionando como si hubiera un peligro real.\nAdemás, tu cuerpo libera adrenalina y cortisol, las hormonas del estrés. A corto plazo te ponen en alerta, pero cuando se repiten demasiadas veces, te dejan agotado/a.' }]
         },
         {
@@ -406,7 +406,8 @@ export const anxietyPath: Path = {
             },
             {
                 type: 'title',
-                text: 'RESUMEN FINAL DE LA RUTA'
+                text: 'RESUMEN FINAL DE LA RUTA',
+                audioUrl: "https://workwellfut.com/audios/ruta13/semana4/Ruta13sem4resumenfinal.mp3"
             },
             {
                 type: 'list',
@@ -428,3 +429,5 @@ export const anxietyPath: Path = {
 
     
     
+
+  
