@@ -103,7 +103,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Acepta lo que sientes sin luchar. Ahora, elige el siguiente paso, por pequeño que sea.</p>
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1permite.mp3" type="audio/mp3" />
+                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3" type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
