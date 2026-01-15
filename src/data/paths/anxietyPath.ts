@@ -6,6 +6,7 @@ export const anxietyPath: Path = {
   title: 'Regular la Ansiedad Paso a Paso',
   description: 'En esta ruta vas a aprender, paso a paso, a entender tu ansiedad sin luchar contra ella, a calmar tu cuerpo para calmar tu mente, a observar los pensamientos sin quedarte atrapado/a en ellos y a dar pequeños pasos hacia aquello que hoy evitas. Todo con herramientas prácticas avaladas por la ciencia, fáciles de entrenar en tu día a día.',
   dataAiHint: 'anxiety mindfulness calm',
+  audioUrl: 'https://workwellfut.com/audios/ruta13/introycierre/Ruta13introduccion.mp3',
   modules: [
     {
       id: 'ansiedad_sem1',
@@ -295,7 +296,7 @@ export const anxietyPath: Path = {
             title: 'La clave: avanzar con cuidado',
             audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4psicoeduc5.mp3',
             content: [
-              { type: 'paragraph', text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional. En la siguiente pantalla veremos cómo este proceso va alimentando tu seguridad interna.' }
+              { type: 'paragraph', text: 'No buscamos que seas valiente todo el día ni que fuerces más de lo necesario. Se trata de dar un paso en dirección contraria a la evitación, aunque la ansiedad siga presente. Piensa en esto como entrenar un músculo en el gimnasio: no necesitas levantar 50 kilos de golpe, basta con empezar con 2 o 3 y añadir poco a poco más peso. Cada serie que repites fortalece tu cuerpo, aunque al principio parezca poca cosa. En la ansiedad ocurre lo mismo: cada exposición, por pequeña que parezca, fortalece tu sistema interno de regulación emocional.' }
             ]
         },
         {
@@ -362,11 +363,11 @@ export const anxietyPath: Path = {
           title: 'REFLEXION FINAL PARA EL CUADERNO',
           prompts: [
             'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
-            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo? […]',
-            '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control? […]',
-            '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía? […]',
-            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo? […]',
-            'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad? […]',
+            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
+            '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
+            '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
+            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
+            'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
             'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
           ]
         },
@@ -401,11 +402,11 @@ export const anxietyPath: Path = {
                 audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Reflexionfinalruta13.mp3',
                 prompts: [
                     'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
-                    '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo? […]',
-                    '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control? […]',
-                    '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía? […]',
-                    '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo? […]',
-                    'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad? […]',
+                    '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
+                    '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
+                    '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
+                    '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
+                    'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
                     'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
                 ]
             },
