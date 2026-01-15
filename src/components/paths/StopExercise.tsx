@@ -58,6 +58,12 @@ ${nextAction}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2">S: STOP / Para</h4>
             <p className="text-sm text-muted-foreground">Interrumpe el piloto automático. Detente físicamente. Suelta los hombros, planta los pies en el suelo.</p>
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3" type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
             <Button onClick={next} className="w-full">Hecho, siguiente</Button>
           </div>
         );
