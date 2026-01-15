@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, TrafficCone } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StopExerciseContent } from '@/data/paths/pathTypes';
 
@@ -75,7 +75,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">O: Observa</h4>
             <p className="text-sm text-muted-foreground">Mira tus pensamientos y sensaciones desde fuera. ¿Qué estás pensando? ¿Qué sientes en el cuerpo?</p>
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: 'Pienso que no podré y siento un nudo en el estómago'"/>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <Button onClick={next} className="w-full" disabled={!observedState.trim()}>Siguiente</Button>
           </div>
         );
       case 4:
@@ -84,7 +84,7 @@ ${nextAction}
             <h4 className="font-semibold text-lg flex items-center gap-2">P: Permite / Prosigue</h4>
             <p className="text-sm text-muted-foreground">Acepta lo que sientes sin luchar. Ahora, elige el siguiente paso, por pequeño que sea.</p>
             <Textarea value={nextAction} onChange={e => setNextAction(e.target.value)} placeholder="Ej: 'Doy tres pasos y entro a la sala'"/>
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi frase permisiva</Button>
+            <Button type="submit" className="w-full" disabled={!nextAction.trim()}><Save className="mr-2 h-4 w-4"/>Guardar mi frase permisiva</Button>
           </form>
         );
       default: return null;
