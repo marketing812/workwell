@@ -48,7 +48,7 @@ ${nextAction}
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="p-4 text-center space-y-4">
             <p>La técnica STOP es como tener un semáforo interno. Cuando la ansiedad acelera tus pensamientos, este semáforo te recuerda que puedes parar y elegir cómo seguir.</p>
             <Button onClick={next}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -72,6 +72,12 @@ ${nextAction}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2">T: Toma una respiración</h4>
             <p className="text-sm text-muted-foreground">Activa tu freno natural. Inhala por la nariz... y exhala lento por la boca. Repite 3-5 veces.</p>
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
             <Button onClick={next} className="w-full">Hecho, siguiente</Button>
           </div>
         );
