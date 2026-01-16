@@ -105,41 +105,52 @@ export const uncertaintyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-        { 
-            type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3'
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
-        { 
-            type: 'collapsible',
-            title: '¿Por qué imaginamos lo peor?',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3',
-            content: [
-                { type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. ' }
-            ]
+        {
+          type: 'collapsible',
+          title: '¿Por qué imaginamos lo peor?',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. ',
+            },
+          ],
         },
         {
           type: 'collapsible',
           title: 'Tu sistema de amenaza: entre el miedo y la percepción',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion2.mp3',
-          content: [{type: 'paragraph', text: 'Nuestro sistema nervioso tiene una función adaptativa: protegernos ante lo que percibimos como peligroso. Pero el problema es que no distingue bien entre peligro real —algo que está sucediendo— y mental —algo que podría pasar—.   Cuando anticipas algo negativo, tu cuerpo entra en modo defensa:   Se activa una zona del cerebro llamada amígdala, que funciona como una alarma interna.   Esta activación acelera el corazón, tensa los músculos y prepara al cuerpo para reaccionar rápido.   Al mismo tiempo, se apaga o bloquea parcialmente la zona del cerebro que te ayuda a pensar con claridad (la corteza prefrontal), porque el cuerpo prioriza la supervivencia, no la reflexión.   Es decir: tu cuerpo reacciona al “¿y si…?” como si ya estuviera ocurriendo. Te sientes inquieto/a, alerta, con dificultad para concentrarte o calmarte. Todo esto nace de un pensamiento como, por ejemplo: “¿Y si no puedo con esto?”'}]
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Nuestro sistema nervioso tiene una función adaptativa: protegernos ante lo que percibimos como peligroso. Pero el problema es que no distingue bien entre peligro real —algo que está sucediendo— y mental —algo que podría pasar—.   Cuando anticipas algo negativo, tu cuerpo entra en modo defensa:   Se activa una zona del cerebro llamada amígdala, que funciona como una alarma interna.   Esta activación acelera el corazón, tensa los músculos y prepara al cuerpo para reaccionar rápido.   Al mismo tiempo, se apaga o bloquea parcialmente la zona del cerebro que te ayuda a pensar con claridad (la corteza prefrontal), porque el cuerpo prioriza la supervivencia, no la reflexión.   Es decir: tu cuerpo reacciona al “¿y si…?” como si ya estuviera ocurriendo. Te sientes inquieto/a, alerta, con dificultad para concentrarte o calmarte. Todo esto nace de un pensamiento como, por ejemplo: “¿Y si no puedo con esto?”',
+            },
+          ],
         },
         {
           type: 'collapsible',
           title: '¿Qué activa mi sistema de amenaza?',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
           content: [
-            { type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como el tono de voz de alguien, una mirada o un gesto, un recuerdo doloroso, o simplemente un cambio en tu entorno, e interpreta alguna de esas señales como insegura, activando la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'},
+            {
+              type: 'paragraph',
+              text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como el tono de voz de alguien, una mirada o un gesto, un recuerdo doloroso, o simplemente un cambio en tu entorno, e interpreta alguna de esas señales como insegura, activando la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.',
+            },
             {
               type: 'collapsible',
               title: 'Errores de pensamiento',
               content: [
                 {
                   type: 'paragraph',
-                  text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'
-                }
-              ]
+                  text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.',
+                },
+              ],
             },
             {
               type: 'collapsible',
@@ -147,150 +158,113 @@ export const uncertaintyPath: Path = {
               content: [
                 {
                   type: 'paragraph',
-                  text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'
-                }
-              ]
-            }
-          ]
+                  text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.',
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'collapsible',
           title: 'Herramientas para regular el sistema de amenaza',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion2.mp3',
-          content: [{ type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},{type: 'collapsible', title: 'Exposición progresiva', content: [{type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},{type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},{type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}]
+          content: [
+            {
+              type: 'paragraph',
+              text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:',
+            },
+            {
+              type: 'collapsible',
+              title: 'Exposición progresiva',
+              content: [
+                {
+                  type: 'paragraph',
+                  text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              title: 'Reestructuración cognitiva',
+              content: [
+                {
+                  type: 'paragraph',
+                  text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              title: 'Mindfulness y ACT',
+              content: [
+                {
+                  type: 'paragraph',
+                  text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.',
+                },
+              ],
+            },
+          ],
         },
-        { type: 'title', text: 'Técnicas Específicas'},
-        { 
-            type: 'exercise', 
-            title: 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente', 
-            objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
-            content: [
-                { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'}
-            ]
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'exercise',
+          title: 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente',
+          objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.',
+            },
+          ],
         },
-        { 
-            type: 'exposureToIntoleranceExercise', 
-            title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
-            objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
-            content: [
-              { type: 'paragraph', text: 'Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. No anticipes el resultado. Haz la acción con conciencia.'}
-          ]
+        {
+          type: 'exposureToIntoleranceExercise',
+          title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto',
+          objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. No anticipes el resultado. Haz la acción con conciencia.',
+            },
+          ],
         },
-           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
-           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
-           prompts: ['¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?','¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?','¿Qué tipo de pensamientos suelen aumentar mi ansiedad?','¿He notado algún cambio en cómo me siento al no tener el control total?','¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?']},
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3' },
-          { type: 'list', items: [
-              'El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.',
-              'Técnicas como la respiración consciente, el escaneo corporal o el anclaje sensorial ayudan a activar el sistema de calma.',
-              'Exponerse de forma gradual a situaciones no controladas es una forma segura de construir confianza.',
-              'No necesitamos eliminar la ansiedad: podemos aprender a sostenerla sin que nos domine.',
-              'La práctica constante transforma la reacción automática en una respuesta más consciente y flexible.',
-              'Cada experiencia que enfrentamos con apertura debilita el miedo anticipatorio y refuerza nuestra seguridad interior.'
-          ]},
-          { type: 'quote', text: 'No tengo que controlarlo todo para estar a salvo. Estoy aprendiendo a confiar, incluso en medio de lo incierto.'}
-        ]
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
+          prompts: [
+            '¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?',
+            '¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?',
+            '¿Qué tipo de pensamientos suelen aumentar mi ansiedad?',
+            '¿He notado algún cambio en cómo me siento al no tener el control total?',
+            '¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?',
+          ],
+        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3' },
+        {
+          type: 'list',
+          items: [
+            'El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.',
+            'Técnicas como la respiración consciente, el escaneo corporal o el anclaje sensorial ayudan a activar el sistema de calma.',
+            'Exponerse de forma gradual a situaciones no controladas es una forma segura de construir confianza.',
+            'No necesitamos eliminar la ansiedad: podemos aprender a sostenerla sin que nos domine.',
+            'La práctica constante transforma la reacción automática en una respuesta más consciente y flexible.',
+            'Cada experiencia que enfrentamos con apertura debilita el miedo anticipatorio y refuerza nuestra seguridad interior.',
+          ],
+        },
+        { type: 'quote', text: 'No tengo que controlarlo todo para estar a salvo. Estoy aprendiendo a confiar, incluso en medio de lo incierto.' },
+      ],
     },
     {
-        id: 'incertidumbre_sem3',
-        title: 'Semana 3: Entrena tu Flexibilidad Mental',
-        type: 'skill_practice',
-        estimatedTime: '15-20 min',
-        content: [
-          { 
-            type: 'paragraphWithAudio', 
-            text: 'A veces, cuando algo te preocupa o no sabes qué va a ocurrir, tu mente se aferra a una sola forma de ver las cosas. Imagina lo peor. Cree que solo hay un camino posible. Esa rigidez mental puede darte una falsa sensación de control… pero también te impide adaptarte con libertad.Esta semana vas a entrenar tu flexibilidad cognitiva: la capacidad de cambiar de perspectiva, abrirte a nuevas opciones y responder con más calma y claridad cuando lo incierto te descoloca. No se trata de forzarte a pensar en positivo, sino de recordar que hay más de una manera de interpretar lo que ocurre… y más de una forma de seguir adelante.Adaptarte no es rendirte. Es crecer desde dentro.', 
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion3.mp3',
-          },
-          { type: 'title', text: 'Psicoeducación' },
-          { 
-            type: 'collapsible',
-            title: '¿Qué es la rigidez cognitiva?',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3',
-            content: [{ type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.' }]
-          },
-          {
-            type: 'collapsible',
-            title: '¿Cómo lo explica la neurociencia?',
-            content: [
-              { type: 'paragraph', text: 'Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.\nSistema 1: es la vía rápida. Funciona en piloto automático, sin que lo pienses demasiado. Es el que actúa cuando reaccionas de forma automática, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.\nSistema 2: es la vía lenta. Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.'}
-            ]
-          },
-          {
-            type: 'collapsible',
-            title: '¿Cómo se manifiesta en tu vida diaria la rigidez cognitiva?',
-            content: [
-              { type: 'list', items: [
-                'Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”',
-                'Necesidad constante de certezas',
-                'Perfeccionismo y duda que paraliza',
-                'Apego a formas de actuar y pensar que ya no funcionan'
-              ]}
-            ]
-          },
-          {
-            type: 'collapsible',
-            title: '¿Qué es la flexibilidad cognitiva?',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion3.mp3',
-            content: [
-              { type: 'paragraph', text: 'La flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar.\nEs poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control.\nLa flexibilidad no es debilidad ni indecisión. Es una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. Y como cualquier habilidad mental y emocional, se puede entrenar.'}
-            ]
-          },
-          {
-            type: 'collapsible',
-            title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental?',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion3.mp3',
-            content: [
-              { type: 'list', items: [
-                'Soltar el bucle de pensamientos rumiativos',
-                'Tolerar mejor la ambigüedad e incertidumbre',
-                'Recuperar perspectiva en momentos intensos',
-                'Ser más creativo/a, abierto/a y adaptativo/a'
-              ]}
-            ]
-          },
-          {
-            type: 'collapsible',
-            title: 'Metáfora del junco y el viento',
-            content: [
-              { type: 'paragraph', text: 'Un árbol rígido puede quebrarse en una tormenta.\nUn junco, en cambio, se dobla con el viento… y luego vuelve a levantarse.\nLa flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte.\nAdaptarte sin dejar de ser tú.'}
-            ]
-          },
-          { type: 'title', text: 'Técnicas Específicas'},
-          {
-            type: 'alternativeStoriesExercise',
-            title: 'Ejercicio 1: Historias Alternativas',
-            objective: 'Entrena tu flexibilidad mental imaginando más de un posible desenlace. No se trata de forzarte a pensar en positivo, sino de recordarte que lo que temes no siempre ocurre.',
-            duration: '5–10 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio5tecnica1.mp3'
-          },
-          {
-            type: 'mantraExercise',
-            title: 'Ejercicio 2: ¿Y si…? pero también…',
-            objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.',
-            duration: '5–7 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3'
-          },
-           { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
+      id: 'incertidumbre_sem3',
+      title: 'Semana 3: Entrena tu Flexibilidad Mental',
+      type: 'skill_practice',
+      estimatedTime: '15-20 min',
+      content: [{ type: 'paragraphWithAudio', text: 'A veces, cuando algo te preocupa o no sabes qué va a ocurrir, tu mente se aferra a una sola forma de ver las cosas. Imagina lo peor. Cree que solo hay un camino posible. Esa rigidez mental puede darte una falsa sensación de control… pero también te impide adaptarte con libertad.Esta semana vas a entrenar tu flexibilidad cognitiva: la capacidad de cambiar de perspectiva, abrirte a nuevas opciones y responder con más calma y claridad cuando lo incierto te descoloca. No se trata de forzarte a pensar en positivo, sino de recordar que hay más de una manera de interpretar lo que ocurre… y más de una forma de seguir adelante.Adaptarte no es rendirte. Es crecer desde dentro.', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion3.mp3'},{ type: 'title', text: 'Psicoeducación' },{ type: 'collapsible', title: '¿Qué es la rigidez cognitiva?', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3', content: [{ type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.' }] },{ type: 'collapsible', title: '¿Cómo lo explica la neurociencia?', content: [{ type: 'paragraph', text: 'Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.\nSistema 1: es la vía rápida. Funciona en piloto automático, sin que lo pienses demasiado. Es el que actúa cuando reaccionas de forma automática, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.\nSistema 2: es la vía lenta. Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.' }] },{ type: 'collapsible', title: '¿Cómo se manifiesta en tu vida diaria la rigidez cognitiva?', content: [{ type: 'list', items: ['Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”','Necesidad constante de certezas','Perfeccionismo y duda que paraliza','Apego a formas de actuar y pensar que ya no funcionan'] }] },{ type: 'collapsible', title: '¿Qué es la flexibilidad cognitiva?', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion3.mp3', content: [{ type: 'paragraph', text: 'La flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar.\nEs poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control.\nLa flexibilidad no es debilidad ni indecisión. Es una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. Y como cualquier habilidad mental y emocional, se puede entrenar.'}] },{ type: 'collapsible', title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental?', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion3.mp3', content: [{ type: 'list', items: ['Soltar el bucle de pensamientos rumiativos','Tolerar mejor la ambigüedad e incertidumbre','Recuperar perspectiva en momentos intensos','Ser más creativo/a, abierto/a y adaptativo/a'] }] },{ type: 'collapsible', title: 'Metáfora del junco y el viento', content: [{ type: 'paragraph', text: 'Un árbol rígido puede quebrarse en una tormenta.\nUn junco, en cambio, se dobla con el viento… y luego vuelve a levantarse.\nLa flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte.\nAdaptarte sin dejar de ser tú.'}] },{ type: 'title', text: 'Técnicas Específicas'},{ type: 'alternativeStoriesExercise', title: 'Ejercicio 1: Historias Alternativas', objective: 'Entrena tu flexibilidad mental imaginando más de un posible desenlace. No se trata de forzarte a pensar en positivo, sino de recordarte que lo que temes no siempre ocurre.', duration: '5–10 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio5tecnica1.mp3' },{ type: 'mantraExercise', title: 'Ejercicio 2: ¿Y si…? pero también…', objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.', duration: '5–7 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3' },{ type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3',
-           prompts: [
-              '¿Qué historia rígida me he contado esta semana que no se cumplió tal como la imaginaba?',
-              '¿Qué descubrí al permitirme ver la situación desde más de un ángulo?',
-              '¿Cuál de las frases “pero también…” sentí más mía o quiero recordarme más a menudo?',
-              '¿En qué momento me sorprendí reaccionando con más flexibilidad de lo habitual?',
-            ]},
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },
-          { type: 'list', items: [
-              'La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.',
-              'La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.',
-              'Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.',
-              'Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.',
-              'Adaptarte no significa rendirte, sino moverte con inteligencia emocional ante lo incierto.'
-          ]},
-          { type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme.'}
-        ]
+           prompts: ['¿Qué historia rígida me he contado esta semana que no se cumplió tal como la imaginaba?','¿Qué descubrí al permitirme ver la situación desde más de un ángulo?','¿Cuál de las frases “pero también…” sentí más mía o quiero recordarme más a menudo?','¿En qué momento me sorprendí reaccionando con más flexibilidad de lo habitual?']},{ type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },{ type: 'list', items: ['La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.','La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.','Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.','Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.','Adaptarte no significa rendirte, sino moverte con inteligencia emocional ante lo incierto.']},{ type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme.'}]
     },
     {
         id: 'incertidumbre_sem4',
@@ -428,3 +402,5 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
+
+    
