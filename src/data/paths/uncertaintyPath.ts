@@ -174,9 +174,9 @@ export const uncertaintyPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
-          type: 'paragraphWithAudio',
-          text: '¿Sientes que tu cuerpo se acelera cuando estás en tensión? Respirar más lento, mover el cuerpo o sentir el contacto con tu entorno puede ayudarte más de lo que imaginas.\n\nAquí encontrarás técnicas validadas por la ciencia para calmar tu sistema nervioso. Elige la que más te ayude y practica durante unos minutos. Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\nSi lo prefieres, activa el audio y déjate guiar.',
-          audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
+            type: 'paragraphWithAudio',
+            text: '¿Sientes que tu cuerpo se acelera cuando estás en tensión? Respirar más lento, mover el cuerpo o sentir el contacto con tu entorno puede ayudarte más de lo que imaginas.\n\nAquí encontrarás técnicas validadas por la ciencia para calmar tu sistema nervioso. Elige la que más te ayude y practica durante unos minutos.\nPuedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\nSi lo prefieres, activa el audio y déjate guiar.',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio6tecnica1.mp3',
         },
         {
             type: 'collapsible',
@@ -194,7 +194,7 @@ export const uncertaintyPath: Path = {
             title: '¿Qué cambia cuando las practicas?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/extras/R1semana2quecambia.mp3',
             content: [
-                { type: 'paragraph', text: '<b>En tu cuerpo:</b>\nRespiración más profunda y regular.\nRegulación del CO₂ (menos mareos o ahogo).\nReducción de tensión muscular.\nSensaciones de alivio, calor o calma.\n\n<b>En tu mente:</b>\nRecuperas el control y vuelves al presente.\nSe interrumpe el bucle de pensamientos ansiosos.\nRefuerzas el autocuidado y la conexión contigo.' },
+                { type: 'paragraph', text: 'En tu cuerpo:\n•\tRespiración más profunda y regular\n•\tRegulación del CO₂ (menos mareos o ahogo)\n•\tReducción de tensión muscular\n•\tSensaciones de alivio, calor o calma\n\nEn tu mente:\n•\tRecuperas el control y vuelves al presente\n•\tSe interrumpe el bucle de pensamientos ansiosos\n•\tRefuerzas el autocuidado y la conexión contigo' },
                 { type: 'paragraph', text: 'Estas técnicas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' },
             ],
         },
@@ -274,7 +274,7 @@ export const uncertaintyPath: Path = {
         },
         {
           type: 'exposureToIntoleranceExercise',
-          title: 'EJERCICIO 2: PEQUEÑOS ACTOS DE EXPOSICIÓN A LO INCIERTO',
+          title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto',
           objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
           audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
           content: [],
@@ -283,28 +283,12 @@ export const uncertaintyPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
-          prompts: [
-            '¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?',
-            '¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?',
-            '¿Qué tipo de pensamientos suelen aumentar mi ansiedad?',
-            '¿He notado algún cambio en cómo me siento al no tener el control total?',
-            '¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?',
-          ],
+          prompts: ['¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?','¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?','¿Qué tipo de pensamientos suelen aumentar mi ansiedad?','¿He notado algún cambio en cómo me siento al no tener el control total?','¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?']
         },
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3' },
-        {
-          type: 'list',
-          items: [
-            'El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.',
-            'Técnicas como la respiración consciente, el escaneo corporal o el anclaje sensorial ayudan a activar el sistema de calma.',
-            'Exponerse de forma gradual a situaciones no controladas es una forma segura de construir confianza.',
-            'No necesitamos eliminar la ansiedad: podemos aprender a sostenerla sin que nos domine.',
-            'La práctica constante transforma la reacción automática en una respuesta más consciente y flexible.',
-            'Cada experiencia que enfrentamos con apertura debilita el miedo anticipatorio y refuerza nuestra seguridad interior.',
-          ],
-        },
-        { type: 'quote', text: 'No tengo que controlarlo todo para estar a salvo. Estoy aprendiendo a confiar, incluso en medio de lo incierto.' },
-      ],
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3'},
+        { type: 'list', items: ['El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.','Técnicas como la respiración consciente, el escaneo corporal o el anclaje sensorial ayudan a activar el sistema de calma.','Exponerse de forma gradual a situaciones no controladas es una forma segura de construir confianza.','No necesitamos eliminar la ansiedad: podemos aprender a sostenerla sin que nos domine.','La práctica constante transforma la reacción automática en una respuesta más consciente y flexible.','Cada experiencia que enfrentamos con apertura debilita el miedo anticipatorio y refuerza nuestra seguridad interior.']},
+        { type: 'quote', text: 'No tengo que controlarlo todo para estar a salvo. Estoy aprendiendo a confiar, incluso en medio de lo incierto.'}
+      ]
     },
     {
       id: 'incertidumbre_sem3',
