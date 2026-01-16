@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 
@@ -31,8 +31,20 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
   
   const [isSaved, setIsSaved] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
-  const back = () => setStep(prev => prev - 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setSituation('');
+    setWhatCouldGoWrong('');
+    setHowToHandle('');
+    setPastExperience('');
+    setBodyReflection('');
+    setMindReflection('');
+    setRealityReflection('');
+    setFinalReflection('');
+    setIsSaved(false);
+  }
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -42,39 +54,31 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
     }
 
     const notebookContent = `
-**${(content as any).title} - Reflexión**
+**${(content as any).title}**
 
-*¿Qué pasó cuando no tuve todas las respuestas?*
+**Situación elegida:**
+${situation || 'No especificada.'}
+
+**Antes de actuar:**
+- ¿Qué creo que podría salir mal?: ${whatCouldGoWrong || 'No especificado.'}
+- ¿Qué haría si eso pasara?: ${howToHandle || 'No especificado.'}
+- Experiencia pasada que me dio fuerza: ${pastExperience || 'No especificado.'}
+
+**Observación posterior:**
+- En mi cuerpo: ${bodyReflection || 'No especificado.'}
+- En mi mente: ${mindReflection || 'No especificado.'}
+- En la realidad: ${realityReflection || 'No especificado.'}
+
+**Reflexión final para mi cuaderno terapéutico:**
 ${finalReflection}
-
-*Situación elegida:*
-${situation}
-
-*Lo que creía que podría salir mal:*
-${whatCouldGoWrong}
-
-*Plan de afrontamiento:*
-${howToHandle}
-
-*Experiencia pasada que me dio fuerza:*
-${pastExperience}
-
-*Reflexión corporal:*
-${bodyReflection}
-
-*Reflexión mental:*
-${mindReflection}
-
-*Lo que ocurrió en realidad:*
-${realityReflection}
-    `;
-    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0,20)}`, content: notebookContent, pathId });
+`;
+    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
   };
   
   const renderStep = () => {
-    switch (step) {
+    switch(step) {
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
@@ -82,19 +86,32 @@ ${realityReflection}
             <p className="text-sm text-muted-foreground">Cuando anticipas lo peor, tu cuerpo reacciona como si ya estuvieras en peligro. Pero esa percepción no siempre es real: muchas veces es solo una interpretación que tu mente hace ante la incertidumbre.</p>
             <p className="text-sm text-muted-foreground">Para entrenarte a vivir con más calma, incluso cuando no tienes todas las respuestas, necesitas practicar algo clave: Exponerte, en dosis pequeñas, a lo que no puedes controlar.</p>
             <p className="text-sm text-muted-foreground font-semibold">Este ejercicio te invita a hacerlo de forma segura y consciente.</p>
-            <Button onClick={next}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Elige tu situación</h4>
-            <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. Ejemplos: Enviar un mensaje sin revisar 3 veces, tomar una decisión sencilla sin pedir confirmación...</Label>
-            <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} />
-            <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next}>Siguiente</Button></div>
+            <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal.</Label>
+             <div className="text-xs text-muted-foreground p-2 border rounded-md bg-background/50">
+                <p className="font-semibold">Ejemplos:</p>
+                <ul className="list-disc list-inside pl-2">
+                    <li>Enviar un mensaje sin revisar 3 veces</li>
+                    <li>Tomar una decisión sencilla sin pedir confirmación</li>
+                    <li>Hacer una pregunta en clase o en una reunión, aunque no estés 100% seguro/a</li>
+                    <li>No llevar siempre el objeto “por si acaso” (medicación, agua, cargador…)</li>
+                    <li>Empezar una conversación sin planear qué vas a decir</li>
+                </ul>
+            </div>
+            <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="¿Cuál será tu pequeña exposición de hoy?"/>
+            <div className="flex justify-between w-full">
+                <Button onClick={prevStep} variant="outline">Atrás</Button>
+                <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
-      case 2:
+       case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Antes de actuar</h4>
@@ -102,7 +119,10 @@ ${realityReflection}
             <div className="space-y-2"><Label htmlFor="what-wrong">¿Qué creo que podría salir mal?</Label><Textarea id="what-wrong" value={whatCouldGoWrong} onChange={e => setWhatCouldGoWrong(e.target.value)} /></div>
             <div className="space-y-2"><Label htmlFor="how-handle">¿Qué haría si eso pasara?</Label><Textarea id="how-handle" value={howToHandle} onChange={e => setHowToHandle(e.target.value)} /></div>
             <div className="space-y-2"><Label htmlFor="past-exp">¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza?</Label><Textarea id="past-exp" value={pastExperience} onChange={e => setPastExperience(e.target.value)} /></div>
-            <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next}>Hecho, siguiente</Button></div>
+            <div className="flex justify-between w-full">
+                <Button onClick={prevStep} variant="outline">Atrás</Button>
+                <Button onClick={nextStep}>Hecho, siguiente</Button>
+            </div>
           </div>
         );
       case 3:
@@ -113,29 +133,42 @@ ${realityReflection}
             <div className="space-y-2"><Label>En tu cuerpo (¿Se activó algo? ¿Hubo tensión? ¿Cómo fue cambiando?):</Label><Textarea value={bodyReflection} onChange={e => setBodyReflection(e.target.value)} /></div>
             <div className="space-y-2"><Label>En tu mente (¿Qué pensamientos aparecieron? ¿Se cumplieron tus predicciones?):</Label><Textarea value={mindReflection} onChange={e => setMindReflection(e.target.value)} /></div>
             <div className="space-y-2"><Label>En la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?):</Label><Textarea value={realityReflection} onChange={e => setRealityReflection(e.target.value)} /></div>
-            <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next}>Siguiente</Button></div>
+            <div className="flex justify-between w-full">
+                <Button onClick={prevStep} variant="outline">Atrás</Button>
+                <Button onClick={nextStep}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 4: Reflexión final</h4>
-            <Label htmlFor="final-reflection">Para tu cuaderno: ¿Qué pasó cuando no tuve todas las respuestas? ¿Fue tan grave como imaginaba?</Label>
-            <Textarea id="final-reflection" value={finalReflection} onChange={e => setFinalReflection(e.target.value)} disabled={isSaved}/>
+            <h4 className="font-semibold text-lg">Reflexión final para tu cuaderno terapéutico:</h4>
+            <div className="space-y-2">
+                <Label htmlFor="final-reflection">¿Qué pasó cuando no tuve todas las respuestas? ¿Fue tan grave como imaginaba?</Label>
+                <Textarea id="final-reflection" value={finalReflection} onChange={e => setFinalReflection(e.target.value)} disabled={isSaved}/>
+            </div>
             {!isSaved ? (
-              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en Cuaderno</Button>
+                <div className="flex justify-between w-full">
+                    <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
+                    <Button type="submit" disabled={!finalReflection.trim()}>
+                        <Save className="mr-2 h-4 w-4"/> Guardar en Cuaderno
+                    </Button>
+                </div>
             ) : (
-              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <p className="font-medium">Guardado.</p>
+              <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                <div className="flex items-center">
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  <p className="font-medium">Guardado.</p>
+                </div>
+                <Button onClick={resetExercise} variant="link" className="mt-2 text-xs h-auto p-0">Hacer otro registro</Button>
               </div>
             )}
-            <Button onClick={() => setStep(0)} variant="link" className="w-full">Hacer otro registro</Button>
           </form>
         );
       default: return null;
     }
   };
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
