@@ -35,7 +35,7 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Por qué nos cuesta tanto la incertidumbre?',
-          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion1.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion1.mp3',
           content: [
             { type: 'paragraph', text: 'Porque nuestro sistema emocional busca seguridad. Preferimos incluso una mala noticia conocida antes que quedarnos en el “no sé”.\nEstudios en neurociencia han demostrado que la incertidumbre activa el sistema de amenaza cerebral (en especial, la amígdala) de forma parecida a como lo haría un peligro real.\nCuando esto ocurre, muchas personas sienten:\n•\tNecesidad de controlarlo todo.\n•\tPensamientos de anticipación (“¿Y si…?”).\n•\tEvitación de decisiones o situaciones inciertas.' }
           ]
@@ -70,7 +70,7 @@ export const uncertaintyPath: Path = {
           content: [
             { type: 'list', items: [
               'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
-              'Nuestro cuerpo y mente tienden a sobreprotegeros cuando sentimos que no tenemos el control.',
+              'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
               'La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.',
               'No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.',
               'Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'
@@ -156,7 +156,7 @@ export const uncertaintyPath: Path = {
               { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}
             ]
           },
-          { type: 'title', text: 'Técnicas Específicas' },
+          { type: 'title', text: 'Técnicas Específicas'},
           { 
             type: 'exercise', 
             title: 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente', 
@@ -167,7 +167,7 @@ export const uncertaintyPath: Path = {
             ]
           },
           { 
-            type: 'exercise', 
+            type: 'exposureToIntoleranceExercise', 
             title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
             objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
@@ -353,7 +353,8 @@ export const uncertaintyPath: Path = {
             type: 'mantraExercise',
             title: 'Ejercicio 1: Mi mantra de confianza',
             objective: 'Crea una frase breve, realista y significativa que funcione como una brújula interna para recordarte que puedes sostenerte aunque no tengas todo resuelto.',
-            duration: '7–10 minutos'
+            duration: '7–10 minutos',
+            audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio5tecnica1.mp3',
           },
           {
             type: 'ritualDeEntregaConscienteExercise',
@@ -435,6 +436,5 @@ export const uncertaintyPath: Path = {
     
 
     
-
 
 
