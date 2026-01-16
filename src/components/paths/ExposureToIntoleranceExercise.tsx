@@ -24,9 +24,11 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
   const [whatCouldGoWrong, setWhatCouldGoWrong] = useState('');
   const [howToHandle, setHowToHandle] = useState('');
   const [pastExperience, setPastExperience] = useState('');
+  
   const [bodyReflection, setBodyReflection] = useState('');
   const [mindReflection, setMindReflection] = useState('');
   const [realityReflection, setRealityReflection] = useState('');
+  
   const [finalReflection, setFinalReflection] = useState('');
   
   const [isSaved, setIsSaved] = useState(false);
@@ -44,7 +46,7 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
     setRealityReflection('');
     setFinalReflection('');
     setIsSaved(false);
-  }
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -54,7 +56,7 @@ export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToInt
     }
 
     const notebookContent = `
-**${(content as any).title}**
+**Ejercicio: Pequeños Actos de Exposición a lo Incierto**
 
 **Situación elegida:**
 ${situation || 'No especificada.'}
@@ -75,10 +77,11 @@ ${finalReflection}
     addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
+    nextStep(); // Corregido: Avanzar al siguiente paso después de guardar
   };
   
   const renderStep = () => {
-    switch(step) {
+    switch (step) {
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
@@ -121,7 +124,7 @@ ${finalReflection}
             <div className="space-y-2"><Label htmlFor="past-exp">¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza?</Label><Textarea id="past-exp" value={pastExperience} onChange={e => setPastExperience(e.target.value)} /></div>
             <div className="flex justify-between w-full">
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
-                <Button onClick={nextStep}>Hecho, siguiente</Button>
+                <Button onClick={nextStep} disabled={!whatCouldGoWrong.trim() || !howToHandle.trim() || !pastExperience.trim()}>Hecho, siguiente</Button>
             </div>
           </div>
         );
@@ -135,7 +138,7 @@ ${finalReflection}
             <div className="space-y-2"><Label>En la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?):</Label><Textarea value={realityReflection} onChange={e => setRealityReflection(e.target.value)} /></div>
             <div className="flex justify-between w-full">
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
-                <Button onClick={nextStep}>Siguiente</Button>
+                <Button onClick={nextStep} disabled={!bodyReflection.trim() || !mindReflection.trim() || !realityReflection.trim()}>Siguiente</Button>
             </div>
           </div>
         );
@@ -144,7 +147,10 @@ ${finalReflection}
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Reflexión final para tu cuaderno terapéutico:</h4>
             <div className="space-y-2">
-                <Label htmlFor="final-reflection">¿Qué pasó cuando no tuve todas las respuestas? ¿Fue tan grave como imaginaba?</Label>
+                <ul className="list-disc list-inside text-sm text-muted-foreground">
+                    <li>¿Qué pasó cuando no tuve todas las respuestas?</li>
+                    <li>¿Fue tan grave como imaginaba?</li>
+                </ul>
                 <Textarea id="final-reflection" value={finalReflection} onChange={e => setFinalReflection(e.target.value)} disabled={isSaved}/>
             </div>
             {!isSaved ? (
@@ -156,14 +162,19 @@ ${finalReflection}
                 </div>
             ) : (
               <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                <div className="flex items-center">
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  <p className="font-medium">Guardado.</p>
-                </div>
-                <Button onClick={resetExercise} variant="link" className="mt-2 text-xs h-auto p-0">Hacer otro registro</Button>
+                <p className="font-medium">Guardado.</p>
               </div>
             )}
           </form>
+        );
+      case 5:
+        return (
+            <div className="p-6 text-center space-y-4">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">¡Ejercicio completado y guardado!</h4>
+                <p className="text-muted-foreground">Has dado un paso valiente para entrenar tu confianza. Cada vez que te expones a la incertidumbre y compruebas que puedes sostenerla, tu resiliencia crece.</p>
+                <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+            </div>
         );
       default: return null;
     }
@@ -188,3 +199,4 @@ ${finalReflection}
     </Card>
   );
 }
+
