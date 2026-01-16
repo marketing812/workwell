@@ -1,5 +1,4 @@
 
-
 import type { Path } from '../pathsData';
 
 export const uncertaintyPath: Path = {
@@ -29,16 +28,14 @@ export const uncertaintyPath: Path = {
             title: '¿Qué es la incertidumbre?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/queeslaincertidumbre.mp3',
             content: [
-                { type: 'paragraph', text: 'La incertidumbre es la ausencia de certezas. Es no saber qué va a pasar. Y aunque todos la experimentamos, no siempre sabemos sostenerla sin malestar. A veces hay un riesgo real, pero muchas otras veces lo que sentimos es ambigüedad, imprevisibilidad o simplemente falta de información clara.\nNuestro cerebro —diseñado para anticiparse y protegernos— interpreta esa falta de claridad como una posible amenaza. Y ahí empieza el malestar.' },
+                { type: 'paragraph', text: 'La incertidumbre es la ausencia de certezas. Es no saber qué va a pasar. Y aunque todos la experimentamos, no siempre sabemos sostenerla sin malestar. A veces hay un riesgo real, pero muchas otras veces lo que sentimos es ambigüedad, imprevisibilidad o simplemente falta de información clara.\nNuestro cerebro —diseñado para anticiparse y protegernos— interpreta esa falta de claridad como una posible amenaza. Y ahí empieza el malestar.' }
             ]
         },
         {
           type: 'collapsible',
           title: '¿Por qué nos cuesta tanto la incertidumbre?',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion1.mp3',
-          content: [
-            { type: 'paragraph', text: 'Porque nuestro sistema emocional busca seguridad. Preferimos incluso una mala noticia conocida antes que quedarnos en el “no sé”.\nEstudios en neurociencia han demostrado que la incertidumbre activa el sistema de amenaza cerebral (en especial, la amígdala) de forma parecida a como lo haría un peligro real.\nCuando esto ocurre, muchas personas sienten:\n•\tNecesidad de controlarlo todo.\n•\tPensamientos de anticipación (“¿Y si…?”).\n•\tEvitación de decisiones o situaciones inciertas.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Porque nuestro sistema emocional busca seguridad. Preferimos incluso una mala noticia conocida antes que quedarnos en el “no sé”.\nEstudios en neurociencia han demostrado que la incertidumbre activa el sistema de amenaza cerebral (en especial, la amígdala) de forma parecida a como lo haría un peligro real.\nCuando esto ocurre, muchas personas sienten:\n•\tNecesidad de controlarlo todo.\n•\tPensamientos de anticipación (“¿Y si…?”).\n•\tEvitación de decisiones o situaciones inciertas.' }]
         },
         {
           type: 'collapsible',
@@ -68,13 +65,7 @@ export const uncertaintyPath: Path = {
           type: 'collapsible',
           title: 'En resumen…',
           content: [
-            { type: 'list', items: [
-              'La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.',
-              'Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.',
-              'La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.',
-              'No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.',
-              'Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'
-            ]}
+            { type: 'list', items: ['La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.','Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.','La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.','No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.','Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.'] }
           ]
         },
         { type: 'quote', text: 'No podemos eliminar la incertidumbre, pero sí podemos aprender a vivir con ella desde un lugar más flexible y sereno.' },
@@ -114,50 +105,62 @@ export const uncertaintyPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [
-          { 
+        { 
             type: 'paragraphWithAudio', 
             text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3',
-          },
-          { type: 'title', text: 'Psicoeducación' },
-          { 
+            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3'
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        { 
             type: 'collapsible',
             title: '¿Por qué imaginamos lo peor?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3',
             content: [
-                { type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. '},
+                { type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta. \n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real. ' }
             ]
-          },
-          {
-            type: 'collapsible',
-            title: 'Tu sistema de amenaza: entre el miedo y la percepción',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion2.mp3',
-            content: [{type: 'paragraph', text: 'Nuestro sistema nervioso tiene una función adaptativa: protegernos ante lo que percibimos como peligroso. Pero el problema es que no distingue bien entre peligro real —algo que está sucediendo— y mental —algo que podría pasar—.   Cuando anticipas algo negativo, tu cuerpo entra en modo defensa:   Se activa una zona del cerebro llamada amígdala, que funciona como una alarma interna.   Esta activación acelera el corazón, tensa los músculos y prepara al cuerpo para reaccionar rápido.   Al mismo tiempo, se apaga o bloquea parcialmente la zona del cerebro que te ayuda a pensar con claridad (la corteza prefrontal), porque el cuerpo prioriza la supervivencia, no la reflexión.   Es decir: tu cuerpo reacciona al “¿y si…?” como si ya estuviera ocurriendo. Te sientes inquieto/a, alerta, con dificultad para concentrarte o calmarte. Todo esto nace de un pensamiento como, por ejemplo: “¿Y si no puedo con esto?”'}]
-          },
-          {
-            type: 'collapsible',
-            title: '¿Qué activa mi sistema de amenaza?',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
-            content: [
-              { type: 'paragraph', text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:'},
-              { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}]},
-              { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.' }]},
-              { type: 'collapsible', title: 'Neurocepción inconsciente', content: [{type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como:   El tono de voz de alguien   Una mirada o gesto   Un recuerdo doloroso   O simplemente un cambio en tu entorno   Y si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'}]}
-            ]
-          },
-          {
-            type: 'collapsible',
-            title: 'Herramientas para regular el sistema de amenaza',
-            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion2.mp3',
-            content: [
-              { type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},
-              { type: 'collapsible', title: 'Exposición progresiva', content: [{type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},
-              { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},
-              { type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}
-            ]
-          },
-          { type: 'title', text: 'Técnicas Específicas'},
-          { 
+        },
+        {
+          type: 'collapsible',
+          title: 'Tu sistema de amenaza: entre el miedo y la percepción',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion2.mp3',
+          content: [{type: 'paragraph', text: 'Nuestro sistema nervioso tiene una función adaptativa: protegernos ante lo que percibimos como peligroso. Pero el problema es que no distingue bien entre peligro real —algo que está sucediendo— y mental —algo que podría pasar—.   Cuando anticipas algo negativo, tu cuerpo entra en modo defensa:   Se activa una zona del cerebro llamada amígdala, que funciona como una alarma interna.   Esta activación acelera el corazón, tensa los músculos y prepara al cuerpo para reaccionar rápido.   Al mismo tiempo, se apaga o bloquea parcialmente la zona del cerebro que te ayuda a pensar con claridad (la corteza prefrontal), porque el cuerpo prioriza la supervivencia, no la reflexión.   Es decir: tu cuerpo reacciona al “¿y si…?” como si ya estuviera ocurriendo. Te sientes inquieto/a, alerta, con dificultad para concentrarte o calmarte. Todo esto nace de un pensamiento como, por ejemplo: “¿Y si no puedo con esto?”'}]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Qué activa mi sistema de amenaza?',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
+          content: [
+            { type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como el tono de voz de alguien, una mirada o un gesto, un recuerdo doloroso, o simplemente un cambio en tu entorno, e interpreta alguna de esas señales como insegura, activando la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'},
+            {
+              type: 'collapsible',
+              title: 'Errores de pensamiento',
+              content: [
+                {
+                  type: 'paragraph',
+                  text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'
+                }
+              ]
+            },
+            {
+              type: 'collapsible',
+              title: 'Creencias aprendidas',
+              content: [
+                {
+                  type: 'paragraph',
+                  text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Herramientas para regular el sistema de amenaza',
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion2.mp3',
+          content: [{ type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},{type: 'collapsible', title: 'Exposición progresiva', content: [{type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},{type: 'collapsible', title: 'Reestructuración cognitiva', content: [{type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},{type: 'collapsible', title: 'Mindfulness y ACT', content: [{type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}]
+        },
+        { type: 'title', text: 'Técnicas Específicas'},
+        { 
             type: 'exercise', 
             title: 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente', 
             objective: 'Encuentra técnicas validadas por la ciencia para calmar tu sistema nervioso y elige las que más te ayuden.',
@@ -165,24 +168,19 @@ export const uncertaintyPath: Path = {
             content: [
                 { type: 'paragraph', text: 'Puedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.'}
             ]
-          },
-          { 
+        },
+        { 
             type: 'exposureToIntoleranceExercise', 
             title: 'Ejercicio 2: Pequeños Actos de Exposición a lo Incierto', 
             objective: 'Entrénate para vivir con más calma, incluso cuando no tienes todas las respuestas, mediante la exposición segura y consciente a lo que no puedes controlar.',
             audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion2audio7tecnica2.mp3',
             content: [
               { type: 'paragraph', text: 'Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal. No anticipes el resultado. Haz la acción con conciencia.'}
-          ]},
+          ]
+        },
            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
            audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion2.mp3',
-           prompts: [
-              '¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?',
-              '¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?',
-              '¿Qué tipo de pensamientos suelen aumentar mi ansiedad?',
-              '¿He notado algún cambio en cómo me siento al no tener el control total?',
-              '¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?',
-           ]},
+           prompts: ['¿Qué he aprendido sobre mi forma de reaccionar ante lo incierto?','¿Qué me ha ayudado más: calmarme antes, enfrentarme directamente o ambas cosas?','¿Qué tipo de pensamientos suelen aumentar mi ansiedad?','¿He notado algún cambio en cómo me siento al no tener el control total?','¿Qué me gustaría seguir practicando para fortalecer mi confianza ante lo incierto?']},
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio9Ruta2Sesion2.mp3' },
           { type: 'list', items: [
               'El cuerpo reacciona a la incertidumbre como si fuera una amenaza real, pero podemos enseñarle que no lo es.',
@@ -193,7 +191,7 @@ export const uncertaintyPath: Path = {
               'Cada experiencia que enfrentamos con apertura debilita el miedo anticipatorio y refuerza nuestra seguridad interior.'
           ]},
           { type: 'quote', text: 'No tengo que controlarlo todo para estar a salvo. Estoy aprendiendo a confiar, incluso en medio de lo incierto.'}
-      ]
+        ]
     },
     {
         id: 'incertidumbre_sem3',
@@ -430,11 +428,3 @@ export const uncertaintyPath: Path = {
     },
   ],
 };
-
-
-
-    
-
-    
-
-
