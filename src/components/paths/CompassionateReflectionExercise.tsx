@@ -1,16 +1,16 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface CompassionateReflectionExerciseProps {
   content: ModuleContent;
@@ -19,17 +19,33 @@ interface CompassionateReflectionExerciseProps {
 
 export function CompassionateReflectionExercise({ content, pathId }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [adviceToFriend, setAdviceToFriend] = useState('');
   const [selfJudgment, setSelfJudgment] = useState('');
   const [avoidedEmotions, setAvoidedEmotions] = useState<Record<string, boolean>>({});
+  const [otherAvoidedEmotion, setOtherAvoidedEmotion] = useState('');
   const [aftermathEmotion, setAftermathEmotion] = useState('');
   const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
   const [flexibleThought, setFlexibleThought] = useState('');
 
   if (content.type !== 'compassionateReflectionExercise') return null;
 
+  const emotionOptions = [
+    { id: 'fear', label: 'Miedo al fallo' },
+    { id: 'shame', label: 'Vergüenza' },
+    { id: 'guilt', label: 'Culpa' },
+    { id: 'anxiety', label: 'Ansiedad' },
+    { id: 'sadness', label: 'Tristeza' },
+    { id: 'frustration', label: 'Frustración' },
+  ];
+
   const handleSave = async () => {
+    const selectedEmotions = emotionOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
+    if (avoidedEmotions['other'] && otherAvoidedEmotion) {
+        selectedEmotions.push(otherAvoidedEmotion);
+    }
+    
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -40,9 +56,7 @@ ${adviceToFriend || 'No especificado.'}
 ${selfJudgment || 'No especificado.'}
 
 *Emociones que intenté evitar:*
-${Object.keys(avoidedEmotions)
-  .filter(k => avoidedEmotions[k])
-  .join(', ') || 'No especificadas.'}
+${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}
 
 *¿Qué sentí después de evitarlo?:*
 ${aftermathEmotion || 'No especificado.'}
@@ -61,6 +75,7 @@ ${flexibleThought || 'No especificada.'}
         content: notebookContent,
         pathId,
         ruta: 'Superar la Procrastinación y Crear Hábitos',
+        userId: user?.id,
     });
     toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
     setStep(prev => prev + 1);
@@ -71,6 +86,7 @@ ${flexibleThought || 'No especificada.'}
     setAdviceToFriend('');
     setSelfJudgment('');
     setAvoidedEmotions({});
+    setOtherAvoidedEmotion('');
     setAftermathEmotion('');
     setPerfectionism({});
     setFlexibleThought('');
@@ -126,10 +142,11 @@ ${flexibleThought || 'No especificada.'}
               onChange={e => setSelfJudgment(e.target.value)}
               placeholder="Pensé que no valía para esto..."
             />
-            <p className="text-sm text-center text-primary">Es solo un pensamiento. No eres ese pensamiento.</p>
-            <Button onClick={() => setStep(3)} className="w-full mt-2">
-              Siguiente
-            </Button>
+            <p className="text-sm text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={() => setStep(3)} disabled={!selfJudgment.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 3:
@@ -138,33 +155,36 @@ ${flexibleThought || 'No especificada.'}
             <div className="space-y-2">
                 <Label>¿Qué emoción crees que intentabas evitar cuando procrastinaste?</Label>
                 <div className="space-y-1">
-                <div className="flex items-center gap-2">
+                {emotionOptions.map(opt => (
+                     <div key={opt.id} className="flex items-center gap-2">
+                        <Checkbox
+                        id={opt.id}
+                        checked={avoidedEmotions[opt.id] || false}
+                        onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, [opt.id]: !!c }))}
+                        />
+                        <Label htmlFor={opt.id} className="font-normal">
+                        {opt.label}
+                        </Label>
+                    </div>
+                ))}
+                 <div className="flex items-center gap-2">
                     <Checkbox
-                    id="fear"
-                    onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, fear: !!c }))}
+                    id="other"
+                    checked={avoidedEmotions['other'] || false}
+                    onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, other: !!c }))}
                     />
-                    <Label htmlFor="fear" className="font-normal">
-                    Miedo al fallo
+                    <Label htmlFor="other" className="font-normal">
+                    Otra:
                     </Label>
                 </div>
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                    id="shame"
-                    onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, shame: !!c }))}
+                {avoidedEmotions['other'] && (
+                     <Textarea 
+                        value={otherAvoidedEmotion}
+                        onChange={(e) => setOtherAvoidedEmotion(e.target.value)}
+                        placeholder="Describe la otra emoción..."
+                        className="ml-6 mt-1"
                     />
-                    <Label htmlFor="shame" className="font-normal">
-                    Vergüenza
-                    </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                    id="guilt"
-                    onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, guilt: !!c }))}
-                    />
-                    <Label htmlFor="guilt" className="font-normal">
-                    Culpa
-                    </Label>
-                </div>
+                )}
                 </div>
             </div>
             <div className="pt-4 space-y-2">
@@ -176,9 +196,10 @@ ${flexibleThought || 'No especificada.'}
                 placeholder="Alivio momentáneo... y luego frustración."
                 />
             </div>
-            <Button onClick={() => setStep(4)} className="w-full mt-2">
-              Siguiente
-            </Button>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={() => setStep(4)} disabled={!aftermathEmotion.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4:
@@ -191,6 +212,7 @@ ${flexibleThought || 'No especificada.'}
                     <Checkbox
                     id="perfect"
                     onCheckedChange={c => setPerfectionism(p => ({ ...p, perfect: !!c }))}
+                    checked={perfectionism.perfect || false}
                     />
                     <Label htmlFor="perfect" className="font-normal">
                     Pensé que, si no lo hacía perfecto, mejor no hacerlo.
@@ -200,6 +222,7 @@ ${flexibleThought || 'No especificada.'}
                     <Checkbox
                     id="energy"
                     onCheckedChange={c => setPerfectionism(p => ({ ...p, energy: !!c }))}
+                    checked={perfectionism.energy || false}
                     />
                     <Label htmlFor="energy" className="font-normal">
                     Sentí que tenía que estar con energía total.
@@ -209,6 +232,7 @@ ${flexibleThought || 'No especificada.'}
                     <Checkbox
                     id="no-error"
                     onCheckedChange={c => setPerfectionism(p => ({ ...p, error: !!c }))}
+                    checked={perfectionism.error || false}
                     />
                     <Label htmlFor="no-error" className="font-normal">
                     Cualquier error me parecía inaceptable.
@@ -225,9 +249,12 @@ ${flexibleThought || 'No especificada.'}
                 placeholder="Aunque no salga perfecto, un pequeño paso ya es avanzar."
                 />
             </div>
-            <Button onClick={handleSave} className="w-full mt-2">
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={handleSave} disabled={!flexibleThought.trim()}>
               Ver mi reflexión completa
             </Button>
+            </div>
           </div>
         );
       case 5:
@@ -235,7 +262,7 @@ ${flexibleThought || 'No especificada.'}
           <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
             <CheckCircle className="h-10 w-10 text-primary mx-auto" />
             <h4 className="font-bold text-lg">Tu Mapa de Comprensión Emocional</h4>
-            <p className="text-sm italic text-center">
+            <p className="text-sm italic text-center pt-2">
               Has dado un paso valiente. Hablarte con amabilidad te ayuda a avanzar.
             </p>
             <Button onClick={resetExercise} variant="outline" className="w-full">
