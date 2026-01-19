@@ -529,7 +529,7 @@ function ContentItemRenderer({
     case 'realisticRitualExercise':
       return <RealisticRitualExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'gentleTrackingExercise':
-      return <GentleTrackingExercise key={index} content={contentItem as ExerciseContent} pathId={path.id} />;
+      return <GentleTrackingExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'blockageMapExercise':
       return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
