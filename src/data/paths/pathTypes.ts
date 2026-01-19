@@ -2,6 +2,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -631,7 +632,7 @@ export type DailyWellbeingPlanExerciseContent = {
 
 export type MorningRitualExerciseContent = {
   type: 'morningRitualExercise';
-  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE Y CONSCIENTE';
+  title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE';
   objective?: string;
   duration?: string;
 };
@@ -716,7 +717,7 @@ export type AnxietyReframingExerciseContent = {
     audioUrl?: string;
 };
 
-// Nuevo tipo de ejercicio para el Ensayo de Crisis Imaginaria
+// NUEVO tipo de ejercicio para el Ensayo de Crisis Imaginaria
 export type ImaginedCrisisRehearsalExerciseContent = {
     type: 'imaginedCrisisRehearsalExercise';
     title: 'Ejercicio 2: Ensayo de Crisis Imaginaria';
@@ -724,6 +725,15 @@ export type ImaginedCrisisRehearsalExerciseContent = {
     duration?: string;
     audioUrl?: string;
 };
+
+export type ExposureToIntoleranceExerciseContent = {
+    type: 'exposureToIntoleranceExercise';
+    title: string;
+    objective: string;
+    audioUrl?: string;
+    content: [];
+};
+
 
 // A union type for all possible content block types within a module
 export type ModuleContent =
@@ -836,7 +846,8 @@ export type ModuleContent =
   | CalmVisualizationExerciseContent
   | AnxietyReframingExerciseContent
   // NUEVO
-  | ImaginedCrisisRehearsalExerciseContent;
+  | ImaginedCrisisRehearsalExerciseContent
+  | ExposureToIntoleranceExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
