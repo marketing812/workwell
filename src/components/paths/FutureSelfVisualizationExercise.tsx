@@ -115,6 +115,10 @@ Fíjate en tu postura, tu ropa, tu rostro…
 Nota si hay algo en tu expresión que te transmite calma, determinación, satisfacción…</p>
                                     
                                     <h4 className="font-semibold pt-2">Parte 2 – Integración emocional y somática</h4>
+                                    <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
+                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejerccio2parte2integracionemocional.mp3" type="audio/mp3" />
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
                                     <p>Ahora trata de sentir lo que esa versión de ti siente: 
 ¿Qué emociones están presentes? 
 ¿Orgullo? ¿Tranquilidad? ¿Autoconfianza?</p>
