@@ -73,7 +73,7 @@ Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro 
                 <Accordion type="single" collapsible>
                                 <AccordionItem value="item-1">
                                 <AccordionTrigger>
-                                    Leer visualización completa
+                                    Mostar la Visualización Completa
                                 </AccordionTrigger>
                                 <AccordionContent className="text-sm text-muted-foreground space-y-2">
                                      <h4 className="font-semibold">Inicio – Respiración y conexión corporal</h4>
