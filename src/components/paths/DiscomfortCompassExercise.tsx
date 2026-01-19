@@ -76,6 +76,7 @@ export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompass
   const [responseConfidence, setResponseConfidence] = useState(5);
 
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = () => {
     const getSelectedLabels = (options: {id: string, label: string}[], selections: Record<string, boolean>) => {
@@ -174,7 +175,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <div className="flex items-center space-x-2 pt-1"><Checkbox id="body-other" checked={bodySensations['body-other'] || false} onCheckedChange={c => setBodySensations(p => ({...p, 'body-other':!!c}))} /><Label htmlFor="body-other" className="font-normal">Otra:</Label></div>
                     {bodySensations['body-other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró." className="ml-6"/>}
                 </div>
-                <Button onClick={next} className="w-full">Siguiente</Button>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
             </div>
         );
       case 3: // Emociones y pensamientos
@@ -197,7 +198,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <Label htmlFor="thought-belief">¿Cuánto te creíste ese pensamiento? {thoughtBelief}%</Label>
                     <Slider id="thought-belief" value={[thoughtBelief]} onValueChange={v => setThoughtBelief(v[0])} max={100} step={5} />
                 </div>
-                 <Button onClick={next} className="w-full">Siguiente</Button>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
             </div>
         );
        case 4: // Impulso e intuición
@@ -220,7 +221,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <Label htmlFor="body-told-me">¿Tu cuerpo y tus emociones estaban intentando decirte algo?</Label>
                     <Textarea id="body-told-me" value={bodyToldMe} onChange={e => setBodyToldMe(e.target.value)} placeholder="Campo abierto de reflexión libre." />
                 </div>
-                <Button onClick={next} className="w-full">Siguiente</Button>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
             </div>
         );
       case 5: // Respuesta alternativa
@@ -249,7 +250,10 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <Label htmlFor="response-confidence">¿Qué grado de seguridad te genera esta nueva respuesta? {responseConfidence}%</Label>
                     <Slider id="response-confidence" value={[responseConfidence]} onValueChange={v => setResponseConfidence(v[0])} max={100} step={5} />
                 </div>
-                <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar mi Brújula</Button>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4" /> Guardar mi Brújula</Button>
+                </div>
             </div>
         );
       case 6: // Final confirmation
