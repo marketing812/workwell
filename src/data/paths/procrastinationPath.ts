@@ -1,4 +1,5 @@
 
+
 import type { Path } from '../pathsData';
 
 export const procrastinationPath: Path = {
@@ -379,16 +380,16 @@ export const procrastinationPath: Path = {
           },
           { 
             type: 'title', 
-            text: 'Resumen Final de la Ruta',
+            text: 'Resumen Clave de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/RESUMEN.mp3' 
           },
           { type: 'list', items: [
-              'Procrastinar no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
+              'La procrastinación no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
               'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
               'Pensar diferente cambia tu forma de actuar: reestructurar tus creencias te ayuda a desbloquearte.',
               'Un hábito funciona cuando es realista, sencillo, emocionalmente significativo y se adapta a ti.',
               'La constancia amable es más poderosa que la exigencia rígida.',
-            ]
+            ] 
           },
           { type: 'quote', text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.' },
       ],

@@ -3,6 +3,7 @@
 
 
 
+
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -127,6 +128,7 @@ export type DelSabotajeALaAccionExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MapOfUnsaidThingsExerciseContent = {
@@ -734,6 +736,33 @@ export type ExposureToIntoleranceExerciseContent = {
     content: [];
 };
 
+export type TwoMinuteRuleExerciseContent = {
+    type: 'twoMinuteRuleExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type FutureSelfVisualizationExerciseContent = {
+    type: 'futureSelfVisualizationExercise';
+    title: string;
+    objective: string;
+    duration?: string;
+};
+
+export type RealisticRitualExerciseContent = {
+    type: 'realisticRitualExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
+
+export type GentleTrackingExerciseContent = {
+    type: 'gentleTrackingExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+};
 
 // A union type for all possible content block types within a module
 export type ModuleContent =
@@ -755,6 +784,10 @@ export type ModuleContent =
   | AlternativeStoriesExerciseContent
   | MantraExerciseContent
   | DelSabotajeALaAccionExerciseContent
+  | TwoMinuteRuleExerciseContent
+  | FutureSelfVisualizationExerciseContent
+  | RealisticRitualExerciseContent
+  | GentleTrackingExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
   | AssertivePhraseExerciseContent
@@ -847,7 +880,9 @@ export type ModuleContent =
   | AnxietyReframingExerciseContent
   // NUEVO
   | ImaginedCrisisRehearsalExerciseContent
-  | ExposureToIntoleranceExerciseContent;
+  | ExposureToIntoleranceExerciseContent
+  | BlockageMapExerciseContent
+  | CompassionateReflectionExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
