@@ -67,6 +67,7 @@ import { ControlTrafficLightExercise } from '@/components/paths/ControlTrafficLi
 import { AlternativeStoriesExercise } from '@/components/paths/AlternativeStoriesExercise';
 import { MantraExercise } from '@/components/paths/MantraExercise';
 import { RitualDeEntregaConscienteExercise } from './RitualDeEntregaConscienteExercise';
+import { ExposureToIntoleranceExercise } from '@/components/paths/ExposureToIntoleranceExercise';
 // RUTA 3
 import { DelSabotajeALaAccionExercise } from '@/components/paths/DelSabotajeALaAccionExercise';
 import { TwoMinuteRuleExercise } from '@/components/paths/TwoMinuteRuleExercise';
@@ -515,14 +516,14 @@ function ContentItemRenderer({
       return <MantraExercise key={index} content={contentItem as any} />;
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
+    case 'exposureToIntoleranceExercise':
+      return <ExposureToIntoleranceExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem as any} />;
     case 'therapeuticNotebookReflection':
       return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={handleComplete} />;
     case 'twoMinuteRuleExercise':
       return <TwoMinuteRuleExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
-    case 'microPlanExercise':
-      return <MicroPlanExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'futureSelfVisualizationExercise':
       return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={(contentItem as any).audioUrl} />;
     case 'realisticRitualExercise':
