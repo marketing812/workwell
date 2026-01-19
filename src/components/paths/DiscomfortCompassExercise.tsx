@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -64,15 +65,15 @@ export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompass
   const [otherBodySensation, setOtherBodySensation] = useState('');
   const [emotion, setEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
-  const [emotionIntensity, setEmotionIntensity] = useState(50);
+  const [emotionIntensity, setEmotionIntensity] = useState(5);
   const [thoughts, setThoughts] = useState('');
-  const [thoughtBelief, setThoughtBelief] = useState(50);
+  const [thoughtBelief, setThoughtBelief] = useState(5);
   const [impulse, setImpulse] = useState('');
   const [otherImpulse, setOtherImpulse] = useState('');
   const [neededLimit, setNeededLimit] = useState('');
   const [bodyToldMe, setBodyToldMe] = useState('');
   const [alternativeResponse, setAlternativeResponse] = useState('');
-  const [responseConfidence, setResponseConfidence] = useState(50);
+  const [responseConfidence, setResponseConfidence] = useState(5);
 
   const next = () => setStep(prev => prev + 1);
 
@@ -171,7 +172,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                         </div>
                     ))}
                     <div className="flex items-center space-x-2 pt-1"><Checkbox id="body-other" checked={bodySensations['body-other'] || false} onCheckedChange={c => setBodySensations(p => ({...p, 'body-other':!!c}))} /><Label htmlFor="body-other" className="font-normal">Otra:</Label></div>
-                    {bodySensations['body-other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Describe la otra sensación" className="ml-6"/>}
+                    {bodySensations['body-other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró." className="ml-6"/>}
                 </div>
                 <Button onClick={next} className="w-full">Siguiente</Button>
             </div>
@@ -209,7 +210,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                         {impulseOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><RadioGroupItem value={opt.label} id={opt.id}/><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
                         <div className="flex items-center space-x-2"><RadioGroupItem value="otra" id="impulse-other-radio"/><Label htmlFor="impulse-other-radio" className="font-normal">Otra:</Label></div>
                     </RadioGroup>
-                     {impulse === 'otra' && <Textarea value={otherImpulse} onChange={e => setOtherImpulse(e.target.value)} placeholder="Describe tu impulso" className="ml-6"/>}
+                     {impulse === 'otra' && <Textarea value={otherImpulse} onChange={e => setOtherImpulse(e.target.value)} placeholder="Aceptar la tarea sin discutir, aunque no me apetecía. Quería evitar el conflicto." className="ml-6"/>}
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="needed-limit">¿Crees que necesitabas poner un límite?</Label>
@@ -217,7 +218,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="body-told-me">¿Tu cuerpo y tus emociones estaban intentando decirte algo?</Label>
-                    <Textarea id="body-told-me" value={bodyToldMe} onChange={e => setBodyToldMe(e.target.value)} />
+                    <Textarea id="body-told-me" value={bodyToldMe} onChange={e => setBodyToldMe(e.target.value)} placeholder="Campo abierto de reflexión libre." />
                 </div>
                 <Button onClick={next} className="w-full">Siguiente</Button>
             </div>
@@ -255,7 +256,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
         return (
              <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">¡Registro Guardado!</h4>
+                 <h4 className="font-bold text-lg">Registro Guardado</h4>
                  <p className="text-muted-foreground">Has dado un paso importante al escuchar a tu cuerpo. Cada vez que lo haces, entrenas tu capacidad de cuidarte.</p>
                  <Button onClick={() => setStep(0)} variant="outline" className="w-full">Registrar otra situación</Button>
              </div>
