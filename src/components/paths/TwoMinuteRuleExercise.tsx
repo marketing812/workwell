@@ -147,10 +147,26 @@ ${finalWhen}
         );
       case 3:
         return (
-          <div className="flex flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 rounded-lg text-center space-y-3">
-              <CheckCircle className="h-8 w-8 text-green-600" />
-              <p className="font-medium text-green-800 dark:text-green-200">¡Compromiso guardado!</p>
-              <Button onClick={resetExercise} variant="link">Hacer otro compromiso</Button>
+            <div className="flex flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 rounded-lg text-center space-y-3">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+                <p className="font-medium text-green-800 dark:text-green-200">¡Compromiso guardado!</p>
+                <Button onClick={nextStep} variant="link">
+                    Ver Cierre Motivador <ArrowRight className="ml-2 h-4 w-4"/>
+                </Button>
+            </div>
+        );
+       case 4:
+        return (
+          <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Cierre Motivador</h4>
+            <p className="text-muted-foreground italic">
+              Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza. Te conecta con tu capacidad de actuar… sin esperar a tenerlo todo bajo control.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+              <Button onClick={resetExercise} variant="outline">
+                Hacer otro compromiso
+              </Button>
+            </div>
           </div>
         );
       default: return null;
