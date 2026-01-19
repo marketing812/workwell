@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -155,6 +154,14 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{(content as any).title}</CardTitle>
+        {(content as any).audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={(content as any).audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
         {(content as any).objective && <CardDescription className="pt-2">{(content as any).objective}</CardDescription>}
       </CardHeader>
       <CardContent>
