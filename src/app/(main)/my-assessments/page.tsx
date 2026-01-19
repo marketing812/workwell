@@ -1,20 +1,18 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useTranslations } from '@/lib/translations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { formatAssessmentTimestamp, type AssessmentRecord, overwriteAssessmentHistory } from '@/data/assessmentHistoryStore'; // Import overwriteAssessmentHistory
-import { History, Eye, ListChecks, ArrowRight, Loader2, AlertTriangle, RefreshCw, FileJson, PlaySquare } from 'lucide-react';
+import { formatAssessmentTimestamp, type AssessmentRecord, overwriteAssessmentHistory, getAssessmentHistory as getLocalAssessmentHistory } from '@/data/assessmentHistoryStore';
+import { History, Eye, ArrowRight, Loader2, AlertTriangle, RefreshCw, PlaySquare } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useUser } from '@/contexts/UserContext';
 import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
 import { z } from 'zod';
-import type { InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 // API constants
 const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
@@ -26,10 +24,8 @@ const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
 const ApiSingleAssessmentRecordSchema = z.object({
   id: z.string(),
   timestamp: z.string().refine((val) => {
-    // Try parsing with Date.parse first, as it's more lenient with "YYYY-MM-DD HH:MM:SS"
     const parsedDate = Date.parse(val);
     if (!isNaN(parsedDate)) return true;
-    // Fallback to try parsing as full ISO string if Date.parse failed
     try {
         return !isNaN(new Date(val).getTime());
     } catch (e) {
@@ -41,35 +37,30 @@ const ApiSingleAssessmentRecordSchema = z.object({
   data: z.object({
     emotionalProfile: z.union([
       z.record(z.string(), z.number().min(1).max(5)),
-      z.array(z.any()) // Start with a generic array
+      z.array(z.any())
     ]).transform((profile, ctx) => {
       if (Array.isArray(profile)) {
         const newRecord: Record<string, number> = {};
         for (const item of profile) {
           if (Array.isArray(item) && item.length === 3 && typeof item[1] === 'string' && (typeof item[2] === 'string' || typeof item[2] === 'number')) {
-            // Handles ["id", "Dimension Name", "score_string"]
             const dimensionName = item[1];
             const scoreValue = typeof item[2] === 'string' ? parseFloat(item[2]) : item[2];
             if (!isNaN(scoreValue) && scoreValue >= 1 && scoreValue <= 5) {
               newRecord[dimensionName] = scoreValue;
             }
           } else if (Array.isArray(item) && item.length === 2 && typeof item[0] === 'string' && (typeof item[1] === 'string' || typeof item[1] === 'number')) {
-            // Handles ["Dimension Name", score_number] or ["Dimension Name", "score_string"]
             const dimensionName = item[0];
             const scoreValue = typeof item[1] === 'string' ? parseFloat(item[1]) : item[1];
              if (!isNaN(scoreValue) && scoreValue >= 1 && scoreValue <= 5) {
               newRecord[dimensionName] = scoreValue;
             }
           } else if (typeof item === 'object' && item !== null && 'dimensionName' in item && 'score' in item) {
-             // Handles { dimensionName: "...", score: ... }
             const objItem = item as { dimensionName: string, score: string | number };
              const scoreValue = typeof objItem.score === 'string' ? parseFloat(objItem.score) : objItem.score;
              if (typeof objItem.dimensionName === 'string' && !isNaN(scoreValue) && scoreValue >= 1 && scoreValue <= 5) {
                newRecord[objItem.dimensionName] = scoreValue;
             }
           } else {
-            // If none of the structures match, we can ignore or add an issue
-            // For now, we'll just ignore malformed items within the array
             continue;
           }
         }
@@ -82,12 +73,10 @@ const ApiSingleAssessmentRecordSchema = z.object({
         }
         return newRecord;
       }
-      // If it's already an object, just pass it through
       return profile;
     }),
     priorityAreas: z.array(z.any()).optional().nullable().transform((val, ctx) => {
         if (!val) return [];
-        // Aplanar el array si viene anidado (ej. [['Area1'], ['Area2']])
         const flattened = val.flat();
         const stringArraySchema = z.array(z.string());
         const result = stringArraySchema.safeParse(flattened);
@@ -104,12 +93,12 @@ const ApiSingleAssessmentRecordSchema = z.object({
     feedback: z.string().min(1, "El feedback no puede estar vacío."),
     respuestas: z.union([z.record(z.string(), z.number()), z.array(z.any())]).optional().nullable().transform(val => {
       if (Array.isArray(val) && val.length === 0) {
-        return null; // Transform empty array to null
+        return null; 
       }
       if (typeof val === 'object' && !Array.isArray(val)) {
-        return val; // It's already an object, pass through
+        return val;
       }
-      return null; // In any other case (like a non-empty array we don't expect), treat as null
+      return null;
     }),
   }),
 });
@@ -132,7 +121,6 @@ export default function MyAssessmentsPage() {
   const [hasInProgress, setHasInProgress] = useState(false);
 
   useEffect(() => {
-    // Check for in-progress assessment on mount and whenever user changes
     if (typeof window !== 'undefined') {
         try {
             const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
@@ -149,186 +137,111 @@ export default function MyAssessmentsPage() {
     }
   }, [user]);
 
-  const fetchAssessments = async () => {
+  const fetchAssessments = useCallback(async () => {
     if (!user || !user.id) {
       setError(t.errorOccurred + " (Usuario no autenticado o ID de usuario no disponible para la API)");
       setIsLoading(false);
       console.warn("MyAssessmentsPage: Fetch aborted. User or user.id is not available.", "User:", user);
       return;
     }
-
+    
     setIsLoading(true);
     setError(null);
-
-    const currentUserId = user.id;
-    console.log("MyAssessmentsPage: Preparing to fetch assessments for user.id:", currentUserId);
+    
+    // --- OPTIMISTIC UI: Cargar datos locales primero ---
+    const localAssessments = getLocalAssessmentHistory();
+    setAssessments(localAssessments);
+    // ---
 
     let constructedApiUrl = "";
     try {
-      const encryptedUserId = forceEncryptStringAES(currentUserId);
-      console.log("MyAssessmentsPage: Encrypted user ID (for API request):", encryptedUserId.substring(0, 50) + "...");
-      
+      const encryptedUserId = forceEncryptStringAES(user.id);
       constructedApiUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getEvaluacion&usuario=${encodeURIComponent(encryptedUserId)}`;
-      console.log("MyAssessmentsPage: Fetching assessments from URL (first 150 chars):", constructedApiUrl.substring(0,150) + "...");
-
-      const signal = AbortSignal.timeout(API_TIMEOUT_MS);
       
-      const response = await fetch(constructedApiUrl, { signal });
+      const response = await fetch(constructedApiUrl, { signal: AbortSignal.timeout(API_TIMEOUT_MS) });
       let responseText = await response.text();
-      
-      console.log("MyAssessmentsPage: Raw API Response Text (first 500 chars before any parsing):", responseText.substring(0,500) + (responseText.length > 500 ? "..." : ""));
 
+      // ... (El resto de la lógica para parsear var_dump y JSON permanece igual)
       let jsonToParse = responseText;
       const varDumpRegex = /^string\(\d+\)\s*"([\s\S]*)"\s*$/;
       const match = responseText.match(varDumpRegex);
-
       if (match && match[1]) {
-        console.log("MyAssessmentsPage: Detected var_dump-like output. Attempting to extract JSON content.");
         jsonToParse = match[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-        console.log("MyAssessmentsPage: Extracted potential JSON string for parsing (first 500 chars):", jsonToParse.substring(0,500) + (jsonToParse.length > 500 ? "..." : ""));
       }
-
 
       if (!response.ok) {
-        console.error(`MyAssessmentsPage: API Error HTTP ${response.status}. StatusText: ${response.statusText}. ResponseBody (potentially stripped, first 300 chars): ${jsonToParse.substring(0,300)}`);
         throw new Error(`${t.errorOccurred} (HTTP ${response.status}): ${response.statusText || jsonToParse.substring(0,100) || 'Error del servidor'}`);
       }
-      
-      let apiResult: ExternalApiResponse;
-      try {
-        apiResult = JSON.parse(jsonToParse);
-      } catch (jsonError: any) {
-        let devErrorMessage = "MyAssessmentsPage: Failed to parse JSON response from API.";
-        if (typeof responseText === 'string' && responseText.trim().toLowerCase().startsWith('string(') && !match) {
-            devErrorMessage += " The response looks like PHP var_dump() output, but regex extraction or subsequent parsing failed.";
-        } else if (match && jsonToParse !== responseText) { 
-             devErrorMessage = "MyAssessmentsPage: Failed to parse extracted JSON from var_dump-like output.";
-        }
-        console.error(devErrorMessage, "Raw text was (first 500 chars):", responseText.substring(0,500), "Error:", jsonError);
-        setError(t.errorOccurred + " (Respuesta del servidor no es JSON válido. Revisa la consola del navegador para ver la respuesta cruda del servidor.)");
-        setIsLoading(false);
-        return;
-      }
-      
-      console.log("MyAssessmentsPage: API call status OK. Parsed API Result (from jsonToParse, first 500 chars of stringified):", JSON.stringify(apiResult).substring(0,500) + "...");
 
-
+      const apiResult: ExternalApiResponse = JSON.parse(jsonToParse);
+      
       if (apiResult.status === "OK") {
         let potentialAssessmentsArray: any = null;
 
         if (Array.isArray(apiResult.data)) {
-          console.log("MyAssessmentsPage: Data from API is already an array.");
           potentialAssessmentsArray = apiResult.data;
         } else if (typeof apiResult.data === 'string' && apiResult.data.trim() !== '') {
-          console.log("MyAssessmentsPage: Data from API is a string, attempting decryption...");
           const decryptedData = decryptDataAES(apiResult.data);
-          console.log("MyAssessmentsPage: Decrypted data (type " + typeof decryptedData + ", first 500 chars of stringified):", JSON.stringify(decryptedData).substring(0,500) + "...");
           if (decryptedData && Array.isArray(decryptedData)) {
-            console.log("MyAssessmentsPage: Successfully decrypted API data into an array.");
             potentialAssessmentsArray = decryptedData;
-          } else {
-            console.warn(
-                "MyAssessmentsPage: Decrypted API data is NOT an array or decryption was not successful. Type of decryptedData:", 
-                typeof decryptedData, 
-                ". Value (first 200 chars):", JSON.stringify(decryptedData).substring(0,200),
-                ". This will likely cause a validation error next."
-            );
-            potentialAssessmentsArray = decryptedData; 
           }
-        } else if (apiResult.data === null || (typeof apiResult.data === 'string' && (apiResult.data.trim() === '' || apiResult.data.trim() === "[]" || apiResult.data.toLowerCase().includes("no hay evaluaciones")))) {
-            console.log("MyAssessmentsPage: API reported 'OK' but data is null, empty, or indicates no assessments. Treating as empty list.");
-            potentialAssessmentsArray = [];
+        } else {
+          potentialAssessmentsArray = [];
         }
 
-        if (potentialAssessmentsArray !== null && potentialAssessmentsArray !== undefined) { 
-          console.log("MyAssessmentsPage: Data before Zod validation (potentialAssessmentsArray, first 1000 chars):", JSON.stringify(potentialAssessmentsArray).substring(0,1000) + "...");
-          const validationResult = ApiFetchedAssessmentsSchema.safeParse(potentialAssessmentsArray);
-          if (validationResult.success) {
-            // Convert timestamps to full ISO string if they are not already, before sorting and saving
-            const processedAssessments = validationResult.data.map(record => {
-                try {
-                    const dateObj = new Date(record.timestamp.includes('T') ? record.timestamp : record.timestamp.replace(' ', 'T'));
-                    if (isNaN(dateObj.getTime())) {
-                        console.warn(`MyAssessmentsPage: Invalid timestamp format for record ID ${record.id}: ${record.timestamp}. Keeping original.`);
-                        return record;
-                    }
-                    return { ...record, timestamp: dateObj.toISOString() };
-                } catch (e) {
-                    console.warn(`MyAssessmentsPage: Error processing timestamp for record ID ${record.id}: ${record.timestamp}. Keeping original. Error: ${e}`);
-                    return record;
-                }
-            });
+        const validationResult = ApiFetchedAssessmentsSchema.safeParse(potentialAssessmentsArray);
+        if (validationResult.success) {
+          const serverAssessments = validationResult.data.map(record => {
+              const dateObj = new Date(record.timestamp.includes('T') ? record.timestamp : record.timestamp.replace(' ', 'T'));
+              return { ...record, timestamp: isNaN(dateObj.getTime()) ? record.timestamp : dateObj.toISOString() };
+          });
 
-            const sortedAssessments = processedAssessments.sort((a, b) => 
-              new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-            );
-            
-            setAssessments(sortedAssessments); // Update React state for display
-            overwriteAssessmentHistory(sortedAssessments); // Sync with localStorage
-            console.log("MyAssessmentsPage: Successfully fetched, processed, validated and stored assessments:", sortedAssessments.length, "records.");
-            if (sortedAssessments.length === 0) { 
-                setError(null); 
-            }
-          } else {
-            const flatErrors = validationResult.error.flatten();
-            console.error(
-              "MyAssessmentsPage: Zod validation failed.",
-              "Flattened errors:", flatErrors,
-              "Full Zod error object:", validationResult.error,
-              "Zod error issues (stringified):", JSON.stringify(validationResult.error.issues, null, 2)
-            );
-            console.error("MyAssessmentsPage: Data that FAILED Zod validation (potentialAssessmentsArray, first 1000 chars):", JSON.stringify(potentialAssessmentsArray).substring(0,1000) + "...");
-            
-            let userErrorMessage = t.errorOccurred + " (Datos de evaluación recibidos no son válidos o tienen un formato incorrecto)";
-            if (validationResult.error.issues.length > 0) {
-                const firstIssue = validationResult.error.issues[0];
-                userErrorMessage += `. Detalle: ${firstIssue.message} en la ruta '${firstIssue.path.join('.')}'`;
-            }
-            setError(userErrorMessage);
-          }
-        } else { 
-          console.warn("MyAssessmentsPage: No valid array of assessments obtained after processing API data. Original apiResult.data type:", typeof apiResult.data, "apiResult.data:", apiResult.data);
-           setError(t.errorOccurred + " (No se pudieron procesar los datos de evaluaciones. Formato inesperado o fallo en desencriptación.)");
+          // --- MERGE LOGIC ---
+          const allAssessmentsMap = new Map<string, AssessmentRecord>();
+          localAssessments.forEach(record => allAssessmentsMap.set(record.id, record));
+          serverAssessments.forEach(record => allAssessmentsMap.set(record.id, record));
+          
+          const mergedAssessments = Array.from(allAssessmentsMap.values()).sort((a, b) => 
+            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+          );
+
+          setAssessments(mergedAssessments);
+          overwriteAssessmentHistory(mergedAssessments);
+          // --- END MERGE LOGIC ---
+
+        } else {
+          console.error("MyAssessmentsPage: Zod validation failed.", validationResult.error);
+          setError(t.errorOccurred + " (Datos de evaluación recibidos no son válidos)");
         }
-
-      } else { 
-        console.warn("MyAssessmentsPage: API reported 'NOOK'. Message:", apiResult.message);
+      } else {
         if (apiResult.message && apiResult.message.toLowerCase().includes("no hay evaluaciones")) {
             setAssessments([]); 
-            overwriteAssessmentHistory([]); // Clear local store if API says no assessments
-            setError(null); 
+            overwriteAssessmentHistory([]);
         } else {
             setError(`${t.errorOccurred}: ${apiResult.message || 'Error desconocido del servidor'}`);
         }
       }
     } catch (e: any) {
       console.error("MyAssessmentsPage: Error fetching or processing assessments:", e);
-      let errorMessage = t.errorOccurred;
-      if (e.name === 'AbortError' || (e.cause && e.cause.code === 'UND_ERR_CONNECT_TIMEOUT')) {
-        errorMessage = t.errorOccurred + " (Tiempo de espera agotado)";
-      } else if (e instanceof SyntaxError) { 
-        errorMessage = t.errorOccurred + " (Respuesta del servidor no es JSON válido incluso después de intentar procesarla. Revisa la consola.)";
-      } else if (e.message) {
-        errorMessage = e.message; 
-      }
-      setError(errorMessage);
+      // En caso de error de red, nos quedamos con los datos locales que ya cargamos
+      setError("No se pudieron sincronizar las evaluaciones. Mostrando datos guardados en el dispositivo.");
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user, t]);
 
   useEffect(() => {
     if (!userLoading && user && user.id) { 
       fetchAssessments();
     } else if (!userLoading && (!user || !user.id)) {
       setIsLoading(false);
+      setAssessments([]); // Limpiar evaluaciones si no hay usuario
       setError(t.errorOccurred + " (Debes iniciar sesión y tener un ID de usuario para ver tus evaluaciones)");
       console.warn("MyAssessmentsPage: User not loaded or user.id missing. User:", user);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, userLoading]); 
+  }, [user, userLoading, fetchAssessments]);
 
-  if (isLoading || userLoading) {
+  if (userLoading) {
     return (
       <div className="container mx-auto py-8 text-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
@@ -371,7 +284,7 @@ export default function MyAssessmentsPage() {
           </CardContent>
           <CardFooter>
             <Button asChild>
-              <Link href="/assessment">Continuar Evaluación</Link>
+              <Link href="/assessment/guided">Continuar Evaluación</Link>
             </Button>
           </CardFooter>
         </Card>
@@ -432,3 +345,4 @@ export default function MyAssessmentsPage() {
     </div>
   );
 }
+
