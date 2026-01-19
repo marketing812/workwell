@@ -30,7 +30,7 @@ const bodySensationOptions = [
     { id: 'body-desire-to-flee', label: 'Ganas de huir o congelación' },
 ];
 
-const emotionOptions = [
+const localEmotionOptions = [
     { id: 'emo-anxiety', label: 'Ansiedad' },
     { id: 'emo-anger', label: 'Enfado' },
     { id: 'emo-guilt', label: 'Culpa' },
@@ -51,7 +51,7 @@ const suggestionPhrases = [
     'Ahora mismo no me viene bien, prefiero ser sincera/o contigo.',
     'Quiero contarte algo que me dejó un poco mal, ¿puedo?',
     'Sé que puede ser incómodo, pero necesito decirte cómo me sentí.',
-    'No es fácil para mí decirte esto, pero prefiero hacerlo a quedarme con este malestar.',
+    'No es fácil para mí decirte esto, pero creo que es importante…',
     'Me cuesta un poco hablar de esto, pero prefiero hacerlo a quedarme con este malestar.',
 ];
 
@@ -74,20 +74,39 @@ export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompass
   const [bodyToldMe, setBodyToldMe] = useState('');
   const [alternativeResponse, setAlternativeResponse] = useState('');
   const [responseConfidence, setResponseConfidence] = useState(5);
+  const [isSaved, setIsSaved] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+      setStep(0);
+      setSituation('');
+      setBodySensations({});
+      setOtherBodySensation('');
+      setEmotion('');
+      setOtherEmotion('');
+      setEmotionIntensity(5);
+      setThoughts('');
+      setThoughtBelief(5);
+      setImpulse('');
+      setOtherImpulse('');
+      setNeededLimit('');
+      setBodyToldMe('');
+      setAlternativeResponse('');
+      setResponseConfidence(5);
+      setIsSaved(false);
+  }
 
   const handleSave = () => {
-    const getSelectedLabels = (options: {id: string, label: string}[], selections: Record<string, boolean>) => {
-        return options.filter(opt => selections[opt.id]).map(opt => opt.label);
+    const getSelectedLabels = (options: {id: string, label: string}[], selections: Record<string, boolean>, otherValue: string) => {
+        const labels = options.filter(opt => selections[opt.id]).map(opt => opt.label);
+        if (selections['other'] && otherValue) labels.push(otherValue);
+        return labels;
     };
 
-    const selectedBodySensations = getSelectedLabels(bodySensationOptions, bodySensations);
-    if(bodySensations['body-other']) selectedBodySensations.push(otherBodySensation);
-    
-    let finalEmotion = emotion === 'otra' ? otherEmotion : emotion;
-    let finalImpulse = impulse === 'otra' ? otherImpulse : impulse;
+    const selectedBodySensations = getSelectedLabels(bodySensationOptions, bodySensations, otherBodySensation);
+    let finalEmotion = emotion === 'otra' ? otherEmotion : localEmotionOptions.find(o => o.id === emotion)?.label;
+    let finalImpulse = impulse === 'Otra opción (campo abierto)' ? otherImpulse : impulse;
     
     const notebookContent = `
 **Ejercicio: ${content.title}**
@@ -96,7 +115,7 @@ export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompass
 ${situation || 'No especificada.'}
 
 **Señales de mi cuerpo:**
-${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).join('\n') : 'Ninguna especificada.'}
+${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ninguna especificada.'}
 
 **Emoción y pensamientos:**
 - Emoción: ${finalEmotion || 'No especificada'} (Intensidad: ${emotionIntensity}%)
@@ -121,35 +140,49 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
       title: "Ejercicio Guardado",
       description: "Tu 'Brújula del Malestar' ha sido guardada en el cuaderno.",
     });
+    setIsSaved(true);
     setStep(prev => prev + 1); // Go to final confirmation
   };
-  
+
   const renderStep = () => {
     switch(step) {
-      case 0: // Intro with example
+      case 0: // Intro
         return (
-            <div className="p-4 space-y-4 text-center">
-                <p className="italic text-muted-foreground">Te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
-                <Accordion type="single" collapsible className="w-full text-left">
-                <AccordionItem value="example">
-                    <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
-                        <p><strong>Situación:</strong> “Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.”</p>
-                        <p><strong>Cuerpo:</strong> Tensión en la mandíbula, presión en el pecho.</p>
-                        <p><strong>Emoción:</strong> Frustración (80%).</p>
-                        <p><strong>Pensamiento:</strong> "Si digo que no, pensará que no soy profesional". (Creído al 85%).</p>
-                        <p><strong>Impulso:</strong> Aceptar sin discutir.</p>
-                        <p><strong>Límite necesario:</strong> Sí, estaba sobrepasado/a.</p>
-                        <p><strong>Respuesta alternativa:</strong> "Me encantaría, pero hoy no puedo. Mañana lo vemos." (Confianza: 65%).</p>
-                      </div>
-                    </AccordionContent>
-                </AccordionItem>
-                </Accordion>
-                <Button onClick={next}><ArrowRight className="mr-2 h-4 w-4" />Empezar mi registro</Button>
-            </div>
+          <div className="p-4 space-y-4 text-center">
+            <p className="italic text-muted-foreground">Te muestro a continuación un ejemplo completo de cómo se realiza este ejercicio. Leerlo antes puede ayudarte a identificar tus propias señales, ponerle palabras a lo que sentiste y conectar mejor con tu experiencia corporal y emocional.</p>
+            <p className="text-sm text-muted-foreground">No tienes que hacerlo igual. Este ejemplo es solo una guía para que encuentres tu propia voz.</p>
+            <Button onClick={nextStep}><ArrowRight className="mr-2 h-4 w-4" />Ver ejemplo guiado</Button>
+          </div>
         );
-      case 1: // Detecta la señal
+      case 1: // Guided Example
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guiado: Brújula del malestar</h4>
+            <Accordion type="single" collapsible className="w-full text-left">
+              <AccordionItem value="example">
+                <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
+                    <p><strong>¿Qué situación te activó emocionalmente?</strong> Estaba por salir del trabajo cuando mi jefa pidió que me quedara para asumir una tarea urgente.</p>
+                    <p><strong>¿Qué notaste en tu cuerpo?</strong> Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró.</p>
+                    <p><strong>¿Qué emoción sentiste? ¿Con qué intensidad la sentiste (0–100)?</strong> Frustración (80%).</p>
+                    <p><strong>¿Qué pensaste en ese momento?</strong> “Si digo que no, pensará que no soy profesional”.</p>
+                    <p><strong>¿Cuánto te creíste ese pensamiento en el momento que pasó por tu cabeza (0-100)?</strong> 85%.</p>
+                    <p><strong>¿Qué te dieron ganas de hacer?</strong> Aceptar la tarea sin discutir, aunque no me apetecía. Quería evitar el conflicto.</p>
+                    <p><strong>¿Crees que necesitabas poner un límite?</strong> Sí. Me di cuenta de que estaba sobrepasado/a y que mi cuerpo me estaba avisando con tensión y cansancio. No tenía energía para más.</p>
+                    <p><strong>¿Qué podrías decir la próxima vez?</strong> “Me encantaría ayudar, pero ya tenía planes para hoy. Si lo necesitas mañana, puedo reorganizarme.”</p>
+                    <p><strong>¿Qué grado de seguridad te genera esta frase (0-100)?</strong> 65%.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 2: // Detecta la señal
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 1: Detecta la Señal</h4>
@@ -157,10 +190,13 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <Label htmlFor="discomfort-situation">¿Qué situación te activó emocionalmente?</Label>
                     <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe con tus palabras lo que ocurrió: qué pasó, dónde estabas, con quién…" />
                 </div>
-                <Button onClick={next} className="w-full">Siguiente</Button>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+                </div>
             </div>
         );
-      case 2: // Escucha tu cuerpo
+      case 3: // Escucha tu cuerpo
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 2: Escucha tu Cuerpo</h4>
@@ -172,20 +208,20 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                             <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                         </div>
                     ))}
-                    <div className="flex items-center space-x-2 pt-1"><Checkbox id="body-other" checked={bodySensations['body-other'] || false} onCheckedChange={c => setBodySensations(p => ({...p, 'body-other':!!c}))} /><Label htmlFor="body-other" className="font-normal">Otra:</Label></div>
-                    {bodySensations['body-other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró." className="ml-6"/>}
+                    <div className="flex items-center space-x-2 pt-1"><Checkbox id="body-other" checked={bodySensations['other'] || false} onCheckedChange={c => setBodySensations(p => ({...p, other:!!c}))} /><Label htmlFor="body-other" className="font-normal">Otra:</Label></div>
+                    {bodySensations['other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró." className="ml-6"/>}
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
+                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 3: // Emociones y pensamientos
+      case 4: // Emociones y pensamientos
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 3: Emociones y Pensamientos</h4>
                 <div className="space-y-2">
                     <Label>¿Qué emoción sentiste?</Label>
                     <RadioGroup value={emotion} onValueChange={setEmotion} className="space-y-1">
-                        {emotionOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><RadioGroupItem value={opt.label} id={opt.id}/><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
+                        {localEmotionOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><RadioGroupItem value={opt.id} id={opt.id}/><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
                         <div className="flex items-center space-x-2"><RadioGroupItem value="otra" id="emo-other-radio"/><Label htmlFor="emo-other-radio" className="font-normal">Otra:</Label></div>
                     </RadioGroup>
                     {emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la emoción" className="ml-6"/>}
@@ -194,14 +230,14 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="discomfort-thoughts">¿Qué pensaste en ese momento?</Label>
-                    <Textarea id="discomfort-thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder="Ej.: “No quiero parecer egoísta”, “Mejor no digo nada”…"/>
+                    <Textarea id="discomfort-thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder="Ej.: 'No quiero parecer egoísta', 'Mejor no digo nada'..."/>
                     <Label htmlFor="thought-belief">¿Cuánto te creíste ese pensamiento? {thoughtBelief}%</Label>
                     <Slider id="thought-belief" value={[thoughtBelief]} onValueChange={v => setThoughtBelief(v[0])} max={100} step={5} />
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-       case 4: // Impulso e intuición
+       case 5: // Impulso e intuición
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 4: Impulso e Intuición</h4>
@@ -209,22 +245,22 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                     <Label>¿Qué te dieron ganas de hacer?</Label>
                     <RadioGroup value={impulse} onValueChange={setImpulse} className="space-y-1">
                         {impulseOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><RadioGroupItem value={opt.label} id={opt.id}/><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
-                        <div className="flex items-center space-x-2"><RadioGroupItem value="otra" id="impulse-other-radio"/><Label htmlFor="impulse-other-radio" className="font-normal">Otra:</Label></div>
+                        <div className="flex items-center space-x-2"><RadioGroupItem value="Otra opción (campo abierto)" id="impulse-other-radio"/><Label htmlFor="impulse-other-radio" className="font-normal">Otra opción (campo abierto)</Label></div>
                     </RadioGroup>
-                     {impulse === 'otra' && <Textarea value={otherImpulse} onChange={e => setOtherImpulse(e.target.value)} placeholder="Aceptar la tarea sin discutir, aunque no me apetecía. Quería evitar el conflicto." className="ml-6"/>}
+                     {impulse === 'Otra opción (campo abierto)' && <Textarea value={otherImpulse} onChange={e => setOtherImpulse(e.target.value)} placeholder="Aceptar la tarea sin discutir, aunque no me apetecía. Quería evitar el conflicto." className="ml-6"/>}
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="needed-limit">¿Crees que necesitabas poner un límite?</Label>
-                    <Textarea id="needed-limit" value={neededLimit} onChange={e => setNeededLimit(e.target.value)} placeholder="Sí. Me di cuenta de que estaba sobrepasado/a y que mi cuerpo me estaba avisando con tensión y cansancio. No tenía energía para más." />
+                    <Textarea id="needed-limit" value={neededLimit} onChange={e => setNeededLimit(e.target.value)} placeholder="Campo abierto de reflexión libre." />
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="body-told-me">¿Tu cuerpo y tus emociones estaban intentando decirte algo?</Label>
                     <Textarea id="body-told-me" value={bodyToldMe} onChange={e => setBodyToldMe(e.target.value)} placeholder="Campo abierto de reflexión libre." />
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={next}>Siguiente</Button></div>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 5: // Respuesta alternativa
+      case 6: // Respuesta alternativa
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Respuesta Alternativa</h4>
@@ -252,17 +288,21 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 </div>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4" /> Guardar mi Brújula</Button>
+                  <Button onClick={handleSave} className="w-auto" disabled={isSaved}>
+                    {isSaved ? <CheckCircle className="mr-2 h-4 w-4"/> : <Save className="mr-2 h-4 w-4" />}
+                    {isSaved ? 'Guardado' : 'Guardar mi Brújula'}
+                  </Button>
                 </div>
             </div>
         );
-      case 6: // Final confirmation
+      case 7: // Final confirmation
         return (
              <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">Registro Guardado</h4>
-                 <p className="text-muted-foreground">Has dado un paso importante al escuchar a tu cuerpo. Cada vez que lo haces, entrenas tu capacidad de cuidarte.</p>
-                 <Button onClick={() => setStep(0)} variant="outline" className="w-full">Registrar otra situación</Button>
+                 <h4 className="font-bold text-lg">Beneficio Adicional</h4>
+                 <p className="text-muted-foreground">Cada vez que practicas este ejercicio, estás entrenando tu capacidad de reconocer tus límites, regular tus emociones y expresarte con mayor claridad.</p>
+                 <p className="italic text-primary pt-2">Tu cuerpo te habla. Este ejercicio te ayuda a escucharlo.</p>
+                 <Button onClick={resetExercise} variant="outline" className="w-full">Registrar otra situación</Button>
              </div>
         );
       default: return null;
