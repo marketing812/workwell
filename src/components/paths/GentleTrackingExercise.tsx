@@ -49,14 +49,36 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       console.error('Error saving tracking progress to localStorage', error);
     }
   };
+  
+  const handleDayClick = (day: Date | undefined) => {
+    if (!day) return;
+    const dateKey = format(day, 'yyyy-MM-dd');
+    const currentStatus = progress[dateKey]?.status;
+    
+    let nextStatus: TrackingStatus | undefined;
+    
+    if (currentStatus === 'done') {
+        nextStatus = 'partial';
+    } else if (currentStatus === 'partial') {
+        nextStatus = 'skipped';
+    } else if (currentStatus === 'skipped') {
+        nextStatus = undefined; // clear status
+    } else {
+        nextStatus = 'done'; // Default first click
+    }
 
-  const handleDayStatusChange = (status: TrackingStatus) => {
-    if (!selectedDate) return;
-    const dateKey = format(selectedDate, 'yyyy-MM-dd');
-    const newProgress = { ...progress, [dateKey]: { ...progress[dateKey], status } };
+    const newProgress = { ...progress };
+    if (nextStatus) {
+        newProgress[dateKey] = { ...newProgress[dateKey], status: nextStatus };
+    } else {
+        delete newProgress[dateKey];
+    }
+    
     setProgress(newProgress);
     saveProgressToLocal(newProgress);
+    setSelectedDate(day); // Keep track of the last clicked day
   };
+
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -87,14 +109,14 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     const dateKey = format(day, 'yyyy-MM-dd');
     const dayProgress = progress[dateKey];
     let icon = null;
-    if (dayProgress?.status === 'done') icon = <CheckIcon className="h-4 w-4 text-green-500" />;
-    if (dayProgress?.status === 'partial') icon = <MinusIcon className="h-4 w-4 text-yellow-500" />;
-    if (dayProgress?.status === 'skipped') icon = <XIcon className="h-4 w-4 text-red-500" />;
+    if (dayProgress?.status === 'done') icon = <CheckIcon className="h-5 w-5 text-green-500" />;
+    if (dayProgress?.status === 'partial') icon = <MinusIcon className="h-5 w-5 text-yellow-500" />;
+    if (dayProgress?.status === 'skipped') icon = <XIcon className="h-5 w-5 text-red-500" />;
 
     return (
       <div className="relative flex items-center justify-center h-full w-full">
         {day.getDate()}
-        {icon && <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">{icon}</div>}
+        {icon && <div className="absolute top-0 right-0 transform translate-x-1 -translate-y-1">{icon}</div>}
       </div>
     );
   };
@@ -110,36 +132,43 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm">Usa el calendario para marcar tu progreso diario (✔, ~, X).</p>
-          <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <p className="text-sm text-center md:text-left">Haz clic en un día para marcar tu progreso.</p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <Calendar
               mode="single"
               selected={selectedDate}
               onSelect={setSelectedDate}
+              onDayClick={handleDayClick}
               locale={es}
               className="rounded-md border p-3"
+              classNames={{
+                day_cell: "h-12 w-12",
+                day: "h-12 w-12",
+              }}
               components={{
-                DayContent: ({ date, displayMonth }) => renderDayContent(date),
+                DayContent: ({ date }) => renderDayContent(date as Date),
               }}
             />
-            {selectedDate && (
-              <div className="w-full sm:w-auto flex-grow space-y-3">
-                <p className="font-semibold text-center">Progreso para {format(selectedDate, 'PPP', { locale: es })}</p>
-                <div className="flex justify-around gap-2">
-                  <Button type="button" variant="outline" size="icon" onClick={() => handleDayStatusChange('done')} title="Lo hice">
-                    <CheckIcon className="h-5 w-5 text-green-500" />
-                  </Button>
-                  <Button type="button" variant="outline" size="icon" onClick={() => handleDayStatusChange('partial')} title="Lo hice parcialmente">
-                    <MinusIcon className="h-5 w-5 text-yellow-500" />
-                  </Button>
-                  <Button type="button" variant="outline" size="icon" onClick={() => handleDayStatusChange('skipped')} title="No lo hice">
-                    <XIcon className="h-5 w-5 text-red-500" />
-                  </Button>
+            <div className="space-y-3 text-sm text-muted-foreground self-center md:self-start">
+              <p className="font-semibold text-foreground">Leyenda:</p>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <CheckIcon className="h-5 w-5 text-green-500" />
+                  <span>Lo hice (1er clic)</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <MinusIcon className="h-5 w-5 text-yellow-500" />
+                  <span>Lo hice parcialmente (2º clic)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <XIcon className="h-5 w-5 text-red-500" />
+                  <span>No lo hice (3er clic)</span>
+                </div>
+                 <p className="text-xs italic pt-2">(4º clic para limpiar)</p>
               </div>
-            )}
+            </div>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 pt-4">
             <Label htmlFor="week-word">Tu palabra de la semana</Label>
             <Textarea id="week-word" value={weekWord} onChange={e => setWeekWord(e.target.value)} placeholder="Ej: Constancia, Presencia, Avance..." disabled={saved} />
           </div>
