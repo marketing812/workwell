@@ -69,14 +69,8 @@ Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro 
                         <p className="text-sm text-muted-foreground">Puedes hacer esta visualización de dos formas:</p>
                         
                         <div className="flex flex-col gap-2">
-                           <Button onClick={() => {
-                               const audio = document.getElementById('main-audio') as HTMLAudioElement;
-                               if (audio) audio.play();
-                           }}>
-                                Escuchar audio guiado
-                           </Button>
 
-                            <Accordion type="single" collapsible>
+                <Accordion type="single" collapsible>
                                 <AccordionItem value="item-1">
                                 <AccordionTrigger>
                                     Leer visualización completa
