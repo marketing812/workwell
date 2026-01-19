@@ -10,6 +10,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
@@ -19,11 +21,14 @@ interface MicroPlanExerciseProps {
 export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
   const { toast } = useToast();
   const [moment, setMoment] = useState('');
+  const [otherMoment, setOtherMoment] = useState('');
   const [action, setAction] = useState('');
   const [step, setStep] = useState(0);
 
+  const finalMoment = moment === 'Otra' ? otherMoment : moment;
+
   const handleSave = () => {
-    if (!moment || !action) {
+    if (!finalMoment || !action) {
       toast({
         title: 'Faltan datos',
         description: 'Por favor, completa ambos campos.',
@@ -35,12 +40,20 @@ export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
 **Ejercicio: ${content.title}**
 
 *Mi microplan de acción es:*
-Cuando ${moment}, voy a ${action}.
+Cuando ${finalMoment}, voy a ${action}.
     `;
     addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId });
     toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
     setStep(3); // Go to final confirmation
   };
+
+  const momentOptions = [
+    'Llegue a casa',
+    'Termine de cenar',
+    'Apague el portátil',
+    'Me levante por la mañana',
+    'Deje a los niños o niñas en el cole'
+  ];
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -61,8 +74,27 @@ Cuando ${moment}, voy a ${action}.
         {step === 1 && (
           <div className="p-4 space-y-4">
             <Label>¿En qué momento cotidiano podrías activar tu gesto?</Label>
-            <Textarea value={moment} onChange={e => setMoment(e.target.value)} placeholder="Ej: Llegue a casa..." />
-            <Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente paso</Button>
+            <p className="text-sm text-muted-foreground">Elige un momento del día que ya forme parte de tu rutina.</p>
+            <Select onValueChange={setMoment} value={moment}>
+                <SelectTrigger>
+                    <SelectValue placeholder="Elige un momento..." />
+                </SelectTrigger>
+                <SelectContent>
+                    {momentOptions.map(option => (
+                        <SelectItem key={option} value={option}>{option}</SelectItem>
+                    ))}
+                    <SelectItem value="Otra">Otra</SelectItem>
+                </SelectContent>
+            </Select>
+            {moment === 'Otra' && (
+                <Input 
+                    value={otherMoment} 
+                    onChange={e => setOtherMoment(e.target.value)} 
+                    placeholder="Describe el otro momento"
+                    className="mt-2"
+                />
+            )}
+            <Button onClick={() => setStep(2)} className="w-full mt-2" disabled={!finalMoment.trim()}>Siguiente paso</Button>
           </div>
         )}
         {step === 2 && (
@@ -76,7 +108,7 @@ Cuando ${moment}, voy a ${action}.
           <div className="p-4 text-center space-y-4">
             <CheckCircle className="h-10 w-10 text-green-500 mx-auto" />
             <p className="font-bold">Tu frase final:</p>
-            <p className="italic">"Cuando {moment}, voy a {action}."</p>
+            <p className="italic">"Cuando {finalMoment}, voy a {action}."</p>
             <p className="text-sm text-muted-foreground">Esta frase no es una obligación: es una señal de autocuidado.</p>
             <Button onClick={() => setStep(0)} variant="outline">Crear otro plan</Button>
           </div>
