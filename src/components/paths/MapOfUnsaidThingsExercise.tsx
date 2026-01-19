@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -77,10 +78,26 @@ export function MapOfUnsaidThingsExercise({ content, pathId }: MapOfUnsaidThings
   const next = () => setStep(prev => prev + 1);
   const back = () => setStep(prev => prev - 1);
   const reset = () => {
-    // Reset all state fields if user wants to start over
     setStep(0);
     setSituation('');
-    // ... reset all other state variables
+    setWhatIWanted('');
+    setWhatIDid('');
+    setEmotions({});
+    setOtherEmotion('');
+    setThoughts('');
+    setAftermath('');
+    setRepeatedEmotions('');
+    setDifficultContexts('');
+    setFears('');
+    setBlockages({});
+    setFriendAdvice('');
+    setFearOrChoice('');
+    setWorstCase('');
+    setHowToSayIt('');
+    setNextStepPhrase('');
+    setNextStepContext('');
+    setNextStepOpener('');
+    setPatternName('');
   };
 
   const handleSave = () => {
@@ -165,7 +182,7 @@ ${nextStepOpener || 'No especificado.'}
                     <p><strong>¿Qué querías decir o hacer, pero no lo hiciste?</strong> Quería decir que no podía asumirlo porque ya tenía demasiada carga y me sentía saturado/a.</p>
                     <p><strong>¿Qué hiciste en su lugar?</strong> Me quedé en silencio. No levanté la mano, pero tampoco expresé que no estaba disponible. Me limité a asentir, como si todo estuviera bien.</p>
                     <p><strong>¿Qué sentiste en ese momento?</strong> Ansiedad, frustración y una especie de tensión interna, como si me estuviera traicionando a mí mismo/a.</p>
-                    <p><strong>¿Qué pensamientos pasaron por tu mente?</strong> “Si digo que no, pensarán que no soy profesional.” “No quiero parecer que me estoy quejando.” “Mejor me callo, no quiero que se lo tomen mal.”</p>
+                    <p><strong>¿Qué pensamientos pasaron por tu mente?</strong> “Si digo que no, pensarán que no soy profesional.”  “No quiero parecer que me estoy quejando.”  “Mejor me callo, no quiero que se lo tomen mal.”</p>
                     <p><strong>¿Qué pasó después?</strong> Me fui con un nudo en el estómago. Estuve rumiando toda la tarde y sintiéndome invisible. Me frustró no haber podido ser honesto/a sobre mis límites.</p>
                   </div>
                 </AccordionContent>
