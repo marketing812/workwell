@@ -75,10 +75,15 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
 
     if (result.success) {
       try {
+        const includedDimensions = assessmentDimensions.filter(dim => {
+            const dimIdNum = parseInt(dim.id.replace('dim', ''), 10);
+            return dimIdNum <= 13;
+        });
+
         const resultsToStore: StoredAssessmentResults = {
             aiInterpretation: result.data,
             rawAnswers: answers,
-            assessmentDimensions: assessmentDimensions,
+            assessmentDimensions: includedDimensions,
         };
         localStorage.setItem(SESSION_STORAGE_ASSESSMENT_RESULTS_KEY, JSON.stringify(resultsToStore));
         

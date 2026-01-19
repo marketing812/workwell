@@ -33,7 +33,7 @@ const assessmentDimensionsData: AssessmentDimension[] = [
       "recommendedPathId": "tolerar-incertidumbre",
       "items": [
         { "id": "dim2_item1", "text": "Me entusiasma aprender cosas nuevas, incluso si desafían lo que ya sé.", "weight": 1 },
-        { "id": "dim2_item2", "text": "Suelo encontrar soluciones creativas cuando algo no sale como esperaba.", "weight": 1 },
+        { "id": "dim2_item2", "text": "Suelo encontrar soluciones creativas cuando algo no sale como esperado.", "weight": 1 },
         { "id": "dim2_item3", "text": "A menudo cuestiono mis propias creencias o formas de pensar.", "weight": 1 },
         { "id": "dim2_item4", "text": "Me adapto con rapidez cuando las circunstancias cambian.", "weight": 1 }
       ]
@@ -81,7 +81,7 @@ const assessmentDimensionsData: AssessmentDimension[] = [
       "recommendedPathId": "comprender-mejor-cada-dia",
       "items": [
         { "id": "dim6_item1", "text": "Reflexiono con frecuencia sobre lo que siento y por qué.", "weight": 1 },
-        { "id": "dim6_item2", "text": "Se con claridad quién soy porque conozco mis puntos fuertes y también mis áreas a mejorar.", "weight": 1 },
+        { "id": "dim6_item2", "text": "Sé con claridad quién soy porque conozco mis puntos fuertes y también mis áreas a mejorar.", "weight": 1 },
         { "id": "dim6_item3", "text": "Soy consciente de cómo influyen mis emociones en mis decisiones.", "weight": 1 },
         { "id": "dim6_item4", "text": "Reconozco cuándo repito patrones que no me benefician y trato de cambiarlos.", "weight": 1 }
       ]
@@ -128,7 +128,7 @@ const assessmentDimensionsData: AssessmentDimension[] = [
       "definition": "Capacidad de reconocer el papel que uno tiene en las situaciones que atraviesa, asumir la parte de responsabilidad sin caer en la culpa, y actuar desde la aceptación y el compromiso con el cambio.",
       "recommendedPathId": "ni-culpa-ni-queja",
       "items": [
-        { "id": "dim10_item1", "text": "Reflexiono y se reconocer cuándo he contribuido a que algo no salga como esperaba.", "weight": 1 },
+        { "id": "dim10_item1", "text": "Reflexiono y sé reconocer cuándo he contribuido a que algo no salga como esperaba.", "weight": 1 },
         { "id": "dim10_item2", "text": "Cuando afronto dificultades, pienso y me pregunto qué puedo hacer diferente.", "weight": 1 },
         { "id": "dim10_item3", "text": "Asumo la responsabilidad de mis actos incluso cuando es incómodo.", "weight": 1 },
         { "id": "dim10_item4", "text": "Soy consciente del papel que tengo en las situaciones que vivo y eso me permite aprender y crecer.", "weight": 1 }
@@ -179,7 +179,40 @@ const assessmentDimensionsData: AssessmentDimension[] = [
         { "id": "dim13_item5", "text": "Reacciono con irritabilidad ante pequeñas molestias.", "weight": 1 },
         { "id": "dim13_item6", "text": "Siento que pierdo el control fácilmente sobre mis emociones.", "weight": 1 }
       ]
-    }
+    },
+    {
+        "id": "dim14",
+        "name": "Rendimiento Autopercibido",
+        "definition": "Evaluación de la satisfacción personal con el propio rendimiento laboral.",
+        "items": [
+          { "id": "dim14_item1", "text": "En las últimas semanas, siento que estoy rindiendo bien en mi trabajo.", "weight": 1 }
+        ]
+      },
+      {
+        "id": "dim15",
+        "name": "Eficacia Laboral",
+        "definition": "Capacidad para completar tareas de manera eficiente y sin agotamiento excesivo.",
+        "items": [
+          { "id": "dim15_item1", "text": "Me siento capaz de completar mis tareas sin distraerme o agotarme en exceso.", "weight": 1 }
+        ]
+      },
+      {
+        "id": "dim16",
+        "name": "Engagement",
+        "definition": "Nivel de compromiso y sentimiento de valor dentro del equipo y la empresa.",
+        "items": [
+          { "id": "dim16_item1", "text": "Me siento comprometido/a con la empresa.", "weight": 1 },
+          { "id": "dim16_item2", "text": "Siento que mi trabajo tiene valor para el equipo.", "weight": 1 }
+        ]
+      },
+      {
+        "id": "dim17",
+        "name": "Permanencia",
+        "definition": "Intención de continuar en la empresa a medio plazo.",
+        "items": [
+          { "id": "dim17_item1", "text": "Tengo intención de continuar en esta empresa en el próximo año.", "weight": 1 }
+        ]
+      }
   ];
 
 interface HistoricalResultsPageClientProps {
@@ -209,7 +242,10 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
       }
       
       try {
-        const dimensions = assessmentDimensionsData;
+        const dimensions = assessmentDimensionsData.filter(dim => {
+            const dimIdNum = parseInt(dim.id.replace('dim', ''));
+            return dimIdNum <= 13;
+        });
         const record = getAssessmentById(assessmentId);
 
         setAssessmentDimensions(dimensions);
