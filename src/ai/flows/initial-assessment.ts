@@ -53,7 +53,12 @@ export async function initialAssessment(input: InitialAssessmentInput): Promise<
   const dimensionScores: Record<string, number> = {};
   const dimensionCalculationsForPrompt: string[] = [];
 
-  assessmentDimensions.forEach(dim => {
+  const includedDimensions = assessmentDimensions.filter(dim => {
+    const dimIdNum = parseInt(dim.id.replace('dim', ''), 10);
+    return dimIdNum <= 13;
+  });
+
+  includedDimensions.forEach(dim => {
     let totalScore = 0;
     let totalWeight = 0;
 
@@ -88,7 +93,7 @@ export async function initialAssessment(input: InitialAssessmentInput): Promise<
 
   const handlebarsInputForPrompt: PromptHandlebarsInput = {
       dimensionCalculations: dimensionCalculationsForPrompt,
-      dimensionNamesForPrompt: assessmentDimensions.map(d => d.name),
+      dimensionNamesForPrompt: includedDimensions.map(d => d.name),
   };
   
   return initialAssessmentFlow(handlebarsInputForPrompt);
@@ -173,5 +178,3 @@ const initialAssessmentFlow = ai.defineFlow(
     return finalOutput;
   }
 );
-
-    

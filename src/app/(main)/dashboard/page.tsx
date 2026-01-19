@@ -65,6 +65,12 @@ export default function DashboardPage() {
   const [debugRegisterUrl, setDebugRegisterUrl] = useState<string | null>(null);
   const [debugSaveNotebookUrl, setDebugSaveNotebookUrl] = useState<string | null>(null);
   
+  const filteredDimensions = useMemo(() => 
+    assessmentDimensionsData.filter(dim => {
+        const dimIdNum = parseInt(dim.id.replace('dim', ''), 10);
+        return dimIdNum <= 13;
+    }), []);
+
   const loadEntries = useCallback(async () => {
     if (!user?.id || !db) {
         setIsLoadingEntries(false);
@@ -411,7 +417,7 @@ export default function DashboardPage() {
             {latestAssessment ? (
                 <EmotionalProfileChart 
                     results={latestAssessment.data}
-                    assessmentDimensions={assessmentDimensionsData}
+                    assessmentDimensions={filteredDimensions}
                     className="lg:h-[450px]"
                 />
             ) : (
@@ -433,5 +439,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
