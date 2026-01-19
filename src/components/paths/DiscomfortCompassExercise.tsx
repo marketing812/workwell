@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -9,11 +8,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DiscomfortCompassExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface DiscomfortCompassExerciseProps {
   content: DiscomfortCompassExerciseContent;
@@ -43,6 +43,15 @@ const impulseOptions = [
     { id: 'impulse-say-yes', label: 'Decir que sí, aunque no quería' },
     { id: 'impulse-avoid-convo', label: 'Evitar la conversación' },
     { id: 'impulse-change-topic', label: 'Cambiar de tema o callarme' },
+];
+
+const suggestionPhrases = [
+    'Me sabe mal decirlo, pero hoy no puedo con más.',
+    'Ahora mismo no me viene bien, prefiero ser sincera/o contigo.',
+    'Quiero contarte algo que me dejó un poco mal, ¿puedo?',
+    'Sé que puede ser incómodo, pero necesito decirte cómo me sentí.',
+    'No es fácil para mí decirte esto, pero prefiero hacerlo a quedarme con este malestar.',
+    'Me cuesta un poco hablar de esto, pero prefiero hacerlo a quedarme con este malestar.',
 ];
 
 export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompassExerciseProps) {
@@ -115,7 +124,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
   
   const renderStep = () => {
     switch(step) {
-      case 0: // Intro & Example
+      case 0: // Intro with example
         return (
             <div className="p-4 space-y-4 text-center">
                 <p className="italic text-muted-foreground">Te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
@@ -123,7 +132,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 <AccordionItem value="example">
                     <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                     <AccordionContent>
-                    <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
+                      <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
                         <p><strong>Situación:</strong> “Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.”</p>
                         <p><strong>Cuerpo:</strong> Tensión en la mandíbula, presión en el pecho.</p>
                         <p><strong>Emoción:</strong> Frustración (80%).</p>
@@ -131,7 +140,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                         <p><strong>Impulso:</strong> Aceptar sin discutir.</p>
                         <p><strong>Límite necesario:</strong> Sí, estaba sobrepasado/a.</p>
                         <p><strong>Respuesta alternativa:</strong> "Me encantaría, pero hoy no puedo. Mañana lo vemos." (Confianza: 65%).</p>
-                    </div>
+                      </div>
                     </AccordionContent>
                 </AccordionItem>
                 </Accordion>
@@ -144,7 +153,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 <h4 className="font-semibold text-lg text-primary">Paso 1: Detecta la Señal</h4>
                 <div className="space-y-2">
                     <Label htmlFor="discomfort-situation">¿Qué situación te activó emocionalmente?</Label>
-                    <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} />
+                    <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe con tus palabras lo que ocurrió: qué pasó, dónde estabas, con quién…" />
                 </div>
                 <Button onClick={next} className="w-full">Siguiente</Button>
             </div>
@@ -183,7 +192,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="discomfort-thoughts">¿Qué pensaste en ese momento?</Label>
-                    <Textarea id="discomfort-thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} />
+                    <Textarea id="discomfort-thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder="Ej.: “No quiero parecer egoísta”, “Mejor no digo nada”…"/>
                     <Label htmlFor="thought-belief">¿Cuánto te creíste ese pensamiento? {thoughtBelief}%</Label>
                     <Slider id="thought-belief" value={[thoughtBelief]} onValueChange={v => setThoughtBelief(v[0])} max={100} step={5} />
                 </div>
@@ -204,7 +213,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="needed-limit">¿Crees que necesitabas poner un límite?</Label>
-                    <Textarea id="needed-limit" value={neededLimit} onChange={e => setNeededLimit(e.target.value)} />
+                    <Textarea id="needed-limit" value={neededLimit} onChange={e => setNeededLimit(e.target.value)} placeholder="Sí. Me di cuenta de que estaba sobrepasado/a y que mi cuerpo me estaba avisando con tensión y cansancio. No tenía energía para más." />
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="body-told-me">¿Tu cuerpo y tus emociones estaban intentando decirte algo?</Label>
@@ -219,8 +228,21 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.map(s => `- ${s}`).
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Respuesta Alternativa</h4>
                 <p className="text-sm text-muted-foreground">Ahora vamos a entrenar una posible forma de expresarte la próxima vez. No tiene que ser perfecta. Solo honesta.</p>
                 <div className="space-y-2">
+                    <Label>Frases inspiradoras sugeridas:</Label>
+                    <Select onValueChange={(value) => setAlternativeResponse(value)}>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Elige una frase para inspirarte..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {suggestionPhrases.map((phrase, index) => (
+                                <SelectItem key={index} value={phrase}>{phrase}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="space-y-2">
                     <Label htmlFor="alt-response">¿Qué podrías decir la próxima vez en una situación parecida?</Label>
-                    <Textarea id="alt-response" value={alternativeResponse} onChange={e => setAlternativeResponse(e.target.value)} />
+                    <Textarea id="alt-response" value={alternativeResponse} onChange={e => setAlternativeResponse(e.target.value)} placeholder="Me encantaría ayudar, pero ya tenía planes para hoy. Si lo necesitas mañana, puedo reorganizarme."/>
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="response-confidence">¿Qué grado de seguridad te genera esta nueva respuesta? {responseConfidence}%</Label>
