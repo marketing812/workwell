@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,10 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { AnsiedadTieneSentidoExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3 } from 'lucide-react';
+import { Edit3, ArrowRight } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface AnsiedadTieneSentidoExerciseProps {
   content: AnsiedadTieneSentidoExerciseContent;
@@ -23,7 +22,6 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
     const [otherSymptom, setOtherSymptom] = useState('');
     const [thoughts, setThoughts] = useState('');
     const [initialThreat, setInitialThreat] = useState('');
-    const [fearOfAnxiety, setFearOfAnxiety] = useState('');
     const [finalAction, setFinalAction] = useState('');
 
     const symptomOptions = [
@@ -45,24 +43,99 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
     
     const renderStep = () => {
         switch(step) {
-            case 0: return <div className="p-4"><Label>Describe brevemente la situación (solo hechos, sin interpretaciones):</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /><Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
-            case 1: return <div className="p-4 space-y-2"><Label>Señales del cuerpo y de la mente:</Label>{symptomOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><Checkbox id={opt.id} onCheckedChange={c => setSymptoms(p => ({...p, [opt.id]: !!c}))} /><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}<div className="flex items-center space-x-2"><Checkbox id="symptom-other" onCheckedChange={c => setSymptoms(p => ({...p, 'symptom-other': !!c}))} /><Label htmlFor="symptom-other" className="font-normal">Otro:</Label></div>{symptoms['symptom-other'] && <Textarea value={otherSymptom} onChange={e => setOtherSymptom(e.target.value)} />}<Label>Escribe los pensamientos que aparecieron:</Label><Textarea value={thoughts} onChange={e => setThoughts(e.target.value)} /><Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
-            case 2: return <div className="p-4"><Label>Identifica el pensamiento inicial de amenaza:</Label><Textarea value={initialThreat} onChange={e => setInitialThreat(e.target.value)} /><Button onClick={() => setStep(3)} className="w-full mt-2">Siguiente</Button></div>;
-            case 3: 
+            case 0: // Pantalla 1
+                return (
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold text-lg">Paso 1: Sitúa el momento</h4>
+                        <p className="text-sm text-muted-foreground">Piensa en la última vez que sentiste ansiedad. No hace falta que sea algo dramático: puede ser un momento sencillo (ej. ir en el metro, hablar en una reunión, acostarte a dormir).</p>
+                        <div className="space-y-2">
+                          <Label htmlFor="situation">Describe brevemente la situación (solo hechos, sin interpretaciones):</Label>
+                          <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder='Ejemplo: “Estaba en el metro y empezó a llenarse de gente.”' />
+                        </div>
+                        <p className="text-xs text-muted-foreground italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
+                        <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
+                );
+            case 1: // Pantalla 2
+                return (
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold text-lg">Paso 2: Señales del cuerpo y de la mente</h4>
+                        <p className="text-sm text-muted-foreground">La ansiedad habla en dos idiomas: tu cuerpo y tus pensamientos. Vamos a escucharlos.</p>
+                        <div className="space-y-2">
+                            <Label>Lista de síntomas físicos (selección múltiple con “otro”):</Label>
+                            {symptomOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><Checkbox id={opt.id} onCheckedChange={c => setSymptoms(p => ({...p, [opt.id]: !!c}))} checked={symptoms[opt.id] || false} /><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
+                            <div className="flex items-center space-x-2"><Checkbox id="symptom-other" onCheckedChange={c => setSymptoms(p => ({...p, 'symptom-other': !!c}))} checked={symptoms['symptom-other'] || false} /><Label htmlFor="symptom-other" className="font-normal">Otro (especificar):</Label></div>
+                            {symptoms['symptom-other'] && <Textarea value={otherSymptom} onChange={e => setOtherSymptom(e.target.value)} />}
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="thoughts">Escribe los pensamientos que aparecieron en ese momento.</Label>
+                          <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder='Ejemplo: “Pensaba: ‘me voy a desmayar’, ‘no voy a aguantar aquí’.”'/>
+                        </div>
+                        <p className="text-xs text-muted-foreground italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
+                        <Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
+                );
+            case 2: // Pantalla 3
+                return (
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold text-lg">Paso 3: El pensamiento inicial de amenaza</h4>
+                        <p className="text-sm text-muted-foreground">Ahora volvamos un momento atrás: antes de que notaras el cuerpo alterado, ¿hubo alguna interpretación o pensamiento que activó la alarma?</p>
+                        <div className="space-y-2">
+                            <Label htmlFor="initial-threat">Identifica ese pensamiento inicial de amenaza:</Label>
+                            <Textarea id="initial-threat" value={initialThreat} onChange={e => setInitialThreat(e.target.value)} placeholder='Ejemplo: “Si el metro se llena, me voy a quedar atrapado/a y no podré salir.” o “Si el metro se llena y aparece la ansiedad, no podré salir”.' />
+                        </div>
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1">
+                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación desplegable</AccordionTrigger>
+                            <AccordionContent className="text-xs text-muted-foreground">
+                              Muchas veces este pensamiento pasa tan rápido que no lo registras. Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. Cuanto más practiques, más fácil será detectarlo en el momento.
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                        <Button onClick={() => setStep(3)} className="w-full mt-2" disabled={!initialThreat.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
+                );
+            case 3: // Pantalla 4
                 const selectedSymptoms = symptomOptions.filter(s => symptoms[s.id]).map(s => s.label);
                 if (symptoms['symptom-other'] && otherSymptom) selectedSymptoms.push(otherSymptom);
                 return (
-                    <div className="p-4 space-y-2">
-                        <h4>Reconstruye el círculo de la ansiedad:</h4>
-                        <p><strong>Situación:</strong> {situation}</p>
-                        <p><strong>Pensamiento amenazante inicial:</strong> {initialThreat}</p>
-                        <p><strong>Síntomas:</strong> {selectedSymptoms.join(', ')}</p>
-                        <p><strong>Interpretación de los síntomas:</strong> {thoughts}</p>
-                        <div><Label>Efecto final (qué hiciste/sentiste):</Label><Textarea value={finalAction} onChange={e => setFinalAction(e.target.value)} /></div>
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold text-lg">Paso 4: Reconstruye el círculo de la ansiedad</h4>
+                        <div className="space-y-3 p-4 border rounded-md bg-background/50">
+                            <p><strong>Situación (hechos):</strong> {situation}</p>
+                            <p><strong>Pensamiento amenazante inicial:</strong> {initialThreat}</p>
+                            <p><strong>Síntomas físicos y mentales:</strong> {selectedSymptoms.join(', ')}</p>
+                            <p><strong>Interpretación de los síntomas (miedo a la ansiedad):</strong> {thoughts}</p>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="final-action">Efecto final: ¿qué hiciste o qué sentiste después?</Label>
+                            <Textarea id="final-action" value={finalAction} onChange={e => setFinalAction(e.target.value)} />
+                        </div>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1">
+                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación desplegable</AccordionTrigger>
+                            <AccordionContent className="text-xs text-muted-foreground">
+                              Muchas veces este pensamiento pasa tan rápido que no lo registras. Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. Cuanto más practiques, más fácil será detectarlo en el momento.
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                        <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
                         <Button onClick={() => setStep(4)} className="w-full mt-2">Ver Cierre</Button>
                     </div>
                 );
-            case 4: return <div className="p-4 text-center"><p>Muy bien, acabas de trazar el mapa de tu ansiedad. Esto te ayuda a ver que no aparece “porque sí”: hay una secuencia clara. Cuanto más practiques este registro, más fácil será detectar el momento clave donde puedes intervenir para frenar el círculo.</p><p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p></div>;
+            case 4: // Pantalla 5
+                return (
+                    <div className="p-4 text-center space-y-4">
+                        <h4 className="font-semibold text-lg">Cierre del ejercicio</h4>
+                        <p>Muy bien, acabas de trazar el mapa de tu ansiedad. Esto te ayuda a ver que no aparece “porque sí”: hay una secuencia clara. Cuanto más practiques este registro, más fácil será detectar el momento clave donde puedes intervenir para frenar el círculo.</p>
+                        <div className="text-sm p-4 border rounded-md bg-background/50">
+                           <p className="font-semibold">Tu Círculo de Ansiedad:</p>
+                           <p>Situación → Pensamiento inicial → Síntomas → Interpretación de los síntomas → Más ansiedad</p>
+                        </div>
+                        <p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p>
+                        <Button onClick={() => setStep(0)} variant="outline" className="w-full">Hacer otro registro</Button>
+                    </div>
+                );
             default: return null;
         }
     }
