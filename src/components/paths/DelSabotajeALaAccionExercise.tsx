@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -132,9 +131,9 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
                         {selectedOptions.map(opt => (
                             <div key={opt.id} className="p-3 border rounded-md bg-background">
                                 <p className="text-sm text-muted-foreground">Ante el pensamiento:</p>
-                                <p className="font-medium italic">"{opt.label}"</p>
+                                <p className="font-medium italic">{opt.label}</p>
                                 <p className="text-sm text-muted-foreground mt-2">Tu nueva respuesta amable es:</p>
-                                <p className="font-semibold text-primary">"{functionalResponses[opt.id]}"</p>
+                                <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
                             </div>
                         ))}
                     </div>
