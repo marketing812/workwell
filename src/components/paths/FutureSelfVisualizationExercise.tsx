@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -64,7 +63,8 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
                         <p className="text-sm text-muted-foreground">Busca un lugar tranquilo y cómodo. Apoya bien los pies en el suelo, relaja el cuerpo y deja que tu respiración te acompañe.</p>
                         <p className="text-sm text-muted-foreground">Hoy vas a iniciar un breve viaje mental hacia una versión futura de ti: una versión que ya ha atravesado el bloqueo que hoy te cuesta, y ha creado el hábito que ahora deseas construir.</p>
                         <p className="text-sm text-muted-foreground">No necesitas saber exactamente cómo lo ha hecho. Solo tienes que observar, sentir y conectar.</p>
-                        <p className="text-sm text-muted-foreground">Este ejercicio no es magia ni adivinación. Es una herramienta poderosa que utiliza tu imaginación como puente hacia el cambio. Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro las mismas redes que se encienden cuando realmente actúas. Eso refuerza tu motivación, tu claridad y tu confianza.</p>
+                        <p className="text-sm text-muted-foreground">Este ejercicio no es magia ni adivinación. Es una herramienta poderosa que utiliza tu imaginación como puente hacia el cambio. 
+Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro las mismas redes que se encienden cuando realmente actúas. Eso refuerza tu motivación, tu claridad y tu confianza.</p>
                         <p className="text-sm text-muted-foreground">Puedes hacer esta visualización de dos formas:</p>
                         
                         <div className="flex flex-col gap-2">
@@ -86,23 +86,51 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
                                         <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejercicio2inicio.mp3" type="audio/mp3" />
                                         Tu navegador no soporta el elemento de audio.
                                     </audio>
-                                    <p>Cierra los ojos suavemente si te sientes cómoda o cómodo con ello. Tómate unos segundos para estar presente aquí y ahora. Siente el contacto de tu cuerpo con la superficie que te sostiene… Observa tu respiración… sin cambiarla, solo sintiéndola entrar y salir… Imagina que, con cada exhalación, liberas tensión… Y con cada inhalación, te conectas contigo misma, contigo mismo.</p>
-                                    <p>Ahora, prepárate para un pequeño viaje hacia una versión futura de ti. Una versión que ha atravesado el bloqueo que hoy te pesa… Y que ha construido poco a poco ese hábito que tú también deseas crear.</p>
+                                    <p>Cierra los ojos suavemente si te sientes cómoda o cómodo con ello. 
+Tómate unos segundos para estar presente aquí y ahora. 
+Siente el contacto de tu cuerpo con la superficie que te sostiene… 
+Observa tu respiración… sin cambiarla, solo sintiéndola entrar y salir… 
+Imagina que, con cada exhalación, liberas tensión… 
+Y con cada inhalación, te conectas contigo misma, contigo mismo.</p>
+                                    <p>Ahora, prepárate para un pequeño viaje hacia una versión futura de ti. 
+Una versión que ha atravesado el bloqueo que hoy te pesa… 
+Y que ha construido poco a poco ese hábito que tú también deseas crear.</p>
                                     
                                     <h4 className="font-semibold pt-2">Parte 1 – Visualización del entorno futuro</h4>
-                                    <p>Imagina que ha pasado el tiempo necesario. No importa si han sido semanas o meses… Lo importante es que ahora estás ahí: En un momento de tu vida en el que ese hábito ya forma parte de tu rutina.</p>
-                                    <p>Tu energía es distinta… tu mirada transmite algo nuevo… Tu cuerpo también se siente diferente. Quizá más ligero, más estable, más conectado.</p>
-                                    <p>¿Dónde estás en esta escena? ¿Es por la mañana o por la tarde? ¿Qué haces justo después de completar ese hábito que tanto te costaba antes?</p>
-                                    <p>Obsérvate con detalle… Fíjate en tu postura, tu ropa, tu rostro… Nota si hay algo en tu expresión que te transmite calma, determinación, satisfacción…</p>
+                                    <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
+                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejercicio2parte1visuLizentornofuturo.mp3" type="audio/mp3" />
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                    <p>Imagina que ha pasado el tiempo necesario. 
+No importa si han sido semanas o meses… 
+Lo importante es que ahora estás ahí: 
+En un momento de tu vida en el que ese hábito ya forma parte de tu rutina.</p>
+                                    <p>Tu energía es distinta… tu mirada transmite algo nuevo… 
+Tu cuerpo también se siente diferente. Quizá más ligero, más estable, más conectado.</p>
+                                    <p>¿Dónde estás en esta escena? 
+¿Es por la mañana o por la tarde? 
+¿Qué haces justo después de completar ese hábito que tanto te costaba antes?</p>
+                                    <p>Obsérvate con detalle… 
+Fíjate en tu postura, tu ropa, tu rostro… 
+Nota si hay algo en tu expresión que te transmite calma, determinación, satisfacción…</p>
                                     
                                     <h4 className="font-semibold pt-2">Parte 2 – Integración emocional y somática</h4>
-                                    <p>Ahora trata de sentir lo que esa versión de ti siente: ¿Qué emociones están presentes? ¿Orgullo? ¿Tranquilidad? ¿Autoconfianza?</p>
+                                    <p>Ahora trata de sentir lo que esa versión de ti siente: 
+¿Qué emociones están presentes? 
+¿Orgullo? ¿Tranquilidad? ¿Autoconfianza?</p>
                                     <p>Déjalas entrar en tu cuerpo como si fueran un sol suave que te envuelve desde dentro.</p>
-                                    <p>Este tú que ahora observas no es perfecto… Ha tenido días difíciles, momentos de duda, incluso tropiezos. Pero ha seguido adelante. Y eso ha hecho toda la diferencia.</p>
-                                    <p>Respira con esa sensación. Imagina que cada célula de tu cuerpo registra este momento como una semilla. Una semilla de posibilidad.</p>
+                                    <p>Este tú que ahora observas no es perfecto… 
+Ha tenido días difíciles, momentos de duda, incluso tropiezos. 
+Pero ha seguido adelante. 
+Y eso ha hecho toda la diferencia.</p>
+                                    <p>Respira con esa sensación. 
+Imagina que cada célula de tu cuerpo registra este momento como una semilla. 
+Una semilla de posibilidad.</p>
 
                                     <h4 className="font-semibold pt-2">Parte 3 – Diálogo con tu yo futuro</h4>
-                                    <p>Ahora, si lo deseas, puedes acercarte a esa versión futura de ti. Pídele un consejo. Una frase. ¿Qué te diría si pudiera hablarte hoy, desde ese lugar donde ya ha cruzado el bloqueo?</p>
+                                    <p>Ahora, si lo deseas, puedes acercarte a esa versión futura de ti. 
+Pídele un consejo. Una frase. 
+¿Qué te diría si pudiera hablarte hoy, desde ese lugar donde ya ha cruzado el bloqueo?</p>
                                     <p>Tal vez te diga algo como:</p>
                                     <ul className="list-disc list-inside pl-4">
                                         <li>“Empieza pequeño, pero empieza.”</li>
@@ -113,8 +141,15 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
                                     <p>Quédate un momento con ese mensaje.</p>
                                     
                                     <h4 className="font-semibold pt-2">Cierre – Anclaje y regreso</h4>
-                                    <p>Ahora, poco a poco, deja que la imagen se vaya difuminando. Pero guarda dentro de ti lo más importante: La emoción que has sentido. La dirección que te ha mostrado. La certeza de que ese camino está a tu alcance, paso a paso.</p>
-                                    <p>Haz una última respiración profunda. Siente nuevamente el apoyo del suelo, el contacto con tu cuerpo. Y cuando estés preparada o preparado… Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
+                                    <p>Ahora, poco a poco, deja que la imagen se vaya difuminando. 
+Pero guarda dentro de ti lo más importante: 
+La emoción que has sentido. 
+La dirección que te ha mostrado. 
+La certeza de que ese camino está a tu alcance, paso a paso.</p>
+                                    <p>Haz una última respiración profunda. 
+Siente nuevamente el apoyo del suelo, el contacto con tu cuerpo. 
+Y cuando estés preparada o preparado… 
+Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                                 </AccordionContent>
                                 </AccordionItem>
                             </Accordion>
