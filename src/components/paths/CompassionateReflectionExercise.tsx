@@ -21,6 +21,8 @@ export function CompassionateReflectionExercise({ content, pathId }: Compassiona
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
+
+  // State for user inputs
   const [adviceToFriend, setAdviceToFriend] = useState('');
   const [selfJudgment, setSelfJudgment] = useState('');
   const [avoidedEmotions, setAvoidedEmotions] = useState<Record<string, boolean>>({});
@@ -29,8 +31,7 @@ export function CompassionateReflectionExercise({ content, pathId }: Compassiona
   const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
   const [flexibleThought, setFlexibleThought] = useState('');
 
-  if (content.type !== 'compassionateReflectionExercise') return null;
-
+  // Options for checkboxes
   const emotionOptions = [
     { id: 'fear', label: 'Miedo al fallo' },
     { id: 'shame', label: 'Vergüenza' },
@@ -40,12 +41,21 @@ export function CompassionateReflectionExercise({ content, pathId }: Compassiona
     { id: 'frustration', label: 'Frustración' },
   ];
 
+  const perfectionismOptions = [
+    { id: 'perfect', label: 'Pensé que, si no lo hacía perfecto, mejor no hacerlo.' },
+    { id: 'energy', label: 'Sentí que tenía que estar con energía total.' },
+    { id: 'error', label: 'Cualquier error me parecía inaceptable.' },
+    { id: 'not-my-case', label: 'No fue mi caso esta vez.' },
+  ];
+
   const handleSave = async () => {
     const selectedEmotions = emotionOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
     if (avoidedEmotions['other'] && otherAvoidedEmotion) {
         selectedEmotions.push(otherAvoidedEmotion);
     }
     
+    const selectedPerfectionism = perfectionismOptions.filter(opt => perfectionism[opt.id]).map(opt => opt.label);
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -62,13 +72,11 @@ ${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.
 ${aftermathEmotion || 'No especificado.'}
 
 *Exigencias detectadas:*
-${Object.keys(perfectionism)
-  .filter(k => perfectionism[k])
-  .join(', ') || 'Ninguna.'}
+${selectedPerfectionism.length > 0 ? selectedPerfectionism.join(', ') : 'Ninguna.'}
 
 *Nueva forma de pensarlo:*
 ${flexibleThought || 'No especificada.'}
-        `;
+    `;
     
     addNotebookEntry({
         title: 'Mi Reflexión Compasiva',
@@ -78,7 +86,7 @@ ${flexibleThought || 'No especificada.'}
         userId: user?.id,
     });
     toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
-    setStep(prev => prev + 1);
+    setStep(prev => prev + 1); // Move to final confirmation screen
   };
 
   const resetExercise = () => {
@@ -93,6 +101,11 @@ ${flexibleThought || 'No especificada.'}
   }
 
   const renderStep = () => {
+    const selectedEmotions = emotionOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
+    if (avoidedEmotions['other'] && otherAvoidedEmotion) selectedEmotions.push(otherAvoidedEmotion);
+
+    const selectedPerfectionism = perfectionismOptions.filter(opt => perfectionism[opt.id]).map(opt => opt.label);
+
     switch (step) {
       case 0:
         return (
@@ -117,14 +130,15 @@ ${flexibleThought || 'No especificada.'}
       case 1:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <Label className="font-semibold">Instrucción:</Label>
                 <p className="text-sm text-muted-foreground">Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
                 <div className="space-y-2">
                     <Label htmlFor="advice-to-friend">Le diría que…</Label>
                     <Textarea
-                    id="advice-to-friend"
-                    value={adviceToFriend}
-                    onChange={e => setAdviceToFriend(e.target.value)}
-                    placeholder="Ej: Entiendo que te bloquees, lo que estás viviendo es difícil. Vas a poder con ello poco a poco."
+                        id="advice-to-friend"
+                        value={adviceToFriend}
+                        onChange={e => setAdviceToFriend(e.target.value)}
+                        placeholder="Ej: Entiendo que te bloquees, lo que estás viviendo es difícil. Vas a poder con ello poco a poco."
                     />
                 </div>
                 <p className="text-sm italic text-center text-primary pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
@@ -158,22 +172,22 @@ ${flexibleThought || 'No especificada.'}
                 {emotionOptions.map(opt => (
                      <div key={opt.id} className="flex items-center gap-2">
                         <Checkbox
-                        id={opt.id}
+                        id={`emotion-${opt.id}`}
                         checked={avoidedEmotions[opt.id] || false}
                         onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, [opt.id]: !!c }))}
                         />
-                        <Label htmlFor={opt.id} className="font-normal">
+                        <Label htmlFor={`emotion-${opt.id}`} className="font-normal">
                         {opt.label}
                         </Label>
                     </div>
                 ))}
                  <div className="flex items-center gap-2">
                     <Checkbox
-                    id="other"
+                    id="emotion-other"
                     checked={avoidedEmotions['other'] || false}
                     onCheckedChange={c => setAvoidedEmotions(p => ({ ...p, other: !!c }))}
                     />
-                    <Label htmlFor="other" className="font-normal">
+                    <Label htmlFor="emotion-other" className="font-normal">
                     Otra:
                     </Label>
                 </div>
@@ -193,7 +207,7 @@ ${flexibleThought || 'No especificada.'}
                 id="aftermath"
                 value={aftermathEmotion}
                 onChange={e => setAftermathEmotion(e.target.value)}
-                placeholder="Alivio momentáneo... y luego frustración."
+                placeholder="Ejemplo sugerido: Alivio momentáneo… y luego frustración."
                 />
             </div>
              <div className="flex justify-between w-full mt-4">
@@ -208,36 +222,18 @@ ${flexibleThought || 'No especificada.'}
             <div className="space-y-2">
                 <Label>¿Te exigiste demasiado en ese momento?</Label>
                 <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                    id="perfect"
-                    onCheckedChange={c => setPerfectionism(p => ({ ...p, perfect: !!c }))}
-                    checked={perfectionism.perfect || false}
-                    />
-                    <Label htmlFor="perfect" className="font-normal">
-                    Pensé que, si no lo hacía perfecto, mejor no hacerlo.
-                    </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                    id="energy"
-                    onCheckedChange={c => setPerfectionism(p => ({ ...p, energy: !!c }))}
-                    checked={perfectionism.energy || false}
-                    />
-                    <Label htmlFor="energy" className="font-normal">
-                    Sentí que tenía que estar con energía total.
-                    </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Checkbox
-                    id="no-error"
-                    onCheckedChange={c => setPerfectionism(p => ({ ...p, error: !!c }))}
-                    checked={perfectionism.error || false}
-                    />
-                    <Label htmlFor="no-error" className="font-normal">
-                    Cualquier error me parecía inaceptable.
-                    </Label>
-                </div>
+                {perfectionismOptions.map(opt => (
+                    <div key={opt.id} className="flex items-center gap-2">
+                        <Checkbox
+                        id={`perfectionism-${opt.id}`}
+                        onCheckedChange={c => setPerfectionism(p => ({ ...p, [opt.id]: !!c }))}
+                        checked={perfectionism[opt.id] || false}
+                        />
+                        <Label htmlFor={`perfectionism-${opt.id}`} className="font-normal">
+                        {opt.label}
+                        </Label>
+                    </div>
+                ))}
                 </div>
             </div>
             <div className="pt-4 space-y-2">
@@ -251,7 +247,7 @@ ${flexibleThought || 'No especificada.'}
             </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
-                <Button onClick={handleSave} disabled={!flexibleThought.trim()}>
+                <Button onClick={() => setStep(5)} disabled={!flexibleThought.trim()}>
               Ver mi reflexión completa
             </Button>
             </div>
@@ -260,16 +256,37 @@ ${flexibleThought || 'No especificada.'}
       case 5:
         return (
           <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto" />
             <h4 className="font-bold text-lg">Tu Mapa de Comprensión Emocional</h4>
+            <div className="text-left p-4 border rounded-md bg-background/50 space-y-3 text-sm">
+                <p><strong>A alguien que quiero le diría:</strong> {adviceToFriend}</p>
+                <p><strong>En ese momento pensé que:</strong> {selfJudgment}</p>
+                <p><strong>Emociones que intenté evitar:</strong> {selectedEmotions.join(', ')}</p>
+                <p><strong>¿Qué sentí después de evitarlo?:</strong> {aftermathEmotion}</p>
+                <p><strong>Exigencias detectadas:</strong> {selectedPerfectionism.join(', ')}</p>
+                <p><strong>Nueva forma de pensarlo:</strong> {flexibleThought}</p>
+            </div>
             <p className="text-sm italic text-center pt-2">
               Has dado un paso valiente. Hablarte con amabilidad te ayuda a avanzar.
             </p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Empezar de nuevo
-            </Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={() => setStep(4)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={handleSave}>
+                    <Save className="mr-2 h-4 w-4"/> Guardar en mi diario
+                </Button>
+            </div>
           </div>
         );
+      case 6:
+        return (
+            <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
+                <CheckCircle className="h-10 w-10 text-primary mx-auto" />
+                <h4 className="font-bold text-lg">¡Reflexión Guardada!</h4>
+                <p className="text-muted-foreground">Tu reflexión se ha guardado en el Cuaderno Terapéutico. Puedes consultarla cuando quieras para recordar tus patrones y tus nuevas formas de responder.</p>
+                <Button onClick={resetExercise} variant="outline" className="w-full">
+                Empezar de nuevo
+                </Button>
+            </div>
+        )
       default:
         return null;
     }
