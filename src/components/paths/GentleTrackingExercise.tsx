@@ -50,7 +50,8 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     }
   };
   
-  const handleDayClick = (day: Date) => {
+  const handleDayClick = (day: Date | undefined) => {
+    if (!day) return;
     const dateKey = format(day, 'yyyy-MM-dd');
     const currentStatus = progress[dateKey]?.status;
     
@@ -107,14 +108,14 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     const dateKey = format(day, 'yyyy-MM-dd');
     const dayProgress = progress[dateKey];
     let icon = null;
-    if (dayProgress?.status === 'done') icon = <CheckIcon className="h-5 w-5 text-green-500" />;
-    if (dayProgress?.status === 'partial') icon = <MinusIcon className="h-5 w-5 text-yellow-500" />;
-    if (dayProgress?.status === 'skipped') icon = <XIcon className="h-5 w-5 text-red-500" />;
+    if (dayProgress?.status === 'done') icon = <CheckIcon className="h-4 w-4 text-green-500" />;
+    if (dayProgress?.status === 'partial') icon = <MinusIcon className="h-4 w-4 text-yellow-500" />;
+    if (dayProgress?.status === 'skipped') icon = <XIcon className="h-4 w-4 text-red-500" />;
 
     return (
       <div className="relative flex items-center justify-center h-full w-full">
         {day.getDate()}
-        {icon && <div className="absolute top-0 right-0 transform translate-x-1 -translate-y-1">{icon}</div>}
+        {icon && <div className="absolute top-1 right-1">{icon}</div>}
       </div>
     );
   };
@@ -130,7 +131,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm text-center md:text-left">Haz clic en un día para marcar tu progreso.</p>
+          <p className="text-sm text-center md:text-left">Haz clic repetidamente en un día para marcar tu progreso.</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <Calendar
               mode="single"
@@ -140,7 +141,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
               locale={es}
               className="rounded-md border p-3"
               classNames={{
-                day_cell: "h-12 w-12",
+                day_cell: "h-12 w-12 border border-border rounded-sm",
                 day: "h-12 w-12",
               }}
               components={{
