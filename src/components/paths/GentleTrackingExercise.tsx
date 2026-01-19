@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -104,6 +105,10 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     setSaved(true);
   };
 
+  const completedDays = Object.values(progress).filter(
+    (day) => day.status === 'done'
+  ).length;
+
   const renderDayContent = (day: Date) => {
     const dateKey = format(day, 'yyyy-MM-dd');
     const dayProgress = progress[dateKey];
@@ -141,8 +146,8 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
               locale={es}
               className="rounded-md border p-3"
               classNames={{
-                day_cell: "h-12 w-12 border border-border rounded-sm",
-                day: "h-12 w-12",
+                day_cell: "h-12 w-12 border border-border/50 rounded-sm relative",
+                day: "h-full w-full",
               }}
               components={{
                 DayContent: ({ date }) => renderDayContent(date as Date),
@@ -174,7 +179,17 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
           {!saved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Palabra de la Semana</Button>
           ) : (
-            <p className="text-center text-green-600">¡Guardado!</p>
+            <div className="text-center p-4 mt-4 border-t space-y-2">
+              <p className="font-semibold text-lg text-green-700 dark:text-green-300">
+                Has completado {completedDays} {completedDays === 1 ? 'día' : 'días'} esta semana.
+              </p>
+              <p className="text-muted-foreground">
+                Eso es: <span className="font-bold text-primary">{weekWord}</span>.
+              </p>
+              <p className="text-muted-foreground">
+                Eso es cuidar tu compromiso real.
+              </p>
+            </div>
           )}
         </form>
       </CardContent>
