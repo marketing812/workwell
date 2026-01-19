@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,7 +11,8 @@ import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
+import { Input } from '../ui/input';
+import { useRouter } from 'next/navigation';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
@@ -19,10 +21,19 @@ interface MicroPlanExerciseProps {
 
 export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
   const { toast } = useToast();
+  const router = useRouter();
   const [moment, setMoment] = useState('');
   const [otherMoment, setOtherMoment] = useState('');
   const [action, setAction] = useState('');
   const [step, setStep] = useState(0);
+
+  // State for final reflection
+  const [activated, setActivated] = useState('');
+  const [felt, setFelt] = useState('');
+  const [discovered, setDiscovered] = useState('');
+  const [reinforce, setReinforce] = useState('');
+  const [isReflectionSaved, setIsReflectionSaved] = useState(false);
+
 
   const finalMoment = moment === 'Otra' ? otherMoment : moment;
   
@@ -31,6 +42,11 @@ export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
     setOtherMoment('');
     setAction('');
     setStep(0);
+    setActivated('');
+    setFelt('');
+    setDiscovered('');
+    setReinforce('');
+    setIsReflectionSaved(false);
   };
 
   const handleSave = () => {
@@ -53,13 +69,38 @@ Cuando ${finalMoment}, voy a ${action}.
     setStep(4); // Go to motivational screen
   };
 
-  const momentOptions = [
-    'Llegue a casa',
-    'Termine de cenar',
-    'Apague el portátil',
-    'Me levante por la mañana',
-    'Deje a los niños o niñas en el cole'
-  ];
+  const handleFinalReflectionSave = () => {
+    if (!activated.trim() || !felt.trim() || !discovered.trim() || !reinforce.trim()) {
+        toast({
+            title: "Reflexión incompleta",
+            description: "Por favor, completa todos los campos para guardar.",
+            variant: "destructive",
+        });
+        return;
+    }
+    const reflectionContent = `
+**Reflexión de Cierre: Microplan de Acción**
+
+*Esta semana, activé:*
+${activated}
+
+*Me sentí:*
+${felt}
+
+*Descubrí que:*
+${discovered}
+
+*Y quiero seguir reforzando:*
+${reinforce}
+    `;
+    addNotebookEntry({ title: 'Cierre Personal: Microplan', content: reflectionContent, pathId });
+    toast({ title: 'Reflexión Guardada' });
+    setIsReflectionSaved(true);
+  };
+  
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
 
   const renderStep = () => {
       switch(step) {
@@ -80,7 +121,7 @@ Cuando ${finalMoment}, voy a ${action}.
                             <SelectValue placeholder="Elige un momento..." />
                         </SelectTrigger>
                         <SelectContent>
-                            {momentOptions.map(option => (
+                            {['Llegue a casa', 'Termine de cenar', 'Apague el portátil', 'Me levante por la mañana', 'Deje a los niños o niñas en el cole'].map(option => (
                                 <SelectItem key={option} value={option}>{option}</SelectItem>
                             ))}
                             <SelectItem value="Otra">Otra</SelectItem>
@@ -111,7 +152,7 @@ Cuando ${finalMoment}, voy a ${action}.
                     </div>
                 </div>
             );
-        case 3: // NEW: "Tu microplan personalizado"
+        case 3: // "Tu microplan personalizado"
             return (
                 <div className="p-4 space-y-4 text-center">
                     <h4 className="font-bold">Tu frase final:</h4>
@@ -130,7 +171,7 @@ Cuando ${finalMoment}, voy a ${action}.
                     </div>
                 </div>
             );
-        case 4: // NEW: "Refuerzo y motivación"
+        case 4: // "Refuerzo y motivación"
             return (
                 <div className="p-4 space-y-4 text-center">
                     <CheckCircle className="h-10 w-10 text-green-500 mx-auto" />
@@ -138,7 +179,37 @@ Cuando ${finalMoment}, voy a ${action}.
                     <p className="text-muted-foreground">Ahora tienes un plan. Y eso lo cambia todo.</p>
                     <blockquote className="italic border-l-4 border-primary pl-4 text-left">“La acción nace del compromiso, no de la inspiración. Hoy te has comprometido contigo.”</blockquote>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Crear otro plan</Button>
+                        <Button onClick={nextStep} className="w-full">Ir a la reflexión final</Button>
+                    </div>
+                </div>
+            );
+        case 5: // "Tu cierre personal"
+            return (
+                 <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                    <h4 className="font-semibold text-lg text-center">Tu Cierre Personal</h4>
+                    <div className="space-y-2">
+                        <Label htmlFor="activated">Esta semana, activé:</Label>
+                        <Textarea id="activated" value={activated} onChange={e => setActivated(e.target.value)} disabled={isReflectionSaved} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="felt">Me sentí:</Label>
+                        <Textarea id="felt" value={felt} onChange={e => setFelt(e.target.value)} disabled={isReflectionSaved} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="discovered">Descubrí que:</Label>
+                        <Textarea id="discovered" value={discovered} onChange={e => setDiscovered(e.target.value)} disabled={isReflectionSaved} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="reinforce">Y quiero seguir reforzando:</Label>
+                        <Textarea id="reinforce" value={reinforce} onChange={e => setReinforce(e.target.value)} disabled={isReflectionSaved} />
+                    </div>
+                    <p className="text-center italic text-sm text-muted-foreground pt-4">Has roto un ciclo. Has creado una dirección. Cada vez que actúas, aunque sea por un instante, estás diciendo: “No me rindo conmigo.”</p>
+                    <div className="flex flex-col sm:flex-row gap-2 mt-4">
+                        <Button onClick={handleFinalReflectionSave} className="w-full" disabled={isReflectionSaved}>
+                            {isReflectionSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
+                            Guardar en mi diario
+                        </Button>
+                        <Button onClick={() => router.push(`/paths/${pathId}`)} variant="outline" className="w-full">Volver a la ruta</Button>
                     </div>
                 </div>
             );
