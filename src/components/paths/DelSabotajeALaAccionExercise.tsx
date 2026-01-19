@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -7,9 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DelSabotajeALaAccionExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
+
 
 interface DelSabotajeALaAccionExerciseProps {
   content: DelSabotajeALaAccionExerciseContent;
@@ -33,17 +36,23 @@ const functionalResponses: Record<string, string> = {
     'sabotage-too-late': '“No puedo cambiar el pasado, pero sí puedo actuar ahora.”',
 };
 
-const steps = ['intro', 'selection', 'responses', 'custom', 'summary'];
-
 export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<Record<string, boolean>>({});
   const [customSabotage, setCustomSabotage] = useState('');
   const [customResponse, setCustomResponse] = useState('');
   
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
+  const nextStep = () => setCurrentStep(prev => prev + 1);
+  const prevStep = () => setCurrentStep(prev => prev - 1);
+  const resetExercise = () => {
+    setCurrentStep(0);
+    setSelections({});
+    setCustomSabotage('');
+    setCustomResponse('');
+  };
 
   const handleSelectionChange = (id: string, checked: boolean) => {
     setSelections(prev => ({ ...prev, [id]: checked }));
@@ -75,6 +84,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
       title: "Mi Tabla de Diálogo Interno",
       content: notebookContent,
       pathId: 'superar-procrastinacion',
+      userId: user?.id
     });
 
     toast({
@@ -84,7 +94,99 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
 
     nextStep(); // Move to summary
   };
+  
+  const renderStep = () => {
+    switch (currentStep) {
+        case 0: // Pantalla 1 – Introducción
+            return (
+                <div className="text-center p-4 space-y-4">
+                    <p className="mb-4">Muchas veces postergas no por flojera, sino por lo que te dices justo antes de actuar. Este ejercicio te ayuda a escuchar ese diálogo interno y a crear una respuesta que te sostenga.</p>
+                    <Button onClick={nextStep}>Entrenar mi diálogo interno</Button>
+                </div>
+            );
+        
+        case 1: // Pantalla 2 – Frases que alimentan la procrastinación
+            return (
+                <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
+                    <Label className="font-semibold text-lg">Frases que alimentan la procrastinación</Label>
+                    <p className="text-sm text-muted-foreground">Marca las que sueles decirte:</p>
+                    <div className="space-y-2">
+                        {sabotageOptions.map(opt => (
+                            <div key={opt.id} className="flex items-center space-x-2">
+                                <Checkbox id={opt.id} checked={selections[opt.id] || false} onCheckedChange={(checked) => handleSelectionChange(opt.id, checked as boolean)} />
+                                <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex justify-between w-full">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
+                </div>
+            );
 
+        case 2: // Pantalla 3 – Tus respuestas entrenadas
+            return (
+                <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
+                    <h3 className="font-semibold text-lg">Tus respuestas entrenadas</h3>
+                    {selectedOptions.length > 0 ? (
+                        <div className="space-y-4">
+                            {selectedOptions.map(opt => (
+                                <div key={opt.id} className="p-3 border rounded-md bg-background">
+                                    <p className="text-sm text-muted-foreground">Ante el pensamiento:</p>
+                                    <p className="font-medium italic">{opt.label}</p>
+                                    <p className="text-sm text-muted-foreground mt-2">Tu nueva respuesta amable es:</p>
+                                    <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ) : <p className="text-muted-foreground italic">No has seleccionado ninguna frase común.</p> }
+                    <div className="flex justify-between w-full">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={nextStep}>Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
+                </div>
+            );
+
+        case 3: // Pantalla 4 – Crea tu tabla personal
+             return (
+                <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
+                    <h3 className="font-semibold text-lg">Crea tu tabla personal</h3>
+                    <p className="text-sm text-muted-foreground">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
+                    <div className="space-y-2">
+                        <Label htmlFor="custom-sabotage">Frase que te repites</Label>
+                        <Textarea id="custom-sabotage" value={customSabotage} onChange={e => setCustomSabotage(e.target.value)} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="custom-response">Respuesta realista y amable</Label>
+                        <Textarea id="custom-response" value={customResponse} onChange={e => setCustomResponse(e.target.value)} />
+                    </div>
+                    <div className="flex justify-between w-full">
+                        <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button type="submit">
+                            <Save className="mr-2 h-4 w-4" /> Guardar mi tabla de diálogo interno
+                        </Button>
+                    </div>
+                </form>
+            );
+
+        case 4: // Pantalla 5 – Refuerzo final
+            return (
+                <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
+                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                    <h3 className="text-xl font-bold">¡Ejercicio Guardado!</h3>
+                    <p className="text-muted-foreground">
+                        Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estarás construyendo un puente hacia la acción.
+                    </p>
+                    <Button onClick={resetExercise} variant="outline" className="w-full">
+                        Hacer otro ejercicio
+                    </Button>
+                </div>
+            );
+        default: return null;
+    }
+  }
+  
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
@@ -100,73 +202,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
         )}
       </CardHeader>
       <CardContent>
-        {steps[currentStep] === 'intro' && (
-           <div className="text-center p-4">
-             <p className="mb-6">Muchas veces postergas no por flojera, sino por lo que te dices justo antes de actuar. Este ejercicio te ayuda a escuchar ese diálogo interno y a crear una respuesta que te sostenga.</p>
-             <Button onClick={nextStep}>Entrenar mi diálogo interno <ArrowRight className="ml-2 h-4 w-4" /></Button>
-          </div>
-        )}
-
-        {steps[currentStep] === 'selection' && (
-            <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                <Label className="font-semibold text-lg">Frases que alimentan la procrastinación</Label>
-                <p className="text-sm text-muted-foreground">Marca las que sueles decirte:</p>
-                <div className="space-y-2">
-                    {sabotageOptions.map(opt => (
-                        <div key={opt.id} className="flex items-center space-x-2">
-                            <Checkbox id={opt.id} checked={selections[opt.id] || false} onCheckedChange={(checked) => handleSelectionChange(opt.id, checked as boolean)} />
-                            <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
-                        </div>
-                    ))}
-                </div>
-                <Button onClick={nextStep} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
-            </div>
-        )}
-
-        {steps[currentStep] === 'responses' && (
-             <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                <h3 className="font-semibold text-lg">Tus respuestas entrenadas</h3>
-                 {selectedOptions.length > 0 ? (
-                    <div className="space-y-4">
-                        {selectedOptions.map(opt => (
-                            <div key={opt.id} className="p-3 border rounded-md bg-background">
-                                <p className="text-sm text-muted-foreground">Ante el pensamiento:</p>
-                                <p className="font-medium italic">{opt.label}</p>
-                                <p className="text-sm text-muted-foreground mt-2">Tu nueva respuesta amable es:</p>
-                                <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
-                            </div>
-                        ))}
-                    </div>
-                ) : <p className="text-muted-foreground italic">No has seleccionado ninguna frase común.</p> }
-                <Button onClick={nextStep} className="w-full">Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
-            </div>
-        )}
-
-        {steps[currentStep] === 'custom' && (
-            <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                <h3 className="font-semibold text-lg">Crea tu tabla personal</h3>
-                <p className="text-sm text-muted-foreground">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
-                <div className="space-y-2">
-                    <Label htmlFor="custom-sabotage">Frase que te repites</Label>
-                    <Textarea id="custom-sabotage" value={customSabotage} onChange={e => setCustomSabotage(e.target.value)} />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="custom-response">Respuesta realista y amable</Label>
-                    <Textarea id="custom-response" value={customResponse} onChange={e => setCustomResponse(e.target.value)} />
-                </div>
-                <Button type="submit" className="w-full">
-                    <Save className="mr-2 h-4 w-4" /> Guardar mi tabla de diálogo interno
-                </Button>
-            </form>
-        )}
-
-        {steps[currentStep] === 'summary' && (
-            <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h3 className="text-xl font-bold">¡Ejercicio Guardado!</h3>
-                <p className="text-muted-foreground">Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estarás construyendo un puente hacia la acción.</p>
-            </div>
-        )}
+        {renderStep()}
       </CardContent>
     </Card>
   );
