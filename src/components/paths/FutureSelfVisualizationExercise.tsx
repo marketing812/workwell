@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -132,6 +133,10 @@ Imagina que cada célula de tu cuerpo registra este momento como una semilla.
 Una semilla de posibilidad.</p>
 
                                     <h4 className="font-semibold pt-2">Parte 3 – Diálogo con tu yo futuro</h4>
+                                    <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
+                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3seman3ejerci2parte3dialogoyofuturoycierre.mp3" type="audio/mp3" />
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
                                     <p>Ahora, si lo deseas, puedes acercarte a esa versión futura de ti. 
 Pídele un consejo. Una frase. 
 ¿Qué te diría si pudiera hablarte hoy, desde ese lugar donde ya ha cruzado el bloqueo?</p>
