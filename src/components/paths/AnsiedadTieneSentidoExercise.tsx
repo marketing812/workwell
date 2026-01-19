@@ -86,9 +86,11 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                         </div>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación desplegable</AccordionTrigger>
+                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
                             <AccordionContent className="text-xs text-muted-foreground">
-                              Muchas veces este pensamiento pasa tan rápido que no lo registras. Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. Cuanto más practiques, más fácil será detectarlo en el momento.
+                              Muchas veces este pensamiento pasa tan rápido que no lo registras. 
+                              Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
+                              Cuanto más practiques, más fácil será detectarlo en el momento.
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
@@ -113,9 +115,11 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                         </div>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación desplegable</AccordionTrigger>
+                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
                             <AccordionContent className="text-xs text-muted-foreground">
-                              Muchas veces este pensamiento pasa tan rápido que no lo registras. Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. Cuanto más practiques, más fácil será detectarlo en el momento.
+                              Muchas veces este pensamiento pasa tan rápido que no lo registras. 
+                              Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
+                              Cuanto más practiques, más fácil será detectarlo en el momento.
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
