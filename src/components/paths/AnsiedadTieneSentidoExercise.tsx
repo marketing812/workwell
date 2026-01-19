@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { AnsiedadTieneSentidoExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, ArrowRight } from 'lucide-react';
+import { Edit3, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface AnsiedadTieneSentidoExerciseProps {
@@ -72,7 +72,10 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                           <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder='Ejemplo: “Pensaba: ‘me voy a desmayar’, ‘no voy a aguantar aquí’.”'/>
                         </div>
                         <p className="text-xs text-muted-foreground italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
-                        <Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        <div className="flex justify-between w-full mt-2">
+                            <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                            <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        </div>
                     </div>
                 );
             case 2: // Pantalla 3
@@ -94,7 +97,10 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
-                        <Button onClick={() => setStep(3)} className="w-full mt-2" disabled={!initialThreat.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        <div className="flex justify-between w-full mt-2">
+                            <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                            <Button onClick={() => setStep(3)} disabled={!initialThreat.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        </div>
                     </div>
                 );
             case 3: // Pantalla 4
@@ -124,7 +130,10 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                           </AccordionItem>
                         </Accordion>
                         <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
-                        <Button onClick={() => setStep(4)} className="w-full mt-2">Ver Cierre</Button>
+                        <div className="flex justify-between w-full mt-2">
+                           <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                           <Button onClick={() => setStep(4)}>Ver Cierre</Button>
+                        </div>
                     </div>
                 );
             case 4: // Pantalla 5
@@ -137,7 +146,10 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                            <p>Situación → Pensamiento inicial → Síntomas → Interpretación de los síntomas → Más ansiedad</p>
                         </div>
                         <p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p>
-                        <Button onClick={() => setStep(0)} variant="outline" className="w-full">Hacer otro registro</Button>
+                        <div className="flex justify-between w-full mt-2">
+                           <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                           <Button onClick={() => setStep(0)} variant="outline" className="w-auto">Hacer otro registro</Button>
+                        </div>
                     </div>
                 );
             default: return null;
