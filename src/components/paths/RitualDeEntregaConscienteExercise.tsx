@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -73,30 +74,38 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
 
   const renderWriteAndRelease = () => (
     <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-        <h4 className="font-semibold text-lg">Opción 1: Escribir y Soltar</h4>
-        <p className="text-xs text-muted-foreground">Ideal si tu mente está llena de pensamientos anticipatorios o autoexigencias.</p>
-        <div className="space-y-2">
-            <Label htmlFor="inquietud">Paso 1: Escribe todo lo que te inquieta</Label>
-            <Textarea id="inquietud" value={writtenInquietud} onChange={e => setWrittenInquietud(e.target.value)} placeholder="Frases cortas, sin filtro..."/>
-        </div>
-        <div className="space-y-2">
-            <Label>Paso 2: Léelo en voz baja y reflexiona</Label>
-            <p className="text-xs text-muted-foreground">• ¿Es esto cierto? • ¿Me ayuda pensar así? • ¿Podría verlo de forma más realista?</p>
-            <Textarea value={writtenReflection} onChange={e => setWrittenReflection(e.target.value)} placeholder="Tu reflexión..."/>
-        </div>
-        <div className="space-y-2">
-            <Label htmlFor="reformulation">Paso 3: Reformula una frase más útil</Label>
-            <Textarea id="reformulation" value={writtenReformulation} onChange={e => setWrittenReformulation(e.target.value)} placeholder="Ej: No tengo que saberlo todo para empezar."/>
-        </div>
-        <div className="text-center space-y-2">
-            <p className="font-semibold">Paso 4: Suelta</p>
-            <p className="text-sm text-muted-foreground">"Hoy elijo confiar en mi capacidad de avanzar paso a paso."</p>
-            <Button onClick={() => {
-                const content = `**Inquietud:**\n${writtenInquietud}\n\n**Reflexión:**\n${writtenReflection}\n\n**Reformulación:**\n${writtenReformulation}`;
-                handleSave("Escribir y Soltar", content);
-            }}><Save className="mr-2 h-4 w-4"/> Guardar como "Entrega consciente"</Button>
-        </div>
-        <Button variant="link" onClick={() => setStep(0)}>Volver a opciones</Button>
+      <h4 className="font-semibold text-lg">Opción 1: Escribir y Soltar</h4>
+      <p className="text-xs text-muted-foreground">Ideal si tu mente está llena de pensamientos anticipatorios o autoexigencias.</p>
+      
+      <div className="space-y-2">
+        <Label htmlFor="inquietud" className="font-semibold">Paso 1: Escribe todo lo que te inquieta</Label>
+        <Textarea id="inquietud" value={writtenInquietud} onChange={e => setWrittenInquietud(e.target.value)} placeholder="Frases cortas, sin filtro..."/>
+      </div>
+      
+      <div className="space-y-2">
+        <Label className="font-semibold">Paso 2: Léelo en voz baja y reflexiona</Label>
+        <p className="text-xs text-muted-foreground">• ¿Es esto cierto? • ¿Me ayuda pensar así? • ¿Podría verlo de forma más realista?</p>
+        <Textarea value={writtenReflection} onChange={e => setWrittenReflection(e.target.value)} placeholder="Tu reflexión..."/>
+      </div>
+      
+      <div className="space-y-2">
+        <Label htmlFor="reformulation" className="font-semibold">Paso 3: Reformula una frase más útil</Label>
+        <Textarea id="reformulation" value={writtenReformulation} onChange={e => setWrittenReformulation(e.target.value)} placeholder="Ej: No tengo que saberlo todo para empezar."/>
+      </div>
+
+      <div className="space-y-2">
+        <Label className="font-semibold">Paso 4: Suelta</Label>
+        <p className="text-sm text-muted-foreground p-3 border rounded-md bg-background/50">
+            Cierra los ojos y repite en voz alta o mentalmente: "Hoy elijo confiar en mi capacidad de avanzar paso a paso." Siente cómo, al decirlo, una parte de ti suelta la necesidad de controlarlo todo.
+        </p>
+      </div>
+
+      <Button onClick={() => {
+          const content = `**Inquietud:**\n${writtenInquietud}\n\n**Reflexión:**\n${writtenReflection}\n\n**Reformulación:**\n${writtenReformulation}`;
+          handleSave("Escribir y Soltar", content);
+      }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como "Entrega consciente"</Button>
+      
+      <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
     </div>
   );
 
