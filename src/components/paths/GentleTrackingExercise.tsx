@@ -28,7 +28,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
   const [weekWord, setWeekWord] = useState('');
   const [saved, setSaved] = useState(false);
   const [progress, setProgress] = useState<Record<string, DailyProgress>>({});
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [month, setMonth] = useState<Date>(new Date());
   const storageKey = `gentle-tracking-${pathId}`;
 
   useEffect(() => {
@@ -50,8 +50,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     }
   };
   
-  const handleDayClick = (day: Date | undefined) => {
-    if (!day) return;
+  const handleDayClick = (day: Date) => {
     const dateKey = format(day, 'yyyy-MM-dd');
     const currentStatus = progress[dateKey]?.status;
     
@@ -76,7 +75,6 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     
     setProgress(newProgress);
     saveProgressToLocal(newProgress);
-    setSelectedDate(day); // Keep track of the last clicked day
   };
 
 
@@ -136,8 +134,8 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <Calendar
               mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
+              month={month}
+              onMonthChange={setMonth}
               onDayClick={handleDayClick}
               locale={es}
               className="rounded-md border p-3"
