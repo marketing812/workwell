@@ -63,8 +63,7 @@ export const empathyPath: Path = {
       title: 'Semana 4: Crea Vínculos con Sentido y Cuidado Mutuo',
       type: 'summary',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         {
             type: 'collapsible',
@@ -95,7 +94,7 @@ export const empathyPath: Path = {
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
-          objective: 'Este ejercicio es una brújula emocional para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
+          objective: 'Tiempo estimado: 15-20 minutos. Te recomedamos repetir este ejercicio una vez al mes o siempre que quieras reforzar tu dirección relacional y tus valores emocionales. \\nVuelve a tu frase de compromiso cada vez que te sientas tentado/a a ceder por miedo o pierdas de vista lo que necesitas realmente en un vínculo.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3'
         },
@@ -155,7 +154,7 @@ export const empathyPath: Path = {
             'Poner límites con firmeza y cuidado no rompe los vínculos, los fortalece.',
             'Es sano sostener la incomodidad emocional tras decir “no”.',
             'Los vínculos más valiosos se construyen con presencia, escucha y coherencia.',
-            'Puedes elegir con quién construir… y también cómo deseas estar tú en esa relación.'
+            'Puedes elegir con quién construir… y también cómo eliges estar tú en esa relación.'
           ]
         },
         {
@@ -167,8 +166,6 @@ export const empathyPath: Path = {
   ]
 };
     
-    
-
     
 
     
