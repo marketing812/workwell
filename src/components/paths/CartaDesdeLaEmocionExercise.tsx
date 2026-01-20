@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CartaDesdeLaEmocionExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
@@ -33,6 +33,15 @@ export function CartaDesdeLaEmocionExercise({ content, pathId }: CartaDesdeLaEmo
     const finalEmotion = emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion);
 
     const handleSave = () => {
+        if (!need.trim()) {
+            toast({
+                title: "Campo requerido",
+                description: "Por favor, define lo que realmente necesitas para poder guardar la carta.",
+                variant: 'destructive',
+            });
+            return;
+        }
+
         const fullLetter = `
 Hola, soy tu emoción: ${finalEmotion}
 Aparezco porque hay algo en ti que te importa mucho… y no está siendo cuidado como necesita.
@@ -45,20 +54,21 @@ Tu emoción: ${finalEmotion}
         `;
         addNotebookEntry({ title: `Carta desde mi ${finalEmotion}`, content: fullLetter, pathId: pathId });
         toast({ title: 'Carta Guardada' });
+        setStep(3); // Go to confirmation
     };
     
     const renderStep = () => {
         switch(step) {
             case 0: return <div className="p-4 space-y-4">
                 <Label>¿Qué emoción te está pidiendo ser escuchada hoy?</Label>
-                <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía. </p>
-                <p className="text-sm text-muted-foreground">Puedes elegir de una lista emocional o escribirla libremente.</p>
-                <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
+                <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía.</p>
+                <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div>;
+            
             case 1: return <div className="p-4 space-y-4">
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
                   Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\n\n'}
                   Tristeza → Voz compasiva y suave {'\n\n'}
-                  Ira → Voz clara, firme y directo {'\n\n'}
+                  Ira → Voz clara, firme y directa {'\n\n'}
                   Ansiedad → Voz serena y tranquilizadora {'\n\n'}
                   Culpa → Voz amable y reparadora {'\n\n'}
                   Otra emoción → Elige el tono que más te ayude
@@ -66,8 +76,65 @@ Tu emoción: ${finalEmotion}
                 <Label>¿En qué tono quieres escribir esta carta?</Label>
                 <Select value={tone} onValueChange={setTone}><SelectTrigger><SelectValue placeholder="Elige un tono..." /></SelectTrigger><SelectContent><SelectItem value="compasivo">Compasivo y suave</SelectItem><SelectItem value="firme">Claro, firme y directo</SelectItem><SelectItem value="sereno">Sereno y tranquilizador</SelectItem><SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
                 {tone === 'otra' && <Textarea value={otherTone} onChange={e => setOtherTone(e.target.value)} placeholder="Describe el tono..." className="mt-2" />}
-                <Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
-            case 2: return <div className="p-4 space-y-4"><Label>Lo que realmente estás necesitando ahora es...</Label><Textarea value={need} onChange={e => setNeed(e.target.value)} /><Label>Cuerpo de la carta (opcional):</Label><Textarea value={letterBody} onChange={e => setLetterBody(e.target.value)} /><Button onClick={handleSave} className="w-full mt-2"><Save className="mr-2 h-4 w-4"/>Guardar Carta</Button></div>;
+                <div className="flex justify-between mt-2">
+                    <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setStep(2)} className="w-auto">Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button>
+                </div>
+              </div>;
+              
+            case 2:
+                return (
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold text-lg">Redacta tu carta desde la emoción (plantilla guiada)</h4>
+                        <p className="text-sm text-muted-foreground">Ahora deja que tu emoción escriba. No tienes que pensarlo demasiado. Solo deja que salga con sinceridad.</p>
+            
+                        <div className="p-4 border rounded-md bg-background/50 space-y-4 text-sm">
+                            <p>Hola, soy tu emoción: <strong>{finalEmotion}</strong></p>
+                            <p>Aparezco porque hay algo en ti que te importa mucho… y no está siendo cuidado como necesita.</p>
+                            
+                            <div className="space-y-1">
+                                <Label htmlFor="need">Lo que realmente estás necesitando ahora es:</Label>
+                                <Textarea id="need" value={need} onChange={e => setNeed(e.target.value)} placeholder="Ej: seguridad, calma, respeto..." />
+                            </div>
+                            
+                            <p>No vengo a hacerte daño. Estoy aquí para ayudarte a mirar hacia dentro. Quiero que sepas que te estoy protegiendo, aunque a veces no sepa cómo expresarme.</p>
+                            <p>Me gustaría que me escucharas sin miedo. Solo necesito un espacio para ser vista, sentida y comprendida.</p>
+            
+                            <div className="space-y-1">
+                                <Label htmlFor="letterBody">(Opcional) Añade aquí cualquier otra cosa que tu emoción quiera decir:</Label>
+                                <Textarea id="letterBody" value={letterBody} onChange={e => setLetterBody(e.target.value)} placeholder="Escribe libremente..." />
+                            </div>
+                            
+                            <p>Con cariño,</p>
+                            <p>Tu emoción: <strong>{finalEmotion}</strong></p>
+                        </div>
+                        
+                        <p className="text-xs text-muted-foreground italic text-center">Recuerda: No tienes que escribir una carta perfecta. Solo deja que tu emoción se exprese tal y como lo harías con alguien que te importa de verdad: tú.</p>
+            
+                        <div className="flex justify-between mt-2">
+                            <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={handleSave} className="w-auto" disabled={!need.trim()}>
+                                <Save className="mr-2 h-4 w-4"/>Guardar Carta
+                            </Button>
+                        </div>
+                    </div>
+                );
+
+            case 3: 
+                return (
+                    <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                        <h4 className="font-bold text-lg">Carta Guardada</h4>
+                        <p className="text-muted-foreground">Tu carta desde la emoción ha sido guardada en tu cuaderno. Puedes volver a leerla cuando necesites reconectar contigo.</p>
+                        <Button onClick={() => {
+                            setStep(0);
+                            setEmotion(''); setOtherEmotion('');
+                            setTone(''); setOtherTone('');
+                            setNeed(''); setLetterBody('');
+                        }} variant="outline">Escribir otra carta</Button>
+                    </div>
+                );
+
             default: return null;
         }
     };
