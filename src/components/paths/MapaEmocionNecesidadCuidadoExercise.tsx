@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -32,13 +31,23 @@ const needOptions = [
 
 const careActions = {
     laboral: [
-        { id: 'pausa', label: 'Pedir una pausa o descanso breve' }, { id: 'limite', label: 'Poner un límite con respeto' }, { id: 'delegar', label: 'Delegar una tarea concreta' }, { id: 'agradecer', label: 'Agradecerte lo que ya hiciste hoy' }
+        { id: 'pausa', label: 'Pedir una pausa o descanso breve' },
+        { id: 'limite', label: 'Poner un límite con respeto' },
+        { id: 'delegar', label: 'Delegar una tarea concreta' },
+        { id: 'agradecer', label: 'Agradecerte lo que ya hiciste hoy' }
     ],
     familiar: [
-        { id: 'compartir', label: 'Compartir cómo te sientes con alguien cercano' }, { id: 'hablar', label: 'Hablar con alguien de confianza' }, { id: 'pedir_ayuda', label: 'Pedir ayuda en una tarea doméstica' }, { id: 'limite_cariño', label: 'Poner un límite con respeto y cariño' }
+        { id: 'compartir', label: 'Compartir cómo te sientes con alguien cercano' },
+        { id: 'hablar', label: 'Hablar con alguien de confianza' },
+        { id: 'pedir_ayuda', label: 'Pedir ayuda en una tarea doméstica' },
+        { id: 'limite_cariño', label: 'Poner un límite con respeto y cariño' }
     ],
     personal: [
-        { id: 'escribir', label: 'Escribir tus emociones en tu cuaderno' }, { id: 'pausa_real', label: 'Darte 15 minutos de pausa real' }, { id: 'nutrir', label: 'Hacer algo que te nutra (música, paseo, respiración)' }, { id: 'no_exigir', label: 'No exigirte tanto hoy' }, { id: 'llorar_respirar', label: 'Llorar, respirar, validar' }
+        { id: 'escribir', label: 'Escribir tus emociones en tu cuaderno' },
+        { id: 'pausa_real', label: 'Darte 15 minutos de pausa real' },
+        { id: 'nutrir', label: 'Hacer algo que te nutra (música, paseo, respiración)' },
+        { id: 'no_exigir', label: 'No exigirte tanto hoy' },
+        { id: 'llorar_respirar', label: 'Llorar, respirar, validar' }
     ]
 };
 
@@ -93,7 +102,7 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
     const selectedNeeds = needOptions.filter(n => needs[n.id]).map(n => n.label);
     if(needs['otra'] && otherNeed) selectedNeeds.push(otherNeed);
 
-    let finalCareAction = otherCareAction || careAction;
+    let finalCareAction = careAction === 'Otra' ? otherCareAction : careAction;
 
     const notebookContent = `
 **Ejercicio: ${content.title}**
@@ -118,7 +127,16 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
 
   const renderStep = () => {
     switch(step) {
-      case 0: return <div className="p-4 space-y-4"><Label>Elige la emoción que sientes con más intensidad:</Label><p className="text-sm text-muted-foreground">¿Te cuesta reconocer lo que sientes? Te puedo ayudar distinguir entre: Emociones primarias: reacciones inmediatas ante algo (por ejemplo, miedo ante un peligro). Emociones secundarias: surgen tras interpretar o juzgar lo que sientes (por ejemplo, sentir culpa por haber sentido ira). Ambas son válidas. Este ejercicio te ayuda a reconocerlas sin filtros, para que puedas escucharte desde un lugar más honesto y compasivo. </p><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={nextStep} className="w-full mt-2" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 0: return <div className="p-4 space-y-4">
+        <Label>Elige la emoción que sientes con más intensidad:</Label>
+        <p className="text-sm text-muted-foreground">¿Te cuesta reconocer lo que sientes? Te puedo ayudar distinguir entre: Emociones primarias: reacciones inmediatas ante algo (por ejemplo, miedo ante un peligro). Emociones secundarias: surgen tras interpretar o juzgar lo que sientes (por ejemplo, sentir culpa por haber sentido ira). Ambas son válidas. Este ejercicio te ayuda a reconocerlas sin filtros, para que puedas escucharte desde un lugar más honesto y compasivo. </p>
+        <Select value={emotion} onValueChange={setEmotion}>
+            <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
+            <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent>
+        </Select>
+        {emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }
+        <Button onClick={nextStep} className="w-full mt-2" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+        </div>;
       case 1: return <div className="p-4 space-y-4">
         <Label>¿Qué podrías estar necesitando?</Label>
         <p className="text-sm text-muted-foreground">¿Qué valor tuyo se está viendo afectado o qué parte de ti necesita atención?</p>
@@ -129,8 +147,67 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
         {needs.otra && <Textarea value={otherNeed} onChange={e => setOtherNeed(e.target.value)} />}
         <div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
         </div>;
-      case 2: return <div className="p-4 space-y-4"><Label>¿Qué acción pequeña y amable podrías hacer hoy?</Label><RadioGroup value={careAction} onValueChange={setCareAction}>{Object.values(careActions).flat().map(a => <div key={a.id} className="flex items-center gap-2"><RadioGroupItem value={a.label} id={a.id}/><Label htmlFor={a.id} className="font-normal">{a.label}</Label></div>)}</RadioGroup><Textarea value={otherCareAction} onChange={e => setOtherCareAction(e.target.value)} placeholder="Otra acción específica..." /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!careAction && !otherCareAction}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
-      case 3: return <div className="p-4 space-y-4 text-center"><p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>. Me propongo cuidarme así: <strong>{otherCareAction || careAction}</strong>.</p><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button><Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button></div>
+      case 2:
+        const isNextDisabled = !careAction && !otherCareAction.trim();
+        return (
+            <div className="p-4 space-y-4">
+                <Label className="font-semibold text-lg">¿Qué podrías hacer hoy para cuidar esa necesidad?</Label>
+                <p className="text-sm text-muted-foreground">Selecciona una acción pequeña, realista y amable que puedas hacer hoy para cuidar eso que necesitas. No hace falta que sea perfecta, solo que sea realista:</p>
+                
+                <RadioGroup value={careAction} onValueChange={setCareAction}>
+                    <div className="space-y-3 mt-4">
+                        <Label className="font-medium">Contexto laboral:</Label>
+                        {careActions.laboral.map(a => (
+                            <div key={a.id} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={a.id}/>
+                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="space-y-3 mt-4">
+                        <Label className="font-medium">Contexto familiar:</Label>
+                        {careActions.familiar.map(a => (
+                            <div key={a.id} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={a.id}/>
+                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="space-y-3 mt-4">
+                        <Label className="font-medium">Contexto personal:</Label>
+                        {careActions.personal.map(a => (
+                            <div key={a.id} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={a.id}/>
+                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="space-y-2 mt-4">
+                         <div className="flex items-center gap-2">
+                            <RadioGroupItem value="Otra" id="care-other"/>
+                            <Label htmlFor="care-other" className="font-medium">Otra:</Label>
+                        </div>
+                        {careAction === 'Otra' && (
+                            <Textarea 
+                                value={otherCareAction} 
+                                onChange={e => setOtherCareAction(e.target.value)} 
+                                placeholder="Describe tu acción de cuidado personalizada..." 
+                                className="ml-6"
+                            />
+                        )}
+                    </div>
+                </RadioGroup>
+
+                <div className="flex justify-between w-full mt-2">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                    <Button onClick={nextStep} className="w-auto" disabled={isNextDisabled}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
+            </div>
+        );
+      case 3: return <div className="p-4 space-y-4 text-center"><p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>. Me propongo cuidarme así: <strong>{careAction === 'Otra' ? otherCareAction : careAction}</strong>.</p><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button><Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button></div>
       default: return null;
     }
   }
@@ -141,7 +218,7 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && 
             <CardDescription className="pt-2">
-                Objetivo terapeutico: Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. 
+                {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
                         <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3" type="audio/mp3" />
