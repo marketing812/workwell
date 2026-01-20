@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetectiveDeEmocionesExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
@@ -62,7 +62,7 @@ ${reflection || 'Sin reflexión.'}
   const renderStep = () => {
     switch (step) {
       case 0: return <div className="p-4"><p className="text-center mb-4">Piensa en una situación reciente que te haya movido emocionalmente.</p><Button onClick={nextStep} className="w-full">Comenzar</Button></div>;
-      case 1: return <div className="p-4 space-y-4"><Label>¿Qué ocurrió? (Describe los hechos)</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /><Button onClick={nextStep} className="w-full">Siguiente</Button></div>;
+      case 1: return <div className="p-4 space-y-4"><Label htmlFor="situation-detective" className="font-semibold">¿Qué ocurrió?</Label><p className="text-sm text-muted-foreground">Describe brevemente una situación concreta que te haya movido emocionalmente esta semana. Céntrate solo en lo que ocurrió —los hechos visibles o verificables— sin añadir aún cómo te sentiste ni lo que pensaste. Piensa que lo estás contando como si fueras una cámara que graba la escena: ¿qué pasó?, ¿quién estaba?, ¿dónde y cuándo fue?</p><Textarea id="situation-detective" value={situation} onChange={e => setSituation(e.target.value)} placeholder={'“Ayer envié un mensaje importante a una amiga y no me contestó.”\n(No pongas: “Me sentí ignorada” o “Seguro que está enfadada conmigo” → eso lo veremos después)'} /><Button onClick={nextStep} className="w-full">Siguiente</Button></div>;
       case 2: return <div className="p-4 space-y-4"><Label>¿Qué pensaste en ese momento?</Label><Textarea value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} /><Button onClick={nextStep} className="w-full">Siguiente</Button></div>;
       case 3: return <div className="p-4 space-y-4"><Label>¿Qué emoción sentiste con más fuerza?</Label><Select value={selectedEmotion} onValueChange={setSelectedEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent></Select><Button onClick={nextStep} className="w-full mt-2">Siguiente</Button></div>;
       case 4: return <div className="p-4 space-y-4"><Label>¿Qué tan fuerte fue esa emoción? ({emotionIntensity}%)</Label><Slider value={[emotionIntensity]} onValueChange={v => setEmotionIntensity(v[0])} max={100} step={5} /><Button onClick={nextStep} className="w-full">Siguiente</Button></div>;
