@@ -631,6 +631,7 @@ function ContentItemRenderer({
           key={index}
           content={exerciseContent}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     }
@@ -1041,3 +1042,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
