@@ -155,7 +155,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'mapaEmocionalRepetidoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
-                objective: 'Objetivo terapéutico: Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
+                objective: 'Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
                 duration: '15–20 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3'
             },
@@ -181,92 +181,156 @@ export const selfUnderstandingPath: Path = {
         ]
     },
     {
-        id: 'comp_sem4',
-        title: 'Semana 4: Habitarme con conciencia y sin juicio',
-        type: 'summary',
-        estimatedTime: '20-25 min',
-        content: [
+      id: 'comp_sem4',
+      title: 'Semana 4: Habitarme con conciencia y sin juicio',
+      type: 'summary',
+      estimatedTime: '20-25 min',
+      content: [
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Y si no tuvieras que corregirte todo el tiempo? \n¿Y si pudieras observar lo que sientes sin pelear contigo? \n\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente. \nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio. \n\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable. \n\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro. \nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'Habitarme con conciencia y sin juicio',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'paragraphWithAudio',
-                text: '¿Y si no tuvieras que corregirte todo el tiempo? \n¿Y si pudieras observar lo que sientes sin pelear contigo? \n\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente. \nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio. \n\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable. \n\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro. \nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
-            },
-            { type: 'title', text: 'Psicoeducación' },
+              type: 'paragraph',
+              text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte? \n\nEso es autoconciencia plena: \nAprender a estar presente con lo que sientes, tal y como es. \nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora. '
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Qué significa tener autoconciencia plena?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: 'Habitarme con conciencia y sin juicio',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte? \n\nEso es autoconciencia plena: \nAprender a estar presente con lo que sientes, tal y como es. \nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.' }]
-            },
+              type: 'paragraph',
+              text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… \nen el momento en que ocurre. \n\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. \nNo se trata de perfección, sino de presencia y aceptación. \nEs estar contigo de forma amable, instante a instante.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿De dónde viene este enfoque?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: '¿Qué significa tener autoconciencia plena?',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… \nen el momento en que ocurre. \n\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. \nNo se trata de perfección, sino de presencia y aceptación. \nEs estar contigo de forma amable, instante a instante.' }]
-            },
+              type: 'paragraph',
+              text: 'Este tipo de conciencia se basa en dos caminos terapéuticos: \n\nMindfulness: prestar atención al presente con amabilidad. \n\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… \neres quien los observa. \n\nAprender esto te permite tomar distancia y elegir mejor.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Observarte no es una debilidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: '¿De dónde viene este enfoque?',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Este tipo de conciencia se basa en dos caminos terapéuticos: \n\nMindfulness: prestar atención al presente con amabilidad. \n\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… \neres quien los observa. \n\nAprender esto te permite tomar distancia y elegir mejor.' }]
-            },
+              type: 'paragraph',
+              text: 'Al contrario: es una fuerza emocional. \nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”. \n\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar. \nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Metacognición: el arte de observar tu mente',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: 'Observarte no es una debilidad',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Al contrario: es una fuerza emocional. \nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”. \n\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar. \nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.' }]
-            },
+              type: 'paragraph',
+              text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera. \n\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti. \nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder. \n\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Del juicio a la curiosidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: 'Metacognición: el arte de observar tu mente',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera. \n\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti. \nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder. \n\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }]
-            },
+              type: 'paragraph',
+              text: 'Muchas veces nos decimos cosas como: \n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…” \n\nPero hablarte así no ayuda a cambiar lo que sientes. \nSolo lo hace más difícil. \n\nEn cambio, si te preguntas con amabilidad: \n“¿Qué me está pasando en realidad?” \nse abre un espacio de comprensión y calma dentro de ti.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Qué cambia cuando me observo con curiosidad?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: 'Del juicio a la curiosidad',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Muchas veces nos decimos cosas como: \n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…” \n\nPero hablarte así no ayuda a cambiar lo que sientes. \nSolo lo hace más difícil. \n\nEn cambio, si te preguntas con amabilidad: \n“¿Qué me está pasando en realidad?” \nse abre un espacio de comprensión y calma dentro de ti.' }]
-            },
+              type: 'paragraph',
+              text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'La curiosidad como medicina emocional',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: '¿Qué cambia cuando me observo con curiosidad?',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes.' }]
-            },
+              type: 'paragraph',
+              text: 'Ejemplo práctico: \n“No quiero estar ansiosa” → resistencia → más ansiedad \n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma \n\nObservarte sin juicio no borra lo que sientes, \npero sí lo contiene con amabilidad, y eso ya es transformador. \n\nNo necesitas tener todas las respuestas \n\nLo más importante es hacerte mejores preguntas. \nEstas te ayudarán a escucharte sin agobiarte: \n\n¿Qué estoy sintiendo ahora mismo? \n\n¿Qué necesita esta emoción? \n\n¿Qué historia estoy contándome? \n\n¿Cómo puedo cuidarme un poco mejor ahora?'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Y si me cuesta observarme con calma?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
+          content: [
             {
-                type: 'collapsible',
-                title: 'La curiosidad como medicina emocional',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Ejemplo práctico: \n“No quiero estar ansiosa” → resistencia → más ansiedad \n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma \n\nObservarte sin juicio no borra lo que sientes, \npero sí lo contiene con amabilidad, y eso ya es transformador. \n\nNo necesitas tener todas las respuestas \n\nLo más importante es hacerte mejores preguntas. \nEstas te ayudarán a escucharte sin agobiarte: \n\n¿Qué estoy sintiendo ahora mismo? \n\n¿Qué necesita esta emoción? \n\n¿Qué historia estoy contándome? \n\n¿Cómo puedo cuidarme un poco mejor ahora?' }]
-            },
+              type: 'paragraph',
+              text: 'Es totalmente normal. \n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar. \nSolo se activa para defenderse. \n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte. \nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo. \n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal) \n\nTu cuerpo cambia según cómo percibe el entorno: \n\nEstado de seguridad: calma, conexión, reflexión. \n\nEstado de alarma: lucha o huida. \n\nEstado de colapso: bloqueo o desconexión. \n\nCuando estás en seguridad, puedes observarte sin pelear contigo. \nPor eso es tan importante cultivar ese estado interno. \n\nCómo generar seguridad dentro de ti \n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo: \n\nRespirar de forma consciente. \n\nSentir tus pies firmes en el suelo. \n\nHablarte con amabilidad. \n\nRodearte de personas que te respetan. \n\nRecordarte: lo que sientes no es un error. \n\nLa seguridad no se impone. Se entrena poco a poco. \n\nEl poder de tu voz interior \n\nTu cuerpo escucha cómo te hablas. \n\nUna frase amable puede calmar tu corazón. \n\nUna crítica interna puede alterarte sin que te des cuenta. \n\nHabitarte con conciencia también es esto: \ntratarte con respeto desde dentro, incluso cuando te equivocas.'
+            }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'En resumen',
+          content: [
             {
-                type: 'collapsible',
-                title: '¿Y si me cuesta observarme con calma?',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Es totalmente normal. \n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar. \nSolo se activa para defenderse. \n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte. \nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo. \n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal) \n\nTu cuerpo cambia según cómo percibe el entorno: \n\nEstado de seguridad: calma, conexión, reflexión. \n\nEstado de alarma: lucha o huida. \n\nEstado de colapso: bloqueo o desconexión. \n\nCuando estás en seguridad, puedes observarte sin pelear contigo. \nPor eso es tan importante cultivar ese estado interno. \n\nCómo generar seguridad dentro de ti \n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo: \n\nRespirar de forma consciente. \n\nSentir tus pies firmes en el suelo. \n\nHablarte con amabilidad. \n\nRodearte de personas que te respetan. \n\nRecordarte: lo que sientes no es un error. \n\nLa seguridad no se impone. Se entrena poco a poco. \n\nEl poder de tu voz interior \n\nTu cuerpo escucha cómo te hablas. \n\nUna frase amable puede calmar tu corazón. \n\nUna crítica interna puede alterarte sin que te des cuenta. \n\nHabitarte con conciencia también es esto: \ntratarte con respeto desde dentro, incluso cuando te equivocas.' }]
-            },
-            {
-                type: 'collapsible',
-                title: 'En resumen',
-                content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad. \n\nObservarte con curiosidad te transforma más que criticarte. \n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.  \n\nLa metacognición te ayuda a elegir mejor. \n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión' }]
-            },
-            { type: 'title', text: 'Técnicas Específicas' },
-            {
-                type: 'meditacionGuiadaSinJuicioExercise',
-                title: 'EJERCICIO 1: MEDITACIÓN GUIADA SIN JUICIO',
-                objective: 'Esta meditación te invita a dejar de luchar con lo que sientes y a practicar la aceptación: No como resignación, sino como una forma de cuidado profundo hacia ti.\n\nAl repetir la frase ancla — “Esto es lo que siento ahora… y está bien” — \nempiezas a entrenar una voz interior más compasiva, que te acompaña sin exigencias, incluso en los momentos difíciles.',
-                duration: 'Duración recomendada: 5-7 minutos por sesión. Te recomiendo practicarla entre 3 y 5 veces a la semana para fortalecer la autocompasión y la regulación emocional.',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/R6sem4ej1meditacion.mp3'
-            },
-            {
-                type: 'diarioMeDiCuentaExercise',
-                title: 'EJERCICIO 2: DIARIO DEL “ME DI CUENTA”',
-                objective: 'Entrena tu autoconciencia registrando pequeños descubrimientos sobre ti, para escucharte con más presencia y claridad.',
-                duration: '5–10 min',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica2.mp3'
-            },
-        ]
+              type: 'paragraph',
+              text: 'La autoconciencia plena es el primer paso para cambiar de verdad. \n\nObservarte con curiosidad te transforma más que criticarte. \n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.  \n\nLa metacognición te ayuda a elegir mejor. \n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión'
+            }
+          ]
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'meditacionGuiadaSinJuicioExercise',
+          title: 'EJERCICIO 1: MEDITACIÓN GUIADA SIN JUICIO',
+          objective: 'Esta meditación te invita a dejar de luchar con lo que sientes y a practicar la aceptación: No como resignación, sino como una forma de cuidado profundo hacia ti.\n\nAl repetir la frase ancla — “Esto es lo que siento ahora… y está bien” — \nempiezas a entrenar una voz interior más compasiva, que te acompaña sin exigencias, incluso en los momentos difíciles.',
+          duration: 'Duración recomendada: 5-7 minutos por sesión. Te recomiendo practicarla entre 3 y 5 veces a la semana para fortalecer la autocompasión y la regulación emocional.',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/R6sem4ej1meditacion.mp3'
+        },
+        {
+          type: 'diarioMeDiCuentaExercise',
+          title: 'EJERCICIO 2: DIARIO DEL “ME DI CUENTA”',
+          objective: 'Entrena tu autoconciencia registrando pequeños descubrimientos sobre ti, para escucharte con más presencia y claridad.',
+          duration: '5–10 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica2.mp3'
+        },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenruta6Sesion4.mp3', 
+          prompts: [
+            'Tómate unos minutos para mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas. Solo darte espacio para reconocer lo que esta semana despertó en ti.',
+            '¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?',
+            '¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte? (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)',
+            '¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”? (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)',
+            '¿Qué emociones o patrones lograste nombrar o detectar con más claridad? (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)',
+            '¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué? (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)',
+            'Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.'
+          ]
+        }
+      ]
     },
     {
       id: 'comp_cierre',
@@ -282,8 +346,7 @@ export const selfUnderstandingPath: Path = {
             '<p>Has recorrido un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad. Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.</p>',
             '<p>Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas. Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.</p>',
             '<p>Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti. Escribe con honestidad y sin exigencias:</p>',
-            '<ul><li>¿Qué he aprendido sobre mí que antes no veía con claridad?</li><li>¿Qué emociones o patrones he comenzado a entender mejor?</li><li>¿Cómo ha cambiado la forma en que me hablo y me observo?</li><li>¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?</li><li>¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?</li></ul>',
-            '<p>No hace falta tener respuestas perfectas. Solo abrir un espacio donde puedas escucharte con respeto… y seguir acompañándote cada día, desde la conciencia y la compasión.</p>'
+            '<ul><li>¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?</li><li>¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?</li><li>¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?</li><li>¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?</li><li>¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?</li><li>¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?</li></ul>'
           ]
         },
         {
@@ -312,6 +375,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 
