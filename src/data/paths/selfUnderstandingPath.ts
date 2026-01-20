@@ -199,8 +199,9 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'meditacionGuiadaSinJuicioExercise',
                 title: 'EJERCICIO 1: MEDITACIÓN GUIADA SIN JUICIO',
-                objective: 'Practica la aceptación de tus emociones, sin lucha ni exigencias, para entrenar una voz interior más compasiva.',
-                duration: '5-7 min'
+                objective: 'Esta meditación te invita a dejar de luchar con lo que sientes y a practicar la aceptación: No como resignación, sino como una forma de cuidado profundo hacia ti.\n\nAl repetir la frase ancla — “Esto es lo que siento ahora… y está bien” — \nempiezas a entrenar una voz interior más compasiva, que te acompaña sin exigencias, incluso en los momentos difíciles.',
+                duration: 'Duración recomendada: 5-7 minutos por sesión. Te recomiendo practicarla entre 3 y 5 veces a la semana para fortalecer la autocompasión y la regulación emocional.',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica1.mp3'
             },
             {
                 type: 'diarioMeDiCuentaExercise',
@@ -263,6 +264,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 

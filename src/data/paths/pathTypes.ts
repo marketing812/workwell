@@ -280,6 +280,7 @@ export type SemaforoEmocionalExerciseContent = {
     title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MeditacionGuiadaSinJuicioExerciseContent = {
