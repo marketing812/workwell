@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -9,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmotionalInvolvementTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 
@@ -21,7 +20,7 @@ interface EmotionalInvolvementTrafficLightExerciseProps {
 export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: EmotionalInvolvementTrafficLightExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
-  const [relations, setRelations] = useState(Array(5).fill({ name: '', color: '' }));
+  const [relations, setRelations] = useState(Array(5).fill({ name: '', color: '', reason: '' }));
   const [reflection, setReflection] = useState({ q1: '', q2: '', q3: '', q4: '' });
   const [isSaved, setIsSaved] = useState(false);
 
@@ -46,7 +45,12 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: Em
 
     notebookContent += "**Mapa de relaciones y su color:**\n";
     filledRelations.forEach(r => {
-      notebookContent += `- ${r.name}: ${r.color}\n`;
+      notebookContent += `- ${r.name}: ${r.color}`;
+      if (r.reason) {
+        notebookContent += ` (Razón: ${r.reason})\n`;
+      } else {
+        notebookContent += `\n`;
+      }
     });
     notebookContent += `\n**Reflexión guiada:**\n`;
     notebookContent += `- ¿Te ha sorprendido el color?: ${reflection.q1 || 'No respondido.'}\n`;
@@ -95,13 +99,23 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: Em
                 <li><strong className="text-red-600">Rojo:</strong> Me siento drenado/a, desestabilizado/a o ansioso/a con frecuencia.</li>
             </ul>
             {relations.filter(r => r.name).map((rel, index) => (
-              <div key={index} className="space-y-2 border-t pt-2">
+              <div key={index} className="space-y-3 border-t pt-3">
                 <Label className="font-semibold">{rel.name}</Label>
                 <RadioGroup value={rel.color} onValueChange={v => handleRelationChange(index, 'color', v)}>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Verde" id={`c-${index}-g`} /><Label htmlFor={`c-${index}-g`} className="font-normal">Verde</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Ámbar" id={`c-${index}-a`} /><Label htmlFor={`c-${index}-a`} className="font-normal">Ámbar</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Rojo" id={`c-${index}-r`} /><Label htmlFor={`c-${index}-r`} className="font-normal">Rojo</Label></div>
                 </RadioGroup>
+                <div className="space-y-1">
+                    <Label htmlFor={`reason-${index}`} className="text-sm font-normal text-muted-foreground pt-2">¿Por qué has elegido ese color? ¿Qué sientes o piensas con esa persona?</Label>
+                    <Textarea 
+                        id={`reason-${index}`}
+                        value={rel.reason} 
+                        onChange={(e) => handleRelationChange(index, 'reason', e.target.value)} 
+                        placeholder="Ejemplo: “Rojo, porque siempre me exige más de lo que puedo dar.”"
+                        rows={2}
+                    />
+                </div>
               </div>
             ))}
             <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
