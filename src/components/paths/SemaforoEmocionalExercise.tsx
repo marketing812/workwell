@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -7,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save, TrafficCone, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight, AlertTriangle, XCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SemaforoEmocionalExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
@@ -24,9 +25,18 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
   const [step, setStep] = useState(0);
   const [light, setLight] = useState<'verde' | 'ambar' | 'rojo' | ''>('');
   const [action, setAction] = useState('');
+  const [learning, setLearning] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setLight('');
+    setAction('');
+    setLearning('');
+    setIsSaved(false);
+  }
 
   const handleSave = () => {
     if (!action.trim()) {
@@ -37,9 +47,13 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
         });
         return;
     }
-    addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: `Estado: ${light}. Acción de cuidado: ${action}`, pathId: pathId });
+    const notebookContent = `**Ejercicio: ${content.title}**\n\nEstado: ${light}.\nAcción de cuidado: ${action}\n\nReflexión: ${learning || 'Sin reflexión.'}`;
+
+    addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: notebookContent, pathId: pathId });
     toast({ title: 'Registro Guardado' });
+    setIsSaved(true);
     onComplete();
+    nextStep();
   };
   
   const renderStep = () => {
@@ -48,22 +62,20 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">¿Cómo te sientes ahora?</h4>
-            <p>Escanea tu cuerpo, tu mente y tus emociones. Selecciona en qué “luz” estás ahora:</p>
+            <p className="text-muted-foreground text-sm">Escanea tu cuerpo, tu mente y tus emociones. Selecciona en qué “luz” estás ahora:</p>
             <RadioGroup value={light} onValueChange={(v) => setLight(v as any)} className="flex flex-col sm:flex-row justify-around py-4 gap-4">
               {[
-                {color: 'verde', label: 'Verde', description: 'Me siento en calma, presente y estable.'},
-                {color: 'ambar', label: 'Ámbar', description: 'Empiezo a activarme, tengo tensión o pensamientos que se aceleran.'},
-                {color: 'rojo', label: 'Rojo', description: 'Estoy muy activado/a. Siento ansiedad, rabia, bloqueo o impulso fuerte.'},
-              ].map(({color, label, description}) => (
+                {color: 'verde', label: 'Verde', description: 'Me siento en calma, presente y estable.', icon: CheckCircle, iconClass: 'text-green-500'},
+                {color: 'ambar', label: 'Ámbar', description: 'Empiezo a activarme, tengo tensión o pensamientos que se aceleran.', icon: AlertTriangle, iconClass: 'text-amber-500'},
+                {color: 'rojo', label: 'Rojo', description: 'Estoy muy activado/a. Siento ansiedad, rabia, bloqueo o impulso fuerte.', icon: XCircle, iconClass: 'text-red-500'},
+              ].map(({color, label, description, icon: Icon, iconClass}) => (
                 <Label key={color} htmlFor={`light-${color}`} 
                   className={cn(
-                    "flex flex-col items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all w-full sm:w-auto",
-                    light === 'verde' && color === 'verde' ? 'border-green-500 bg-green-100 dark:bg-green-900/30 ring-2 ring-green-500' :
-                    light === 'ambar' && color === 'ambar' ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/30 ring-2 ring-amber-500' :
-                    light === 'rojo' && color === 'rojo' ? 'border-red-500 bg-red-100 dark:bg-red-900/30 ring-2 ring-red-500' :
-                    'border-border bg-background hover:bg-muted'
+                    "flex flex-col items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all w-full sm:w-auto h-40",
+                    light === color ? `border-primary ring-2 ring-primary bg-primary/10` : 'border-border bg-background hover:bg-muted'
                   )}>
                   <RadioGroupItem value={color} id={`light-${color}`} className="sr-only" />
+                  <Icon className={cn("h-10 w-10 mb-2", iconClass)} />
                   <span className={cn(
                     "font-bold",
                     color === 'verde' && 'text-green-700 dark:text-green-300',
@@ -100,9 +112,45 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
             <Textarea id="action-textarea" value={action} onChange={e => setAction(e.target.value)} placeholder={placeholder} />
             <div className="flex justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={handleSave} className="w-auto" disabled={!action.trim()}><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+              <Button onClick={nextStep} className="w-auto" disabled={!action.trim()}>Siguiente</Button>
             </div>
           </div>
+        );
+      case 2:
+        return (
+             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg">Integración y aprendizaje</h4>
+                <p className="text-sm text-muted-foreground">Hoy entrenaste tu autorregulación emocional. Anotar cómo te sientes y qué hiciste para ayudarte refuerza nuevas conexiones cerebrales que te darán más recursos cada vez.</p>
+                <div className="space-y-2 pt-2">
+                    <Label htmlFor="learning-reflection">¿Qué aprendiste hoy sobre ti? (Opcional)</Label>
+                    <Textarea id="learning-reflection" value={learning} onChange={(e) => setLearning(e.target.value)} />
+                </div>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                    <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar Registro</Button>
+                </div>
+            </div>
+        );
+       case 3:
+        return (
+            <div className="p-6 space-y-4 text-center">
+                 <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg space-y-3">
+                    <CheckCircle className="h-8 w-8 text-green-600" />
+                    <p className="font-medium text-green-800 dark:text-green-200">Registro Guardado.</p>
+                </div>
+                <div className="pt-4 space-y-2">
+                    <h5 className="font-semibold">Recuerda:</h5>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 pl-4 text-left">
+                        <li>No hay emociones incorrectas.</li>
+                        <li>Lo importante es darte cuenta y cuidarte en el momento que lo necesitas.</li>
+                        <li>Puedes estar en rojo y aún así elegir qué hacer y no hacerte daño.</li>
+                        <li>Puedes volver a tu centro con práctica y presencia.</li>
+                    </ul>
+                    <blockquote className="text-sm italic pt-4">“Tu calma no es un destino. Es una decisión que puedes entrenar.”</blockquote>
+                </div>
+                <p className="text-xs text-muted-foreground pt-2">Recomendación clínica: esta semana puede enlazarse con un recordatorio semanal automático para seguir identificando activadores.</p>
+                <Button onClick={resetExercise} variant="outline" className="w-full mt-4">Hacer otro registro</Button>
+            </div>
         );
       default: return null;
     }
@@ -112,12 +160,12 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        <CardDescription>
-            <p className="pt-1 text-xs italic">
+        <CardDescription className="pt-1">
+            <span className="text-xs italic">
                 (<span className="text-green-500 font-semibold">verde</span> = bienestar;{' '}
                 <span className="text-amber-500 font-semibold">ámbar</span> = activación;{' '}
                 <span className="text-red-500 font-semibold">rojo</span> = desborde) con estrategias de regulación en cada fase.
-            </p>
+            </span>
             {content.objective && <p className="pt-2"><span className="font-bold">Objetivo terapéutico:</span> {content.objective}</p>}
             {content.duration && <p className="pt-1 text-sm text-muted-foreground"><span className="font-bold">Duración estimada:</span> {content.duration}</p>}
         </CardDescription>
