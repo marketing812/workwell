@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -25,6 +26,7 @@ export function CartaDesdeLaEmocionExercise({ content, pathId }: CartaDesdeLaEmo
     const [emotion, setEmotion] = useState('');
     const [otherEmotion, setOtherEmotion] = useState('');
     const [tone, setTone] = useState('');
+    const [otherTone, setOtherTone] = useState('');
     const [need, setNeed] = useState('');
     const [letterBody, setLetterBody] = useState('');
     
@@ -48,9 +50,9 @@ Tu emoción: ${finalEmotion}
     const renderStep = () => {
         switch(step) {
             case 0: return <div className="p-4 space-y-4">
-                <p className="text-sm text-muted-foreground">Elige la emoción que quiere hablar contigo<br/><br/>Imagina que hay una parte dentro de ti que siente algo muy intensamente… y quiere expresarse.</p>
                 <Label>¿Qué emoción te está pidiendo ser escuchada hoy?</Label>
-                <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía.</p>
+                <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía. </p>
+                <p className="text-sm text-muted-foreground">Puedes elegir de una lista emocional o escribirla libremente.</p>
                 <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2">Siguiente</Button></div>;
             case 1: return <div className="p-4 space-y-4">
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
@@ -62,7 +64,9 @@ Tu emoción: ${finalEmotion}
                   Otra emoción → Elige el tono que más te ayude
                 </p>
                 <Label>¿En qué tono quieres escribir esta carta?</Label>
-                <Select value={tone} onValueChange={setTone}><SelectTrigger><SelectValue placeholder="Elige un tono..." /></SelectTrigger><SelectContent><SelectItem value="compasivo">Compasivo y suave</SelectItem><SelectItem value="firme">Claro, firme y directo</SelectItem><SelectItem value="sereno">Sereno y tranquilizador</SelectItem></SelectContent></Select><Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
+                <Select value={tone} onValueChange={setTone}><SelectTrigger><SelectValue placeholder="Elige un tono..." /></SelectTrigger><SelectContent><SelectItem value="compasivo">Compasivo y suave</SelectItem><SelectItem value="firme">Claro, firme y directo</SelectItem><SelectItem value="sereno">Sereno y tranquilizador</SelectItem><SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
+                {tone === 'otra' && <Textarea value={otherTone} onChange={e => setOtherTone(e.target.value)} placeholder="Describe el tono..." className="mt-2" />}
+                <Button onClick={() => setStep(2)} className="w-full mt-2">Siguiente</Button></div>;
             case 2: return <div className="p-4 space-y-4"><Label>Lo que realmente estás necesitando ahora es...</Label><Textarea value={need} onChange={e => setNeed(e.target.value)} /><Label>Cuerpo de la carta (opcional):</Label><Textarea value={letterBody} onChange={e => setLetterBody(e.target.value)} /><Button onClick={handleSave} className="w-full mt-2"><Save className="mr-2 h-4 w-4"/>Guardar Carta</Button></div>;
             default: return null;
         }
