@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,14 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { EmpathicMirrorExerciseContent } from '@/data/paths/pathTypes';
-import { emotions } from '@/components/dashboard/EmotionalEntryForm';
-import { useTranslations } from '@/lib/translations';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 
@@ -30,10 +26,18 @@ const invalidatingPhrasesOptions = [
     { id: 'inv-at-least', label: 'Bueno, al menos no fue peor.' },
 ];
 
+const empathicMirrorEmotionOptions = [
+  'Tristeza',
+  'Miedo',
+  'Rabia',
+  'Culpa',
+  'Frustración',
+  'Alegría contenida'
+];
+
 
 export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerciseProps) {
   const { toast } = useToast();
-  const t = useTranslations();
 
   const [step, setStep] = useState(0);
   const [conversationPartner, setConversationPartner] = useState('');
@@ -47,6 +51,7 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
   const [isCompleted, setIsCompleted] = useState(false);
 
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleComplete = () => {
     if (step === 4 && !commitment.trim()) {
@@ -71,10 +76,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                             <p><strong>Situación:</strong> “Mi jefe me pidió quedarme para una tarea urgente cuando ya salía.”</p>
                             <p><strong>Cuerpo:</strong> Tensión en la mandíbula, presión en el pecho.</p>
                             <p><strong>Emoción:</strong> Frustración (80%).</p>
-                            <p><strong>Pensamiento:</strong> "Si digo que no, pensará que no soy profesional". (Creído al 85%).</p>
+                            <p><strong>Pensamiento:</strong> "Si digo que no, pensarán que no soy profesional". (Creído al 85%).</p>
                             <p><strong>Impulso:</strong> Aceptar sin discutir.</p>
                             <p><strong>Límite necesario:</strong> Sí, estaba sobrepasado/a.</p>
-                            <p><strong>Respuesta alternativa:</strong> "Me encantaría, pero hoy no puedo. Mañana lo vemos." (Confianza: 65%).</p>
+                            <p><strong>Respuesta alternativa:</strong> "Me encantaría ayudar, pero hoy no puedo. Mañana lo vemos." (Confianza: 65%).</p>
                         </div>
                         </AccordionContent>
                     </AccordionItem>
@@ -89,7 +94,7 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                     <p className="text-sm text-muted-foreground">Piensa en una conversación reciente o habitual en la que alguien te compartió algo con carga emocional.</p>
                     <div className="space-y-2">
                         <Label htmlFor="partner-name">¿Con quién fue esa conversación?</Label>
-                        <Input id="partner-name" value={conversationPartner} onChange={e => setConversationPartner(e.target.value)} placeholder="Nombre o inicial..." />
+                        <Textarea id="partner-name" value={conversationPartner} onChange={e => setConversationPartner(e.target.value)} placeholder="Nombre o inicial..." />
                     </div>
                      <div className="space-y-2">
                         <Label htmlFor="topic">¿Qué te compartió o qué tema estaba en juego?</Label>
@@ -108,7 +113,7 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                         <Select value={perceivedEmotion} onValueChange={setPerceivedEmotion}>
                             <SelectTrigger id="perceived-emotion"><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
                             <SelectContent>
-                                {emotions.map(e => <SelectItem key={e.value} value={e.labelKey}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}
+                                {empathicMirrorEmotionOptions.map(e => <SelectItem key={e} value={e}>{e}</SelectItem>)}
                                 <SelectItem value="otra">Otra...</SelectItem>
                             </SelectContent>
                         </Select>
@@ -201,7 +206,3 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
     </Card>
   );
 }
-
-    
-
-    
