@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -29,7 +30,7 @@ const needOptions = [
     { id: 'expresion', label: 'Expresión' }, { id: 'amor', label: 'Amor' }, { id: 'espacio', label: 'Espacio' }, { id: 'reconocimiento', label: 'Reconocimiento' }
 ];
 
-const careActions = {
+const careActionsData = {
     laboral: [
         { id: 'pausa', label: 'Pedir una pausa o descanso breve' },
         { id: 'limite', label: 'Poner un límite con respeto' },
@@ -59,8 +60,8 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
   const [otherEmotion, setOtherEmotion] = useState('');
   const [needs, setNeeds] = useState<Record<string, boolean>>({});
   const [otherNeed, setOtherNeed] = useState('');
-  const [careAction, setCareAction] = useState('');
-  const [otherCareAction, setOtherCareAction] = useState('');
+  const [careActions, setCareActions] = useState({ laboral: '', familiar: '', personal: '' });
+  const [otherCareActions, setOtherCareActions] = useState({ laboral: '', familiar: '', personal: '' });
   const [isSaved, setIsSaved] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
@@ -72,14 +73,14 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
-        const { step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction } = JSON.parse(savedState);
-        setStep(step || 0);
-        setEmotion(emotion || '');
-        setOtherEmotion(otherEmotion || '');
-        setNeeds(needs || {});
-        setOtherNeed(otherNeed || '');
-        setCareAction(careAction || '');
-        setOtherCareAction(otherCareAction || '');
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setEmotion(data.emotion || '');
+        setOtherEmotion(data.otherEmotion || '');
+        setNeeds(data.needs || {});
+        setOtherNeed(data.otherNeed || '');
+        setCareActions(data.careActions || { laboral: '', familiar: '', personal: '' });
+        setOtherCareActions(data.otherCareActions || { laboral: '', familiar: '', personal: '' });
       }
     } catch (error) {
       console.error("Error loading exercise state:", error);
@@ -90,26 +91,36 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
   useEffect(() => {
     if (!isClient) return;
     try {
-      const stateToSave = { step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction };
+      const stateToSave = { step, emotion, otherEmotion, needs, otherNeed, careActions, otherCareActions };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, emotion, otherEmotion, needs, otherNeed, careAction, otherCareAction, storageKey, isClient]);
+  }, [step, emotion, otherEmotion, needs, otherNeed, careActions, otherCareActions, storageKey, isClient]);
 
 
   const handleSave = () => {
     const selectedNeeds = needOptions.filter(n => needs[n.id]).map(n => n.label);
     if(needs['otra'] && otherNeed) selectedNeeds.push(otherNeed);
 
-    let finalCareAction = careAction === 'Otra' ? otherCareAction : careAction;
+    const finalLaboral = careActions.laboral === 'Otra' ? otherCareActions.laboral : careActions.laboral;
+    const finalFamiliar = careActions.familiar === 'Otra' ? otherCareActions.familiar : careActions.familiar;
+    const finalPersonal = careActions.personal === 'Otra' ? otherCareActions.personal : careActions.personal;
+    
+    const allCareActions = [finalLaboral, finalFamiliar, finalPersonal].filter(Boolean);
+
+    if (allCareActions.length === 0) {
+      toast({ title: "Acción de cuidado requerida", description: "Por favor, selecciona al menos una acción.", variant: "destructive" });
+      return;
+    }
 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
 *Emoción sentida:* ${emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion)}
 *Necesidades detectadas:* ${selectedNeeds.join(', ')}
-*Acción de cuidado elegida:* ${finalCareAction}
+*Acciones de cuidado elegidas:*
+${allCareActions.map(action => `- ${action}`).join('\n')}
     `;
 
     addNotebookEntry({ title: 'Mi Mapa Emoción-Necesidad-Cuidado', content: notebookContent, pathId: pathId });
@@ -148,66 +159,105 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
         <div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
         </div>;
       case 2:
-        const isNextDisabled = !careAction && !otherCareAction.trim();
+        const hasAnyAction = careActions.laboral || careActions.familiar || careActions.personal || otherCareActions.laboral || otherCareActions.familiar || otherCareActions.personal;
         return (
             <div className="p-4 space-y-4">
                 <Label className="font-semibold text-lg">¿Qué podrías hacer hoy para cuidar esa necesidad?</Label>
-                <p className="text-sm text-muted-foreground">Selecciona una acción pequeña, realista y amable que puedas hacer hoy para cuidar eso que necesitas. No hace falta que sea perfecta, solo que sea realista:</p>
+                <p className="text-sm text-muted-foreground">Selecciona una o más acciones pequeñas, realistas y amables que puedas hacer hoy para cuidar eso que necesitas. No hace falta que sea perfecta, solo que sea realista:</p>
                 
-                <RadioGroup value={careAction} onValueChange={setCareAction}>
-                    <div className="space-y-3 mt-4">
-                        <Label className="font-medium">Contexto laboral:</Label>
-                        {careActions.laboral.map(a => (
-                            <div key={a.id} className="flex items-center gap-2 pl-2">
-                                <RadioGroupItem value={a.label} id={a.id}/>
-                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
+                <div className="space-y-3 mt-4">
+                    <Label className="font-medium">Contexto laboral:</Label>
+                    <RadioGroup value={careActions.laboral} onValueChange={(value) => setCareActions(p => ({...p, laboral: value}))}>
+                        {careActionsData.laboral.map(a => (
+                            <div key={`laboral-${a.id}`} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={`laboral-${a.id}`}/>
+                                <Label htmlFor={`laboral-${a.id}`} className="font-normal">{a.label}</Label>
                             </div>
                         ))}
-                    </div>
-
-                    <div className="space-y-3 mt-4">
-                        <Label className="font-medium">Contexto familiar:</Label>
-                        {careActions.familiar.map(a => (
-                            <div key={a.id} className="flex items-center gap-2 pl-2">
-                                <RadioGroupItem value={a.label} id={a.id}/>
-                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="space-y-3 mt-4">
-                        <Label className="font-medium">Contexto personal:</Label>
-                        {careActions.personal.map(a => (
-                            <div key={a.id} className="flex items-center gap-2 pl-2">
-                                <RadioGroupItem value={a.label} id={a.id}/>
-                                <Label htmlFor={a.id} className="font-normal">{a.label}</Label>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="space-y-2 mt-4">
-                         <div className="flex items-center gap-2">
-                            <RadioGroupItem value="Otra" id="care-other"/>
-                            <Label htmlFor="care-other" className="font-medium">Otra:</Label>
+                         <div className="flex items-center gap-2 pl-2">
+                            <RadioGroupItem value="Otra" id="laboral-care-other"/>
+                            <Label htmlFor="laboral-care-other" className="font-medium">Otra:</Label>
                         </div>
-                        {careAction === 'Otra' && (
-                            <Textarea 
-                                value={otherCareAction} 
-                                onChange={e => setOtherCareAction(e.target.value)} 
-                                placeholder="Describe tu acción de cuidado personalizada..." 
-                                className="ml-6"
-                            />
-                        )}
-                    </div>
-                </RadioGroup>
+                    </RadioGroup>
+                    {careActions.laboral === 'Otra' && (
+                        <Textarea 
+                            value={otherCareActions.laboral} 
+                            onChange={e => setOtherCareActions(p => ({...p, laboral: e.target.value}))}
+                            placeholder="Describe tu acción de cuidado personalizada..." 
+                            className="ml-8"
+                        />
+                    )}
+                </div>
 
+                <div className="space-y-3 mt-4">
+                    <Label className="font-medium">Contexto familiar:</Label>
+                     <RadioGroup value={careActions.familiar} onValueChange={(value) => setCareActions(p => ({...p, familiar: value}))}>
+                        {careActionsData.familiar.map(a => (
+                            <div key={`familiar-${a.id}`} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={`familiar-${a.id}`}/>
+                                <Label htmlFor={`familiar-${a.id}`} className="font-normal">{a.label}</Label>
+                            </div>
+                        ))}
+                         <div className="flex items-center gap-2 pl-2">
+                            <RadioGroupItem value="Otra" id="familiar-care-other"/>
+                            <Label htmlFor="familiar-care-other" className="font-medium">Otra:</Label>
+                        </div>
+                    </RadioGroup>
+                     {careActions.familiar === 'Otra' && (
+                        <Textarea 
+                            value={otherCareActions.familiar} 
+                            onChange={e => setOtherCareActions(p => ({...p, familiar: e.target.value}))}
+                            placeholder="Describe tu acción de cuidado personalizada..." 
+                            className="ml-8"
+                        />
+                    )}
+                </div>
+
+                <div className="space-y-3 mt-4">
+                    <Label className="font-medium">Contexto personal:</Label>
+                    <RadioGroup value={careActions.personal} onValueChange={(value) => setCareActions(p => ({...p, personal: value}))}>
+                        {careActionsData.personal.map(a => (
+                            <div key={`personal-${a.id}`} className="flex items-center gap-2 pl-2">
+                                <RadioGroupItem value={a.label} id={`personal-${a.id}`}/>
+                                <Label htmlFor={`personal-${a.id}`} className="font-normal">{a.label}</Label>
+                            </div>
+                        ))}
+                         <div className="flex items-center gap-2 pl-2">
+                            <RadioGroupItem value="Otra" id="personal-care-other"/>
+                            <Label htmlFor="personal-care-other" className="font-medium">Otra:</Label>
+                        </div>
+                    </RadioGroup>
+                     {careActions.personal === 'Otra' && (
+                        <Textarea 
+                            value={otherCareActions.personal} 
+                            onChange={e => setOtherCareActions(p => ({...p, personal: e.target.value}))}
+                            placeholder="Describe tu acción de cuidado personalizada..." 
+                            className="ml-8"
+                        />
+                    )}
+                </div>
+                
                 <div className="flex justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                    <Button onClick={nextStep} className="w-auto" disabled={isNextDisabled}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    <Button onClick={nextStep} className="w-auto" disabled={!hasAnyAction}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             </div>
         );
-      case 3: return <div className="p-4 space-y-4 text-center"><p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>. Me propongo cuidarme así: <strong>{careAction === 'Otra' ? otherCareAction : careAction}</strong>.</p><Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button><Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button></div>
+      case 3: 
+        const finalLaboral = careActions.laboral === 'Otra' ? otherCareActions.laboral : careActions.laboral;
+        const finalFamiliar = careActions.familiar === 'Otra' ? otherCareActions.familiar : careActions.familiar;
+        const finalPersonal = careActions.personal === 'Otra' ? otherCareActions.personal : careActions.personal;
+        const allCareActions = [finalLaboral, finalFamiliar, finalPersonal].filter(Boolean);
+
+        return <div className="p-4 space-y-4 text-center">
+            <p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>.</p>
+            <p className="font-semibold">Me propongo cuidarme así:</p>
+            <ul className="list-disc list-inside text-left mx-auto max-w-md">
+                {allCareActions.map((action, i) => <li key={i}>{action}</li>)}
+            </ul>
+            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+            <Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+        </div>;
       default: return null;
     }
   }
@@ -218,7 +268,7 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && 
             <CardDescription className="pt-2">
-                {content.objective}
+                {"Objetivo terapeutico: Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. "}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
                         <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3" type="audio/mp3" />
