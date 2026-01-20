@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -43,6 +44,17 @@ export function DetectiveDeEmocionesExercise({ content, pathId }: DetectiveDeEmo
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setSituation('');
+    setAutomaticThought('');
+    setSelectedEmotions({});
+    setOtherEmotion('');
+    setEmotionIntensity(50);
+    setImpulse('');
+    setReflectionSelections({});
+    setOtherReflection('');
+  };
 
   const handleSave = () => {
     const finalEmotions = emotionOptions
@@ -108,6 +120,7 @@ ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('
       case 6: return (
             <div className="p-4 space-y-4">
                 <Label>¿Qué aprendiste al observar esta cadena?</Label>
+                 <p className="text-sm text-muted-foreground">Selecciona una o varias opciones:</p>
                 <div className="space-y-2">
                     {reflectionOptions.map(opt => (
                         <div key={opt.id} className="flex items-center space-x-2">
@@ -132,7 +145,7 @@ ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('
       case 7: 
         const selectedReflections = reflectionOptions.filter(opt => reflectionSelections[opt.id]).map(opt => opt.label);
         if (reflectionSelections['otra'] && otherReflection) selectedReflections.push(otherReflection);
-        return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p><div className="text-left border p-2 rounded-md bg-background"><p className="font-semibold">Tu registro:</p><p>Situación: {situation}</p><p>Pensamiento: {automaticThought}</p><p>Emoción(es): {finalEmotions.join(', ')}</p><p>Impulso: {impulse}</p><p>Aprendizaje: {selectedReflections.join(', ')}</p></div><Button onClick={() => setStep(0)} variant="outline">Hacer otro registro</Button></div>;
+        return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p><div className="text-left border p-2 rounded-md bg-background"><p className="font-semibold">Tu registro:</p><p>Situación: {situation}</p><p>Pensamiento: {automaticThought}</p><p>Emoción(es): {finalEmotions.join(', ')}</p><p>Impulso: {impulse}</p><p>Aprendizaje: {selectedReflections.join(', ')}</p></div><Button onClick={resetExercise} variant="outline">Hacer otro registro</Button></div>;
       default: return null;
     }
   };
