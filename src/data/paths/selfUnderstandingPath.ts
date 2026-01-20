@@ -30,7 +30,7 @@ export const selfUnderstandingPath: Path = {
           title: 'Emoción, pensamiento e impulso: ¿cómo se diferencian?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio2Ruta6Sesion1.mp3',
           content: [
-            { type: 'paragraph', text: 'Cuando estamos muy activados emocionalmente, todo se mezcla: lo que sentimos, lo que pensamos, lo que queremos hacer. Pero entender la diferencia entre emoción, pensamiento e impulso es clave para poder autorregularnos.\\nVamos con un ejemplo:\\nImagina que alguien cercano no te devuelve una llamada importante.\\n•\\tPensamiento: “No le importo nada.”\\n•\\tEmoción: tristeza… o quizás enfado.\\n•\\tImpulso: escribir un mensaje duro… o desaparecer por completo.\\nLa emoción es el sentir profundo.\\nEl pensamiento es la interpretación que haces.\\nEl impulso es lo que querrías hacer justo después.\\nMuchas veces, no podemos cambiar lo que sentimos… pero sí cómo pensamos sobre ello y qué hacemos con eso.\\nSeparar estos tres niveles es como desenredar una madeja. Nos da claridad, espacio interno y capacidad de elegir.' }
+            { type: 'paragraph', text: 'Cuando estamos muy activados emocionalmente, todo se mezcla: lo que sentimos, lo que pensamos, lo que queremos hacer. Pero entender la diferencia entre emoción, pensamiento e impulso es clave para poder autorregularnos.\\nVamos con un ejemplo:\\nImagina que alguien cercano no te devuelve una llamada importante.\\n•\tPensamiento: “No le importo nada.”\\n•\tEmoción: tristeza… o quizás enfado.\\n•\tImpulso: escribir un mensaje duro… o desaparecer por completo.\\nLa emoción es el sentir profundo.\\nEl pensamiento es la interpretación que haces.\\nEl impulso es lo que querrías hacer justo después.\\nMuchas veces, no podemos cambiar lo que sentimos… pero sí cómo pensamos sobre ello y qué hacemos con eso.\\nSeparar estos tres niveles es como desenredar una madeja. Nos da claridad, espacio interno y capacidad de elegir.' }
           ]
         },
         {
@@ -53,8 +53,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'detectiveDeEmocionesExercise',
           title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”',
-          objective: '¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia.',
-          duration: '5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana.',
+          objective: '¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia. \n\nDuración estimada: 5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana.',
         },
         {
           type: 'unaPalabraCadaDiaExercise',
@@ -65,7 +64,7 @@ export const selfUnderstandingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
           prompts: ['¿Qué he descubierto de mí esta semana al detenerme a sentir?','¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?','¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?','¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?','¿Qué quiero seguir entrenando en mí a partir de ahora?']},
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion1.mp3'},
         { type: 'list', items: ['Toda emoción tiene una función adaptativa, incluso si es incómoda.','Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.','Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.','Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.','No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.']},
         { type: 'quote', text: '“Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.”' }
       ]
