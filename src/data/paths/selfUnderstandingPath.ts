@@ -53,7 +53,8 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'detectiveDeEmocionesExercise',
           title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”',
-          objective: '¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia. \n\nDuración estimada: 5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana.',
+          objective: 'Objetivo terapéutico: ¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia. \n\nDuración estimada: 5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana. ',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3'
         },
         {
           type: 'unaPalabraCadaDiaExercise',
@@ -105,8 +106,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'mapaEmocionNecesidadCuidadoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO',
-                objective: 'Traduce una emoción en una necesidad, y luego, transforma esa necesidad en una acción real que te cuide.',
-                duration: '5-10 min',
+                objective: 'Objetivo terapeutico: Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. ',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3'
             },
             {
@@ -185,7 +185,7 @@ export const selfUnderstandingPath: Path = {
         type: 'summary',
         estimatedTime: '20-25 min',
         content: [
-            { type: 'paragraphWithAudio', text: '¿Y si no tuvieras que corregirte todo el tiempo?\\n¿Y si pudieras observar lo que sientes sin pelear contigo?\\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente.\\nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio.\\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable.\\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro.\\nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introsesion4Ruta6.mp3' },
+            { type: 'paragraphWithAudio', text: '¿Y si no tuvieras que corregirte todo el tiempo?\\n¿Y si pudieras observar lo que sientes sin pelear contigo?\\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente.\\nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio.\\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable.\\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro.\\nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introsemana4.mp3' },
             { type: 'title', text: 'Psicoeducación' },
             { type: 'collapsible', title: '¿Qué significa tener autoconciencia plena?', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3', content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… en el momento en que ocurre. Y hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. No se trata de perfección, sino de presencia y aceptación. Es estar contigo de forma amable, instante a instante.' }] },
             { type: 'collapsible', title: 'Metacognición: el arte de observar tu mente', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3', content: [{ type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera.\\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti.\\nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder.\\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }] },
@@ -244,17 +244,11 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'list',
           items: [
-            'Nombrar lo que sientes te ayuda a comprenderte y a regularte.',
-            'Toda emoción encierra una necesidad que merece atención.',
-            'Tus patrones emocionales repetidos no son errores: son puertas a tu historia.',
-            'La autoconciencia no es autoexigencia, es presencia sin juicio.',
-            'Observarte con curiosidad abre espacio para elegir, no solo reaccionar.',
-            'No eres lo que sientes ni lo que piensas: eres quien observa.',
-            'El juicio interno alimenta el malestar; la compasión lo transforma.',
-            'La seguridad interna es la base para poder mirarte sin miedo.',
-            'Tu sistema nervioso necesita cuidado, no presión.',
-            'La metacognición te permite salir del piloto automático y actuar con conciencia.',
-            'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
+            'La autoconciencia plena es el primer paso para cambiar de verdad.',
+            'Observarte con curiosidad te transforma más que criticarte.',
+            'Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.',
+            'La metacognición te ayuda a elegir mejor.',
+            'No tienes que corregirte. Solo aprender a acompañarte con respeto.',
             'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
           ]
         },
