@@ -32,12 +32,8 @@ export function RelationalCommitmentExercise({ content, pathId }: RelationalComm
 
   const next = () => setStep(prev => prev + 1);
 
-  const handleSave = () => {
-    if (!commitmentStatement.trim()) {
-      toast({ title: "Compromiso no definido", description: "Por favor, escribe tu declaración de compromiso para guardarla.", variant: "destructive" });
-      return;
-    }
-    
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -72,6 +68,19 @@ ${weeklyMicroAction || 'No especificada.'}
     next();
   };
 
+  const resetExercise = () => {
+    setStep(0);
+    setValues('');
+    setMisalignedRelation('');
+    setCommitmentPerson('');
+    setVulnerableBehavior('');
+    setPartToStrengthen('');
+    setBlockingThoughts('');
+    setCommitmentStatement('');
+    setWeeklyMicroAction('');
+    setIsSaved(false);
+  };
+
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -91,10 +100,11 @@ ${weeklyMicroAction || 'No especificada.'}
             </div>
             <div className="space-y-2">
               <Label htmlFor="misaligned">¿Hay alguna relación actual que no esté alineada con estos valores? ¿Qué señales lo indican?</Label>
-              <Textarea id="misaligned" value={misalignedRelation} onChange={e => setMisalignedRelation(e.target.value)} />
+              <Textarea id="misaligned" value={misalignedRelation} onChange={e => setMisalignedRelation(e.target.value)} placeholder="Ejemplo: Me siento silenciada/o, me cuesta confiar, no me siento libre de expresar mis emociones…" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="commitment-person">¿Con quién te gustaría comprometerte a construir un vínculo más honesto y equilibrado?</Label>
+              <p className="text-sm text-muted-foreground">Puede ser alguien con quien ya te relacionas o alguien con quien deseas cultivar algo nuevo.</p>
               <Textarea id="commitment-person" value={commitmentPerson} onChange={e => setCommitmentPerson(e.target.value)} />
             </div>
             <Button onClick={next} className="w-full">Siguiente</Button>
@@ -126,7 +136,7 @@ ${weeklyMicroAction || 'No especificada.'}
              <p className="text-sm text-muted-foreground">Escribe una frase potente y verdadera que refleje cómo eliges vincularte contigo y con las personas que te rodean. Será tu ancla.</p>
             <div className="space-y-2">
               <Label htmlFor="commitment-statement">Mi compromiso relacional personal:</Label>
-              <Textarea id="commitment-statement" value={commitmentStatement} onChange={e => setCommitmentStatement(e.target.value)} placeholder="Ej: 'Me comprometo a construir vínculos basados en el respeto y la honestidad...'" />
+              <Textarea id="commitment-statement" value={commitmentStatement} onChange={e => setCommitmentStatement(e.target.value)} placeholder="Ej: Me comprometo a construir vínculos basados en el respeto y la honestidad. Me permito expresar mis necesidades con claridad, incluso cuando me da miedo hacerlo." />
             </div>
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
@@ -137,19 +147,23 @@ ${weeklyMicroAction || 'No especificada.'}
             <h4 className="font-semibold text-lg">Paso 4: Microacción semanal</h4>
             <p className="text-sm text-muted-foreground">Elige una acción pequeña y concreta que te acerque a tu compromiso.</p>
             <div className="space-y-2">
-              <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para actuar en coherencia con tu compromiso?</Label>
+              <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
               <Textarea id="micro-action" value={weeklyMicroAction} onChange={e => setWeeklyMicroAction(e.target.value)} placeholder="Ej: Poner un límite sin justificarme, agradecer su presencia..." />
             </div>
             <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
           </div>
         );
-       case 5:
+       case 5: // Confirmation
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
-            <p className="text-muted-foreground">Has creado una brújula valiosa para tus relaciones. Vuelve a ella cuando necesites recordar tu dirección.</p>
-            <Button onClick={() => { setStep(0); setIsSaved(false); }} variant="outline" className="w-full">Comenzar de nuevo</Button>
+            <h4 className="font-bold text-lg">Ejercicio Guardado</h4>
+            <div className="space-y-2 text-muted-foreground">
+                <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
+                <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
+                <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
+            </div>
+            <Button onClick={resetExercise} variant="outline" className="w-full">Comenzar de nuevo</Button>
           </div>
         );
       default:
@@ -166,7 +180,7 @@ ${weeklyMicroAction || 'No especificada.'}
                 {content.objective}
                 <div className="mt-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src="https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3" type="audio/mp3" />
+                      <source src={content.audioUrl} type="audio/mp3" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
                 </div>
