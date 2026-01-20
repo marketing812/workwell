@@ -210,7 +210,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… \nen el momento en que ocurre. \n\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. \nNo se trata de perfección, sino de presencia y aceptación. \nEs estar contigo de forma amable, instante a instante.'
+              text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… \nen el momento en que ocurre. \n\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. \nNo se trata de perfección, sino de presencia y aceptación. \nEs estar contigo de forma amable, instante a instante. '
             }
           ]
         },
@@ -221,7 +221,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Este tipo de conciencia se basa en dos caminos terapéuticos: \n\nMindfulness: prestar atención al presente con amabilidad. \n\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… \neres quien los observa. \n\nAprender esto te permite tomar distancia y elegir mejor.'
+              text: 'Este tipo de conciencia se basa en dos caminos terapéuticos: \n\nMindfulness: prestar atención al presente con amabilidad. \n\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… \neres quien los observa. \n\nAprender esto te permite tomar distancia y elegir mejor. '
             }
           ]
         },
@@ -232,7 +232,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Al contrario: es una fuerza emocional. \nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”. \n\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar. \nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.'
+              text: 'Al contrario: es una fuerza emocional. \nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”. \n\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar. \nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático. '
             }
           ]
         },
@@ -243,7 +243,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera. \n\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti. \nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder. \n\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.'
+              text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera. \n\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti. \nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder. \n\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones. '
             }
           ]
         },
@@ -254,7 +254,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Muchas veces nos decimos cosas como: \n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…” \n\nPero hablarte así no ayuda a cambiar lo que sientes. \nSolo lo hace más difícil. \n\nEn cambio, si te preguntas con amabilidad: \n“¿Qué me está pasando en realidad?” \nse abre un espacio de comprensión y calma dentro de ti.'
+              text: 'Muchas veces nos decimos cosas como: \n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…” \n\nPero hablarte así no ayuda a cambiar lo que sientes. \nSolo lo hace más difícil. \n\nEn cambio, si te preguntas con amabilidad: \n“¿Qué me está pasando en realidad?” \nse abre un espacio de comprensión y calma dentro de ti. '
             }
           ]
         },
@@ -265,7 +265,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes'
+              text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes '
             }
           ]
         },
@@ -276,7 +276,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Ejemplo práctico: \n“No quiero estar ansiosa” → resistencia → más ansiedad \n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma \n\nObservarte sin juicio no borra lo que sientes, \npero sí lo contiene con amabilidad, y eso ya es transformador. \n\nNo necesitas tener todas las respuestas \n\nLo más importante es hacerte mejores preguntas. \nEstas te ayudarán a escucharte sin agobiarte: \n\n¿Qué estoy sintiendo ahora mismo? \n\n¿Qué necesita esta emoción? \n\n¿Qué historia estoy contándome? \n\n¿Cómo puedo cuidarme un poco mejor ahora?'
+              text: 'Ejemplo práctico: \n“No quiero estar ansiosa” → resistencia → más ansiedad \n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma \n\nObservarte sin juicio no borra lo que sientes, \npero sí lo contiene con amabilidad, y eso ya es transformador. \n\nNo necesitas tener todas las respuestas \n\nLo más importante es hacerte mejores preguntas. \nEstas te ayudarán a escucharte sin agobiarte: \n\n¿Qué estoy sintiendo ahora mismo? \n\n¿Qué necesita esta emoción? \n\n¿Qué historia estoy contándome? \n\n¿Cómo puedo cuidarme un poco mejor ahora? '
             }
           ]
         },
@@ -287,7 +287,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Es totalmente normal. \n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar. \nSolo se activa para defenderse. \n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte. \nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo. \n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal) \n\nTu cuerpo cambia según cómo percibe el entorno: \n\nEstado de seguridad: calma, conexión, reflexión. \n\nEstado de alarma: lucha o huida. \n\nEstado de colapso: bloqueo o desconexión. \n\nCuando estás en seguridad, puedes observarte sin pelear contigo. \nPor eso es tan importante cultivar ese estado interno. \n\nCómo generar seguridad dentro de ti \n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo: \n\nRespirar de forma consciente. \n\nSentir tus pies firmes en el suelo. \n\nHablarte con amabilidad. \n\nRodearte de personas que te respetan. \n\nRecordarte: lo que sientes no es un error. \n\nLa seguridad no se impone. Se entrena poco a poco. \n\nEl poder de tu voz interior \n\nTu cuerpo escucha cómo te hablas. \n\nUna frase amable puede calmar tu corazón. \n\nUna crítica interna puede alterarte sin que te des cuenta. \n\nHabitarte con conciencia también es esto: \ntratarte con respeto desde dentro, incluso cuando te equivocas.'
+              text: 'Es totalmente normal. \n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar. \nSolo se activa para defenderse. \n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte. \nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo. \n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal) \n\nTu cuerpo cambia según cómo percibe el entorno: \n\nEstado de seguridad: calma, conexión, reflexión. \n\nEstado de alarma: lucha o huida. \n\nEstado de colapso: bloqueo o desconexión. \n\nCuando estás en seguridad, puedes observarte sin pelear contigo. \nPor eso es tan importante cultivar ese estado interno. \n\nCómo generar seguridad dentro de ti \n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo: \n\nRespirar de forma consciente. \n\nSentir tus pies firmes en el suelo. \n\nHablarte con amabilidad. \n\nRodearte de personas que te respetan. \n\nRecordarte: lo que sientes no es un error. \n\nLa seguridad no se impone. Se entrena poco a poco. \n\nEl poder de tu voz interior \n\nTu cuerpo escucha cómo te hablas. \n\nUna frase amable puede calmar tu corazón. \n\nUna crítica interna puede alterarte sin que te des cuenta. \n\nHabitarte con conciencia también es esto: \ntratarte con respeto desde dentro, incluso cuando te equivocas. '
             }
           ]
         },
@@ -319,17 +319,24 @@ export const selfUnderstandingPath: Path = {
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenruta6Sesion4.mp3', 
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Reflexionruta6Sesion4.mp3', 
           prompts: [
-            'Tómate unos minutos para mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas. Solo darte espacio para reconocer lo que esta semana despertó en ti.',
-            '¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?',
-            '¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte? (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)',
-            '¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”? (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)',
-            '¿Qué emociones o patrones lograste nombrar o detectar con más claridad? (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)',
-            '¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué? (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)',
-            'Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.'
+            '<p>Tómate unos minutos para mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas. Solo darte espacio para reconocer lo que esta semana despertó en ti.</p><p>Preguntas para tu cuaderno emocional:</p><ul><li>¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?</li><li>¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte?  (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)</li><li>¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”?  (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)</li><li>¿Qué emociones o patrones lograste nombrar o detectar con más claridad?  (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)</li><li>¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué?  (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)</li></ul><p>Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.</p>'
           ]
-        }
+        },
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenruta6Sesion4.mp3' },
+        { 
+          type: 'list', 
+          items: [
+            'La autoconciencia plena es la habilidad de estar presente contigo, sin juicio ni exigencias.',
+            'Observar tus emociones no es debilidad. Es un acto de fuerza emocional y cuidado.',
+            'La curiosidad transforma más que el juicio. Abre espacio y calma.',
+            'Para observarte sin reaccionar, necesitas seguridad interna (teoría polivagal).',
+            'La metacognición te permite detectar tus procesos mentales y elegir tu respuesta.',
+            'Hablarte con amabilidad, anclarte al cuerpo y escribir lo que descubres… fortalece tu regulación emocional.'
+          ]
+        },
+        { type: 'quote', text: '“No necesitas arreglarte. Solo aprender a estar contigo con honestidad, sin juicio y con presencia. Desde ahí, todo empieza a transformarse.”' }
       ]
     },
     {
@@ -352,7 +359,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: "https://workwellfut.com/audios/ruta6/descripciones/Resumenfinalruta6.mp3"
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenfinalruta6.mp3'
         },
         {
           type: 'list',
@@ -375,6 +382,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 
