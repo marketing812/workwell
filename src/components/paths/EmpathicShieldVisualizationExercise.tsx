@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -32,7 +31,7 @@ export function EmpathicShieldVisualizationExercise({ content, pathId, onComplet
       toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti." });
       onComplete();
     }
-    setStep(6);
+    setStep(7); // Go to final confirmation screen
   };
 
   const renderStep = () => {
@@ -105,17 +104,29 @@ export function EmpathicShieldVisualizationExercise({ content, pathId, onComplet
             </blockquote>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={handleComplete}>Finalizar y Guardar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
       case 6: // Pantalla 6: Cierre
         return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary text-center">Pantalla 6: Cierre: tu escudo sigue contigo</h4>
+            <p className="text-muted-foreground">Imagina cómo ese escudo se integra en tu conciencia. No desaparece: ahora vive dentro de ti, como una herramienta que puedes activar siempre que lo necesites.</p>
+            <p className="text-muted-foreground">Respira una última vez… Y cuando estés lista/o, vuelve suavemente al presente.</p>
+            <p className="text-muted-foreground italic">Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti.</p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={handleComplete}>Finalizar Ejercicio <CheckCircle className="ml-2 h-4 w-4" /></Button>
+            </div>
+          </div>
+        );
+      case 7: // Confirmation screen
+        return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
             <p className="text-muted-foreground">Has creado un recurso interno muy valioso. Recuerda tu escudo empático la próxima vez que necesites cuidar y cuidarte. Tu escudo ahora vive dentro de ti.</p>
-            <p className="text-muted-foreground">Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti.</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Repetir Visualización</Button>
           </div>
         );
@@ -144,5 +155,3 @@ export function EmpathicShieldVisualizationExercise({ content, pathId, onComplet
     </Card>
   );
 }
-
-    
