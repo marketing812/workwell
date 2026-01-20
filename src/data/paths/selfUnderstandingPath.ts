@@ -186,15 +186,65 @@ export const selfUnderstandingPath: Path = {
         type: 'summary',
         estimatedTime: '20-25 min',
         content: [
-            { type: 'paragraphWithAudio', text: '¿Y si no tuvieras que corregirte todo el tiempo?\\n¿Y si pudieras observar lo que sientes sin pelear contigo?\\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente.\\nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio.\\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable.\\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro.\\nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Introsemana4.mp3' },
+            {
+                type: 'paragraphWithAudio',
+                text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte?\n\nEso es autoconciencia plena:\nAprender a estar presente con lo que sientes, tal y como es.\nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion4.mp3'
+            },
             { type: 'title', text: 'Psicoeducación' },
-            { type: 'collapsible', title: '¿Qué significa tener autoconciencia plena?', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3', content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… en el momento en que ocurre. Y hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. No se trata de perfección, sino de presencia y aceptación. Es estar contigo de forma amable, instante a instante.' }] },
-            { type: 'collapsible', title: 'Metacognición: el arte de observar tu mente', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3', content: [{ type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera.\\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti.\\nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder.\\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }] },
-            { type: 'collapsible', title: '¿Y si me cuesta observarme con calma?', content: [{ type: 'paragraph', text: 'Es totalmente normal.\\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\\nSolo se activa para defenderse.\\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.' }] },
-            { type: 'collapsible', title: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)', content: [{ type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:\\n🔵 Estado de seguridad: calma, conexión, reflexión.\\n🔴 Estado de alarma: lucha o huida.\\n⚫ Estado de colapso: bloqueo o desconexión.\\nCuando estás en seguridad, puedes observarte sin pelear contigo.\\nPor eso es tan importante cultivar ese estado interno.' }] },
-            { type: 'collapsible', title: 'Cómo generar seguridad dentro de ti', content: [{ type: 'list', items: ['🌬️ Respirar de forma consciente.', '🌍 Sentir tus pies firmes en el suelo.', '💬 Hablarte con amabilidad.', '🤝 Rodearte de personas que te respetan.', '🧠 Recordarte: lo que sientes no es un error.'] }] },
-            { type: 'collapsible', title: 'El poder de tu voz interior', content: [{ type: 'paragraph', text: 'Tu cuerpo escucha cómo te hablas.\\n🫀 Una frase amable puede calmar tu corazón.\\n🔥 Una crítica interna puede alterarte sin que te des cuenta.\\nHabitarte con conciencia también es esto:\\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }] },
-            { type: 'collapsible', title: 'En resumen', content: [{ type: 'list', items: ['💠 La autoconciencia plena es el primer paso para cambiar de verdad.', '💠 Observarte con curiosidad te transforma más que criticarte.', '💠 Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.', '💠 La metacognición te ayuda a elegir mejor.', '💠 No tienes que corregirte. Solo aprender a acompañarte con respeto.'] }, { type: 'paragraph', text: 'Desde esa base… todo empieza a cambiar, con más claridad y compasión' }] },
+            {
+                type: 'collapsible',
+                title: '¿Qué significa tener autoconciencia plena?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio3Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Significa darte cuenta de lo que estás pensando, sintiendo y haciendo… \nen el momento en que ocurre. \n\nY hacerlo sin juzgarte, sin querer taparlo ni cambiarlo al instante. \nNo se trata de perfección, sino de presencia y aceptación. \nEs estar contigo de forma amable, instante a instante.' }]
+            },
+            {
+                type: 'collapsible',
+                title: '¿De dónde viene este enfoque?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Este tipo de conciencia se basa en dos caminos terapéuticos: \n\nMindfulness: prestar atención al presente con amabilidad. \n\nACT (Terapia de Aceptación y Compromiso): tú no eres tus pensamientos o emociones… \neres quien los observa. \n\nAprender esto te permite tomar distancia y elegir mejor.' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'Observarte no es una debilidad',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio5Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Al contrario: es una fuerza emocional. \nDecir “estoy notando ansiedad” no es lo mismo que decir “soy ansiosa”. \n\nEsa diferencia, aunque parezca pequeña, te da poder para decidir cómo actuar. \nCuando dejas de identificarte con la emoción, dejas también de reaccionar en automático.' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'Metacognición: el arte de observar tu mente',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'La metacognición es la habilidad de darte cuenta de lo que piensas o sientes… y observarlo desde fuera. \n\nEs como tener una linterna que te ayuda a ver con claridad lo que pasa dentro de ti. \nY gracias a eso, puedes entender mejor tu reacción y elegir otra forma de responder. \n\nEs una herramienta clave para regularte, cuidarte y tomar buenas decisiones.' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'Del juicio a la curiosidad',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Muchas veces nos decimos cosas como: \n“No debería sentir esto”, “Estoy exagerando”, “Ya estamos otra vez…” \n\nPero hablarte así no ayuda a cambiar lo que sientes. \nSolo lo hace más difícil. \n\nEn cambio, si te preguntas con amabilidad: \n“¿Qué me está pasando en realidad?” \nse abre un espacio de comprensión y calma dentro de ti.' }]
+            },
+            {
+                type: 'collapsible',
+                title: '¿Qué cambia cuando me observo con curiosidad?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'La curiosidad como medicina emocional',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Ejemplo práctico: \n“No quiero estar ansiosa” → resistencia → más ansiedad \n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma \n\nObservarte sin juicio no borra lo que sientes, \npero sí lo contiene con amabilidad, y eso ya es transformador. \n\nNo necesitas tener todas las respuestas \n\nLo más importante es hacerte mejores preguntas. \nEstas te ayudarán a escucharte sin agobiarte: \n\n¿Qué estoy sintiendo ahora mismo? \n\n¿Qué necesita esta emoción? \n\n¿Qué historia estoy contándome? \n\n¿Cómo puedo cuidarme un poco mejor ahora?' }]
+            },
+            {
+                type: 'collapsible',
+                title: '¿Y si me cuesta observarme con calma?',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: 'Es totalmente normal. \n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar. \nSolo se activa para defenderse. \n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte. \nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo. \n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal) \n\nTu cuerpo cambia según cómo percibe el entorno: \n\nEstado de seguridad: calma, conexión, reflexión. \n\nEstado de alarma: lucha o huida. \n\nEstado de colapso: bloqueo o desconexión. \n\nCuando estás en seguridad, puedes observarte sin pelear contigo. \nPor eso es tan importante cultivar ese estado interno. \n\nCómo generar seguridad dentro de ti \n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo: \n\nRespirar de forma consciente. \n\nSentir tus pies firmes en el suelo. \n\nHablarte con amabilidad. \n\nRodearte de personas que te respetan. \n\nRecordarte: lo que sientes no es un error. \n\nLa seguridad no se impone. Se entrena poco a poco. \n\nEl poder de tu voz interior \n\nTu cuerpo escucha cómo te hablas. \n\nUna frase amable puede calmar tu corazón. \n\nUna crítica interna puede alterarte sin que te des cuenta. \n\nHabitarte con conciencia también es esto: \ntratarte con respeto desde dentro, incluso cuando te equivocas.' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'En resumen',
+                content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad. \n\nObservarte con curiosidad te transforma más que criticarte. \n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.  \n\nLa metacognición te ayuda a elegir mejor. \n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión' }]
+            },
             { type: 'title', text: 'Técnicas Específicas' },
             {
                 type: 'meditacionGuiadaSinJuicioExercise',
@@ -264,6 +314,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 
