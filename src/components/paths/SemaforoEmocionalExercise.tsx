@@ -54,23 +54,22 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
                 {color: 'verde', label: 'Verde', description: 'Me siento en calma, presente y estable.'},
                 {color: 'ambar', label: 'Ámbar', description: 'Empiezo a activarme, tengo tensión o pensamientos que se aceleran.'},
                 {color: 'rojo', label: 'Rojo', description: 'Estoy muy activado/a. Siento ansiedad, rabia, bloqueo o impulso fuerte.'},
-              ] as const).map(({color, label, description}) => (
+              ].map(({color, label, description}) => (
                 <Label key={color} htmlFor={`light-${color}`} 
-                  className={cn("flex flex-col items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all w-full sm:w-auto", 
-                      light === color ? {
-                          'border-green-500 bg-green-100 dark:bg-green-900/30 ring-2 ring-green-500': color === 'verde',
-                          'border-amber-500 bg-amber-100 dark:bg-amber-900/30 ring-2 ring-amber-500': color === 'ambar',
-                          'border-red-500 bg-red-100 dark:bg-red-900/30 ring-2 ring-red-500': color === 'rojo',
-                      } : {
-                          'border-border bg-background hover:bg-muted': true,
-                      }
+                  className={cn(
+                    "flex flex-col items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all w-full sm:w-auto",
+                    light === 'verde' && color === 'verde' ? 'border-green-500 bg-green-100 dark:bg-green-900/30 ring-2 ring-green-500' :
+                    light === 'ambar' && color === 'ambar' ? 'border-amber-500 bg-amber-100 dark:bg-amber-900/30 ring-2 ring-amber-500' :
+                    light === 'rojo' && color === 'rojo' ? 'border-red-500 bg-red-100 dark:bg-red-900/30 ring-2 ring-red-500' :
+                    'border-border bg-background hover:bg-muted'
                   )}>
                   <RadioGroupItem value={color} id={`light-${color}`} className="sr-only" />
-                  <span className={cn("font-bold", {
-                    'text-green-700 dark:text-green-300': color === 'verde',
-                    'text-amber-700 dark:text-amber-300': color === 'ambar',
-                    'text-red-700 dark:text-red-300': color === 'rojo',
-                  })}>{label}</span>
+                  <span className={cn(
+                    "font-bold",
+                    color === 'verde' && 'text-green-700 dark:text-green-300',
+                    color === 'ambar' && 'text-amber-700 dark:text-amber-300',
+                    color === 'rojo' && 'text-red-700 dark:text-red-300'
+                  )}>{label}</span>
                   <p className="text-xs text-muted-foreground text-center mt-1">{description}</p>
                 </Label>
               ))}
@@ -113,9 +112,15 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        <CardDescription className="pt-1 text-xs italic">(verde = bienestar; ámbar = activación; rojo = desborde) con estrategias de regulación en cada fase.</CardDescription>
-        {content.objective && <CardDescription className="pt-2"><span className="font-bold">Objetivo terapéutico:</span> {content.objective}</CardDescription>}
-        {content.duration && <p className="text-sm text-muted-foreground pt-1"><span className="font-bold">Duración estimada:</span> {content.duration}</p>}
+        <CardDescription>
+            <p className="pt-1 text-xs italic">
+                (<span className="text-green-500 font-semibold">verde</span> = bienestar;{' '}
+                <span className="text-amber-500 font-semibold">ámbar</span> = activación;{' '}
+                <span className="text-red-500 font-semibold">rojo</span> = desborde) con estrategias de regulación en cada fase.
+            </p>
+            {content.objective && <p className="pt-2"><span className="font-bold">Objetivo terapéutico:</span> {content.objective}</p>}
+            {content.duration && <p className="pt-1 text-sm text-muted-foreground"><span className="font-bold">Duración estimada:</span> {content.duration}</p>}
+        </CardDescription>
         {content.audioUrl && (
           <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
