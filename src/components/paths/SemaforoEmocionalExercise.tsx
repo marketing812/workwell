@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -30,6 +29,14 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = () => {
+    if (!action.trim()) {
+        toast({
+            title: "Acción requerida",
+            description: "Por favor, escribe qué harás para cuidarte.",
+            variant: "destructive",
+        });
+        return;
+    }
     addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: `Estado: ${light}. Acción de cuidado: ${action}`, pathId: pathId });
     toast({ title: 'Registro Guardado' });
     onComplete();
@@ -37,31 +44,67 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
   
   const renderStep = () => {
     switch(step) {
-      case 0: return <div className="p-4 space-y-4 text-center"><p>Escanea tu cuerpo, tu mente y tus emociones y selecciona en qué "luz" estás ahora.</p><RadioGroup value={light} onValueChange={(v) => setLight(v as any)} className="flex justify-around py-4">{['verde', 'ambar', 'rojo'].map(color => <Label key={color} htmlFor={`light-${color}`} 
-      className={cn("flex items-center justify-center h-20 w-20 rounded-full border-4 cursor-pointer transition-all", 
-          light === color ? {
-              'border-green-500 bg-green-200 dark:bg-green-800': color === 'verde',
-              'border-amber-500 bg-amber-200 dark:bg-amber-800': color === 'ambar',
-              'border-red-500 bg-red-200 dark:bg-red-800': color === 'rojo',
-          } : {
-              'border-green-200 bg-green-50 dark:bg-green-900/50': color === 'verde',
-              'border-amber-200 bg-amber-50 dark:bg-amber-900/50': color === 'ambar',
-              'border-red-200 bg-red-50 dark:bg-red-900/50': color === 'rojo',
-          }
-      )}>
-          <RadioGroupItem value={color as 'verde' | 'ambar' | 'rojo'} id={`light-${color}`} className="sr-only" />
-          <TrafficCone className={cn("h-10 w-10", {
-              'text-green-600 dark:text-green-300': color === 'verde',
-              'text-amber-600 dark:text-amber-300': color === 'ambar',
-              'text-red-600 dark:text-red-300': color === 'rojo',
-          })} />
-      </Label>)}</RadioGroup><Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 0: 
+        return (
+          <div className="p-4 space-y-4 text-center">
+            <h4 className="font-semibold text-lg">¿Cómo te sientes ahora?</h4>
+            <p>Escanea tu cuerpo, tu mente y tus emociones. Selecciona en qué “luz” estás ahora:</p>
+            <RadioGroup value={light} onValueChange={(v) => setLight(v as any)} className="flex flex-col sm:flex-row justify-around py-4 gap-4">
+              {[
+                {color: 'verde', label: 'Verde', description: 'Me siento en calma, presente y estable.'},
+                {color: 'ambar', label: 'Ámbar', description: 'Empiezo a activarme, tengo tensión o pensamientos que se aceleran.'},
+                {color: 'rojo', label: 'Rojo', description: 'Estoy muy activado/a. Siento ansiedad, rabia, bloqueo o impulso fuerte.'},
+              ] as const).map(({color, label, description}) => (
+                <Label key={color} htmlFor={`light-${color}`} 
+                  className={cn("flex flex-col items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all w-full sm:w-auto", 
+                      light === color ? {
+                          'border-green-500 bg-green-100 dark:bg-green-900/30 ring-2 ring-green-500': color === 'verde',
+                          'border-amber-500 bg-amber-100 dark:bg-amber-900/30 ring-2 ring-amber-500': color === 'ambar',
+                          'border-red-500 bg-red-100 dark:bg-red-900/30 ring-2 ring-red-500': color === 'rojo',
+                      } : {
+                          'border-border bg-background hover:bg-muted': true,
+                      }
+                  )}>
+                  <RadioGroupItem value={color} id={`light-${color}`} className="sr-only" />
+                  <span className={cn("font-bold", {
+                    'text-green-700 dark:text-green-300': color === 'verde',
+                    'text-amber-700 dark:text-amber-300': color === 'ambar',
+                    'text-red-700 dark:text-red-300': color === 'rojo',
+                  })}>{label}</span>
+                  <p className="text-xs text-muted-foreground text-center mt-1">{description}</p>
+                </Label>
+              ))}
+            </RadioGroup>
+            <Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          </div>
+        );
       case 1:
-        let suggestions, title;
-        if(light === 'verde') { title='Bienestar emocional presente'; suggestions = 'Agradece algo, regálate un momento consciente.'; }
-        else if(light === 'ambar') { title='Activación emocional leve'; suggestions = 'Haz una respiración profunda, conecta con tus sentidos.'; }
-        else { title='Desborde o activación intensa'; suggestions = 'Aléjate del estímulo, usa una técnica de grounding.'; }
-        return <div className="p-4 space-y-4"><h4 className="font-semibold text-center">{title}</h4><p className="text-sm text-center">{suggestions}</p><Label>¿Qué harás ahora para ayudarte?</Label><Textarea value={action} onChange={e => setAction(e.target.value)} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar</Button></div></div>;
+        let suggestions, title, placeholder;
+        if(light === 'verde') { 
+          title='🟢 Bienestar emocional presente'; 
+          suggestions = 'Aprovecha para reforzar lo que te hace bien. Sugerencias:\n\nAgradece algo del día.\nRegálate un momento consciente (una respiración profunda, una mirada amable).\nAnota lo que has hecho hoy para sentirte así.';
+          placeholder = '¿Qué quieres seguir cultivando hoy?';
+        } else if(light === 'ambar') { 
+          title='🟠 Activación emocional leve o moderada'; 
+          suggestions = 'Estás empezando a salir de tu zona de calma. Este es el momento ideal para regularte antes de escalar. Sugerencias:\n\nHaz una respiración profunda y diafragmática.\nNombra lo que sientes sin juicio.\nConecta con los sentidos: ¿qué ves, qué oyes, qué tocas?';
+          placeholder = '¿Qué harás ahora para ayudarte?';
+        } else { // rojo
+          title='🔴 Desborde o activación intensa'; 
+          suggestions = 'Cuando estás muy activado/a, lo primero es contenerte con cuidado, sin exigencias. Sugerencias:\n\nAléjate del estímulo si puedes.\nUsa una técnica de grounding (contacto con un objeto frío, contar objetos de un color, etc.) o de relajación.\nEscribe lo que sientes sin censura.\nRespira con ritmo lento, sin forzarte.';
+          placeholder = '¿Qué vas a hacer ahora para sostenerte?';
+        }
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-center text-lg">{title}</h4>
+            <p className="text-sm text-muted-foreground text-center whitespace-pre-line">{suggestions}</p>
+            <Label htmlFor="action-textarea">Tu acción:</Label>
+            <Textarea id="action-textarea" value={action} onChange={e => setAction(e.target.value)} placeholder={placeholder} />
+            <div className="flex justify-between w-full mt-2">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={handleSave} className="w-auto" disabled={!action.trim()}><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+            </div>
+          </div>
+        );
       default: return null;
     }
   };
@@ -70,16 +113,16 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && (
-          <CardDescription className="pt-2">
-            {content.objective}
-            <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-              </audio>
-            </div>
-          </CardDescription>
+        <CardDescription className="pt-1 text-xs italic">(verde = bienestar; ámbar = activación; rojo = desborde) con estrategias de regulación en cada fase.</CardDescription>
+        {content.objective && <CardDescription className="pt-2"><span className="font-bold">Objetivo terapéutico:</span> {content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm text-muted-foreground pt-1"><span className="font-bold">Duración estimada:</span> {content.duration}</p>}
+        {content.audioUrl && (
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src={content.audioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
         )}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>

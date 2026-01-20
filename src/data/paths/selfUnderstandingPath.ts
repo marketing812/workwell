@@ -155,15 +155,15 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'mapaEmocionalRepetidoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
-                objective: 'Objetivo terapeutico: Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
+                objective: 'Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
                 duration: '15–20 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3'
             },
             {
                 type: 'semaforoEmocionalExercise',
                 title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
-                objective: 'Aprende a identificar si estás en calma, activándote o al borde del desborde, y elige cómo cuidarte en cada momento.',
-                duration: '5–10 min',
+                objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás: si estás en calma, empezando a activarte o al borde del desborde. Y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
+                duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3'
             },
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3', prompts: ['¿Qué emoción se ha repetido más en mí últimamente?','¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?','¿Qué patrón emocional reconozco como más habitual?','¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?','¿Qué suele ocurrirme cuando una emoción me desborda?','¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?']},
@@ -263,6 +263,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 
