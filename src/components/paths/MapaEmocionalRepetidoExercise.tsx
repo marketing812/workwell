@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -48,7 +47,6 @@ const schemaOptions = [
     { value: 'impulsividad', label: 'Impulsividad o descontrol emocional: Me cuesta parar. Actúo o exploto cuando algo me afecta, sin pensar.' },
 ];
 
-
 export function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: MapaEmocionalRepetidoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
@@ -64,6 +62,7 @@ export function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: M
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+
   const resetExercise = () => {
     setStep(0);
     setSituation('');
@@ -114,7 +113,7 @@ ${schema || 'No especificado.'}
       case 3: return <div className="p-4 space-y-4"><Label htmlFor="automaticThought">¿Qué historia o interpretación surgió en tu mente en ese momento?</Label><Textarea id="automaticThought" value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} placeholder={'"No le importo."\n"Soy un desastre."\n"Siempre me dejan fuera."\n"Seguro se están burlando de mí."'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!automaticThought}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 4: return <div className="p-4 space-y-4"><Label htmlFor="behavior">¿Cómo reaccionaste? ¿Qué hiciste o cómo te comportaste después de esa emoción?</Label><Textarea id="behavior" value={behavior} onChange={e => setBehavior(e.target.value)} placeholder={'"Me encerré en mi habitación."\n"Mandé un mensaje cortante."\n"Me bloqueé y no dije nada."\n"Me mostré sonriente, pero me dolía por dentro."'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!behavior}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 5: return <div className="p-4 space-y-4"><Label>¿Te suena esta reacción?</Label><RadioGroup value={isRepeated} onValueChange={setIsRepeated}><div className="flex items-center gap-2"><RadioGroupItem value="si" id="r_si"/><Label htmlFor="r_si" className="font-normal">Sí, me pasa a menudo</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="algunas" id="r_algunas" /><Label htmlFor="r_algunas" className="font-normal">Algunas veces</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="no" id="r_no"/><Label htmlFor="r_no" className="font-normal">No, fue algo nuevo para mí</Label></div></RadioGroup><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!isRepeated}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
-      case 6: return <div className="p-4 space-y-4"><Label>¿Qué patrón crees que se activó?</Label><Select value={schema} onValueChange={setSchema}><SelectTrigger><SelectValue placeholder="Elige un patrón..." /></SelectTrigger><SelectContent>{schemaOptions.map(s=><SelectItem key={s.value} value={s.label}>{s.label}</SelectItem>)}</SelectContent></Select><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto" disabled={!schema}>Ver Resumen</Button></div></div>;
+      case 6: return <div className="p-4 space-y-4"><Label>¿Qué patrón crees que se activó?</Label><Select value={schema} onValueChange={setSchema}><SelectTrigger><SelectValue placeholder="Elige un patrón..." /></SelectTrigger><SelectContent>{schemaOptions.map(s=><SelectItem key={s.value} value={s.label}>{s.label}</SelectItem>)}</SelectContent></Select><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto" disabled={!schema}>Guardar y ver resumen</Button></div></div>;
       case 7: 
         return (
             <div className="p-4 text-center space-y-4">
@@ -175,5 +174,3 @@ ${schema || 'No especificado.'}
     </Card>
   );
 }
-
-  
