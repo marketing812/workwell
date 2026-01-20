@@ -155,7 +155,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'mapaEmocionalRepetidoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
-                objective: 'Identifica situaciones que te remueven, reconoce qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta.',
+                objective: 'Objetivo terapeutico: Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
                 duration: '15–20 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3'
             },
@@ -263,5 +263,6 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
