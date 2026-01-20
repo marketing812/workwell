@@ -155,7 +155,7 @@ export const selfUnderstandingPath: Path = {
             {
                 type: 'mapaEmocionalRepetidoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
-                objective: 'Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
+                objective: 'Objetivo terapéutico: Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \\nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \\nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \\nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \\n\\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
                 duration: '15–20 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3'
             },
@@ -188,10 +188,16 @@ export const selfUnderstandingPath: Path = {
         content: [
             {
                 type: 'paragraphWithAudio',
-                text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte?\n\nEso es autoconciencia plena:\nAprender a estar presente con lo que sientes, tal y como es.\nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion4.mp3'
+                text: '¿Y si no tuvieras que corregirte todo el tiempo? \n¿Y si pudieras observar lo que sientes sin pelear contigo? \n\nEsta semana cerrarás la ruta cultivando una mirada interna más compasiva y consciente. \nAprenderás a entrenar la autoconciencia plena: estar contigo con curiosidad, no con juicio. \n\nVerás cómo el mindfulness, la teoría polivagal y la metacognición pueden ayudarte a cultivar seguridad interna, observar sin reaccionar, y escucharte desde un lugar más amable. \n\nEste es uno de los mayores regalos que puedes darte: ser tu propio espacio seguro. \nPorque cuando aprendes a habitarte con respeto, todo empieza a cambiar desde dentro.',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'
             },
             { type: 'title', text: 'Psicoeducación' },
+            {
+                type: 'collapsible',
+                title: 'Habitarme con conciencia y sin juicio',
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion4.mp3',
+                content: [{ type: 'paragraph', text: '¿Y si pudieras estar contigo, incluso cuando algo te duele… sin criticarte? \n\nEso es autoconciencia plena: \nAprender a estar presente con lo que sientes, tal y como es. \nSin lucha. Sin exigencias. Sin disfraz. Solo tú, aquí y ahora.' }]
+            },
             {
                 type: 'collapsible',
                 title: '¿Qué significa tener autoconciencia plena?',
@@ -226,7 +232,7 @@ export const selfUnderstandingPath: Path = {
                 type: 'collapsible',
                 title: '¿Qué cambia cuando me observo con curiosidad?',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion4.mp3',
-                content: [{ type: 'paragraph', text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes' }]
+                content: [{ type: 'paragraph', text: 'Empiezas a conocerte mejor. \n\nDejas de encasillarte con etiquetas (“soy débil”, “siempre fallo”). \n\nDescubres qué necesitas de verdad. \n\nReaccionas menos y eliges mejor. \n\nTratas con más empatía. \n\nNo tienes que cambiar lo que sientes. \nSolo cambiar la manera en la que te acompañas cuando lo sientes.' }]
             },
             {
                 type: 'collapsible',
@@ -251,7 +257,7 @@ export const selfUnderstandingPath: Path = {
                 title: 'EJERCICIO 1: MEDITACIÓN GUIADA SIN JUICIO',
                 objective: 'Esta meditación te invita a dejar de luchar con lo que sientes y a practicar la aceptación: No como resignación, sino como una forma de cuidado profundo hacia ti.\n\nAl repetir la frase ancla — “Esto es lo que siento ahora… y está bien” — \nempiezas a entrenar una voz interior más compasiva, que te acompaña sin exigencias, incluso en los momentos difíciles.',
                 duration: 'Duración recomendada: 5-7 minutos por sesión. Te recomiendo practicarla entre 3 y 5 veces a la semana para fortalecer la autocompasión y la regulación emocional.',
-                audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica1.mp3'
+                audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/R6sem4ej1meditacion.mp3'
             },
             {
                 type: 'diarioMeDiCuentaExercise',
@@ -273,19 +279,11 @@ export const selfUnderstandingPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Reflexionfinalruta6.mp3',
           prompts: [
-            'Has hecho un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad.',
-            'Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.',
-            'Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas.',
-            'Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.',
-            'Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti.',
-            'Escribe con honestidad y sin exigencias:',
-            '¿Qué he aprendido sobre mí que antes no veía con claridad?',
-            '¿Qué emociones o patrones he comenzado a entender mejor?',
-            '¿Cómo ha cambiado la forma en que me hablo y me observo?',
-            '¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?',
-            '¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?',
-            'No hace falta tener respuestas perfectas. Solo abrir un espacio donde puedas escucharte con respeto…',
-            'y seguir acompañándote cada día, desde la conciencia y la compasión.',
+            '<p>Has recorrido un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad. Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.</p>',
+            '<p>Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas. Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.</p>',
+            '<p>Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti. Escribe con honestidad y sin exigencias:</p>',
+            '<ul><li>¿Qué he aprendido sobre mí que antes no veía con claridad?</li><li>¿Qué emociones o patrones he comenzado a entender mejor?</li><li>¿Cómo ha cambiado la forma en que me hablo y me observo?</li><li>¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?</li><li>¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?</li></ul>',
+            '<p>No hace falta tener respuestas perfectas. Solo abrir un espacio donde puedas escucharte con respeto… y seguir acompañándote cada día, desde la conciencia y la compasión.</p>'
           ]
         },
         {
@@ -314,6 +312,7 @@ export const selfUnderstandingPath: Path = {
 };
 
     
+
 
 
 
