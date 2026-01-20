@@ -15,7 +15,7 @@ export const selfUnderstandingPath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: '¿Alguna vez te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'},
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que te has sentido mal… pero sin saber exactamente por qué?\n¿O has reaccionado con enojo o tristeza sin poder identificar qué había realmente detrás?\nEsta semana vas a empezar un camino muy valiente: ponerle nombre a tus emociones.\nPorque lo que puedes nombrar, puedes empezar a comprenderlo.\nY lo que comprendes, puedes empezar a cuidarlo.\nAprenderás a diferenciar lo que sientes de lo que piensas o haces, y a reconocer si esa emoción es una reacción inmediata (primaria) o si viene modulada por tus creencias o experiencias previas (secundaria).\nEste primer paso es clave: no se trata de cambiar cómo te sientes, sino de mirarlo con claridad y sin culpa.', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio1Ruta6Sesion1.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -107,6 +107,7 @@ export const selfUnderstandingPath: Path = {
                 type: 'mapaEmocionNecesidadCuidadoExercise',
                 title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO',
                 objective: 'Objetivo terapeutico: Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. ',
+                duration: '5–10 min',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3'
             },
             {
@@ -260,3 +261,6 @@ export const selfUnderstandingPath: Path = {
     }
   ]
 };
+
+    
+
