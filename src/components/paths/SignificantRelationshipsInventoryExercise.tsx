@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
 import type { SignificantRelationshipsInventoryExerciseContent } from '@/data/paths/pathTypes';
@@ -150,7 +151,7 @@ export function SignificantRelationshipsInventoryExercise({ content, pathId }: S
             <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">¡Ejercicio finalizado!</h4>
-                 <p className="text-muted-foreground">Reconocer tu red de apoyo es un acto de autocuidado. Las relaciones que nos nutren se cultivan con presencia y conciencia.</p>
+                 <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
                  <Button onClick={() => { setStep(0); setIsCompleted(false); }} variant="outline" className="w-full">Practicar de nuevo</Button>
             </div>
         )}
