@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmpatheticDialogueExerciseContent } from '@/data/paths/pathTypes';
 
@@ -40,6 +39,9 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
     toast({ title: "Ejercicio Guardado", description: "Tu diálogo interno ha sido guardado en el cuaderno." });
     setStep(prev => prev + 1);
   };
+  
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
   
   const renderStep = () => {
     switch (step) {
@@ -99,10 +101,29 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
               <Label htmlFor="intention">Mi intención es...</Label>
               <Textarea id="intention" value={intention} onChange={e => setIntention(e.target.value)} />
             </div>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mi Diálogo Interno</Button>
+            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar y Continuar</Button>
           </div>
         );
-       case 5: // Confirmation
+       case 5: // New screen
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">MINIPRÁCTICA DIARIA (OPCIONAL) – “Recordar mis derechos emocionales”</h4>
+            <p className="text-sm text-muted-foreground">Antes de cualquier interacción o decisión, dedica 1 minuto a recordarte esto:</p>
+            <ul className="list-disc list-inside text-sm space-y-1 pl-4">
+              <li>Tengo derecho a sentir lo que siento, sin pedir perdón por ello.</li>
+              <li>Tengo derecho a expresarme con respeto, aunque no todos estén de acuerdo.</li>
+              <li>Tengo derecho a no justificar mis emociones para que sean válidas.</li>
+            </ul>
+            <blockquote className="mt-4 p-4 italic border-l-4 bg-accent/10 text-accent-foreground border-accent">
+              Puedes repetir mentalmente esta frase: “Lo que siento es válido. No necesito explicarlo para merecer respeto.”
+            </blockquote>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} type="button">Finalizar Ejercicio</Button>
+            </div>
+          </div>
+        );
+       case 6: // Confirmation
         return (
           <div className="text-center p-6 space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto"/>
