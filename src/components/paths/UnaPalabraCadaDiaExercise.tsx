@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
@@ -37,7 +37,11 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   const [otherEmotion, setOtherEmotion] = useState('');
   const [anchorAction, setAnchorAction] = useState('');
   const [otherAnchorAction, setOtherAnchorAction] = useState('');
-  const [reflection, setReflection] = useState('');
+  
+  // New states for the final reflection
+  const [needed, setNeeded] = useState('');
+  const [gaveOrAsked, setGaveOrAsked] = useState('');
+
   const [isClient, setIsClient] = useState(false);
   const [isDailySaved, setIsDailySaved] = useState(false);
   const storageKey = `exercise-progress-${pathId}-${content.type}`;
@@ -54,7 +58,8 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
         setOtherEmotion(data.otherEmotion || '');
         setAnchorAction(data.anchorAction || '');
         setOtherAnchorAction(data.otherAnchorAction || '');
-        setReflection(data.reflection || '');
+        setNeeded(data.needed || '');
+        setGaveOrAsked(data.gaveOrAsked || '');
         setIsDailySaved(data.isDailySaved || false);
       }
     } catch (error) {
@@ -66,12 +71,13 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   useEffect(() => {
     if (!isClient) return;
     try {
-      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, reflection, isDailySaved };
+      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isDailySaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, reflection, isDailySaved, storageKey, isClient]);
+  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isDailySaved, storageKey, isClient]);
+
 
   const handleSaveDailyEntry = () => {
     const finalEmotion = selectedEmotion === 'otra' ? otherEmotion : (unaPalabraEmotionOptions.find(e => e.value === selectedEmotion)?.label || selectedEmotion);
@@ -94,12 +100,28 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
   };
 
   const handleSaveReflection = () => {
-    if (reflection.trim()) {
-        addNotebookEntry({ title: 'Reflexión semanal: Mis emociones', content: reflection, pathId });
-        toast({ title: 'Reflexión Guardada' });
+    if (!needed.trim() || !gaveOrAsked.trim()) {
+        toast({ title: "Reflexión incompleta", description: "Por favor, completa ambos campos para guardar.", variant: "destructive"});
+        return;
     }
+
+    const notebookContent = `
+**${content.title}: Reflexión Semanal**
+
+**Mis tres frases de esta semana:**
+(Reflexión sobre las emociones de la semana)
+
+**¿Qué necesitaba al sentir esto?**
+${needed}
+
+**¿Me lo di o lo pedí?**
+${gaveOrAsked}
+`;
+
+    addNotebookEntry({ title: 'Reflexión: Mis tres frases de la semana', content: notebookContent, pathId });
+    toast({ title: 'Reflexión Guardada' });
     onComplete();
-    setStep(5); // Move to a final confirmation step
+    setStep(5); // Go to a final confirmation step
   };
   
   const nextStep = () => setStep(prev => prev + 1);
@@ -112,7 +134,8 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
       setAnchorAction('');
       setOtherAnchorAction('');
       setIsDailySaved(false);
-      setReflection('');
+      setNeeded('');
+      setGaveOrAsked('');
   }
 
   if (!isClient) {
@@ -156,12 +179,12 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
         return (
           <div className="p-4 space-y-4">
             <Label>Elige una microacción para anclar el ejercicio:</Label>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2"><Checkbox id="a1" onCheckedChange={c => setAnchorAction(c ? 'Respirar' : '')} checked={anchorAction === 'Respirar'} /><Label htmlFor="a1" className="font-normal">Respirar con esta emoción durante 3 ciclos</Label></div>
-              <div className="flex items-center gap-2"><Checkbox id="a2" onCheckedChange={c => setAnchorAction(c ? 'Llevar' : '')} checked={anchorAction === 'Llevar'} /><Label htmlFor="a2" className="font-normal">Llevar esta frase conmigo como una compañera</Label></div>
-              <div className="flex items-center gap-2"><Checkbox id="a3" onCheckedChange={c => setAnchorAction(c ? 'Agradecerme' : '')} checked={anchorAction === 'Agradecerme'} /><Label htmlFor="a3" className="font-normal">Agradecerme por haberme escuchado</Label></div>
-              <div className="flex items-center gap-2"><Checkbox id="a4" onCheckedChange={c => setAnchorAction(c ? 'Otra' : '')} checked={anchorAction === 'Otra'} /><Label htmlFor="a4" className="font-normal">Otra:</Label></div>
-            </div>
+            <RadioGroup value={anchorAction} onValueChange={setAnchorAction}>
+              <div className="flex items-center gap-2"><RadioGroupItem value="Respirar con esta emoción durante 3 ciclos" id="a1" /><Label htmlFor="a1" className="font-normal">Respirar con esta emoción durante 3 ciclos</Label></div>
+              <div className="flex items-center gap-2"><RadioGroupItem value="Llevar esta frase conmigo como una compañera" id="a2" /><Label htmlFor="a2" className="font-normal">Llevar esta frase conmigo como una compañera</Label></div>
+              <div className="flex items-center gap-2"><RadioGroupItem value="Agradecerme por haberme escuchado" id="a3" /><Label htmlFor="a3" className="font-normal">Agradecerme por haberme escuchado</Label></div>
+              <div className="flex items-center gap-2"><RadioGroupItem value="Otra" id="a4" /><Label htmlFor="a4" className="font-normal">Otra:</Label></div>
+            </RadioGroup>
             {anchorAction === 'Otra' && (
               <Textarea
                 value={otherAnchorAction}
@@ -176,7 +199,7 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
             </div>
           </div>
         );
-       case 3: // Guarda tu nube emocional
+       case 3: // Guarda tu nube emocional y continua
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">Guarda tu nube emocional</h4>
@@ -186,16 +209,36 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
                 <p><strong>Acción de anclaje:</strong> {finalAnchorAction}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
-                <Button onClick={handleSaveDailyEntry} disabled={isDailySaved} className="w-full">
-                    <Save className="mr-2 h-4 w-4"/> {isDailySaved ? 'Guardado' : 'Guardar en mi diario'}
+                <Button onClick={() => {
+                    if (!isDailySaved) {
+                        handleSaveDailyEntry();
+                    }
+                    nextStep();
+                }} className="w-full">
+                   {isDailySaved ? 'Continuar a la reflexión' : 'Guardar y continuar a la reflexión'}
                 </Button>
-                <Button variant="secondary" onClick={() => setStep(5)} className="w-full">Ver historial</Button>
             </div>
              <Button variant="link" onClick={prevStep}>Atrás</Button>
           </div>
         );
-      case 4: // Práctica reflexiva opcional (Días 5-7)
-        return <div className="p-4 space-y-4"><h4 className="font-semibold">Práctica reflexiva opcional (Días 5-7)</h4><Label>“Mis tres frases de esta semana” Elige tus tres emociones más repetidas o significativas y respóndete: ¿Qué necesitaba al sentir esto? ¿Me lo di o lo pedí?</Label><Textarea value={reflection} onChange={e => setReflection(e.target.value)} placeholder="Campo para reflexión [...]" /><div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar en mi cuaderno emocional</Button></div></div>;
+      case 4: // Práctica reflexiva opcional
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold">Mis tres frases de esta semana</h4>
+            <div className="space-y-2">
+                <Label htmlFor="needed">¿Qué necesitaba al sentir esto?</Label>
+                <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} />
+            </div>
+             <div className="space-y-2">
+                <Label htmlFor="gaveOrAsked">¿Me lo di o lo pedí?</Label>
+                <Textarea id="gaveOrAsked" value={gaveOrAsked} onChange={e => setGaveOrAsked(e.target.value)} />
+            </div>
+            <div className="flex justify-between w-full mt-2">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                <Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar en el diario</Button>
+            </div>
+        </div>
+        );
       case 5: // Final confirmation
         return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-lg">¡Práctica Guardada!</h4><p className="text-muted-foreground">Tu reflexión ha sido guardada en el cuaderno.</p><Button onClick={resetDaily} variant="outline">Hacer otro registro</Button></div>;
       default: return null;
