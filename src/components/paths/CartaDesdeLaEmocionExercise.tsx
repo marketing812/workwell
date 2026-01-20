@@ -66,11 +66,11 @@ Tu emoción: ${finalEmotion}
             
             case 1: return <div className="p-4 space-y-4">
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
-                  Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\n\n'}
-                  Tristeza → Voz compasiva y suave {'\n\n'}
-                  Ira → Voz clara, firme y directa {'\n\n'}
-                  Ansiedad → Voz serena y tranquilizadora {'\n\n'}
-                  Culpa → Voz amable y reparadora {'\n\n'}
+                  Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\\n\\n'}
+                  Tristeza → Voz compasiva y suave {'\\n\\n'}
+                  Ira → Voz clara, firme y directa {'\\n\\n'}
+                  Ansiedad → Voz serena y tranquilizadora {'\\n\\n'}
+                  Culpa → Voz amable y reparadora {'\\n\\n'}
                   Otra emoción → Elige el tono que más te ayude
                 </p>
                 <Label>¿En qué tono quieres escribir esta carta?</Label>
@@ -110,6 +110,8 @@ Tu emoción: ${finalEmotion}
                         </div>
                         
                         <p className="text-xs text-muted-foreground italic text-center">Recuerda: No tienes que escribir una carta perfecta. Solo deja que tu emoción se exprese tal y como lo harías con alguien que te importa de verdad: tú.</p>
+
+                        <p className="text-sm text-muted-foreground text-center mt-4">Puedes guardar esta carta en tu Cuaderno o en una sección especial llamada “Cartas a mí”. Así podrás volver a leerla cuando lo necesites, como recordatorio de que tus emociones también quieren ayudarte.</p>
             
                         <div className="flex justify-between mt-2">
                             <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
