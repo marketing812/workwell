@@ -56,7 +56,8 @@ const techniques = {
     title: "Técnica: Redirección con foco",
     when: "Cuando quieres poner un límite sin romper el vínculo, ofreciendo una alternativa viable.",
     goal: "Te permite cuidar tus recursos sin cerrarte por completo. Refuerza tu equilibrio entre dar y cuidarte.",
-    example: "No puedo quedarme más tiempo hoy, pero mañana puedo ayudarte a repasar el informe."
+    example: "No puedo quedarme más tiempo hoy, pero mañana puedo ayudarte a repasar el informe.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4semana2tecredirecciondefoco.mp3"
   }
 };
 
@@ -97,7 +98,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
         <p className="text-sm text-muted-foreground mb-4">Usa estas técnicas como inspiración. Adáptalas, hazlas tuyas y practica decirlas en voz alta para que te salgan con naturalidad.</p>
         <Accordion type="multiple" className="w-full space-y-3">
           {Object.entries(techniques).map(([key, tech]) => (
-            <AccordionItem value={key} key={key} className="border rounded-lg bg-background shadow-sm">
+            <AccordionItem value={key} key={key} className="border rounded-lg shadow-sm bg-background">
                 <AccordionTrigger className="p-4 font-semibold hover:no-underline text-left text-primary">
                     <div className="flex items-center justify-between w-full gap-3">
                       <span>{tech.title}</span>
