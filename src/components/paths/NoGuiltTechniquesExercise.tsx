@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Save, CheckCircle, NotebookText } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -22,37 +22,37 @@ const techniques = {
     title: "Técnica: Disco rayado",
     when: "Cuando te presionan o insisten para que cambies de opinión o cedas.",
     goal: "Te ayuda a mantener tu decisión con calma, sin entrar en discusiones, reforzando tu firmeza interna.",
-    example: "“Lo entiendo, pero mi decisión sigue siendo la misma: esta vez no voy a poder.”"
+    example: "Lo entiendo, pero mi decisión sigue siendo la misma: esta vez no voy a poder."
   },
   bancoNiebla: {
     title: "Técnica: Banco de niebla",
     when: "Cuando no quieres discutir, pero tampoco ceder ni justificarte. Ideal en situaciones donde percibes que debatir solo generará más tensión.",
     goal: "Te ayuda a mantener tu posición sin enfrentarte ni engancharte en argumentos.",
-    example: "“Entiendo que te moleste, pero esta vez necesito que respetes mi decisión.”"
+    example: "Entiendo que te moleste, pero esta vez necesito que respetes mi decisión."
   },
   aplazamientoAsertivo: {
     title: "Técnica: Aplazamiento asertivo",
     when: "Cuando sientes presión o confusión y necesitas tiempo para responder con claridad.",
     goal: "Evita respuestas impulsivas y te permite actuar desde la calma. Refuerza tu derecho a pensar antes de decidir.",
-    example: "“Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde.”"
+    example: "Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde."
   },
   acuerdoParcial: {
     title: "Técnica: Acuerdo parcial o asertivo",
     when: "Cuando la otra persona tiene parte de razón y tú quieres reconocerlo honestamente, pero sin renunciar a tu necesidad o decisión.",
     goal: "Favorece un entendimiento real, mostrando que escuchas y validas al otro, sin dejarte de lado a ti.",
-    example: "“Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos.”"
+    example: "Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos."
   },
   sandwich: {
     title: "Técnica: Técnica del sándwich",
     when: "Cuando quieres suavizar una negativa o límite, sin dejar de expresar lo que necesitas.",
     goal: "Te permite proteger el vínculo y decir que no con amabilidad. Refuerza tu empatía sin renunciar a ti.",
-    example: "“Me encanta que me tengas en cuenta, pero este fin de semana necesito descansar. Seguro que lo resolvéis genial.”"
+    example: "Me encanta que me tengas en cuenta, pero este fin de semana necesito descansar. Seguro que lo resolvéis genial."
   },
   redireccion: {
     title: "Técnica: Redirección con foco",
     when: "Cuando quieres poner un límite sin romper el vínculo, ofreciendo una alternativa viable.",
     goal: "Te permite cuidar tus recursos sin cerrarte por completo. Refuerza tu equilibrio entre dar y cuidarte.",
-    example: "“No puedo quedarme más tiempo hoy, pero mañana puedo ayudarte a repasar el informe.”"
+    example: "No puedo quedarme más tiempo hoy, pero mañana puedo ayudarte a repasar el informe."
   }
 };
 
@@ -86,7 +86,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent">{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent">Caja de herramientas extra: frases para decir "no" sin culpa</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
@@ -102,7 +102,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
                         <p><strong className="text-foreground">¿Cuándo usarla?</strong> {tech.when}</p>
                         <p><strong className="text-foreground">¿Qué logra?</strong> {tech.goal}</p>
                         <div className="p-2 border-l-2 border-accent bg-accent/10 italic">
-                            <p><strong>Ejemplo:</strong> "{tech.example}"</p>
+                            <p><strong>Ejemplo:</strong> {tech.example}</p>
                         </div>
                         <div className="space-y-2 pt-2">
                              <Label htmlFor={`phrase-${key}`} className="font-semibold">Tu versión personalizada:</Label>
