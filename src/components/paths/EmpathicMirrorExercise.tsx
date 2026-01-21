@@ -12,7 +12,6 @@ import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { EmpathicMirrorExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-
 interface EmpathicMirrorExerciseProps {
   content: EmpathicMirrorExerciseContent;
   pathId: string;
@@ -21,10 +20,34 @@ interface EmpathicMirrorExerciseProps {
 const empathicMirrorEmotionOptions = [
   'Tristeza',
   'Miedo',
-  'Rabia',
-  'Culpa',
+  'Ira',
+  'Asco',
+  'Estrés',
+  'Ansiedad',
+  'Agobio',
+  'Tensión',
+  'Alarma',
+  'Cansancio emocional',
+  'Desaliento',
+  'Vacío',
   'Frustración',
-  'Alegría contenida'
+  'Rechazo',
+  'Soledad',
+  'Celos',
+  'Envidia',
+  'Vergüenza',
+  'Culpa',
+  'Inseguridad',
+  'Confusión',
+  'Ambivalencia',
+  'Alegría',
+  'Sorpresa',
+  'Ilusión',
+  'Entusiasmo',
+  'Esperanza',
+  'Amor',
+  'Confianza',
+  'Orgullo'
 ];
 
 
@@ -96,7 +119,7 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                      <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la otra emoción..." className="mt-2" />
                 )}
             </div>
-            <Button onClick={next} className="w-full">Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 3:
