@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -18,10 +17,21 @@ interface DirectedDecisionsExerciseProps {
 }
 
 const valueOptions = [
-    {id: 'care', label: 'Cuidado personal'}, {id: 'auth', label: 'Autenticidad'},
-    {id: 'calm', label: 'Calma'}, {id: 'connect', label: 'Conexión'},
-    {id: 'respect', label: 'Respeto'}, {id: 'balance', label: 'Equilibrio'},
-    {id: 'presence', label: 'Presencia'}, {id: 'coherence', label: 'Coherencia interna'},
+    { id: 'care', label: 'Cuidado personal', description: 'Elegir lo que te hace bien física y emocionalmente.' },
+    { id: 'auth', label: 'Autenticidad', description: 'Ser fiel a lo que sientes, aunque no siempre sea lo más cómodo.' },
+    { id: 'calm', label: 'Calma', description: 'Priorizar espacios de serenidad frente a la prisa o la hiperexigencia.' },
+    { id: 'connect', label: 'Conexión', description: 'Cuidar vínculos significativos y estar presente en ellos.' },
+    { id: 'respect', label: 'Respeto', description: 'Tratarte (y tratar a los demás) con dignidad y límites sanos.' },
+    { id: 'balance', label: 'Equilibrio', description: 'Sostener armonía entre dar y recibir, hacer y descansar.' },
+    { id: 'presence', label: 'Presencia', description: 'Estar aquí y ahora, no vivir solo en el “tengo que”.' },
+    { id: 'coherence', label: 'Coherencia interna', description: 'Alinear lo que haces con lo que crees y sientes.' },
+    { id: 'autonomy', label: 'Autonomía', description: 'Tomar decisiones propias, no solo por presión externa.' },
+    { id: 'compassion', label: 'Compasión', description: 'Tratarte con amabilidad cuando no puedes con todo.' },
+    { id: 'creativity', label: 'Creatividad', description: 'Dar espacio a lo que te inspira, nutre o emociona.' },
+    { id: 'growth', label: 'Crecimiento personal', description: 'Elegir lo que te ayuda a evolucionar.' },
+    { id: 'security', label: 'Seguridad emocional', description: 'Alejarte de lo que daña tu estabilidad interior.' },
+    { id: 'vitality', label: 'Vitalidad', description: 'Recuperar energía haciendo cosas con sentido.' },
+    { id: 'freedom', label: 'Libertad interna', description: 'Soltar el deber constante para elegir con más consciencia.' },
 ];
 
 export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisionsExerciseProps) {
@@ -29,10 +39,17 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
   const [step, setStep] = useState(0);
 
   const [selectedValue, setSelectedValue] = useState('');
-  const [decision1, setDecision1] = useState('');
-  const [adjustment1, setAdjustment1] = useState('');
+  const [decisions, setDecisions] = useState(
+    Array(3).fill({ decision: '', adjustment: '' })
+  );
   const [tomorrowAction, setTomorrowAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+
+  const handleDecisionChange = (index: number, field: 'decision' | 'adjustment', value: string) => {
+    const newDecisions = [...decisions];
+    newDecisions[index] = { ...newDecisions[index], [field]: value };
+    setDecisions(newDecisions);
+  };
 
   const next = () => setStep(prev => prev + 1);
 
@@ -42,12 +59,26 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
       toast({ title: "Acción no definida", description: "Define tu acción para mañana.", variant: 'destructive'});
       return;
     }
-    const notebookContent = `
+    
+    let notebookContent = `
 **Ejercicio: ${content.title}**
 
 **Valor elegido a fortalecer:** ${selectedValue || 'No especificado.'}
+`;
+
+    decisions.forEach((d, i) => {
+      if (d.decision.trim()) {
+        notebookContent += `
+**Decisión ${i + 1}:** ${d.decision}
+- *Ajuste posible:* ${d.adjustment || 'Ninguno.'}
+`;
+      }
+    });
+
+    notebookContent += `
 **Acción para mañana:** ${tomorrowAction}
     `;
+    
     addNotebookEntry({ title: `Decisiones con Dirección`, content: notebookContent, pathId });
     toast({ title: "Decisión Guardada", description: "Tu acción de mañana se ha guardado." });
     setIsSaved(true);
@@ -68,9 +99,12 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
             <h4 className="font-semibold text-lg">Paso 1: Elige un valor central</h4>
             <RadioGroup value={selectedValue} onValueChange={setSelectedValue}>
               {valueOptions.map(opt => (
-                <div key={opt.id} className="flex items-center space-x-2">
-                  <RadioGroupItem value={opt.label} id={opt.id} />
-                  <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50">
+                   <RadioGroupItem value={opt.label} id={opt.id} className="mt-1"/>
+                   <div className="grid gap-1.5 leading-none">
+                     <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
+                     <p className="text-sm text-muted-foreground">{opt.description}</p>
+                   </div>
                 </div>
               ))}
             </RadioGroup>
@@ -82,12 +116,14 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Microdecisiones cotidianas</h4>
             <p className="text-sm text-muted-foreground">Revisa tu día y anota 1-3 decisiones. ¿Están alineadas con tu valor elegido? ¿Cómo podrías reajustarlas?</p>
-            <div className="space-y-2">
-              <Label htmlFor="decision1">Decisión 1</Label>
-              <Textarea id="decision1" value={decision1} onChange={e => setDecision1(e.target.value)} />
-              <Label htmlFor="adjustment1">Ajuste posible</Label>
-              <Textarea id="adjustment1" value={adjustment1} onChange={e => setAdjustment1(e.target.value)} />
-            </div>
+            {decisions.map((d, index) => (
+              <div key={index} className="space-y-2 p-3 border rounded-md">
+                <Label htmlFor={`decision${index}`}>Decisión {index + 1}</Label>
+                <Textarea id={`decision${index}`} value={d.decision} onChange={e => handleDecisionChange(index, 'decision', e.target.value)} />
+                <Label htmlFor={`adjustment${index}`}>Ajuste posible</Label>
+                <Textarea id={`adjustment${index}`} value={d.adjustment} onChange={e => handleDecisionChange(index, 'adjustment', e.target.value)} />
+              </div>
+            ))}
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -100,7 +136,7 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={e => setTomorrowAction(e.target.value)} />
             </div>
             {!isSaved ? (
-                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" />Guardar mi acción</Button>
+                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi acción</Button>
             ) : (
                 <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
                     <CheckCircle className="mr-2 h-5 w-5" />
