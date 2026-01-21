@@ -31,7 +31,8 @@ export const settingBoundariesPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3', prompts: ['¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?','¿Qué has comprendido sobre ti que antes no veías tan claro?','¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?','¿Cómo sería tu vida si te expresaras con más firmeza y respeto?','¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3'},
         { type: 'list', items: ['Un límite sano no separa: organiza, protege y cuida.','Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.','Detectar tu malestar es el primer aviso de que algo importante no está siendo dicho.','Poner límites no es egoísmo, es autorrespeto.','Todos tenemos bloqueos, pero también podemos elegir responder de otra forma.','Empezar a expresarte con claridad es empezar a vivir con coherencia.']},
-        { type: 'quote', text: '“Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.”'}]
+        { type: 'quote', text: 'Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.' }
+      ]
     },
     {
       id: 'limites_sem2',
@@ -124,4 +125,5 @@ export const settingBoundariesPath: Path = {
 };
     
     
+
 
