@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PostBoundaryEmotionsExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -33,64 +32,130 @@ export function PostBoundaryEmotionsExercise({ content, pathId }: PostBoundaryEm
   const [step, setStep] = useState(0);
 
   const [situation, setSituation] = useState('');
-  const [thoughts, setThoughts] = useState<Record<string, {text: string, belief: number}>>({});
+  const [thoughts, setThoughts] = useState<Record<string, {text: string, belief: number}>>({
+    thought1: { text: '', belief: 50 },
+    thought2: { text: '', belief: 50 }
+  });
   const [emotions, setEmotions] = useState<Record<string, {selected: boolean, intensity: number}>>({});
   const [bodySensations, setBodySensations] = useState('');
   const [behavior, setBehavior] = useState('');
   const [emotionFunction, setEmotionFunction] = useState('');
   const [compassionateResponse, setCompassionateResponse] = useState('');
   const [reassessment, setReassessment] = useState('');
+  
+  const [isSaved, setIsSaved] = useState(false);
   const [savedPhrases, setSavedPhrases] = useState<string[]>([]);
   
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+      setStep(0);
+      setSituation('');
+      setThoughts({ thought1: { text: '', belief: 50 }, thought2: { text: '', belief: 50 } });
+      setEmotions({});
+      setBodySensations('');
+      setBehavior('');
+      setEmotionFunction('');
+      setCompassionateResponse('');
+      setReassessment('');
+      setIsSaved(false);
+      setSavedPhrases([]);
+  };
 
-  const handleSave = () => {
-    let notebookContent = `
+  const handleThoughtChange = (key: string, field: 'text' | 'belief', value: string | number) => {
+      setThoughts(prev => ({
+          ...prev,
+          [key]: {
+              ...(prev[key] || { text: '', belief: 50 }),
+              [field]: value,
+          }
+      }));
+  };
+
+  const handleEmotionChange = (id: string, field: 'selected' | 'intensity', value: boolean | number) => {
+    setEmotions(prev => ({
+        ...prev,
+        [id]: {
+            ...(prev[id] || { selected: false, intensity: 50 }),
+            [field]: value,
+        }
+    }));
+  };
+  
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    if (!reassessment.trim()) {
+        toast({ title: 'Campo incompleto', description: 'Por favor, completa la reevaluación final.', variant: 'destructive' });
+        return;
+    }
+    
+    const selectedEmotions = Object.entries(emotions).filter(([, val]) => val.selected).map(([key, val]) => {
+        const label = emotionOptions.find(o => o.id === key)?.label || key;
+        return `${label} (${val.intensity}%)`;
+    }).join(', ');
+
+    const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Situación en la que puse un límite:**
+**Situación:**
 ${situation || 'No especificada.'}
 
-**Pensamientos que aparecieron (y cuánto los creí):**
-${Object.values(thoughts).map(t => `- "${t.text}" (Creído al ${t.belief}%)`).join('\n') || 'No especificados.'}
+**Pensamientos automáticos (y creencia):**
+${Object.values(thoughts).filter(t => t.text).map(t => `- "${t.text}" (${t.belief}%)`).join('\n') || 'No especificados.'}
 
-**Emociones que sentí (y su intensidad):**
-${Object.entries(emotions).filter(([key, val]) => val.selected).map(([key, val]) => `- ${emotionOptions.find(o=>o.id === key)?.label || key}: ${val.intensity}%`).join('\n') || 'No especificadas.'}
+**Emociones sentidas (e intensidad):**
+${selectedEmotions || 'No especificadas.'}
 
 **Sensaciones corporales:**
 ${bodySensations || 'No especificadas.'}
 
-**Comportamiento posterior:**
+**Conducta posterior:**
 ${behavior || 'No especificado.'}
 
 **Función de la emoción:**
-${emotionFunction || 'No especificado.'}
+${emotionFunction || 'No especificada.'}
 
-**Respuesta compasiva que me di:**
+**Respuesta compasiva:**
 "${compassionateResponse || 'No especificada.'}"
 
-**Reevaluación de la situación:**
-${reassessment || 'No especificada.'}
+**Reevaluación final:**
+${reassessment}
     `;
-    addNotebookEntry({ title: `Registro Post-Límite: ${situation.substring(0, 25)}`, content: notebookContent, pathId });
-    toast({ title: "Ejercicio Guardado", description: "Tu registro se ha guardado en el cuaderno." });
-    next();
+
+    addNotebookEntry({
+      title: `Registro Post-Límite: ${situation.substring(0, 25) || 'Reflexión'}`,
+      content: notebookContent,
+      pathId: pathId,
+    });
+
+    toast({ title: "Registro Guardado", description: "Tu ejercicio se ha guardado en el cuaderno." });
+    setIsSaved(true);
+    nextStep();
   };
 
   const handleSavePhrase = (phrase: string) => {
-    addNotebookEntry({ title: "Frase de Autocompasión", content: `"${phrase}"`, pathId });
+    addNotebookEntry({ title: "Frase de Autocompasión", content: `"${phrase}"`, pathId: pathId });
     setSavedPhrases(prev => [...prev, phrase]);
     toast({ title: "Frase Guardada", description: "Tu frase de autocuidado se ha guardado." });
   };
   
   const renderStep = () => {
-    switch(step) {
-      case 0: // Example
+    switch (step) {
+      case 0: // Pantalla 1: Cómo lo harás
         return (
-          <div className="p-4 space-y-4 text-center">
-             <Accordion type="single" collapsible className="w-full text-left">
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">¿Cómo lo harás?</h4>
+            <p className="text-sm text-muted-foreground">Vas a recorrer, paso a paso, lo que ocurrió después de poner un límite. Primero, describirás la situación concreta en la que te expresaste con firmeza. Luego, explorarás lo que pensaste, sentiste y notaste en tu cuerpo. Después, identificarás qué intentaba proteger esa emoción que apareció (porque siempre hay algo valioso detrás). Y por último, te ofrecerás una respuesta más compasiva y realista, que te ayude a sostenerte sin juzgarte.</p>
+            <Button onClick={nextStep} className="w-full">Comenzar</Button>
+          </div>
+        );
+      case 1: // Pantalla 2: Ejemplo
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guiado completo</h4>
+            <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
-                <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
+                <AccordionTrigger>Ver ejemplo</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
                     <p><strong>Situación:</strong> “Mi amiga me pidió que le ayudara a organizar su mudanza este fin de semana, pero yo ya tenía planes de descanso. Le dije que no.”</p>
@@ -105,32 +170,115 @@ ${reassessment || 'No especificada.'}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button onClick={next}><ArrowRight className="mr-2 h-4 w-4" />Empezar mi registro</Button>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
-      case 1: // Form steps
+      case 2: // Pantalla 3: Situación
         return (
-            <div className="p-4 space-y-6 animate-in fade-in-0 duration-500">
-                <div className="space-y-2"><Label htmlFor="sit-desc">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label><Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} /></div>
-                <div className="space-y-2"><Label>¿Qué frases surgieron en tu mente? ¿Cuánto las creíste (0–100%)?</Label><Input value={thoughts['thought1']?.text || ''} onChange={e => setThoughts(p => ({...p, thought1: {...p.thought1, text: e.target.value}}))} /><Slider value={[thoughts['thought1']?.belief || 50]} onValueChange={v => setThoughts(p => ({...p, thought1: {...p.thought1, belief:v[0]}}))} /></div>
-                <div className="space-y-2"><Label>¿Qué emociones aparecieron y con qué intensidad (0–100%)?</Label>
-                    {emotionOptions.map(opt => (
-                        <div key={opt.id} className="space-y-2"><div className="flex items-center gap-2"><Checkbox id={opt.id} checked={emotions[opt.id]?.selected || false} onCheckedChange={c => setEmotions(p => ({...p, [opt.id]: {...p[opt.id], selected: !!c}}))} /><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>
-                        {emotions[opt.id]?.selected && <Slider value={[emotions[opt.id]?.intensity || 50]} onValueChange={v => setEmotions(p => ({...p, [opt.id]: {...p[opt.id], intensity: v[0]}}))} />}</div>
-                    ))}
-                </div>
-                <div className="space-y-2"><Label htmlFor="body-sens">¿Qué notaste en tu cuerpo?</Label><Textarea id="body-sens" value={bodySensations} onChange={e => setBodySensations(e.target.value)} /></div>
-                <div className="space-y-2"><Label htmlFor="behavior">¿Qué hiciste o evitaste hacer tras el límite?</Label><Textarea id="behavior" value={behavior} onChange={e => setBehavior(e.target.value)} /></div>
-                <div className="space-y-2"><Label htmlFor="emo-func">¿Qué estaba protegiendo esta emoción? ¿Qué valor estaba detrás?</Label><Textarea id="emo-func" value={emotionFunction} onChange={e => setEmotionFunction(e.target.value)} /></div>
-                <div className="space-y-2"><Label htmlFor="comp-resp">¿Qué podrías decirte para validar lo que sientes sin dejarte arrastrar?</Label><Textarea id="comp-resp" value={compassionateResponse} onChange={e => setCompassionateResponse(e.target.value)} /></div>
-                <div className="space-y-2"><Label htmlFor="reassess">¿Cómo ves ahora esa situación? ¿Cambió algo en tu percepción?</Label><Textarea id="reassess" value={reassessment} onChange={e => setReassessment(e.target.value)} /></div>
-                <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" />Guardar Registro</Button>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <Label htmlFor="sit-desc" className="font-semibold text-lg">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
+            <Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: “Le dije a mi compañero que no podía cubrirle el turno.”" />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+            </div>
+          </div>
+        );
+      case 3: // Pantalla 4: Pensamientos
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <Label className="font-semibold text-lg">¿Qué frases surgieron en tu mente? ¿Cuánto las creíste (0–100%)?</Label>
+            <p className="text-sm text-muted-foreground">Ej: “Va a pensar que soy egoísta” (85%).</p>
+            <div className="space-y-2">
+                <Input value={thoughts.thought1.text} onChange={e => handleThoughtChange('thought1', 'text', e.target.value)} placeholder="Pensamiento 1..."/>
+                <Slider value={[thoughts.thought1.belief]} onValueChange={v => handleThoughtChange('thought1', 'belief', v[0])} />
+            </div>
+             <div className="space-y-2">
+                <Input value={thoughts.thought2.text} onChange={e => handleThoughtChange('thought2', 'text', e.target.value)} placeholder="Pensamiento 2 (opcional)..."/>
+                {thoughts.thought2.text && <Slider value={[thoughts.thought2.belief]} onValueChange={v => handleThoughtChange('thought2', 'belief', v[0])} />}
+            </div>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Siguiente</Button>
+            </div>
+          </div>
+        );
+      case 4: // Pantalla 5: Emociones
+        return (
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <Label className="font-semibold text-lg">¿Qué emociones aparecieron y con qué intensidad (0–100%)?</Label>
+                {emotionOptions.map(opt => (
+                    <div key={opt.id} className="space-y-2">
+                        <div className="flex items-center gap-2">
+                            <Checkbox id={opt.id} checked={emotions[opt.id]?.selected || false} onCheckedChange={c => handleEmotionChange(opt.id, 'selected', !!c)} />
+                            <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                        </div>
+                        {emotions[opt.id]?.selected && <Slider value={[emotions[opt.id]?.intensity || 50]} onValueChange={v => handleEmotionChange(opt.id, 'intensity', v[0])}/>}
+                    </div>
+                ))}
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Siguiente</Button>
+                 </div>
             </div>
         );
-      case 2: // Suggested phrases
+      case 5: // Pantalla 6: Cuerpo y Conducta
         return (
-             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500 text-center">
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <div className="space-y-2">
+                    <Label htmlFor="body-sens">¿Qué notaste en tu cuerpo?</Label>
+                    <Textarea id="body-sens" value={bodySensations} onChange={e => setBodySensations(e.target.value)} placeholder="Ej: Tensión en el pecho, mandíbula apretada."/>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="behavior">¿Qué hiciste o evitaste hacer tras el límite?</Label>
+                    <Textarea id="behavior" value={behavior} onChange={e => setBehavior(e.target.value)} placeholder="Ej: Me fui sin hablar mucho más. Le estuve dando vueltas todo el día."/>
+                </div>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Siguiente</Button>
+                 </div>
+            </div>
+        );
+      case 6: // Pantalla 7: Función y respuesta compasiva
+        return (
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                 <div className="space-y-2">
+                    <Label htmlFor="emo-func">¿Qué estaba protegiendo esta emoción? ¿Qué valor estaba detrás?</Label>
+                    <Textarea id="emo-func" value={emotionFunction} onChange={e => setEmotionFunction(e.target.value)} placeholder="Ej: La culpa me muestra que me importa el otro y quiero cuidar el vínculo."/>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="comp-resp">¿Qué podrías decirte para validar lo que sientes sin dejarte arrastrar?</Label>
+                    <Textarea id="comp-resp" value={compassionateResponse} onChange={e => setCompassionateResponse(e.target.value)} placeholder="Ej: 'Es normal sentirme culpable. Estoy aprendiendo. Cuidarme no es egoísmo.'"/>
+                </div>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Siguiente</Button>
+                 </div>
+            </div>
+        );
+      case 7: // Pantalla 8: Reevaluación
+        return (
+            <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <div className="space-y-2">
+                    <Label htmlFor="reassess" className="font-semibold text-lg">¿Cómo ves ahora esa situación? ¿Cambió algo en tu percepción?</Label>
+                    <Textarea id="reassess" value={reassessment} onChange={e => setReassessment(e.target.value)} placeholder="Ej: 'Ya no creo que fui egoísta. Estoy empezando a respetarme.'" disabled={isSaved}/>
+                </div>
+                {!isSaved ? (
+                     <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Registro</Button>
+                    </div>
+                ) : <Button onClick={nextStep} className="w-full">Ver frases de apoyo</Button>}
+            </form>
+        );
+      case 8: // Pantalla 9: Frases sugeridas
+        return (
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500 text-center">
                 <h4 className="font-semibold text-lg text-primary">Frases de Autocompasión Sugeridas</h4>
+                <p className="text-sm text-muted-foreground">Puedes repetir mentalmente o guardar estas frases:</p>
                 <ul className="space-y-2 text-left">
                     {["Es incómodo poner límites, pero no es peligroso.", "Puedo sentir culpa y seguir cuidándome.", "Estoy aprendiendo. No necesito hacerlo perfecto.", "Esta emoción me habla, no me define.", "La incomodidad es pasajera. Mi bienestar es más importante que el juicio externo."].map(phrase => (
                         <li key={phrase} className="flex items-center justify-between p-2 border rounded-md bg-background">
@@ -139,7 +287,8 @@ ${reassessment || 'No especificada.'}
                         </li>
                     ))}
                 </ul>
-             </div>
+                <Button onClick={resetExercise} variant="outline" className="w-full mt-4">Finalizar y hacer otro registro</Button>
+            </div>
         );
       default: return null;
     }
