@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -53,20 +52,33 @@ export function MentalNoiseTrafficLightExercise({ content, pathId }: MentalNoise
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
+    
+    const formatZone = (radioSelection: string, otherText: string) => {
+        if (radioSelection && otherText.trim()) {
+            return `${radioSelection} (Detalles: ${otherText.trim()})`;
+        }
+        return radioSelection || otherText.trim() || 'No especificado.';
+    };
+
+    const finalRed = formatZone(redZone, otherRed);
+    const finalAmber = formatZone(amberZone, otherAmber);
+    const finalGreen = formatZone(greenZone, otherGreen);
+    const finalGesture = greenGesture === 'Otro' ? otherGesture : (greenGesture || 'No especificado.');
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
 **🔴 Zona Roja (Saturación):**
-${redZone === 'Otro' ? otherRed : redZone || 'No especificada.'}
+${finalRed}
 
 **🟡 Zona Ámbar (Tensión creciente):**
-${amberZone === 'Otro' ? otherAmber : amberZone || 'No especificada.'}
+${finalAmber}
 
 **🟢 Zona Verde (Claridad y presencia):**
-${greenZone === 'Otro' ? otherGreen : greenZone || 'No especificada.'}
+${finalGreen}
 
 **Mi gesto de protección verde:**
-${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
+${finalGesture}
     `;
     addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
@@ -90,9 +102,8 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
             <Label>¿Cuándo sientes más saturación mental o emocional?</Label>
             <RadioGroup value={redZone} onValueChange={setRedZone}>
                 {redOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`red-${opt}`} /><Label htmlFor={`red-${opt}`} className="font-normal">{opt}</Label></div>)}
-                <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="red-other" /><Label htmlFor="red-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {redZone === 'Otro' && <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} placeholder="Describe tu momento rojo aquí..." />}
+            <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} placeholder="Describe tu momento rojo aquí..." />
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -103,9 +114,8 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
             <Label>¿Cuándo notas que la tensión va subiendo?</Label>
              <RadioGroup value={amberZone} onValueChange={setAmberZone}>
                 {amberOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`amber-${opt}`} /><Label htmlFor={`amber-${opt}`} className="font-normal">{opt}</Label></div>)}
-                <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="amber-other" /><Label htmlFor="amber-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {amberZone === 'Otro' && <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} placeholder="Describe tu momento ámbar aquí..." />}
+            <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} placeholder="Describe tu momento ámbar aquí..." />
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -116,9 +126,8 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
             <Label>¿En qué momentos sientes más calma y conexión contigo?</Label>
             <RadioGroup value={greenZone} onValueChange={setGreenZone}>
                 {greenOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`green-${opt}`} /><Label htmlFor={`green-${opt}`} className="font-normal">{opt}</Label></div>)}
-                <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="green-other" /><Label htmlFor="green-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {greenZone === 'Otro' && <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} placeholder="Describe tu momento verde aquí..." />}
+            <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} placeholder="Describe tu momento verde aquí..." />
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
