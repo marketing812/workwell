@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -61,6 +62,16 @@ const partOptions = [
     { id: 'part-failure-fear', label: 'Mi parte que teme fracasar' },
 ];
 
+
+interface Reflection {
+    values: Record<string, boolean>;
+    emotions: Record<string, boolean>;
+    parts: Record<string, boolean>;
+    otherValue: string;
+    otherEmotion: string;
+    otherPart: string;
+}
+
 export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
@@ -68,35 +79,43 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
   const [detours, setDetours] = useState<Record<string, boolean>>({});
   const [otherDetour, setOtherDetour] = useState('');
   
-  const [reflection, setReflection] = useState<{
-    detour: string,
-    values: Record<string, boolean>,
-    emotions: Record<string, boolean>,
-    parts: Record<string, boolean>,
-    otherValue: string,
-    otherEmotion: string,
-    otherPart: string,
-  }>({ detour: '', values: {}, emotions: {}, parts: {}, otherValue: '', otherEmotion: '', otherPart: ''});
+  const [reflections, setReflections] = useState<Record<string, Partial<Reflection>>>({});
 
   const [commitment, setCommitment] = useState('');
   const [reconnectionGestures, setReconnectionGestures] = useState('');
   
   const next = () => setStep(prev => prev + 1);
   const back = () => setStep(prev => prev - 1);
+
+  const handleReflectionCheckboxChange = (detourId: string, field: 'values' | 'emotions' | 'parts', subfield: string, checked: boolean) => {
+    setReflections(prev => ({
+        ...prev,
+        [detourId]: {
+            ...(prev[detourId] || {}),
+            [field]: {
+                ...(prev[detourId]?.[field] || {}),
+                [subfield]: checked,
+            }
+        }
+    }));
+  };
+
+  const handleOtherReflectionTextChange = (detourId: string, field: 'otherValue' | 'otherEmotion' | 'otherPart', value: string) => {
+      setReflections(prev => ({
+          ...prev,
+          [detourId]: {
+              ...(prev[detourId] || {}),
+              [field]: value
+          }
+      }));
+  };
   
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    const selectedDetours = frequentDetours.filter(d => detours[d.id]).map(d => d.label);
-    if (detours['detour-other'] && otherDetour) selectedDetours.push(otherDetour);
-
-    const selectedValues = valueOptions.filter(v => reflection.values[v.id]).map(v => v.label);
-    if(reflection.values['val-other'] && reflection.otherValue) selectedValues.push(reflection.otherValue);
-    
-    const selectedEmotions = emotionOptions.filter(e => reflection.emotions[e.id]).map(e => e.label);
-    if(reflection.emotions['emo-other'] && reflection.otherEmotion) selectedEmotions.push(reflection.otherEmotion);
-
-    const selectedParts = partOptions.filter(p => reflection.parts[p.id]).map(p => p.label);
-    if(reflection.parts['part-other'] && reflection.otherPart) selectedParts.push(reflection.otherPart);
+    const selectedDetours = frequentDetours.filter(d => detours[d.id]);
+    if(detours['detour-other'] && otherDetour) {
+        selectedDetours.push({id: 'detour-other', label: otherDetour});
+    }
 
     if (!commitment.trim() || !reconnectionGestures.trim()) {
         toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa el compromiso y los gestos de reconexión.', variant: 'destructive' });
@@ -104,14 +123,26 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     }
 
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
-    if (selectedDetours.length > 0) {
-      notebookContent += `**Desvíos frecuentes:**\n- ${selectedDetours.join('\n- ')}\n\n`;
-    }
-    notebookContent += `**Reflexión sobre un desvío:**\n`;
-    notebookContent += ` - Desvío elegido: ${reflection.detour || 'No especificado.'}\n`;
-    notebookContent += ` - Valores afectados: ${selectedValues.length > 0 ? selectedValues.join(', ') : 'No especificados.'}\n`;
-    notebookContent += ` - Emociones que deja: ${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}\n`;
-    notebookContent += ` - Parte de mí que se activa: ${selectedParts.length > 0 ? selectedParts.join(', ') : 'No especificada.'}\n\n`;
+
+    selectedDetours.forEach(detour => {
+        const reflection = reflections[detour.id];
+        if (!reflection) return;
+
+        const selectedValues = valueOptions.filter(v => reflection.values?.[v.id]).map(v => v.label);
+        if(reflection.values?.['val-other'] && reflection.otherValue) selectedValues.push(reflection.otherValue);
+        
+        const selectedEmotions = emotionOptions.filter(em => reflection.emotions?.[em.id]).map(em => em.label);
+        if(reflection.emotions?.['emo-other'] && reflection.otherEmotion) selectedEmotions.push(reflection.otherEmotion);
+
+        const selectedParts = partOptions.filter(p => reflection.parts?.[p.id]).map(p => p.label);
+        if(reflection.parts?.['part-other'] && reflection.otherPart) selectedParts.push(reflection.otherPart);
+
+        notebookContent += `**Reflexión sobre el desvío: "${detour.label}"**\n`;
+        notebookContent += ` - Valores afectados: ${selectedValues.length > 0 ? selectedValues.join(', ') : 'No especificados.'}\n`;
+        notebookContent += ` - Emociones que deja: ${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}\n`;
+        notebookContent += ` - Parte de mí que se activa: ${selectedParts.length > 0 ? selectedParts.join(', ') : 'No especificada.'}\n\n`;
+    });
+    
     notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment || 'No especificado.'}\n\n`;
     notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
     
@@ -169,41 +200,55 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
           </div>
         );
-      case 3: // Reflection on one detour
-        const selectedDetourLabel = Object.keys(detours).filter(k => detours[k]).map(k => {
-            if (k === 'detour-other') return otherDetour;
-            return frequentDetours.find(d => d.id === k)?.label || '';
-        }).join(', ');
+      case 3: // Reflection on one or more detours
+        const selectedDetours = useMemo(() => {
+            const common = frequentDetours.filter(d => detours[d.id]);
+            if (detours['detour-other'] && otherDetour) {
+                common.push({ id: 'detour-other', label: otherDetour });
+            }
+            return common;
+        }, [detours, otherDetour]);
+
+        if (selectedDetours.length === 0) {
+            next();
+            return null;
+        }
+
         return (
-             <div className="p-4 space-y-4">
-                <h4 className="font-semibold text-lg">Paso 2: Profundiza en un desvío</h4>
-                <div className="space-y-2">
-                    <Label>Elige uno de tus desvíos para reflexionar:</Label>
-                    <Textarea value={reflection.detour} onChange={e => setReflection(p => ({...p, detour: e.target.value}))} placeholder={selectedDetourLabel || 'Describe un desvío...'} />
-                </div>
-                <div className="space-y-2">
-                    <Label>¿Qué valor personal estás dejando de lado?</Label>
-                    {valueOptions.map(v => <div key={v.id} className="flex items-center space-x-2"><Checkbox id={v.id} checked={!!reflection.values[v.id]} onCheckedChange={c => setReflection(p => ({...p, values: {...p.values, [v.id]:!!c}}))} /><Label htmlFor={v.id} className="font-normal">{v.label}</Label></div>)}
-                    <div className="flex items-center space-x-2"><Checkbox id="val-other" checked={!!reflection.values['val-other']} onCheckedChange={c => setReflection(p => ({...p, values: {...p.values, 'val-other':!!c}}))} /><Label htmlFor="val-other" className="font-normal">Otro</Label></div>
-                    {reflection.values['val-other'] && <Textarea value={reflection.otherValue} onChange={e => setReflection(p => ({...p, otherValue: e.target.value}))} placeholder="Escribe otro valor..."/>}
-                </div>
-                <div className="space-y-2">
-                    <Label>¿Qué sientes después de actuar así?</Label>
-                    {emotionOptions.map(e => <div key={e.id} className="flex items-center space-x-2"><Checkbox id={e.id} checked={!!reflection.emotions[e.id]} onCheckedChange={c => setReflection(p => ({...p, emotions: {...p.emotions, [e.id]:!!c}}))} /><Label htmlFor={e.id} className="font-normal">{e.label}</Label></div>)}
-                    <div className="flex items-center space-x-2"><Checkbox id="emo-other" checked={!!reflection.emotions['emo-other']} onCheckedChange={c => setReflection(p => ({...p, emotions: {...p.emotions, 'emo-other':!!c}}))} /><Label htmlFor="emo-other" className="font-normal">Otro</Label></div>
-                    {reflection.emotions['emo-other'] && <Textarea value={reflection.otherEmotion} onChange={e => setReflection(p => ({...p, otherEmotion: e.target.value}))} placeholder="Escribe otra emoción..."/>}
-                </div>
-                <div className="space-y-2">
-                    <Label>¿Qué parte de ti busca protección o alivio en ese desvío?</Label>
-                    {partOptions.map(p_opt => <div key={p_opt.id} className="flex items-center space-x-2"><Checkbox id={p_opt.id} checked={!!reflection.parts[p_opt.id]} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, [p_opt.id]:!!c}}))} /><Label htmlFor={p_opt.id} className="font-normal">{p_opt.label}</Label></div>)}
-                    <div className="flex items-center space-x-2"><Checkbox id="part-other" checked={!!reflection.parts['part-other']} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, 'part-other':!!c}}))} /><Label htmlFor="part-other" className="font-normal">Otro</Label></div>
-                    {reflection.parts['part-other'] && <Textarea value={reflection.otherPart} onChange={e => setReflection(p => ({...p, otherPart: e.target.value}))} placeholder="Describe otra parte de ti..."/>}
-                </div>
-                 <div className="flex justify-between w-full mt-4">
+            <div className="p-4 space-y-4">
+                <h4 className="font-semibold text-lg">Paso 2: Profundiza en tus desvíos</h4>
+                {selectedDetours.map(detour => (
+                    <Accordion key={detour.id} type="single" collapsible className="w-full border rounded-md p-2 bg-background/50">
+                        <AccordionItem value={detour.id}>
+                            <AccordionTrigger className="font-semibold text-primary">{detour.label}</AccordionTrigger>
+                            <AccordionContent className="pt-4 space-y-4">
+                                <div className="space-y-2">
+                                    <Label>¿Qué valor personal estás dejando de lado?</Label>
+                                    {valueOptions.map(v => <div key={v.id} className="flex items-center space-x-2"><Checkbox id={`${detour.id}-${v.id}`} checked={!!reflections[detour.id]?.values?.[v.id]} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'values', v.id, !!c)} /><Label htmlFor={`${detour.id}-${v.id}`} className="font-normal">{v.label}</Label></div>)}
+                                    <div className="flex items-center space-x-2"><Checkbox id={`${detour.id}-val-other`} checked={!!reflections[detour.id]?.values?.['val-other']} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'values', 'val-other', !!c)} /><Label htmlFor={`${detour.id}-val-other`} className="font-normal">Otro</Label></div>
+                                    {reflections[detour.id]?.values?.['val-other'] && <Textarea value={reflections[detour.id]?.otherValue || ''} onChange={e => handleOtherReflectionTextChange(detour.id, 'otherValue', e.target.value)} placeholder="Escribe otro valor..."/>}
+                                </div>
+                                <div className="space-y-2">
+                                    <Label>¿Qué sientes después de actuar así?</Label>
+                                    {emotionOptions.map(e_opt => <div key={e_opt.id} className="flex items-center space-x-2"><Checkbox id={`${detour.id}-${e_opt.id}`} checked={!!reflections[detour.id]?.emotions?.[e_opt.id]} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'emotions', e_opt.id, !!c)} /><Label htmlFor={`${detour.id}-${e_opt.id}`} className="font-normal">{e_opt.label}</Label></div>)}
+                                    <div className="flex items-center space-x-2"><Checkbox id={`${detour.id}-emo-other`} checked={!!reflections[detour.id]?.emotions?.['emo-other']} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'emotions', 'emo-other', !!c)} /><Label htmlFor={`${detour.id}-emo-other`} className="font-normal">Otro</Label></div>
+                                    {reflections[detour.id]?.emotions?.['emo-other'] && <Textarea value={reflections[detour.id]?.otherEmotion || ''} onChange={e => handleOtherReflectionTextChange(detour.id, 'otherEmotion', e.target.value)} placeholder="Escribe otra emoción..."/>}
+                                </div>
+                                <div className="space-y-2">
+                                    <Label>¿Qué parte de ti busca protección o alivio en ese desvío?</Label>
+                                    {partOptions.map(p_opt => <div key={p_opt.id} className="flex items-center space-x-2"><Checkbox id={`${detour.id}-${p_opt.id}`} checked={!!reflections[detour.id]?.parts?.[p_opt.id]} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'parts', p_opt.id, !!c)} /><Label htmlFor={`${detour.id}-${p_opt.id}`} className="font-normal">{p_opt.label}</Label></div>)}
+                                    <div className="flex items-center space-x-2"><Checkbox id={`${detour.id}-part-other`} checked={!!reflections[detour.id]?.parts?.['part-other']} onCheckedChange={c => handleReflectionCheckboxChange(detour.id, 'parts', 'part-other', !!c)} /><Label htmlFor={`${detour.id}-part-other`} className="font-normal">Otro</Label></div>
+                                    {reflections[detour.id]?.parts?.['part-other'] && <Textarea value={reflections[detour.id]?.otherPart || ''} onChange={e => handleOtherReflectionTextChange(detour.id, 'otherPart', e.target.value)} placeholder="Describe otra parte de ti..."/>}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                ))}
+                <div className="flex justify-between w-full mt-4">
                     <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={next} className="w-auto">Ir al compromiso de cambio</Button>
                 </div>
-             </div>
+            </div>
         );
       case 4:
         return (
@@ -221,7 +266,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             <p className="text-sm text-muted-foreground italic">Mejor un paso pequeño y seguro que uno grande que nunca darás.</p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next} className="w-auto" disabled={!commitment.trim()}>Guardar compromiso</Button>
+              <Button onClick={next} className="w-auto" disabled={!commitment.trim()}>Siguiente paso</Button>
             </div>
           </div>
         );
