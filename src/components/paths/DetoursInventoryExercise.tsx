@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -84,6 +83,14 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
   const [commitment, setCommitment] = useState('');
   const [reconnectionGestures, setReconnectionGestures] = useState('');
   
+  const selectedDetours = useMemo(() => {
+      const common = frequentDetours.filter(d => detours[d.id]);
+      if (detours['detour-other'] && otherDetour) {
+          common.push({ id: 'detour-other', label: otherDetour });
+      }
+      return common;
+  }, [detours, otherDetour]);
+
   const next = () => setStep(prev => prev + 1);
   const back = () => setStep(prev => prev - 1);
 
@@ -162,7 +169,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
         );
       case 1: // NEW Example
         return (
-          <div className="p-4 text-center space-y-4">
+          <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Antes de mirar tus propios desvíos, observa un ejemplo realista. No es para copiarlo, sino para inspirarte en cómo se identifica un desvío, el valor que toca y la reflexión que ayuda a reconectar.</p>
             <div className="p-4 border rounded-md bg-background/50 text-left text-sm">
                 <p><strong>Desvío:</strong> Postergar el autocuidado por miedo a parecer egoísta.</p>
@@ -196,24 +203,21 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next} className="w-auto">Continuar</Button>
+              <Button onClick={() => {
+                if (selectedDetours.length === 0) {
+                  toast({
+                    title: "Selección requerida",
+                    description: "Por favor, marca al menos un desvío para continuar.",
+                    variant: "destructive"
+                  });
+                  return;
+                }
+                next();
+              }} className="w-auto">Continuar</Button>
             </div>
           </div>
         );
       case 3: // Reflection on one or more detours
-        const selectedDetours = useMemo(() => {
-            const common = frequentDetours.filter(d => detours[d.id]);
-            if (detours['detour-other'] && otherDetour) {
-                common.push({ id: 'detour-other', label: otherDetour });
-            }
-            return common;
-        }, [detours, otherDetour]);
-
-        if (selectedDetours.length === 0) {
-            next();
-            return null;
-        }
-
         return (
             <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 2: Profundiza en tus desvíos</h4>
