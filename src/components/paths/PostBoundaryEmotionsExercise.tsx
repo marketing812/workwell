@@ -77,7 +77,7 @@ export function PostBoundaryEmotionsExercise({ content, pathId }: PostBoundaryEm
     setEmotions(prev => ({
         ...prev,
         [id]: {
-            ...(prev[id] || { selected: false, intensity: 50 }),
+            ...(prev[id] || { selected: false, intensity: 5 }),
             [field]: value,
         }
     }));
@@ -221,7 +221,7 @@ ${reassessment}
                             <Checkbox id={opt.id} checked={emotions[opt.id]?.selected || false} onCheckedChange={c => handleEmotionChange(opt.id, 'selected', !!c)} />
                             <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                         </div>
-                        {emotions[opt.id]?.selected && <Slider value={[emotions[opt.id]?.intensity || 50]} onValueChange={v => handleEmotionChange(opt.id, 'intensity', v[0])}/>}
+                        {emotions[opt.id]?.selected && <Slider value={[emotions[opt.id]?.intensity || 5]} onValueChange={v => handleEmotionChange(opt.id, 'intensity', v[0])}/>}
                     </div>
                 ))}
                  <div className="flex justify-between w-full mt-4">
@@ -326,4 +326,3 @@ ${reassessment}
     </Card>
   );
 }
-
