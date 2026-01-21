@@ -88,14 +88,6 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
       <CardHeader>
         <CardTitle className="text-lg text-accent">{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full h-10">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground mb-4">Usa estas técnicas como inspiración. Adáptalas, hazlas tuyas y practica decirlas en voz alta para que te salgan con naturalidad.</p>
