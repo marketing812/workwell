@@ -21,7 +21,9 @@ interface Activity {
 export function EnergySenseMapExercise({ content, pathId }: { content: EnergySenseMapExerciseContent; pathId: string }) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
-  const [activities, setActivities] = useState<Activity[]>(Array(6).fill({ name: '', energy: '', value: '' }));
+  const [activities, setActivities] = useState<Activity[]>(() => 
+    Array.from({ length: 6 }, () => ({ name: '', energy: '', value: '' }))
+  );
   const [reflection, setReflection] = useState({ moreOf: '', lessOf: '' });
   const [commitment, setCommitment] = useState('');
 
@@ -82,3 +84,4 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
     </Card>
   );
 }
+    
