@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetoursInventoryExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -33,6 +33,9 @@ const valueOptions = [
     { id: 'val-calm', label: 'Calma y equilibrio'},
     { id: 'val-respect', label: 'Respeto hacia mí mismo/a'},
     { id: 'val-growth', label: 'Crecimiento personal'},
+    { id: 'val-responsibility', label: 'Responsabilidad' },
+    { id: 'val-freedom', label: 'Libertad' },
+    { id: 'val-security', label: 'Seguridad' },
 ];
 
 const emotionOptions = [
@@ -42,6 +45,9 @@ const emotionOptions = [
     { id: 'emo-relief', label: 'Alivio momentáneo'},
     { id: 'emo-anxiety', label: 'Ansiedad'},
     { id: 'emo-shame', label: 'Vergüenza'},
+    { id: 'emo-disconnect', label: 'Desconexión' },
+    { id: 'emo-resentment', label: 'Resentimiento' },
+    { id: 'emo-emptiness', label: 'Indiferencia / vacío' },
 ];
 
 const partOptions = [
@@ -49,6 +55,10 @@ const partOptions = [
     { id: 'part-fearful', label: 'Mi parte que teme al rechazo'},
     { id: 'part-pleaser', label: 'Mi parte que busca aprobación'},
     { id: 'part-controlling', label: 'Mi parte que quiere sentirse en control'},
+    { id: 'part-avoider', label: 'Mi parte que evita el dolor o el conflicto' },
+    { id: 'part-needy', label: 'Mi parte que necesita afecto o reconocimiento' },
+    { id: 'part-lonely', label: 'Mi parte que se siente sola' },
+    { id: 'part-failure-fear', label: 'Mi parte que teme fracasar' },
 ];
 
 
@@ -77,10 +87,30 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
   
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    let notebookContent = `**${'content.title'}**\n\n`;
-    notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment}\n\n`;
-    notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
+    const selectedDetours = frequentDetours.filter(d => detours[d.id]).map(d => d.label);
+    if (detours['detour-other'] && otherDetour) selectedDetours.push(otherDetour);
 
+    const selectedValues = valueOptions.filter(v => reflection.values[v.id]).map(v => v.label);
+    if(reflection.values['val-other'] && reflection.otherValue) selectedValues.push(reflection.otherValue);
+    
+    const selectedEmotions = emotionOptions.filter(e => reflection.emotions[e.id]).map(e => e.label);
+    if(reflection.emotions['emo-other'] && reflection.otherEmotion) selectedEmotions.push(reflection.otherEmotion);
+
+    const selectedParts = partOptions.filter(p => reflection.parts[p.id]).map(p => p.label);
+    if(reflection.parts['part-other'] && reflection.otherPart) selectedParts.push(reflection.otherPart);
+
+    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    if (selectedDetours.length > 0) {
+      notebookContent += `**Desvíos frecuentes:**\n- ${selectedDetours.join('\n- ')}\n\n`;
+    }
+    notebookContent += `**Reflexión sobre un desvío:**\n`;
+    notebookContent += ` - Desvío elegido: ${reflection.detour || 'No especificado.'}\n`;
+    notebookContent += ` - Valores afectados: ${selectedValues.length > 0 ? selectedValues.join(', ') : 'No especificados.'}\n`;
+    notebookContent += ` - Emociones que deja: ${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}\n`;
+    notebookContent += ` - Parte de mí que se activa: ${selectedParts.length > 0 ? selectedParts.join(', ') : 'No especificada.'}\n\n`;
+    notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment || 'No especificado.'}\n\n`;
+    notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
+    
     addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu inventario ha sido guardado." });
   };
@@ -89,7 +119,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     switch(step) {
       case 0: // NEW Intro
         return (
-          <div className="p-4 text-center space-y-4">
+          <div className="p-4 space-y-4 text-center">
             <p>A veces no es que no sepas lo que quieres… sino que hay interferencias que te desvían del camino. Hoy vamos a ponerles nombre para empezar a recuperar dirección.</p>
             <Button onClick={next}>Empezar mi inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -110,7 +140,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
           </div>
         );
-      case 2: // OLD step 0: Frequent detours
+      case 2: // Frequent detours
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: Tus desvíos más frecuentes</h4>
@@ -134,7 +164,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
           </div>
         );
-      case 3: // OLD step 1: Reflection on one detour
+      case 3: // Reflection on one detour
         const selectedDetourLabel = Object.keys(detours).filter(k => detours[k]).map(k => {
             if (k === 'detour-other') return otherDetour;
             return frequentDetours.find(d => d.id === k)?.label || '';
@@ -142,18 +172,27 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
         return (
              <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 2: Profundiza en un desvío</h4>
-                <p className="font-medium italic">Desvío seleccionado: {selectedDetourLabel || 'Ninguno'}</p>
+                <div className="space-y-2">
+                    <Label>Elige uno de tus desvíos para reflexionar:</Label>
+                    <Textarea value={reflection.detour} onChange={e => setReflection(p => ({...p, detour: e.target.value}))} placeholder={selectedDetourLabel || 'Describe un desvío...'} />
+                </div>
                 <div className="space-y-2">
                     <Label>¿Qué valor personal estás dejando de lado?</Label>
                     {valueOptions.map(v => <div key={v.id} className="flex items-center space-x-2"><Checkbox id={v.id} checked={!!reflection.values[v.id]} onCheckedChange={c => setReflection(p => ({...p, values: {...p.values, [v.id]:!!c}}))} /><Label htmlFor={v.id} className="font-normal">{v.label}</Label></div>)}
+                    <div className="flex items-center space-x-2"><Checkbox id="val-other" checked={!!reflection.values['val-other']} onCheckedChange={c => setReflection(p => ({...p, values: {...p.values, 'val-other':!!c}}))} /><Label htmlFor="val-other" className="font-normal">Otro</Label></div>
+                    {reflection.values['val-other'] && <Textarea value={reflection.otherValue} onChange={e => setReflection(p => ({...p, otherValue: e.target.value}))} placeholder="Escribe otro valor..."/>}
                 </div>
                 <div className="space-y-2">
                     <Label>¿Qué sientes después de actuar así?</Label>
                     {emotionOptions.map(e => <div key={e.id} className="flex items-center space-x-2"><Checkbox id={e.id} checked={!!reflection.emotions[e.id]} onCheckedChange={c => setReflection(p => ({...p, emotions: {...p.emotions, [e.id]:!!c}}))} /><Label htmlFor={e.id} className="font-normal">{e.label}</Label></div>)}
+                    <div className="flex items-center space-x-2"><Checkbox id="emo-other" checked={!!reflection.emotions['emo-other']} onCheckedChange={c => setReflection(p => ({...p, emotions: {...p.emotions, 'emo-other':!!c}}))} /><Label htmlFor="emo-other" className="font-normal">Otro</Label></div>
+                    {reflection.emotions['emo-other'] && <Textarea value={reflection.otherEmotion} onChange={e => setReflection(p => ({...p, otherEmotion: e.target.value}))} placeholder="Escribe otra emoción..."/>}
                 </div>
                 <div className="space-y-2">
-                    <Label>¿Qué parte de ti busca protección o alivio?</Label>
-                    {partOptions.map(p => <div key={p.id} className="flex items-center space-x-2"><Checkbox id={p.id} checked={!!reflection.parts[p.id]} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, [p.id]:!!c}}))} /><Label htmlFor={p.id} className="font-normal">{p.label}</Label></div>)}
+                    <Label>¿Qué parte de ti busca protección o alivio en ese desvío?</Label>
+                    {partOptions.map(p_opt => <div key={p_opt.id} className="flex items-center space-x-2"><Checkbox id={p_opt.id} checked={!!reflection.parts[p_opt.id]} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, [p_opt.id]:!!c}}))} /><Label htmlFor={p_opt.id} className="font-normal">{p_opt.label}</Label></div>)}
+                    <div className="flex items-center space-x-2"><Checkbox id="part-other" checked={!!reflection.parts['part-other']} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, 'part-other':!!c}}))} /><Label htmlFor="part-other" className="font-normal">Otro</Label></div>
+                    {reflection.parts['part-other'] && <Textarea value={reflection.otherPart} onChange={e => setReflection(p => ({...p, otherPart: e.target.value}))} placeholder="Describe otra parte de ti..."/>}
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -161,7 +200,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                 </div>
              </div>
         );
-    case 4: // OLD step 2: Commitment and Reconnection
+    case 4: // Commitment and Reconnection
         return (
             <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 3 y 4: Compromiso y Gestos de Reconexión</h4>
