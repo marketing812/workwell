@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -62,7 +61,7 @@ ${smallAction}
       case 1: // Present Self
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 1: Tu yo actual</h4>
+            <h4 className="font-semibold">Paso 1: Tu yo actual</h4>
             <p className="text-sm text-muted-foreground">Pregúntate: ¿Cómo me hablo en mi día a día? ¿Cómo transcurren mis jornadas? ¿Qué emociones predominan? ¿Cómo me relaciono con los demás? ¿Qué hábitos mantengo, aunque no me hagan bien?</p>
             <Label htmlFor="present-self">Describe tu yo actual...</Label>
             <Textarea id="present-self" value={presentSelfDesc} onChange={e => setPresentSelfDesc(e.target.value)} placeholder="Ej: Mi yo actual corre a todos lados, revisa el móvil constantemente..." />
@@ -72,17 +71,28 @@ ${smallAction}
       case 2: // Essential Self
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 2: Tu yo esencial</h4>
-            <p className="text-sm text-muted-foreground">Pregúntate: ¿Cómo se mueve esta versión de mí? ¿Cómo cuida sus espacios y se habla? ¿Qué decisiones toma? ¿Qué límites pone? ¿Qué transmite a los demás?</p>
-            <Label htmlFor="essential-self">Describe tu yo esencial...</Label>
-            <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Ej: Mi yo esencial se mueve con calma, respira profundamente..." />
+            <h4 className="font-semibold">Paso 2: Tu yo esencial</h4>
+            <p className="text-sm text-muted-foreground">Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p>
+            <div className="text-sm text-muted-foreground">
+              <p>Pregúntate:</p>
+              <ul className="list-disc list-inside pl-4">
+                  <li>¿Cómo se mueve esta versión de mí? </li>
+                  <li>¿Cómo cuida sus espacios y se habla? </li>
+                  <li>¿Qué decisiones toma? </li>
+                  <li>¿Qué límites pone? </li>
+                  <li>¿Qué transmite a los demás? </li>
+              </ul>
+            </div>
+            <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial…</Label>
+            <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad." />
+            <p className="text-xs text-muted-foreground italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
       case 3: // Integration and choice
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 3: Integración y elección</h4>
+            <h4 className="font-semibold">Paso 3: Integración y elección</h4>
             <p className="text-sm text-muted-foreground">Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
             <div className="space-y-2">
                 <Label htmlFor="small-action">¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</Label>
