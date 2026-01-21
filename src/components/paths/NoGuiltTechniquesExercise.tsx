@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Save } from 'lucide-react';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -131,7 +132,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
                             <p className="whitespace-pre-line">{tech.example}</p>
                         </div>
                         <div className="space-y-2 pt-2">
-                             <Label htmlFor={`phrase-${key}`} className="font-semibold">✍️ Tu versión personalizada:</Label>
+                             <Label htmlFor={`phrase-${key}`} className="font-semibold">Tu versión personalizada:</Label>
                              <Textarea 
                                 id={`phrase-${key}`}
                                 value={personalizedPhrases[key as keyof typeof techniques]}
