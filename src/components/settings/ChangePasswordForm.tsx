@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Save } from "lucide-react";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { useAuth, useUser } from "@/firebase/provider";
+import { useAuth } from "@/firebase/provider";
+import { useUser } from "@/contexts/UserContext"; 
 import { useRouter } from "next/navigation"; 
 
 export function ChangePasswordForm() {
   const { toast } = useToast();
-  const { user, loading: userLoading } = useUser();
+  const { user, loading } = useUser();
   const auth = useAuth();
   const router = useRouter(); 
   
@@ -42,7 +43,7 @@ export function ChangePasswordForm() {
     }
   };
   
-  if (userLoading) {
+  if (loading) {
     return <div className="flex justify-center items-center h-full"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
   }
   
