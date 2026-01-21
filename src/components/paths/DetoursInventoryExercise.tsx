@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -61,7 +61,6 @@ const partOptions = [
     { id: 'part-failure-fear', label: 'Mi parte que teme fracasar' },
 ];
 
-
 export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
@@ -99,6 +98,11 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     const selectedParts = partOptions.filter(p => reflection.parts[p.id]).map(p => p.label);
     if(reflection.parts['part-other'] && reflection.otherPart) selectedParts.push(reflection.otherPart);
 
+    if (!commitment.trim() || !reconnectionGestures.trim()) {
+        toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa el compromiso y los gestos de reconexión.', variant: 'destructive' });
+        return;
+    }
+
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
     if (selectedDetours.length > 0) {
       notebookContent += `**Desvíos frecuentes:**\n- ${selectedDetours.join('\n- ')}\n\n`;
@@ -113,6 +117,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     
     addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu inventario ha sido guardado." });
+    next(); // Move to confirmation
   };
   
   const renderStep = () => {
@@ -200,22 +205,54 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                 </div>
              </div>
         );
-    case 4: // Commitment and Reconnection
+      case 4:
         return (
-            <div className="p-4 space-y-4">
-                <h4 className="font-semibold text-lg">Paso 3 y 4: Compromiso y Gestos de Reconexión</h4>
-                <div className="space-y-2">
-                    <Label htmlFor="commitment-si">Tu gesto de cambio (Si... entonces...)</Label>
-                    <Textarea id="commitment-si" value={commitment} onChange={e => setCommitment(e.target.value)} placeholder="Ej: Si me pongo a revisar redes por soledad, entonces enviaré un mensaje sincero a alguien cercano." />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="reconnection-gestures">Tu kit personal de reconexión</Label>
-                    <Textarea id="reconnection-gestures" value={reconnectionGestures} onChange={e => setReconnectionGestures(e.target.value)} placeholder="Ej: Poner mi canción favorita y moverme un rato." />
-                </div>
-                <div className="flex justify-between w-full mt-4">
-                    <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi Inventario</Button>
-                </div>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 3: Primer compromiso de cambio</h4>
+            <p className="text-sm text-muted-foreground">Ahora toca pasar a la acción. Un pequeño gesto concreto puede ayudarte a reducir el desvío y volver a lo importante.</p>
+            <p className="text-sm text-muted-foreground">Elige un gesto sencillo (1–3 minutos) formulado en positivo. Usa la estructura “si–entonces” para hacerlo más fácil.</p>
+            <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+              <p>Ejemplo: Si me pongo a revisar redes por soledad, entonces enviaré un mensaje sincero a alguien cercano.</p>
+            </div>
+            <div className="space-y-2">
+                <Label htmlFor="commitment-si">Escribe aquí tu gesto de cambio en formato: Si… entonces…</Label>
+                <Textarea id="commitment-si" value={commitment} onChange={e => setCommitment(e.target.value)} placeholder="Escribe aquí tu gesto de cambio en formato: Si… entonces…" />
+            </div>
+            <p className="text-sm text-muted-foreground italic">Mejor un paso pequeño y seguro que uno grande que nunca darás.</p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next} className="w-auto" disabled={!commitment.trim()}>Guardar compromiso</Button>
+            </div>
+          </div>
+        );
+      case 5:
+        return (
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 4: Guarda tus gestos valiosos</h4>
+            <p className="text-sm text-muted-foreground">A veces, cuando más lo necesitamos, se nos olvidan esas pequeñas cosas que nos devuelven la calma y la conexión con lo que importa.</p>
+            <p className="text-sm text-muted-foreground">Aquí puedes crear tu kit personal de reconexión: una lista de gestos sencillos que siempre te ayudan a volver a ti cuando sientes que te desvías.</p>
+            <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                <p>Ejemplo guía: Poner mi canción favorita y moverme un rato. Escribir tres cosas por las que me siento agradecido/a.</p>
+            </div>
+            <div className="space-y-2">
+                <Label htmlFor="reconnection-gestures">Escribe aquí tu gesto de reconexión:</Label>
+                <Textarea id="reconnection-gestures" value={reconnectionGestures} onChange={e => setReconnectionGestures(e.target.value)} placeholder="Salir a caminar sin móvil durante 10 minutos. Respirar profundo tres veces y repetirme: “Estoy aquí, estoy a salvo”." />
+            </div>
+            <p className="text-sm text-muted-foreground italic">No hace falta que sean grandes cambios. Lo importante es que sean gestos simples y realistas, que de verdad puedas aplicar en tu día a día.</p>
+            <p className="text-sm text-muted-foreground font-semibold text-center">Cada gesto guardado será un recordatorio de tu fuerza y de tu camino.</p>
+             <div className="flex justify-between w-full mt-4">
+              <Button onClick={back} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en Mis gestos de reconexión</Button>
+            </div>
+          </form>
+        );
+      case 6: // Confirmation
+        return (
+            <div className="p-6 text-center space-y-4">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">¡Inventario Guardado!</h4>
+                <p className="text-muted-foreground">Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando necesites recordar tu compromiso y tus gestos de reconexión.</p>
+                <Button onClick={() => setStep(0)} variant="outline">Hacer otro registro</Button>
             </div>
         );
       default: return null;
