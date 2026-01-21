@@ -1,9 +1,4 @@
 
-
-
-
-
-
 export type ParagraphContent = {
   type: 'paragraph';
   text: string;
@@ -155,8 +150,17 @@ export type AssertivePhraseExerciseContent = {
 export type NoGuiltTechniquesExerciseContent = {
     type: 'noGuiltTechniquesExercise';
     title: string;
-    objective?: string;
-    duration?: string;
+    objective: string;
+    duration: string;
+    audioUrl?: string;
+};
+
+export type SecureBoundaryPhraseExerciseContent = {
+    type: 'secureBoundaryPhraseExercise';
+    title: string;
+    objective: string;
+    duration: string;
+    audioUrl?: string;
 };
 
 export type PostBoundaryEmotionsExerciseContent = {
@@ -793,6 +797,7 @@ export type ModuleContent =
   | DiscomfortCompassExerciseContent
   | AssertivePhraseExerciseContent
   | NoGuiltTechniquesExerciseContent
+  | SecureBoundaryPhraseExerciseContent
   | PostBoundaryEmotionsExerciseContent
   | CompassionateFirmnessExerciseContent
   | SelfCareContractExerciseContent

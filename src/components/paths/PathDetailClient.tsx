@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -85,6 +84,7 @@ const MapOfUnsaidThingsExercise = dynamic(() => import('@/components/paths/MapOf
 const DiscomfortCompassExercise = dynamic(() => import('@/components/paths/DiscomfortCompassExercise').then(mod => mod.DiscomfortCompassExercise), { loading: LoaderComponent, ssr: false });
 const AssertivePhraseExercise = dynamic(() => import('@/components/paths/AssertivePhraseExercise').then(mod => mod.AssertivePhraseExercise), { loading: LoaderComponent, ssr: false });
 const NoGuiltTechniquesExercise = dynamic(() => import('@/components/paths/NoGuiltTechniquesExercise').then(mod => mod.NoGuiltTechniquesExercise), { loading: LoaderComponent, ssr: false });
+const SecureBoundaryPhraseExercise = dynamic(() => import('@/components/paths/SecureBoundaryPhraseExercise').then(mod => mod.SecureBoundaryPhraseExercise), { loading: LoaderComponent, ssr: false });
 const PostBoundaryEmotionsExercise = dynamic(() => import('@/components/paths/PostBoundaryEmotionsExercise').then(mod => mod.PostBoundaryEmotionsExercise), { loading: LoaderComponent, ssr: false });
 const CompassionateFirmnessExercise = dynamic(() => import('@/components/paths/CompassionateFirmnessExercise').then(mod => mod.CompassionateFirmnessExercise), { loading: LoaderComponent, ssr: false });
 const SelfCareContractExercise = dynamic(() => import('@/components/paths/SelfCareContractExercise').then(mod => mod.SelfCareContractExercise), { loading: LoaderComponent, ssr: false });
@@ -567,6 +567,14 @@ function ContentItemRenderer({
         <NoGuiltTechniquesExercise
           key={index}
           content={contentItem as any}
+          pathId={path.id}
+        />
+      );
+    case 'secureBoundaryPhraseExercise':
+      return (
+        <SecureBoundaryPhraseExercise
+          key={index}
+          content={contentItem}
           pathId={path.id}
         />
       );
