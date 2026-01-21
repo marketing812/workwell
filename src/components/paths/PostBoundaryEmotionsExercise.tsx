@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -141,18 +142,19 @@ ${reassessment}
   
   const renderStep = () => {
     switch (step) {
-      case 0: // Pantalla 1: Cómo lo harás
+      case 0: // Pantalla 1: Introducción
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">¿Cómo lo harás?</h4>
-            <p className="text-sm text-muted-foreground">Vas a recorrer, paso a paso, lo que ocurrió después de poner un límite. Primero, describirás la situación concreta en la que te expresaste con firmeza. Luego, explorarás lo que pensaste, sentiste y notaste en tu cuerpo. Después, identificarás qué intentaba proteger esa emoción que apareció (porque siempre hay algo valioso detrás). Y por último, te ofrecerás una respuesta más compasiva y realista, que te ayude a sostenerte sin juzgarte.</p>
+            <h4 className="font-semibold text-lg text-primary">¿Cómo lo harás?</h4>
+            <p className="text-sm text-muted-foreground">Vas a recorrer, paso a paso, lo que ocurrió después de poner un límite. Primero, describirás la situación concreta en la que te expresaste con firmeza. Luego, explorarás lo que pensaste, sentiste y notaste en tu cuerpo.</p>
+            <p className="text-sm text-muted-foreground">Después, identificarás qué intentaba proteger esa emoción que apareció (porque siempre hay algo valioso detrás). Y por último, te ofrecerás una respuesta más compasiva y realista, que te ayude a sostenerte sin juzgarte.</p>
             <Button onClick={nextStep} className="w-full">Comenzar</Button>
           </div>
         );
       case 1: // Pantalla 2: Ejemplo
         return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guiado completo</h4>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guía completo</h4>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplo</AccordionTrigger>
@@ -179,7 +181,8 @@ ${reassessment}
       case 2: // Pantalla 3: Situación
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="sit-desc" className="font-semibold text-lg">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
+            <h4 className="font-semibold text-lg text-primary">Paso 1: Situación desencadenante</h4>
+            <Label htmlFor="sit-desc">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
             <Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: “Le dije a mi compañero que no podía cubrirle el turno.”" />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -190,7 +193,8 @@ ${reassessment}
       case 3: // Pantalla 4: Pensamientos
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label className="font-semibold text-lg">¿Qué frases surgieron en tu mente? ¿Cuánto las creíste (0–100%)?</Label>
+            <h4 className="font-semibold text-lg text-primary">Paso 2: Pensamientos automáticos</h4>
+            <Label>¿Qué frases surgieron en tu mente? ¿Cuánto las creíste (0–100%)?</Label>
             <p className="text-sm text-muted-foreground">Ej: “Va a pensar que soy egoísta” (85%).</p>
             <div className="space-y-2">
                 <Input value={thoughts.thought1.text} onChange={e => handleThoughtChange('thought1', 'text', e.target.value)} placeholder="Pensamiento 1..."/>
@@ -209,7 +213,8 @@ ${reassessment}
       case 4: // Pantalla 5: Emociones
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <Label className="font-semibold text-lg">¿Qué emociones aparecieron y con qué intensidad (0–100%)?</Label>
+                <h4 className="font-semibold text-lg text-primary">Paso 3: Emociones sentidas</h4>
+                <Label>¿Qué emociones aparecieron y con qué intensidad (0–100%)?</Label>
                 {emotionOptions.map(opt => (
                     <div key={opt.id} className="space-y-2">
                         <div className="flex items-center gap-2">
@@ -228,6 +233,7 @@ ${reassessment}
       case 5: // Pantalla 6: Cuerpo y Conducta
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Sensaciones corporales y Conducta posterior</h4>
                 <div className="space-y-2">
                     <Label htmlFor="body-sens">¿Qué notaste en tu cuerpo?</Label>
                     <Textarea id="body-sens" value={bodySensations} onChange={e => setBodySensations(e.target.value)} placeholder="Ej: Tensión en el pecho, mandíbula apretada."/>
@@ -245,6 +251,7 @@ ${reassessment}
       case 6: // Pantalla 7: Función y respuesta compasiva
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                 <h4 className="font-semibold text-lg text-primary">Paso 5: Función de la emoción y Respuesta racional y compasiva</h4>
                  <div className="space-y-2">
                     <Label htmlFor="emo-func">¿Qué estaba protegiendo esta emoción? ¿Qué valor estaba detrás?</Label>
                     <Textarea id="emo-func" value={emotionFunction} onChange={e => setEmotionFunction(e.target.value)} placeholder="Ej: La culpa me muestra que me importa el otro y quiero cuidar el vínculo."/>
@@ -262,8 +269,9 @@ ${reassessment}
       case 7: // Pantalla 8: Reevaluación
         return (
             <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 6: Resultado de la reevaluación</h4>
                 <div className="space-y-2">
-                    <Label htmlFor="reassess" className="font-semibold text-lg">¿Cómo ves ahora esa situación? ¿Cambió algo en tu percepción?</Label>
+                    <Label htmlFor="reassess">¿Cómo ves ahora esa situación? ¿Cambió algo en tu percepción?</Label>
                     <Textarea id="reassess" value={reassessment} onChange={e => setReassessment(e.target.value)} placeholder="Ej: 'Ya no creo que fui egoísta. Estoy empezando a respetarme.'" disabled={isSaved}/>
                 </div>
                 {!isSaved ? (
@@ -277,7 +285,7 @@ ${reassessment}
       case 8: // Pantalla 9: Frases sugeridas
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500 text-center">
-                <h4 className="font-semibold text-lg text-primary">Frases de Autocompasión Sugeridas</h4>
+                <h4 className="font-semibold text-lg text-primary">Frases de autocompasión sugeridas</h4>
                 <p className="text-sm text-muted-foreground">Puedes repetir mentalmente o guardar estas frases:</p>
                 <ul className="space-y-2 text-left">
                     {["Es incómodo poner límites, pero no es peligroso.", "Puedo sentir culpa y seguir cuidándome.", "Estoy aprendiendo. No necesito hacerlo perfecto.", "Esta emoción me habla, no me define.", "La incomodidad es pasajera. Mi bienestar es más importante que el juicio externo."].map(phrase => (
@@ -318,3 +326,4 @@ ${reassessment}
     </Card>
   );
 }
+
