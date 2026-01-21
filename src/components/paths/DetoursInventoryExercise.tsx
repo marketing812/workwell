@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -8,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle } from 'lucide-react';
+import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetoursInventoryExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -78,7 +77,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
   
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    let notebookContent = `**${content.title}**\n\n`;
+    let notebookContent = `**${'content.title'}**\n\n`;
     notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment}\n\n`;
     notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
 
@@ -88,14 +87,30 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
   
   const renderStep = () => {
     switch(step) {
-      case 0: // Intro
+      case 0: // NEW Intro
         return (
           <div className="p-4 text-center space-y-4">
             <p>A veces no es que no sepas lo que quieres… sino que hay interferencias que te desvían del camino. Hoy vamos a ponerles nombre para empezar a recuperar dirección.</p>
             <Button onClick={next}>Empezar mi inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
-      case 1: // Frequent detours
+      case 1: // NEW Example
+        return (
+          <div className="p-4 text-center space-y-4">
+            <p className="text-sm text-muted-foreground">Antes de mirar tus propios desvíos, observa un ejemplo realista. No es para copiarlo, sino para inspirarte en cómo se identifica un desvío, el valor que toca y la reflexión que ayuda a reconectar.</p>
+            <div className="p-4 border rounded-md bg-background/50 text-left text-sm">
+                <p><strong>Desvío:</strong> Postergar el autocuidado por miedo a parecer egoísta.</p>
+                <p><strong>Valor afectado:</strong> Autorrespeto y bienestar.</p>
+                <p><strong>Reflexión:</strong> Cada vez que dejo de cuidarme para que los demás no me juzguen, me alejo de mi autenticidad.</p>
+            </div>
+            <p className="text-sm italic text-muted-foreground pt-2">Piensa: ¿qué cosas en tu vida se parecen a esto?</p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next} className="w-auto">Ir a mis desvíos <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
+          </div>
+        );
+      case 2: // OLD step 0: Frequent detours
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: Tus desvíos más frecuentes</h4>
@@ -113,10 +128,13 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                 </div>
                 {detours['detour-other'] && <Textarea value={otherDetour} onChange={e => setOtherDetour(e.target.value)} />}
             </div>
-            <Button onClick={next} className="w-full">Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next} className="w-auto">Continuar</Button>
+            </div>
           </div>
         );
-      case 2: // Reflection on one detour
+      case 3: // OLD step 1: Reflection on one detour
         const selectedDetourLabel = Object.keys(detours).filter(k => detours[k]).map(k => {
             if (k === 'detour-other') return otherDetour;
             return frequentDetours.find(d => d.id === k)?.label || '';
@@ -137,10 +155,13 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                     <Label>¿Qué parte de ti busca protección o alivio?</Label>
                     {partOptions.map(p => <div key={p.id} className="flex items-center space-x-2"><Checkbox id={p.id} checked={!!reflection.parts[p.id]} onCheckedChange={c => setReflection(p_state => ({...p_state, parts: {...p_state.parts, [p.id]:!!c}}))} /><Label htmlFor={p.id} className="font-normal">{p.label}</Label></div>)}
                 </div>
-                <Button onClick={next} className="w-full">Ir al compromiso de cambio</Button>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={next} className="w-auto">Ir al compromiso de cambio</Button>
+                </div>
              </div>
         );
-    case 3: // Commitment and Reconnection
+    case 4: // OLD step 2: Commitment and Reconnection
         return (
             <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 3 y 4: Compromiso y Gestos de Reconexión</h4>
@@ -152,7 +173,10 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                     <Label htmlFor="reconnection-gestures">Tu kit personal de reconexión</Label>
                     <Textarea id="reconnection-gestures" value={reconnectionGestures} onChange={e => setReconnectionGestures(e.target.value)} placeholder="Ej: Poner mi canción favorita y moverme un rato." />
                 </div>
-                <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi Inventario</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi Inventario</Button>
+                </div>
             </div>
         );
       default: return null;
