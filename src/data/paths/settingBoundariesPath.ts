@@ -19,9 +19,7 @@ export const settingBoundariesPath: Path = {
           text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3',
         },
-
         { type: 'title', text: 'Psicoeducación' },
-
         {
           type: 'collapsible',
           title: '¿Qué es un límite personal?',
@@ -35,7 +33,6 @@ export const settingBoundariesPath: Path = {
             },
           ],
         },
-
         {
           type: 'collapsible',
           title: 'Mitos y bloqueos más comunes',
@@ -49,7 +46,6 @@ export const settingBoundariesPath: Path = {
             },
           ],
         },
-
         {
           type: 'collapsible',
           title: '¿Qué pasa cuando callas lo que necesitas?',
@@ -63,7 +59,6 @@ export const settingBoundariesPath: Path = {
             },
           ],
         },
-
         {
           type: 'collapsible',
           title: 'Enfoque terapéutico que vamos a usar',
@@ -77,9 +72,7 @@ export const settingBoundariesPath: Path = {
             },
           ],
         },
-
         { type: 'title', text: 'Técnicas Específicas' },
-
         {
           type: 'mapOfUnsaidThingsExercise',
           title: 'Ejercicio 1: Mapa de Mis No Dichos',
@@ -89,7 +82,6 @@ export const settingBoundariesPath: Path = {
           audioUrl:
             'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3',
         },
-
         {
           type: 'discomfortCompassExercise',
           title: 'Ejercicio 2: La Brújula del Malestar',
@@ -99,7 +91,6 @@ export const settingBoundariesPath: Path = {
           audioUrl:
             'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3',
         },
-
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
@@ -113,7 +104,6 @@ export const settingBoundariesPath: Path = {
             '¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?',
           ],
         },
-
         {
           type: 'title',
           text: 'Resumen Clave',
@@ -133,7 +123,8 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: 'Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.',
+          text:
+            'Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.',
         },
       ],
     },
@@ -145,7 +136,8 @@ export const settingBoundariesPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
+          text:
+            '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
           audioUrl:
             'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3',
         },
@@ -204,7 +196,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por debajo del otro.',
-                    'Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.',
+                    'Conductas comunes:\n•\tCallar lo que piensas o sientes.\n•\tAceptar cosas que no deseas hacer.\n•\tPedir disculpas constantemente.\n•\tCeder por miedo al conflicto.',
                     'Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”',
                     'Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.',
                     'Impacto en ti: Frustración, agotamiento, pérdida de autoestima.',
@@ -221,7 +213,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por encima del otro.',
-                    'Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.',
+                    'Conductas comunes:\n•\tImponer tus ideas o decisiones.\n•\tInterrumpir o desacreditar.\n•\tUsar tono irónico o autoritario.',
                     'Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”',
                     'Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.',
                     'Impacto en ti: Tensión, culpa, deterioro de vínculos.',
@@ -241,7 +233,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.',
-                    'Conductas comunes:\no\tEvitar el conflicto directo.\no\tUsar sarcasmo o indirectas.\no\tRetrasar o boicotear de forma encubierta.',
+                    'Conductas comunes:\n•\tEvitar el conflicto directo.\n•\tUsar sarcasmo o indirectas.\n•\tRetrasar o boicotear de forma encubierta.',
                     'Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”',
                     'Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.',
                     'Impacto en ti: Resentimiento y frustración.',
@@ -258,7 +250,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas a la misma altura.',
-                    'Conductas comunes:\no\tExpresas con claridad y respeto.\no\tEscuchas sin dejar de comunicarte.\no\tDices “no” sin culpa y “sí” con conciencia.',
+                    'Conductas comunes:\n•\tExpresas con claridad y respeto.\n•\tEscuchas sin dejar de comunicarte.\n•\tDices “no” sin culpa y “sí” con conciencia.',
                     'Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”',
                     'Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.',
                     'Impacto en ti: Coherencia, autoestima, calma.',
@@ -277,7 +269,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
+              text:
+                'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
             },
             {
               type: 'list',
@@ -289,7 +282,8 @@ export const settingBoundariesPath: Path = {
             },
             {
               type: 'paragraph',
-              text: 'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
+              text:
+                'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
             },
             {
               type: 'list',
@@ -322,9 +316,10 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'secureBoundaryPhraseExercise',
-          title: 'EJERCICIO 2: TU FRASE DE “LÍMITE SEGURO”',
+          title: 'Ejercicio 2: Tu Frase de "Límite Seguro"',
           objective: 'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.',
-          duration: '5 minutos'
+          duration: '5 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -357,7 +352,8 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.”',
+          text:
+            '“Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.”',
         },
       ],
     },
@@ -369,7 +365,8 @@ export const settingBoundariesPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.',
+          text:
+            '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.',
           audioUrl:
             'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion3.mp3',
         },
@@ -434,7 +431,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Busca un lugar tranquilo. Si puedes, siéntate con la espalda recta. Cierra los ojos o suaviza tu mirada.\nRespira. Escucha. Imagina. Y permite que tu “yo firme” te acompañe.',
+              text:
+                'Busca un lugar tranquilo. Si puedes, siéntate con la espalda recta. Cierra los ojos o suaviza tu mirada.\nRespira. Escucha. Imagina. Y permite que tu “yo firme” te acompañe.',
             },
           ],
         },
@@ -482,7 +480,8 @@ export const settingBoundariesPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.',
+          text:
+            '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.',
           audioUrl:
             'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3',
         },
@@ -587,7 +586,8 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”',
+          text:
+            '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”',
         },
       ],
     },
