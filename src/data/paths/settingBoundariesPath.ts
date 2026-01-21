@@ -4,8 +4,7 @@ import type { Path } from '../pathsData';
 export const settingBoundariesPath: Path = {
   id: 'poner-limites',
   title: 'Poner Límites con Respeto y Firmeza',
-  description:
-    'Aprende a decir “no” sin culpa y a proteger tu espacio emocional, construyendo relaciones más sanas y una conexión más auténtica contigo.',
+  description: 'Aprende a decir “no” sin culpa y a proteger tu espacio emocional, construyendo relaciones más sanas y una conexión más auténtica contigo.',
   dataAiHint: 'boundaries respect communication',
   audioUrl:
     'https://workwellfut.com/audios/ruta4/descripciones/Introruta4.mp3',
@@ -206,7 +205,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por debajo del otro.',
-                    'Conductas comunes:\n•\tCallar lo que piensas o sientes.\n•\tAceptar cosas que no deseas hacer.\n•\tPedir disculpas constantemente.\n•\tCeder por miedo al conflicto.',
+                    'Conductas comunes:\no\tCallar lo que piensas o sientes.\no\tAceptar cosas que no deseas hacer.\no\tPedir disculpas constantemente.\no\tCeder por miedo al conflicto.',
                     'Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”',
                     'Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.',
                     'Impacto en ti: Frustración, agotamiento, pérdida de autoestima.',
@@ -223,7 +222,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por encima del otro.',
-                    'Conductas comunes:\n•\tImponer tus ideas o decisiones.\n•\tInterrumpir o desacreditar.\n•\tUsar tono irónico o autoritario.',
+                    'Conductas comunes:\no\tImponer tus ideas o decisiones.\no\tInterrumpir o desacreditar.\no\tUsar tono irónico o autoritario.',
                     'Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”',
                     'Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.',
                     'Impacto en ti: Tensión, culpa, deterioro de vínculos.',
@@ -243,7 +242,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.',
-                    'Conductas comunes:\n•\tEvitar el conflicto directo.\n•\tUsar sarcasmo o indirectas.\n•\tRetrasar o boicotear de forma encubierta.',
+                    'Conductas comunes:\no\tEvitar el conflicto directo.\no\tUsar sarcasmo o indirectas.\no\tRetrasar o boicotear de forma encubierta.',
                     'Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”',
                     'Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.',
                     'Impacto en ti: Resentimiento y frustración.',
@@ -260,7 +259,7 @@ export const settingBoundariesPath: Path = {
                   type: 'list',
                   items: [
                     'Jerarquía relacional: Te colocas a la misma altura.',
-                    'Conductas comunes:\n•\tExpresas con claridad y respeto.\n•\tEscuchas sin dejar de comunicarte.\n•\tDices “no” sin culpa y “sí” con conciencia.',
+                    'Conductas comunes:\no\tExpresas con claridad y respeto.\no\tEscuchas sin dejar de comunicarte.\no\tDices “no” sin culpa y “sí” con conciencia.',
                     'Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”',
                     'Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.',
                     'Impacto en ti: Coherencia, autoestima, calma.',
@@ -318,7 +317,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'noGuiltTechniquesExercise',
           title:
-            'Ejercicio 2: Caja de herramientas extra: frases para decir "no" sin culpa',
+            'Caja de herramientas extra: frases para decir "no" sin culpa',
           objective:
             'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
           duration: '5-10 min por técnica',
@@ -356,7 +355,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: 'Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.',
+          text: '“Cuando te comunicas desde el respeto, no solo cuidas el vínculo: también te eliges a ti.”',
         },
       ],
     },
@@ -586,8 +585,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text:
-            '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”',
+          text: '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”',
         },
       ],
     },
