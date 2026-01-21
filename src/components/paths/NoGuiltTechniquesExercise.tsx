@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -48,7 +49,8 @@ const techniques = {
     title: "Técnica: Técnica del sándwich",
     when: "Cuando quieres suavizar una negativa o límite, sin dejar de expresar lo que necesitas.",
     goal: "Te permite proteger el vínculo y decir que no con amabilidad. Refuerza tu empatía sin renunciar a ti.",
-    example: "Me encanta que me tengas en cuenta, pero este fin de semana necesito descansar. Seguro que lo resolvéis genial."
+    example: "Me encanta que me tengas en cuenta, pero este fin de semana necesito descansar. Seguro que lo resolvéis genial.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4semana2tecsandwich.mp3"
   },
   redireccion: {
     title: "Técnica: Redirección con foco",
