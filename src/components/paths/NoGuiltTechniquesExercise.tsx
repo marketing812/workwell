@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -29,7 +29,8 @@ const techniques = {
     title: "Técnica: Banco de niebla",
     when: "Cuando no quieres discutir, pero tampoco ceder ni justificarte. Ideal en situaciones donde percibes que debatir solo generará más tensión.",
     goal: "Te ayuda a mantener tu posición sin enfrentarte ni engancharte en argumentos.",
-    example: "Entiendo que te moleste, pero esta vez necesito que respetes mi decisión."
+    example: "Entiendo que te moleste, pero esta vez necesito que respetes mi decisión.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2bancodeniebla.mp3"
   },
   aplazamientoAsertivo: {
     title: "Técnica: Aplazamiento asertivo",
