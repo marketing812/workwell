@@ -15,6 +15,7 @@ import type { DiscomfortCompassExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 
 interface DiscomfortCompassExerciseProps {
   content: DiscomfortCompassExerciseContent;
@@ -143,10 +144,10 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
     setIsSaved(true);
     setStep(7); // Go to final confirmation
   };
-
+  
   const renderStep = () => {
     switch(step) {
-      case 0: // Pantalla 1 – Antes de empezar
+      case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Te muestro a continuación un ejemplo completo de cómo se realiza este ejercicio. Leerlo antes puede ayudarte a identificar tus propias señales, ponerle palabras a lo que sentiste y conectar mejor con tu experiencia corporal y emocional.</p>
@@ -154,7 +155,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
             <Button onClick={nextStep}><ArrowRight className="mr-2 h-4 w-4" />Ver ejemplo guiado</Button>
           </div>
         );
-      case 1: // Pantalla 2 – Ejemplo guiado
+      case 1: // Ejemplo guiado
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guiado: Brújula del malestar</h4>
@@ -182,12 +183,13 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
             </div>
           </div>
         );
-      case 2: // Pantalla 3 – Detecta la señal
+      case 2: // Detecta la señal
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 1: Detecta la Señal</h4>
+                <h4 className="font-semibold text-lg text-primary">Paso 1: Detecta la señal</h4>
                 <div className="space-y-2">
                     <Label htmlFor="discomfort-situation">¿Qué situación te activó emocionalmente?</Label>
+                    <p className="text-sm text-muted-foreground">Vamos a observar qué te pasó a ti. Recuerda una situación reciente en la que sentiste malestar, incomodidad o sobrecarga emocional. </p>
                     <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe con tus palabras lo que ocurrió: qué pasó, dónde estabas, con quién…" />
                 </div>
                  <div className="flex justify-between w-full mt-4">
@@ -196,7 +198,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 </div>
             </div>
         );
-      case 3: // Pantalla 4 – Escucha tu cuerpo
+      case 3: // Escucha tu cuerpo
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 2: Escucha tu Cuerpo</h4>
@@ -214,7 +216,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                  <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 4: // Pantalla 5 – Emociones y pensamientos
+      case 4: // Emociones y pensamientos
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 3: Emociones y Pensamientos</h4>
@@ -237,7 +239,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-       case 5: // Pantalla 6 – Impulso e intuición
+       case 5: // Impulso e intuición
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 4: Impulso e Intuición</h4>
@@ -260,7 +262,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 6: // Pantalla 7 – Respuesta alternativa
+      case 6: // Respuesta alternativa
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Respuesta Alternativa</h4>
@@ -295,7 +297,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 </div>
             </div>
         );
-      case 7: // Pantalla Final – Beneficio adicional
+      case 7: // Beneficio adicional
         return (
              <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -329,5 +331,3 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
     </Card>
   );
 }
-
-    
