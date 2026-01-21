@@ -86,6 +86,7 @@ const AssertivePhraseExercise = dynamic(() => import('@/components/paths/Asserti
 const NoGuiltTechniquesExercise = dynamic(() => import('@/components/paths/NoGuiltTechniquesExercise').then(mod => mod.NoGuiltTechniquesExercise), { loading: LoaderComponent, ssr: false });
 const SecureBoundaryPhraseExercise = dynamic(() => import('@/components/paths/SecureBoundaryPhraseExercise').then(mod => mod.SecureBoundaryPhraseExercise), { loading: LoaderComponent, ssr: false });
 const PostBoundaryEmotionsExercise = dynamic(() => import('@/components/paths/PostBoundaryEmotionsExercise').then(mod => mod.PostBoundaryEmotionsExercise), { loading: LoaderComponent, ssr: false });
+const FirmAndCalmSelfVisualizationExercise = dynamic(() => import('@/components/paths/FirmAndCalmSelfVisualizationExercise').then(mod => mod.FirmAndCalmSelfVisualizationExercise), { loading: LoaderComponent, ssr: false });
 const CompassionateFirmnessExercise = dynamic(() => import('@/components/paths/CompassionateFirmnessExercise').then(mod => mod.CompassionateFirmnessExercise), { loading: LoaderComponent, ssr: false });
 const SelfCareContractExercise = dynamic(() => import('@/components/paths/SelfCareContractExercise').then(mod => mod.SelfCareContractExercise), { loading: LoaderComponent, ssr: false });
 // RUTA 5
@@ -579,13 +580,9 @@ function ContentItemRenderer({
         />
       );
     case 'postBoundaryEmotionsExercise':
-      return (
-        <PostBoundaryEmotionsExercise
-          key={index}
-          content={contentItem as any}
-          pathId={path.id}
-        />
-      );
+      return <PostBoundaryEmotionsExercise key={index} content={contentItem as any} pathId={path.id} />;
+    case 'firmAndCalmSelfVisualizationExercise':
+      return <FirmAndCalmSelfVisualizationExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'compassionateFirmnessExercise':
       return (
         <CompassionateFirmnessExercise

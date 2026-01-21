@@ -168,6 +168,15 @@ export type PostBoundaryEmotionsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
+};
+
+export type FirmAndCalmSelfVisualizationExerciseContent = {
+    type: 'firmAndCalmSelfVisualizationExercise';
+    title: string;
+    objective: string;
+    duration: string;
+    audioUrl: string;
 };
 
 export type CompassionateFirmnessExerciseContent = {
@@ -799,8 +808,7 @@ export type ModuleContent =
   | NoGuiltTechniquesExerciseContent
   | SecureBoundaryPhraseExerciseContent
   | PostBoundaryEmotionsExerciseContent
-  | CompassionateFirmnessExerciseContent
-  | SelfCareContractExerciseContent
+  | FirmAndCalmSelfVisualizationExerciseContent
   // RUTA 5
   | AuthenticityThermometerExerciseContent
   | EmpatheticDialogueExerciseContent
