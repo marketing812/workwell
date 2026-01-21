@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -36,7 +35,8 @@ const techniques = {
     title: "Técnica: Aplazamiento asertivo",
     when: "Cuando sientes presión o confusión y necesitas tiempo para responder con claridad.",
     goal: "Evita respuestas impulsivas y te permite actuar desde la calma. Refuerza tu derecho a pensar antes de decidir.",
-    example: "Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde."
+    example: "Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3"
   },
   acuerdoParcial: {
     title: "Técnica: Acuerdo parcial o asertivo",
