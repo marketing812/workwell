@@ -27,6 +27,14 @@ export function PresentVsEssentialSelfExercise({ content, pathId }: PresentVsEss
 
   const next = () => setStep(prev => prev + 1);
 
+  const resetExercise = () => {
+    setStep(0);
+    setPresentSelfDesc('');
+    setEssentialSelfDesc('');
+    setSmallAction('');
+    setIsSaved(false);
+  }
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!smallAction.trim()) {
@@ -48,6 +56,7 @@ ${smallAction}
     addNotebookEntry({ title: `Visualización: Yo Presente vs. Yo Esencial`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu visualización ha sido guardada." });
     setIsSaved(true);
+    next();
   };
 
   const renderStep = () => {
@@ -73,7 +82,7 @@ ${smallAction}
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold">Paso 2: Tu yo esencial</h4>
-            <p>Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p><p>Pregúntate: <ul><li>¿Cómo se mueve esta versión de mí? </li><li>¿Cómo cuida sus espacios y se habla? </li><li>¿Qué decisiones toma? </li><li>¿Qué límites pone? </li><li>¿Qué transmite a los demás? </li></ul></p>
+            <p>Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p><p>Pregúntate: <ul><li>¿Cómo se mueve esta versión de mí? </li><li>¿Cómo cuida sus espacios y se habla? </li><li>¿Qué decisiones toma? </li><li>¿Qué límites pone? </li><li>¿Qué transmite a los demás? </li></ul></p><p>Escribe aquí tu descripción de tu yo esencial… </p>
             <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial… </Label>
             <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad." />
             <p className="text-xs text-muted-foreground italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
@@ -84,7 +93,7 @@ ${smallAction}
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Integración y elección</h4>
-            <p className="text-sm text-muted-foreground">Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
+            <p>Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
             
             <div className="space-y-4 text-sm p-4 border rounded-md bg-background/50">
                 <div>
@@ -98,11 +107,7 @@ ${smallAction}
             </div>
 
             <div className="text-sm text-muted-foreground">
-                <p>Pregúntate:</p>
-                <ul className="list-disc list-inside pl-4">
-                    <li>¿Qué diferencia más significativa noto entre mis dos versiones?</li>
-                    <li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</li>
-                </ul>
+                <p> Pregúntate:</p><ul><li> ¿Qué diferencia más significativa noto entre mis dos versiones? </li><li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana? </li></ul>
             </div>
 
             <div className="space-y-2">
@@ -112,19 +117,28 @@ ${smallAction}
                     value={smallAction} 
                     onChange={e => setSmallAction(e.target.value)} 
                     placeholder="Describe tu gesto o acción pequeña…" 
-                    disabled={isSaved}
                 />
                  <p className="text-xs text-muted-foreground">Ejemplo guía: “Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para leer o simplemente descansar en calma.”</p>
             </div>
-            {!isSaved ? (
-                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
-            ) : (
-                <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                    <CheckCircle className="mr-2 h-5 w-5" />
-                    <p className="font-medium">Tu acción ha sido guardada.</p>
-                </div>
-            )}
+            
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
+            
           </form>
+        );
+      case 4: // Confirmation screen
+        return (
+          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Guardado con Éxito!</h4>
+            <p className="text-muted-foreground">Recuerda: no se trata de transformarte de golpe, sino de acercarte poco a poco a tu esencia. Cada gesto que incorpores es un paso hacia tu autenticidad.</p>
+            <ul className="text-sm text-muted-foreground list-none space-y-2 text-left">
+                <li className="flex items-start"><span className="mr-2">✅</span>Felicítate por haberte regalado este momento de conexión.</li>
+                <li className="flex items-start"><span className="mr-2">👉</span>Tus respuestas quedan guardadas en tu cuaderno terapéutico.</li>
+            </ul>
+            <Button onClick={resetExercise} variant="outline" className="w-full mt-4">
+              Hacer otra reflexión
+            </Button>
+          </div>
         );
       default: return null;
     }
