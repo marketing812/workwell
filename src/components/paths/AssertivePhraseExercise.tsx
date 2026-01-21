@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AssertivePhraseExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
@@ -65,6 +64,7 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
 
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
+  const prevStep = () => setCurrentStep(prev => Math.max(0, prev - 1));
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -118,7 +118,10 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
             <Label htmlFor="fact" className="font-semibold text-lg">Paso 1: Describe el hecho objetivo</Label>
             <p className="text-sm text-muted-foreground">¿Qué ocurrió? Sé concreto/a y evita juicios.</p>
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} placeholder="Ej: Llegaste tarde a la reunión sin avisar." />
-            <Button onClick={nextStep} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
 
@@ -128,7 +131,10 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
             <Label htmlFor="feeling" className="font-semibold text-lg">Paso 2: Expresa tu emoción</Label>
             <p className="text-sm text-muted-foreground">Ponle nombre a lo que sentiste. Habla desde ti.</p>
             <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustración, tristeza, inseguridad..." />
-            <Button onClick={nextStep} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
 
@@ -138,7 +144,10 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
             <Label htmlFor="need" className="font-semibold text-lg">Paso 3: Identifica tu necesidad</Label>
             <p className="text-sm text-muted-foreground">Conecta con lo que estaba en juego para ti.</p>
             <Textarea id="need" value={need} onChange={e => setNeed(e.target.value)} placeholder="Ej: respeto, apoyo, claridad..." />
-            <Button onClick={nextStep} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       
@@ -148,7 +157,10 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
             <Label htmlFor="request" className="font-semibold text-lg">Paso 4: Formula una petición</Label>
             <p className="text-sm text-muted-foreground">Pide algo concreto, breve y posible.</p>
             <Textarea id="request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ej: Te pido que me avises si vas a llegar más tarde." />
-            <Button onClick={nextStep} className="w-full">Ver mi frase completa</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Ver mi frase completa</Button>
+            </div>
           </div>
         );
 
@@ -160,7 +172,10 @@ export function AssertivePhraseExercise({ content, pathId, onComplete }: Asserti
               “Cuando {fact || '...' }, me siento {feeling || '...'}. Necesito {need || '...'}. Por eso te pido {request || '...' }.”
             </blockquote>
             <p className="text-sm text-muted-foreground">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá.</p>
-            <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi Cuaderno</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi Cuaderno</Button>
+            </div>
           </div>
         );
 
