@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Save, CheckCircle, NotebookText } from 'lucide-react';
+import { Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -22,7 +22,8 @@ const techniques = {
     title: "Técnica: Disco rayado",
     when: "Cuando te presionan o insisten para que cambies de opinión o cedas.",
     goal: "Te ayuda a mantener tu decisión con calma, sin entrar en discusiones, reforzando tu firmeza interna.",
-    example: "Lo entiendo, pero mi decisión sigue siendo la misma: esta vez no voy a poder."
+    example: "Lo entiendo, pero mi decisión sigue siendo la misma: esta vez no voy a poder.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2discoraydo.mp3"
   },
   bancoNiebla: {
     title: "Técnica: Banco de niebla",
@@ -95,7 +96,18 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
           {Object.entries(techniques).map(([key, tech]) => (
             <AccordionItem value={key} key={key} className="border rounded-lg bg-background shadow-sm">
                 <AccordionTrigger className="p-4 font-semibold hover:no-underline text-left text-primary">
-                    {tech.title}
+                    <div className="flex items-center justify-between w-full gap-3">
+                      <span>{tech.title}</span>
+                      {(tech as any).audioUrl && (
+                        <audio
+                          src={(tech as any).audioUrl}
+                          controls
+                          controlsList="nodownload"
+                          className="h-8 max-w-[200px] sm:max-w-xs"
+                          onClick={e => e.stopPropagation()}
+                        />
+                      )}
+                    </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-4 border-t pt-4">
                     <div className="space-y-3 text-sm">
