@@ -11,6 +11,14 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ValuesCompassExerciseContent } from '@/data/paths/pathTypes';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface ValuesCompassExerciseProps {
   content: ValuesCompassExerciseContent;
@@ -31,6 +39,7 @@ const lifeAreas = [
     { id: 'creatividad', label: 'Creatividad y expresión personal' },
     { id: 'autenticidad', label: 'Autenticidad / Vivir con coherencia' },
 ];
+
 
 export function ValuesCompassExercise({ content, pathId }: ValuesCompassExerciseProps) {
   const { toast } = useToast();
@@ -53,6 +62,8 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
   };
   
   const activeAreas = useMemo(() => lifeAreas.filter(area => selectedAreas[area.id]), [selectedAreas]);
+
+  const next = () => setStep(prev => prev + 1);
 
   const handleSave = () => {
     let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Brújula de Valores:**\n\n`;
@@ -108,23 +119,51 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
                 </div>
               </div>
             ))}
-            <Button onClick={handleSave} className="w-full">Ver mi Brújula</Button>
+            <Button onClick={next} className="w-full">Ver mi Brújula</Button>
           </div>
         );
-      case 3:
+    case 3:
+        return (
+            <div className="p-4 space-y-4">
+              <h3 className="font-bold text-lg text-center">Tu Brújula de Valores</h3>
+              <p className="text-sm text-muted-foreground">Te mostramos ahora un resumen visual con tus áreas prioritarias y los valores que representan. Esta brújula te ayuda a tomar decisiones con más coherencia y a reconectar contigo cuando te sientas perdida o dispersa.</p>
+              <div className="border rounded-lg overflow-hidden">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Área de Vida</TableHead>
+                      <TableHead>Valor Asociado</TableHead>
+                      <TableHead>Cómo quieres vivirla</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {activeAreas.map(area => (
+                      <TableRow key={area.id}>
+                        <TableCell className="font-medium">{area.label}</TableCell>
+                        <TableCell>{reflections[area.id]?.value || 'N/A'}</TableCell>
+                        <TableCell>{reflections[area.id]?.howToLive || 'N/A'}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <p className="italic text-sm text-muted-foreground text-center">Mira esta brújula cada vez que tengas que tomar una decisión difícil. Volver a tus valores es como volver a casa.</p>
+              <Button onClick={handleSave} className="w-full">
+                <Save className="mr-2 h-4 w-4" /> Guardar Brújula
+              </Button>
+            </div>
+        );
+      case 4:
         return (
           <div className="p-4 text-center space-y-4">
-            <h3 className="font-bold text-lg">Tu Brújula Personal</h3>
-            <div className="text-left border p-2 rounded-md">
-                {activeAreas.map(area => (
-                     <div key={area.id} className="mb-2">
-                        <p><strong>Área:</strong> {area.label}</p>
-                        <p><strong>Valor:</strong> {reflections[area.id]?.value || 'N/A'}</p>
-                        <p><strong>Cómo vivirla:</strong> {reflections[area.id]?.howToLive || 'N/A'}</p>
-                     </div>
-                ))}
-            </div>
-            <p className="italic text-sm">Mira esta brújula cada vez que tengas que tomar una decisión difícil. Volver a tus valores es como volver a casa.</p>
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">Brújula Guardada</h4>
+            <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
+            <Button onClick={() => {
+                setStep(0);
+                setSelectedAreas({});
+                setReflections({});
+            }} variant="outline">Empezar de nuevo</Button>
           </div>
         );
       default: return null;
