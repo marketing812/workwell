@@ -1,4 +1,3 @@
-
 import type { Path } from '../pathsData';
 
 export const settingBoundariesPath: Path = {
@@ -278,8 +277,7 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text:
-                'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
+              text: 'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
             },
             {
               type: 'list',
@@ -291,8 +289,7 @@ export const settingBoundariesPath: Path = {
             },
             {
               type: 'paragraph',
-              text:
-                'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
+              text: 'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
             },
             {
               type: 'list',
@@ -316,13 +313,18 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'noGuiltTechniquesExercise',
-          title:
-            'Caja de herramientas extra: frases para decir "no" sin culpa',
+          title: 'Caja de herramientas extra: frases para decir "no" sin culpa',
           objective:
             'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
           duration: '5-10 min por técnica',
           audioUrl:
             'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3',
+        },
+        {
+          type: 'secureBoundaryPhraseExercise',
+          title: 'EJERCICIO 2: TU FRASE DE “LÍMITE SEGURO”',
+          objective: 'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.',
+          duration: '5 minutos'
         },
         {
           type: 'therapeuticNotebookReflection',
