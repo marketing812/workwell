@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -72,18 +73,8 @@ ${smallAction}
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold">Paso 2: Tu yo esencial</h4>
-            <p className="text-sm text-muted-foreground">Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p>
-            <div className="text-sm text-muted-foreground">
-              <p>Pregúntate:</p>
-              <ul className="list-disc list-inside pl-4">
-                  <li>¿Cómo se mueve esta versión de mí? </li>
-                  <li>¿Cómo cuida sus espacios y se habla? </li>
-                  <li>¿Qué decisiones toma? </li>
-                  <li>¿Qué límites pone? </li>
-                  <li>¿Qué transmite a los demás? </li>
-              </ul>
-            </div>
-            <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial…</Label>
+            <p>Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p><p>Pregúntate: <ul><li>¿Cómo se mueve esta versión de mí? </li><li>¿Cómo cuida sus espacios y se habla? </li><li>¿Qué decisiones toma? </li><li>¿Qué límites pone? </li><li>¿Qué transmite a los demás? </li></ul></p>
+            <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial… </Label>
             <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad." />
             <p className="text-xs text-muted-foreground italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
             <Button onClick={next} className="w-full">Siguiente</Button>
@@ -91,12 +82,39 @@ ${smallAction}
         );
       case 3: // Integration and choice
         return (
-          <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso 3: Integración y elección</h4>
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 3: Integración y elección</h4>
             <p className="text-sm text-muted-foreground">Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
+            
+            <div className="space-y-4 text-sm p-4 border rounded-md bg-background/50">
+                <div>
+                    <h5 className="font-medium">Tu yo actual:</h5>
+                    <p className="italic text-muted-foreground whitespace-pre-wrap">{presentSelfDesc || "No descrito."}</p>
+                </div>
+                <div>
+                    <h5 className="font-medium">Tu yo esencial:</h5>
+                    <p className="italic text-muted-foreground whitespace-pre-wrap">{essentialSelfDesc || "No descrito."}</p>
+                </div>
+            </div>
+
+            <div className="text-sm text-muted-foreground">
+                <p>Pregúntate:</p>
+                <ul className="list-disc list-inside pl-4">
+                    <li>¿Qué diferencia más significativa noto entre mis dos versiones?</li>
+                    <li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</li>
+                </ul>
+            </div>
+
             <div className="space-y-2">
-                <Label htmlFor="small-action">¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</Label>
-                <Textarea id="small-action" value={smallAction} onChange={e => setSmallAction(e.target.value)} placeholder="Ej: Quiero probar a poner el móvil en silencio media hora cada noche..." />
+                <Label htmlFor="small-action">Mi pequeña acción para esta semana:</Label>
+                <Textarea 
+                    id="small-action" 
+                    value={smallAction} 
+                    onChange={e => setSmallAction(e.target.value)} 
+                    placeholder="Describe tu gesto o acción pequeña…" 
+                    disabled={isSaved}
+                />
+                 <p className="text-xs text-muted-foreground">Ejemplo guía: “Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para leer o simplemente descansar en calma.”</p>
             </div>
             {!isSaved ? (
                 <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
