@@ -148,40 +148,33 @@ export const settingBoundariesPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué es un estilo de comunicación?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n• Cómo pides las cosas.\n• Cómo reaccionas ante un conflicto.\n• Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.',
+              text:
+                'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n• Cómo pides las cosas.\n• Cómo reaccionas ante un conflicto.\n• Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: '¿Desde qué lugar te colocas cuando te comunicas?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Una forma sencilla de observar tu estilo de comunicación es preguntarte: ¿Desde qué lugar me estoy comunicando?:',
-            },
-            {
-              type: 'list',
-              items: [
-                '¿Desde abajo, callándome o cediendo para evitar conflictos?',
-                '¿Desde arriba, imponiendo o descalificando?',
-                '¿O desde un lugar de equilibrio, en el que me expreso con respeto mutuo?',
-              ],
-            },
-            {
-              type: 'paragraph',
-              text: 'Cada vez que hablas con alguien, consciente o no, te colocas en una posición relacional. Esa posición influye en cómo te sientes, cómo reacciona el otro y qué tipo de relación se construye entre ambos.\nAunque a veces usamos diferentes estilos según la situación, hay uno que ha demostrado ser el más saludable, tanto para ti como para tus vínculos: el estilo asertivo.\n¿Por qué?\nPorque te permite:',
+              text:
+                'Una forma sencilla de observar tu estilo de comunicación es preguntarte: ¿Desde qué lugar me estoy comunicando?:\n•\t¿Desde abajo, callándome o cediendo para evitar conflictos?\n•\t¿Desde arriba, imponiendo o descalificando?\n•\t¿O desde un lugar de equilibrio, en el que me expreso con respeto mutuo?\nCada vez que hablas con alguien, consciente o no, te colocas en una posición relacional. Esa posición influye en cómo te sientes, cómo reacciona el otro y qué tipo de relación se construye entre ambos.\nAunque a veces usamos diferentes estilos según la situación, hay uno que ha demostrado ser el más saludable, tanto para ti como para tus vínculos: el estilo asertivo.\n¿Por qué?\nPorque te permite:',
             },
             {
               type: 'list',
@@ -194,14 +187,16 @@ export const settingBoundariesPath: Path = {
             },
             {
               type: 'paragraph',
-              text: 'El estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.',
+              text:
+                'El estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
           content: [
             {
               type: 'collapsible',
@@ -284,7 +279,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
+              text:
+                'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:',
             },
             {
               type: 'list',
@@ -296,7 +292,8 @@ export const settingBoundariesPath: Path = {
             },
             {
               type: 'paragraph',
-              text: 'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
+              text:
+                'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
             },
             {
               type: 'list',
@@ -384,7 +381,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Poner límites no siempre te hace sentir “bien”.\nY esto puede desorientarte: hiciste algo que sabías que necesitabas, pero aun así... te sientes mal.\nEste malestar puede venir en forma de:\n• Miedo al rechazo: “¿Y si se enfada?”, “¿Y si se aleja?”\n• Culpa: “Quizá fui demasiado tajante”, “¿Y si le hice daño sin querer?”\n• Duda: “¿Lo dije bien?”, “¿Exageré?”\nEstas sensaciones son normales. Lo que está ocurriendo no es que hayas hecho algo malo, sino que tu sistema emocional está desprogramando años de hábitos aprendidos: ceder, agradar, adaptarte, callarte o imponerte.',
+              text:
+                'Poner límites no siempre te hace sentir “bien”.\nY esto puede desorientarte: hiciste algo que sabías que necesitabas, pero aun así... te sientes mal.\nEste malestar puede venir en forma de:\n• Miedo al rechazo: “¿Y si se enfada?”, “¿Y si se aleja?”\n• Culpa: “Quizá fui demasiado tajante”, “¿Y si le hice daño sin querer?”\n• Duda: “¿Lo dije bien?”, “¿Exageré?”\nEstas sensaciones son normales. Lo que está ocurriendo no es que hayas hecho algo malo, sino que tu sistema emocional está desprogramando años de hábitos aprendidos: ceder, agradar, adaptarte, callarte o imponerte.',
             },
           ],
         },
@@ -396,7 +394,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Esta es una de las claves de la semana: aprender a diferenciar el tipo de incomodidad que estás sintiendo.\nPorque no todo malestar es igual.\nMalestar sano:\n•\tEs el que aparece cuando haces algo nuevo que te acerca a tu bienestar.\n•\tPuede sentirse como tensión, duda o culpa… pero nace de haber actuado con coherencia contigo.\n•\tA largo plazo, este malestar se transforma en claridad, tranquilidad y autoestima.\nEjemplo:\nDices “no puedo ayudarte esta vez” y sientes incomodidad, pero también paz. Es una emoción nueva, incómoda… pero alineada.\n Malestar por autoabandono:\n•\tEs el que surge cuando te abandonas a ti mismo o a ti misma por miedo a molestar.\n•\tAparece cuando callas, cedes, aceptas… no porque quieras, sino por miedo.\n•\tPuede parecer un alivio al principio, pero deja una sensación sutil de traición interna, cansancio o tristeza.\nEjemplo:\nDices “sí” cuando en realidad querías decir “no”. Evitas el conflicto, pero luego te sientes frustrado o frustrada contigo.\nAprender a notar esta diferencia te permitirá seguir avanzando, aunque lo incómodo esté presente.\nNo todo lo incómodo es dañino. A veces lo incómodo es justo lo que necesitas para crecer.',
+              text:
+                'Esta es una de las claves de la semana: aprender a diferenciar el tipo de incomodidad que estás sintiendo.\nPorque no todo malestar es igual.\nMalestar sano:\n•\tEs el que aparece cuando haces algo nuevo que te acerca a tu bienestar.\n•\tPuede sentirse como tensión, duda o culpa… pero nace de haber actuado con coherencia contigo.\n•\tA largo plazo, este malestar se transforma en claridad, tranquilidad y autoestima.\nEjemplo:\nDices “no puedo ayudarte esta vez” y sientes incomodidad, pero también paz. Es una emoción nueva, incómoda… pero alineada.\n Malestar por autoabandono:\n•\tEs el que surge cuando te abandonas a ti mismo o a ti misma por miedo a molestar.\n•\tAparece cuando callas, cedes, aceptas… no porque quieras, sino por miedo.\n•\tPuede parecer un alivio al principio, pero deja una sensación sutil de traición interna, cansancio o tristeza.\nEjemplo:\nDices “sí” cuando en realidad querías decir “no”. Evitas el conflicto, pero luego te sientes frustrado o frustrada contigo.\nAprender a notar esta diferencia te permitirá seguir avanzando, aunque lo incómodo esté presente.\nNo todo lo incómodo es dañino. A veces lo incómodo es justo lo que necesitas para crecer.',
             },
           ],
         },
@@ -408,7 +407,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Cambiar no es fácil, y mucho menos cuando hablamos de romper patrones relacionales profundos.\nSostener un límite —aunque sea justo, necesario y sano— puede ser desafiante por varias razones:\n•\tPorque aprendiste a evitar el conflicto: Tal vez desde pequeña/o te enseñaron que llevar la contraria era peligroso, maleducado o egoísta. Ahora estás practicando quedarte incluso cuando hay tensión.\n•\tPorque estás empezando a confiar en ti, pero aún escuchas esas voces del pasado que dicen: “Estás exagerando”, “No deberías decir eso”, “Vas a decepcionar”.\n•\tPorque tu entorno también se está reacomodando: Las personas a tu alrededor pueden estar acostumbradas a que siempre digas que sí, a que no pongas límites, y el cambio les sorprende, incomoda o incluso les molesta.\nTodo esto es normal. No significa que estés fallando.\nEstás reconstruyendo la relación contigo, y eso requiere práctica, conciencia… y mucha compasión.\nLo importante no es hacerlo perfecto.\nLo importante es no volver atrás solo para calmar la incomodidad momentánea.\nEsa incomodidad pasará. Pero tu coherencia… se quedará contigo.',
+              text:
+                'Cambiar no es fácil, y mucho menos cuando hablamos de romper patrones relacionales profundos.\nSostener un límite —aunque sea justo, necesario y sano— puede ser desafiante por varias razones:\n•\tPorque aprendiste a evitar el conflicto: Tal vez desde pequeña/o te enseñaron que llevar la contraria era peligroso, maleducado o egoísta. Ahora estás practicando quedarte incluso cuando hay tensión.\n•\tPorque estás empezando a confiar en ti, pero aún escuchas esas voces del pasado que dicen: “Estás exagerando”, “No deberías decir eso”, “Vas a decepcionar”.\n•\tPorque tu entorno también se está reacomodando: Las personas a tu alrededor pueden estar acostumbradas a que siempre digas que sí, a que no pongas límites, y el cambio les sorprende, incomoda o incluso les molesta.\nTodo esto es normal. No significa que estés fallando.\nEstás reconstruyendo la relación contigo, y eso requiere práctica, conciencia… y mucha compasión.\nLo importante no es hacerlo perfecto.\nLo importante es no volver atrás solo para calmar la incomodidad momentánea.\nEsa incomodidad pasará. Pero tu coherencia… se quedará contigo.',
             },
           ],
         },
@@ -469,7 +469,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: 'No te juzgues por sentirte incómodo. Estás aprendiendo a priorizarte sin herir.',
+          text: '“No te juzgues por sentirte incómodo. Estás aprendiendo a priorizarte sin herir.”',
         },
       ],
     },
@@ -494,7 +494,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.',
+              text:
+                'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.',
             },
           ],
         },
@@ -506,7 +507,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Muchas veces, actuamos con buena intención… pero desde el miedo. Miedo a que el otro se enfade, se aleje o deje de querernos. Y ese miedo puede llevarte a silenciarte o a sostener más de lo que puedes. Esta pantalla te invita a hacer una pausa honesta: ¿te estás eligiendo, o estás eligiendo agradar?\nUna pregunta clave esta semana es:\n¿Estoy siendo yo… o estoy actuando para evitar el malestar del otro?\nLa complacencia a veces se disfraza de amabilidad, pero muchas veces nace del miedo:\n•\tMiedo al enfado del otro.\n•\tMiedo al conflicto.\n•\tMiedo a que me dejen de querer.\nCuando actúas desde ese lugar, tus relaciones pierden autenticidad… y tú te desgastas.\nEn cambio, cuando te expresas con firmeza y cuidado, fortaleces la confianza en ti… y das al otro la oportunidad de responder desde la suya.',
+              text:
+                'Muchas veces, actuamos con buena intención… pero desde el miedo. Miedo a que el otro se enfade, se aleje o deje de querernos. Y ese miedo puede llevarte a silenciarte o a sostener más de lo que puedes. Esta pantalla te invita a hacer una pausa honesta: ¿te estás eligiendo, o estás eligiendo agradar?\nUna pregunta clave esta semana es:\n¿Estoy siendo yo… o estoy actuando para evitar el malestar del otro?\nLa complacencia a veces se disfraza de amabilidad, pero muchas veces nace del miedo:\n•\tMiedo al enfado del otro.\n•\tMiedo al conflicto.\n•\tMiedo a que me dejen de querer.\nCuando actúas desde ese lugar, tus relaciones pierden autenticidad… y tú te desgastas.\nEn cambio, cuando te expresas con firmeza y cuidado, fortaleces la confianza en ti… y das al otro la oportunidad de responder desde la suya.',
             },
           ],
         },
@@ -518,7 +520,8 @@ export const settingBoundariesPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Aquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.\n- Insiste cuando:\n•\tEl vínculo es importante para ti y hay apertura al diálogo.\n•\tHay respeto mutuo, aunque existan diferencias.\n•\tEl otro también está dispuesto a crecer.\n- Cede cuando:\n•\tLo haces por elección, no por miedo.\n•\tEntiendes que ceder no borra tu valor ni tu dignidad.\n•\tHay reciprocidad.\n- Aléjate cuando:\n•\tPoner límites siempre genera castigo, conflicto o manipulación.\n•\tTus necesidades son ignoradas.\n•\tSientes que tienes que desaparecer para sostener la relación.\nA veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.',
+              text:
+                'Aquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.\n- Insiste cuando:\n•\tEl vínculo es importante para ti y hay apertura al diálogo.\n•\tHay respeto mutuo, aunque existan diferencias.\n•\tEl otro también está dispuesto a crecer.\n- Cede cuando:\n•\tLo haces por elección, no por miedo.\n•\tEntiendes que ceder no borra tu valor ni tu dignidad.\n•\tHay reciprocidad.\n- Aléjate cuando:\n•\tPoner límites siempre genera castigo, conflicto o manipulación.\n•\tTus necesidades son ignoradas.\n•\tSientes que tienes que desaparecer para sostener la relación.\nA veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.',
             },
           ],
         },
@@ -583,7 +586,8 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: 'Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.',
+          text:
+            '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”',
         },
       ],
     },
