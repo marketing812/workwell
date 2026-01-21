@@ -38,6 +38,19 @@ export function MentalNoiseTrafficLightExercise({ content, pathId }: MentalNoise
 
   const next = () => setStep(prev => prev + 1);
 
+  const resetExercise = () => {
+    setStep(0);
+    setRedZone('');
+    setOtherRed('');
+    setAmberZone('');
+    setOtherAmber('');
+    setGreenZone('');
+    setOtherGreen('');
+    setGreenGesture('');
+    setOtherGesture('');
+    setIsSaved(false);
+  };
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     const notebookContent = `
@@ -58,6 +71,7 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
     addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
     setIsSaved(true);
+    next();
   };
   
   const renderStep = () => {
@@ -78,7 +92,7 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
                 {redOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`red-${opt}`} /><Label htmlFor={`red-${opt}`} className="font-normal">{opt}</Label></div>)}
                 <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="red-other" /><Label htmlFor="red-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {redZone === 'Otro' && <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} />}
+            {redZone === 'Otro' && <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} placeholder="Describe tu momento rojo aquí..." />}
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -91,7 +105,7 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
                 {amberOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`amber-${opt}`} /><Label htmlFor={`amber-${opt}`} className="font-normal">{opt}</Label></div>)}
                 <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="amber-other" /><Label htmlFor="amber-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {amberZone === 'Otro' && <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} />}
+            {amberZone === 'Otro' && <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} placeholder="Describe tu momento ámbar aquí..." />}
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -104,7 +118,7 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
                 {greenOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`green-${opt}`} /><Label htmlFor={`green-${opt}`} className="font-normal">{opt}</Label></div>)}
                 <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="green-other" /><Label htmlFor="green-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
-            {greenZone === 'Otro' && <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} />}
+            {greenZone === 'Otro' && <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} placeholder="Describe tu momento verde aquí..." />}
             <Button onClick={next} className="w-full">Siguiente</Button>
           </div>
         );
@@ -127,6 +141,15 @@ ${greenGesture === 'Otro' ? otherGesture : greenGesture || 'No especificado.'}
                 </div>
             )}
           </form>
+        );
+      case 5:
+        return (
+          <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
+            <CheckCircle className="h-10 w-10 text-primary mx-auto" />
+            <h4 className="font-semibold text-lg">Tu Semáforo Personal</h4>
+            <p className="text-sm text-muted-foreground">Ya tienes tu semáforo personal: rojo para detectar saturación, amarillo para anticipar tensión y verde para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el ruido mental, sino aprender a escucharlo como señal para volver a ti.</p>
+            <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+          </div>
         );
       default: return null;
     }
