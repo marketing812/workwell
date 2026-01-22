@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SelfCareContractExerciseContent } from '@/data/paths/pathTypes';
 
@@ -48,6 +48,8 @@ ${reminder}
     toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });
     setIsSaved(true);
   };
+  
+  const prevStep = () => setStep(prev => Math.max(0, prev - 1));
 
   const renderStep = () => {
     switch (step) {
@@ -72,7 +74,10 @@ ${reminder}
               <div className="flex items-center space-x-2"><RadioGroupItem value="gesto" id="rem-gesture" /><Label className="font-normal" htmlFor="rem-gesture">Un gesto físico</Label></div>
             </RadioGroup>
             <Textarea value={reminder} onChange={e => setReminder(e.target.value)} placeholder={`Describe tu recordatorio de tipo "${reminderType}"`} />
-            <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={() => setStep(2)} className="w-auto">Siguiente</Button>
+            </div>
           </div>
         );
       case 2:
@@ -81,7 +86,10 @@ ${reminder}
             <h4 className="font-semibold">Paso 3: Una frase que me acompañe</h4>
             <Label htmlFor="anchor-phrase">¿Qué quieres decirte a ti mismo/a cuando te sientas perdido/a, agotado/a o en lucha?</Label>
             <Textarea id="anchor-phrase" value={anchorPhrase} onChange={e => setAnchorPhrase(e.target.value)} />
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mi pacto</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/> Guardar mi pacto</Button>
+            </div>
           </div>
         );
       default:
