@@ -91,7 +91,7 @@ export const settingBoundariesPath: Path = {
           objective: 'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
           duration: '5-10 min por técnica',
         },
-        { type: 'secureBoundaryPhraseExercise', title: 'Ejercicio 2: Tu Frase de "Límite Seguro"', objective: 'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.', duration: '5 minutos', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3' },
+        { type: 'secureBoundaryPhraseExercise', title: 'Ejercicio 2: Tu Frase de Límite Seguro', objective: 'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.', duration: '5 minutos', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3', prompts: ['¿Hubo alguna frase o situación que te haya resonado especialmente?','¿Cómo te sentiste al practicar tus frases de límite?','¿Notaste cambios en tu forma de expresarte o en tu sensación interna?','¿Qué te llevas de esta semana que te gustaría conservar?']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3'},
         { type: 'list', items: ['Tu estilo de comunicación no es algo fijo: es aprendido, y puede transformarse.','Existen cuatro estilos comunes: pasivo, agresivo, pasivo-agresivo y asertivo.','Cada estilo refleja una posición relacional implícita: por debajo, por encima o a la misma altura.','La asertividad consciente es la capacidad de expresar lo que sentimos, pensamos y necesitas desde un lugar de respeto hacia uno mismo y hacia los demás.','No se trata de ser perfecto, sino de ganar conciencia, entrenar nuevas formas y elegir cómo queremos comunicarnos.','Aprender a comunicar lo que sientes y necesitas es una forma profunda de autocuidado y construcción de vínculos sanos.']},
@@ -105,13 +105,13 @@ export const settingBoundariesPath: Path = {
       estimatedTime: '20-25 min',
       content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion3.mp3'},
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: '¿Por qué me siento mal si hice lo correcto?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Poner límites no siempre te hace sentir “bien”.\nY esto puede desorientarte: hiciste algo que sabías que necesitabas, pero aun así... te sientes mal.\nEste malestar puede venir en forma de:\n• Miedo al rechazo: “¿Y si se enfada?”, “¿Y si se aleja?”\n• Culpa: “Quizá fui demasiado tajante”, “¿Y si le hice daño sin querer?”\n• Duda: “¿Lo dije bien?”, “¿Exageré?”\nEstas sensaciones son normales. Lo que está ocurriendo no es que hayas hecho algo malo, sino que tu sistema emocional está desprogramando años de hábitos aprendidos: ceder, agradar, adaptarte, callarte o imponerte.' }] },
-        { type: 'collapsible', title: '¿Qué tipo de malestar estás sintiendo?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Esta es una de las claves de la semana: aprender a diferenciar el tipo de incomodidad que estás sintiendo.\nPorque no todo malestar es igual.\nMalestar sano:\n•\tEs el que aparece cuando haces algo nuevo que te acerca a tu bienestar.\n•\tPuede sentirse como tensión, duda o culpa… pero nace de haber actuado con coherencia contigo.\n•\tA largo plazo, este malestar se transforma en claridad, tranquilidad y autoestima.\nEjemplo:\nDices “no puedo ayudarte esta vez” y sientes incomodidad, pero también paz. Es una emoción nueva, incómoda… pero alineada.\n Malestar por autoabandono:\n•\tEs el que surge cuando te abandonas a ti mismo o a ti misma por miedo a molestar.\n•\tAparece cuando callas, cedes, aceptas… no porque quieras, sino por miedo.\n•\tPuede parecer un alivio al principio, pero deja una sensación sutil de traición interna, cansancio o tristeza.\nEjemplo:\nDices “sí” cuando en realidad querías decir “no”. Evitas el conflicto, pero luego te sientes frustrado o frustrada contigo.\nAprender a notar esta diferencia te permitirá seguir avanzando, aunque lo incómodo esté presente.\nNo todo lo incómodo es dañino. A veces lo incómodo es justo lo que necesitas para crecer.' }] },
-        { type: 'collapsible', title: '¿Por qué cuesta tanto sostenerse?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Cambiar no es fácil, y mucho menos cuando hablamos de romper patrones relacionales profundos.\nSostener un límite —aunque sea justo, necesario y sano— puede ser desafiante por varias razones:\n•\tPorque aprendiste a evitar el conflicto: Tal vez desde pequeña/o te enseñaron que llevar la contraria era peligroso, maleducado o egoísta. Ahora estás practicando quedarte incluso cuando hay tensión.\n•\tPorque estás empezando a confiar en ti, pero aún escuchas esas voces del pasado que dicen: “Estás exagerando”, “No deberías decir eso”, “Vas a decepcionar”.\n•\tPorque tu entorno también se está reacomodando: Las personas a tu alrededor pueden estar acostumbradas a que siempre digas que sí, a que no pongas límites, y el cambio les sorprende, incomoda o incluso les molesta.\nTodo esto es normal. No significa que estés fallando.\nEstás reconstruyendo la relación contigo, y eso requiere práctica, conciencia… y mucha compasión.\nLo importante no es hacerlo perfecto.\nLo importante es no volver atrás solo para calmar la incomodidad momentánea.\nEsa incomodidad pasará. Pero tu coherencia… se quedará contigo.' }] },
+        { type: 'collapsible', title: '¿Por qué me siento mal si hice lo correcto?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Poner límites no siempre te hace sentir “bien”.\nY esto puede desorientarte: hiciste algo que sabías que necesitabas, pero aun así... te sientes mal.\nEste malestar puede venir en forma de:\n• Miedo al rechazo: “¿Y si se enfada?”, “¿Y si se aleja?”\n• Culpa: “Quizá fui demasiado tajante”, “¿Y si le hice daño sin querer?”\n• Duda: “¿Lo dije bien?”, “¿Exageré?”\nEstas sensaciones son normales. Lo que está ocurriendo no es que hayas hecho algo malo, sino que tu sistema emocional está desprogramando años de hábitos aprendidos: ceder, agradar, adaptarte, callarte o imponerte.'}] },
+        { type: 'collapsible', title: '¿Qué tipo de malestar estás sintiendo?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Esta es una de las claves de la semana: aprender a diferenciar el tipo de incomodidad que estás sintiendo.\nPorque no todo malestar es igual.\nMalestar sano:\n•\tEs el que aparece cuando haces algo nuevo que te acerca a tu bienestar.\n•\tPuede sentirse como tensión, duda o culpa… pero nace de haber actuado con coherencia contigo.\n•\tA largo plazo, este malestar se transforma en claridad, tranquilidad y autoestima.\nEjemplo:\nDices “no puedo ayudarte esta vez” y sientes incomodidad, pero también paz. Es una emoción nueva, incómoda… pero alineada.\n Malestar por autoabandono:\n•\tEs el que surge cuando te abandonas a ti mismo o a ti misma por miedo a molestar.\n•\tAparece cuando callas, cedes, aceptas… no porque quieras, sino por miedo.\n•\tPuede parecer un alivio al principio, pero deja una sensación sutil de traición interna, cansancio o tristeza.\nEjemplo:\nDices “sí” cuando en realidad querías decir “no”. Evitas el conflicto, pero luego te sientes frustrado o frustrada contigo.\nAprender a notar esta diferencia te permitirá seguir avanzando, aunque lo incómodo esté presente.\nNo todo lo incómodo es dañino. A veces lo incómodo es justo lo que necesitas para crecer.'}] },
+        { type: 'collapsible', title: '¿Por qué cuesta tanto sostenerse?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion3.mp3', content: [{ type: 'paragraph', text: 'Cambiar no es fácil, y mucho menos cuando hablamos de romper patrones relacionales profundos.\nSostener un límite —aunque sea justo, necesario y sano— puede ser desafiante por varias razones:\n•\tPorque aprendiste a evitar el conflicto: Tal vez desde pequeña/o te enseñaron que llevar la contraria era peligroso, maleducado o egoísta. Ahora estás practicando quedarte incluso cuando hay tensión.\n•\tPorque estás empezando a confiar en ti, pero aún escuchas esas voces del pasado que dicen: “Estás exagerando”, “No deberías decir eso”, “Vas a decepcionar”.\n•\tPorque tu entorno también se está reacomodando: Las personas a tu alrededor pueden estar acostumbradas a que siempre digas que sí, a que no pongas límites, y el cambio les sorprende, incomoda o incluso les molesta.\nTodo esto es normal. No significa que estés fallando.\nEstás reconstruyendo la relación contigo, y eso requiere práctica, conciencia… y mucha compasión.\nLo importante no es hacerlo perfecto.\nLo importante es no volver atrás solo para calmar la incomodidad momentánea.\nEsa incomodidad pasará. Pero tu coherencia… se quedará contigo.'}] },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'postBoundaryEmotionsExercise', title: 'Ejercicio 1: Registro de Emociones Post-Límite', objective: 'Cuando te atreves a marcar un límite, puede aparecer culpa, duda o ansiedad. Este ejercicio te ayuda a identificar y validar lo que sientes después, y a responderte con comprensión, no con juicio.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana3audio5ejercicio1.mp3' },
         { type: 'firmAndCalmSelfVisualizationExercise', title: 'Ejercicio 2: Visualización del Yo Firme y Tranquilo', objective: 'A veces, lo que necesitas no es más fuerza… sino más conexión contigo. Esta visualización te ayuda a conectar con esa parte tuya que puede sostener un límite sin romperse, sin gritar, sin justificarse. Una parte firme, clara y tranquila.', duration: '5–8 minutos', audioUrl: 'https://workwellfut.com/audios/rm/R4_visualizacion_del_yo_firme_y_tranquilo.mp3'},
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion3.mp3', prompts: ['Esta semana has aprendido que la incomodidad no siempre es señal de que te estás equivocando. A veces, el mayor crecimiento se siente raro, porque te estás atreviendo a hacer lo que nunca hiciste.','Te propongo cerrar con una pregunta:','¿Qué sensaciones aparecen en ti cuando mantienes un límite que antes habrías retirado?']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion3.mp3', prompts: ["Esta semana has aprendido que la incomodidad no siempre es señal de que te estás equivocando. A veces, el mayor crecimiento se siente raro, porque te estás atreviendo a hacer lo que nunca hiciste.","Te propongo cerrar con una pregunta:","¿Qué sensaciones aparecen en ti cuando mantienes un límite que antes habrías retirado?"]},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio8Ruta4Sesion3.mp3' },
         { type: 'list', items: ['Poner límites puede generar emociones incómodas, pero eso no significa que estés actuando mal.','Diferenciar entre malestar sano (por crecer) y malestar por autoabandono (por no escucharte) es clave.','Aprender a sostener la incomodidad sin retroceder te ayuda a fortalecer tu seguridad interna.','Validar tus emociones y practicar autocompasión evita que cedas ante la culpa o el miedo.','No necesitas hacerlo perfecto. Solo necesitas respetarte un poco más cada vez.']},
         { type: 'quote', text: 'No te juzgues por sentirte incómodo. Estás aprendiendo a priorizarte sin herir.' }
@@ -123,12 +123,17 @@ export const settingBoundariesPath: Path = {
       type: 'summary',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3'},
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3',
+        },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Poner límites también es un acto relacional',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -139,18 +144,20 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué pasa cuando empiezo a poner límites?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\nDejas de responder automáticamente, y empiezas a elegir desde tu verdad. Eso mueve cosas.\n\nAlgo se mueve. Tus relaciones cambian. Algunas se vuelven más sanas. Otras… quizás se tensan. Es natural:\n\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\n\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.\n\nEsta semana no se trata solo de seguir practicando el “no”, sino de observar con conciencia qué relaciones merecen tu energía, cuáles necesitan un reajuste… y cuáles, tal vez, tu distancia.',
+              text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible. Dejas de responder automáticamente, y empiezas a elegir desde tu verdad. Eso mueve cosas.\n\nAlgo se mueve. Tus relaciones cambian. Algunas se vuelven más sanas. Otras… quizás se tensan. Es natural:\n\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\n\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.\n\nEsta semana no se trata solo de seguir practicando el “no”, sino de observar con conciencia qué relaciones merecen tu energía, cuáles necesitan un reajuste… y cuáles, tal vez, tu distancia.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Límites sanos: respeto, claridad y conexión real',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -161,29 +168,32 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Actúo desde mi verdad o para evitar el malestar del otro?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Muchas veces, actuamos con buena intención… pero desde el miedo. Miedo a que el otro se enfade, se aleje o deje de querernos. Y ese miedo puede llevarte a silenciarte o a sostener más de lo que puedes. Esta ruta te invita a hacer una pausa honesta: ¿te estás eligiendo, o estás eligiendo agradar?\n\nUna pregunta clave esta semana es:\n\n¿Estoy siendo yo… o estoy actuando para evitar el malestar del otro?\n\nLa complacencia a veces se disfraza de amabilidad, pero muchas veces nace del miedo:\n•\tMiedo al enfado del otro.\n•\tMiedo al conflicto.\n•\tMiedo a que me dejen de querer.\n\nCuando actúas desde ese lugar, tus relaciones pierden autenticidad… y tú te desgastas.\n\nEn cambio, cuando te expresas con firmeza y cuidado, fortaleces la confianza en ti… y das al otro la oportunidad de responder desde la suya.',
+              text: 'Muchas veces, actuamos con buena intención… pero desde el miedo. Miedo a que el otro se enfade, se aleje o deje de querernos. Y ese miedo puede llevarte a silenciarte o a sostener más de lo que puedes. Esta ruta te invita a hacer una pausa honesta: ¿te estás eligiendo, o estás eligiendo agradar?\n\nUna pregunta clave esta semana es:\n\n¿Estoy siendo yo… o estoy actuando para evitar el malestar del otro?\n\nLa complacencia a veces se disfraza de amabilidad, pero muchas veces nace del miedo:\n\n•\tMiedo al enfado del otro.\n•\tMiedo al conflicto.\n•\tMiedo a que me dejen de querer.\n\nCuando actúas desde ese lugar, tus relaciones pierden autenticidad… y tú te desgastas.\n\nEn cambio, cuando te expresas con firmeza y cuidado, fortaleces la confianza en ti… y das al otro la oportunidad de responder desde la suya.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: '¿Insistir, ceder o alejarme?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Aquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.\n\n- Insiste cuando:\n\n•\tEl vínculo es importante para ti y hay apertura al diálogo.\n•\tHay respeto mutuo, aunque existan diferencias.\n•\tEl otro también está dispuesto a crecer.\n\n- Cede cuando:\n\n•\tLo haces por elección, no por miedo.\n•\tEntiendes que ceder no borra tu valor ni tu dignidad.\n•\tHay reciprocidad.\n\n- Aléjate cuando:\n\n•\tPoner límites siempre genera castigo, conflicto o manipulación.\n•\tTus necesidades son ignoradas.\n•\tSientes que tienes que desaparecer para sostener la relación.\n\nA veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.',
+              text: 'No siempre es fácil saber qué hacer ante una relación tensa. A veces dudamos entre seguir insistiendo, ceder para evitar conflicto o alejarnos para protegernos. Esta guía no te da respuestas absolutas, pero sí te ofrece señales internas para orientarte desde el respeto y la coherencia contigo.\n\nAquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.\n\n- Insiste cuando:\n\n•\tEl vínculo es importante para ti y hay apertura al diálogo.\n•\tHay respeto mutuo, aunque existan diferencias.\n•\tEl otro también está dispuesto a crecer.\n\n- Cede cuando:\n\n•\tLo haces por elección, no por miedo.\n•\tEntiendes que ceder no borra tu valor ni tu dignidad.\n•\tHay reciprocidad.\n\n- Aléjate cuando:\n\n•\tPoner límites siempre genera castigo, conflicto o manipulación.\n•\tTus necesidades son ignoradas.\n•\tSientes que tienes que desaparecer para sostener la relación.\n\nA veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Quererte también es una forma de vincularte',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3',
+          audioUrl:
+            'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -193,7 +203,42 @@ export const settingBoundariesPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'compassionateFirmnessExercise', title: 'Ejercicio 1: Tu Frase de Firmeza Compasiva', objective: 'Entrenar tu capacidad para sostener una decisión sin retroceder, incluso cuando el otro muestre incomodidad o decepción. Aprenderás a validar la emoción ajena sin anular tu necesidad.', duration: '5-10 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3' },
-        { type: 'selfCareContractExercise', title: 'Ejercicio 2: Mi Contrato Interno de Autocuidado', objective: 'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3' }
+        { type: 'selfCareContractExercise', title: 'Ejercicio 2: Mi Contrato Interno de Autocuidado', objective: 'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3' },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion4.mp3',
+          prompts: [
+            'Tómate unos minutos para cerrar esta semana desde un lugar de conexión contigo. No necesitas tener todas las respuestas, solo darte espacio para observarte con honestidad.',
+            '✍️ Responde en tu cuaderno:',
+            '¿En qué momento reciente sentí que me respeté al mantener un límite, aunque fuera incómodo?',
+            '¿Qué sentí internamente al sostener mi decisión sin justificarme?',
+            '¿Qué vínculo ha cambiado —aunque sea ligeramente— desde que empecé a expresarme con más claridad?',
+            '¿Qué me comprometo a seguir practicando, aunque a veces me cueste?',
+          ]
+        },
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion4.mp3'
+        },
+        { 
+          type: 'list', 
+          items: [
+            'Poner límites con respeto es un acto de honestidad, no de rechazo.',
+            'Las relaciones sanas resisten la claridad, incluso con desacuerdos.',
+            'No necesitas justificar tu “no” mil veces para que sea válido.',
+            'Validar la emoción del otro no implica ceder tu necesidad.',
+            'Sostener tu decisión sin culpa fortalece tu dignidad emocional.',
+            'Alejarte de vínculos que no respetan tus límites no es egoísmo, es autocuidado.',
+            'La coherencia entre lo que sientes, piensas y haces es el cimiento de relaciones auténticas.',
+            'El respeto hacia ti es una brújula: te muestra dónde quedarte, con quién reajustar, y de qué alejarte.'
+          ]
+        },
+        { 
+          type: 'quote', 
+          text: '“Cuando aprendo a tratarme con respeto, enseño al mundo cómo cuidarme. \nY cada vez que sostengo un ‘no’ con calma, afirmo mi derecho a vivir desde la verdad.”'
+        }
       ]
     },
     {
@@ -211,3 +256,4 @@ export const settingBoundariesPath: Path = {
 };
 
     
+
