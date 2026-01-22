@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IntensityScaleExerciseContent } from '@/data/paths/pathTypes';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface IntensityScaleExerciseProps {
   content: IntensityScaleExerciseContent;
@@ -20,29 +21,36 @@ export function IntensityScaleExercise({ content, pathId }: IntensityScaleExerci
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [scale, setScale] = useState({
-    '0-2': { signals: '', needs: '', strategy: '' },
-    '3-4': { signals: '', needs: '', strategy: '' },
-    '5-6': { signals: '', needs: '', strategy: '' },
-    '7-8': { signals: '', needs: '', strategy: '' },
-    '9-10': { signals: '', needs: '', strategy: '' },
+    '0–2': { signals: '', needs: '', strategy: '' },
+    '3–4': { signals: '', needs: '', strategy: '' },
+    '5–6': { signals: '', needs: '', strategy: '' },
+    '7–8': { signals: '', needs: '', strategy: '' },
+    '9–10': { signals: '', needs: '', strategy: '' },
   });
   const [isSaved, setIsSaved] = useState(false);
 
   const handleScaleChange = (level: keyof typeof scale, field: string, value: string) => {
     setScale(prev => ({ ...prev, [level]: { ...prev[level], [field]: value } }));
   };
+  
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
-  const handleSave = () => {
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
     Object.entries(scale).forEach(([level, data]) => {
-      notebookContent += `**Nivel ${level}:**\n`;
-      notebookContent += `- Señales: ${data.signals || 'No descrito'}\n`;
-      notebookContent += `- Necesidades: ${data.needs || 'No descrito'}\n`;
-      notebookContent += `- Estrategias: ${data.strategy || 'No descrito'}\n\n`;
+      if (data.signals.trim() || data.needs.trim() || data.strategy.trim()) {
+        notebookContent += `**Nivel ${level}:**\n`;
+        notebookContent += `- Señales: ${data.signals || 'No descrito'}\n`;
+        notebookContent += `- Necesidades: ${data.needs || 'No descrito'}\n`;
+        notebookContent += `- Estrategias: ${data.strategy || 'No descrito'}\n\n`;
+      }
     });
     addNotebookEntry({ title: 'Mi Escala de Intensidad Emocional', content: notebookContent, pathId });
     toast({ title: 'Escala Guardada', description: 'Tu escala de intensidad emocional se ha guardado.' });
     setIsSaved(true);
+    nextStep();
   };
 
   const renderStep = () => {
@@ -50,39 +58,80 @@ export function IntensityScaleExercise({ content, pathId }: IntensityScaleExerci
       case 0:
         return (
           <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Este ejercicio te ayudará a crear una brújula emocional para saber qué hacer según cómo te sientes. No tienes que improvisar cuando estés en plena tormenta.</p>
-            <Button onClick={() => setStep(1)}>Crear mi plan <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <p className="text-sm text-muted-foreground">No todas las emociones intensas necesitan la misma respuesta. A veces un poco de malestar se resuelve con respirar. Otras veces necesitas parar por completo y pedir ayuda. Este ejercicio te ayudará a crear una brújula emocional para saber qué hacer según cómo te sientes.</p>
+            <Button onClick={nextStep}>Crear mi plan <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Crea tu plan por niveles</h4>
+            <h4 className="font-semibold text-lg">Visualiza tu escala del 0 al 10</h4>
+             <ul className="list-disc list-inside text-sm pl-4 space-y-1">
+                <li><strong className="text-green-600">0–2:</strong> Tranquilidad – Equilibrio</li>
+                <li><strong className="text-yellow-600">3–4:</strong> Activación leve – Incomodidad</li>
+                <li><strong className="text-orange-600">5–6:</strong> Tensión moderada – Desconcentración</li>
+                <li><strong className="text-red-600">7–8:</strong> Estrés alto – Ansiedad intensa</li>
+                <li><strong className="text-red-800">9–10:</strong> Colapso emocional – Bloqueo, desconexión o explosión</li>
+            </ul>
+             <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="example">
+                <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Ver ejemplo guía</AccordionTrigger>
+                <AccordionContent>
+                  <div className="text-xs space-y-2 p-2">
+                    <p><strong>Nivel 2:</strong> Siento calma, respiración estable. Necesito mantenerme así. Estrategia: Pasear, música suave.</p>
+                    <p><strong>Nivel 4:</strong> Empiezo a agobiarme, tensión en cuello. Necesito soltar presión. Estrategia: Respiración 5-5-5, pausa breve.</p>
+                    <p><strong>Nivel 6:</strong> Irritación, mente acelerada. Necesito calmar el sistema nervioso. Estrategia: Visualización segura, gesto de autocuidado.</p>
+                    <p><strong>Nivel 8:</strong> Llantos o bloqueo. Necesito protección y contención. Estrategia: Llamar a alguien, salir del entorno, técnica del ancla.</p>
+                    <p><strong>Nivel 10:</strong> Siento que no puedo más. Necesito seguridad. Estrategia: Parar, validar lo que siento, buscar apoyo urgente.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Crea tu plan por niveles</h4>
             {Object.keys(scale).map(level => (
               <div key={level} className="p-3 border rounded-md">
                 <h5 className="font-medium">Nivel {level}</h5>
                 <div className="space-y-2 mt-2">
                   <Label>¿Qué siento en el cuerpo y en la mente?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].signals} onChange={e => handleScaleChange(level as keyof typeof scale, 'signals', e.target.value)} />
+                  <Textarea value={scale[level as keyof typeof scale].signals} onChange={e => handleScaleChange(level as keyof typeof scale, 'signals', e.target.value)} disabled={isSaved} />
                   <Label>¿Qué necesito realmente en este nivel?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].needs} onChange={e => handleScaleChange(level as keyof typeof scale, 'needs', e.target.value)} />
+                  <Textarea value={scale[level as keyof typeof scale].needs} onChange={e => handleScaleChange(level as keyof typeof scale, 'needs', e.target.value)} disabled={isSaved} />
                   <Label>¿Qué estrategias puedo usar para regularme?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].strategy} onChange={e => handleScaleChange(level as keyof typeof scale, 'strategy', e.target.value)} />
+                  <Textarea value={scale[level as keyof typeof scale].strategy} onChange={e => handleScaleChange(level as keyof typeof scale, 'strategy', e.target.value)} disabled={isSaved} />
                 </div>
               </div>
             ))}
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mi escala</Button>
-          </div>
+             <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button type="submit" disabled={isSaved}>
+                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar mi escala'}
+              </Button>
+            </div>
+          </form>
         );
+        case 3:
+            return (
+                <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                    <h4 className="font-bold text-lg">Escala Guardada</h4>
+                    <p className="text-muted-foreground">Ya tienes tu propia escala emocional con recursos asociados. Esta será tu hoja de ruta cuando todo parezca desbordarte. Puedes volver a ella siempre que lo necesites.</p>
+                    <p className="text-xs text-muted-foreground italic">Recuerda: tu cuerpo te habla. Cuanto antes lo escuches, más fácil será cuidarte.</p>
+                    <Button onClick={() => setStep(0)} variant="outline" className="w-full">
+                        Empezar de nuevo
+                    </Button>
+                </div>
+            );
       default:
-        return (
-          <div className="p-4 text-center space-y-4">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-            <h4 className="font-semibold text-lg">Escala Guardada</h4>
-            <p className="text-muted-foreground">Ya tienes tu propia escala emocional con recursos asociados. Esta será tu hoja de ruta cuando todo parezca desbordarte.</p>
-            <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
-          </div>
-        );
+        return null;
     }
   };
 
