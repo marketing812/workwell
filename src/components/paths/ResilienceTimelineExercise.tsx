@@ -98,11 +98,31 @@ export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimeli
         );
       case 3:
         return (
-          <div className="p-4 text-center space-y-4">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-            <h4 className="font-semibold text-lg">Tu Línea de Resiliencia</h4>
-            <p className="text-muted-foreground">Observa lo que has escrito. Esta es tu línea de resiliencia: no solo viviste momentos difíciles… también te transformaste a través de ellos.</p>
-            <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h3 className="font-bold text-center text-lg text-primary">Tu Línea de Resiliencia</h3>
+            <p className="text-sm text-center text-muted-foreground">Esta es una síntesis de lo que has explorado. Cada punto es un testimonio de tu capacidad para seguir adelante.</p>
+            <div className="space-y-4">
+              {situations.map((sit, index) => {
+                if (!sit.trim()) return null;
+                const reflection = reflections[index];
+                return (
+                  <Card key={index} className="bg-background/50">
+                    <CardHeader>
+                      <CardTitle className="text-base">{sit}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="text-sm space-y-2">
+                      <p><strong>Lo más difícil:</strong> {reflection.difficult || 'No especificado.'}</p>
+                      <p><strong>Recursos que usé:</strong> {reflection.resources || 'No especificado.'}</p>
+                      <p><strong>Lo que aprendí:</strong> {reflection.learned || 'No especificado.'}</p>
+                      <p><strong>Lo que me sorprendió de mí:</strong> {reflection.surprised || 'No especificado.'}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+            <div className="text-center mt-6">
+                <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
+            </div>
           </div>
         );
       default:
