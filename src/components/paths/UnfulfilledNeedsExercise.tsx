@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -78,9 +77,9 @@ ${tomorrowPlan}
            {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar Reflexión</Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <p className="font-medium">Tu reflexión ha sido guardada.</p>
+            <div className="p-4 text-center space-y-4">
+                <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
+                <p className="italic text-muted-foreground">Reconocer lo que no hice desde el cuidado… ya es un acto de cuidado.</p>
             </div>
           )}
         </form>

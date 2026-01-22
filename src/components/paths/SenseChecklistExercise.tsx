@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -53,7 +52,7 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
       <CardContent>
         {step === 0 && (
           <div className="p-4 text-center space-y-4">
-            <p>Antes de actuar o tomar una decisión, te invitamos a hacer una breve pausa y revisar algunas preguntas clave. Este pequeño gesto puede ayudarte a elegir con más claridad y en sintonía con lo que realmente te importa.</p>
+            <p className="text-sm text-muted-foreground">Antes de actuar o tomar una decisión, te invitamos a hacer una breve pausa y revisar algunas preguntas clave. Este pequeño gesto puede ayudarte a elegir con más claridad y en sintonía con lo que realmente te importa. Solo tienes que leer cada pregunta con calma, responderte con honestidad y observar qué sensación te deja. Al final, podrás notar si la decisión que estás a punto de tomar te acerca o te aleja de tu dirección vital. No se trata de hacerlo perfecto, sino de aprender a escucharte un poco más antes de actuar.</p>
             <Button onClick={next}>Comenzar Checklist <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         )}
