@@ -30,17 +30,27 @@ export const resiliencePath: Path = {
           content: [{ type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\nMito\tRealidad\n“Las personas resilientes no se rompen nunca”\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\n“Es una cualidad con la que se nace”\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\n“Ser resiliente es mantener una actitud positiva siempre”\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\n“Si recaigo o me vuelvo a sentir mal, es que no soy resiliente”\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.' }]
         },
         { type: 'collapsible', title: 'Recaer no es lo contrario de ser resiliente', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio4sesion1ruta8.mp3', content: [{ type: 'paragraph', text: '¿Y si te dijera que una recaída emocional no es el final, sino una señal para ajustar el rumbo?\nMuchas personas piensan que, si vuelven a sentirse mal o repiten un patrón, están fallando.\nPero no es así.\nEn psicología lo sabemos: el cambio real no es lineal.\nTiene curvas, pausas, a veces retrocesos.\n•\tUna recaída puede ser la forma en que el cuerpo o la mente piden ayuda o descanso.\n•\tA veces reactivamos antiguas heridas, no porque estemos fracasando, sino porque estamos profundizando en nuestro proceso.\nResiliente no es quien nunca cae. Es quien se levanta sabiendo cómo cuidarse mejor.' }] },
-        { type: 'collapsible', title: 'El estrés no siempre es malo', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion1ruta8.mp3', content: [{ type: 'paragraph', text: 'Otro gran mito: “el estrés es nuestro enemigo”.\nLa verdad: no todo el estrés es negativo. Existe también el llamado eustrés: un tipo de activación saludable que nos empuja a actuar, a crecer y a conectar con los demás.\nEl problema no es sentir estrés.\nEl problema es no saber cómo gestionarlo o interpretarlo.\n•\tCuando entendemos el estrés como una señal de alarma, podemos:\no\tEscuchar lo que está pidiendo.\no\tSoltar lo que nos daña.\no\tRecuperar nuestro poder de elegir cómo actuar.' }] },
+        {
+          type: 'collapsible',
+          title: 'El estrés no siempre es malo',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion1ruta8.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Otro gran mito: “el estrés es nuestro enemigo”.\nLa verdad: no todo el estrés es negativo. Existe también el llamado eustrés: un tipo de activación saludable que nos empuja a actuar, a crecer y a conectar con los demás.\nEl problema no es sentir estrés.\nEl problema es no saber cómo gestionarlo o interpretarlo.\nCuando entendemos el estrés como una señal de alarma, podemos:\n•\tEscuchar lo que está pidiendo.\n•\tSoltar lo que nos daña.\n•\tRecuperar nuestro poder de elegir cómo actuar.',
+            },
+          ],
+        },
         { type: 'collapsible', title: '¿De qué está hecha la resiliencia?', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion1ruta8.mp3', content: [{ type: 'paragraph', text: 'La resiliencia emocional se construye con muchos ingredientes. Aquí tienes algunos de los más importantes:\n1.\tRegulación emocional\n Saber calmarte sin negar lo que sientes.\n2.\tFlexibilidad mental\n Salir del “todo o nada” y abrirte a nuevas formas de ver y hacer.\n3.\tPropósito vital\n Conectar con algo que dé sentido a tu vida incluso en el dolor.\n4.tRed de apoyo\n No caminar sola ni solo. Pedir y recibir ayuda también es resiliencia.' }] },
         { type: 'collapsible', title: 'En resumen…', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion1ruta8.mp3', content: [{ type: 'paragraph', text: 'Ser resiliente no es resistir como una roca.\nEs adaptarte como el agua, transformarte como el fuego, volver a florecer como un árbol podado.\nNo se trata de “ser fuerte”. Se trata de saber reconstruirte con cuidado, conciencia y recursos.\nY tú ya has sido resiliente más veces de las que recuerdas.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'resilienceTimelineExercise', title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE', objective: 'Con este ejercicio descubrirás los recursos internos que ya has usado (aunque no fueras consciente) en momentos difíciles. Te ayudará a recordar que no partes de cero, y que ya has sido resiliente más veces de las que crees.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica1.mp3' },
         { type: 'personalDefinitionExercise', title: 'Técnica 2: Mi definición personal de resiliencia', objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]']},
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
-        { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
+        { type: 'quote', text: 'Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.' }
       ]
     },
     {
@@ -64,10 +74,10 @@ export const resiliencePath: Path = {
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3' },
         { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: ['¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional? […]','¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme? […]','¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme? […]','¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor? […]','¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional? […]'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion2ruta8.mp3' },
         { type: 'list', items: ['Antes de resolver, es necesario sostenerte por dentro.', 'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.', 'Las emociones se regulan mejor cuando puedes nombrarlas, respirarlas y comprenderlas.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] },
-        { type: 'quote', text: '“Respira. No tienes que tenerlo todo resuelto para dar un paso.”' }
+        { type: 'quote', text: 'Respira. No tienes que tenerlo todo resuelto para dar un paso.' }
       ]
     },
     {
@@ -89,10 +99,10 @@ export const resiliencePath: Path = {
         { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3' },
         { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional (versión ampliada)', objective: 'Esta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion3ruta8_1.mp3', prompts: ['¿Qué aprendí sobre mi forma de reaccionar ante la incertidumbre o el miedo? […]','¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza? […]','¿Qué me ha ayudado a decidir con más claridad y menos ruido mental? […]','¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo? […]','¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo? […]'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion3ruta8.mp3' },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
-        { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
+        { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
       ]
     },
     {
@@ -144,8 +154,11 @@ export const resiliencePath: Path = {
               'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
               'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
           ]},
-          { type: 'quote', text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”' }
+          { type: 'quote', text: 'La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.' }
         ]
     }
   ]
 };
+
+    
+
