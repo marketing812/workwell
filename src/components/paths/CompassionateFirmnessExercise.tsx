@@ -86,11 +86,11 @@ export function CompassionateFirmnessExercise({ content, pathId }: Compassionate
                 “Veo que te sientes <strong>[emoción del otro]</strong>, y al mismo tiempo necesito <strong>[tu necesidad o límite]</strong>.”
             </blockquote>
              <div className="space-y-2">
-                <Label htmlFor="other-emotion">✍️ Veo que te sientes...</Label>
+                <Label htmlFor="other-emotion">Veo que te sientes...</Label>
                 <Textarea id="other-emotion" value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Ej: frustrado/a, decepcionado/a..." disabled={isSaved}/>
              </div>
               <div className="space-y-2">
-                <Label htmlFor="my-need">✍️ ...y al mismo tiempo, yo necesito...</Label>
+                <Label htmlFor="my-need">...y al mismo tiempo, yo necesito...</Label>
                 <Textarea id="my-need" value={myNeed} onChange={e => setMyNeed(e.target.value)} placeholder="Ej: mantener mi decisión, cuidar mi tiempo..." disabled={isSaved}/>
              </div>
              <p className="text-xs text-muted-foreground italic">Puedes escribirla en tu cuaderno emocional, repetirla en voz alta o guardarla para futuras conversaciones difíciles.</p>
