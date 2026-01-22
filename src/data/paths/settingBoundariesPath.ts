@@ -81,17 +81,7 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Qué es un estilo de comunicación?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3', content: [{ type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n• Cómo pides las cosas.\n• Cómo reaccionas ante un conflicto.\n• Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }] },
         { type: 'collapsible', title: '¿Desde qué lugar te colocas cuando te comunicas?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3', content: [{ type: 'paragraph', text: 'Una forma sencilla de observar tu estilo de comunicación es preguntarte: ¿Desde qué lugar me estoy comunicando?:\n•\t¿Desde abajo, callándome o cediendo para evitar conflictos?\n•\t¿Desde arriba, imponiendo o descalificando?\n•\t¿O desde un lugar de equilibrio, en el que me expreso con respeto mutuo?\nCada vez que hablas con alguien, consciente o no, te colocas en una posición relacional. Esa posición influye en cómo te sientes, cómo reacciona el otro y qué tipo de relación se construye entre ambos.\nAunque a veces usamos diferentes estilos según la situación, hay uno que ha demostrado ser el más saludable, tanto para ti como para tus vínculos: el estilo asertivo.\n¿Por qué?\nPorque te permite:'}, { type: 'list', items: ['Defender lo que sientes, piensas y necesitas sin herir.','Comunicarte con claridad y firmeza, sin miedo ni culpa.','Cuidar el vínculo, sin dejarte a un lado.','Sostener tu autoestima y generar relaciones de confianza.']}, { type: 'paragraph', text: 'El estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.' }] },
-        {
-          type: 'collapsible',
-          title: 'Estilos de comunicación',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
-          content: [
-            { type: 'collapsible', title: '1. Estilo Pasivo – “Tú importas más que yo”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\n•\tCallar lo que piensas o sientes.\n•\tAceptar cosas que no deseas hacer.\n•\tPedir disculpas constantemente.\n•\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }] },
-            { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\n•\tImponer tus ideas o decisiones.\n•\tInterrumpir o desacreditar.\n•\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','Impacto en ti: Tensión, culpa, deterioro de vínculos.','Impacto en el otro: Rechazo, miedo, resentimiento.'] }] },
-            { type: 'collapsible', title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.','Conductas comunes:\n•\tEvitar el conflicto directo.\n•\tUsar sarcasmo o indirectas.\n•\tRetrasar o boicotear de forma encubierta.','Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”','Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.','Impacto en ti: Resentimiento y frustración.','Impacto en el otro: Inseguridad, desgaste emocional.'] }] },
-            { type: 'collapsible', title: '4. Estilo Asertivo – “Tú y yo importamos por igual”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas a la misma altura.','Conductas comunes:\n•\tExpresas con claridad y respeto.\n•\tEscuchas sin dejar de comunicarte.\n•\tDices “no” sin culpa y “sí” con conciencia.','Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”','Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.','Impacto en ti: Coherencia, autoestima, calma.','Impacto en el otro: Claridad, confianza, relaciones sanas.'] }] }
-          ]
-        },
+        { type: 'collapsible', title: 'Estilos de comunicación', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3', content: [{ type: 'collapsible', title: '1. Estilo Pasivo – “Tú importas más que yo”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo del otro.','Conductas comunes:\n•\tCallar lo que piensas o sientes.\n•\tAceptar cosas que no deseas hacer.\n•\tPedir disculpas constantemente.\n•\tCeder por miedo al conflicto.','Frases típicas:\n•\t“No pasa nada.”\n•\t“Como tú quieras…”\n•\t“Da igual, lo que tú decidas.”','Lenguaje no verbal: Voz baja, mirada esquiva, postura encogida, manos inquietas.','Impacto en ti: Frustración, agotamiento, pérdida de autoestima.','Impacto en el otro: Confusión, sobrecarga, posible abuso.'] }] }, { type: 'collapsible', title: '2. Estilo Agresivo – “Yo importo más que tú”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por encima del otro.','Conductas comunes:\n•\tImponer tus ideas o decisiones.\n•\tInterrumpir o desacreditar.\n•\tUsar tono irónico o autoritario.','Frases típicas:\n•\t“Eso es una tontería.”\n•\t“Hazlo como te digo.”\n•\t“Ya te dije que no tenías razón.”','Lenguaje no verbal: Voz fuerte, gestos bruscos, mirada intimidante.','Impacto en ti: Tensión, culpa, deterioro de vínculos.','Impacto en el otro: Rechazo, miedo, resentimiento.'] }] }, { type: 'collapsible', title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas por debajo… pero castigas desde la sombra.','Conductas comunes:\n•\tEvitar el conflicto directo.\n•\tUsar sarcasmo o indirectas.\n•\tRetrasar o boicotear de forma encubierta.','Frases típicas:\n•\t“Ay, claro… como tú siempre sabes más…”\n•\t“Nada, tú haz lo que quieras.”\n•\t“Lo decía en broma.”','Lenguaje no verbal: Sonrisa forzada, tono cortante, expresión cerrada.','Impacto en ti: Resentimiento y frustración.','Impacto en el otro: Inseguridad, desgaste emocional.'] }] }, { type: 'collapsible', title: '4. Estilo Asertivo – “Tú y yo importamos por igual”', content: [{ type: 'list', items: ['Jerarquía relacional: Te colocas a la misma altura.','Conductas comunes:\n•\tExpresas con claridad y respeto.\n•\tEscuchas sin dejar de comunicarte.\n•\tDices “no” sin culpa y “sí” con conciencia.','Frases típicas:\n•\t“Prefiero que lo hablemos más adelante.”\n•\t“Esto no me resulta cómodo.”\n•\t“Te entiendo, y al mismo tiempo necesito decir lo que siento.”','Lenguaje no verbal: Voz firme y calmada, mirada directa, postura abierta.','Impacto en ti: Coherencia, autoestima, calma.','Impacto en el otro: Claridad, confianza, relaciones sanas.'] }] }] },
         { type: 'collapsible', title: 'Cierre motivador', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3', content: [{ type: 'paragraph', text: 'Recuerda esto: tu estilo de comunicación es una forma aprendida de comunicarte, no un rasgo fijo.\nEs el modo en que sueles expresarte: cómo pides las cosas, cómo defiendes tus ideas, cómo respondes al conflicto, cómo marcas tus límites. Lo aprendiste a lo largo de tu vida, y eso significa que puedes revisarlo, transformarlo y elegir comunicarte de forma diferente.\nTu estilo no solo impacta en cómo te ven los demás, sino en cómo te ves tú. Aprender a expresarte con respeto te acerca a relaciones más sanas… y a una relación más amable contigo mismo o contigo misma.\nEl objetivo no es ser siempre “perfectamente asertivo”, sino desarrollar una asertividad consciente:'}, { type: 'list', items: ['Elegir cómo comunicarte desde un lugar de equilibrio, sin imponer ni ceder.','Expresar lo que piensas, sientes y necesitas con claridad, cuidado y firmeza.','Respetarte a ti y respetar al otro, incluso cuando haya desacuerdo.']}, { type: 'paragraph', text: 'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:'}, { type: 'list', items: ['Escucharte.','Nombrar lo que necesitas.','Y atreverte a comunicarte desde tu centro, con respeto, verdad y seguridad emocional.'] }] },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'assertivePhraseExercise', title: 'Ejercicio 1: Tu Frase Asertiva en 4 Pasos', objective: 'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3' },
@@ -133,11 +123,7 @@ export const settingBoundariesPath: Path = {
       type: 'summary',
       estimatedTime: '20-25 min',
       content: [
-        {
-          type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3',
-        },
+        { type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3'},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -153,20 +139,18 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué pasa cuando empiezo a poner límites?',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\n\nDejas de responder automáticamente, y empiezas a elegir desde tu verdad. Eso mueve cosas.\n\nAlgo se mueve. Tus relaciones cambian. Algunas se vuelven más sanas. Otras… quizás se tensan. Es natural:\n\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\n\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.\n\nEsta semana no se trata solo de seguir practicando el “no”, sino de observar con conciencia qué relaciones merecen tu energía, cuáles necesitan un reajuste… y cuáles, tal vez, tu distancia.',
+              text: 'Al comenzar a poner límites, algo dentro de ti cambia… y eso también impacta en tus relaciones. No es un cambio pequeño: es como reordenar la forma en que te vinculas con los demás, te proteges y te haces visible.\nDejas de responder automáticamente, y empiezas a elegir desde tu verdad. Eso mueve cosas.\n\nAlgo se mueve. Tus relaciones cambian. Algunas se vuelven más sanas. Otras… quizás se tensan. Es natural:\n\nLas personas que te quieren bien agradecerán tu claridad, aunque al principio les sorprenda.\n\nLas relaciones basadas en el control, la culpa o el desequilibrio pueden resistirse, porque estaban sostenidas por tu silencio o tu disponibilidad constante.\n\nEsta semana no se trata solo de seguir practicando el “no”, sino de observar con conciencia qué relaciones merecen tu energía, cuáles necesitan un reajuste… y cuáles, tal vez, tu distancia.',
             },
           ],
         },
         {
           type: 'collapsible',
           title: 'Límites sanos: respeto, claridad y conexión real',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -177,8 +161,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Actúo desde mi verdad o para evitar el malestar del otro?',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -189,8 +172,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Insistir, ceder o alejarme?',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -201,8 +183,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Quererte también es una forma de vincularte',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
@@ -212,7 +193,7 @@ export const settingBoundariesPath: Path = {
         },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'compassionateFirmnessExercise', title: 'Ejercicio 1: Tu Frase de Firmeza Compasiva', objective: 'Entrenar tu capacidad para sostener una decisión sin retroceder, incluso cuando el otro muestre incomodidad o decepción. Aprenderás a validar la emoción ajena sin anular tu necesidad.', duration: '5-10 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3' },
-        { type: 'selfCareContractExercise', title: 'Ejercicio 2: Mi Contrato Interno de Autocuidado', objective: 'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.', duration: '10-15 min' }
+        { type: 'selfCareContractExercise', title: 'Ejercicio 2: Mi Contrato Interno de Autocuidado', objective: 'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3' }
       ]
     },
     {
@@ -228,3 +209,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
+    
