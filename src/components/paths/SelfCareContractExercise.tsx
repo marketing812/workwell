@@ -6,8 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SelfCareContractExerciseContent } from '@/data/paths/pathTypes';
 
@@ -19,87 +20,102 @@ interface SelfCareContractExerciseProps {
 export function SelfCareContractExercise({ content, pathId }: SelfCareContractExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
-
-  const [notWilling, setNotWilling] = useState('');
   const [commitment, setCommitment] = useState('');
-  const [how, setHow] = useState('');
+  const [reminderType, setReminderType] = useState('');
+  const [reminder, setReminder] = useState('');
+  const [anchorPhrase, setAnchorPhrase] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
-
-  const handleSave = () => {
-    if (!notWilling.trim() || !commitment.trim() || !how.trim()) {
-        toast({ title: "Contrato Incompleto", description: "Por favor, completa todas las secciones del contrato.", variant: "destructive" });
-        return;
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    if (!commitment.trim() || !reminder.trim() || !anchorPhrase.trim()) {
+      toast({ title: 'Pacto incompleto', description: 'Por favor, completa todas las secciones del pacto.', variant: 'destructive' });
+      return;
     }
-
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**No estoy dispuesta/o a:**
-${notWilling}
-
-**Me comprometo a:**
+*Me comprometo a cuidar:*
 ${commitment}
 
-**Lo haré de forma:**
-${how}
-`;
-    addNotebookEntry({ title: "Mi Contrato Interno de Autocuidado", content: notebookContent, pathId: pathId });
-    toast({ title: "Contrato Guardado", description: "Tu contrato interno se ha guardado en el cuaderno." });
-    next();
+*Mi recordatorio tangible será:*
+${reminder}
+
+*Mi frase de acompañamiento emocional es:*
+"${anchorPhrase}"
+    `;
+    addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId });
+    toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });
+    setIsSaved(true);
   };
 
   const renderStep = () => {
-    switch(step) {
-        case 0:
-            return (
-                <div className="p-4 space-y-4 text-center">
-                    <p className="text-sm text-muted-foreground">A menudo hablamos de poner límites hacia fuera, pero ¿qué pasa con los límites internos? Este ejercicio te ayuda a identificar con claridad aquello que ya no estás dispuesto o dispuesta a seguir permitiéndote, desde un lugar de cuidado, no de juicio.</p>
-                    <Button onClick={next}><ArrowRight className="mr-2 h-4 w-4" />Crear mi contrato</Button>
-                </div>
-            );
-        case 1:
-            return (
-                <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                    <div className="space-y-2">
-                        <Label htmlFor="not-willing" className="font-semibold text-lg">No estoy dispuesta/o a…</Label>
-                        <p className="text-xs text-muted-foreground">Ejemplos: Seguir callando lo que me duele; Ceder siempre para evitar conflictos; Negar mis necesidades para complacer.</p>
-                        <Textarea id="not-willing" value={notWilling} onChange={e => setNotWilling(e.target.value)} />
-                    </div>
-                     <div className="space-y-2">
-                        <Label htmlFor="commitment" className="font-semibold text-lg">Me comprometo a…</Label>
-                         <p className="text-xs text-muted-foreground">Ejemplos: Cuidar mi energía como prioridad; Escuchar mis emociones sin juzgarlas; Recordarme que tengo derecho a poner límites.</p>
-                        <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} />
-                    </div>
-                     <div className="space-y-2">
-                        <Label htmlFor="how" className="font-semibold text-lg">Lo haré de forma…</Label>
-                         <p className="text-xs text-muted-foreground">Ejemplos: Clara, sin herir; Suave, pero firme; Honesta, aunque me cueste.</p>
-                        <Textarea id="how" value={how} onChange={e => setHow(e.target.value)} />
-                    </div>
-                    <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi Contrato</Button>
-                </div>
-            );
-        case 2:
-            return (
-                <div className="p-6 text-center space-y-4">
-                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                    <h4 className="font-bold text-lg">¡Contrato Guardado!</h4>
-                    <p className="text-muted-foreground">Has creado un compromiso valioso contigo. Vuelve a él cuando necesites recordar lo que es importante para ti.</p>
-                    <Button onClick={() => setStep(0)} variant="outline" className="w-full">Crear otro</Button>
-                </div>
-            );
-        default: return null;
+    switch (step) {
+      case 0:
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold">Paso 1: ¿Qué me comprometo a cuidar?</h4>
+            <Label htmlFor="commitment-pact">Piensa en una o dos prácticas o actitudes que quieras mantener vivas.</Label>
+            <Textarea id="commitment-pact" value={commitment} onChange={e => setCommitment(e.target.value)} />
+            <Button onClick={() => setStep(1)} className="w-full">Siguiente</Button>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold">Paso 2: ¿Cómo me lo recordaré?</h4>
+            <Label>Elige un recordatorio concreto, algo visible, físico o cotidiano.</Label>
+            <RadioGroup value={reminderType} onValueChange={setReminderType}>
+              <div className="flex items-center space-x-2"><RadioGroupItem value="rutina" id="rem-routine" /><Label className="font-normal" htmlFor="rem-routine">Una rutina diaria</Label></div>
+              <div className="flex items-center space-x-2"><RadioGroupItem value="objeto" id="rem-object" /><Label className="font-normal" htmlFor="rem-object">Un objeto con significado</Label></div>
+              <div className="flex items-center space-x-2"><RadioGroupItem value="nota" id="rem-note" /><Label className="font-normal" htmlFor="rem-note">Una nota o imagen visible</Label></div>
+              <div className="flex items-center space-x-2"><RadioGroupItem value="gesto" id="rem-gesture" /><Label className="font-normal" htmlFor="rem-gesture">Un gesto físico</Label></div>
+            </RadioGroup>
+            <Textarea value={reminder} onChange={e => setReminder(e.target.value)} placeholder={`Describe tu recordatorio de tipo "${reminderType}"`} />
+            <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold">Paso 3: Una frase que me acompañe</h4>
+            <Label htmlFor="anchor-phrase">¿Qué quieres decirte a ti mismo/a cuando te sientas perdido/a, agotado/a o en lucha?</Label>
+            <Textarea id="anchor-phrase" value={anchorPhrase} onChange={e => setAnchorPhrase(e.target.value)} />
+            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mi pacto</Button>
+          </div>
+        );
+      default:
+        return null;
     }
-  }
+  };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        {content.objective && (
+            <CardDescription className="pt-2">
+                {content.objective}
+                {content.audioUrl && (
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full h-10">
+                            <source src={content.audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
+            </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
-        {renderStep()}
+        {!isSaved ? renderStep() : (
+          <div className="p-6 text-center space-y-4">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Pacto Guardado!</h4>
+            <p className="text-muted-foreground">Este pacto no es una obligación. Es una forma de cuidarte con conciencia. Llévalo contigo.</p>
+            <Button onClick={() => { setStep(0); setIsSaved(false); }} variant="outline" className="w-full">Crear otro pacto</Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

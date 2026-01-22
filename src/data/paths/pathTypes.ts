@@ -184,6 +184,7 @@ export type CompassionateFirmnessExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SelfCareContractExerciseContent = {
@@ -191,6 +192,7 @@ export type SelfCareContractExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 5
@@ -896,6 +898,8 @@ export type ModuleContent =
   | ImaginedCrisisRehearsalExerciseContent
   | ExposureToIntoleranceExerciseContent
   | BlockageMapExerciseContent
+  | CompassionateFirmnessExerciseContent
+  | SelfCareContractExerciseContent
   | CompassionateReflectionExerciseContent;
 
 // Defines a single module within a guided path
