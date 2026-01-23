@@ -40,7 +40,11 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
     const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [logs, setLogs] = useState<DecisionLog[]>(() =>
+<<<<<<< HEAD
         Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', otherAftermath: '', nextTime: '' }))
+=======
+        Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))
+>>>>>>> b4b5800b (en la ruta 9 semana 1, ejericcio 2, las situaciones tienen que ser indep)
     );
 
     const handleLogChange = (index: number, field: keyof DecisionLog, value: string) => {
@@ -138,7 +142,11 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                         <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                         <h4 className="font-semibold text-lg">Registro Guardado</h4>
                         <p className="text-sm text-muted-foreground">Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
+<<<<<<< HEAD
                         <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+=======
+                        <Button onClick={() => { setStep(0); setLogs(Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))) }} variant="outline">Hacer otro registro</Button>
+>>>>>>> b4b5800b (en la ruta 9 semana 1, ejericcio 2, las situaciones tienen que ser indep)
                     </div>
                 );
             default: return null;
