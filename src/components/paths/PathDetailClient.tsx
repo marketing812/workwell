@@ -354,6 +354,7 @@ ${reflection}
               rows={5}
               disabled={isSaved}
             />
+            <p className="text-sm italic text-muted-foreground mt-2 text-center">Respira. Lo estás haciendo bien. Cada paso cuenta. Incluso este momento de pausa es parte de tu proceso.</p>
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full">
@@ -1050,5 +1051,7 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
 
     
