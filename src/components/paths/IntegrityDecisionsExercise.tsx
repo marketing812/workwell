@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -61,7 +60,7 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
         setCoherence(5);
         setAdjustment('');
         setIsSaved(false);
-    }
+    };
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
@@ -116,10 +115,10 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
                                     <Label htmlFor={`val-${v}`} className="font-normal text-xs">{v}</Label>
                                 </div>
                             ))}
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <Checkbox id="val-otro" checked={!!selectedValues['Otro']} onCheckedChange={c => setSelectedValues(p => ({ ...p, 'Otro': !!c }))} />
-                            <Label htmlFor="val-otro" className="font-normal text-xs">Otro</Label>
+                             <div className="flex items-center space-x-2">
+                                <Checkbox id="val-otro" checked={!!selectedValues['Otro']} onCheckedChange={c => setSelectedValues(p => ({ ...p, 'Otro': !!c }))} />
+                                <Label htmlFor="val-otro" className="font-normal text-xs">Otro</Label>
+                            </div>
                         </div>
                         {selectedValues['Otro'] && (
                             <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2 ml-6" />
@@ -163,7 +162,7 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
                         <h4 className="font-semibold text-lg">Paso 4: Evalúa tu coherencia</h4>
                         <div className="space-y-2">
                             <Label>Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y dentro de 5 años?</Label>
-                            <Textarea value={impact} onChange={e => setImpact(e.target.value)} />
+                            <Textarea value={impact} onChange={e => setImpact(e.target.value)} placeholder='Ejemplo: "A 1 año: tendré más ingresos pero estaré lejos de mi familia. A 5 años: habré crecido profesionalmente y podré volver con más opciones."' />
                         </div>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
@@ -176,10 +175,14 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
                         <div>
                             <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
+                            <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                                <span>0 (Nada coherente)</span>
+                                <span>10 (Totalmente coherente)</span>
+                            </div>
                         </div>
                         <div className="flex justify-between w-full mt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -189,7 +192,7 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
                         <h4 className="font-semibold text-lg">Paso 5: Ajuste final y Guardado</h4>
                         <div className="space-y-2">
                             <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                            <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
+                            <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder='"Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."'/>
                         </div>
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -230,5 +233,3 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
         </Card>
     );
 }
-
-    
