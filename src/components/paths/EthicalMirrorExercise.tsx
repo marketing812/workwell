@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { EthicalMirrorExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, Save } from 'lucide-react';
+import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
@@ -28,6 +28,7 @@ const valuesList = [
 ];
 
 export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExerciseProps) {
+    const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [decision, setDecision] = useState('');
     const [person, setPerson] = useState('');
@@ -41,9 +42,30 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
     const [coherence, setCoherence] = useState(5);
     const [adjustment, setAdjustment] = useState('');
-    const {toast} = useToast();
+    const [isSaved, setIsSaved] = useState(false);
+    
+    const nextStep = () => setStep(prev => prev + 1);
+    const prevStep = () => setStep(prev => prev - 1);
+    
+    const resetExercise = () => {
+        setStep(0);
+        setDecision('');
+        setPerson('');
+        setOtherPerson('');
+        setExplanation('');
+        setMotives('');
+        setExplanationForOther('');
+        setValues({});
+        setOtherValue('');
+        setIsProud(false);
+        setReflectsWhoIAm(false);
+        setCoherence(5);
+        setAdjustment('');
+        setIsSaved(false);
+    };
 
-    const handleSave = () => {
+    const handleSave = (e: FormEvent) => {
+        e.preventDefault();
         const selectedValues = Object.keys(values).filter(k => values[k] && k !== 'Otra');
         if (values['Otra'] && otherValue) {
             selectedValues.push(otherValue);
@@ -57,27 +79,31 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
 **Motivos principales:** ${motives}
 **Explicación para que lo entienda:** ${explanationForOther}
 **Valores en juego:** ${selectedValues.join(', ')}
-**Nivel de coherencia:** ${coherence}/10
+**¿Me sentiría orgulloso/a?:** ${isProud ? 'Sí' : 'No'}
+**¿Refleja quién soy?:** ${reflectsWhoIAm ? 'Sí' : 'No'}
+**Nivel de coherencia percibido:** ${coherence}/10
 **Ajuste necesario:** ${adjustment || 'Ninguno.'}
         `;
         addNotebookEntry({ title: 'Reflexión: Espejo Ético', content: notebookContent, pathId });
         toast({title: "Reflexión Guardada"});
+        setIsSaved(true);
+        nextStep();
     };
 
     const renderStep = () => {
         switch (step) {
             case 0:
                 return (
-                    <div className="p-4 space-y-2">
-                        <Label>¿Qué decisión estás valorando?</Label>
+                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                        <Label className="font-semibold text-lg">Paso 1: ¿Qué decisión estás valorando?</Label>
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} />
-                        <Button onClick={() => setStep(1)} className="w-full">Siguiente</Button>
+                        <Button onClick={nextStep} className="w-full mt-4" disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                     </div>
                 );
             case 1:
                 return (
-                    <div className="p-4 space-y-2">
-                        <Label>¿A quién se lo explicarías?</Label>
+                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                        <Label className="font-semibold text-lg">Paso 2: ¿A quién se lo explicarías?</Label>
                         <Select value={person} onValueChange={setPerson}>
                             <SelectTrigger><SelectValue placeholder="Elige..."/></SelectTrigger>
                             <SelectContent>
@@ -88,13 +114,17 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
                                 <SelectItem value="Otra">Otra</SelectItem>
                             </SelectContent>
                         </Select>
-                        {person === 'Otra' && <Textarea value={otherPerson} onChange={e => setOtherPerson(e.target.value)} />}
-                        <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+                        {person === 'Otra' && <Textarea value={otherPerson} onChange={e => setOtherPerson(e.target.value)} placeholder="Describe a la otra persona..."/>}
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep} disabled={!person || (person === 'Otra' && !otherPerson.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
                     </div>
                 );
             case 2:
                 return(
-                     <div className="p-4 space-y-4">
+                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 3: Explica tu decisión</h4>
                         <div className="space-y-2">
                             <Label>Escribe tu explicación como si fuera real</Label>
                             <Textarea value={explanation} onChange={e => setExplanation(e.target.value)} />
@@ -105,7 +135,7 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
                         </div>
                         <div className="space-y-2">
                             <Label>¿Cómo se lo explicarías para que lo entienda?</Label>
-                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo. Sé que implica un cambio grande, pero he ahorrado, he valorado pros y contras, y creo que es el momento adecuado para dar este paso.”" />
+                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo…”" />
                         </div>
                         <div className="space-y-2">
                             <Label>Valores implicados</Label>
@@ -125,12 +155,16 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
                                 <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
                             )}
                         </div>
-                        <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
                      </div>
                 );
             case 3:
                 return(
-                    <div className="p-4 space-y-4">
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 4: Evalúa tu coherencia</h4>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
                             <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
@@ -140,18 +174,51 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
                             <Label htmlFor="reflects">Refleja quién soy y lo que quiero ser.</Label>
                         </div>
                         <div>
-                            <Label>Nivel de coherencia: {coherence}/10</Label>
+                            <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <p className="text-xs text-muted-foreground italic mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
+                            <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                                <span>0 (Nada)</span>
+                                <span>5 (Medio)</span>
+                                <span>10 (Total)</span>
+                            </div>
                         </div>
-                         <Button onClick={() => setStep(4)} className="w-full">Siguiente</Button>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
                     </div>
                 );
             case 4:
                 return (
-                    <div className="p-4 space-y-2">
+                    <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 5: Consejo práctico</h4>
+                        <p className="p-4 bg-accent/10 border-l-4 border-accent">Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.</p>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+            case 5:
+                return (
+                    <form onSubmit={handleSave} className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 6: Ajuste final y Guardado</h4>
                         <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi Cuaderno</Button>
+                        </div>
+                    </form>
+                );
+            case 6:
+                return (
+                    <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                        <h4 className="font-bold text-lg">Reflexión Guardada</h4>
+                        <p className="text-muted-foreground">Has usado tu espejo ético para ganar claridad. Puedes volver a este registro cuando lo necesites.</p>
+                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otra reflexión</Button>
                     </div>
                 );
             default: return null;
