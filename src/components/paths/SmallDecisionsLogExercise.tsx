@@ -28,7 +28,9 @@ interface DecisionLog {
 export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLogExerciseProps) {
     const { toast } = useToast();
     const [step, setStep] = useState(0);
-    const [logs, setLogs] = useState<DecisionLog[]>(Array(2).fill({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: ''}));
+    const [logs, setLogs] = useState<DecisionLog[]>(() =>
+        Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))
+    );
 
     const handleLogChange = (index: number, field: keyof DecisionLog, value: string) => {
         const newLogs = [...logs];
@@ -74,10 +76,10 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                                 <Label htmlFor={`decision-${index}`}>Decisión {index + 1}:</Label>
                                 <Textarea id={`decision-${index}`} value={log.decision} onChange={e => handleLogChange(index, 'decision', e.target.value)} />
                                 <Label>¿Actuaste desde el “querer” o el “deber”?</Label>
-                                <RadioGroup value={log.choiceType} onValueChange={v => handleLogChange(index, 'choiceType', v)} className="flex gap-4">
-                                    <div className="flex items-center space-x-2"><RadioGroupItem value="querer" id={`choice-${index}-q`}/><Label htmlFor={`choice-${index}-q`}>Querer</Label></div>
-                                    <div className="flex items-center space-x-2"><RadioGroupItem value="deber" id={`choice-${index}-d`}/><Label htmlFor={`choice-${index}-d`}>Deber</Label></div>
-                                    <div className="flex items-center space-x-2"><RadioGroupItem value="mixto" id={`choice-${index}-m`}/><Label htmlFor={`choice-${index}-m`}>Mixto</Label></div>
+                                <RadioGroup value={log.choiceType} onValueChange={v => handleLogChange(index, 'choiceType', v as any)} className="space-y-2">
+                                    <div className="flex items-center space-x-2"><RadioGroupItem value="querer" id={`choice-${index}-q`}/><Label htmlFor={`choice-${index}-q`} className="font-normal">Querer (autenticidad, deseo, conexión)</Label></div>
+                                    <div className="flex items-center space-x-2"><RadioGroupItem value="deber" id={`choice-${index}-d`}/><Label htmlFor={`choice-${index}-d`} className="font-normal">Deber (exigencia, miedo, costumbre)</Label></div>
+                                    <div className="flex items-center space-x-2"><RadioGroupItem value="mixto" id={`choice-${index}-m`}/><Label htmlFor={`choice-${index}-m`} className="font-normal">Mixto (una mezcla – cuéntalo brevemente)</Label></div>
                                 </RadioGroup>
                                 <Label htmlFor={`reason-${index}`}>¿Qué te llevó a elegir así?</Label>
                                 <Textarea id={`reason-${index}`} value={log.reason} onChange={e => handleLogChange(index, 'reason', e.target.value)} />
@@ -98,7 +100,7 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                         <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                         <h4 className="font-semibold text-lg">Registro Guardado</h4>
                         <p className="text-sm text-muted-foreground">Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
-                        <Button onClick={() => { setStep(0); setLogs(Array(2).fill({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: ''})) }} variant="outline">Hacer otro registro</Button>
+                        <Button onClick={() => { setStep(0); setLogs(Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))) }} variant="outline">Hacer otro registro</Button>
                     </div>
                 );
             default: return null;

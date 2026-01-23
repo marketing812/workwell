@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo } from 'react';
@@ -71,6 +72,12 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
         },
     };
 
+    const resetExercise = () => {
+        setStep(0);
+        setSelectedEnvs({});
+        setRatings({});
+    };
+
     const renderStep = () => {
         switch(step) {
             case 0:
@@ -130,7 +137,7 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
+                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
                     </div>
                 );
             default: return null;
