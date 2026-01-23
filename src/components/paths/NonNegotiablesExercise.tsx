@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -14,7 +14,7 @@ import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { Input } from '../ui/input';
 
 const valuesList = [
-    'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
+    'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad', 'Pareja / Amor romántico',
     'Justicia', 'Responsabilidad', 'Libertad', 'Creatividad', 'Propósito vital', 'Aprendizaje',
     'Empatía', 'Perseverancia', 'Integridad', 'Compasión', 'Equilibrio', 'Gratitud',
     'Generosidad', 'Lealtad', 'Coraje', 'Cooperación', 'Transparencia', 'Sostenibilidad',
@@ -34,9 +34,13 @@ export function NonNegotiablesExercise({ content, pathId }: NonNegotiablesExerci
   const [nonNegotiables, setNonNegotiables] = useState<string[]>([]);
   const [commitments, setCommitments] = useState<Record<string, string>>({});
   const { toast } = useToast();
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleInitialValueChange = (value: string, checked: boolean) => {
     setInitialValues(prev => ({...prev, [value]: checked }));
+    if (!checked) {
+        setNonNegotiables(prev => prev.filter(v => v !== value));
+    }
   };
   
   const handleNonNegotiableSelect = (value: string, checked: boolean) => {
@@ -47,7 +51,7 @@ export function NonNegotiablesExercise({ content, pathId }: NonNegotiablesExerci
         toast({ title: "Límite alcanzado", description: "Solo puedes elegir hasta 3 valores no negociables."});
       }
     } else {
-      setNonNegotiables(prev => p.filter(v => v !== value));
+      setNonNegotiables(prev => prev.filter(v => v !== value));
     }
   };
 
@@ -55,7 +59,8 @@ export function NonNegotiablesExercise({ content, pathId }: NonNegotiablesExerci
     setCommitments(prev => ({...prev, [value]: text}));
   };
 
-  const handleSave = () => {
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
     if (nonNegotiables.length !== 3 || nonNegotiables.some(v => !commitments[v]?.trim())) {
         toast({ title: 'Ejercicio Incompleto', description: 'Por favor, elige 3 no negociables y escribe un compromiso para cada uno.', variant: 'destructive'});
         return;
@@ -71,6 +76,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
     `;
     addNotebookEntry({ title: 'Mis No Negociables', content: notebookContent, pathId: pathId });
     toast({ title: 'No Negociables Guardados' });
+    setIsSaved(true);
     setStep(prev => prev + 1);
   };
   
@@ -85,61 +91,63 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
       return selected;
   };
   
+  const resetExercise = () => {
+    setStep(0);
+    setPastSituation('');
+    setInitialValues({});
+    setOtherInitialValue('');
+    setNonNegotiables([]);
+    setCommitments({});
+    setIsSaved(false);
+  };
+
   const renderStep = () => {
     switch (step) {
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Un no negociable no es una norma impuesta por otros. Es una elección interna que nace de tus valores y tu experiencia. No se trata de tener una lista enorme, sino de elegir lo que realmente es esencial para ti.</p>
-            <Button onClick={nextStep}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Piensa en tu historia</h4>
+            <h4 className="font-semibold text-lg">Paso 1: Piensa en tu historia y explora tus valores</h4>
             <div className="space-y-2">
-                <Label htmlFor="past-situation">Recuerda una situación en la que actuaste en contra de lo que sentías correcto y eso te dejó malestar. ¿Qué valor se rompió?</Label>
+                <Label htmlFor="past-situation">Recuerda una situación en la que actuaste en contra de lo que sentías correcto y eso te dejó malestar. ¿Qué valor se rompió? (Opcional)</Label>
                 <Textarea id="past-situation" value={pastSituation} onChange={e => setPastSituation(e.target.value)} placeholder='Ejemplo: "Acepté un trato injusto por miedo a perder el trabajo. El valor que se rompió fue la justicia."' />
+            </div>
+            <div className="space-y-2">
+              <Label>Elige los valores que, si los traicionas, sentirías que te pierdes a ti mismo o a ti misma. (Puedes elegir más de uno)</Label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
+                  {valuesList.map(v => (
+                      <div key={v} className="flex items-center space-x-2">
+                          <Checkbox id={`val-${v}`} checked={!!initialValues[v]} onCheckedChange={c => handleInitialValueChange(v, !!c)} />
+                          <Label htmlFor={`val-${v}`} className="font-normal text-xs">{v}</Label>
+                      </div>
+                  ))}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="val-otro" checked={!!initialValues['Otro']} onCheckedChange={c => handleInitialValueChange('Otro', !!c)} />
+                    <Label htmlFor="val-otro" className="font-normal text-xs">Otro</Label>
+                  </div>
+              </div>
+              {initialValues['Otro'] && (
+                  <Textarea value={otherInitialValue} onChange={e => setOtherInitialValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />
+              )}
             </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-       case 2:
-        return (
-          <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Explora tus valores</h4>
-            <Label>Elige los valores que, si los traicionas, sentirías que te pierdes a ti mismo o a ti misma. (Puedes elegir más de uno)</Label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
-                {valuesList.map(v => (
-                    <div key={v} className="flex items-center space-x-2">
-                        <Checkbox id={`val-${v}`} checked={!!initialValues[v]} onCheckedChange={c => handleInitialValueChange(v, !!c)} />
-                        <Label htmlFor={`val-${v}`} className="font-normal text-xs">{v}</Label>
-                    </div>
-                ))}
-            </div>
-             <div className="flex items-center space-x-2 pt-2">
-                <Checkbox id="val-otro" checked={!!initialValues['Otro']} onCheckedChange={c => handleInitialValueChange('Otro', !!c)} />
-                <Label htmlFor="val-otro" className="font-normal text-xs">Otro</Label>
-            </div>
-            {initialValues['Otro'] && (
-                <Textarea value={otherInitialValue} onChange={e => setOtherInitialValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2 ml-6" />
-            )}
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
-          </div>
-        );
-      case 3:
+      case 2:
         const availableValues = getFilteredValues();
         return (
             <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 3: Elige tus 3 no negociables</h4>
-                <p className="text-sm text-muted-foreground">Menos es más. Elige solo los tres que sean tu línea roja.</p>
+                <h4 className="font-semibold text-lg">Paso 2: Elige tus 3 no negociables</h4>
+                <p className="text-sm text-muted-foreground">Menos es más. Elige solo los tres que sean tu línea roja de entre los que has seleccionado.</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 border rounded-md">
                     {availableValues.map(v => (
                         <div key={v} className="flex items-center space-x-2">
@@ -154,10 +162,10 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
                 </div>
             </div>
         );
-      case 4:
+      case 3:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 4: Escríbelos como compromisos</h4>
+                <h4 className="font-semibold text-lg">Paso 3: Escríbelos como compromisos</h4>
                  <p className="text-sm text-muted-foreground italic">Ejemplo: "Me comprometo a decir la verdad, incluso cuando es incómodo."</p>
                 {nonNegotiables.map((v, i) => (
                     <div key={i} className="space-y-1">
@@ -171,10 +179,10 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
                  </div>
             </div>
         );
-      case 5:
+      case 4:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-center">Paso 5: Revisión y guardado</h4>
+                <h4 className="font-semibold text-lg text-center">Paso 4: Revisión y guardado</h4>
                 <p className="text-sm text-muted-foreground">Estos no negociables son tu ancla. Guárdalos en tu cuaderno y revísalos cada vez que enfrentes una decisión difícil.</p>
                 <div className="p-4 border rounded-md bg-background/50 space-y-2">
                     {nonNegotiables.map(v => (
@@ -190,7 +198,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
                 </div>
             </div>
         );
-      case 6:
+      case 5:
           return (
             <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -227,3 +235,4 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
     </Card>
   );
 }
+
