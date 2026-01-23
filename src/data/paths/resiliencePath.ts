@@ -63,15 +63,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3' },
         { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3' },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', 
-          prompts: [
-            '<p>Esta semana has aprendido a identificar cómo reacciona tu cuerpo, tu mente y tu emoción ante el estrés o la dificultad. Has entrenado tu capacidad para sostenerte por dentro, incluso cuando todo fuera parece incierto.</p><p>Para integrar lo aprendido, tómate un momento para responder con honestidad y cuidado a estas preguntas. No hay respuestas correctas: solo las tuyas.</p>',
-            '<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'
-          ] 
-        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: ['<p>Esta semana has aprendido a identificar cómo reacciona tu cuerpo, tu mente y tu emoción ante el estrés o la dificultad. Has entrenado tu capacidad para sostenerte por dentro, incluso cuando todo fuera parece incierto.</p><p>Para integrar lo aprendido, tómate un momento para responder con honestidad y cuidado a estas preguntas. No hay respuestas correctas: solo las tuyas.</p>', '<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?.</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?.</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?.</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?.</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?.</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion2ruta8.mp3' },
         { type: 'list', items: ['Antes de resolver, es necesario sostenerte por dentro.', 'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.', 'Las emociones se regulan mejor cuando puedes nombrarlas, respirarlas y comprenderlas.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] },
@@ -100,7 +92,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion3ruta8.mp3' },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
-        { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
+        { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
       ]
     },
     {
@@ -134,13 +126,7 @@ export const resiliencePath: Path = {
               duration: '10-15 min',
               audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3'
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: [
-              '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma? […]',
-              '¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado? […]',
-              '¿Qué cambio he notado en mi forma de responder ante las dificultades? […]',
-              '¿Qué frase o imagen me llevo como símbolo de mi resiliencia? […]',
-              '¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta? […]'
-          ]},
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma? […]','¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado? […]','¿Qué cambio he notado en mi forma de responder ante las dificultades? […]','¿Qué frase o imagen me llevo como símbolo de mi resiliencia? […]','¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta? […]']},
           { type: 'title', text: 'Resumen Final de la Ruta' },
           { type: 'list', items: [
               'Comprendí que la resiliencia no es innata, sino entrenable.',
@@ -158,5 +144,7 @@ export const resiliencePath: Path = {
   ]
 };
 
+
+    
 
     
