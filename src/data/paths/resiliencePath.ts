@@ -1,4 +1,3 @@
-
 import type { Path } from '../pathsData';
 
 export const resiliencePath: Path = {
@@ -158,7 +157,7 @@ export const resiliencePath: Path = {
           title: 'No solo haces resiliencia. Eres resiliencia.',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.' },
+            { type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.' },
             {
               type: 'list',
               items: ['Es la nueva manera en la que te hablas.','Es el permiso que te das para sentir sin romperte.','Es el compromiso que asumes contigo, incluso cuando no hay motivación.' ]},
@@ -169,29 +168,10 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'changeTimelineExercise', title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO', objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3' },
         { type: 'myPactExercise', title: 'EJERCICIO 2: MI PACTO CONMIGO', objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3' },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          prompts: [
-            'Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.',
-            '¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?',
-            '¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?',
-            '¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?',
-            '¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?',
-            'Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.'
-          ]
-        },
-        { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'list',
-          items: [
-            'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
-            'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
-            'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
-            'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'
-          ]
-        },
-        { type: 'quote', text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.”\n— Tu nueva versión' }
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 'prompts':['¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?','¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?','¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?','¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?','Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.'], audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3'},
+        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'},
+        { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'] },
+        { type: 'quote', text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'}
       ]
     },
     {
@@ -202,7 +182,7 @@ export const resiliencePath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Ruta',
+          title: 'Reflexión final de la Ruta',
           prompts: [
             '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?.',
             '¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?.',
@@ -227,31 +207,9 @@ export const resiliencePath: Path = {
         },
         {
           type: 'quote',
-          text: 'La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.'
+          text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”'
         }
       ]
     }
   ]
 };
-
-```
-
-with the text content:
-
-    La resiliencia ya no es solo algo que haces en momentos difíciles.
-    Es una forma de estar en el mundo.
-    🧠 Es la nueva manera en la que te hablas.
-    ❤️ Es el permiso que te das para sentir sin romperte.
-    💪 Es el compromiso que asumes contigo, incluso cuando no hay motivación.
-    Tu identidad se va construyendo con cada elección cotidiana.
-    Y hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.
-
-Relevant files:
-
-    - src/components/paths/PathDetailClient.tsx
-    - src/components/paths/PathDetailClient.tsx
-    - src/components/paths/PathDetailClient.tsx
-
-And change it as follows:
-  
-lo mismo para este
