@@ -1,114 +1,157 @@
-
 "use client";
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
-import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import type { CoherenceCompassExerciseContent } from '@/data/paths/pathTypes';
-import { ArrowRight, CheckCircle, Edit3 } from 'lucide-react';
-import { Checkbox } from '../ui/checkbox';
+import { Edit3 } from 'lucide-react';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+  PolarRadiusAxis
+} from "recharts";
+
+const environments = [
+    { id: 'salud_fisica', label: 'Salud física' },
+    { id: 'salud_mental', label: 'Salud mental y emocional' },
+    { id: 'familia', label: 'Relaciones familiares' },
+    { id: 'pareja', label: 'Pareja / vida afectiva' },
+    { id: 'amistades', label: 'Amistades y red social' },
+    { id: 'desarrollo_personal', label: 'Desarrollo personal' },
+    { id: 'trabajo', label: 'Vida laboral/profesional' },
+    { id: 'finanzas', label: 'Finanzas y seguridad' },
+    { id: 'ocio', label: 'Ocio y tiempo libre' },
+];
 
 interface CoherenceCompassExerciseProps {
   content: CoherenceCompassExerciseContent;
   pathId: string;
 }
 
-const areas = [
-    { id: 'relaciones_personales', label: 'Relaciones personales (familia, pareja, amistades)' },
-    { id: 'relaciones_laborales', label: 'Relaciones laborales o estudios' },
-    { id: 'tiempo_libre', label: 'Tiempo libre y actividades que te nutren' },
-    { id: 'salud', label: 'Salud física y mental (descanso, alimentación, emociones)' },
-    { id: 'dinero', label: 'Manejo del dinero y decisiones económicas' },
-    { id: 'entorno', label: 'Cuidado del entorno (hogar, espacio, medioambiente)' },
-    { id: 'espiritualidad', label: 'Espiritualidad o vida interior (creencias, valores, conexión personal)' },
-    { id: 'prioridades', label: 'Uso del tiempo y prioridades diarias' },
-    { id: 'comunicacion', label: 'Comunicación con los demás' },
-    { id: 'compromiso_social', label: 'Compromiso social o ético (si aplica)' },
-];
-
 export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassExerciseProps) {
     const [step, setStep] = useState(0);
-    const [ratings, setRatings] = useState<Record<string, number>>({});
-    const [aligned, setAligned] = useState({ area1: '', reason1: '', emotion1: '', area2: '', reason2: '', emotion2: '' });
-    const [disconnected, setDisconnected] = useState({ area: '', reason: '', action: '' });
+    const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
+    const [ratings, setRatings] = useState<Record<string, { support: number, drain: number }>>({});
 
-    const handleRatingChange = (id: string, value: number[]) => {
-        setRatings(prev => ({...prev, [id]: value[0]}));
+    const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
+        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5}), [type]: value[0]}}));
+    }
+
+    const selectedEnvironments = useMemo(() => {
+        return environments.filter(e => selectedEnvs[e.id]);
+    }, [selectedEnvs]);
+
+    const chartData = useMemo(() => {
+        return selectedEnvironments.map(env => {
+            const rating = ratings[env.id] || { support: 5, drain: 5 };
+            // Puntuación área=(Apoyo) + (10 - Drenaje) / 2
+            const score = (rating.support + (10 - rating.drain)) / 2;
+            return {
+                area: env.label,
+                score: parseFloat(score.toFixed(1)),
+                fullMark: 10,
+            };
+        });
+    }, [selectedEnvironments, ratings]);
+
+    const chartConfig = {
+        score: {
+            label: 'Coherencia del Entorno',
+            color: "hsl(var(--primary))",
+        },
     };
-
-    const next = () => setStep(p => p + 1);
 
     const renderStep = () => {
         switch(step) {
             case 0:
                 return (
-                    <div className="p-4 text-center space-y-4">
-                        <p>A veces sentimos que estamos viviendo según nuestros valores... y otras veces, como si lleváramos el piloto automático. Este ejercicio te ayudará a ver con más claridad dónde estás alineada/o contigo misma/o… y dónde quizás no tanto.</p>
-                        <Button onClick={next}>Empezar mi brújula <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    <div className="p-4 space-y-2">
+                        <Label className="font-semibold">Identifica tus entornos clave:</Label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            {environments.map(e => (
+                                <div key={e.id} className="flex items-center space-x-2">
+                                    <Checkbox id={e.id} checked={!!selectedEnvs[e.id]} onCheckedChange={c => setSelectedEnvs(p => ({...p, [e.id]: !!c}))} />
+                                    <Label htmlFor={e.id} className="font-normal">{e.label}</Label>
+                                </div>
+                            ))}
+                        </div>
+                        <Button onClick={() => setStep(1)} className="w-full mt-4">Siguiente</Button>
                     </div>
                 );
-            case 1:
-                return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 1: Explora tus áreas clave</h4>
-                        <p className="text-sm text-muted-foreground">En cada una, piensa si lo que piensas, sientes y haces está en sintonía. Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia).</p>
-                        {areas.map(area => (
-                            <div key={area.id} className="space-y-2">
-                                <Label htmlFor={area.id}>{area.label}: {ratings[area.id] || 'N/A'}</Label>
-                                <Slider id={area.id} value={[ratings[area.id] || 3]} onValueChange={(v) => handleRatingChange(area.id, v)} min={1} max={5} step={1} />
-                            </div>
-                        ))}
-                        <Button onClick={next} className="w-full">Siguiente</Button>
+            case 1: return (
+                <div className="p-4 space-y-4">
+                    {selectedEnvironments.length > 0 ? selectedEnvironments.map(e => (
+                        <div key={e.id} className="p-3 border rounded-md">
+                            <h4 className="font-semibold">{e.label}</h4>
+                            <Label htmlFor={`support-${e.id}`}>¿Cuánto apoya tus valores? {ratings[e.id]?.support ?? 5}/10</Label>
+                            <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} />
+                            <Label htmlFor={`drain-${e.id}`}>¿Cuánto te aleja de ellos? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} />
+                        </div>
+                    )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
+                     <div className="flex justify-between w-full">
+                        <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
+                        <Button onClick={() => setStep(2)} disabled={selectedEnvironments.length === 0}>Ver Síntesis Visual</Button>
                     </div>
-                );
+                </div>
+            );
             case 2:
-                 return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 2: Selecciona tus dos zonas de mayor alineación</h4>
-                        <p className="text-sm text-muted-foreground">Observa tus puntuaciones. ¿En qué dos áreas sientes más coherencia?</p>
-                        <div className="space-y-2"><Label>¿Qué estás haciendo bien en ellas?</Label><Textarea value={aligned.reason1} onChange={e => setAligned(p => ({...p, reason1: e.target.value}))}/></div>
-                        <div className="space-y-2"><Label>¿Qué emociones te despierta vivir en coherencia ahí?</Label><Textarea value={aligned.emotion1} onChange={e => setAligned(p => ({...p, emotion1: e.target.value}))}/></div>
-                        <Button onClick={next} className="w-full">Siguiente</Button>
-                    </div>
-                );
-            case 3:
-                return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 3: Detecta una zona de desconexión</h4>
-                         <p className="text-sm text-muted-foreground">Ahora identifica una de las áreas donde sientes más contradicción o conflicto interno.</p>
-                        <div className="space-y-2"><Label>¿Qué crees que te impide ser más coherente ahí?</Label><Textarea value={disconnected.reason} onChange={e => setDisconnected(p => ({...p, reason: e.target.value}))}/></div>
-                        <div className="space-y-2"><Label>¿Qué pequeño gesto podrías dar para ser un poco más coherente?</Label><Textarea value={disconnected.action} onChange={e => setDisconnected(p => ({...p, action: e.target.value}))}/></div>
-                        <Button onClick={next} className="w-full">Finalizar ejercicio</Button>
-                    </div>
-                );
-            case 4:
                 return (
                     <div className="p-4 text-center space-y-4">
-                        <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-                        <h4 className="font-semibold text-lg">Brújula Completada</h4>
-                        <p className="text-sm text-muted-foreground">No necesitas respuestas perfectas ahora. Solo empezar a mirarte con más claridad y menos juicio. El primer paso hacia la coherencia es atreverte a ver.</p>
+                        <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
+                        <p className="text-sm text-muted-foreground">Este gráfico muestra la "coherencia" de cada entorno. Una puntuación alta indica que te apoya y no te drena. Una baja, lo contrario.</p>
+                         <ChartContainer config={chartConfig} className="w-full aspect-square h-[350px]">
+                            <RadarChart data={chartData}>
+                                <ChartTooltip
+                                    cursor={false}
+                                    content={<ChartTooltipContent indicator="line" />}
+                                />
+                                <PolarAngleAxis dataKey="area" tick={{ fontSize: 10 }} />
+                                <PolarRadiusAxis angle={90} domain={[0, 10]} tickCount={6} />
+                                <PolarGrid />
+                                <Radar
+                                    dataKey="score"
+                                    fill="var(--color-score)"
+                                    fillOpacity={0.6}
+                                    dot={{
+                                        r: 4,
+                                        fillOpacity: 1,
+                                    }}
+                                />
+                            </RadarChart>
+                        </ChartContainer>
                         <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
                     </div>
                 );
             default: return null;
         }
-    };
-
+    }
+    
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}
-                <div className="mt-4">
-                    <audio controls controlsList="nodownload" className="w-full">
-                        <source src='https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica1.mp3' type="audio/mp3" />
-                        Tu navegador no soporta el elemento de audio.
-                    </audio>
-                </div>
-                </CardDescription>}
+                {content.objective && (
+                    <CardDescription className="pt-2">
+                        {content.objective}
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica1.mp3" type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    </CardDescription>
+                )}
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>
