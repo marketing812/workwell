@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo } from 'react';
@@ -21,6 +20,7 @@ import {
   Radar,
   PolarRadiusAxis
 } from "recharts";
+import { Textarea } from '../ui/textarea';
 
 const environments = [
     { id: 'salud_fisica', label: 'Salud física' },
@@ -42,20 +42,28 @@ interface EnvironmentEvaluationExerciseProps {
 export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEvaluationExerciseProps) {
     const [step, setStep] = useState(0);
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
-    const [ratings, setRatings] = useState<Record<string, { support: number, drain: number }>>({});
+    const [otherEnvironment, setOtherEnvironment] = useState('');
+    const [ratings, setRatings] = useState<Record<string, { support: number, drain: number, example: string }>>({});
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
-        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5}), [type]: value[0]}}));
+        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), [type]: value[0]}}));
+    }
+    
+    const handleExampleChange = (id: string, value: string) => {
+      setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), example: value }}));
     }
 
     const selectedEnvironments = useMemo(() => {
-        return environments.filter(e => selectedEnvs[e.id]);
-    }, [selectedEnvs]);
+        const selected = environments.filter(e => selectedEnvs[e.id]);
+        if (selectedEnvs['otro'] && otherEnvironment) {
+            selected.push({ id: 'otro', label: otherEnvironment });
+        }
+        return selected;
+    }, [selectedEnvs, otherEnvironment]);
 
     const chartData = useMemo(() => {
         return selectedEnvironments.map(env => {
-            const rating = ratings[env.id] || { support: 5, drain: 5 };
-            // Puntuación área=(Apoyo) + (10 - Drenaje) / 2
+            const rating = ratings[env.id] || { support: 5, drain: 5, example: '' };
             const score = (rating.support + (10 - rating.drain)) / 2;
             return {
                 area: env.label,
@@ -72,6 +80,13 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
         },
     };
 
+    const resetExercise = () => {
+        setStep(0);
+        setSelectedEnvs({});
+        setOtherEnvironment('');
+        setRatings({});
+    };
+
     const renderStep = () => {
         switch(step) {
             case 0:
@@ -85,7 +100,19 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                                     <Label htmlFor={e.id} className="font-normal">{e.label}</Label>
                                 </div>
                             ))}
+                             <div className="flex items-center space-x-2">
+                                <Checkbox id="otro" checked={!!selectedEnvs['otro']} onCheckedChange={c => setSelectedEnvs(p => ({...p, ['otro']: !!c}))} />
+                                <Label htmlFor="otro" className="font-normal">Otro</Label>
+                            </div>
                         </div>
+                        {selectedEnvs['otro'] && (
+                            <Textarea 
+                                value={otherEnvironment} 
+                                onChange={(e) => setOtherEnvironment(e.target.value)} 
+                                placeholder="Describe tu entorno personalizado aquí..."
+                                className="mt-2"
+                            />
+                        )}
                         <Button onClick={() => setStep(1)} className="w-full mt-4">Siguiente</Button>
                     </div>
                 );
@@ -94,10 +121,14 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                     {selectedEnvironments.length > 0 ? selectedEnvironments.map(e => (
                         <div key={e.id} className="p-3 border rounded-md">
                             <h4 className="font-semibold">{e.label}</h4>
-                            <Label htmlFor={`support-${e.id}`}>¿Cuánto apoya tus valores? {ratings[e.id]?.support ?? 5}/10</Label>
+                            <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
                             <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} />
-                            <Label htmlFor={`drain-${e.id}`}>¿Cuánto te aleja de ellos? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            
+                            <Label htmlFor={`drain-${e.id}`}>Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
                             <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} />
+                            
+                            <Label htmlFor={`example-${e.id}`}>Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
+                            <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
@@ -110,7 +141,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                 return (
                     <div className="p-4 text-center space-y-4">
                         <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
-                        <p className="text-sm text-muted-foreground">Este gráfico muestra la "coherencia" de cada entorno. Una puntuación alta indica que te apoya y no te drena. Una baja, lo contrario.</p>
+                        <p className="text-sm text-muted-foreground">Aquí tienes tu mapa de entornos. No es para juzgarte ni para que tomes decisiones inmediatas, sino para que tengas claridad. Y recuerda: un entorno que ahora es saboteador, puede transformarse si introduces cambios.</p>
                          <ChartContainer config={chartConfig} className="w-full aspect-square h-[350px]">
                             <RadarChart data={chartData}>
                                 <ChartTooltip
@@ -131,7 +162,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
+                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
                     </div>
                 );
             default: return null;
