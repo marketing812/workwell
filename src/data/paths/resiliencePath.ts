@@ -173,16 +173,30 @@ export const resiliencePath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3',
-          prompts: ['¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?','¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?','¿Qué cambio he notado en mi forma de responder ante las dificultades?','¿Qué frase o imagen me llevo como símbolo de mi resiliencia?','¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?']
+          prompts: [
+            '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?',
+            '¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?',
+            '¿Qué cambio he notado en mi forma de responder ante las dificultades?',
+            '¿Qué frase o imagen me llevo como símbolo de mi resiliencia?',
+            '¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?',
+          ],
         },
         {
           type: 'title',
           text: 'Resumen Clave de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3',
         },
-        { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.' ]},
-        { type: 'quote', text: 'No vuelvo al pasado, pero camino con todo lo que aprendí de él. — Tu nueva versión' }
-      ]
+        {
+          type: 'list',
+          items: [
+            'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
+            'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
+            'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
+            'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.',
+          ],
+        },
+        { type: 'quote', text: 'No vuelvo al pasado, pero camino con todo lo que aprendí de él. — Tu nueva versión' },
+      ],
     },
     {
       id: 'res_cierre',
@@ -222,9 +236,27 @@ export const resiliencePath: Path = {
         },
         {
           type: 'quote',
-          text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”',
+          text: 'La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.',
         },
       ],
     },
-  ],
+  ]
 };
+
+    
+
+``` module={"id":"res_cierre","title":"Cierre de la Ruta: Integración y Próximos Pasos","type":"summary","estimatedTime":"10-15 min","content":[{"type":"therapeuticNotebookReflection","title":"Reflexión final de la Ruta","audioUrl":"https://workwellfut.com/audios/ruta8/descripciones/Reflexionfinalruta8.mp3","prompts":["¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?","¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?","¿Qué cambio he notado en mi forma de responder ante las dificultades?","¿Qué frase o imagen me llevo como símbolo de mi resiliencia?","¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?."]},{"type":"title","text":"RESUMEN FINAL DE LA RUTA","audioUrl":"https://workwellfut.com/audios/ruta8/descripciones/Resumenfinalruta8.mp3"},{"type":"list","items":["Comprendí que la resiliencia no es innata, sino entrenable.","Identifiqué mis detonantes internos y aprendí a regularme.","Descubrí que puedo decidir desde el valor y no solo desde el miedo.","Reescribí mi historia desde la fuerza y el aprendizaje.","Reconocí mis recursos personales y los guardé en mi caja de herramientas.","Practiqué el autocuidado emocional como un acto de fortaleza.","Me comprometí conmigo, con lo que soy y con lo que quiero construir.","Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia."]},{"type":"quote","text":"“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”"}]}>
+
+with the text content:
+
+    “La resiliencia no es una meta: es una forma de caminar.
+    Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+quita las comillas de este texto, pero deja el texto en cursiva. Recuerda no romper nada
