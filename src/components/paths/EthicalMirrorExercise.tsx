@@ -33,7 +33,10 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
     const [person, setPerson] = useState('');
     const [otherPerson, setOtherPerson] = useState('');
     const [explanation, setExplanation] = useState('');
+    const [motives, setMotives] = useState('');
+    const [explanationForOther, setExplanationForOther] = useState('');
     const [values, setValues] = useState<Record<string, boolean>>({});
+    const [otherValue, setOtherValue] = useState('');
     const [isProud, setIsProud] = useState(false);
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
     const [coherence, setCoherence] = useState(5);
@@ -41,13 +44,18 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
     const {toast} = useToast();
 
     const handleSave = () => {
-        const selectedValues = Object.keys(values).filter(k => values[k]);
+        const selectedValues = Object.keys(values).filter(k => values[k] && k !== 'Otra');
+        if (values['Otra'] && otherValue) {
+            selectedValues.push(otherValue);
+        }
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
 **Decisión a explorar:** ${decision}
 **Persona espejo:** ${person === 'Otra' ? otherPerson : person}
-**Explicación:** ${explanation}
+**Explicación como si fuera real:** ${explanation}
+**Motivos principales:** ${motives}
+**Explicación para que lo entienda:** ${explanationForOther}
 **Valores en juego:** ${selectedValues.join(', ')}
 **Nivel de coherencia:** ${coherence}/10
 **Ajuste necesario:** ${adjustment || 'Ninguno.'}
@@ -85,18 +93,37 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
                     </div>
                 );
             case 2:
-                return (
-                     <div className="p-4 space-y-2">
-                        <Label>Escribe tu explicación</Label>
-                        <Textarea value={explanation} onChange={e => setExplanation(e.target.value)} />
-                        <Label>Valores implicados</Label>
-                         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
-                            {valuesList.map(v => (
-                                <div key={v} className="flex items-center space-x-2">
-                                    <Checkbox id={v} checked={!!values[v]} onCheckedChange={c => setValues(p => ({...p, [v]: !!c}))} />
-                                    <Label htmlFor={v} className="font-normal text-xs">{v}</Label>
+                return(
+                     <div className="p-4 space-y-4">
+                        <div className="space-y-2">
+                            <Label>Escribe tu explicación como si fuera real</Label>
+                            <Textarea value={explanation} onChange={e => setExplanation(e.target.value)} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>Los motivos principales de mi decisión son...</Label>
+                            <Textarea value={motives} onChange={e => setMotives(e.target.value)} placeholder="Ejemplo: “Quiero crecer y el nuevo puesto me reta.”" />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>¿Cómo se lo explicarías para que lo entienda?</Label>
+                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo. Sé que implica un cambio grande, pero he ahorrado, he valorado pros y contras, y creo que es el momento adecuado para dar este paso.”" />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>Valores implicados</Label>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
+                                {valuesList.map(v => (
+                                    <div key={v} className="flex items-center space-x-2">
+                                        <Checkbox id={v} checked={!!values[v]} onCheckedChange={c => setValues(p => ({...p, [v]: !!c}))} />
+                                        <Label htmlFor={v} className="font-normal text-xs">{v}</Label>
+                                    </div>
+                                ))}
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="Otra" checked={!!values['Otra']} onCheckedChange={c => setValues(p => ({...p, ['Otra']: !!c}))} />
+                                    <Label htmlFor="Otra" className="font-normal text-xs">Otros</Label>
                                 </div>
-                            ))}
+                            </div>
+                            {values['Otra'] && (
+                                <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
+                            )}
                         </div>
                         <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
                      </div>
