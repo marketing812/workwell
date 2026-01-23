@@ -131,7 +131,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Aceptar no es rendirse',
-          audioUrl: 'https://workwellfut.com/ruta8/descripciones/Audio4sesion4ruta8.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio4sesion4ruta8.mp3',
           content: [
             { type: 'paragraph', text: 'Aceptar no es decir “esto está bien”.\nAceptar es decir: “Esto es lo que hay. Y desde aquí, ¿qué puedo hacer?”.\nCuando dejas de pelearte con la realidad, liberas energía.' },
             {
@@ -177,3 +177,23 @@ export const resiliencePath: Path = {
     }]}
 ]
 };
+
+with the text content:
+
+    La resiliencia ya no es solo algo que haces en momentos difíciles.
+    Es una forma de estar en el mundo.
+    Es la nueva manera en la que te hablas.
+    Es el permiso que te das para sentir sin romperte.
+    Es el compromiso que asumes contigo, incluso cuando no hay motivación.
+    Tu identidad se va construyendo con cada elección cotidiana.
+    Y hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+
+And change it as follows:
+  
+repite la acción en este párrafo
