@@ -22,20 +22,39 @@ interface DecisionLog {
     choiceType: 'querer' | 'deber' | 'mixto' | '';
     reason: string;
     aftermath: string;
+    otherAftermath: string;
     nextTime: string;
 }
+
+const aftermathOptions = [
+    { value: 'Satisfacción', label: 'Satisfacción' },
+    { value: 'Alivio', label: 'Alivio' },
+    { value: 'Frustración', label: 'Frustración' },
+    { value: 'Culpa', label: 'Culpa' },
+    { value: 'Orgullo', label: 'Orgullo' },
+    { value: 'Desconexión', label: 'Desconexión' },
+];
+
 
 export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLogExerciseProps) {
     const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [logs, setLogs] = useState<DecisionLog[]>(() =>
-        Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))
+        Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', otherAftermath: '', nextTime: '' }))
     );
 
     const handleLogChange = (index: number, field: keyof DecisionLog, value: string) => {
         const newLogs = [...logs];
         (newLogs[index] as any)[field] = value;
+        if (field === 'aftermath' && value !== 'Otro') {
+          newLogs[index].otherAftermath = '';
+        }
         setLogs(newLogs);
+    };
+    
+    const resetExercise = () => {
+        setStep(0);
+        setLogs(Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', otherAftermath: '', nextTime: '' })));
     };
 
     const handleSave = () => {
@@ -47,11 +66,12 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
 
         let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
         filledLogs.forEach((log, index) => {
+            const finalAftermath = log.aftermath === 'Otro' ? log.otherAftermath : log.aftermath;
             notebookContent += `**Decisión ${index + 1}:** ${log.decision}\n`;
-            notebookContent += `- Elegí desde: ${log.choiceType}\n`;
-            notebookContent += `- Razón: ${log.reason}\n`;
-            notebookContent += `- Cómo me sentí: ${log.aftermath}\n`;
-            notebookContent += `- Próxima vez: ${log.nextTime}\n\n`;
+            notebookContent += `- Elegí desde: ${log.choiceType || 'No especificado'}\n`;
+            notebookContent += `- Razón: ${log.reason || 'No especificado'}\n`;
+            notebookContent += `- Cómo me sentí: ${finalAftermath || 'No especificado'}\n`;
+            notebookContent += `- Próxima vez: ${log.nextTime || 'No especificado'}\n\n`;
         });
         addNotebookEntry({ title: 'Registro de Decisiones Pequeñas', content: notebookContent, pathId: pathId });
         toast({ title: 'Registro Guardado' });
@@ -75,18 +95,36 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                              <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                                 <Label htmlFor={`decision-${index}`}>Decisión {index + 1}:</Label>
                                 <Textarea id={`decision-${index}`} value={log.decision} onChange={e => handleLogChange(index, 'decision', e.target.value)} />
+                                
                                 <Label>¿Actuaste desde el “querer” o el “deber”?</Label>
                                 <RadioGroup value={log.choiceType} onValueChange={v => handleLogChange(index, 'choiceType', v as any)} className="space-y-2">
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="querer" id={`choice-${index}-q`}/><Label htmlFor={`choice-${index}-q`} className="font-normal">Querer (autenticidad, deseo, conexión)</Label></div>
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="deber" id={`choice-${index}-d`}/><Label htmlFor={`choice-${index}-d`} className="font-normal">Deber (exigencia, miedo, costumbre)</Label></div>
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="mixto" id={`choice-${index}-m`}/><Label htmlFor={`choice-${index}-m`} className="font-normal">Mixto (una mezcla – cuéntalo brevemente)</Label></div>
                                 </RadioGroup>
+                                
                                 <Label htmlFor={`reason-${index}`}>¿Qué te llevó a elegir así?</Label>
-                                <Textarea id={`reason-${index}`} value={log.reason} onChange={e => handleLogChange(index, 'reason', e.target.value)} />
-                                <Label htmlFor={`aftermath-${index}`}>¿Cómo te sentiste después?</Label>
-                                <Textarea id={`aftermath-${index}`} value={log.aftermath} onChange={e => handleLogChange(index, 'aftermath', e.target.value)} />
+                                <Textarea id={`reason-${index}`} value={log.reason} onChange={e => handleLogChange(index, 'reason', e.target.value)} placeholder={'Ejemplo: \n"Decisión: Ir a cenar con mi familia. \nLa tomé más desde el deber, porque estaba cansada pero sentía que tenía que estar presente. Me costó disfrutarlo."'} />
+
+                                <Label>¿Cómo te sentiste después?</Label>
+                                <RadioGroup value={log.aftermath} onValueChange={v => handleLogChange(index, 'aftermath', v as any)} className="space-y-2">
+                                    {aftermathOptions.map(opt => (
+                                        <div key={opt.value} className="flex items-center space-x-2">
+                                            <RadioGroupItem value={opt.value} id={`aftermath-${index}-${opt.value}`} />
+                                            <Label htmlFor={`aftermath-${index}-${opt.value}`} className="font-normal">{opt.label}</Label>
+                                        </div>
+                                    ))}
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="Otro" id={`aftermath-${index}-otro`} />
+                                        <Label htmlFor={`aftermath-${index}-otro`} className="font-normal">Otro (escribe tu emoción)</Label>
+                                    </div>
+                                </RadioGroup>
+                                {log.aftermath === 'Otro' && (
+                                    <Textarea value={log.otherAftermath} onChange={e => handleLogChange(index, 'otherAftermath', e.target.value)} className="ml-6 mt-2" placeholder="Escribe aquí cómo te sentiste..." />
+                                )}
+                                
                                 <Label htmlFor={`nextTime-${index}`}>¿Qué harías distinto la próxima vez?</Label>
-                                <Textarea id={`nextTime-${index}`} value={log.nextTime} onChange={e => handleLogChange(index, 'nextTime', e.target.value)} />
+                                <Textarea id={`nextTime-${index}`} value={log.nextTime} onChange={e => handleLogChange(index, 'nextTime', e.target.value)} placeholder="Ejemplo: Después me sentí frustrada porque necesitaba descansar. La próxima vez me gustaría proponer un encuentro más breve o en otro momento." />
                             </div>
                         ))}
                         <Button onClick={handleSave} className="w-full">
@@ -100,7 +138,7 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                         <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                         <h4 className="font-semibold text-lg">Registro Guardado</h4>
                         <p className="text-sm text-muted-foreground">Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
-                        <Button onClick={() => { setStep(0); setLogs(Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', nextTime: '' }))) }} variant="outline">Hacer otro registro</Button>
+                        <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
                     </div>
                 );
             default: return null;
