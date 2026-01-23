@@ -1,13 +1,12 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveDecisionsWheelExerciseContent } from '@/data/paths/pathTypes';
 
@@ -25,8 +24,22 @@ export function BraveDecisionsWheelExercise({ content, pathId }: BraveDecisionsW
   const [confidenceDecision, setConfidenceDecision] = useState('');
   const [despairDecision, setDespairDecision] = useState('');
   const [finalChoice, setFinalChoice] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
-  const handleSave = () => {
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+  
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    if (!finalChoice.trim()) {
+        toast({
+            title: "Elección final requerida",
+            description: "Por favor, describe tu elección final para poder guardar el ejercicio.",
+            variant: "destructive",
+        });
+        return;
+    }
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -39,46 +52,115 @@ export function BraveDecisionsWheelExercise({ content, pathId }: BraveDecisionsW
 `;
     addNotebookEntry({ title: 'Rueda de Decisiones Valientes', content: notebookContent, pathId: pathId });
     toast({ title: 'Decisión Guardada', description: 'Tu reflexión ha sido guardada.' });
-    setStep(prev => prev + 1);
+    setIsSaved(true);
+    nextStep();
+  };
+
+  const resetExercise = () => {
+    setStep(0);
+    setSituation('');
+    setFearDecision('');
+    setValueDecision('');
+    setConfidenceDecision('');
+    setDespairDecision('');
+    setFinalChoice('');
+    setIsSaved(false);
   };
 
   const renderStep = () => {
     switch (step) {
-      case 0:
+      case 0: // Introducción
         return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso 1: Define tu situación actual</h4>
-            <Label htmlFor="situation-brave">Describe brevemente la decisión que tienes que tomar.</Label>
+          <div className="p-4 space-y-4 text-center">
+            <p className="text-sm text-muted-foreground">En este ejercicio vas a construir una especie de “rueda emocional” para mirar una decisión difícil desde cuatro estados internos distintos. El objetivo no es que elijas ahora, sino que ganes claridad sobre cómo influye tu estado emocional en tu forma de ver y decidir.</p>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          </div>
+        );
+      case 1: // Paso 1: Define tu situación actual
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 1: Define tu situación actual</h4>
+            <p className="text-sm text-muted-foreground">Describe brevemente la decisión que tienes que tomar. Intenta que sea lo más concreta posible. Ejemplos: Hablar con mi pareja sobre algo que me está doliendo. Pedir un cambio de proyecto en el trabajo. Decidir si continúo en esta relación. Elegir entre quedarme o mudarme.</p>
+            <Label htmlFor="situation-brave">¿Cuál es la decisión que estás enfrentando?</Label>
             <Textarea id="situation-brave" value={situation} onChange={e => setSituation(e.target.value)} />
-            <Button onClick={() => setStep(1)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
-      case 1:
+      case 2: // Paso 2: Miedo
         return (
-          <div className="p-4 space-y-4">
-            <div className="space-y-2"><Label htmlFor="fear-decision">¿Qué harías si decidieras desde el miedo?</Label><Textarea id="fear-decision" value={fearDecision} onChange={e => setFearDecision(e.target.value)} /></div>
-            <div className="space-y-2"><Label htmlFor="value-decision">¿Qué harías si decidieras desde el valor?</Label><Textarea id="value-decision" value={valueDecision} onChange={e => setValueDecision(e.target.value)} /></div>
-            <div className="space-y-2"><Label htmlFor="confidence-decision">¿Qué harías si decidieras desde la confianza?</Label><Textarea id="confidence-decision" value={confidenceDecision} onChange={e => setConfidenceDecision(e.target.value)} /></div>
-            <div className="space-y-2"><Label htmlFor="despair-decision">¿Qué harías si decidieras desde la desesperanza?</Label><Textarea id="despair-decision" value={despairDecision} onChange={e => setDespairDecision(e.target.value)} /></div>
-            <Button onClick={() => setStep(2)} className="w-full">Integrar y Elegir</Button>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 2: ¿Qué harías si decidieras desde el miedo?</h4>
+            <p className="text-sm text-muted-foreground">El miedo tiende a protegerte evitando el daño. Pero también puede bloquearte. Ejemplo: “Tengo miedo de que si expreso mi necesidad, me rechacen. Así que, desde el miedo, decidiría callarme y seguir acumulando malestar.”</p>
+            <Label htmlFor="fear-decision">Describe tu posible decisión si actuaras desde el miedo</Label>
+            <Textarea id="fear-decision" value={fearDecision} onChange={e => setFearDecision(e.target.value)} />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!fearDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
-      case 2:
+      case 3: // Paso 3: Valor
         return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso final: Integra y elige tu camino</h4>
-            <Label htmlFor="final-choice">Ahora que has visto la situación desde distintas lentes, ¿qué decisión quieres tomar hoy y por qué?</Label>
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 3: ¿Qué harías si decidieras desde el valor?</h4>
+            <p className="text-sm text-muted-foreground">Decidir desde el valor no es hacerlo sin miedo, sino a pesar de él, priorizando lo que de verdad importa para ti. Ejemplo: “Desde el valor, hablaría con calma y honestidad. Me costaría, pero lo haría porque quiero relaciones donde se pueda hablar desde el respeto.”</p>
+            <Label htmlFor="value-decision">Describe qué harías si actuaras desde tu coraje y tus valores</Label>
+            <Textarea id="value-decision" value={valueDecision} onChange={e => setValueDecision(e.target.value)} />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!valueDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 4: // Paso 4: Confianza
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 4: ¿Qué harías si decidieras desde la confianza?</h4>
+            <p className="text-sm text-muted-foreground">La confianza no garantiza resultados, pero te recuerda que puedes afrontar lo que venga. Ejemplo: “Desde la confianza, decidiría moverme porque sé que, aunque algo salga mal, voy a saber repararlo.”</p>
+            <Label htmlFor="confidence-decision">Describe la decisión que tomarías si confiaras en ti y en tu proceso</Label>
+            <Textarea id="confidence-decision" value={confidenceDecision} onChange={e => setConfidenceDecision(e.target.value)} />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!confidenceDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 5: // Paso 5: Desesperanza
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 5: ¿Qué harías si decidieras desde la desesperanza?</h4>
+            <p className="text-sm text-muted-foreground">Este paso te ayudará a reconocer tu patrón de rendición o evitación. No es para que decidas desde ahí, sino para detectar cuándo esa parte toma el control. Ejemplo: “Desde la desesperanza, probablemente no haría nada. Pensaría que ya da igual, y me aislaría.”</p>
+            <Label htmlFor="despair-decision">Describe tu posible decisión si actuaras desde la rendición o el agotamiento emocional</Label>
+            <Textarea id="despair-decision" value={despairDecision} onChange={e => setDespairDecision(e.target.value)} />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!despairDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 6: // Paso 6: Integrar y elegir
+        return (
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 6: Integra y elige tu camino</h4>
+            <p className="text-sm text-muted-foreground">Ahora que has visto la situación desde distintas lentes… Respira. Vuelve a conectar contigo. ¿Cuál de estas decisiones se alinea más contigo hoy? ¿Cuál te haría sentir más entera o entero, aunque no sea la más cómoda?</p>
+            <Label htmlFor="final-choice">¿Qué decisión quieres tomar hoy y por qué?</Label>
             <Textarea id="final-choice" value={finalChoice} onChange={e => setFinalChoice(e.target.value)} />
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mi elección</Button>
-          </div>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi elección</Button>
+            </div>
+          </form>
         );
-      case 3:
+      case 7: // Cierre
         return (
-          <div className="p-4 text-center space-y-4">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-            <h4 className="font-semibold text-lg">Elección Guardada</h4>
-            <p className="text-muted-foreground">“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él”.</p>
-            <Button onClick={() => { setStep(0); setSituation(''); setFearDecision(''); setValueDecision(''); setConfidenceDecision(''); setDespairDecision(''); setFinalChoice(''); }} variant="outline">Empezar de nuevo</Button>
+          <div className="p-6 text-center space-y-4">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">Elección Guardada</h4>
+            <p className="text-muted-foreground italic">“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él”.</p>
+            <Button onClick={resetExercise} variant="outline" className="w-full">Empezar de nuevo</Button>
           </div>
         );
       default:
