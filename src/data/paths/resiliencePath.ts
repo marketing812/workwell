@@ -1,3 +1,4 @@
+
 import type { Path } from '../pathsData';
 
 export const resiliencePath: Path = {
@@ -157,7 +158,7 @@ export const resiliencePath: Path = {
           title: 'No solo haces resiliencia. Eres resiliencia.',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.' },
+            { type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.' },
             {
               type: 'list',
               items: ['Es la nueva manera en la que te hablas.','Es el permiso que te das para sentir sin romperte.','Es el compromiso que asumes contigo, incluso cuando no hay motivación.' ]},
@@ -168,10 +169,19 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'changeTimelineExercise', title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO', objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3' },
         { type: 'myPactExercise', title: 'EJERCICIO 2: MI PACTO CONMIGO', objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 'prompts':['¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?','¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?','¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?','¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?','Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.'], audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3'},
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'},
-        { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'] },
-        { type: 'quote', text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'}
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3',
+          prompts: ['¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?','¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?','¿Qué cambio he notado en mi forma de responder ante las dificultades?','¿Qué frase o imagen me llevo como símbolo de mi resiliencia?','¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?']
+        },
+        {
+          type: 'title',
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'
+        },
+        { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.' ]},
+        { type: 'quote', text: 'No vuelvo al pasado, pero camino con todo lo que aprendí de él. — Tu nueva versión' }
       ]
     },
     {
@@ -183,15 +193,20 @@ export const resiliencePath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión final de la Ruta',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionfinalruta8.mp3',
           prompts: [
-            '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?.',
-            '¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?.',
-            '¿Qué cambio he notado en mi forma de responder ante las dificultades?.',
-            '¿Qué frase o imagen me llevo como símbolo de mi resiliencia?.',
-            '¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?.'
-          ]
+            '¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?',
+            '¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?',
+            '¿Qué cambio he notado en mi forma de responder ante las dificultades?',
+            '¿Qué frase o imagen me llevo como símbolo de mi resiliencia?',
+            '¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?.',
+          ],
         },
-        { type: 'title', text: 'Resumen Final de la Ruta' },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumenfinalruta8.mp3',
+        },
         {
           type: 'list',
           items: [
@@ -202,14 +217,14 @@ export const resiliencePath: Path = {
             'Reconocí mis recursos personales y los guardé en mi caja de herramientas.',
             'Practiqué el autocuidado emocional como un acto de fortaleza.',
             'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
-            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
-          ]
+            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.',
+          ],
         },
         {
           type: 'quote',
-          text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”'
-        }
-      ]
-    }
-  ]
+          text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”',
+        },
+      ],
+    },
+  ],
 };
