@@ -109,9 +109,9 @@ export const resiliencePath: Path = {
           title: 'La resiliencia se entrena, no se hereda',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio2sesion4ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'Es fácil pensar que hay personas que “ya son fuertes” por naturaleza.\nPero la verdad es que la resiliencia no es un rasgo con el que naces, sino una capacidad que se cultiva.\nY tú la has estado entrenando.' },
-            { type: 'list', items: ['Cada vez que elegiste respirar en lugar de reaccionar.', 'Cada vez que te hablaste con amabilidad en lugar de exigencia.', 'Cada vez que dijiste: “No puedo con todo… pero puedo con este paso”.'] },
-            { type: 'paragraph', text: 'Eso es practicar resiliencia.' }
+            { type: 'paragraph', text: 'Es fácil pensar que hay personas que “ya son fuertes” por naturaleza.\nPero la verdad es que la resiliencia no es un rasgo con el que naces, sino una capacidad que se cultiva.\nY tú la has estado entrenando.'},
+            { type: 'list', items: ['Cada vez que elegiste respirar en lugar de reaccionar.','Cada vez que te hablaste con amabilidad en lugar de exigencia.','Cada vez que dijiste: “No puedo con todo… pero puedo con este paso”.']},
+            { type: 'paragraph', text: 'Eso es practicar resiliencia.'}
           ]
         },
         {
@@ -119,26 +119,45 @@ export const resiliencePath: Path = {
           title: '¿El secreto? Repetir, repetir, repetir',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio3sesion4ruta8.mp3',
           content: [
-            { type: 'paragraph', text: 'A veces creemos que con entender algo, ya basta. Pero no.\nPara que algo cale, hay que repetirlo.\nPiensa en una senda entre la maleza: cada vez que pasas por ahí, se va marcando más.\nLo mismo ocurre con tus recursos emocionales.' },
+            { type: 'paragraph', text: 'A veces creemos que con entender algo, ya basta. Pero no.\nPara que algo cale, hay que repetirlo.\nPiensa en una senda entre la maleza: cada vez que pasas por ahí, se va marcando más.\nLo mismo ocurre con tus recursos emocionales.'},
             { type: 'list', items: ['Cada vez que repites una técnica, fortaleces una red interna.','Cada vez que eliges cuidarte, entrenas tu sistema nervioso.']},
             { type: 'paragraph', text: 'No necesitas hacerlo perfecto. Solo necesitas volver.\nY volver. Y volver.'}
           ]
         },
-        { type: 'collapsible', title: 'Aceptar no es rendirse', audioUrl: 'https://workwellfut.com/ruta8/descripciones/Audio4sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Aceptar no es decir “esto está bien”.\nAceptar es decir: “Esto es lo que hay. Y desde aquí, ¿qué puedo hacer?”.\nCuando dejas de pelearte con la realidad, liberas energía.\n👉 Energía que puedes usar para decidir.\n👉 Energía que puedes usar para reconstruirte.\nAceptar el dolor, el cambio o la incertidumbre no es pasividad.\nEs la base de una acción más sabia, más enraizada y más libre.' }] },
+        {
+          type: 'collapsible',
+          title: 'Aceptar no es rendirse',
+          audioUrl: 'https://workwellfut.com/ruta8/descripciones/Audio4sesion4ruta8.mp3',
+          content: [
+            { type: 'paragraph', text: 'Aceptar no es decir “esto está bien”.\nAceptar es decir: “Esto es lo que hay. Y desde aquí, ¿qué puedo hacer?”.\nCuando dejas de pelearte con la realidad, liberas energía.' },
+            { type: 'list', items: ['Energía que puedes usar para decidir.', 'Energía que puedes usar para reconstruirte.']},
+            { type: 'paragraph', text: 'Aceptar el dolor, el cambio o la incertidumbre no es pasividad.\nEs la base de una acción más sabia, más enraizada y más libre.' }
+          ]
+        },
         { type: 'collapsible', title: 'Reescribir tu historia', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Todos tenemos una historia. Pero lo que más influye en cómo nos sentimos hoy no es el hecho en sí, sino la forma en que lo interpretamos.\nPor ejemplo:\n•\t“Fallé” puede convertirse en “Tuve el coraje de intentarlo”.\n•\t“Estaba rota” puede transformarse en “Empecé a reconstruirme desde ahí”.\nNo se trata de mentirte. Se trata de ver la otra cara que también es cierta, pero que quizás no habías reconocido.\nContarte tu historia desde un lugar más compasivo y valiente te cambia por dentro.' }] },
-        { type: 'collapsible', title: 'De víctima a protagonista', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.\n🔸 Cuando reconoces que lo hiciste lo mejor que pudiste.\n🔸 Cuando te das cuenta de todo lo que has sostenido.\n🔸 Cuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.\nY ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }] },
+        {
+          type: 'collapsible',
+          title: 'De víctima a protagonista',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3',
+          content: [
+            { type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.' },
+            { type: 'list', items: ['Cuando reconoces que lo hiciste lo mejor que pudiste.','Cuando te das cuenta de todo lo que has sostenido.','Cuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.']},
+            { type: 'paragraph', text: 'Y ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }
+          ]
+        },
         { type: 'collapsible', title: 'No solo haces resiliencia. Eres resiliencia.', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.\n🧠 Es la nueva manera en la que te hablas.\n❤️ Es el permiso que te das para sentir sin romperte.\n💪 Es el compromiso que asumes contigo, incluso cuando no hay motivación.\nTu identidad se va construyendo con cada elección cotidiana.\nY hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.' }] },
         { type: 'collapsible', title: 'Tu historia continúa', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio8sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'changeTimelineExercise', title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO', objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3' },
         { type: 'myPactExercise', title: 'EJERCICIO 2: MI PACTO CONMIGO', objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?.','¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?.','¿Qué cambio he notado en mi forma de responder ante las dificultades?.','¿Qué frase o imagen me llevo como símbolo de mi resiliencia?.','¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?.']},
-        { type: 'title', text: 'Resumen Final de la Ruta' },
-        { type: 'list', items: ['Comprendí que la resiliencia no es innata, sino entrenable.','Identifiqué mis detonantes internos y aprendí a regularme.','Descubrí que puedo decidir desde el valor y no solo desde el miedo.','Reescribí mi historia desde la fuerza y el aprendizaje.','Reconocí mis recursos personales y los guardé en mi caja de herramientas.','Practiqué el autocuidado emocional como un acto de fortaleza.','Me comprometí conmigo, con lo que soy y con lo que quiero construir.','Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'] },
+        { type: 'title', text: 'Resumen Final de la Ruta'},
+        { type: 'list', items: ['Comprendí que la resiliencia no es innata, sino entrenable.','Identifiqué mis detonantes internos y aprendí a regularme.','Descubrí que puedo decidir desde el valor y no solo desde el miedo.','Reescribí mi historia desde la fuerza y el aprendizaje.','Reconocí mis recursos personales y los guardé en mi caja de herramientas.','Practiqué el autocuidado emocional como un acto de fortaleza.','Me comprometí conmigo, con lo que soy y con lo que quiero construir.','Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.']},
         { type: 'quote', text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”' }
       ]
     }
   ]
 };
 
+    
     
