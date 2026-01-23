@@ -1,13 +1,14 @@
+
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { EnvironmentEvaluationExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3 } from 'lucide-react';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
 import {
   ChartContainer,
   ChartTooltip,
@@ -21,6 +22,9 @@ import {
   PolarRadiusAxis
 } from "recharts";
 import { Textarea } from '../ui/textarea';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useToast } from '@/hooks/use-toast';
+
 
 const environments = [
     { id: 'salud_fisica', label: 'Salud física' },
@@ -40,10 +44,12 @@ interface EnvironmentEvaluationExerciseProps {
 }
 
 export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEvaluationExerciseProps) {
+    const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
     const [otherEnvironment, setOtherEnvironment] = useState('');
     const [ratings, setRatings] = useState<Record<string, { support: number, drain: number, example: string }>>({});
+    const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
         setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), [type]: value[0]}}));
@@ -80,11 +86,36 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
         },
     };
 
+    const handleSave = () => {
+        const filledEnvironments = selectedEnvironments.map(env => ({
+            ...env,
+            rating: ratings[env.id] || { support: 5, drain: 5, example: '' }
+        })).filter(env => env.name.trim() !== '');
+
+        if (filledEnvironments.length === 0) {
+            toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa al menos un entorno para guardar.', variant: 'destructive' });
+            return;
+        }
+
+        let notebookContent = `**${content.title}**\n\n`;
+        filledEnvironments.forEach(env => {
+            notebookContent += `**Entorno:** ${env.label}\n`;
+            notebookContent += `- Apoyo a mis valores (0-10): ${env.rating.support}\n`;
+            notebookContent += `- Me aleja de mis valores (0-10): ${env.rating.drain}\n`;
+            notebookContent += `- Ejemplo: ${env.rating.example || 'No especificado.'}\n\n`;
+        });
+
+        addNotebookEntry({ title: 'Mi Mapa de Coherencia', content: notebookContent, pathId });
+        toast({ title: 'Mapa de Coherencia Guardado' });
+        setIsSaved(true);
+    };
+
     const resetExercise = () => {
         setStep(0);
         setSelectedEnvs({});
         setOtherEnvironment('');
         setRatings({});
+        setIsSaved(false);
     };
 
     const renderStep = () => {
@@ -124,10 +155,10 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                             <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
                             <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`drain-${e.id}`}>Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
                             <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`example-${e.id}`}>Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
+                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
                             <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
@@ -162,7 +193,12 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                         <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                            <Button onClick={handleSave} disabled={isSaved}>
+                                <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
+                            </Button>
+                            <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                         </div>
                     </div>
                 );
             default: return null;
