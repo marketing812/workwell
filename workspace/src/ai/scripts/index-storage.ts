@@ -3,7 +3,7 @@ import { PDFParse } from "pdf-parse";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";
 import * as path from "node:path";
-
+import { vector } from "@google-cloud/firestore";
 import { embedText } from "../rag/embed";
 
 if (!admin.apps.length) {
@@ -63,7 +63,7 @@ async function main() {
       //console.log("EMBEDDING_DIM=", embedding.length);return;
       await db.collection("kb-chunks").add({
         text: chunk,
-        embedding,
+        embedding: vector(embedding),
         source: file.name,
         chunkIndex: idx,
         createdAt: admin.firestore.FieldValue.serverTimestamp(),

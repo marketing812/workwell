@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { embedText } from "./embed";
-
+import { vector } from "@google-cloud/firestore";
 if (!admin.apps.length) {
   // Si tu script usa storageBucket explícito, aquí no hace falta para leer Firestore.
   // En App Hosting / Functions se inicializa con credenciales del runtime.
@@ -31,13 +31,13 @@ export async function retrieveDocsContext(
   // - o funciona directo,
   // - o te devuelve un error con enlace para crear el índice.
   const snap = await db
-    .collection("kb-chunks")
-    // @ts-ignore - findNearest puede no estar tipado según versión
-    .findNearest("embedding", qVec, {
-      limit: k,
-      distanceMeasure: "COSINE",
-    })
-    .get();
+  .collection("kb-chunks")
+  // @ts-ignore
+  .findNearest("embedding", vector(qVec), {
+    limit: k,
+    distanceMeasure: "COSINE",
+  })
+  .get();
 
   const chunks: RetrievedChunk[] = snap.docs
     .map((d) => d.data() as any)
