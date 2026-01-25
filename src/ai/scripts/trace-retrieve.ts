@@ -1,13 +1,5 @@
-import * as admin from "firebase-admin";
+import { admin } from "@/lib/firebase-admin";
 import { embedText } from "../rag/embed";
-
-// ✅ IMPORTANTE: usa el projectId y credenciales que ya te funcionan para indexar
-if (!admin.apps.length) {
-  admin.initializeApp({
-    // si no hace falta, puedes quitarlo; lo dejo para estabilidad
-    storageBucket: "workwell-c4rlk.firebasestorage.app",
-  });
-}
 
 const db = admin.firestore();
 

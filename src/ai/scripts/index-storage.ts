@@ -1,16 +1,9 @@
-import * as admin from "firebase-admin";
+import { admin } from "@/lib/firebase-admin";
 import { PDFParse } from "pdf-parse";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";
 import * as path from "node:path";
-import { vector } from "@google-cloud/firestore";
 import { embedText } from "../rag/embed";
-
-if (!admin.apps.length) {
-  admin.initializeApp({
-    storageBucket: "workwell-c4rlk.firebasestorage.app",
-  });
-}
 
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
@@ -34,6 +27,16 @@ async function main() {
   console.log("PDFs encontrados:", pdfFiles.map((f) => f.name));
 
   for (const file of pdfFiles) {
+    const already = await db
+      .collection("kb-chunks")
+      .where("source", "==", file.name)
+      .limit(1)
+      .get();
+
+    if (!already.empty) {
+      console.log("⏭️ Ya indexado, salto:", file.name);
+      continue;
+    }
     console.log("\nIndexando:", file.name);
 
     const tmp = path.join(os.tmpdir(), path.basename(file.name));
@@ -63,7 +66,7 @@ async function main() {
       //console.log("EMBEDDING_DIM=", embedding.length);return;
       await db.collection("kb-chunks").add({
         text: chunk,
-        embedding: vector(embedding),
+        embedding: admin.firestore.FieldValue.vector(embedding),
         source: file.name,
         chunkIndex: idx,
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
