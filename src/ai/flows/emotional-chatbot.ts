@@ -92,8 +92,13 @@ const emotionalChatbotFlow = ai.defineFlow(
     let docsContext: string | undefined = undefined;
     try {
       // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
-      const { context } = await retrieveDocsContext(input.message, { k: 6 });
-      docsContext = context;
+      const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
+      docsContext = context; // Assign to the outer scope variable
+     console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
+    console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
+    console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
+    console.log("RAG_CHAT preview:", String(docsContext ?? "").slice(0, 200));
+   
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
     } catch (e: any) {
       console.warn(
@@ -134,5 +139,3 @@ const emotionalChatbotFlow = ai.defineFlow(
     return output;
   }
 );
-
-    
