@@ -1,3 +1,4 @@
+
 "use server";
 
 /**
@@ -88,8 +89,20 @@ const emotionalChatbotFlow = ai.defineFlow(
   async (rawInput) => {
     const input = EmotionalChatbotInputSchema.parse(rawInput);
 
-    // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
-    const { context: docsContext } = await retrieveDocsContext(input.message, { k: 6 });
+    let docsContext: string | undefined = undefined;
+    try {
+      // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
+      const { context } = await retrieveDocsContext(input.message, { k: 6 });
+      docsContext = context;
+      console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
+    } catch (e: any) {
+      console.warn(
+        "emotionalChatbotFlow: Failed to retrieve RAG context. This is expected if the 'kb-chunks' collection doesn't exist. Proceeding without it.",
+        e.message
+      );
+      // This is not a fatal error. We can continue without the RAG context.
+      // The prompt is designed to handle cases where docsContext is not provided.
+    }
 
     // ✅ 2) Construye payload del prompt incluyendo docsContext
     const promptPayload: {
@@ -99,8 +112,11 @@ const emotionalChatbotFlow = ai.defineFlow(
       docsContext?: string;
     } = {
       message: input.message,
-      docsContext,
     };
+    
+    if (docsContext) {
+        promptPayload.docsContext = docsContext;
+    }
 
     if (typeof input.context === "string" && input.context.trim() !== "") {
       promptPayload.context = input.context;
@@ -118,3 +134,5 @@ const emotionalChatbotFlow = ai.defineFlow(
     return output;
   }
 );
+
+    
