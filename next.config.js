@@ -24,7 +24,6 @@ const nextConfig = {
       }
     ],
   },
-  eslint: { ignoreDuringBuilds: true },    // ⚠️ solo temporal
   productionBrowserSourceMaps: false, // Deshabilita source maps en producción
 };
 
