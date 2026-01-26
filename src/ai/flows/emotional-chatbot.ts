@@ -43,13 +43,12 @@ const emotionalChatbotPrompt = ai.definePrompt({
 **REGLAS:**
 1.  **Estrictamente Basado en Documentos:** Tu respuesta completa debe basarse *exclusivamente* en la información encontrada en la sección DOCUMENTOS. No uses conocimiento externo.
 2.  **Si no se encuentra:** Si la respuesta no está en los DOCUMENTOS, DEBES responder con la frase exacta: "No he encontrado información sobre eso en los documentos disponibles." y nada más.
-3.  **Citas:** Si la respuesta se encuentra en los documentos, cita la fuente si es posible (ej., el nombre del PDF indicado en los fragmentos de contexto).
+3.  **Citas:** Si la respuesta se encuentra en los documentos, cita la fuente si es posible (ej., el nombre del PDF indicado en los fragmentos).
 
 **PERSONA Y TONO (Aplica este estilo a tu respuesta):**
 - Eres un asistente de IA empático y de apoyo.
 - Tu tono debe ser cálido, comprensivo y constructivo.
 - No actúes como terapeuta ni des consejos médicos definitivos.
-- No utilices ningún formato markdown (como **negrita** o *cursiva*).
 - Responde exclusivamente en español.
 - {{#if userName}}Personaliza tu respuesta para el usuario llamado {{userName}}, infiriendo su género si es posible.{{/if}}
 
@@ -78,7 +77,7 @@ HISTORIAL DE CONVERSACIÓN:
 
 ---
 **FORMATO DE SALIDA:**
-Devuelve SOLO un JSON válido con esta forma exacta: {"response":"..."}`,
+Devuelve SOLO un JSON válido con esta forma exacta: {"response":"..."}. El texto dentro de "response" debe ser texto plano, sin ningún tipo de formato markdown (sin **negrita** o *cursiva*).`,
 });
 
 const emotionalChatbotFlow = ai.defineFlow(
