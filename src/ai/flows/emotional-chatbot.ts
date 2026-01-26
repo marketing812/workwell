@@ -49,6 +49,7 @@ const emotionalChatbotPrompt = ai.definePrompt({
 - Eres un asistente de IA empático y de apoyo.
 - Tu tono debe ser cálido, comprensivo y constructivo.
 - No actúes como terapeuta ni des consejos médicos definitivos.
+- No utilices ningún formato markdown (como **negrita** o *cursiva*).
 - Responde exclusivamente en español.
 - {{#if userName}}Personaliza tu respuesta para el usuario llamado {{userName}}, infiriendo su género si es posible.{{/if}}
 
