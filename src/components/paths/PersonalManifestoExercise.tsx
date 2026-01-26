@@ -12,11 +12,16 @@ import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalManifestoExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { Input } from '../ui/input';
 
-interface PersonalManifestoExerciseProps {
-  content: PersonalManifestoExerciseContent;
-  pathId: string;
-}
+const valuesList = [
+    'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
+    'Justicia', 'Responsabilidad', 'Libertad', 'Creatividad', 'Propósito vital', 'Aprendizaje',
+    'Empatía', 'Perseverancia', 'Integridad', 'Compasión', 'Equilibrio', 'Gratitud',
+    'Generosidad', 'Lealtad', 'Coraje', 'Cooperación', 'Transparencia', 'Sostenibilidad',
+    'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
+];
 
 const reactionOptions = [
     { id: 'reac-prisa', label: 'Actué desde la prisa.' },
@@ -24,6 +29,11 @@ const reactionOptions = [
     { id: 'reac-presion', label: 'Cedí por presión externa.' },
     { id: 'reac-desconecte', label: 'Me desconecté de lo que sentía.' },
 ];
+
+interface PersonalManifestoExerciseProps {
+  content: PersonalManifestoExerciseContent;
+  pathId: string;
+}
 
 export function PersonalManifestoExercise({ content, pathId }: PersonalManifestoExerciseProps) {
     const { toast } = useToast();
@@ -49,7 +59,8 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         setIsSaved(false);
     };
 
-    const handleSave = () => {
+    const handleSave = (e: FormEvent) => {
+        e.preventDefault();
         const selectedReactions = reactionOptions.filter(o => reactions[o.id]).map(o => o.label);
         if (reactions['reac-otro']) selectedReactions.push(otherReaction);
 
@@ -63,13 +74,13 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
 **Ajuste Sencillo:** ${adjustment}
         `;
         addNotebookEntry({ title: 'Ajuste Compasivo', content: notebookContent, pathId });
-        toast({ title: 'Reflexión Guardada', description: 'Tu ajuste compasivo ha sido guardado.' });
+        toast({title: "Reflexión Guardada"});
         setIsSaved(true);
-        setStep(5); // Go to final screen
+        nextStep();
     };
 
     const renderStep = () => {
-        switch(step) {
+        switch (step) {
             case 0:
                 return (
                     <div className="p-4 space-y-4 text-center">
@@ -79,7 +90,7 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
                 );
             case 1:
                 return (
-                    <div className="p-4 space-y-4">
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold">Paso 1: Recuerda la situación</h4>
                         <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="“Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
                         <div className="flex justify-between mt-2">
