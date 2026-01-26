@@ -149,7 +149,7 @@ export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTr
               locale={es}
               className="rounded-md border p-3"
               classNames={{
-                day_cell: "h-12 w-12 border border-border/50 rounded-sm relative",
+                cell: "h-12 w-12 border border-border/50 rounded-sm relative p-0",
                 day: "h-full w-full",
               }}
               components={{
