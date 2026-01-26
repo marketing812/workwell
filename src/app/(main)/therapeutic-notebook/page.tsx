@@ -14,7 +14,7 @@ const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
 
 export default function TherapeuticNotebookPage() {
   const t = useTranslations();
-  const { user, userLoading, notebookEntries, fetchAndSetNotebook, isNotebookLoading } = useUser();
+  const { user, loading: userLoading, notebookEntries, fetchAndSetNotebook, isNotebookLoading } = useUser();
   const [debugUrl, setDebugUrl] = useState<string | null>(null);
 
   useEffect(() => {
