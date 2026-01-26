@@ -3,6 +3,7 @@
 
 import { admin } from "@/lib/firebase-admin";
 import { embedText } from "../rag/embed";
+import { QueryDocumentSnapshot } from 'firebase-admin/firestore';
 
 const db = admin.firestore();
 
@@ -14,7 +15,7 @@ async function main() {
   // A) Confirmar que hay docs en la colección
   const countSnap = await db.collection("kb-chunks").limit(3).get();
   console.log("SAMPLE DOCS:", countSnap.size);
-  countSnap.docs.forEach((d, i) => {
+  countSnap.docs.forEach((d: QueryDocumentSnapshot, i: number) => {
     const data: any = d.data();
     console.log(`DOC#${i} fields:`, Object.keys(data));
     console.log(`DOC#${i} source:`, data.source);
@@ -35,7 +36,7 @@ async function main() {
   }).get();
 
   console.log("NEAREST RESULTS:", snap.size);
-  snap.docs.forEach((d, idx) => {
+  snap.docs.forEach((d: QueryDocumentSnapshot, idx: number) => {
     const data: any = d.data();
     console.log(`RES#${idx} source:`, data.source, "chunkIndex:", data.chunkIndex, "text chars:", (data.text ?? "").length);
     console.log(String(data.text ?? "").slice(0, 200).replace(/\s+/g, " "));
