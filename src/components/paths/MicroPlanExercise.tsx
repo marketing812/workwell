@@ -108,7 +108,7 @@ ${reinforce}
             return (
                 <div className="text-center p-4">
                     <p className="mb-4">Planear con realismo es lo que necesitamos para avanzar. Crea tu microplan: una frase corta que una lo cotidiano con lo que quieres empezar.</p>
-                    <Button onClick={() => setStep(1)}>Crear mi frase de acción</Button>
+                    <Button onClick={() => setStep(1)}>Crear mi frase de acción <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             );
         case 1:

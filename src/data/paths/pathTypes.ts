@@ -145,6 +145,7 @@ export type AssertivePhraseExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type NoGuiltTechniquesExerciseContent = {
@@ -929,5 +930,3 @@ export interface AssessmentItem {
   weight: number; // The weight of the item for calculating scores
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
-
-    
