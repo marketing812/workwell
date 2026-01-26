@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const empathyPath: Path = {
   id: 'relaciones-autenticas',
@@ -165,7 +165,3 @@ export const empathyPath: Path = {
     }
   ]
 };
-    
-    
-
-    

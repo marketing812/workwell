@@ -886,7 +886,7 @@ export type MicroPlanExerciseContent = {
 };
 
 
-// A union type for all possible content block types within a module
+// A union type for all possible content blocks that make up a module
 export type ModuleContent =
   | ParagraphContent
   | ParagraphWithAudioContent
@@ -1037,4 +1037,11 @@ export interface AssessmentItem {
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
 
-    
+export type Path = {
+  id: string;
+  title: string; // Spanish
+  description: string; // Spanish
+  modules: PathModule[];
+  dataAiHint?: string;
+  audioUrl?: string; // Optional audio URL for the entire path
+};

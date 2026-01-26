@@ -1,6 +1,6 @@
 
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const procrastinationPath: Path = {
   id: 'superar-procrastinacion',

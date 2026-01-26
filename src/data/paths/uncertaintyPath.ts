@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const uncertaintyPath: Path = {
   id: 'tolerar-incertidumbre',
@@ -108,7 +108,7 @@ export const uncertaintyPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta2/extras/R1semana2quecambia.mp3',
               content: [
                 { type: 'paragraph', text: 'En tu cuerpo:\\n- Respiración más profunda y regular\\n- Regulación del CO₂ (menos mareos o ahogo)\\n- Reducción de tensión muscular\\n- Sensaciones de alivio, calor o calma\\n\\nEn tu mente:\\n- Recuperas el control y vuelves al presente\\n- Se interrumpe el bucle de pensamientos ansiosos\\n- Refuerzas el autocuidado y la conexión contigo'},
-                { type: 'paragraph', text: 'Estas técnicas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
+                { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
               ]
             },
             {
@@ -230,5 +230,3 @@ export const uncertaintyPath: Path = {
     }
   ]
 };
-
-    

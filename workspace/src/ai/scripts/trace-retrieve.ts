@@ -17,11 +17,11 @@ async function main() {
   console.log("SAMPLE DOCS:", countSnap.size);
   countSnap.docs.forEach((d: QueryDocumentSnapshot, i: number) => {
     const data: any = d.data();
-    console.log(`DOC#${i} fields:`, Object.keys(data));
+    /*console.log(`DOC#${i} fields:`, Object.keys(data));
     console.log(`DOC#${i} source:`, data.source);
     console.log(`DOC#${i} embedding type:`, Array.isArray(data.embedding) ? "array" : typeof data.embedding);
     console.log(`DOC#${i} embedding length:`, Array.isArray(data.embedding) ? data.embedding.length : null);
-    console.log(`DOC#${i} text chars:`, (data.text ?? "").length);
+    console.log(`DOC#${i} text chars:`, (data.text ?? "").length);*/
   });
 
   // B) Confirmar que el embedding de la query existe y tiene dimensión correcta

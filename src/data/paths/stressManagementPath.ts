@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const stressManagementPath: Path = {
   id: 'gestion-estres',
@@ -225,7 +225,7 @@ export const stressManagementPath: Path = {
                     { type: 'list', items: ['La respiración se vuelve más profunda y regular.', 'Se regula el CO₂ en sangre, reduciendo mareos y sensaciones de ahogo.', 'Se libera tensión muscular acumulada.', 'Aparece una sensación de alivio, calor o tranquilidad.'] },
                     { type: 'paragraph', text: 'En tu mente:' },
                     { type: 'list', items: ['Recuperas el control y vuelves al presente.', 'Se interrumpe el bucle de pensamientos ansiosos.', 'Refuerzas el autocuidado y la conexión contigo.'] },
-                    { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Algunas se basan en la respiración, otras en el movimiento, la atención plena o el contacto sensorial. Todas comparten un mismo propósito: ayudarte a regular tu sistema y conectar contigo desde un lugar de seguridad.\\nPuedes usarlas:\\n•\tEn el momento, si sientes ansiedad o bloqueo.\\n•\tAntes de una situación desafiante.\\n•\tComo rutina diaria para cultivar equilibrio.\\n•\tPara conocerte mejor: observa cuáles te funcionan más.' },
+                    { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Algunas se basan en la respiración, otras en el movimiento, la atención plena o el contacto sensorial. Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar de seguridad.\\nPuedes usarlas:\\n•\tEn el momento, si sientes ansiedad o bloqueo.\\n•\tAntes de una situación desafiante.\\n•\tComo rutina diaria para cultivar equilibrio.\\n•\tPara conocerte mejor: observa cuáles te funcionan más.' },
                 ]
             },
              {
@@ -275,7 +275,7 @@ export const stressManagementPath: Path = {
               objective: 'Interrumpir una activación emocional intensa.',
               audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
               content: [
-                { type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\tHumedece una toalla o paño con agua fría.\\n2.\tAplícalo entre 10 y 20 segundos en:\\n\to\tLa nuca\\n\to\tLas muñecas\\n\to\tLa parte interna de los brazos o las mejillas\\n3.\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
+                { type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\\tHumedece una toalla o paño con agua fría.\\n2.\\tAplícalo entre 10 y 20 segundos en:\\n\\to\\tLa nuca\\n\\to\\tLas muñecas\\n\\to\\tLa parte interna de los brazos o las mejillas\\n3.\\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
               ]
             },
             {

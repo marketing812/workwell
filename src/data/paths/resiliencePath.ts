@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const resiliencePath: Path = {
   id: 'resiliencia-en-accion',

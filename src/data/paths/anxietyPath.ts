@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const anxietyPath: Path = {
   id: 'regular-ansiedad-paso-a-paso',
@@ -406,7 +406,7 @@ export const anxietyPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: "https://workwellfut.com/audios/ruta13/semana4/Resumenfinalruta13.mp3"
+          audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Resumenfinalruta13.mp3'
         },
         {
           type: 'list',
@@ -425,4 +425,3 @@ export const anxietyPath: Path = {
     }
   ]
 };
-

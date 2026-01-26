@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const purposePath: Path = {
   id: 'volver-a-lo-importante',
@@ -56,7 +56,7 @@ export const purposePath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3', prompts: ['¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?', '¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?', '¿Qué 3 valores personales quiero tener más presentes en mi día a día?', '¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/RESUMEN.mp3' },
-        { type: 'list', items: ['No todo lo urgente es importante. Aprender a distinguir entre lo valioso, lo necesario y lo inmediato es un acto de autoliderazgo.', 'Vivir en piloto automático puede alejarnos de lo que realmente nos importa. Detenernos y observar es el primer paso para volver a lo esencial.', 'Los valores personales son principios que dan dirección y sentido a nuestra vida. Son nuestra brújula interna.', 'Conectar con nuestros valores nos ayuda a tomar decisiones más alineadas, a construir hábitos con propósito y a sentirnos más en paz con quienes somos.', 'Identificar nuestras actividades potenciadoras y drenantes nos permite reorganizar la energía hacia lo que nutre, en lugar de lo que desgasta.'] },
+        { type: 'list', items: ['No todo lo urgente es importante. Aprender a distinguir entre lo valioso, lo necesario y lo inmediato es un acto de autoliderazgo.', 'Vivir en piloto automático nos desconecta de lo que realmente nos importa.', 'Los valores personales son principios que dan dirección y sentido a nuestra vida. Son nuestra brújula interna.', 'Conectar con nuestros valores nos ayuda a tomar decisiones más alineadas, a construir hábitos con propósito y a sentirnos más en paz con quienes somos.', 'Identificar nuestras actividades potenciadoras y drenantes nos permite reorganizar la energía hacia lo que nutre, en lugar de lo que desgasta.'] },
         { type: 'quote', text: '“Lo importante no grita. Hay que detenerse para escucharlo.”' }
       ]
     },
@@ -123,7 +123,7 @@ export const purposePath: Path = {
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica1.mp3' },
         { type: 'essentialReminderExercise', title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL', objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica2.mp3' },
         { type: 'thoughtsThatBlockPurposeExercise', title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?', objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', prompts: ['¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?', '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?', '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?', '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?', '¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', prompts: ['¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?', '¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?', '¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?', '¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?', '¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/RESUMEN.mp3' },
         { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.', 'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.', 'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.', 'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
@@ -143,5 +143,3 @@ export const purposePath: Path = {
     }
   ]
 };
-
-    

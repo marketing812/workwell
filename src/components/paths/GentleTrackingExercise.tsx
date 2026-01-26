@@ -197,5 +197,3 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     </Card>
   );
 }
-
-    

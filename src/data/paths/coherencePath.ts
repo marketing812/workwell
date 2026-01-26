@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const coherencePath: Path = {
   id: 'vivir-con-coherencia',
@@ -225,5 +225,3 @@ export const coherencePath: Path = {
     },
   ],
 };
-
-    
