@@ -493,7 +493,7 @@ function ContentItemRenderer({
           key={index}
           className={cn(
             "mt-6 italic",
-            (contentItem as any).align === 'center' 
+            contentItem.align === 'center' 
               ? "text-center border-none p-4" 
               : "border-l-2 pl-6 text-accent-foreground/80"
           )}

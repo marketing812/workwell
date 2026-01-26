@@ -905,9 +905,13 @@ export type ModuleContent =
   | MantraExerciseContent
   | DelSabotajeALaAccionExerciseContent
   | TwoMinuteRuleExerciseContent
+  | MicroPlanExerciseContent
   | FutureSelfVisualizationExerciseContent
   | RealisticRitualExerciseContent
   | GentleTrackingExerciseContent
+  | BlockageMapExerciseContent
+  | CompassionateReflectionExerciseContent
+  | RitualDeEntregaConscienteExerciseContent
   | MapOfUnsaidThingsExerciseContent
   | DiscomfortCompassExerciseContent
   | AssertivePhraseExerciseContent
@@ -1001,11 +1005,7 @@ export type ModuleContent =
   | CalmVisualizationExerciseContent
   | AnxietyReframingExerciseContent
   | ImaginedCrisisRehearsalExerciseContent
-  | ExposureToIntoleranceExerciseContent
-  | BlockageMapExerciseContent
-  | CompassionateReflectionExerciseContent
-  | RitualDeEntregaConscienteExerciseContent
-  | MicroPlanExerciseContent;
+  | ExposureToIntoleranceExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {
