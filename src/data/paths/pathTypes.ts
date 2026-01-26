@@ -48,7 +48,7 @@ export type StressMapExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    // No 'content' needed as it's a self-contained interactive component
+    audioUrl?: string;
 };
 
 export type TriggerExerciseContent = {
@@ -56,7 +56,7 @@ export type TriggerExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    // No 'content' needed as it's a self-contained interactive component
+    audioUrl?: string;
 };
 
 export type TherapeuticNotebookReflection = {
@@ -71,6 +71,7 @@ export type DetectiveExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type DemandsExerciseContent = {
@@ -78,6 +79,7 @@ export type DemandsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type WellbeingPlanExerciseContent = {
@@ -85,6 +87,7 @@ export type WellbeingPlanExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type UncertaintyMapExerciseContent = {
@@ -100,6 +103,7 @@ export type ControlTrafficLightExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type AlternativeStoriesExerciseContent = {
@@ -112,6 +116,14 @@ export type AlternativeStoriesExerciseContent = {
 
 export type MantraExerciseContent = {
     type: 'mantraExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type RitualDeEntregaConscienteExerciseContent = {
+    type: 'ritualDeEntregaConscienteExercise';
     title: string;
     objective?: string;
     duration?: string;
@@ -131,6 +143,7 @@ export type MapOfUnsaidThingsExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type DiscomfortCompassExerciseContent = {
@@ -138,6 +151,7 @@ export type DiscomfortCompassExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type AssertivePhraseExerciseContent = {
@@ -202,6 +216,7 @@ export type AuthenticityThermometerExerciseContent = {
     title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EmpatheticDialogueExerciseContent = {
@@ -209,6 +224,7 @@ export type EmpatheticDialogueExerciseContent = {
     title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EmpathicMirrorExerciseContent = {
@@ -216,6 +232,7 @@ export type EmpathicMirrorExerciseContent = {
     title: 'EJERCICIO 1: EL ESPEJO EMPÁTICO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ValidationIn3StepsExerciseContent = {
@@ -223,6 +240,7 @@ export type ValidationIn3StepsExerciseContent = {
     title: 'EJERCICIO 2: VALIDACIÓN EN 3 PASOS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EmpathicShieldVisualizationExerciseContent = {
@@ -239,6 +257,7 @@ export type EmotionalInvolvementTrafficLightExerciseContent = {
     title: 'Ejercicio 2: Semáforo de implicación emocional';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SignificantRelationshipsInventoryExerciseContent = {
@@ -246,6 +265,7 @@ export type SignificantRelationshipsInventoryExerciseContent = {
     title: 'EJERCICIO1: INVENTARIO DE RELACIONES SIGNIFICATIVAS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type RelationalCommitmentExerciseContent = {
@@ -253,6 +273,7 @@ export type RelationalCommitmentExerciseContent = {
     title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 6
@@ -261,6 +282,7 @@ export type DetectiveDeEmocionesExerciseContent = {
     title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type UnaPalabraCadaDiaExerciseContent = {
@@ -268,6 +290,7 @@ export type UnaPalabraCadaDiaExerciseContent = {
     title: 'EJERCICIO 2: “UNA PALABRA CADA DÍA”';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MapaEmocionNecesidadCuidadoExerciseContent = {
@@ -275,6 +298,7 @@ export type MapaEmocionNecesidadCuidadoExerciseContent = {
     title: 'EJERCICIO 1: MAPA EMOCIÓN – NECESIDAD – CUIDADO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type CartaDesdeLaEmocionExerciseContent = {
@@ -282,6 +306,7 @@ export type CartaDesdeLaEmocionExerciseContent = {
     title: 'EJERCICIO 2: CARTA DESDE LA EMOCIÓN';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MapaEmocionalRepetidoExerciseContent = {
@@ -289,6 +314,7 @@ export type MapaEmocionalRepetidoExerciseContent = {
     title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SemaforoEmocionalExerciseContent = {
@@ -312,6 +338,7 @@ export type DiarioMeDiCuentaExerciseContent = {
     title: 'EJERCICIO 2: DIARIO DEL “ME DI CUENTA”';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 7
@@ -320,6 +347,7 @@ export type ValuesCompassExerciseContent = {
     title: 'EJERCICIO 1: MI BRÚJULA DE VALORES';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EnergySenseMapExerciseContent = {
@@ -327,6 +355,7 @@ export type EnergySenseMapExerciseContent = {
     title: 'EJERCICIO 2: MAPA DE ENERGÍA VS. SENTIDO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type DetoursInventoryExerciseContent = {
@@ -334,6 +363,7 @@ export type DetoursInventoryExerciseContent = {
     title: 'EJERCICIO 1: INVENTARIO DE DESVÍOS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type PresentVsEssentialSelfExerciseContent = {
@@ -349,6 +379,7 @@ export type MentalNoiseTrafficLightExerciseContent = {
     title: 'MICROPRÁCTICA OPCIONAL: SEMÁFORO DEL RUIDO MENTAL';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type DirectedDecisionsExerciseContent = {
@@ -356,6 +387,7 @@ export type DirectedDecisionsExerciseContent = {
     title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SenseChecklistExerciseContent = {
@@ -363,6 +395,7 @@ export type SenseChecklistExerciseContent = {
     title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type UnfulfilledNeedsExerciseContent = {
@@ -370,6 +403,7 @@ export type UnfulfilledNeedsExerciseContent = {
     title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type BraveRoadmapExerciseContent = {
@@ -377,6 +411,7 @@ export type BraveRoadmapExerciseContent = {
     title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EssentialReminderExerciseContent = {
@@ -384,6 +419,7 @@ export type EssentialReminderExerciseContent = {
     title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ThoughtsThatBlockPurposeExerciseContent = {
@@ -391,6 +427,7 @@ export type ThoughtsThatBlockPurposeExerciseContent = {
     title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 8
@@ -423,6 +460,7 @@ export type IntensityScaleExerciseContent = {
     title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type BraveDecisionsWheelExerciseContent = {
@@ -430,6 +468,7 @@ export type BraveDecisionsWheelExerciseContent = {
     title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type PlanABExerciseContent = {
@@ -437,6 +476,7 @@ export type PlanABExerciseContent = {
     title: 'EJERCICIO 2: Plan A / Plan B emocional (versión ampliada)';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type ChangeTimelineExerciseContent = {
@@ -444,6 +484,7 @@ export type ChangeTimelineExerciseContent = {
     title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type MyPactExerciseContent = {
@@ -451,6 +492,7 @@ export type MyPactExerciseContent = {
     title: 'EJERCICIO 2: MI PACTO CONMIGO';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 // RUTA 9
@@ -459,6 +501,7 @@ export type CoherenceCompassExerciseContent = {
     title: 'EJERCICIO 1: MI BRÚJULA DE COHERENCIA';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SmallDecisionsLogExerciseContent = {
@@ -466,6 +509,7 @@ export type SmallDecisionsLogExerciseContent = {
     title: 'EJERCICIO 2: REGISTRO DE DECISIONES PEQUEÑAS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type InternalTensionsMapExerciseContent = {
@@ -481,6 +525,7 @@ export type EthicalMirrorExerciseContent = {
     title: 'EJERCICIO 2: EL ESPEJO ÉTICO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type IntegrityDecisionsExerciseContent = {
@@ -488,6 +533,7 @@ export type IntegrityDecisionsExerciseContent = {
     title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type NonNegotiablesExerciseContent = {
@@ -495,6 +541,7 @@ export type NonNegotiablesExerciseContent = {
     title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type EnvironmentEvaluationExerciseContent = {
@@ -502,6 +549,7 @@ export type EnvironmentEvaluationExerciseContent = {
     title: 'EJERCICIO 1: EVALUACIÓN DE ENTORNOS CLAVE';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type PersonalManifestoExerciseContent = {
@@ -509,6 +557,7 @@ export type PersonalManifestoExerciseContent = {
     title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 10
@@ -525,6 +574,7 @@ export type GuiltRadarExerciseContent = {
     title: 'EJERCICIO 2: MI RADAR DE CULPA';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type AcceptanceWritingExerciseContent = {
@@ -532,6 +582,7 @@ export type AcceptanceWritingExerciseContent = {
     title: 'EJERCICIO 1: ESO PASÓ. ¿Y AHORA QUÉ?';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type SelfAcceptanceAudioExerciseContent = {
@@ -547,6 +598,7 @@ export type CompassionateResponsibilityContractExerciseContent = {
     title: 'EJERCICIO 1: MI CONTRATO DE AUTORRESPONSABILIDAD COMPASIVA';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type CriticismToGuideExerciseContent = {
@@ -554,6 +606,7 @@ export type CriticismToGuideExerciseContent = {
     title: 'EJERCICIO 2: TRANSFORMA TU CRÍTICA EN GUÍA';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type InfluenceWheelExerciseContent = {
@@ -561,6 +614,7 @@ export type InfluenceWheelExerciseContent = {
     title: 'EJERCICIO 1: RUEDA DE MI ZONA DE INFLUENCIA';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type PersonalCommitmentDeclarationExerciseContent = {
@@ -568,6 +622,7 @@ export type PersonalCommitmentDeclarationExerciseContent = {
     title: string;
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 // RUTA 11
@@ -576,6 +631,7 @@ export type SupportMapExerciseContent = {
     title: 'EJERCICIO1: MAPA DE RELACIONES Y APOYO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type BlockingThoughtsExerciseContent = {
@@ -583,6 +639,7 @@ export type BlockingThoughtsExerciseContent = {
     title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type NutritiveDrainingSupportMapExerciseContent = {
@@ -590,6 +647,7 @@ export type NutritiveDrainingSupportMapExerciseContent = {
     title: 'EJERCICIO 1: MAPA DE APOYOS NUTRITIVOS Y DRENANTES';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type NourishingConversationExerciseContent = {
@@ -597,6 +655,7 @@ export type NourishingConversationExerciseContent = {
     title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type ClearRequestMapExerciseContent = {
@@ -604,6 +663,7 @@ export type ClearRequestMapExerciseContent = {
     title: 'EJERCICIO 1: EL MAPA DE PETICIONES CLARAS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SupportBankExerciseContent = {
@@ -611,6 +671,7 @@ export type SupportBankExerciseContent = {
     title: 'EJERCICIO 2: EL BANCO DE APOYOS';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type MutualCareCommitmentExerciseContent = {
@@ -618,6 +679,7 @@ export type MutualCareCommitmentExerciseContent = {
     title: 'EJERCICIO 1: MI COMPROMISO CON EL CUIDADO MUTUO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type SymbolicSupportCircleExerciseContent = {
@@ -625,6 +687,7 @@ export type SymbolicSupportCircleExerciseContent = {
     title: 'EJERCICIO 2: CÍRCULO DE SOSTÉN SIMBÓLICO';
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 // RUTA 12
@@ -633,6 +696,7 @@ export type EmotionalGratificationMapExerciseContent = {
   title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type DailyEnergyCheckExerciseContent = {
@@ -640,6 +704,7 @@ export type DailyEnergyCheckExerciseContent = {
   title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type DailyWellbeingPlanExerciseContent = {
@@ -647,6 +712,7 @@ export type DailyWellbeingPlanExerciseContent = {
   title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type MorningRitualExerciseContent = {
@@ -654,6 +720,7 @@ export type MorningRitualExerciseContent = {
   title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type MotivationIn3LayersExerciseContent = {
@@ -661,6 +728,7 @@ export type MotivationIn3LayersExerciseContent = {
   title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type VisualizeDayExerciseContent = {
@@ -668,6 +736,7 @@ export type VisualizeDayExerciseContent = {
   title: 'EJERCICIO 2: VISUALIZACIÓN DEL DÍA QUE QUIERO VIVIR';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type IlluminatingMemoriesAlbumExerciseContent = {
@@ -675,6 +744,7 @@ export type IlluminatingMemoriesAlbumExerciseContent = {
   title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 export type PositiveEmotionalFirstAidKitExerciseContent = {
@@ -682,6 +752,7 @@ export type PositiveEmotionalFirstAidKitExerciseContent = {
   title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO';
   objective?: string;
   duration?: string;
+  audioUrl?: string;
 };
 
 // RUTA 13 (NUEVA)
@@ -690,6 +761,7 @@ export type AnsiedadTieneSentidoExerciseContent = {
     title: 'MI ANSIEDAD TIENE SENTIDO CUANDO…';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type VisualizacionGuiadaCuerpoAnsiedadExerciseContent = {
@@ -697,6 +769,7 @@ export type VisualizacionGuiadaCuerpoAnsiedadExerciseContent = {
     title: 'VISUALIZACIÓN GUIADA DEL CUERPO EN ANSIEDAD';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type StopExerciseContent = {
@@ -704,6 +777,7 @@ export type StopExerciseContent = {
     title: 'EJERCICIO 1: STOP - Ponle un alto al piloto automático';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type QuestionYourIfsExerciseContent = {
@@ -711,6 +785,7 @@ export type QuestionYourIfsExerciseContent = {
     title: 'EJERCICIO 2: Cuestiona tus “¿Y si…?” con la lupa de la realidad';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type ExposureLadderExerciseContent = {
@@ -718,6 +793,7 @@ export type ExposureLadderExerciseContent = {
     title: 'EJERCICIO 1: ESCALERA DE EXPOSICIÓN PERSONAL';
     objective: string;
     duration: string;
+    audioUrl?: string;
 };
 
 export type CalmVisualizationExerciseContent = {
@@ -758,6 +834,7 @@ export type TwoMinuteRuleExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type FutureSelfVisualizationExerciseContent = {
@@ -765,6 +842,7 @@ export type FutureSelfVisualizationExerciseContent = {
     title: string;
     objective: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type RealisticRitualExerciseContent = {
@@ -772,6 +850,7 @@ export type RealisticRitualExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
 
 export type GentleTrackingExerciseContent = {
@@ -779,7 +858,33 @@ export type GentleTrackingExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
+    audioUrl?: string;
 };
+
+export type BlockageMapExerciseContent = {
+  type: 'blockageMapExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
+};
+
+export type CompassionateReflectionExerciseContent = {
+  type: 'compassionateReflectionExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
+};
+
+export type MicroPlanExerciseContent = {
+    type: 'microPlanExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
 
 // A union type for all possible content block types within a module
 export type ModuleContent =
@@ -812,6 +917,8 @@ export type ModuleContent =
   | SecureBoundaryPhraseExerciseContent
   | PostBoundaryEmotionsExerciseContent
   | FirmAndCalmSelfVisualizationExerciseContent
+  | CompassionateFirmnessExerciseContent
+  | SelfCareContractExerciseContent
   // RUTA 5
   | AuthenticityThermometerExerciseContent
   | EmpatheticDialogueExerciseContent
@@ -895,13 +1002,12 @@ export type ModuleContent =
   | ExposureLadderExerciseContent
   | CalmVisualizationExerciseContent
   | AnxietyReframingExerciseContent
-  // NUEVO
   | ImaginedCrisisRehearsalExerciseContent
   | ExposureToIntoleranceExerciseContent
   | BlockageMapExerciseContent
-  | CompassionateFirmnessExerciseContent
-  | SelfCareContractExerciseContent
-  | CompassionateReflectionExerciseContent;
+  | CompassionateReflectionExerciseContent
+  | RitualDeEntregaConscienteExerciseContent
+  | MicroPlanExerciseContent;
 
 // Defines a single module within a guided path
 export type PathModule = {

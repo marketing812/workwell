@@ -528,6 +528,8 @@ function ContentItemRenderer({
       return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={handleComplete} />;
     case 'twoMinuteRuleExercise':
       return <TwoMinuteRuleExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
+    case 'microPlanExercise':
+        return <MicroPlanExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete}/>;
     case 'futureSelfVisualizationExercise':
       return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={(contentItem as any).audioUrl} />;
     case 'realisticRitualExercise':
@@ -537,7 +539,7 @@ function ContentItemRenderer({
     case 'blockageMapExercise':
       return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
-      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mapOfUnsaidThingsExercise':
       return (
         <MapOfUnsaidThingsExercise
@@ -1050,5 +1052,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    

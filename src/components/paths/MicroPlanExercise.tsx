@@ -11,15 +11,16 @@ import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '../ui/input';
+import { Input } from '@/components/ui/input';
 import { useRouter } from 'next/navigation';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function MicroPlanExercise({ content, pathId }: MicroPlanExerciseProps) {
+export function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExerciseProps) {
   const { toast } = useToast();
   const router = useRouter();
   const [moment, setMoment] = useState('');
@@ -96,6 +97,7 @@ ${reinforce}
     addNotebookEntry({ title: 'Cierre Personal: Microplan', content: reflectionContent, pathId });
     toast({ title: 'Reflexión Guardada' });
     setIsReflectionSaved(true);
+    onComplete();
   };
   
   const nextStep = () => setStep(prev => prev + 1);

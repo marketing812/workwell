@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -15,9 +16,10 @@ import { useUser } from '@/contexts/UserContext';
 interface CompassionateReflectionExerciseProps {
   content: ModuleContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function CompassionateReflectionExercise({ content, pathId }: CompassionateReflectionExerciseProps) {
+export function CompassionateReflectionExercise({ content, pathId, onComplete }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -87,6 +89,7 @@ ${flexibleThought || 'No especificada.'}
     });
     toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
     setStep(prev => prev + 1); // Move to final confirmation screen
+    onComplete();
   };
 
   const resetExercise = () => {
