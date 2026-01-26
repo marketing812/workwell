@@ -354,7 +354,6 @@ ${reflection}
               rows={5}
               disabled={isSaved}
             />
-            <p className="text-sm italic text-muted-foreground mt-2 text-center">Respira. Lo estás haciendo bien. Cada paso cuenta. Incluso este momento de pausa es parte de tu proceso.</p>
           </div>
           {!isSaved ? (
             <Button type="submit" className="w-full">
@@ -722,7 +721,7 @@ function ContentItemRenderer({
     case 'planABExercise':
         return <PlanABExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'changeTimelineExercise':
-        return <ChangeTimelineExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <ChangeTimelineExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'myPactExercise':
         return <MyPactExercise key={index} content={contentItem as any} pathId={path.id} />;
     // RUTA 9
@@ -1051,7 +1050,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    
 
     
