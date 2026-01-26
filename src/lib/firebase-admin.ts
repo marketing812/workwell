@@ -1,3 +1,4 @@
+
 import * as admin from 'firebase-admin';
 
 if (!admin.apps.length) {
@@ -9,7 +10,7 @@ if (!admin.apps.length) {
     projectId: process.env.FIREBASE_PROJECT_ID || "workwell-c4rlk",
 
     // Para Storage (scripts). No molesta en prod.
-    storageBucket: "workwell-c4rlk.firebasestorage.app",
+    storageBucket: "workwell-c4rlk.appspot.com",
   });
 
   console.log("🔥 Firebase Admin Project:", admin.app().options.projectId);

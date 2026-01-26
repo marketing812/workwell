@@ -212,7 +212,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: '<p>Pasos para transformar culpa improductiva en aprendizaje: </p><ol><li>Aceptar el hecho: ocurrió. </li><li>Separar conducta de identidad: no eres tu error. </li><li>Reparar si es posible. </li><li>Aprender: definir qué harás diferente. </li><li>Soltar lo que no depende de ti. </li></ol><p>Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona”. </p>',
+              text: '<p>Pasos para transformar culpa improductiva en aprendizaje: </p><ol><li>Aceptar el hecho: ocurrió. </li><li>Separar conducta de identidad: no eres tu error. </li><li>Reparar si es posible. </li><li>Aprender: definir qué harás diferente. </li><li>Soltar lo que no depende de ti. </li></ol><p>Ejemplo: “Hablé con brusquedad” → Me disculpo, busco mejorar y dejo de repetirme que “soy una mala persona.” </p>',
             },
           ],
         },
