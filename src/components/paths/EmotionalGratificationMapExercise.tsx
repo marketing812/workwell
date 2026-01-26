@@ -11,7 +11,9 @@ import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmotionalGratificationMapExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface EmotionalGratificationMapExerciseProps {
   content: EmotionalGratificationMapExerciseContent;
@@ -35,6 +37,7 @@ const placesOptions = [
 
 export function EmotionalGratificationMapExercise({ content, pathId }: EmotionalGratificationMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [activities, setActivities] = useState('');
@@ -76,7 +79,7 @@ ${finalPeople}
 **Lugares que me llenan de energía:**
 ${finalPlaces}
     `;
-    addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu mapa ha sido guardado en el cuaderno.' });
     setIsSaved(true);
     setStep(4);
@@ -217,3 +220,5 @@ ${finalPlaces}
     </Card>
   );
 }
+
+    

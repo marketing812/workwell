@@ -13,6 +13,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { GentleTrackingExerciseContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface GentleTrackingExerciseProps {
   content: GentleTrackingExerciseContent;
@@ -26,6 +27,7 @@ type DailyProgress = {
 
 export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [weekWord, setWeekWord] = useState('');
   const [saved, setSaved] = useState(false);
   const [progress, setProgress] = useState<Record<string, DailyProgress>>({});
@@ -89,14 +91,13 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       })
       .join('\n');
 
-    const notebookContent = {
+    addNotebookEntry({
         title: 'Mi Seguimiento Amable',
         content: `**Seguimiento del Hábito:**\n${progressText || 'No se registraron días.'}\n\n*Mi palabra de la semana para este hábito ha sido:*\n**${weekWord || 'No especificada.'}**`,
         pathId,
         ruta: 'Superar la Procrastinación y Crear Hábitos',
-    };
-    
-    addNotebookEntry(notebookContent);
+        userId: user?.id
+    });
     
     toast({
       title: 'Seguimiento Guardado',
@@ -196,3 +197,5 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
     </Card>
   );
 }
+
+    

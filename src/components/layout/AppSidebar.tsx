@@ -85,8 +85,9 @@ export function AppSidebar() {
                 asChild
                 isActive={isActive(item.href)}
                 tooltip={t[item.labelKey as keyof typeof t]}
+                onClick={handleLinkClick}
               >
-                <Link href={item.href} onClick={handleLinkClick}>
+                <Link href={item.href}>
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
                 </Link>
@@ -103,8 +104,9 @@ export function AppSidebar() {
                 asChild
                 isActive={isActive(item.href)}
                 tooltip={t[item.labelKey as keyof typeof t]}
+                onClick={handleLinkClick}
               >
-                <Link href={item.href} onClick={handleLinkClick}>
+                <Link href={item.href}>
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
                 </Link>
@@ -123,3 +125,5 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
+
+    

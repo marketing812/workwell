@@ -24,6 +24,7 @@ import {
 import { Textarea } from '../ui/textarea';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/contexts/UserContext';
 
 
 const environments = [
@@ -45,6 +46,7 @@ interface EnvironmentEvaluationExerciseProps {
 
 export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEvaluationExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
     const [otherEnvironment, setOtherEnvironment] = useState('');
@@ -90,7 +92,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
         const filledEnvironments = selectedEnvironments.map(env => ({
             ...env,
             rating: ratings[env.id] || { support: 5, drain: 5, example: '' }
-        })).filter(env => env.name.trim() !== '');
+        })).filter(env => env.label.trim() !== '');
 
         if (filledEnvironments.length === 0) {
             toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa al menos un entorno para guardar.', variant: 'destructive' });
@@ -105,7 +107,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
             notebookContent += `- Ejemplo: ${env.rating.example || 'No especificado.'}\n\n`;
         });
 
-        addNotebookEntry({ title: 'Mi Mapa de Coherencia', content: notebookContent, pathId });
+        addNotebookEntry({ title: 'Mi Mapa de Coherencia', content: notebookContent, pathId, userId: user?.id });
         toast({ title: 'Mapa de Coherencia Guardado' });
         setIsSaved(true);
     };
@@ -214,7 +216,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                         {content.objective}
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
-                                <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica1.mp3" type="audio/mp3" />
+                                <source src={content.audioUrl} type="audio/mp3" />
                                 Tu navegador no soporta el elemento de audio.
                             </audio>
                         </div>
@@ -225,3 +227,5 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
         </Card>
     );
 }
+
+    

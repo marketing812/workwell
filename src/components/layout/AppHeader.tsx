@@ -1,3 +1,4 @@
+
 "use client";
 
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
@@ -153,3 +154,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+    

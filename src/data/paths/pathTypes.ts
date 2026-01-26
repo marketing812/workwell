@@ -433,7 +433,7 @@ export type ThoughtsThatBlockPurposeExerciseContent = {
 // RUTA 8
 export type ResilienceTimelineExerciseContent = {
     type: 'resilienceTimelineExercise';
-    title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE';
+    title: string;
     objective: string;
     duration: string;
     audioUrl?: string;
@@ -1036,3 +1036,5 @@ export interface AssessmentItem {
   weight: number; // The weight of the item for calculating scores
   isInverse?: boolean; // True if a low score is "good" and a high score is "bad"
 }
+
+    

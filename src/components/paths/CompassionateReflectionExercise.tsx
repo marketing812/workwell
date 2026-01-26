@@ -9,12 +9,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
-import type { ModuleContent } from '@/data/paths/pathTypes';
+import type { CompassionateReflectionExerciseContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
 
 interface CompassionateReflectionExerciseProps {
-  content: ModuleContent;
+  content: CompassionateReflectionExerciseContent;
   pathId: string;
   onComplete: () => void;
 }
@@ -113,10 +113,10 @@ ${flexibleThought || 'No especificada.'}
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-             {(content as any).audioUrl && (
+             {content.audioUrl && (
               <div className="mb-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src={(content as any).audioUrl} type="audio/mp3" />
+                      <source src={content.audioUrl} type="audio/mp3" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>
@@ -307,3 +307,5 @@ ${flexibleThought || 'No especificada.'}
     </Card>
   );
 }
+
+    
