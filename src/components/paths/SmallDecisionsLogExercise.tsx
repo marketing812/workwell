@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,12 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SmallDecisionsLogExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
-
-interface SmallDecisionsLogExerciseProps {
-  content: SmallDecisionsLogExerciseContent;
-  pathId: string;
-}
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface DecisionLog {
     decision: string;
@@ -35,6 +29,10 @@ const aftermathOptions = [
     { value: 'Desconexión', label: 'Desconexión' },
 ];
 
+interface SmallDecisionsLogExerciseProps {
+  content: SmallDecisionsLogExerciseContent;
+  pathId: string;
+}
 
 export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLogExerciseProps) {
     const { toast } = useToast();
