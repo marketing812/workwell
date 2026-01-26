@@ -1,3 +1,6 @@
+
+"use server";
+
 import { admin } from "@/lib/firebase-admin";
 import { embedText } from "../rag/embed";
 
@@ -11,7 +14,7 @@ async function main() {
   // A) Confirmar que hay docs en la colección
   const countSnap = await db.collection("kb-chunks").limit(3).get();
   console.log("SAMPLE DOCS:", countSnap.size);
-  countSnap.forEach((d, i) => {
+  countSnap.docs.forEach((d, i) => {
     const data: any = d.data();
     console.log(`DOC#${i} fields:`, Object.keys(data));
     console.log(`DOC#${i} source:`, data.source);
@@ -26,13 +29,13 @@ async function main() {
 
   // C) Ejecutar vector search y mostrar resultados
   // @ts-ignore
-  const snap = await db.collection("kb-chunks").findNearest("embedding", qVec, {
+  const snap = await db.collection("kb-chunks").findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
     limit: 6,
     distanceMeasure: "COSINE",
   }).get();
 
   console.log("NEAREST RESULTS:", snap.size);
-  snap.forEach((d, idx) => {
+  snap.docs.forEach((d, idx) => {
     const data: any = d.data();
     console.log(`RES#${idx} source:`, data.source, "chunkIndex:", data.chunkIndex, "text chars:", (data.text ?? "").length);
     console.log(String(data.text ?? "").slice(0, 200).replace(/\s+/g, " "));
