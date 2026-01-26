@@ -30,6 +30,7 @@ export type QuoteContent = {
 export type CollapsibleContent = {
   type: 'collapsible';
   title: string;
+  objective?: string;
   content: ModuleContent[];
   audioUrl?: string;
 };
