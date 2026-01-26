@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -9,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
-import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowRight, CheckCircle, Save, ArrowLeft, Frown, Annoyed, Meh, Smile, Laugh } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { 
   AlertDialog, 
@@ -23,19 +22,12 @@ import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { assessmentDimensions } from '@/data/assessmentDimensions';
 
-// Helper para asegurar que los iconos se cargan correctamente
-const FrownIcon = require('lucide-react').Frown;
-const AnnoyedIcon = require('lucide-react').Annoyed;
-const MehIcon = require('lucide-react').Meh;
-const SmileIcon = require('lucide-react').Smile;
-const LaughIcon = require('lucide-react').Laugh;
-
 const iconMap: Record<string, React.ElementType> = {
-  Frown: FrownIcon,
-  Annoyed: AnnoyedIcon,
-  Meh: MehIcon,
-  Smile: SmileIcon,
-  Laugh: LaughIcon,
+  Frown,
+  Annoyed,
+  Meh,
+  Smile,
+  Laugh,
 };
 
 const likertOptions = [

@@ -81,17 +81,16 @@ export function AppSidebar() {
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref legacyBehavior>
-                <SidebarMenuButton
-                  as="a"
-                  isActive={isActive(item.href)}
-                  tooltip={t[item.labelKey as keyof typeof t]}
-                  onClick={handleLinkClick}
-                >
+              <SidebarMenuButton
+                asChild
+                isActive={isActive(item.href)}
+                tooltip={t[item.labelKey as keyof typeof t]}
+              >
+                <Link href={item.href} onClick={handleLinkClick}>
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
-                </SidebarMenuButton>
-              </Link>
+                </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
@@ -100,17 +99,16 @@ export function AppSidebar() {
          <SidebarMenu>
           {settingsNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref legacyBehavior>
-                <SidebarMenuButton
-                  as="a"
-                  isActive={isActive(item.href)}
-                  tooltip={t[item.labelKey as keyof typeof t]}
-                  onClick={handleLinkClick}
-                >
+              <SidebarMenuButton
+                asChild
+                isActive={isActive(item.href)}
+                tooltip={t[item.labelKey as keyof typeof t]}
+              >
+                <Link href={item.href} onClick={handleLinkClick}>
                   <item.icon />
                   <span>{t[item.labelKey as keyof typeof t]}</span>
-                </SidebarMenuButton>
-              </Link>
+                </Link>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
           <SidebarSeparator />

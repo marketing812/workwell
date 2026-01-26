@@ -1,10 +1,9 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import type { DailyQuestion } from '@/types/daily-question';
-import { Loader2, AlertTriangle, Save } from 'lucide-react';
+import { Loader2, AlertTriangle, Save, Frown, Annoyed, Meh, Smile, Laugh } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -14,14 +13,8 @@ import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
 import { useTranslations } from '@/lib/translations';
 
-const FrownIcon = require('lucide-react').Frown;
-const AnnoyedIcon = require('lucide-react').Annoyed;
-const MehIcon = require('lucide-react').Meh;
-const SmileIcon = require('lucide-react').Smile;
-const LaughIcon = require('lucide-react').Laugh;
-
 const iconMap: Record<string, React.ElementType> = {
-  Frown: FrownIcon, Annoyed: AnnoyedIcon, Meh: MehIcon, Smile: SmileIcon, Laugh: LaughIcon,
+  Frown, Annoyed, Meh, Smile, Laugh,
 };
 
 interface DailyCheckInPopupProps {
