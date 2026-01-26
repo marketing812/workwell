@@ -18,6 +18,7 @@ import { useUser } from '@/contexts/UserContext';
 interface GentleTrackingExerciseProps {
   content: GentleTrackingExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 type TrackingStatus = 'done' | 'partial' | 'skipped';
@@ -25,7 +26,7 @@ type DailyProgress = {
   status?: TrackingStatus;
 };
 
-export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerciseProps) {
+export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTrackingExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [weekWord, setWeekWord] = useState('');
@@ -104,6 +105,7 @@ export function GentleTrackingExercise({ content, pathId }: GentleTrackingExerci
       description: 'Tu progreso y palabra de la semana se han guardado.',
     });
     setSaved(true);
+    onComplete();
   };
 
   const completedDays = Object.values(progress).filter(

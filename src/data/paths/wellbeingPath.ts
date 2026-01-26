@@ -1,6 +1,5 @@
 
-import type { Path } from './pathTypes';
-
+import type { Path } from '@/data/paths/pathTypes';
 export const wellbeingPath: Path = {
   id: 'volver-a-sentirse-bien',
   title: 'Volver a lo que me hace sentir bien',

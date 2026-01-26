@@ -1,5 +1,5 @@
 
-import type { Path } from './pathTypes';
+import type { Path } from '@/data/paths/pathTypes';
 
 export const stressManagementPath: Path = {
   id: 'gestion-estres',

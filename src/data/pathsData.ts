@@ -15,7 +15,8 @@ import { wellbeingPath } from './paths/wellbeingPath';
 import { anxietyPath } from './paths/anxietyPath'; 
 
 // Re-export types for easy access in other parts of the application
-export type { PathModule, CollapsibleContent, ExerciseContent, ModuleContent };
+// Re-export types for easy access in other parts of the application
+export type { PathModule, CollapsibleContent, ExerciseContent, ModuleContent, Path };
 
 // Now, the pathsData array will be built from imported path definitions.
 // This makes the file cleaner and scales better as more paths are added.

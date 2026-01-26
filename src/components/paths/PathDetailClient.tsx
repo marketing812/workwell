@@ -4,7 +4,7 @@
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 
-import { Path, PathModule, ModuleContent } from '@/data/pathsData';
+import { Path, PathModule, ModuleContent } from '@/data/paths/pathTypes';
 import { useTranslations } from '@/lib/translations';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -535,7 +535,7 @@ function ContentItemRenderer({
     case 'realisticRitualExercise':
       return <RealisticRitualExercise key={index} content={contentItem as any} pathId={path.id} />;
     case 'gentleTrackingExercise':
-      return <GentleTrackingExercise key={index} content={contentItem as any} pathId={path.id} />;
+      return <GentleTrackingExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'blockageMapExercise':
       return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'compassionateReflectionExercise':
