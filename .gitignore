@@ -43,3 +43,9 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# secrets
+.env*
+workspace/firebase-adminsdk.json
+*.pem
+*.key
