@@ -13,27 +13,23 @@ export type RetrievedChunk = {
   chunkIndex?: number;
   distance?: number;
 };
-
-export async function retrieveDocsContext(
-  question: string,
-  opts?: { k?: number; minChars?: number }
-): Promise<{ context: string; chunks: RetrievedChunk[] }> {
+export async function retrieveDocsContext(question: string, opts?: { k?: number; minChars?: number }) {
   const k = opts?.k ?? 6;
   const minChars = opts?.minChars ?? 80;
 
   const qVec = await embedText(question);
 
-  // ✅ NO vector() externo: usamos el del Admin SDK
+  // PASA EL ARRAY DIRECTO
+  // @ts-ignore
   const snap = await db
     .collection("kb-chunks")
-    // @ts-ignore
-    .findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
+    .findNearest("embedding", qVec, {
       limit: k,
       distanceMeasure: "COSINE",
     })
     .get();
 
-  const chunks: RetrievedChunk[] = snap.docs
+  const chunks = snap.docs
     .map((d) => d.data() as any)
     .map((x) => ({
       text: String(x.text ?? ""),

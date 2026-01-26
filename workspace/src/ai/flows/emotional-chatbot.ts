@@ -100,10 +100,8 @@ const emotionalChatbotFlow = ai.defineFlow(
       console.log("RAG_CHAT preview:", String(docsContext ?? "").slice(0, 200));
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
     } catch (e: any) {
-      console.warn(
-        "emotionalChatbotFlow: Failed to retrieve RAG context. This is expected if the 'kb-chunks' collection doesn't exist. Proceeding without it.",
-        e.message
-      );
+      console.error("RAG ERROR:", e);
+      throw e; // solo mientras debug
       // This is not a fatal error. We can continue without the RAG context.
       // The prompt is designed to handle cases where docsContext is not provided.
     }

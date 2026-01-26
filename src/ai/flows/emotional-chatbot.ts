@@ -92,21 +92,23 @@ const emotionalChatbotFlow = ai.defineFlow(
     let docsContext: string | undefined = undefined;
     try {
       // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
+      console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
       const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
       docsContext = context; // Assign to the outer scope variable
-     console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
-    console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
-    console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
-    console.log("RAG_CHAT preview:", String(docsContext ?? "").slice(0, 200));
-   
+      
+      console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
+      console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
+      console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
+
     } catch (e: any) {
-      console.warn(
-        "emotionalChatbotFlow: Failed to retrieve RAG context. This is expected if the 'kb-chunks' collection doesn't exist. Proceeding without it.",
-        e.message
+      console.error(
+        "emotionalChatbotFlow: ERROR al recuperar el contexto RAG. Esto impedirá que el chatbot use los documentos.",
+        e
       );
-      // This is not a fatal error. We can continue without the RAG context.
-      // The prompt is designed to handle cases where docsContext is not provided.
+      // RE-LANZAMOS el error para que se propague al cliente.
+      // Esto será capturado por la server action y mostrado en la interfaz.
+      throw new Error(`Error en la recuperación de documentos: ${e.message}`);
     }
 
     // ✅ 2) Construye payload del prompt incluyendo docsContext
