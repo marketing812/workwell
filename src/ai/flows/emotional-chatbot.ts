@@ -106,9 +106,7 @@ const emotionalChatbotFlow = ai.defineFlow(
         "emotionalChatbotFlow: ERROR al recuperar el contexto RAG. Esto impedirá que el chatbot use los documentos.",
         e
       );
-      // RE-LANZAMOS el error para que se propague al cliente.
-      // Esto será capturado por la server action y mostrado en la interfaz.
-      throw new Error(`Error en la recuperación de documentos: ${e.message}`);
+      // No re-lanzamos el error. El chatbot continuará sin contexto de documentos.
     }
 
     // ✅ 2) Construye payload del prompt incluyendo docsContext
