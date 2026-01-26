@@ -13,7 +13,7 @@ export type ParagraphWithAudioContent = {
 export type TitleContent = {
   type: 'title';
   text: string;
-  audioUrl?: string; // Add audioUrl to TitleContent
+  audioUrl?: string;
 };
 
 export type ListContent = {
@@ -31,7 +31,7 @@ export type CollapsibleContent = {
   type: 'collapsible';
   title: string;
   content: ModuleContent[];
-  audioUrl?: string; // Add audioUrl to collapsible
+  audioUrl?: string;
 };
 
 export type ExerciseContent = {
@@ -40,7 +40,7 @@ export type ExerciseContent = {
     objective?: string;
     duration?: string;
     content: ModuleContent[];
-    audioUrl?: string; // NEW: Added audioUrl property
+    audioUrl?: string;
 };
 
 export type StressMapExerciseContent = {
@@ -136,6 +136,62 @@ export type DelSabotajeALaAccionExerciseContent = {
     objective?: string;
     duration?: string;
     audioUrl?: string;
+};
+
+export type TwoMinuteRuleExerciseContent = {
+    type: 'twoMinuteRuleExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type MicroPlanExerciseContent = {
+    type: 'microPlanExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type FutureSelfVisualizationExerciseContent = {
+    type: 'futureSelfVisualizationExercise';
+    title: string;
+    objective: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type RealisticRitualExerciseContent = {
+    type: 'realisticRitualExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type GentleTrackingExerciseContent = {
+    type: 'gentleTrackingExercise';
+    title: string;
+    objective?: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
+export type BlockageMapExerciseContent = {
+  type: 'blockageMapExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
+};
+
+export type CompassionateReflectionExerciseContent = {
+  type: 'compassionateReflectionExercise';
+  title: string;
+  objective?: string;
+  duration?: string;
+  audioUrl?: string;
 };
 
 export type MapOfUnsaidThingsExerciseContent = {
@@ -248,7 +304,7 @@ export type EmpathicShieldVisualizationExerciseContent = {
     title: string;
     objective?: string;
     duration?: string;
-    content?: { type: 'paragraph', text: string }[]; // Para la versión escrita
+    content?: { type: 'paragraph', text: string }[];
     audioUrl?: string;
 };
 
@@ -812,7 +868,6 @@ export type AnxietyReframingExerciseContent = {
     audioUrl?: string;
 };
 
-// NUEVO tipo de ejercicio para el Ensayo de Crisis Imaginaria
 export type ImaginedCrisisRehearsalExerciseContent = {
     type: 'imaginedCrisisRehearsalExercise';
     title: string;
@@ -828,63 +883,6 @@ export type ExposureToIntoleranceExerciseContent = {
     audioUrl?: string;
     content: [];
 };
-
-export type TwoMinuteRuleExerciseContent = {
-    type: 'twoMinuteRuleExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type FutureSelfVisualizationExerciseContent = {
-    type: 'futureSelfVisualizationExercise';
-    title: string;
-    objective: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type RealisticRitualExerciseContent = {
-    type: 'realisticRitualExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type GentleTrackingExerciseContent = {
-    type: 'gentleTrackingExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
-export type BlockageMapExerciseContent = {
-  type: 'blockageMapExercise';
-  title: string;
-  objective?: string;
-  duration?: string;
-  audioUrl?: string;
-};
-
-export type CompassionateReflectionExerciseContent = {
-  type: 'compassionateReflectionExercise';
-  title: string;
-  objective?: string;
-  duration?: string;
-  audioUrl?: string;
-};
-
-export type MicroPlanExerciseContent = {
-    type: 'microPlanExercise';
-    title: string;
-    objective?: string;
-    duration?: string;
-    audioUrl?: string;
-};
-
 
 // A union type for all possible content blocks that make up a module
 export type ModuleContent =
