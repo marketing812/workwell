@@ -436,7 +436,7 @@ function ContentItemRenderer({
       );
     case 'list':
       return (
-        <ul key={index} className="list-disc list-inside space-y-2 mb-4 pl-4">
+        <ul key={index} className="list-disc list-inside space-y-2 mb-4 pl-4 text-base leading-relaxed">
           {contentItem.items.map((item, i) => (
             <li
               key={i}

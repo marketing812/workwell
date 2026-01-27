@@ -213,7 +213,7 @@ export const stressManagementPath: Path = {
                 title: '¿Por qué estas técnicas funcionan?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Cuando estás en modo alerta —con el corazón acelerado, el cuerpo tenso y la mente agitada— tu sistema nervioso está intentando protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
+                    { type: 'paragraph', text: 'Cuando estás en modo alerta —con el corazón acelerado, el cuerpo tenso y la mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
                 ]
             },
             {
@@ -221,69 +221,45 @@ export const stressManagementPath: Path = {
                 title: '¿Qué cambia cuando las practicas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2quecambia.mp3',
                 content: [
-                    { type: 'paragraph', text: 'En tu cuerpo:' },
-                    { type: 'list', items: ['La respiración se vuelve más profunda y regular.', 'Se regula el CO₂ en sangre, reduciendo mareos y sensaciones de ahogo.', 'Se libera tensión muscular acumulada.', 'Aparece una sensación de alivio, calor o tranquilidad.'] },
-                    { type: 'paragraph', text: 'En tu mente:' },
-                    { type: 'list', items: ['Recuperas el control y vuelves al presente.', 'Se interrumpe el bucle de pensamientos ansiosos.', 'Refuerzas el autocuidado y la conexión contigo.'] },
-                    { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Algunas se basan en la respiración, otras en el movimiento, la atención plena o el contacto sensorial. Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar de seguridad.\\nPuedes usarlas:\\n•\tEn el momento, si sientes ansiedad o bloqueo.\\n•\tAntes de una situación desafiante.\\n•\tComo rutina diaria para cultivar equilibrio.\\n•\tPara conocerte mejor: observa cuáles te funcionan más.' },
+                    { type: 'paragraph', text: 'En tu cuerpo:\\n- Respiración más profunda y regular\\n- Regulación del CO₂ (menos mareos o ahogo)\\n- Reducción de tensión muscular\\n- Sensaciones de alivio, calor o calma\\n\\nEn tu mente:\\n- Recuperas el control y vuelves al presente\\n- Se interrumpe el bucle de pensamientos ansiosos\\n- Refuerzas el autocuidado y la conexión contigo'},
+                    { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
                 ]
-            },
-             {
-              type: 'collapsible',
-              title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado',
-              objective: 'Salir del modo estrés y activar el modo calma.',
-              audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3',
-              content: [
-                { type: 'paragraph', text: '1.\tInhala por la nariz durante 4 segundos.\\n2.\tMantén el aire 2 segundos.\\n3.\tExhala lentamente por la boca durante 6 segundos.\\n4.\tMientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti.\\nPractica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }
-              ]
-            },
-            {
-              type: 'collapsible',
-              title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
-              objective: 'Salir del bucle mental ansioso y volver al momento presente.',
-              audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a',
-              content: [
-                { type: 'paragraph', text: 'Instrucciones (con respiración 6-2-4 previa):\\n1.\tInhala 6 s – mantén 2 s – exhala 4 s (2 veces).\\n2.\tNombra mentalmente:\\n\to\t5 cosas que ves.\\n\to\t4 cosas que puedes tocar.\\n\to\t3 sonidos que escuchas.\\n\to\t2 olores que detectas o recuerdas.\\n\to\t1 sabor presente en tu boca.\\nAl terminar, haz una respiración profunda y siente cómo has interrumpido el piloto automático.' }
-              ]
-            },
-            {
-              type: 'collapsible',
-              title: 'Técnica 3: Escaneo corporal sin juicio (body scan)',
-              objective: 'Observar tu cuerpo con amabilidad y disminuir la tensión acumulada.',
-              audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3',
-              content: [{ type: 'paragraph', text: 'En esta técnica guiada, recorrerás mentalmente tu cuerpo de pies a cabeza sin intentar cambiar nada. Solo observarás y acompañarás las sensaciones físicas con una actitud amable. 🎧 Disponible en formato audio.' }]
-            },
-            {
-              type: 'collapsible',
-              title: 'Técnica 4: Relajación muscular progresiva (Jacobson)',
-              objective: 'Liberar la tensión física generada por el estrés.',
-              audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3',
-              content: [{ type: 'paragraph', text: '🎧 A través de un audio o video guiado, irás tensando y soltando diferentes grupos musculares (piernas, abdomen, cara, hombros…). Este ejercicio te ayudará a sentir alivio físico y a reconocer cómo tu cuerpo acumula tensión.' }]
             },
             {
                 type: 'collapsible',
-                title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
-                audioUrl: 'https://workwellfut.com/audios/rm/R16balanceocorporal.mp3',
-                objective: 'Generar una sensación de seguridad y arraigo desde el cuerpo.',
+                title: '¿Cuándo puedes usarlas?',
+                audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2cuando.mp3',
+                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\\n•\\tEn el momento: si sientes ansiedad o bloqueo\\n•\\tAntes de una situación desafiante\\n•\\tComo rutina diaria para entrenar tu equilibrio\\n\\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\\nLa calma también se entrena.' }]
+            },
+            {
+                type: 'collapsible',
+                title: 'Selección de técnicas',
                 content: [
-                  { type: 'paragraph', text: 'Opciones que puedes probar:\n•\tAutoabrazo firme: Cruza los brazos sobre tu pecho y mantén la presión mientras respiras.\n•\tBalanceo suave: Sentado/a o de pie, realiza un vaivén rítmico con el cuerpo.\n•\tManta con peso (o varias mantas dobladas): Cúbrete durante unos minutos para activar el sistema de regulación interna.\nEstas prácticas envían señales de seguridad al cerebro. Úsalas tras situaciones exigentes o como parte de tu rutina diaria.' }
+                    { type: 'collapsible', title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado', audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3', content: [{ type: 'paragraph', text: '🕒 Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }] },
+                    { type: 'collapsible', title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)', audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a', content: [{ type: 'paragraph', text: '🧠 Úsala cuando tu mente se inunde de pensamientos anticipatorios.' }] },
+                    { type: 'collapsible', title: 'Técnica 3: Escaneo corporal sin juicio (body scan)', audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3', content: [{ type: 'paragraph', text: '🛏️ Útil para relajarte al final del día o facilitar el descanso.' }] },
+                    { type: 'collapsible', title: 'Técnica 4: Relajación muscular progresiva (Jacobson)', audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3', content: [{ type: 'paragraph', text: '💪 Si sientes ansiedad física o mucha tensión corporal.' }] },
+                    {
+                        type: 'collapsible',
+                        title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
+                        audioUrl: 'https://workwellfut.com/audios/rm/R16balanceocorporal.mp3',
+                        content: [{ type: 'paragraph', text: '🤗 Especialmente útiles en momentos de desregulación intensa.' }]
+                    },
+                     {
+                      type: 'collapsible',
+                      title: 'Técnica 6: Contacto frío breve (reset inmediato)',
+                      audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
+                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\\tHumedece una toalla o paño con agua fría.\\n2.\\tAplícalo entre 10 y 20 segundos en:\\n\\to\\tLa nuca\\n\\to\\tLas muñecas\\n\\to\\tLa parte interna de los brazos o las mejillas\\n3.\\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
+                    },
                 ]
             },
-            {
-              type: 'collapsible',
-              title: 'Técnica 6: Contacto frío breve (reset inmediato)',
-              objective: 'Interrumpir una activación emocional intensa.',
-              audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
-              content: [
-                { type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\\tHumedece una toalla o paño con agua fría.\\n2.\\tAplícalo entre 10 y 20 segundos en:\\n\\to\\tLa nuca\\n\\to\\tLas muñecas\\n\\to\\tLa parte interna de los brazos o las mejillas\\n3.\\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }
-              ]
-            },
-            {
+             {
                 type: 'therapeuticNotebookReflection',
-                title: 'Reflexión Final de la Semana',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3',
-                prompts: ['<b>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</b>   Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.'],
+                title: 'Registro de experiencia personal',
+                prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:'],
             },
+          
+            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3', prompts: ['<b>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</b>   Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.']},
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
             { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
             { type: 'quote', text: 'Respirar con conciencia es el gesto más pequeño y poderoso que puedes hacer por ti.'}
