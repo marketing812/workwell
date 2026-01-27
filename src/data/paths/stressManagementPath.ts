@@ -135,7 +135,6 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/REFLEXION.mp3',
           prompts: [
-            'Tómate un momento para integrar todo lo aprendido:',
             '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
           ],
         },
@@ -152,7 +151,7 @@ export const stressManagementPath: Path = {
                 'Aprender a distinguir entre lo externo y lo interno te devuelve el poder sobre ti.',
             ]
         }
-      ]
+      ],
     },
     {
         id: 'estres_sem2',
@@ -182,7 +181,7 @@ export const stressManagementPath: Path = {
                         type: 'collapsible',
                         title: 'Rama parasimpática: tu sistema de descanso y seguridad',
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramaparasimpatica.mp3',
-                        content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\\nCuando se activa:\\n•\tTu respiración se vuelve más lenta.\\n•\tTus músculos se relajan.\\n•\tSe reduce la tensión.\\n•\tTu cuerpo recupera energía.\\n•\tSe activa un estado de bienestar profundo.\\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
+                        content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\\nCuando se activa:\\n•\\tTu respiración se vuelve más lenta.\\n•\\tTus músculos se relajan.\\n•\\tSe reduce la tensión.\\n•\\tTu cuerpo recupera energía.\\n•\\tSe activa un estado de bienestar profundo.\\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
                     },
                 ]
             },
@@ -191,8 +190,8 @@ export const stressManagementPath: Path = {
                 title: 'Tu detector interno de seguridad',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/TudetectorinternodeseguridadylaTeoriaPolivagal.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\\nEste sistema se activa por cosas muy sutiles, como:\\n•\tUna mirada que percibes como crítica.\\n•\tUn tono de voz tenso.\\n•\tUn ambiente impredecible.\\n•\tUn recuerdo que se activa sin querer.\\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
-                    { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\\n1.\tConexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\\n2.\tLucha o huida: tu cuerpo se activa para defenderse.\\n3.\tColapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
+                    { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\\nEste sistema se activa por cosas muy sutiles, como:\\n•\\tUna mirada que percibes como crítica.\\n•\\tUn tono de voz tenso.\\n•\\tUn ambiente impredecible.\\n•\\tUn recuerdo que se activa sin querer.\\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
+                    { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\\n1.\\tConexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\\n2.\\tLucha o huida: tu cuerpo se activa para defenderse.\\n3.\\tColapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
                 ]
             },
             {
@@ -200,7 +199,7 @@ export const stressManagementPath: Path = {
                 title: '¿Qué genera seguridad?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Quegeneraseguridad.mp3',
                 content: [
-                    { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\\n•\tTu respiración se regula sola.\\n•\tTu expresión facial se relaja.\\n•\tTu cuerpo se afloja.\\n•\tTu mente se siente más presente.\\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
+                    { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\\n•\\tTu respiración se regula sola.\\n•\\tTu expresión facial se relaja.\\n•\\tTu cuerpo se afloja.\\n•\tTu mente se siente más presente.\\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
                 ]
             },
             { 
@@ -213,7 +212,7 @@ export const stressManagementPath: Path = {
                 title: '¿Por qué estas técnicas funcionan?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Cuando estás en modo alerta —con el corazón acelerado, el cuerpo tenso y la mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
+                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
                 ]
             },
             {
@@ -235,15 +234,15 @@ export const stressManagementPath: Path = {
                 type: 'collapsible',
                 title: 'Selección de técnicas',
                 content: [
-                    { type: 'collapsible', title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado', audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3', content: [{ type: 'paragraph', text: '🕒 Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }] },
-                    { type: 'collapsible', title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)', audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a', content: [{ type: 'paragraph', text: '🧠 Úsala cuando tu mente se inunde de pensamientos anticipatorios.' }] },
-                    { type: 'collapsible', title: 'Técnica 3: Escaneo corporal sin juicio (body scan)', audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3', content: [{ type: 'paragraph', text: '🛏️ Útil para relajarte al final del día o facilitar el descanso.' }] },
-                    { type: 'collapsible', title: 'Técnica 4: Relajación muscular progresiva (Jacobson)', audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3', content: [{ type: 'paragraph', text: '💪 Si sientes ansiedad física o mucha tensión corporal.' }] },
+                    { type: 'collapsible', title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado', audioUrl: 'https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3', content: [{ type: 'paragraph', text: 'Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }] },
+                    { type: 'collapsible', title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)', audioUrl: 'https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a', content: [{ type: 'paragraph', text: 'Úsala cuando tu mente se inunde de pensamientos anticipatorios.' }] },
+                    { type: 'collapsible', title: 'Técnica 3: Escaneo corporal sin juicio (body scan)', audioUrl: 'https://workwellfut.com/audios/rm/R_body_scan_breve.mp3', content: [{ type: 'paragraph', text: 'Útil para relajarte al final del día o facilitar el descanso.' }] },
+                    { type: 'collapsible', title: 'Técnica 4: Relajación muscular progresiva (Jacobson)', audioUrl: 'https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3', content: [{ type: 'paragraph', text: 'Si sientes ansiedad física o mucha tensión corporal.' }] },
                     {
                         type: 'collapsible',
                         title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
                         audioUrl: 'https://workwellfut.com/audios/rm/R16balanceocorporal.mp3',
-                        content: [{ type: 'paragraph', text: '🤗 Especialmente útiles en momentos de desregulación intensa.' }]
+                        content: [{ type: 'paragraph', text: 'Especialmente útiles en momentos de desregulación intensa.' }]
                     },
                      {
                       type: 'collapsible',
@@ -266,130 +265,130 @@ export const stressManagementPath: Path = {
         ]
     },
     {
-        id: 'estres_sem3',
-        title: 'Semana 3: Reestructura tus Pensamientos de Sobrecarga',
-        type: 'skill_practice',
-        estimatedTime: '20-25 min',
-        content: [
-            {
-                type: 'paragraphWithAudio',
-                text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3',
-            },
-            { type: 'title', text: 'Psicoeducación' },
-            {
-                type: 'collapsible',
-                title: '¿Qué son los pensamientos automáticos?',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Pensamientosautomaticos.mp3',
-                content: [{ type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.\\nSon ideas breves y espontáneas que aparecen en tu mente casi sin darte cuenta. Aunque parecen simples, influyen mucho en cómo te sientes y en cómo actúas. Por ejemplo, si alguien dice “tenemos que hablar”, puedes sentir ansiedad solo porque aparece el pensamiento “algo va mal”.\\nEstos pensamientos no siempre son racionales, pero sí muy poderosos. Por eso, aprender a identificarlos y cuestionarlos puede ayudarte a transformar tu forma de sentir y actuar.'}]
-            },
-            {
-                type: 'collapsible',
-                title: 'Las creencias exigentes: una fuente silenciosa de tensión',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Creenciasexigentesunafuentesilenciosadetension.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Muchas personas viven con un diálogo interno muy exigente:'},
-                    { type: 'list', items: ['“Tengo que poder con todo.”', '“No puedo permitirme fallar.”', '“Los demás lo hacen mejor que yo.”']},
-                    { type: 'paragraph', text: 'Estas creencias generan tensión constante, te ponen en deuda contigo y con los demás, y te hacen vivir como si nunca fuera suficiente.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'El modelo ABC: cómo se conectan pensamiento, emoción y acción',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/ElmodeloABCpensamientoemocionyaccion.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual usamos el modelo A-B-C:'},
-                    { type: 'list', items: ['A (Acontecimiento): Lo que pasa. Ej: Tu jefe te encarga algo urgente.', 'B (Creencia o pensamiento): Lo que piensas. Ej: “No voy a dar la talla”.', 'C (Consecuencia): Cómo te sientes y actúas. Ej: Ansiedad + bloqueo + trabajar con angustia.']},
-                    { type: 'paragraph', text: 'Solemos creer que A causa directamente C, pero en realidad, lo que te estresa no es solo lo que pasa, sino cómo lo interpretas.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'Un mismo hecho, dos emociones distintas',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Unmismohechodosemocionesdistintas.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Situación: Tu pareja no contesta a tu mensaje en horas.'},
-                    { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia.']},
-                    { type: 'paragraph', text: 'La misma situación puede vivirse con emociones muy diferentes según el pensamiento que la acompaña.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'Las distorsiones cognitivas: filtros mentales que aumentan tu estrés',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Distorsionescognitivas.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Nuestro cerebro tiende a interpretar la realidad con atajos que a veces fallan. Estas distorsiones son formas automáticas y poco realistas de pensar que exageran lo negativo, minimizan lo positivo o interpretan las cosas de forma rígida. Aprender a identificarlas te permite ganar claridad y aliviar tu carga emocional.'},
-                    { 
-                        type: 'collapsible',
-                        title: 'Aquí tienes una descripción breve de las más frecuentes, con ejemplos:',
-                        content: [
-                            { type: 'list', items: [
-                                'Catastrofismo: Imaginar el peor escenario como inevitable. Ejemplo: “Si fallo esta presentación, arruinaré mi carrera.”',
-                                'Pensamiento dicotómico (todo o nada): Ver todo en extremos, sin matices. Ejemplo: “Si no lo hago perfecto, es un fracaso.”',
-                                'Sobregeneralización: Extraer una conclusión general a partir de un solo hecho negativo. Ejemplo: “Me equivoqué una vez, siempre lo hago mal.”',
-                                'Personalización: Creer que todo lo que pasa tiene que ver contigo. Ejemplo: “Están serios, seguro hice algo mal.”',
-                                'Adivinación del pensamiento o del futuro: Suponer sin evidencia qué piensan los demás o lo que ocurrirá. Ejemplo: “No respondió el mensaje, seguro está molesto conmigo.”',
-                                'Abstracción selectiva: Fijarse solo en lo negativo y pasar por alto lo positivo. Ejemplo: “Me equivoqué en una palabra, así que todo salió mal.”',
-                                'Razonamiento emocional: Creer que algo es verdad solo porque lo sientes intensamente. Ejemplo: “Me siento inútil, así que debo serlo.”',
-                                '“Deberías” rígidos: Imponerse normas estrictas que generan culpa o presión. Ejemplo: “Debería poder con todo sin quejarme.”',
-                                'Minimizar lo positivo / Maximizar lo negativo: Restar valor a los logros y agrandar los errores. Ejemplo: “Sí, me felicitaron, pero seguro fue por compromiso.”',
-                                'Perfeccionismo: Necesidad de cumplir con estándares imposibles. Ejemplo: “Si no es perfecto, no vale la pena.”',
-                                'Comparación negativa: Compararte solo con lo que te falta respecto a otros. Ejemplo: “Ella gana más que yo, así que soy un fracaso.”',
-                                'Falacia del control: Creer que todo depende de ti o que no tienes control en absoluto. Ejemplo: “Si mi hijo no está bien, es culpa mía.”',
-                                'Exageración de la responsabilidad: Sentirse culpable de todo lo que ocurre, incluso sin pruebas. Ejemplo: “Si algo sale mal, será por mi culpa.”',
-                'Distorsión del tiempo: Creer que lo que vives ahora será así para siempre. Ejemplo: “Nunca voy a salir de esto.”',
-                                'Túnel atencional negativo: Solo ver lo que falta o lo que está mal. Ejemplo: “Hoy ha sido horrible porque tuve una discusión”, ignorando que el resto del día fue positivo.'
-                            ]},
-                            { type: 'paragraph', text: 'Detectarlas no significa eliminarlas de golpe, pero sí abrir un espacio para mirar con más claridad y cuidarte mejor.'}
-                        ]
-                    }
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: '¿Qué hacer cuando detectas un pensamiento negativo?',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Quehacercuandodetectasunpensamientonegativo.mp3',
-                content: [
-                    { type: 'paragraph', text: 'No se trata de forzarte a “pensar en positivo”, sino de pensar de forma más realista y compasiva. Puedes preguntarte:'},
-                    { type: 'list', items: ['¿Qué evidencia tengo de que esto sea cierto?', '¿Estoy exagerando o anticipando?', '¿Qué le diría a alguien que quiero si pensara esto?', '¿Este pensamiento me ayuda o me hace daño?']},
-                    { type: 'paragraph', text: 'Este proceso se llama reestructuración cognitiva: es como entrenar tu mente para dejar de castigarte y empezar a hablarte de otra forma.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'Desde la neurociencia: por qué funciona',
-                audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Desdelaneurocienciaporquefunciona.mp3',
-                content: [
-                    { type: 'paragraph', text: 'Cuando reinterpretas una situación, activas nuevas redes neuronales. Tu corteza prefrontal (la parte que decide) toma protagonismo frente al sistema límbico (la parte reactiva). Así, pasas de reaccionar por impulso a responder con claridad.\\nTus pensamientos no siempre son verdad. Son interpretaciones. Y puedes aprender a elegir las que te cuidan.'}
-                ]
-            },
-            { type: 'quote', text: 'No puedes parar las olas, pero puedes aprender a surfear tus pensamientos.' },
-            { type: 'title', text: 'Técnicas Específicas'},
-            { 
-              type: 'detectiveExercise', 
-              title: 'Ejercicio 1: Detective de Pensamientos Estresantes', 
-              objective: 'En este ejercicio vas a convertirte en un detective de tu propia mente. Aprenderás a observar esos pensamientos automáticos que te sobrecargan, detectar los filtros que distorsionan tu percepción y reformularlos con una mirada más realista, flexible y amable. Esto fortalecerá tu conciencia emocional y te ayudará a regular ese diálogo interno que, a veces, se vuelve demasiado exigente.',
-            },
-            { 
-              type: 'demandsExercise', 
-              title: 'Ejercicio 2: Tabla de Exigencias vs. Deseos Reales', 
-              objective: 'En este ejercicio vas a observar con honestidad tus propias exigencias internas y diferenciarlas de tus verdaderos deseos y necesidades. Aprenderás a soltar los "debería" que te presionan y a reformularlos con una mirada más compasiva. Este proceso te ayudará a liberar tu mente del exceso de autoexigencia y a reconectar con una forma de cuidarte más humana, realista y sostenible.',
-            },
-            {
-              type: 'therapeuticNotebookReflection',
-              title: 'Reflexión Final de la Semana',
-              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/REFLEXION.mp3',
-              prompts: [
-                'Te proponemos un momento para integrar lo que has trabajado.',
-                '¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?',
-                '¿Qué exigencias internas me alejan de mis verdaderas necesidades?',
-                '¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio?',
-              ],
-            },
-            { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/RESUMEN.mp3'},
-            { type: 'list', items: ['El estrés no solo viene de fuera, sino de cómo interpretas lo que ocurre.', 'Tus pensamientos automáticos pueden aumentar o aliviar tu malestar.', 'Las distorsiones cognitivas son filtros mentales que puedes aprender a detectar.', 'Reestructurar es entrenar la mente para pensar con más claridad, flexibilidad y compasión.', 'No eres lo que piensas: eres quien decide cómo responder a lo que piensa.'] },
-            { type: 'quote', text: 'No eres lo que piensas. Eres quien decide cómo responder a esos pensamientos.' }
-        ]
+      id: 'estres_sem3',
+      title: 'Semana 3: Reestructura tus Pensamientos de Sobrecarga',
+      type: 'skill_practice',
+      estimatedTime: '20-25 min',
+      content: [
+          {
+              type: 'paragraphWithAudio',
+              text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/INTRODUCCIONSEMANA3.mp3',
+          },
+          { type: 'title', text: 'Psicoeducación' },
+          {
+              type: 'collapsible',
+              title: '¿Qué son los pensamientos automáticos?',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Pensamientosautomaticos.mp3',
+              content: [{ type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.\\nSon ideas breves y espontáneas que aparecen en tu mente casi sin darte cuenta. Aunque parecen simples, influyen mucho en cómo te sientes y en cómo actúas. Por ejemplo, si alguien dice “tenemos que hablar”, puedes sentir ansiedad solo porque aparece el pensamiento “algo va mal”.\\nEstos pensamientos no siempre son racionales, pero sí muy poderosos. Por eso, aprender a identificarlos y cuestionarlos puede ayudarte a transformar tu forma de sentir y actuar.'}]
+          },
+          {
+              type: 'collapsible',
+              title: 'Las creencias exigentes: una fuente silenciosa de tensión',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Creenciasexigentesunafuentesilenciosadetension.mp3',
+              content: [
+                  { type: 'paragraph', text: 'Muchas personas viven con un diálogo interno muy exigente:'},
+                  { type: 'list', items: ['“Tengo que poder con todo.”', '“No puedo permitirme fallar.”', '“Los demás lo hacen mejor que yo.”']},
+                  { type: 'paragraph', text: 'Estas creencias generan tensión constante, te ponen en deuda contigo y con los demás, y te hacen vivir como si nunca fuera suficiente.'}
+              ]
+          },
+          {
+              type: 'collapsible',
+              title: 'El modelo ABC: cómo se conectan pensamiento, emoción y acción',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/ElmodeloABCpensamientoemocionyaccion.mp3',
+              content: [
+                  { type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual usamos el modelo A-B-C:'},
+                  { type: 'list', items: ['A (Acontecimiento): Lo que pasa. Ej: Tu jefe te encarga algo urgente.', 'B (Creencia o pensamiento): Lo que piensas. Ej: “No voy a dar la talla”.', 'C (Consecuencia): Cómo te sientes y actúas. Ej: Ansiedad + bloqueo + trabajar con angustia.']},
+                  { type: 'paragraph', text: 'Solemos creer que A causa directamente C, pero en realidad, lo que te estresa no es solo lo que pasa, sino cómo lo interpretas.'}
+              ]
+          },
+          {
+              type: 'collapsible',
+              title: 'Un mismo hecho, dos emociones distintas',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Unmismohechodosemocionesdistintas.mp3',
+              content: [
+                  { type: 'paragraph', text: 'Situación: Tu pareja no contesta a tu mensaje en horas.'},
+                  { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia.']},
+                  { type: 'paragraph', text: 'La misma situación puede vivirse con emociones muy diferentes según el pensamiento que la acompaña.'}
+              ]
+          },
+          {
+              type: 'collapsible',
+              title: 'Las distorsiones cognitivas: filtros mentales que aumentan tu estrés',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Distorsionescognitivas.mp3',
+              content: [
+                  { type: 'paragraph', text: 'Nuestro cerebro tiende a interpretar la realidad con atajos que a veces fallan. Estas distorsiones son formas automáticas y poco realistas de pensar que exageran lo negativo, minimizan lo positivo o interpretan las cosas de forma rígida. Aprender a identificarlas te permite ganar claridad y aliviar tu carga emocional.'},
+                  { 
+                      type: 'collapsible',
+                      title: 'Aquí tienes una descripción breve de las más frecuentes, con ejemplos:',
+                      content: [
+                          { type: 'list', items: [
+                              'Catastrofismo: Imaginar el peor escenario como inevitable. Ejemplo: “Si fallo esta presentación, arruinaré mi carrera.”',
+                              'Pensamiento dicotómico (todo o nada): Ver todo en extremos, sin matices. Ejemplo: “Si no lo hago perfecto, es un fracaso.”',
+                              'Sobregeneralización: Extraer una conclusión general a partir de un solo hecho negativo. Ejemplo: “Me equivoqué una vez, siempre lo hago mal.”',
+                              'Personalización: Creer que todo lo que pasa tiene que ver contigo. Ejemplo: “Están serios, seguro hice algo mal.”',
+                              'Adivinación del pensamiento o del futuro: Suponer sin evidencia qué piensan los demás o lo que ocurrirá. Ejemplo: “No respondió el mensaje, seguro está molesto conmigo.”',
+                              'Abstracción selectiva: Fijarse solo en lo negativo y pasar por alto lo positivo. Ejemplo: “Me equivoqué en una palabra, así que todo salió mal.”',
+                              'Razonamiento emocional: Creer que algo es verdad solo porque lo sientes intensamente. Ejemplo: “Me siento inútil, así que debo serlo.”',
+                              '“Deberías” rígidos: Imponerse normas estrictas que generan culpa o presión. Ejemplo: “Debería poder con todo sin quejarme.”',
+                              'Minimizar lo positivo / Maximizar lo negativo: Restar valor a los logros y agrandar los errores. Ejemplo: “Sí, me felicitaron, pero seguro fue por compromiso.”',
+                              'Perfeccionismo: Necesidad de cumplir con estándares imposibles. Ejemplo: “Si no es perfecto, no vale la pena.”',
+                              'Comparación negativa: Compararte solo con lo que te falta respecto a otros. Ejemplo: “Ella gana más que yo, así que soy un fracaso.”',
+                              'Falacia del control: Creer que todo depende de ti o que no tienes control en absoluto. Ejemplo: “Si mi hijo no está bien, es culpa mía.”',
+                              'Exageración de la responsabilidad: Sentirse culpable de todo lo que ocurre, incluso sin pruebas. Ejemplo: “Si algo sale mal, será por mi culpa.”',
+              'Distorsión del tiempo: Creer que lo que vives ahora será así para siempre. Ejemplo: “Nunca voy a salir de esto.”',
+                              'Túnel atencional negativo: Solo ver lo que falta o lo que está mal. Ejemplo: “Hoy ha sido horrible porque tuve una discusión”, ignorando que el resto del día fue positivo.'
+                          ]},
+                          { type: 'paragraph', text: 'Detectarlas no significa eliminarlas de golpe, pero sí abrir un espacio para mirar con más claridad y cuidarte mejor.'}
+                      ]
+                  }
+              ]
+          },
+          {
+              type: 'collapsible',
+              title: '¿Qué hacer cuando detectas un pensamiento negativo?',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Quehacercuandodetectasunpensamientonegativo.mp3',
+              content: [
+                  { type: 'paragraph', text: 'No se trata de forzarte a “pensar en positivo”, sino de pensar de forma más realista y compasiva. Puedes preguntarte:'},
+                  { type: 'list', items: ['¿Qué evidencia tengo de que esto sea cierto?', '¿Estoy exagerando o anticipando?', '¿Qué le diría a alguien que quiero si pensara esto?', '¿Este pensamiento me ayuda o me hace daño?']},
+                  { type: 'paragraph', text: 'Este proceso se llama reestructuración cognitiva: es como entrenar tu mente para dejar de castigarte y empezar a hablarte de otra forma.'}
+              ]
+          },
+          {
+              type: 'collapsible',
+              title: 'Desde la neurociencia: por qué funciona',
+              audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Desdelaneurocienciaporquefunciona.mp3',
+              content: [
+                  { type: 'paragraph', text: 'Cuando reinterpretas una situación, activas nuevas redes neuronales. Tu corteza prefrontal (la parte que decide) toma protagonismo frente al sistema límbico (la parte reactiva). Así, pasas de reaccionar por impulso a responder con claridad.\\nTus pensamientos no siempre son verdad. Son interpretaciones. Y puedes aprender a elegir las que te cuidan.'}
+              ]
+          },
+          { type: 'quote', text: 'No puedes parar las olas, pero puedes aprender a surfear tus pensamientos.' },
+          { type: 'title', text: 'Técnicas Específicas'},
+          { 
+            type: 'detectiveExercise', 
+            title: 'Ejercicio 1: Detective de Pensamientos Estresantes', 
+            objective: 'En este ejercicio vas a convertirte en un detective de tu propia mente. Aprenderás a observar esos pensamientos automáticos que te sobrecargan, detectar los filtros que distorsionan tu percepción y reformularlos con una mirada más realista, flexible y amable. Esto fortalecerá tu conciencia emocional y te ayudará a regular ese diálogo interno que, a veces, se vuelve demasiado exigente.',
+          },
+          { 
+            type: 'demandsExercise', 
+            title: 'Ejercicio 2: Tabla de Exigencias vs. Deseos Reales', 
+            objective: 'En este ejercicio vas a observar con honestidad tus propias exigencias internas y diferenciarlas de tus verdaderos deseos y necesidades. Aprenderás a soltar los "debería" que te presionan y a reformularlos con una mirada más compasiva. Este proceso te ayudará a liberar tu mente del exceso de autoexigencia y a reconectar con una forma de cuidarte más humana, realista y sostenible.',
+          },
+          {
+            type: 'therapeuticNotebookReflection',
+            title: 'Reflexión Final de la Semana',
+            audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/REFLEXION.mp3',
+            prompts: [
+              'Te proponemos un momento para integrar lo que has trabajado.',
+              '¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?',
+              '¿Qué exigencias internas me alejan de mis verdaderas necesidades?',
+              '¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio?',
+            ],
+          },
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/RESUMEN.mp3'},
+          { type: 'list', items: ['El estrés no solo viene de fuera, sino de cómo interpretas lo que ocurre.', 'Tus pensamientos automáticos pueden aumentar o aliviar tu malestar.', 'Las distorsiones cognitivas son filtros mentales que puedes aprender a detectar.', 'Reestructurar es entrenar la mente para pensar con más claridad, flexibilidad y compasión.', 'No eres lo que piensas: eres quien decide cómo responder a lo que piensa.'] },
+          { type: 'quote', text: 'No eres lo que piensas. Eres quien decide cómo responder a esos pensamientos.' }
+      ]
     },
     {
         id: 'estres_sem4',
@@ -508,3 +507,5 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
+    
