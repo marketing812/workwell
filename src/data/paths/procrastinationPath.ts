@@ -30,7 +30,7 @@ export const procrastinationPath: Path = {
           title: 'Procrastinar no es flojear: es evitar sentir',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3',
           content: [
-            { type: 'paragraph', text: 'Muchas personas se juzgan duramente cuando procrastinan. Se dicen cosas como “soy un flojo o una floja”, “no tengo fuerza de voluntad” o “soy un desastre”.\nPero la verdad es que la procrastinación no es pereza: es una forma de protegerte emocionalmente.\nEvitas ciertas tareas porque, aunque sean importantes, despiertan en ti emociones incómodas:\n• Ansiedad (por no saber cómo hacerlo o por todo lo que implica)\n• Miedo al juicio (a fallar, a hacerlo mal, a que no sea suficiente)\n• Inseguridad (dudas sobre si eres capaz)\n• Tristeza o agotamiento emocional\nAl aplazarlas, tu mente siente un alivio momentáneo. Pero ese alivio dura poco, y con el tiempo aparece otra cadena de emociones: culpa, frustración, estrés o baja autoestima.\nNo es que no quieras hacer la tarea. Es que no quieres sentir lo que la tarea despierta.' },
+            { type: 'paragraph', text: 'Muchas personas se juzgan duramente cuando procrastinan. Se dicen cosas como “soy un flojo o una floja”, “no tengo fuerza de voluntad” o “soy un desastre”.\nPero la verdad es que la procrastinación no es pereza: es una forma de protegerte emocionalmente.\nEvitas ciertas tareas porque, aunque sean importantes, despiertan en ti emociones incómodas:\n- Ansiedad (por no saber cómo hacerlo o por todo lo que implica)\n- Miedo al juicio (a fallar, a hacerlo mal, a que no sea suficiente)\n- Inseguridad (dudas sobre si eres capaz)\n- Tristeza o agotamiento emocional\nAl aplazarlas, tu mente siente un alivio momentáneo. Pero ese alivio dura poco, y con el tiempo aparece otra cadena de emociones: culpa, frustración, estrés o baja autoestima.\nNo es que no quieras hacer la tarea. Es que no quieres sentir lo que la tarea despierta.' },
           ],
         },
         {
@@ -396,3 +396,4 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
