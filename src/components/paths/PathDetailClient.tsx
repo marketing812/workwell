@@ -54,6 +54,7 @@ import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
@@ -825,9 +826,9 @@ export function PathDetailClient({ path }: { path: Path }) {
   const t = useTranslations();
   const { toast } = useToast();
   const { loadPath, updateModuleCompletion: contextUpdateModuleCompletion } = useActivePath();
+  const router = useRouter();
 
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
-  const [showPathCongratsDialog, setShowPathCongratsDialog] = useState(false);
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
 
@@ -858,9 +859,9 @@ export function PathDetailClient({ path }: { path: Path }) {
 
     const allModulesCompleted = path.modules.every(m => newCompletedModules.has(m.id));
     if (allModulesCompleted) {
-      setShowPathCongratsDialog(true);
+      router.push(`/paths/${path.id}/completed`);
     }
-  }, [completedModules, path.id, path.modules, contextUpdateModuleCompletion, t, toast]);
+  }, [completedModules, path.id, path.modules, contextUpdateModuleCompletion, t, toast, router]);
 
 
   const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
@@ -1028,24 +1029,6 @@ export function PathDetailClient({ path }: { path: Path }) {
             </AlertDialogFooter>
         </AlertDialogContent>
        </AlertDialog>
-
-      <AlertDialog open={showPathCongratsDialog} onOpenChange={setShowPathCongratsDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle className="text-2xl text-primary">
-              {t.pathCompletedTitle}
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-base">
-              {t.pathCompletedMessage.replace('{pathTitle}', path.title)}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setShowPathCongratsDialog(false)}>
-              {t.continueLearning}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 }
