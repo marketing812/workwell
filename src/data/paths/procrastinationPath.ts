@@ -92,8 +92,10 @@ export const procrastinationPath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
-            '¿Qué emociones intento evitar cuando postergo?',
-            'Lo que siento no me define, pero observarlo me transforma',
+            '<ul>',
+            '<li>¿Qué emociones intento evitar cuando postergo?</li>',
+            '<li>Lo que siento no me define, pero observarlo me transforma</li>',
+            '</ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -376,10 +378,12 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
             prompts: [
-              '¿Qué hábito me gustaría mantener a largo plazo?',
-              '¿Qué me ha ayudado a mantenerlo?',
-              '¿Qué quiero ajustar para que me funcione mejor?',
-              '¿Cómo me quiero hablar si un día fallo?',
+              '<ul>',
+              '<li>¿Qué hábito me gustaría mantener a largo plazo?</li>',
+              '<li>¿Qué me ha ayudado a mantenerlo?</li>',
+              '<li>¿Qué quiero ajustar para que me funcione mejor?</li>',
+              '<li>¿Cómo me quiero hablar si un día fallo?</li>',
+              '</ul>'
             ]
           },
           { 
@@ -400,5 +404,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-
