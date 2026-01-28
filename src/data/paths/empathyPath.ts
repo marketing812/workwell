@@ -24,7 +24,7 @@ export const empathyPath: Path = {
             { type: 'paragraph', text: 'Las relaciones que realmente nos nutren no se construyen desde la perfección ni desde la obligación. Se construyen cuando podemos estar presentes de forma genuina, sin disfraces, y cuando nos sentimos vistos, escuchados y respetados en lo que realmente sentimos.\nPero para que eso sea posible, hay algo que debe estar en el centro: la empatía verdadera y la honestidad emocional.\nSin ellas, no hay espacio seguro para mostrarnos tal como somos.' }
           ]
         },
-        { type: 'collapsible', title: '¿Qué es realmente la empatía?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3', content: [{ type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }] },
+        { type: 'collapsible', title: '¿Qué es realmente la empatía?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3', content: [{ type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n- “Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n- “No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }] },
         { type: 'collapsible', title: 'Lo que la empatía NO es', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3', content: [{ type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:\n- “Bueno, no es para tanto…”\n- “Tienes que ser más fuerte.”\n- “Eso no debería afectarte así.”\nEstas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }] },
         { type: 'collapsible', title: 'Empatía y autenticidad van juntas', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3', content: [{ type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:\n- La empatía crea el espacio seguro.\n- La autenticidad lo habita.' }] },
         { type: 'collapsible', title: 'La honestidad emocional se entrena', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Lahonestidademocionalseentrena.mp3', content: [{ type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\nEs aprender a expresar lo esencial con respeto y claridad.\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }] },
@@ -117,7 +117,7 @@ export const empathyPath: Path = {
             'Una relación segura se basa en respeto mutuo, comunicación clara y presencia emocional.',
             'Es válido elegir con quién te relacionas… y también cómo eliges estar tú en ese vínculo.',
             'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.',
-          ]
+          ],
         },
       ]
     },
@@ -159,7 +159,7 @@ export const empathyPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”'
+          text: 'Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.'
         }
       ]
     }

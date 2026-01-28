@@ -77,7 +77,7 @@ export const selfUnderstandingPath: Path = {
           prompts: ['¿Qué he descubierto de mí esta semana al detenerme a sentir?','¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?','¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?','¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?','¿Qué quiero seguir entrenando en mí a partir de ahora?']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion1.mp3'},
         { type: 'list', items: ['Toda emoción tiene una función adaptativa, incluso si es incómoda.','Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.','Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.','Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.','No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.']},
-        { type: 'quote', text: '“Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.”' }
+        { type: 'quote', text: 'Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.' }
       ]
     },
     {
@@ -143,7 +143,7 @@ export const selfUnderstandingPath: Path = {
                 'Aprender a traducir emociones en necesidades y acciones es un acto de autocompasión activa.',
                 'Nuestras emociones presentes están teñidas por historias pasadas, pero podemos aprender a cuidarlas con nuevas respuestas.',
             ]},
-            { type: 'quote', text: '“Sentir no te debilita. Te revela lo que importa”' }
+            { type: 'quote', text: 'Sentir no te debilita. Te revela lo que importa' }
         ]
     },
     {
@@ -187,7 +187,7 @@ export const selfUnderstandingPath: Path = {
                 'Tu cuerpo también guarda memoria emocional. Aprender a escucharlo es una vía para regularte.',
                 'Conectar con tu patrón emocional te da poder: el poder de responder diferente.',
             ]},
-            { type: 'quote', text: '“Lo que repites no dice quién eres. Lo que realmente te define es lo que eliges hacer cuando comprendes tu propio patrón.”' }
+            { type: 'quote', text: 'Lo que repites no dice quién eres. Lo que realmente te define es lo que eliges hacer cuando comprendes tu propio patrón.' }
         ]
     },
     {
@@ -307,7 +307,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión'
+              text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.'
             }
           ]
         },
@@ -346,7 +346,7 @@ export const selfUnderstandingPath: Path = {
             'Hablarte con amabilidad, anclarte al cuerpo y escribir lo que descubres… fortalece tu regulación emocional.'
           ]
         },
-        { type: 'quote', text: '“No necesitas arreglarte. Solo aprender a estar contigo con honestidad, sin juicio y con presencia. Desde ahí, todo empieza a transformarse.”' }
+        { type: 'quote', text: 'No necesitas arreglarte. Solo aprender a estar contigo con honestidad, sin juicio y con presencia. Desde ahí, todo empieza a transformarse.' }
       ]
     },
     {
@@ -386,7 +386,7 @@ export const selfUnderstandingPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Cada vez que me observo con presencia y sin juicio, doy un paso hacia mi versión más consciente, más libre… y más compasiva.”'
+          text: 'Cada vez que me observo con presencia y sin juicio, doy un paso hacia mi versión más consciente, más libre… y más compasiva.'
         }
       ]
     }
@@ -395,13 +395,6 @@ export const selfUnderstandingPath: Path = {
 
     
 
+    
 
-
-
-
-
-
-
-
-
-
+    
