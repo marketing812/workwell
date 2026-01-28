@@ -54,7 +54,7 @@ export function CompassionateFirmnessExercise({ content, pathId }: Compassionate
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Recuerda una situación reciente en la que alguien reaccionó con incomodidad a un límite que pusiste. Observa cómo se sintió esa persona y qué necesidad estabas defendiendo tú. Luego, completa tu frase usando el siguiente modelo.</p>
             <blockquote className="p-3 border-l-4 border-accent bg-accent/10 italic text-left">
-              “Veo que te sientes [emoción del otro]… y al mismo tiempo, yo necesito [tu necesidad o límite].”
+              Veo que te sientes [emoción del otro]… y al mismo tiempo, yo necesito [tu necesidad o límite].
             </blockquote>
             <Button onClick={nextStep}>Ver ejemplos guía <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -83,7 +83,7 @@ export function CompassionateFirmnessExercise({ content, pathId }: Compassionate
             <h4 className="font-semibold text-lg">Tu frase personalizada</h4>
              <p className="text-sm text-muted-foreground">Ahora es tu turno. Piensa en una situación concreta en la que te haya costado mantener tu decisión ante la incomodidad del otro o la otra. A partir de esa situación, escribe una frase que te ayude a validar la emoción ajena sin perder tu centro. Usa el modelo como guía, pero hazla tuya.</p>
              <blockquote className="p-3 border-l-4 border-accent bg-accent/10 italic text-left text-sm">
-                “Veo que te sientes <strong>[emoción del otro]</strong>, y al mismo tiempo necesito <strong>[tu necesidad o límite]</strong>.”
+                Veo que te sientes <strong>[emoción del otro]</strong>, y al mismo tiempo necesito <strong>[tu necesidad o límite]</strong>.
             </blockquote>
              <div className="space-y-2">
                 <Label htmlFor="other-emotion">Veo que te sientes...</Label>
