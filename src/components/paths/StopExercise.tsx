@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StopExerciseContent } from '@/data/paths/pathTypes';
 
@@ -24,6 +24,7 @@ export function StopExercise({ content, pathId }: StopExerciseProps) {
   const [nextAction, setNextAction] = useState('');
   
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -64,7 +65,10 @@ ${nextAction}
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
-            <Button onClick={next} className="w-full">Hecho, siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={next}>Hecho, siguiente</Button>
+            </div>
           </div>
         );
       case 2:
@@ -78,7 +82,10 @@ ${nextAction}
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
-            <Button onClick={next} className="w-full">Hecho, siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={next}>Hecho, siguiente</Button>
+            </div>
           </div>
         );
       case 3:
@@ -93,7 +100,10 @@ ${nextAction}
               </audio>
             </div>
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: 'Pienso que no podré y siento un nudo en el estómago'"/>
-            <Button onClick={next} className="w-full" disabled={!observedState.trim()}>Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={next} disabled={!observedState.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4:
@@ -108,7 +118,10 @@ ${nextAction}
               </audio>
             </div>
             <Textarea value={nextAction} onChange={e => setNextAction(e.target.value)} placeholder="Ej: 'Doy tres pasos y entro a la sala'"/>
-            <Button type="submit" className="w-full" disabled={!nextAction.trim()}><Save className="mr-2 h-4 w-4"/>Guardar mi frase permisiva</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit" disabled={!nextAction.trim()}><Save className="mr-2 h-4 w-4"/>Guardar mi frase permisiva</Button>
+            </div>
           </form>
         );
       default: return null;

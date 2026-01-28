@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ImaginedCrisisRehearsalExerciseContent } from '@/data/paths/pathTypes';
 
@@ -110,9 +110,14 @@ ${reflection.toolUsed || 'No especificado.'}
           </div>
 
           {!isSaved ? (
-            <Button type="submit" className="w-full">
-              <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
-            </Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button variant="outline" type="button" onClick={() => toast({title: "No hay paso anterior"})}>
+                    <ArrowLeft className="mr-2 h-4 w-4"/>Atrás
+                </Button>
+                <Button type="submit" className="w-auto">
+                    <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
+                </Button>
+            </div>
           ) : (
             <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
               <CheckCircle className="mr-2 h-5 w-5" />

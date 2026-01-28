@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, Save, ArrowRight, BookOpen, Camera, Sun, Music, Ear } from 'lucide-react';
+import { Edit3, CheckCircle, Save, ArrowRight, BookOpen, Camera, Sun, Music, Ear, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IlluminatingMemoriesAlbumExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -45,6 +45,9 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
   
   const [finalReflection, setFinalReflection] = useState('');
 
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleMomentChange = (index: number, value: string) => {
     const newMoments = [...moments];
     newMoments[index] = value;
@@ -79,8 +82,6 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
     setStep(5); // Go to final confirmation
   };
   
-  const nextStep = () => setStep(prev => prev + 1);
-
   const renderStep = () => {
     switch(step) {
       case 0: // Pantalla 1: Captura tus momentos
@@ -98,7 +99,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
                 </div>
               ))}
             </div>
-            <Button onClick={nextStep} className="w-full">Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" disabled><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Continuar</Button>
+            </div>
           </div>
         );
       case 1: // Pantalla 2: Dale vida a tu galería
@@ -107,7 +111,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
             <h4 className="font-semibold text-lg">Paso 2: Dale vida a tu galería</h4>
             <p className="text-sm text-muted-foreground">Al revivir un buen recuerdo, tu cerebro reacciona como si lo estuvieras viviendo de nuevo.</p>
             <p className="font-medium p-3 border rounded-md bg-background">Cierra los ojos… Imagínate dentro de cada momento: observa colores, sonidos, olores, la temperatura, la emoción que sentías. Quédate ahí, en ese recuerdo, el tiempo que desees.</p>
-            <Button onClick={nextStep} className="w-full">Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Continuar</Button>
+            </div>
           </div>
         );
       case 2: // Pantalla 3: Amplía tu colección
@@ -124,7 +131,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
                         </SelectContent>
                     </Select>
                 </div>
-                <Button onClick={nextStep} className="w-full">Continuar</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Continuar</Button>
+                </div>
            </div>
         );
       case 3: // Pantalla 4: Reencuadra y fortalece
@@ -133,7 +143,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
                  <h4 className="font-semibold text-lg">Paso 4: Reencuadra y fortalece</h4>
                 <p className="text-sm text-muted-foreground">Incluso en situaciones difíciles puede haber algo valioso. Elige una situación incómoda reciente y busca un aprendizaje o una señal de tu fortaleza.</p>
                 <Textarea value={finalReflection} onChange={e => setFinalReflection(e.target.value)} placeholder="Ej: Aunque fue duro, descubrí que soy más fuerte de lo que pensaba." />
-                <Button onClick={nextStep} className="w-full">Continuar</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Continuar</Button>
+                </div>
             </div>
         );
       case 4: // Pantalla 5: Tu galería siempre contigo
@@ -141,7 +154,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
             <div className="p-4 space-y-4 text-center">
                 <h4 className="font-semibold text-lg">Paso 5: Tu galería siempre contigo</h4>
                 <p className="text-sm text-muted-foreground">Revisa tus momentos y guárdalos como tus "recursos estrella".</p>
-                <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi álbum</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi álbum</Button>
+                </div>
             </div>
         );
       case 5: // Pantalla 6: Final
@@ -150,7 +166,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Álbum Guardado</h4>
                 <p className="italic text-muted-foreground">"Cada recuerdo positivo que eliges guardar es como encender una luz en tu interior. No elimina la oscuridad, pero sí te recuerda que siempre hay algo que puede iluminar tu camino."</p>
-                <Button onClick={() => setStep(0)} variant="outline">Añadir más recuerdos</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setStep(0)} variant="outline">Añadir más recuerdos</Button>
+                </div>
             </div>
         );
       default: return null;

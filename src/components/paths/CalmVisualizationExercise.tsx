@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, PlayCircle, BookOpen, Save } from 'lucide-react';
+import { Edit3, CheckCircle, PlayCircle, BookOpen, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CalmVisualizationExerciseContent } from '@/data/paths/pathTypes';
 
@@ -18,7 +19,7 @@ interface CalmVisualizationExerciseProps {
 export function CalmVisualizationExercise({ content, pathId }: CalmVisualizationExerciseProps) {
   const { toast } = useToast();
   const [isCompleted, setIsCompleted] = useState(false);
-
+  
   const handleComplete = () => {
     setIsCompleted(true);
     toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de responder con calma." });
@@ -60,7 +61,10 @@ export function CalmVisualizationExercise({ content, pathId }: CalmVisualization
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
                 <p className="text-muted-foreground">Has ensayado una respuesta más calmada. Tu cerebro está aprendiendo.</p>
-                <Button onClick={() => setIsCompleted(false)} variant="outline" className="w-full">Repetir Visualización</Button>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={() => setIsCompleted(false)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setIsCompleted(false)} variant="outline">Repetir Visualización</Button>
+                </div>
             </div>
         )}
       </CardContent>

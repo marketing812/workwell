@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmotionalGratificationMapExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
@@ -54,6 +54,9 @@ export function EmotionalGratificationMapExercise({ content, pathId }: Emotional
 
   const [isSaved, setIsSaved] = useState(false);
 
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSelectChange = (setter: React.Dispatch<React.SetStateAction<string>>, otherSetter: React.Dispatch<React.SetStateAction<string>>, mainSetter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
     setter(value);
     if (value !== 'Otro') {
@@ -82,7 +85,7 @@ ${finalPlaces}
     addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu mapa ha sido guardado en el cuaderno.' });
     setIsSaved(true);
-    setStep(4);
+    setStep(4); // Go to final confirmation
   };
   
   const resetExercise = () => {
@@ -105,13 +108,13 @@ ${finalPlaces}
         return (
           <div className="text-center p-4">
             <p className="mb-4">¿Has notado que a veces olvidas lo que te hacía sentir bien? Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo. Este ejercicio te ayudará a reconectar con esas fuentes de bienestar que, en algún momento, te han hecho sentir bien. Al recordarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.</p>
-            <Button onClick={() => setStep(1)}>Empezar mi mapa</Button>
+            <Button onClick={nextStep}>Empezar mi mapa</Button>
           </div>
         );
       case 1: // Step 1: Activities
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="activities" className="font-semibold">Paso 1: Recuerda actividades que te hacían sentir bien</Label>
+            <h4 className="font-semibold">Paso 1: Recuerda actividades que te hacían sentir bien</h4>
             <p className="text-sm text-muted-foreground">Piensa en acciones concretas que antes te producían disfrute, calma o motivación. Ejemplo: “Caminar por la playa”, “Cocinar mi receta favorita”.</p>
             <Textarea id="activities" value={activities} onChange={e => setActivities(e.target.value)} placeholder="Escribe aquí las actividades..." rows={4}/>
             <div className="space-y-2">
@@ -124,13 +127,16 @@ ${finalPlaces}
                 </Select>
                 {selectedActivity === 'Otro' && <Input value={otherActivity} onChange={e => {setOtherActivity(e.target.value); setActivities(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Escribe otra actividad" className="mt-2"/>}
             </div>
-            <Button onClick={() => setStep(2)} className="w-full">Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Continuar</Button>
+            </div>
           </div>
         );
       case 2: // Step 2: People
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="people" className="font-semibold">Paso 2: Recuerda personas con las que te sentías bien</Label>
+            <h4 className="font-semibold">Paso 2: Recuerda personas con las que te sentías bien</h4>
             <p className="text-sm text-muted-foreground">Piensa en personas con las que has sentido calma, apoyo o diversión. Ejemplo: “Mi mejor amigo de la universidad”.</p>
             <Textarea id="people" value={people} onChange={e => setPeople(e.target.value)} placeholder="Escribe aquí los nombres..." rows={4}/>
              <div className="space-y-2">
@@ -143,13 +149,16 @@ ${finalPlaces}
                 </Select>
                 {selectedPerson === 'Otro' && <Input value={otherPerson} onChange={e => {setOtherPerson(e.target.value); setPeople(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Describe a otra persona" className="mt-2"/>}
             </div>
-            <Button onClick={() => setStep(3)} className="w-full">Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Continuar</Button>
+            </div>
           </div>
         );
       case 3: // Step 3: Places
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="places" className="font-semibold">Paso 3: Lugares que te recargaban</Label>
+            <h4 className="font-semibold">Paso 3: Lugares que te recargaban</h4>
             <p className="text-sm text-muted-foreground">Recuerda entornos en los que te hayas sentido tranquilo/a, inspirado/a o con energía. Ejemplo: “Una cafetería acogedora”.</p>
             <Textarea id="places" value={places} onChange={e => setPlaces(e.target.value)} placeholder="Escribe aquí los lugares..." rows={4}/>
              <div className="space-y-2">
@@ -162,7 +171,10 @@ ${finalPlaces}
                 </Select>
                 {selectedPlace === 'Otro' && <Input value={otherPlace} onChange={e => {setOtherPlace(e.target.value); setPlaces(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Describe otro lugar" className="mt-2"/>}
             </div>
-            <Button onClick={handleSave} className="w-full">Guardar mi mapa de gratificación</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave}>Guardar mi mapa de gratificación</Button>
+            </div>
           </div>
         );
       case 4: // Final Confirmation
@@ -189,7 +201,7 @@ ${finalPlaces}
                 <div className="flex flex-col sm:flex-row gap-2 justify-center">
                      <Button onClick={() => setStep(1)} variant="outline">Editar mi mapa</Button>
                      <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio semanal</Button>
-                     <Button onClick={() => setStep(0)}>Finalizar ejercicio</Button>
+                     <Button onClick={resetExercise}>Finalizar ejercicio</Button>
                 </div>
             </div>
          );
@@ -220,5 +232,3 @@ ${finalPlaces}
     </Card>
   );
 }
-
-    

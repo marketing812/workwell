@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ExposureLadderExerciseContent } from '@/data/paths/pathTypes';
 
@@ -23,6 +23,9 @@ export function ExposureLadderExercise({ content, pathId }: ExposureLadderExerci
   const [goal, setGoal] = useState('');
   const [steps, setSteps] = useState(Array(7).fill(''));
   const [firstStep, setFirstStep] = useState('');
+
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleStepChange = (index: number, value: string) => {
     const newSteps = [...steps];
@@ -51,13 +54,16 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
   
   const renderCurrentStep = () => {
     switch (step) {
-      case 0: return <div className="p-4 text-center"><p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={() => setStep(1)}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
+      case 0: return <div className="p-4 text-center"><p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
       case 1: return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: Define tu meta</h4>
             <p className="text-sm text-muted-foreground">¿Qué situación ansiosa quieres poder afrontar en el futuro?</p>
             <Textarea id="goal" value={goal} onChange={e => setGoal(e.target.value)} placeholder="Ej: Hablar en público en una reunión de trabajo"/>
-            <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!goal.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 2: return (
@@ -67,7 +73,10 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
             {steps.map((s, i) => (
                 <Textarea key={i} value={s} onChange={e => handleStepChange(i, e.target.value)} placeholder={`Escalón ${i+1}`}/>
             ))}
-            <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente</Button>
+            </div>
           </div>
         );
        case 3: return (
@@ -77,7 +86,10 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
             <ul className="list-decimal list-inside p-2 border rounded-md">
                 {steps.filter(s => s.trim()).map((s, i) => <li key={i}>{s}</li>)}
             </ul>
-            <Button onClick={() => setStep(4)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4: return (
@@ -92,7 +104,10 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
                      </div>
                 ))}
              </RadioGroup>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi escalera</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi escalera</Button>
+            </div>
           </div>
         );
       default: return null;

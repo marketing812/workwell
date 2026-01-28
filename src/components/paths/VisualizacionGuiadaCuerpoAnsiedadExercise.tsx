@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -149,7 +150,10 @@ export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: V
                            <span>Ola</span>
                         </div>
                         <p className="italic text-primary pt-2">“Tu cuerpo grita con la ansiedad, pero tú puedes aprender a escucharlo sin miedo. Cada vez que lo haces, la ola pierde fuerza.”</p>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                           <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
+                        </div>
                     </div>
                 );
 
@@ -181,4 +185,3 @@ export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: V
         </Card>
     );
 }
-    

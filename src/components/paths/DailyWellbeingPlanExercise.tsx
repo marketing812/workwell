@@ -57,10 +57,10 @@ const mentalHabits = [
 const timeOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios', 'Otro'];
 const reminderOptions = ['Poner una alarma en el móvil', 'Dejar una nota visible', 'Vincularlo a otra acción (ej. después de lavarme los dientes)', 'Aviso en la app', 'Otro'];
 
-const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext }: any) => {
+const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
     return (
         <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">{title}</h4>
+            <h4 className="font-semibold text-lg text-primary">{title}</h4>
             <p className="text-sm text-muted-foreground">{description}</p>
             <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
                 <Accordion type="single" collapsible className="w-full">
@@ -77,9 +77,7 @@ const HabitStep = ({ title, description, options, selected, setSelected, other, 
                                     <Info className="h-4 w-4 text-muted-foreground" />
                                 </AccordionTrigger>
                             </div>
-                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">
-                                {opt.importance}
-                            </AccordionContent>
+                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.importance}</AccordionContent>
                         </AccordionItem>
                     ))}
                 </Accordion>
@@ -91,7 +89,10 @@ const HabitStep = ({ title, description, options, selected, setSelected, other, 
                 </RadioGroup>
             </div>
             {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
-            <Button onClick={onNext} className="w-full mt-4" disabled={!selected}>Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+                {onPrev && <Button onClick={onPrev} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
+                <Button onClick={onNext} className="w-full" disabled={!selected}>Continuar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
         </div>
     );
 };
@@ -142,6 +143,9 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
   const finalEmotionalHabit = emotionalHabit === 'Otro' ? otherEmotional : emotionalHabit;
   const finalMentalHabit = mentalHabit === 'Otro' ? otherMental : mentalHabit;
 
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSave = () => {
     if (!finalPhysicalHabit || !finalEmotionalHabit || !finalMentalHabit) {
       toast({ title: "Incompleto", description: "Por favor, elige un microhábito para cada área.", variant: 'destructive' });
@@ -172,7 +176,14 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
   
   const resetExercise = () => {
     setStep(0);
-    // Reset all states
+    setPhysicalHabit(''); setOtherPhysical('');
+    setEmotionalHabit(''); setOtherEmotional('');
+    setMentalHabit(''); setOtherMental('');
+    setSchedule({ physical: '', emotional: '', mental: '' });
+    setOtherSchedule({ physical: '', emotional: '', mental: '' });
+    setReminders({ physical: '', emotional: '', mental: '' });
+    setOtherReminder({ physical: '', emotional: '', mental: '' });
+    setIsSaved(false);
   };
 
   const renderStepContent = () => {
@@ -180,16 +191,16 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-             <p className="mb-4">Este ejercicio te ayudará a identificar qué actividades, personas y entornos recargan tu batería y cuáles la gastan más rápido.</p>
-            <Button onClick={() => setStep(1)}>Empezar mi registro de energía</Button>
+            <p className="mb-4">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
+            <Button onClick={nextStep}>Empezar mi plan de bienestar</Button>
           </div>
         );
       case 1:
-        return <HabitStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={() => setStep(2)} />;
+        return <HabitStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={nextStep} onPrev={prevStep} />;
       case 2:
-        return <HabitStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={() => setStep(3)} />;
+        return <HabitStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={nextStep} onPrev={prevStep} />;
       case 3:
-        return <HabitStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={() => setStep(4)} />;
+        return <HabitStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={nextStep} onPrev={prevStep} />;
       case 4:
         return (
           <div className="p-4 space-y-6">
@@ -202,8 +213,11 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
             <SchedulingStep title="Paso 5: Cómo recordarlo" description="Un pequeño empujón para que no se te olvide." habit={finalPhysicalHabit} habitKey="physical" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
             <SchedulingStep title="" description="" habit={finalEmotionalHabit} habitKey="emotional" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
             <SchedulingStep title="" description="" habit={finalMentalHabit} habitKey="mental" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
-
-            <Button onClick={handleSave} className="w-full mt-6"><Save className="mr-2 h-4 w-4"/> Guardar mi plan diario</Button>
+            
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave} className="w-full mt-6"><Save className="mr-2 h-4 w-4"/> Guardar mi plan diario</Button>
+            </div>
           </div>
         );
       case 5:
@@ -244,5 +258,3 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
     </Card>
   );
 }
-
-    

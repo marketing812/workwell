@@ -172,7 +172,10 @@ ${responses.q4}
                 <p><strong>Mi compromiso:</strong><br/>{responses.q4}</p>
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otra reflexión</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={resetExercise} variant="outline">Hacer otra reflexión</Button>
+            </div>
           </div>
         )}
       </CardContent>
