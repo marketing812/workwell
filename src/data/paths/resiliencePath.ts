@@ -1,5 +1,6 @@
 
-import type { Path } from './pathTypes';
+
+import type { Path } from '@/data/paths/pathTypes';
 
 export const resiliencePath: Path = {
   id: 'resiliencia-en-accion',
@@ -27,7 +28,7 @@ export const resiliencePath: Path = {
           type: 'collapsible',
           title: 'No, la resiliencia no es lo que siempre te han contado…',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio3sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\nMito\tRealidad\n“Las personas resilientes no se rompen nunca”\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\n“Es una cualidad con la que se nace”\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\n“Ser resiliente es mantener una actitud positiva siempre”\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\n“Si recaigo o me vuelvo a sentir mal, es que no soy resiliente”\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.' }]
+          content: [{ type: 'paragraph', text: 'Muchos mitos rodean esta palabra. Vamos a desmontarlos uno a uno:\nMito\tRealidad\nLas personas resilientes no se rompen nunca.\tLa resiliencia no es invulnerabilidad. Es poder reconstruirte cuando algo se rompe.\nEs una cualidad con la que se nace.\tEn realidad, se aprende y se fortalece con la experiencia y el entrenamiento emocional.\nSer resiliente es mantener una actitud positiva siempre.\tNo. A veces ser resiliente es llorar, pedir ayuda, parar, y luego volver a empezar con más claridad.\nSi recaigo o me vuelvo a sentir mal, es que no soy resiliente.\tLa resiliencia incluye los retrocesos. Aprender de una recaída forma parte del proceso. No es un fracaso, es una oportunidad.' }]
         },
         {
           type: 'collapsible',
@@ -39,7 +40,7 @@ export const resiliencePath: Path = {
           type: 'collapsible',
           title: 'El estrés no siempre es malo',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion1ruta8.mp3',
-          content: [{ type: 'paragraph', text: 'Otro gran mito: “el estrés es nuestro enemigo”.\nLa verdad: no todo el estrés es negativo. Existe también el llamado eustrés: un tipo de activación saludable que nos empuja a actuar, a crecer y a conectar con los demás.\nEl problema no es sentir estrés.\nEl problema es no saber cómo gestionarlo o interpretarlo.\nCuando entendemos el estrés como una señal de alarma, podemos:\n- Escuchar lo que está pidiendo.\n- Soltar lo que nos daña.\n- Recuperar nuestro poder de elegir cómo actuar.' }]
+          content: [{ type: 'paragraph', text: 'Otro gran mito: el estrés es nuestro enemigo.\nLa verdad: no todo el estrés es negativo. Existe también el llamado eustrés: un tipo de activación saludable que nos empuja a actuar, a crecer y a conectar con los demás.\nEl problema no es sentir estrés.\nEl problema es no saber cómo gestionarlo o interpretarlo.\nCuando entendemos el estrés como una señal de alarma, podemos:\n- Escuchar lo que está pidiendo.\n- Soltar lo que nos daña.\n- Recuperar nuestro poder de elegir cómo actuar.' }]
         },
         {
           type: 'collapsible',
@@ -56,7 +57,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'resilienceTimelineExercise', title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE', objective: 'Con este ejercicio descubrirás los recursos internos que ya has usado (aunque no fueras consciente) en momentos difíciles. Te ayudará a recordar que no partes de cero, y que ya has sido resiliente más veces de las que crees.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica1.mp3' },
         { type: 'personalDefinitionExercise', title: 'Técnica 2: Mi definición personal de resiliencia', objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ["¿Qué es realmente la resiliencia? […]","¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]","¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]","¿Por qué quiero comprometerme con mi proceso de resiliencia? […]"] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]']},
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
@@ -163,8 +164,11 @@ export const resiliencePath: Path = {
               'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
               'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
           ]},
-          { type: 'quote', text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”' }
+          { type: 'quote', text: 'La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.' }
         ]
     }
   ]
 };
+
+    
+
