@@ -55,7 +55,8 @@ export function PersonalDefinitionExercise({ content, pathId }: PersonalDefiniti
         <form onSubmit={handleSave} className="space-y-4">
           <p className="text-sm text-muted-foreground">La resiliencia no es una fórmula universal. Tiene que ver con cómo tú vives el dolor, el cambio y la transformación. Te invito a escribir tu propia definición.</p>
           <div className="space-y-2">
-            <Label htmlFor="resilience-def">Para mí, ser resiliente es...</Label>
+            <h4 className="font-semibold text-lg">Escribe tu Definición</h4>
+            <p className="text-sm text-muted-foreground">Para mí, ser resiliente es...</p>
             <Textarea id="resilience-def" value={definition} onChange={e => setDefinition(e.target.value)} rows={4} disabled={isSaved} />
           </div>
           {!isSaved ? (

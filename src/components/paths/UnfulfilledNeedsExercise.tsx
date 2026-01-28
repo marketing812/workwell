@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -57,21 +58,24 @@ ${tomorrowPlan}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm text-muted-foreground">Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien.</p>
           <div className="space-y-2">
-            <Label htmlFor="unfulfilled-action">Acción que me habría hecho bien:</Label>
+            <h4 className="font-semibold text-lg">Paso 1: Identifica la Acción No Realizada</h4>
+            <p className="text-sm text-muted-foreground">Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien.</p>
             <Textarea id="unfulfilled-action" value={unfulfilledAction} onChange={e => setUnfulfilledAction(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="assoc-value">¿Qué valor estaba asociado a eso que postergaste?</Label>
+            <h4 className="font-semibold text-lg">Paso 2: Conecta con el Valor</h4>
+            <p className="text-sm text-muted-foreground">¿Qué valor estaba asociado a eso que postergaste?</p>
             <Textarea id="assoc-value" value={associatedValue} onChange={e => setAssociatedValue(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="reason">¿Qué te impidió hacerlo? (miedo, prisa, presión, distracción)</Label>
+            <h4 className="font-semibold text-lg">Paso 3: ¿Qué te Impidió Hacerlo?</h4>
+            <p className="text-sm text-muted-foreground">Sé honesto/a contigo: ¿fue miedo, prisa, presión, distracción?</p>
             <Textarea id="reason" value={reason} onChange={e => setReason(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="tomorrow-plan">¿Qué puedes hacer mañana para protegerlo mejor?</Label>
+            <h4 className="font-semibold text-lg">Paso 4: Plan para Mañana</h4>
+            <p className="text-sm text-muted-foreground">¿Qué puedes hacer mañana para proteger mejor ese valor?</p>
             <Textarea id="tomorrow-plan" value={tomorrowPlan} onChange={e => setTomorrowPlan(e.target.value)} disabled={isSaved} />
           </div>
            {!isSaved ? (

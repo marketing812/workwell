@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -56,7 +57,14 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
   const renderStep = () => {
     switch (step) {
       case 0: return <div className="p-4 text-center"><p className="mb-4">Cada día invertimos nuestra energía en múltiples cosas. Algunas nos conectan, otras solo nos drenan. Este ejercicio te ayuda a distinguir entre lo que te ocupa y lo que te nutre.</p><Button onClick={() => setStep(1)}>Empezar mi mapa</Button></div>;
-      case 1: return <div className="p-4 space-y-4"><Label>Haz una lista de 6-8 actividades de tu última semana.</Label>{activities.map((act, i) => <Textarea key={i} value={act.name} onChange={e => handleActivityChange(i, 'name', e.target.value)} placeholder={`Actividad ${i + 1}`} />)}<Button onClick={() => setStep(2)} className="w-full">Siguiente</Button></div>;
+      case 1: return (
+        <div className="p-4 space-y-4">
+          <h4 className="font-semibold text-lg">Paso 1: Lista tus actividades recientes</h4>
+          <p className="text-sm text-muted-foreground">Anota entre 6 y 8 actividades que hayas realizado en la última semana.</p>
+          {activities.map((act, i) => <Textarea key={i} value={act.name} onChange={e => handleActivityChange(i, 'name', e.target.value)} placeholder={`Actividad ${i + 1}`} />)}
+          <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+        </div>
+      );
       case 2: return <div className="p-4 space-y-4">{activities.filter(a => a.name).map((act, i) => <div key={i} className="p-2 border rounded"><p className="font-semibold">{act.name}</p><Label>¿Cuánta energía te consume?</Label><RadioGroup value={act.energy} onValueChange={v => handleActivityChange(i, 'energy', v)} className="flex gap-4"><div className="flex items-center gap-1"><RadioGroupItem value="low" id={`e-${i}-l`}/><Label htmlFor={`e-${i}-l`}>Poco</Label></div><div className="flex items-center gap-1"><RadioGroupItem value="medium" id={`e-${i}-m`}/><Label htmlFor={`e-${i}-m`}>Moderado</Label></div><div className="flex items-center gap-1"><RadioGroupItem value="high" id={`e-${i}-h`}/><Label htmlFor={`e-${i}-h`}>Mucho</Label></div></RadioGroup><Label>¿Se alinea con tus valores?</Label><RadioGroup value={act.value} onValueChange={v => handleActivityChange(i, 'value', v)} className="flex gap-4"><div className="flex items-center gap-1"><RadioGroupItem value="low" id={`v-${i}-l`}/><Label htmlFor={`v-${i}-l`}>Nada</Label></div><div className="flex items-center gap-1"><RadioGroupItem value="medium" id={`v-${i}-m`}/><Label htmlFor={`v-${i}-m`}>Algo</Label></div><div className="flex items-center gap-1"><RadioGroupItem value="high" id={`v-${i}-h`}/><Label htmlFor={`v-${i}-h`}>Mucho</Label></div></RadioGroup></div>)}<Button onClick={() => setStep(3)} className="w-full">Ver cuadrante</Button></div>;
       case 3: return (
         <div className="p-4 space-y-6">
@@ -133,7 +141,24 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
             <Button onClick={() => setStep(4)} className="w-full mt-6">Reflexionar</Button>
         </div>
       );
-      case 4: return <div className="p-4 space-y-4"><Label>¿Qué actividad te gustaría hacer más?</Label><Textarea value={reflection.moreOf} onChange={e => setReflection(p => ({...p, moreOf: e.target.value}))}/><Label>¿Qué actividad podrías reducir o reajustar?</Label><Textarea value={reflection.lessOf} onChange={e => setReflection(p => ({...p, lessOf: e.target.value}))}/><Label>Hoy me comprometo a...</Label><Textarea value={commitment} onChange={e => setCommitment(e.target.value)} /><Button onClick={handleSave} className="w-full">Guardar</Button></div>;
+      case 4: return (
+        <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 3: Reflexión y Compromiso</h4>
+            <div className="space-y-2">
+                <Label>¿Qué actividad te gustaría hacer más?</Label>
+                <Textarea value={reflection.moreOf} onChange={e => setReflection(p => ({...p, moreOf: e.target.value}))}/>
+            </div>
+            <div className="space-y-2">
+                <Label>¿Qué actividad podrías reducir o reajustar?</Label>
+                <Textarea value={reflection.lessOf} onChange={e => setReflection(p => ({...p, lessOf: e.target.value}))}/>
+            </div>
+            <div className="space-y-2">
+                <Label>Hoy me comprometo a...</Label>
+                <Textarea value={commitment} onChange={e => setCommitment(e.target.value)} />
+            </div>
+            <Button onClick={handleSave} className="w-full">Guardar</Button>
+        </div>
+      );
       case 5: return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><p>Mapa guardado. Vuelve a él para recordar dónde enfocar tu energía.</p></div>
       default: return null;
     }
