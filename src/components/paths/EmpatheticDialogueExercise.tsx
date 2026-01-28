@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -55,7 +56,7 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
       case 1: // Step 1 & 2
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Detente y obsérvate</h4>
+            <h4 className="font-semibold text-lg">Paso 1: Detente y obsérvate</h4>
             <p>Piensa en una situación reciente o próxima en la que tengas que interactuar con alguien que te genera presión, inseguridad o emociones intensas.</p>
             <div className="space-y-2">
               <Label htmlFor="feeling">¿Qué siento ahora que pienso en esta situación o persona?</Label>
@@ -71,7 +72,7 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
       case 2: // Step 3
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Escúchate con empatía</h4>
+            <h4 className="font-semibold text-lg">Paso 2: Escúchate con empatía</h4>
             <p>Imagina que eres tu mejor amiga/o. Escribe una frase de validación compasiva hacia ti. Ejemplos: “Entiendo que te sientas así, tiene sentido por lo que viviste.”, “No necesitas ser perfecta/o para estar presente.”</p>
             <div className="space-y-2">
               <Label htmlFor="empathetic-phrase">Tu frase empática hacia ti:</Label>
@@ -83,7 +84,7 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
       case 3: // Step 4
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">¿Qué necesito ahora?</h4>
+            <h4 className="font-semibold text-lg">Paso 3: ¿Qué necesito ahora?</h4>
             <p>Pregúntate: ¿Qué necesito darme a mí en esta situación, antes de responder al otro?</p>
             <div className="space-y-2">
               <Label htmlFor="my-need">Lo que necesito darme ahora es...</Label>
@@ -95,7 +96,7 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
       case 4: // Step 5
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Una intención para actuar desde tu centro</h4>
+            <h4 className="font-semibold text-lg">Paso 4: Una intención para actuar desde tu centro</h4>
             <p>Cierra el ejercicio con una intención clara y realista para tu próxima interacción. Ejemplos: “Voy a intentar estar presente sin perderme a mí.”, “Voy a priorizarme sin dejar de cuidar el vínculo.”</p>
             <div className="space-y-2">
               <Label htmlFor="intention">Mi intención es...</Label>

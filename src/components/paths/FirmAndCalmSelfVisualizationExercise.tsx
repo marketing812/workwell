@@ -148,6 +148,7 @@ Cada vez será un poco más fácil.`;
       case 1:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Reflexión sobre la visualización</h4>
             <p className="text-sm text-muted-foreground">Has practicado algo muy importante: sostener un límite desde tu centro. Recuerda esta frase: “Puedo sentirme incómodo y aun así actuar con respeto y claridad.”</p>
             <div className="space-y-2">
               <Label htmlFor="reflection-visualization">¿Qué sentiste al verte firme y tranquilo?</Label>
