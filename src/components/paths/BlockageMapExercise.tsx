@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 
@@ -28,6 +28,8 @@ export function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProp
   const [consequences, setConsequences] = useState('');
 
   if (content.type !== 'blockageMapExercise') return null;
+  
+  const prevStep = () => setStep(prev => prev - 1);
 
   const emotionsOptions = [
     { id: 'emo-anxiety', label: 'Ansiedad', description: 'Siento que algo malo va a pasar si empiezo o si no lo hago bien.' },
@@ -112,37 +114,42 @@ ${consequences || 'No especificadas.'}
       case 1:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="avoided-task" className="font-semibold text-lg">Paso 1: Piensa en una tarea concreta que llevas tiempo evitando.</Label>
+            <h4 className="font-semibold text-lg">Paso 1: Piensa en una tarea concreta que llevas tiempo evitando.</h4>
+            <Label htmlFor="avoided-task" className="sr-only">Tarea evitada</Label>
             <Textarea
               id="avoided-task"
               value={avoidedTask}
               onChange={e => setAvoidedTask(e.target.value)}
               placeholder="Ej: Escribir un email importante"
             />
-            <Button onClick={() => setStep(2)} className="w-full">
-              Siguiente
-            </Button>
+            <div className="flex justify-between w-full">
+              <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(2)} disabled={!avoidedTask.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="blocking-thoughts" className="font-semibold text-lg">Paso 2: ¿Qué pensamientos aparecen cuando piensas en esa tarea?</Label>
+            <h4 className="font-semibold text-lg">Paso 2: ¿Qué pensamientos aparecen cuando piensas en esa tarea?</h4>
+            <Label htmlFor="blocking-thoughts" className="sr-only">Pensamientos bloqueadores</Label>
             <Textarea
               id="blocking-thoughts"
               value={blockingThoughts}
               onChange={e => setBlockingThoughts(e.target.value)}
               placeholder="Ej: Lo haré mal y me juzgarán"
             />
-            <Button onClick={() => setStep(3)} className="w-full">
-              Siguiente
-            </Button>
+             <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(3)} disabled={!blockingThoughts.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <Label className="font-semibold text-lg">Paso 3: ¿Qué emociones o sensaciones físicas intentas evitar?</Label>
+            <h4 className="font-semibold text-lg">Paso 3: ¿Qué emociones o sensaciones físicas intentas evitar?</h4>
+            <Label className="sr-only">Emociones evitadas</Label>
             {emotionsOptions.map(opt => (
               <div key={opt.id} className="flex items-start space-x-3">
                 <Checkbox
@@ -175,39 +182,44 @@ ${consequences || 'No especificadas.'}
                 className="ml-6"
               />
             )}
-            <Button onClick={() => setStep(4)} className="w-full">
-              Siguiente
-            </Button>
+             <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(4)} disabled={Object.values(avoidedEmotions).every(v => !v)}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="escape-behaviors" className="font-semibold text-lg">Paso 4: ¿Qué haces para evitarla?</Label>
+            <h4 className="font-semibold text-lg">Paso 4: ¿Qué haces para evitarla?</h4>
+            <Label htmlFor="escape-behaviors" className="sr-only">Conductas de escape</Label>
             <Textarea
               id="escape-behaviors"
               value={escapeBehaviors}
               onChange={e => setEscapeBehaviors(e.target.value)}
               placeholder="Ej: Miro redes sociales, limpio compulsivamente..."
             />
-            <Button onClick={() => setStep(5)} className="w-full">
-              Siguiente
-            </Button>
+             <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(5)} disabled={!escapeBehaviors.trim()}>Siguiente</Button>
+            </div>
           </div>
         );
       case 5:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="consequences" className="font-semibold text-lg">Paso 5: ¿Qué consecuencias tiene para ti seguir evitándolo?</Label>
+            <h4 className="font-semibold text-lg">Paso 5: ¿Qué consecuencias tiene para ti seguir evitándolo?</h4>
+            <Label htmlFor="consequences" className="sr-only">Consecuencias</Label>
             <Textarea
               id="consequences"
               value={consequences}
               onChange={e => setConsequences(e.target.value)}
               placeholder="Ej: Me siento culpable, pierdo oportunidades..."
             />
-            <Button onClick={() => setStep(6)} className="w-full">
-              Ver mi mapa del bloqueo
-            </Button>
+             <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(6)} disabled={!consequences.trim()}>Ver mi mapa del bloqueo</Button>
+            </div>
           </div>
         );
       case 6:
@@ -227,8 +239,8 @@ ${consequences || 'No especificadas.'}
               Este mapa no es para juzgarte. Es para ayudarte a ver el ciclo completo con más claridad. Entenderlo es el primer paso para liberarte.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 mt-4">
-              <Button onClick={resetExercise} variant="outline" className="w-full">
-                Volver a la sesión
+              <Button onClick={prevStep} variant="outline" className="w-full">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Atrás
               </Button>
               <Button onClick={handleSave} className="w-full">
                 <Save className="mr-2 h-4 w-4" /> Guardar en mi diario

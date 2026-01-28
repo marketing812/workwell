@@ -101,7 +101,8 @@ ${finalWhen}
       case 0:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="task" className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</Label>
+            <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
+            <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
             <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} />
             <Button onClick={nextStep} className="w-full mt-4" disabled={!task.trim()}>
               Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -111,7 +112,8 @@ ${finalWhen}
       case 1:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="twoMin" className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</Label>
+            <h4 className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</h4>
+            <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
             <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -121,8 +123,8 @@ ${finalWhen}
         );
       case 2:
         return (
-          <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <Label className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</Label>
+          <form onSubmit={handleSave} className="space-y-4 p-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</h4>
             <RadioGroup value={when} onValueChange={setWhen}>
                 {whenOptions.map(opt => (
                     <div className="flex items-center gap-2" key={opt.value}>
@@ -140,10 +142,10 @@ ${finalWhen}
               </div>
             </RadioGroup>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar mi compromiso</Button>
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar mi compromiso</Button>
             </div>
-          </div>
+          </form>
         );
       case 3:
         return (

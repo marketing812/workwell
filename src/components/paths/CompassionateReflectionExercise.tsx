@@ -50,6 +50,8 @@ export function CompassionateReflectionExercise({ content, pathId, onComplete }:
   const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
   const [flexibleThought, setFlexibleThought] = useState('');
 
+  const prevStep = () => setStep(prev => prev - 1);
+
   const handleSave = async () => {
     const selectedEmotions = emotionOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
     if (avoidedEmotions['other'] && otherAvoidedEmotion) {
@@ -133,10 +135,10 @@ ${flexibleThought || 'No especificada.'}
       case 1:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <Label className="font-semibold text-lg">Paso 1: Instrucción</Label>
+                <h4 className="font-semibold text-lg">Paso 1: Instrucción</h4>
                 <p className="text-sm text-muted-foreground">Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
                 <div className="space-y-2">
-                    <Label htmlFor="advice-to-friend" className="font-semibold">Le diría que…</Label>
+                    <Label htmlFor="advice-to-friend">Le diría que…</Label>
                     <Textarea
                         id="advice-to-friend"
                         value={adviceToFriend}
@@ -145,23 +147,26 @@ ${flexibleThought || 'No especificada.'}
                     />
                 </div>
                 <p className="text-sm italic text-center text-primary pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
-                <Button onClick={() => setStep(2)} className="w-full mt-2">
-                    Continuar
-                </Button>
+                <div className="flex justify-between w-full">
+                  <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={() => setStep(2)} disabled={!adviceToFriend.trim()}>Continuar</Button>
+                </div>
             </div>
         );
       case 2:
         return (
           <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-            <Label className="font-semibold text-lg">Paso 2: Cuando te bloqueaste, ¿qué pensaste sobre ti?</Label>
+            <h4 className="font-semibold text-lg">Paso 2: Cuando te bloqueaste, ¿qué pensaste sobre ti?</h4>
+            <Label htmlFor="self-judgment" className="sr-only">Juicio propio</Label>
             <Textarea
+              id="self-judgment"
               value={selfJudgment}
               onChange={e => setSelfJudgment(e.target.value)}
               placeholder="Pensé que no valía para esto..."
             />
             <p className="text-sm text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={() => setStep(3)} disabled={!selfJudgment.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -170,7 +175,7 @@ ${flexibleThought || 'No especificada.'}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-                <Label className="font-semibold text-lg">Paso 3: ¿Qué emoción crees que intentabas evitar cuando procrastinaste?</Label>
+                <h4 className="font-semibold text-lg">Paso 3: ¿Qué emoción crees que intentabas evitar cuando procrastinaste?</h4>
                 <div className="space-y-1">
                 {emotionOptions.map(opt => (
                      <div key={opt.id} className="flex items-center gap-2">
@@ -214,7 +219,7 @@ ${flexibleThought || 'No especificada.'}
                 />
             </div>
              <div className="flex justify-between w-full mt-4">
-                <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={() => setStep(4)} disabled={!aftermathEmotion.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -223,7 +228,7 @@ ${flexibleThought || 'No especificada.'}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-                <Label className="font-semibold text-lg">Paso 4: ¿Te exigiste demasiado en ese momento?</Label>
+                <h4 className="font-semibold text-lg">Paso 4: ¿Te exigiste demasiado en ese momento?</h4>
                 <div className="space-y-1">
                 {perfectionismOptions.map(opt => (
                     <div key={opt.id} className="flex items-center gap-2">
@@ -249,7 +254,7 @@ ${flexibleThought || 'No especificada.'}
                 />
             </div>
              <div className="flex justify-between w-full mt-4">
-                <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={() => setStep(5)} disabled={!flexibleThought.trim()}>
               Ver mi reflexión completa
             </Button>
@@ -272,7 +277,7 @@ ${flexibleThought || 'No especificada.'}
               Has dado un paso valiente. Hablarte con amabilidad te ayuda a avanzar.
             </p>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={() => setStep(4)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={handleSave}>
                     <Save className="mr-2 h-4 w-4"/> Guardar en mi diario
                 </Button>

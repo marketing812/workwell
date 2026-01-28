@@ -108,7 +108,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
         case 1: // Pantalla 2 – Frases que alimentan la procrastinación
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                    <Label className="font-semibold text-lg">Frases que alimentan la procrastinación</Label>
+                    <h4 className="font-semibold text-lg">Frases que alimentan la procrastinación</h4>
                     <p className="text-sm text-muted-foreground">Marca las que sueles decirte:</p>
                     <div className="space-y-2">
                         {sabotageOptions.map(opt => (
@@ -128,7 +128,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
         case 2: // Pantalla 3 – Tus respuestas entrenadas
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                    <h3 className="font-semibold text-lg">Tus respuestas entrenadas</h3>
+                    <h4 className="font-semibold text-lg">Tus respuestas entrenadas</h4>
                     {selectedOptions.length > 0 ? (
                         <div className="space-y-4">
                             {selectedOptions.map(opt => (
@@ -151,7 +151,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
         case 3: // Pantalla 4 – Crea tu tabla personal
              return (
                 <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                    <h3 className="font-semibold text-lg">Crea tu tabla personal</h3>
+                    <h4 className="font-semibold text-lg">Crea tu tabla personal</h4>
                     <p className="text-sm text-muted-foreground">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
                     <div className="space-y-2">
                         <Label htmlFor="custom-sabotage">Frase que te repites</Label>
@@ -174,7 +174,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
             return (
                 <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                    <h3 className="text-xl font-bold">¡Ejercicio Guardado!</h3>
+                    <h4 className="text-xl font-bold">¡Ejercicio Guardado!</h4>
                     <p className="text-muted-foreground">
                         Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estarás construyendo un puente hacia la acción.
                     </p>

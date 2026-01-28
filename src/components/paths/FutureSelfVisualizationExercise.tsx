@@ -21,7 +21,6 @@ interface FutureSelfVisualizationExerciseProps {
 export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: FutureSelfVisualizationExerciseProps) {
     const { toast } = useToast();
     const [step, setStep] = useState(0);
-
     const [habit, setHabit] = useState('');
     const [futureSelf, setFutureSelf] = useState('');
     const [emotions, setEmotions] = useState('');
@@ -31,6 +30,19 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
     const [saved, setSaved] = useState(false);
 
     if (content.type !== 'futureSelfVisualizationExercise') return null;
+    
+    const nextStep = () => setStep(prev => prev + 1);
+    const prevStep = () => setStep(prev => prev - 1);
+    const resetExercise = () => {
+        setStep(0);
+        setHabit('');
+        setFutureSelf('');
+        setEmotions('');
+        setThoughts('');
+        setBenefits('');
+        setJourneySteps('');
+        setSaved(false);
+    };
 
     const handleSave = async (e: FormEvent) => {
         e.preventDefault();
@@ -151,8 +163,7 @@ La dirección que te ha mostrado.
 La certeza de que ese camino está a tu alcance, paso a paso.</p>
                                     <p>Haz una última respiración profunda. 
 Siente nuevamente el apoyo del suelo, el contacto con tu cuerpo. 
-Y cuando estés preparada o preparado… 
-Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
+Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                                 </AccordionContent>
                                 </AccordionItem>
                             </Accordion>
@@ -166,7 +177,10 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <h4 className="font-semibold text-lg">Paso 1: Define tu hábito deseado</h4>
                         <Label htmlFor="habit">Escribe aquí el hábito que deseas construir.</Label>
                         <Textarea id="habit" value={habit} onChange={e => setHabit(e.target.value)} placeholder="Ej: Revisar mi agenda cada mañana" />
-                        <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(0)}>Atrás</Button><Button onClick={() => setStep(2)} disabled={!habit}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-2">
+                            <Button variant="outline" onClick={() => setStep(0)}>Atrás</Button>
+                            <Button onClick={() => setStep(2)} disabled={!habit}>Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 2: // Paso 2 – Viaje al futuro
@@ -176,7 +190,10 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <p className="text-sm text-muted-foreground">Imagina que ha pasado el tiempo suficiente para que el hábito que deseas ya forme parte de tu vida.</p>
                         <Label htmlFor="futureSelf">¿Dónde estás? ¿Es por la mañana, por la tarde? ¿Qué estás haciendo justo después de completar ese hábito? ¿Cómo te ves? ¿Cómo es tu cuerpo, tu ropa, tu expresión facial? ¿Qué transmite tu mirada?</Label>
                         <Textarea id="futureSelf" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} />
-                        <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(1)}>Atrás</Button><Button onClick={() => setStep(3)} disabled={!futureSelf}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-2">
+                            <Button variant="outline" onClick={() => setStep(1)}>Atrás</Button>
+                            <Button onClick={() => setStep(3)} disabled={!futureSelf}>Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 3: // Paso 3 – Emociones y pensamientos
@@ -187,7 +204,10 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <Label htmlFor="emotions">¿Sientes orgullo? ¿Confianza? ¿Tranquilidad? ¿Qué pensamientos aparecen en tu mente? ¿Hay frases que te dices o que resuenan dentro de ti?</Label>
                         <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} />
                         <p className="text-sm text-muted-foreground">Déjalas entrar como una luz suave que te abraza por dentro.</p>
-                        <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(2)}>Atrás</Button><Button onClick={() => setStep(4)} disabled={!emotions}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-2">
+                            <Button variant="outline" onClick={() => setStep(2)}>Atrás</Button>
+                            <Button onClick={() => setStep(4)} disabled={!emotions}>Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 4: // Paso 4 – Cambios
@@ -197,7 +217,10 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <Label htmlFor="benefits">¿Cómo ha mejorado tu bienestar físico o emocional? ¿En qué ha cambiado tu autoestima o tu energía diaria? ¿Y tus relaciones? ¿Qué dificultades lograste superar?</Label>
                         <p className="text-sm text-muted-foreground">Observa con atención los frutos del camino recorrido.</p>
                         <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} />
-                        <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(3)}>Atrás</Button><Button onClick={() => setStep(5)} disabled={!benefits}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-2">
+                            <Button variant="outline" onClick={() => setStep(3)}>Atrás</Button>
+                            <Button onClick={() => setStep(5)} disabled={!benefits}>Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 5: // Paso 5 – Mirar atrás
@@ -206,7 +229,10 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <h4 className="font-semibold text-lg">Paso 5: Mirar atrás desde el futuro</h4>
                         <Label htmlFor="journeySteps">Desde esa versión futura de ti, ¿qué fue lo primero que hiciste para empezar? ¿Qué estrategias usaste en momentos de duda? ¿Qué actitud mental te ayudó a no rendirte?</Label>
                         <Textarea id="journeySteps" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} />
-                        <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(4)}>Atrás</Button><Button onClick={() => setStep(6)} disabled={!journeySteps}>Ir al plan de acción</Button></div>
+                        <div className="flex justify-between mt-2">
+                            <Button variant="outline" onClick={() => setStep(4)}>Atrás</Button>
+                            <Button onClick={() => setStep(6)} disabled={!journeySteps}>Ir al plan de acción</Button>
+                        </div>
                     </div>
                 );
             case 6: // Paso 6 - Plan de acción
@@ -233,7 +259,7 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Visualización Guardada</h4>
                         <blockquote className="italic border-l-4 border-primary pl-4 text-left">“Visualizar mi cambio me ayuda a construirlo. Cada pequeño paso que doy me acerca a esa versión de mí que ya está en camino.”</blockquote>
-                        <Button onClick={() => setStep(0)} variant="outline">Hacer otra visualización</Button>
+                        <Button onClick={resetExercise} variant="outline">Hacer otra visualización</Button>
                     </div>
                 );
             default:
