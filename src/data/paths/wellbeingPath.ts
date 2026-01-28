@@ -224,7 +224,7 @@ export const wellbeingPath: Path = {
             'Usar música, humor y gestos como la sonrisa.',
             'Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza.']
         },
-        { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte' }
+        { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte.' }
       ]
     },
     {
