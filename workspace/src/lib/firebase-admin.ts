@@ -32,7 +32,9 @@ function initAdmin() {
     );*/
     return admin.app();
   }
-
+  if (process.env.NODE_ENV === "development" && (!clientEmail || !privateKey)) {
+    throw new Error("DEV: faltan FIREBASE_CLIENT_EMAIL o FIREBASE_PRIVATE_KEY, no usar ADC");
+  }
   // Opción 2: ADC (ideal en Google Cloud: App Hosting / Cloud Run / Functions)
   admin.initializeApp({
     credential: admin.credential.applicationDefault(),
