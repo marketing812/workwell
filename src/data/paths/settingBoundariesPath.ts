@@ -36,7 +36,7 @@ export const settingBoundariesPath: Path = {
           title: 'Mitos y bloqueos más comunes',
           audioUrl:
             'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion1.mp3',
-          content: [{ type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n“No quiero parecer exagerada/o”, “mejor no molesto”, “igual estoy siendo egoísta”...\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarte, callarte o imponerte.\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n- sin juicio,\n- con herramientas concretas,\n- y al ritmo que tú elijas.' }]
+          content: [{ type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n- “No quiero parecer exagerada/o”\n- “mejor no molesto”\n- “igual estoy siendo egoísta”\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarte, callarte o imponerte.\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n- sin juicio,\n- con herramientas concretas,\n- y al ritmo que tú elijas.' }]
         },
         {
           type: 'collapsible',
@@ -255,7 +255,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'quote',
-          text: '“Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.”'
+          text: 'Poner un límite no me aleja. Me acerca a lo que soy. \nY cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.'
         }
       ]
     }
