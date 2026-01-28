@@ -12,6 +12,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UnaPalabraCadaDiaExerciseContent } from '@/data/paths/pathTypes';
+import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
+import { useTranslations } from '@/lib/translations';
 
 interface UnaPalabraCadaDiaExerciseProps {
   content: UnaPalabraCadaDiaExerciseContent;
@@ -31,6 +33,7 @@ const unaPalabraEmotionOptions = [
 
 export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPalabraCadaDiaExerciseProps) {
   const { toast } = useToast();
+  const t = useTranslations();
   
   const [step, setStep] = useState(0);
   const [selectedEmotion, setSelectedEmotion] = useState('');
@@ -150,16 +153,13 @@ ${gaveOrAsked}
       case 0: // Select Emotion
         return (
           <div className="p-4 space-y-4">
-            <Label>¿Qué emoción resume mejor tu día hasta ahora?</Label>
+            <h4 className="font-semibold text-lg">¿Qué emoción resume mejor tu día hasta ahora?</h4>
             <p className="text-sm text-muted-foreground">Puedes elegir de una lista emocional o escribirla libremente.</p>
             <Select value={selectedEmotion} onValueChange={v => {setSelectedEmotion(v); if(v !== 'otra') setOtherEmotion('')}}>
               <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
-              <SelectContent>
-                {unaPalabraEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{e.label}</SelectItem>)}
-                <SelectItem value="otra">Otra...</SelectItem>
-              </SelectContent>
+              <SelectContent>{unaPalabraEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{e.label}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent>
             </Select>
-            {selectedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe tu emoción..." className="mt-2" />}
+            {selectedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe tu emoción aquí..." className="mt-2" />}
             <Button onClick={nextStep} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -178,7 +178,7 @@ ${gaveOrAsked}
       case 2: // Choose Micro-action
         return (
           <div className="p-4 space-y-4">
-            <Label>Elige una microacción para anclar el ejercicio:</Label>
+            <h4 className="font-semibold text-lg">Elige una microacción para anclar el ejercicio:</h4>
             <RadioGroup value={anchorAction} onValueChange={setAnchorAction}>
               <div className="flex items-center gap-2"><RadioGroupItem value="Respirar con esta emoción durante 3 ciclos" id="a1" /><Label htmlFor="a1" className="font-normal">Respirar con esta emoción durante 3 ciclos</Label></div>
               <div className="flex items-center gap-2"><RadioGroupItem value="Llevar esta frase conmigo como una compañera" id="a2" /><Label htmlFor="a2" className="font-normal">Llevar esta frase conmigo como una compañera</Label></div>

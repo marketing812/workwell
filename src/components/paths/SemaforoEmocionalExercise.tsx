@@ -61,7 +61,7 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
       case 0: 
         return (
           <div className="p-4 space-y-4 text-center">
-            <h4 className="font-semibold text-lg">¿Cómo te sientes ahora?</h4>
+            <h4 className="font-semibold text-lg">Paso 1: ¿Cómo te sientes ahora?</h4>
             <p className="text-muted-foreground text-sm">Escanea tu cuerpo, tu mente y tus emociones. Selecciona en qué “luz” estás ahora:</p>
             <RadioGroup value={light} onValueChange={(v) => setLight(v as any)} className="flex flex-col sm:flex-row justify-around py-4 gap-4">
               {[
@@ -92,15 +92,15 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
       case 1:
         let suggestions, title, placeholder;
         if(light === 'verde') { 
-          title='🟢 Bienestar emocional presente'; 
+          title='Paso 2: Bienestar emocional presente'; 
           suggestions = 'Aprovecha para reforzar lo que te hace bien. Sugerencias:\n\nAgradece algo del día.\nRegálate un momento consciente (una respiración profunda, una mirada amable).\nAnota lo que has hecho hoy para sentirte así.';
           placeholder = '¿Qué quieres seguir cultivando hoy?';
         } else if(light === 'ambar') { 
-          title='🟠 Activación emocional leve o moderada'; 
+          title='Paso 2: Activación emocional leve o moderada'; 
           suggestions = 'Estás empezando a salir de tu zona de calma. Este es el momento ideal para regularte antes de escalar. Sugerencias:\n\nHaz una respiración profunda y diafragmática.\nNombra lo que sientes sin juicio.\nConecta con los sentidos: ¿qué ves, qué oyes, qué tocas?';
           placeholder = '¿Qué harás ahora para ayudarte?';
         } else { // rojo
-          title='🔴 Desborde o activación intensa'; 
+          title='Paso 2: Desborde o activación intensa'; 
           suggestions = 'Cuando estás muy activado/a, lo primero es contenerte con cuidado, sin exigencias. Sugerencias:\n\nAléjate del estímulo si puedes.\nUsa una técnica de grounding (contacto con un objeto frío, contar objetos de un color, etc.) o de relajación.\nEscribe lo que sientes sin censura.\nRespira con ritmo lento, sin forzarte.';
           placeholder = '¿Qué vas a hacer ahora para sostenerte?';
         }
@@ -108,7 +108,7 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-center text-lg">{title}</h4>
             <p className="text-sm text-muted-foreground text-center whitespace-pre-line">{suggestions}</p>
-            <Label htmlFor="action-textarea">Tu acción:</Label>
+            <Label htmlFor="action-textarea" className="font-semibold">Tu acción:</Label>
             <Textarea id="action-textarea" value={action} onChange={e => setAction(e.target.value)} placeholder={placeholder} />
             <div className="flex justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
@@ -119,7 +119,7 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
       case 2:
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Integración y aprendizaje</h4>
+                <h4 className="font-semibold text-lg">Paso 3: Integración y aprendizaje</h4>
                 <p className="text-sm text-muted-foreground">Hoy entrenaste tu autorregulación emocional. Anotar cómo te sientes y qué hiciste para ayudarte refuerza nuevas conexiones cerebrales que te darán más recursos cada vez.</p>
                 <div className="space-y-2 pt-2">
                     <Label htmlFor="learning-reflection">¿Qué aprendiste hoy sobre ti? (Opcional)</Label>

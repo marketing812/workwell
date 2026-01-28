@@ -139,7 +139,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
   const renderStep = () => {
     switch(step) {
       case 0: return <div className="p-4 space-y-4">
-        <Label>Elige la emoción que sientes con más intensidad:</Label>
+        <h4 className="font-semibold text-lg">Paso 1: Elige la emoción que sientes con más intensidad</h4>
         <p className="text-sm text-muted-foreground">¿Te cuesta reconocer lo que sientes? Te puedo ayudar distinguir entre: Emociones primarias: reacciones inmediatas ante algo (por ejemplo, miedo ante un peligro). Emociones secundarias: surgen tras interpretar o juzgar lo que sientes (por ejemplo, sentir culpa por haber sentido ira). Ambas son válidas. Este ejercicio te ayuda a reconocerlas sin filtros, para que puedas escucharte desde un lugar más honesto y compasivo. </p>
         <Select value={emotion} onValueChange={setEmotion}>
             <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
@@ -149,7 +149,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
         <Button onClick={nextStep} className="w-full mt-2" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
         </div>;
       case 1: return <div className="p-4 space-y-4">
-        <Label>¿Qué podrías estar necesitando?</Label>
+        <h4 className="font-semibold text-lg">Paso 2: ¿Qué podrías estar necesitando?</h4>
         <p className="text-sm text-muted-foreground">¿Qué valor tuyo se está viendo afectado o qué parte de ti necesita atención?</p>
         <div className="grid grid-cols-2 gap-x-4 gap-y-2">
             {needOptions.map(n => <div key={n.id} className="flex items-center gap-2"><Checkbox id={n.id} checked={needs[n.id] || false} onCheckedChange={c => setNeeds(p => ({...p, [n.id]: !!c}))} /><Label htmlFor={n.id} className="font-normal">{n.label}</Label></div>)}
@@ -162,7 +162,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
         const hasAnyAction = careActions.laboral || careActions.familiar || careActions.personal || otherCareActions.laboral || otherCareActions.familiar || otherCareActions.personal;
         return (
             <div className="p-4 space-y-4">
-                <Label className="font-semibold text-lg">¿Qué podrías hacer hoy para cuidar esa necesidad?</Label>
+                <h4 className="font-semibold text-lg">Paso 3: ¿Qué podrías hacer hoy para cuidar esa necesidad?</h4>
                 <p className="text-sm text-muted-foreground">Selecciona una o más acciones pequeñas, realistas y amables que puedas hacer hoy para cuidar eso que necesitas. No hace falta que sea perfecta, solo que sea realista:</p>
                 
                 <div className="space-y-3 mt-4">

@@ -109,15 +109,15 @@ ${whatINeed}
                 <h4 className="font-semibold text-lg text-center">Tu entrada de hoy</h4>
                 <p className="text-sm text-muted-foreground text-center">Completa tu “me di cuenta” del día:</p>
                 <div className="space-y-2">
-                    <Label htmlFor="noticed">1. ¿Qué noté en mí hoy?</Label>
+                    <Label htmlFor="noticed" className="font-semibold">1. ¿Qué noté en mí hoy?</Label>
                     <Textarea id="noticed" value={noticed} onChange={e => setNoticed(e.target.value)} disabled={isSaved} />
                 </div>
                  <div className="space-y-2">
-                    <Label htmlFor="howNoticed">2. ¿Qué me ayudó a notarlo? (Ej: pausa, emoción intensa, algo que dije o pensé...)</Label>
+                    <Label htmlFor="howNoticed" className="font-semibold">2. ¿Qué me ayudó a notarlo? (Ej: pausa, emoción intensa, algo que dije o pensé...)</Label>
                     <Textarea id="howNoticed" value={howNoticed} onChange={e => setHowNoticed(e.target.value)} disabled={isSaved} />
                 </div>
                  <div className="space-y-2">
-                    <Label htmlFor="whatINeed">3. ¿Qué necesito ahora que me he dado cuenta de esto?</Label>
+                    <Label htmlFor="whatINeed" className="font-semibold">3. ¿Qué necesito ahora que me he dado cuenta de esto?</Label>
                     <Textarea id="whatINeed" value={whatINeed} onChange={e => setWhatINeed(e.target.value)} disabled={isSaved} />
                 </div>
                 <p className="text-xs text-muted-foreground flex items-center gap-2 pt-2"><CheckCircle className="h-4 w-4 text-primary" />Puedes completar este diario cada día o varias veces a la semana. Lo importante es crear el hábito de escucharte con más atención y menos juicio.</p>

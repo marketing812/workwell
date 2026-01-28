@@ -60,11 +60,12 @@ Tu emoción: ${finalEmotion}
     const renderStep = () => {
         switch(step) {
             case 0: return <div className="p-4 space-y-4">
-                <Label>¿Qué emoción te está pidiendo ser escuchada hoy?</Label>
+                <h4 className="font-semibold text-lg">Paso 1: ¿Qué emoción te está pidiendo ser escuchada hoy?</h4>
                 <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía.</p>
                 <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div>;
             
             case 1: return <div className="p-4 space-y-4">
+                <h4 className="font-semibold text-lg">Paso 2: ¿En qué tono quieres escribir esta carta?</h4>
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
                   Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\\n\\n'}
                   Tristeza → Voz compasiva y suave {'\\n\\n'}
@@ -73,7 +74,6 @@ Tu emoción: ${finalEmotion}
                   Culpa → Voz amable y reparadora {'\\n\\n'}
                   Otra emoción → Elige el tono que más te ayude
                 </p>
-                <Label>¿En qué tono quieres escribir esta carta?</Label>
                 <Select value={tone} onValueChange={setTone}><SelectTrigger><SelectValue placeholder="Elige un tono..." /></SelectTrigger><SelectContent><SelectItem value="compasivo">Compasivo y suave</SelectItem><SelectItem value="firme">Claro, firme y directo</SelectItem><SelectItem value="sereno">Sereno y tranquilizador</SelectItem><SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
                 {tone === 'otra' && <Textarea value={otherTone} onChange={e => setOtherTone(e.target.value)} placeholder="Describe el tono..." className="mt-2" />}
                 <div className="flex justify-between mt-2">
@@ -85,7 +85,7 @@ Tu emoción: ${finalEmotion}
             case 2:
                 return (
                     <div className="p-4 space-y-4">
-                        <h4 className="font-semibold text-lg">Redacta tu carta desde la emoción (plantilla guiada)</h4>
+                        <h4 className="font-semibold text-lg">Paso 3: Redacta tu carta desde la emoción (plantilla guiada)</h4>
                         <p className="text-sm text-muted-foreground">Ahora deja que tu emoción escriba. No tienes que pensarlo demasiado. Solo deja que salga con sinceridad.</p>
             
                         <div className="p-4 border rounded-md bg-background/50 space-y-4 text-sm">
