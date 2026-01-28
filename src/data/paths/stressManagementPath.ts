@@ -28,8 +28,8 @@ export const stressManagementPath: Path = {
           title: '¿Qué es el estrés?',
           audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Queeselestresyporquenoestuenemigo.mp3',
           content: [
-            { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
-            { type: 'paragraph', text: 'El estrés aparece cuando sentimos que las demandas del entorno —una tarea urgente, una discusión, un cambio inesperado— superan nuestros recursos. No es simplemente estar nervioso o tener prisa: es un conjunto de reacciones físicas, emocionales y mentales que se activan para intentar protegernos.\\nAntiguamente, esta respuesta tenía mucho sentido. Si aparecía un depredador, el cuerpo se preparaba para luchar o huir: el corazón se aceleraba, los músculos se tensaban, el cerebro entraba en alerta. Hoy en día, nuestros “depredadores” son emails urgentes, facturas, críticas o nuestra propia autoexigencia. Y el cuerpo, que no distingue entre un tigre y una reunión complicada, reacciona igual.\\nDesde la neurociencia sabemos que cuando estamos estresados, se activa un sistema de emergencia en el cerebro. Se liberan hormonas como la adrenalina y el cortisol, que nos preparan para actuar rápido. Esto puede ayudarnos en momentos puntuales, pero si se mantiene en el tiempo, empieza a desgastarnos: fatiga, insomnio, irritabilidad, dificultad para concentrarnos… Suena familiar, ¿verdad?' }
+            { type: 'paragraph', text: '¿Alguna vez has sentido que no llegas a todo, que te desbordas, que tu cuerpo va por un lado y tu cabeza por otro?\nEso que sientes tiene nombre: estrés. Y aunque solemos verlo como el enemigo, en realidad es un sistema que intenta ayudarte. Es una respuesta natural del cuerpo y la mente cuando percibimos que lo que se nos pide es más de lo que creemos poder dar.' },
+            { type: 'paragraph', text: 'El estrés aparece cuando sentimos que las demandas del entorno —una tarea urgente, una discusión, un cambio inesperado— superan nuestros recursos. No es simplemente estar nervioso o tener prisa: es un conjunto de reacciones físicas, emocionales y mentales que se activan para intentar protegernos.\nAntiguamente, esta respuesta tenía mucho sentido. Si aparecía un depredador, el cuerpo se preparaba para luchar o huir: el corazón se aceleraba, los músculos se tensaban, el cerebro entraba en alerta. Hoy en día, nuestros “depredadores” son emails urgentes, facturas, críticas o nuestra propia autoexigencia. Y el cuerpo, que no distingue entre un tigre y una reunión complicada, reacciona igual.\nDesde la neurociencia sabemos que cuando estamos estresados, se activa un sistema de emergencia en el cerebro. Se liberan hormonas como la adrenalina y el cortisol, que nos preparan para actuar rápido. Esto puede ayudarnos en momentos puntuales, pero si se mantiene en el tiempo, empieza a desgastarnos: fatiga, insomnio, irritabilidad, dificultad para concentrarnos… Suena familiar, ¿verdad?' }
           ]
         },
         {
@@ -37,7 +37,7 @@ export const stressManagementPath: Path = {
             title: 'No todas las personas viven el estrés igual',
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Comovivestuelestres.mp3',
             content: [
-              { type: 'paragraph', text: 'Lo que para una persona puede ser un reto motivador, para otra puede ser una amenaza angustiante. Esto depende de nuestras experiencias, nuestra forma de pensar y nuestra manera de ver el mundo. Si llevas unas “gafas” mentales teñidas por la autoexigencia, la anticipación del fracaso o el miedo a decepcionar, es más fácil que sientas muchas situaciones como amenazantes.\\nPor eso es tan importante empezar por entender cómo funciona el estrés en ti.' },
+              { type: 'paragraph', text: 'Lo que para una persona puede ser un reto motivador, para otra puede ser una amenaza angustiante. Esto depende de nuestras experiencias, nuestra forma de pensar y nuestra manera de ver el mundo. Si llevas unas “gafas” mentales teñidas por la autoexigencia, la anticipación del fracaso o el miedo a decepcionar, es más fácil que sientas muchas situaciones como amenazantes.\nPor eso es tan importante empezar por entender cómo funciona el estrés en ti.' },
             ],
         },
         {
@@ -59,7 +59,7 @@ export const stressManagementPath: Path = {
             title: '¿Por qué sentimos estrés?',
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Porquesentimosestres.mp3',
             content: [
-              { type: 'paragraph', text: 'El estrés no depende solo de lo que pasa fuera, sino de cómo lo interpretas y con qué recursos cuentas para enfrentarlo.\\nAlgunos factores que influyen:' },
+              { type: 'paragraph', text: 'El estrés no depende solo de lo que pasa fuera, sino de cómo lo interpretas y con qué recursos cuentas para enfrentarlo.\nAlgunos factores que influyen:' },
               { type: 'list', items: [
                   'Tu estilo de pensamiento: Si sueles exigirte mucho, anticipar lo peor o pensar que todo depende de ti, es más fácil que actives la respuesta de estrés.',
                   'Tu historia personal: Si creciste con mucha inseguridad, crítica o miedo, es posible que tu sistema nervioso sea más sensible.',
@@ -88,7 +88,7 @@ export const stressManagementPath: Path = {
             title: 'Tus “mínimos no negociables”',
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Tusminimosnonegociables.mp3',
             content: [
-              { type: 'paragraph', text: 'Cuando el estrés aparece, lo primero que solemos dejar de lado son las cosas que más nos sostienen: dormir bien, comer con calma, mover el cuerpo, hablar con alguien que nos escucha.\\nEstas pequeñas acciones no son lujos, son necesidades básicas. Las llamamos “mínimos no negociables” porque son el suelo emocional sobre el que puedes caminar cada día. Si los abandonas, el estrés encuentra terreno fértil para crecer.\\nDormir entre 7 y 8 horas, moverte al menos 15 minutos al día, comer con conciencia, tener pausas reales de desconexión y mantener vínculos afectivos de calidad… son tu mejor red de protección.' },
+              { type: 'paragraph', text: 'Cuando el estrés aparece, lo primero que solemos dejar de lado son las cosas que más nos sostienen: dormir bien, comer con calma, mover el cuerpo, hablar con alguien que nos escucha.\nEstas pequeñas acciones no son lujos, son necesidades básicas. Las llamamos “mínimos no negociables” porque son el suelo emocional sobre el que puedes caminar cada día. Si los abandonas, el estrés encuentra terreno fértil para crecer.\nDormir entre 7 y 8 horas, moverte al menos 15 minutos al día, comer con conciencia, tener pausas reales de desconexión y mantener vínculos afectivos de calidad… son tu mejor red de protección.' },
             ],
         },
         {
@@ -112,7 +112,7 @@ export const stressManagementPath: Path = {
             title: 'El estrés como brújula',
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana1/Elestrescomobrujulaycierredelapsicoeducacion.mp3',
             content: [
-              { type: 'paragraph', text: 'El estrés no es una señal de que estés rota o roto. Es una brújula que te está mostrando que algo en tu vida necesita atención, cambio o cuidado.\\nIgnorarlo o luchar contra él solo lo hace más fuerte. Aprender a escucharlo con curiosidad y compasión es el verdadero camino hacia la calma.\\nVer el estrés con conciencia no significa eliminarlo, sino recuperar el poder sobre tu vida. Y ese poder empieza aquí, ahora, con tu decisión de mirar hacia dentro con valentía.' }
+              { type: 'paragraph', text: 'El estrés no es una señal de que estés rota o roto. Es una brújula que te está mostrando que algo en tu vida necesita atención, cambio o cuidado.\nIgnorarlo o luchar contra él solo lo hace más fuerte. Aprender a escucharlo con curiosidad y compasión es el verdadero camino hacia la calma.\nVer el estrés con conciencia no significa eliminarlo, sino recuperar el poder sobre tu vida. Y ese poder empieza aquí, ahora, con tu decisión de mirar hacia dentro con valentía.' }
             ]
         },
         { type: 'quote', text: 'Tu cuerpo no está en tu contra. Te está hablando. La clave está en aprender a escucharlo con compasión.' },
@@ -170,18 +170,18 @@ export const stressManagementPath: Path = {
                 title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3',
                 content: [
-                    { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.'},
+                    { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.'},
                     { 
                         type: 'collapsible',
                         title: 'Rama simpática: tu sistema de alarma',
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramasimpatica.mp3',
-                        content: [{ type: 'paragraph', text: 'Esta es la parte que se enciende cuando algo se percibe como una amenaza. Y no hace falta que sea un peligro real. El cuerpo no distingue entre un león y un correo urgente: si tu sistema cree que algo puede salir mal, activa la alarma igual.\\nEn ese momento, tu corazón se acelerada, respiras más rápido, tus músculos se tensan… Es tu cuerpo preparándose para “luchar o huir”. A corto plazo, esta reacción puede ayudarte a resolver un problema. Pero si se mantiene encendida mucho tiempo, te agota, te desconecta y puede dejar encendida la ansiedad.' }]
+                        content: [{ type: 'paragraph', text: 'Esta es la parte que se enciende cuando algo se percibe como una amenaza. Y no hace falta que sea un peligro real. El cuerpo no distingue entre un león y un correo urgente: si tu sistema cree que algo puede salir mal, activa la alarma igual.\nEn ese momento, tu corazón se acelerada, respiras más rápido, tus músculos se tensan… Es tu cuerpo preparándose para “luchar o huir”. A corto plazo, esta reacción puede ayudarte a resolver un problema. Pero si se mantiene encendida mucho tiempo, te agota, te desconecta y puede dejar encendida la ansiedad.' }]
                     },
                     { 
                         type: 'collapsible',
                         title: 'Rama parasimpática: tu sistema de descanso y seguridad',
                         audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Ramaparasimpatica.mp3',
-                        content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\\nCuando se activa:\\n•\\tTu respiración se vuelve más lenta.\\n•\\tTus músculos se relajan.\\n•\\tSe reduce la tensión.\\n•\\tTu cuerpo recupera energía.\\n•\\tSe activa un estado de bienestar profundo.\\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
+                        content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n- Tu respiración se vuelve más lenta.\n- Tus músculos se relajan.\n- Se reduce la tensión.\n- Tu cuerpo recupera energía.\n- Se activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
                     },
                 ]
             },
@@ -190,8 +190,8 @@ export const stressManagementPath: Path = {
                 title: 'Tu detector interno de seguridad',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/TudetectorinternodeseguridadylaTeoriaPolivagal.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\\nEste sistema se activa por cosas muy sutiles, como:\\n•\\tUna mirada que percibes como crítica.\\n•\\tUn tono de voz tenso.\\n•\\tUn ambiente impredecible.\\n•\\tUn recuerdo que se activa sin querer.\\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
-                    { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\\n1.\\tConexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\\n2.\\tLucha o huida: tu cuerpo se activa para defenderse.\\n3.\\tColapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
+                    { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\nEste sistema se activa por cosas muy sutiles, como:\n- Una mirada que percibes como crítica.\n- Un tono de voz tenso.\n- Un ambiente impredecible.\n- Un recuerdo que se activa sin querer.\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
+                    { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\n1. Conexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\n2. Lucha o huida: tu cuerpo se activa para defenderse.\n3. Colapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
                 ]
             },
             {
@@ -199,7 +199,7 @@ export const stressManagementPath: Path = {
                 title: '¿Qué genera seguridad?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/Quegeneraseguridad.mp3',
                 content: [
-                    { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\\n•\\tTu respiración se regula sola.\\n•\\tTu expresión facial se relaja.\\n•\\tTu cuerpo se afloja.\\n•\tTu mente se siente más presente.\\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
+                    { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\n- Tu respiración se regula sola.\n- Tu expresión facial se relaja.\n- Tu cuerpo se afloja.\n- Tu mente se siente más presente.\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
                 ]
             },
             { 
@@ -212,7 +212,7 @@ export const stressManagementPath: Path = {
                 title: '¿Por qué estas técnicas funcionan?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
+                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
                 ]
             },
             {
@@ -220,7 +220,7 @@ export const stressManagementPath: Path = {
                 title: '¿Qué cambia cuando las practicas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2quecambia.mp3',
                 content: [
-                    { type: 'paragraph', text: 'En tu cuerpo:\\n- Respiración más profunda y regular\\n- Regulación del CO₂ (menos mareos o ahogo)\\n- Reducción de tensión muscular\\n- Sensaciones de alivio, calor o calma\\n\\nEn tu mente:\\n- Recuperas el control y vuelves al presente\\n- Se interrumpe el bucle de pensamientos ansiosos\\n- Refuerzas el autocuidado y la conexión contigo'},
+                    { type: 'paragraph', text: 'En tu cuerpo:\n- Respiración más profunda y regular\n- Regulación del CO₂ (menos mareos o ahogo)\n- Reducción de tensión muscular\n- Sensaciones de alivio, calor o calma\n\nEn tu mente:\n- Recuperas el control y vuelves al presente\n- Se interrumpe el bucle de pensamientos ansiosos\n- Refuerzas el autocuidado y la conexión contigo'},
                     { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
                 ]
             },
@@ -228,7 +228,7 @@ export const stressManagementPath: Path = {
                 type: 'collapsible',
                 title: '¿Cuándo puedes usarlas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2cuando.mp3',
-                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\\n•\\tEn el momento: si sientes ansiedad o bloqueo\\n•\\tAntes de una situación desafiante\\n•\\tComo rutina diaria para entrenar tu equilibrio\\n\\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\\nLa calma también se entrena.' }]
+                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\n- En el momento: si sientes ansiedad o bloqueo\n- Antes de una situación desafiante\n- Como rutina diaria para entrenar tu equilibrio\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.' }]
             },
             {
                 type: 'collapsible',
@@ -248,7 +248,7 @@ export const stressManagementPath: Path = {
                       type: 'collapsible',
                       title: 'Técnica 6: Contacto frío breve (reset inmediato)',
                       audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
-                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\\n1.\\tHumedece una toalla o paño con agua fría.\\n2.\\tAplícalo entre 10 y 20 segundos en:\\n\\to\\tLa nuca\\n\\to\\tLas muñecas\\n\\to\\tLa parte interna de los brazos o las mejillas\\n3.\\tRespira mientras sientes el contacto del frío.\\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
+                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\n1. Humedece una toalla o paño con agua fría.\n2. Aplícalo entre 10 y 20 segundos en:\n\t- La nuca\n\t- Las muñecas\n\t- La parte interna de los brazos o las mejillas\n3. Respira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
                     },
                 ]
             },
@@ -280,7 +280,7 @@ export const stressManagementPath: Path = {
               type: 'collapsible',
               title: '¿Qué son los pensamientos automáticos?',
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Pensamientosautomaticos.mp3',
-              content: [{ type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.\\nSon ideas breves y espontáneas que aparecen en tu mente casi sin darte cuenta. Aunque parecen simples, influyen mucho en cómo te sientes y en cómo actúas. Por ejemplo, si alguien dice “tenemos que hablar”, puedes sentir ansiedad solo porque aparece el pensamiento “algo va mal”.\\nEstos pensamientos no siempre son racionales, pero sí muy poderosos. Por eso, aprender a identificarlos y cuestionarlos puede ayudarte a transformar tu forma de sentir y actuar.'}]
+              content: [{ type: 'paragraph', text: 'Lo que piensas puede calmarte… o estresarte aún más.\n¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.\nSon ideas breves y espontáneas que aparecen en tu mente casi sin darte cuenta. Aunque parecen simples, influyen mucho en cómo te sientes y en cómo actúas. Por ejemplo, si alguien dice “tenemos que hablar”, puedes sentir ansiedad solo porque aparece el pensamiento “algo va mal”.\nEstos pensamientos no siempre son racionales, pero sí muy poderosos. Por eso, aprender a identificarlos y cuestionarlos puede ayudarte a transformar tu forma de sentir y actuar.'}]
           },
           {
               type: 'collapsible',
@@ -359,7 +359,7 @@ export const stressManagementPath: Path = {
               title: 'Desde la neurociencia: por qué funciona',
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Desdelaneurocienciaporquefunciona.mp3',
               content: [
-                  { type: 'paragraph', text: 'Cuando reinterpretas una situación, activas nuevas redes neuronales. Tu corteza prefrontal (la parte que decide) toma protagonismo frente al sistema límbico (la parte reactiva). Así, pasas de reaccionar por impulso a responder con claridad.\\nTus pensamientos no siempre son verdad. Son interpretaciones. Y puedes aprender a elegir las que te cuidan.'}
+                  { type: 'paragraph', text: 'Cuando reinterpretas una situación, activas nuevas redes neuronales. Tu corteza prefrontal (la parte que decide) toma protagonismo frente al sistema límbico (la parte reactiva). Así, pasas de reaccionar por impulso a responder con claridad.\nTus pensamientos no siempre son verdad. Son interpretaciones. Y puedes aprender a elegir las que te cuidan.'}
               ]
           },
           { type: 'quote', text: 'No puedes parar las olas, pero puedes aprender a surfear tus pensamientos.' },
@@ -407,7 +407,7 @@ export const stressManagementPath: Path = {
                 title: 'De la teoría a la práctica: tu plan personal para sostenerte',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/Delateoriaalapracticatuplanpersonal.mp3',
                 content: [
-                    { type: 'paragraph', text: 'El estrés no desaparece para siempre. Vuelve en forma de tareas acumuladas, expectativas, interrupciones o pensamientos exigentes. Por eso, el objetivo de esta semana es ayudarte a crear tu propio plan de acción: un mapa de recursos, señales de alerta y estrategias que te ayuden a cuidarte cuando lo necesites.\\nMás adelante, en la Técnica 1, empezarás a diseñar tu plan personalizado.\\nPero antes, necesitas entender para qué sirve, cuáles son sus partes y cómo te ayuda a sostenerte en los momentos difíciles. Este contexto será tu base para crear algo realmente útil y tuyo.\\nEste plan no es un protocolo rígido. Es una herramienta viva, ajustada a tu realidad y fortalecida por todo lo que has aprendido. Aquí no buscamos perfección, sino continuidad. Porque prevenir recaídas no es evitar el estrés, sino prepararte para responder con mayor conciencia cuando vuelva a aparecer.'},
+                    { type: 'paragraph', text: 'El estrés no desaparece para siempre. Vuelve en forma de tareas acumuladas, expectativas, interrupciones o pensamientos exigentes. Por eso, el objetivo de esta semana es ayudarte a crear tu propio plan de acción: un mapa de recursos, señales de alerta y estrategias que te ayuden a cuidarte cuando lo necesites.\nMás adelante, en la Técnica 1, empezarás a diseñar tu plan personalizado.\nPero antes, necesitas entender para qué sirve, cuáles son sus partes y cómo te ayuda a sostenerte en los momentos difíciles. Este contexto será tu base para crear algo realmente útil y tuyo.\nEste plan no es un protocolo rígido. Es una herramienta viva, ajustada a tu realidad y fortalecida por todo lo que has aprendido. Aquí no buscamos perfección, sino continuidad. Porque prevenir recaídas no es evitar el estrés, sino prepararte para responder con mayor conciencia cuando vuelva a aparecer.'},
                 ]
             },
             {
@@ -415,7 +415,7 @@ export const stressManagementPath: Path = {
                 title: 'Etapa 1: Evaluación y conciencia',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/Etapa1Evaluacionyconciencia.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Todo buen plan empieza por observarte.\\nDurante estas semanas, has aprendido a identificar cómo se activa el estrés en ti: qué lo dispara, cómo reacciona tu cuerpo, qué pensamientos se repiten y qué emociones se intensifican. Ahora es momento de consolidar esa información para que se convierta en una alerta temprana que te ayude a actuar antes de desbordarte.\\n¿Cómo saber que el estrés está empezando a subir?'},
+                    { type: 'paragraph', text: 'Todo buen plan empieza por observarte.\nDurante estas semanas, has aprendido a identificar cómo se activa el estrés en ti: qué lo dispara, cómo reacciona tu cuerpo, qué pensamientos se repiten y qué emociones se intensifican. Ahora es momento de consolidar esa información para que se convierta en una alerta temprana que te ayude a actuar antes de desbordarte.\n¿Cómo saber que el estrés está empezando a subir?'},
                     { type: 'list', items: ['Me cuesta dormir o me despierto cansado/a', 'Tensión muscular (cuello, mandíbula, pecho)', 'Me irrito o me siento desconectada/o sin saber por qué', 'Me aíslo o aumento conductas evasivas (pantallas, comida, control excesivo)', 'Vuelvo a pensar “no puedo con esto” o “tengo que hacerlo todo perfecto”']},
                     { type: 'paragraph', text: 'Detectar estas señales no es debilidad. Es autoconocimiento.'}
                 ]
@@ -425,7 +425,7 @@ export const stressManagementPath: Path = {
                 title: 'Etapa 2: Objetivos y estrategias',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/Etapa2Objetivosyestrategias.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Tu plan de acción se construye sobre lo que ya has practicado. No necesitas hacerlo perfecto, sino contar con algunas herramientas bien integradas que puedas activar cuando lo necesites.\\nEstrategias cognitivas:'},
+                    { type: 'paragraph', text: 'Tu plan de acción se construye sobre lo que ya has practicado. No necesitas hacerlo perfecto, sino contar con algunas herramientas bien integradas que puedas activar cuando lo necesites.\nEstrategias cognitivas:'},
                     { type: 'list', items: ['Reestructuración cognitiva: detectar pensamientos automáticos y transformarlos en versiones más amables', 'Autoinstrucciones positivas: Ej. “Estoy haciendo lo que puedo con lo que tengo”', 'Identificación de pensamientos exigentes (Semana 3)']},
                     { type: 'paragraph', text: 'Estrategias conductuales:'},
                     { type: 'list', items: ['Respiración diafragmática, 4-2-6', 'Anclaje sensorial 5-4-3-2-1', 'Escaneo corporal breve', 'Registro emocional y frases ancla compasivas']},
@@ -438,7 +438,7 @@ export const stressManagementPath: Path = {
                 title: 'Etapa 3: Prevención de recaídas',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/semana4/Etapa3Prevencionderecaidas.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Recaer no es fracasar. Es aplicar lo aprendido en un nuevo ciclo.\\nSeñales tempranas de recaída:'},
+                    { type: 'paragraph', text: 'Recaer no es fracasar. Es aplicar lo aprendido en un nuevo ciclo.\nSeñales tempranas de recaída:'},
                     { type: 'list', items: ['Autoexigencia creciente', 'Abandono de rutinas de autocuidado', 'Pensamientos rígidos o catastrofistas']},
                     { type: 'paragraph', text: 'Qué hacer si te sientes desbordada/o:'},
                     { type: 'list', items: ['Pausa y observa: “¿Qué me está activando? ¿Qué parte de mí necesita cuidado?”', 'Evita la catastrofización: Un mal día no borra tus avances', 'Vuelve a lo básico: respiración, frase ancla, conectar contigo', 'Activa tu red de apoyo: no tienes que sostenerte sola/o']}
@@ -507,5 +507,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
-    
