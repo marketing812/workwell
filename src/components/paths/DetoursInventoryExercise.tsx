@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -91,8 +92,8 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
       return common;
   }, [detours, otherDetour]);
 
-  const next = () => setStep(prev => prev + 1);
-  const back = () => setStep(prev => prev - 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleReflectionCheckboxChange = (detourId: string, field: 'values' | 'emotions' | 'parts', subfield: string, checked: boolean) => {
     setReflections(prev => ({
@@ -155,7 +156,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     
     addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu inventario ha sido guardado." });
-    next(); // Move to confirmation
+    nextStep(); // Move to confirmation
   };
   
   const renderStep = () => {
@@ -164,7 +165,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
         return (
           <div className="p-4 space-y-4 text-center">
             <p>A veces no es que no sepas lo que quieres… sino que hay interferencias que te desvían del camino. Hoy vamos a ponerles nombre para empezar a recuperar dirección.</p>
-            <Button onClick={next}>Empezar mi inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar mi inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // NEW Example
@@ -178,8 +179,8 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
             <p className="text-sm italic text-muted-foreground pt-2">Piensa: ¿qué cosas en tu vida se parecen a esto?</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next} className="w-auto">Ir a mis desvíos <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} className="w-auto">Ir a mis desvíos <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
@@ -202,7 +203,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                 {detours['detour-other'] && <Textarea value={otherDetour} onChange={e => setOtherDetour(e.target.value)} />}
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={() => {
                 if (selectedDetours.length === 0) {
                   toast({
@@ -212,7 +213,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                   });
                   return;
                 }
-                next();
+                nextStep();
               }} className="w-auto">Continuar</Button>
             </div>
           </div>
@@ -249,8 +250,8 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                     </Accordion>
                 ))}
                 <div className="flex justify-between w-full mt-4">
-                    <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={next} className="w-auto">Ir al compromiso de cambio</Button>
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep} className="w-auto">Ir al compromiso de cambio</Button>
                 </div>
             </div>
         );
@@ -269,8 +270,8 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             </div>
             <p className="text-sm text-muted-foreground italic">Mejor un paso pequeño y seguro que uno grande que nunca darás.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next} className="w-auto" disabled={!commitment.trim()}>Siguiente paso</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} className="w-auto" disabled={!commitment.trim()}>Siguiente paso</Button>
             </div>
           </div>
         );
@@ -290,7 +291,7 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
             <p className="text-sm text-muted-foreground italic">No hace falta que sean grandes cambios. Lo importante es que sean gestos simples y realistas, que de verdad puedas aplicar en tu día a día.</p>
             <p className="text-sm text-muted-foreground font-semibold text-center">Cada gesto guardado será un recordatorio de tu fuerza y de tu camino.</p>
              <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en Mis gestos de reconexión</Button>
             </div>
           </form>
@@ -301,7 +302,10 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Inventario Guardado!</h4>
                 <p className="text-muted-foreground">Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando necesites recordar tu compromiso y tus gestos de reconexión.</p>
-                <Button onClick={() => setStep(0)} variant="outline">Hacer otro registro</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setStep(0)} variant="outline">Hacer otro registro</Button>
+                </div>
             </div>
         );
       default: return null;

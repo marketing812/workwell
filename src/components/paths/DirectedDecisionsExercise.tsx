@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle } from 'lucide-react';
+import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DirectedDecisionsExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -24,7 +25,7 @@ const valueOptions = [
     { id: 'respect', label: 'Respeto', description: 'Tratarte (y tratar a los demás) con dignidad y límites sanos.' },
     { id: 'balance', label: 'Equilibrio', description: 'Sostener armonía entre dar y recibir, hacer y descansar.' },
     { id: 'presence', label: 'Presencia', description: 'Estar aquí y ahora, no vivir solo en el “tengo que”.' },
-    { id: 'coherence', label: 'Coherencia interna', description: 'Alinear lo que haces con lo que crees y sientes.' },
+    { id: 'coherence', label: 'Coherencia interna', description: 'Alinear lo que haces con lo que piensas y sientes.' },
     { id: 'autonomy', label: 'Autonomía', description: 'Tomar decisiones propias, no solo por presión externa.' },
     { id: 'compassion', label: 'Compasión', description: 'Tratarte con amabilidad cuando no puedes con todo.' },
     { id: 'creativity', label: 'Creatividad', description: 'Dar espacio a lo que te inspira, nutre o emociona.' },
@@ -51,7 +52,8 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
     setDecisions(newDecisions);
   };
 
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -82,6 +84,7 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
     addNotebookEntry({ title: `Decisiones con Dirección`, content: notebookContent, pathId });
     toast({ title: "Decisión Guardada", description: "Tu acción de mañana se ha guardado." });
     setIsSaved(true);
+    nextStep();
   };
 
   const renderStep = () => {
@@ -90,7 +93,7 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
         return (
           <div className="p-4 text-center space-y-4">
             <p>A veces vivimos decidiendo en automático. Pero hoy vas a practicar algo distinto: tomar decisiones pequeñas que te acerquen a lo que sí tiene sentido para ti.</p>
-            <Button onClick={next}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -108,7 +111,10 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
                 </div>
               ))}
             </RadioGroup>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!selectedValue}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 2:
@@ -124,7 +130,10 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
                 <Textarea id={`adjustment${index}`} value={d.adjustment} onChange={e => handleDecisionChange(index, 'adjustment', e.target.value)} />
               </div>
             ))}
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 3:
@@ -135,14 +144,17 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
               <Label htmlFor="tomorrow-action">¿Qué pequeña acción puedes tomar mañana que honre ese valor?</Label>
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={e => setTomorrowAction(e.target.value)} />
             </div>
-            {!isSaved ? (
-                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi acción</Button>
-            ) : (
-                <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                {!isSaved ? (
+                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi acción</Button>
+                ) : (
+                <div className="flex items-center p-3 text-green-800 dark:text-green-200">
                     <CheckCircle className="mr-2 h-5 w-5" />
-                    <p className="font-medium">Tu acción ha sido guardada.</p>
+                    <p className="font-medium">Guardado.</p>
                 </div>
-            )}
+                )}
+            </div>
           </form>
         );
       default: return null;

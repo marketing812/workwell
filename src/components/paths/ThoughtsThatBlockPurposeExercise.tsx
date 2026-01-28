@@ -26,7 +26,7 @@ const distortionOptions = [
     {id: 'mind_reading', label: 'Inferencia arbitraria / Saltar a conclusiones', description: 'Sacar conclusiones negativas sin pruebas claras. Hay dos tipos: la Adivinación del Pensamiento de los demás y la Adivinación del Futuro. Ejemplo: “No me contestó el mensaje, seguro que está molesto conmigo”, “No me lo voy a pasar bien en la cena, asi que no voy a ir”.' },
     {id: 'selective_abstraction', label: 'Abstracción selectiva', description: 'Fijarse solo en lo negativo, ignorando el resto de los acontecimientos y hechos de la experiencia. Ejemplo: “Todo salió mal porque me equivoqué en una palabra”, aunque el resto de la reunión fue bien.' },
     {id: 'emotional_reasoning', label: 'Razonamiento emocional', description: 'Creer que algo es cierto solo porque lo sientes intensamente. Ejemplo: “Me siento insegura, así que debo ser incompetente.”' },
-    {id: 'should_statements', label: '“Debería” rígidos', description: 'Imponerse reglas a uno mismo o a los demás, absolutas y exigentes que generan culpa o presión. Ejemplo: “Debería estar siempre tranquila”, “No debería fallar nunca.”' },
+    {id: 'should_statements', label: '“Deberías” rígidos', description: 'Imponerse reglas a uno mismo o a los demás, absolutas y exigentes que generan culpa o presión. Ejemplo: “Debería estar siempre tranquila”, “No debería fallar nunca.”' },
     {id: 'magnification_minimization', label: 'Minimizar lo positivo y Maximizar lo negativo', description: 'Rechazar o minimizar cualquier logro o aspecto positivo y maximizar cualquier error o aspecto negativo. Ejemplo: “Sí, me felicitaron… pero seguro fue por compromiso”, “Mi pareja me señala un error...soy lo peor, es imperdonable”.' },
     {id: 'perfectionism', label: 'Perfeccionismo', description: 'Necesidad de cumplir estándares imposiblemente altos, sin permitir errores. Ejemplo: “Si no lo hago todo perfecto, no vale la pena.”' },
     {id: 'approval_dependency', label: 'Valía personal dependiente de la aprobación', description: 'Sentir que tu valor depende de lo que piensan los demás. Ejemplo: “Si no me valoran en el trabajo, entonces no valgo nada.”' },
@@ -191,4 +191,3 @@ export function ThoughtsThatBlockPurposeExercise({ content, pathId }: ThoughtsTh
     </Card>
   );
 }
-

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle } from 'lucide-react';
+import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PresentVsEssentialSelfExerciseContent } from '@/data/paths/pathTypes';
 
@@ -24,8 +24,39 @@ export function PresentVsEssentialSelfExercise({ content, pathId }: PresentVsEss
   const [essentialSelfDesc, setEssentialSelfDesc] = useState('');
   const [smallAction, setSmallAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
+  const storageKey = `exercise-progress-${pathId}-presentVsEssential`;
+
+  useEffect(() => {
+    setIsClient(true);
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setPresentSelfDesc(data.presentSelfDesc || '');
+        setEssentialSelfDesc(data.essentialSelfDesc || '');
+        setSmallAction(data.smallAction || '');
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    if (!isClient) return;
+    try {
+      const stateToSave = { step, presentSelfDesc, essentialSelfDesc, smallAction, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, presentSelfDesc, essentialSelfDesc, smallAction, isSaved, storageKey, isClient]);
+
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const resetExercise = () => {
     setStep(0);
@@ -33,6 +64,7 @@ export function PresentVsEssentialSelfExercise({ content, pathId }: PresentVsEss
     setEssentialSelfDesc('');
     setSmallAction('');
     setIsSaved(false);
+    localStorage.removeItem(storageKey);
   }
 
   const handleSave = (e: FormEvent) => {
@@ -56,8 +88,12 @@ ${smallAction}
     addNotebookEntry({ title: `Visualización: Yo Presente vs. Yo Esencial`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu visualización ha sido guardada." });
     setIsSaved(true);
-    next();
+    nextStep();
   };
+  
+  if (!isClient) {
+    return null; // or a loading skeleton
+  }
 
   const renderStep = () => {
     switch (step) {
@@ -65,7 +101,7 @@ ${smallAction}
         return (
           <div className="p-4 space-y-4 text-center">
              <p className="text-sm text-muted-foreground">No se trata de juzgarte ni de exigirte cambios inmediatos. Se trata de mirarte con amabilidad, como quien observa una película, para redescubrir quién eres y hacia dónde quieres ir.</p>
-            <Button onClick={next}>Empezar visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Present Self
@@ -75,7 +111,10 @@ ${smallAction}
             <p className="text-sm text-muted-foreground">Pregúntate: ¿Cómo me hablo en mi día a día? ¿Cómo transcurren mis jornadas? ¿Qué emociones predominan? ¿Cómo me relaciono con los demás? ¿Qué hábitos mantengo, aunque no me hagan bien?</p>
             <Label htmlFor="present-self">Describe tu yo actual...</Label>
             <Textarea id="present-self" value={presentSelfDesc} onChange={e => setPresentSelfDesc(e.target.value)} placeholder="Ej: Mi yo actual corre a todos lados, revisa el móvil constantemente..." />
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!presentSelfDesc.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 2: // Essential Self
@@ -86,7 +125,10 @@ ${smallAction}
             <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial… </Label>
             <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad." />
             <p className="text-xs text-muted-foreground italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!essentialSelfDesc.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 3: // Integration and choice
@@ -121,8 +163,10 @@ ${smallAction}
                  <p className="text-xs text-muted-foreground">Ejemplo guía: “Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para leer o simplemente descansar en calma.”</p>
             </div>
             
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
-            
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit" disabled={!smallAction.trim()}><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
+            </div>
           </form>
         );
       case 4: // Confirmation screen
@@ -135,9 +179,12 @@ ${smallAction}
                 <li className="flex items-start"><span className="mr-2">✅</span>Felicítate por haberte regalado este momento de conexión.</li>
                 <li className="flex items-start"><span className="mr-2">👉</span>Tus respuestas quedan guardadas en tu cuaderno terapéutico.</li>
             </ul>
-            <Button onClick={resetExercise} variant="outline" className="w-full mt-4">
-              Hacer otra reflexión
-            </Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={resetExercise} variant="outline" className="w-auto">
+                Hacer otra reflexión
+                </Button>
+            </div>
           </div>
         );
       default: return null;

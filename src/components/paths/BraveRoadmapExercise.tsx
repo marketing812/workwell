@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -27,7 +27,7 @@ const valueOptions = [
     { id: 'connect', label: 'Conexión', description: 'Sentirte en sintonía con otras personas desde el respeto y la empatía.' },
     { id: 'calm', label: 'Calma', description: 'Vivir con más serenidad, sin dejarte arrastrar por la prisa o la ansiedad.' },
     { id: 'respect', label: 'Respeto', description: 'Tratarte a ti y a los demás con dignidad y cuidado, incluso en el conflicto.' },
-    { id: 'coherence', label: 'Coherencia interna', description: 'Actuar en línea con lo que piensas y sientes, sin dividirte por dentro.' },
+    { id: 'coherence', label: 'Coherencia interna', description: 'Alinear lo que haces con lo que piensas y sientes, sin dividirte por dentro.' },
     { id: 'bravery', label: 'Valentía', description: 'Dar pasos aunque sientas miedo, si eso te acerca a lo que de verdad importa.' },
     { id: 'compassion', label: 'Compasión', description: 'Tratarte con amabilidad, sobre todo cuando te equivocas o estás en dolor.' },
     { id: 'responsibility', label: 'Responsabilidad', description: 'Hacerte cargo de tus elecciones, con honestidad y sin culpas innecesarias.' },
@@ -62,8 +62,8 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
     setActions(newActions);
   };
   
-  const next = () => setStep(prev => prev + 1);
-  const back = () => setStep(prev => prev - 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
   
   const resetExercise = () => {
     setStep(0);
@@ -96,7 +96,7 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
     addNotebookEntry({ title: `Mi Hoja de Ruta Valiente`, content: notebookContent, pathId: pathId });
     toast({ title: "Hoja de Ruta Guardada", description: "Tus acciones han sido guardadas." });
     setIsSaved(true);
-    next();
+    nextStep();
   };
 
   const renderActionStep = (index: number) => {
@@ -140,8 +140,8 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
                 </div>
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={next}>{index === 2 ? 'Revisar mi hoja de ruta' : 'Siguiente Acción'}</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>{index === 2 ? 'Revisar mi hoja de ruta' : 'Siguiente Acción'}</Button>
             </div>
         </div>
     );
@@ -153,7 +153,7 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
         return (
           <div className="p-4 text-center space-y-4">
             <p>Una vida con sentido no se construye en grandes saltos, sino en pequeños actos valientes. Hoy vas a elegir tres acciones que reflejen quién eres y hacia dónde quieres ir.</p>
-            <Button onClick={next}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -182,8 +182,8 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
             </RadioGroup>
             {chosenValue === 'Otro' && <Textarea value={otherChosenValue} onChange={e => setOtherChosenValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2 ml-6" />}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next} disabled={!chosenValue.trim()}>Siguiente</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!chosenValue.trim()}>Siguiente</Button>
             </div>
           </div>
         );
@@ -207,9 +207,9 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
               ))}
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={back} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit">
-                <Save className="mr-2 h-4 w-4" /> Guardar en mi hoja de ruta
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button type="submit" disabled={isSaved}>
+                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en mi hoja de ruta'}
               </Button>
             </div>
           </form>
@@ -220,7 +220,10 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">Hoja de Ruta Guardada</h4>
                 <p className="italic text-muted-foreground">"Tus decisiones crean tu camino. No importa si es grande o pequeño: cada paso desde el propósito cuenta."</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">Crear otra hoja de ruta</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={resetExercise} variant="outline" className="w-auto">Crear otra hoja de ruta</Button>
+                </div>
             </div>
         );
       default: return null;

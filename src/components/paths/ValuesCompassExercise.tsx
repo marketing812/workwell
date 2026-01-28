@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ValuesCompassExerciseContent } from '@/data/paths/pathTypes';
 import {
@@ -63,7 +63,8 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
   
   const activeAreas = useMemo(() => lifeAreas.filter(area => selectedAreas[area.id]), [selectedAreas]);
 
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = () => {
     let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Brújula de Valores:**\n\n`;
@@ -85,7 +86,7 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
         return (
           <div className="p-4 text-center space-y-4">
             <p>Muchas veces actuamos en piloto automático. Este ejercicio te ayuda a detectar cuáles son los valores que realmente te importan, para que esa pregunta tenga una respuesta clara.</p>
-            <Button onClick={() => setStep(1)}>Empezar mi brújula</Button>
+            <Button onClick={nextStep}>Empezar mi brújula</Button>
           </div>
         );
       case 1:
@@ -95,12 +96,15 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {lifeAreas.map(area => (
                 <div key={area.id} className="flex items-center space-x-2">
-                  <Checkbox id={area.id} checked={!!selectedAreas[area.id]} onCheckedChange={(checked) => handleAreaChange(area.id, !!checked)} />
+                  <Checkbox id={area.id} checked={!!selectedAreas[area.id]} onCheckedChange={c => handleAreaChange(area.id, !!c)} />
                   <Label htmlFor={area.id} className="font-normal">{area.label}</Label>
                 </div>
               ))}
             </div>
-            <Button onClick={() => setStep(2)} className="w-full mt-4">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 2:
@@ -119,7 +123,10 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
                 </div>
               </div>
             ))}
-            <Button onClick={next} className="w-full">Ver mi Brújula</Button>
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} className="w-auto">Ver mi Brújula <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
     case 3:
@@ -148,9 +155,12 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
                 </Table>
               </div>
               <p className="italic text-sm text-muted-foreground text-center">Mira esta brújula cada vez que tengas que tomar una decisión difícil. Volver a tus valores es como volver a casa.</p>
-              <Button onClick={handleSave} className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Brújula
-              </Button>
+              <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleSave} className="w-auto">
+                    <Save className="mr-2 h-4 w-4" /> Guardar Brújula
+                </Button>
+              </div>
             </div>
         );
       case 4:
@@ -159,11 +169,14 @@ export function ValuesCompassExercise({ content, pathId }: ValuesCompassExercise
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Brújula Guardada</h4>
             <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
-            <Button onClick={() => {
-                setStep(0);
-                setSelectedAreas({});
-                setReflections({});
-            }} variant="outline">Empezar de nuevo</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={() => {
+                    setStep(0);
+                    setSelectedAreas({});
+                    setReflections({});
+                }} variant="outline">Empezar de nuevo</Button>
+            </div>
           </div>
         );
       default: return null;

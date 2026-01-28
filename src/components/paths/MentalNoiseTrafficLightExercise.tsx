@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle, TrafficCone } from 'lucide-react';
+import { Edit3, Save, ArrowRight, CheckCircle, TrafficCone, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MentalNoiseTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -35,7 +36,8 @@ export function MentalNoiseTrafficLightExercise({ content, pathId }: MentalNoise
   const [otherGesture, setOtherGesture] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const resetExercise = () => {
     setStep(0);
@@ -83,7 +85,7 @@ ${finalGesture}
     addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId });
     toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
     setIsSaved(true);
-    next();
+    nextStep();
   };
   
   const renderStep = () => {
@@ -92,7 +94,7 @@ ${finalGesture}
         return (
           <div className="p-4 text-center space-y-4">
             <p>Tu mente a veces es como una calle llena de tráfico: hay momentos de atasco, momentos de tensión creciente y también momentos de calma. Este ejercicio te ayudará a reconocerlos y a entrenar tu capacidad de detenerte cuando más lo necesites.</p>
-            <Button onClick={next}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -104,7 +106,10 @@ ${finalGesture}
                 {redOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`red-${opt}`} /><Label htmlFor={`red-${opt}`} className="font-normal">{opt}</Label></div>)}
             </RadioGroup>
             <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} placeholder="Describe tu momento rojo aquí..." />
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
        case 2:
@@ -116,7 +121,10 @@ ${finalGesture}
                 {amberOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`amber-${opt}`} /><Label htmlFor={`amber-${opt}`} className="font-normal">{opt}</Label></div>)}
             </RadioGroup>
             <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} placeholder="Describe tu momento ámbar aquí..." />
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 3:
@@ -128,7 +136,10 @@ ${finalGesture}
                 {greenOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`green-${opt}`} /><Label htmlFor={`green-${opt}`} className="font-normal">{opt}</Label></div>)}
             </RadioGroup>
             <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} placeholder="Describe tu momento verde aquí..." />
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 4:
@@ -141,14 +152,17 @@ ${finalGesture}
                 <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="gesture-other" /><Label htmlFor="gesture-other" className="font-normal">Otro:</Label></div>
             </RadioGroup>
             {greenGesture === 'Otro' && <Textarea value={otherGesture} onChange={e => setOtherGesture(e.target.value)} />}
-            {!isSaved ? (
-                <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi semáforo en el cuaderno</Button>
-            ) : (
-                 <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                {!isSaved ? (
+                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi semáforo</Button>
+                ) : (
+                <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
                     <CheckCircle className="mr-2 h-5 w-5" />
-                    <p className="font-medium">Tu semáforo ha sido guardado.</p>
+                    <p className="font-medium">Guardado.</p>
                 </div>
-            )}
+                )}
+            </div>
           </form>
         );
       case 5:
@@ -157,7 +171,10 @@ ${finalGesture}
             <CheckCircle className="h-10 w-10 text-primary mx-auto" />
             <h4 className="font-semibold text-lg">Tu Semáforo Personal</h4>
             <p className="text-sm text-muted-foreground">Ya tienes tu semáforo personal: rojo para detectar saturación, amarillo para anticipar tensión y verde para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el ruido mental, sino aprender a escucharlo como señal para volver a ti.</p>
-            <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+            </div>
           </div>
         );
       default: return null;

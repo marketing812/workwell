@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -27,7 +28,7 @@ const valueOptions = [
     { id: 'connect', label: 'Conexión', description: 'Sentirte en sintonía con otras personas desde el respeto y la empatía.' },
     { id: 'calm', label: 'Calma', description: 'Vivir con más serenidad, sin dejarte arrastrar por la prisa o la ansiedad.' },
     { id: 'respect', label: 'Respeto', description: 'Tratarte a ti y a los demás con dignidad y cuidado, incluso en el conflicto.' },
-    { id: 'coherence', label: 'Coherencia interna', description: 'Actuar en línea con lo que piensas y sientes, sin dividirte por dentro.' },
+    { id: 'coherence', label: 'Coherencia interna', description: 'Alinear lo que haces con lo que piensas y sientes, sin dividirte por dentro.' },
     { id: 'bravery', label: 'Valentía', description: 'Dar pasos aunque sientas miedo, si eso te acerca a lo que de verdad importa.' },
     { id: 'compassion', label: 'Compasión', description: 'Tratarte con amabilidad, sobre todo cuando te equivocas o estás en dolor.' },
     { id: 'responsibility', label: 'Responsabilidad', description: 'Hacerte cargo de tus elecciones, con honestidad y sin culpas innecesarias.' },
@@ -180,7 +181,10 @@ export function EssentialReminderExercise({ content, pathId }: EssentialReminder
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Recordatorio Guardado</h4>
                 <p className="italic text-muted-foreground">"Cada vez que veas tu recordatorio, respira hondo y vuelve a ti. A tu valor. A tu dirección."</p>
-                <Button onClick={() => setStep(0)} variant="outline">Crear otro recordatorio</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setStep(0)} variant="outline">Crear otro recordatorio</Button>
+                </div>
             </div>
         );
       default: return null;

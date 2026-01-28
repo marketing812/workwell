@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { SenseChecklistExerciseContent } from '@/data/paths/pathTypes';
 
 interface SenseChecklistExerciseProps {
@@ -31,7 +32,8 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
     setSelections(prev => ({...prev, [id]: checked}));
   };
   
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -53,7 +55,7 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
         {step === 0 && (
           <div className="p-4 text-center space-y-4">
             <p className="text-sm text-muted-foreground">Antes de actuar o tomar una decisión, te invitamos a hacer una breve pausa y revisar algunas preguntas clave. Este pequeño gesto puede ayudarte a elegir con más claridad y en sintonía con lo que realmente te importa. Solo tienes que leer cada pregunta con calma, responderte con honestidad y observar qué sensación te deja. Al final, podrás notar si la decisión que estás a punto de tomar te acerca o te aleja de tu dirección vital. No se trata de hacerlo perfecto, sino de aprender a escucharte un poco más antes de actuar.</p>
-            <Button onClick={next}>Comenzar Checklist <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar Checklist <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         )}
         {step === 1 && (
@@ -68,7 +70,10 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
                         </div>
                     ))}
                 </div>
-                <Button onClick={next} className="w-full">Revisar mis respuestas</Button>
+                 <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep}>Revisar mis respuestas <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                 </div>
             </div>
         )}
         {step === 2 && (
@@ -77,7 +82,10 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
                 <h4 className="font-semibold text-lg">Revisa</h4>
                 <p className="text-sm text-muted-foreground">Si hay más ✓ en la dirección de tus valores, adelante. Si hay dudas, quizá aún puedas elegir diferente.</p>
                 <p className="italic">“Cada decisión es una oportunidad de acercarte a la vida que sí quieres habitar.”</p>
-                <Button onClick={() => setStep(0)} variant="outline" className="w-full">Hacer otro checklist</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={() => setStep(0)} variant="outline" className="w-auto">Hacer otro checklist</Button>
+                </div>
             </div>
         )}
       </CardContent>
