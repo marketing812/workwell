@@ -485,7 +485,7 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que has descubierto sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
+            '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -521,15 +521,11 @@ export const supportNetworkPath: Path = {
           title: 'Reflexión final de la ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
-            'Has llegado al final de esta ruta. Durante estas semanas te has detenido a observar tu red de apoyo con más claridad, descubriendo qué vínculos te fortalecen y cuáles quizás te restan energía.',
-            'No es un camino fácil, porque mirar de cerca nuestras relaciones también toca fibras sensibles. Aun así, cada paso que has dado te ha acercado a una vida más consciente, sostenida y enraizada en lo que de verdad importa.',
-            'Hoy te invito a hacer una pausa, respirar hondo y mirar atrás con gratitud: ¿qué aprendizajes quieres llevar contigo y cómo vas a ponerlos en práctica? Esta es tu oportunidad para darle forma a tus descubrimientos y comprometerte con lo que deseas cuidar a partir de ahora.',
-            'Pregúntate:',
-            '¿Eras consciente de la importancia de tu red de apoyo?',
-            '¿Qué has descubierto sobre las personas que realmente te sostienen y nutren tu vida?',
-            '¿Qué cambios has notado en ti cuando priorizas vínculos que te dan calma, respeto y energía?',
-            '¿De qué manera te relacionas ahora con esos apoyos que antes no reconocías o que dabas por sentado?',
-            '¿Qué compromisos quieres asumir para cuidar mejor tu red y también para ser tú un apoyo nutritivo para quienes quieres?',
+            '<p>Has llegado al final de esta ruta. Durante estas semanas te has detenido a observar tu red de apoyo con más claridad, descubriendo qué vínculos te fortalecen y cuáles quizás te restan energía.</p>',
+            '<p>No es un camino fácil, porque mirar de cerca nuestras relaciones también toca fibras sensibles. Aun así, cada paso que has dado te ha acercado a una vida más consciente, sostenida y enraizada en lo que de verdad importa.</p>',
+            '<p>Hoy te invito a hacer una pausa, respirar hondo y mirar atrás con gratitud: ¿qué aprendizajes quieres llevar contigo y cómo vas a ponerlos en práctica? Esta es tu oportunidad para darle forma a tus descubrimientos y comprometerte con lo que deseas cuidar a partir de ahora.</p>',
+            '<p>Pregúntate:</p>',
+            '<ul><li>¿Eras consciente de la importancia de tu red de apoyo?</li><li>¿Qué has descubierto sobre las personas que realmente te sostienen y nutren tu vida?</li><li>¿Qué cambios has notado en ti cuando priorizas vínculos que te dan calma, respeto y energía?</li><li>¿De qué manera te relacionas ahora con esos apoyos que antes no reconocías o que dabas por sentado?</li><li>¿Qué compromisos quieres asumir para cuidar mejor tu red y también para ser tú un apoyo nutritivo para quienes quieres?</li></ul>'
           ],
         },
         {
@@ -554,3 +550,4 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
+
