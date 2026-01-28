@@ -80,7 +80,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13reflexioncuaderno.mp3',
-          prompts: ['¿Qué he descubierto sobre mi manera de interpretar la ansiedad?','¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?','¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?']
+          prompts: ['<ul><li>¿Qué he descubierto sobre mi manera de interpretar la ansiedad?</li><li>¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?</li><li>¿Qué diferencia noto entre luchar contra la ansiedad y observarla con curiosidad?</li></ul>']
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13resumenclave.mp3'},
@@ -175,7 +175,7 @@ export const anxietyPath: Path = {
             title: 'Registro de experiencia personal',
             prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:'],
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2reflexion.mp3', prompts: ['¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?','¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?','¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2reflexion.mp3', prompts: ['<ul><li>¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?</li><li>¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?</li><li>¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?</li></ul>']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta13/semana2/R13sem2resumen.mp3'},
         { type: 'list', items: ['La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.','El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.','Cuando calmas el cuerpo, tu cerebro recupera claridad.','Las sensaciones físicas (palpitaciones, mareo, nudo en el estómago) pueden ser molestas pero no son peligrosas: aprender a observarlas sin miedo reduce su impacto.','La práctica constante entrena tu sistema nervioso para responder con más equilibrio y recuperarse antes del estrés.','Las técnicas más eficaces (coherencia cardíaca, diafragmática, exhalación, RMP) ayudan a modular el sistema nervioso de forma sostenida; otras (anclaje, frío, balanceo) son recursos rápidos en picos de ansiedad.','Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia.']},
@@ -340,7 +340,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/R13sem4reflexion.mp3',
-          prompts: ['¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?','¿Qué estrategias has comprobado que te ayudan más a calmarte?','¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?']
+          prompts: ['<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><ul><li>¿Qué descubrí sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li></ul>']
         },
         { 
           type: 'title', 
@@ -372,13 +372,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXION FINAL PARA EL CUADERNO',
           prompts: [
-            'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
-            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
-            '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
-            '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
-            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
-            'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
-            'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
+            '<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><p>Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.</p><ul><li>¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?</li><li>¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li><li>Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?</li></ul>'
           ]
         },
         {
@@ -411,13 +405,7 @@ export const anxietyPath: Path = {
           title: 'Reflexión final de la ruta',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana4/Reflexionfinalruta13.mp3',
           prompts: [
-            'Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:',
-            '¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?',
-            '¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?',
-            '¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?',
-            '¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?',
-            'Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?',
-            'Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.'
+            '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p><p>Preguntas para tu cuaderno emocional:</p><ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
           ]
         },
         {
@@ -444,3 +432,4 @@ export const anxietyPath: Path = {
 };
 
     
+
