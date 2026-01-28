@@ -228,7 +228,7 @@ export const stressManagementPath: Path = {
                 type: 'collapsible',
                 title: '¿Cuándo puedes usarlas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2cuando.mp3',
-                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\n- En el momento: si sientes ansiedad o bloqueo\n- Antes de una situación desafiante\n- Como rutina diaria para entrenar tu equilibrio\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.' }]
+                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\n•\tEn el momento: si sientes ansiedad o bloqueo\n•\tAntes de una situación desafiante\n•\tComo rutina diaria para entrenar tu equilibrio\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.' }]
             },
             {
                 type: 'collapsible',
@@ -264,7 +264,7 @@ export const stressManagementPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3', 
               prompts: [
                 '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
-                'Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.'
+                'Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.',
               ]
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
@@ -388,9 +388,7 @@ export const stressManagementPath: Path = {
             audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/REFLEXION.mp3',
             prompts: [
               'Te proponemos un momento para integrar lo que has trabajado.',
-              '¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?',
-              '¿Qué exigencias internas me alejan de mis verdaderas necesidades?',
-              '¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio?',
+              '<ul><li>¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?</li><li>¿Qué exigencias internas me alejan de mis verdaderas necesidades?</li><li>¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio?</li></ul>'
             ],
           },
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/RESUMEN.mp3'},
