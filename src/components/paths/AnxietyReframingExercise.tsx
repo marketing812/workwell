@@ -132,19 +132,19 @@ ${responses.q4}
             <p className="text-sm text-muted-foreground">Tómate unos minutos para integrar lo que has trabajado. No busques respuestas correctas, solo honestidad.</p>
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="q1">¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?</Label>
+                <h4 className="font-semibold">¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?</h4>
                 <Textarea id="q1" value={responses.q1} onChange={(e) => handleChange('q1', e.target.value)} disabled={isSaved} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="q2">¿Qué me pasa cuando confundo posibilidad con probabilidad? ¿Qué efecto tiene en mis decisiones?</Label>
+                <h4 className="font-semibold">¿Qué me pasa cuando confundo posibilidad con probabilidad? ¿Qué efecto tiene en mis decisiones?</h4>
                 <Textarea id="q2" value={responses.q2} onChange={(e) => handleChange('q2', e.target.value)} disabled={isSaved} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="q3">¿Qué me ha servido más para tomar distancia de los pensamientos: la técnica STOP, el cuestionamiento de “¿y si…?” u otra estrategia personal?</Label>
+                <h4 className="font-semibold">¿Qué me ha servido más para tomar distancia de los pensamientos: la técnica STOP, el cuestionamiento de “¿y si…?” u otra estrategia personal?</h4>
                 <Textarea id="q3" value={responses.q3} onChange={(e) => handleChange('q3', e.target.value)} disabled={isSaved} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="q4">¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad? (ejemplo: “darme una pausa y observar antes de reaccionar”)</Label>
+                <h4 className="font-semibold">¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad? (ejemplo: “darme una pausa y observar antes de reaccionar”)</h4>
                 <Textarea id="q4" value={responses.q4} onChange={(e) => handleChange('q4', e.target.value)} disabled={isSaved} />
               </div>
             </div>

@@ -51,41 +51,39 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
   
   const renderCurrentStep = () => {
     switch (step) {
-      case 0: return (
-        <div className="p-4 text-center">
-            <p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p>
-            <Button onClick={() => setStep(1)}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button>
-        </div>
-      );
+      case 0: return <div className="p-4 text-center"><p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={() => setStep(1)}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
       case 1: return (
-        <div className="p-4 space-y-4">
-            <Label htmlFor="goal">¿Qué situación ansiosa quieres poder afrontar en el futuro?</Label>
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 1: Define tu meta</h4>
+            <p className="text-sm text-muted-foreground">¿Qué situación ansiosa quieres poder afrontar en el futuro?</p>
             <Textarea id="goal" value={goal} onChange={e => setGoal(e.target.value)} placeholder="Ej: Hablar en público en una reunión de trabajo"/>
             <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
-        </div>
-      );
+          </div>
+        );
       case 2: return (
-        <div className="p-4 space-y-4">
-            <Label>Ahora divide esa situación en escalones más pequeños.</Label>
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 2: Divide en escalones</h4>
+            <p className="text-sm text-muted-foreground">Ahora divide esa situación en escalones más pequeños.</p>
             {steps.map((s, i) => (
                 <Textarea key={i} value={s} onChange={e => handleStepChange(i, e.target.value)} placeholder={`Escalón ${i+1}`}/>
             ))}
             <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
-        </div>
-      );
+          </div>
+        );
        case 3: return (
-        <div className="p-4 space-y-4">
-            <Label>Ordena tus escalones del más fácil al más difícil.</Label>
-            <p className="text-sm text-muted-foreground">(Funcionalidad de arrastrar y ordenar no disponible, por favor ordénalos mentalmente por ahora)</p>
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 3: Ordena tus escalones</h4>
+            <p className="text-sm text-muted-foreground">Ordena tus escalones del más fácil al más difícil. (Funcionalidad de arrastrar y ordenar no disponible, por favor ordénalos mentalmente por ahora)</p>
             <ul className="list-decimal list-inside p-2 border rounded-md">
                 {steps.filter(s => s.trim()).map((s, i) => <li key={i}>{s}</li>)}
             </ul>
             <Button onClick={() => setStep(4)} className="w-full">Siguiente</Button>
-        </div>
-      );
+          </div>
+        );
       case 4: return (
-        <div className="p-4 space-y-4">
-            <Label>¿Cuál será el primer paso realista que puedes poner en práctica esta semana?</Label>
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 4: Elige tu primer paso</h4>
+            <p className="text-sm text-muted-foreground">¿Cuál será el primer paso realista que puedes poner en práctica esta semana?</p>
              <RadioGroup value={firstStep} onValueChange={setFirstStep}>
                 {steps.filter(s => s.trim()).map((s, i) => (
                      <div key={i} className="flex items-center space-x-2">
@@ -95,8 +93,8 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
                 ))}
              </RadioGroup>
             <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi escalera</Button>
-        </div>
-      );
+          </div>
+        );
       default: return null;
     }
   };

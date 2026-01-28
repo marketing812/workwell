@@ -55,23 +55,23 @@ export function ClearRequestMapExercise({ content, pathId }: ClearRequestMapExer
             </CardDescription>}
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSave} className="space-y-4">
+        <form onSubmit={handleSave} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="sit-clear-req">Describe una situación en la que necesites ayuda</Label>
+            <h4 className="font-semibold text-lg">Describe una situación en la que necesites ayuda</h4>
             <Textarea id="sit-clear-req" value={situation} onChange={e => setSituation(e.target.value)} disabled={isSaved}/>
           </div>
           <div className="space-y-2">
-            <Label>Define qué, cuándo y cómo</Label>
+            <h4 className="font-semibold text-lg">Define qué, cuándo y cómo</h4>
             <Textarea value={need} onChange={e => setNeed(e.target.value)} placeholder="Qué necesito exactamente..." disabled={isSaved}/>
             <Textarea value={when} onChange={e => setWhen(e.target.value)} placeholder="Cuándo lo necesito..." disabled={isSaved}/>
             <Textarea value={how} onChange={e => setHow(e.target.value)} placeholder="Cómo quiero que me ayuden..." disabled={isSaved}/>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="final-phrase-req">Formula tu petición final</Label>
+            <h4 className="font-semibold text-lg">Formula tu petición final</h4>
             <Textarea id="final-phrase-req" value={finalPhrase} onChange={e => setFinalPhrase(e.target.value)} disabled={isSaved}/>
           </div>
           <div className="space-y-2">
-            <Label>Revisión rápida</Label>
+            <h4 className="font-semibold text-lg">Revisión rápida</h4>
             <div className="flex items-center gap-2"><Checkbox id="isClear" onCheckedChange={c => setChecklist(p => ({...p, isClear: !!c}))} disabled={isSaved}/><Label htmlFor="isClear" className="font-normal">¿Es clara?</Label></div>
             <div className="flex items-center gap-2"><Checkbox id="isKind" onCheckedChange={c => setChecklist(p => ({...p, isKind: !!c}))} disabled={isSaved}/><Label htmlFor="isKind" className="font-normal">¿Es amable?</Label></div>
             <div className="flex items-center gap-2"><Checkbox id="isEasy" onCheckedChange={c => setChecklist(p => ({...p, isEasy: !!c}))} disabled={isSaved}/><Label htmlFor="isEasy" className="font-normal">¿Es fácil de responder?</Label></div>

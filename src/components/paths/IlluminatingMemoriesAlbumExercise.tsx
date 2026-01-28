@@ -86,6 +86,7 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
       case 0: // Pantalla 1: Captura tus momentos
         return (
           <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Paso 1: Captura tus momentos</h4>
             <p className="text-sm text-muted-foreground">Elige 3 momentos que te hicieron sentir bien. Pueden ser sencillos o significativos. Añade detalles sensoriales para que el recuerdo cobre vida.</p>
             <div className="space-y-3">
               {moments.map((moment, index) => (
