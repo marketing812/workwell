@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -8,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ControlTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
@@ -18,7 +17,7 @@ interface ControlTrafficLightExerciseProps {
   content: ControlTrafficLightExerciseContent;
 }
 
-const steps = ['intro', 'green', 'amber', 'red', 'summary'];
+const steps = ['intro', 'green', 'amber', 'red', 'summary', 'confirmation'];
 
 export function ControlTrafficLightExercise({ content }: ControlTrafficLightExerciseProps) {
   const { toast } = useToast();
@@ -28,8 +27,18 @@ export function ControlTrafficLightExercise({ content }: ControlTrafficLightExer
   const [greenZone, setGreenZone] = useState('');
   const [amberZone, setAmberZone] = useState('');
   const [redZone, setRedZone] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
+  const prevStep = () => setCurrentStep(prev => Math.max(0, prev - 1));
+  const resetExercise = () => {
+    setCurrentStep(0);
+    setSituation('');
+    setGreenZone('');
+    setAmberZone('');
+    setRedZone('');
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -66,7 +75,8 @@ ${redZone || 'Sin entradas.'}
       title: "Ejercicio Guardado",
       description: "Tu 'Semáforo del Control' se ha guardado en el Cuaderno Terapéutico.",
     });
-    // No cerramos el ejercicio, el usuario puede seguir viéndolo o ir a la reflexión final
+    setIsSaved(true);
+    nextStep();
   };
   
   const redZoneItemsCount = redZone.split('\n').filter(line => line.trim() !== '').length;
@@ -106,7 +116,10 @@ ${redZone || 'Sin entradas.'}
             <div className="text-xs text-muted-foreground bg-background p-2 rounded-md border">
                 <strong>Pistas:</strong> Tus decisiones, tu actitud, cómo organizas tu tiempo, cómo te hablas, cómo gestionas tus emociones, tu manera de cuidarte.
             </div>
-            <Button onClick={nextStep} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         )}
 
@@ -121,7 +134,10 @@ ${redZone || 'Sin entradas.'}
             <div className="text-xs text-muted-foreground bg-background p-2 rounded-md border">
                 <strong>Pistas:</strong> Puedes proponer o negociar, expresar lo que sientes, pedir ayuda, planificar con más margen, ofrecer tu punto de vista con respeto.
             </div>
-            <Button onClick={nextStep} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         )}
 
@@ -141,7 +157,10 @@ ${redZone || 'Sin entradas.'}
                     <AlertDescription>Has colocado muchas cosas en la Zona Roja. Es natural sentir que hay mucho fuera de tu control. Reconocerlo es el primer paso para soltar. Y soltar no es rendirse: es confiar más en ti.</AlertDescription>
                 </Alert>
             )}
-            <Button onClick={nextStep} className="w-full">Ver mi semáforo <TrafficCone className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Ver mi semáforo <TrafficCone className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         )}
 
@@ -165,12 +184,24 @@ ${redZone || 'Sin entradas.'}
                  <p className="text-center text-muted-foreground italic text-sm pt-4">
                     Soltar no es rendirse. Es redirigir tu energía hacia lo que sí puedes transformar. No todo depende de ti, pero sí puedes elegir cómo responder.
                 </p>
-                <div className="flex justify-center">
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline">Atrás</Button>
                     <Button onClick={handleSave}>
                         <Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno
                     </Button>
                 </div>
             </div>
+        )}
+        
+        {steps[currentStep] === 'confirmation' && (
+          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
+            <p className="text-muted-foreground">Tu semáforo ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
+            <Button onClick={resetExercise} variant="outline" className="w-full">
+              Hacer otro registro
+            </Button>
+          </div>
         )}
       </CardContent>
     </Card>

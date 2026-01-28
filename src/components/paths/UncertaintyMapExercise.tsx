@@ -100,7 +100,7 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
     addNotebookEntry({
       title: "Mi Mapa de la Incertidumbre",
       content: notebookContent,
-      pathId: 'tolerar-incertidumbre', // Hardcoded for now
+      pathId: 'tolerar-incertidumbre',
     });
 
     toast({
