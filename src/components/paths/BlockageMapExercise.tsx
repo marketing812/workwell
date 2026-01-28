@@ -112,7 +112,7 @@ ${consequences || 'No especificadas.'}
       case 1:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="avoided-task">Piensa en una tarea concreta que llevas tiempo evitando.</Label>
+            <Label htmlFor="avoided-task" className="font-semibold text-lg">Paso 1: Piensa en una tarea concreta que llevas tiempo evitando.</Label>
             <Textarea
               id="avoided-task"
               value={avoidedTask}
@@ -127,7 +127,7 @@ ${consequences || 'No especificadas.'}
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="blocking-thoughts">¿Qué pensamientos aparecen cuando piensas en esa tarea?</Label>
+            <Label htmlFor="blocking-thoughts" className="font-semibold text-lg">Paso 2: ¿Qué pensamientos aparecen cuando piensas en esa tarea?</Label>
             <Textarea
               id="blocking-thoughts"
               value={blockingThoughts}
@@ -142,7 +142,7 @@ ${consequences || 'No especificadas.'}
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <Label>¿Qué emociones o sensaciones físicas intentas evitar?</Label>
+            <Label className="font-semibold text-lg">Paso 3: ¿Qué emociones o sensaciones físicas intentas evitar?</Label>
             {emotionsOptions.map(opt => (
               <div key={opt.id} className="flex items-start space-x-3">
                 <Checkbox
@@ -183,7 +183,7 @@ ${consequences || 'No especificadas.'}
       case 4:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="escape-behaviors">¿Qué haces para evitarla?</Label>
+            <Label htmlFor="escape-behaviors" className="font-semibold text-lg">Paso 4: ¿Qué haces para evitarla?</Label>
             <Textarea
               id="escape-behaviors"
               value={escapeBehaviors}
@@ -198,7 +198,7 @@ ${consequences || 'No especificadas.'}
       case 5:
         return (
           <div className="p-4 space-y-4">
-            <Label htmlFor="consequences">¿Qué consecuencias tiene para ti seguir evitándolo?</Label>
+            <Label htmlFor="consequences" className="font-semibold text-lg">Paso 5: ¿Qué consecuencias tiene para ti seguir evitándolo?</Label>
             <Textarea
               id="consequences"
               value={consequences}

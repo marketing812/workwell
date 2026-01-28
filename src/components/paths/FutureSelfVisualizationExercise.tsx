@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -160,29 +160,29 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <Button onClick={() => setStep(1)} className="w-full">Comenzar ejercicio de escritura</Button>
                     </div>
                 );
-            case 1: // Pantalla 2 – Define tu hábito
+            case 1: // Paso 1 – Define tu hábito
                  return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold">Define tu hábito deseado</h4>
+                        <h4 className="font-semibold text-lg">Paso 1: Define tu hábito deseado</h4>
                         <Label htmlFor="habit">Escribe aquí el hábito que deseas construir.</Label>
                         <Textarea id="habit" value={habit} onChange={e => setHabit(e.target.value)} placeholder="Ej: Revisar mi agenda cada mañana" />
                         <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(0)}>Atrás</Button><Button onClick={() => setStep(2)} disabled={!habit}>Siguiente</Button></div>
                     </div>
                 );
-            case 2: // Pantalla 3 – Viaje al futuro
+            case 2: // Paso 2 – Viaje al futuro
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold">Fase 1: Viaje al futuro</h4>
+                        <h4 className="font-semibold text-lg">Paso 2: Viaje al futuro</h4>
                         <p className="text-sm text-muted-foreground">Imagina que ha pasado el tiempo suficiente para que el hábito que deseas ya forme parte de tu vida.</p>
                         <Label htmlFor="futureSelf">¿Dónde estás? ¿Es por la mañana, por la tarde? ¿Qué estás haciendo justo después de completar ese hábito? ¿Cómo te ves? ¿Cómo es tu cuerpo, tu ropa, tu expresión facial? ¿Qué transmite tu mirada?</Label>
                         <Textarea id="futureSelf" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} />
                         <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(1)}>Atrás</Button><Button onClick={() => setStep(3)} disabled={!futureSelf}>Siguiente</Button></div>
                     </div>
                 );
-            case 3: // Pantalla 4 – Emociones y pensamientos
+            case 3: // Paso 3 – Emociones y pensamientos
                  return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold">Fase 2: Emociones y pensamientos del yo futuro</h4>
+                        <h4 className="font-semibold text-lg">Paso 3: Emociones y pensamientos del yo futuro</h4>
                         <p className="text-sm text-muted-foreground">Observa las emociones que te habitan en esa escena:</p>
                         <Label htmlFor="emotions">¿Sientes orgullo? ¿Confianza? ¿Tranquilidad? ¿Qué pensamientos aparecen en tu mente? ¿Hay frases que te dices o que resuenan dentro de ti?</Label>
                         <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} />
@@ -190,29 +190,29 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(2)}>Atrás</Button><Button onClick={() => setStep(4)} disabled={!emotions}>Siguiente</Button></div>
                     </div>
                 );
-            case 4: // Pantalla 5 – Cambios
+            case 4: // Paso 4 – Cambios
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold">Fase 3: Cambios que observas en tu vida</h4>
+                        <h4 className="font-semibold text-lg">Paso 4: Cambios que observas en tu vida</h4>
                         <Label htmlFor="benefits">¿Cómo ha mejorado tu bienestar físico o emocional? ¿En qué ha cambiado tu autoestima o tu energía diaria? ¿Y tus relaciones? ¿Qué dificultades lograste superar?</Label>
                         <p className="text-sm text-muted-foreground">Observa con atención los frutos del camino recorrido.</p>
                         <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} />
                         <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(3)}>Atrás</Button><Button onClick={() => setStep(5)} disabled={!benefits}>Siguiente</Button></div>
                     </div>
                 );
-            case 5: // Pantalla 6 – Mirar atrás
+            case 5: // Paso 5 – Mirar atrás
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold">Fase 4: Mirar atrás desde el futuro</h4>
+                        <h4 className="font-semibold text-lg">Paso 5: Mirar atrás desde el futuro</h4>
                         <Label htmlFor="journeySteps">Desde esa versión futura de ti, ¿qué fue lo primero que hiciste para empezar? ¿Qué estrategias usaste en momentos de duda? ¿Qué actitud mental te ayudó a no rendirte?</Label>
                         <Textarea id="journeySteps" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} />
                         <div className="flex justify-between mt-2"><Button variant="outline" onClick={() => setStep(4)}>Atrás</Button><Button onClick={() => setStep(6)} disabled={!journeySteps}>Ir al plan de acción</Button></div>
                     </div>
                 );
-            case 6: // Pantalla 7 - Plan de acción
+            case 6: // Paso 6 - Plan de acción
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Plan de acción desde la visualización</h4>
+                        <h4 className="font-semibold text-lg">Paso 6: Plan de acción desde la visualización</h4>
                         <div className="space-y-2"><Label htmlFor="habit-final">¿Qué hábito visualizaste?</Label><Textarea id="habit-final" value={habit} onChange={e => setHabit(e.target.value)} disabled={saved} /></div>
                         <div className="space-y-2"><Label htmlFor="future-self-final">¿Cómo era tu yo futuro?</Label><Textarea id="future-self-final" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} disabled={saved} /></div>
                         <div className="space-y-2"><Label htmlFor="emotions-final">¿Qué emociones sentiste?</Label><Textarea id="emotions-final" value={emotions} onChange={e => setEmotions(e.target.value)} disabled={saved} /></div>
@@ -227,7 +227,7 @@ Puedes abrir los ojos, o volver a la app para registrar lo que has vivido.</p>
                         ) : null}
                     </form>
                 );
-             case 7: // Pantalla 8 - Cierre
+             case 7: // Paso 7 - Cierre
                 return (
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />

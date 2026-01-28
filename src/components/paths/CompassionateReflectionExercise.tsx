@@ -13,11 +13,28 @@ import type { CompassionateReflectionExerciseContent } from '@/data/paths/pathTy
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
 
+
 interface CompassionateReflectionExerciseProps {
   content: CompassionateReflectionExerciseContent;
   pathId: string;
   onComplete: () => void;
 }
+
+const emotionOptions = [
+    { id: 'fear', label: 'Miedo al fallo' },
+    { id: 'shame', label: 'Vergüenza' },
+    { id: 'guilt', label: 'Culpa' },
+    { id: 'anxiety', label: 'Ansiedad' },
+    { id: 'sadness', label: 'Tristeza' },
+    { id: 'frustration', label: 'Frustración' },
+];
+
+const perfectionismOptions = [
+    { id: 'perfect', label: 'Pensé que, si no lo hacía perfecto, mejor no hacerlo.' },
+    { id: 'energy', label: 'Sentí que tenía que estar con energía total.' },
+    { id: 'error', label: 'Cualquier error me parecía inaceptable.' },
+    { id: 'not-my-case', label: 'No fue mi caso esta vez.' },
+];
 
 export function CompassionateReflectionExercise({ content, pathId, onComplete }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
@@ -32,23 +49,6 @@ export function CompassionateReflectionExercise({ content, pathId, onComplete }:
   const [aftermathEmotion, setAftermathEmotion] = useState('');
   const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
   const [flexibleThought, setFlexibleThought] = useState('');
-
-  // Options for checkboxes
-  const emotionOptions = [
-    { id: 'fear', label: 'Miedo al fallo' },
-    { id: 'shame', label: 'Vergüenza' },
-    { id: 'guilt', label: 'Culpa' },
-    { id: 'anxiety', label: 'Ansiedad' },
-    { id: 'sadness', label: 'Tristeza' },
-    { id: 'frustration', label: 'Frustración' },
-  ];
-
-  const perfectionismOptions = [
-    { id: 'perfect', label: 'Pensé que, si no lo hacía perfecto, mejor no hacerlo.' },
-    { id: 'energy', label: 'Sentí que tenía que estar con energía total.' },
-    { id: 'error', label: 'Cualquier error me parecía inaceptable.' },
-    { id: 'not-my-case', label: 'No fue mi caso esta vez.' },
-  ];
 
   const handleSave = async () => {
     const selectedEmotions = emotionOptions.filter(opt => avoidedEmotions[opt.id]).map(opt => opt.label);
@@ -133,10 +133,10 @@ ${flexibleThought || 'No especificada.'}
       case 1:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <Label className="font-semibold">Instrucción:</Label>
+                <Label className="font-semibold text-lg">Paso 1: Instrucción</Label>
                 <p className="text-sm text-muted-foreground">Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
                 <div className="space-y-2">
-                    <Label htmlFor="advice-to-friend">Le diría que…</Label>
+                    <Label htmlFor="advice-to-friend" className="font-semibold">Le diría que…</Label>
                     <Textarea
                         id="advice-to-friend"
                         value={adviceToFriend}
@@ -153,7 +153,7 @@ ${flexibleThought || 'No especificada.'}
       case 2:
         return (
           <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-            <Label>Cuando te bloqueaste, ¿qué pensaste sobre ti?</Label>
+            <Label className="font-semibold text-lg">Paso 2: Cuando te bloqueaste, ¿qué pensaste sobre ti?</Label>
             <Textarea
               value={selfJudgment}
               onChange={e => setSelfJudgment(e.target.value)}
@@ -170,7 +170,7 @@ ${flexibleThought || 'No especificada.'}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-                <Label>¿Qué emoción crees que intentabas evitar cuando procrastinaste?</Label>
+                <Label className="font-semibold text-lg">Paso 3: ¿Qué emoción crees que intentabas evitar cuando procrastinaste?</Label>
                 <div className="space-y-1">
                 {emotionOptions.map(opt => (
                      <div key={opt.id} className="flex items-center gap-2">
@@ -205,7 +205,7 @@ ${flexibleThought || 'No especificada.'}
                 </div>
             </div>
             <div className="pt-4 space-y-2">
-                <Label htmlFor="aftermath">¿Y qué sentí después de evitarlo?</Label>
+                <Label htmlFor="aftermath" className="font-semibold">¿Y qué sentí después de evitarlo?</Label>
                 <Textarea
                 id="aftermath"
                 value={aftermathEmotion}
@@ -223,7 +223,7 @@ ${flexibleThought || 'No especificada.'}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-                <Label>¿Te exigiste demasiado en ese momento?</Label>
+                <Label className="font-semibold text-lg">Paso 4: ¿Te exigiste demasiado en ese momento?</Label>
                 <div className="space-y-1">
                 {perfectionismOptions.map(opt => (
                     <div key={opt.id} className="flex items-center gap-2">
@@ -240,7 +240,7 @@ ${flexibleThought || 'No especificada.'}
                 </div>
             </div>
             <div className="pt-4 space-y-2">
-                <Label htmlFor="flexible-thought">¿Cómo podrías pensarlo hoy con más flexibilidad?</Label>
+                <Label htmlFor="flexible-thought" className="font-semibold">¿Cómo podrías pensarlo hoy con más flexibilidad?</Label>
                 <Textarea
                 id="flexible-thought"
                 value={flexibleThought}
@@ -307,5 +307,3 @@ ${flexibleThought || 'No especificada.'}
     </Card>
   );
 }
-
-    

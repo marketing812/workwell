@@ -116,7 +116,7 @@ ${reinforce}
         case 1:
             return (
                 <div className="p-4 space-y-4">
-                    <Label>¿En qué momento cotidiano podrías activar tu gesto?</Label>
+                    <h4 className="font-semibold text-lg">Paso 1: ¿En qué momento cotidiano podrías activar tu gesto?</h4>
                     <p className="text-sm text-muted-foreground">Elige un momento del día que ya forme parte de tu rutina.</p>
                     <Select onValueChange={setMoment} value={moment}>
                         <SelectTrigger>
@@ -146,7 +146,7 @@ ${reinforce}
         case 2:
             return (
                 <div className="p-4 space-y-4">
-                    <Label>¿Qué pequeña acción puedes vincular a ese momento?</Label>
+                    <h4 className="font-semibold text-lg">Paso 2: ¿Qué pequeña acción puedes vincular a ese momento?</h4>
                     <Textarea value={action} onChange={e => setAction(e.target.value)} placeholder="Ej: Salir a caminar 10 minutos..." />
                     <div className="flex justify-between w-full">
                         <Button variant="outline" onClick={() => setStep(1)}>Atrás</Button>
@@ -157,7 +157,7 @@ ${reinforce}
         case 3: // "Tu microplan personalizado"
             return (
                 <div className="p-4 space-y-4 text-center">
-                    <h4 className="font-bold">Tu frase final:</h4>
+                    <h4 className="font-bold text-lg">Tu frase final:</h4>
                     <p className="italic text-lg p-4 bg-accent/10 border-l-4 border-accent">"Cuando {finalMoment}, voy a {action}."</p>
                     <div className="text-sm text-muted-foreground text-left">
                         <p className="font-semibold">Ejemplos reales:</p>
@@ -236,5 +236,3 @@ ${reinforce}
     </Card>
   );
 }
-
-    
