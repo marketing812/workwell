@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Star } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SupportBankExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';

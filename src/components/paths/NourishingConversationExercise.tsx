@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -62,7 +63,7 @@ export function NourishingConversationExercise({ content, pathId }: NourishingCo
     switch (step) {
       case 0: // Pantalla 1 – Introducción
         return (
-          <div className="p-4 text-center space-y-4">
+          <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">A veces creemos que las relaciones nutritivas “se dan solas”, pero la verdad es que se construyen con pequeñas decisiones diarias. Esta técnica te invita a preparar y vivir una conversación desde la escucha, la empatía y la autenticidad.</p>
             <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>

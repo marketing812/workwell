@@ -69,18 +69,7 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: 
       setRelations(newRelations);
   };
 
-  const nextStep = () => {
-    if (step === 1 && relations.filter(r => r.name.trim() !== '').length < 1) {
-      toast({
-        title: 'Ejercicio Incompleto',
-        description: 'Por favor, anota al menos una persona para continuar.',
-        variant: 'destructive',
-      });
-      return;
-    }
-    setStep(prev => prev + 1);
-  };
-
+  const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleSave = (e: FormEvent) => {
@@ -112,7 +101,6 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: 
     
     toast({ title: 'Mapa Guardado', description: 'Tu mapa de relaciones se ha guardado en el cuaderno.' });
     setIsSaved(true);
-    nextStep();
   };
   
   const renderStep = () => {
@@ -196,15 +184,6 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: 
             <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar y continuar</Button></div>
           </form>
         );
-        case 5:
-            return (
-                <div className="p-4 text-center space-y-4">
-                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                    <h4 className="font-bold text-lg">Mapa Guardado</h4>
-                    <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-                    <Button onClick={() => { setStep(0); setRelations(Array(5).fill(null).map(() => ({ name: '', supportType: { emocional: false, practico: false, validacion: false }, quality: 3 }))); setReflection(''); setIsSaved(false); }} variant="outline">Hacer otro mapa</Button>
-                </div>
-            );
       default: return null;
     }
   };
@@ -229,4 +208,3 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: 
     </Card>
   );
 }
-

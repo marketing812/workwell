@@ -54,6 +54,11 @@ export function SymbolicSupportCircleExercise({ content, pathId }: SymbolicSuppo
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setPillars(Array(4).fill({ name: '', contribution: '', careAction: ''}));
+    setIsSaved(false);
+  };
 
   const renderStep = () => {
     const filledPillars = pillars.filter(p => p.name.trim() !== '');
@@ -114,7 +119,7 @@ export function SymbolicSupportCircleExercise({ content, pathId }: SymbolicSuppo
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Círculo Guardado</h4>
             <p className="text-muted-foreground">"Este círculo es tu recordatorio de que no tienes que sostenerte solo o sola. Y también, de que tú eres parte del círculo de alguien más."</p>
-            <Button onClick={() => { setStep(0); setIsSaved(false); }} variant="outline" className="w-full">Hacer otro registro</Button>
+            <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
           </div>
         );
       default: return null;
