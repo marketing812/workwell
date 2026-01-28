@@ -218,7 +218,7 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                                     <div className="space-y-4">
                                         {Object.entries(section.categories).map(([catKey, category]) => (
                                             <div key={catKey}>
-                                                <Label className="font-medium text-foreground/90">{category.title}</Label>
+                                                <Label className="font-semibold text-foreground/90">{category.title}</Label>
                                                 <div className="space-y-2 mt-2 pl-2">
                                                     {category.options.map(opt => (
                                                         <div key={opt.id} className="flex items-center space-x-2">
@@ -237,7 +237,7 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
                                             </div>
                                         ))}
                                          <div className="space-y-2 pt-4 border-t mt-4">
-                                            <Label htmlFor="signals-custom-free-text" className="font-medium">¿Qué señales propias reconoces en ti cuando estás empezando a sobrecargarte?</Label>
+                                            <Label htmlFor="signals-custom-free-text" className="font-semibold">¿Qué señales propias reconoces en ti cuando estás empezando a sobrecargarte?</Label>
                                             <Textarea 
                                                 id="signals-custom-free-text" 
                                                 value={notes['signals-custom-free-text'] || ''} 

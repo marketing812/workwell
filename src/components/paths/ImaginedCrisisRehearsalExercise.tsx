@@ -79,7 +79,7 @@ ${reflection.toolUsed || 'No especificado.'}
             Instrucciones: Primero, escucha el audio para realizar la visualización. Luego, con esa experiencia fresca en tu mente, responde a las siguientes preguntas para anclar tu aprendizaje.
           </p>
           <div className="space-y-2">
-            <Label htmlFor="differentAction">¿Qué harías diferente?</Label>
+            <Label htmlFor="differentAction" className="font-semibold">¿Qué harías diferente?</Label>
             <Textarea
               id="differentAction"
               value={reflection.differentAction}
@@ -89,7 +89,7 @@ ${reflection.toolUsed || 'No especificado.'}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="selfTalk">¿Qué te dirías?</Label>
+            <Label htmlFor="selfTalk" className="font-semibold">¿Qué te dirías?</Label>
             <Textarea
               id="selfTalk"
               value={reflection.selfTalk}
@@ -99,7 +99,7 @@ ${reflection.toolUsed || 'No especificado.'}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="toolUsed">¿Qué herramienta usarías primero?</Label>
+            <Label htmlFor="toolUsed" className="font-semibold">¿Qué herramienta usarías primero?</Label>
             <Textarea
               id="toolUsed"
               value={reflection.toolUsed}
@@ -124,5 +124,3 @@ ${reflection.toolUsed || 'No especificado.'}
     </Card>
   );
 }
-
-    
