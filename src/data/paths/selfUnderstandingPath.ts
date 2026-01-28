@@ -74,7 +74,7 @@ export const selfUnderstandingPath: Path = {
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
-          prompts: ['¿Qué he descubierto de mí esta semana al detenerme a sentir?','¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?','¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?','¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?','¿Qué quiero seguir entrenando en mí a partir de ahora?']},
+          prompts: ['<ul><li>¿Qué he descubierto de mí esta semana al detenerme a sentir?</li><li>¿Qué emociones he “mirado a la cara” por primera vez, sin evitarlas?</li><li>¿Qué cambió dentro de mí cuando las observé en vez de pelear con ellas?</li><li>¿Hay alguna emoción que suelo juzgar o esconder y que esta vez logré nombrar con respeto?</li><li>¿Qué quiero seguir entrenando en mí a partir de ahora?</li></ul>']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion1.mp3'},
         { type: 'list', items: ['Toda emoción tiene una función adaptativa, incluso si es incómoda.','Distinguir entre emoción, pensamiento e impulso nos ayuda a responder con más conciencia.','Podemos sentir varias emociones al mismo tiempo, incluso contradictorias.','Nombrar una emoción con precisión reduce su intensidad y mejora la autorregulación.','No hay emociones “buenas” o “malas”, sino emociones que nos informan y nos guían.']},
         { type: 'quote', text: 'Cuando le pones nombre a lo que sientes, dejas de estar a oscuras contigo. Y empieza la claridad.' }
@@ -130,10 +130,7 @@ export const selfUnderstandingPath: Path = {
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
               prompts: [
-                '¿Qué emoción ha aparecido con más fuerza esta semana?',
-                '¿Qué crees que esa emoción intentaba proteger o señalar?',
-                '¿Qué aprendiste al traducir tus emociones en necesidades concretas?',
-                '¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?',
+                '<ul><li>¿Qué emoción ha aparecido con más fuerza esta semana?</li><li>¿Qué crees que esa emoción intentaba proteger o señalar?</li><li>¿Qué aprendiste al traducir tus emociones en necesidades concretas?</li><li>¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?</li></ul>',
             ]},
             { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3'},
             { type: 'list', items: [
@@ -176,7 +173,7 @@ export const selfUnderstandingPath: Path = {
                 duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
                 audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3'
             },
-            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3', prompts: ['¿Qué emoción se ha repetido más en mí últimamente?','¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?','¿Qué patrón emocional reconozco como más habitual?','¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?','¿Qué suele ocurrirme cuando una emoción me desborda?','¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?']},
+            { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3', prompts: ['<ul><li>¿Qué emoción se ha repetido más en mí últimamente?</li><li>¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?</li><li>¿Qué patrón emocional reconozco como más habitual?</li><li>¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?</li><li>¿Qué suele ocurrirme cuando una emoción me desborda?</li><li>¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?</li></ul>']},
             { type: 'title', text: 'Resumen Clave'},
             { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3'},
             { type: 'list', items: [
@@ -360,7 +357,7 @@ export const selfUnderstandingPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Reflexionfinalruta6.mp3',
           prompts: [
-            '<p>Has hecho un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad. Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.</p>',
+            '<p>Has recorrido un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad. Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.</p>',
             '<p>Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas. Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.</p>',
             '<p>Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti.</p>',
             '<p>Escribe con honestidad y sin exigencias:</p>',
@@ -398,3 +395,4 @@ export const selfUnderstandingPath: Path = {
     
 
     
+
