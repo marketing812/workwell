@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight } from 'lucide-react';
+import { Edit3, Save, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UncertaintyMapExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
@@ -60,6 +60,8 @@ export function UncertaintyMapExercise({ content }: UncertaintyMapExerciseProps)
     setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
   };
   
+  const prevStep = () => setCurrentStep(prev => Math.max(0, prev - 1));
+
   const handleAreaChange = (id: string, checked: boolean) => {
     setSelectedAreas(prev => ({ ...prev, [id]: checked }));
   };
@@ -151,7 +153,10 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
                     <Textarea value={otherArea} onChange={e => setOtherArea(e.target.value)} placeholder="Describe el otra área" className="ml-6" />
                 )}
             </div>
-            <Button onClick={nextStep} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         )}
 
@@ -174,7 +179,10 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
                     <Textarea value={otherResponse} onChange={e => setOtherResponse(e.target.value)} placeholder="Describe la otra respuesta" className="ml-6" />
                 )}
             </div>
-            <Button onClick={nextStep} className="w-full">Ver mi mapa</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Ver mi mapa</Button>
+            </div>
           </div>
         )}
         
@@ -205,7 +213,8 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
              <p className="text-sm italic text-center text-muted-foreground pt-4">
                 Este mapa no es un diagnóstico, es una brújula. Reconocer dónde te cuesta soltar el control te da la oportunidad de responder con conciencia, en lugar de reaccionar en automático.
              </p>
-             <div className="flex justify-center">
+             <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}>
                     <Save className="mr-2 h-4 w-4" /> Guardar en mi diario
                 </Button>
