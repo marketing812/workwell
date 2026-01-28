@@ -192,11 +192,13 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana: Rompe el Ciclo',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
             prompts: [
-              'Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte',
-              '¿Qué he podido activar?',
-              '¿Cómo me sentí después?',
-              '¿Qué descubrí sobre mí?',
-              '¿Qué quiero reforzar?',
+              '<p>Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte:</p>',
+              '<ul>',
+              '<li>¿Qué he podido activar?</li>',
+              '<li>¿Cómo me sentí después?</li>',
+              '<li>¿Qué descubrí sobre mí?</li>',
+              '<li>¿Qué quiero reforzar?</li>',
+              '</ul>'
             ]
           },
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' },
@@ -288,9 +290,11 @@ export const procrastinationPath: Path = {
             title: 'Reflexión Final de la Semana',
             audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
             prompts: [
-              'Te proponemos un momento para integrar lo que has trabajado',
-              '¿Qué frases me sabotean más?',
-              '¿Y cómo puedo empezar a responderme con claridad y sin exigencia?',
+              '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
+              '<ul>',
+              '<li>¿Qué frases me sabotean más?</li>',
+              '<li>¿Y cómo puedo empezar a responderme con claridad y sin exigencia?</li>',
+              '</ul>'
             ]
           },
           { 
@@ -396,4 +400,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
 

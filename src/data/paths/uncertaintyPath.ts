@@ -175,7 +175,20 @@ export const uncertaintyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'alternativeStoriesExercise', title: 'Ejercicio 1: Historias Alternativas', objective: 'Entrena tu flexibilidad mental imaginando más de un posible desenlace. No se trata de forzarte a pensar en positivo, sino de recordarte que lo que temes no siempre ocurre.','duration': '5–10 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio5tecnica1.mp3' },
         { type: 'mantraExercise', title: 'EJERCICIO 2: ¿Y si…? pero también…', objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.', duration: '5–7 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3', prompts: ['¿Qué historia rígida me he contado esta semana que no se cumplió tal como la imaginaba?','¿Qué descubrí al permitirme ver la situación desde más de un ángulo?','¿Cuál de las frases “pero también…” sentí más mía o quiero recordarme más a menudo?','¿En qué momento me sorprendí reaccionando con más flexibilidad de lo habitual?']},
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3', 
+          prompts: [
+            '<p>Ahora que has practicado cómo flexibilizar tu mente, tómate un momento para integrar el aprendizaje:</p>',
+            '<ul>',
+            '<li>¿Qué historia rígida me he contado esta semana que no se cumplió tal como la imaginaba?</li>',
+            '<li>¿Qué descubrí al permitirme ver la situación desde más de un ángulo?</li>',
+            '<li>¿Cuál de las frases “pero también…” sentí más mía o quiero recordarme más a menudo?</li>',
+            '<li>¿En qué momento me sorprendí reaccionando con más flexibilidad de lo habitual?</li>',
+            '</ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3' },
         { type: 'list', items: ['La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.','La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.','Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.','Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.','Adaptarte no significa rendirte, sino moverte con inteligencia emocional ante lo incierto.']},
         { type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme.'}
@@ -221,7 +234,15 @@ export const uncertaintyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión final de la Ruta',
           'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Reflexionfinalruta2.mp3', 
-          prompts: ['Te proponemos cerrar este proceso con algunas preguntas clave:','¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?','¿Qué recursos internos he descubierto o fortalecido?','¿Qué nuevas formas de pensar o actuar quiero seguir practicando?','¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?']
+          prompts: [
+            '<p>Te proponemos cerrar este proceso con algunas preguntas clave:</p>',
+            '<ul>',
+            '<li>¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?</li>',
+            '<li>¿Qué recursos internos he descubierto o fortalecido?</li>',
+            '<li>¿Qué nuevas formas de pensar o actuar quiero seguir practicando?</li>',
+            '<li>¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?</li>',
+            '</ul>'
+          ]
         },
         { type: 'title', text: 'Resumen final de la Ruta', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Resumenfinalruta2.mp3'},
         { type: 'list', items: ['La incertidumbre puede activar tu sistema de alerta, pero no tienes que vivir desde el miedo.','Comprender cómo funciona tu mente te ayuda a ganar claridad y no reaccionar de forma automática.','Tu cuerpo puede ser una brújula: calmarlo es una forma de recuperar el centro.','La rigidez mental intenta protegerte, pero limita tu capacidad de adaptación.','Entrenar la flexibilidad cognitiva te permite imaginar más de una historia y abrir nuevas posibilidades.','Confiar no es tener certezas, es avanzar con lo que tienes, desde donde estás.','Soltar el control no es rendirse, es un acto consciente de presencia y confianza.']},
