@@ -1,5 +1,5 @@
 
-import type { Path } from './pathTypes';
+import type { Path } from  '@/data/paths/pathTypes';
 
 export const coherencePath: Path = {
   id: 'vivir-con-coherencia',
@@ -102,7 +102,7 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
         { type: 'list', items: ['Detectar tus puntos de desconexión interna te da información valiosa sobre tus necesidades y límites.','Pensamiento, emoción y acción funcionan como un equipo: si uno se descuida, todo el equilibrio se resiente.','La coherencia no significa rigidez: a veces elegir lo contrario a lo que sientes es válido, si responde a un valor importante para ti.','Observarte sin juicio abre espacio para el cambio y la autoaceptación.'] },
-        { type: 'quote', text: '“La coherencia no es perfección, es respeto hacia lo que eres. Cada vez que piensas, sientes y actúas en la misma dirección, fortaleces tu brújula interna.”' }
+        { type: 'quote', text: 'La coherencia no es perfección, es respeto hacia lo que eres. Cada vez que piensas, sientes y actúas en la misma dirección, fortaleces tu brújula interna.' }
       ]
     },
     {
@@ -124,7 +124,7 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
-        { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }
+        { type: 'quote', text: 'No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.' }
       ]
     },
     {
@@ -149,7 +149,7 @@ export const coherencePath: Path = {
           title: 'Reflexión final de la semana',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            'Dedica unos minutos a mirar hacia atrás y conectar con lo que has descubierto esta semana. No busques respuestas perfectas, busca honestidad y claridad. ',
+            'Dedica unos minutos a mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas, solo darte espacio para reconocer lo que esta semana despertó en ti. ',
             'Preguntas para tu cuaderno emocional:',
             '¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan? ',
             '¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso? ',
@@ -225,3 +225,5 @@ export const coherencePath: Path = {
     },
   ],
 };
+
+    
