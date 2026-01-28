@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { CoherenceCompassExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3 } from 'lucide-react';
+import { Edit3, ArrowLeft, ArrowRight } from 'lucide-react';
 import {
   ChartContainer,
   ChartTooltip,
@@ -64,6 +64,9 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
             };
         });
     }, [selectedEnvironments, ratings]);
+    
+    const prevStep = () => setStep(prev => prev - 1);
+    const nextStep = () => setStep(prev => prev + 1);
 
     const chartConfig = {
         score: {
@@ -92,7 +95,9 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
                                 </div>
                             ))}
                         </div>
-                        <Button onClick={() => setStep(1)} className="w-full mt-4">Siguiente</Button>
+                        <div className="flex justify-end w-full mt-4">
+                            <Button onClick={() => setStep(1)} className="w-full">Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 1: return (
@@ -107,7 +112,7 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
-                        <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={() => setStep(2)} disabled={selectedEnvironments.length === 0}>Ver Síntesis Visual</Button>
                     </div>
                 </div>
@@ -137,7 +142,10 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                        <div className="flex justify-between w-full">
+                          <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                          <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                        </div>
                     </div>
                 );
             default: return null;
@@ -164,3 +172,5 @@ export function CoherenceCompassExercise({ content, pathId }: CoherenceCompassEx
         </Card>
     );
 }
+
+    

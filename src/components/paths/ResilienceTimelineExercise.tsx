@@ -216,3 +216,5 @@ export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimeli
     </Card>
   );
 }
+
+    

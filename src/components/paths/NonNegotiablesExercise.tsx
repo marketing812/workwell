@@ -10,8 +10,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NonNegotiablesExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
-import { Input } from '../ui/input';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad', 'Pareja / Amor romántico',
@@ -236,3 +235,4 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
   );
 }
 
+    

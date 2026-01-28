@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight, Save } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ChangeTimelineExerciseContent } from '@/data/paths/pathTypes';
 
@@ -39,6 +39,7 @@ export function ChangeTimelineExercise({ content, pathId, onComplete }: ChangeTi
   };
 
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
 
   const handleComplete = () => {
     const notebookContent = `
@@ -82,7 +83,9 @@ ${inflectionPoints}
               <Label>¿Qué creías sobre ti?</Label><Textarea value={startPoint.beliefs} onChange={e => handleStartPointChange('beliefs', e.target.value)} />
               <Label>¿Qué cosas te costaban?</Label><Textarea value={startPoint.struggles} onChange={e => handleStartPointChange('struggles', e.target.value)} />
             </div>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-end w-full mt-4">
+              <Button onClick={next} className="w-full">Siguiente</Button>
+            </div>
           </div>
         );
       case 1:
@@ -91,7 +94,10 @@ ${inflectionPoints}
             <h4 className="font-semibold">Paso 2: Nombra tus momentos de inflexión</h4>
             <Label>Recuerda 2 o 3 momentos importantes del proceso.</Label>
             <Textarea value={inflectionPoints} onChange={e => setInflectionPoints(e.target.value)} placeholder="Momentos clave, logros, caídas, descubrimientos..." rows={5} />
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={next} className="w-auto">Siguiente</Button>
+            </div>
           </div>
         );
       case 2:
@@ -104,7 +110,10 @@ ${inflectionPoints}
               <Label>¿Qué recursos has desarrollado?</Label><Textarea value={presentMoment.resources} onChange={e => handlePresentMomentChange('resources', e.target.value)} />
               <Label>¿Qué cosas valoras de ti?</Label><Textarea value={presentMoment.values} onChange={e => handlePresentMomentChange('values', e.target.value)} />
             </div>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={next} className="w-auto">Siguiente</Button>
+            </div>
           </div>
         );
       case 3:
@@ -115,7 +124,10 @@ ${inflectionPoints}
               <Label>¿Qué imagen se te viene a la mente?</Label><Textarea value={symbol.image} onChange={e => handleSymbolChange('image', e.target.value)} placeholder="Una montaña, un faro, una semilla..." />
               <Label>¿Por qué lo elegiste?</Label><Textarea value={symbol.why} onChange={e => handleSymbolChange('why', e.target.value)} />
             </div>
-            <Button onClick={handleComplete} className="w-full"><CheckCircle className="mr-2 h-4 w-4"/> Finalizar Ejercicio</Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleComplete} className="w-auto"><CheckCircle className="mr-2 h-4 w-4"/> Finalizar Ejercicio</Button>
+            </div>
           </div>
         );
       default:
@@ -152,3 +164,5 @@ ${inflectionPoints}
     </Card>
   );
 }
+
+    

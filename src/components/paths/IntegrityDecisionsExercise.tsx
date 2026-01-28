@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -233,3 +234,5 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
         </Card>
     );
 }
+
+    

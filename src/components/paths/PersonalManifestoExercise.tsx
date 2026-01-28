@@ -12,16 +12,6 @@ import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalManifestoExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import { Input } from '../ui/input';
-
-const valuesList = [
-    'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
-    'Justicia', 'Responsabilidad', 'Libertad', 'Creatividad', 'Propósito vital', 'Aprendizaje',
-    'Empatía', 'Perseverancia', 'Integridad', 'Compasión', 'Equilibrio', 'Gratitud',
-    'Generosidad', 'Lealtad', 'Coraje', 'Cooperación', 'Transparencia', 'Sostenibilidad',
-    'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
-];
 
 const reactionOptions = [
     { id: 'reac-prisa', label: 'Actué desde la prisa.' },
@@ -176,7 +166,7 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
                 );
             case 5:
                 return (
-                    <div className="p-4 text-center space-y-4">
+                    <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-semibold text-lg">Cierre motivador</h4>
                         <p className="text-muted-foreground">La coherencia no se mide por un tropiezo, sino por cómo eliges levantarte. Cada vez que te miras con compasión y eliges un ajuste, fortaleces tu dirección interna.</p>
@@ -206,3 +196,5 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         </Card>
     );
 }
+
+    
