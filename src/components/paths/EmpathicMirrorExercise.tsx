@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -98,7 +99,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                 <Label htmlFor="topic">¿Qué te compartió o qué tema estaba en juego?</Label>
                 <Textarea id="topic" value={topic} onChange={e => setTopic(e.target.value)} />
             </div>
-            <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         );
       case 2:
@@ -119,7 +123,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                      <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la otra emoción..." className="mt-2" />
                 )}
             </div>
-            <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         );
       case 3:
@@ -134,7 +141,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                     <Label htmlFor="mirror-phrase">Tu frase-espejo:</Label>
                     <Textarea id="mirror-phrase" value={mirrorPhrase} onChange={e => setMirrorPhrase(e.target.value)} />
                 </div>
-                <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
             </div>
         );
       case 4:
@@ -163,7 +173,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                     {selectedInvalidating['inv-other'] && <Textarea value={otherInvalidating} onChange={e => setOtherInvalidating(e.target.value)} placeholder="Escribe otra frase que suelas usar..." className="ml-6"/>}
                 </div>
                 <p className="text-xs text-muted-foreground italic">Tu intención: Quiero intentar evitar estas respuestas automáticas y practicar el silencio como espacio seguro para el otro.</p>
-                <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
             </div>
         );
       case 5:
@@ -175,9 +188,12 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                     <Label htmlFor="commitment">Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”):</Label>
                     <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} />
                 </div>
-                <Button onClick={handleComplete} className="w-full">
-                    <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
-                </Button>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={handleComplete}>
+                      <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
+                  </Button>
+                </div>
             </div>
         );
       default: return null;

@@ -142,22 +142,13 @@ ${reassessment}
   
   const renderStep = () => {
     switch (step) {
-      case 0: // Pantalla 1: Introducción
+      case 0: // Intro
         return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-primary">¿Cómo lo harás?</h4>
-            <p className="text-sm text-muted-foreground">Vas a recorrer, paso a paso, lo que ocurrió después de poner un límite. Primero, describirás la situación concreta en la que te expresaste con firmeza. Luego, explorarás lo que pensaste, sentiste y notaste en tu cuerpo.</p>
-            <p className="text-sm text-muted-foreground">Después, identificarás qué intentaba proteger esa emoción que apareció (porque siempre hay algo valioso detrás). Y por último, te ofrecerás una respuesta más compasiva y realista, que te ayude a sostenerte sin juzgarte.</p>
-            <Button onClick={nextStep} className="w-full">Comenzar</Button>
-          </div>
-        );
-      case 1: // Pantalla 2: Ejemplo
-        return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guía completo</h4>
+          <div className="p-4 space-y-4 text-center">
+            <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
-                <AccordionTrigger>Ver ejemplo</AccordionTrigger>
+                <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
                     <p><strong>Situación:</strong> “Mi amiga me pidió que le ayudara a organizar su mudanza este fin de semana, pero yo ya tenía planes de descanso. Le dije que no.”</p>
@@ -172,13 +163,10 @@ ${reassessment}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
+            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );
-      case 2: // Pantalla 3: Situación
+      case 1: // Situación
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 1: Situación desencadenante</h4>
@@ -190,7 +178,7 @@ ${reassessment}
             </div>
           </div>
         );
-      case 3: // Pantalla 4: Pensamientos
+      case 2: // Pensamientos
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 2: Pensamientos automáticos</h4>
@@ -210,7 +198,7 @@ ${reassessment}
             </div>
           </div>
         );
-      case 4: // Pantalla 5: Emociones
+      case 3: // Emociones
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 3: Emociones sentidas</h4>
@@ -230,7 +218,7 @@ ${reassessment}
                  </div>
             </div>
         );
-      case 5: // Pantalla 6: Cuerpo y Conducta
+      case 4: // Cuerpo y Conducta
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 4: Sensaciones corporales y Conducta posterior</h4>
@@ -248,7 +236,7 @@ ${reassessment}
                  </div>
             </div>
         );
-      case 6: // Pantalla 7: Función y respuesta compasiva
+      case 5: // Función y respuesta compasiva
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                  <h4 className="font-semibold text-lg text-primary">Paso 5: Función de la emoción y Respuesta racional y compasiva</h4>
@@ -266,7 +254,7 @@ ${reassessment}
                  </div>
             </div>
         );
-      case 7: // Pantalla 8: Reevaluación
+      case 6: // Reevaluación
         return (
             <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 6: Resultado de la reevaluación</h4>
@@ -282,7 +270,7 @@ ${reassessment}
                 ) : <Button onClick={nextStep} className="w-full">Ver frases de apoyo</Button>}
             </form>
         );
-      case 8: // Pantalla 9: Frases sugeridas
+      case 7: // Frases de apoyo
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500 text-center">
                 <h4 className="font-semibold text-lg text-primary">Frases de autocompasión sugeridas</h4>
@@ -295,7 +283,10 @@ ${reassessment}
                         </li>
                     ))}
                 </ul>
-                <Button onClick={resetExercise} variant="outline" className="w-full mt-4">Finalizar y hacer otro registro</Button>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={resetExercise} variant="outline">Finalizar y hacer otro registro</Button>
+                </div>
             </div>
         );
       default: return null;

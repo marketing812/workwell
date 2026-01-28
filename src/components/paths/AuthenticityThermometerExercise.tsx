@@ -25,6 +25,36 @@ export function AuthenticityThermometerExercise({ content, pathId }: Authenticit
   const [reflection, setReflection] = useState({ q1: '', q2: '', q3: '', q4: '' });
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const storageKey = `exercise-progress-${pathId}-authenticityThermometer`;
+
+  useEffect(() => {
+    setIsClient(true);
+    if (typeof window === 'undefined') return;
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setRelations(data.relations || Array(6).fill({ name: '', howIShow: '', whatIHide: '', whyIHide: '', authenticity: 5 }));
+        setReflection(data.reflection || { q1: '', q2: '', q3: '', q4: '' });
+        setStep(data.step || 0);
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    if (!isClient) return;
+    try {
+      const stateToSave = { relations, reflection, step, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [relations, reflection, step, isSaved, storageKey, isClient]);
+
 
   const handleRelationChange = (index: number, field: string, value: any) => {
     const newRelations = [...relations];

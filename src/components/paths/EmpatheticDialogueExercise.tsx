@@ -66,7 +66,10 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
               <Label htmlFor="active-part">¿Qué parte de mí está más activa en este momento?</Label>
               <Textarea id="active-part" value={activePart} onChange={e => setActivePart(e.target.value)} placeholder="Ej: mi parte complaciente, insegura, defensiva…"/>
             </div>
-            <Button onClick={() => setStep(2)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={() => setStep(2)}>Siguiente</Button>
+            </div>
           </div>
         );
       case 2: // Step 3
@@ -78,7 +81,10 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
               <Label htmlFor="empathetic-phrase">Tu frase empática hacia ti:</Label>
               <Textarea id="empathetic-phrase" value={empatheticPhrase} onChange={e => setEmpatheticPhrase(e.target.value)} />
             </div>
-            <Button onClick={() => setStep(3)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={() => setStep(3)}>Siguiente</Button>
+            </div>
           </div>
         );
       case 3: // Step 4
@@ -90,7 +96,10 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
               <Label htmlFor="my-need">Lo que necesito darme ahora es...</Label>
               <Textarea id="my-need" value={myNeed} onChange={e => setMyNeed(e.target.value)} placeholder="Ej: más claridad, más calma, permiso para poner un límite..."/>
             </div>
-            <Button onClick={() => setStep(4)} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={() => setStep(4)}>Siguiente</Button>
+            </div>
           </div>
         );
       case 4: // Step 5
@@ -102,7 +111,10 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
               <Label htmlFor="intention">Mi intención es...</Label>
               <Textarea id="intention" value={intention} onChange={e => setIntention(e.target.value)} />
             </div>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar y Continuar</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar y Continuar</Button>
+            </div>
           </div>
         );
        case 5: // New screen
