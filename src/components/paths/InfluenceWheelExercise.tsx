@@ -58,7 +58,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [situations, setSituations] = useState<Situation[]>(() =>
-    Array(5).fill(null).map(() => ({ name: '', control: '', circle: '' }))
+    Array.from({ length: 5 }, () => ({ name: '', control: '', circle: '' }))
   );
   const [actionPlans, setActionPlans] = useState<Record<number, string>>({});
   const [otherActionPlans, setOtherActionPlans] = useState<Record<number, string>>({});
@@ -157,7 +157,8 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 1:
         return (
             <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold" dangerouslySetInnerHTML={{ __html: "<b>Paso 1: Lista de situaciones</b><br>  Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable.   Ejemplo:   Preparar una presentación importante.   La actitud negativa de un compañero/a.   Que mi pareja esté de mal humor. " }}/>
+                <h4 className="font-semibold text-lg">Paso 1: Lista de situaciones</h4>
+                <p className="text-sm text-muted-foreground">Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable. Ejemplo: Preparar una presentación importante. La actitud negativa de un compañero/a. Que mi pareja esté de mal humor.</p>
                 {situations.map((sit, index) => (
                     <div key={index}>
                         <Label htmlFor={`sit-text-${index}`} className="sr-only">Situación {index + 1}:</Label>
@@ -179,7 +180,8 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 2:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold" dangerouslySetInnerHTML={{__html: "<b>Paso 2: Clasificación</b><br> Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí.   Ejemplo:  Preparar una presentación importante → Depende de mí.  Que mi pareja esté de mal humor → No depende de mí. "}}/>
+            <h4 className="font-semibold text-lg">Paso 2: Clasificación</h4>
+            <p className="text-sm text-muted-foreground">Para cada situación, selecciona si:  - Depende de mí. - No depende de mí.  - Depende parcialmente de mí. Ejemplo: Preparar una presentación importante → Depende de mí. Que mi pareja esté de mal humor → No depende de mí.</p>
             {situations.filter(sit => sit.name.trim() !== '').map((sit, index) => (
               <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                 <p className="font-semibold text-muted-foreground">{sit.name}</p>
@@ -208,7 +210,8 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 3:
         return (
            <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold" dangerouslySetInnerHTML={{__html:"<b>Paso 3: Mi rueda de influencia</b></p><p>Indica para cada situación su lugar: <br>Círculo interno: lo que depende de ti (acciones, actitudes, elecciones). <br>Círculo externo: lo que no depende de ti (conductas ajenas, pasado, azar). </p>"}}/>
+            <h4 className="font-semibold text-lg">Paso 3: Mi rueda de influencia</h4>
+            <p className="text-sm text-muted-foreground">Indica para cada situación su lugar: <br/>Círculo interno: lo que depende de ti (acciones, actitudes, elecciones). <br/>Círculo externo: lo que no depende de ti (conductas ajenas, pasado, azar).</p>
              {situations.filter(sit => sit.name.trim() !== '').map((sit, index) => (
               <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                 <p className="font-semibold text-muted-foreground">{sit.name}</p>
@@ -235,7 +238,8 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       case 4:
          return (
             <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold" dangerouslySetInnerHTML={{__html:"<b>Paso 4: Plan de acción </b><p>Para las que dependen de ti → indica1 acción concreta que puedas hacer esta semana.<br>Para las que no dependen de ti → elige una forma de soltarlas.  </p>"}}/>
+                <h4 className="font-semibold text-lg">Paso 4: Plan de acción</h4>
+                <p className="text-sm text-muted-foreground">Para las que dependen de ti → indica 1 acción concreta que puedas hacer esta semana.<br/>Para las que no dependen de ti → elige una forma de soltarlas.</p>
                 {situations.filter(sit => sit.name.trim() && sit.circle).map((sit, index) => (
                     <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                         <p className="font-semibold text-muted-foreground">{sit.name}</p>

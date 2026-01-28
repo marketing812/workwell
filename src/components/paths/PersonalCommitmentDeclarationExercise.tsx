@@ -74,7 +74,7 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label className="font-semibold" dangerouslySetInnerHTML={{ __html: "<b>Paso 1: Inspírate en tus valores </b>" }} />
+            <h4 className="font-semibold text-lg">Paso 1: Inspírate en tus valores</h4>
             <p className="text-sm text-muted-foreground">Piensa en momentos donde actuaste alineado/a contigo mismo/a y te sentiste orgulloso/a. ¿Qué valores estaban presentes?   Selecciona los que mejor te representen. (Puedes elegir más de uno)</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
               {valuesList.map(v => (
@@ -93,14 +93,14 @@ ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
             )}
           </div>
           <div className="space-y-2">
-            <Label className="font-semibold" dangerouslySetInnerHTML={{__html: "<b>Paso 2: Redacta tus frases</b>"}} />
+            <h4 className="font-semibold text-lg">Paso 2: Redacta tus frases</h4>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{__html: 'Escribe tres frases que empiecen por: “Elijo…”, “Me comprometo a…” , “Decido…” <p>Ejemplos: <br>Elijo hacerme cargo de lo que siento, sin culparme por sentirlo.<br>Me comprometo a no intentar con todo, sino con lo que elijo priorizar. <br>Decido respetar mis límites y actuar desde mi energía disponible. </p>'}} />
             <Textarea value={commitments.elijo} onChange={e => setCommitments(p => ({ ...p, elijo: e.target.value }))} placeholder="Elijo..." disabled={isSaved} />
             <Textarea value={commitments.meComprometo} onChange={e => setCommitments(p => ({ ...p, meComprometo: e.target.value }))} placeholder="Me comprometo a..." disabled={isSaved} />
             <Textarea value={commitments.decido} onChange={e => setCommitments(p => ({ ...p, decido: e.target.value }))} placeholder="Decido..." disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <Label className="font-semibold">Paso 3: Plan de recordatorio</Label>
+            <h4 className="font-semibold text-lg">Paso 3: Plan de recordatorio</h4>
             <Select onValueChange={v => setReminder(p => ({ ...p, type: v }))} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Elige un recordatorio..." /></SelectTrigger>
               <SelectContent>
