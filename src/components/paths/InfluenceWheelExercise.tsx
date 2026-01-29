@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,6 +10,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InfluenceWheelExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 interface InfluenceWheelExerciseProps {
   content: InfluenceWheelExerciseContent;
@@ -91,7 +91,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
     if (filledSituations.length < 1) {
       toast({
         title: 'Ejercicio Incompleto',
-        description: 'Por favor, completa al menos una situación para poder guardar.',
+        description: 'Por favor, completa al menos una situación para guardar.',
         variant: 'destructive',
       });
       return;
@@ -117,11 +117,11 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
 
   const renderStep = () => {
     switch (step) {
-      case 0: // Intro
+      case 0:
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">La responsabilidad no es cargar con todo, sino elegir dónde pones tu energía. Este ejercicio te ayuda a dibujar un mapa claro: lo que sí depende de ti y lo que es mejor soltar.</p>
-            <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
