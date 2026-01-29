@@ -172,8 +172,8 @@ const StopExercise = dynamic(() => import('@/components/paths/StopExercise').the
 const QuestionYourIfsExercise = dynamic(() => import('@/components/paths/QuestionYourIfsExercise').then(mod => mod.QuestionYourIfsExercise), { loading: LoaderComponent, ssr: false });
 const ExposureLadderExercise = dynamic(() => import('@/components/paths/ExposureLadderExercise').then(mod => mod.ExposureLadderExercise), { loading: LoaderComponent, ssr: false });
 const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise').then(mod => mod.CalmVisualizationExercise), { loading: LoaderComponent, ssr: false });
-const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise').then(mod => mod.ImaginedCrisisRehearsalExercise), { loading: LoaderComponent, ssr: false });
 const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise').then(mod => mod.AnxietyReframingExercise), { loading: LoaderComponent, ssr: false });
+const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise').then(mod => mod.ImaginedCrisisRehearsalExercise), { loading: LoaderComponent, ssr: false });
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -625,6 +625,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'validationIn3StepsExercise':

@@ -9,14 +9,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, ArrowLeft, Save } from 'lucide-react';
 import type { EmpathicMirrorExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
-interface EmpathicMirrorExerciseProps {
-  content: EmpathicMirrorExerciseContent;
-  pathId: string;
-}
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 
 const empathicMirrorEmotionOptions = [
   'Tristeza',
@@ -52,12 +48,16 @@ const empathicMirrorEmotionOptions = [
 ];
 
 
-export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerciseProps) {
+interface EmpathicMirrorExerciseProps {
+  content: EmpathicMirrorExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
+
+export function EmpathicMirrorExercise({ content, pathId, onComplete }: EmpathicMirrorExerciseProps) {
   const { toast } = useToast();
 
   const [step, setStep] = useState(0);
-  const [conversationPartner, setConversationPartner] = useState('');
-  const [topic, setTopic] = useState('');
   const [perceivedEmotion, setPerceivedEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
   const [mirrorPhrase, setMirrorPhrase] = useState('');
@@ -68,47 +68,82 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
 
   const next = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setPerceivedEmotion('');
+    setOtherEmotion('');
+    setMirrorPhrase('');
+    setSelectedInvalidating({});
+    setOtherInvalidating('');
+    setCommitment('');
+    setIsCompleted(false);
+  }
 
-  const handleComplete = () => {
-    if (step === 4 && !commitment.trim()) {
-        toast({ title: "Acción requerida", description: "Por favor, define tu microacción empática.", variant: "destructive" });
-        return;
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
+    if (!mirrorPhrase.trim()) {
+      toast({ title: "Frase Espejo Requerida", description: "Por favor, completa tu frase espejo para guardar.", variant: "destructive" });
+      return;
     }
+    const finalEmotion = perceivedEmotion === 'otra' ? otherEmotion : perceivedEmotion;
+
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**Emoción percibida en el otro:**
+${finalEmotion || 'No especificada.'}
+
+**Mi frase-espejo:**
+"${mirrorPhrase}"
+
+**Posibles bloqueos que tiendo a usar:**
+${Object.keys(selectedInvalidating).filter(k => selectedInvalidating[k]).map(k => `  - ${k === 'inv-other' ? `Otro: ${otherInvalidating}` : (invalidatingPhrasesOptions.find(o => o.id === k)?.label || '')}`).join('\n') || 'Ninguno seleccionado.'}
+
+**Mi compromiso para practicar:**
+${commitment || 'No especificado.'}
+`;
+
+    addNotebookEntry({ title: 'Mi Práctica de Espejo Empático', content: notebookContent, pathId });
+    toast({ title: "Ejercicio Guardado", description: "Tu práctica de Espejo Empático se ha guardado en el cuaderno." });
     setIsCompleted(true);
-    toast({ title: "Ejercicio Finalizado", description: "Has completado la práctica del Espejo Empático. ¡Buen trabajo!" });
+    onComplete();
+    next();
   };
+
+  const invalidatingPhrasesOptions = [
+      { id: 'inv-not-big-deal', label: 'No es para tanto.' },
+      { id: 'inv-positive-side', label: 'Tienes que ver el lado positivo.' },
+      { id: 'inv-i-would', label: 'Yo en tu lugar haría…' },
+      { id: 'inv-i-went-through', label: 'Yo también pasé por eso y no me afectó tanto.' },
+      { id: 'inv-at-least', label: 'Bueno, al menos no fue peor.' },
+  ];
   
   const renderStep = () => {
     switch(step) {
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
+            <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
+            <Accordion type="single" collapsible className="w-full text-left">
+              <AccordionItem value="example">
+                <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
+                    <p><strong>Situación:</strong> Una amiga te cuenta que está muy agobiada con el trabajo.</p>
+                    <p><strong>Emoción que percibes:</strong> Agobio, cansancio.</p>
+                    <p><strong>Frase-espejo:</strong> “Veo que estás agotada porque sientes que no llegas a todo.”</p>
+                    <p><strong>Reflexión final:</strong> Al decirlo así, sentí que ella se relajaba. No tuve que solucionar nada, solo acompañar.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
             <Button onClick={next}><ArrowRight className="mr-2 h-4 w-4" />Empezar mi registro</Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Paso 1: Recuerda una conversación reciente</h4>
-            <p className="text-sm text-muted-foreground">Piensa en una conversación reciente o habitual en la que alguien te compartió algo con carga emocional.</p>
-            <div className="space-y-2">
-                <Label htmlFor="partner-name">¿Con quién fue esa conversación?</Label>
-                <Textarea id="partner-name" value={conversationPartner} onChange={e => setConversationPartner(e.target.value)} placeholder="Nombre o inicial..." />
-            </div>
-             <div className="space-y-2">
-                <Label htmlFor="topic">¿Qué te compartió o qué tema estaba en juego?</Label>
-                <Textarea id="topic" value={topic} onChange={e => setTopic(e.target.value)} />
-            </div>
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
-            </div>
-          </div>
-        );
-      case 2:
-        return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Paso 2: ¿Qué emoción estaba detrás?</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 1: ¿Qué emoción estaba detrás?</h4>
              <p className="text-sm text-muted-foreground">Conecta con lo que percibiste en esa persona. No hace falta que sea exacto: simplemente sintoniza con su tono, su expresión, su energía.</p>
              <div className="space-y-2">
                 <Label htmlFor="perceived-emotion">¿Qué emoción crees que predominaba en su mensaje?</Label>
@@ -129,13 +164,13 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
             </div>
           </div>
         );
-      case 3:
+      case 2:
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 3: Practica tu frase-espejo</h4>
+                <h4 className="font-semibold text-lg text-primary">Paso 2: Practica tu frase-espejo</h4>
                 <p className="text-sm text-muted-foreground">Ahora vas a reflejar esa emoción, sin interpretar ni corregir. Usa esta fórmula como guía: “Entiendo que estés [emoción] porque [situación].”</p>
                 <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                    <p>Ejemplo: “Entiendo que estés agotada porque llevas muchos días tirando sola de todo esto.”</p>
+                    <p>Ejemplo: “Entiendo que estés frustrada porque sentías que habías dado mucho y nadie lo valoró.”</p>
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="mirror-phrase">Tu frase-espejo:</Label>
@@ -147,17 +182,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                 </div>
             </div>
         );
-      case 4:
-        const invalidatingPhrasesOptions = [
-            { id: 'inv-not-big-deal', label: 'No es para tanto.' },
-            { id: 'inv-positive-side', label: 'Tienes que ver el lado positivo.' },
-            { id: 'inv-i-would', label: 'Yo en tu lugar haría…' },
-            { id: 'inv-i-went-through', label: 'Yo también pasé por eso y no me afectó tanto.' },
-            { id: 'inv-at-least', label: 'Bueno, al menos no fue peor.' },
-        ];
+      case 3:
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 4: Detecta frases que invalidan (para evitarlas)</h4>
+                <h4 className="font-semibold text-lg text-primary">Paso 3: Detecta frases que invalidan (para evitarlas)</h4>
                 <p className="text-sm text-muted-foreground">Reflexiona con honestidad: ¿Qué tipo de frases dices a veces, sin querer, que podrían invalidar emocionalmente al otro?</p>
                  <div className="space-y-2">
                     {invalidatingPhrasesOptions.map(opt => (
@@ -179,10 +207,10 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                 </div>
             </div>
         );
-      case 5:
+      case 4:
         return (
-             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 5: Define tu próxima microacción empática</h4>
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Define tu próxima microacción empática</h4>
                 <p className="text-sm text-muted-foreground">Para integrar este aprendizaje, elige una acción pequeña y concreta que pondrás en práctica en tu próxima conversación.</p>
                 <div className="space-y-2">
                     <Label htmlFor="commitment">Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”):</Label>
@@ -190,10 +218,19 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
                 </div>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleComplete}>
-                      <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
+                  <Button onClick={handleSave}>
+                      <Save className="mr-2 h-4 w-4" /> Guardar y Finalizar
                   </Button>
                 </div>
+            </div>
+        );
+      case 5:
+        return (
+            <div className="p-6 text-center space-y-4">
+                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                 <h4 className="font-bold text-lg">¡Práctica guardada y completada!</h4>
+                 <p className="text-muted-foreground">Cuando escuchas sin corregir ni compararte, regalas al otro algo muy poderoso: el permiso de ser quien es.</p>
+                 <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
             </div>
         );
       default: return null;
@@ -204,27 +241,18 @@ export function EmpathicMirrorExercise({ content, pathId }: EmpathicMirrorExerci
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && 
-            <CardDescription className="pt-2 whitespace-pre-line">
-                {content.objective}
-                <div className="mt-4">
-                    <audio controls controlsList="nodownload" className="w-full h-10">
-                        <source src={content.audioUrl} type="audio/mp3" />
-                        Tu navegador no soporta el elemento de audio.
-                    </audio>
-                </div>
-            </CardDescription>
-        }
-      </CardHeader>
-      <CardContent>
-        {!isCompleted ? renderStep() : (
-            <div className="p-6 text-center space-y-4">
-                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
-                 <p className="text-muted-foreground">Cuando escuchas sin corregir ni compararte, regalas al otro algo muy poderoso: el permiso de ser quien es.</p>
-                 <Button onClick={() => { setStep(0); setIsCompleted(false); }} variant="outline" className="w-full">Practicar de nuevo</Button>
+        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
             </div>
         )}
+      </CardHeader>
+      <CardContent>
+        {renderStep()}
       </CardContent>
     </Card>
   );
