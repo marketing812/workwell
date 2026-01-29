@@ -66,15 +66,17 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
                 key={option.value}
                 variant="outline"
                 className={cn(
-                  "w-full h-auto text-left justify-start p-4 space-x-4",
+                  "w-full h-auto text-left justify-start p-4 space-x-4 items-start whitespace-normal",
                   selectedMood?.value === option.value && "border-primary ring-2 ring-primary"
                 )}
                 onClick={() => setSelectedMood(option)}
               >
-                <Icon className="h-8 w-8 text-muted-foreground flex-shrink-0" />
-                <div className="flex flex-col">
+                <Icon className="h-8 w-8 text-muted-foreground flex-shrink-0 mt-1" />
+                <div className="flex flex-col flex-1 min-w-0">
                   <span className="font-semibold text-base">{option.label}</span>
-                  <span className="text-sm text-muted-foreground font-normal">{option.description}</span>
+                  <span className="text-sm text-muted-foreground font-normal">
+                    {option.description}
+                  </span>
                 </div>
               </Button>
             );
