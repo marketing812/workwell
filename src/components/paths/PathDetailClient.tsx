@@ -689,7 +689,7 @@ function ContentItemRenderer({
         return <DiarioMeDiCuentaExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 7
     case 'valuesCompassExercise':
-        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
+        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} />;
     case 'energySenseMapExercise':
         return <EnergySenseMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'detoursInventoryExercise':
@@ -753,7 +753,7 @@ function ContentItemRenderer({
       return <AcceptanceWritingExercise key={index} content={contentItem} pathId={path.id} />;
     case 'selfAcceptanceAudioExercise': {
         const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
-        return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} audioUrl={exerciseContent.audioUrl} />;
+        return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} onComplete={handleComplete} audioUrl={exerciseContent.audioUrl} />;
     }
     case 'compassionateResponsibilityContractExercise':
       return <CompassionateResponsibilityContractExercise key={index} content={contentItem} pathId={path.id} />;

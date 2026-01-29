@@ -7,20 +7,34 @@ import { Button } from '@/components/ui/button';
 import { Edit3, CheckCircle } from 'lucide-react';
 import type { SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useToast } from '@/hooks/use-toast';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface SelfAcceptanceAudioExerciseProps {
   content: SelfAcceptanceAudioExerciseContent;
   pathId: string;
+  onComplete: () => void;
   audioUrl?: string; // Make audioUrl an optional prop
 }
 
-export function SelfAcceptanceAudioExercise({ content, pathId, audioUrl }: SelfAcceptanceAudioExerciseProps) {
+export function SelfAcceptanceAudioExercise({ content, pathId, onComplete, audioUrl }: SelfAcceptanceAudioExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);
 
   const handleComplete = () => {
+    if (isCompleted) return;
+
+    addNotebookEntry({
+      title: `Práctica completada: ${content.title}`,
+      content: "He completado la práctica de audio de autoaceptación y la he marcado como finalizada.",
+      pathId: pathId,
+      userId: user?.id,
+    });
+    
     setIsCompleted(true);
-    toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de hablarte con amabilidad." });
+    onComplete();
+    toast({ title: "Práctica Finalizada", description: "Tu ejercicio ha sido guardado y marcado como completado." });
   };
   
   return (
