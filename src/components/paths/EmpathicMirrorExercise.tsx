@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +12,7 @@ import { Edit3, CheckCircle, ArrowRight, ArrowLeft, Save } from 'lucide-react';
 import type { EmpathicMirrorExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 const empathicMirrorEmotionOptions = [
   'Tristeza',
@@ -56,7 +56,7 @@ interface EmpathicMirrorExerciseProps {
 
 export function EmpathicMirrorExercise({ content, pathId, onComplete }: EmpathicMirrorExerciseProps) {
   const { toast } = useToast();
-
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [perceivedEmotion, setPerceivedEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
@@ -64,7 +64,7 @@ export function EmpathicMirrorExercise({ content, pathId, onComplete }: Empathic
   const [selectedInvalidating, setSelectedInvalidating] = useState<Record<string, boolean>>({});
   const [otherInvalidating, setOtherInvalidating] = useState('');
   const [commitment, setCommitment] = useState('');
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   const next = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
@@ -76,16 +76,21 @@ export function EmpathicMirrorExercise({ content, pathId, onComplete }: Empathic
     setSelectedInvalidating({});
     setOtherInvalidating('');
     setCommitment('');
-    setIsCompleted(false);
-  }
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!mirrorPhrase.trim()) {
-      toast({ title: "Frase Espejo Requerida", description: "Por favor, completa tu frase espejo para guardar.", variant: "destructive" });
+    if (!mirrorPhrase.trim() && !commitment.trim()) {
+      toast({ title: "Ejercicio Incompleto", description: "Por favor, completa al menos tu frase-espejo y tu compromiso.", variant: "destructive" });
       return;
     }
     const finalEmotion = perceivedEmotion === 'otra' ? otherEmotion : perceivedEmotion;
+
+    const invalidatingPhrases = invalidatingPhrasesOptions.filter(opt => selectedInvalidating[opt.id]).map(opt => opt.label);
+    if (selectedInvalidating['inv-other'] && otherInvalidating.trim()) {
+      invalidatingPhrases.push(`Otra: ${otherInvalidating.trim()}`);
+    }
 
     const notebookContent = `
 **Ejercicio: ${content.title}**
@@ -97,15 +102,21 @@ ${finalEmotion || 'No especificada.'}
 "${mirrorPhrase}"
 
 **Posibles bloqueos que tiendo a usar:**
-${Object.keys(selectedInvalidating).filter(k => selectedInvalidating[k]).map(k => `  - ${k === 'inv-other' ? `Otro: ${otherInvalidating}` : (invalidatingPhrasesOptions.find(o => o.id === k)?.label || '')}`).join('\n') || 'Ninguno seleccionado.'}
+${invalidatingPhrases.length > 0 ? invalidatingPhrases.map(p => `- ${p}`).join('\n') : 'Ninguno seleccionado.'}
 
 **Mi compromiso para practicar:**
 ${commitment || 'No especificado.'}
 `;
 
-    addNotebookEntry({ title: 'Mi Práctica de Espejo Empático', content: notebookContent, pathId });
+    addNotebookEntry({ 
+      title: 'Mi Práctica de Espejo Empático', 
+      content: notebookContent, 
+      pathId: pathId,
+      userId: user?.id,
+    });
+    
     toast({ title: "Ejercicio Guardado", description: "Tu práctica de Espejo Empático se ha guardado en el cuaderno." });
-    setIsCompleted(true);
+    setIsSaved(true);
     onComplete();
     next();
   };
@@ -120,7 +131,7 @@ ${commitment || 'No especificado.'}
   
   const renderStep = () => {
     switch(step) {
-      case 0: // Intro
+      case 0: // Intro with example
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
@@ -209,7 +220,7 @@ ${commitment || 'No especificado.'}
         );
       case 4:
         return (
-            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 4: Define tu próxima microacción empática</h4>
                 <p className="text-sm text-muted-foreground">Para integrar este aprendizaje, elige una acción pequeña y concreta que pondrás en práctica en tu próxima conversación.</p>
                 <div className="space-y-2">
@@ -217,12 +228,12 @@ ${commitment || 'No especificado.'}
                     <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} />
                 </div>
                 <div className="flex justify-between w-full mt-4">
-                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave}>
+                  <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button type="submit">
                       <Save className="mr-2 h-4 w-4" /> Guardar y Finalizar
                   </Button>
                 </div>
-            </div>
+            </form>
         );
       case 5:
         return (
