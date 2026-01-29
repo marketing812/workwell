@@ -28,8 +28,9 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    // Send userId raw, not base64 encoded
-    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(userId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // CORRECTION: Encode the userId in base64 to match the GET request format.
+    const base64UserId = Buffer.from(userId).toString('base64');
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log("API Route (save-daily-check-in): Attempting to save. URL constructed.");
 
