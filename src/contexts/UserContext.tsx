@@ -1,5 +1,4 @@
-
-"use client";
+'use client';
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
@@ -57,40 +56,64 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
 
   try {
     const res = await fetch(url, { cache: 'no-store' });
-    const responseText = await res.text();
-
     if (!res.ok) {
-        console.error("Error fetching notebook:", responseText);
+        const errorText = await res.text();
+        console.error("Error fetching notebook:", errorText);
         return { entries: [], debugUrl: url };
     }
+    const responseText = await res.text();
     
-    const decryptedData = decryptDataAES(responseText);
-    
-    if (Array.isArray(decryptedData)) {
-      // The API returns an array of arrays: [["id", "timestamp", "userId", "title", "content", "pathId"], ...]
-      // We need to map this to an array of NotebookEntry objects.
-      const entries = decryptedData.map((item: any[]): NotebookEntry | null => {
-        if (Array.isArray(item) && item.length >= 5) {
-          return {
-            id: item[0],
-            timestamp: item[1],
-            // item[2] is userId, which we don't store directly in the entry object
-            title: item[3],
-            content: item[4],
-            pathId: item[5] || undefined, // pathId is optional
-            ruta: item[5] ? (item[5].replace(/-/g, ' ').charAt(0).toUpperCase() + item[5].slice(1).replace(/-/g, ' ')) : undefined, // Also map pathId to ruta
-          };
+    // The response might be a JSON string with a `data` property that is either an array or an encrypted string.
+    let apiResult;
+    try {
+        apiResult = JSON.parse(responseText);
+    } catch(e) {
+        // Fallback for when the response is not JSON but a raw encrypted string.
+        const decryptedData = decryptDataAES(responseText);
+        if (Array.isArray(decryptedData)) {
+            apiResult = { status: "OK", data: decryptedData };
+        } else {
+             console.error("Failed to parse notebook response as JSON or decrypt it:", responseText);
+             return { entries: [], debugUrl: url };
         }
-        console.warn("Invalid item format in notebook data:", item);
-        return null;
-      }).filter((item): item is NotebookEntry => item !== null); // Filter out any null entries from mapping
-      
-      return { entries, debugUrl: url };
     }
+
+    if (apiResult.status === "OK") {
+        let notebookData: any[] | null = null;
+
+        if (Array.isArray(apiResult.data)) {
+            notebookData = apiResult.data;
+        } else if (typeof apiResult.data === 'string' && apiResult.data.trim() !== '') {
+            const decrypted = decryptDataAES(apiResult.data);
+            if (Array.isArray(decrypted)) {
+                notebookData = decrypted;
+            }
+        }
+        
+        if (notebookData) {
+             const entries = notebookData.map((item: any[]): NotebookEntry | null => {
+                if (Array.isArray(item) && item.length >= 5) {
+                return {
+                    id: item[0],
+                    timestamp: item[1],
+                    // item[2] is userId
+                    title: item[3],
+                    content: item[4],
+                    pathId: item[5] || undefined,
+                    ruta: item[5] ? (item[5].replace(/-/g, ' ').charAt(0).toUpperCase() + item[5].slice(1).replace(/-/g, ' ')) : undefined,
+                };
+                }
+                return null;
+            }).filter((item): item is NotebookEntry => item !== null);
+            return { entries, debugUrl: url };
+        }
+    }
+
+    console.warn("Could not find notebook data in API response:", apiResult);
     return { entries: [], debugUrl: url };
 
   } catch (error) {
-    console.error("Failed to fetch or decrypt notebook:", error);
+    console.error("Failed to fetch or process notebook:", error);
     return { entries: [], debugUrl: url };
   }
 }
