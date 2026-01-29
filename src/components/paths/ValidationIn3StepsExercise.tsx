@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,17 +9,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
 import type { ValidationIn3StepsExerciseContent } from '@/data/paths/pathTypes';
-import { emotions } from '@/components/dashboard/EmotionalEntryForm';
+import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface ValidationIn3StepsExerciseProps {
   content: ValidationIn3StepsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function ValidationIn3StepsExercise({ content, pathId }: ValidationIn3StepsExerciseProps) {
+export function ValidationIn3StepsExercise({ content, pathId, onComplete }: ValidationIn3StepsExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [perceivedEmotion, setPerceivedEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
@@ -38,8 +41,35 @@ export function ValidationIn3StepsExercise({ content, pathId }: ValidationIn3Ste
       toast({ title: "Reflexión Incompleta", description: "Por favor, completa ambos campos de reflexión.", variant: "destructive" });
       return;
     }
+    
+    const finalEmotion = perceivedEmotion === 'otra' ? otherEmotion : (t[perceivedEmotion as keyof typeof t] || perceivedEmotion);
+
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**Emoción percibida en el otro:** ${finalEmotion || 'No especificada.'}
+
+*Paso 1 (Reconocer):* "${step1Phrase || 'No escrita.'}"
+*Paso 2 (Nombrar y dar sentido):* "${step2Phrase || 'No escrita.'}"
+*Paso 3 (Normalizar):* "${step3Phrase || 'No escrita.'}"
+
+**Reflexión sobre mis bloqueos:**
+${blockageReflection || 'No especificado.'}
+
+**Mi próximo paso para estar más presente:**
+${nextStepReflection || 'No especificado.'}
+    `;
+
+    addNotebookEntry({
+      title: `Práctica: Validación en 3 Pasos`,
+      content: notebookContent,
+      pathId: pathId,
+      userId: user?.id,
+    });
+    
+    toast({ title: "Ejercicio Finalizado y Guardado", description: "Has completado la práctica de Validación en 3 Pasos." });
     setIsCompleted(true);
-    toast({ title: "Ejercicio Finalizado", description: "Has completado la práctica de Validación en 3 Pasos. ¡Buen trabajo!" });
+    onComplete();
   };
   
   const renderStep = () => {
@@ -53,10 +83,7 @@ export function ValidationIn3StepsExercise({ content, pathId }: ValidationIn3Ste
                         <Label htmlFor="perceived-emotion">¿Qué emoción crees que sentía?</Label>
                         <Select value={perceivedEmotion} onValueChange={setPerceivedEmotion}>
                             <SelectTrigger id="perceived-emotion"><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
-                            <SelectContent>
-                                {emotions.map(e => <SelectItem key={e.value} value={e.labelKey}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}
-                                <SelectItem value="otra">Otra...</SelectItem>
-                            </SelectContent>
+                            <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.labelKey}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent>
                         </Select>
                         {perceivedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la otra emoción..." className="mt-2" />}
                     </div>
