@@ -73,12 +73,18 @@ export default function DashboardPage() {
 
       const response = await fetch(url, { cache: 'no-store' });
       const responseText = await response.text();
-
       let jsonToParse = responseText;
-      const varDumpRegex = /^string\(\d+\)\s*"([\s\S]*)"\s*$/;
-      const match = responseText.match(varDumpRegex);
-      if (match && match[1]) {
-        jsonToParse = match[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+
+      // Robustly find the start of the JSON object.
+      const jsonStartIndex = jsonToParse.indexOf('{"status"');
+      if (jsonStartIndex > -1) {
+          jsonToParse = jsonToParse.substring(jsonStartIndex);
+      }
+      
+      // It's also possible for junk to be at the end. Let's find the last '}'.
+      const jsonEndIndex = jsonToParse.lastIndexOf('}');
+      if (jsonEndIndex > -1) {
+          jsonToParse = jsonToParse.substring(0, jsonEndIndex + 1);
       }
 
       if (!response.ok) {
@@ -316,5 +322,7 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
 
     
