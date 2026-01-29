@@ -38,7 +38,24 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
     setIsSubmitting(false);
 
     if (result.success) {
-      toast({ title: "Respuesta Guardada", description: "¡Gracias por tu registro!" });
+      toast({
+        title: "Respuesta Guardada",
+        description: (
+          <div className="flex flex-col gap-2">
+            <span>¡Gracias por tu registro!</span>
+            {result.debugUrl && (
+              <a 
+                href={result.debugUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-xs underline text-muted-foreground hover:text-foreground"
+              >
+                Ver llamada a la API
+              </a>
+            )}
+          </div>
+        ),
+      });
       onClose();
       // Reset for next time
       setSelectedMood(null);

@@ -85,10 +85,6 @@ service cloud.firestore {
         allow get, list, create, update, delete: if isOwner(userId);
       }
 
-      match /mood_check_ins/{checkInId} {
-        allow get, list, create, update, delete: if isOwner(userId);
-      }
-      
       match /notebook_entries/{notebookEntryId} {
         allow get, list, create, update, delete: if isOwner(userId);
       }
