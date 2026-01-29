@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -7,8 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { AnsiedadTieneSentidoExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, ArrowRight, ArrowLeft, Save, CheckCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/contexts/UserContext';
 
 interface AnsiedadTieneSentidoExerciseProps {
   content: AnsiedadTieneSentidoExerciseContent;
@@ -16,6 +20,8 @@ interface AnsiedadTieneSentidoExerciseProps {
 }
 
 export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneSentidoExerciseProps) {
+    const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [situation, setSituation] = useState('');
     const [symptoms, setSymptoms] = useState<Record<string, boolean>>({});
@@ -23,6 +29,7 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
     const [thoughts, setThoughts] = useState('');
     const [initialThreat, setInitialThreat] = useState('');
     const [finalAction, setFinalAction] = useState('');
+    const [isSaved, setIsSaved] = useState(false);
 
     const symptomOptions = [
         { id: 'symptom-palpitations', label: 'Palpitaciones o taquicardia' },
@@ -40,6 +47,64 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
         { id: 'symptom-headache', label: 'Dolor de cabeza o presión en la frente' },
         { id: 'symptom-concentration', label: 'Dificultad para concentrarte o “mente en blanco”' },
     ];
+
+    const handleSave = () => {
+        if (!situation || !initialThreat) {
+            toast({
+                title: "Campos incompletos",
+                description: "Por favor, completa al menos la situación y el pensamiento de amenaza.",
+                variant: "destructive"
+            });
+            return;
+        }
+
+        const selectedSymptoms = symptomOptions.filter(s => symptoms[s.id]).map(s => s.label);
+        if (symptoms['symptom-other'] && otherSymptom) selectedSymptoms.push(otherSymptom);
+
+        const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**Situación (hechos):**
+${situation}
+
+**Pensamiento amenazante inicial:**
+${initialThreat}
+
+**Síntomas físicos y mentales:**
+${selectedSymptoms.length > 0 ? selectedSymptoms.join(', ') : 'No especificados.'}
+
+**Interpretación de los síntomas (miedo a la ansiedad):**
+${thoughts || 'No especificado.'}
+
+**Efecto final (qué hiciste o sentiste):**
+${finalAction || 'No especificado.'}
+        `;
+        
+        addNotebookEntry({
+            title: `Círculo de la Ansiedad: ${situation.substring(0, 25)}...`,
+            content: notebookContent,
+            pathId: pathId,
+            userId: user?.id,
+        });
+
+        toast({
+            title: "Registro Guardado",
+            description: "Tu círculo de la ansiedad se ha guardado en el cuaderno terapéutico."
+        });
+        setIsSaved(true);
+        setStep(4);
+    };
+
+    const resetExercise = () => {
+        setStep(0);
+        setSituation('');
+        setSymptoms({});
+        setOtherSymptom('');
+        setThoughts('');
+        setInitialThreat('');
+        setFinalAction('');
+        setIsSaved(false);
+    };
     
     const renderStep = () => {
         switch(step) {
@@ -132,7 +197,10 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                         <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
                         <div className="flex justify-between w-full mt-2">
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
-                           <Button onClick={() => setStep(4)}>Ver Cierre</Button>
+                           <Button onClick={handleSave} disabled={isSaved}>
+                             <Save className="mr-2 h-4 w-4" />
+                             {isSaved ? 'Guardado' : 'Guardar y Ver Cierre'}
+                           </Button>
                         </div>
                     </div>
                 );
@@ -148,7 +216,7 @@ export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneS
                         <p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p>
                         <div className="flex justify-between w-full mt-2">
                            <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
-                           <Button onClick={() => setStep(0)} variant="outline" className="w-auto">Hacer otro registro</Button>
+                           <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
                         </div>
                     </div>
                 );
