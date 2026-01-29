@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -7,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { EmpathicShieldVisualizationExerciseContent } from '@/data/paths/pathTypes';
 import { useToast } from '@/hooks/use-toast';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface EmpathicShieldVisualizationExerciseProps {
   content: EmpathicShieldVisualizationExerciseContent;
@@ -16,6 +17,7 @@ interface EmpathicShieldVisualizationExerciseProps {
 
 export function EmpathicShieldVisualizationExercise({ content, pathId, onComplete }: EmpathicShieldVisualizationExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);
   const [step, setStep] = useState(0);
 
@@ -28,6 +30,12 @@ export function EmpathicShieldVisualizationExercise({ content, pathId, onComplet
 
   const handleComplete = () => {
     if (!isCompleted) {
+      addNotebookEntry({
+        title: `Práctica completada: ${content.title}`,
+        content: "He completado la visualización de Escudo Empático y he marcado el módulo como finalizado.",
+        pathId: pathId,
+        userId: user?.id,
+      });
       setIsCompleted(true);
       toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti." });
       onComplete();
