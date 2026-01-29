@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -46,6 +47,7 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [debugUrl, setDebugUrl] = useState<string | null>(null);
   
   const filteredDimensions = useMemo(() => 
     assessmentDimensionsData.filter(dim => {
@@ -60,6 +62,7 @@ export default function DashboardPage() {
     };
     setIsLoading(true);
     setError(null); // Reset error on new load attempt
+    setDebugUrl(null);
     try {
       const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
       const API_KEY = "4463";
@@ -71,6 +74,7 @@ export default function DashboardPage() {
       const base64UserId = btoa(user.id);
       
       const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
+      setDebugUrl(url);
 
       const response = await fetch(url, { cache: 'no-store' });
       const responseText = await response.text();
@@ -236,6 +240,17 @@ export default function DashboardPage() {
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
 
+      {debugUrl && (
+        <Card>
+          <CardHeader>
+            <CardTitle>URL de la llamada a la API (getanimo)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground break-all bg-muted p-2 rounded-md">{debugUrl}</p>
+          </CardContent>
+        </Card>
+      )}
+
       {error && (
         <Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
@@ -325,16 +340,6 @@ export default function DashboardPage() {
           />
         </div>
       </section>
-
-      {chartData && chartData.length > 0 && (
-        <div className="mt-8">
-          <h3 className="text-lg font-semibold">Datos cargados para la gráfica (depuración):</h3>
-          <pre className="mt-2 p-4 bg-muted rounded-md text-xs overflow-x-auto">
-            {JSON.stringify(chartData, null, 2)}
-          </pre>
-        </div>
-      )}
-
     </div>
   );
 }
