@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -319,9 +318,21 @@ export default function DashboardPage() {
           />
         </div>
       </section>
+
+      {chartData && chartData.length > 0 && (
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold">Datos cargados para la gráfica (depuración):</h3>
+          <pre className="mt-2 p-4 bg-muted rounded-md text-xs overflow-x-auto">
+            {JSON.stringify(chartData, null, 2)}
+          </pre>
+        </div>
+      )}
+
     </div>
   );
 }
+
+    
 
     
 
