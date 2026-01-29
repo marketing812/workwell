@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import type { DailyQuestion } from '@/types/daily-question';
 import { Loader2, AlertTriangle, Save, Frown, Annoyed, Meh, Smile, Laugh } from 'lucide-react';
@@ -68,6 +68,10 @@ export function DailyCheckInPopup({ isOpen, onClose }: DailyCheckInPopupProps) {
 
     loadQuestion();
   }, [isOpen, user]);
+
+  const handleAnswerChange = (questionId: string, value: string) => {
+    setAnswers({ [questionId]: value });
+  };
 
   const handleSubmit = async () => {
     if (!user || !user.id) {
