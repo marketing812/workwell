@@ -244,43 +244,9 @@ export default function DashboardPage() {
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
 
-       {debugRegisterUrl && (
-        <Card className="shadow-md border-amber-500 bg-amber-50 dark:bg-amber-900/30">
-          <CardHeader>
-            <CardTitle className="text-lg text-amber-700 dark:text-amber-300 flex items-center">
-              <FileJson className="mr-2 h-5 w-5" />
-              Información de Depuración (Registro de Usuario)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-xs text-muted-foreground mb-2">
-              URL utilizada para enviar los datos de perfil al sistema antiguo durante el registro.
-            </p>
-            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
-              <code>{debugRegisterUrl}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      )}
+      
 
-      {debugSaveNotebookUrl && (
-        <Card className="shadow-md border-blue-500 bg-blue-50 dark:bg-blue-900/30">
-          <CardHeader>
-            <CardTitle className="text-lg text-blue-700 dark:text-blue-300 flex items-center">
-              <FileJson className="mr-2 h-5 w-5" />
-              Información de Depuración (Guardar Cuaderno)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-xs text-muted-foreground mb-2">
-              Última URL utilizada para guardar una entrada del cuaderno en el sistema antiguo.
-            </p>
-            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
-              <code>{debugSaveNotebookUrl}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      )}
+      
 
       <section aria-labelledby="quick-summary-heading">
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>

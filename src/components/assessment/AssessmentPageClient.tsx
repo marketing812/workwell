@@ -186,24 +186,7 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
         isGuided={isGuided}
       />
         
-      {generatedSaveUrl && (
-        <Card className="mt-8 shadow-md border-yellow-500 bg-yellow-50 dark:bg-yellow-900/30">
-          <CardHeader>
-              <CardTitle className="text-lg text-yellow-700 dark:text-yellow-300 flex items-center">
-              <ShieldQuestion className="mr-2 h-5 w-5" />
-              {t.generatedAssessmentSaveUrlLabel}
-              </CardTitle>
-          </CardHeader>
-          <CardContent>
-              <p className="text-xs text-muted-foreground mb-2">
-              Esta URL se genera para el intento de guardado y se muestra aquí para depuración.
-              </p>
-              <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all shadow-inner">
-              <code>{generatedSaveUrl}</code>
-              </pre>
-          </CardContent>
-        </Card>
-      )}
+      
 
       <Dialog open={isProcessingModalVisible}>
         <DialogContent className="sm:max-w-md flex flex-col items-center justify-center text-center p-8">
