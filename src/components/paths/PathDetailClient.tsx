@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -527,7 +528,7 @@ function ContentItemRenderer({
     case 'therapeuticNotebookReflection':
       return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={handleComplete} />;
     case 'twoMinuteRuleExercise':
-      return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
+      return <TwoMinuteRuleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'microPlanExercise':
         return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'futureSelfVisualizationExercise':
@@ -687,7 +688,7 @@ function ContentItemRenderer({
         return <DiarioMeDiCuentaExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 7
     case 'valuesCompassExercise':
-        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'energySenseMapExercise':
         return <EnergySenseMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'detoursInventoryExercise':
@@ -727,7 +728,7 @@ function ContentItemRenderer({
         return <MyPactExercise key={index} content={contentItem} pathId={path.id} />;
     // RUTA 9
     case 'coherenceCompassExercise':
-      return <CoherenceCompassExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CoherenceCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'smallDecisionsLogExercise':
       return <SmallDecisionsLogExercise key={index} content={contentItem} pathId={path.id} />;
     case 'internalTensionsMapExercise':
