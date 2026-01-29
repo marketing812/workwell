@@ -52,8 +52,8 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
   const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
   const raw = `${clave}|${fecha}`;
   const token = Buffer.from(raw).toString('base64');
-  const encryptedUserId = forceEncryptStringAES(userId);
-  const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getcuaderno&usuario=${encodeURIComponent(encryptedUserId)}&token=${encodeURIComponent(token)}`;
+  const base64UserId = btoa(userId);
+  const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getcuaderno&usuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
 
   try {
     const res = await fetch(url, { cache: 'no-store' });
