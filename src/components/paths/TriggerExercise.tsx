@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -23,7 +24,7 @@ interface TriggerExerciseProps {
   onComplete: () => void;
 }
 
-export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
+export default function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -285,7 +286,7 @@ export function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
               id="reflections"
               value={reflections}
               onChange={(e) => setReflections(e.target.value)}
-              placeholder="¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?   ¿Qué hice en esos momentos?   ¿Qué podría probar diferente la próxima vez? "
+              placeholder="¿Qué patrón reconoces? Por ejemplo: &quot;Siempre que me hacen un comentario crítico, pienso que no valgo, siento ansiedad y me sobreexijo&quot;.   Este ejercicio te ayuda a tomar distancia, ver tus reacciones con claridad, y empezar a transformar automatismos en elecciones conscientes. Tus emociones tienen sentido, y también pueden regularse. "
               disabled={isSaved}
             />
           </div>

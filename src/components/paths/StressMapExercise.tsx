@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,18 +11,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from '@/lib/translations';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, NotebookText, Compass } from 'lucide-react';
 import { emotions } from '@/components/dashboard/EmotionalEntryForm';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StressMapExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { StressCompass } from './StressCompass';
 
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
   onComplete: () => void;
 }
 
-export function StressMapExercise({ content, onComplete }: StressMapExerciseProps) {
+export default function StressMapExercise({ content, onComplete }: StressMapExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -40,6 +43,10 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
   const [responseAction, setResponseAction] = useState('');
   const [reflections, setReflections] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [showCompass, setShowCompass] = useState(false);
+  const [triggerSource, setTriggerSource] = useState<'externo' | 'interno' | 'ambos' | ''>('');
+
+
   const audioUrl = "https://workwellfut.com/audios/r1_desc/Tecnica-1-mapa-del-estres-personal.mp3";
 
 
@@ -78,6 +85,7 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
     setIsSaved(true);
     onComplete();
   };
+  
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -255,12 +263,29 @@ export function StressMapExercise({ content, onComplete }: StressMapExerciseProp
                 <Save className="mr-2 h-4 w-4" /> Guardar Registro
             </Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <p className="font-medium">Tu registro ha sido guardado.</p>
+            <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                <div className="flex items-center">
+                    <CheckCircle className="mr-2 h-5 w-5" />
+                    <p className="font-medium">Tu registro ha sido guardado.</p>
+                </div>
+                <Dialog open={showCompass} onOpenChange={setShowCompass}>
+                  <DialogTrigger asChild>
+                    <Button variant="link" className="text-green-800 dark:text-green-200 mt-2">
+                        <Compass className="mr-2 h-4 w-4" /> Ver mi Brújula de Estrés
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Brújula de Estrés</DialogTitle>
+                      <DialogDescription>
+                        Esta brújula visual muestra si la principal fuente de tu estrés fue interna, externa o una combinación de ambas.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <StressCompass sourceType={triggerSource} />
+                  </DialogContent>
+                </Dialog>
             </div>
           )}
-
         </form>
       </CardContent>
     </Card>
