@@ -661,6 +661,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'relationalCommitmentExercise':
