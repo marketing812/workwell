@@ -27,13 +27,14 @@ import { es } from 'date-fns/locale';
 import { z } from "zod";
 import { decryptDataAES } from "@/lib/encryption";
 
-const MoodCheckInFromApiSchema = z.object({
-    id: z.string().optional(),
-    mood: z.string(),
-    score: z.coerce.number(),
-    timestamp: z.string(),
-});
-const MoodCheckInsApiResponseSchema = z.array(MoodCheckInFromApiSchema);
+const MoodCheckInTupleSchema = z.tuple([
+  z.string(), // mood
+  z.coerce.number(), // score
+  z.string(), // userId (b64)
+  z.string(), // timestamp
+]);
+const MoodCheckInsApiResponseSchema = z.array(MoodCheckInTupleSchema);
+
 
 export default function DashboardPage() {
   const t = useTranslations();
@@ -71,31 +72,46 @@ export default function DashboardPage() {
       const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
 
       const response = await fetch(url, { cache: 'no-store' });
-      if (!response.ok) {
-        throw new Error(`Error del servidor: ${response.statusText}`);
-      }
-      
       const responseText = await response.text();
-      const decryptedData = decryptDataAES(responseText);
 
-      const validation = MoodCheckInsApiResponseSchema.safeParse(decryptedData);
+      let jsonToParse = responseText;
+      const varDumpRegex = /^string\(\d+\)\s*"([\s\S]*)"\s*$/;
+      const match = responseText.match(varDumpRegex);
+      if (match && match[1]) {
+        jsonToParse = match[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+      }
 
-      if (validation.success) {
-        const entries = validation.data.map((item, index) => ({
-            id: item.id || `mood-${Date.now()}-${index}`,
-            mood: item.mood,
-            score: item.score,
-            timestamp: new Date(item.timestamp.replace(' ', 'T')), // Handle potential space separator
-        })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
-        
-        setAllMoodCheckIns(entries);
+      if (!response.ok) {
+        throw new Error(`Error del servidor (HTTP ${response.status}): ${jsonToParse.substring(0, 150)}`);
+      }
+
+      const apiResult = JSON.parse(jsonToParse);
+      
+      if (apiResult.status === "OK" && Array.isArray(apiResult.data)) {
+        const validation = MoodCheckInsApiResponseSchema.safeParse(apiResult.data);
+
+        if (validation.success) {
+          const entries = validation.data.map((item, index) => ({
+              id: `mood-${Date.now()}-${index}`, // Generate a unique ID for React key
+              mood: item[0],
+              score: item[1],
+              // item[2] is userId, which we are not using on the client
+              timestamp: new Date(item[3].replace(' ', 'T')),
+          })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+          
+          setAllMoodCheckIns(entries);
+        } else {
+           console.error("Error validando los datos de ánimo desde la API:", validation.error);
+           toast({
+              title: "Error de Datos",
+              description: "Los datos de estado de ánimo recibidos no son válidos.",
+              variant: "destructive",
+            });
+        }
+      } else if (apiResult.message && (apiResult.message.toLowerCase().includes("no hay registros") || apiResult.message.toLowerCase().includes("no existen registros"))) {
+          setAllMoodCheckIns([]);
       } else {
-         console.error("Error validando los datos de ánimo desde la API:", validation.error);
-         toast({
-            title: "Error de Datos",
-            description: "Los datos de estado de ánimo recibidos no son válidos.",
-            variant: "destructive",
-          });
+        throw new Error(`Respuesta de API inesperada: ${apiResult.message || 'Sin mensaje'}`);
       }
 
     } catch (error) {
@@ -300,3 +316,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
