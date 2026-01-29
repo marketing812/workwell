@@ -13,6 +13,8 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { DailyCheckInProvider, useDailyCheckIn } from '@/hooks/use-daily-check-in';
 import { DailyCheckInPopup } from '@/components/daily-check-in/DailyCheckInPopup';
 import * as React from 'react';
+import { MoodCheckInProvider, useMoodCheckIn } from '@/hooks/use-mood-check-in';
+import { MoodCheckInPopup } from '@/components/mood-check-in/MoodCheckInPopup';
 
 // Wrapper component to manage the daily check-in popup logic
 function DailyCheckInManager({ children }: { children: ReactNode }) {
@@ -23,6 +25,17 @@ function DailyCheckInManager({ children }: { children: ReactNode }) {
       <DailyCheckInPopup isOpen={showPopup} onClose={closePopup} />
     </>
   );
+}
+
+// New manager for Mood Check-in
+function MoodCheckInManager({ children }: { children: ReactNode }) {
+    const { showPopup, closePopup } = useMoodCheckIn();
+    return (
+        <>
+            {children}
+            <MoodCheckInPopup isOpen={showPopup} onClose={closePopup} />
+        </>
+    );
 }
 
 // This is the main client layout component
@@ -56,15 +69,19 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
   return (
     <TooltipProvider>
       <DailyCheckInProvider>
-        <SidebarProvider>
-          <div className="flex min-h-screen w-full flex-col">
-            <AppSidebar />
-            <AppHeader />
-            <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-              <DailyCheckInManager>{children}</DailyCheckInManager>
-            </main>
-          </div>
-        </SidebarProvider>
+        <MoodCheckInProvider>
+          <SidebarProvider>
+            <div className="flex min-h-screen w-full flex-col">
+              <AppSidebar />
+              <AppHeader />
+              <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+                <DailyCheckInManager>
+                  <MoodCheckInManager>{children}</MoodCheckInManager>
+                </DailyCheckInManager>
+              </main>
+            </div>
+          </SidebarProvider>
+        </MoodCheckInProvider>
       </DailyCheckInProvider>
     </TooltipProvider>
   );

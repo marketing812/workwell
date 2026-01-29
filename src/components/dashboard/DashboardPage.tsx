@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -31,7 +32,8 @@ import { useFirestore } from "@/firebase/provider";
 import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
 
 const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
-const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
+const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
+
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5,
@@ -60,9 +62,13 @@ export default function DashboardPage() {
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isLoadingEntries, setIsLoadingEntries] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
-  const [debugRegisterUrl, setDebugRegisterUrl] = useState<string | null>(null);
-  const [debugDeleteUrl, setDebugDeleteUrl] = useState<string | null>(null);
   
+  const filteredDimensions = useMemo(() => 
+    assessmentDimensionsData.filter(dim => {
+        const dimIdNum = parseInt(dim.id.replace('dim', ''), 10);
+        return dimIdNum <= 13;
+    }), []);
+
   const loadEntries = useCallback(async () => {
     if (!user?.id || !db) {
         setIsLoadingEntries(false);
@@ -105,13 +111,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsClient(true);
-    if (typeof window !== 'undefined') {
-        const storedRegisterUrl = sessionStorage.getItem(DEBUG_REGISTER_FETCH_URL_KEY);
-        if (storedRegisterUrl) setDebugRegisterUrl(storedRegisterUrl);
-        
-        const storedDeleteUrl = sessionStorage.getItem(DEBUG_DELETE_FETCH_URL_KEY);
-        if (storedDeleteUrl) setDebugDeleteUrl(storedDeleteUrl);
-    }
     if (user?.id && db) {
       loadEntries();
       const assessmentHistory = getAssessmentHistory();
@@ -227,43 +226,9 @@ export default function DashboardPage() {
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
 
-       {debugRegisterUrl && (
-        <Card className="shadow-md border-amber-500 bg-amber-50 dark:bg-amber-900/30">
-          <CardHeader>
-            <CardTitle className="text-lg text-amber-700 dark:text-amber-300 flex items-center">
-              <FileJson className="mr-2 h-5 w-5" />
-              Información de Depuración (Registro de Usuario)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-xs text-muted-foreground mb-2">
-              URL utilizada para enviar los datos de perfil al sistema antiguo durante el registro.
-            </p>
-            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
-              <code>{debugRegisterUrl}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      )}
+      
 
-      {debugDeleteUrl && (
-        <Card className="shadow-md border-destructive bg-destructive/10 dark:bg-destructive/20">
-          <CardHeader>
-            <CardTitle className="text-lg text-destructive flex items-center">
-              <FileJson className="mr-2 h-5 w-5" />
-              Información de Depuración (Borrado de Usuario)
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-xs text-muted-foreground mb-2">
-              URL utilizada para solicitar el borrado de usuario en el sistema antiguo.
-            </p>
-            <pre className="text-xs bg-background p-2 rounded overflow-x-auto whitespace-pre-wrap break-all">
-              <code>{debugDeleteUrl}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      )}
+      
 
       <section aria-labelledby="quick-summary-heading">
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>
@@ -400,7 +365,7 @@ export default function DashboardPage() {
             {latestAssessment ? (
                 <EmotionalProfileChart 
                     results={latestAssessment.data}
-                    assessmentDimensions={assessmentDimensionsData}
+                    assessmentDimensions={filteredDimensions}
                     className="lg:h-[450px]"
                 />
             ) : (
@@ -414,7 +379,7 @@ export default function DashboardPage() {
           <MoodEvolutionChart
             data={chartData}
             title={t.myEvolution}
-            description={t.myEvolutionDescription}
+            description="Gráfico de tu estado de ánimo general a lo largo del tiempo."
             className="lg:h-[450px]"
           />
         </div>

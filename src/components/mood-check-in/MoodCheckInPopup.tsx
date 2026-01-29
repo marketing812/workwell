@@ -1,0 +1,92 @@
+
+"use client";
+
+import { useState } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/contexts/UserContext';
+import { Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { moodCheckInOptions, type MoodOption } from '@/data/moodCheckInOptions';
+import { saveMoodCheckIn } from '@/actions/mood-check-in';
+
+interface MoodCheckInPopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
+  const { user } = useUser();
+  const { toast } = useToast();
+  const [selectedMood, setSelectedMood] = useState<MoodOption | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!user || !user.id || !selectedMood) {
+      toast({ title: "Error", description: "No se puede guardar la respuesta.", variant: "destructive" });
+      return;
+    }
+    setIsSubmitting(true);
+
+    const result = await saveMoodCheckIn({
+      userId: user.id,
+      mood: selectedMood.value,
+      score: selectedMood.score,
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      toast({ title: "Respuesta Guardada", description: "¡Gracias por tu registro!" });
+      onClose();
+      // Reset for next time
+      setSelectedMood(null);
+    } else {
+      toast({
+        title: "Error al Guardar",
+        description: result.error || "No se pudo comunicar con el servidor.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle className="text-center text-2xl">¿Cómo te sientes hoy?</DialogTitle>
+          <DialogDescription className="text-center">En general, ¿cómo ha sido tu estado de ánimo?</DialogDescription>
+        </DialogHeader>
+        <div className="py-4 space-y-3">
+          {moodCheckInOptions.map((option) => {
+            const Icon = option.icon;
+            return (
+              <Button
+                key={option.value}
+                variant="outline"
+                className={cn(
+                  "w-full h-auto text-left justify-start p-4 space-x-4",
+                  selectedMood?.value === option.value && "border-primary ring-2 ring-primary"
+                )}
+                onClick={() => setSelectedMood(option)}
+              >
+                <Icon className="h-8 w-8 text-muted-foreground flex-shrink-0" />
+                <div className="flex flex-col">
+                  <span className="font-semibold text-base">{option.label}</span>
+                  <span className="text-sm text-muted-foreground font-normal">{option.description}</span>
+                </div>
+              </Button>
+            );
+          })}
+        </div>
+        <div className="flex justify-end pt-4">
+            <Button onClick={handleSubmit} disabled={!selectedMood || isSubmitting}>
+                {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                Guardar Respuesta
+            </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}

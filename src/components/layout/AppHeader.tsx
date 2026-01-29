@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, User as UserIcon, Settings as SettingsIcon, Sun, Moon, Laptop, ListChecks, MessageSquareQuote } from "lucide-react";
+import { LogOut, User as UserIcon, Settings as SettingsIcon, Sun, Moon, Laptop, ListChecks, MessageSquareQuote, Smile } from "lucide-react";
 import { useUser } from "@/contexts/UserContext";
 import { useTranslations } from "@/lib/translations";
 import Link from "next/link";
@@ -27,6 +27,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { usePathname } from "next/navigation";
 import { useDailyCheckIn } from '@/hooks/use-daily-check-in'; // Importar el hook
+import { useMoodCheckIn } from "@/hooks/use-mood-check-in";
 
 export function AppHeader() {
   const { user, logout } = useUser();
@@ -36,6 +37,7 @@ export function AppHeader() {
   const { activePath } = useActivePath();
   const pathname = usePathname();
   const { forceOpen } = useDailyCheckIn(); // Usar el hook del check-in
+  const { forceOpen: forceMoodCheckInOpen } = useMoodCheckIn();
 
   const modulesRemaining = activePath ? activePath.totalModules - activePath.completedModuleIds.length : 0;
 
@@ -59,6 +61,18 @@ export function AppHeader() {
       </div>
       
       <div className="flex items-center gap-2">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" size="icon" onClick={forceMoodCheckInOpen}>
+              <Smile className="h-5 w-5 text-primary" />
+              <span className="sr-only">Chequeo de Ánimo</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Chequeo de Ánimo</p>
+          </TooltipContent>
+        </Tooltip>
+
         <Tooltip>
             <TooltipTrigger asChild>
                 <Button variant="ghost" size="icon" onClick={forceOpen}>
@@ -154,5 +168,3 @@ export function AppHeader() {
     </header>
   );
 }
-
-    
