@@ -28,8 +28,8 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    // Base64 encode the user ID separately
-    const base64UserId = btoa(userId);
+    // Base64 encode the user ID separately using Buffer for server-side compatibility
+    const base64UserId = Buffer.from(userId).toString('base64');
     
     const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
