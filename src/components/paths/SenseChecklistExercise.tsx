@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState } from 'react';
@@ -7,12 +8,16 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, ArrowLeft, Save } from 'lucide-react';
 import type { SenseChecklistExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+
 
 interface SenseChecklistExerciseProps {
   content: SenseChecklistExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const checklistItems = [
@@ -23,10 +28,12 @@ const checklistItems = [
     { id: 'check-valor', label: '¿Estoy honrando un valor o evitando un conflicto?' },
 ];
 
-export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerciseProps) {
+export function SenseChecklistExercise({ content, pathId, onComplete }: SenseChecklistExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [selections, setSelections] = useState<Record<string, boolean>>({});
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleSelectionChange = (id: string, checked: boolean) => {
     setSelections(prev => ({...prev, [id]: checked}));
@@ -34,21 +41,61 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setSelections({});
+    setIsSaved(false);
+  };
+
+  const handleSave = () => {
+    const selectedItems = checklistItems
+      .filter(item => selections[item.id])
+      .map(item => item.label);
+
+    if (selectedItems.length === 0) {
+      toast({
+        title: "Checklist vacío",
+        description: "Por favor, marca al menos una pregunta para guardar tu reflexión.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**Preguntas que resonaron conmigo:**
+${selectedItems.map(item => `- ${item}`).join('\n')}
+    `;
+
+    addNotebookEntry({
+      title: 'Checklist del Sentido',
+      content: notebookContent,
+      pathId: pathId,
+      userId: user?.id,
+    });
+
+    toast({ title: 'Checklist Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });
+    setIsSaved(true);
+    if(onComplete) onComplete();
+    nextStep();
+  };
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && (
-          <CardDescription className="pt-2">
-            {content.objective}
-            <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-              </audio>
-            </div>
-          </CardDescription>
+            <CardDescription className="pt-2">
+                {content.objective}
+                <div className="mt-4">
+                    <audio controls controlsList="nodownload" className="w-full">
+                        <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3" type="audio/mp3" />
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+            </CardDescription>
         )}
       </CardHeader>
       <CardContent>
@@ -72,7 +119,9 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep}>Revisar mis respuestas <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    <Button onClick={handleSave}>
+                        <Save className="mr-2 h-4 w-4" /> Guardar y Revisar
+                    </Button>
                  </div>
             </div>
         )}
@@ -84,7 +133,7 @@ export function SenseChecklistExercise({ content, pathId }: SenseChecklistExerci
                 <p className="italic">“Cada decisión es una oportunidad de acercarte a la vida que sí quieres habitar.”</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={() => setStep(0)} variant="outline" className="w-auto">Hacer otro checklist</Button>
+                    <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro checklist</Button>
                 </div>
             </div>
         )}

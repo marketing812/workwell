@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -701,7 +702,7 @@ function ContentItemRenderer({
     case 'directedDecisionsExercise':
         return <DirectedDecisionsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'senseChecklistExercise':
-        return <SenseChecklistExercise key={index} content={contentItem} pathId={path.id} />;
+      return <SenseChecklistExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'unfulfilledNeedsExercise':
         return <UnfulfilledNeedsExercise key={index} content={contentItem} pathId={path.id} />;
     case 'braveRoadmapExercise':
