@@ -58,6 +58,7 @@ export default function DashboardPage() {
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [debugUrl, setDebugUrl] = useState<string | null>(null);
+  const [debugSaveUrl, setDebugSaveUrl] = useState<string | null>(null);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   
   const filteredDimensions = useMemo(() => 
@@ -165,7 +166,7 @@ export default function DashboardPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [user?.id, toast]);
+  }, [user?.id]);
 
   useEffect(() => {
     setIsClient(true);
@@ -181,6 +182,18 @@ export default function DashboardPage() {
      if (user && user.id && !user.ageRange) { 
       fetchUserProfile(user.id);
     }
+
+    const handleUrlUpdate = () => {
+      if (typeof window !== 'undefined') {
+        const url = sessionStorage.getItem('workwell-debug-daily-checkin-url');
+        setDebugSaveUrl(url);
+      }
+    };
+    window.addEventListener('daily-checkin-url-updated', handleUrlUpdate);
+    handleUrlUpdate();
+    return () => {
+      window.removeEventListener('daily-checkin-url-updated', handleUrlUpdate);
+    };
   }, [user, fetchUserProfile, loadMoodCheckIns]);
 
   const lastMood = useMemo(() => {
@@ -275,6 +288,20 @@ export default function DashboardPage() {
         </h1>
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
+
+       {debugSaveUrl && (
+        <Card>
+          <CardHeader>
+            <CardTitle>URL de Depuración (Guardar Pregunta del Día)</CardTitle>
+            <CardDescription>
+              Esta es la URL que se está utilizando para guardar tu respuesta a la pregunta del día.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs bg-muted p-2 rounded-md break-all">{debugSaveUrl}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {error && (
         <Alert variant="destructive">

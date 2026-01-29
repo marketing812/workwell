@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -16,6 +17,8 @@ import { useTranslations } from '@/lib/translations';
 const iconMap: Record<string, React.ElementType> = {
   Frown, Annoyed, Meh, Smile, Laugh,
 };
+
+const DAILY_CHECKIN_URL_KEY = 'workwell-debug-daily-checkin-url';
 
 interface DailyCheckInPopupProps {
   isOpen: boolean;
@@ -66,10 +69,6 @@ export function DailyCheckInPopup({ isOpen, onClose }: DailyCheckInPopupProps) {
     loadQuestion();
   }, [isOpen, user]);
 
-  const handleAnswerChange = (questionId: string, value: string) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
-  };
-
   const handleSubmit = async () => {
     if (!user || !user.id) {
       toast({ title: "Error", description: "No se puede guardar la respuesta sin un usuario identificado.", variant: "destructive" });
@@ -97,6 +96,11 @@ export function DailyCheckInPopup({ isOpen, onClose }: DailyCheckInPopupProps) {
       });
 
       const result = await response.json();
+      
+      if (result.debugUrl && typeof window !== 'undefined') {
+        sessionStorage.setItem(DAILY_CHECKIN_URL_KEY, result.debugUrl);
+        window.dispatchEvent(new Event('daily-checkin-url-updated'));
+      }
 
       if (response.ok && result.success) {
         toast({ title: "Respuesta Guardada", description: "Gracias por tu registro diario." });
