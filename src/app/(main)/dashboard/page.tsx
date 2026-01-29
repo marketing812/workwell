@@ -27,13 +27,12 @@ import { es } from 'date-fns/locale';
 import { z } from "zod";
 import { decryptDataAES } from "@/lib/encryption";
 
-const MoodCheckInTupleSchema = z.tuple([
-  z.string(), // mood
-  z.coerce.number(), // score
-  z.string(), // userId (b64)
-  z.string(), // timestamp
-]);
-const MoodCheckInsApiResponseSchema = z.array(MoodCheckInTupleSchema);
+const MoodCheckInObjectSchema = z.object({
+  mood: z.string(),
+  score: z.coerce.number(),
+  timestamp: z.string(),
+});
+const MoodCheckInsApiResponseSchema = z.array(MoodCheckInObjectSchema);
 
 
 export default function DashboardPage() {
@@ -99,10 +98,9 @@ export default function DashboardPage() {
         if (validation.success) {
           const entries = validation.data.map((item, index) => ({
               id: `mood-${Date.now()}-${index}`, // Generate a unique ID for React key
-              mood: item[0],
-              score: item[1],
-              // item[2] is userId, which we are not using on the client
-              timestamp: new Date(item[3].replace(' ', 'T')),
+              mood: item.mood,
+              score: item.score,
+              timestamp: new Date(item.timestamp.replace(' ', 'T')),
           })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
           
           setAllMoodCheckIns(entries);
@@ -332,9 +330,5 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
-
-    
 
     
