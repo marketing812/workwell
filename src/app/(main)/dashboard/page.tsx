@@ -27,13 +27,12 @@ import { es } from 'date-fns/locale';
 import { z } from "zod";
 import { decryptDataAES } from "@/lib/encryption";
 
-const MoodCheckInTupleSchema = z.tuple([
-  z.string(), // mood
-  z.coerce.number(), // score
-  z.string(), // userId (ignored)
-  z.string(), // timestamp
-]);
-const MoodCheckInsApiResponseSchema = z.array(MoodCheckInTupleSchema);
+const MoodCheckInObjectSchema = z.object({
+  mood: z.string(),
+  score: z.coerce.number(),
+  timestamp: z.string(),
+});
+const MoodCheckInsApiResponseSchema = z.array(MoodCheckInObjectSchema);
 
 
 export default function DashboardPage() {
@@ -74,25 +73,15 @@ export default function DashboardPage() {
       const base64UserId = btoa(user.id);
       
       const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
-      setDebugUrl(url);
-
+      
       const response = await fetch(url, { cache: 'no-store' });
       const responseText = await response.text();
-      let jsonToParse = responseText;
-
-      // Robustly find the JSON object within the response string.
-      const firstBrace = jsonToParse.indexOf('{');
-      const lastBrace = jsonToParse.lastIndexOf('}');
-      if (firstBrace === -1 || lastBrace === -1 || lastBrace < firstBrace) {
-          throw new Error(`La respuesta de la API no contiene un JSON válido. Respuesta recibida: ${responseText.substring(0, 200)}`);
-      }
-      jsonToParse = jsonToParse.substring(firstBrace, lastBrace + 1);
 
       if (!response.ok) {
-        throw new Error(`Error del servidor (HTTP ${response.status}): ${jsonToParse.substring(0, 150)}`);
+        throw new Error(`Error del servidor (HTTP ${response.status}): ${responseText.substring(0, 150)}`);
       }
 
-      const apiResult = JSON.parse(jsonToParse);
+      const apiResult = JSON.parse(responseText);
       
       if (apiResult.status === "OK" && Array.isArray(apiResult.data)) {
         const validation = MoodCheckInsApiResponseSchema.safeParse(apiResult.data);
@@ -100,9 +89,9 @@ export default function DashboardPage() {
         if (validation.success) {
           const entries = validation.data.map((item, index) => ({
               id: `mood-${Date.now()}-${index}`, // Generate a unique ID for React key
-              mood: item[0],
-              score: item[1],
-              timestamp: new Date(item[3].replace(' ', 'T')),
+              mood: item.mood,
+              score: item.score,
+              timestamp: new Date(item.timestamp.replace(' ', 'T')),
           })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
           
           setAllMoodCheckIns(entries);
@@ -240,17 +229,6 @@ export default function DashboardPage() {
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
 
-      {debugUrl && (
-        <Card>
-          <CardHeader>
-            <CardTitle>URL de la llamada a la API (getanimo)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground break-all bg-muted p-2 rounded-md">{debugUrl}</p>
-          </CardContent>
-        </Card>
-      )}
-
       {error && (
         <Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
@@ -340,6 +318,19 @@ export default function DashboardPage() {
           />
         </div>
       </section>
+
+      {chartData.length > 0 && (
+        <Card>
+            <CardHeader>
+                <CardTitle>Datos cargados para la gráfica (depuración):</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <pre className="mt-2 text-xs whitespace-pre-wrap bg-muted p-2 rounded">
+                    {JSON.stringify(chartData, null, 2)}
+                </pre>
+            </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
