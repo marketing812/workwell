@@ -10,6 +10,17 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { PersonalManifestoExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/contexts/UserContext';
+
+
+interface PersonalManifestoExerciseProps {
+  content: PersonalManifestoExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
 
 const reactionOptions = [
     { id: 'reac-prisa', label: 'Actué desde la prisa.' },
@@ -18,12 +29,9 @@ const reactionOptions = [
     { id: 'reac-desconecte', label: 'Me desconecté de lo que sentía.' },
 ];
 
-interface PersonalManifestoExerciseProps {
-  content: PersonalManifestoExerciseContent;
-  pathId: string;
-}
-
-export function PersonalManifestoExercise({ content, pathId }: PersonalManifestoExerciseProps) {
+export function PersonalManifestoExercise({ content, pathId, onComplete }: PersonalManifestoExerciseProps) {
+    const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [situation, setSituation] = useState('');
     const [reactions, setReactions] = useState<Record<string, boolean>>({});
@@ -31,7 +39,8 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
     const [coherenceChoice, setCoherenceChoice] = useState<'flexibilidad' | 'incoherencia' | 'duda' | ''>('');
     const [compassionatePhrase, setCompassionatePhrase] = useState('');
     const [adjustment, setAdjustment] = useState('');
-
+    const [isSaved, setIsSaved] = useState(false);
+    
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
     
@@ -43,11 +52,36 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         setCoherenceChoice('');
         setCompassionatePhrase('');
         setAdjustment('');
+        setIsSaved(false);
     };
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
-        // Saving logic would go here
+        const selectedReactions = reactionOptions.filter(r => reactions[r.id]).map(r => r.label);
+        if (reactions['reac-otro'] && otherReaction) {
+            selectedReactions.push(otherReaction);
+        }
+
+        if (!adjustment.trim() || !situation.trim() || !coherenceChoice.trim()) {
+             toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa los pasos principales para guardar.', variant: 'destructive'});
+            return;
+        }
+
+        const notebookContent = `
+**Ejercicio: ${content.title}**
+
+*Situación:* ${situation || 'No especificada.'}
+*Reacción sin juicio:* ${selectedReactions.join(', ') || 'No especificada.'}
+*Evaluación de coherencia:* ${coherenceChoice || 'No evaluado.'}
+*Frase compasiva:* "${compassionatePhrase || 'No escrita.'}"
+*Ajuste para la próxima vez:* ${adjustment}
+        `;
+
+        addNotebookEntry({ title: 'Mi Manifiesto de Coherencia', content: notebookContent, pathId, userId: user?.id });
+        toast({ title: 'Manifiesto Guardado' });
+        setIsSaved(true);
+        onComplete();
+        nextStep();
     };
 
     const renderStep = () => {
@@ -127,8 +161,8 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
                 );
             case 4:
                 return (
-                    <div className="p-4 space-y-4">
-                        <h4 className="font-semibold">Paso 4: Elige un ajuste sencillo</h4>
+                    <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 4: Elige un ajuste sencillo</h4>
                         <p className="text-sm text-muted-foreground">Piensa en un pequeño paso para la próxima vez que te ayude a sentirte más coherente.</p>
                         <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                             <p>Ejemplo:</p>
@@ -139,11 +173,11 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
                         </div>
                         <Label htmlFor="adjustment">Pequeño paso:</Label>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between mt-2">
-                            <Button variant="outline" onClick={prevStep}>Atrás</Button>
-                            <Button onClick={handleSave} disabled={!adjustment.trim()}><Save className="mr-2 h-4 w-4"/> Guardar mi ajuste compasivo</Button>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi ajuste compasivo</Button>
                         </div>
-                    </div>
+                    </form>
                 );
             case 5:
                 return (
@@ -177,7 +211,3 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         </Card>
     );
 }
-
-    
-
-    

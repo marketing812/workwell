@@ -743,7 +743,7 @@ function ContentItemRenderer({
     case 'environmentEvaluationExercise':
       return <EnvironmentEvaluationExercise key={index} content={contentItem} pathId={path.id} />;
     case 'personalManifestoExercise':
-      return <PersonalManifestoExercise key={index} content={contentItem} pathId={path.id} />;
+      return <PersonalManifestoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 10
     case 'complaintTransformationExercise':
       return <ComplaintTransformationExercise key={index} content={contentItem} pathId={path.id} />;
