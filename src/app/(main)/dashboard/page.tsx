@@ -19,20 +19,27 @@ import Link from "next/link";
 import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
-import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, type Timestamp } from "firebase/firestore";
 import type { MoodCheckIn } from "@/types/mood-check-in";
 import { moodCheckInOptions } from "@/data/moodCheckInOptions";
 import { pathsData } from "@/data/pathsData";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { z } from "zod";
+import { decryptDataAES } from "@/lib/encryption";
+
+const MoodCheckInFromApiSchema = z.object({
+    id: z.string().optional(),
+    mood: z.string(),
+    score: z.coerce.number(),
+    timestamp: z.string(),
+});
+const MoodCheckInsApiResponseSchema = z.array(MoodCheckInFromApiSchema);
 
 export default function DashboardPage() {
   const t = useTranslations();
   const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
-  const db = useFirestore();
 
   const [isClient, setIsClient] = useState(false);
   const [allMoodCheckIns, setAllMoodCheckIns] = useState<MoodCheckIn[]>([]);
@@ -46,39 +53,66 @@ export default function DashboardPage() {
     }), []);
 
   const loadMoodCheckIns = useCallback(async () => {
-    if (!user?.id || !db) {
+    if (!user?.id) {
         setIsLoading(false);
         return;
     };
     setIsLoading(true);
     try {
-      const checkInsRef = collection(db, "users", user.id, "mood_check_ins");
-      const q = query(checkInsRef, orderBy("timestamp", "desc"));
-      const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          return { 
-              id: doc.id, 
-              ...data,
-          } as MoodCheckIn
-      });
+      const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+      const API_KEY = "4463";
+      
+      const clave = "SJDFgfds788sdfs8888KLLLL";
+      const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
+      const raw = `${clave}|${fecha}`;
+      const token = Buffer.from(raw).toString('base64');
+      const base64UserId = btoa(user.id);
+      
+      const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
 
-      setAllMoodCheckIns(entries);
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Error del servidor: ${response.statusText}`);
+      }
+      
+      const responseText = await response.text();
+      const decryptedData = decryptDataAES(responseText);
+
+      const validation = MoodCheckInsApiResponseSchema.safeParse(decryptedData);
+
+      if (validation.success) {
+        const entries = validation.data.map((item, index) => ({
+            id: item.id || `mood-${Date.now()}-${index}`,
+            mood: item.mood,
+            score: item.score,
+            timestamp: new Date(item.timestamp.replace(' ', 'T')), // Handle potential space separator
+        })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+        
+        setAllMoodCheckIns(entries);
+      } else {
+         console.error("Error validando los datos de ánimo desde la API:", validation.error);
+         toast({
+            title: "Error de Datos",
+            description: "Los datos de estado de ánimo recibidos no son válidos.",
+            variant: "destructive",
+          });
+      }
+
     } catch (error) {
-      console.error("Error loading mood check-ins:", error);
+      console.error("Error cargando los registros de ánimo:", error);
       toast({
         title: "Error al Cargar Registros de Ánimo",
-        description: "No se pudieron obtener los registros de estado de ánimo.",
+        description: "No se pudieron obtener los registros de estado de ánimo desde WordPress.",
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
-  }, [user?.id, db, toast]);
+  }, [user?.id, toast]);
 
   useEffect(() => {
     setIsClient(true);
-    if (user?.id && db) {
+    if (user?.id) {
       loadMoodCheckIns();
       const assessmentHistory = getAssessmentHistory();
       if (assessmentHistory.length > 0) {
@@ -87,10 +121,10 @@ export default function DashboardPage() {
     } else {
         setIsLoading(false);
     }
-     if (user && user.id && !user.ageRange && db) { 
+     if (user && user.id && !user.ageRange) { 
       fetchUserProfile(user.id);
     }
-  }, [user, fetchUserProfile, loadMoodCheckIns, db]);
+  }, [user, fetchUserProfile, loadMoodCheckIns]);
 
   const lastMood = useMemo(() => {
     if (allMoodCheckIns.length === 0) return null;
@@ -109,7 +143,7 @@ export default function DashboardPage() {
       .map(entry => {
         const moodOption = moodCheckInOptions.find(e => e.value === entry.mood);
         const moodLabel = moodOption ? moodOption.label : entry.mood;
-        const entryDate = entry.timestamp instanceof Date ? entry.timestamp : (entry.timestamp as Timestamp).toDate();
+        const entryDate = entry.timestamp as Date; // Now it's always a Date object
         return {
           date: format(entryDate, "dd MMM", { locale: es }),
           moodScore: entry.score,
@@ -125,7 +159,7 @@ export default function DashboardPage() {
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     return allMoodCheckIns.filter(entry => {
         if (!entry.timestamp) return false;
-        const entryDate = entry.timestamp instanceof Date ? entry.timestamp : (entry.timestamp as Timestamp).toDate();
+        const entryDate = entry.timestamp as Date;
         return entryDate > oneWeekAgo;
     }).length;
   }, [isClient, allMoodCheckIns]);
@@ -152,7 +186,7 @@ export default function DashboardPage() {
 
     const recentCheckIns = allMoodCheckIns.filter(entry => {
       if (!entry.timestamp) return false;
-      const entryDate = entry.timestamp instanceof Date ? entry.timestamp : (entry.timestamp as Timestamp).toDate();
+      const entryDate = entry.timestamp as Date;
       return entryDate > oneWeekAgo;
     });
 
