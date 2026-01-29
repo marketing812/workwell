@@ -47,7 +47,7 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
 
     const intervalId = setInterval(() => {
       checkShouldShowPopup();
-    }, CHECK_INTERVAL);
+    }, CHECK_INTERVAL_MS);
 
     return () => {
       clearTimeout(initialTimer);
