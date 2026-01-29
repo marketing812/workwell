@@ -119,11 +119,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const fetchUserProfile = useCallback(async (userId: string) => {
-    if (!db || !userId) return;
-
+    if (!db || !userId) {
+      return;
+    }
     const userDocRef = doc(db, "users", userId);
-    
-    getDoc(userDocRef).then(userDoc => {
+    try {
+      const userDoc = await getDoc(userDocRef);
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(prevUser => ({
@@ -136,14 +137,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
       }
-    }).catch(error => {
-        errorEmitter.emit('permission-error', new FirestorePermissionError({
-          path: userDocRef.path,
-          operation: 'get',
-        }));
-    }).finally(() => {
-        setLoading(false);
-    });
+    } catch (error) {
+      errorEmitter.emit('permission-error', new FirestorePermissionError({
+        path: userDocRef.path,
+        operation: 'get',
+      }));
+    }
   }, [db]);
 
 
@@ -162,9 +161,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
             email: fbUser.email,
           };
           setUser(minimalUser);
-          await fetchUserProfile(fbUser.uid);
-          await fetchAndSetNotebook(fbUser.uid);
-
+          // Run fetches in parallel for performance
+          await Promise.all([
+            fetchUserProfile(fbUser.uid),
+            fetchAndSetNotebook(fbUser.uid)
+          ]);
+          setLoading(false); // Set loading to false after all async operations are complete
       } else {
         setUser(null);
         setNotebookEntries([]); // Limpiar entradas al cerrar sesión
