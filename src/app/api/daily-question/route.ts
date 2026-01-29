@@ -1,6 +1,5 @@
 
 import { NextResponse, type NextRequest } from 'next/server';
-import { forceEncryptStringAES } from '@/lib/encryption'; // Add import
 
 interface DailyQuestionFromApi {
   numero: number;
@@ -18,8 +17,8 @@ async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ que
   let externalUrl = `https://workwellfut.com/wp-content/programacion/traejson.php?archivo=clima&token=${encodeURIComponent(token)}`;
 
   if (userId) {
-    const encryptedUserId = forceEncryptStringAES(userId);
-    externalUrl += `&idusuario=${encodeURIComponent(encryptedUserId)}`;
+    const base64UserId = Buffer.from(userId).toString('base64');
+    externalUrl += `&idusuario=${encodeURIComponent(base64UserId)}`;
   }
 
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);

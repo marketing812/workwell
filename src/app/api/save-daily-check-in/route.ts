@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import { encryptDataAES, forceEncryptStringAES } from '@/lib/encryption';
+import { encryptDataAES } from '@/lib/encryption';
 
 const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
 const API_KEY = "4463";
@@ -28,10 +28,10 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    // Encrypt the user ID using the forced AES method
-    const encryptedUserId = forceEncryptStringAES(userId);
+    // Encrypt the user ID using base64
+    const base64UserId = Buffer.from(userId).toString('base64');
     
-    const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(encryptedUserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    const saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log("API Route (save-daily-check-in): Attempting to save. URL constructed.");
 
