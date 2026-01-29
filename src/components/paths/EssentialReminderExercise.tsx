@@ -7,13 +7,13 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Checkbox } from '@/components/ui/checkbox'; // Import Checkbox
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react'; // Import ArrowLeft and Info
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EssentialReminderExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'; // Import Accordion
-import { Input } from '../ui/input'; // Import Input for "Otro"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Input } from '../ui/input';
 
 interface EssentialReminderExerciseProps {
   content: EssentialReminderExerciseContent;
@@ -215,3 +215,5 @@ export function EssentialReminderExercise({ content, pathId }: EssentialReminder
     </Card>
   );
 }
+
+    

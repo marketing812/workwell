@@ -8,8 +8,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { useToast } from '@/hooks/use-toast';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalManifestoExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 
@@ -26,7 +24,6 @@ interface PersonalManifestoExerciseProps {
 }
 
 export function PersonalManifestoExercise({ content, pathId }: PersonalManifestoExerciseProps) {
-    const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [situation, setSituation] = useState('');
     const [reactions, setReactions] = useState<Record<string, boolean>>({});
@@ -34,10 +31,10 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
     const [coherenceChoice, setCoherenceChoice] = useState<'flexibilidad' | 'incoherencia' | 'duda' | ''>('');
     const [compassionatePhrase, setCompassionatePhrase] = useState('');
     const [adjustment, setAdjustment] = useState('');
-    const [isSaved, setIsSaved] = useState(false);
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
+    
     const resetExercise = () => {
         setStep(0);
         setSituation('');
@@ -46,27 +43,11 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         setCoherenceChoice('');
         setCompassionatePhrase('');
         setAdjustment('');
-        setIsSaved(false);
     };
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
-        const selectedReactions = reactionOptions.filter(o => reactions[o.id]).map(o => o.label);
-        if (reactions['reac-otro']) selectedReactions.push(otherReaction);
-
-        const notebookContent = `
-**Ejercicio: ${content.title}**
-
-**Situación:** ${situation}
-**Reacción:** ${selectedReactions.join(', ')}
-**Evaluación:** ${coherenceChoice}
-**Frase Compasiva:** ${compassionatePhrase}
-**Ajuste Sencillo:** ${adjustment}
-        `;
-        addNotebookEntry({ title: 'Ajuste Compasivo', content: notebookContent, pathId });
-        toast({title: "Reflexión Guardada"});
-        setIsSaved(true);
-        nextStep();
+        // Saving logic would go here
     };
 
     const renderStep = () => {
@@ -196,5 +177,7 @@ export function PersonalManifestoExercise({ content, pathId }: PersonalManifesto
         </Card>
     );
 }
+
+    
 
     

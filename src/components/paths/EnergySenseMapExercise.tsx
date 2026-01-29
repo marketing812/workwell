@@ -196,3 +196,5 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
     </Card>
   );
 }
+
+    

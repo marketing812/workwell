@@ -122,7 +122,7 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
                             </div>
                         </div>
                         {selectedValues['Otro'] && (
-                            <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2 ml-6" />
+                            <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />
                         )}
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -234,5 +234,7 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
         </Card>
     );
 }
+
+    
 
     

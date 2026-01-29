@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -125,9 +126,12 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
                                 <Textarea id={`nextTime-${index}`} value={log.nextTime} onChange={e => handleLogChange(index, 'nextTime', e.target.value)} placeholder="Ejemplo: Después me sentí frustrada porque necesitaba descansar. La próxima vez me gustaría proponer un encuentro más breve o en otro momento." />
                             </div>
                         ))}
-                        <Button onClick={handleSave} className="w-full">
-                            <Save className="mr-2 h-4 w-4"/> Guardar Registro
-                        </Button>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                            <Button onClick={handleSave} className="w-auto">
+                                <Save className="mr-2 h-4 w-4"/> Guardar Registro
+                            </Button>
+                        </div>
                     </div>
                 );
             case 2:
@@ -165,3 +169,5 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
         </Card>
     );
 }
+
+    

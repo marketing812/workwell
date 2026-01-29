@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -5,12 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, TrafficCone } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InfluenceWheelExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 interface InfluenceWheelExerciseProps {
   content: InfluenceWheelExerciseContent;
@@ -114,7 +115,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
     setIsSaved(true);
     nextStep();
   };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -249,3 +250,5 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
     </Card>
   );
 }
+
+    

@@ -242,3 +242,5 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
         </Card>
     );
 }
+
+    

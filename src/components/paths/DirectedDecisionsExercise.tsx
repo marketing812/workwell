@@ -183,3 +183,5 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
     </Card>
   );
 }
+
+    

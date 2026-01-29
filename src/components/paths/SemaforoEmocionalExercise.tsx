@@ -86,7 +86,10 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
                 </Label>
               ))}
             </RadioGroup>
-            <Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline" disabled><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         );
       case 1:
@@ -142,14 +145,17 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
                     <h5 className="font-semibold">Recuerda:</h5>
                     <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 pl-4 text-left">
                         <li>No hay emociones incorrectas.</li>
-                        <li>Lo importante es darte cuenta y cuidarte en el momento que lo necesitas.</li>
+                        <li>Lo importante es darte cuenta y cuidarte en el momento que lo necesites.</li>
                         <li>Puedes estar en rojo y aún así elegir qué hacer y no hacerte daño.</li>
                         <li>Puedes volver a tu centro con práctica y presencia.</li>
                     </ul>
                     <blockquote className="text-sm italic pt-4">“Tu calma no es un destino. Es una decisión que puedes entrenar.”</blockquote>
                 </div>
                 <p className="text-xs text-muted-foreground pt-2">Recomendación clínica: esta semana puede enlazarse con un recordatorio semanal automático para seguir identificando activadores.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full mt-4">Hacer otro registro</Button>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
+                </div>
             </div>
         );
       default: return null;
@@ -182,3 +188,5 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     </Card>
   );
 }
+
+    
