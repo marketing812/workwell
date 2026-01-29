@@ -49,20 +49,29 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     const { user } = useUser();
     const [step, setStep] = useState(0);
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
+    const [otherEnvironment, setOtherEnvironment] = useState('');
     const [ratings, setRatings] = useState<Record<string, { support: number, drain: number }>>({});
     const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
-        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5}), [type]: value[0]}}));
+        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), [type]: value[0]}}));
+    }
+    
+    const handleExampleChange = (id: string, value: string) => {
+      setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), example: value }}));
     }
 
-    const activeAreas = useMemo(() => {
-        return environments.filter(e => selectedEnvs[e.id]);
-    }, [selectedEnvs]);
+    const selectedEnvironments = useMemo(() => {
+        const selected = environments.filter(e => selectedEnvs[e.id]);
+        if (selectedEnvs['otro'] && otherEnvironment) {
+            selected.push({ id: 'otro', label: otherEnvironment });
+        }
+        return selected;
+    }, [selectedEnvs, otherEnvironment]);
 
     const chartData = useMemo(() => {
-        return activeAreas.map(env => {
-            const rating = ratings[env.id] || { support: 5, drain: 5 };
+        return selectedEnvironments.map(env => {
+            const rating = ratings[env.id] || { support: 5, drain: 5, example: '' };
             // Puntuación área=(Apoyo) + (10 - Drenaje) / 2
             const score = (rating.support + (10 - rating.drain)) / 2;
             return {
@@ -71,7 +80,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 fullMark: 10,
             };
         });
-    }, [activeAreas, ratings]);
+    }, [selectedEnvironments, ratings]);
     
     const prevStep = () => setStep(prev => prev - 1);
     const nextStep = () => setStep(prev => prev + 1);
@@ -117,6 +126,17 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     };
 
 
+    const activeAreas = useMemo(() => {
+        return environments.filter(e => selectedEnvs[e.id]);
+    }, [selectedEnvs]);
+
+    const chartConfig = {
+        score: {
+            label: 'Coherencia del Entorno',
+            color: "hsl(var(--primary))",
+        },
+    };
+
     const renderStep = () => {
         switch(step) {
             case 0:
@@ -130,10 +150,21 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                     <Label htmlFor={e.id} className="font-normal">{e.label}</Label>
                                 </div>
                             ))}
+                             <div className="flex items-center space-x-2">
+                                <Checkbox id="otro" checked={!!selectedEnvs['otro']} onCheckedChange={c => setSelectedEnvs(p => ({...p, ['otro']: !!c}))} disabled={isSaved}/>
+                                <Label htmlFor="otro" className="font-normal">Otro</Label>
+                            </div>
                         </div>
-                        <div className="flex justify-end w-full mt-4">
-                            <Button onClick={() => setStep(1)} className="w-full" disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
-                        </div>
+                        {selectedEnvs['otro'] && (
+                            <Textarea 
+                                value={otherEnvironment} 
+                                onChange={(e) => setOtherEnvironment(e.target.value)} 
+                                placeholder="Describe tu entorno personalizado aquí..."
+                                className="mt-2"
+                                disabled={isSaved}
+                            />
+                        )}
+                        <Button onClick={() => setStep(1)} className="w-full mt-4" disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
                     </div>
                 );
             case 1: return (
@@ -143,23 +174,17 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                             <h4 className="font-semibold">{e.label}</h4>
                             <Label htmlFor={`support-${e.id}`}>¿Cuánto apoya tus valores? {ratings[e.id]?.support ?? 5}/10</Label>
                             <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} disabled={isSaved}/>
-                            <Label htmlFor={`drain-${e.id}`}>¿Cuánto te aleja de ellos? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">¿Cuánto te aleja de ellos? {ratings[e.id]?.drain ?? 5}/10</Label>
                             <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} disabled={isSaved}/>
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
-                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={() => setStep(2)} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
                 </div>
             );
             case 2:
-                const chartConfig = {
-                    score: {
-                        label: 'Coherencia del Entorno',
-                        color: "hsl(var(--primary))",
-                    },
-                };
                 return (
                     <div className="p-4 text-center space-y-4">
                         <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
@@ -184,19 +209,12 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                             {!isSaved ? (
-                                <Button onClick={handleSave}>
-                                    <Save className="mr-2 h-4 w-4" /> Guardar Brújula
-                                </Button>
-                            ) : (
-                                <div className="flex items-center p-2 text-green-700 bg-green-100 rounded-md">
-                                    <CheckCircle className="mr-2 h-4 w-4" /> Guardado
-                                </div>
-                            )}
+                        <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                            <Button onClick={handleSave} disabled={isSaved}>
+                                <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
+                            </Button>
                             <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
-                        </div>
+                         </div>
                     </div>
                 );
             default: return null;
@@ -210,12 +228,14 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 {content.objective && (
                     <CardDescription className="pt-2">
                         {content.objective}
-                        <div className="mt-4">
-                            <audio controls controlsList="nodownload" className="w-full">
-                                <source src={content.audioUrl} type="audio/mp3" />
-                                Tu navegador no soporta el elemento de audio.
-                            </audio>
-                        </div>
+                        {content.audioUrl && (
+                            <div className="mt-4">
+                                <audio controls controlsList="nodownload" className="w-full">
+                                    <source src={content.audioUrl} type="audio/mp3" />
+                                    Tu navegador no soporta el elemento de audio.
+                                </audio>
+                            </div>
+                        )}
                     </CardDescription>
                 )}
             </CardHeader>
@@ -223,7 +243,3 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         </Card>
     );
 }
-
-    
-
-    
