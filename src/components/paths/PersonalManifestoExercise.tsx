@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -139,11 +138,11 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
             case 3:
                 let reminderText;
                 if (coherenceChoice === 'flexibilidad') {
-                    reminderText = "✨ “Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
+                    reminderText = "“Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
                 } else if (coherenceChoice === 'incoherencia') {
-                    reminderText = "✨ “Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
+                    reminderText = "“Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
                 } else {
-                    reminderText = "✨ “La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
+                    reminderText = "“La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
                 }
                 return (
                     <div className="p-4 space-y-4">
@@ -183,7 +182,7 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                        <h4 className="font-semibold text-lg">Cierre motivador</h4>
+                        <h4 className="font-bold text-lg">Guardado</h4>
                         <p className="text-muted-foreground">La coherencia no se mide por un tropiezo, sino por cómo eliges levantarte. Cada vez que te miras con compasión y eliges un ajuste, fortaleces tu dirección interna.</p>
                         <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
                     </div>
