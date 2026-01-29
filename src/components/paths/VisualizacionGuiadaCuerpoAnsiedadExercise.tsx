@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -9,7 +9,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import type { VisualizacionGuiadaCuerpoAnsiedadExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Edit3, ArrowRight, ArrowLeft, CheckCircle, Save } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 
 interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
   content: VisualizacionGuiadaCuerpoAnsiedadExerciseContent;
@@ -17,6 +19,7 @@ interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
 }
 
 export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
+    const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [breathing, setBreathing] = useState('');
     const [heart, setHeart] = useState('');
@@ -24,10 +27,53 @@ export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: V
     const [head, setHead] = useState('');
     const [acceptancePhrase, setAcceptancePhrase] = useState('');
     const [wavePhrase, setWavePhrase] = useState('');
+    const [isSaved, setIsSaved] = useState(false);
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
-    const resetExercise = () => setStep(0);
+    const resetExercise = () => {
+        setStep(0);
+        setBreathing('');
+        setHeart('');
+        setStomach('');
+        setHead('');
+        setAcceptancePhrase('');
+        setWavePhrase('');
+        setIsSaved(false);
+    };
+
+    const handleSave = (e: FormEvent) => {
+        e.preventDefault();
+        if (!wavePhrase.trim()) {
+          toast({
+            title: "Campo incompleto",
+            description: "Por favor, completa la frase final para guardar.",
+            variant: "destructive",
+          });
+          return;
+        }
+        const notebookContent = `
+    **Ejercicio: ${content.title}**
+    
+    **Respiración:** ${breathing || 'No especificada.'}
+    **Corazón:** ${heart || 'No especificado.'}
+    **Estómago:** ${stomach || 'No especificado.'}
+    **Cabeza:** ${head || 'No especificado.'}
+    
+    **Frase de aceptación:** "${acceptancePhrase || 'No escrita.'}"
+    **Frase de la ola:** "${wavePhrase}"
+        `;
+    
+        addNotebookEntry({
+          title: 'Mi Visualización del Cuerpo en Ansiedad',
+          content: notebookContent,
+          pathId: pathId,
+        });
+    
+        toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
+        setIsSaved(true);
+        nextStep();
+      };
 
     const renderStep = () => {
         switch (step) {
@@ -121,7 +167,7 @@ export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: V
 
             case 5: // Step 5: Wave
                 return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                    <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Imagina la ola</h4>
                         <p className="text-sm text-muted-foreground">Cierra los ojos un momento y visualiza tus sensaciones como una ola del mar. Sube con fuerza (síntomas intensos), llega a la cresta (momento de máximo malestar) y después, inevitablemente, baja y regresa al mar.</p>
                         <Label htmlFor="wavePhrase">Escribe una frase que te ayude a recordarlo en el futuro</Label>
@@ -132,13 +178,19 @@ export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: V
                                 <AccordionContent className="text-xs text-muted-foreground">Las investigaciones muestran que una emoción intensa dura entre 60 y 90 segundos si no la alimentas con pensamientos catastróficos.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!wavePhrase.trim()}>Ver Cierre</Button></div>
-                    </div>
+                        <div className="flex justify-between mt-4">
+                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                            <Button type="submit" disabled={!wavePhrase.trim() || isSaved}>
+                                {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
+                                {isSaved ? 'Guardado' : 'Guardar y ver cierre'}
+                            </Button>
+                        </div>
+                    </form>
                 );
 
             case 6: // Closing
                 return (
-                     <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto"/>
                         <h4 className="font-semibold text-lg">Cierre del ejercicio</h4>
                         <p className="text-muted-foreground">Muy bien. Hoy has practicado observar tu ansiedad en el cuerpo sin huir de ella. Cuanto más te entrenes, más descubrirás que las sensaciones, aunque molestas, no te dañan.</p>
