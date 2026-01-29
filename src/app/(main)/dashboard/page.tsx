@@ -10,7 +10,7 @@ import { DashboardSummaryCard } from "@/components/dashboard/DashboardSummaryCar
 import { ChartPlaceholder } from "@/components/dashboard/ChartPlaceholder";
 import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb } from "lucide-react";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -45,6 +45,7 @@ export default function DashboardPage() {
   const [allMoodCheckIns, setAllMoodCheckIns] = useState<MoodCheckIn[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
+  const [error, setError] = useState<string | null>(null);
   
   const filteredDimensions = useMemo(() => 
     assessmentDimensionsData.filter(dim => {
@@ -58,6 +59,7 @@ export default function DashboardPage() {
         return;
     };
     setIsLoading(true);
+    setError(null); // Reset error on new load attempt
     try {
       const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
       const API_KEY = "4463";
@@ -74,17 +76,13 @@ export default function DashboardPage() {
       const responseText = await response.text();
       let jsonToParse = responseText;
 
-      // Robustly find the start of the JSON object.
-      const jsonStartIndex = jsonToParse.indexOf('{"status"');
-      if (jsonStartIndex > -1) {
-          jsonToParse = jsonToParse.substring(jsonStartIndex);
+      // Robustly find the JSON object within the response string.
+      const firstBrace = jsonToParse.indexOf('{');
+      const lastBrace = jsonToParse.lastIndexOf('}');
+      if (firstBrace === -1 || lastBrace === -1 || lastBrace < firstBrace) {
+          throw new Error(`La respuesta de la API no contiene un JSON válido. Respuesta recibida: ${responseText.substring(0, 200)}`);
       }
-      
-      // It's also possible for junk to be at the end. Let's find the last '}'.
-      const jsonEndIndex = jsonToParse.lastIndexOf('}');
-      if (jsonEndIndex > -1) {
-          jsonToParse = jsonToParse.substring(0, jsonEndIndex + 1);
-      }
+      jsonToParse = jsonToParse.substring(firstBrace, lastBrace + 1);
 
       if (!response.ok) {
         throw new Error(`Error del servidor (HTTP ${response.status}): ${jsonToParse.substring(0, 150)}`);
@@ -105,12 +103,9 @@ export default function DashboardPage() {
           
           setAllMoodCheckIns(entries);
         } else {
-           console.error("Error validando los datos de ánimo desde la API:", validation.error);
-           toast({
-              title: "Error de Datos",
-              description: "Los datos de estado de ánimo recibidos no son válidos.",
-              variant: "destructive",
-            });
+           const errorMessage = "Error validando los datos de ánimo desde la API: " + validation.error.message;
+           console.error(errorMessage, validation.error);
+           throw new Error(errorMessage);
         }
       } else if (apiResult.message && (apiResult.message.toLowerCase().includes("no hay registros") || apiResult.message.toLowerCase().includes("no existen registros"))) {
           setAllMoodCheckIns([]);
@@ -118,11 +113,13 @@ export default function DashboardPage() {
         throw new Error(`Respuesta de API inesperada: ${apiResult.message || 'Sin mensaje'}`);
       }
 
-    } catch (error) {
+    } catch (error: any) {
+      const errorMessage = error.message || "Ocurrió un error desconocido al cargar los registros.";
       console.error("Error cargando los registros de ánimo:", error);
+      setError(errorMessage); // Set error state to display in UI
       toast({
         title: "Error al Cargar Registros de Ánimo",
-        description: "No se pudieron obtener los registros de estado de ánimo desde WordPress.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -238,6 +235,17 @@ export default function DashboardPage() {
         </h1>
         <p className="text-lg text-muted-foreground mt-1">{t.dashboardGreeting}</p>
       </div>
+
+      {error && (
+        <Alert variant="destructive">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertTitle>Error al Cargar Datos del Ánimo</AlertTitle>
+            <AlertDescription>
+                <p>No se pudieron obtener los datos para la gráfica de evolución.</p>
+                <pre className="mt-2 text-xs whitespace-pre-wrap bg-destructive/10 p-2 rounded">Detalles: {error}</pre>
+            </AlertDescription>
+        </Alert>
+      )}
 
       {pathSuggestion && (
         <Alert>
