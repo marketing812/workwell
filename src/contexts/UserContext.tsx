@@ -148,34 +148,45 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!auth || !db) {
-        setLoading(false);
-        return;
-    };
+      setLoading(false);
+      return;
+    }
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
-      setLoading(true); 
+      setLoading(true);
       if (fbUser) {
+        try {
           const minimalUser: User = {
             id: fbUser.uid,
             name: fbUser.displayName || 'Usuario',
             email: fbUser.email,
           };
           setUser(minimalUser);
-          // Run fetches in parallel for performance
+
+          // We fetch user profile and notebook entries.
+          // These can fail, so they must be handled.
           await Promise.all([
             fetchUserProfile(fbUser.uid),
-            fetchAndSetNotebook(fbUser.uid)
+            fetchAndSetNotebook(fbUser.uid),
           ]);
-          setLoading(false); // Set loading to false after all async operations are complete
+
+        } catch (error) {
+          console.error("Failed to initialize user session:", error);
+          // It's important to not leave the app in a loading state.
+          // We can decide if we want to log the user out or show an error state.
+          // For now, just stopping the loading is enough to prevent the frozen spinner.
+        } finally {
+          // This ensures that loading is always set to false, even if an error occurs.
+          setLoading(false);
+        }
       } else {
         setUser(null);
-        setNotebookEntries([]); // Limpiar entradas al cerrar sesión
+        setNotebookEntries([]);
         setLoading(false);
       }
     });
 
     return () => unsubscribe();
-    
   }, [auth, db, fetchUserProfile, fetchAndSetNotebook]);
 
 
