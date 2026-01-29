@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -24,7 +23,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
-
+import { Textarea } from '@/components/ui/textarea';
 
 const environments = [
     { id: 'salud_fisica', label: 'Salud física' },
@@ -209,7 +208,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                 />
                             </RadarChart>
                         </ChartContainer>
-                        <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                         <div className="flex flex-col sm:flex-row gap-2 justify-center">
                             <Button onClick={handleSave} disabled={isSaved}>
                                 <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
                             </Button>
