@@ -318,19 +318,6 @@ export default function DashboardPage() {
           />
         </div>
       </section>
-
-      {chartData.length > 0 && (
-        <Card>
-            <CardHeader>
-                <CardTitle>Datos cargados para la gráfica (depuración):</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <pre className="mt-2 text-xs whitespace-pre-wrap bg-muted p-2 rounded">
-                    {JSON.stringify(chartData, null, 2)}
-                </pre>
-            </CardContent>
-        </Card>
-      )}
     </div>
   );
 }
