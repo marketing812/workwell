@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -808,7 +807,7 @@ function ContentItemRenderer({
     case 'exposureLadderExercise':
         return <ExposureLadderExercise key={index} content={contentItem} pathId={path.id} />;
     case 'calmVisualizationExercise': {
-        return <CalmVisualizationExercise key={index} content={contentItem} pathId={path.id} />;
+        return <CalmVisualizationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     }
     case 'imaginedCrisisRehearsalExercise': {
       return <ImaginedCrisisRehearsalExercise key={index} content={contentItem} pathId={path.id} />;

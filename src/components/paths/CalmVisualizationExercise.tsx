@@ -1,28 +1,38 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, PlayCircle, BookOpen, Save, ArrowLeft } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CalmVisualizationExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface CalmVisualizationExerciseProps {
   content: CalmVisualizationExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function CalmVisualizationExercise({ content, pathId }: CalmVisualizationExerciseProps) {
+export function CalmVisualizationExercise({ content, pathId, onComplete }: CalmVisualizationExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);
   
   const handleComplete = () => {
+    if (isCompleted) return;
+
+    addNotebookEntry({
+      title: `Práctica completada: ${content.title}`,
+      content: "He completado la visualización para cultivar la calma y he marcado el módulo como finalizado.",
+      pathId: pathId,
+      userId: user?.id
+    });
+    
     setIsCompleted(true);
-    toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de responder con calma." });
+    onComplete(); // Mark module as complete
+    toast({ title: "Práctica Finalizada", description: "Tu ejercicio ha sido guardado y marcado como completado." });
   };
   
   const meditationText = "Cierra los ojos y visualiza la situación que te genera ansiedad. Ahora, imagina que una luz cálida te envuelve, creando una burbuja de calma. Dentro de esa burbuja, te sientes seguro/a. Observa la escena desde esa distancia, sabiendo que puedes manejarla. Respira hondo y siente cómo la calma se expande. Repite mentalmente: 'Puedo estar aquí, estoy a salvo'.";
