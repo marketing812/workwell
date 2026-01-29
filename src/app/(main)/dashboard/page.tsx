@@ -25,7 +25,17 @@ import { pathsData } from "@/data/pathsData";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { z } from "zod";
-import { decryptDataAES } from "@/lib/encryption";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
+import { useFirestore } from "@/firebase/provider";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -40,6 +50,7 @@ export default function DashboardPage() {
   const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
+  const db = useFirestore();
 
   const [isClient, setIsClient] = useState(false);
   const [allMoodCheckIns, setAllMoodCheckIns] = useState<MoodCheckIn[]>([]);
@@ -47,6 +58,7 @@ export default function DashboardPage() {
   const [latestAssessment, setLatestAssessment] = useState<AssessmentRecord | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [debugUrl, setDebugUrl] = useState<string | null>(null);
+  const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   
   const filteredDimensions = useMemo(() => 
     assessmentDimensionsData.filter(dim => {
@@ -54,13 +66,41 @@ export default function DashboardPage() {
         return dimIdNum <= 13;
     }), []);
 
+  const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
+    if (!user || !user.id || !db) {
+      toast({
+        title: "Error de Usuario o Conexión",
+        description: "No se pudo identificar al usuario o la base de datos.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setIsEntryDialogOpen(false);
+    
+    try {
+      const entriesRef = collection(db, "users", user.id, "emotional_entries");
+      await addDoc(entriesRef, {
+        ...data,
+        timestamp: serverTimestamp()
+      });
+      
+      toast({
+        title: t.emotionalEntrySavedTitle,
+        description: "Tu registro se ha guardado en la nube.",
+      });
+
+    } catch (error) {
+       toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
+    }
+  };
+
   const loadMoodCheckIns = useCallback(async () => {
     if (!user?.id) {
         setIsLoading(false);
         return;
     };
     setIsLoading(true);
-    setError(null); // Reset error on new load attempt
+    setError(null); 
     setDebugUrl(null);
     try {
       const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
@@ -73,22 +113,34 @@ export default function DashboardPage() {
       const base64UserId = btoa(user.id);
       
       const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
-      
+      setDebugUrl(url);
+
       const response = await fetch(url, { cache: 'no-store' });
-      const responseText = await response.text();
+      let responseText = await response.text();
+       
+      let jsonToParse = responseText;
+      if (!responseText.trim().startsWith('{')) {
+          const jsonStartIndex = responseText.indexOf('{');
+          if (jsonStartIndex !== -1) {
+              const jsonEndIndex = responseText.lastIndexOf('}');
+              if (jsonEndIndex > jsonStartIndex) {
+                  jsonToParse = responseText.substring(jsonStartIndex, jsonEndIndex + 1);
+              }
+          }
+      }
 
       if (!response.ok) {
         throw new Error(`Error del servidor (HTTP ${response.status}): ${responseText.substring(0, 150)}`);
       }
-
-      const apiResult = JSON.parse(responseText);
+      
+      const apiResult = JSON.parse(jsonToParse);
       
       if (apiResult.status === "OK" && Array.isArray(apiResult.data)) {
         const validation = MoodCheckInsApiResponseSchema.safeParse(apiResult.data);
 
         if (validation.success) {
           const entries = validation.data.map((item, index) => ({
-              id: `mood-${Date.now()}-${index}`, // Generate a unique ID for React key
+              id: `mood-${Date.now()}-${index}`,
               mood: item.mood,
               score: item.score,
               timestamp: new Date(item.timestamp.replace(' ', 'T')),
@@ -109,12 +161,7 @@ export default function DashboardPage() {
     } catch (error: any) {
       const errorMessage = error.message || "Ocurrió un error desconocido al cargar los registros.";
       console.error("Error cargando los registros de ánimo:", error);
-      setError(errorMessage); // Set error state to display in UI
-      toast({
-        title: "Error al Cargar Registros de Ánimo",
-        description: errorMessage,
-        variant: "destructive",
-      });
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -153,7 +200,7 @@ export default function DashboardPage() {
       .map(entry => {
         const moodOption = moodCheckInOptions.find(e => e.value === entry.mood);
         const moodLabel = moodOption ? moodOption.label : entry.mood;
-        const entryDate = entry.timestamp as Date; // Now it's always a Date object
+        const entryDate = entry.timestamp as Date;
         return {
           date: format(entryDate, "dd MMM", { locale: es }),
           moodScore: entry.score,
@@ -235,7 +282,11 @@ export default function DashboardPage() {
             <AlertTitle>Error al Cargar Datos del Ánimo</AlertTitle>
             <AlertDescription>
                 <p>No se pudieron obtener los datos para la gráfica de evolución.</p>
-                <pre className="mt-2 text-xs whitespace-pre-wrap bg-destructive/10 p-2 rounded">Detalles: {error}</pre>
+                <details className="mt-2 text-xs whitespace-pre-wrap">
+                  <summary>Detalles técnicos</summary>
+                  <p><strong>URL de la llamada:</strong> {debugUrl || 'No disponible'}</p>
+                  <p><strong>Error:</strong> {error}</p>
+                </details>
             </AlertDescription>
         </Alert>
       )}
@@ -291,6 +342,27 @@ export default function DashboardPage() {
             iconColorClass="text-yellow-600 dark:text-yellow-500"
           />
         </div>
+      </section>
+
+      <section aria-labelledby="emotional-registry-heading" className="py-6">
+        <h2 id="emotional-registry-heading" className="sr-only">{t.emotionalRegistry}</h2>
+        <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
+          <DialogTrigger asChild>
+            <Button size="lg" className="w-full text-lg py-6 shadow-lg hover:shadow-xl transition-shadow">
+              <Edit className="mr-3 h-6 w-6" />
+              {t.registerEmotion}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[480px]">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
+              <DialogDescription>
+                {t.registerEmotionDialogDescription}
+              </DialogDescription>
+            </DialogHeader>
+            <EmotionalEntryForm onSubmit={handleEmotionalEntrySubmit} />
+          </DialogContent>
+        </Dialog>
       </section>
 
       <section aria-labelledby="visualizations-heading">
