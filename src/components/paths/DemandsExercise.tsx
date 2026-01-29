@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -27,7 +26,7 @@ const originOptions = [
     { id: 'origin-insecurity', label: 'Inseguridad personal' },
 ];
 
-export function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
+export default function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();

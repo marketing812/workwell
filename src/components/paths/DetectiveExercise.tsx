@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +12,7 @@ import { Edit3, Save, CheckCircle, NotebookText } from 'lucide-react';
 import { emotions } from '@/components/dashboard/EmotionalEntryForm';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetectiveExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface DetectiveExerciseProps {
   content: DetectiveExerciseContent;
@@ -31,9 +31,10 @@ const cognitiveDistortions = [
     { value: 'magnification_minimization', label: 'Maximizar lo negativo / Minimizar lo positivo' },
 ];
 
-export function DetectiveExercise({ content, onComplete }: DetectiveExerciseProps) {
+export default function DetectiveExercise({ content, onComplete }: DetectiveExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [situation, setSituation] = useState('');
   const [automaticThought, setAutomaticThought] = useState('');
@@ -59,6 +60,14 @@ export function DetectiveExercise({ content, onComplete }: DetectiveExerciseProp
       });
       return;
     }
+    
+    addNotebookEntry({
+        title: 'Registro: Detective de Pensamientos',
+        content: `Situación: ${situation}\nPensamiento: ${automaticThought}\nDistorsión: ${distortion}\nEmoción: ${emotion}\nReflexión: ${alternativeThought}`,
+        pathId: 'gestion-estres',
+        userId: user?.id,
+    });
+    
     toast({
       title: "Ejercicio Guardado",
       description: "Tu registro del 'Detective de Pensamientos' ha sido guardado.",
@@ -77,6 +86,7 @@ export function DetectiveExercise({ content, onComplete }: DetectiveExerciseProp
       title: `Reflexión: ${content.title}`,
       content: `**¿Qué aprendí al observar mis pensamientos desde fuera? ¿Qué distorsiones repito más? ¿Qué noto cuando me hablo con más comprensión?**\n\n${reflection}`,
       pathId: 'gestion-estres',
+      userId: user?.id,
     });
     toast({
       title: "Reflexión Guardada",

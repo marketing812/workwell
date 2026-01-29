@@ -112,7 +112,7 @@ const planSections = {
 };
 
 
-export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExerciseProps) {
+export default function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [selections, setSelections] = useState<Record<string, boolean>>({});
@@ -189,7 +189,6 @@ export function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExer
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
