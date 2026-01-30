@@ -65,7 +65,7 @@ const DetectiveExercise = dynamic(() => import('@/components/paths/DetectiveExer
 const DemandsExercise = dynamic(() => import('@/components/paths/DemandsExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 const WellbeingPlanExercise = dynamic(() => import('@/components/paths/WellbeingPlanExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 // RUTA 2
-const UncertaintyMapExercise = dynamic(() => import('@/components/paths/UncertaintyMapExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const UncertaintyMapExercise = dynamic(() => import('@/components/paths/UncertaintyMapExercise'), { loading: LoaderComponent, ssr: false });
 const ControlTrafficLightExercise = dynamic(() => import('@/components/paths/ControlTrafficLightExercise').then(mod => mod.ControlTrafficLightExercise), { loading: LoaderComponent, ssr: false });
 const AlternativeStoriesExercise = dynamic(() => import('@/components/paths/AlternativeStoriesExercise').then(mod => mod.AlternativeStoriesExercise), { loading: LoaderComponent, ssr: false });
 const MantraExercise = dynamic(() => import('@/components/paths/MantraExercise').then(mod => mod.MantraExercise), { loading: LoaderComponent, ssr: false });
@@ -387,7 +387,7 @@ function ContentItemRenderer({
     case 'stressMapExercise':
       return <StressMapExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'triggerExercise':
-      return <TriggerExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <TriggerExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'detectiveExercise':
       return <DetectiveExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'demandsExercise':

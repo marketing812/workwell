@@ -22,9 +22,10 @@ import { useUser } from '@/contexts/UserContext';
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
   onComplete: () => void;
+  pathId: string;
 }
 
-export default function TriggerExercise({ content, onComplete }: TriggerExerciseProps) {
+export default function TriggerExercise({ content, onComplete, pathId }: TriggerExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -65,7 +66,7 @@ export default function TriggerExercise({ content, onComplete }: TriggerExercise
     addNotebookEntry({
         title: 'Registro de Disparador',
         content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}\nReflexión: ${reflections}`,
-        pathId: 'gestion-estres',
+        pathId: pathId,
         userId: user?.id,
     });
     
