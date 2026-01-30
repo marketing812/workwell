@@ -25,7 +25,7 @@ export default function TherapeuticNotebookPage() {
         fetchAndSetNotebook(user.id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, fetchAndSetNotebook]); // Depende del usuario y de la función de carga
+  }, [user]); // Depende solo del usuario para el primer renderizado
 
   useEffect(() => {
     // Listener para actualizar la URL de depuración si cambia en otra parte
@@ -108,28 +108,26 @@ export default function TherapeuticNotebookPage() {
               <CardContent>
                 <NotebookText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                 <p className="text-lg font-medium text-muted-foreground">{t.noNotebookEntries}</p>
+                 {debugUrl && (
+                  <Card className="mt-8 shadow-lg border-amber-500 bg-amber-50/50 dark:bg-amber-900/20">
+                    <CardHeader>
+                      <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2">
+                        <FileJson className="h-5 w-5" />
+                        URL de Depuración (Cuaderno)
+                      </CardTitle>
+                      <CardDescription>
+                        Esta es la URL exacta que se usó para intentar cargar tu cuaderno terapéutico.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-muted-foreground break-all bg-background p-2 rounded-md border">{debugUrl}</p>
+                    </CardContent>
+                  </Card>
+                )}
               </CardContent>
             </Card>
           )}
         </div>
-      )}
-
-      
-      {debugUrl && (
-        <Card className="mt-8 shadow-lg border-amber-500 bg-amber-50/50 dark:bg-amber-900/20">
-          <CardHeader>
-            <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2">
-              <FileJson className="h-5 w-5" />
-              URL de Depuración (Cuaderno)
-            </CardTitle>
-            <CardDescription>
-              Esta es la URL exacta que se usó para intentar cargar tu cuaderno terapéutico.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-xs text-muted-foreground break-all bg-background p-2 rounded-md border">{debugUrl}</p>
-          </CardContent>
-        </Card>
       )}
 
     </div>

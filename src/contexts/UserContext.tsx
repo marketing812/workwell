@@ -91,18 +91,31 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
         }
         
         if (notebookData) {
-             const entries = notebookData.map((item: any[]): NotebookEntry | null => {
+             const entries = notebookData.map((item: any): NotebookEntry | null => {
+                // Handle array format (legacy)
                 if (Array.isArray(item) && item.length >= 5) {
-                return {
-                    id: item[0],
-                    timestamp: item[1],
-                    // item[2] is userId
-                    title: item[3],
-                    content: item[4],
-                    pathId: item[5] || undefined,
-                    ruta: item[5] ? (item[5].replace(/-/g, ' ').charAt(0).toUpperCase() + item[5].slice(1).replace(/-/g, ' ')) : undefined,
-                };
+                    return {
+                        id: String(item[0]),
+                        timestamp: String(item[1]),
+                        // item[2] is userId
+                        title: String(item[3]),
+                        content: String(item[4]),
+                        pathId: item[5] ? String(item[5]) : undefined,
+                        ruta: item[5] ? (String(item[5]).replace(/-/g, ' ').charAt(0).toUpperCase() + String(item[5]).slice(1).replace(/-/g, ' ')) : undefined,
+                    };
                 }
+                // Handle object format (more likely, and more robust)
+                if (typeof item === 'object' && item !== null && 'id' in item && 'timestamp' in item) {
+                    return {
+                        id: String(item.id),
+                        timestamp: String(item.timestamp),
+                        title: String(item.title || ''),
+                        content: String(item.content || ''),
+                        pathId: item.pathId ? String(item.pathId) : (item.ruta ? String(item.ruta) : undefined), // check for ruta as fallback
+                        ruta: item.ruta ? String(item.ruta) : (item.pathId ? (String(item.pathId).replace(/-/g, ' ').charAt(0).toUpperCase() + String(item.pathId).slice(1).replace(/-/g, ' ')) : undefined),
+                    };
+                }
+                console.warn("Unrecognized notebook item format:", item);
                 return null;
             }).filter((item): item is NotebookEntry => item !== null);
             return { entries, debugUrl: url };
