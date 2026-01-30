@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -72,7 +71,7 @@ export default function TherapeuticNotebookPage() {
         <div className="space-y-6">
           {notebookEntries.length > 0 ? (
             notebookEntries.map((entry) => (
-              <Card key={entry.id} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={`${entry.id}-${entry.timestamp}`} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
                       <CardTitle className="text-xl text-accent">{entry.ruta || entry.title}</CardTitle>
                       <CardDescription className="flex flex-col sm:flex-row sm:items-center text-xs pt-1 gap-x-4">
