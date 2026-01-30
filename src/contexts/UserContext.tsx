@@ -63,30 +63,14 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
     }
     const responseText = await res.text();
     
-    // START FIX: Robust JSON parsing to handle potential server-side debug output
     let jsonToParse = responseText.trim();
-    if (!jsonToParse.startsWith('{') && !jsonToParse.startsWith('[')) {
-        const jsonStartIndex = jsonToParse.indexOf('{');
-        const arrayStartIndex = jsonToParse.indexOf('[');
-        
-        let startIndex = -1;
-        if (jsonStartIndex !== -1 && arrayStartIndex !== -1) {
-            startIndex = Math.min(jsonStartIndex, arrayStartIndex);
-        } else if (jsonStartIndex !== -1) {
-            startIndex = jsonStartIndex;
-        } else {
-            startIndex = arrayStartIndex;
-        }
-
-        if (startIndex !== -1) {
-            const jsonEndIndex = jsonToParse.lastIndexOf('}');
-            const arrayEndIndex = jsonToParse.lastIndexOf(']');
-            const endIndex = Math.max(jsonEndIndex, arrayEndIndex);
-
-            if (endIndex > startIndex) {
-                jsonToParse = jsonToParse.substring(startIndex, endIndex + 1);
-            }
-        }
+    
+    // START FIX: Handle concatenated JSON objects in the response.
+    const jsonSeparator = '}{';
+    const separatorIndex = jsonToParse.indexOf(jsonSeparator);
+    if (separatorIndex !== -1) {
+        console.log("UserContext: Detected concatenated JSON, processing first object.");
+        jsonToParse = jsonToParse.substring(0, separatorIndex + 1); // +1 to include the closing '}'
     }
     // END FIX
 
