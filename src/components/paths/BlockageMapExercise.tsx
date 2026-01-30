@@ -17,7 +17,7 @@ interface BlockageMapExerciseProps {
   pathId: string;
 }
 
-export function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProps) {
+export default function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [avoidedTask, setAvoidedTask] = useState('');
@@ -243,7 +243,7 @@ ${consequences || 'No especificadas.'}
                 <ArrowLeft className="mr-2 h-4 w-4" /> Atrás
               </Button>
               <Button onClick={handleSave} className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar en mi diario
+                <Save className="mr-2 h-4 w-4" /> guardar en mi cuaderno
               </Button>
             </div>
           </div>
