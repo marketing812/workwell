@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from 'react';
@@ -96,7 +95,7 @@ export function ChatInterface() {
     } else {
       const errorMessage: Message = {
         id: crypto.randomUUID(),
-        text: `${t.errorOccurred} ${result.error}`,
+        text: result.error,
         sender: 'bot',
         timestamp: new Date(),
       };

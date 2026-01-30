@@ -62,7 +62,7 @@ export async function sendMessageToChatbot(
     // Log the detailed error for debugging on the server
     console.error("sendMessageToChatbot error:", error, "ENV_DEBUG:", JSON.stringify(envDebug));
     
-    // Return a generic, user-friendly message as requested.
-    return { success: false, error: "Lo sentimos, ocurrió un error. Por favor, inténtalo de nuevo." };
+    // Return a user-friendly message, specific to the likely problem (RAG failure).
+    return { success: false, error: "No se pudieron traer los datos de la bibliografía de consulta. Por favor, inténtalo de nuevo." };
   }
 }
