@@ -104,12 +104,12 @@ const emotionalChatbotFlow = ai.defineFlow(
       console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
       const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
       docsContext = context; // Assign to the outer scope variable
-      
+      /*
       console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
       console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
       console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
-
+*/
     } catch (e: any) {
       console.error(
         "emotionalChatbotFlow: ERROR al recuperar el contexto RAG. Esto impedirá que el chatbot use los documentos.",
