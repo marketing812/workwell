@@ -63,20 +63,52 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
     }
     const responseText = await res.text();
     
-    // The response might be a JSON string with a `data` property that is either an array or an encrypted string.
+    // START FIX: Robust JSON parsing to handle potential server-side debug output
+    let jsonToParse = responseText.trim();
+    if (!jsonToParse.startsWith('{') && !jsonToParse.startsWith('[')) {
+        const jsonStartIndex = jsonToParse.indexOf('{');
+        const arrayStartIndex = jsonToParse.indexOf('[');
+        
+        let startIndex = -1;
+        if (jsonStartIndex !== -1 && arrayStartIndex !== -1) {
+            startIndex = Math.min(jsonStartIndex, arrayStartIndex);
+        } else if (jsonStartIndex !== -1) {
+            startIndex = jsonStartIndex;
+        } else {
+            startIndex = arrayStartIndex;
+        }
+
+        if (startIndex !== -1) {
+            const jsonEndIndex = jsonToParse.lastIndexOf('}');
+            const arrayEndIndex = jsonToParse.lastIndexOf(']');
+            const endIndex = Math.max(jsonEndIndex, arrayEndIndex);
+
+            if (endIndex > startIndex) {
+                jsonToParse = jsonToParse.substring(startIndex, endIndex + 1);
+            }
+        }
+    }
+    // END FIX
+
     let apiResult;
     try {
-        apiResult = JSON.parse(responseText);
+        apiResult = JSON.parse(jsonToParse);
     } catch(e) {
         // Fallback for when the response is not JSON but a raw encrypted string.
-        const decryptedData = decryptDataAES(responseText);
+        const decryptedData = decryptDataAES(jsonToParse);
         if (Array.isArray(decryptedData)) {
             apiResult = { status: "OK", data: decryptedData };
         } else {
-             console.error("Failed to parse notebook response as JSON or decrypt it:", responseText);
+             console.error("Failed to parse notebook response as JSON or decrypt it:", jsonToParse);
              return { entries: [], debugUrl: url };
         }
     }
+    
+    // If the parsed result is an array directly, wrap it in the expected structure.
+    if (Array.isArray(apiResult)) {
+        apiResult = { status: "OK", data: apiResult };
+    }
+
 
     if (apiResult.status === "OK") {
         let notebookData: any[] | null = null;
