@@ -59,13 +59,10 @@ export async function sendMessageToChatbot(
 
     return { success: true, data: result };
   } catch (error) {
-    // 👇 Fuerza que el error devuelto incluya el debug del entorno
-    const baseMsg =
-      error instanceof Error ? error.message : "Error al comunicarse con el chatbot.";
-
-    const debugMsg = "ENV_DEBUG=" + JSON.stringify(envDebug);
-
-    // Esto hace que incluso si tu UI pone un “UNKNOWN: ...”, dentro venga ENV_DEBUG
-    return { success: false, error: baseMsg + " | " + debugMsg };
+    // Log the detailed error for debugging on the server
+    console.error("sendMessageToChatbot error:", error, "ENV_DEBUG:", JSON.stringify(envDebug));
+    
+    // Return a generic, user-friendly message as requested.
+    return { success: false, error: "Lo sentimos, ocurrió un error. Por favor, inténtalo de nuevo." };
   }
 }
