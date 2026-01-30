@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -115,9 +115,23 @@ export default function TherapeuticNotebookPage() {
       )}
 
       
+      {debugUrl && (
+        <Card className="mt-8 shadow-lg border-amber-500 bg-amber-50/50 dark:bg-amber-900/20">
+          <CardHeader>
+            <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2">
+              <FileJson className="h-5 w-5" />
+              URL de Depuración (Cuaderno)
+            </CardTitle>
+            <CardDescription>
+              Esta es la URL exacta que se usó para intentar cargar tu cuaderno terapéutico.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs text-muted-foreground break-all bg-background p-2 rounded-md border">{debugUrl}</p>
+          </CardContent>
+        </Card>
+      )}
 
     </div>
   );
 }
-
-    
