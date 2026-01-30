@@ -165,12 +165,29 @@ const emotionalChatbotFlow = ai.defineFlow(
       promptPayload.userName = input.userName;
     }
 
-    const { output } = await emotionalChatbotPrompt(promptPayload);
+    const promptResponse = await emotionalChatbotPrompt(promptPayload);
+    const rawTextResponse = promptResponse.text;
 
-    if (!output?.response) {
-      throw new Error("Genkit devolvió un 'output' vacío o sin la propiedad 'response'.");
+    if (!rawTextResponse || rawTextResponse.trim() === '') {
+        throw new Error("La IA devolvió una respuesta de texto vacía.");
     }
 
-    return output;
+    // Limpiamos el texto crudo para eliminar saltos de línea que rompen el JSON.parse()
+    const cleanedText = rawTextResponse.replace(/[\r\n]/g, '').trim();
+
+    try {
+        const finalOutput: EmotionalChatbotOutput = JSON.parse(cleanedText);
+        
+        if (!finalOutput?.response) {
+            throw new Error("El JSON parseado de la IA no contiene la propiedad 'response'.");
+        }
+        
+        return finalOutput;
+
+    } catch (e) {
+        console.error("Error al parsear el JSON de la IA después de la limpieza. Texto limpio:", cleanedText, "Error:", e);
+        // Si el parseo falla incluso después de limpiar, es un error crítico.
+        throw new Error("La IA no devolvió un JSON válido, incluso después de la limpieza.");
+    }
   }
 );
