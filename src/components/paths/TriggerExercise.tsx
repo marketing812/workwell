@@ -62,9 +62,20 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
       return;
     }
     
+    const notebookContent = `
+**Ejercicio:** ${content.title}
+
+- **Emoción principal sentida:** ${emotion}
+- **Situación que ocurrió:** ${situation === 'otra' ? otherSituation : situation}
+- **Pensamientos que pasaron por mi cabeza:** ${thoughts}
+- **Disparador principal:** ${triggerSource}
+- **Mi respuesta o acción posterior:** ${copingResponse === 'otra' ? otherCopingResponse : copingResponse}
+- **Reflexión final:** ${reflections || 'Sin reflexión adicional.'}
+    `;
+    
     addNotebookEntry({
         title: 'Registro de Disparador',
-        content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}\nReflexión: ${reflections}`,
+        content: notebookContent,
         pathId: pathId,
         userId: user?.id
     });
