@@ -39,7 +39,7 @@ const responseOptions = [
 
 const steps = ['intro', 'areas', 'responses', 'summary'];
 
-export function UncertaintyMapExercise({ content }: UncertaintyMapExerciseProps) {
+export default function UncertaintyMapExercise({ content }: UncertaintyMapExerciseProps) {
   const { toast } = useToast();
   
   const [currentStep, setCurrentStep] = useState(0);
