@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,11 +12,11 @@ import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from '@/lib/translations';
 import { Edit3, Save, CheckCircle, NotebookText, Compass } from 'lucide-react';
 import { emotions } from '@/components/dashboard/EmotionalEntryForm';
-import type { TriggerExerciseContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import type { TriggerExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
-import { useUser } from '@/contexts/UserContext';
 
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
@@ -67,7 +66,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
         title: 'Registro de Disparador',
         content: `Emoción: ${emotion}\nSituación: ${situation === 'otra' ? otherSituation : situation}\nPensamientos: ${thoughts}\nDisparador: ${triggerSource}\nReflexión: ${reflections}`,
         pathId: pathId,
-        userId: user?.id,
+        userId: user?.id
     });
     
     toast({
@@ -106,7 +105,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
     addNotebookEntry({
         title: `Reflexión: ${content.title}`,
         content: reflectionEntry,
-        pathId: 'gestion-estres',
+        pathId: pathId,
         userId: user?.id,
     });
 
@@ -294,13 +293,13 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
 
           {!isSaved ? (
              <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Ejercicio
+                <Save className="mr-2 h-4 w-4" /> Guardar Registro
             </Button>
           ) : (
             <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
                 <div className="flex items-center">
                     <CheckCircle className="mr-2 h-5 w-5" />
-                    <p className="font-medium">Tu ejercicio ha sido guardado.</p>
+                    <p className="font-medium">Tu registro ha sido guardado.</p>
                 </div>
                 <Dialog open={showCompass} onOpenChange={setShowCompass}>
                   <DialogTrigger asChild>
