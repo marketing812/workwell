@@ -16,7 +16,7 @@ interface StopExerciseProps {
   pathId: string;
 }
 
-export function StopExercise({ content, pathId }: StopExerciseProps) {
+export default function StopExercise({ content, pathId }: StopExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   
@@ -44,7 +44,7 @@ ${nextAction}
     addNotebookEntry({ title: `Práctica STOP`, content: notebookContent, pathId });
     toast({ title: 'Práctica Guardada' });
   };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:

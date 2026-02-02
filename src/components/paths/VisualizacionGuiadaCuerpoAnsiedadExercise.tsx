@@ -18,7 +18,7 @@ interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
   pathId: string;
 }
 
-export function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
+export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
     const { toast } = useToast();
     const [step, setStep] = useState(0);
     const [breathing, setBreathing] = useState('');
