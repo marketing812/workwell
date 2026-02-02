@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CompassionateFirmnessExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface CompassionateFirmnessExerciseProps {
   content: CompassionateFirmnessExerciseContent;
@@ -18,6 +19,7 @@ interface CompassionateFirmnessExerciseProps {
 
 export function CompassionateFirmnessExercise({ content, pathId }: CompassionateFirmnessExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [otherEmotion, setOtherEmotion] = useState('');
   const [myNeed, setMyNeed] = useState('');
@@ -31,7 +33,7 @@ export function CompassionateFirmnessExercise({ content, pathId }: Compassionate
       return;
     }
     
-    addNotebookEntry({ title: "Mi Frase de Firmeza Compasiva", content: `"${finalPhrase}"`, pathId: pathId });
+    addNotebookEntry({ title: "Mi Frase de Firmeza Compasiva", content: `"${finalPhrase}"`, pathId: pathId, userId: user?.id });
     toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el cuaderno." });
     setIsSaved(true);
     nextStep();

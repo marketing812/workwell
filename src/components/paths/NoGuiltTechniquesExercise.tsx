@@ -11,6 +11,7 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface NoGuiltTechniquesExerciseProps {
   content: NoGuiltTechniquesExerciseContent;
@@ -69,6 +70,7 @@ const techniques = {
 
 export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniquesExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [personalizedPhrases, setPersonalizedPhrases] = useState<Record<keyof typeof techniques, string>>({
       discoRayado: '', bancoNiebla: '', aplazamientoAsertivo: '', acuerdoParcial: '', sandwich: '', redireccion: ''
   });
@@ -90,7 +92,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
 *Mi frase personalizada:*
 "${phrase}"
     `;
-    addNotebookEntry({ title: `Técnica asertiva: ${techniques[techniqueKey].title}`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Técnica asertiva: ${techniques[techniqueKey].title}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el Cuaderno Terapéutico."});
   };
 

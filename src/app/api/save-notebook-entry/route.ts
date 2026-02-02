@@ -29,6 +29,7 @@ export async function POST(request: Request) {
     // CRITICAL FIX: Added the empty `&token=` parameter to match other working API calls.
     saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
+
     console.log(`[API Route] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
 
     const saveResponse = await fetch(saveUrl, {

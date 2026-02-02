@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Input } from '../ui/input';
 import { Slider } from '../ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useUser } from '@/contexts/UserContext';
 
 interface PostBoundaryEmotionsExerciseProps {
   content: PostBoundaryEmotionsExerciseContent;
@@ -30,6 +31,7 @@ const emotionOptions = [
 
 export function PostBoundaryEmotionsExercise({ content, pathId }: PostBoundaryEmotionsExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [situation, setSituation] = useState('');
@@ -127,6 +129,7 @@ ${reassessment}
       title: `Registro Post-Límite: ${situation.substring(0, 25) || 'Reflexión'}`,
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({ title: "Registro Guardado", description: "Tu ejercicio se ha guardado en el cuaderno." });
@@ -135,7 +138,7 @@ ${reassessment}
   };
 
   const handleSavePhrase = (phrase: string) => {
-    addNotebookEntry({ title: "Frase de Autocompasión", content: `"${phrase}"`, pathId: pathId });
+    addNotebookEntry({ title: "Frase de Autocompasión", content: `"${phrase}"`, pathId: pathId, userId: user?.id });
     setSavedPhrases(prev => [...prev, phrase]);
     toast({ title: "Frase Guardada", description: "Tu frase de autocuidado se ha guardado." });
   };
@@ -163,7 +166,7 @@ ${reassessment}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            <Button onClick={nextStep}><ArrowRight className="mr-2 h-4 w-4" />Empezar mi registro</Button>
           </div>
         );
       case 1: // Situación

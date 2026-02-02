@@ -8,9 +8,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SelfCareContractExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface SelfCareContractExerciseProps {
   content: SelfCareContractExerciseContent;
@@ -19,6 +20,7 @@ interface SelfCareContractExerciseProps {
 
 export function SelfCareContractExercise({ content, pathId }: SelfCareContractExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [commitment, setCommitment] = useState('');
   const [reminderType, setReminderType] = useState('');
@@ -44,7 +46,7 @@ ${reminder}
 *Mi frase de acompañamiento emocional es:*
 "${anchorPhrase}"
     `;
-    addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });
     setIsSaved(true);
   };
@@ -88,7 +90,7 @@ ${reminder}
             <Textarea id="anchor-phrase" value={anchorPhrase} onChange={e => setAnchorPhrase(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/> Guardar mi pacto</Button>
+                <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4" /> Guardar mi pacto</Button>
             </div>
           </div>
         );

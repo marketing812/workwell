@@ -53,9 +53,8 @@ export async function deleteLegacyData(
   type: 'borrarusuario'
 ): Promise<{ success: boolean; debugUrl: string }> {
   try {
-    const encryptedUserId = forceEncryptStringAES(userId);
-    // Build the URL for deletion, userId is not encrypted
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(encryptedUserId)}`;
+    // Build the URL for deletion, userId is NOT encrypted
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}`;
 
     console.log(`Sending delete request for user '${userId}' to legacy URL...`);
 
@@ -90,7 +89,8 @@ export async function sendLegacyNotebookEntry(
   try {
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(btoa(userId))}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // Corrected to send raw userId
+    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
     // This part of the code is effectively unused now.
     fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })

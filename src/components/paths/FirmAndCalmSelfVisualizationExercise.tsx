@@ -33,12 +33,12 @@ export function FirmAndCalmSelfVisualizationExercise({ content, pathId, onComple
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!reflection.trim()) {
-      toast({ title: "Reflexión vacía", variant: 'destructive' });
+      toast({ title: "Reflexión vacía", description: "Escribe algo en tu reflexión para guardarla.", variant: 'destructive' });
       return;
     }
     addNotebookEntry({
       title: `Reflexión: ${content.title}`,
-      content: `¿Qué sentí al verte firme y tranquilo?\n\n${reflection}`,
+      content: `¿Qué sentí al verme firme y tranquilo?\n\n${reflection}`,
       pathId: pathId,
       userId: user?.id,
     });
@@ -46,7 +46,7 @@ export function FirmAndCalmSelfVisualizationExercise({ content, pathId, onComple
     setIsSaved(true);
     onComplete();
   };
-
+  
   const transcript = `Vamos a entrar en una breve visualización. 
 Un momento para conectar con esa parte de ti que sabe cuidarte, incluso cuando hay incomodidad. 
 

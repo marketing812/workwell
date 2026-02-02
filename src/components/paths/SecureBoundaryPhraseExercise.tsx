@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface SecureBoundaryPhraseExerciseProps {
   content: ModuleContent;
@@ -27,6 +28,7 @@ const suggestedPhrases = [
 
 export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundaryPhraseExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [selectedPhrase, setSelectedPhrase] = useState('');
     const [customPhrase, setCustomPhrase] = useState('');
@@ -43,6 +45,7 @@ export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundary
             title: `Mi Frase de Límite Seguro`,
             content: `Mi frase: "${finalPhrase}"\n\nPráctica diaria opcional: ${dailyPractice || 'No realizada.'}`,
             pathId: pathId,
+            userId: user?.id,
         });
         toast({ title: 'Frase Guardada' });
         setStep(5); // Confirmation screen
@@ -50,7 +53,13 @@ export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundary
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
-
+    const resetExercise = () => {
+      setStep(0);
+      setSelectedPhrase('');
+      setCustomPhrase('');
+      setDailyPractice('');
+    };
+    
     const renderStep = () => {
         const contentTyped = content as any;
         switch (step) {
@@ -134,7 +143,7 @@ export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundary
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">¡Frase Guardada!</h4>
                         <p className="text-muted-foreground">Tu frase de límite seguro se ha guardado. Puedes practicarla para que se vuelva parte de tu forma natural de comunicarte.</p>
-                        <Button onClick={() => setStep(0)} variant="outline">Crear otra frase</Button>
+                        <Button onClick={resetExercise} variant="outline">Crear otra frase</Button>
                     </div>
                 );
             default:
