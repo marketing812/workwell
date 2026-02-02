@@ -103,15 +103,8 @@ Responde exclusivamente en español.
 {{{message}}}
 
 ---
-**FORMATO DE SALIDA (OBLIGATORIO Y ESTRICTO)**
-Devuelve **ÚNICAMENTE** un JSON válido en **UNA SOLA LÍNEA**, sin texto adicional antes o después, con esta forma exacta:
-{"response":"..."}.
-
-Reglas del JSON:
-- El valor de "response" debe ser texto plano en español, sin markdown.
-- No incluyas saltos de línea dentro de "response". Si necesitas separar ideas, usa frases cortas con espacios.
-- Si incluyes comillas dobles en el texto, escápalas con \\"
-- No incluyas campos adicionales. Solo "response".`
+**RESPUESTA DEL ASISTENTE:**
+`
 });
 
 
@@ -166,28 +159,14 @@ const emotionalChatbotFlow = ai.defineFlow(
     }
 
     const promptResponse = await emotionalChatbotPrompt(promptPayload);
-    const rawTextResponse = promptResponse.text;
+    const textResponse = promptResponse.text;
 
-    if (!rawTextResponse || rawTextResponse.trim() === '') {
+    if (!textResponse || textResponse.trim() === '') {
         throw new Error("La IA devolvió una respuesta de texto vacía.");
     }
 
-    // Limpiamos el texto crudo para eliminar saltos de línea que rompen el JSON.parse()
-    const cleanedText = rawTextResponse.replace(/[\r\n]/g, '').trim();
-
-    try {
-        const finalOutput: EmotionalChatbotOutput = JSON.parse(cleanedText);
-        
-        if (!finalOutput?.response) {
-            throw new Error("El JSON parseado de la IA no contiene la propiedad 'response'.");
-        }
-        
-        return finalOutput;
-
-    } catch (e) {
-        console.error("Error al parsear el JSON de la IA después de la limpieza. Texto limpio:", cleanedText, "Error:", e);
-        // Si el parseo falla incluso después de limpiar, es un error crítico.
-        throw new Error("La IA no devolvió un JSON válido, incluso después de la limpieza.");
-    }
+    // Como el flow debe devolver un objeto del tipo EmotionalChatbotOutputSchema,
+    // envolvemos la respuesta de texto plano en el formato esperado.
+    return { response: textResponse };
   }
 );
