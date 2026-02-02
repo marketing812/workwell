@@ -17,9 +17,10 @@ import { useUser } from '@/contexts/UserContext';
 interface AnsiedadTieneSentidoExerciseProps {
   content: AnsiedadTieneSentidoExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneSentidoExerciseProps) {
+export default function AnsiedadTieneSentidoExercise({ content, pathId, onComplete }: AnsiedadTieneSentidoExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -92,9 +93,10 @@ ${finalAction || 'No especificado.'}
             description: "Tu círculo de la ansiedad se ha guardado en el cuaderno terapéutico."
         });
         setIsSaved(true);
+        onComplete();
         setStep(4);
     };
-
+    
     const resetExercise = () => {
         setStep(0);
         setSituation('');
