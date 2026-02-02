@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -11,10 +11,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MantraExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface MantraExerciseProps {
   content: MantraExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const peroTambienOptions = [
@@ -30,8 +32,9 @@ const feelingOptions = [
     'Me sigo sintiendo igual, pero agradezco haberlo intentado',
 ];
 
-export function MantraExercise({ content, pathId }: MantraExerciseProps) {
+export function MantraExercise({ content, pathId, onComplete }: MantraExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [ySiThought, setYSiThought] = useState('');
@@ -78,6 +81,7 @@ ${finalFeelingText}
       title: "Cuestionando mis '¿Y si...?'",
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
@@ -85,6 +89,7 @@ ${finalFeelingText}
       description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
+    onComplete();
   };
   
   const finalPeroTambien = peroTambienThought === 'Otra opción:' ? customPeroTambien : peroTambienThought;
@@ -96,7 +101,6 @@ ${finalFeelingText}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">PANTALLA 1 – Escribe un pensamiento tipo “¿Y si…?”</h4>
             <p className="text-sm text-muted-foreground">Cuando te enfrentas a algo incierto o que te genera ansiedad, es común que aparezcan pensamientos automáticos del tipo: “¿Y si no puedo?”, “¿Y si me equivoco?”, “¿Y si sale mal?” Estos pensamientos suelen activar el miedo y la ansiedad porque tu mente está intentando prepararte para lo peor, aunque eso que imagina no haya ocurrido. Lo que vamos a hacer es detectar uno de esos pensamientos en ti, escribirlo con tus propias palabras y luego aprender a equilibrarlo.</p>
-            <p className="text-sm text-muted-foreground">Piensa en una situación reciente que te haya generado inseguridad o duda. ¿Qué “¿Y si…?” apareció en tu mente?</p>
             <p className="text-xs text-muted-foreground italic">Ejemplo: “¿Y si digo algo que no tiene sentido?”, “¿Y si se enfadan conmigo?”, “¿Y si me quedo en blanco durante la reunión?”, “¿Y si no soy suficiente?”</p>
             <Label htmlFor="ySiThought">Escríbelo aquí, tal y como te viene a la cabeza:</Label>
             <Textarea id="ySiThought" value={ySiThought} onChange={e => setYSiThought(e.target.value)} />

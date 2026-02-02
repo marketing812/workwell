@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, PlayCircle, BookOpen, Feather, Wind } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/pathsData';
+import { useUser } from '@/contexts/UserContext';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
   pathId: string; // Cambiado para recibir solo el ID
+  onComplete: () => void;
 }
 
-export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeEntregaConscienteExerciseProps) {
+export function RitualDeEntregaConscienteExercise({ content, pathId, onComplete }: RitualDeEntregaConscienteExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0); // 0: initial choice, 1: write, 2: breathe, 3: gratitude
 
   // State for "Escribir y soltar"
@@ -53,12 +56,13 @@ export function RitualDeEntregaConscienteExercise({ content, pathId }: RitualDeE
       title: `Ritual de Entrega Consciente: ${option}`,
       content: entryContent,
       pathId: pathId,
-      // La 'ruta' se puede añadir si es necesario, obteniéndola de alguna otra fuente de datos
+      userId: user?.id,
     });
     toast({
       title: "Ritual Guardado",
       description: `Tu ritual de '${option}' ha sido guardado en el cuaderno.`,
     });
+    onComplete();
   };
 
   const renderInitialChoice = () => (

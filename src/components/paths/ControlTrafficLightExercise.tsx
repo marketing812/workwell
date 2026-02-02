@@ -12,16 +12,19 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ControlTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '../ui/alert';
+import { useUser } from '@/contexts/UserContext';
 
 interface ControlTrafficLightExerciseProps {
   content: ControlTrafficLightExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const steps = ['intro', 'green', 'amber', 'red', 'summary', 'confirmation'];
 
-export function ControlTrafficLightExercise({ content, pathId }: ControlTrafficLightExerciseProps) {
+export function ControlTrafficLightExercise({ content, pathId, onComplete }: ControlTrafficLightExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [currentStep, setCurrentStep] = useState(0);
   const [situation, setSituation] = useState('');
@@ -70,6 +73,7 @@ ${redZone || 'Sin entradas.'}
       title: `Semáforo del Control: ${situation.substring(0, 30) || 'Reflexión'}`,
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
@@ -77,6 +81,7 @@ ${redZone || 'Sin entradas.'}
       description: "Tu 'Semáforo del Control' se ha guardado en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   
@@ -166,7 +171,7 @@ ${redZone || 'Sin entradas.'}
         )}
 
         {steps[currentStep] === 'summary' && (
-             <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
+             <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                 <h3 className="text-center font-bold text-lg text-primary">Tu Semáforo del Control</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                     <div className="border-2 border-green-500 rounded-lg p-3 bg-green-50/50 dark:bg-green-900/20">
@@ -186,12 +191,12 @@ ${redZone || 'Sin entradas.'}
                     Soltar no es rendirse. Es redirigir tu energía hacia lo que sí puedes transformar. No todo depende de ti, pero sí puedes elegir cómo responder.
                 </p>
                 <div className="flex justify-between w-full mt-4">
-                    <Button onClick={prevStep} variant="outline">Atrás</Button>
-                    <Button onClick={handleSave}>
+                    <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
+                    <Button type="submit">
                         <Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno
                     </Button>
                 </div>
-            </div>
+            </form>
         )}
         
         {steps[currentStep] === 'confirmation' && (

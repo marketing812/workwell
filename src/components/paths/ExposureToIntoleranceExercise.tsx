@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface ExposureToIntoleranceExerciseProps {
   content: ModuleContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function ExposureToIntoleranceExercise({ content, pathId }: ExposureToIntoleranceExerciseProps) {
+export function ExposureToIntoleranceExercise({ content, pathId, onComplete }: ExposureToIntoleranceExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [situation, setSituation] = useState('');
@@ -74,10 +77,11 @@ ${situation || 'No especificada.'}
 **Reflexión final para mi cuaderno terapéutico:**
 ${finalReflection}
 `;
-    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId, userId: user?.id, });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
-    nextStep(); // Corregido: Avanzar al siguiente paso después de guardar
+    onComplete();
+    nextStep();
   };
   
   const renderStep = () => {
@@ -199,4 +203,3 @@ ${finalReflection}
     </Card>
   );
 }
-

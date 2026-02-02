@@ -395,17 +395,17 @@ function ContentItemRenderer({
     case 'wellbeingPlanExercise':
       return <WellbeingPlanExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'uncertaintyMapExercise':
-      return <UncertaintyMapExercise key={index} content={contentItem} pathId={path.id} />;
+      return <UncertaintyMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'controlTrafficLightExercise':
-      return <ControlTrafficLightExercise key={index} content={contentItem} pathId={path.id} />;
+      return <ControlTrafficLightExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'alternativeStoriesExercise':
-      return <AlternativeStoriesExercise key={index} content={contentItem} pathId={path.id} />;
+      return <AlternativeStoriesExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mantraExercise':
-      return <MantraExercise key={index} content={contentItem} pathId={path.id} />;
+      return <MantraExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
     case 'exposureToIntoleranceExercise':
-      return <ExposureToIntoleranceExercise key={index} content={contentItem} pathId={path.id} />;
+      return <ExposureToIntoleranceExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
     case 'therapeuticNotebookReflection':

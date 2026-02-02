@@ -8,14 +8,16 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UncertaintyMapExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface UncertaintyMapExerciseProps {
   content: UncertaintyMapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const areaOptions = [
@@ -40,8 +42,9 @@ const responseOptions = [
 
 const steps = ['intro', 'areas', 'responses', 'summary'];
 
-export default function UncertaintyMapExercise({ content, pathId }: UncertaintyMapExerciseProps) {
+export default function UncertaintyMapExercise({ content, pathId, onComplete }: UncertaintyMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedAreas, setSelectedAreas] = useState<Record<string, boolean>>({});
@@ -102,12 +105,15 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
       title: "Mi Mapa de la Incertidumbre",
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
       title: "Ejercicio Guardado",
       description: "Tu 'Mapa de la Incertidumbre' se ha guardado en el Cuaderno Terapéutico.",
     });
+    
+    onComplete();
   };
 
   return (
@@ -188,7 +194,7 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
         )}
         
         {steps[currentStep] === 'summary' && (
-          <div className="space-y-6 p-4 animate-in fade-in-0 duration-500">
+          <form onSubmit={handleSave} className="space-y-6 p-4 animate-in fade-in-0 duration-500">
              <Card className="p-4">
                 <CardHeader className="p-2">
                     <CardTitle>Áreas donde sientes más incertidumbre:</CardTitle>
@@ -215,12 +221,12 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
                 Este mapa no es un diagnóstico, es una brújula. Reconocer dónde te cuesta soltar el control te da la oportunidad de responder con conciencia, en lugar de reaccionar en automático.
              </p>
              <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}>
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit">
                     <Save className="mr-2 h-4 w-4" /> Guardar en mi diario
                 </Button>
             </div>
-          </div>
+          </form>
         )}
       </CardContent>
     </Card>

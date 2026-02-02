@@ -11,14 +11,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AlternativeStoriesExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface AlternativeStoriesExerciseProps {
   content: AlternativeStoriesExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function AlternativeStoriesExercise({ content, pathId }: AlternativeStoriesExerciseProps) {
+export function AlternativeStoriesExercise({ content, pathId, onComplete }: AlternativeStoriesExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [situation, setSituation] = useState('');
   const [negativeStory, setNegativeStory] = useState('');
@@ -96,6 +99,7 @@ ${newPossibilities}
       title: `Escenario alternativo: ${content.title}`,
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
@@ -103,6 +107,7 @@ ${newPossibilities}
       description: "Tus 'Historias Alternativas' se han guardado en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
+    onComplete();
   };
   
   if (!isClient) {
