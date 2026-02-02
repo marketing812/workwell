@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -20,11 +21,10 @@ export default function TherapeuticNotebookPage() {
   useEffect(() => {
     // Cuando el componente se monta y el usuario está disponible,
     // se inicia la carga de las entradas del cuaderno.
-    if (user && user.id && !isNotebookLoading) {
+    if (user?.id && !isNotebookLoading) {
         fetchAndSetNotebook(user.id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]); // Depende solo del usuario para el primer renderizado
+  }, [user?.id, fetchAndSetNotebook, isNotebookLoading]); 
 
   useEffect(() => {
     // Listener para actualizar la URL de depuración si cambia en otra parte
@@ -70,8 +70,8 @@ export default function TherapeuticNotebookPage() {
       ) : (
         <div className="space-y-6">
           {notebookEntries.length > 0 ? (
-            notebookEntries.map((entry) => (
-              <Card key={`${entry.id}-${entry.timestamp}`} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+            notebookEntries.map((entry, index) => (
+              <Card key={`${entry.id}-${entry.timestamp}-${index}`} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
                       <CardTitle className="text-xl text-accent">{entry.ruta || entry.title}</CardTitle>
                       <CardDescription className="flex flex-col sm:flex-row sm:items-center text-xs pt-1 gap-x-4">

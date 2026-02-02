@@ -241,6 +241,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, [auth, db, fetchUserProfile, fetchAndSetNotebook]);
 
+  useEffect(() => {
+    const handleNotebookUpdate = () => {
+      if (user?.id) {
+        fetchAndSetNotebook(user.id);
+      }
+    };
+    window.addEventListener('notebook-updated', handleNotebookUpdate);
+    return () => {
+      window.removeEventListener('notebook-updated', handleNotebookUpdate);
+    };
+  }, [user?.id, fetchAndSetNotebook]);
+
 
   const logout = useCallback(async () => {
     if (!auth) return;

@@ -119,7 +119,7 @@ export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
     });
     const entriesToStore = sortedEntries.slice(0, MAX_NOTEBOOK_ENTRIES);
     localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(entriesToStore));
-    window.dispatchEvent(new Event('notebook-updated'));
+    // Do NOT dispatch 'notebook-updated' here to avoid infinite loops when called from the context.
   } catch (error) {
     console.error("Error overwriting notebook entries in localStorage:", error);
   }
