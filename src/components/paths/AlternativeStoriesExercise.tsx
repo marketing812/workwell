@@ -19,7 +19,7 @@ interface AlternativeStoriesExerciseProps {
   onComplete: () => void;
 }
 
-export function AlternativeStoriesExercise({ content, pathId, onComplete }: AlternativeStoriesExerciseProps) {
+export default function AlternativeStoriesExercise({ content, pathId, onComplete }: AlternativeStoriesExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

@@ -22,7 +22,7 @@ interface ControlTrafficLightExerciseProps {
 
 const steps = ['intro', 'green', 'amber', 'red', 'summary', 'confirmation'];
 
-export function ControlTrafficLightExercise({ content, pathId, onComplete }: ControlTrafficLightExerciseProps) {
+export default function ControlTrafficLightExercise({ content, pathId, onComplete }: ControlTrafficLightExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

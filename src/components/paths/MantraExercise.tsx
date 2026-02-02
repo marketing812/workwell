@@ -32,7 +32,7 @@ const feelingOptions = [
     'Me sigo sintiendo igual, pero agradezco haberlo intentado',
 ];
 
-export function MantraExercise({ content, pathId, onComplete }: MantraExerciseProps) {
+export default function MantraExercise({ content, pathId, onComplete }: MantraExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

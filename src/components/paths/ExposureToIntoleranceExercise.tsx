@@ -18,7 +18,7 @@ interface ExposureToIntoleranceExerciseProps {
   onComplete: () => void;
 }
 
-export function ExposureToIntoleranceExercise({ content, pathId, onComplete }: ExposureToIntoleranceExerciseProps) {
+export default function ExposureToIntoleranceExercise({ content, pathId, onComplete }: ExposureToIntoleranceExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

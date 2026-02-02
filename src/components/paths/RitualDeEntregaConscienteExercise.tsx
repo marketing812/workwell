@@ -18,7 +18,7 @@ interface RitualDeEntregaConscienteExerciseProps {
   onComplete: () => void;
 }
 
-export function RitualDeEntregaConscienteExercise({ content, pathId, onComplete }: RitualDeEntregaConscienteExerciseProps) {
+export default function RitualDeEntregaConscienteExercise({ content, pathId, onComplete }: RitualDeEntregaConscienteExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0); // 0: initial choice, 1: write, 2: breathe, 3: gratitude
