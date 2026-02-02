@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -10,7 +11,7 @@ import { ArrowLeft, NotebookText, Calendar, Eye, FileJson, ArrowRight, Loader2 }
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/contexts/UserContext";
 
-const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
+const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
 
 export default function TherapeuticNotebookPage() {
   const t = useTranslations();
@@ -29,13 +30,13 @@ export default function TherapeuticNotebookPage() {
     // Listener para actualizar la URL de depuración si cambia en otra parte
     const handleUrlUpdate = () => {
         if (typeof window !== 'undefined') {
-            setDebugUrl(sessionStorage.getItem(DEBUG_NOTEBOOK_FETCH_URL_KEY));
+            setDebugUrl(sessionStorage.getItem(DEBUG_SAVE_NOTEBOOK_URL_KEY));
         }
     };
     // Llamada inicial para establecer la URL al cargar
     handleUrlUpdate();
-    window.addEventListener('notebook-url-updated', handleUrlUpdate);
-    return () => window.removeEventListener('notebook-url-updated', handleUrlUpdate);
+    window.addEventListener('notebook-save-url-updated', handleUrlUpdate);
+    return () => window.removeEventListener('notebook-save-url-updated', handleUrlUpdate);
   }, []);
 
   const isLoading = userLoading || isNotebookLoading;
@@ -111,10 +112,10 @@ export default function TherapeuticNotebookPage() {
                     <CardHeader>
                       <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2">
                         <FileJson className="h-5 w-5" />
-                        URL de Depuración (Cuaderno)
+                        URL de Depuración (Último Guardado)
                       </CardTitle>
                       <CardDescription>
-                        Esta es la URL exacta que se usó para intentar cargar tu cuaderno terapéutico.
+                        Esta es la URL de la última llamada para guardar una entrada. Si tu entrada no aparece, esta información puede ayudar a depurar el problema.
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
