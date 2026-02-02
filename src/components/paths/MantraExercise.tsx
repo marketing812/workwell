@@ -46,6 +46,15 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  const resetExercise = () => {
+    setStep(0);
+    setYSiThought('');
+    setPeroTambienThought('');
+    setCustomPeroTambien('');
+    setFinalFeeling('');
+    setCustomFinalFeeling('');
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -90,6 +99,7 @@ ${finalFeelingText}
     });
     setIsSaved(true);
     onComplete();
+    nextStep(); // Ir a la pantalla de confirmación
   };
   
   const finalPeroTambien = peroTambienThought === 'Otra opción:' ? customPeroTambien : peroTambienThought;
@@ -173,18 +183,30 @@ ${finalFeelingText}
                 <p className="text-xs text-muted-foreground italic">No hace falta que todo cambie de golpe. A veces, darle otra forma a un pensamiento es el primer paso para vivirlo de otra manera.</p>
                 <div className="flex justify-between w-full">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
-                    {!isSaved ? (
-                         <Button type="submit">
-                            <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno terapeútico
-                        </Button>
-                    ) : (
-                         <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                            <CheckCircle className="mr-2 h-5 w-5" />
-                            <p className="font-medium">Guardado.</p>
-                        </div>
-                    )}
+                    <Button type="submit" disabled={isSaved}>
+                        <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno terapeútico
+                    </Button>
                 </div>
             </form>
+        );
+      case 4: // Pantalla de confirmación
+        return (
+          <div className="p-6 text-center space-y-4">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Guardado!</h4>
+            <p className="text-muted-foreground">
+              Tu reflexión se ha guardado correctamente. Puedes volver a ella en tu cuaderno cuando lo necesites.
+            </p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={resetExercise} variant="outline">
+                Hacer otro registro
+              </Button>
+            </div>
+          </div>
         );
       default:
         return null;
