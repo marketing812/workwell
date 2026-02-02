@@ -77,7 +77,7 @@ ${situation || 'No especificada.'}
 **Reflexión final para mi cuaderno terapéutico:**
 ${finalReflection}
 `;
-    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId, userId: user?.id, });
+    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
     onComplete();
