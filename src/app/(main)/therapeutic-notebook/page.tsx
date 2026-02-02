@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -21,10 +20,10 @@ export default function TherapeuticNotebookPage() {
   useEffect(() => {
     // Cuando el componente se monta y el usuario está disponible,
     // se inicia la carga de las entradas del cuaderno.
-    if (user?.id && !isNotebookLoading) {
+    if (user?.id) {
         fetchAndSetNotebook(user.id);
     }
-  }, [user?.id, fetchAndSetNotebook, isNotebookLoading]); 
+  }, [user?.id, fetchAndSetNotebook]); 
 
   useEffect(() => {
     // Listener para actualizar la URL de depuración si cambia en otra parte

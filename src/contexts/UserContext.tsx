@@ -65,18 +65,30 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
     
     let jsonToParse = responseText.trim();
     
-    // START FIX: Handle concatenated JSON objects in the response.
-    const jsonSeparator = '}{';
-    const separatorIndex = jsonToParse.indexOf(jsonSeparator);
-    if (separatorIndex !== -1) {
-        console.log("UserContext: Detected concatenated JSON, processing first object.");
-        jsonToParse = jsonToParse.substring(0, separatorIndex + 1); // +1 to include the closing '}'
+    // START FIX: Handle potentially concatenated JSON objects in the response.
+    // The backend sometimes returns multiple JSON objects back-to-back, e.g. {..}{..}
+    // This isn't valid JSON. We attempt to fix it by wrapping it in an array.
+    if (jsonToParse.startsWith('{') && jsonToParse.endsWith('}')) {
+        jsonToParse = `[${jsonToParse.replace(/}\s*{/g, '},{')}]`;
     }
     // END FIX
 
     let apiResult;
     try {
-        apiResult = JSON.parse(jsonToParse);
+        const parsedData = JSON.parse(jsonToParse);
+        // If the result of the fix is an array of objects, we take the first one
+        // if it contains a status, otherwise we assume it's the data array itself.
+        if (Array.isArray(parsedData) && parsedData.length > 0) {
+            if('status' in parsedData[0]){
+                 apiResult = parsedData[0];
+                 console.log("UserContext: Processed concatenated JSON response, taking first object.");
+            } else {
+                 apiResult = { status: "OK", data: parsedData };
+                 console.log("UserContext: Processed concatenated JSON as a direct data array.");
+            }
+        } else {
+            apiResult = parsedData;
+        }
     } catch(e) {
         // Fallback for when the response is not JSON but a raw encrypted string.
         const decryptedData = decryptDataAES(jsonToParse);
