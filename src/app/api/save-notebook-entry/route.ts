@@ -21,12 +21,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Faltan datos en la petición (userId o entryData)." }, { status: 400 });
     }
 
+    const base64UserId = Buffer.from(userId).toString('base64');
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
     const requestBody = new URLSearchParams();
     requestBody.append('apikey', API_KEY);
     requestBody.append('tipo', 'guardarcuaderno');
-    requestBody.append('idusuario', userId); 
+    requestBody.append('idusuario', base64UserId); 
     requestBody.append('datos', encryptedPayload);
 
     const saveResponse = await fetch(API_BASE_URL, {
