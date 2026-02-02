@@ -15,9 +15,10 @@ import { useUser } from '@/contexts/UserContext';
 interface ImaginedCrisisRehearsalExerciseProps {
   content: ImaginedCrisisRehearsalExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function ImaginedCrisisRehearsalExercise({ content, pathId }: ImaginedCrisisRehearsalExerciseProps) {
+export default function ImaginedCrisisRehearsalExercise({ content, pathId, onComplete }: ImaginedCrisisRehearsalExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [reflection, setReflection] = useState({
@@ -26,10 +27,6 @@ export default function ImaginedCrisisRehearsalExercise({ content, pathId }: Ima
     toolUsed: '',
   });
   const [isSaved, setIsSaved] = useState(false);
-
-  const handleInputChange = (field: keyof typeof reflection, value: string) => {
-    setReflection(prev => ({ ...prev, [field]: value }));
-  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -60,6 +57,7 @@ ${reflection.toolUsed || 'No especificado.'}
 
     toast({ title: 'Ensayo Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });
     setIsSaved(true);
+    onComplete(); // Marcar el módulo como completado
   };
 
   return (
@@ -131,4 +129,8 @@ ${reflection.toolUsed || 'No especificado.'}
       </CardContent>
     </Card>
   );
+
+  function handleInputChange(field: keyof typeof reflection, value: string) {
+    setReflection(prev => ({ ...prev, [field]: value }));
+  }
 }
