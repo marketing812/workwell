@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ImaginedCrisisRehearsalExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface ImaginedCrisisRehearsalExerciseProps {
   content: ImaginedCrisisRehearsalExerciseContent;
@@ -18,6 +19,7 @@ interface ImaginedCrisisRehearsalExerciseProps {
 
 export default function ImaginedCrisisRehearsalExercise({ content, pathId }: ImaginedCrisisRehearsalExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [reflection, setReflection] = useState({
     differentAction: '',
     selfTalk: '',
@@ -53,6 +55,7 @@ ${reflection.toolUsed || 'No especificado.'}
       title: 'Ensayo de Crisis Imaginaria',
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({ title: 'Ensayo Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });

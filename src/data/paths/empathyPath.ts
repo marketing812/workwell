@@ -16,7 +16,7 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: 'En esta primera semana vamos a sentar las bases de las relaciones que de verdad nutren: la empatía real y la honestidad emocional.\nNo se trata de ser perfecto o perfecta, ni de decirlo todo sin filtro, sino de aprender a estar presente sin disfraces y a no dejarte fuera de lo que sientes.\nVas a descubrir que la empatía no es imaginarte en el lugar del otro, sino intentar comprender su mundo sin juicios ni correcciones. Y que la autenticidad no es imponerte, sino expresarte con respeto y verdad.\nDurante esta semana empezarás a observar en qué relaciones puedes ser tú con libertad y en cuáles te pones una máscara para protegerte o agradar. Entrenarás a escucharte antes de responder y a comunicarte desde un lugar más conectado contigo.',
+          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?Esta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.Verás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.Cada vez que te eliges con respeto, estás entrenando tu autoestima.',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
         },
         { type: 'title', text: 'Psicoeducación' },

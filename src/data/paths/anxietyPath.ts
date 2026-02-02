@@ -16,7 +16,7 @@ export const anxietyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te has dado cuenta de que muchas veces lo que más asusta no es la situación en sí, sino las sensaciones que aparecen en tu cuerpo? Esa taquicardia, ese nudo en el estómago, esa mente que corre sin parar.\nEsta primera semana aprenderás a mirar la ansiedad de frente, a entender cómo funciona y a descubrir que no es un enemigo, sino una señal que puedes aprender a interpretar.\nPiensa en ella como una alarma: no siempre indica fuego real, a veces solo está demasiado sensible.',
+          text: 'En esta primera semana vamos a sentar las bases de las relaciones que de verdad nutren: la empatía real y la honestidad emocional.\nNo se trata de ser perfecto o perfecta, ni de decirlo todo sin filtro, sino de aprender a estar presente sin disfraces y a no dejarte fuera de lo que sientes.\nVas a descubrir que la empatía no es imaginarte en el lugar del otro, sino intentar comprender su mundo sin juicios ni correcciones. Y que la autenticidad no es imponerte, sino expresarte con respeto y verdad.\nDurante esta semana empezarás a observar en qué relaciones puedes ser tú con libertad y en cuáles te pones una máscara para protegerte o agradar. Entrenarás a escucharte antes de responder y a comunicarte desde un lugar más conectado contigo.',
           audioUrl: 'https://workwellfut.com/audios/ruta13/semana1/Ruta13semana1introduccion.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },

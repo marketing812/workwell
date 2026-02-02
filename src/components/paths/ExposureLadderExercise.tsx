@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ExposureLadderExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface ExposureLadderExerciseProps {
   content: ExposureLadderExerciseContent;
@@ -19,6 +20,7 @@ interface ExposureLadderExerciseProps {
 
 export default function ExposureLadderExercise({ content, pathId }: ExposureLadderExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [goal, setGoal] = useState('');
   const [steps, setSteps] = useState(Array(7).fill(''));
@@ -48,7 +50,7 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
 
 **Mi primer paso será:** ${firstStep}
     `;
-    addNotebookEntry({ title: 'Mi Escalera de Exposición', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Escalera de Exposición', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Escalera Guardada' });
   };
   

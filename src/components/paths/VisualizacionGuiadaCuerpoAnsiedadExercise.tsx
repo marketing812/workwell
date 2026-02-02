@@ -12,6 +12,7 @@ import type { VisualizacionGuiadaCuerpoAnsiedadExerciseContent } from '@/data/pa
 import { Edit3, ArrowRight, ArrowLeft, CheckCircle, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
   content: VisualizacionGuiadaCuerpoAnsiedadExerciseContent;
@@ -20,6 +21,7 @@ interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
 
 export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [breathing, setBreathing] = useState('');
     const [heart, setHeart] = useState('');
@@ -68,6 +70,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
           title: 'Mi Visualización del Cuerpo en Ansiedad',
           content: notebookContent,
           pathId: pathId,
+          userId: user?.id,
         });
     
         toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });

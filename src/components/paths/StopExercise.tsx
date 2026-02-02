@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StopExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface StopExerciseProps {
   content: StopExerciseContent;
@@ -18,6 +19,7 @@ interface StopExerciseProps {
 
 export default function StopExercise({ content, pathId }: StopExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   
   const [observedState, setObservedState] = useState('');
@@ -41,7 +43,7 @@ ${observedState}
 *Mi siguiente paso elegido:*
 ${nextAction}
     `;
-    addNotebookEntry({ title: `Práctica STOP`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Práctica STOP`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Práctica Guardada' });
   };
   
@@ -95,7 +97,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Mira tus pensamientos y sensaciones desde fuera. ¿Qué estás pensando? ¿Qué sientes en el cuerpo?</p>
             <div className="mt-4">
               <audio key="audio-step-3" controls controlsList="nodownload" className="w-full">
-                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semN3tecnica1observa.mp3" type="audio/mp3" />
+                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semN3tecnica1observa.mp3" type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>

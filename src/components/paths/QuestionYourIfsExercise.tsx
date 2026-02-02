@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { QuestionYourIfsExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface QuestionYourIfsExerciseProps {
   content: QuestionYourIfsExerciseContent;
@@ -19,6 +20,7 @@ interface QuestionYourIfsExerciseProps {
 
 export default function QuestionYourIfsExercise({ content, pathId }: QuestionYourIfsExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [thought, setThought] = useState('');
@@ -47,7 +49,7 @@ export default function QuestionYourIfsExercise({ content, pathId }: QuestionYou
 *Gravedad real (0-10):* ${severity}
 *Reformulación final:* "${reformulation}"
     `;
-    addNotebookEntry({ title: 'Cuestionando mis "¿Y si...?"', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Cuestionando mis "¿Y si...?"', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado' });
   };
   
