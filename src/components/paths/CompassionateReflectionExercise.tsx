@@ -41,7 +41,6 @@ export function CompassionateReflectionExercise({ content, pathId, onComplete }:
   const { user } = useUser();
   const [step, setStep] = useState(0);
 
-  // State for user inputs
   const [adviceToFriend, setAdviceToFriend] = useState('');
   const [selfJudgment, setSelfJudgment] = useState('');
   const [avoidedEmotions, setAvoidedEmotions] = useState<Record<string, boolean>>({});
@@ -49,6 +48,7 @@ export function CompassionateReflectionExercise({ content, pathId, onComplete }:
   const [aftermathEmotion, setAftermathEmotion] = useState('');
   const [perfectionism, setPerfectionism] = useState<Record<string, boolean>>({});
   const [flexibleThought, setFlexibleThought] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
   const prevStep = () => setStep(prev => prev - 1);
 
@@ -90,8 +90,9 @@ ${flexibleThought || 'No especificada.'}
         userId: user?.id,
     });
     toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
-    setStep(prev => prev + 1); // Move to final confirmation screen
+    setIsSaved(true);
     onComplete();
+    setStep(prev => prev + 1); 
   };
 
   const resetExercise = () => {
@@ -103,6 +104,7 @@ ${flexibleThought || 'No especificada.'}
     setAftermathEmotion('');
     setPerfectionism({});
     setFlexibleThought('');
+    setIsSaved(false);
   }
 
   const renderStep = () => {

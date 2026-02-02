@@ -66,9 +66,9 @@ export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTr
     } else if (currentStatus === 'partial') {
         nextStatus = 'skipped';
     } else if (currentStatus === 'skipped') {
-        nextStatus = undefined; // clear status
+        nextStatus = undefined;
     } else {
-        nextStatus = 'done'; // Default first click
+        nextStatus = 'done';
     }
 
     const newProgress = { ...progress };

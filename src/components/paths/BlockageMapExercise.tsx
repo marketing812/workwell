@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -29,6 +29,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
   const [otherEmotion, setOtherEmotion] = useState('');
   const [escapeBehaviors, setEscapeBehaviors] = useState('');
   const [consequences, setConsequences] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
 
   if (content.type !== 'blockageMapExercise') return null;
   
@@ -80,8 +81,9 @@ ${consequences || 'No especificadas.'}
         userId: user?.id,
     });
     toast({ title: 'Mapa guardado', description: 'Tu Mapa del Bloqueo Personal se ha guardado en el cuaderno.' });
-    setStep(7);
+    setIsSaved(true);
     onComplete();
+    setStep(7);
   };
   
   const resetExercise = () => {
@@ -92,6 +94,7 @@ ${consequences || 'No especificadas.'}
     setOtherEmotion('');
     setEscapeBehaviors('');
     setConsequences('');
+    setIsSaved(false);
   }
 
   const renderStep = () => {
@@ -248,7 +251,7 @@ ${consequences || 'No especificadas.'}
                 <ArrowLeft className="mr-2 h-4 w-4" /> Atrás
               </Button>
               <Button onClick={handleSave} className="w-full">
-                <Save className="mr-2 h-4 w-4" /> guardar en mi cuaderno
+                <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno
               </Button>
             </div>
           </div>

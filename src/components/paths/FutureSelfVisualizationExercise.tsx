@@ -1,15 +1,15 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
 
@@ -29,8 +29,8 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onC
     const [emotions, setEmotions] = useState('');
     const [thoughts, setThoughts] = useState('');
     const [benefits, setBenefits] = useState('');
-    const [journeySteps, setJourneySteps] = useState(''); // Renamed from 'steps' to avoid conflict
-    const [saved, setSaved] = useState(false);
+    const [journeySteps, setJourneySteps] = useState('');
+    const [isSaved, setIsSaved] = useState(false);
 
     if (content.type !== 'futureSelfVisualizationExercise') return null;
     
@@ -44,7 +44,7 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onC
         setThoughts('');
         setBenefits('');
         setJourneySteps('');
-        setSaved(false);
+        setIsSaved(false);
     };
 
     const handleSave = async (e: FormEvent) => {
@@ -68,13 +68,14 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onC
             userId: user?.id,
         });
         toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
-        setSaved(true);
+        setIsSaved(true);
         onComplete();
+        nextStep();
     };
 
     const renderStep = () => {
         switch(step) {
-            case 0: // Introducción
+            case 0:
                 return (
                     <div className="p-4 space-y-4">
                         <p className="text-sm text-muted-foreground">Busca un lugar tranquilo y cómodo. Apoya bien los pies en el suelo, relaja el cuerpo y deja que tu respiración te acompañe.</p>
@@ -175,7 +176,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <Button onClick={() => setStep(1)} className="w-full">Comenzar ejercicio de escritura</Button>
                     </div>
                 );
-            case 1: // Paso 1 – Define tu hábito
+            case 1:
                  return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 1: Define tu hábito deseado</h4>
@@ -187,7 +188,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         </div>
                     </div>
                 );
-            case 2: // Paso 2 – Viaje al futuro
+            case 2:
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Viaje al futuro</h4>
@@ -200,7 +201,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         </div>
                     </div>
                 );
-            case 3: // Paso 3 – Emociones y pensamientos
+            case 3:
                  return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Emociones y pensamientos del yo futuro</h4>
@@ -214,7 +215,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         </div>
                     </div>
                 );
-            case 4: // Paso 4 – Cambios
+            case 4:
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Cambios que observas en tu vida</h4>
@@ -227,7 +228,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         </div>
                     </div>
                 );
-            case 5: // Paso 5 – Mirar atrás
+            case 5:
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Mirar atrás desde el futuro</h4>
@@ -239,17 +240,17 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         </div>
                     </div>
                 );
-            case 6: // Paso 6 - Plan de acción
+            case 6:
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Plan de acción desde la visualización</h4>
-                        <div className="space-y-2"><Label htmlFor="habit-final">¿Qué hábito visualizaste?</Label><Textarea id="habit-final" value={habit} onChange={e => setHabit(e.target.value)} disabled={saved} /></div>
-                        <div className="space-y-2"><Label htmlFor="future-self-final">¿Cómo era tu yo futuro?</Label><Textarea id="future-self-final" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} disabled={saved} /></div>
-                        <div className="space-y-2"><Label htmlFor="emotions-final">¿Qué emociones sentiste?</Label><Textarea id="emotions-final" value={emotions} onChange={e => setEmotions(e.target.value)} disabled={saved} /></div>
-                        <div className="space-y-2"><Label htmlFor="thoughts-final">¿Qué pensamientos nuevos aparecieron?</Label><Textarea id="thoughts-final" value={thoughts} onChange={e => setThoughts(e.target.value)} disabled={saved} /></div>
-                        <div className="space-y-2"><Label htmlFor="benefits-final">¿Qué beneficios viste en tu vida?</Label><Textarea id="benefits-final" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={saved} /></div>
-                        <div className="space-y-2"><Label htmlFor="steps-final">¿Qué pasos te ayudaron a llegar hasta ahí?</Label><Textarea id="steps-final" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} disabled={saved} /></div>
-                        {!saved ? (
+                        <div className="space-y-2"><Label htmlFor="habit-final">¿Qué hábito visualizaste?</Label><Textarea id="habit-final" value={habit} onChange={e => setHabit(e.target.value)} disabled={isSaved} /></div>
+                        <div className="space-y-2"><Label htmlFor="future-self-final">¿Cómo era tu yo futuro?</Label><Textarea id="future-self-final" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} disabled={isSaved} /></div>
+                        <div className="space-y-2"><Label htmlFor="emotions-final">¿Qué emociones sentiste?</Label><Textarea id="emotions-final" value={emotions} onChange={e => setEmotions(e.target.value)} disabled={isSaved} /></div>
+                        <div className="space-y-2"><Label htmlFor="thoughts-final">¿Qué pensamientos nuevos aparecieron?</Label><Textarea id="thoughts-final" value={thoughts} onChange={e => setThoughts(e.target.value)} disabled={isSaved} /></div>
+                        <div className="space-y-2"><Label htmlFor="benefits-final">¿Qué beneficios viste en tu vida?</Label><Textarea id="benefits-final" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={isSaved} /></div>
+                        <div className="space-y-2"><Label htmlFor="steps-final">¿Qué pasos te ayudaron a llegar hasta ahí?</Label><Textarea id="steps-final" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} disabled={isSaved} /></div>
+                        {!isSaved ? (
                             <div className="flex justify-between w-full mt-4">
                                 <Button variant="outline" onClick={() => setStep(5)} type="button">Atrás</Button>
                                 <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar mi visualización</Button>
@@ -257,7 +258,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         ) : null}
                     </form>
                 );
-             case 7: // Paso 7 - Cierre
+             case 7:
                 return (
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />

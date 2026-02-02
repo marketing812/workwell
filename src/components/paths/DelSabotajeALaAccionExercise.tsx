@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useMemo } from 'react';
+import { useState, type FormEvent, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -9,8 +9,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DelSabotajeALaAccionExerciseContent } from '@/data/paths/pathTypes';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
 
 
@@ -46,6 +46,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
   const [selections, setSelections] = useState<Record<string, boolean>>({});
   const [customSabotage, setCustomSabotage] = useState('');
   const [customResponse, setCustomResponse] = useState('');
+  const [isSaved, setIsSaved] = useState(false);
   
   const nextStep = () => setCurrentStep(prev => prev + 1);
   const prevStep = () => setCurrentStep(prev => prev - 1);
@@ -54,6 +55,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
     setSelections({});
     setCustomSabotage('');
     setCustomResponse('');
+    setIsSaved(false);
   };
 
   const handleSelectionChange = (id: string, checked: boolean) => {
@@ -94,14 +96,15 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
       title: "Ejercicio Guardado",
       description: "Tu tabla de diálogo interno se ha guardado en el Cuaderno Terapéutico.",
     });
-
+    
+    setIsSaved(true);
     onComplete();
-    nextStep(); // Move to summary
+    nextStep();
   };
   
   const renderStep = () => {
     switch (currentStep) {
-        case 0: // Pantalla 1 – Introducción
+        case 0:
             return (
                 <div className="text-center p-4 space-y-4">
                     <p className="mb-4">Muchas veces postergas no por flojera, sino por lo que te dices justo antes de actuar. Este ejercicio te ayuda a escuchar ese diálogo interno y a crear una respuesta que te sostenga.</p>
@@ -109,7 +112,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                 </div>
             );
         
-        case 1: // Pantalla 2 – Frases que alimentan la procrastinación
+        case 1:
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Frases que alimentan la procrastinación</h4>
@@ -129,7 +132,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                 </div>
             );
 
-        case 2: // Pantalla 3 – Tus respuestas entrenadas
+        case 2:
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Tus respuestas entrenadas</h4>
@@ -152,7 +155,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                 </div>
             );
 
-        case 3: // Pantalla 4 – Crea tu tabla personal
+        case 3:
              return (
                 <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Crea tu tabla personal</h4>
@@ -174,7 +177,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                 </form>
             );
 
-        case 4: // Pantalla 5 – Refuerzo final
+        case 4:
             return (
                 <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
