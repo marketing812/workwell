@@ -14,9 +14,10 @@ import type { AlternativeStoriesExerciseContent } from '@/data/paths/pathTypes';
 
 interface AlternativeStoriesExerciseProps {
   content: AlternativeStoriesExerciseContent;
+  pathId: string;
 }
 
-export function AlternativeStoriesExercise({ content }: AlternativeStoriesExerciseProps) {
+export function AlternativeStoriesExercise({ content, pathId }: AlternativeStoriesExerciseProps) {
   const { toast } = useToast();
   
   const [situation, setSituation] = useState('');
@@ -29,7 +30,7 @@ export function AlternativeStoriesExercise({ content }: AlternativeStoriesExerci
   const [isSaved, setIsSaved] = useState(false);
   const [isClient, setIsClient] = useState(false);
   
-  const storageKey = `exercise-progress-tolerar-incertidumbre-alternativeStories`;
+  const storageKey = `exercise-progress-${pathId}-alternativeStories`;
 
   useEffect(() => {
     setIsClient(true);
@@ -94,7 +95,7 @@ ${newPossibilities}
     addNotebookEntry({
       title: `Escenario alternativo: ${content.title}`,
       content: notebookContent,
-      pathId: 'tolerar-incertidumbre',
+      pathId: pathId,
     });
 
     toast({

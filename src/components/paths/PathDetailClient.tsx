@@ -173,7 +173,7 @@ const QuestionYourIfsExercise = dynamic(() => import('@/components/paths/Questio
 const ExposureLadderExercise = dynamic(() => import('@/components/paths/ExposureLadderExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
-const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise'), { loading: LoaderComponent, ssr: false });
 const TherapeuticNotebookReflectionExercise = dynamic(() => import('@/components/paths/TherapeuticNotebookReflectionExercise'), { loading: LoaderComponent, ssr: false });
 
 // =================== ERROR BOUNDARIES ===================
@@ -395,13 +395,13 @@ function ContentItemRenderer({
     case 'wellbeingPlanExercise':
       return <WellbeingPlanExercise key={index} content={contentItem} onComplete={handleComplete} />;
     case 'uncertaintyMapExercise':
-      return <UncertaintyMapExercise key={index} content={contentItem} />;
+      return <UncertaintyMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'controlTrafficLightExercise':
-      return <ControlTrafficLightExercise key={index} content={contentItem} />;
+      return <ControlTrafficLightExercise key={index} content={contentItem} pathId={path.id} />;
     case 'alternativeStoriesExercise':
-      return <AlternativeStoriesExercise key={index} content={contentItem} />;
+      return <AlternativeStoriesExercise key={index} content={contentItem} pathId={path.id} />;
     case 'mantraExercise':
-      return <MantraExercise key={index} content={contentItem} />;
+      return <MantraExercise key={index} content={contentItem} pathId={path.id} />;
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} />;
     case 'exposureToIntoleranceExercise':
@@ -697,7 +697,7 @@ function ContentItemRenderer({
         return <CalmVisualizationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     }
     case 'imaginedCrisisRehearsalExercise': {
-      return <ImaginedCrisisRehearsalExercise key={index} content={contentItem} pathId={path.id} />;
+      return <ImaginedCrisisRehearsalExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     }
     case 'anxietyReframingExercise':
         return <AnxietyReframingExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;

@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils';
 
 interface UncertaintyMapExerciseProps {
   content: UncertaintyMapExerciseContent;
+  pathId: string;
 }
 
 const areaOptions = [
@@ -39,7 +40,7 @@ const responseOptions = [
 
 const steps = ['intro', 'areas', 'responses', 'summary'];
 
-export default function UncertaintyMapExercise({ content }: UncertaintyMapExerciseProps) {
+export default function UncertaintyMapExercise({ content, pathId }: UncertaintyMapExerciseProps) {
   const { toast } = useToast();
   
   const [currentStep, setCurrentStep] = useState(0);
@@ -100,7 +101,7 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
     addNotebookEntry({
       title: "Mi Mapa de la Incertidumbre",
       content: notebookContent,
-      pathId: 'tolerar-incertidumbre',
+      pathId: pathId,
     });
 
     toast({

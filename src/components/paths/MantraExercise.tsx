@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,9 +14,23 @@ import type { MantraExerciseContent } from '@/data/paths/pathTypes';
 
 interface MantraExerciseProps {
   content: MantraExerciseContent;
+  pathId: string;
 }
 
-export function MantraExercise({ content }: MantraExerciseProps) {
+const peroTambienOptions = [
+    'Pero también podría aprender de ello.',
+    'Pero también puedo pedir ayuda si lo necesito.',
+    'Pero también he salido adelante en otras ocasiones.',
+    'Pero también puedo adaptarme si las cosas no salen como quiero.',
+];
+
+const feelingOptions = [
+    'Me siento un poco más en calma',
+    'Me siento menos atrapado/a por el pensamiento',
+    'Me sigo sintiendo igual, pero agradezco haberlo intentado',
+];
+
+export function MantraExercise({ content, pathId }: MantraExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
 
@@ -62,7 +77,7 @@ ${finalFeelingText}
     addNotebookEntry({
       title: "Cuestionando mis '¿Y si...?'",
       content: notebookContent,
-      pathId: 'tolerar-incertidumbre',
+      pathId: pathId,
     });
 
     toast({
@@ -71,19 +86,6 @@ ${finalFeelingText}
     });
     setIsSaved(true);
   };
-  
-  const peroTambienOptions = [
-    'Pero también podría aprender de ello.',
-    'Pero también puedo pedir ayuda si lo necesito.',
-    'Pero también he salido adelante en otras ocasiones.',
-    'Pero también puedo adaptarme si las cosas no salen como quiero.',
-  ];
-
-  const feelingOptions = [
-      'Me siento un poco más en calma',
-      'Me siento menos atrapado/a por el pensamiento',
-      'Me sigo sintiendo igual, pero agradezco haberlo intentado',
-  ];
   
   const finalPeroTambien = peroTambienThought === 'Otra opción:' ? customPeroTambien : peroTambienThought;
 
@@ -205,5 +207,3 @@ ${finalFeelingText}
     </Card>
   );
 }
-
-    

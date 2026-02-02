@@ -15,11 +15,12 @@ import { Alert, AlertDescription } from '../ui/alert';
 
 interface ControlTrafficLightExerciseProps {
   content: ControlTrafficLightExerciseContent;
+  pathId: string;
 }
 
 const steps = ['intro', 'green', 'amber', 'red', 'summary', 'confirmation'];
 
-export function ControlTrafficLightExercise({ content }: ControlTrafficLightExerciseProps) {
+export function ControlTrafficLightExercise({ content, pathId }: ControlTrafficLightExerciseProps) {
   const { toast } = useToast();
   
   const [currentStep, setCurrentStep] = useState(0);
@@ -68,7 +69,7 @@ ${redZone || 'Sin entradas.'}
     addNotebookEntry({
       title: `Semáforo del Control: ${situation.substring(0, 30) || 'Reflexión'}`,
       content: notebookContent,
-      pathId: 'tolerar-incertidumbre',
+      pathId: pathId,
     });
 
     toast({
