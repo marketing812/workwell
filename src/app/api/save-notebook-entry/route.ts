@@ -25,8 +25,9 @@ export async function POST(request: Request) {
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
     // CONSTRUCT A GET URL INSTEAD OF A POST BODY
-    // Use the raw userId without base64 encoding as per user's debugging insight.
-    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // Use the raw userId without base64 encoding.
+    // CRITICAL FIX: Added the empty `&token=` parameter to match other working API calls.
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log(`[API Route] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
 
