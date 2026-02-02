@@ -22,11 +22,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Faltan datos en la petición (userId o entryData)." }, { status: 400 });
     }
 
-    const base64UserId = Buffer.from(userId).toString('base64');
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
     // CONSTRUCT A GET URL INSTEAD OF A POST BODY
-    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    // Use the raw userId without base64 encoding as per user's debugging insight.
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log(`[API Route] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
 
