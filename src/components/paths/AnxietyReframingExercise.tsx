@@ -18,7 +18,7 @@ interface AnxietyReframingExerciseProps {
   onComplete: () => void;
 }
 
-export function AnxietyReframingExercise({ content, pathId, onComplete }: AnxietyReframingExerciseProps) {
+export default function AnxietyReframingExercise({ content, pathId, onComplete }: AnxietyReframingExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

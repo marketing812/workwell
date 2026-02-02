@@ -16,7 +16,7 @@ interface ImaginedCrisisRehearsalExerciseProps {
   pathId: string;
 }
 
-export function ImaginedCrisisRehearsalExercise({ content, pathId }: ImaginedCrisisRehearsalExerciseProps) {
+export default function ImaginedCrisisRehearsalExercise({ content, pathId }: ImaginedCrisisRehearsalExerciseProps) {
   const { toast } = useToast();
   const [reflection, setReflection] = useState({
     differentAction: '',

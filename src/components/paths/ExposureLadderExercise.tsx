@@ -17,7 +17,7 @@ interface ExposureLadderExerciseProps {
   pathId: string;
 }
 
-export function ExposureLadderExercise({ content, pathId }: ExposureLadderExerciseProps) {
+export default function ExposureLadderExercise({ content, pathId }: ExposureLadderExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [goal, setGoal] = useState('');

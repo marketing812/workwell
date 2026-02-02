@@ -19,7 +19,7 @@ interface AnsiedadTieneSentidoExerciseProps {
   pathId: string;
 }
 
-export function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneSentidoExerciseProps) {
+export default function AnsiedadTieneSentidoExercise({ content, pathId }: AnsiedadTieneSentidoExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);

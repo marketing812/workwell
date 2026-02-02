@@ -17,7 +17,7 @@ interface QuestionYourIfsExerciseProps {
   pathId: string;
 }
 
-export function QuestionYourIfsExercise({ content, pathId }: QuestionYourIfsExerciseProps) {
+export default function QuestionYourIfsExercise({ content, pathId }: QuestionYourIfsExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
 

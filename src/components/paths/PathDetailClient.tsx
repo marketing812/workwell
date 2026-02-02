@@ -166,14 +166,14 @@ const VisualizeDayExercise = dynamic(() => import('@/components/paths/VisualizeD
 const IlluminatingMemoriesAlbumExercise = dynamic(() => import('@/components/paths/IlluminatingMemoriesAlbumExercise').then(mod => mod.IlluminatingMemoriesAlbumExercise), { loading: LoaderComponent, ssr: false });
 const PositiveEmotionalFirstAidKitExercise = dynamic(() => import('@/components/paths/PositiveEmotionalFirstAidKitExercise').then(mod => mod.PositiveEmotionalFirstAidKitExercise), { loading: LoaderComponent, ssr: false });
 // RUTA 13 (NUEVA)
-const AnsiedadTieneSentidoExercise = dynamic(() => import('@/components/paths/AnsiedadTieneSentidoExercise').then(mod => mod.AnsiedadTieneSentidoExercise), { loading: LoaderComponent, ssr: false });
-const VisualizacionGuiadaCuerpoAnsiedadExercise = dynamic(() => import('@/components/paths/VisualizacionGuiadaCuerpoAnsiedadExercise').then(mod => mod.VisualizacionGuiadaCuerpoAnsiedadExercise), { loading: LoaderComponent, ssr: false });
-const StopExercise = dynamic(() => import('@/components/paths/StopExercise').then(mod => mod.StopExercise), { loading: LoaderComponent, ssr: false });
-const QuestionYourIfsExercise = dynamic(() => import('@/components/paths/QuestionYourIfsExercise').then(mod => mod.QuestionYourIfsExercise), { loading: LoaderComponent, ssr: false });
-const ExposureLadderExercise = dynamic(() => import('@/components/paths/ExposureLadderExercise').then(mod => mod.ExposureLadderExercise), { loading: LoaderComponent, ssr: false });
-const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise').then(mod => mod.CalmVisualizationExercise), { loading: LoaderComponent, ssr: false });
-const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise').then(mod => mod.AnxietyReframingExercise), { loading: LoaderComponent, ssr: false });
-const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise').then(mod => mod.ImaginedCrisisRehearsalExercise), { loading: LoaderComponent, ssr: false });
+const AnsiedadTieneSentidoExercise = dynamic(() => import('@/components/paths/AnsiedadTieneSentidoExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const VisualizacionGuiadaCuerpoAnsiedadExercise = dynamic(() => import('@/components/paths/VisualizacionGuiadaCuerpoAnsiedadExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const StopExercise = dynamic(() => import('@/components/paths/StopExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const QuestionYourIfsExercise = dynamic(() => import('@/components/paths/QuestionYourIfsExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const ExposureLadderExercise = dynamic(() => import('@/components/paths/ExposureLadderExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 const TherapeuticNotebookReflectionExercise = dynamic(() => import('@/components/paths/TherapeuticNotebookReflectionExercise'), { loading: LoaderComponent, ssr: false });
 
 // =================== ERROR BOUNDARIES ===================

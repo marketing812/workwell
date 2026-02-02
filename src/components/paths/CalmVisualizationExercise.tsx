@@ -16,7 +16,7 @@ interface CalmVisualizationExerciseProps {
   onComplete: () => void;
 }
 
-export function CalmVisualizationExercise({ content, pathId, onComplete }: CalmVisualizationExerciseProps) {
+export default function CalmVisualizationExercise({ content, pathId, onComplete }: CalmVisualizationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);
