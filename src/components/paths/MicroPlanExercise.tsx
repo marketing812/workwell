@@ -67,20 +67,27 @@ export function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExer
 *Mi microplan de acción es:*
 Cuando ${finalMoment}, voy a ${action}.
     `;
-    addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ 
+      title: 'Mi Microplan de Acción', 
+      content: notebookContent, 
+      pathId, 
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
+      userId: user?.id 
+    });
     toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
     onComplete();
     setStep(4); // Go to motivational screen
   };
 
-  const handleFinalReflectionSave = () => {
-    if (!activated.trim() || !felt.trim() || !discovered.trim() || !reinforce.trim()) {
-        toast({
-            title: "Reflexión incompleta",
-            description: "Por favor, completa todos los campos para guardar.",
-            variant: "destructive",
-        });
-        return;
+  const handleFinalReflectionSave = (e: FormEvent) => {
+    e.preventDefault();
+     if (!activated.trim() || !felt.trim() || !discovered.trim() || !reinforce.trim()) {
+      toast({
+        title: "Reflexión incompleta",
+        description: "Por favor, completa todos los campos para guardar.",
+        variant: "destructive",
+      });
+      return;
     }
     const reflectionContent = `
 **Reflexión de Cierre: Microplan de Acción**
@@ -97,7 +104,13 @@ ${discovered}
 *Y quiero seguir reforzando:*
 ${reinforce}
     `;
-    addNotebookEntry({ title: 'Cierre Personal: Microplan', content: reflectionContent, pathId, userId: user?.id });
+    addNotebookEntry({ 
+      title: 'Cierre Personal: Microplan', 
+      content: reflectionContent, 
+      pathId, 
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
+      userId: user?.id 
+    });
     toast({ title: 'Reflexión Guardada' });
     setIsReflectionSaved(true);
   };
@@ -189,7 +202,7 @@ ${reinforce}
             );
         case 5: // "Tu cierre personal"
             return (
-                 <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                 <form onSubmit={handleFinalReflectionSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg text-center">Tu Cierre Personal</h4>
                     <div className="space-y-2">
                         <Label htmlFor="activated">Esta semana, activé:</Label>
@@ -209,13 +222,19 @@ ${reinforce}
                     </div>
                     <p className="text-center italic text-sm text-muted-foreground pt-4">Has roto un ciclo. Has creado una dirección. Cada vez que actúas, aunque sea por un instante, estás diciendo: “No me rindo conmigo.”</p>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
-                        <Button onClick={handleFinalReflectionSave} className="w-full" disabled={isReflectionSaved}>
-                            {isReflectionSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
-                            Guardar en mi diario
-                        </Button>
+                        {!isReflectionSaved ? (
+                             <Button type="submit" className="w-full">
+                                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
+                            </Button>
+                        ) : (
+                             <div className="w-full flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                                <CheckCircle className="mr-2 h-5 w-5" />
+                                <p className="font-medium">Reflexión guardada.</p>
+                            </div>
+                        )}
                         <Button onClick={() => router.push(`/paths/${pathId}`)} variant="outline" className="w-full">Volver a la ruta</Button>
                     </div>
-                </div>
+                </form>
             );
         default:
             return null;

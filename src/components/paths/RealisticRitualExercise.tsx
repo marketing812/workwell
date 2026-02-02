@@ -62,7 +62,13 @@ ${link}
 *Para recordarlo o facilitarlo, voy a:*
 ${reminder}
     `;
-    addNotebookEntry({ title: 'Mi Ritual Realista', content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ 
+      title: 'Mi Ritual Realista', 
+      content: notebookContent, 
+      pathId,
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
+      userId: user?.id 
+    });
     toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
     setSaved(true);
     onComplete();
@@ -145,7 +151,7 @@ ${reminder}
       default:
         return null;
     }
-  };
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
