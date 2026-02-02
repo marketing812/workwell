@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, FileJson } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MantraExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
@@ -32,6 +32,8 @@ const feelingOptions = [
     'Me sigo sintiendo igual, pero agradezco haberlo intentado',
 ];
 
+const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
+
 export default function MantraExercise({ content, pathId, onComplete }: MantraExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -43,6 +45,21 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
   const [finalFeeling, setFinalFeeling] = useState('');
   const [customFinalFeeling, setCustomFinalFeeling] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [debugUrl, setDebugUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleUrlUpdate = () => {
+        if (typeof window !== 'undefined') {
+            setDebugUrl(sessionStorage.getItem(DEBUG_SAVE_NOTEBOOK_URL_KEY));
+        }
+    };
+    
+    window.addEventListener('notebook-save-url-updated', handleUrlUpdate);
+
+    return () => {
+        window.removeEventListener('notebook-save-url-updated', handleUrlUpdate);
+    };
+  }, []);
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
@@ -54,6 +71,10 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
     setFinalFeeling('');
     setCustomFinalFeeling('');
     setIsSaved(false);
+    setDebugUrl(null);
+    if (typeof window !== 'undefined') {
+        sessionStorage.removeItem(DEBUG_SAVE_NOTEBOOK_URL_KEY);
+    }
   };
 
   const handleSave = (e: FormEvent) => {
@@ -151,7 +172,7 @@ ${finalFeelingText}
                 <h4 className="font-semibold text-lg">PANTALLA 3 – Lee tu frase completa… y date un momento para sentirla</h4>
                 <p className="text-sm text-muted-foreground">Ahora une las dos partes de tu pensamiento: el “¿Y si…?” que apareció al principio + el “pero también…” que has elegido o escrito.</p>
                 <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-left">
-                    “¿Y si {ySiThought}? ...vale, pero también {finalPeroTambien}.”
+                    “¿Y si ${ySiThought}? ...vale, pero también ${finalPeroTambien}.”
                 </blockquote>
                 <p className="text-sm text-muted-foreground">Léelo en voz alta o en silencio. Haz una pausa. Respira. Permite que esta frase no solo suene distinta, sino que se sienta distinta en ti. Este ejercicio no elimina el miedo, pero te recuerda que puedes sostenerlo con más recursos de los que crees. Esa también es parte de tu historia.</p>
                 <div className="flex justify-between w-full">
@@ -197,6 +218,22 @@ ${finalFeelingText}
             <p className="text-muted-foreground">
               Tu reflexión se ha guardado correctamente. Puedes volver a ella en tu cuaderno cuando lo necesites.
             </p>
+             {debugUrl && (
+              <Card className="mt-4 shadow-lg border-amber-500 bg-amber-50/50 dark:bg-amber-900/20 text-left">
+                <CardHeader className="p-4">
+                  <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2 text-base">
+                    <FileJson className="h-5 w-5" />
+                    URL de Depuración (Último Guardado)
+                  </CardTitle>
+                  <CardDescription className="text-xs pt-1">
+                    Si tu entrada no aparece en el cuaderno, esta información puede ayudar a depurar el problema.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-4 pt-0">
+                  <p className="text-xs text-muted-foreground break-all bg-background p-2 rounded-md border">{debugUrl}</p>
+                </CardContent>
+              </Card>
+            )}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />

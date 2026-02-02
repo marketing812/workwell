@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -7,17 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { useTranslations } from "@/lib/translations";
 import { formatEntryTimestamp, type NotebookEntry } from "@/data/therapeuticNotebookStore";
-import { ArrowLeft, NotebookText, Calendar, Eye, FileJson, ArrowRight, Loader2 } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { ArrowLeft, NotebookText, Calendar, Eye, ArrowRight, Loader2 } from "lucide-react";
 import { useUser } from "@/contexts/UserContext";
-
-const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
 
 export default function TherapeuticNotebookPage() {
   const t = useTranslations();
   const { user, loading: userLoading, notebookEntries, fetchAndSetNotebook, isNotebookLoading } = useUser();
-  const [debugUrl, setDebugUrl] = useState<string | null>(null);
-
+  
   useEffect(() => {
     // Cuando el componente se monta y el usuario está disponible,
     // se inicia la carga de las entradas del cuaderno.
@@ -25,19 +20,6 @@ export default function TherapeuticNotebookPage() {
         fetchAndSetNotebook(user.id);
     }
   }, [user?.id, fetchAndSetNotebook]); 
-
-  useEffect(() => {
-    // Listener para actualizar la URL de depuración si cambia en otra parte
-    const handleUrlUpdate = () => {
-        if (typeof window !== 'undefined') {
-            setDebugUrl(sessionStorage.getItem(DEBUG_SAVE_NOTEBOOK_URL_KEY));
-        }
-    };
-    // Llamada inicial para establecer la URL al cargar
-    handleUrlUpdate();
-    window.addEventListener('notebook-save-url-updated', handleUrlUpdate);
-    return () => window.removeEventListener('notebook-save-url-updated', handleUrlUpdate);
-  }, []);
 
   const isLoading = userLoading || isNotebookLoading;
 
@@ -107,28 +89,11 @@ export default function TherapeuticNotebookPage() {
               <CardContent>
                 <NotebookText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                 <p className="text-lg font-medium text-muted-foreground">{t.noNotebookEntries}</p>
-                 {debugUrl && (
-                  <Card className="mt-8 shadow-lg border-amber-500 bg-amber-50/50 dark:bg-amber-900/20">
-                    <CardHeader>
-                      <CardTitle className="text-amber-700 dark:text-amber-300 flex items-center gap-2">
-                        <FileJson className="h-5 w-5" />
-                        URL de Depuración (Último Guardado)
-                      </CardTitle>
-                      <CardDescription>
-                        Esta es la URL de la última llamada para guardar una entrada. Si tu entrada no aparece, esta información puede ayudar a depurar el problema.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xs text-muted-foreground break-all bg-background p-2 rounded-md border">{debugUrl}</p>
-                    </CardContent>
-                  </Card>
-                )}
               </CardContent>
             </Card>
           )}
         </div>
       )}
-
     </div>
   );
 }
