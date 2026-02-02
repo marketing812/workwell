@@ -407,7 +407,7 @@ function ContentItemRenderer({
     case 'exposureToIntoleranceExercise':
       return <ExposureToIntoleranceExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
-      return <DelSabotajeALaAccionExercise key={index} content={contentItem} />;
+      return <DelSabotajeALaAccionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'therapeuticNotebookReflection':
       return <TherapeuticNotebookReflectionExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} onComplete={handleComplete} />;
     case 'twoMinuteRuleExercise':
@@ -415,13 +415,13 @@ function ContentItemRenderer({
     case 'microPlanExercise':
         return <MicroPlanExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'futureSelfVisualizationExercise':
-      return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} />;
+      return <FutureSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} audioUrl={contentItem.audioUrl} onComplete={handleComplete} />;
     case 'realisticRitualExercise':
-      return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} />;
+      return <RealisticRitualExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'gentleTrackingExercise':
       return <GentleTrackingExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'blockageMapExercise':
-      return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} />;
+      return <BlockageMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'compassionateReflectionExercise':
       return <CompassionateReflectionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mapOfUnsaidThingsExercise':

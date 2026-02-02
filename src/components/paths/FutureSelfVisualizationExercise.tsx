@@ -70,7 +70,6 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onC
         toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
         setSaved(true);
         onComplete();
-        setStep(7); // Move to confirmation screen
     };
 
     const renderStep = () => {
