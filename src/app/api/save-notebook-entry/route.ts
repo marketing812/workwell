@@ -13,6 +13,7 @@ interface NotebookEntryPayload {
 
 // This is the API route that acts as a proxy to the external service
 export async function POST(request: Request) {
+  let saveUrl = ''; // Define url at the top to be accessible in catch block
   try {
     const body: NotebookEntryPayload = await request.json();
     const { userId, entryData } = body;
@@ -24,29 +25,22 @@ export async function POST(request: Request) {
     const base64UserId = Buffer.from(userId).toString('base64');
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     
-    const requestBody = new URLSearchParams();
-    requestBody.append('apikey', API_KEY);
-    requestBody.append('tipo', 'guardarcuaderno');
-    requestBody.append('idusuario', base64UserId); 
-    requestBody.append('datos', encryptedPayload);
+    // CONSTRUCT A GET URL INSTEAD OF A POST BODY
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    const saveResponse = await fetch(API_BASE_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: requestBody.toString(),
+    console.log(`[API Route] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
+
+    const saveResponse = await fetch(saveUrl, {
+      method: 'GET', // EXPLICITLY USE GET
       signal: AbortSignal.timeout(API_TIMEOUT_MS),
     });
     
     const saveResponseText = await saveResponse.text();
 
-    const debugUrl = `${API_BASE_URL}?${requestBody.toString()}`;
-
     if (!saveResponse.ok) {
       console.warn(`API Route (save-notebook-entry): External API call failed. Status: ${saveResponse.status}, Text: ${saveResponseText}`);
       return NextResponse.json(
-        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}`, debugUrl },
+        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}`, debugUrl: saveUrl },
         { status: 502 }
       );
     }
@@ -54,13 +48,13 @@ export async function POST(request: Request) {
     try {
         const finalApiResult = JSON.parse(saveResponseText);
         if (finalApiResult.status === 'OK') {
-           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo.", debugUrl });
+           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo.", debugUrl: saveUrl });
         } else {
-           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error.", debugUrl }, { status: 400 });
+           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error.", debugUrl: saveUrl }, { status: 400 });
         }
     } catch (e) {
         console.warn("API Route (save-notebook-entry): External API response was not valid JSON, but status was OK. Raw text:", saveResponseText);
-        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON.", debugUrl });
+        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON.", debugUrl: saveUrl });
     }
 
   } catch (error: any) {
@@ -73,7 +67,7 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json(
-      { success: false, message: errorMessage, debugUrl: "Error creating URL" },
+      { success: false, message: errorMessage, debugUrl: saveUrl || "Error creating URL" },
       { status: 500 }
     );
   }
