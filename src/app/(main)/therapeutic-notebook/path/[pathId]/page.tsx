@@ -42,7 +42,7 @@ export default function NotebookEntriesByPathPage() {
           <BookText className="mr-3 h-10 w-10 text-primary" />
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-primary">
-              {pathTitle || 'Cuaderno Terapéutico'}
+              Cuaderno Terapéutico
             </h1>
             <p className="text-muted-foreground mt-1">
               Entradas para la ruta: {pathTitle}
@@ -52,7 +52,7 @@ export default function NotebookEntriesByPathPage() {
         <Button variant="outline" asChild>
           <Link href="/therapeutic-notebook">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver a las Rutas
+            Volver
           </Link>
         </Button>
       </div>
