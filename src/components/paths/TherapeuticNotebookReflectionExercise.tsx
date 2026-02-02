@@ -65,7 +65,8 @@ ${reflection}
       title: `Reflexión: ${content.title}`,
       content: fullContent,
       pathId: pathId,
-      ruta: pathTitle
+      ruta: pathTitle,
+      userId: user?.id,
     });
     
     toast({
