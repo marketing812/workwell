@@ -40,7 +40,7 @@ export async function POST(request: Request) {
     if (!saveResponse.ok) {
       console.warn(`API Route (save-notebook-entry): External API call failed. Status: ${saveResponse.status}, Text: ${saveResponseText}`);
       return NextResponse.json(
-        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}`, debugUrl: saveUrl },
+        { success: false, message: `Error en el servidor externo (HTTP ${saveResponse.status}): ${saveResponseText.substring(0, 150)}` },
         { status: 502 }
       );
     }
@@ -48,13 +48,13 @@ export async function POST(request: Request) {
     try {
         const finalApiResult = JSON.parse(saveResponseText);
         if (finalApiResult.status === 'OK') {
-           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo.", debugUrl: saveUrl });
+           return NextResponse.json({ success: true, message: finalApiResult.message || "Entrada guardada en el servidor externo." });
         } else {
-           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error.", debugUrl: saveUrl }, { status: 400 });
+           return NextResponse.json({ success: false, message: finalApiResult.message || "El servidor externo indicó un error." }, { status: 400 });
         }
     } catch (e) {
         console.warn("API Route (save-notebook-entry): External API response was not valid JSON, but status was OK. Raw text:", saveResponseText);
-        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON.", debugUrl: saveUrl });
+        return NextResponse.json({ success: true, message: "Guardado en el servidor externo, pero la respuesta no fue JSON." });
     }
 
   } catch (error: any) {
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json(
-      { success: false, message: errorMessage, debugUrl: saveUrl || "Error creating URL" },
+      { success: false, message: errorMessage },
       { status: 500 }
     );
   }
