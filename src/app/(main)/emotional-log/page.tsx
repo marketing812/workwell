@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -154,7 +153,7 @@ export default function EmotionalLogPage() {
 
       <MoodEvolutionChart
         data={chartData}
-        title={t.myEvolution}
+        title="Mis autorregistros"
         description={t.myEvolutionFullHistoryDescription}
         className="lg:h-[450px]"
       />
