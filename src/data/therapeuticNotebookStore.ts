@@ -64,14 +64,17 @@ export function getNotebookEntryById(id: string): NotebookEntry | undefined {
 export function addNotebookEntry(
   newEntryData: Omit<NotebookEntry, 'id' | 'timestamp'> & { userId?: string }
 ): NotebookEntry {
-  const { userId, ...entryData } = newEntryData;
+  // 1. Separate userId from the rest of the data.
+  const { userId, ...entryProps } = newEntryData;
+
+  // 2. Create the full entry object for local storage.
   const newEntry: NotebookEntry = {
     id: crypto.randomUUID(),
     timestamp: new Date().toISOString(),
-    ...entryData,
+    ...entryProps,
   };
 
-  // 1. Save to local storage for immediate UI update
+  // 3. Save to local storage for immediate UI update.
   try {
     if (typeof window !== "undefined") {
       const currentEntries = getNotebookEntries();
@@ -83,10 +86,19 @@ export function addNotebookEntry(
     console.error("Error saving notebook entry to localStorage:", error);
   }
 
-  // 2. Sync with the external server via our internal API route (non-blocking)
+  // 4. Sync with the server (non-blocking).
   if (userId) {
-    // We don't await this call, so it's "fire and forget" and doesn't block the UI
-    syncNotebookEntryWithServer(userId, newEntry);
+    // Create a clean object for the server payload, ensuring userId is NOT included.
+    const entryDataForServer = {
+        id: newEntry.id,
+        timestamp: newEntry.timestamp,
+        title: newEntry.title,
+        content: newEntry.content,
+        pathId: newEntry.pathId,
+        ruta: newEntry.ruta,
+    };
+    // The 'as NotebookEntry' is safe because the server function only needs these properties.
+    syncNotebookEntryWithServer(userId, entryDataForServer as NotebookEntry);
   } else {
     console.warn("addNotebookEntry: userId not provided, skipping external sync.");
   }
