@@ -11,14 +11,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { useUser } from '@/contexts/UserContext';
 
 interface BlockageMapExerciseProps {
   content: ModuleContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function BlockageMapExercise({ content, pathId }: BlockageMapExerciseProps) {
+export default function BlockageMapExercise({ content, pathId, onComplete }: BlockageMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [avoidedTask, setAvoidedTask] = useState('');
   const [blockingThoughts, setBlockingThoughts] = useState('');
@@ -74,9 +77,11 @@ ${consequences || 'No especificadas.'}
         content: notebookContent,
         pathId,
         ruta: 'Superar la Procrastinación y Crear Hábitos',
+        userId: user?.id,
     });
     toast({ title: 'Mapa guardado', description: 'Tu Mapa del Bloqueo Personal se ha guardado en el cuaderno.' });
     setStep(7);
+    onComplete();
   };
   
   const resetExercise = () => {

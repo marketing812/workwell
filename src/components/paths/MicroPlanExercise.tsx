@@ -13,6 +13,7 @@ import type { MicroPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@/contexts/UserContext';
 
 interface MicroPlanExerciseProps {
   content: MicroPlanExerciseContent;
@@ -23,6 +24,7 @@ interface MicroPlanExerciseProps {
 export function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExerciseProps) {
   const { toast } = useToast();
   const router = useRouter();
+  const { user } = useUser();
   const [moment, setMoment] = useState('');
   const [otherMoment, setOtherMoment] = useState('');
   const [action, setAction] = useState('');
@@ -65,8 +67,9 @@ export function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExer
 *Mi microplan de acción es:*
 Cuando ${finalMoment}, voy a ${action}.
     `;
-    addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Microplan de Acción', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Microplan Guardado', description: 'Tu frase de acción ha sido guardada.' });
+    onComplete();
     setStep(4); // Go to motivational screen
   };
 
@@ -94,10 +97,9 @@ ${discovered}
 *Y quiero seguir reforzando:*
 ${reinforce}
     `;
-    addNotebookEntry({ title: 'Cierre Personal: Microplan', content: reflectionContent, pathId });
+    addNotebookEntry({ title: 'Cierre Personal: Microplan', content: reflectionContent, pathId, userId: user?.id });
     toast({ title: 'Reflexión Guardada' });
     setIsReflectionSaved(true);
-    onComplete();
   };
   
   const nextStep = () => setStep(prev => prev + 1);

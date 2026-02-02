@@ -11,15 +11,18 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface FutureSelfVisualizationExerciseProps {
   content: ModuleContent;
   pathId: string;
   audioUrl?: string;
+  onComplete: () => void;
 }
 
-export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: FutureSelfVisualizationExerciseProps) {
+export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onComplete }: FutureSelfVisualizationExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [habit, setHabit] = useState('');
     const [futureSelf, setFutureSelf] = useState('');
@@ -62,9 +65,11 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl }: F
             content: notebookContent,
             pathId,
             ruta: 'Superar la Procrastinación y Crear Hábitos',
+            userId: user?.id,
         });
         toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
         setSaved(true);
+        onComplete();
         setStep(7); // Move to confirmation screen
     };
 

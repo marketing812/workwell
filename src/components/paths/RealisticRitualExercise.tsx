@@ -11,13 +11,15 @@ import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RealisticRitualExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { Input } from '../ui/input';
 
 interface RealisticRitualExerciseProps {
   content: RealisticRitualExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function RealisticRitualExercise({ content, pathId }: RealisticRitualExerciseProps) {
+export function RealisticRitualExercise({ content, pathId, onComplete }: RealisticRitualExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -63,6 +65,7 @@ ${reminder}
     addNotebookEntry({ title: 'Mi Ritual Realista', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
     setSaved(true);
+    onComplete();
     nextStep();
   };
 
@@ -70,7 +73,7 @@ ${reminder}
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="text-center p-4 space-y-4">
             <p className="text-sm text-muted-foreground">Un ritual realista es un hábito que se adapta a ti, no al revés. Aquí vas a diseñar una versión mínima, clara y posible de lo que quieres sostener en el tiempo.</p>
             <Button onClick={nextStep}>Diseñar mi ritual <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -96,8 +99,8 @@ ${reminder}
             <Label htmlFor="min-version" className="sr-only">¿Cuál es su versión mínima viable?</Label>
             <Textarea id="min-version" value={minVersion} onChange={e => setMinVersion(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={nextStep} disabled={!minVersion.trim()}>Siguiente</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!minVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -109,8 +112,8 @@ ${reminder}
             <Label htmlFor="link" className="sr-only">¿Cuándo o con qué lo vincularás?</Label>
             <Textarea id="link" value={link} onChange={e => setLink(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={nextStep} disabled={!link.trim()}>Siguiente</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} disabled={!link.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );

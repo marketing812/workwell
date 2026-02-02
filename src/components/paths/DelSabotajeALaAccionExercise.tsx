@@ -16,6 +16,8 @@ import { useUser } from '@/contexts/UserContext';
 
 interface DelSabotajeALaAccionExerciseProps {
   content: DelSabotajeALaAccionExerciseContent;
+  pathId: string;
+  onComplete: () => void;
 }
 
 const sabotageOptions = [
@@ -36,7 +38,7 @@ const functionalResponses: Record<string, string> = {
     'sabotage-too-late': '“No puedo cambiar el pasado, pero sí puedo actuar ahora.”',
 };
 
-export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionExerciseProps) {
+export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: DelSabotajeALaAccionExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
 
@@ -83,7 +85,8 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
     addNotebookEntry({
       title: "Mi Tabla de Diálogo Interno",
       content: notebookContent,
-      pathId: 'superar-procrastinacion',
+      pathId: pathId,
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
       userId: user?.id
     });
 
@@ -92,6 +95,7 @@ export function DelSabotajeALaAccionExercise({ content }: DelSabotajeALaAccionEx
       description: "Tu tabla de diálogo interno se ha guardado en el Cuaderno Terapéutico.",
     });
 
+    onComplete();
     nextStep(); // Move to summary
   };
   
