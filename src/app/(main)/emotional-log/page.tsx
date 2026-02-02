@@ -154,7 +154,7 @@ export default function EmotionalLogPage() {
       <MoodEvolutionChart
         data={chartData}
         title="Mis autorregistros"
-        description={t.myEvolutionFullHistoryDescription}
+        description="Evolución de tus autorregistros a lo largo del tiempo"
         className="lg:h-[450px]"
       />
 
