@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -16,6 +15,7 @@ import { useUser } from '@/contexts/UserContext';
 interface SecureBoundaryPhraseExerciseProps {
   content: ModuleContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const suggestedPhrases = [
@@ -26,7 +26,7 @@ const suggestedPhrases = [
     'Necesito un momento para procesarlo antes de responder.',
 ];
 
-export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundaryPhraseExerciseProps) {
+export function SecureBoundaryPhraseExercise({ content, pathId, onComplete }: SecureBoundaryPhraseExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -48,6 +48,7 @@ export function SecureBoundaryPhraseExercise({ content, pathId }: SecureBoundary
             userId: user?.id,
         });
         toast({ title: 'Frase Guardada' });
+        onComplete();
         setStep(5); // Confirmation screen
     };
 

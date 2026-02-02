@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -16,10 +15,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface DiscomfortCompassExerciseProps {
   content: DiscomfortCompassExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const bodySensationOptions = [
@@ -56,8 +57,9 @@ const suggestionPhrases = [
     'Me cuesta un poco hablar de esto, pero prefiero hacerlo a quedarme con este malestar.',
 ];
 
-export function DiscomfortCompassExercise({ content, pathId }: DiscomfortCompassExerciseProps) {
+export function DiscomfortCompassExercise({ content, pathId, onComplete }: DiscomfortCompassExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   // State for user inputs
@@ -135,6 +137,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
       title: `Brújula del Malestar: ${situation.substring(0,25) || 'Reflexión'}`,
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
@@ -142,6 +145,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
       description: "Tu 'Brújula del Malestar' ha sido guardada en el cuaderno.",
     });
     setIsSaved(true);
+    onComplete();
     setStep(7); // Go to final confirmation
   };
   
@@ -303,7 +307,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">Beneficio Adicional</h4>
                  <p className="text-muted-foreground">Cada vez que practicas este ejercicio, estás entrenando tu capacidad de reconocer tus límites, regular tus emociones y expresarte con mayor claridad.</p>
-                 <p className="italic text-primary pt-2">Tu cuerpo te habla. Este ejercicio te ayuda a escucharlo.</p>
+                 <p className="italic text-primary pt-2">“Tu cuerpo te habla. Este ejercicio te ayuda a escucharlo.”</p>
                  <Button onClick={resetExercise} variant="outline" className="w-full">Registrar otra situación</Button>
              </div>
         );

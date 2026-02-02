@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -19,6 +18,7 @@ import { useUser } from '@/contexts/UserContext';
 interface PostBoundaryEmotionsExerciseProps {
   content: PostBoundaryEmotionsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const emotionOptions = [
@@ -29,7 +29,7 @@ const emotionOptions = [
     { id: 'emo-anger', label: 'Enfado o irritación' },
 ];
 
-export function PostBoundaryEmotionsExercise({ content, pathId }: PostBoundaryEmotionsExerciseProps) {
+export function PostBoundaryEmotionsExercise({ content, pathId, onComplete }: PostBoundaryEmotionsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -134,6 +134,7 @@ ${reassessment}
 
     toast({ title: "Registro Guardado", description: "Tu ejercicio se ha guardado en el cuaderno." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 

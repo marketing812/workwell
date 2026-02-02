@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,10 +11,12 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MapOfUnsaidThingsExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface MapOfUnsaidThingsExerciseProps {
   content: MapOfUnsaidThingsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const emotionOptions = [
@@ -41,9 +42,9 @@ const blockageOptions = [
 ];
 
 
-export function MapOfUnsaidThingsExercise({ content, pathId }: MapOfUnsaidThingsExerciseProps) {
+export function MapOfUnsaidThingsExercise({ content, pathId, onComplete }: MapOfUnsaidThingsExerciseProps) {
   const { toast } = useToast();
-  
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   // State for the user's reflection
@@ -157,12 +158,14 @@ ${nextStepOpener || 'No especificado.'}
       title: `Mapa de mis no dichos: ${patternName || 'Reflexión'}`,
       content: notebookContent,
       pathId: pathId,
+      userId: user?.id,
     });
 
     toast({
       title: "Ejercicio Guardado",
       description: "Tu 'Mapa de mis no dichos' se ha guardado en el Cuaderno Terapéutico.",
     });
+    onComplete();
     setStep(prev => prev + 1); // Go to final confirmation screen
   };
 

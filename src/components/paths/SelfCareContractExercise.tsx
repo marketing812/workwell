@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -16,9 +15,10 @@ import { useUser } from '@/contexts/UserContext';
 interface SelfCareContractExerciseProps {
   content: SelfCareContractExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function SelfCareContractExercise({ content, pathId }: SelfCareContractExerciseProps) {
+export function SelfCareContractExercise({ content, pathId, onComplete }: SelfCareContractExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -49,6 +49,7 @@ ${reminder}
     addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
   };
   
   const prevStep = () => setStep(prev => Math.max(0, prev - 1));

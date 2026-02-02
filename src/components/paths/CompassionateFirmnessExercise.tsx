@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -15,9 +14,10 @@ import { useUser } from '@/contexts/UserContext';
 interface CompassionateFirmnessExerciseProps {
   content: CompassionateFirmnessExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function CompassionateFirmnessExercise({ content, pathId }: CompassionateFirmnessExerciseProps) {
+export function CompassionateFirmnessExercise({ content, pathId, onComplete }: CompassionateFirmnessExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -36,6 +36,7 @@ export function CompassionateFirmnessExercise({ content, pathId }: Compassionate
     addNotebookEntry({ title: "Mi Frase de Firmeza Compasiva", content: `"${finalPhrase}"`, pathId: pathId, userId: user?.id });
     toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el cuaderno." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 

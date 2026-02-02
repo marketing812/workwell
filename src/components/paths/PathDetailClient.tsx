@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -430,6 +429,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'discomfortCompassExercise':
@@ -438,6 +438,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'assertivePhraseExercise':
@@ -463,10 +464,11 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'postBoundaryEmotionsExercise':
-      return <PostBoundaryEmotionsExercise key={index} content={contentItem} pathId={path.id} />;
+      return <PostBoundaryEmotionsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'firmAndCalmSelfVisualizationExercise':
       return <FirmAndCalmSelfVisualizationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'compassionateFirmnessExercise':
@@ -475,6 +477,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'selfCareContractExercise':
@@ -483,6 +486,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     // RUTA 5
@@ -684,7 +688,7 @@ function ContentItemRenderer({
         return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem} pathId={path.id} />;
     // RUTA 13 (NUEVA)
     case 'ansiedadTieneSentidoExercise':
-        return <AnsiedadTieneSentidoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
+        return <AnsiedadTieneSentidoExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'visualizacionGuiadaCuerpoAnsiedadExercise':
         return <VisualizacionGuiadaCuerpoAnsiedadExercise key={index} content={contentItem} pathId={path.id} />;
     case 'stopExercise':
