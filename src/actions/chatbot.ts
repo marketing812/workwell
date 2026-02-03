@@ -63,6 +63,8 @@ export async function sendMessageToChatbot(
     console.error("sendMessageToChatbot error:", error, "ENV_DEBUG:", JSON.stringify(envDebug));
     
     // Return a user-friendly message, specific to the likely problem (RAG failure).
-    return { success: false, error: "No se pudieron traer los datos de la bibliografía de consulta. Por favor, inténtalo de nuevo." };
+    const errorMessage = "No se han encontrado resultados en la documentación disponible. ¿Podrías reformular tu pregunta o intentarlo con otras palabras?";
+    
+    return { success: false, error: errorMessage };
   }
 }

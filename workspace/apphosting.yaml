@@ -14,3 +14,10 @@ env:
 # This is a definitive fix to align dependencies and authentication method.
 # Final fix attempt after ETARGET error.
 # Definitive fix after ETARGET to use @genkit-ai/google-genai and correct auth method. Timestamp: 2026-01-14T09:50:00
+- variable: NODE_ENV
+    value: production
+    availability: [BUILD, RUNTIME]
+
+  - variable: NPM_CONFIG_OMIT
+    value: dev
+    availability: [BUILD]

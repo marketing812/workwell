@@ -50,7 +50,11 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       const answeredToday = completedData[todayKey] || [];
       
       const filteredQuestions = allQuestions.filter(q => !answeredToday.includes(q.id));
-      setUnansweredQuestions(filteredQuestions);
+      
+      // Shuffle the array to show a random question first, if multiple are available
+      const shuffledQuestions = [...filteredQuestions].sort(() => 0.5 - Math.random());
+      
+      setUnansweredQuestions(shuffledQuestions);
 
     } catch (error) {
       console.error("Error processing daily questions:", error);
