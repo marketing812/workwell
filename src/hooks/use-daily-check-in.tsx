@@ -1,10 +1,10 @@
-
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
 import type { DailyQuestion } from '@/types/daily-question';
 import { useUser } from '@/contexts/UserContext';
 import { getDailyQuestion, DailyQuestionApiResponse } from '@/data/dailyQuestion';
+import { useToast } from '@/hooks/use-toast';
 
 const DAILY_CHECKIN_COMPLETED_KEY = 'workwell-daily-checkin-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
@@ -25,23 +25,24 @@ const DailyCheckInContext = createContext<DailyCheckInContextType | undefined>(u
 
 export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { user } = useUser();
+  const { toast } = useToast();
   const [unansweredQuestions, setUnansweredQuestions] = useState<DailyQuestion[]>([]);
   const [isForcedOpen, setIsForcedOpen] = useState(false);
   const [wasDismissedThisSession, setWasDismissedThisSession] = useState(false);
   
   const getTodayKey = useCallback(() => new Date().toISOString().split('T')[0], []);
 
-  const loadAndFilterQuestions = useCallback(async () => {
+  const loadAndFilterQuestions = useCallback(async (): Promise<DailyQuestion[]> => {
     if (!user?.id) {
       setUnansweredQuestions([]);
-      return;
+      return [];
     }
 
     const apiResponse: DailyQuestionApiResponse | null = await getDailyQuestion(user.id);
     
     if (!apiResponse || !Array.isArray(apiResponse.questions) || apiResponse.questions.length === 0) {
       setUnansweredQuestions([]);
-      return;
+      return [];
     }
     
     const allQuestions = apiResponse.questions;
@@ -54,14 +55,15 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       
       const filteredQuestions = allQuestions.filter(q => !answeredToday.includes(q.id));
       
-      // Shuffle the array to show a random question first, if multiple are available
       const shuffledQuestions = [...filteredQuestions].sort(() => 0.5 - Math.random());
       
       setUnansweredQuestions(shuffledQuestions);
+      return shuffledQuestions;
 
     } catch (error) {
       console.error("Error processing daily questions:", error);
       setUnansweredQuestions(allQuestions);
+      return allQuestions;
     }
   }, [user?.id, getTodayKey]);
   
@@ -82,11 +84,19 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   }, [loadAndFilterQuestions]);
   
 
-  const forceOpen = useCallback(() => {
-    loadAndFilterQuestions(); // Reload questions on force open
-    setWasDismissedThisSession(false); // If user forces it, it's not dismissed
-    setIsForcedOpen(true);
-  }, [loadAndFilterQuestions]);
+  const forceOpen = useCallback(async () => {
+    const questions = await loadAndFilterQuestions();
+    if (questions.length > 0) {
+      setWasDismissedThisSession(false);
+      setIsForcedOpen(true);
+    } else {
+      toast({
+        title: "¡Todo listo por hoy!",
+        description: "Ya has respondido a todas las preguntas diarias. ¡Gracias por tu participación!",
+      });
+      setIsForcedOpen(false);
+    }
+  }, [loadAndFilterQuestions, toast]);
   
   const dismissPopup = useCallback(() => {
     setIsForcedOpen(false);
@@ -116,7 +126,6 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     }
   }, [getTodayKey]);
 
-  // Determine if the popup should be shown
   const showPopup = isForcedOpen || (unansweredQuestions.length > 0 && !wasDismissedThisSession);
 
   const contextValue = { 
