@@ -23,7 +23,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
-import { Textarea } from '@/components/ui/textarea';
+import { Textarea } from '../ui/textarea';
 
 const environments = [
     { id: 'salud_fisica', label: 'Salud física' },
@@ -49,7 +49,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     const [step, setStep] = useState(0);
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
     const [otherEnvironment, setOtherEnvironment] = useState('');
-    const [ratings, setRatings] = useState<Record<string, { support: number, drain: number }>>({});
+    const [ratings, setRatings] = useState<Record<string, { support: number, drain: number, example: string }>>({});
     const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
@@ -178,7 +178,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
-                        <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
                         <Button onClick={() => setStep(2)} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
                 </div>

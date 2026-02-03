@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,10 +11,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InternalTensionsMapExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface InternalTensionsMapExerciseProps {
   content: InternalTensionsMapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const emotionOptions = [
@@ -29,8 +30,9 @@ const emotionOptions = [
     { id: 'frustracion', label: 'Frustración' },
 ];
 
-export function InternalTensionsMapExercise({ content, pathId }: InternalTensionsMapExerciseProps) {
+export function InternalTensionsMapExercise({ content, pathId, onComplete }: InternalTensionsMapExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [situation, setSituation] = useState('');
     const [thought, setThought] = useState('');
     const [emotions, setEmotions] = useState<Record<string, boolean>>({});
@@ -60,8 +62,9 @@ export function InternalTensionsMapExercise({ content, pathId }: InternalTension
 **Alineación:** ${alignment}
 **¿Qué habría necesitado?:** ${needed}
         `;
-        addNotebookEntry({ title: 'Mapa de Tensiones Internas', content: notebookContent, pathId });
+        addNotebookEntry({ title: 'Mapa de Tensiones Internas', content: notebookContent, pathId, userId: user?.id });
         toast({ title: 'Mapa Guardado' });
+        onComplete();
     };
 
     return (
@@ -111,5 +114,3 @@ export function InternalTensionsMapExercise({ content, pathId }: InternalTension
         </Card>
     );
 }
-
-    

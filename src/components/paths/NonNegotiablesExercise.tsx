@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -11,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NonNegotiablesExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad', 'Pareja / Amor romántico',
@@ -23,9 +23,10 @@ const valuesList = [
 interface NonNegotiablesExerciseProps {
   content: NonNegotiablesExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function NonNegotiablesExercise({ content, pathId }: NonNegotiablesExerciseProps) {
+export function NonNegotiablesExercise({ content, pathId, onComplete }: NonNegotiablesExerciseProps) {
   const [step, setStep] = useState(0);
   const [pastSituation, setPastSituation] = useState('');
   const [initialValues, setInitialValues] = useState<Record<string, boolean>>({});
@@ -33,6 +34,7 @@ export function NonNegotiablesExercise({ content, pathId }: NonNegotiablesExerci
   const [nonNegotiables, setNonNegotiables] = useState<string[]>([]);
   const [commitments, setCommitments] = useState<Record<string, string>>({});
   const { toast } = useToast();
+  const { user } = useUser();
   const [isSaved, setIsSaved] = useState(false);
 
   const handleInitialValueChange = (value: string, checked: boolean) => {
@@ -73,9 +75,10 @@ ${nonNegotiables.join(', ')}
 **Mis compromisos para cuidarlos:**
 ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
     `;
-    addNotebookEntry({ title: 'Mis No Negociables', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mis No Negociables', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'No Negociables Guardados' });
     setIsSaved(true);
+    onComplete();
     setStep(prev => prev + 1);
   };
   
@@ -234,7 +237,3 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
     </Card>
   );
 }
-
-    
-
-    

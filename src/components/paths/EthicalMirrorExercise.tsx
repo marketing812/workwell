@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,10 +12,12 @@ import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
+import { useUser } from '@/contexts/UserContext';
 
 interface EthicalMirrorExerciseProps {
   content: EthicalMirrorExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const valuesList = [
@@ -27,8 +28,9 @@ const valuesList = [
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
 ];
 
-export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExerciseProps) {
+export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMirrorExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [decision, setDecision] = useState('');
     const [person, setPerson] = useState('');
@@ -84,9 +86,10 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
 **Nivel de coherencia percibido:** ${coherence}/10
 **Ajuste necesario:** ${adjustment || 'Ninguno.'}
         `;
-        addNotebookEntry({ title: 'Reflexión: Espejo Ético', content: notebookContent, pathId });
+        addNotebookEntry({ title: 'Reflexión: Espejo Ético', content: notebookContent, pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
         setIsSaved(true);
+        onComplete();
         nextStep();
     };
 
@@ -242,5 +245,3 @@ export function EthicalMirrorExercise({ content, pathId }: EthicalMirrorExercise
         </Card>
     );
 }
-
-    

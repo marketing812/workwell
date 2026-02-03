@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SmallDecisionsLogExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 interface DecisionLog {
     decision: string;
@@ -33,10 +33,12 @@ const aftermathOptions = [
 interface SmallDecisionsLogExerciseProps {
   content: SmallDecisionsLogExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLogExerciseProps) {
+export function SmallDecisionsLogExercise({ content, pathId, onComplete }: SmallDecisionsLogExerciseProps) {
     const { toast } = useToast();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [logs, setLogs] = useState<DecisionLog[]>(() =>
         Array.from({ length: 2 }, () => ({ decision: '', choiceType: '', reason: '', aftermath: '', otherAftermath: '', nextTime: '' }))
@@ -72,8 +74,9 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
             notebookContent += `- Cómo me sentí: ${finalAftermath || 'No especificado'}\n`;
             notebookContent += `- Próxima vez: ${log.nextTime || 'No especificado'}\n\n`;
         });
-        addNotebookEntry({ title: 'Registro de Decisiones Pequeñas', content: notebookContent, pathId: pathId });
+        addNotebookEntry({ title: 'Registro de Decisiones Pequeñas', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({ title: 'Registro Guardado' });
+        onComplete();
         setStep(2);
     };
     
@@ -169,5 +172,3 @@ export function SmallDecisionsLogExercise({ content, pathId }: SmallDecisionsLog
         </Card>
     );
 }
-
-    

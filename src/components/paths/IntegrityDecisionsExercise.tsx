@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -15,6 +14,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm'; // Import emotions
 import { useTranslations } from '@/lib/translations'; // Import translations hook
+import { useUser } from '@/contexts/UserContext';
 
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
@@ -27,11 +27,13 @@ const valuesList = [
 interface IntegrityDecisionsExerciseProps {
   content: IntegrityDecisionsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisionsExerciseProps) {
+export function IntegrityDecisionsExercise({ content, pathId, onComplete }: IntegrityDecisionsExerciseProps) {
     const { toast } = useToast();
     const t = useTranslations();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
 
     const [decision, setDecision] = useState('');
@@ -88,9 +90,10 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
 **Nivel de coherencia percibido:** ${coherence}/10
 **Ajuste necesario:** ${adjustment || 'Ninguno.'}
         `;
-        addNotebookEntry({ title: 'Reflexión: Espejo Ético', content: notebookContent, pathId });
+        addNotebookEntry({ title: 'Reflexión: Decisiones con Integridad', content: notebookContent, pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
         setIsSaved(true);
+        onComplete();
         nextStep();
     };
 
@@ -234,7 +237,3 @@ export function IntegrityDecisionsExercise({ content, pathId }: IntegrityDecisio
         </Card>
     );
 }
-
-    
-
-    

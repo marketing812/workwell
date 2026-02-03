@@ -68,9 +68,9 @@ const WellbeingPlanExercise = dynamic(() => import('@/components/paths/Wellbeing
 const UncertaintyMapExercise = dynamic(() => import('@/components/paths/UncertaintyMapExercise'), { loading: LoaderComponent, ssr: false });
 const ControlTrafficLightExercise = dynamic(() => import('@/components/paths/ControlTrafficLightExercise'), { loading: LoaderComponent, ssr: false });
 const AlternativeStoriesExercise = dynamic(() => import('@/components/paths/AlternativeStoriesExercise'), { loading: LoaderComponent, ssr: false });
-const MantraExercise = dynamic(() => import('@/components/paths/MantraExercise'), { loading: LoaderComponent, ssr: false });
-const RitualDeEntregaConscienteExercise = dynamic(() => import('@/components/paths/RitualDeEntregaConscienteExercise'), { loading: LoaderComponent, ssr: false });
-const ExposureToIntoleranceExercise = dynamic(() => import('@/components/paths/ExposureToIntoleranceExercise'), { loading: LoaderComponent, ssr: false });
+const MantraExercise = dynamic(() => import('@/components/paths/MantraExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const RitualDeEntregaConscienteExercise = dynamic(() => import('@/components/paths/RitualDeEntregaConscienteExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
+const ExposureToIntoleranceExercise = dynamic(() => import('@/components/paths/ExposureToIntoleranceExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 // RUTA 3
 const DelSabotajeALaAccionExercise = dynamic(() => import('@/components/paths/DelSabotajeALaAccionExercise').then(mod => mod.DelSabotajeALaAccionExercise), { loading: LoaderComponent, ssr: false });
 const TwoMinuteRuleExercise = dynamic(() => import('@/components/paths/TwoMinuteRuleExercise').then(mod => mod.TwoMinuteRuleExercise), { loading: LoaderComponent, ssr: false });
@@ -625,17 +625,17 @@ function ContentItemRenderer({
     case 'coherenceCompassExercise':
       return <CoherenceCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'smallDecisionsLogExercise':
-      return <SmallDecisionsLogExercise key={index} content={contentItem} pathId={path.id} />;
+      return <SmallDecisionsLogExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'internalTensionsMapExercise':
-      return <InternalTensionsMapExercise key={index} content={contentItem} pathId={path.id} />;
+      return <InternalTensionsMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'ethicalMirrorExercise':
-      return <EthicalMirrorExercise key={index} content={contentItem} pathId={path.id} />;
+      return <EthicalMirrorExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'integrityDecisionsExercise':
-      return <IntegrityDecisionsExercise key={index} content={contentItem} pathId={path.id} />;
+      return <IntegrityDecisionsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'nonNegotiablesExercise':
-      return <NonNegotiablesExercise key={index} content={contentItem} pathId={path.id} />;
+      return <NonNegotiablesExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'environmentEvaluationExercise':
-      return <EnvironmentEvaluationExercise key={index} content={contentItem} pathId={path.id} />;
+      return <EnvironmentEvaluationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'personalManifestoExercise':
       return <PersonalManifestoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 10
