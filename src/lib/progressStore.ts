@@ -1,4 +1,3 @@
-
 "use client";
 
 // Funciones para interactuar con localStorage para el progreso de las rutas
@@ -34,6 +33,8 @@ export function saveCompletedModules(pathId: string, completedModules: Set<strin
   if (typeof window === "undefined") return;
   try {
     localStorage.setItem(`${PROGRESS_PREFIX}${pathId}`, JSON.stringify(Array.from(completedModules)));
+    // Despachar evento para notificar a otros componentes
+    window.dispatchEvent(new CustomEvent(`progress-updated-${pathId}`));
   } catch (error) {
     console.error("Error saving completed modules to localStorage:", error);
   }
