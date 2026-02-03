@@ -17,6 +17,8 @@ interface DailyCheckInContextType {
   unansweredQuestions: DailyQuestion[];
   forceOpen: () => void;
   closePopup: (questionId: string) => void;
+  showPopup: boolean;
+  dismissPopup: () => void;
 }
 
 const DailyCheckInContext = createContext<DailyCheckInContextType | undefined>(undefined);
@@ -24,7 +26,8 @@ const DailyCheckInContext = createContext<DailyCheckInContextType | undefined>(u
 export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { user } = useUser();
   const [unansweredQuestions, setUnansweredQuestions] = useState<DailyQuestion[]>([]);
-  const [isPopupForced, setIsPopupForced] = useState(false);
+  const [isForcedOpen, setIsForcedOpen] = useState(false);
+  const [wasDismissedThisSession, setWasDismissedThisSession] = useState(false);
   
   const getTodayKey = useCallback(() => new Date().toISOString().split('T')[0], []);
 
@@ -58,17 +61,17 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
 
     } catch (error) {
       console.error("Error processing daily questions:", error);
-      setUnansweredQuestions(allQuestions); // Fallback to show all if storage fails
+      setUnansweredQuestions(allQuestions);
     }
   }, [user?.id, getTodayKey]);
   
-  // Initial load and periodic check
   useEffect(() => {
     const initialTimer = setTimeout(() => {
         loadAndFilterQuestions();
-    }, 5000); // Wait 5 seconds after app load
+    }, 5000);
 
     const intervalId = setInterval(() => {
+        setWasDismissedThisSession(false); // Periodically reset dismissal
         loadAndFilterQuestions();
     }, CHECK_INTERVAL_MS);
 
@@ -80,16 +83,21 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   
 
   const forceOpen = useCallback(() => {
-    setIsPopupForced(true);
-    loadAndFilterQuestions(); // Recargar preguntas al forzar la apertura
+    loadAndFilterQuestions(); // Reload questions on force open
+    setWasDismissedThisSession(false); // If user forces it, it's not dismissed
+    setIsForcedOpen(true);
   }, [loadAndFilterQuestions]);
+  
+  const dismissPopup = useCallback(() => {
+    setIsForcedOpen(false);
+    setWasDismissedThisSession(true);
+  }, []);
 
   const closePopup = useCallback((questionId: string) => {
-    // Optimistically remove the question from the local state
+    setIsForcedOpen(false);
+    setWasDismissedThisSession(false);
     setUnansweredQuestions(prev => prev.filter(q => q.id !== questionId));
-    setIsPopupForced(false); // Reset forced state
-
-    // Persist the completion in localStorage
+    
     try {
       const todayKey = getTodayKey();
       const storedData = localStorage.getItem(DAILY_CHECKIN_COMPLETED_KEY);
@@ -108,22 +116,19 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     }
   }, [getTodayKey]);
 
-  const showPopup = isPopupForced || unansweredQuestions.length > 0;
+  // Determine if the popup should be shown
+  const showPopup = isForcedOpen || (unansweredQuestions.length > 0 && !wasDismissedThisSession);
 
   const contextValue = { 
     unansweredQuestions, 
     forceOpen, 
     closePopup,
-    // The component needs to know if it should show, which depends on state
-    // We'll manage the visibility in the manager component that consumes this
-    showPopup
+    showPopup,
+    dismissPopup
   };
 
-  // This is a simplified context just to expose the functions
-  const valueForProvider = { unansweredQuestions, forceOpen, closePopup };
-
   return (
-    <DailyCheckInContext.Provider value={valueForProvider}>
+    <DailyCheckInContext.Provider value={contextValue}>
       {children}
     </DailyCheckInContext.Provider>
   );

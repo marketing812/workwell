@@ -18,35 +18,16 @@ import { MoodCheckInPopup } from '@/components/mood-check-in/MoodCheckInPopup';
 
 // Wrapper component to manage the daily check-in popup logic
 function DailyCheckInManager({ children }: { children: ReactNode }) {
-  const { unansweredQuestions, closePopup, forceOpen } = useDailyCheckIn();
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-
-  useEffect(() => {
-    // Logic to decide if the popup should be shown is now based on the hook's state
-    if (unansweredQuestions.length > 0) {
-      setIsPopupVisible(true);
-    } else {
-      setIsPopupVisible(false);
-    }
-  }, [unansweredQuestions]);
-
-  const handleClose = (questionId: string) => {
-    closePopup(questionId);
-    // The popup will automatically hide when unansweredQuestions is updated
-  };
-
-  const handleDismiss = () => {
-    setIsPopupVisible(false); // Simply hide it for this session if the user closes it without answering
-  }
+  const { unansweredQuestions, closePopup, showPopup, dismissPopup } = useDailyCheckIn();
 
   return (
     <>
       {children}
       <DailyCheckInPopup 
-        isOpen={isPopupVisible} 
+        isOpen={showPopup} 
         questions={unansweredQuestions}
-        onClose={handleClose}
-        onDismiss={handleDismiss}
+        onClose={closePopup}
+        onDismiss={dismissPopup}
       />
     </>
   );
