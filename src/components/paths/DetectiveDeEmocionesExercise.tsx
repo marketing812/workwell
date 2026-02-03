@@ -19,6 +19,7 @@ import { useTranslations } from '@/lib/translations';
 interface DetectiveDeEmocionesExerciseProps {
   content: DetectiveDeEmocionesExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const reflectionOptions = [
@@ -28,7 +29,7 @@ const reflectionOptions = [
     { id: 'mas-tranquilo', label: 'Me sentí más tranquilo/a al escribirlo' },
 ];
 
-export function DetectiveDeEmocionesExercise({ content, pathId }: DetectiveDeEmocionesExerciseProps) {
+export function DetectiveDeEmocionesExercise({ content, pathId, onComplete }: DetectiveDeEmocionesExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   
@@ -98,6 +99,7 @@ ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('
 `;
     addNotebookEntry({ title: 'Mi Registro de Detective de Emociones', content: notebookContent, pathId });
     toast({ title: 'Registro Guardado', description: 'Tu registro se ha guardado en el cuaderno.' });
+    onComplete();
     nextStep();
   };
   
@@ -170,5 +172,3 @@ ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('
     </Card>
   );
 }
-
-    

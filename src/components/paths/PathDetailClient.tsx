@@ -567,19 +567,19 @@ function ContentItemRenderer({
       );
     // RUTA 6
     case 'detectiveDeEmocionesExercise':
-        return <DetectiveDeEmocionesExercise key={index} content={contentItem} pathId={path.id} />;
+        return <DetectiveDeEmocionesExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'unaPalabraCadaDiaExercise':
         return <UnaPalabraCadaDiaExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mapaEmocionNecesidadCuidadoExercise':
         return <MapaEmocionNecesidadCuidadoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'cartaDesdeLaEmocionExercise':
-        return <CartaDesdeLaEmocionExercise key={index} content={contentItem} pathId={path.id} />;
+        return <CartaDesdeLaEmocionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mapaEmocionalRepetidoExercise':
         return <MapaEmocionalRepetidoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'semaforoEmocionalExercise':
         return <SemaforoEmocionalExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'meditacionGuiadaSinJuicioExercise':
-        return <MeditacionGuiadaSinJuicioExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MeditacionGuiadaSinJuicioExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'diarioMeDiCuentaExercise':
         return <DiarioMeDiCuentaExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 7
@@ -953,5 +953,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    

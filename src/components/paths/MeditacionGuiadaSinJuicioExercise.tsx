@@ -10,13 +10,15 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MeditacionGuiadaSinJuicioExerciseContent } from '@/data/paths/pathTypes';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface MeditacionGuiadaSinJuicioExerciseProps {
   content: MeditacionGuiadaSinJuicioExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: MeditacionGuiadaSinJuicioExerciseProps) {
+export function MeditacionGuiadaSinJuicioExercise({ content, pathId, onComplete }: MeditacionGuiadaSinJuicioExerciseProps) {
   const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [reflection, setReflection] = useState('');
@@ -38,6 +40,7 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId }: Meditacio
     addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: reflection, pathId: pathId });
     toast({ title: 'Reflexión guardada' });
     setIsSaved(true);
+    onComplete();
   };
   
   const meditationText = "Puedes cerrar los ojos si lo deseas. Respira… y sigue el ritmo del ejercicio.\n\nLleva tu atención a la respiración.\nInhala… exhala lentamente.\n\nSiente el aire entrar y salir de tu cuerpo.\n\nPermite que cualquier sensación, pensamiento o emoción esté presente.\nNo tienes que luchar. Solo observar.\n\nDi mentalmente:\n\n“Esto es lo que siento ahora… y está bien.”\n\nSi te distraes, vuelve suavemente a la frase y la respiración.\n\nQuédate ahí unos minutos. Simplemente presente contigo misma o contigo mismo.\n\n(Recomendado: 5 minutos)";

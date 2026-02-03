@@ -70,8 +70,8 @@ ${reflection}
     });
     
     toast({
-      title: 'Reflexión Guardada',
-      description: 'Tu reflexión ha sido guardada en el Cuaderno Terapéutico.',
+      title: "Reflexión Guardada",
+      description: "Tu reflexión ha sido guardada en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
     onComplete();

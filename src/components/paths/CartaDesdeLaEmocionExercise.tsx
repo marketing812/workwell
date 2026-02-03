@@ -17,9 +17,10 @@ import { useTranslations } from '@/lib/translations';
 interface CartaDesdeLaEmocionExerciseProps {
   content: CartaDesdeLaEmocionExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function CartaDesdeLaEmocionExercise({ content, pathId }: CartaDesdeLaEmocionExerciseProps) {
+export function CartaDesdeLaEmocionExercise({ content, pathId, onComplete }: CartaDesdeLaEmocionExerciseProps) {
     const { toast } = useToast();
     const t = useTranslations();
     const [step, setStep] = useState(0);
@@ -54,6 +55,7 @@ Tu emoción: ${finalEmotion}
         `;
         addNotebookEntry({ title: `Carta desde mi ${finalEmotion}`, content: fullLetter, pathId: pathId });
         toast({ title: 'Carta Guardada' });
+        onComplete();
         setStep(3); // Go to confirmation
     };
     
