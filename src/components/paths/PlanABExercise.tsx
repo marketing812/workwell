@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,14 +9,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PlanABExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface PlanABExerciseProps {
   content: PlanABExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function PlanABExercise({ content, pathId }: PlanABExerciseProps) {
+export function PlanABExercise({ content, pathId, onComplete }: PlanABExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0); // State for multi-step flow
   const [decision, setDecision] = useState('');
   const [planA, setPlanA] = useState({ action: '', value: '', outcome: '' });
@@ -67,9 +69,10 @@ ${decision}
 ${commitment}
     `;
 
-    addNotebookEntry({ title: 'Mi Plan A/B Emocional', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Plan A/B Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Plan Guardado', description: 'Tu plan A/B se ha guardado en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
     nextStep(); // Go to confirmation screen
   };
   
@@ -195,5 +198,3 @@ ${commitment}
     </Card>
   );
 }
-
-    

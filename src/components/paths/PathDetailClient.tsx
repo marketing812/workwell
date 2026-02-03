@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -607,21 +606,21 @@ function ContentItemRenderer({
         return <ThoughtsThatBlockPurposeExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 8
     case 'resilienceTimelineExercise':
-        return <ResilienceTimelineExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ResilienceTimelineExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'personalDefinitionExercise':
-        return <PersonalDefinitionExercise key={index} content={contentItem} pathId={path.id} />;
+        return <PersonalDefinitionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'anchorInStormExercise':
-        return <AnchorInStormExercise key={index} content={contentItem} pathId={path.id} />;
+        return <AnchorInStormExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'intensityScaleExercise':
-        return <IntensityScaleExercise key={index} content={contentItem} pathId={path.id} />;
+        return <IntensityScaleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'braveDecisionsWheelExercise':
-        return <BraveDecisionsWheelExercise key={index} content={contentItem} pathId={path.id} />;
+        return <BraveDecisionsWheelExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'planABExercise':
-        return <PlanABExercise key={index} content={contentItem} pathId={path.id} />;
+        return <PlanABExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'changeTimelineExercise':
       return <ChangeTimelineExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'myPactExercise':
-        return <MyPactExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MyPactExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     // RUTA 9
     case 'coherenceCompassExercise':
       return <CoherenceCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;

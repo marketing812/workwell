@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,14 +10,17 @@ import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ResilienceTimelineExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface ResilienceTimelineExerciseProps {
   content: ResilienceTimelineExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimelineExerciseProps) {
+export function ResilienceTimelineExercise({ content, pathId, onComplete }: ResilienceTimelineExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [situations, setSituations] = useState(['', '', '']);
   const [reflections, setReflections] = useState(Array(3).fill({ difficult: '', resources: '', learned: '', surprised: '' }));
@@ -37,7 +39,7 @@ export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimeli
   };
 
   const next = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const resetExercise = () => {
     setStep(0);
@@ -68,9 +70,10 @@ export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimeli
           notebookContent += `- Lo que me sorprendió de mí: ${item.reflection.surprised || 'No especificado.'}\n\n---\n\n`;
       });
       
-      addNotebookEntry({ title: 'Mi Línea del Tiempo Resiliente', content: notebookContent, pathId });
+      addNotebookEntry({ title: 'Mi Línea del Tiempo Resiliente', content: notebookContent, pathId, userId: user?.id });
       toast({ title: "Línea de Tiempo Guardada" });
       setIsSaved(true);
+      onComplete();
       next(); // Move to confirmation screen
   }
 
@@ -216,5 +219,3 @@ export function ResilienceTimelineExercise({ content, pathId }: ResilienceTimeli
     </Card>
   );
 }
-
-    
