@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -679,9 +680,9 @@ function ContentItemRenderer({
     case 'morningRitualExercise':
         return <MorningRitualExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'motivationIn3LayersExercise':
-        return <MotivationIn3LayersExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MotivationIn3LayersExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'visualizeDayExercise':
-        return <VisualizeDayExercise key={index} content={contentItem} pathId={path.id} />;
+        return <VisualizeDayExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'illuminatingMemoriesAlbumExercise':
         return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'positiveEmotionalFirstAidKitExercise':
@@ -922,3 +923,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    

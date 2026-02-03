@@ -150,7 +150,7 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
                   <p><strong>Mi día ideal:</strong> {idealDay}</p>
                   <p><strong>Gesto clave:</strong> {keyGesture}</p>
               </div>
-              <p className="text-xs italic text-muted-foreground pt-2">Tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas.</p>
+              <p className="text-xs italic text-muted-foreground pt-2">"Tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas."</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
                    <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio</Button>

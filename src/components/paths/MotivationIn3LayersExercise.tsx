@@ -11,7 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MotivationIn3LayersExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
+import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 
 
