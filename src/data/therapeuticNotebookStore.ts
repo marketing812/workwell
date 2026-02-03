@@ -1,4 +1,3 @@
-
 "use client";
 
 import { format, parseISO } from 'date-fns';
@@ -22,11 +21,17 @@ const API_PROXY_URL = "/api/save-notebook-entry"; // The internal API route that
 // This async function sends the data to the internal API route
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
-        console.log(`[Client] Preparing to sync notebook entry for user '${userId}'...`);
+        const payload = { userId, entryData: entry };
+        console.log("--- DEBUG: Información de la llamada API para guardar en el cuaderno ---");
+        console.log("URL Destino (Proxy Interno):", API_PROXY_URL);
+        console.log("Método HTTP:", "POST");
+        console.log("Payload (Cuerpo de la petición):", JSON.stringify(payload, null, 2));
+        console.log("--------------------------------------------------------------------");
+
         const response = await fetch(API_PROXY_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId, entryData: entry }),
+            body: JSON.stringify(payload),
         });
 
         const result = await response.json();
