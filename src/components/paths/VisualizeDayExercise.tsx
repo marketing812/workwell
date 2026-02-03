@@ -12,17 +12,20 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { VisualizeDayExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
 import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface VisualizeDayExerciseProps {
   content: VisualizeDayExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const intentionOptions = ['Confianza', 'Calma', 'Energía', 'Gratitud', 'Apertura', 'Foco', 'Alegría', 'Cuidado personal', 'Fortaleza', 'Otro'];
 const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuchar música que me guste', 'Hacer ejercicio', 'Comer sano', 'Pasar tiempo con familia o amistades', 'Avanzar en un proyecto importante', 'Dedicar tiempo a un hobby', 'Meditar o practicar respiración consciente', 'Otro'];
 
-export function VisualizeDayExercise({ content, pathId }: VisualizeDayExerciseProps) {
+export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [intention, setIntention] = useState('');
   const [otherIntention, setOtherIntention] = useState('');
@@ -56,9 +59,10 @@ export function VisualizeDayExercise({ content, pathId }: VisualizeDayExercisePr
 **Mi día ideal:** ${idealDay}
 **Gesto clave:** ${keyGesture}
     `;
-    addNotebookEntry({ title: 'Mi Visualización del Día', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Visualización del Día', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Visualización Guardada', description: 'Tu visualización del día ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
     setStep(4);
   };
   
@@ -181,3 +185,5 @@ export function VisualizeDayExercise({ content, pathId }: VisualizeDayExercisePr
     </Card>
   );
 }
+
+    

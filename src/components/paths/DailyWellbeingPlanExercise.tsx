@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -141,12 +142,60 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
   const [reminders, setReminders] = useState({ physical: '', emotional: '', mental: '' });
   const [otherReminder, setOtherReminder] = useState({ physical: '', emotional: '', mental: '' });
 
+  const storageKey = `exercise-progress-${pathId}-dailyWellbeingPlan`;
+
+  useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setPhysicalHabit(data.physicalHabit || '');
+        setOtherPhysical(data.otherPhysical || '');
+        setEmotionalHabit(data.emotionalHabit || '');
+        setOtherEmotional(data.otherEmotional || '');
+        setMentalHabit(data.mentalHabit || '');
+        setOtherMental(data.otherMental || '');
+        setSchedule(data.schedule || { physical: '', emotional: '', mental: '' });
+        setOtherSchedule(data.otherSchedule || { physical: '', emotional: '', mental: '' });
+        setReminders(data.reminders || { physical: '', emotional: '', mental: '' });
+        setOtherReminder(data.otherReminder || { physical: '', emotional: '', mental: '' });
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    try {
+      const stateToSave = { step, physicalHabit, otherPhysical, emotionalHabit, otherEmotional, mentalHabit, otherMental, schedule, otherSchedule, reminders, otherReminder, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, physicalHabit, otherPhysical, emotionalHabit, otherEmotional, mentalHabit, otherMental, schedule, otherSchedule, reminders, otherReminder, isSaved, storageKey]);
+
+
   const finalPhysicalHabit = physicalHabit === 'Otro' ? otherPhysical : physicalHabit;
   const finalEmotionalHabit = emotionalHabit === 'Otro' ? otherEmotional : emotionalHabit;
   const finalMentalHabit = mentalHabit === 'Otro' ? otherMental : mentalHabit;
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  
+  const resetExercise = () => {
+    setStep(0);
+    setPhysicalHabit(''); setOtherPhysical('');
+    setEmotionalHabit(''); setOtherEmotional('');
+    setMentalHabit(''); setOtherMental('');
+    setSchedule({ physical: '', emotional: '', mental: '' });
+    setOtherSchedule({ physical: '', emotional: '', mental: '' });
+    setReminders({ physical: '', emotional: '', mental: '' });
+    setOtherReminder({ physical: '', emotional: '', mental: '' });
+    setIsSaved(false);
+    localStorage.removeItem(storageKey);
+  };
 
   const handleSave = () => {
     if (!finalPhysicalHabit || !finalEmotionalHabit || !finalMentalHabit) {
@@ -176,34 +225,22 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
     onComplete();
     setStep(5);
   };
-  
-  const resetExercise = () => {
-    setStep(0);
-    setPhysicalHabit(''); setOtherPhysical('');
-    setEmotionalHabit(''); setOtherEmotional('');
-    setMentalHabit(''); setOtherMental('');
-    setSchedule({ physical: '', emotional: '', mental: '' });
-    setOtherSchedule({ physical: '', emotional: '', mental: '' });
-    setReminders({ physical: '', emotional: '', mental: '' });
-    setOtherReminder({ physical: '', emotional: '', mental: '' });
-    setIsSaved(false);
-  };
 
   const renderStepContent = () => {
     switch(step) {
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-            <p className="mb-4">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
+             <p className="mb-4">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
             <Button onClick={nextStep}>Empezar mi plan de bienestar</Button>
           </div>
         );
       case 1:
-        return <HabitStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={nextStep} onPrev={prevStep} />;
       case 2:
-        return <HabitStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={nextStep} onPrev={prevStep} />;
       case 3:
-        return <HabitStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={nextStep} onPrev={prevStep} />;
       case 4:
         return (
           <div className="p-4 space-y-6">
@@ -230,7 +267,7 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
             <h4 className="font-bold text-lg">¡Plan de microhábitos guardado!</h4>
             <p className="text-sm text-muted-foreground">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
             <div className="flex gap-2 justify-center">
-              <Button onClick={resetExercise} variant="outline">Editar mi plan</Button>
+              <Button onClick={resetExercise} variant="outline">Crear un nuevo plan</Button>
             </div>
           </div>
         );
@@ -261,3 +298,5 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
     </Card>
   );
 }
+
+    

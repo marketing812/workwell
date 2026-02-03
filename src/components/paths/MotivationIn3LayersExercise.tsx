@@ -12,10 +12,13 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MotivationIn3LayersExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import { useUser } from '@/contexts/UserContext';
+
 
 interface MotivationIn3LayersExerciseProps {
   content: MotivationIn3LayersExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const valueOptions = [
@@ -33,9 +36,12 @@ const valueOptions = [
     { id: 'contribucion', label: 'Contribución / ayudar a otros' },
 ];
 
-export function MotivationIn3LayersExercise({ content, pathId }: MotivationIn3LayersExerciseProps) {
+export function MotivationIn3LayersExercise({ content, pathId, onComplete }: MotivationIn3LayersExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   const [action, setAction] = useState('');
   const [valueReason, setValueReason] = useState('');
@@ -43,9 +49,6 @@ export function MotivationIn3LayersExercise({ content, pathId }: MotivationIn3La
   const [otherValue, setOtherValue] = useState('');
   const [purpose, setPurpose] = useState('');
   
-  const [isSaved, setIsSaved] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
   const storageKey = `exercise-progress-${pathId}-motivation3layers`;
 
   useEffect(() => {
@@ -77,6 +80,7 @@ export function MotivationIn3LayersExercise({ content, pathId }: MotivationIn3La
     }
   }, [step, action, valueReason, selectedValues, otherValue, purpose, isSaved, storageKey, isClient]);
 
+
   const handleValueChange = (id: string, checked: boolean) => {
     setSelectedValues(prev => ({ ...prev, [id]: checked }));
   };
@@ -100,17 +104,29 @@ ${valueReason || 'No especificado.'}
 **Sentido mayor:**
 ${purpose || 'No especificado.'}
     `;
-    addNotebookEntry({ title: 'Mi Motivación en 3 Capas', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Motivación en 3 Capas', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Motivación Guardada', description: 'Tu motivación en 3 capas ha sido guardada.' });
     setIsSaved(true);
-    setStep(4); // Go to final summary screen
+    onComplete();
+    setStep(4);
   };
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+
+  const resetExercise = () => {
+    setStep(0);
+    setAction('');
+    setValueReason('');
+    setSelectedValues({});
+    setOtherValue('');
+    setPurpose('');
+    setIsSaved(false);
+    localStorage.removeItem(storageKey);
+  };
   
   if (!isClient) {
-    return null; // or a loading skeleton
+    return null;
   }
 
   const renderStep = () => {
@@ -198,7 +214,7 @@ ${purpose || 'No especificado.'}
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                 <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
                 <Button onClick={() => toast({title: "Próximamente", description: "La función de recordatorios estará disponible pronto."})}>Programar recordatorio</Button>
-                <Button onClick={() => { setStep(0); setIsSaved(false); }}>Finalizar ejercicio</Button>
+                <Button onClick={resetExercise}>Finalizar ejercicio</Button>
             </div>
           </div>
         );
@@ -229,3 +245,5 @@ ${purpose || 'No especificado.'}
     </Card>
   );
 }
+
+    
