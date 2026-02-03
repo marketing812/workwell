@@ -11,10 +11,12 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SymbolicSupportCircleExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface SymbolicSupportCircleExerciseProps {
   content: SymbolicSupportCircleExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 interface Pillar {
@@ -23,8 +25,9 @@ interface Pillar {
     careAction: string;
 }
 
-export function SymbolicSupportCircleExercise({ content, pathId }: SymbolicSupportCircleExerciseProps) {
+export function SymbolicSupportCircleExercise({ content, pathId, onComplete }: SymbolicSupportCircleExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [pillars, setPillars] = useState<Pillar[]>(Array(4).fill({ name: '', contribution: '', careAction: ''}));
   const [isSaved, setIsSaved] = useState(false);
@@ -46,9 +49,10 @@ export function SymbolicSupportCircleExercise({ content, pathId }: SymbolicSuppo
     filledPillars.forEach(p => {
         notebookContent += `**Pilar:** ${p.name}\n- Aporta: ${p.contribution || 'No especificado'}\n- Gesto de cuidado: ${p.careAction || 'No especificado'}\n\n`;
     });
-    addNotebookEntry({ title: 'Mi Círculo de Sostén Simbólico', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Círculo de Sostén Simbólico', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Círculo Guardado' });
     setIsSaved(true);
+    onComplete();
     setStep(prev => prev + 1); // Move to confirmation screen
   };
   

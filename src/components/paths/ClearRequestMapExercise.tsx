@@ -11,14 +11,17 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ClearRequestMapExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
+import { useUser } from '@/contexts/UserContext';
 
 interface ClearRequestMapExerciseProps {
   content: ClearRequestMapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function ClearRequestMapExercise({ content, pathId }: ClearRequestMapExerciseProps) {
+export function ClearRequestMapExercise({ content, pathId, onComplete }: ClearRequestMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [situation, setSituation] = useState('');
   const [need, setNeed] = useState('');
   const [when, setWhen] = useState('');
@@ -35,9 +38,10 @@ export function ClearRequestMapExercise({ content, pathId }: ClearRequestMapExer
 *Situación:* ${situation}
 *Petición final:* ${finalPhrase}
     `;
-    addNotebookEntry({ title: 'Mi Petición Clara', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Petición Clara', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Petición Guardada' });
     setIsSaved(true);
+    onComplete();
   };
   
   return (

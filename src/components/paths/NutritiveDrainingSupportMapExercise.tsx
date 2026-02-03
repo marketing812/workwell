@@ -13,10 +13,12 @@ import type { NutritiveDrainingSupportMapExerciseContent } from '@/data/paths/pa
 import { Input } from '../ui/input';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface NutritiveDrainingSupportMapExerciseProps {
   content: NutritiveDrainingSupportMapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 interface Relation {
@@ -24,8 +26,9 @@ interface Relation {
     sensation: 'nutritivo' | 'drenante' | 'neutral' | '';
 }
 
-export function NutritiveDrainingSupportMapExercise({ content, pathId }: NutritiveDrainingSupportMapExerciseProps) {
+export function NutritiveDrainingSupportMapExercise({ content, pathId, onComplete }: NutritiveDrainingSupportMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [relations, setRelations] = useState<Relation[]>(Array(5).fill({ name: '', sensation: '' }));
   const [reflection, setReflection] = useState({ approach: '', distance: '' });
@@ -58,15 +61,23 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
     notebookContent += `- Quiero acercarme a: ${reflection.approach || 'No respondido.'}\n`;
     notebookContent += `- Necesito tomar distancia de: ${reflection.distance || 'No respondido.'}\n`;
 
-    addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado' });
     setIsSaved(true);
+    onComplete();
     setStep(prev => prev + 1); // Move to final screen
   };
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
+  const resetExercise = () => {
+    setStep(0);
+    setRelations(Array(5).fill({ name: '', sensation: '' }));
+    setReflection({ approach: '', distance: ''});
+    setIsSaved(false);
+  };
+  
   const renderStep = () => {
     switch (step) {
       case 0: // Pantalla 1 – Introducción
@@ -171,7 +182,7 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId }: Nutriti
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Mapa Guardado</h4>
             <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-            <Button onClick={() => { setStep(0); setIsSaved(false); }} variant="outline" className="w-full">Hacer otro mapa</Button>
+            <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro mapa</Button>
           </div>
         );
       default:

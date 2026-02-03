@@ -17,10 +17,12 @@ import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface MutualCareCommitmentExerciseProps {
   content: MutualCareCommitmentExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const gestureExamples = [
@@ -31,8 +33,9 @@ const gestureExamples = [
   'Recordar un momento especial compartido.',
 ];
 
-export function MutualCareCommitmentExercise({ content, pathId }: MutualCareCommitmentExerciseProps) {
+export function MutualCareCommitmentExercise({ content, pathId, onComplete }: MutualCareCommitmentExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [people, setPeople] = useState(['', '', '']);
   const [action, setAction] = useState('');
@@ -60,9 +63,10 @@ export function MutualCareCommitmentExercise({ content, pathId }: MutualCareComm
         notebookContent += `**Fecha programada:** ${format(selectedDate, 'PPP', { locale: es })}\n`;
     }
 
-    addNotebookEntry({ title: 'Mi Compromiso de Cuidado Mutuo', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Compromiso de Cuidado Mutuo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Compromiso Guardado' });
     setIsSaved(true);
+    onComplete();
     setStep(prev => prev + 1); // Move to confirmation
   };
 

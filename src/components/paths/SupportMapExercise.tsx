@@ -13,12 +13,14 @@ import type { SupportMapExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { Slider } from '../ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useUser } from '@/contexts/UserContext';
 
 interface SupportMapExerciseProps {
   content: SupportMapExerciseContent;
   pathId: string;
-  pathTitle: string; // Título de la ruta
-  moduleTitle: string; // Título del módulo/semana
+  pathTitle: string; 
+  moduleTitle: string; 
+  onComplete: () => void;
 }
 
 interface Relation {
@@ -38,8 +40,9 @@ const supportTypes = [
 ];
 
 
-export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: SupportMapExerciseProps) {
+export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle, onComplete }: SupportMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [relations, setRelations] = useState<Relation[]>(() => 
     Array(5).fill(null).map(() => ({ name: '', supportType: { emocional: false, practico: false, validacion: false }, quality: 3 }))
@@ -96,20 +99,22 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle }: 
       title: 'Mi Mapa de Relaciones y Apoyo', 
       content: notebookContent, 
       pathId: pathId,
-      ruta: pathTitle
+      ruta: pathTitle,
+      userId: user?.id,
     });
     
-    toast({ title: 'Mapa Guardado', description: 'Tu mapa de relaciones se ha guardado en el cuaderno.' });
+    toast({ title: 'Mapa Guardado' });
     setIsSaved(true);
+    onComplete();
   };
   
   const renderStep = () => {
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
-             <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
-             <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
+          <div className="p-4 text-center space-y-4">
+            <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
+            <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
             <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4"/></Button>
           </div>
         );

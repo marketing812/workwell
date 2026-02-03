@@ -12,14 +12,17 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NourishingConversationExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { useUser } from '@/contexts/UserContext';
 
 interface NourishingConversationExerciseProps {
   content: NourishingConversationExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function NourishingConversationExercise({ content, pathId }: NourishingConversationExerciseProps) {
+export function NourishingConversationExercise({ content, pathId, onComplete }: NourishingConversationExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [person, setPerson] = useState('');
   const [context, setContext] = useState('');
@@ -54,9 +57,10 @@ export function NourishingConversationExercise({ content, pathId }: NourishingCo
 - Descubrí: ${reflection.discovered}
 - Para fortalecer el vínculo: ${reflection.strengthen}
     `;
-    addNotebookEntry({ title: 'Registro de Conversación Nutritiva', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Registro de Conversación Nutritiva', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
     setIsSaved(true);
+    onComplete();
   };
 
   const renderStep = () => {

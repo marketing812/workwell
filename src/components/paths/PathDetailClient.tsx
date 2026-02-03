@@ -149,7 +149,7 @@ const InfluenceWheelExercise = dynamic(() => import('@/components/paths/Influenc
 const PersonalCommitmentDeclarationExercise = dynamic(() => import('@/components/paths/PersonalCommitmentDeclarationExercise').then(mod => mod.PersonalCommitmentDeclarationExercise), { loading: LoaderComponent, ssr: false });
 // RUTA 11
 const SupportMapExercise = dynamic(() => import('@/components/paths/SupportMapExercise').then(mod => mod.SupportMapExercise), { loading: LoaderComponent, ssr: false });
-const BlockingThoughtsExercise = dynamic(() => import('@/components/paths/BlockingThoughtsExercise').then(mod => mod.BlockingThoughtsExercise), { loading: LoaderComponent, ssr: false });
+const BlockingThoughtsExercise = dynamic(() => import('@/components/paths/BlockingThoughtsExercise').then(mod => mod.default), { loading: LoaderComponent, ssr: false });
 const NutritiveDrainingSupportMapExercise = dynamic(() => import('@/components/paths/NutritiveDrainingSupportMapExercise').then(mod => mod.NutritiveDrainingSupportMapExercise), { loading: LoaderComponent, ssr: false });
 const NourishingConversationExercise = dynamic(() => import('@/components/paths/NourishingConversationExercise').then(mod => mod.NourishingConversationExercise), { loading: LoaderComponent, ssr: false });
 const ClearRequestMapExercise = dynamic(() => import('@/components/paths/ClearRequestMapExercise').then(mod => mod.ClearRequestMapExercise), { loading: LoaderComponent, ssr: false });
@@ -655,21 +655,21 @@ function ContentItemRenderer({
       return <PersonalCommitmentDeclarationExercise key={index} content={contentItem} pathId={path.id} />;
     // RUTA 11
     case 'supportMapExercise':
-        return <SupportMapExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} moduleTitle={module.title} />;
+        return <SupportMapExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} moduleTitle={module.title} onComplete={handleComplete} />;
     case 'blockingThoughtsExercise':
-      return <BlockingThoughtsExercise key={index} content={contentItem} pathId={path.id} />;
+      return <BlockingThoughtsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'nutritiveDrainingSupportMapExercise':
-      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem} pathId={path.id} />;
+      return <NutritiveDrainingSupportMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'nourishingConversationExercise':
-      return <NourishingConversationExercise key={index} content={contentItem} pathId={path.id} />;
+      return <NourishingConversationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'clearRequestMapExercise':
-        return <ClearRequestMapExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ClearRequestMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'supportBankExercise':
-        return <SupportBankExercise key={index} content={contentItem} pathId={path.id} />;
+        return <SupportBankExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mutualCareCommitmentExercise':
-        return <MutualCareCommitmentExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MutualCareCommitmentExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'symbolicSupportCircleExercise':
-        return <SymbolicSupportCircleExercise key={index} content={contentItem} pathId={path.id} />;
+        return <SymbolicSupportCircleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 12
     case 'emotionalGratificationMapExercise':
         return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
@@ -923,5 +923,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    

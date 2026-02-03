@@ -11,10 +11,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BlockingThoughtsExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface BlockingThoughtsExerciseProps {
   content: BlockingThoughtsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const distortionOptions = [
@@ -24,8 +26,9 @@ const distortionOptions = [
     { value: 'personalization', label: 'Personalización' },
 ];
 
-export function BlockingThoughtsExercise({ content, pathId }: BlockingThoughtsExerciseProps) {
+export default function BlockingThoughtsExercise({ content, pathId, onComplete }: BlockingThoughtsExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [situation, setSituation] = useState('');
   const [blockingThought, setBlockingThought] = useState('');
@@ -61,9 +64,10 @@ export function BlockingThoughtsExercise({ content, pathId }: BlockingThoughtsEx
 *Reformulación:* ${reformulation}
 *Próximo paso:* ${nextStepAction}
     `;
-    addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
     setIsSaved(true);
+    onComplete();
     nextStep(); // Move to confirmation screen
   };
 
@@ -155,7 +159,7 @@ export function BlockingThoughtsExercise({ content, pathId }: BlockingThoughtsEx
             Con esta técnica aprenderás a detectar y reformular los pensamientos que te frenan al pedir ayuda. La Terapia Cognitivo-Conductual (Beck, 2011) demuestra que cuestionar creencias disfuncionales reduce la ansiedad y mejora la disposición a buscar apoyo.
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3" type="audio/mp3" />
+                    <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3" type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>

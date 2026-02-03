@@ -13,10 +13,12 @@ import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Slider } from '../ui/slider';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useUser } from '@/contexts/UserContext';
 
 interface SupportBankExerciseProps {
   content: SupportBankExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 interface Person {
@@ -33,8 +35,9 @@ const supportOptions = [
     'Otro'
 ];
 
-export function SupportBankExercise({ content, pathId }: SupportBankExerciseProps) {
+export function SupportBankExercise({ content, pathId, onComplete }: SupportBankExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [people, setPeople] = useState<Person[]>(Array(5).fill({ name: '', supportType: '', confidence: 3 }));
   const [isSaved, setIsSaved] = useState(false);
@@ -57,9 +60,10 @@ export function SupportBankExercise({ content, pathId }: SupportBankExerciseProp
     filledPeople.forEach(p => {
         notebookContent += `**Persona:** ${p.name}\n- Tipo de apoyo: ${p.supportType || 'No especificado'}\n- Grado de confianza: ${p.confidence}/5\n\n`;
     });
-    addNotebookEntry({ title: 'Mi Banco de Apoyos', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Banco de Apoyos', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Banco de Apoyos Guardado' });
     setIsSaved(true);
+    onComplete();
     setStep(prev => prev + 1);
   };
 
