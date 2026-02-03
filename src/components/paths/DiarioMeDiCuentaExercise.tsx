@@ -12,6 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DiarioMeDiCuentaExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { useUser } from '@/contexts/UserContext';
 
 interface DiarioMeDiCuentaExerciseProps {
   content: DiarioMeDiCuentaExerciseContent;
@@ -28,6 +29,7 @@ const messages = [
 
 export function DiarioMeDiCuentaExercise({ content, pathId, onComplete }: DiarioMeDiCuentaExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [noticed, setNoticed] = useState('');
@@ -69,7 +71,7 @@ ${howNoticed}
 *¿Qué necesito ahora que me he dado cuenta de esto?:*
 ${whatINeed}
 `;
-    addNotebookEntry({ title: 'Mi "Me di cuenta" del día', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi "Me di cuenta" del día', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Entrada Guardada' });
     if(!isSaved) { // To avoid calling onComplete multiple times
         onComplete();

@@ -11,6 +11,7 @@ import { Edit3, CheckCircle, Save, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MeditacionGuiadaSinJuicioExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface MeditacionGuiadaSinJuicioExerciseProps {
   content: MeditacionGuiadaSinJuicioExerciseContent;
@@ -20,6 +21,7 @@ interface MeditacionGuiadaSinJuicioExerciseProps {
 
 export function MeditacionGuiadaSinJuicioExercise({ content, pathId, onComplete }: MeditacionGuiadaSinJuicioExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [reflection, setReflection] = useState('');
   const [isSaved, setIsSaved] = useState(false);
@@ -37,7 +39,7 @@ export function MeditacionGuiadaSinJuicioExercise({ content, pathId, onComplete 
       });
       return;
     }
-    addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: reflection, pathId: pathId });
+    addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: reflection, pathId: pathId, userId: user?.id });
     toast({ title: 'Reflexión guardada' });
     setIsSaved(true);
     onComplete();

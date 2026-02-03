@@ -14,6 +14,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MapaEmocionalRepetidoExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface MapaEmocionalRepetidoExerciseProps {
   content: MapaEmocionalRepetidoExerciseContent;
@@ -52,6 +53,7 @@ const schemaOptions = [
 export function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: MapaEmocionalRepetidoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [situation, setSituation] = useState('');
@@ -99,7 +101,7 @@ ${isRepeated || 'No especificado.'}
 *Esquema Activado:*
 ${schema || 'No especificado.'}
 `;
-    addNotebookEntry({ title: 'Mi Mapa Emocional Repetido', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Mapa Emocional Repetido', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu registro se ha guardado en el cuaderno.' });
     onComplete();
     nextStep();
@@ -171,5 +173,3 @@ ${schema || 'No especificado.'}
     </Card>
   );
 }
-
-    

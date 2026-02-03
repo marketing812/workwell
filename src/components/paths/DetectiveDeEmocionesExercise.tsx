@@ -15,6 +15,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetectiveDeEmocionesExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface DetectiveDeEmocionesExerciseProps {
   content: DetectiveDeEmocionesExerciseContent;
@@ -32,6 +33,7 @@ const reflectionOptions = [
 export function DetectiveDeEmocionesExercise({ content, pathId, onComplete }: DetectiveDeEmocionesExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [situation, setSituation] = useState('');
@@ -97,7 +99,7 @@ ${impulse || 'No especificado.'}
 *Reflexión (¿Qué aprendiste?):*
 ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('\n') : 'Sin reflexión.'}
 `;
-    addNotebookEntry({ title: 'Mi Registro de Detective de Emociones', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Registro de Detective de Emociones', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado', description: 'Tu registro se ha guardado en el cuaderno.' });
     onComplete();
     nextStep();

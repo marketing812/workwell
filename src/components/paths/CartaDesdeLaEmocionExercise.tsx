@@ -13,6 +13,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CartaDesdeLaEmocionExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface CartaDesdeLaEmocionExerciseProps {
   content: CartaDesdeLaEmocionExerciseContent;
@@ -23,6 +24,7 @@ interface CartaDesdeLaEmocionExerciseProps {
 export function CartaDesdeLaEmocionExercise({ content, pathId, onComplete }: CartaDesdeLaEmocionExerciseProps) {
     const { toast } = useToast();
     const t = useTranslations();
+    const { user } = useUser();
     const [step, setStep] = useState(0);
     const [emotion, setEmotion] = useState('');
     const [otherEmotion, setOtherEmotion] = useState('');
@@ -53,7 +55,7 @@ ${letterBody}
 Con cariño,
 Tu emoción: ${finalEmotion}
         `;
-        addNotebookEntry({ title: `Carta desde mi ${finalEmotion}`, content: fullLetter, pathId: pathId });
+        addNotebookEntry({ title: `Carta desde mi ${finalEmotion}`, content: fullLetter, pathId: pathId, userId: user?.id });
         toast({ title: 'Carta Guardada' });
         onComplete();
         setStep(3); // Go to confirmation

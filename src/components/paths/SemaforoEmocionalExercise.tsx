@@ -12,6 +12,7 @@ import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight, AlertTriangle, XCircle
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SemaforoEmocionalExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface SemaforoEmocionalExerciseProps {
   content: SemaforoEmocionalExerciseContent;
@@ -21,6 +22,7 @@ interface SemaforoEmocionalExerciseProps {
 
 export function SemaforoEmocionalExercise({ content, pathId, onComplete }: SemaforoEmocionalExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [light, setLight] = useState<'verde' | 'ambar' | 'rojo' | ''>('');
@@ -49,7 +51,7 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     }
     const notebookContent = `**Ejercicio: ${content.title}**\n\nEstado: ${light}.\nAcción de cuidado: ${action}\n\nReflexión: ${learning || 'Sin reflexión.'}`;
 
-    addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
     setIsSaved(true);
     onComplete();
@@ -188,5 +190,3 @@ export function SemaforoEmocionalExercise({ content, pathId, onComplete }: Semaf
     </Card>
   );
 }
-
-    

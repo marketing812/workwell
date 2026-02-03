@@ -14,6 +14,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UnaPalabraCadaDiaExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface UnaPalabraCadaDiaExerciseProps {
   content: UnaPalabraCadaDiaExerciseContent;
@@ -34,6 +35,7 @@ const unaPalabraEmotionOptions = [
 export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPalabraCadaDiaExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [selectedEmotion, setSelectedEmotion] = useState('');
@@ -97,7 +99,7 @@ export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPa
 *Mi emoción de hoy:* ${finalEmotion}
 *Mi microacción de anclaje:* ${finalAnchorAction}
 `;
-    addNotebookEntry({ title: `Diario de una palabra: ${finalEmotion}`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Diario de una palabra: ${finalEmotion}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Diario Guardado' });
     setIsDailySaved(true);
   };
@@ -121,7 +123,7 @@ ${needed}
 ${gaveOrAsked}
 `;
 
-    addNotebookEntry({ title: 'Reflexión: Mis tres frases de la semana', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Reflexión: Mis tres frases de la semana', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Reflexión Guardada' });
     onComplete();
     setStep(5); // Go to a final confirmation step

@@ -15,6 +15,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MapaEmocionNecesidadCuidadoExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface MapaEmocionNecesidadCuidadoExerciseProps {
   content: MapaEmocionNecesidadCuidadoExerciseContent;
@@ -55,6 +56,7 @@ const careActionsData = {
 export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplete }: MapaEmocionNecesidadCuidadoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [emotion, setEmotion] = useState('');
   const [otherEmotion, setOtherEmotion] = useState('');
@@ -123,7 +125,7 @@ export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplet
 ${allCareActions.map(action => `- ${action}`).join('\n')}
     `;
 
-    addNotebookEntry({ title: 'Mi Mapa Emoción-Necesidad-Cuidado', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Mapa Emoción-Necesidad-Cuidado', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
     setIsSaved(true);
     onComplete();
