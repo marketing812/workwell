@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useMemo } from 'react';
+import { useState, type FormEvent, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -12,10 +12,12 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetoursInventoryExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface DetoursInventoryExerciseProps {
   content: DetoursInventoryExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const frequentDetours = [
@@ -72,8 +74,9 @@ interface Reflection {
     otherPart: string;
 }
 
-export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryExerciseProps) {
+export function DetoursInventoryExercise({ content, pathId, onComplete }: DetoursInventoryExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [detours, setDetours] = useState<Record<string, boolean>>({});
@@ -154,8 +157,9 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment || 'No especificado.'}\n\n`;
     notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
     
-    addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu inventario ha sido guardado." });
+    onComplete();
     nextStep(); // Move to confirmation
   };
   
@@ -331,3 +335,5 @@ export function DetoursInventoryExercise({ content, pathId }: DetoursInventoryEx
     </Card>
   );
 }
+
+    
