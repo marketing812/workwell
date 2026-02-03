@@ -17,7 +17,7 @@ export const purposePath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Apagas fuegos todo el día, pero te acuestas con la sensación de no haber tocado “lo de verdad”?\nAprenderás a diferenciar urgente, necesario y valioso, a salir del piloto automático y a redescubrir tus valores como tu Estrella Polar. \nDesde ACT (Hayes) sabemos que actuar alineada/o con valores aumenta la motivación y la coherencia interna. \nPracticaremos identificar áreas de vida y mapear qué actividades te nutren y cuáles te drenan, para que vuelvas a elegir con intención… aunque sea por 10 minutos al día.',
+          text: 'En esta primera semana de la “Ruta Volver a lo Importante”, aprenderás a diferenciar entre lo urgente, lo necesario y lo valioso, a salir del piloto automático y a redescubrir tus valores como tu Estrella Polar.\n\nDesde la Terapia de Aceptación y Compromiso (Hayes), sabemos que actuar alineada/o con los valores aumenta la motivación y la coherencia interna.\n\nPracticaremos identificar áreas de vida importantes y mapear qué actividades te nutren y cuáles te drenan, para que vuelvas a elegir con intención… aunque sea por 10 minutos al día.',
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/INTRODUCCIONSEMANA1.mp3'
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -148,6 +148,7 @@ export const purposePath: Path = {
     }
   ]
 };
+
 
 
 
