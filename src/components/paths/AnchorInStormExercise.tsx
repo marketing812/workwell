@@ -11,14 +11,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AnchorInStormExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface AnchorInStormExerciseProps {
   content: AnchorInStormExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function AnchorInStormExercise({ content, pathId }: AnchorInStormExerciseProps) {
+export function AnchorInStormExercise({ content, pathId, onComplete }: AnchorInStormExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [emotionalState, setEmotionalState] = useState('');
   const [anchorType, setAnchorType] = useState('');
@@ -75,9 +78,10 @@ ${finalAnchorType}
 *Descripción de mi ancla:*
 ${anchorDesc}
     `;
-    addNotebookEntry({ title: 'Mi Ancla en la Tormenta', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Ancla en la Tormenta', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ancla Guardada', description: 'Tu ancla emocional ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
     setStep(3); // Move to the closing screen
   };
   
@@ -170,7 +174,7 @@ ${anchorDesc}
     }
   }
 
-  const newObjective = '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva. Porque no siempre puedes calmar la tormenta. Pero sí puedes encontrar un lugar dentro de ti donde anclarte mientras pasa.';
+  const newObjective = '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.';
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">

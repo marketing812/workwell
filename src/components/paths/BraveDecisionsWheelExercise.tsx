@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -9,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveDecisionsWheelExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface BraveDecisionsWheelExerciseProps {
   content: BraveDecisionsWheelExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function BraveDecisionsWheelExercise({ content, pathId }: BraveDecisionsWheelExerciseProps) {
+export function BraveDecisionsWheelExercise({ content, pathId, onComplete }: BraveDecisionsWheelExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [situation, setSituation] = useState('');
   const [fearDecision, setFearDecision] = useState('');
@@ -50,9 +54,10 @@ export function BraveDecisionsWheelExercise({ content, pathId }: BraveDecisionsW
 *Decisión desde la desesperanza:* ${despairDecision || 'No especificado.'}
 *Mi elección final:* ${finalChoice || 'No especificada.'}
 `;
-    addNotebookEntry({ title: 'Rueda de Decisiones Valientes', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Rueda de Decisiones Valientes', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Decisión Guardada', description: 'Tu reflexión ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 
@@ -159,7 +164,7 @@ export function BraveDecisionsWheelExercise({ content, pathId }: BraveDecisionsW
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Elección Guardada</h4>
-            <p className="text-muted-foreground italic">“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él”.</p>
+            <p className="text-muted-foreground italic">“No todo depende de ti. Pero sí depende de ti cómo decides cuidarte pase lo que pase”.</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Empezar de nuevo</Button>
           </div>
         );

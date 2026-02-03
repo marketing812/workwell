@@ -1,24 +1,28 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IntensityScaleExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface IntensityScaleExerciseProps {
   content: IntensityScaleExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function IntensityScaleExercise({ content, pathId }: IntensityScaleExerciseProps) {
+export function IntensityScaleExercise({ content, pathId, onComplete }: IntensityScaleExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [scale, setScale] = useState({
     '0–2': { signals: '', needs: '', strategy: '' },
@@ -47,9 +51,10 @@ export function IntensityScaleExercise({ content, pathId }: IntensityScaleExerci
         notebookContent += `- Estrategias: ${data.strategy || 'No descrito'}\n\n`;
       }
     });
-    addNotebookEntry({ title: 'Mi Escala de Intensidad Emocional', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Escala de Intensidad Emocional', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Escala Guardada', description: 'Tu escala de intensidad emocional se ha guardado.' });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 

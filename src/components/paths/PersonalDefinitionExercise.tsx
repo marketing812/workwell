@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalDefinitionExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface PersonalDefinitionExerciseProps {
   content: PersonalDefinitionExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function PersonalDefinitionExercise({ content, pathId }: PersonalDefinitionExerciseProps) {
+export function PersonalDefinitionExercise({ content, pathId, onComplete }: PersonalDefinitionExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [definition, setDefinition] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
@@ -33,9 +36,10 @@ export function PersonalDefinitionExercise({ content, pathId }: PersonalDefiniti
 *Mi definición personal de resiliencia es:*
 "${definition}"
     `;
-    addNotebookEntry({ title: 'Mi Definición de Resiliencia', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Definición de Resiliencia', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Definición Guardada', description: 'Tu definición de resiliencia se ha guardado en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (

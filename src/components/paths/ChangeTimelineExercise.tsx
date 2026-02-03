@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ChangeTimelineExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface ChangeTimelineExerciseProps {
   content: ChangeTimelineExerciseContent;
@@ -19,6 +20,7 @@ interface ChangeTimelineExerciseProps {
 
 export function ChangeTimelineExercise({ content, pathId, onComplete }: ChangeTimelineExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [startPoint, setStartPoint] = useState({ feelings: '', thoughts: '', beliefs: '', struggles: '' });
   const [inflectionPoints, setInflectionPoints] = useState('');
@@ -65,7 +67,7 @@ ${inflectionPoints}
 - Porqué: ${symbol.why}
     `;
 
-    addNotebookEntry({ title: 'Mi Línea del Cambio', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Línea del Cambio', content: notebookContent, pathId, userId: user?.id });
     setIsCompleted(true);
     toast({ title: 'Línea de Cambio Finalizada', description: 'Has integrado tu camino de resiliencia.' });
     onComplete();
@@ -164,5 +166,3 @@ ${inflectionPoints}
     </Card>
   );
 }
-
-    

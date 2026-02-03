@@ -11,14 +11,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MyPactExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface MyPactExerciseProps {
   content: MyPactExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function MyPactExercise({ content, pathId }: MyPactExerciseProps) {
+export function MyPactExercise({ content, pathId, onComplete }: MyPactExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [commitment, setCommitment] = useState('');
   const [reminderType, setReminderType] = useState('');
@@ -56,9 +59,10 @@ ${reminder}
 *Mi frase de acompañamiento emocional es:*
 "${anchorPhrase}"
     `;
-    addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
     nextStep(); // Move to confirmation screen
   };
 
@@ -172,7 +176,3 @@ ${reminder}
     </Card>
   );
 }
-
-    
-
-    
