@@ -2,7 +2,7 @@
 "use client";
 
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
@@ -18,11 +18,36 @@ import { MoodCheckInPopup } from '@/components/mood-check-in/MoodCheckInPopup';
 
 // Wrapper component to manage the daily check-in popup logic
 function DailyCheckInManager({ children }: { children: ReactNode }) {
-  const { showPopup, closePopup } = useDailyCheckIn();
+  const { unansweredQuestions, closePopup, forceOpen } = useDailyCheckIn();
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  useEffect(() => {
+    // Logic to decide if the popup should be shown is now based on the hook's state
+    if (unansweredQuestions.length > 0) {
+      setIsPopupVisible(true);
+    } else {
+      setIsPopupVisible(false);
+    }
+  }, [unansweredQuestions]);
+
+  const handleClose = (questionId: string) => {
+    closePopup(questionId);
+    // The popup will automatically hide when unansweredQuestions is updated
+  };
+
+  const handleDismiss = () => {
+    setIsPopupVisible(false); // Simply hide it for this session if the user closes it without answering
+  }
+
   return (
     <>
       {children}
-      <DailyCheckInPopup isOpen={showPopup} onClose={closePopup} />
+      <DailyCheckInPopup 
+        isOpen={isPopupVisible} 
+        questions={unansweredQuestions}
+        onClose={handleClose}
+        onDismiss={handleDismiss}
+      />
     </>
   );
 }
