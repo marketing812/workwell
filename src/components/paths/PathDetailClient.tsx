@@ -732,13 +732,29 @@ export function PathDetailClient({ path }: { path: Path }) {
 
   useEffect(() => {
     setIsClient(true);
-    if (path) {
-      const initialCompleted = getCompletedModules(path.id);
-      setCompletedModules(initialCompleted);
+    if (!path) return;
+
+    const updateCompletedState = () => {
+      const completed = getCompletedModules(path.id);
+      setCompletedModules(completed);
+      // Actualizar el contexto también para consistencia
       loadPath(path.id, path.title, path.modules.length);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [path, loadPath]);
+    };
+
+    updateCompletedState(); // Carga inicial
+
+    const handleProgressUpdate = () => {
+      updateCompletedState();
+    };
+    
+    window.addEventListener(`progress-updated-${path.id}`, handleProgressUpdate);
+    window.addEventListener('storage', handleProgressUpdate); // Fallback para otras pestañas
+
+    return () => {
+      window.removeEventListener(`progress-updated-${path.id}`, handleProgressUpdate);
+      window.removeEventListener('storage', handleProgressUpdate);
+    };
+  }, [path, loadPath]); // Depender solo de `path` y `loadPath`
 
   useEffect(() => {
     // Si navegamos fuera de la sección de rutas, podríamos limpiar la ruta activa
