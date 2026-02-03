@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -13,10 +12,12 @@ import type { DailyEnergyCheckExerciseContent } from '@/data/paths/pathTypes';
 import { cn } from '@/lib/utils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface DailyEnergyCheckExerciseProps {
   content: DailyEnergyCheckExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const rechargeOptions = [
@@ -32,8 +33,9 @@ const drainOptions = [
 ];
 
 
-export function DailyEnergyCheckExercise({ content, pathId }: DailyEnergyCheckExerciseProps) {
+export function DailyEnergyCheckExercise({ content, pathId, onComplete }: DailyEnergyCheckExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [energyLevel, setEnergyLevel] = useState<'alta' | 'media' | 'baja' | ''>('');
   const [energyNuance, setEnergyNuance] = useState('');
@@ -80,9 +82,10 @@ ${rechargedBy || 'No especificado.'}
 **Me drenó:**
 ${drainedBy || 'No especificado.'}
     `;
-    addNotebookEntry({ title: 'Mi Balance de Energía Diario', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Balance de Energía Diario', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado', description: 'Tu registro de energía ha sido guardado.' });
     setIsSaved(true);
+    onComplete();
     setStep(4);
   };
   

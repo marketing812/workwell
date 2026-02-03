@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -674,19 +673,19 @@ function ContentItemRenderer({
     case 'emotionalGratificationMapExercise':
         return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'dailyEnergyCheckExercise':
-        return <DailyEnergyCheckExercise key={index} content={contentItem} pathId={path.id} />;
+        return <DailyEnergyCheckExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'dailyWellbeingPlanExercise':
-        return <DailyWellbeingPlanExercise key={index} content={contentItem} pathId={path.id} />;
+        return <DailyWellbeingPlanExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'morningRitualExercise':
-        return <MorningRitualExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MorningRitualExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'motivationIn3LayersExercise':
         return <MotivationIn3LayersExercise key={index} content={contentItem} pathId={path.id} />;
     case 'visualizeDayExercise':
         return <VisualizeDayExercise key={index} content={contentItem} pathId={path.id} />;
     case 'illuminatingMemoriesAlbumExercise':
-        return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem} pathId={path.id} />;
+        return <IlluminatingMemoriesAlbumExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'positiveEmotionalFirstAidKitExercise':
-        return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem} pathId={path.id} />;
+        return <PositiveEmotionalFirstAidKitExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 13 (NUEVA)
     case 'ansiedadTieneSentidoExercise':
         return <AnsiedadTieneSentidoExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,11 +10,13 @@ import { Edit3, CheckCircle, Save, ArrowRight, BookOpen, Camera, Sun, Music, Ear
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IlluminatingMemoriesAlbumExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
+import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface IlluminatingMemoriesAlbumExerciseProps {
   content: IlluminatingMemoriesAlbumExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const inspirationChips = [
@@ -31,8 +32,9 @@ const activityChips = [
     'Otro'
 ];
 
-export function IlluminatingMemoriesAlbumExercise({ content, pathId }: IlluminatingMemoriesAlbumExerciseProps) {
+export function IlluminatingMemoriesAlbumExercise({ content, pathId, onComplete }: IlluminatingMemoriesAlbumExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [moments, setMoments] = useState(['', '', '']);
   const [sensoryDetails, setSensoryDetails] = useState(['', '', '']);
@@ -76,9 +78,10 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId }: Illuminat
         notebookContent += `**Reencuadre de situación difícil:**\n${finalReflection}\n`;
     }
 
-    addNotebookEntry({ title: 'Mi Álbum de Recuerdos que Iluminan', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Álbum de Recuerdos que Iluminan', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Álbum Guardado', description: 'Tus recuerdos han sido guardados.' });
     setIsSaved(true);
+    onComplete();
     setStep(5); // Go to final confirmation
   };
   

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -18,10 +17,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
+import { useUser } from '@/contexts/UserContext';
 
 interface DailyWellbeingPlanExerciseProps {
   content: DailyWellbeingPlanExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const physicalHabits = [
@@ -120,8 +121,9 @@ const SchedulingStep = ({ title, description, habit, habitKey, schedule, setSche
 };
 
 
-export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPlanExerciseProps) {
+export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -168,9 +170,10 @@ export function DailyWellbeingPlanExercise({ content, pathId }: DailyWellbeingPl
 - **Recordatorio:** ${reminders.mental === 'Otro' ? otherReminder.mental : reminders.mental}
     `;
 
-    addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Plan Guardado' });
     setIsSaved(true);
+    onComplete();
     setStep(5);
   };
   

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,11 +12,13 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PositiveEmotionalFirstAidKitExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '../ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
+import { useUser } from '@/contexts/UserContext';
 
 interface PositiveEmotionalFirstAidKitExerciseProps {
   content: PositiveEmotionalFirstAidKitExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const resourceCategories = {
@@ -58,8 +59,9 @@ interface Selections {
   frase: string;
 }
 
-export function PositiveEmotionalFirstAidKitExercise({ content, pathId }: PositiveEmotionalFirstAidKitExerciseProps) {
+export function PositiveEmotionalFirstAidKitExercise({ content, pathId, onComplete }: PositiveEmotionalFirstAidKitExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [selections, setSelections] = useState<Selections>({ persona: '', actividad: '', musica: '', gesto: '', frase: '' });
   const [otherValues, setOtherValues] = useState<Partial<Selections>>({});
@@ -105,9 +107,10 @@ export function PositiveEmotionalFirstAidKitExercise({ content, pathId }: Positi
         notebookContent += `- *Cómo lo activaré:* ${s.how || 'No especificado.'}\n\n`;
     });
 
-    addNotebookEntry({ title: 'Mi Botiquín Emocional Positivo', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Botiquín Emocional Positivo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Botiquín Guardado', description: 'Tu botiquín emocional ha sido guardado.' });
     setIsSaved(true);
+    onComplete();
     setStep(3); // Go to summary
   };
 
@@ -159,7 +162,7 @@ export function PositiveEmotionalFirstAidKitExercise({ content, pathId }: Positi
                             <Textarea id={`why-${key}`} value={personalization[key as ResourceKey].why} onChange={e => handlePersonalizationChange(key as ResourceKey, 'why', e.target.value)} rows={2}/>
                         </div>
                         <div className="space-y-1">
-                            <Label htmlFor={`how-${key}`} className="text-xs">¿Cómo lo vas a activar?</Label>
+                            <Label htmlFor={`how-${key}`} className="text-xs">¿Cómo lo activaré?</Label>
                             <Textarea id={`how-${key}`} value={personalization[key as ResourceKey].how} onChange={e => handlePersonalizationChange(key as ResourceKey, 'how', e.target.value)} placeholder="Ej: Dejarlo en un lugar visible, poner un recordatorio..." rows={2}/>
                         </div>
                     </div>

@@ -1,24 +1,23 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MorningRitualExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '../ui/input';
-import { Info } from 'lucide-react';
+import { useUser } from '@/contexts/UserContext';
 
 interface MorningRitualExerciseProps {
   content: MorningRitualExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const firstGestureOptions = [
@@ -82,8 +81,9 @@ const HabitStep = ({ stepTitle, description, options, selected, setSelected, oth
 };
 
 
-export function MorningRitualExercise({ content, pathId }: MorningRitualExerciseProps) {
+export function MorningRitualExercise({ content, pathId, onComplete }: MorningRitualExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   // Step 1
@@ -132,9 +132,10 @@ export function MorningRitualExercise({ content, pathId }: MorningRitualExercise
 *Cómo lo facilitaré:*
 ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join('\n') : 'Sin facilitadores definidos.'}
     `;
-    addNotebookEntry({ title: 'Mi Ritual de Mañana Amable', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Ritual de Mañana Amable', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ritual Guardado' });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 
@@ -159,7 +160,7 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
       case 2:
         return <HabitStep stepTitle="Paso 2: Añade un cuidado para tu cuerpo" description="Tu cuerpo es tu base para todo lo que harás después. Aquí vamos a elegir un gesto físico breve que te active sin agobio." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} />;
       case 3:
-        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Antes de sumergirte en mensajes, trabajo o tareas, elige un gesto que oriente tu mente hacia la calma, el enfoque o la gratitud." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} />;
+        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} />;
       case 4:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
@@ -235,19 +236,21 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
     }
   }
 
-
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        </CardDescription>}
+        <CardDescription className="pt-2 whitespace-pre-line">
+          Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
+          {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {renderStep()}
