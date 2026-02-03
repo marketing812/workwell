@@ -74,7 +74,7 @@ interface Reflection {
     otherPart: string;
 }
 
-export function DetoursInventoryExercise({ content, pathId, onComplete }: DetoursInventoryExerciseProps) {
+export default function DetoursInventoryExercise({ content, pathId, onComplete }: DetoursInventoryExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -111,7 +112,7 @@ const DiarioMeDiCuentaExercise = dynamic(() => import('@/components/paths/Diario
 // RUTA 7
 const ValuesCompassExercise = dynamic(() => import('@/components/paths/ValuesCompassExercise').then(mod => mod.ValuesCompassExercise), { loading: LoaderComponent, ssr: false });
 const EnergySenseMapExercise = dynamic(() => import('@/components/paths/EnergySenseMapExercise').then(mod => mod.EnergySenseMapExercise), { loading: LoaderComponent, ssr: false });
-const DetoursInventoryExercise = dynamic(() => import('@/components/paths/DetoursInventoryExercise').then(mod => mod.DetoursInventoryExercise), { loading: LoaderComponent, ssr: false });
+const DetoursInventoryExercise = dynamic(() => import('@/components/paths/DetoursInventoryExercise'), { loading: LoaderComponent, ssr: false });
 const PresentVsEssentialSelfExercise = dynamic(() => import('@/components/paths/PresentVsEssentialSelfExercise').then(mod => mod.PresentVsEssentialSelfExercise), { loading: LoaderComponent, ssr: false });
 const MentalNoiseTrafficLightExercise = dynamic(() => import('@/components/paths/MentalNoiseTrafficLightExercise').then(mod => mod.MentalNoiseTrafficLightExercise), { loading: LoaderComponent, ssr: false });
 const DirectedDecisionsExercise = dynamic(() => import('@/components/paths/DirectedDecisionsExercise').then(mod => mod.DirectedDecisionsExercise), { loading: LoaderComponent, ssr: false });
