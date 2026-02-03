@@ -14,10 +14,12 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EssentialReminderExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface EssentialReminderExerciseProps {
   content: EssentialReminderExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 // New detailed value options
@@ -47,8 +49,9 @@ const valueOptions = [
 const reminderTypes = ['Frase corta escrita', 'Imagen', 'Dibujo o símbolo', 'Objeto personal'];
 const reminderPlacements = ['Espejo', 'Escritorio', 'Agenda', 'Fondo de pantalla', 'Otro']; // Added "Otro"
 
-export function EssentialReminderExercise({ content, pathId }: EssentialReminderExerciseProps) {
+export function EssentialReminderExercise({ content, pathId, onComplete }: EssentialReminderExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [selectedValues, setSelectedValues] = useState<Record<string, boolean>>({});
@@ -86,9 +89,10 @@ export function EssentialReminderExercise({ content, pathId }: EssentialReminder
 **Contenido:** ${reminderContent}
 **Ubicación:** ${finalPlacement}
     `;
-    addNotebookEntry({ title: `Mi Recordatorio Esencial`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Mi Recordatorio Esencial`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Recordatorio Guardado", description: "Tu recordatorio esencial ha sido guardado." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   
@@ -98,7 +102,7 @@ export function EssentialReminderExercise({ content, pathId }: EssentialReminder
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">A veces, una imagen o una frase puede sostenernos más que mil pensamientos. Hoy vas a crear tu recordatorio esencial.</p>
-            <p className="text-sm text-muted-foreground">Para ello, empezarás eligiendo un valor que quieras tener presente en tu día a día: ese que te conecta con lo que de verdad importa. Después, decidirás qué forma tendrá tu recordatorio: puede ser una frase, una imagen, un dibujo o un objeto con significado para ti. Lo diseñarás con libertad y creatividad. No tiene que ser perfecto: solo tiene que resonar contigo. Por último, colócalo en un lugar visible —tu espejo, tu escritorio, tu agenda o donde lo veas cada día— como un ancla silenciosa que te devuelva a tu propósito.</p>
+            <p className="text-sm text-muted-foreground">Para ello, empezarás eligiendo un valor que quieras tener presente en tu día a día: ese que te conecta con lo que de verdad te importa. Después, decidirás qué forma tendrá tu recordatorio: puede ser una frase, una imagen, un dibujo o un objeto con significado para ti. Lo diseñarás con libertad y creatividad. No tiene que ser perfecto: solo tiene que resonar contigo. Por último, colócalo en un lugar visible —tu espejo, tu escritorio, tu agenda o donde lo veas cada día— como un ancla silenciosa que te devuelva a tu propósito.</p>
             <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -215,5 +219,3 @@ export function EssentialReminderExercise({ content, pathId }: EssentialReminder
     </Card>
   );
 }
-
-    

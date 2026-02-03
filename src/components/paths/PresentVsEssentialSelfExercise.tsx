@@ -7,17 +7,20 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PresentVsEssentialSelfExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface PresentVsEssentialSelfExerciseProps {
   content: PresentVsEssentialSelfExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function PresentVsEssentialSelfExercise({ content, pathId }: PresentVsEssentialSelfExerciseProps) {
+export function PresentVsEssentialSelfExercise({ content, pathId, onComplete }: PresentVsEssentialSelfExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [presentSelfDesc, setPresentSelfDesc] = useState('');
@@ -55,6 +58,7 @@ export function PresentVsEssentialSelfExercise({ content, pathId }: PresentVsEss
     }
   }, [step, presentSelfDesc, essentialSelfDesc, smallAction, isSaved, storageKey, isClient]);
 
+
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
@@ -85,9 +89,10 @@ ${essentialSelfDesc || 'No descrito.'}
 **Mi pequeña acción para esta semana:**
 ${smallAction}
     `;
-    addNotebookEntry({ title: `Visualización: Yo Presente vs. Yo Esencial`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Visualización: Yo Presente vs. Yo Esencial`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu visualización ha sido guardada." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   

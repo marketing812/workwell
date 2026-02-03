@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UnfulfilledNeedsExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface UnfulfilledNeedsExerciseProps {
   content: UnfulfilledNeedsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function UnfulfilledNeedsExercise({ content, pathId }: UnfulfilledNeedsExerciseProps) {
+export function UnfulfilledNeedsExercise({ content, pathId, onComplete }: UnfulfilledNeedsExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [unfulfilledAction, setUnfulfilledAction] = useState('');
   const [associatedValue, setAssociatedValue] = useState('');
   const [reason, setReason] = useState('');
@@ -45,9 +48,10 @@ ${reason}
 *Plan para mañana:*
 ${tomorrowPlan}
     `;
-    addNotebookEntry({ title: `Micropráctica: Necesidades No Atendidas`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Micropráctica: Necesidades No Atendidas`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Reflexión Guardada", description: "Tu reflexión ha sido guardada en el cuaderno." });
     setIsSaved(true);
+    onComplete();
   };
 
   return (

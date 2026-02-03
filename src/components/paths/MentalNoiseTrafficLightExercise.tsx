@@ -11,10 +11,12 @@ import { Edit3, Save, ArrowRight, CheckCircle, TrafficCone, ArrowLeft } from 'lu
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MentalNoiseTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useUser } from '@/contexts/UserContext';
 
 interface MentalNoiseTrafficLightExerciseProps {
   content: MentalNoiseTrafficLightExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const redOptions = ['Antes de dormir', 'Tras una discusión', 'Al empezar la semana', 'Durante atascos de trabajo'];
@@ -22,8 +24,9 @@ const amberOptions = ['Antes de una reunión', 'Durante la jornada laboral', 'En
 const greenOptions = ['Al caminar', 'Al desayunar en calma', 'Después de hacer ejercicio', 'En actividades creativas'];
 const gestureOptions = ['Respirar hondo 3 veces', 'Hacer una mini-pausa física', 'Enviar un mensaje a alguien cercano', 'Escribir en mi cuaderno una gratitud'];
 
-export function MentalNoiseTrafficLightExercise({ content, pathId }: MentalNoiseTrafficLightExerciseProps) {
+export function MentalNoiseTrafficLightExercise({ content, pathId, onComplete }: MentalNoiseTrafficLightExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [redZone, setRedZone] = useState('');
@@ -82,9 +85,10 @@ ${finalGreen}
 **Mi gesto de protección verde:**
 ${finalGesture}
     `;
-    addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   
@@ -193,5 +197,3 @@ ${finalGesture}
     </Card>
   );
 }
-
-    

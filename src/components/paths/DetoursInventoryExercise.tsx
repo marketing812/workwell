@@ -335,5 +335,3 @@ export function DetoursInventoryExercise({ content, pathId, onComplete }: Detour
     </Card>
   );
 }
-
-    

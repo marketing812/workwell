@@ -12,10 +12,12 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ThoughtsThatBlockPurposeExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface ThoughtsThatBlockPurposeExerciseProps {
   content: ThoughtsThatBlockPurposeExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const distortionOptions = [
@@ -37,8 +39,9 @@ const distortionOptions = [
 ];
 
 
-export function ThoughtsThatBlockPurposeExercise({ content, pathId }: ThoughtsThatBlockPurposeExerciseProps) {
+export function ThoughtsThatBlockPurposeExercise({ content, pathId, onComplete }: ThoughtsThatBlockPurposeExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [situation, setSituation] = useState('');
@@ -75,9 +78,10 @@ export function ThoughtsThatBlockPurposeExercise({ content, pathId }: ThoughtsTh
 **Distorsiones detectadas:** ${selectedDistortions.join(', ') || 'Ninguna.'}
 **Reformulación consciente:** "${reformulation}"
     `;
-    addNotebookEntry({ title: `Micropráctica: Pensamientos que Bloquean`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Micropráctica: Pensamientos que Bloquean`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Práctica Guardada", description: "Tu ejercicio ha sido guardado." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   
@@ -191,5 +195,3 @@ export function ThoughtsThatBlockPurposeExercise({ content, pathId }: ThoughtsTh
     </Card>
   );
 }
-
-    

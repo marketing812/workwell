@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -14,10 +14,12 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveRoadmapExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 interface BraveRoadmapExerciseProps {
   content: BraveRoadmapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const valueOptions = [
@@ -43,8 +45,9 @@ const valueOptions = [
     { id: 'tenderness', label: 'Ternura', description: 'Aportar dulzura, sensibilidad y cuidado en cómo te tratas y cómo te relacionas.' },
 ];
 
-export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExerciseProps) {
+export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadmapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [chosenValue, setChosenValue] = useState('');
@@ -93,9 +96,10 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
       notebookContent += `**Acción ${i + 1}:** ${a.action} (Coraje: ${a.courage}/3, Valor: ${finalValue})\n`;
     });
 
-    addNotebookEntry({ title: `Mi Hoja de Ruta Valiente`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Mi Hoja de Ruta Valiente`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Hoja de Ruta Guardada", description: "Tus acciones han sido guardadas." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 
@@ -254,5 +258,3 @@ export function BraveRoadmapExercise({ content, pathId }: BraveRoadmapExercisePr
     </Card>
   );
 }
-
-    

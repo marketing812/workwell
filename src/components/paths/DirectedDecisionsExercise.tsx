@@ -11,10 +11,12 @@ import { Edit3, Save, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DirectedDecisionsExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useUser } from '@/contexts/UserContext';
 
 interface DirectedDecisionsExerciseProps {
   content: DirectedDecisionsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const valueOptions = [
@@ -35,8 +37,9 @@ const valueOptions = [
     { id: 'freedom', label: 'Libertad interna', description: 'Soltar el deber constante para elegir con más consciencia.' },
 ];
 
-export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisionsExerciseProps) {
+export function DirectedDecisionsExercise({ content, pathId, onComplete }: DirectedDecisionsExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [selectedValue, setSelectedValue] = useState('');
@@ -81,9 +84,10 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
 **Acción para mañana:** ${tomorrowAction}
     `;
     
-    addNotebookEntry({ title: `Decisiones con Dirección`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Decisiones con Dirección`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Decisión Guardada", description: "Tu acción de mañana se ha guardado." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 
@@ -183,5 +187,3 @@ export function DirectedDecisionsExercise({ content, pathId }: DirectedDecisions
     </Card>
   );
 }
-
-    
