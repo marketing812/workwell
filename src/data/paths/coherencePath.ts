@@ -221,7 +221,7 @@ export const coherencePath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA7.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
             '<p>Preguntas para tu cuaderno emocional:</p>',
@@ -231,7 +231,7 @@ export const coherencePath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/RESUMENFINALRUTA.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/RESUMENRUTA.mp3'
         },
         {
           type: 'list',
@@ -253,5 +253,3 @@ export const coherencePath: Path = {
     },
   ],
 };
-
-    
