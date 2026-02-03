@@ -133,15 +133,15 @@ ${weeklyMicroAction || 'No especificada.'}
         );
       case 4:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: Microacción semanal</h4>
             <p className="text-sm text-muted-foreground">Elige una acción pequeña y concreta que te acerque a tu compromiso.</p>
             <div className="space-y-2">
               <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
               <Textarea id="micro-action" value={weeklyMicroAction} onChange={e => setWeeklyMicroAction(e.target.value)} placeholder="Ej: Poner un límite sin justificarme, agradecer su presencia..." />
             </div>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
-          </div>
+            <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
+          </form>
         );
       default:
         return null;

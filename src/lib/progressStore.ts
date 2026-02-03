@@ -1,3 +1,4 @@
+
 "use client";
 
 // Funciones para interactuar con localStorage para el progreso de las rutas

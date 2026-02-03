@@ -70,7 +70,7 @@ Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder l
 {{{message}}}
 
 ---
-**RESPUESTA DEL ASISTENTE:**
+**RESPUESTA DEL ASISTENTE (DEBE SER UN JSON VÁLIDO con la clave "response"):**
 `,
 });
 
@@ -125,15 +125,14 @@ const emotionalChatbotFlow = ai.defineFlow(
       promptPayload.userName = input.userName;
     }
 
-    const promptResponse = await emotionalChatbotPrompt(promptPayload);
-    const textResponse = promptResponse.text;
+    const { output } = await emotionalChatbotPrompt(promptPayload);
 
-    if (!textResponse || textResponse.trim() === '') {
-        throw new Error("La IA devolvió una respuesta de texto vacía.");
+    if (!output?.response) {
+      console.error("emotionalChatbotFlow: Genkit devolvió un 'output' vacío o sin la propiedad 'response'. Raw output:", output);
+      throw new Error("La IA devolvió una respuesta en un formato inesperado.");
     }
-
-    // Como el flow debe devolver un objeto del tipo EmotionalChatbotOutputSchema,
-    // envolvemos la respuesta de texto plano en el formato esperado.
-    return { response: textResponse };
+    
+    // output is already { response: "..." }
+    return output;
   }
 );

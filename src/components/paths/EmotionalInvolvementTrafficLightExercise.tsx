@@ -185,48 +185,16 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId, onCo
                 <p className="text-xs text-muted-foreground italic text-center">No tienes que cortar ningún vínculo de golpe. Solo dar un paso hacia delante que te devuelva a ti.</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline">Atrás</Button>
-                    <Button onClick={nextStep}>Siguiente</Button>
+                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
                 </div>
             </div>
         );
        case 5:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Cierre: tus relaciones también te construyen</h4>
-            <p className="text-sm">Este ejercicio no es para clasificar a nadie. Es para que puedas mirar tus relaciones con más claridad y menos culpa. Lo que sientes importa. Y lo que decides hacer con ello es un acto profundo de respeto hacia ti.</p>
-            <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="micro-practice">
-                    <AccordionTrigger>Micropráctica diaria opcional</AccordionTrigger>
-                    <AccordionContent>
-                        <div className="space-y-2">
-                            <p className="font-semibold">“Activa tu escudo antes de entrar”</p>
-                            <p className="text-sm"><strong>¿Para qué sirve?</strong> Para ayudarte a no perderte en el malestar del otro. Es tu momento para recordar que también tú importas en cada interacción. Esta práctica breve te ancla antes de cuidar.</p>
-                            <p className="text-sm"><strong>Cuándo hacerla:</strong> Antes de: Una conversación difícil. Un encuentro que sabes que te remueve. Contestar un mensaje que te genera tensión. Acompañar emocionalmente a alguien.</p>
-                        </div>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline">Atrás</Button>
-                <Button onClick={handleSave} disabled={isSaved}>
-                    <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi cuaderno'}
-                </Button>
-            </div>
-          </div>
-        );
-      case 6:
-        return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
+            <h4 className="font-bold text-lg">Ejercicio Guardado</h4>
             <p className="text-muted-foreground">Tu reflexión ha sido guardada en el Cuaderno Terapéutico. Puedes revisarla cuando quieras.</p>
-            <Button onClick={() => {
-                setStep(0);
-                setIsSaved(false);
-                setRelations(Array(5).fill({ name: '', color: '', reason: '' }));
-                setReflection({ q1: '', q2: '', q3: '', q4: '' });
-                setActionPlans({ green: '', amber: '', red: '' });
-            }} variant="outline">Empezar de nuevo</Button>
           </div>
         );
       default:

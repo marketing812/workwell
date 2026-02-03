@@ -6,11 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MotivationIn3LayersExerciseContent } from '@/data/paths/pathTypes';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 
@@ -212,10 +212,10 @@ ${purpose || 'No especificado.'}
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">"Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste."</p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
-                <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
-                <Button onClick={() => toast({title: "Próximamente", description: "La función de recordatorios estará disponible pronto."})}>Programar recordatorio</Button>
-                <Button onClick={resetExercise}>Finalizar ejercicio</Button>
-            </div>
+                   <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
+                   <Button onClick={() => toast({title: "Próximamente", description: "La función de recordatorios estará disponible pronto."})}>Programar recordatorio</Button>
+                   <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+              </div>
           </div>
         );
       default:
@@ -245,5 +245,3 @@ ${purpose || 'No especificado.'}
     </Card>
   );
 }
-
-    
