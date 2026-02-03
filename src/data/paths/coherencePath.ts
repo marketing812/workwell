@@ -77,18 +77,18 @@ export const coherencePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3'
         },
         { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana', 
-            audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', 
-            prompts: [
-              '<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p>',
-              '<ul>',
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', 
+          prompts: [
+            '<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p>',
+            '<ul>',
               '<li><p>Lo que he aprendido sobre mí:</p><p class="text-xs text-muted-foreground">(Escribe aquí 2-3 ideas clave que te lleves de esta semana)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me he dado cuenta de que en mis relaciones soy coherente, pero en el trabajo suelo callar lo que pienso.”</p></li>',
               '<li><p>Consecuencias de no cuidar mi coherencia:</p><p class="text-xs text-muted-foreground">(Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me siento agotada, con menos motivación y más frustrada.”</p></li>',
               '<li><p>Ventajas de vivir con coherencia personal:</p><p class="text-xs text-muted-foreground">(Enumera los beneficios que te inspira buscar esta alineación)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me siento más ligera, segura y con energía para lo que importa.”</p></li>',
               '<li><p>Mi compromiso para esta semana:</p><p class="text-xs text-muted-foreground">(Define un gesto concreto para acercarte a tu coherencia)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Decir que no a una petición que no puedo atender sin sentirme culpable.”</p></li>',
-              '</ul>'
-            ]
+            '</ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
@@ -121,13 +121,13 @@ export const coherencePath: Path = {
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', duration: '15 min' },
         { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.','duration': '10-12 min' },
         { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana', 
-            audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', 
-            prompts: [
-                '<p>Te propongo detenerte para integrar lo que has aprendido. No hay respuestas correctas, solo observaciones sinceras que te ayudarán a seguir conociéndote y reforzar tu sentido de coherencia.</p>',
-                '<ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué pasa en mi vida cuando no actúo en coherencia?</li><li>¿Qué ventajas noto cuando alineo lo que pienso, siento y hago?</li><li>¿Qué compromiso personal me llevo?</li></ul>'
-            ]
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', 
+          prompts: [
+            '<p>Te propongo detenerte para integrar lo que has aprendido. No hay respuestas correctas, solo observaciones sinceras que te ayudarán a seguir conociéndote y reforzar tu sentido de coherencia.</p>',
+            '<ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué pasa en mi vida cuando no actúo en coherencia?</li><li>¿Qué ventajas noto cuando alineo lo que pienso, siento y hago?</li><li>¿Qué compromiso personal me llevo?</li></ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
@@ -148,9 +148,17 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3', content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
         { type: 'collapsible', title: 'Lo que vamos a trabajar esta semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.', duration: '15-20 min' },
-        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.', duration: '10-15 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', prompts: ['<ul><li>¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?</li><li>¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?</li><li>¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?</li><li>¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?</li><li>¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?</li></ul>'] },
+        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.','duration': '15-20 min' },
+        { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', 
+          prompts: [
+            '<p>Tomate unos minutos para escribir en el espacio de reflexión de la aplicación. Reflexionar es integrar, cada palabra que registres te ayudará a fortalecer los cambios.</p>',
+            '<ul><li>¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?</li><li>¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?</li><li>¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?</li><li>¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?</li><li>¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?</li></ul>'
+          ] 
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
@@ -213,7 +221,7 @@ export const coherencePath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA7.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
             '<p>Preguntas para tu cuaderno emocional:</p>',
@@ -245,3 +253,5 @@ export const coherencePath: Path = {
     },
   ],
 };
+
+    
