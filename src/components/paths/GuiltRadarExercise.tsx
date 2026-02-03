@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { GuiltRadarExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface GuiltRadarExerciseProps {
   content: GuiltRadarExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function GuiltRadarExercise({ content, pathId }: GuiltRadarExerciseProps) {
+export function GuiltRadarExercise({ content, pathId, onComplete }: GuiltRadarExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [situation, setSituation] = useState('');
   const [internalPhrase, setInternalPhrase] = useState('');
   const [controlLevel, setControlLevel] = useState<'total' | 'parcial' | 'none' | ''>('');
@@ -55,9 +57,10 @@ ${responseAction}
 *Aprendizaje y cuidado para la próxima vez:*
 ${learning}
     `;
-    addNotebookEntry({ title: 'Mi Radar de Culpa', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Radar de Culpa', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Radar Guardado', description: 'Tu radar de culpa ha sido guardado.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (
@@ -122,5 +125,3 @@ ${learning}
     </Card>
   );
 }
-
-    

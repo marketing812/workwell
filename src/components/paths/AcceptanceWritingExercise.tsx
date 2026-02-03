@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -13,10 +12,12 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AcceptanceWritingExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
+import { useUser } from '@/contexts/UserContext';
 
 interface AcceptanceWritingExerciseProps {
   content: AcceptanceWritingExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const acceptanceEmotionOptions = [
@@ -45,9 +46,10 @@ const acceptanceEmotionOptions = [
 ];
 
 
-export function AcceptanceWritingExercise({ content, pathId }: AcceptanceWritingExerciseProps) {
+export function AcceptanceWritingExercise({ content, pathId, onComplete }: AcceptanceWritingExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
   const [fact, setFact] = useState('');
   const [emotion, setEmotion] = useState('');
   const [dialogue, setDialogue] = useState('');
@@ -111,9 +113,10 @@ ${response}
 *Frase de cierre compasivo:*
 "${compassionPhrase}"
     `;
-    addNotebookEntry({ title: 'Ejercicio de Aceptación Escrita', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Ejercicio de Aceptación Escrita', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
   };
 
   if (!isClient) {

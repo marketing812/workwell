@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,14 +9,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ComplaintTransformationExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface ComplaintTransformationExerciseProps {
   content: ComplaintTransformationExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function ComplaintTransformationExercise({ content, pathId }: ComplaintTransformationExerciseProps) {
+export function ComplaintTransformationExercise({ content, pathId, onComplete }: ComplaintTransformationExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [complaint, setComplaint] = useState('');
   const [controllable, setControllable] = useState('');
   const [action, setAction] = useState('');
@@ -49,9 +51,10 @@ ${registration}
 *Revisión final:*
 ${finalReview}
     `;
-    addNotebookEntry({ title: 'Transformación de Queja a Acción', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Transformación de Queja a Acción', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu transformación de queja a acción ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (

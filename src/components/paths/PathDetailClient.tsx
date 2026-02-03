@@ -640,23 +640,23 @@ function ContentItemRenderer({
       return <PersonalManifestoExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 10
     case 'complaintTransformationExercise':
-      return <ComplaintTransformationExercise key={index} content={contentItem} pathId={path.id} />;
+      return <ComplaintTransformationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'guiltRadarExercise':
-      return <GuiltRadarExercise key={index} content={contentItem} pathId={path.id} />;
+      return <GuiltRadarExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'acceptanceWritingExercise':
-      return <AcceptanceWritingExercise key={index} content={contentItem} pathId={path.id} />;
+      return <AcceptanceWritingExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'selfAcceptanceAudioExercise': {
         const exerciseContent = contentItem as SelfAcceptanceAudioExerciseContent;
         return <SelfAcceptanceAudioExercise key={index} content={exerciseContent} pathId={path.id} onComplete={handleComplete} audioUrl={exerciseContent.audioUrl} />;
     }
     case 'compassionateResponsibilityContractExercise':
-      return <CompassionateResponsibilityContractExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CompassionateResponsibilityContractExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'criticismToGuideExercise':
-      return <CriticismToGuideExercise key={index} content={contentItem} pathId={path.id} />;
+      return <CriticismToGuideExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'influenceWheelExercise':
-      return <InfluenceWheelExercise key={index} content={contentItem} pathId={path.id} />;
+      return <InfluenceWheelExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'personalCommitmentDeclarationExercise':
-      return <PersonalCommitmentDeclarationExercise key={index} content={contentItem} pathId={path.id} />;
+      return <PersonalCommitmentDeclarationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 11
     case 'supportMapExercise':
         return <SupportMapExercise key={index} content={contentItem} pathId={path.id} pathTitle={path.title} moduleTitle={module.title} onComplete={handleComplete} />;

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,10 +11,12 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalCommitmentDeclarationExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useUser } from '@/contexts/UserContext';
 
 interface PersonalCommitmentDeclarationExerciseProps {
   content: PersonalCommitmentDeclarationExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const valuesList = [
@@ -26,8 +27,9 @@ const valuesList = [
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
 ];
 
-export function PersonalCommitmentDeclarationExercise({ content, pathId }: PersonalCommitmentDeclarationExerciseProps) {
+export function PersonalCommitmentDeclarationExercise({ content, pathId, onComplete }: PersonalCommitmentDeclarationExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [selectedValues, setSelectedValues] = useState<Record<string, boolean>>({});
   const [otherValue, setOtherValue] = useState('');
   const [commitments, setCommitments] = useState({ elijo: '', meComprometo: '', decido: '' });
@@ -50,9 +52,10 @@ ${Object.keys(selectedValues).filter(k => selectedValues[k] && k !== 'other').jo
 *Recordatorio:*
 ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
     `;
-    addNotebookEntry({ title: 'Mi Declaración de Compromiso Personal', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Declaración de Compromiso Personal', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Declaración Guardada', description: 'Tu declaración de compromiso ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -12,10 +11,12 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
+import { useUser } from '@/contexts/UserContext';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const distortionOptions = [
@@ -25,8 +26,9 @@ const distortionOptions = [
     { value: 'personalization', label: 'Personalización' },
 ];
 
-export function CriticismToGuideExercise({ content, pathId }: CriticismToGuideExerciseProps) {
+export function CriticismToGuideExercise({ content, pathId, onComplete }: CriticismToGuideExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [criticalPhrase, setCriticalPhrase] = useState('');
   const [hiddenObjective, setHiddenObjective] = useState('');
   const [distortion, setDistortion] = useState('');
@@ -63,9 +65,10 @@ ${hiddenObjective}
 *Mi frase reformulada como guía:*
 "${reformulation}"
     `;
-    addNotebookEntry({ title: 'Transformación de Crítica a Guía', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Transformación de Crítica a Guía', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu transformación ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (

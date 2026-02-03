@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -8,14 +7,16 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, TrafficCone } from 'lucide-react';
+import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InfluenceWheelExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useUser } from '@/contexts/UserContext';
 
 interface InfluenceWheelExerciseProps {
   content: InfluenceWheelExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const internalActions = [
@@ -52,8 +53,9 @@ interface Situation {
     circle: 'interno' | 'externo' | '';
 }
 
-export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerciseProps) {
+export function InfluenceWheelExercise({ content, pathId, onComplete }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [situations, setSituations] = useState<Situation[]>(() =>
     Array.from({ length: 5 }, () => ({ name: '', control: '', circle: '' }))
@@ -110,9 +112,10 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
       notebookContent += '\n';
     });
 
-    addNotebookEntry({ title: 'Mi Rueda de Influencia', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Rueda de Influencia', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu rueda de influencia ha sido guardada.' });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
   
@@ -122,7 +125,7 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">La responsabilidad no es cargar con todo, sino elegir dónde pones tu energía. Este ejercicio te ayuda a dibujar un mapa claro: lo que sí depende de ti y lo que es mejor soltar.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -250,5 +253,3 @@ export function InfluenceWheelExercise({ content, pathId }: InfluenceWheelExerci
     </Card>
   );
 }
-
-    

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -10,14 +9,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CompassionateResponsibilityContractExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface CompassionateResponsibilityContractExerciseProps {
   content: CompassionateResponsibilityContractExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function CompassionateResponsibilityContractExercise({ content, pathId }: CompassionateResponsibilityContractExerciseProps) {
+export function CompassionateResponsibilityContractExercise({ content, pathId, onComplete }: CompassionateResponsibilityContractExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [initialCommitment, setInitialCommitment] = useState('');
   const [howToTalk, setHowToTalk] = useState('');
   const [howToRespond, setHowToRespond] = useState('');
@@ -41,9 +43,10 @@ ${howToRespond}
 *Firma del contrato:*
 ${signature}
     `;
-    addNotebookEntry({ title: 'Mi Contrato de Autorresponsabilidad Compasiva', content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: 'Mi Contrato de Autorresponsabilidad Compasiva', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Contrato Guardado', description: 'Tu contrato ha sido guardado.' });
     setIsSaved(true);
+    onComplete();
   };
 
   return (
