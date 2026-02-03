@@ -8,9 +8,10 @@ export interface DailyQuestionApiResponse {
     debugUrl?: string;
 }
 
-export async function getDailyQuestion(): Promise<DailyQuestionApiResponse | null> {
+export async function getDailyQuestion(userId?: string | null): Promise<DailyQuestionApiResponse | null> {
   try {
-    const response = await fetch('/api/daily-question');
+    const url = userId ? `/api/daily-question?userId=${userId}` : '/api/daily-question';
+    const response = await fetch(url);
     // We don't check for response.ok here, so we can pass the error JSON to the component for debugging
     const data = await response.json();
     return data;

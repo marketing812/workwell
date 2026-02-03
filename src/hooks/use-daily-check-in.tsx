@@ -34,7 +34,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
-    const apiResponse: DailyQuestionApiResponse | null = await getDailyQuestion();
+    const apiResponse: DailyQuestionApiResponse | null = await getDailyQuestion(user.id);
     
     if (!apiResponse || !Array.isArray(apiResponse.questions) || apiResponse.questions.length === 0) {
       setUnansweredQuestions([]);
