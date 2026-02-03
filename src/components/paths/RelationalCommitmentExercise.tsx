@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RelationalCommitmentExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface RelationalCommitmentExerciseProps {
   content: RelationalCommitmentExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function RelationalCommitmentExercise({ content, pathId }: RelationalCommitmentExerciseProps) {
+export function RelationalCommitmentExercise({ content, pathId, onComplete }: RelationalCommitmentExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
 
   const [values, setValues] = useState('');
@@ -62,25 +65,12 @@ ${blockingThoughts || 'No especificado.'}
 **Mi microacción para esta semana:**
 ${weeklyMicroAction || 'No especificada.'}
 `;
-    addNotebookEntry({ title: `Mi Compromiso Relacional`, content: notebookContent, pathId });
+    addNotebookEntry({ title: `Mi Compromiso Relacional`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu compromiso relacional se ha guardado en el cuaderno." });
     setIsSaved(true);
-    next();
+    onComplete();
   };
-
-  const resetExercise = () => {
-    setStep(0);
-    setValues('');
-    setMisalignedRelation('');
-    setCommitmentPerson('');
-    setVulnerableBehavior('');
-    setPartToStrengthen('');
-    setBlockingThoughts('');
-    setCommitmentStatement('');
-    setWeeklyMicroAction('');
-    setIsSaved(false);
-  };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -153,19 +143,6 @@ ${weeklyMicroAction || 'No especificada.'}
             <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
           </div>
         );
-       case 5: // Confirmation
-        return (
-          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">Ejercicio Guardado</h4>
-            <div className="space-y-2 text-muted-foreground">
-                <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
-                <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
-                <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
-            </div>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Comenzar de nuevo</Button>
-          </div>
-        );
       default:
         return null;
     }
@@ -188,7 +165,17 @@ ${weeklyMicroAction || 'No especificada.'}
         }
       </CardHeader>
       <CardContent>
-        {renderStep()}
+        {!isSaved ? renderStep() : (
+            <div className="p-6 text-center space-y-4">
+                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado</h4>
+                 <div className="space-y-2 text-muted-foreground">
+                    <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
+                    <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
+                    <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
+                </div>
+            </div>
+        )}
       </CardContent>
     </Card>
   );

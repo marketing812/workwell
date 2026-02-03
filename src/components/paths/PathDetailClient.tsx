@@ -497,6 +497,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'empatheticDialogueExercise':
@@ -505,6 +506,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'empathicMirrorExercise':
@@ -541,6 +543,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     case 'significantRelationshipsInventoryExercise':
@@ -558,6 +561,7 @@ function ContentItemRenderer({
           key={index}
           content={contentItem}
           pathId={path.id}
+          onComplete={handleComplete}
         />
       );
     // RUTA 6
@@ -672,7 +676,7 @@ function ContentItemRenderer({
         return <SymbolicSupportCircleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 12
     case 'emotionalGratificationMapExercise':
-        return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} />;
+        return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     case 'dailyEnergyCheckExercise':
         return <DailyEnergyCheckExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'dailyWellbeingPlanExercise':
@@ -733,6 +737,14 @@ export function PathDetailClient({ path }: { path: Path }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path, loadPath]);
+
+  useEffect(() => {
+    // Si navegamos fuera de la sección de rutas, podríamos limpiar la ruta activa
+    // Esto es opcional y depende del comportamiento deseado
+    if (!pathname.startsWith('/paths/')) {
+      // clearActivePath(); // Descomentar si se desea este comportamiento
+    }
+  }, [pathname]);
 
   const completeModule = useCallback((moduleId: string, moduleTitle: string) => {
     const newCompletedModules = new Set(completedModules);

@@ -10,14 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmpatheticDialogueExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface EmpatheticDialogueExerciseProps {
   content: EmpatheticDialogueExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialogueExerciseProps) {
+export function EmpatheticDialogueExercise({ content, pathId, onComplete }: EmpatheticDialogueExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [step, setStep] = useState(0);
   const [feeling, setFeeling] = useState('');
@@ -36,8 +39,9 @@ export function EmpatheticDialogueExercise({ content, pathId }: EmpatheticDialog
 - **Lo que necesito darme:** ${myNeed}
 - **Mi intención:** ${intention}
     `;
-    addNotebookEntry({ title: 'Mi Diálogo Interno Empático', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Diálogo Interno Empático', content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu diálogo interno ha sido guardado en el cuaderno." });
+    onComplete();
     setStep(prev => prev + 1);
   };
   

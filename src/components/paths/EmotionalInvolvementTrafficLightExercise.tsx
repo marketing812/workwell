@@ -13,14 +13,17 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmotionalInvolvementTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
+import { useUser } from '@/contexts/UserContext';
 
 interface EmotionalInvolvementTrafficLightExerciseProps {
   content: EmotionalInvolvementTrafficLightExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: EmotionalInvolvementTrafficLightExerciseProps) {
+export function EmotionalInvolvementTrafficLightExercise({ content, pathId, onComplete }: EmotionalInvolvementTrafficLightExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [relations, setRelations] = useState(Array(5).fill({ name: '', color: '', reason: '' }));
   const [reflection, setReflection] = useState({ q1: '', q2: '', q3: '', q4: '' });
@@ -73,9 +76,10 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId }: Em
     if (actionPlans.amber) notebookContent += `🟠 Ámbar - Exigente: ${actionPlans.amber}\n`;
     if (actionPlans.red) notebookContent += `🔴 Roja - Drenante: ${actionPlans.red}\n`;
 
-    addNotebookEntry({ title: `Semáforo de Implicación Emocional`, content: notebookContent, pathId: pathId });
+    addNotebookEntry({ title: `Semáforo de Implicación Emocional`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
+    onComplete();
     nextStep(); // Go to confirmation
   };
   

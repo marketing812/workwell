@@ -12,14 +12,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { AuthenticityThermometerExerciseContent } from '@/data/paths/pathTypes';
+import { useUser } from '@/contexts/UserContext';
 
 interface AuthenticityThermometerExerciseProps {
   content: AuthenticityThermometerExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function AuthenticityThermometerExercise({ content, pathId }: AuthenticityThermometerExerciseProps) {
+export function AuthenticityThermometerExercise({ content, pathId, onComplete }: AuthenticityThermometerExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   
   const [relations, setRelations] = useState(Array(6).fill({ name: '', howIShow: '', whatIHide: '', whyIHide: '', authenticity: 5 }));
   const [reflection, setReflection] = useState({ q1: '', q2: '', q3: '', q4: '' });
@@ -106,9 +109,10 @@ export function AuthenticityThermometerExercise({ content, pathId }: Authenticit
     notebookContent += `- Patrón en relaciones difíciles: ${reflection.q3 || 'No respondido.'}\n`;
     notebookContent += `- Próximo pequeño paso: ${reflection.q4 || 'No respondido.'}\n`;
 
-    addNotebookEntry({ title: 'Mi Termómetro de Autenticidad', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Termómetro de Autenticidad', content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión ha sido guardada en el Cuaderno Terapéutico." });
     setIsSaved(true);
+    onComplete();
     nextStep();
   };
 
