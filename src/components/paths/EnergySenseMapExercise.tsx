@@ -13,6 +13,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EnergySenseMapExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
+import { useUser } from '@/contexts/UserContext';
 
 interface Activity {
   name: string;
@@ -20,8 +21,15 @@ interface Activity {
   value: 'low' | 'medium' | 'high' | '';
 }
 
-export function EnergySenseMapExercise({ content, pathId }: { content: EnergySenseMapExerciseContent; pathId: string }) {
+interface EnergySenseMapExerciseProps {
+  content: EnergySenseMapExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
+
+export function EnergySenseMapExercise({ content, pathId, onComplete }: EnergySenseMapExerciseProps) {
   const { toast } = useToast();
+  const { user } = useUser();
   const [step, setStep] = useState(0);
   const [activities, setActivities] = useState<Activity[]>(() => 
     Array.from({ length: 6 }, () => ({ name: '', energy: '', value: '' }))
@@ -42,8 +50,9 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
     });
     notebookContent += `\n**Reflexión:**\n- Hacer más: ${reflection.moreOf}\n- Hacer menos/diferente: ${reflection.lessOf}\n\n**Compromiso:** ${commitment}\n`;
 
-    addNotebookEntry({ title: 'Mi Mapa de Energía y Sentido', content: notebookContent, pathId });
+    addNotebookEntry({ title: 'Mi Mapa de Energía y Sentido', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu mapa de energía ha sido guardado.' });
+    onComplete();
     setStep(prev => prev + 1);
   };
 
@@ -196,5 +205,3 @@ export function EnergySenseMapExercise({ content, pathId }: { content: EnergySen
     </Card>
   );
 }
-
-    

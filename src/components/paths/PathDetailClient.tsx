@@ -584,9 +584,9 @@ function ContentItemRenderer({
         return <DiarioMeDiCuentaExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 7
     case 'valuesCompassExercise':
-        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ValuesCompassExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'energySenseMapExercise':
-        return <EnergySenseMapExercise key={index} content={contentItem} pathId={path.id} />;
+        return <EnergySenseMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'detoursInventoryExercise':
         return <DetoursInventoryExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'presentVsEssentialSelfExercise':
