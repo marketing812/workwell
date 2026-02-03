@@ -588,23 +588,23 @@ function ContentItemRenderer({
     case 'energySenseMapExercise':
         return <EnergySenseMapExercise key={index} content={contentItem} pathId={path.id} />;
     case 'detoursInventoryExercise':
-        return <DetoursInventoryExercise key={index} content={contentItem} pathId={path.id} />;
+        return <DetoursInventoryExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'presentVsEssentialSelfExercise':
-        return <PresentVsEssentialSelfExercise key={index} content={contentItem} pathId={path.id} />;
+        return <PresentVsEssentialSelfExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'mentalNoiseTrafficLightExercise':
-        return <MentalNoiseTrafficLightExercise key={index} content={contentItem} pathId={path.id} />;
+        return <MentalNoiseTrafficLightExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'directedDecisionsExercise':
-        return <DirectedDecisionsExercise key={index} content={contentItem} pathId={path.id} />;
+        return <DirectedDecisionsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'senseChecklistExercise':
       return <SenseChecklistExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'unfulfilledNeedsExercise':
-        return <UnfulfilledNeedsExercise key={index} content={contentItem} pathId={path.id} />;
+        return <UnfulfilledNeedsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'braveRoadmapExercise':
-        return <BraveRoadmapExercise key={index} content={contentItem} pathId={path.id} />;
+        return <BraveRoadmapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'essentialReminderExercise':
-        return <EssentialReminderExercise key={index} content={contentItem} pathId={path.id} />;
+        return <EssentialReminderExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'thoughtsThatBlockPurposeExercise':
-        return <ThoughtsThatBlockPurposeExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ThoughtsThatBlockPurposeExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 8
     case 'resilienceTimelineExercise':
         return <ResilienceTimelineExercise key={index} content={contentItem} pathId={path.id} />;
