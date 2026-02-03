@@ -3,6 +3,7 @@
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 
 import type { Path, PathModule, ModuleContent } from '@/data/paths/pathTypes';
 import { useTranslations } from '@/lib/translations';
@@ -722,6 +723,7 @@ export function PathDetailClient({ path }: { path: Path }) {
   const { toast } = useToast();
   const { loadPath, updateModuleCompletion: contextUpdateModuleCompletion } = useActivePath();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
@@ -741,7 +743,7 @@ export function PathDetailClient({ path }: { path: Path }) {
   useEffect(() => {
     // Si navegamos fuera de la sección de rutas, podríamos limpiar la ruta activa
     // Esto es opcional y depende del comportamiento deseado
-    if (!pathname.startsWith('/paths/')) {
+    if (pathname && !pathname.startsWith('/paths/')) {
       // clearActivePath(); // Descomentar si se desea este comportamiento
     }
   }, [pathname]);
@@ -935,3 +937,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
