@@ -15,7 +15,7 @@ export async function retrieveDocsContext(
   question: string,
   opts?: { k?: number; minChars?: number }
 ): Promise<{ context: string; chunks: RetrievedChunk[] }> {
-  const k = opts?.k ?? 6;
+  const k = opts?.k ?? 8;
   const minChars = opts?.minChars ?? 80;
 
   const qVec = await embedText(question);
@@ -23,7 +23,7 @@ export async function retrieveDocsContext(
   const snap = await db
     .collection("kb-chunks")
     // @ts-ignore
-    .findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
+    .findNearest("embedding", qVec, {
       limit: k,
       distanceMeasure: "COSINE",
     })
