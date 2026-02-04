@@ -38,22 +38,14 @@ function TherapeuticNotebookReflectionExercise({
       return;
     }
     
-    // Convert prompts array into a formatted HTML string
-    const promptsHtml = content.prompts.map(p => {
-        if (p.startsWith('¿') && p.endsWith('?')) {
-            return `<p><strong>${p}</strong></p>`;
-        }
-        if (p.startsWith('•') || p.startsWith('-') || p.startsWith('*')) {
-            return `<li>${p.substring(1).trim()}</li>`;
-        }
-        return `<p>${p}</p>`;
-    }).join('');
+    // Use the raw HTML from prompts directly to ensure correct formatting
+    const promptsHtml = content.prompts.join('');
     
     const fullContent = `
 **${content.title}**
 
 <div class="prose dark:prose-invert max-w-none">
-    ${promptsHtml.includes('<li>') ? `<ul>${promptsHtml}</ul>` : promptsHtml}
+    ${promptsHtml}
 </div>
 
 **Mi reflexión:**
