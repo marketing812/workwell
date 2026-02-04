@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -11,7 +10,7 @@ import { DashboardSummaryCard } from "@/components/dashboard/DashboardSummaryCar
 import { ChartPlaceholder } from "@/components/dashboard/ChartPlaceholder";
 import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle } from "lucide-react";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle, MessageSquareQuote } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -21,7 +20,6 @@ import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileCh
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
 import type { MoodCheckIn } from "@/types/mood-check-in";
 import { moodCheckInOptions } from "@/data/moodCheckInOptions";
-import { pathsData } from "@/data/pathsData";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { z } from "zod";
@@ -36,6 +34,7 @@ import {
 import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
 import { useFirestore } from "@/firebase/provider";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -51,6 +50,7 @@ export default function DashboardPage() {
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
   const db = useFirestore();
+  const { forceOpen: forceDailyCheckInOpen } = useDailyCheckIn();
 
   const [isClient, setIsClient] = useState(false);
   const [allMoodCheckIns, setAllMoodCheckIns] = useState<MoodCheckIn[]>([]);
@@ -345,6 +345,25 @@ export default function DashboardPage() {
         </div>
       </section>
 
+      <section aria-labelledby="daily-question-heading">
+        <Card className="shadow-lg">
+          <CardHeader className="flex-row items-center justify-between">
+            <div className="space-y-1">
+              <CardTitle className="text-xl flex items-center">
+                <MessageSquareQuote className="mr-3 h-6 w-6 text-primary"/>
+                Pregunta del Día
+              </CardTitle>
+              <CardDescription>
+                Pulsa para responder a la pregunta diaria y reflexionar sobre tu bienestar.
+              </CardDescription>
+            </div>
+            <Button onClick={forceDailyCheckInOpen}>
+              Abrir Pregunta
+            </Button>
+          </CardHeader>
+        </Card>
+      </section>
+
       <section aria-labelledby="emotional-registry-heading" className="py-6">
         <h2 id="emotional-registry-heading" className="sr-only">{t.emotionalRegistry}</h2>
         <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
@@ -394,5 +413,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
