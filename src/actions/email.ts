@@ -12,12 +12,17 @@ interface SendEmailParams {
 }
 
 export async function sendEmail({ to, subject, body }: SendEmailParams): Promise<{ success: boolean; error?: string }> {
-  console.log(`sendEmail: Attempting to send email to ${to}`);
-  // Estas variables de entorno deben configurarse en el entorno de despliegue.
+  console.log(`[sendEmail] Attempting to send email to ${to}`);
+  
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error("[sendEmail] ERROR: Missing required SMTP environment variables (HOST, USER, PASS).");
+      return { success: false, error: 'Email service is not configured on the server.' };
+  }
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT || 587),
-    secure: process.env.SMTP_PORT === '465', // true para 465, false para otros puertos
+    secure: process.env.SMTP_PORT === '465', 
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -25,31 +30,31 @@ export async function sendEmail({ to, subject, body }: SendEmailParams): Promise
   });
 
   try {
-    console.log(`sendEmail: transporter.sendMail called for ${to}.`);
+    console.log(`[sendEmail] Transporter created. Calling sendMail for ${to}.`);
     await transporter.sendMail({
       from: `"EMOTIVA" <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER}>`,
       to: to,
       subject: subject,
       html: body,
     });
-    console.log(`sendEmail: Email sent successfully to ${to}.`);
+    console.log(`[sendEmail] Email sent successfully to ${to}.`);
     return { success: true };
   } catch (error) {
-    console.error(`sendEmail: Error sending email to ${to}:`, error);
-    return { success: false, error: 'Failed to send email.' };
+    console.error(`[sendEmail] Error sending email to ${to}:`, error);
+    return { success: false, error: 'Failed to send email via transporter.' };
   }
 }
 
 
 export async function sendReminderEmailByUserId(userId: string, body: string): Promise<{ success: boolean; error?: string }> {
-  console.log(`sendReminderEmailByUserId: Received request for userId: ${userId}`);
+  console.log(`[sendReminderEmailByUserId] Received request for userId: ${userId}`);
   if (!userId) {
-    console.error("sendReminderEmailByUserId: Aborting, no userId provided.");
+    console.error("[sendReminderEmailByUserId] Aborting, no userId provided.");
     return { success: false, error: "No userId provided." };
   }
 
   try {
-    console.log("sendReminderEmailByUserId: Initializing Firestore connection...");
+    console.log("[sendReminderEmailByUserId] Initializing Firestore connection...");
     let app;
     if (!getApps().length) {
       app = initializeApp(firebaseConfig);
@@ -57,26 +62,26 @@ export async function sendReminderEmailByUserId(userId: string, body: string): P
       app = getApp();
     }
     const db = getFirestore(app);
-    console.log("sendReminderEmailByUserId: Firestore connection initialized.");
+    console.log("[sendReminderEmailByUserId] Firestore connection initialized.");
 
     const userDocRef = doc(db, "users", userId);
-    console.log(`sendReminderEmailByUserId: Fetching user document from path: users/${userId}`);
+    console.log(`[sendReminderEmailByUserId] Fetching user document from path: users/${userId}`);
     const userDoc = await getDoc(userDocRef);
 
     if (!userDoc.exists()) {
-      console.error(`sendReminderEmailByUserId: User with ID ${userId} not found in Firestore.`);
+      console.error(`[sendReminderEmailByUserId] User with ID ${userId} not found in Firestore.`);
       return { success: false, error: `User not found.` };
     }
-    console.log(`sendReminderEmailByUserId: User document found for ID ${userId}.`);
+    console.log(`[sendReminderEmailByUserId] User document found for ID ${userId}.`);
 
     const userData = userDoc.data();
     const userEmail = userData.email;
 
     if (!userEmail) {
-      console.error(`sendReminderEmailByUserId: User with ID ${userId} does not have an email address in their document.`);
+      console.error(`[sendReminderEmailByUserId] User with ID ${userId} does not have an email address in their document.`);
       return { success: false, error: `User email not found.` };
     }
-    console.log(`sendReminderEmailByUserId: Found email '${userEmail}' for userId ${userId}. Preparing to send email.`);
+    console.log(`[sendReminderEmailByUserId] Found email '${userEmail}' for userId ${userId}. Preparing to send email.`);
 
     return await sendEmail({
       to: userEmail,
@@ -85,7 +90,7 @@ export async function sendReminderEmailByUserId(userId: string, body: string): P
     });
 
   } catch (error) {
-    console.error(`sendReminderEmailByUserId: Error processing reminder for userId ${userId}:`, error);
+    console.error(`[sendReminderEmailByUserId] Error processing reminder for userId ${userId}:`, error);
     return { success: false, error: 'Failed to send reminder email.' };
   }
 }

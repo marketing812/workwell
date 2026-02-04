@@ -27,13 +27,21 @@ async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ que
     cache: 'no-store',
   });
 
+  const responseText = await response.text();
+
   if (!response.ok) {
-    const errorText = await response.text();
-    console.error(`API Route (daily-question): Failed to fetch. Status: ${response.status}. Body: ${errorText}`);
+    console.error(`API Route (daily-question): Failed to fetch. Status: ${response.status}. Body: ${responseText}`);
     throw new Error(`Failed to fetch external daily question. Status: ${response.statusText}`);
   }
   
-  const data = await response.json();
+  let jsonToParse = responseText.trim();
+  // The API might return characters before the JSON array. Find the start of the array.
+  const startIndex = jsonToParse.indexOf('[');
+  if (startIndex > 0) { // Only substring if there's leading text.
+      jsonToParse = jsonToParse.substring(startIndex);
+  }
+
+  const data = JSON.parse(jsonToParse);
   const questionsArray = Array.isArray(data) ? data : [data];
   
   return { questions: questionsArray, debugUrl: externalUrl };
