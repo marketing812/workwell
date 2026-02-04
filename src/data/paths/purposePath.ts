@@ -120,10 +120,11 @@ export const purposePath: Path = {
         {
           type: 'collapsible',
           title: 'Vivir con sentido',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Vivirconsentido.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'Vivir con sentido es un entrenamiento diario,\u202F  como fortalecer un músculo invisible.\u202F  Cada elección alineada, por pequeña que parezca,\u202F  refuerza tu dirección vital.\u202F '
+              text: 'Vivir con sentido es un entrenamiento diario,   como fortalecer un músculo invisible.   Cada elección alineada, por pequeña que parezca,   refuerza tu dirección vital.\u202F '
             }
           ]
         },
@@ -188,9 +189,4 @@ export const purposePath: Path = {
   ]
 };
 
-
-
-
-
-
-
+    
