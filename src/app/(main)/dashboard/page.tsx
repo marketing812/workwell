@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -347,25 +346,6 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      <section aria-labelledby="daily-question-heading">
-        <Card className="shadow-lg">
-          <CardHeader className="flex-row items-center justify-between">
-            <div className="space-y-1">
-              <CardTitle className="text-xl flex items-center">
-                <MessageSquareQuote className="mr-3 h-6 w-6 text-primary"/>
-                Pregunta del Día
-              </CardTitle>
-              <CardDescription>
-                Pulsa para responder a la pregunta diaria y reflexionar sobre tu bienestar.
-              </CardDescription>
-            </div>
-            <Button onClick={forceDailyCheckInOpen}>
-              Abrir Pregunta
-            </Button>
-          </CardHeader>
-        </Card>
-      </section>
-
       <section aria-labelledby="emotional-registry-heading" className="py-6">
         <h2 id="emotional-registry-heading" className="sr-only">{t.emotionalRegistry}</h2>
         <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
@@ -415,6 +395,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-
-    
