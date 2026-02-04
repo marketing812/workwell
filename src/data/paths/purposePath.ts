@@ -59,6 +59,7 @@ export const purposePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3',
           prompts: [
             '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
             '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
           ]
         },
@@ -90,7 +91,7 @@ export const purposePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/REFLEXION.mp3', 
           prompts: [
-            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación. </p>',
+            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
             '<ul><li>¿Qué has descubierto sobre el ruido mental en tu vida?</li><li>¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?</li><li>¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?</li><li>¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?</li><li>¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?</li><li>¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?</li></ul>'
           ] 
         },
@@ -110,12 +111,35 @@ export const purposePath: Path = {
         { type: 'collapsible', title: 'Los valores como brújula interna', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Losvalorescomobrujulainterna.mp3', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la honestidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
         { type: 'collapsible', title: 'El costo de oportunidad emocional', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elcostoemocionaldelainercia.mp3', content: [{ type: 'paragraph', text: 'Cuando decimos sí a todo lo urgente, casi sin darnos cuenta decimos no a lo que nutre. \nLa psicóloga de Harvard Susan David lo describe como un “costo emocional de oportunidad”: lo que dejamos de lado cuando actuamos solo por inercia o miedo.\nPiénsalo: responder correos hasta la medianoche puede darte la sensación de control momentáneo, pero también roba espacio al descanso que realmente sostiene tu bienestar. Esa renuncia silenciosa suele ser lo que nos desgasta más.' }] },
         { type: 'collapsible', title: 'Disonancia cognitiva: cuando algo no encaja', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Cuandoalgonoencaja.mp3', content: [{ type: 'paragraph', text: 'Y cuando lo que hacemos se aleja demasiado de lo que valoramos, aparece una incomodidad que todos conocemos: esa sensación de “no estoy en paz conmigo mismo o conmigo misma”. A esto la psicología lo llama disonancia cognitiva.\nEl neurólogo Antonio Damasio mostró que esta incoherencia no es solo mental: el cuerpo también la registra en forma de tensión, dolor de estómago o insomnio.\nComo cuando valoras la calma, pero acabas entrando en una discusión innecesaria y luego sientes un nudo en el pecho.' }] },
-        { type: 'collapsible', title: 'Elegir con conciencia: tu poder interno', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elegirconconciencia.mp3', content: [{ type: 'paragraph', text: 'La clave no es ser perfectos ni acertar siempre, sino practicar pequeñas elecciones coherentes. \nLa investigadora Kristin Neff recuerda que la autocompasión es esencial en este proceso: acompañarte cuando no lo haces como te gustaría, sin castigarte, porque cada intento cuenta como aprendizaje.\nUn ejemplo simple: darte permiso para descansar sin sentirte culpable. Ese gesto no significa debilidad, sino responsabilidad hacia tu salud y hacia lo que valoras de verdad.' }] },
+        {
+          type: 'collapsible',
+          title: 'Elegir con conciencia: tu poder interno',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/Elegirconconciencia.mp3',
+          content: [{ type: 'paragraph', text: 'La clave no es ser perfectos ni acertar siempre, sino practicar pequeñas elecciones coherentes. \nLa investigadora Kristin Neff recuerda que la autocompasión es esencial en este proceso: acompañarte cuando no lo haces como te gustaría, sin castigarte, porque cada intento cuenta como aprendizaje.\nUn ejemplo simple: darte permiso para descansar sin sentirte culpable. Ese gesto no significa debilidad, sino responsabilidad hacia tu salud y hacia lo que valoras de verdad.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Vivir con sentido',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Vivir con sentido es un entrenamiento diario,\u202F  como fortalecer un músculo invisible.\u202F  Cada elección alineada, por pequeña que parezca,\u202F  refuerza tu dirección vital.\u202F '
+            }
+          ]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'directedDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN', objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.', duration: '10–15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3' },
         { type: 'senseChecklistExercise', title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO', objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.', duration: '5 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3' },
         { type: 'unfulfilledNeedsExercise', title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA', objective: 'Este ejercicio te ayudará a tomar conciencia del costo emocional de decisiones automáticas. Identificar lo que dejamos de lado (y nos nutriría) permite reequilibrar elecciones futuras.', duration: '3–5 min diarios' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión final de la semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he aprendido esta semana sobre la forma en la que tomo decisiones?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?</li><li>¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?</li><li>¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?</li><li>¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?</li></ul>'] },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/REFLEXION.mp3', 
+          prompts: [
+            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
+            '<ul><li>¿Qué he aprendido esta semana sobre la forma en la que tomo decisiones?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?</li><li>¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?</li><li>¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?</li><li>¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?</li></ul>'
+          ] 
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: ['El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.', 'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.', 'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.', 'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.', 'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.', 'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'] }, { type: 'quote', text: 'Vivir con dirección no es hacerlo todo perfecto. Es elegir lo que tiene sentido, paso a paso.' }]
@@ -163,6 +187,7 @@ export const purposePath: Path = {
     }
   ]
 };
+
 
 
 
