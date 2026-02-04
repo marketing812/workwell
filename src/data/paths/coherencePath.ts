@@ -183,10 +183,7 @@ export const coherencePath: Path = {
           title: 'Reflexión final de la semana',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p>',
-            '<p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p>',
-            '<p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p>',
-            '<p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3' },
@@ -247,3 +244,5 @@ export const coherencePath: Path = {
     },
   ],
 };
+
+    
