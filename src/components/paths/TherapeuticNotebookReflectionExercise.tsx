@@ -2,12 +2,11 @@
 "use client";
 
 import { useState, type FormEvent } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, NotebookText } from 'lucide-react';
+import { Save, CheckCircle, NotebookText } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TherapeuticNotebookReflection } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
@@ -78,22 +77,22 @@ ${reflection}
   };
   
   return (
-    <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader>
-        <CardTitle className="text-lg text-primary flex items-center gap-4">
-          <NotebookText className="h-6 w-6" />
-          <span>{content.title}</span>
-          {content.audioUrl && (
-            <audio
-              src={content.audioUrl}
-              controls
-              controlsList="nodownload"
-              className="h-8 max-w-[200px] sm:max-w-xs"
-            />
-          )}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <div className="my-6">
+        <div className="flex items-center gap-4 mt-6 mb-3">
+            <h3 className="text-xl font-bold text-primary flex items-center gap-4">
+                <NotebookText className="h-6 w-6" />
+                <span>{content.title}</span>
+            </h3>
+            {content.audioUrl && (
+                <audio
+                src={content.audioUrl}
+                controls
+                controlsList="nodownload"
+                className="h-8 max-w-[200px] sm:max-w-xs"
+                />
+            )}
+        </div>
+        
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
             <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
@@ -120,8 +119,7 @@ ${reflection}
             </div>
           )}
         </form>
-      </CardContent>
-    </Card>
+    </div>
   );
 }
 
