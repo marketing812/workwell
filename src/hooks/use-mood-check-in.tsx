@@ -2,6 +2,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
+import { sendEmail } from '@/actions/email';
 
 const MOOD_CHECKIN_KEY = 'workwell-mood-checkin-last-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 60; // Check every hour
@@ -39,6 +40,43 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
       console.error("Error checking mood check-in status:", error);
     }
   }, [getTodayTimestamp]);
+
+  useEffect(() => {
+    if (showPopup) {
+      const triggerEmailReminder = async () => {
+        try {
+          const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+          const API_KEY = "4463";
+          const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getavisoemail`;
+
+          console.log("Fetching email reminder notice...");
+          const response = await fetch(url, { cache: 'no-store' });
+
+          if (response.ok) {
+            const result = await response.json();
+            if (result.status === 'OK' && result.message && result.data) {
+              console.log(`Received OK status. Sending email to ${result.message}`);
+              await sendEmail({
+                to: result.message,
+                subject: "Recordatorio de EMOTIVA",
+                body: result.data,
+              });
+            } else {
+              console.warn("getavisoemail responded OK, but with unexpected data:", result);
+            }
+          } else {
+            const errorText = await response.text();
+            console.error("Failed to fetch getavisoemail:", response.status, errorText);
+          }
+        } catch (error) {
+          console.error("Error in getavisoemail logic:", error);
+        }
+      };
+
+      triggerEmailReminder();
+    }
+  }, [showPopup]);
+
 
   useEffect(() => {
     const initialTimer = setTimeout(() => {
