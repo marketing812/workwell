@@ -23,17 +23,23 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
   }, []);
 
   const checkShouldShowPopup = useCallback(() => {
+    console.log("useMoodCheckIn: Checking if popup should be shown...");
     try {
       const lastCompletedTimestamp = localStorage.getItem(MOOD_CHECKIN_KEY);
       if (!lastCompletedTimestamp) {
-        // If never completed, show it.
+        console.log("useMoodCheckIn: No last completed timestamp found. Showing popup.");
         setShowPopup(true);
         return;
       }
 
       const timeSinceLastCheck = getTodayTimestamp() - parseInt(lastCompletedTimestamp, 10);
+      console.log(`useMoodCheckIn: Time since last check-in: ${Math.round(timeSinceLastCheck / (1000 * 60 * 60))} hours.`);
       if (timeSinceLastCheck > TWO_DAYS_MS) {
+        console.log("useMoodCheckIn: More than 48 hours passed. Showing popup.");
         setShowPopup(true);
+      } else {
+        console.log("useMoodCheckIn: Less than 48 hours passed. Not showing popup.");
+        setShowPopup(false);
       }
     } catch (error) {
       console.error("Error checking mood check-in status:", error);
@@ -42,34 +48,39 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
 
   useEffect(() => {
     if (showPopup) {
+      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic.");
       const triggerEmailReminder = async () => {
         try {
           const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
           const API_KEY = "4463";
           const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getavisoemail`;
 
-          console.log("Fetching email reminder notice...");
+          console.log("useMoodCheckIn: Fetching email reminder notice from external API...");
           const response = await fetch(url, { cache: 'no-store' });
 
           if (response.ok) {
+            console.log("useMoodCheckIn: API call successful (response.ok). Parsing JSON...");
             const result = await response.json();
+            console.log("useMoodCheckIn: API response parsed:", result);
             if (result.status === 'OK' && result.message && result.data) {
               const userId = result.message;
-              console.log(`Received OK status. Sending email for userId ${userId}`);
+              console.log(`useMoodCheckIn: API status is OK. Triggering email send for userId: ${userId}`);
               await sendReminderEmailByUserId(userId, result.data);
             } else {
-              console.warn("getavisoemail responded OK, but with unexpected data:", result);
+              console.warn("useMoodCheckIn: getavisoemail responded OK, but with unexpected data:", result);
             }
           } else {
             const errorText = await response.text();
-            console.error("Failed to fetch getavisoemail:", response.status, errorText);
+            console.error("useMoodCheckIn: Failed to fetch getavisoemail. Status:", response.status, "Response text:", errorText);
           }
         } catch (error) {
-          console.error("Error in getavisoemail logic:", error);
+          console.error("useMoodCheckIn: Error in triggerEmailReminder logic:", error);
         }
       };
 
       triggerEmailReminder();
+    } else {
+      console.log("useMoodCheckIn: showPopup is false, not triggering email reminder.");
     }
   }, [showPopup]);
 
