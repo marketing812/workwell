@@ -696,13 +696,13 @@ function ContentItemRenderer({
     case 'ansiedadTieneSentidoExercise':
         return <AnsiedadTieneSentidoExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'visualizacionGuiadaCuerpoAnsiedadExercise':
-        return <VisualizacionGuiadaCuerpoAnsiedadExercise key={index} content={contentItem} pathId={path.id} />;
+        return <VisualizacionGuiadaCuerpoAnsiedadExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'stopExercise':
-        return <StopExercise key={index} content={contentItem} pathId={path.id} />;
+        return <StopExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'questionYourIfsExercise':
-      return <QuestionYourIfsExercise key={index} content={contentItem} pathId={path.id} />;
+      return <QuestionYourIfsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'exposureLadderExercise':
-        return <ExposureLadderExercise key={index} content={contentItem} pathId={path.id} />;
+        return <ExposureLadderExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'calmVisualizationExercise': {
         return <CalmVisualizationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     }

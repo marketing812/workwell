@@ -17,9 +17,10 @@ import { useUser } from '@/contexts/UserContext';
 interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
   content: VisualizacionGuiadaCuerpoAnsiedadExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
+export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pathId, onComplete }: VisualizacionGuiadaCuerpoAnsiedadExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -75,6 +76,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     
         toast({ title: 'Visualización Guardada', description: 'Tu ejercicio se ha guardado en el cuaderno.' });
         setIsSaved(true);
+        onComplete();
         nextStep();
       };
 

@@ -16,9 +16,10 @@ import { useUser } from '@/contexts/UserContext';
 interface ExposureLadderExerciseProps {
   content: ExposureLadderExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function ExposureLadderExercise({ content, pathId }: ExposureLadderExerciseProps) {
+export default function ExposureLadderExercise({ content, pathId, onComplete }: ExposureLadderExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -52,6 +53,7 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
     `;
     addNotebookEntry({ title: 'Mi Escalera de Exposición', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Escalera Guardada' });
+    onComplete();
   };
   
   const renderCurrentStep = () => {

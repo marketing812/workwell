@@ -15,9 +15,10 @@ import { useUser } from '@/contexts/UserContext';
 interface StopExerciseProps {
   content: StopExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function StopExercise({ content, pathId }: StopExerciseProps) {
+export default function StopExercise({ content, pathId, onComplete }: StopExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -45,15 +46,20 @@ ${nextAction}
     `;
     addNotebookEntry({ title: `Práctica STOP`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Práctica Guardada' });
+    onComplete();
   };
   
   const renderStep = () => {
     switch (step) {
       case 0:
         return (
-          <div className="p-4 text-center space-y-4">
-            <p>La técnica STOP es como tener un semáforo interno. Cuando la ansiedad acelera tus pensamientos, este semáforo te recuerda que puedes parar y elegir cómo seguir.</p>
-            <Button onClick={next}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          <div className="text-center p-4 space-y-4">
+             <p className="mb-4">
+              La técnica STOP es como tener un semáforo interno. Cuando la ansiedad acelera tus pensamientos, este semáforo te recuerda que puedes parar y elegir cómo seguir.
+            </p>
+            <Button onClick={() => setStep(1)}>
+              Comenzar práctica <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         );
       case 1:
@@ -67,9 +73,9 @@ ${nextAction}
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={next}>Hecho, siguiente</Button>
+            <div className="flex justify-between w-full">
+              <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={() => setStep(2)} >Siguiente</Button>
             </div>
           </div>
         );
@@ -85,7 +91,7 @@ ${nextAction}
               </audio>
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button onClick={next}>Hecho, siguiente</Button>
             </div>
           </div>
@@ -103,7 +109,7 @@ ${nextAction}
             </div>
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: 'Pienso que no podré y siento un nudo en el estómago'"/>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button onClick={next} disabled={!observedState.trim()}>Siguiente</Button>
             </div>
           </div>

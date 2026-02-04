@@ -16,9 +16,10 @@ import { useUser } from '@/contexts/UserContext';
 interface QuestionYourIfsExerciseProps {
   content: QuestionYourIfsExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export default function QuestionYourIfsExercise({ content, pathId }: QuestionYourIfsExerciseProps) {
+export default function QuestionYourIfsExercise({ content, pathId, onComplete }: QuestionYourIfsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -51,6 +52,7 @@ export default function QuestionYourIfsExercise({ content, pathId }: QuestionYou
     `;
     addNotebookEntry({ title: 'Cuestionando mis "¿Y si...?"', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado' });
+    onComplete();
   };
   
   const renderCurrentStep = () => {
