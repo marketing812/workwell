@@ -4,7 +4,6 @@ import { UserProvider } from '@/contexts/UserContext';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
-import { FeatureFlagProvider } from '@/contexts/FeatureFlagContext';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export default function RootLayout({
@@ -25,10 +24,8 @@ export default function RootLayout({
           <FirebaseClientProvider>
             <UserProvider>
               <ActivePathProvider>
-                <FeatureFlagProvider>
-                  {children}
-                  <Toaster />
-                </FeatureFlagProvider>
+                {children}
+                <Toaster />
               </ActivePathProvider>
             </UserProvider>
           </FirebaseClientProvider>
