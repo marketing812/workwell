@@ -123,8 +123,8 @@ export const coherencePath: Path = {
           prompts: [
             '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
             '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
-            '<ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué pasa en mi vida cuando no actúo en coherencia?</li><li>¿Qué ventajas noto cuando alineo lo que pienso, siento y hago?</li><li>¿Qué compromiso personal me llevo?</li></ul>'
-          ] 
+            '<ul><li>¿Qué he aprendido esta semana sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
@@ -189,12 +189,7 @@ export const coherencePath: Path = {
             '<p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
           ],
         },
-        { type: 'title', text: 'Resumen semana 4' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3',
-        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/RESUMEN.mp3' },
         {
           type: 'list',
           items: [
