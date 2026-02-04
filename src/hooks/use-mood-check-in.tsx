@@ -1,8 +1,7 @@
-
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
-import { sendEmail } from '@/actions/email';
+import { sendReminderEmailByUserId } from '@/actions/email';
 
 const MOOD_CHECKIN_KEY = 'workwell-mood-checkin-last-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 60; // Check every hour
@@ -55,12 +54,9 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
           if (response.ok) {
             const result = await response.json();
             if (result.status === 'OK' && result.message && result.data) {
-              console.log(`Received OK status. Sending email to ${result.message}`);
-              await sendEmail({
-                to: result.message,
-                subject: "Recordatorio de EMOTIVA",
-                body: result.data,
-              });
+              const userId = result.message;
+              console.log(`Received OK status. Sending email for userId ${userId}`);
+              await sendReminderEmailByUserId(userId, result.data);
             } else {
               console.warn("getavisoemail responded OK, but with unexpected data:", result);
             }
