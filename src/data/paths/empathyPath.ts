@@ -91,19 +91,19 @@ export const empathyPath: Path = {
           type: 'collapsible', 
           title: 'Por qué nos fundimos emocionalmente', 
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Porquenosfundimosemocionalmente.mp3', 
-          content: [{ type: 'paragraph', text: 'Nos fundimos porque muchas veces aprendimos a hacerlo así.  \nDe pequeños, nos premiaron por “ser buenos”, “no molestar”, o “hacer feliz a los demás”.  Y sin darnos cuenta, asociamos el amor con el sacrificio. ' }] 
+          content: [{ type: 'paragraph', text: 'Nos fundimos porque muchas veces aprendimos a hacerlo así.  \nDe pequeños, nos premiaron por “ser buenos”, “no molestar”, o “hacer feliz a los demás”.  Y sin darnos cuenta, asociamos el amor con el sacrificio.  ' }] 
         },
         { 
           type: 'collapsible', 
           title: 'La empatía sana sí existe', 
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Laempatiasanasiexiste.mp3', 
-          content: [{ type: 'paragraph', text: 'La empatía sana es acompañar sin absorber. Es sostener con una presencia clara, firme y compasiva.  \n\nNo necesitas tener todas las respuestas. No necesitas apagar tu luz para que el otro brille.  \n\nLa empatía real respeta al otro… y también te respeta a ti. ' }] 
+          content: [{ type: 'paragraph', text: 'La empatía sana es acompañar sin absorber. Es sostener con una presencia clara, firme y compasiva.  \n\nNo necesitas tener todas las respuestas. No necesitas apagar tu luz para que el otro brille.  \n\nLa empatía real respeta al otro… y también te respeta a ti.  ' }] 
         },
         { 
           type: 'collapsible', 
           title: 'Herramientas que vas a entrenar esta semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Herramientasquevasaentrenarestasemana.mp3', 
-          content: [{ type: 'paragraph', text: 'Asertividad emocional: poner palabras claras a lo que necesitas, sin agredir ni desaparecer.  \n\nAutoconciencia: detectar cómo te sientes antes de actuar. Preguntarte “¿Estoy disponible de verdad?”.  \n\nMindfulness emocional: respirar antes de absorber, darte tiempo antes de responder.  \n\nReestructuración cognitiva: cambiar pensamientos como “Tengo que aguantarlo todo” por “Puedo cuidar sin cargar”.  \n\nCompasión equilibrada: recordar que tú también mereces contención. ' }] 
+          content: [{ type: 'paragraph', text: 'Asertividad emocional: poner palabras claras a lo que necesitas, sin agredir ni desaparecer.  \n\nAutoconciencia: detectar cómo te sientes antes de actuar. Preguntarte “¿Estoy disponible de verdad?”.  \n\nMindfulness emocional: respirar antes de absorber, darte tiempo antes de responder.  \n\nReestructuración cognitiva: cambiar pensamientos como “Tengo que aguantarlo todo” por “Puedo cuidar sin cargar”.  \n\nCompasión equilibrada: recordar que tú también mereces contención.  ' }] 
         },
         { 
           type: 'collapsible', 
@@ -139,25 +139,68 @@ export const empathyPath: Path = {
       title: 'Semana 4: Crea Vínculos con Sentido y Cuidado Mutuo',
       type: 'summary',
       estimatedTime: '20-25 min',
-      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
+      content: [
+        { 
+          type: 'paragraphWithAudio', 
+          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.', 
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' 
+        },
         { type: 'title', text: 'Psicoeducación' },
-        {
-            type: 'collapsible',
-            title: 'No necesitas muchas personas, necesitas relaciones que te sostengan de verdad.',
-            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO1.mp3',
-            content: [{ type: 'paragraph', text: 'Lo que de verdad alivia y transforma no es la cantidad, sino la calidad del vínculo. Una sola relación donde puedas respirar y ser tú sin miedo, vale más que diez relaciones donde tienes que esconderte.' }]
+        { 
+          type: 'collapsible', 
+          title: 'No necesitas muchas personas. Necesitas relaciones que te sostengan de verdad.', 
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO1.mp3',
+          content: [
+              { type: 'paragraph', text: 'A veces creemos que estar rodeados de muchas personas es señal de bienestar. Que cuantos más vínculos, más seguridad, más apoyo, más amor.\nPero con el tiempo —y sobre todo cuando pasamos por momentos difíciles— nos damos cuenta de algo muy diferente:\nLo que de verdad alivia, sostiene y transforma no es la cantidad, sino la calidad del vínculo.\n\nUna sola relación donde puedas respirar, decir cómo te sientes sin miedo, ser tú sin tener que defenderte o explicar todo…\n…vale más que diez relaciones donde tienes que estar vigilando qué partes de ti mostrar y cuáles esconder.\n\nLas relaciones que nutren no son aquellas donde todo fluye sin conflicto.\nSon aquellas donde puedes existir tal y como eres.' }
+          ] 
+        },
+        { 
+          type: 'collapsible', 
+          title: 'Las relaciones honestas a veces duelen… pero sanan', 
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO2.mp3',
+          content: [
+              { type: 'paragraph', text: 'Cuando aprendemos a poner límites o a decir lo que realmente sentimos, no todo se vuelve más fácil al instante.\nDe hecho, al principio puede doler.\nPuedes sentirte incómoda/o, culpable o insegura/o.\nY eso es completamente normal. Porque estás empezando a mostrarte sin máscaras en relaciones donde antes te adaptabas para no molestar.\n\nPero ese paso es necesario.\nPorque una relación honesta no es perfecta:\nes aquella donde puede haber incomodidad, desacuerdo o frustración…\n…y aun así el vínculo se sostiene con respeto mutuo.\n\nPoner límites claros también es una forma de cuidar lo que construyes con el otro.'}
+          ] 
         },
         {
             type: 'collapsible',
-            title: 'La seguridad relacional se construye paso a paso',
-            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO2.mp3',
-            content: [{ type: 'paragraph', text: 'Las relaciones sanas se construyen con conciencia, palabra y coherencia. Implica cuidar cómo te expresas, cómo escuchas y cómo reparas tras un conflicto. Implica dejar de asumir que el otro sabe lo que te pasa, y empezar a nombrarlo con respeto.' }]
+            title: 'No necesitas esconder lo que sientes para que la relación funcione',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO3.mp3',
+            content: [
+                { type: 'paragraph', text: 'En relaciones realmente nutritivas no hace falta que te muestres fuerte todo el tiempo.\nTampoco necesitas fingir que todo está bien, o callarte cuando algo te duele.\nPorque la confianza no se fortalece con silencios, sino con autenticidad.\n\nHablar claro, desde tu vivencia, es un acto de conexión.\nY aquí es importante recordar una diferencia fundamental:\nno es lo mismo criticar que comunicar.\n\n💬 No es igual decir:\n“Eres muy egoísta, nunca piensas en mí”\n…que decir:\n“Cuando tomas decisiones sin contar conmigo, siento que mi opinión no se tiene en cuenta. Y eso me duele.”\n\nUna comunicación honesta no dramatiza ni ataca.\nNombra lo que ocurre desde lo vivido, desde el cuerpo, desde el vínculo que se quiere cuidar.'}
+            ]
+        },
+        {
+            type: 'collapsible',
+            title: 'La seguridad relacional no aparece sola: se construye paso a paso',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO4.mp3',
+            content: [
+                { type: 'paragraph', text: 'Es fácil pensar que los vínculos seguros nacen de forma natural, como si la afinidad, el tiempo o la buena voluntad bastaran.\nPero la realidad es otra:\nlas relaciones sanas se construyen con conciencia, palabra y coherencia.\n\nEso implica cuidar cómo te expresas, cómo escuchas, cómo corriges y cómo agradeces.\nImplica dejar de asumir que el otro sabe lo que te pasa, y empezar a nombrarlo con respeto.\nImplica no solo señalar lo que falta, sino también reconocer lo que sí hay.\n\nA veces, un “gracias por estar” o un “me hizo bien que me escucharas” fortalece más un vínculo que horas de discusión.'}
+            ]
+        },
+        {
+            type: 'collapsible',
+            title: 'Lo que hace que una relación merezca la pena no es que todo sea fácil, sino que tú te sientas libre en ella',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO5.mp3',
+            content: [
+                { type: 'paragraph', text: 'Puede que tengas muchas personas a tu alrededor, pero si no puedes ser tú en esas relaciones… ¿de qué sirven?\nUna relación que te respeta, que te cuida, que no necesita que finjas…\n…esa relación vale más que muchas que te exigen esfuerzo constante para mantenerte en pie.\n\nY no es que todo tenga que ser perfecto.\nLo importante es que puedas sentirte libre para estar como estés:\nconfusa/o, alegre, cansada/o, vulnerable.\nPorque si necesitas ocultarte para mantener un vínculo, ese vínculo ya te está pidiendo demasiado.'}
+            ]
+        },
+        {
+            type: 'collapsible',
+            title: 'Cuando sabes que tus vínculos son sólidos, poner límites no da tanto miedo',
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO6.mp3',
+            content: [
+                { type: 'paragraph', text: 'Una pista importante:\ncuanto más sólida y segura es una relación, menos culpa sientes al poner límites.\nPorque sabes que ese vínculo no depende de que digas siempre “sí”, ni de que estés disponible todo el tiempo.\nDepende de la confianza que se han ido dando… incluso cuando las decisiones no son cómodas.\n\nEn una relación segura, tu “no” no destruye. Fortalece.\n\nY cuanto más practiques poner límites con respeto, más cerca estarás de crear relaciones que te incluyan, no que te exijan borrarte.'}
+            ]
         },
         {
             type: 'collapsible',
             title: 'Autocompasión después de elegir cuidarte',
-            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO3.mp3',
-            content: [{ type: 'paragraph', text: 'A veces, después de poner un límite, aparece un malestar. Es normal, porque estás saliendo de patrones donde cuidar al otro era más fácil que cuidarte a ti. Justo ahí necesitas practicar autocompasión y recordarte: "Poner un límite no significa dejar de amar".' }]
+            audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO7.mp3',
+            content: [
+                { type: 'paragraph', text: 'A veces, después de poner un límite o decir lo que sientes, aparece un malestar que no esperabas:\ndudas, tristeza, miedo a haber hecho daño, ganas de volver atrás.\nEs normal. Porque estás saliendo de patrones donde cuidar al otro era más fácil que cuidarte a ti.\n\nPero justo ahí es donde necesitas practicar algo esencial:\nautocompasión.\n\nDecirte internamente:\n\n“No necesito ser perfecta/o para ser querida/o.”\n“Poner un límite no significa dejar de amar.”\n“Este malestar es parte del cambio, no una señal de error.”\n\nApóyate en las relaciones donde puedes respirar.\nDonde no necesitas justificarte.\nDonde ser tú no es una amenaza, sino una bienvenida.'}
+            ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -179,7 +222,7 @@ export const empathyPath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3', 
           prompts: [
-            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
+            '<p>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? Si hoy pudiera revivir esa situación, ¿qué haría diferente? ¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) ¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</p>',
           ] 
         },
         {
@@ -211,7 +254,6 @@ export const empathyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
-            '<p>Preguntas para tu cuaderno emocional:</p>',
             '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
           ]
         },
