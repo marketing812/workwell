@@ -54,7 +54,15 @@ export const purposePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'valuesCompassExercise', title: 'EJERCICIO 1: MI BRÚJULA DE VALORES', objective: 'Ayudarte a identificar las áreas de tu vida que son verdaderamente significativas para ti (como relaciones, salud, crecimiento personal o contribución), para que puedas empezar a tomar decisiones alineadas con tu dirección vital, no solo con lo urgente. Al hacerlo, fortaleces tu identidad, desarrollas claridad emocional y empiezas a construir una vida más coherente y plena.', duration: '10–15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana1tecnica1.mp3' },
         { type: 'energySenseMapExercise', title: 'EJERCICIO 2: MAPA DE ENERGÍA VS. SENTIDO', objective: 'Ayudarte a tomar conciencia de cómo distribuyes tu energía diaria entre tareas que simplemente “te ocupan” y aquellas que realmente te conectan con tus valores. El objetivo es detectar desequilibrios y redirigir parte de tu energía hacia lo que te hace sentir viva, presente y en coherencia contigo misma.', duration: '10–12 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'] },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/REFLEXION.mp3',
+          prompts: [
+            '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
+            '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['No todo lo urgente es importante. Aprender a distinguir entre lo valioso, lo necesario y lo inmediato es un acto de autoliderazgo.', 'Vivir en piloto automático nos desconecta de lo que realmente nos importa.', 'Los valores personales son principios que dan dirección y sentido a nuestra vida. Son nuestra brújula interna.', 'Conectar con nuestros valores nos ayuda a tomar decisiones más alineadas, a construir hábitos con propósito y a sentirnos más en paz con quienes somos.', 'Identificar nuestras actividades potenciadoras y drenantes nos permite reorganizar la energía hacia lo que nutre, en lugar de lo que desgasta.'] },
@@ -137,9 +145,9 @@ export const purposePath: Path = {
       type: 'summary',
       estimatedTime: '10-15 min',
       content: [{ type: 'therapeuticNotebookReflection', title: 'REFLEXIÓN FINAL DE LA RUTA', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/REFLEXIONRUTA7.mp3', prompts: [
-            '<p>Has recorrido cuatro semanas de trabajo profundo. No se trata de haberlo hecho perfecto, sino de haberlo hecho con honestidad. Te invito a cerrar esta ruta con una mirada hacia dentro, reconociendo tus avances, tus resistencias y lo que quieres llevarte contigo.</p>',
-            '<p>Puedes escribir libremente sobre lo que surja, pero si lo necesitas, aquí tienes algunas preguntas para guiar tu reflexión:</p>',
-            '<ul><li>¿Qué es lo que más me ha ayudado de esta ruta para comprenderme mejor?</li><li>¿Qué diferencia noto entre tomar decisiones desde la inercia y hacerlo desde el propósito?</li><li>¿Qué consecuencias he vivido (o suelo vivir) cuando me dejo arrastrar por el piloto automático?</li><li>¿Qué me ha aportado identificar mis valores y actuar desde ellos, aunque fuera en pasos pequeños?</li><li>¿Con qué idea, frase o herramienta quiero quedarme como brújula personal?</li><li>¿Qué me comprometo a seguir cultivando, y por qué eso es importante para mí?</li></ul>'
+            '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
+            '<p>Preguntas para tu cuaderno emocional:</p>',
+            '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
         ] },
         { type: 'title', text: 'RESUMEN FINAL DE LA RUTA', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3' },
         { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.', 'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.', 'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.', 'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
@@ -148,6 +156,7 @@ export const purposePath: Path = {
     }
   ]
 };
+
 
 
 
