@@ -52,7 +52,7 @@ function TherapeuticNotebookReflectionExercise({
     const fullContent = `
 **${content.title}**
 
-<div class="prose prose-sm dark:prose-invert max-w-none">
+<div class="prose dark:prose-invert max-w-none">
     ${promptsHtml.includes('<li>') ? `<ul>${promptsHtml}</ul>` : promptsHtml}
 </div>
 
@@ -95,8 +95,7 @@ ${reflection}
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>
-            <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
+            <div className="prose dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
             <Label htmlFor={`reflection-${pathId}`} className="sr-only">
               Tu reflexión
             </Label>
