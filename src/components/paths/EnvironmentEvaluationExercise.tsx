@@ -33,7 +33,7 @@ const environments = [
     { id: 'familia', label: 'Relaciones familiares' },
     { id: 'pareja', label: 'Pareja / vida afectiva' },
     { id: 'amistades', label: 'Amistades y red social' },
-    { id: 'desarrollo_personal', label: 'Desarrollo personal' },
+    { id: 'desarrollo_personal', label: 'Desarrollo personal o espiritual' },
     { id: 'trabajo', label: 'Vida laboral/profesional' },
     { id: 'finanzas', label: 'Finanzas y seguridad' },
     { id: 'ocio', label: 'Ocio y tiempo libre' },
@@ -42,9 +42,10 @@ const environments = [
 interface EnvironmentEvaluationExerciseProps {
   content: EnvironmentEvaluationExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
-export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEvaluationExerciseProps) {
+export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: EnvironmentEvaluationExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -89,36 +90,38 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
     };
 
     const handleSave = () => {
-        const filledEnvironments = selectedEnvironments.map(env => ({
-            ...env,
-            rating: ratings[env.id] || { support: 5, drain: 5, example: '' }
-        })).filter(env => env.label.trim() !== '');
-
+        const filledEnvironments = activeAreas.filter(area => ratings[area.id]);
         if (filledEnvironments.length === 0) {
-            toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa al menos un entorno para guardar.', variant: 'destructive' });
+            toast({ title: 'Ejercicio Incompleto', description: 'Por favor, evalúa al menos un entorno para guardar.', variant: 'destructive' });
             return;
         }
 
-        let notebookContent = `**${content.title}**\n\n`;
-        filledEnvironments.forEach(env => {
-            notebookContent += `**Entorno:** ${env.label}\n`;
-            notebookContent += `- Apoyo a mis valores (0-10): ${env.rating.support}\n`;
-            notebookContent += `- Me aleja de mis valores (0-10): ${env.rating.drain}\n`;
-            notebookContent += `- Ejemplo: ${env.rating.example || 'No especificado.'}\n\n`;
+        let notebookContent = `**${content.title}**\n\n**Mi Mapa de Coherencia:**\n\n`;
+        filledEnvironments.forEach(area => {
+            const rating = ratings[area.id];
+            if (rating) {
+                notebookContent += `**Área:** ${area.label}\n`;
+                notebookContent += `- Apoyo a mis valores (0-10): ${rating.support}\n`;
+                notebookContent += `- Me aleja de mis valores (0-10): ${rating.drain}\n\n`;
+            }
         });
 
-        addNotebookEntry({ title: 'Mi Mapa de Coherencia', content: notebookContent, pathId, userId: user?.id });
+        addNotebookEntry({
+            title: 'Mi Mapa de Coherencia',
+            content: notebookContent,
+            pathId,
+            userId: user?.id,
+        });
+        
         toast({ title: 'Mapa de Coherencia Guardado' });
         setIsSaved(true);
+        onComplete();
     };
 
-    const resetExercise = () => {
-        setStep(0);
-        setSelectedEnvs({});
-        setOtherEnvironment('');
-        setRatings({});
-        setIsSaved(false);
-    };
+
+    const activeAreas = useMemo(() => {
+        return environments.filter(e => selectedEnvs[e.id]);
+    }, [selectedEnvs]);
 
     const renderStep = () => {
         switch(step) {
@@ -151,7 +154,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                 );
             case 1: return (
                 <div className="p-4 space-y-4">
-                    {selectedEnvironments.length > 0 ? selectedEnvironments.map(e => (
+                    {activeAreas.length > 0 ? activeAreas.map(e => (
                         <div key={e.id} className="p-3 border rounded-md">
                             <h4 className="font-semibold">{e.label}</h4>
                             <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
@@ -166,7 +169,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
                         <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
-                        <Button onClick={() => setStep(2)} disabled={selectedEnvironments.length === 0}>Ver Síntesis Visual</Button>
+                        <Button onClick={() => setStep(2)} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
                 </div>
             );
@@ -199,7 +202,7 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                             <Button onClick={handleSave} disabled={isSaved}>
                                 <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
                             </Button>
-                            <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                            <Button onClick={() => { setStep(0); setSelectedEnvs({}); setRatings({}); setIsSaved(false); }} variant="outline">Empezar de nuevo</Button>
                          </div>
                     </div>
                 );
@@ -214,12 +217,14 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
                 {content.objective && (
                     <CardDescription className="pt-2">
                         {content.objective}
-                        <div className="mt-4">
-                            <audio controls controlsList="nodownload" className="w-full">
-                                <source src={content.audioUrl} type="audio/mp3" />
-                                Tu navegador no soporta el elemento de audio.
-                            </audio>
-                        </div>
+                        {content.audioUrl && (
+                            <div className="mt-4">
+                                <audio controls controlsList="nodownload" className="w-full">
+                                    <source src={content.audioUrl} type="audio/mp3" />
+                                    Tu navegador no soporta el elemento de audio.
+                                </audio>
+                            </div>
+                        )}
                     </CardDescription>
                 )}
             </CardHeader>
@@ -227,5 +232,3 @@ export function EnvironmentEvaluationExercise({ content, pathId }: EnvironmentEv
         </Card>
     );
 }
-
-    

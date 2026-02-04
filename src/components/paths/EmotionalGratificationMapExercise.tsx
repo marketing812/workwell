@@ -18,6 +18,7 @@ import { useUser } from '@/contexts/UserContext';
 interface EmotionalGratificationMapExerciseProps {
   content: EmotionalGratificationMapExerciseContent;
   pathId: string;
+  onComplete: () => void;
 }
 
 const activityOptions = [
@@ -35,7 +36,7 @@ const placesOptions = [
 ];
 
 
-export function EmotionalGratificationMapExercise({ content, pathId }: EmotionalGratificationMapExerciseProps) {
+export function EmotionalGratificationMapExercise({ content, pathId, onComplete }: EmotionalGratificationMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -85,6 +86,7 @@ ${finalPlaces}
     addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu mapa ha sido guardado en el cuaderno.' });
     setIsSaved(true);
+    onComplete();
     setStep(4); // Go to final confirmation
   };
   

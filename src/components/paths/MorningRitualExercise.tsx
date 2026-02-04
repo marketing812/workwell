@@ -19,6 +19,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface MorningRitualExerciseProps {
   content: MorningRitualExerciseContent;
@@ -244,12 +245,12 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
                 <div className="space-y-2">
                 {facilitatorOptions.map(opt => (
                     <div key={opt.id} className="flex items-center space-x-2">
-                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={c => setFacilitators(p => ({...p, [opt.id]: !!c}))} />
+                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, [opt.id]: c}))} />
                         <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                     </div>
                 ))}
                  <div className="flex items-center space-x-2">
-                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={c => setFacilitators(p => ({...p, ['facilitator-other']: !!c}))} />
+                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, ['facilitator-other']: c}))} />
                     <Label htmlFor="facilitator-other" className="font-normal">Otro:</Label>
                 </div>
                 {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
