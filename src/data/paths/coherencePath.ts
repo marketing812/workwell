@@ -81,9 +81,9 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', 
           prompts: [
-              '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
-              '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
-              '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
+            '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
+            '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave'},
@@ -122,8 +122,9 @@ export const coherencePath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', 
           prompts: [
             '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
             '<ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué pasa en mi vida cuando no actúo en coherencia?</li><li>¿Qué ventajas noto cuando alineo lo que pienso, siento y hago?</li><li>¿Qué compromiso personal me llevo?</li></ul>'
-          ]
+          ] 
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
