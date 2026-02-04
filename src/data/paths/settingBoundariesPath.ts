@@ -226,7 +226,6 @@ export const settingBoundariesPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
-            '<p>Preguntas para tu cuaderno emocional:</p>',
             '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
           ]
         },
@@ -254,4 +253,5 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
+
 
