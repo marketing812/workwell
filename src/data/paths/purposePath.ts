@@ -91,7 +91,7 @@ export const purposePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/REFLEXION.mp3', 
           prompts: [
-            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
+            '<p>Llega el momento de integrar lo aprendido con una reflexión personal; sin prisa. Mira dentro de ti y pon con palabras lo que ha cambiado</p>',
             '<ul><li>¿Qué has descubierto sobre el ruido mental en tu vida?</li><li>¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?</li><li>¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?</li><li>¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?</li><li>¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?</li><li>¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?</li></ul>'
           ] 
         },
@@ -140,7 +140,7 @@ export const purposePath: Path = {
             '<p>Te invito a parar unos minutos. Busca un espacio tranquilo y escribe desde la honestidad. Cada palabra escrita es un acto de claridad y toma de conciencia. </p>',
             '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
             '<ul><li>¿Qué he aprendido esta semana sobre la forma en la que tomo decisiones?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?</li><li>¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?</li><li>¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?</li><li>¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?</li></ul>'
-          ] 
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/RESUMEN.mp3' },
@@ -165,7 +165,7 @@ export const purposePath: Path = {
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica1.mp3' },
         { type: 'essentialReminderExercise', title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL', objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica2.mp3' },
         { type: 'thoughtsThatBlockPurposeExercise', title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?', objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?</li><li>¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?</li><li>¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?</li><li>¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?</li><li>¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?</li></ul>'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', prompts: ['<p>Llega el momento de integrar lo aprendido con una reflexión personal; sin prisa. Mira dentro de ti y pon con palabras lo que ha cambiado</p>','<ul><li>¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?</li><li>¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?</li><li>¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?</li><li>¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?</li><li>¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/RESUMEN.mp3' },
         { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.', 'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.', 'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.', 'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
@@ -190,6 +190,3 @@ export const purposePath: Path = {
   ]
 };
 
-    
-
-    
