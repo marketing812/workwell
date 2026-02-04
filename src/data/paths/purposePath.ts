@@ -124,7 +124,7 @@ export const purposePath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Vivir con sentido es un entrenamiento diario,   como fortalecer un músculo invisible.   Cada elección alineada, por pequeña que parezca,   refuerza tu dirección vital.\u202F '
+              text: 'Vivir con sentido es un entrenamiento diario,   como fortalecer un músculo invisible.   Cada elección alineada, por pequeña que parezca,   refuerza tu dirección vital.  '
             }
           ]
         },
@@ -137,7 +137,8 @@ export const purposePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/REFLEXION.mp3', 
           prompts: [
-            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
+            '<p>Te invito a parar unos minutos. Busca un espacio tranquilo y escribe desde la honestidad. Cada palabra escrita es un acto de claridad y toma de conciencia. </p>',
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
             '<ul><li>¿Qué he aprendido esta semana sobre la forma en la que tomo decisiones?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy actuando en piloto automático?</li><li>¿Cómo me afecta emocionalmente vivir en modo automático o decidir desde el “hay que”?</li><li>¿He notado algún momento en el que elegí desde un valor y eso me dio paz, claridad o coherencia interna?</li><li>¿Qué emociones o sensaciones me deja el hecho de acercarme (aunque sea un poco) a lo que realmente valoro?</li></ul>'
           ] 
         },
@@ -188,5 +189,7 @@ export const purposePath: Path = {
     }
   ]
 };
+
+    
 
     
