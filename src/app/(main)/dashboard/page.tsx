@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -35,6 +36,7 @@ import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
 import { useFirestore } from "@/firebase/provider";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
+import { pathsData } from '@/data/pathsData';
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -413,3 +415,6 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+
+    
