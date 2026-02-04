@@ -81,13 +81,9 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', 
           prompts: [
-            '<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p>',
-            '<ul>',
-              '<li><p>Lo que he aprendido sobre mí:</p><p class="text-xs text-muted-foreground">(Escribe aquí 2-3 ideas clave que te lleves de esta semana)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me he dado cuenta de que en mis relaciones soy coherente, pero en el trabajo suelo callar lo que pienso.”</p></li>',
-              '<li><p>Consecuencias de no cuidar mi coherencia:</p><p class="text-xs text-muted-foreground">(Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me siento agotada, con menos motivación y más frustrada.”</p></li>',
-              '<li><p>Ventajas de vivir con coherencia personal:</p><p class="text-xs text-muted-foreground">(Enumera los beneficios que te inspira buscar esta alineación)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Me siento más ligera, segura y con energía para lo que importa.”</p></li>',
-              '<li><p>Mi compromiso para esta semana:</p><p class="text-xs text-muted-foreground">(Define un gesto concreto para acercarte a tu coherencia)</p><p class="text-xs text-muted-foreground italic">Ejemplo: “Decir que no a una petición que no puedo atender sin sentirme culpable.”</p></li>',
-            '</ul>'
+              '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
+              '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
+              '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave'},
@@ -125,7 +121,7 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', 
           prompts: [
-            '<p>Te propongo detenerte para integrar lo que has aprendido. No hay respuestas correctas, solo observaciones sinceras que te ayudarán a seguir conociéndote y reforzar tu sentido de coherencia.</p>',
+            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
             '<ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué pasa en mi vida cuando no actúo en coherencia?</li><li>¿Qué ventajas noto cuando alineo lo que pienso, siento y hago?</li><li>¿Qué compromiso personal me llevo?</li></ul>'
           ]
         },
@@ -143,7 +139,7 @@ export const coherencePath: Path = {
       content: [{ type: 'paragraphWithAudio', text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte. ', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/INTRODUCCIONSEMANA3.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Coherencia ≠ Rigidez', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3', content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] },
-        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta.' }] },
+        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3', content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\nPor ejemplo, si uno de tus valores es la honestidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
         { type: 'collapsible', title: 'El arte de adaptarse sin perderte', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3', content: [{ type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }] },
         { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3', content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
         { type: 'collapsible', title: 'Lo que vamos a trabajar esta semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
@@ -155,7 +151,7 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', 
           prompts: [
-            '<p>Tomate unos minutos para escribir en el espacio de reflexión de la aplicación. Reflexionar es integrar, cada palabra que registres te ayudará a fortalecer los cambios.</p>',
+            '<p>Tómate unos minutos para escribir en el espacio de reflexión de la aplicación. Reflexionar es integrar, cada palabra que registres te ayudará a fortalecer los cambios.</p>',
             '<ul><li>¿Qué idea o descubrimiento de esta semana me ha hecho más “clic” por dentro?</li><li>¿Qué he comprendido sobre mí al observar cómo tomo decisiones importantes?</li><li>¿Cómo ha cambiado mi forma de ver la relación entre coherencia y rigidez?</li><li>¿Qué aprendí sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?</li><li>¿Qué puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?</li></ul>'
           ] 
         },
@@ -253,3 +249,5 @@ export const coherencePath: Path = {
     },
   ],
 };
+
+    
