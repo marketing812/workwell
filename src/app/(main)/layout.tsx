@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { ReactNode } from 'react';
@@ -15,14 +14,13 @@ import { DailyCheckInPopup } from '@/components/daily-check-in/DailyCheckInPopup
 import { MoodCheckInProvider, useMoodCheckIn } from '@/hooks/use-mood-check-in';
 import { MoodCheckInPopup } from '@/components/mood-check-in/MoodCheckInPopup';
 
-// Wrapper component to manage popups
-function PopupManager({ children }: { children: ReactNode }) {
+// Componente para gestionar los pop-ups
+function PopupManager() {
   const { unansweredQuestions, closePopup, showPopup, dismissPopup } = useDailyCheckIn();
   const { showPopup: showMoodPopup, closePopup: closeMoodPopup } = useMoodCheckIn();
 
   return (
     <>
-      {children}
       <DailyCheckInPopup 
         isOpen={showPopup} 
         questions={unansweredQuestions}
@@ -34,7 +32,7 @@ function PopupManager({ children }: { children: ReactNode }) {
   );
 }
 
-// This is the main client layout component
+// Layout principal del cliente
 export default function MainAppLayout({ children }: { children: ReactNode }) {
   const { user, loading } = useUser();
   const router = useRouter();
@@ -54,7 +52,6 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
   }
 
   if (!user) {
-    // Return null or a loader while redirecting to avoid flashing content
     return (
         <div className="flex h-screen items-center justify-center bg-background">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -71,8 +68,9 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
               <AppSidebar />
               <AppHeader />
               <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-                 <PopupManager>{children}</PopupManager>
+                 {children}
               </main>
+              <PopupManager />
             </div>
           </SidebarProvider>
         </MoodCheckInProvider>
