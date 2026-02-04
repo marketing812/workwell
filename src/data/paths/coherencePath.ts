@@ -183,8 +183,10 @@ export const coherencePath: Path = {
           title: 'Reflexión final de la semana',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            '<p>Dedica unos minutos a mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas, solo darte espacio para reconocer lo que esta semana despertó en ti. </p>',
-            '<p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan?</li><li>¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso?</li><li>¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia?</li><li>¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación?</li><li>Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo?</li></ul>',
+            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p>',
+            '<p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p>',
+            '<p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p>',
+            '<p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
           ],
         },
         { type: 'title', text: 'Resumen semana 4' },
@@ -228,7 +230,7 @@ export const coherencePath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/RESUMENRUTA.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/RESUMENFINALRUTA.mp3'
         },
         {
           type: 'list',
@@ -250,5 +252,3 @@ export const coherencePath: Path = {
     },
   ],
 };
-
-    

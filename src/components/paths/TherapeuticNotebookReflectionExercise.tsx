@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -31,9 +32,9 @@ function TherapeuticNotebookReflectionExercise({
     e.preventDefault();
     if (!reflection.trim()) {
       toast({
-        title: 'Reflexión Incompleta',
-        description: 'Por favor, escribe tu reflexión antes de guardar.',
-        variant: 'destructive',
+        title: "Reflexión Incompleta",
+        description: "Por favor, escribe tu reflexión antes de guardar.",
+        variant: "destructive",
       });
       return;
     }
@@ -95,7 +96,7 @@ ${reflection}
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            <div className="prose dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
+            <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
             <Label htmlFor={`reflection-${pathId}`} className="sr-only">
               Tu reflexión
             </Label>
