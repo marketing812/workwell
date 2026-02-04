@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from "react";
@@ -14,6 +13,7 @@ import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useAuth } from "@/firebase/provider"; 
+import { sendLegacyData } from "@/data/userUtils";
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
@@ -64,7 +64,12 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        
+        if (userCredential.user) {
+            sendLegacyData({ id: userCredential.user.uid }, 'guardarlogin');
+        }
+
         toast({
             title: t.login,
             description: t.loginSuccessMessage,

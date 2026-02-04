@@ -1,4 +1,3 @@
-
 "use server";
 
 import { forceEncryptStringAES } from '@/lib/encryption';
@@ -9,7 +8,7 @@ const API_TIMEOUT_MS = 15000;
 
 export async function sendLegacyData(
   data: Record<string, any>,
-  type: 'usuario' | 'guardaranimo' | 'otro_tipo'
+  type: 'usuario' | 'guardaranimo' | 'guardarlogin' | 'otro_tipo'
 ): Promise<{ success: boolean; debugUrl: string }> {
   try {
     // Extract id and department_code to be sent unencrypted
