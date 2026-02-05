@@ -51,6 +51,9 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     const [selectedEnvs, setSelectedEnvs] = useState<Record<string, boolean>>({});
     const [otherEnvironment, setOtherEnvironment] = useState('');
     const [ratings, setRatings] = useState<Record<string, { support: number, drain: number, example: string }>>({});
+    const [highCoherenceReflection, setHighCoherenceReflection] = useState('');
+    const [highCoherenceEmotions, setHighCoherenceEmotions] = useState('');
+    const [disconnectionReflection, setDisconnectionReflection] = useState('');
     const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
@@ -81,13 +84,16 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         });
     }, [selectedEnvironments, ratings]);
     
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
     const nextStep = () => setStep(prev => prev + 1);
 
     const resetExercise = () => {
         setStep(0);
         setSelectedEnvs({});
         setRatings({});
+        setHighCoherenceReflection('');
+        setHighCoherenceEmotions('');
+        setDisconnectionReflection('');
         setIsSaved(false);
     };
 
@@ -112,6 +118,13 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 notebookContent += `- Me aleja de mis valores (1-5): ${rating.drain}\n\n`;
             }
         });
+        
+        notebookContent += `\n**Reflexión sobre zonas de alineación:**\n`;
+        notebookContent += `- Lo que hago bien: ${highCoherenceReflection || 'No respondido.'}\n`;
+        notebookContent += `- Emociones que despierta: ${highCoherenceEmotions || 'No respondido.'}\n\n`;
+        
+        notebookContent += `**Reflexión sobre zona de desconexión:**\n`;
+        notebookContent += `- Lo que me impide ser coherente: ${disconnectionReflection || 'No respondido.'}\n\n`;
 
         addNotebookEntry({
             title: 'Mi Brújula de Coherencia',
@@ -123,6 +136,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         toast({ title: 'Brújula Guardada' });
         onComplete();
         setIsSaved(true);
+        nextStep();
     };
 
 
@@ -142,7 +156,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
             case 0:
                 return (
                     <div className="p-4 space-y-2">
-                        <p className="text-sm text-muted-foreground">Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, piensa si lo que piensas, sientes y haces está en sintonía… o si notas contradicción o tensión. Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia):</p>
+                        <p className="text-sm text-muted-foreground">Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, piensa si lo que piensas, sientes y haces está en sintonía… o si notas contradicción o tensión.    Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia): </p>
                         <Label className="font-semibold">Identifica tus entornos clave:</Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {environments.map(e => (
@@ -165,31 +179,72 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                 disabled={isSaved}
                             />
                         )}
-                        <Button onClick={() => setStep(1)} className="w-full mt-4" disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
+                        <Button onClick={nextStep} className="w-full mt-4" disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
                     </div>
                 );
-            case 1: return (
-                <div className="p-4 space-y-4">
-                    {activeAreas.length > 0 ? activeAreas.map(e => (
-                        <div key={e.id} className="p-3 border rounded-md">
-                            <h4 className="font-semibold">{e.label}</h4>
-                            <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 1}/5</Label>
-                            <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 1]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={1} max={5} step={1} disabled={isSaved}/>
-                            
-                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 1}/5</Label>
-                            <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 1]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={1} max={5} step={1} disabled={isSaved}/>
-                            
-                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
-                            <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
+            case 1: 
+                return (
+                    <div className="p-4 space-y-4">
+                        {activeAreas.length > 0 ? activeAreas.map(e => (
+                            <div key={e.id} className="p-3 border rounded-md">
+                                <h4 className="font-semibold">{e.label}</h4>
+                                <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 1}/5</Label>
+                                <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 1]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                                
+                                <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 1}/5</Label>
+                                <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 1]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                                
+                                <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
+                                <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
+                            </div>
+                        )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
+                        <div className="flex justify-between w-full">
+                            <Button onClick={prevStep} variant="outline">Atrás</Button>
+                            <Button onClick={nextStep} disabled={activeAreas.length === 0}>Siguiente</Button>
                         </div>
-                    )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
-                     <div className="flex justify-between w-full">
-                        <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
-                        <Button onClick={() => setStep(2)} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
-                </div>
-            );
+                );
             case 2:
+                return (
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 3: Selecciona tus dos zonas de mayor alineación</h4>
+                        <p className="text-sm text-muted-foreground">Ahora observa: ¿en qué dos áreas sientes más coherencia contigo misma/o? Elige esas dos y responde:</p>
+                        <blockquote className="p-3 border-l-2 border-accent bg-accent/10 italic text-sm">
+                            Ejemplo de inspiración: “En mi relación con mi hermana he aprendido a decir lo que pienso sin miedo. Eso me da calma y orgullo.”
+                        </blockquote>
+                        <div className="space-y-2">
+                            <Label htmlFor="high-coherence-doing-well">¿Qué estás haciendo bien en ellas que te hace sentirte en paz o en equilibrio?</Label>
+                            <Textarea id="high-coherence-doing-well" value={highCoherenceReflection} onChange={e => setHighCoherenceReflection(e.target.value)} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="high-coherence-emotions">¿Qué emociones te despierta vivir en coherencia en esas áreas?</Label>
+                            <Textarea id="high-coherence-emotions" value={highCoherenceEmotions} onChange={e => setHighCoherenceEmotions(e.target.value)} />
+                        </div>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+             case 3:
+                return (
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 4: Detecta una zona de desconexión</h4>
+                        <p className="text-sm text-muted-foreground">Ahora identifica una de las áreas donde sientes más contradicción o conflicto interno. ¿Qué crees que te impide ser más coherente en esa parte de tu vida? Puedes explorar si hay miedo, necesidad de agradar, cansancio, confusión…</p>
+                         <blockquote className="p-3 border-l-2 border-accent bg-accent/10 italic text-sm">
+                            Ejemplo: “En el trabajo, valoro la honestidad, pero suelo callarme para no incomodar. Me frustra y me desconecta de mí.”
+                        </blockquote>
+                        <div className="space-y-2">
+                            <Label htmlFor="disconnection-reason">¿Qué te impide ser más coherente en esa área?</Label>
+                            <Textarea id="disconnection-reason" value={disconnectionReflection} onChange={e => setDisconnectionReflection(e.target.value)} />
+                        </div>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Ver Síntesis Visual <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+            case 4:
                 return (
                     <div className="p-4 text-center space-y-4">
                         <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
@@ -215,13 +270,22 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                             </RadarChart>
                         </ChartContainer>
                          <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                             <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={handleSave} disabled={isSaved}>
                                 <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
                             </Button>
-                            <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
                          </div>
                     </div>
                 );
+            case 5:
+                return (
+                    <div className="p-4 text-center space-y-4">
+                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                        <h4 className="font-bold text-lg">Brújula Guardada</h4>
+                        <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
+                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                    </div>
+                )
             default: return null;
         }
     }
@@ -248,3 +312,5 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         </Card>
     );
 }
+
+    
