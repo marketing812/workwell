@@ -47,27 +47,27 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
   }, [getTodayTimestamp]);
 
   useEffect(() => {
+    // This effect now ONLY handles the email reminder check.
     const triggerEmailReminder = async () => {
       console.log("useMoodCheckIn: Firing email reminder check to internal API...");
       try {
         // This is a fire-and-forget call to the internal API route
-        fetch('/api/trigger-reminder');
+        await fetch('/api/trigger-reminder');
       } catch (error) {
         console.error("useMoodCheckIn: Error calling /api/trigger-reminder:", error);
       }
     };
     
-    // Check for email reminder regardless of whether the popup is shown,
-    // as long as the time condition is met.
+    // Check if the condition for a reminder is met
     const lastCompletedTimestamp = typeof window !== 'undefined' ? localStorage.getItem(MOOD_CHECKIN_KEY) : null;
     if (!lastCompletedTimestamp || (getTodayTimestamp() - parseInt(lastCompletedTimestamp, 10)) > TWO_DAYS_MS) {
         triggerEmailReminder();
     }
-
-  }, [showPopup, getTodayTimestamp]);
+  }, [getTodayTimestamp]);
 
 
   useEffect(() => {
+    // This effect handles the popup visibility logic
     const initialTimer = setTimeout(() => {
       checkShouldShowPopup();
     }, 5000); // Check 5 seconds after app load
