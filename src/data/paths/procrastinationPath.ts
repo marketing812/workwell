@@ -86,7 +86,7 @@ export const procrastinationPath: Path = {
           prompts: [
             '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido.</p>',
             '<ul>',
-            '<li>¿Qué emociones intento evitar cuando postergo?</li>',
+            '<li>¿Qué emociones intento evitar cuando postergo? […]</li>',
             '</ul>'
           ]
         },
@@ -230,7 +230,7 @@ export const procrastinationPath: Path = {
           title: 'Diálogos internos que te frenan',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Dialogosinternosquetefrenan.mp3',
           content: [
-            { type: 'paragraph', text: 'Estas frases son más comunes de lo que imaginas, y todos o todas las hemos dicho alguna vez:' },
+            { type: 'paragraph', text: 'Estas frases son más comunes de lo que imaginas, y todos o todas las hemos dicho alguna vez:'},
             { type: 'list', items: [
                 '“Estoy demasiado cansado o cansada, lo haré más tarde.”',
                 '“Ahora no es el momento ideal.”',
@@ -261,14 +261,14 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'No eres flojo o floja: estás defendiéndote',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Noeresflojooflojaestasdefendiendote.mp3',
-          content: [{ type: 'paragraph', text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva. Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte. Cuanto más postergas, más frustración, culpa o impotencia puedes sentir. Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado. Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar. ' }]
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Noeresflojooflojaestasdefendiendote.mp3',
+          content: [{ type: 'paragraph', text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva. Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte. Cuanto más postergas, más frustración, culpa o impotencia puedes sentir. Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado. Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.' }],
         },
         {
           type: 'collapsible',
           title: 'En resumen',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Enresumen.mp3',
-          content: [{ type: 'paragraph', text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles. Reconocerlas no significa criticarte, sino entenderte mejor. Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción. Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma. Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar. ' }]
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
+          content: [{ type: 'list', items: ['Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.','Reconocerlas no significa criticarte, sino entenderte mejor.','Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción.','Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.','Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.']}]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -285,10 +285,10 @@ export const procrastinationPath: Path = {
           duration: '10 a 15 minutos',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
         },
-        { 
+        {
           type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3', 
           prompts: [
             '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
             '<ul>',
@@ -374,10 +374,10 @@ export const procrastinationPath: Path = {
           prompts: [
             '<p>Ahora es momento de integrar lo que has descubierto. En este espacio podrás concretar qué hábito quieres mantener a largo plazo. Escribir lo que has aprendido consolida la conciencia.</p>',
             '<ul>',
-            '<li>¿Qué hábito me gustaría mantener a largo plazo? Ejemplo: “Empezar el día con un gesto de autocuidado”</li>',
-            '<li>¿Qué me ha ayudado a mantenerlo? Ejemplo: “Vincularlo a una rutina ya existente”</li>',
-            '<li>¿Qué quiero ajustar para que me funcione mejor? Ejemplo: “Reducir la duración para no agobiarme”</li>',
-            '<li>¿Cómo me quiero hablar si un día fallo? Ejemplo: “Quiero recordarme que puedo volver mañana sin castigo”</li>',
+            '<li>¿Qué hábito me gustaría mantener a largo plazo? Ejemplo: “Empezar el día con un gesto de autocuidado” […]</li>',
+            '<li>¿Qué me ha ayudado a mantenerlo? Ejemplo: “Vincularlo a una rutina ya existente” […]</li>',
+            '<li>¿Qué quiero ajustar para que me funcione mejor? Ejemplo: “Reducir la duración para no agobiarme” […]</li>',
+            '<li>¿Cómo me quiero hablar si un día fallo? Ejemplo: “Quiero recordarme que puedo volver mañana sin castigo” […]</li>',
             '</ul>'
           ]
         },
@@ -396,6 +396,50 @@ export const procrastinationPath: Path = {
         },
         { type: 'quote', text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.' },
     ],
+    },
+    {
+      id: 'procrast_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/REFLEXIONRUTA.mp3',
+          prompts: [
+            '<p>Hemos llegado casi al final de la Ruta 3. Este es un buen momento para mirar tu recorrido con perspectiva; en un espacio idóneo para nombrar y decidir como quieres acompañarte cuando vuelvas a sentir bloqueo.</p>',
+            '<ul>',
+            '<li>¿Qué he comprendido sobre mí al trabajar la procrastinación? Ejemplo: “Que no soy perezoso o perezosa, solo tenía miedo al fracaso.” […]</li>',
+            '<li>¿Qué ha sido lo más útil o transformador para mí en esta ruta? Ejemplo: “Darme cuenta de que puedo empezar por muy poco, y eso ya es suficiente.” […]</li>',
+            '<li>¿Qué hábitos me gustaría mantener a partir de ahora? Ejemplo: “Revisar mi día con calma cada mañana” o “darme una frase de aliento antes de empezar algo difícil” […]</li>',
+            '<li>¿Cómo me quiero hablar cuando sienta que vuelvo a posponer? Ejemplo: “Estoy aprendiendo, no fallando. Puedo volver a empezar sin castigarme.” […]</li>',
+            '<li>¿Qué me llevo de esta ruta que quiero recordar más adelante? Ejemplo: “Avanzar con amabilidad es mejor que exigirme hacerlo perfecto.” […]</li>',
+            '</ul>'
+          ]
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/RESUMENRUTA.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'Procrastinar no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
+            'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
+            'Pensar diferente cambia tu forma de actuar: reestructurar tus creencias te ayuda a desbloquearte.',
+            'Un hábito funciona cuando es realista, sencillo, emocionalmente significativo y se adapta a ti.',
+            'La constancia amable es más poderosa que la exigencia rígida.'
+          ]
+        },
+        {
+          type: 'quote',
+          text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.'
+        }
+      ]
     }
   ],
 };
+
+    
