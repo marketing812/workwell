@@ -36,15 +36,15 @@ export async function emotionalChatbot(
 }
 const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
-  model: googleAI.model("gemini-2.5-flash"),
+  model: googleAI.model("gemini-1.5-flash"),
   prompt: `**ROL Y OBJETIVO**
 Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable, como si fuera una conversación entre dos personas.
 
 **REGLA CRÍTICA (BÚSQUEDA EN DOCUMENTOS)**
-1.  Tu respuesta debe basarse **única y exclusivamente** en la información contenida en la sección DOCUMENTOS.
-2.  Si la respuesta se encuentra en los DOCUMENTOS, responde de forma clara, directa y en frases cortas.
-3.  Si la respuesta **NO** se encuentra en los DOCUMENTOS, debes responder **exactamente** con esta frase: "No se han encontrado resultados en la documentación disponible. ¿Podrías reformular tu pregunta o intentarlo con otras palabras?"
-4.  No inventes información ni utilices conocimiento externo. Tu única fuente de verdad son los DOCUMENTOS proporcionados.
+1.  Tu respuesta debe basarse **prioritariamente** en la información contenida en la sección DOCUMENTOS.
+2.  Si la respuesta se encuentra en los DOCUMENTOS, responde de forma clara, directa y en frases cortas. Cita la fuente si la conoces (por ejemplo, "Según el manual de emergencias...").
+3.  Si la respuesta **NO** se encuentra en los DOCUMENTOS, en lugar de decir que no la encuentras, intenta dar una respuesta general y útil si es posible. Solo si la pregunta es muy específica y no tienes contexto, responde con una frase como: "No he encontrado información específica sobre eso en los documentos. ¿Podrías reformular tu pregunta?".
+4.  No inventes información que no esté en los documentos.
 
 **ESTILO DE RESPUESTA**
 - **Conversacional:** Usa un tono cercano y natural.
@@ -86,25 +86,18 @@ const emotionalChatbotFlow = ai.defineFlow(
 
     let docsContext: string | undefined = undefined;
     try {
-      // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
       console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
-      const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
-      docsContext = context; // Assign to the outer scope variable
-      /*
-      console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
-      console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
-      console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
+      const { context } = await retrieveDocsContext(input.message, { k: 8 }); // Aumentamos a 8 chunks
+      docsContext = context;
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
-*/
+
     } catch (e: any) {
       console.error(
         "emotionalChatbotFlow: ERROR al recuperar el contexto RAG. Esto impedirá que el chatbot use los documentos.",
         e
       );
-      // No re-lanzamos el error. El chatbot continuará sin contexto de documentos.
     }
 
-    // ✅ 2) Construye payload del prompt incluyendo docsContext
     const promptPayload: {
       message: string;
       context?: string;
@@ -132,7 +125,6 @@ const emotionalChatbotFlow = ai.defineFlow(
       throw new Error("La IA devolvió una respuesta en un formato inesperado.");
     }
     
-    // output is already { response: "..." }
     return output;
   }
 );
