@@ -1,4 +1,5 @@
-'use server';
+
+"use server";
 
 /**
  * @fileOverview An AI-powered chatbot for emotional support and guidance using Cognitive-Behavioral Therapy principles.
@@ -35,30 +36,32 @@ export async function emotionalChatbot(
 }
 const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
-  model: googleAI.model("gemini-1.5-pro"), // Upgraded model
-  prompt: `You are EMOTIVA, an expert and empathetic AI assistant. Your goal is to provide helpful and supportive answers to the user in Spanish.
+  model: googleAI.model("gemini-2.5-flash"),
+  prompt: `**ROL Y OBJETIVO**
+Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable, como si fuera una conversación entre dos personas.
 
-First, you MUST check the DOCUMENTS section. If it contains relevant information to answer the user's question, use it as your primary source.
+**REGLA CRÍTICA (BÚSQUEDA EN DOCUMENTOS)**
+1.  Tu respuesta debe basarse **única y exclusivamente** en la información contenida en la sección DOCUMENTOS.
+2.  Si la respuesta se encuentra en los DOCUMENTOS, responde de forma clara, directa y en frases cortas.
+3.  Si la respuesta **NO** se encuentra en los DOCUMENTOS, debes responder **exactamente** con esta frase: "No se han encontrado resultados en la documentación disponible. ¿Podrías reformular tu consulta o intentarlo con otras palabras?"
+4.  No inventes información ni utilices conocimiento externo. Tu única fuente de verdad son los DOCUMENTOS proporcionados.
 
-If the DOCUMENTS section is empty or does not contain a relevant answer, you MUST switch to your general knowledge and act as a supportive, empathetic conversational AI.
-
-**CRITICAL RULES:**
-1.  **NEVER** say "I can't find information in the documents", "I don't have access to that information", or any similar phrase.
-2.  If the documents are not useful, simply answer the user's question naturally and conversationally using your general knowledge and empathetic persona.
-3.  Always respond in Spanish.
-4.  The final output MUST be a valid JSON object with a "response" key: {"response": "..."}
+**ESTILO DE RESPUESTA**
+- **Conversacional:** Usa un tono cercano y natural.
+- **Conciso:** Ve directo al punto. Evita respuestas largas y párrafos extensos.
+- **Idioma:** Responde siempre en español.
 
 ---
 **DOCUMENTOS**
 {{#if docsContext}}
 {{{docsContext}}}
 {{else}}
-(No se proporcionaron documentos relevantes para esta consulta.)
+(No se proporcionaron documentos para esta consulta.)
 {{/if}}
 
+{{#if context}}
 ---
 **HISTORIAL DE CONVERSACIÓN**
-{{#if context}}
 {{{context}}}
 {{/if}}
 
@@ -67,7 +70,7 @@ If the DOCUMENTS section is empty or does not contain a relevant answer, you MUS
 {{{message}}}
 
 ---
-**ASISTENTE (JSON):**
+**RESPUESTA DEL ASISTENTE (DEBE SER UN JSON VÁLIDO con la clave "response"):**
 `,
 });
 
@@ -83,19 +86,25 @@ const emotionalChatbotFlow = ai.defineFlow(
 
     let docsContext: string | undefined = undefined;
     try {
+      // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
       console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
-      // Use a larger k to increase chances of finding relevant info
-      const { context } = await retrieveDocsContext(input.message, { k: 6 }); 
-      docsContext = context;
+      const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
+      docsContext = context; // Assign to the outer scope variable
+      /*
+      console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
+      console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
+      console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
-
+*/
     } catch (e: any) {
       console.error(
         "emotionalChatbotFlow: ERROR al recuperar el contexto RAG. Esto impedirá que el chatbot use los documentos.",
         e
       );
+      // No re-lanzamos el error. El chatbot continuará sin contexto de documentos.
     }
 
+    // ✅ 2) Construye payload del prompt incluyendo docsContext
     const promptPayload: {
       message: string;
       context?: string;
@@ -123,6 +132,7 @@ const emotionalChatbotFlow = ai.defineFlow(
       throw new Error("La IA devolvió una respuesta en un formato inesperado.");
     }
     
+    // output is already { response: "..." }
     return output;
   }
 );
