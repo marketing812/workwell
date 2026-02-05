@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -31,7 +32,7 @@ const environments = [
     { id: 'familia', label: 'Relaciones familiares' },
     { id: 'pareja', label: 'Pareja / vida afectiva' },
     { id: 'amistades', label: 'Amistades y red social' },
-    { id: 'desarrollo_personal', label: 'Desarrollo personal' },
+    { id: 'desarrollo_personal', label: 'Desarrollo personal o espiritual' },
     { id: 'trabajo', label: 'Vida laboral/profesional' },
     { id: 'finanzas', label: 'Finanzas y seguridad' },
     { id: 'ocio', label: 'Ocio y tiempo libre' },
@@ -53,11 +54,11 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
-        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), [type]: value[0]}}));
+        setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:1, drain:1, example: ''}), [type]: value[0]}}));
     }
     
     const handleExampleChange = (id: string, value: string) => {
-      setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:5, drain:5, example: ''}), example: value }}));
+      setRatings(prev => ({...prev, [id]: {...(prev[id] || {support:1, drain:1, example: ''}), example: value }}));
     }
 
     const selectedEnvironments = useMemo(() => {
@@ -70,13 +71,12 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
 
     const chartData = useMemo(() => {
         return selectedEnvironments.map(env => {
-            const rating = ratings[env.id] || { support: 5, drain: 5, example: '' };
-            // Puntuación área=(Apoyo) + (10 - Drenaje) / 2
-            const score = (rating.support + (10 - rating.drain)) / 2;
+            const rating = ratings[env.id] || { support: 1, drain: 1, example: '' };
+            const score = (rating.support + (6 - rating.drain)) / 2;
             return {
                 area: env.label,
                 score: parseFloat(score.toFixed(1)),
-                fullMark: 10,
+                fullMark: 5,
             };
         });
     }, [selectedEnvironments, ratings]);
@@ -92,6 +92,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     };
 
     const handleSave = () => {
+        const activeAreas = environments.filter(e => selectedEnvs[e.id]);
         const filledEnvironments = activeAreas.filter(area => ratings[area.id]);
         if (filledEnvironments.length === 0) {
             toast({
@@ -107,8 +108,8 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
             const rating = ratings[area.id];
             if (rating) {
                 notebookContent += `**Área:** ${area.label}\n`;
-                notebookContent += `- Apoyo a mis valores (0-10): ${rating.support}\n`;
-                notebookContent += `- Me aleja de mis valores (0-10): ${rating.drain}\n\n`;
+                notebookContent += `- Apoyo a mis valores (1-5): ${rating.support}\n`;
+                notebookContent += `- Me aleja de mis valores (1-5): ${rating.drain}\n\n`;
             }
         });
 
@@ -141,6 +142,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
             case 0:
                 return (
                     <div className="p-4 space-y-2">
+                        <p className="text-sm text-muted-foreground">Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, piensa si lo que piensas, sientes y haces está en sintonía… o si notas contradicción o tensión. Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia):</p>
                         <Label className="font-semibold">Identifica tus entornos clave:</Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {environments.map(e => (
@@ -171,10 +173,14 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                     {activeAreas.length > 0 ? activeAreas.map(e => (
                         <div key={e.id} className="p-3 border rounded-md">
                             <h4 className="font-semibold">{e.label}</h4>
-                            <Label htmlFor={`support-${e.id}`}>¿Cuánto apoya tus valores? {ratings[e.id]?.support ?? 5}/10</Label>
-                            <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} disabled={isSaved}/>
-                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">¿Cuánto te aleja de ellos? {ratings[e.id]?.drain ?? 5}/10</Label>
-                            <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} disabled={isSaved}/>
+                            <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 1}/5</Label>
+                            <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 1]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                            
+                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 1}/5</Label>
+                            <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 1]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                            
+                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
+                            <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                      <div className="flex justify-between w-full">
@@ -195,7 +201,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                     content={<ChartTooltipContent indicator="line" />}
                                 />
                                 <PolarAngleAxis dataKey="area" tick={{ fontSize: 10 }} />
-                                <PolarRadiusAxis angle={90} domain={[0, 10]} tickCount={6} />
+                                <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
                                 <PolarGrid />
                                 <Radar
                                     dataKey="score"
