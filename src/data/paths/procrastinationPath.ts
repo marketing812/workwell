@@ -85,7 +85,7 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
             '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido. </p>',
-            '<ul><li>¿Qué emociones intento evitar cuando postergo? […]</li></ul>'
+            '<ul><li>¿Qué emociones intento evitar cuando postergo?</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -105,105 +105,103 @@ export const procrastinationPath: Path = {
       title: 'Semana 2: Crea Activación, Aunque Sea Pequeña',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [
-          { 
-            type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que esperas a sentirte motivado para arrancar, pero la motivación nunca llega? Esta semana te acompaño a darle la vuelta a ese ciclo.\nDescubrirás que no necesitas energía para empezar… sino que empezar es lo que genera energía. Aprenderás a romper el bloqueo con acciones mínimas que activan tu sistema de recompensa, y a planificar sin exigencia desde tu realidad.\nEl primer paso no tiene que ser perfecto. Solo tiene que ser real.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'
-          },
-          { type: 'title', text: 'Psicoeducación' },
-          {
-              type: 'collapsible',
-              title: 'El mito de la motivación',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Elmitodelamotivacion.mp3',
-              content: [{ type: 'paragraph', text: '¿Alguna vez te has dicho “lo haré cuando me sienta con ganas”? Es una idea muy extendida… pero poco útil. La motivación no siempre aparece antes de actuar. De hecho, casi siempre es al revés: actuar es lo que genera motivación.' }],
-          },
-          {
-              type: 'collapsible',
-              title: 'Movimiento primero, motivación después',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Movimientoprimeromotivaciondespues.mp3',
-              content: [{ type: 'paragraph', text: 'Muchas veces esperamos a sentirnos motivados o motivadas para empezar una tarea. Pero desde la psicología conductual y la neurociencia, sabemos que la motivación no es lo que da lugar al movimiento… es al revés. Cuando realizas una acción, aunque sea muy pequeña, tu cerebro libera dopamina, una sustancia asociada al placer, la activación y el sistema de recompensa. Esa pequeña dosis de "logro" crea una sensación de avance que alimenta tu energía y tu confianza. No esperes a tener ganas para actuar: empieza con un pequeño paso, y las ganas vendrán después.' }],
-          },
-          {
-              type: 'collapsible',
-              title: 'Tu cerebro necesita arrancar',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Tucerebronecesitaarrancar.mp3',
-              content: [{ type: 'paragraph', text: 'Imagina que estás en una cuesta arriba con una bicicleta parada. Al principio, moverla parece imposible. Pero si logras impulsarla un poco… empieza a rodar. Tu mente funciona igual. Cuando estás bloqueado o bloqueada, lo difícil no es continuar: lo difícil es arrancar. Y por eso, necesitas un impulso inicial que rompa la inercia. No tienes que tener todo resuelto para empezar. Solo tienes que dar el primer paso.' }],
-          },
-          {
-              type: 'collapsible',
-              title: 'Microcomienzos: la clave para romper la inercia',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
-              content: [
-                  { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
-                  { type: 'list', items: [
-                      'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
-                      'En lugar de “limpiar la casa”, solo recoge tres cosas.',
-                      'En lugar de “escribir un informe”, solo abre el documento.',
-                      'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
-                  ]},
-                  { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
-              ],
-          },
-          {
-              type: 'collapsible',
-              title: 'Cada paso es una prueba de identidad',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
-              content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
-          },
-           {
-              type: 'collapsible',
-              title: 'Planificar con intención (no con presión)',
-              audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
-              content: [{ type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
-              { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
-              { type: 'list', items: [
-                  'Realista, no perfecta.',
-                  'Concreta, no ambigua.',
-                  'Flexible, no rígida.',
-              ]},
-              { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' }],
-          },
-          { type: 'title', text: 'Técnicas Específicas' },
-          {
-            type: 'twoMinuteRuleExercise',
-            title: 'Ejercicio 1: La Regla de los 2 Minutos',
-            objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
-            duration: '5 a 7 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
-          },
-          {
-            type: 'microPlanExercise',
-            title: 'Ejercicio 2: Tu Primer Microplan de Acción',
-            objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
-            duration: '5 a 8 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
-          },
-          { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana: Rompe el Ciclo',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
-            prompts: [
-              '<p>Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte:</p>',
-              '<ul>',
-              '<li>¿Qué he podido activar?</li>',
-              '<li>¿Cómo me sentí después?</li>',
-              '<li>¿Qué descubrí sobre mí?</li>',
-              '<li>¿Qué quiero reforzar?</li>',
-              '</ul>'
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que esperas a sentirte motivado para arrancar, pero la motivación nunca llega? Esta semana te acompaño a darle la vuelta a ese ciclo.\nDescubrirás que no necesitas energía para empezar… sino que empezar es lo que genera energía. Aprenderás a romper el bloqueo con acciones mínimas que activan tu sistema de recompensa, y a planificar sin exigencia desde tu realidad.\nEl primer paso no tiene que ser perfecto. Solo tiene que ser real.',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'},
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'El mito de la motivación',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Elmitodelamotivacion.mp3',
+          content: [{ type: 'paragraph', text: '¿Alguna vez te has dicho “lo haré cuando me sienta con ganas”? Es una idea muy extendida… pero poco útil. La motivación no siempre aparece antes de actuar. De hecho, casi siempre es al revés: actuar es lo que genera motivación.' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'Movimiento primero, motivación después',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Movimientoprimeromotivaciondespues.mp3',
+          content: [{ type: 'paragraph', text: 'Muchas veces esperamos a sentirnos motivados o motivadas para empezar una tarea. Pero desde la psicología conductual y la neurociencia, sabemos que la motivación no es lo que da lugar al movimiento… es al revés. Cuando realizas una acción, aunque sea muy pequeña, tu cerebro libera dopamina, una sustancia asociada al placer, la activación y el sistema de recompensa. Esa pequeña dosis de "logro" crea una sensación de avance que alimenta tu energía y tu confianza. No esperes a tener ganas para actuar: empieza con un pequeño paso, y las ganas vendrán después.' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'Tu cerebro necesita arrancar',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Tucerebronecesitaarrancar.mp3',
+          content: [{ type: 'paragraph', text: 'Imagina que estás en una cuesta arriba con una bicicleta parada. Al principio, moverla parece imposible. Pero si logras impulsarla un poco… empieza a rodar. Tu mente funciona igual. Cuando estás bloqueado o bloqueada, lo difícil no es continuar: lo difícil es arrancar. Y por eso, necesitas un impulso inicial que rompa la inercia. No tienes que tener todo resuelto para empezar. Solo tienes que dar el primer paso.' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'Microcomienzos: la clave para romper la inercia',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
+          content: [
+            { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
+            { type: 'list', items: [
+                'En lugar de “hacer ejercicio”, solo ponte las zapatillas.',
+                'En lugar de “limpiar la casa”, solo recoge tres cosas.',
+                'En lugar de “escribir un informe”, solo abre el documento.',
+                'En lugar de “hacer la compra”, solo escribe los tres primeros productos.',
+              ] 
+            },
+            { type: 'paragraph', text: 'Esos gestos te sacan del bloqueo. Y si luego sigues, genial. Pero si no lo haces, también está bien: ya rompiste la barrera más difícil. Un microcomienzo no es poco: es el paso que lo cambia todo.'}
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Cada paso es una prueba de identidad',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
+          content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
+        },
+         {
+          type: 'collapsible',
+          title: 'Planificar con intención (no con presión)',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
+          content: [{ type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
+          { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
+          { type: 'list', items: [
+              'Realista, no perfecta.',
+              'Concreta, no ambigua.',
+              'Flexible, no rígida.',
             ]
           },
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' },
-          { type: 'list', items: [
-              'La motivación no llega antes: llega después de actuar.',
-              'Las acciones pequeñas generan impulso real.',
-              'Planificar el “cuándo y cómo” activa tu mente para avanzar.',
-              'Cada microcomienzo es un voto a favor de tu nueva versión.',
-              'Empezar es más poderoso que esperar.',
-            ] 
-          },
-          { type: 'quote', text: 'Avanzar no siempre se nota al instante, pero cada pequeño movimiento te aleja de donde estabas. Hoy te has movido. Y eso ya transforma el camino.' },
-      ],
+          { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' }],
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'twoMinuteRuleExercise',
+          title: 'Ejercicio 1: La Regla de los 2 Minutos',
+          objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
+          duration: '5 a 7 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
+        },
+        {
+          type: 'microPlanExercise',
+          title: 'Ejercicio 2: Tu Primer Microplan de Acción',
+          objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
+          duration: '5 a 8 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
+        },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana: Rompe el Ciclo',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
+          prompts: [
+            '<p>Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte:</p>',
+            '<ul>',
+            '<li>¿Qué he podido activar?</li>',
+            '<li>¿Cómo me sentí después?</li>',
+            '<li>¿Qué descubrí sobre mí?</li>',
+            '<li>¿Qué quiero reforzar?</li>',
+            '</ul>'
+          ]
+        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' },
+        { type: 'list', items: [
+            'La motivación no llega antes: llega después de actuar.',
+            'Las acciones pequeñas generan impulso real.',
+            'Planificar el “cuándo y cómo” activa tu mente para avanzar.',
+            'Cada microcomienzo es un voto a favor de tu nueva versión.',
+            'Empezar es más poderoso que esperar.',
+          ] 
+        },
+        { type: 'quote', text: 'Avanzar no siempre se nota al instante, pero cada pequeño movimiento te aleja de donde estabas. Hoy te has movido. Y eso ya transforma el camino.' },
+    ],
     },
     {
       id: 'procrast_sem3',
@@ -264,7 +262,7 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Noeresflojooflojaestasdefendiendote.mp3',
           content: [{
             type: 'paragraph',
-            text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva.  Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte.  Cuanto más postergas, más frustración, culpa o impotencia puedes sentir.  Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado.  Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.'
+            text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva.  Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte.  Cuanto más postergas, más frustración, culpa o impotencia puedes sentir.  Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado.  Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.  '
           }]
         },
         {
@@ -273,7 +271,7 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Enresumen.mp3',
           content: [{
             type: 'paragraph',
-            text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.  Reconocerlas no significa criticarte, sino entenderte mejor.  Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción.  Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.  Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.'
+            text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.  Reconocerlas no significa criticarte, sino entenderte mejor.  Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción.  Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.  Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.  '
           }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -299,7 +297,7 @@ export const procrastinationPath: Path = {
             '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
             '<ul>',
             '<li>¿Qué frases me sabotean más?</li>',
-            '<li>¿Y cómo puedo empezar a responderme con claridad y sin exigencia?</li>',
+            '<li>¿Cómo puedo empezar a responderme con claridad y sin exigencia?</li>',
             '</ul>'
           ]
         },
@@ -324,89 +322,83 @@ export const procrastinationPath: Path = {
       title: 'Semana 4: Consolida Hábitos que se Adapten a Ti',
       type: 'summary',
       estimatedTime: '15-20 min',
-      content: [
-          { 
-            type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3',
-          },
-          { type: 'title', text: 'Psicoeducación' },
-          {
-            type: 'collapsible',
-            title: 'Un hábito no se impone: se construye',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Unhabitonoseimponeseconstruye.mp3',
-            content: [{ type: 'paragraph', text: 'Ya diste varios pasos: reconociste bloqueos, te activaste, desarmaste pensamientos saboteadores. Ahora toca consolidar. Y eso no significa forzarte, sino encontrar un ritmo que puedas sostener desde tu realidad.' }],
-          },
-          {
-            type: 'collapsible',
-            title: '¿Qué hace que un hábito perdure?',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Quehacequeunhabitoperdure.mp3',
-            content: [
-              { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
-              { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
-              { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
-              { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
-              { type: 'collapsible', title: '4. Refuerza una emoción positiva', content: [{ type: 'paragraph', text: 'Si al hacerlo sientes alivio, claridad o bienestar, será mucho más fácil que quieras repetirlo. No necesitas una gran recompensa. Basta con una sensación pequeña pero significativa. Ejemplo: Sentirte en paz tras escribir, orgulloso u orgullosa después de moverte.' }] },
-              { type: 'collapsible', title: '5. Se alinea con tu identidad', content: [{ type: 'paragraph', text: 'Un hábito se consolida cuando no es solo “algo que haces”, sino una forma de ser o cuidarte. Cuando lo sientes como parte de tu manera de vivir, ya no necesitas motivación constante. Ejemplo: “No estoy haciendo yoga... soy alguien que se escucha y se cuida.”' }] },
-            ],
-          },
-          {
-            type: 'collapsible',
-            title: 'No busques perfección: busca continuidad amable',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3',
-            content: [{ type: 'paragraph', text: 'No pasa nada si fallas un día. Lo importante es que vuelvas al hábito sin culpa ni juicio. Como dice James Clear: “No se trata de no romper la cadena. Se trata de no romperla dos veces seguidas.”' }],
-          },
-          {
-            type: 'collapsible',
-            title: 'Tu hábito no tiene que ser perfecto',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Tuhabitonotienequeserperfectosolotienequeestarvivo.mp3',
-            content: [{ type: 'paragraph', text: 'Muchos hábitos fallan porque los diseñamos como si fueran mandatos. Queremos cumplirlos todos los días, sin errores, sin fallos, como si solo sirvieran si se hacen al 100%. Pero <b>un hábito realista y vivo vale más que uno perfecto e inalcanzable</b>.'}]
-          },
-          { type: 'title', text: 'Técnicas Específicas' },
-          {
-            type: 'realisticRitualExercise',
-            title: 'Ejercicio 1: Diseña tu Ritual Realista',
-            objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
-            duration: '7-10 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3'
-          },
-          {
-            type: 'gentleTrackingExercise',
-            title: 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual',
-            objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
-            duration: '3 a 5 minutos al día',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3',
-          },
-          { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
-            prompts: [
-              '<ul>',
-              '<li>¿Qué hábito me gustaría mantener a largo plazo?</li>',
-              '<li>¿Qué me ha ayudado a mantenerlo?</li>',
-              '<li>¿Qué quiero ajustar para que me funcione mejor?</li>',
-              '<li>¿Cómo me quiero hablar si un día fallo?</li>',
-              '</ul>'
-            ]
-          },
-          { 
-            type: 'title', 
-            text: 'Resumen Clave de la Semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/RESUMEN.mp3' 
-          },
-          { type: 'list', items: [
-              'La procrastinación no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
-              'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
-              'Pensar diferente cambia tu forma de actuar: reestructurar tus creencias te ayuda a desbloquearte.',
-              'Un hábito funciona cuando es realista, sencillo, emocionalmente significativo y se adapta a ti.',
-              'La constancia amable es más poderosa que la exigencia rígida.',
-            ] 
-          },
-          { type: 'quote', text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.' },
-      ],
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'},
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'Un hábito no se impone: se construye',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Unhabitonoseimponeseconstruye.mp3',
+          content: [{ type: 'paragraph', text: 'Ya diste varios pasos: reconociste bloqueos, te activaste, desarmaste pensamientos saboteadores. Ahora toca consolidar. Y eso no significa forzarte, sino encontrar un ritmo que puedas sostener desde tu realidad.' }],
+        },
+        {
+          type: 'collapsible',
+          title: '¿Qué hace que un hábito perdure?',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Quehacequeunhabitoperdure.mp3',
+          content: [
+            { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
+            { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
+            { type: 'collapsible', title: '2. Fácil de ejecutar', content: [{ type: 'paragraph', text: 'Cuanto más simple sea la acción, más probable es que la lleves a cabo. Un hábito sencillo es más resistente al cansancio, la pereza o los imprevistos. Ejemplo: En lugar de “meditar 20 minutos”, puedes empezar con “respirar conscientemente 2 minutos al despertar”.' }] },
+            { type: 'collapsible', title: '3. Vinculado a una rutina que ya haces', content: [{ type: 'paragraph', text: 'Los hábitos se mantienen mejor si los colocas junto a algo que ya forma parte de tu día. Tu cerebro los asocia y automatiza más rápido. Ejemplo: Después de lavarte los dientes → escribes una frase en tu diario.' }] },
+            { type: 'collapsible', title: '4. Refuerza una emoción positiva', content: [{ type: 'paragraph', text: 'Si al hacerlo sientes alivio, claridad o bienestar, será mucho más fácil que quieras repetirlo. No necesitas una gran recompensa. Basta con una sensación pequeña pero significativa. Ejemplo: Sentirte en paz tras escribir, orgulloso u orgullosa después de moverte.' }] },
+            { type: 'collapsible', title: '5. Se alinea con tu identidad', content: [{ type: 'paragraph', text: 'Un hábito se consolida cuando no es solo “algo que haces”, sino una forma de ser o cuidarte. Cuando lo sientes como parte de tu manera de vivir, ya no necesitas motivación constante. Ejemplo: “No estoy haciendo yoga... soy alguien que se escucha y se cuida.”' }] },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'No busques perfección: busca continuidad amable',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3',
+          content: [{ type: 'paragraph', text: 'No pasa nada si fallas un día. Lo importante es que vuelvas al hábito sin culpa ni juicio. Como dice James Clear: “No se trata de no romper la cadena. Se trata de no romperla dos veces seguidas.”' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'Tu hábito no tiene que ser perfecto',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Tuhabitonotienequeserperfectosolotienequeestarvivo.mp3',
+          content: [{ type: 'paragraph', text: 'Muchos hábitos fallan porque los diseñamos como si fueran mandatos. Queremos cumplirlos todos los días, sin errores, sin fallos, como si solo sirvieran si se hacen al 100%. Pero <b>un hábito realista y vivo vale más que uno perfecto e inalcanzable</b>.'}]
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'realisticRitualExercise',
+          title: 'Ejercicio 1: Diseña tu Ritual Realista',
+          objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
+          duration: '7-10 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3'
+        },
+        {
+          type: 'gentleTrackingExercise',
+          title: 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual',
+          objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
+          duration: '3 a 5 minutos al día',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3',
+        },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
+          prompts: [
+            '<ul>',
+            '<li>¿Qué hábito me gustaría mantener a largo plazo?</li>',
+            '<li>¿Qué me ha ayudado a mantenerlo?</li>',
+            '<li>¿Qué quiero ajustar para que me funcione mejor?</li>',
+            '<li>¿Cómo me quiero hablar si un día fallo?</li>',
+            '</ul>'
+          ]
+        },
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/RESUMEN.mp3' 
+        },
+        { type: 'list', items: [
+            'La procrastinación no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
+            'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
+            'Pensar diferente cambia tu forma de actuar: reestructurar tus creencias te ayuda a desbloquearte.',
+            'Un hábito funciona cuando es realista, sencillo, emocionalmente significativo y se adapta a ti.',
+            'La constancia amable es más poderosa que la exigencia rígida.',
+          ] 
+        },
+        { type: 'quote', text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.' },
+    ],
     }
   ],
 };
-
-    
