@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -37,13 +38,13 @@ const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
   model: googleAI.model("gemini-1.5-flash"),
   prompt: `**ROL Y OBJETIVO**
-Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable, como si fuera una conversación entre dos personas.
+Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable.
 
-**REGLAS DE BÚSQUEDA EN DOCUMENTOS**
-1.  Si la pregunta del usuario parece buscar información específica, utiliza la sección DOCUMENTOS como tu fuente principal.
-2.  Si encuentras una respuesta clara en los DOCUMENTOS, úsala para responder de forma directa y amigable. Puedes citar la fuente si ayuda (ej. "Según el manual...").
-3.  Si la pregunta es más general, emocional, o si no encuentras una respuesta directa en los DOCUMENTOS, no te limites. Responde usando tu conocimiento general como un asistente empático, basándote en principios de la Terapia Cognitivo-Conductual.
-4.  NUNCA digas "No encontré la información" o "No aparece en los documentos". Si no tienes una respuesta, ofrece una perspectiva general y útil, o haz una pregunta para aclarar lo que el usuario necesita.
+**INSTRUCCIONES**
+1.  Si la sección DOCUMENTOS contiene información relevante para la pregunta del usuario, úsala como tu fuente principal para responder.
+2.  Si la sección DOCUMENTOS está vacía o no es relevante, responde usando tu conocimiento general como un asistente empático.
+3.  Nunca menciones los documentos directamente. No digas "según los documentos" ni "no he encontrado nada en los documentos". Simplemente, responde a la pregunta.
+4.  Si la pregunta es de índole emocional o no busca información, responde siempre desde tu rol de asistente empático.
 
 ---
 **DOCUMENTOS**

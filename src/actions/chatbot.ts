@@ -1,3 +1,4 @@
+
 "use server";
 
 import {
@@ -17,31 +18,9 @@ export type ServerChatbotResult =
   | { success: true; data: EmotionalChatbotOutput }
   | { success: false; error: string };
 
-function buildEnvDebug() {
-  return {
-    hasGeminiKey: Boolean(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY),
-    keyUsed: process.env.GEMINI_API_KEY
-      ? "GEMINI_API_KEY"
-      : process.env.GOOGLE_API_KEY
-      ? "GOOGLE_API_KEY"
-      : null,
-    googleGenaiUseVertex: process.env.GOOGLE_GENAI_USE_VERTEXAI ?? null,
-    hasAdc: Boolean(process.env.GOOGLE_APPLICATION_CREDENTIALS),
-
-    // Estos 3 suelen empujar a “modo Vertex/OAuth” sin querer
-    googleCloudProject: process.env.GOOGLE_CLOUD_PROJECT ?? null,
-    gcloudProject: process.env.GCLOUD_PROJECT ?? null,
-    googleCloudLocation: process.env.GOOGLE_CLOUD_LOCATION ?? null,
-
-    nodeEnv: process.env.NODE_ENV ?? null,
-  };
-}
-
 export async function sendMessageToChatbot(
   userInput: { message: string; context?: string; userName?: string }
 ): Promise<ServerChatbotResult> {
-  const envDebug = buildEnvDebug();
-
   try {
     const validatedInput = chatbotMessageSchema.parse(userInput);
 
@@ -59,12 +38,10 @@ export async function sendMessageToChatbot(
 
     return { success: true, data: result };
   } catch (error) {
-    // Log the detailed error for debugging on the server
-    console.error("sendMessageToChatbot error:", error, "ENV_DEBUG:", JSON.stringify(envDebug));
+    console.error("Error en sendMessageToChatbot:", error);
+    // Provide a more user-friendly but still informative error
+    const userFriendlyError = "Lo siento, he tenido un problema al procesar tu solicitud. Puede ser un fallo temporal de conexión. Por favor, inténtalo de nuevo en un momento.";
     
-    // Return a user-friendly message, specific to the likely problem (RAG failure).
-    const errorMessage = "No se han encontrado resultados en la documentación disponible. ¿Podrías reformular tu pregunta o intentarlo con otras palabras?";
-    
-    return { success: false, error: errorMessage };
+    return { success: false, error: userFriendlyError };
   }
 }
