@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useMemo, type FormEvent } from 'react';
+import { useState, useMemo, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -54,6 +54,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
     const [highCoherenceReflection, setHighCoherenceReflection] = useState('');
     const [highCoherenceEmotions, setHighCoherenceEmotions] = useState('');
     const [disconnectionReflection, setDisconnectionReflection] = useState('');
+    const [smallGesture, setSmallGesture] = useState('');
     const [isSaved, setIsSaved] = useState(false);
 
     const handleRatingChange = (id: string, type: 'support' | 'drain', value: number[]) => {
@@ -94,6 +95,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         setHighCoherenceReflection('');
         setHighCoherenceEmotions('');
         setDisconnectionReflection('');
+        setSmallGesture('');
         setIsSaved(false);
     };
 
@@ -125,6 +127,8 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         
         notebookContent += `**Reflexión sobre zona de desconexión:**\n`;
         notebookContent += `- Lo que me impide ser coherente: ${disconnectionReflection || 'No respondido.'}\n\n`;
+        
+        notebookContent += `**Pequeño gesto para ser más coherente:**\n${smallGesture || 'No especificado.'}\n`;
 
         addNotebookEntry({
             title: 'Mi Brújula de Coherencia',
@@ -271,15 +275,44 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                         </ChartContainer>
                          <div className="flex flex-col sm:flex-row gap-2 justify-center">
                              <Button onClick={prevStep} variant="outline">Atrás</Button>
-                            <Button onClick={handleSave} disabled={isSaved}>
-                                <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
-                            </Button>
+                             <Button onClick={nextStep}>Ir al cierre y reflexión final</Button>
                          </div>
                     </div>
                 );
             case 5:
                 return (
-                    <div className="p-4 text-center space-y-4">
+                    <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                      <h4 className="font-semibold text-lg text-center">Cierre y reflexión</h4>
+                      <p className="text-sm text-muted-foreground text-center">
+                        Esta brújula no tiene por qué darte todas las respuestas ahora. Solo busca que empieces a mirarte con más claridad y menos juicio. El primer paso hacia la coherencia es atreverte a ver.
+                      </p>
+                      <div className="space-y-2 pt-4">
+                        <Label htmlFor="small-gesture">
+                          Pregunta interactiva opcional: ¿Qué pequeño gesto podrías dar esta semana para ser un poco más coherente en el área que te duele?
+                        </Label>
+                        <Textarea id="small-gesture" value={smallGesture} onChange={(e) => setSmallGesture(e.target.value)} disabled={isSaved} />
+                      </div>
+                      <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline" type="button">
+                          <ArrowLeft className="mr-2 h-4 w-4" />
+                          Atrás
+                        </Button>
+                        {!isSaved ? (
+                          <Button type="submit">
+                            <Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno
+                          </Button>
+                        ) : (
+                          <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                            <CheckCircle className="mr-2 h-5 w-5" />
+                            <p className="font-medium">Guardado.</p>
+                          </div>
+                        )}
+                      </div>
+                    </form>
+                  );
+            case 6:
+                return (
+                    <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Brújula Guardada</h4>
                         <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
@@ -312,5 +345,3 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
         </Card>
     );
 }
-
-    
