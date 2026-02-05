@@ -84,8 +84,10 @@ export const procrastinationPath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
-            '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido. </p>',
-            '<ul><li>¿Qué emociones intento evitar cuando postergo?</li></ul>'
+            '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido.</p>',
+            '<ul>',
+            '<li>¿Qué emociones intento evitar cuando postergo?</li>',
+            '</ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -260,19 +262,13 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'No eres flojo o floja: estás defendiéndote',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Noeresflojooflojaestasdefendiendote.mp3',
-          content: [{
-            type: 'paragraph',
-            text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva.  Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte.  Cuanto más postergas, más frustración, culpa o impotencia puedes sentir.  Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado.  Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.  '
-          }]
+          content: [{ type: 'paragraph', text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva. Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte. Cuanto más postergas, más frustración, culpa o impotencia puedes sentir. Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado. Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar. ' }]
         },
         {
           type: 'collapsible',
           title: 'En resumen',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Enresumen.mp3',
-          content: [{
-            type: 'paragraph',
-            text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.  Reconocerlas no significa criticarte, sino entenderte mejor.  Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción.  Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.  Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.  '
-          }]
+          content: [{ type: 'paragraph', text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles. Reconocerlas no significa criticarte, sino entenderte mejor. Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción. Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma. Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar. ' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -376,11 +372,12 @@ export const procrastinationPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
           prompts: [
+            '<p>Ahora es momento de integrar lo que has descubierto. En este espacio podrás concretar qué hábito quieres mantener a largo plazo. Escribir lo que has aprendido consolida la conciencia.</p>',
             '<ul>',
-            '<li>¿Qué hábito me gustaría mantener a largo plazo?</li>',
-            '<li>¿Qué me ha ayudado a mantenerlo?</li>',
-            '<li>¿Qué quiero ajustar para que me funcione mejor?</li>',
-            '<li>¿Cómo me quiero hablar si un día fallo?</li>',
+            '<li>¿Qué hábito me gustaría mantener a largo plazo? Ejemplo: “Empezar el día con un gesto de autocuidado”</li>',
+            '<li>¿Qué me ha ayudado a mantenerlo? Ejemplo: “Vincularlo a una rutina ya existente”</li>',
+            '<li>¿Qué quiero ajustar para que me funcione mejor? Ejemplo: “Reducir la duración para no agobiarme”</li>',
+            '<li>¿Cómo me quiero hablar si un día fallo? Ejemplo: “Quiero recordarme que puedo volver mañana sin castigo”</li>',
             '</ul>'
           ]
         },
