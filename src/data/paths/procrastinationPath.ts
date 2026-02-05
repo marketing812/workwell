@@ -22,8 +22,7 @@ export const procrastinationPath: Path = {
         },
         { 
             type: 'title', 
-            text: 'Psicoeducación',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3'
+            text: 'Psicoeducación'
         },
         {
           type: 'collapsible',
@@ -63,14 +62,7 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'En resumen',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
-          content: [
-            { type: 'list', items: [
-                'La procrastinación es una forma de calmar emociones incómodas',
-                'El alivio que ofrece es breve, pero refuerza el problema',
-                'Comprenderla es el primer paso para transformarla',
-                'No se trata de hacerlo perfecto, sino de empezar. Una y otra vez',
-            ]}
-          ]
+          content: [{ type: 'list', items: ['La procrastinación es una forma de calmar emociones incómodas','El alivio que ofrece es breve, pero refuerza el problema','Comprenderla es el primer paso para transformarla','No se trata de hacerlo perfecto, sino de empezar. Una y otra vez']}]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -92,10 +84,8 @@ export const procrastinationPath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
-            '<ul>',
-            '<li>¿Qué emociones intento evitar cuando postergo?</li>',
-            '<li>Lo que siento no me define, pero observarlo me transforma</li>',
-            '</ul>'
+            '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido. </p>',
+            '<ul><li>¿Qué emociones intento evitar cuando postergo? […]</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -220,99 +210,95 @@ export const procrastinationPath: Path = {
       title: 'Semana 3: Desmonta tus Excusas Internas',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-          { 
-            type: 'paragraphWithAudio', 
-            text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
-          },
-          { type: 'title', text: 'Psicoeducación' },
-          {
-            type: 'collapsible',
-            title: '¿Por qué postergas, si sabes lo que tienes que hacer?',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Porquepostergassisabesloquetienesquehacer.mp3',
-            content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes perfectamente lo que “deberías” estar haciendo, pero aun así no te pones con ello? Esa distancia entre lo que quieres hacer y lo que finalmente haces no se debe a falta de voluntad. Muchas veces, en medio de esa brecha hay una voz silenciosa pero poderosa: tu diálogo interno. Frases que parecen lógicas o razonables, pero que en realidad te alejan de tus objetivos. Esta semana vamos a observar con más atención qué te dices por dentro cuando postergas, y a entrenar nuevas formas de responderte con más conciencia y amabilidad.' }],
-          },
-          {
-            type: 'collapsible',
-            title: 'No son excusas: son formas de protegerte del malestar',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Nosonexcusassonformasdeprotegertedelmalestar.mp3',
-            content: [{ type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual y la neurociencia, sabemos que lo que llamamos “excusas” no son simple pereza o falta de interés. Son mecanismos automáticos que tu mente utiliza para protegerte de emociones incómodas: como la ansiedad, la inseguridad, el miedo a equivocarte o el aburrimiento. Tu mente no trata de boicotearte. En realidad, intenta cuidarte. Pero a veces, ese cuidado malentendido te bloquea, te mantiene en pausa, y te aleja de lo que te hace bien.' }],
-          },
-          {
-            type: 'collapsible',
-            title: 'Diálogos internos que te frenan',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Dialogosinternosquetefrenan.mp3',
-            content: [
-                { type: 'paragraph', text: 'Estas frases son más comunes de lo que imaginas, y todos o todas las hemos dicho alguna vez:' },
-                { type: 'list', items: [
-                    '“Estoy demasiado cansado o cansada, lo haré más tarde.”',
-                    '“Ahora no es el momento ideal.”',
-                    '“Necesito estar más inspirado o inspirada.”',
-                    '“¿Y si lo hago mal?”',
-                    '“No estoy preparado o preparada.”',
-                    '“Para lo que va a servir…”',
-                  ] 
-                },
-                { type: 'paragraph', text: 'Parece que nos dan un respiro... pero nos mantienen atrapados en el mismo lugar.' },
-            ],
-          },
-          {
-            type: 'collapsible',
-            title: 'Lo que hay detrás de esas frases',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Loquehaydetrasdeesasfrases.mp3',
-            content: [
-              { type: 'paragraph', text: 'Estas frases actúan como máscaras. Detrás de ellas se esconden emociones reales que merecen ser escuchadas:'},
-              { type: 'list', items: [
-                  'Evitación emocional encubierta: “No me apetece ahora” suele traducirse en ansiedad anticipada, miedo a fallar o sensación de que no podrás con ello.',
-                  'Perfeccionismo paralizante: “Tiene que salir perfecto” oculta rigidez mental y temor a no estar a la altura.',
-                  'Anticipación catastrofista: “¿Y si me sale mal?” es una señal de que tu sistema de amenaza está hiperactivo, y te bloquea para protegerte.',
-                  'Agotamiento emocional: “No estoy para eso ahora” muchas veces refleja tristeza, saturación o desconexión emocional. No es falta de interés: es falta de energía emocional.',
-                ]
-              },
-            ],
-          },
-          { type: 'title', text: 'Técnicas Específicas' },
-          {
-            type: 'delSabotajeALaAccionExercise',
-            title: 'Ejercicio 1: Del Sabotaje a la Acción',
-            objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
-            duration: '10 a 15 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3',
-          },
-          {
-            type: 'futureSelfVisualizationExercise',
-            title: 'Ejercicio 2: Visualización del Yo Futuro',
-            objective: 'Este ejercicio te permite conectar con una imagen clara y emocionalmente poderosa de ti misma o de ti mismo sosteniendo el hábito que deseas. Te ayuda a motivarte desde la identidad, no solo desde la obligación. Visualizarte avanzando te impulsa a actuar hoy.',
-            duration: '10 a 15 minutos',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
-          },
-          { 
-            type: 'therapeuticNotebookReflection', 
-            title: 'Reflexión Final de la Semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
-            prompts: [
-              '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
-              '<ul>',
-              '<li>¿Qué frases me sabotean más?</li>',
-              '<li>¿Y cómo puedo empezar a responderme con claridad y sin exigencia?</li>',
-              '</ul>'
-            ]
-          },
-          { 
-            type: 'title', 
-            text: 'Resumen Clave de la Semana',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3',
-          },
-          { type: 'list', items: [
-                'Muchas excusas internas son formas de evitar emociones difíciles.',
-                'Tu diálogo interno no es enemigo: quiere protegerte, pero a veces te bloquea.',
-                'Puedes cambiar tu forma de hablarte sin exigirte perfección.',
-                'Visualizar tu yo futuro te ayuda a conectar con la versión de ti que ya está avanzando.',
-                'Cada vez que te respondes con claridad, estás construyendo una nueva dirección.',
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'},
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: '¿Por qué postergas, si sabes lo que tienes que hacer?',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Porquepostergassisabesloquetienesquehacer.mp3',
+          content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes perfectamente lo que “deberías” estar haciendo, pero aun así no te pones con ello? Esa distancia entre lo que quieres hacer y lo que finalmente haces no se debe a falta de voluntad. Muchas veces, en medio de esa brecha hay una voz silenciosa pero poderosa: tu diálogo interno. Frases que parecen lógicas o razonables, pero que en realidad te alejan de tus objetivos. Esta semana vamos a observar con más atención qué te dices por dentro cuando postergas, y a entrenar nuevas formas de responderte con más conciencia y amabilidad.' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'No son excusas: son formas de protegerte del malestar',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Nosonexcusassonformasdeprotegertedelmalestar.mp3',
+          content: [{ type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual y la neurociencia, sabemos que lo que llamamos “excusas” no son simple pereza o falta de interés. Son mecanismos automáticos que tu mente utiliza para protegerte de emociones incómodas: como la ansiedad, la inseguridad, el miedo a equivocarte o el aburrimiento. Tu mente no trata de boicotearte. En realidad, intenta cuidarte. Pero a veces, ese cuidado malentendido te bloquea, te mantiene en pausa, y te aleja de lo que te hace bien.' }],
+        },
+        {
+          type: 'collapsible',
+          title: 'Diálogos internos que te frenan',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Dialogosinternosquetefrenan.mp3',
+          content: [
+            { type: 'paragraph', text: 'Estas frases son más comunes de lo que imaginas, y todos o todas las hemos dicho alguna vez:' },
+            { type: 'list', items: [
+                '“Estoy demasiado cansado o cansada, lo haré más tarde.”',
+                '“Ahora no es el momento ideal.”',
+                '“Necesito estar más inspirado o inspirada.”',
+                '“¿Y si lo hago mal?”',
+                '“No estoy preparado o preparada.”',
+                '“Para lo que va a servir…”',
               ] 
-          },
-          { type: 'quote', text: 'Tú decides a quién escuchar: a tu miedo que evita o a tu voz que avanza.' },
+            },
+            { type: 'paragraph', text: 'Parece que nos dan un respiro... pero nos mantienen atrapados en el mismo lugar.' },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'Lo que hay detrás de esas frases',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Loquehaydetrasdeesasfrases.mp3',
+          content: [
+            { type: 'paragraph', text: 'Estas frases actúan como máscaras. Detrás de ellas se esconden emociones reales que merecen ser escuchadas:'},
+            { type: 'list', items: [
+                'Evitación emocional encubierta: “No me apetece ahora” suele traducirse en ansiedad anticipada, miedo a fallar o sensación de que no podrás con ello.',
+                'Perfeccionismo paralizante: “Tiene que salir perfecto” oculta rigidez mental y temor a no estar a la altura.',
+                'Anticipación catastrofista: “¿Y si me sale mal?” es una señal de que tu sistema de amenaza está hiperactivo, y te bloquea para protegerte.',
+                'Agotamiento emocional: “No estoy para eso ahora” muchas veces refleja tristeza, saturación o desconexión emocional. No es falta de interés: es falta de energía emocional.',
+              ]
+            },
+          ],
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'delSabotajeALaAccionExercise',
+          title: 'Ejercicio 1: Del Sabotaje a la Acción',
+          objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
+          duration: '10 a 15 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3',
+        },
+        {
+          type: 'futureSelfVisualizationExercise',
+          title: 'Ejercicio 2: Visualización del Yo Futuro',
+          objective: 'Este ejercicio te permite conectar con una imagen clara y emocionalmente poderosa de ti misma o de ti mismo sosteniendo el hábito que deseas. Te ayuda a motivarte desde la identidad, no solo desde la obligación. Visualizarte avanzando te impulsa a actuar hoy.',
+          duration: '10 a 15 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
+        },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3',
+          prompts: [
+            '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
+            '<ul>',
+            '<li>¿Qué frases me sabotean más?</li>',
+            '<li>¿Y cómo puedo empezar a responderme con claridad y sin exigencia?</li>',
+            '</ul>'
+          ]
+        },
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3',
+        },
+        { type: 'list', items: [
+              'Muchas excusas internas son formas de evitar emociones difíciles.',
+              'Tu diálogo interno no es enemigo: quiere protegerte, pero a veces te bloquea.',
+              'Puedes cambiar tu forma de hablarte sin exigirte perfección.',
+              'Visualizar tu yo futuro te ayuda a conectar con la versión de ti que ya está avanzando.',
+              'Cada vez que te respondes con claridad, estás construyendo una nueva dirección.',
+            ] 
+        },
+        { type: 'quote', text: 'Tú decides a quién escuchar: a tu miedo que evita o a tu voz que avanza.' },
       ],
     },
     {
