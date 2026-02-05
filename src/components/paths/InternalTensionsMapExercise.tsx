@@ -80,6 +80,7 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
                 )}
             </CardDescription>}</CardHeader>
             <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground">Piensa en dos decisiones que hayas tomado hoy. Pueden ser muy simples o más complejas: Ejemplos: “He dicho sí a un plan que no me apetecía.” “Me he tomado un descanso aunque tenía cosas pendientes.” “He respondido rápido sin pensar lo que realmente quería decir.”</p>
                 <div className="space-y-2"><Label>¿Qué ocurrió?</Label><Textarea value={situation} onChange={e => setSituation(e.target.value)} /></div>
                 <div className="space-y-2"><Label>¿Qué te dijiste?</Label><Textarea value={thought} onChange={e => setThought(e.target.value)} /></div>
                 <div className="space-y-2">
