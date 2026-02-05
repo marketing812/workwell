@@ -85,7 +85,7 @@ export const procrastinationPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
           prompts: [
             '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido. </p>',
-            '<ul><li>¿Qué emociones intento evitar cuando postergo? […]</li></ul>'
+            '<ul><li>¿Qué emociones intento evitar cuando postergo? […]</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
@@ -258,6 +258,24 @@ export const procrastinationPath: Path = {
             },
           ],
         },
+        {
+          type: 'collapsible',
+          title: 'No eres flojo o floja: estás defendiéndote',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Noeresflojooflojaestasdefendiendote.mp3',
+          content: [{
+            type: 'paragraph',
+            text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva.  Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte.  Cuanto más postergas, más frustración, culpa o impotencia puedes sentir.  Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado.  Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.'
+          }]
+        },
+        {
+          type: 'collapsible',
+          title: 'En resumen',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Enresumen.mp3',
+          content: [{
+            type: 'paragraph',
+            text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.  Reconocerlas no significa criticarte, sino entenderte mejor.  Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción.  Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.  Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.'
+          }]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'delSabotajeALaAccionExercise',
@@ -288,7 +306,7 @@ export const procrastinationPath: Path = {
         { 
           type: 'title', 
           text: 'Resumen Clave de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3' 
         },
         { type: 'list', items: [
               'Muchas excusas internas son formas de evitar emociones difíciles.',
@@ -390,3 +408,5 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+
+    
