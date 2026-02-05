@@ -36,7 +36,7 @@ export async function emotionalChatbot(
 }
 const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
-  model: googleAI.model("gemini-1.5-flash"),
+  model: googleAI.model("gemini-2.5-pro-preview"),
   prompt: `**ROL Y OBJETIVO**
 Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable, como si fuera una conversación entre dos personas.
 
