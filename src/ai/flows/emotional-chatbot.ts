@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -36,27 +35,30 @@ export async function emotionalChatbot(
 }
 const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
-  model: googleAI.model("gemini-1.5-flash"),
-  prompt: `**ROL Y OBJETIVO**
-Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder las preguntas del usuario de forma directa, concisa y amigable.
+  model: googleAI.model("gemini-1.5-pro"), // Upgraded model
+  prompt: `You are EMOTIVA, an expert and empathetic AI assistant. Your goal is to provide helpful and supportive answers to the user in Spanish.
 
-**INSTRUCCIONES**
-1.  Si la sección DOCUMENTOS contiene información relevante para la pregunta del usuario, úsala como tu fuente principal para responder.
-2.  Si la sección DOCUMENTOS está vacía o no es relevante, responde usando tu conocimiento general como un asistente empático.
-3.  Nunca menciones los documentos directamente. No digas "según los documentos" ni "no he encontrado nada en los documentos". Simplemente, responde a la pregunta.
-4.  Si la pregunta es de índole emocional o no busca información, responde siempre desde tu rol de asistente empático.
+First, you MUST check the DOCUMENTS section. If it contains relevant information to answer the user's question, use it as your primary source.
+
+If the DOCUMENTS section is empty or does not contain a relevant answer, you MUST switch to your general knowledge and act as a supportive, empathetic conversational AI.
+
+**CRITICAL RULES:**
+1.  **NEVER** say "I can't find information in the documents", "I don't have access to that information", or any similar phrase.
+2.  If the documents are not useful, simply answer the user's question naturally and conversationally using your general knowledge and empathetic persona.
+3.  Always respond in Spanish.
+4.  The final output MUST be a valid JSON object with a "response" key: {"response": "..."}
 
 ---
 **DOCUMENTOS**
 {{#if docsContext}}
 {{{docsContext}}}
 {{else}}
-(No se proporcionaron documentos para esta consulta.)
+(No se proporcionaron documentos relevantes para esta consulta.)
 {{/if}}
 
-{{#if context}}
 ---
 **HISTORIAL DE CONVERSACIÓN**
+{{#if context}}
 {{{context}}}
 {{/if}}
 
@@ -65,7 +67,7 @@ Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es responder l
 {{{message}}}
 
 ---
-**RESPUESTA DEL ASISTENTE (DEBE SER UN JSON VÁLIDO con la clave "response"):**
+**ASISTENTE (JSON):**
 `,
 });
 
@@ -82,7 +84,8 @@ const emotionalChatbotFlow = ai.defineFlow(
     let docsContext: string | undefined = undefined;
     try {
       console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
-      const { context } = await retrieveDocsContext(input.message, { k: 4 }); // Reduced k to 4
+      // Use a larger k to increase chances of finding relevant info
+      const { context } = await retrieveDocsContext(input.message, { k: 6 }); 
       docsContext = context;
       console.log("emotionalChatbotFlow: RAG context retrieved successfully.");
 
