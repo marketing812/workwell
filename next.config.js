@@ -3,8 +3,7 @@
 const nextConfig = {
   allowedDevOrigins: [
     "https://6000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev",
-    "https://9000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev",
-    "https://*-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev"
+    "https://9000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev"
   ],
   images: {
     remotePatterns: [
@@ -31,6 +30,15 @@ const nextConfig = {
     ],
   },
   productionBrowserSourceMaps: false, // Deshabilita source maps en producción
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+        config.watchOptions = {
+            poll: 1000,
+            aggregateTimeout: 300,
+        }
+    }
+    return config;
+  }
 };
 
 module.exports = nextConfig;
