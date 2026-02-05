@@ -110,7 +110,7 @@ export default function DashboardPage() {
       const clave = "SJDFgfds788sdfs8888KLLLL";
       const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
       const raw = `${clave}|${fecha}`;
-      const token = Buffer.from(raw).toString('base64');
+      const token = btoa(raw);
       const base64UserId = btoa(user.id);
       
       const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
