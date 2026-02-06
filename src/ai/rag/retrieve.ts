@@ -1,5 +1,3 @@
-'use server';
-
 import { admin } from "@/lib/firebase-admin";
 import { embedText } from "./embed";
 
