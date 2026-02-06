@@ -147,8 +147,11 @@ function CategoryClientPage({ slug }: { slug: string }) {
   );
 }
 
+type PageProps = {
+  params: { slug: string };
+};
 
 // Este es el componente de servidor que extrae el slug y lo pasa al componente de cliente.
-export default function CategoryPage({ params }: { params: { slug: string } }) {
+export default function CategoryPage({ params }: PageProps) {
     return <CategoryClientPage slug={params.slug} />;
 }

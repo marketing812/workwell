@@ -116,7 +116,11 @@ function PostClientPage({ slug }: { slug: string }) {
   );
 }
 
+type PageProps = {
+  params: { slug: string };
+};
+
 // Componente de servidor que extrae el slug y lo pasa al componente cliente.
-export default function PostPage({ params }: { params: { slug: string } }) {
+export default function PostPage({ params }: PageProps) {
     return <PostClientPage slug={params.slug} />;
 }
