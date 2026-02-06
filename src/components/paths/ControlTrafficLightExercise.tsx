@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -189,7 +188,7 @@ ${redZone || 'Sin entradas.'}
                 </div>
                  <p className="text-center text-muted-foreground italic text-sm pt-4">
                     Soltar no es rendirse. Es redirigir tu energía hacia lo que sí puedes transformar. No todo depende de ti, pero sí puedes elegir cómo responder.
-                </p>
+                 </p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit">

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -92,8 +91,8 @@ const HabitStep = ({ title, description, options, selected, setSelected, other, 
             </div>
             {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
             <div className="flex justify-between w-full mt-4">
-                {onPrev && <Button onClick={onPrev} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
-                <Button onClick={onNext} className="w-full" disabled={!selected}>Continuar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                {onPrev && <Button variant="outline" onClick={onPrev} type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
+                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
         </div>
     );
@@ -127,39 +126,39 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
   const { user } = useUser();
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   // States for selected habits
-  const [physicalHabit, setPhysicalHabit] = useState('');
-  const [otherPhysical, setOtherPhysical] = useState('');
-  const [emotionalHabit, setEmotionalHabit] = useState('');
-  const [otherEmotional, setOtherEmotional] = useState('');
-  const [mentalHabit, setMentalHabit] = useState('');
-  const [otherMental, setOtherMental] = useState('');
+  const [firstGesture, setFirstGesture] = useState('');
+  const [otherFirstGesture, setOtherFirstGesture] = useState('');
+  const [bodyCare, setBodyCare] = useState('');
+  const [otherBodyCare, setOtherBodyCare] = useState('');
+  const [mentalPrep, setMentalPrep] = useState('');
+  const [otherMentalPrep, setOtherMentalPrep] = useState('');
   
   // States for scheduling and reminders
-  const [schedule, setSchedule] = useState({ physical: '', emotional: '', mental: '' });
-  const [otherSchedule, setOtherSchedule] = useState({ physical: '', emotional: '', mental: '' });
-  const [reminders, setReminders] = useState({ physical: '', emotional: '', mental: '' });
-  const [otherReminder, setOtherReminder] = useState({ physical: '', emotional: '', mental: '' });
-
+  const [durations, setDurations] = useState({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+  const [facilitators, setFacilitators] = useState<Record<string, boolean>>({});
+  const [otherFacilitator, setOtherFacilitator] = useState('');
+  
   const storageKey = `exercise-progress-${pathId}-dailyWellbeingPlan`;
 
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
         const data = JSON.parse(savedState);
         setStep(data.step || 0);
-        setPhysicalHabit(data.physicalHabit || '');
-        setOtherPhysical(data.otherPhysical || '');
-        setEmotionalHabit(data.emotionalHabit || '');
-        setOtherEmotional(data.otherEmotional || '');
-        setMentalHabit(data.mentalHabit || '');
-        setOtherMental(data.otherMental || '');
-        setSchedule(data.schedule || { physical: '', emotional: '', mental: '' });
-        setOtherSchedule(data.otherSchedule || { physical: '', emotional: '', mental: '' });
-        setReminders(data.reminders || { physical: '', emotional: '', mental: '' });
-        setOtherReminder(data.otherReminder || { physical: '', emotional: '', mental: '' });
+        setFirstGesture(data.firstGesture || '');
+        setOtherFirstGesture(data.otherFirstGesture || '');
+        setBodyCare(data.bodyCare || '');
+        setOtherBodyCare(data.otherBodyCare || '');
+        setMentalPrep(data.mentalPrep || '');
+        setOtherMentalPrep(data.otherMentalPrep || '');
+        setDurations(data.durations || { firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+        setFacilitators(data.facilitators || {});
+        setOtherFacilitator(data.otherFacilitator || '');
         setIsSaved(data.isSaved || false);
       }
     } catch (error) {
@@ -168,65 +167,69 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
   }, [storageKey]);
 
   useEffect(() => {
+    if (!isClient) return;
     try {
-      const stateToSave = { step, physicalHabit, otherPhysical, emotionalHabit, otherEmotional, mentalHabit, otherMental, schedule, otherSchedule, reminders, otherReminder, isSaved };
+      const stateToSave = { step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, physicalHabit, otherPhysical, emotionalHabit, otherEmotional, mentalHabit, otherMental, schedule, otherSchedule, reminders, otherReminder, isSaved, storageKey]);
+  }, [step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved, storageKey, isClient]);
 
 
-  const finalPhysicalHabit = physicalHabit === 'Otro' ? otherPhysical : physicalHabit;
-  const finalEmotionalHabit = emotionalHabit === 'Otro' ? otherEmotional : emotionalHabit;
-  const finalMentalHabit = mentalHabit === 'Otro' ? otherMental : mentalHabit;
+  const finalFirstGesture = firstGesture === 'Otro' ? otherFirstGesture : firstGesture;
+  const finalBodyCare = bodyCare === 'Otro' ? otherBodyCare : bodyCare;
+  const finalMentalPrep = mentalPrep === 'Otro' ? otherMentalPrep : mentalPrep;
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
   
   const resetExercise = () => {
     setStep(0);
-    setPhysicalHabit(''); setOtherPhysical('');
-    setEmotionalHabit(''); setOtherEmotional('');
-    setMentalHabit(''); setOtherMental('');
-    setSchedule({ physical: '', emotional: '', mental: '' });
-    setOtherSchedule({ physical: '', emotional: '', mental: '' });
-    setReminders({ physical: '', emotional: '', mental: '' });
-    setOtherReminder({ physical: '', emotional: '', mental: '' });
+    setFirstGesture(''); setOtherFirstGesture('');
+    setBodyCare(''); setOtherBodyCare('');
+    setMentalPrep(''); setOtherMentalPrep('');
+    setDurations({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+    setFacilitators({}); setOtherFacilitator('');
     setIsSaved(false);
     localStorage.removeItem(storageKey);
   };
 
   const handleSave = () => {
-    if (!finalPhysicalHabit || !finalEmotionalHabit || !finalMentalHabit) {
+    if (!finalFirstGesture || !finalBodyCare || !finalMentalPrep) {
       toast({ title: "Incompleto", description: "Por favor, elige un microhábito para cada área.", variant: 'destructive' });
       return;
     }
 
+    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
+    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
+
     const notebookContent = `
 **${content.title}**
 
-**Microhábito Físico:** ${finalPhysicalHabit}
-- **Cuándo:** ${schedule.physical === 'Otro' ? otherSchedule.physical : schedule.physical}
-- **Recordatorio:** ${reminders.physical === 'Otro' ? otherReminder.physical : reminders.physical}
+*Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
+*Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
+*Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
 
-**Microhábito Emocional:** ${finalEmotionalHabit}
-- **Cuándo:** ${schedule.emotional === 'Otro' ? otherSchedule.emotional : schedule.emotional}
-- **Recordatorio:** ${reminders.emotional === 'Otro' ? otherReminder.emotional : reminders.emotional}
-
-**Microhábito Mental:** ${finalMentalHabit}
-- **Cuándo:** ${schedule.mental === 'Otro' ? otherSchedule.mental : schedule.mental}
-- **Recordatorio:** ${reminders.mental === 'Otro' ? otherReminder.mental : reminders.mental}
+*Cómo lo facilitaré:*
+${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join('\n') : 'Sin facilitadores definidos.'}
     `;
 
     addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Plan Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(5);
+    setStep(6);
   };
 
+  if (!isClient) {
+    return null;
+  }
+
   const renderStepContent = () => {
+    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
+    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
+
     switch(step) {
       case 0:
         return (
@@ -236,43 +239,71 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
           </div>
         );
       case 1:
-        return <HabitStep stepTitle="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabits} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysical} setOther={setOtherPhysical} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 1: Elige tu primer gesto al despertar" description="Lo que haces en los primeros minutos después de abrir los ojos marca el tono del resto del día. Vamos a elegir un gesto amable y consciente que te ayude a conectar contigo antes de sumergirte en las demandas externas." options={firstGestureOptions} selected={firstGesture} setSelected={setFirstGesture} other={otherFirstGesture} setOther={setOtherFirstGesture} onNext={nextStep} onPrev={undefined} />;
       case 2:
-        return <HabitStep stepTitle="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabits} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotional} setOther={setOtherEmotional} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 2: Añade un cuidado para tu cuerpo" description="Tu cuerpo es tu base para todo lo que harás después. Aquí vamos a elegir un gesto físico breve que te active sin agobio." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} onPrev={prevStep} />;
       case 3:
-        return <HabitStep stepTitle="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabits} selected={mentalHabit} setSelected={setMentalHabit} other={otherMental} setOther={setOtherMental} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} onPrev={prevStep} />;
       case 4:
         return (
-          <div className="p-4 space-y-6">
-            <SchedulingStep title="Paso 4: Cuándo lo harás" description="Cuanto más los vincules a un momento concreto, más fácil será que se conviertan en parte natural de tu día." habit={finalPhysicalHabit} habitKey="physical" schedule={schedule} setSchedule={setSchedule} otherSchedule={otherSchedule} setOtherSchedule={setOtherSchedule} options={timeOptions} />
-            <SchedulingStep title="" description="" habit={finalEmotionalHabit} habitKey="emotional" schedule={schedule} setSchedule={setSchedule} otherSchedule={otherSchedule} setOtherSchedule={setOtherSchedule} options={timeOptions} />
-            <SchedulingStep title="" description="" habit={finalMentalHabit} habitKey="mental" schedule={schedule} setSchedule={setSchedule} otherSchedule={otherSchedule} setOtherSchedule={setOtherSchedule} options={timeOptions} />
-            
-            <hr className="my-6" />
-
-            <SchedulingStep title="Paso 5: Cómo recordarlo" description="Un pequeño empujón para que no se te olvide." habit={finalPhysicalHabit} habitKey="physical" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
-            <SchedulingStep title="" description="" habit={finalEmotionalHabit} habitKey="emotional" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
-            <SchedulingStep title="" description="" habit={finalMentalHabit} habitKey="mental" schedule={reminders} setSchedule={setReminders} otherSchedule={otherReminder} setOtherSchedule={setOtherReminder} options={reminderOptions} />
-            
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave} className="w-full mt-6"><Save className="mr-2 h-4 w-4"/> Guardar mi plan diario</Button>
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Decide el orden y la duración</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a ordenar tus tres gestos para que encajen en tu mañana sin prisa. No necesitas más de 10-15 minutos en total.</p>
+                <div className="space-y-4">
+                    {[
+                        {label: finalFirstGesture, key: 'firstGesture'},
+                        {label: finalBodyCare, key: 'bodyCare'},
+                        {label: finalMentalPrep, key: 'mentalPrep'}
+                    ].filter(item => item.label).map(item => (
+                        <div key={item.key} className="p-3 border rounded-md bg-background flex items-center justify-between">
+                            <span className="font-medium text-sm">{item.label}</span>
+                            <div className="flex items-center gap-2">
+                                <Input type="number" value={durations[item.key as keyof typeof durations]} onChange={e => setDurations(p => ({...p, [item.key]: e.target.value}))} className="w-16 h-8 text-center" />
+                                <span className="text-sm text-muted-foreground">min</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
             </div>
-          </div>
         );
-      case 5:
+       case 5:
         return (
-          <div className="p-6 text-center space-y-4">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Plan de microhábitos guardado!</h4>
-            <p className="text-sm text-muted-foreground">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
-            <div className="flex gap-2 justify-center">
-              <Button onClick={resetExercise} variant="outline">Crear un nuevo plan</Button>
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste.</p>
+                <div className="space-y-2">
+                {facilitatorOptions.map(opt => (
+                    <div key={opt.id} className="flex items-center space-x-2">
+                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, [opt.id]: c}))} />
+                        <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                    </div>
+                ))}
+                 <div className="flex items-center space-x-2">
+                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, ['facilitator-other']: c}))} />
+                    <Label htmlFor="facilitator-other" className="font-normal">Otro:</Label>
+                </div>
+                {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
+                </div>
+                 <div className="flex justify-between w-full mt-4">
+                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                     <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi mañana amable</Button>
+                 </div>
             </div>
-          </div>
         );
-      default:
-        return null;
+      case 6:
+        return (
+             <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">Rutina Guardada</h4>
+                <p className="text-muted-foreground">“Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido.”</p>
+                <div className="flex gap-2 justify-center">
+                    <Button onClick={() => setStep(1)} variant="outline">Editar mi rutina</Button>
+                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+                </div>
+            </div>
+        );
+      default: return null;
     }
   }
 
@@ -293,10 +324,8 @@ export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: Dail
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {renderStepContent()}
+        {renderStep()}
       </CardContent>
     </Card>
   );
 }
-
-    

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -148,7 +147,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         <Button onClick={() => {
             const content = `**Agradezco:**\n${gratitude}\n\n**Avance:**\n${advancement}\n\n**Momento de calma:**\n${calmMoment}`;
             handleSave("Cierre con Gratitud", content);
-        }}><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
+        }}><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
         <Button variant="link" onClick={() => setStep(0)}>Volver a opciones</Button>
     </div>
   );

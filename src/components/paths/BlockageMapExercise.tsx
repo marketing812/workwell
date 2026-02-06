@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -103,7 +102,7 @@ ${consequences || 'No especificadas.'}
         return (
           <div className="text-center p-4 space-y-4">
              {(content as any).audioUrl && (
-              <div className="mt-4">
+              <div className="mb-4">
                   <audio controls controlsList="nodownload" className="w-full">
                       <source src={(content as any).audioUrl} type="audio/mp3" />
                       Tu navegador no soporta el elemento de audio.
@@ -156,40 +155,42 @@ ${consequences || 'No especificadas.'}
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 3: ¿Qué emociones o sensaciones físicas intentas evitar?</h4>
-            <Label className="sr-only">Emociones evitadas</Label>
-            {emotionsOptions.map(opt => (
-              <div key={opt.id} className="flex items-start space-x-3">
-                <Checkbox
-                  id={opt.id}
-                  checked={avoidedEmotions[opt.id] || false}
-                  onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, [opt.id]: !!checked }))}
-                  className="mt-1"
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
-                  <p className="text-sm text-muted-foreground">{opt.description}</p>
+            <div className="space-y-2">
+                <h4 className="font-semibold text-lg">Paso 3: ¿Qué emociones o sensaciones físicas intentas evitar?</h4>
+                <Label className="sr-only">Emociones evitadas</Label>
+                {emotionsOptions.map(opt => (
+                  <div key={opt.id} className="flex items-start space-x-3">
+                    <Checkbox
+                      id={opt.id}
+                      checked={avoidedEmotions[opt.id] || false}
+                      onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, [opt.id]: !!checked }))}
+                      className="mt-1"
+                    />
+                    <div className="grid gap-1.5 leading-none">
+                      <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
+                      <p className="text-sm text-muted-foreground">{opt.description}</p>
+                    </div>
+                  </div>
+                ))}
+                <div className="flex items-center space-x-2 pt-2">
+                  <Checkbox
+                    id="emo-other"
+                    checked={avoidedEmotions['emo-other'] || false}
+                    onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, 'emo-other': !!checked }))}
+                  />
+                  <Label htmlFor="emo-other" className="font-normal">
+                    Otra:
+                  </Label>
                 </div>
-              </div>
-            ))}
-            <div className="flex items-center space-x-2 pt-2">
-              <Checkbox
-                id="emo-other"
-                checked={avoidedEmotions['emo-other'] || false}
-                onCheckedChange={checked => setAvoidedEmotions(p => ({ ...p, 'emo-other': !!checked }))}
-              />
-              <Label htmlFor="emo-other" className="font-normal">
-                Otra:
-              </Label>
+                {avoidedEmotions['emo-other'] && (
+                  <Textarea
+                    value={otherEmotion}
+                    onChange={e => setOtherEmotion(e.target.value)}
+                    placeholder="Describe la otra emoción"
+                    className="ml-6"
+                  />
+                )}
             </div>
-            {avoidedEmotions['emo-other'] && (
-              <Textarea
-                value={otherEmotion}
-                onChange={e => setOtherEmotion(e.target.value)}
-                placeholder="Describe la otra emoción"
-                className="ml-6"
-              />
-            )}
              <div className="flex justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(4)} disabled={Object.values(avoidedEmotions).every(v => !v)}>Siguiente</Button>
