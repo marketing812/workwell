@@ -22,7 +22,7 @@ export async function retrieveDocsContext(
   const snap = await db
     .collection("kb-chunks")
     // @ts-ignore
-    .findNearest("embedding", qVec, {
+    .findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
       limit: k,
       distanceMeasure: "COSINE",
     })

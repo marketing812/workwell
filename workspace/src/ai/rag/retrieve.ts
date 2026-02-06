@@ -19,11 +19,10 @@ export async function retrieveDocsContext(question: string, opts?: { k?: number;
 
   const qVec = await embedText(question);
 
-  // PASA EL ARRAY DIRECTO
   // @ts-ignore
   const snap = await db
     .collection("kb-chunks")
-    .findNearest("embedding", qVec, {
+    .findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
       limit: k,
       distanceMeasure: "COSINE",
     })

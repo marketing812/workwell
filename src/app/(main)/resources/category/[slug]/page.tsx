@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -147,11 +146,7 @@ function CategoryClientPage({ slug }: { slug: string }) {
   );
 }
 
-type PageProps = {
-  params: { slug: string };
-};
-
 // Este es el componente de servidor que extrae el slug y lo pasa al componente de cliente.
-export default function CategoryPage({ params }: PageProps) {
+export default function CategoryPage({ params }: { params: { slug: string } }) {
     return <CategoryClientPage slug={params.slug} />;
 }
