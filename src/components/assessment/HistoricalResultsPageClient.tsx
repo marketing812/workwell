@@ -33,7 +33,7 @@ const assessmentDimensionsData: AssessmentDimension[] = [
       "recommendedPathId": "tolerar-incertidumbre",
       "items": [
         { "id": "dim2_item1", "text": "Me entusiasma aprender cosas nuevas, incluso si desafían lo que ya sé.", "weight": 1 },
-        { "id": "dim2_item2", "text": "Suelo encontrar soluciones creativas cuando algo no sale como esperado.", "weight": 1 },
+        { "id": "dim2_item2", "text": "Suelo encontrar soluciones creativas cuando algo no sale como esperaba.", "weight": 1 },
         { "id": "dim2_item3", "text": "A menudo cuestiono mis propias creencias o formas de pensar.", "weight": 1 },
         { "id": "dim2_item4", "text": "Me adapto con rapidez cuando las circunstancias cambian.", "weight": 1 }
       ]

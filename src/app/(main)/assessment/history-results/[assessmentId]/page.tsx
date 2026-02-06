@@ -1,9 +1,8 @@
 
 import { HistoricalResultsPageClient } from '@/components/assessment/HistoricalResultsPageClient';
 import type { Metadata } from 'next';
-import type { RoutePageProps } from '@/types/page-props';
 
-export default async function Page({ params }: { params: { assessmentId: string } }) {
+export default function Page({ params }: { params: { assessmentId: string } }) {
   const { assessmentId } = params;
   return <HistoricalResultsPageClient assessmentId={assessmentId} />;
 }

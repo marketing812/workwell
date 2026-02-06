@@ -3,11 +3,10 @@ import { pathsData } from '@/data/pathsData';
 import { PathDetailClient } from '@/components/paths/PathDetailClient';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import type { RoutePageProps } from '@/types/page-props';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ params }: { params: { pathId: string } }) {
+export default function Page({ params }: { params: { pathId: string } }) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
