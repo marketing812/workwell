@@ -14,12 +14,6 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
 
-interface EthicalMirrorExerciseProps {
-  content: EthicalMirrorExerciseContent;
-  pathId: string;
-  onComplete: () => void;
-}
-
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
     'Justicia', 'Responsabilidad', 'Libertad', 'Creatividad', 'Propósito vital', 'Aprendizaje',
@@ -27,6 +21,12 @@ const valuesList = [
     'Generosidad', 'Lealtad', 'Coraje', 'Cooperación', 'Transparencia', 'Sostenibilidad',
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
 ];
+
+interface EthicalMirrorExerciseProps {
+  content: EthicalMirrorExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
 
 export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMirrorExerciseProps) {
     const { toast } = useToast();
@@ -174,7 +174,7 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                         </div>
                          <div className="flex items-center space-x-2">
                             <Checkbox id="reflects" checked={reflectsWhoIAm} onCheckedChange={c => setReflectsWhoIAm(!!c)} />
-                            <Label htmlFor="reflects">Refleja quién soy y lo que quiero ser.</Label>
+                            <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
                             <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>
@@ -232,14 +232,15 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}
-                <div className="mt-4">
-                    <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3" type="audio/mp3" />
-                        Tu navegador no soporta el elemento de audio.
-                    </audio>
-                </div>
-                </CardDescription>}
+                <CardDescription className="pt-2">
+                    Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3" type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>
