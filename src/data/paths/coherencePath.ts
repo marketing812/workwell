@@ -135,7 +135,12 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3', content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
         { type: 'collapsible', title: 'Lo que vamos a trabajar esta semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3', content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'integrityDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD', objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad.','duration': '15-20 min' },
+        {
+          type: 'integrityDecisionsExercise',
+          title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD',
+          objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad. No se trata de encontrar la decisión perfecta, sino la que te deje en paz contigo, incluso si no es la más fácil. Vamos a poner tres filtros —tus valores, tus emociones y el impacto a largo plazo— para que tu elección sea clara y honesta.',
+          duration: '15-20 min',
+        },
         { type: 'nonNegotiablesExercise', title: 'EJERCICIO 2: LISTA DE NO NEGOCIABLES PERSONALES', objective: 'Tus no negociables son como un cinturón de seguridad emocional: te protegen de tomar decisiones que te dejen vacío o vacía por dentro.','duration': '10-15 min' },
         { 
           type: 'therapeuticNotebookReflection', 
@@ -169,7 +174,7 @@ export const coherencePath: Path = {
         { type: 'personalManifestoExercise', title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA', objective: 'Redacta un texto breve que sea tu brújula para tomar decisiones alineadas contigo.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3', duration: '10-15 min' },
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión final de la semana',
+          title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/REFLEXION.mp3',
           prompts: [
             '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
