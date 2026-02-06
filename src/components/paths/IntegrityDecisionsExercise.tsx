@@ -1,18 +1,19 @@
 
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Slider } from '@/components/ui/slider';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { IntegrityDecisionsExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
-import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 import { useUser } from '@/contexts/UserContext';
 
@@ -22,6 +23,22 @@ const valuesList = [
     'Empatía', 'Perseverancia', 'Integridad', 'Compasión', 'Equilibrio', 'Gratitud',
     'Generosidad', 'Lealtad', 'Coraje', 'Cooperación', 'Transparencia', 'Sostenibilidad',
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
+];
+
+const emotionOptions = [
+    { value: 'tristeza', labelKey: 'emotionSadness' },
+    { value: 'miedo', labelKey: 'emotionFear' },
+    { value: 'ira', labelKey: 'emotionAnger' },
+    { value: 'asco', labelKey: 'emotionDisgust' },
+    { value: 'estres', labelKey: 'emotionStress' },
+    { value: 'ansiedad', labelKey: 'emotionAnxiety' },
+    { value: 'agobio', labelKey: 'emotionOverwhelm' },
+    { value: 'ilusion', labelKey: 'emotionHope' },
+    { value: 'entusiasmo', labelKey: 'emotionEnthusiasm' },
+    { value: 'esperanza', labelKey: 'emotionHopefulness' },
+    { value: 'culpa', labelKey: 'emotionGuilt' },
+    { value: 'inseguridad', labelKey: 'emotionInsecurity' },
+    { value: 'confusion', labelKey: 'emotionConfusion' },
 ];
 
 interface IntegrityDecisionsExerciseProps {
@@ -254,6 +271,14 @@ export function IntegrityDecisionsExercise({ content, pathId, onComplete }: Inte
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
                     {content.objective}
+                    {content.audioUrl && (
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src={content.audioUrl} type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    )}
                 </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
