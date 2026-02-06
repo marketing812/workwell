@@ -1,3 +1,4 @@
+
 import type { Path } from  '@/data/paths/pathTypes';
 
 export const coherencePath: Path = {
@@ -105,7 +106,7 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Por qué detectar la incoherencia es clave', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3', content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\\n- Si lo ignoras, acabarás en un lugar que no eliges.\\nDetectar la incoherencia te permite:\\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', duration: '15 min' },
-        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.','duration': '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3' },
+        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión.   Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente.   En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad. ', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3', 'duration': '10-12 min' },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
@@ -137,8 +138,7 @@ export const coherencePath: Path = {
         {
           type: 'integrityDecisionsExercise',
           title: 'EJERCICIO 1: DECISIONES CON INTEGRIDAD',
-          objective:
-            'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad. No se trata de encontrar la decisión perfecta, sino la que te deje en paz contigo, incluso si no es la más fácil. Vamos a poner tres filtros —tus valores, tus emociones y el impacto a largo plazo— para que tu elección sea clara y honesta.',
+          objective: 'Hoy vamos a ayudarte a tomar decisiones importantes con la tranquilidad de saber que te representan de verdad. No se trata de encontrar la decisión perfecta, sino la que te deje en paz contigo, incluso si no es la más fácil. Vamos a poner tres filtros —tus valores, tus emociones y el impacto a largo plazo— para que tu elección sea clara y honesta.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica1.mp3',
         },
@@ -168,7 +168,8 @@ export const coherencePath: Path = {
       title: 'Semana 4: Sostén tu Coherencia en la Vida Cotidiana',
       type: 'summary',
       estimatedTime: '15-20 min',
-      content: [{ type: 'paragraphWithAudio', text: 'El verdadero reto no es descubrir lo que valoras, sino vivirlo día a día. Esta semana aprenderás a detectar si tu entorno te impulsa o te sabotea, y a crear un compromiso personal que te recuerde quién eres y qué quieres sostener, incluso en momentos de presión o incertidumbre. Porque la coherencia se fortalece en lo pequeño… y eso la hace grande.', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
+      content: [
+        { type: 'paragraphWithAudio', text: 'El verdadero reto no es descubrir lo que valoras, sino vivirlo día a día. Esta semana aprenderás a detectar si tu entorno te impulsa o te sabotea, y a crear un compromiso personal que te recuerde quién eres y qué quieres sostener, incluso en momentos de presión o incertidumbre. Porque la coherencia se fortalece en lo pequeño… y eso la hace grande.', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/INTRODUCCIONSEMANA4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Introducción: Cuando el mundo no va en tu misma dirección', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/Cuandoelmundonovaentumismadireccion.mp3', content: [{ type: 'paragraph', text: 'A veces, tu entorno parece un aliado: te apoya, te impulsa y te recuerda por qué haces lo que haces.\\nPero otras veces… no. Puedes encontrarte con personas que minimizan tus valores, con rutinas que te alejan de lo que quieres o con presiones que te empujan a ceder.\\nEsta semana vamos a trabajar cómo mantener tu dirección interna incluso en contextos exigentes, ambiguos o incoherentes… sin caer en la rigidez y sin perder tu paz.' }] },
         { type: 'collapsible', title: 'El papel del entorno', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana4/Elpapeldelentorno.mp3', content: [{ type: 'paragraph', text: 'La neurociencia nos recuerda que nuestro cerebro es altamente social: las normas, hábitos y actitudes de quienes nos rodean pueden influir más de lo que creemos en nuestras decisiones diarias.\\nEn TCC hablamos del “entorno facilitador” y del “entorno saboteador”:\\nFacilitador → Personas y contextos que apoyan, refuerzan y celebran tus elecciones coherentes.\\nSaboteador → Circunstancias, relaciones o hábitos que hacen que actuar en coherencia sea más difícil.\\nEjemplo:\\nFacilitador → Un compañero de trabajo que respeta tus descansos y horarios.\\nSaboteador → Un entorno laboral donde se espera que respondas mensajes a cualquier hora.' }] },
@@ -186,10 +187,10 @@ export const coherencePath: Path = {
         },
         { 
           type: 'personalManifestoExercise', 
-          title: 'EJERCICIO 2: TU MANIFIESTO DE COHERENCIA', 
-          objective: 'Redacta un texto breve que sea tu brújula para tomar decisiones alineadas contigo.', 
-          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3', 
-          duration: '10-15 min' 
+          title: 'EJERCICIO 2: VOLVER AL CAMINO CON COMPASIÓN',
+          objective: 'Este ejercicio te ayudará a mirar con amabilidad los momentos en los que no actuaste en coherencia. No se trata de castigarte ni de “tachar” lo que hiciste, sino de entender qué pasó, aprender de ello y elegir un pequeño ajuste para retomar tu camino. La coherencia se sostiene con práctica, paciencia y autocompasión.',
+          duration: '8–12 minutos. Te recomiendo hacerlo cada vez que sientas que te alejaste de tus valores o que reaccionaste de una forma que no te representa.',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana4tecnica2.mp3' 
         },
         {
           type: 'therapeuticNotebookReflection',

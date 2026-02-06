@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -9,7 +10,6 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { PersonalManifestoExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
@@ -41,7 +41,7 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
     const [isSaved, setIsSaved] = useState(false);
     
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
     
     const resetExercise = () => {
         setStep(0);
@@ -76,7 +76,7 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
 *Ajuste para la próxima vez:* ${adjustment}
         `;
 
-        addNotebookEntry({ title: 'Mi Manifiesto de Coherencia', content: notebookContent, pathId, userId: user?.id });
+        addNotebookEntry({ title: 'Mi Manifiesto de Coherencia', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({ title: 'Manifiesto Guardado' });
         setIsSaved(true);
         onComplete();
@@ -85,25 +85,25 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
 
     const renderStep = () => {
         switch (step) {
-            case 0:
+            case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
                         <p className="text-sm text-muted-foreground">A veces no actuamos como nos hubiera gustado. Y está bien. Somos humanos y la vida está llena de presiones, miedos y hábitos. Hoy vas a mirar un momento reciente en el que no actuaste en coherencia… pero lo harás desde la comprensión, no desde la culpa. El objetivo no es juzgarte, sino aprender y elegir un nuevo paso.</p>
                         <Button onClick={nextStep}>Comenzar ejercicio</Button>
                     </div>
                 );
-            case 1:
+            case 1: // Paso 1: Recuerda la situación
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold">Paso 1: Recuerda la situación</h4>
-                        <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="“Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
-                        <div className="flex justify-between mt-2">
-                            <Button variant="outline" onClick={prevStep}>Atrás</Button>
-                            <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+                        <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
+                        <div className="flex justify-between w-full mt-4">
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 2:
+            case 2: // Paso 2: Nombra tu reacción sin juicio
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 2: Nombra tu reacción sin juicio</h4>
@@ -130,19 +130,19 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
                             </RadioGroup>
                         </div>
                         <div className="flex justify-between mt-2">
-                            <Button variant="outline" onClick={prevStep}>Atrás</Button>
+                            <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={nextStep} disabled={!coherenceChoice}>Siguiente</Button>
                         </div>
                     </div>
                 );
-            case 3:
+            case 3: // Paso 3: Mira con compasión
                 let reminderText;
                 if (coherenceChoice === 'flexibilidad') {
-                    reminderText = "“Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
+                    reminderText = "✨ “Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
                 } else if (coherenceChoice === 'incoherencia') {
-                    reminderText = "“Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
+                    reminderText = "✨ “Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
                 } else {
-                    reminderText = "“La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
+                    reminderText = "✨ “La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
                 }
                 return (
                     <div className="p-4 space-y-4">
@@ -153,12 +153,12 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
                             <Textarea id="compassion-phrase" value={compassionatePhrase} onChange={e => setCompassionatePhrase(e.target.value)} placeholder="Ejemplo: “Entiendo que estabas cansada y no querías problemas. Está bien, lo importante es cómo eliges a partir de ahora.”"/>
                         </div>
                         <div className="flex justify-between mt-2">
-                            <Button variant="outline" onClick={prevStep}>Atrás</Button>
+                            <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
                     </div>
                 );
-            case 4:
+            case 4: // Paso 4: Elige un ajuste sencillo
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Elige un ajuste sencillo</h4>
@@ -178,12 +178,11 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
                         </div>
                     </form>
                 );
-            case 5:
+            case 5: // Pantalla 6 - Cierre motivador
                 return (
-                    <div className="p-6 text-center space-y-4">
+                    <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                        <h4 className="font-bold text-lg">Guardado</h4>
-                        <p className="text-muted-foreground">La coherencia no se mide por un tropiezo, sino por cómo eliges levantarte. Cada vez que te miras con compasión y eliges un ajuste, fortaleces tu dirección interna.</p>
+                        <h4 className="font-bold text-lg">La coherencia no se mide por un tropiezo, sino por cómo eliges levantarte. Cada vez que te miras con compasión y eliges un ajuste, fortaleces tu dirección interna.</h4>
                         <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
                     </div>
                 );
@@ -195,7 +194,7 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}
+                {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
@@ -204,9 +203,10 @@ export function PersonalManifestoExercise({ content, pathId, onComplete }: Perso
                         </audio>
                     </div>
                 )}
-                </CardDescription>}
             </CardHeader>
-            <CardContent>{renderStep()}</CardContent>
+            <CardContent>
+                {renderStep()}
+            </CardContent>
         </Card>
     );
 }
