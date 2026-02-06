@@ -1,96 +1,64 @@
 'use server';
 
-import nodemailer from 'nodemailer';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { firebaseConfig } from '@/firebase/config';
+import admin from "firebase-admin";
 
-interface SendEmailParams {
-  to: string;
-  subject: string;
-  body: string;
-}
+function getAdminApp() {
+  if (admin.apps.length) return admin.app();
 
-export async function sendEmail({ to, subject, body }: SendEmailParams): Promise<{ success: boolean; error?: string }> {
-  console.log(`[sendEmail] Attempting to send email to ${to}`);
-  
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.error("[sendEmail] ERROR: Missing required SMTP environment variables (HOST, USER, PASS).");
-      return { success: false, error: 'Email service is not configured on the server.' };
+  const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  if (!raw) throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_JSON");
+
+  let cleaned = raw.trim();
+  if (
+    (cleaned.startsWith("'") && cleaned.endsWith("'")) ||
+    (cleaned.startsWith('"') && cleaned.endsWith('"'))
+  ) {
+    cleaned = cleaned.slice(1, -1);
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT || 587),
-    secure: process.env.SMTP_PORT === '465', 
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
+  const serviceAccount = JSON.parse(cleaned);
+
+  return admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
   });
-
-  try {
-    console.log(`[sendEmail] Transporter created. Calling sendMail for ${to}.`);
-    await transporter.sendMail({
-      from: `"EMOTIVA" <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER}>`,
-      to: to,
-      subject: subject,
-      html: body,
-    });
-    console.log(`[sendEmail] Email sent successfully to ${to}.`);
-    return { success: true };
-  } catch (error) {
-    console.error(`[sendEmail] Error sending email to ${to}:`, error);
-    return { success: false, error: 'Failed to send email via transporter.' };
-  }
 }
 
-
-export async function sendReminderEmailByUserId(userId: string, body: string): Promise<{ success: boolean; error?: string }> {
-  console.log(`[sendReminderEmailByUserId] Received request for userId: ${userId}`);
-  if (!userId) {
-    console.error("[sendReminderEmailByUserId] Aborting, no userId provided.");
-    return { success: false, error: "No userId provided." };
-  }
-
+export async function sendReminderEmailByUserId(
+  userId: string,
+  bodyHtml: string
+): Promise<{ success: boolean; error?: string }> {
   try {
-    console.log("[sendReminderEmailByUserId] Initializing Firestore connection...");
-    let app;
-    if (!getApps().length) {
-      app = initializeApp(firebaseConfig);
-    } else {
-      app = getApp();
-    }
-    const db = getFirestore(app);
-    console.log("[sendReminderEmailByUserId] Firestore connection initialized.");
+    if (!userId) return { success: false, error: "No userId provided." };
+    if (!bodyHtml) return { success: false, error: "No email body provided." };
 
-    const userDocRef = doc(db, "users", userId);
-    console.log(`[sendReminderEmailByUserId] Fetching user document from path: users/${userId}`);
-    const userDoc = await getDoc(userDocRef);
+    const app = getAdminApp();
+    const db = admin.firestore(app);
 
-    if (!userDoc.exists()) {
-      console.error(`[sendReminderEmailByUserId] User with ID ${userId} not found in Firestore.`);
-      return { success: false, error: `User not found.` };
-    }
-    console.log(`[sendReminderEmailByUserId] User document found for ID ${userId}.`);
+    // 🔥 AQUÍ: obtener email desde Firebase Auth
+    const userRecord = await admin.auth(app).getUser(userId);
 
-    const userData = userDoc.data();
-    const userEmail = userData.email;
-
+    const userEmail = userRecord.email;
     if (!userEmail) {
-      console.error(`[sendReminderEmailByUserId] User with ID ${userId} does not have an email address in their document.`);
-      return { success: false, error: `User email not found.` };
+      return { success: false, error: "User has no email in Firebase Auth." };
     }
-    console.log(`[sendReminderEmailByUserId] Found email '${userEmail}' for userId ${userId}. Preparing to send email.`);
 
-    return await sendEmail({
+    // 🔥 Encolar email en Firestore para la extensión Trigger Email
+    await db.collection("mail").add({
       to: userEmail,
-      subject: "Recordatorio de EMOTIVA",
-      body: body,
+      message: {
+        subject: "Recordatorio de EMOTIVA",
+        html: bodyHtml,
+      },
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      meta: {
+        kind: "mood-checkin-reminder",
+        userId,
+      },
     });
 
-  } catch (error) {
-    console.error(`[sendReminderEmailByUserId] Error processing reminder for userId ${userId}:`, error);
-    return { success: false, error: 'Failed to send reminder email.' };
+    return { success: true };
+  } catch (err: any) {
+    console.error("[sendReminderEmailByUserId] FAILED:", err);
+    return { success: false, error: err?.message || "Failed to queue email." };
   }
 }
