@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, CalendarIcon, Info } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DailyWellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -18,6 +19,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface DailyWellbeingPlanExerciseProps {
   content: DailyWellbeingPlanExerciseContent;
@@ -25,38 +27,32 @@ interface DailyWellbeingPlanExerciseProps {
   onComplete: () => void;
 }
 
-const physicalHabits = [
-  { id: 'caminar', label: 'Caminar 15 minutos al día', importance: 'Caminar a diario no solo cuida tu salud física (mejora la circulación, fortalece el corazón y regula la presión arterial), sino que también activa la liberación de endorfinas y serotonina, neurotransmisores que elevan el estado de ánimo y reducen el estrés. Además, rompe la inercia de la pasividad: un gesto tan simple como ponerse en movimiento envía a tu cerebro el mensaje de que te estás cuidando activamente, lo que refuerza la motivación para otras acciones saludables.' },
-  { id: 'agua', label: 'Beber un vaso grande de agua al despertar', importance: 'Durante la noche, tu cuerpo pierde líquidos y necesita rehidratarse para funcionar bien. Tomar agua nada más levantarte reactiva tu metabolismo, favorece la oxigenación cerebral y mejora la concentración desde las primeras horas. Según estudios de neurociencia, incluso una leve deshidratación puede afectar tu atención y estado de ánimo. Este sencillo hábito es una forma consciente de empezar el día cuidando de ti, sin esfuerzo extra.' },
-  { id: 'estirar', label: 'Estirarte 2 minutos al levantarte', importance: 'Estirarte suavemente al iniciar el día activa la circulación, aumenta la movilidad y libera la tensión acumulada durante el sueño. Además, le envía señales al sistema nervioso de que es hora de “ponerse en marcha”, despertando cuerpo y mente. Es un ritual breve que conecta contigo desde el primer momento, ayudándote a iniciar el día con más presencia y energía.' },
-  { id: 'sol', label: 'Tomar el sol 10 minutos', importance: 'La exposición moderada al sol estimula la producción de vitamina D, esencial para el sistema inmunitario y la salud ósea, y favorece la regulación del ritmo circadiano, lo que mejora el sueño. Además, la luz solar incrementa la liberación de serotonina, la hormona del bienestar, contribuyendo a un estado de ánimo más equilibrado. Es como darle a tu cuerpo una recarga natural de energía y buen humor.' },
-  { id: 'fruta', label: 'Comer una fruta o verdura extra', importance: 'Aumentar la ingesta de frutas y verduras aporta vitaminas, minerales y fibra que estabilizan los niveles de energía y ayudan a regular el azúcar en sangre, evitando los bajones de ánimo que provocan algunos alimentos procesados. Además, sus antioxidantes protegen las células del estrés oxidativo. Es un microgesto que nutre tanto tu cuerpo como tu salud emocional.' },
-  { id: 'ropa', label: 'Preparar la ropa de ejercicio la noche anterior', importance: 'Dejar lista tu ropa deportiva reduce la “fricción” para empezar a moverte: elimina una excusa y aumenta las probabilidades de que cumplas tu plan, incluso si la motivación está baja. Este hábito es un ejemplo de cómo pequeñas decisiones estratégicas facilitan cambios grandes en tu bienestar.' },
-  { id: 'escaleras', label: 'Subir escaleras en vez de ascensor', importance: 'Optar por las escaleras incrementa tu gasto energético diario, fortalece piernas y corazón, y mejora la capacidad pulmonar. Más allá del beneficio físico, es un recordatorio constante de que cada elección suma en tu salud: no siempre hacen falta grandes esfuerzos para sentirte más fuerte y con más energía.' },
+const firstGestureOptions = [
+  { id: 'respirar', label: 'Respirar profundamente 1 minuto', importance: 'Comenzar con una respiración lenta y profunda regula tu sistema nervioso, reduce la activación del modo alerta y prepara tu mente para un inicio más sereno.' },
+  { id: 'agua', label: 'Beber un vaso grande de agua', importance: 'Hidratarte nada más despertar reactiva tu metabolismo, mejora la concentración y contrarresta la ligera deshidratación de la noche.' },
+  { id: 'luz', label: 'Abrir la ventana y dejar entrar luz y aire', importance: 'La luz natural activa tu ritmo circadiano, mejora el estado de ánimo y ayuda a tu cuerpo a “entender” que es hora de iniciar el día.' },
+  { id: 'frase', label: 'Decir una frase positiva o motivadora', importance: 'La forma en la que te hablas al empezar el día influye en tu actitud. Una frase breve pero significativa puede enfocar tu mente hacia lo constructivo.' },
+];
+const bodyCareOptions = [
+  { id: 'estirar', label: 'Estiramientos suaves 2-3 minutos', importance: 'Movilizar el cuerpo al despertar mejora la circulación, aumenta la flexibilidad y reduce la rigidez muscular acumulada durante la noche.' },
+  { id: 'caminar', label: 'Caminar un poco por casa mientras te preparas', importance: 'El movimiento temprano activa la energía, mejora la oxigenación y ayuda a despejar la mente.' },
+  { id: 'desayuno', label: 'Preparar y tomar un desayuno nutritivo', importance: 'Un desayuno equilibrado estabiliza los niveles de glucosa, evitando bajones de energía y cambios bruscos de ánimo en las horas siguientes.' },
+  { id: 'higiene', label: 'Higiene consciente (lavarte la cara con agua fresca, ducha breve, etc.)', importance: 'Más que un hábito mecánico, puede convertirse en un momento de presencia y cuidado personal que marca el inicio de tu día.' },
+];
+const mentalPrepOptions = [
+  { id: 'intencion', label: 'Anotar una intención o prioridad del día', importance: 'Te ayuda a enfocar tu energía y a no dispersarte entre tareas menos importantes.' },
+  { id: 'gratitud', label: 'Escribir 3 cosas por las que estás agradecido/a', importance: 'Entrena tu mente para fijarse en lo positivo, mejorando tu estado de ánimo y tu resiliencia emocional.' },
+  { id: 'musica', label: 'Escuchar una canción o audio inspirador', importance: 'La música o las palabras motivadoras pueden elevar tu energía emocional y predisponerte a un día más positivo.' },
+  { id: 'meditacion', label: 'Práctica breve de mindfulness o meditación guiada (2-5 minutos)', importance: 'Mejora la regulación emocional y entrena tu atención para responder en lugar de reaccionar de forma automática.' },
+];
+const facilitatorOptions: { id: string; label: string; }[] = [
+    { id: 'facilitator-agua', label: 'Dejar preparado el vaso de agua o la tetera la noche anterior.' },
+    { id: 'facilitator-alarma', label: 'Poner el despertador 5 minutos antes.' },
+    { id: 'facilitator-ropa', label: 'Dejar ropa cómoda o deportiva lista.' },
+    { id: 'facilitator-libreta', label: 'Tener a mano tu libreta o lista de intenciones.' },
+    { id: 'facilitator-movil', label: 'Guardar el móvil en otro lugar para evitar distracciones al despertar.' },
 ];
 
-const emotionalHabits = [
-  { id: 'gratitud', label: 'Escribir una frase de gratitud al final del día', importance: 'Practicar gratitud entrena tu cerebro para fijarse en lo positivo, lo que reduce la atención excesiva en lo negativo. Según investigaciones en psicología positiva (Emmons & McCullough, 2003), este hábito mejora el ánimo y la satisfacción vital. Además, escribirlo antes de dormir ayuda a cerrar el día con una sensación de calma y bienestar.' },
-  { id: 'amabilidad', label: 'Decir algo amable a alguien', importance: 'Los actos de amabilidad liberan oxitocina y dopamina, hormonas vinculadas al bienestar y la conexión social. Este gesto no solo mejora el día de la otra persona, también refuerza tu autoestima y fortalece vínculos.' },
-  { id: 'musica', label: 'Escuchar una canción que te inspire', importance: 'La música puede regular tus emociones de forma rápida y eficaz. Investigaciones en neurociencia han demostrado que escuchar canciones que te gustan activa el sistema de recompensa del cerebro, elevando el ánimo y reduciendo el estrés.' },
-  { id: 'abrazo', label: 'Dar un abrazo (o autoabrazo consciente)', importance: 'Abrazar —o abrazarte— estimula la liberación de oxitocina, que genera calma y conexión. Un autoabrazo consciente, acompañado de respiración lenta, también reduce la activación del sistema nervioso simpático, ayudándote a relajarte.' },
-  { id: 'vela', label: 'Encender una vela y respirar profundamente', importance: 'Este pequeño ritual combina estímulos sensoriales (luz suave, aroma) con respiración profunda, favoreciendo la relajación y reduciendo el ritmo cardíaco. Es un ancla que te ayuda a pasar del “modo estrés” al “modo calma”.' },
-  { id: 'paisaje', label: 'Observar un paisaje, planta o cielo 5 minutos', importance: 'Mirar elementos naturales, aunque sea desde una ventana, tiene efectos restauradores en la atención y el estado de ánimo. Según la teoría de la restauración de la atención (Kaplan, 1995), este contacto con la naturaleza recarga la mente y reduce la fatiga mental.' },
-  { id: 'foto', label: 'Colocar una foto que te motive en un lugar visible', importance: 'Ver una imagen que te conecta con algo valioso para ti (personas, lugares, metas) genera emociones positivas y te recuerda qué es importante, ayudando a mantener la motivación en tu día a día.' },
-];
-
-const mentalHabits = [
-  { id: 'respiracion', label: 'Respiración consciente 5 minutos', importance: 'La respiración consciente reduce la activación del sistema de estrés y mejora la concentración. Practicarla unos minutos al día entrena tu mente para volver al presente y gestionar mejor la ansiedad.' },
-  { id: 'leer', label: 'Leer una página de un libro', importance: 'La lectura estimula la mente, amplía el vocabulario y mejora la concentración. Incluso leer una sola página antes de dormir puede ayudarte a desconectar de las preocupaciones y relajar la mente.' },
-  { id: 'anotar', label: 'Anotar una idea o aprendizaje del día', importance: 'Registrar tus ideas o aprendizajes fortalece la memoria, te ayuda a integrar lo aprendido y genera una sensación de progreso personal.' },
-  { id: 'meditacion', label: 'Meditación guiada breve', importance: 'La meditación guiada entrena tu atención y regula el sistema nervioso. Incluso sesiones cortas (3-5 minutos) han demostrado reducir el estrés y aumentar la sensación de calma.' },
-  { id: 'meta', label: 'Escribir una meta o intención diaria', importance: 'Poner por escrito una meta concreta orienta tu energía y tu atención hacia lo que de verdad importa, aumentando la probabilidad de cumplirlo.' },
-  { id: 'planificar', label: 'Planificar 3 tareas clave para mañana', importance: 'La planificación anticipada reduce la sobrecarga mental, previene olvidos y libera espacio mental para enfocarte en el presente.' },
-  { id: 'descanso-pantallas', label: 'Hacer un descanso sin pantallas cada hora', importance: 'Darle un respiro a tu cerebro y a tu vista reduce la fatiga mental y visual. Estos microdescansos mejoran el rendimiento y la creatividad.' },
-];
-
-const timeOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios', 'Otro'];
-const reminderOptions = ['Poner una alarma en el móvil', 'Dejar una nota visible', 'Vincularlo a otra acción (ej. después de lavarme los dientes)', 'Aviso en la app', 'Otro'];
 
 const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
     return (
@@ -97,29 +93,6 @@ const HabitStep = ({ title, description, options, selected, setSelected, other, 
         </div>
     );
 };
-
-const SchedulingStep = ({ title, description, habit, habitKey, schedule, setSchedule, otherSchedule, setOtherSchedule, options }: any) => {
-  if (!habit) return null;
-  return (
-    <div className="space-y-3">
-      {title && <h4 className="font-semibold text-lg">{title}</h4>}
-      {description && <p className="text-sm text-muted-foreground">{description}</p>}
-      <div className="p-3 border rounded-md bg-background">
-        <p className="font-medium text-primary">{habit}</p>
-        <RadioGroup value={schedule[habitKey]} onValueChange={v => setSchedule((p: any) => ({...p, [habitKey]: v}))} className="mt-2 space-y-1">
-          {options.map((opt: string) => (
-            <div key={opt} className="flex items-center space-x-2">
-              <RadioGroupItem value={opt} id={`${habitKey}-${opt.replace(/\s+/g, '-')}`} />
-              <Label htmlFor={`${habitKey}-${opt.replace(/\s+/g, '-')}`} className="font-normal">{opt}</Label>
-            </div>
-          ))}
-        </RadioGroup>
-        {schedule[habitKey] === 'Otro' && <Input value={otherSchedule[habitKey]} onChange={e => setOtherSchedule((p:any) => ({...p, [habitKey]: e.target.value}))} placeholder="Especifica..." className="mt-2 ml-6" />}
-      </div>
-    </div>
-  );
-};
-
 
 export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
@@ -227,9 +200,6 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
   }
 
   const renderStepContent = () => {
-    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
-    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
-
     switch(step) {
       case 0:
         return (
@@ -324,7 +294,7 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {renderStep()}
+        {renderStepContent()}
       </CardContent>
     </Card>
   );
