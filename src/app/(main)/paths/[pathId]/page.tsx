@@ -6,11 +6,7 @@ import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
-type Props = {
-  params: { pathId: string };
-};
-
-export default function Page({ params }: Props) {
+export default function Page({ params }: { params: { pathId: string } }) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
@@ -22,7 +18,7 @@ export default function Page({ params }: Props) {
 }
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: { params: { pathId: string } }
 ): Promise<Metadata> {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
