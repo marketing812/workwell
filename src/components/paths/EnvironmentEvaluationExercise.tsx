@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -8,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { EnvironmentEvaluationExerciseContent } from '@/data/paths/pathTypes';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import {
   ChartContainer,
   ChartTooltip,
@@ -25,7 +24,6 @@ import { Textarea } from '../ui/textarea';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
-
 
 const environments = [
     { id: 'salud_fisica', label: 'Salud física' },
@@ -88,8 +86,20 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
             color: "hsl(var(--primary))",
         },
     };
+    
+    const nextStep = () => setStep(prev => prev + 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+    const resetExercise = () => {
+        setStep(0);
+        setSelectedEnvs({});
+        setOtherEnvironment('');
+        setRatings({});
+        setIsSaved(false);
+    };
 
-    const handleSave = () => {
+    const handleSave = (e: FormEvent) => {
+        e.preventDefault();
+        const activeAreas = selectedEnvironments;
         const filledEnvironments = activeAreas.filter(area => ratings[area.id]);
         if (filledEnvironments.length === 0) {
             toast({ title: 'Ejercicio Incompleto', description: 'Por favor, evalúa al menos un entorno para guardar.', variant: 'destructive' });
@@ -102,7 +112,8 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
             if (rating) {
                 notebookContent += `**Área:** ${area.label}\n`;
                 notebookContent += `- Apoyo a mis valores (0-10): ${rating.support}\n`;
-                notebookContent += `- Me aleja de mis valores (0-10): ${rating.drain}\n\n`;
+                notebookContent += `- Me aleja de mis valores (0-10): ${rating.drain}\n`;
+                if(rating.example) notebookContent += `- Ejemplo: ${rating.example}\n\n`;
             }
         });
 
@@ -116,20 +127,25 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
         toast({ title: 'Mapa de Coherencia Guardado' });
         setIsSaved(true);
         onComplete();
+        nextStep();
     };
 
-
-    const activeAreas = useMemo(() => {
-        return environments.filter(e => selectedEnvs[e.id]);
-    }, [selectedEnvs]);
-
     const renderStep = () => {
+        const activeAreas = selectedEnvironments;
         switch(step) {
             case 0:
                 return (
-                    <div className="p-4 space-y-2">
-                        <Label className="font-semibold">Identifica tus entornos clave:</Label>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div className="p-4 space-y-4 text-center">
+                        <p className="text-sm text-muted-foreground">Todos tenemos entornos que nos facilitan vivir alineados con lo que valoramos… y otros que nos lo ponen difícil. Hoy vas a analizar los tuyos, sin juicio, para tomar decisiones más conscientes.</p>
+                        <Button onClick={nextStep}>Comenzar evaluación</Button>
+                    </div>
+                );
+            case 1:
+                return (
+                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 1: Identifica tus entornos clave</h4>
+                        <p className="text-sm text-muted-foreground">Piensa en las áreas más importantes de tu vida. Vamos a evaluarlas una a una.</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                             {environments.map(e => (
                                 <div key={e.id} className="flex items-center space-x-2">
                                     <Checkbox id={e.id} checked={!!selectedEnvs[e.id]} onCheckedChange={c => setSelectedEnvs(p => ({...p, [e.id]: !!c}))} />
@@ -149,34 +165,39 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
                                 className="mt-2"
                             />
                         )}
-                        <Button onClick={() => setStep(1)} className="w-full mt-4">Siguiente</Button>
+                        <div className="flex justify-between w-full pt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep} disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
+                        </div>
                     </div>
                 );
-            case 1: return (
-                <div className="p-4 space-y-4">
+            case 2: return (
+                <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                    <h4 className="font-semibold text-lg">Paso 2: Evalúa cada entorno</h4>
+                    <p className="text-sm text-muted-foreground">Para cada entorno que elegiste, responde con sinceridad. No hay respuestas correctas o incorrectas.</p>
                     {activeAreas.length > 0 ? activeAreas.map(e => (
-                        <div key={e.id} className="p-3 border rounded-md">
+                        <div key={e.id} className="p-3 border rounded-md space-y-3 bg-background">
                             <h4 className="font-semibold">{e.label}</h4>
-                            <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
+                            <Label htmlFor={`support-${e.id}`}>¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
                             <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
                             <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
-                            <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
+                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Ejemplo de cómo me apoya o me dificulta.</Label>
+                            <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} rows={2}/>
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
-                     <div className="flex justify-between w-full">
-                        <Button onClick={() => setStep(0)} variant="outline">Atrás</Button>
-                        <Button onClick={() => setStep(2)} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
+                     <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline">Atrás</Button>
+                        <Button onClick={nextStep} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
                 </div>
             );
-            case 2:
+            case 3:
                 return (
-                    <div className="p-4 text-center space-y-4">
-                        <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
+                    <form onSubmit={handleSave} className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 3: Síntesis visual</h4>
                         <p className="text-sm text-muted-foreground">Aquí tienes tu mapa de entornos. No es para juzgarte ni para que tomes decisiones inmediatas, sino para que tengas claridad. Y recuerda: un entorno que ahora es saboteador, puede transformarse si introduces cambios.</p>
                          <ChartContainer config={chartConfig} className="w-full aspect-square h-[350px]">
                             <RadarChart data={chartData}>
@@ -198,12 +219,19 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
                                 />
                             </RadarChart>
                         </ChartContainer>
-                         <div className="flex flex-col sm:flex-row gap-2 justify-center">
-                            <Button onClick={handleSave} disabled={isSaved}>
-                                <Save className="mr-2 h-4 w-4"/> {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
-                            </Button>
-                            <Button onClick={() => { setStep(0); setSelectedEnvs({}); setRatings({}); setIsSaved(false); }} variant="outline">Empezar de nuevo</Button>
+                         <div className="flex justify-between w-full mt-4">
+                             <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
+                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
                          </div>
+                    </form>
+                );
+            case 4:
+                return (
+                    <div className="p-6 text-center space-y-4">
+                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                        <h4 className="font-bold text-lg">Guardado</h4>
+                        <p className="text-muted-foreground">Tu mapa de coherencia ha sido guardado. Puedes volver a él cuando lo necesites.</p>
+                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
                     </div>
                 );
             default: return null;
@@ -214,19 +242,17 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && (
-                    <CardDescription className="pt-2">
-                        {content.objective}
-                        {content.audioUrl && (
-                            <div className="mt-4">
-                                <audio controls controlsList="nodownload" className="w-full">
-                                    <source src={content.audioUrl} type="audio/mp3" />
-                                    Tu navegador no soporta el elemento de audio.
-                                </audio>
-                            </div>
-                        )}
-                    </CardDescription>
-                )}
+                <CardDescription className="pt-2">
+                    {content.objective}
+                    {content.audioUrl && (
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src={content.audioUrl} type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    )}
+                </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>
