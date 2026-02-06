@@ -175,7 +175,7 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                         </div>
                         <div className="space-y-2">
                             <Label>¿Cómo se lo explicarías para que lo entienda?</Label>
-                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador…”" />
+                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo. Sé que implica un cambio grande, pero he ahorrado, he valorado pros y contras, y creo que es el momento adecuado para dar este paso.”" />
                         </div>
                         <div className="space-y-2">
                             <Label>Valores en juego (Selecciona los que mejor representen lo que quieres respetar con tu decisión)</Label>
@@ -234,7 +234,7 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Ajusta si es necesario</h4>
-                        <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella. Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.</p>
+                        <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                          “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
                         </blockquote>
@@ -264,6 +264,7 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
+                    {content.objective}
                     {content.audioUrl && (
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">

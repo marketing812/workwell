@@ -76,20 +76,11 @@ export const coherencePath: Path = {
           duration: '5-10 min diarios',
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3'
         },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', 
-          prompts: [
-            '<p>Ahora llega el momento de mirar hacia dentro y poner en palabras lo que has descubierto.</p>',
-            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
-            '<ul><li>¿Qué aspectos de mi vida me hacen sentir más en coherencia con quién soy?</li><li>¿Qué áreas importantes estoy dejando de lado por estar en piloto automático o por priorizar lo urgente?</li><li>¿Qué 3 valores personales quiero tener más presentes en mi día a día?</li><li>¿Cómo puedo recordarme, con amabilidad, que lo importante también necesita tiempo y atención?</li></ul>'
-          ]
-        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
-        { type: 'quote', text: 'Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.' }
+        { type: 'quote', text: '“Cada vez que escuchas tu voz interna y la honras, das un paso hacia la vida que quieres vivir.”' }
       ]
     },
     {
@@ -115,16 +106,15 @@ export const coherencePath: Path = {
         { type: 'collapsible', title: 'Por qué detectar la incoherencia es clave', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/Porquedetectarlaincoherenciaesclave.mp3', content: [{ type: 'paragraph', text: 'Piensa en la incoherencia como en un GPS que te avisa cuando te has salido de la ruta:\n- Si lo escuchas, puedes recalcular y volver al camino que quieres.\n- Si lo ignoras, acabarás en un lugar que no eliges.\nDetectar la incoherencia te permite:\n- Reorientarte sin castigarte: el objetivo no es “ser perfecto/a”, sino ser más consciente.\n- Recuperar tu capacidad de elegir: en vez de reaccionar por costumbre o por miedo, decides con intención.\n- Fortalecer tu integridad y bienestar emocional: cada vez que alineas lo que piensas, sientes y haces, refuerzas tu autoconfianza.\nEsta semana vamos a trabajar precisamente en eso: poner nombre a tus puntos de desconexión para que puedas, poco a poco, volver a alinear tu brújula interna.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3', duration: '15 min' },
-        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Aclara si tus decisiones están alineadas con tus valores, imaginando que se las explicas a alguien a quien respetas.','duration': '10-12 min' },
+        { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.','duration': '10-12 min', audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3' },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/REFLEXION.mp3', 
           prompts: [
-            '<p>Llega el momento de integrar lo que has descubierto. Tómate unos minutos de calma y escribe en tu espacio de reflexión dentro de la aplicación.</p>',
-            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
+            '<p>Te invito a detenerte un momento para mirar dentro de ti. Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente. </p>',
             '<ul><li>¿Qué he aprendido esta semana sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'
-          ]
+          ] 
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana2/RESUMEN.mp3' },
@@ -159,8 +149,7 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/RESUMEN.mp3' },
         { type: 'list', items: ['La integridad no es rigidez: puedes mantener tus valores y adaptarte sin traicionarte.','Tener claros tus no negociables internos te ayuda a decidir con menos dudas y más calma.','La flexibilidad consciente es una fortaleza, no una señal de debilidad.','Decidir desde tus valores y emociones alineadas genera paz y autoconfianza.','Ajustar no es rendirse: es adaptar el camino sin perder el rumbo.'] },
-        { type: 'quote', text: 'No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.' }
-      ]
+        { type: 'quote', text: '“No siempre será fácil, pero cada vez que eliges lo que te representa, te fortaleces por dentro. La coherencia es tu ancla y la flexibilidad, tu vela.”' }]
     },
     {
       id: 'coherencia_sem4',
@@ -212,7 +201,7 @@ export const coherencePath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/REFLEXIONRUTA7.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
             '<p>Preguntas para tu cuaderno emocional:</p>',
@@ -244,5 +233,3 @@ export const coherencePath: Path = {
     },
   ],
 };
-
-    
