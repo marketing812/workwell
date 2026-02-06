@@ -3,12 +3,12 @@ import { HistoricalResultsPageClient } from '@/components/assessment/HistoricalR
 import type { Metadata } from 'next';
 import type { RoutePageProps } from '@/types/page-props';
 
-export default async function Page({ params }: RoutePageProps<{ assessmentId: string }>) {
+export default async function Page({ params }: { params: { assessmentId: string } }) {
   const { assessmentId } = params;
   return <HistoricalResultsPageClient assessmentId={assessmentId} />;
 }
 
-export async function generateMetadata({ params }: RoutePageProps<{ assessmentId: string }>): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { assessmentId: string } }): Promise<Metadata> {
   const { assessmentId } = params;
   return { title: `Resultados de Evaluación ${assessmentId}` };
 }

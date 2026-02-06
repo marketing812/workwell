@@ -7,7 +7,7 @@ import type { RoutePageProps } from '@/types/page-props';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ params }: RoutePageProps<{ pathId: string }>) {
+export default async function Page({ params }: { params: { pathId: string } }) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
@@ -19,7 +19,7 @@ export default async function Page({ params }: RoutePageProps<{ pathId: string }
 }
 
 export async function generateMetadata(
-  { params }: RoutePageProps<{ pathId: string }>
+  { params }: { params: { pathId: string } }
 ): Promise<Metadata> {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
