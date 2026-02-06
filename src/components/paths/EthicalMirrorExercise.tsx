@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +14,8 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad',
@@ -95,15 +98,47 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
 
     const renderStep = () => {
         switch (step) {
-            case 0:
+            case 0: // New Intro
+                return (
+                    <div className="p-4 space-y-4 text-center">
+                        <p className="text-sm text-muted-foreground">
+                            Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.
+                        </p>
+                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    </div>
+                );
+            case 1: // New Example
+                return (
+                    <div className="p-4 space-y-4 text-center">
+                        <Accordion type="single" collapsible className="w-full text-left">
+                            <AccordionItem value="example">
+                                <AccordionTrigger>Ejemplo guiado</AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="space-y-3 text-sm p-2">
+                                        <p>Al finalizar el ejercicio podrías descubrir algo como esto…</p>
+                                        <p className="italic">Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia. En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es la decisión correcta para él.</p>
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+            case 2: // Old step 0
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 1: ¿Qué decisión estás valorando?</Label>
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} />
-                        <Button onClick={nextStep} className="w-full mt-4" disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        <div className="flex justify-between w-full pt-4">
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
                     </div>
                 );
-            case 1:
+            case 3: // Old step 1
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 2: ¿A quién se lo explicarías?</Label>
@@ -118,13 +153,13 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                             </SelectContent>
                         </Select>
                         {person === 'Otra' && <Textarea value={otherPerson} onChange={e => setOtherPerson(e.target.value)} placeholder="Describe a la otra persona..."/>}
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!person || (person === 'Otra' && !otherPerson.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 2:
+            case 4: // Old step 2
                 return(
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Explica tu decisión</h4>
@@ -158,13 +193,13 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                                 <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
                             )}
                         </div>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                      </div>
                 );
-            case 3:
+            case 5: // Old step 3
                 return(
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Evalúa tu coherencia</h4>
@@ -186,13 +221,13 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                                 <span>10 (Total)</span>
                             </div>
                         </div>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 4:
+            case 6: // Old step 4
                 return (
                     <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Consejo práctico</h4>
@@ -203,19 +238,19 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                         </div>
                     </div>
                 );
-            case 5:
+            case 7: // Old step 5
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajuste final y Guardado</h4>
                         <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi Cuaderno</Button>
                         </div>
                     </form>
                 );
-            case 6:
+            case 8: // Old step 6
                 return (
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -233,13 +268,14 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
-                    Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.
-                    <div className="mt-4">
-                        <audio controls controlsList="nodownload" className="w-full">
-                            <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3" type="audio/mp3" />
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                    </div>
+                    {content.audioUrl && (
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src={content.audioUrl} type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    )}
                 </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
