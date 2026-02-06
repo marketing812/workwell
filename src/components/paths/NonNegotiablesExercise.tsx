@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -11,6 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NonNegotiablesExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
+import { Input } from '../ui/input';
 
 const valuesList = [
     'Autenticidad', 'Honestidad', 'Respeto', 'Cuidado propio', 'Amor', 'Familia', 'Amistad', 'Pareja / Amor romántico',
@@ -49,7 +51,7 @@ export function NonNegotiablesExercise({ content, pathId, onComplete }: NonNegot
       if (nonNegotiables.length < 3) {
         setNonNegotiables(prev => [...prev, value]);
       } else {
-        toast({ title: "Límite alcanzado", description: "Solo puedes elegir hasta 3 valores no negociables."});
+        toast({ title: "Límite alcanzado", description: "Solo puedes elegir hasta 3 valores no negociables.", variant: "destructive"});
       }
     } else {
       setNonNegotiables(prev => prev.filter(v => v !== value));
@@ -135,7 +137,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
                   </div>
               </div>
               {initialValues['Otro'] && (
-                  <Textarea value={otherInitialValue} onChange={e => setOtherInitialValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />
+                  <Input value={otherInitialValue} onChange={e => setOtherInitialValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />
               )}
             </div>
              <div className="flex justify-between w-full mt-4">
@@ -149,7 +151,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
         return (
             <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 2: Elige tus 3 no negociables</h4>
-                <p className="text-sm text-muted-foreground">Menos es más. Elige solo los tres que sean tu línea roja de entre los que has seleccionado.</p>
+                <p className="text-sm text-muted-foreground">Menos es más. Elige solo los tres que sean tu línea roja de entre los que has seleccionado. ({nonNegotiables.length}/3)</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 border rounded-md">
                     {availableValues.map(v => (
                         <div key={v} className="flex items-center space-x-2">
@@ -219,16 +221,14 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && (
-          <CardDescription className="pt-2">
-            {content.objective}
-            <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-              </audio>
-            </div>
-          </CardDescription>
+        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.audioUrl && (
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src={content.audioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
         )}
       </CardHeader>
       <CardContent>
