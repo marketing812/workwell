@@ -3,9 +3,8 @@
 import { ai } from "@/ai/genkit";
 import { googleAI } from "@genkit-ai/google-genai";
 
-const embedder = googleAI.embedder("gemini-embedding-001");
-
 export async function embedText(text: string): Promise<number[]> {
+  const embedder = googleAI.embedder("gemini-embedding-001");
   const res: any = await ai.embed({
     embedder,
     content: text,
