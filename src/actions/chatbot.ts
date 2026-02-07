@@ -30,13 +30,22 @@ export async function sendMessageToChatbot(
       userName: validatedInput.userName,
     };
 
-    const result = await emotionalChatbot(input);
+const result = await emotionalChatbot(input);
 
-    if (!result || !result.response) {
-      throw new Error("Respuesta incompleta del chatbot IA.");
-    }
+// Normaliza a string
+const response =
+  typeof result === "string"
+    ? result
+    : typeof (result as any)?.response === "string"
+      ? (result as any).response
+      : "";
 
-    return { success: true, data: result };
+// Si viene vacío, devuelve un mensaje profesional (para que SIEMPRE haya algo que pintar)
+const safe = response.trim() !== ""
+  ? response.trim()
+  : "No he podido generar una respuesta útil con la información disponible. ¿Puedes reformular la pregunta o darme un poco más de contexto?";
+
+return { success: true, data: { response: safe } };
   } catch (error) {
     console.error("Error en sendMessageToChatbot:", error);
     // Provide a more user-friendly but still informative error

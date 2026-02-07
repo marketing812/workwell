@@ -50,3 +50,5 @@ export const db = admin.firestore(app);
 export const storage = admin.storage(app);
 export const authAdmin = admin.auth(app); // Renamed to avoid conflict with client-side auth
 export const FieldValue = admin.firestore.FieldValue;
+
+export { admin };

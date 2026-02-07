@@ -82,7 +82,7 @@ export function ChatInterface() {
         context,
         userName: currentUser?.name || undefined,
     });
-
+console.log("SERVER ACTION RESULT:", result);
     setIsLoading(false);
     if (result.success) {
       const botMessage: Message = {
