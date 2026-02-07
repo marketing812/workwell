@@ -7,11 +7,10 @@
 import { ai } from "@/ai/genkit";
 import { z } from "zod";
 import { googleAI } from "@genkit-ai/google-genai";
-import { admin } from "@/lib/firebase-admin";
+import { getDb } from "@/lib/firebase-admin";
 import { embedText } from "@/ai/rag/embed";
 
-// RAG (Retrieval-Augmented Generation) Logic moved here from retrieve.ts
-const db = admin.firestore();
+// RAG (Retrieval-Augmented Generation) Logic
 
 export type RetrievedChunk = {
   text: string;
@@ -102,6 +101,7 @@ export async function retrieveDocsContext(
   const k = opts?.k ?? 8;
   const minChars = opts?.minChars ?? 80;
 
+  const db = getDb();
   const qVec = await embedText(question);
 
   // Pedimos más candidatos para poder re-rankear por keyword

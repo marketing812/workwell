@@ -2,15 +2,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { getPostBySlug } from '@/data/resourcesData';
 
-interface RouteContext {
-  params: {
-    slug: string;
-  };
-}
-
 export async function GET(
     request: NextRequest,
-    { params }: RouteContext
+    { params }: { params: { slug: string } }
 ) {
     const { slug } = params;
 

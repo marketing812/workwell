@@ -1,6 +1,6 @@
 'use server';
 
-import { db, authAdmin, FieldValue } from "@/lib/firebase-admin";
+import { getDb, getAuthAdmin, FieldValue } from "@/lib/firebase-admin";
 
 export async function sendReminderEmailByUserId(
   userId: string,
@@ -9,6 +9,9 @@ export async function sendReminderEmailByUserId(
   try {
     if (!userId) return { success: false, error: "No userId provided." };
     if (!bodyHtml) return { success: false, error: "No email body provided." };
+
+    const authAdmin = getAuthAdmin();
+    const db = getDb();
 
     // 🔥 AQUÍ: obtener email desde Firebase Auth usando el admin SDK
     const userRecord = await authAdmin.getUser(userId);

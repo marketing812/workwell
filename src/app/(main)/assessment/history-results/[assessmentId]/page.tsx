@@ -1,16 +1,13 @@
+
 import { HistoricalResultsPageClient } from '@/components/assessment/HistoricalResultsPageClient';
 import type { Metadata } from 'next';
 
-interface HistoryResultsPageProps {
-  params: { assessmentId: string };
-}
-
-export default function Page({ params }: HistoryResultsPageProps) {
+export default function Page({ params }: { params: { assessmentId: string } }) {
   const { assessmentId } = params;
   return <HistoricalResultsPageClient assessmentId={assessmentId} />;
 }
 
-export async function generateMetadata({ params }: HistoryResultsPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { assessmentId: string } }): Promise<Metadata> {
   const { assessmentId } = params;
   return { title: `Resultados de Evaluación ${assessmentId}` };
 }
