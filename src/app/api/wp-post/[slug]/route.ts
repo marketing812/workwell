@@ -2,7 +2,13 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { getPostBySlug } from '@/data/resourcesData';
 
-export async function GET(request: NextRequest, context: { params: { slug: string } }) {
+interface WPPostRouteContext {
+  params: {
+    slug: string;
+  };
+}
+
+export async function GET(request: NextRequest, context: WPPostRouteContext) {
     const { slug } = context.params;
 
     try {

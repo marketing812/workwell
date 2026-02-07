@@ -2,9 +2,15 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { getPostsByCategory, getCategoryBySlug } from '@/data/resourcesData';
 
+interface CategoryRouteContext {
+  params: {
+    slug: string;
+  };
+}
+
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  context: CategoryRouteContext
 ) {
   const { slug } = context.params;
 
