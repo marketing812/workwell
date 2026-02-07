@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
-import { sendReminderEmailByUserId } from '@/actions/email';
 
 const MOOD_CHECKIN_KEY = 'workwell-mood-checkin-last-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 60; // Check every hour
@@ -48,54 +47,20 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
 
   useEffect(() => {
     if (showPopup) {
-      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic.");
+      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via API route.");
       const triggerEmailReminder = async () => {
         try {
-          const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
-          const API_KEY = "4463";
-          const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getavisoemail`;
-
-          console.log("useMoodCheckIn: Fetching email reminder notice from external API...");
-          const response = await fetch(url, { cache: 'no-store' });
-
-          if (response.ok) {
-            console.log("useMoodCheckIn: API call successful (response.ok). Parsing JSON...");
-            const result = await response.json();
-            console.log("useMoodCheckIn: API response parsed:", result);
-            if (result.status === 'OK' && result.message && result.data) {
-              const userId = result.message;
-              console.log(`useMoodCheckIn: API status is OK. Triggering email send for userId: ${userId}`);
-
-              const body =
-  typeof result.data === 'string'
-    ? result.data
-    : JSON.stringify(result.data);
-try {
-  console.log('ANTES server action', { userId, t: typeof result.data });
- 
-
-  const res = await sendReminderEmailByUserId(userId, body);
-  console.log('DESPUÉS server action', res);
-} catch (error: any) {
-  console.error(`[sendReminderEmailByUserId] Error processing reminder for userId ${userId}:`, error);
-
-  const msg =
-    error?.message ||
-    error?.toString?.() ||
-    'Unknown error';
-
-  return { success: false, error: msg };
-}
-
-            } else {
-              console.warn("useMoodCheckIn: getavisoemail responded OK, but with unexpected data:", result);
-            }
+          // Call the internal API route which handles server-side logic
+          const response = await fetch('/api/trigger-reminder');
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error("useMoodCheckIn: API route /api/trigger-reminder failed.", errorData);
           } else {
-            const errorText = await response.text();
-            console.error("useMoodCheckIn: Failed to fetch getavisoemail. Status:", response.status, "Response text:", errorText);
+            const result = await response.json();
+            console.log("useMoodCheckIn: API route /api/trigger-reminder responded.", result.message);
           }
         } catch (error) {
-          console.error("useMoodCheckIn: Error in triggerEmailReminder logic:", error);
+          console.error("useMoodCheckIn: Error calling /api/trigger-reminder.", error);
         }
       };
 
