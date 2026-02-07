@@ -1,5 +1,3 @@
-'use server';
-
 import { db, authAdmin, FieldValue } from "@/lib/firebase-admin";
 
 export async function sendReminderEmailByUserId(

@@ -1,6 +1,3 @@
-
-'use server';
-
 /**
  * @fileOverview An AI-powered assistant that answers questions based on a provided knowledge base.
  *

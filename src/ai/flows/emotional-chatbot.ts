@@ -1,5 +1,3 @@
-"use server";
-
 /**
  * @fileOverview An AI-powered chatbot for emotional support and guidance using Cognitive-Behavioral Therapy principles.
  */

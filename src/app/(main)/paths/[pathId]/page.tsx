@@ -2,11 +2,10 @@ import { pathsData } from '@/data/pathsData';
 import { PathDetailClient } from '@/components/paths/PathDetailClient';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import type { RoutePageProps } from '@/types/page-props';
 
 export const dynamic = 'force-dynamic';
 
-export default function Page({ params }: RoutePageProps<{ pathId: string }>) {
+export default function Page({ params }: { params: { pathId: string } }) {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);
 
@@ -18,7 +17,7 @@ export default function Page({ params }: RoutePageProps<{ pathId: string }>) {
 }
 
 export async function generateMetadata(
-  { params }: RoutePageProps<{ pathId: string }>
+  { params }: { params: { pathId: string } }
 ): Promise<Metadata> {
   const { pathId } = params;
   const path = pathsData.find(p => p.id === pathId);

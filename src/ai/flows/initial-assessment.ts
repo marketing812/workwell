@@ -1,5 +1,3 @@
-
-'use server';
 /**
  * @fileOverview An AI agent for conducting an initial psychological assessment.
  *
