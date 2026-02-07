@@ -8,9 +8,12 @@ import { ArrowRight, AlertTriangle, Loader2 } from 'lucide-react';
 import { type ResourcePost, type ResourceCategory } from '@/data/resourcesData';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
-// Este componente ahora es cliente y recibe `slug` como prop.
-function CategoryClientPage({ slug }: { slug: string }) {
+export default function CategoryPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+
   const [category, setCategory] = useState<ResourceCategory | null>(null);
   const [posts, setPosts] = useState<ResourcePost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -144,9 +147,4 @@ function CategoryClientPage({ slug }: { slug: string }) {
       )}
     </div>
   );
-}
-
-// Este es el componente de servidor que extrae el slug y lo pasa al componente de cliente.
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-    return <CategoryClientPage slug={params.slug} />;
 }
