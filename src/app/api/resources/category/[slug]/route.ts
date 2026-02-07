@@ -2,8 +2,14 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { getPostsByCategory, getCategoryBySlug } from '@/data/resourcesData';
 
-export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
-  const { slug } = params;
+interface RouteContext {
+  params: {
+    slug: string;
+  };
+}
+
+export async function GET(request: NextRequest, context: RouteContext) {
+  const { slug } = context.params;
 
   try {
     const category = await getCategoryBySlug(slug);
