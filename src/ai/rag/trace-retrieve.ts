@@ -1,11 +1,9 @@
 
 "use server";
 
-import { admin } from "@/lib/firebase-admin";
+import { db, FieldValue } from "@/lib/firebase-admin";
 import { embedText } from "../rag/embed";
 import { QueryDocumentSnapshot } from 'firebase-admin/firestore';
-
-const db = admin.firestore();
 
 async function main() {
   const q = process.argv.slice(2).join(" ") || "terapia cognitiva beck reestructuración cognitiva";
@@ -30,7 +28,7 @@ async function main() {
 
   // C) Ejecutar vector search y mostrar resultados
   // @ts-ignore
-  const snap = await db.collection("kb-chunks").findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
+  const snap = await db.collection("kb-chunks").findNearest("embedding", FieldValue.vector(qVec), {
     limit: 6,
     distanceMeasure: "COSINE",
   }).get();
@@ -48,5 +46,3 @@ main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
-
-    

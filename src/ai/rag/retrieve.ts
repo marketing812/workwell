@@ -1,7 +1,5 @@
-import { admin } from "@/lib/firebase-admin";
+import { db, FieldValue } from "@/lib/firebase-admin";
 import { embedText } from "./embed";
-
-const db = admin.firestore();
 
 export type RetrievedChunk = {
   text: string;
@@ -22,7 +20,7 @@ export async function retrieveDocsContext(
   const snap = await db
     .collection("kb-chunks")
     // @ts-ignore
-    .findNearest("embedding", admin.firestore.FieldValue.vector(qVec), {
+    .findNearest("embedding", FieldValue.vector(qVec), {
       limit: k,
       distanceMeasure: "COSINE",
     })

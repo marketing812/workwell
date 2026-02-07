@@ -1,27 +1,6 @@
 'use server';
 
-import admin from "firebase-admin";
-
-function getAdminApp() {
-  if (admin.apps.length) return admin.app();
-
-  const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
-  if (!raw) throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_JSON");
-
-  let cleaned = raw.trim();
-  if (
-    (cleaned.startsWith("'") && cleaned.endsWith("'")) ||
-    (cleaned.startsWith('"') && cleaned.endsWith('"'))
-  ) {
-    cleaned = cleaned.slice(1, -1);
-  }
-
-  const serviceAccount = JSON.parse(cleaned);
-
-  return admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
-}
+import { db, authAdmin, FieldValue } from "@/lib/firebase-admin";
 
 export async function sendReminderEmailByUserId(
   userId: string,
@@ -31,11 +10,8 @@ export async function sendReminderEmailByUserId(
     if (!userId) return { success: false, error: "No userId provided." };
     if (!bodyHtml) return { success: false, error: "No email body provided." };
 
-    const app = getAdminApp();
-    const db = admin.firestore(app);
-
-    // 🔥 AQUÍ: obtener email desde Firebase Auth
-    const userRecord = await admin.auth(app).getUser(userId);
+    // 🔥 AQUÍ: obtener email desde Firebase Auth usando el admin SDK
+    const userRecord = await authAdmin.getUser(userId);
 
     const userEmail = userRecord.email;
     if (!userEmail) {
@@ -49,7 +25,7 @@ export async function sendReminderEmailByUserId(
         subject: "Recordatorio de EMOTIVA",
         html: bodyHtml,
       },
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
       meta: {
         kind: "mood-checkin-reminder",
         userId,

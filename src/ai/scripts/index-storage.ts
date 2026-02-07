@@ -1,12 +1,11 @@
-import { admin } from "@/lib/firebase-admin";
+import { db, storage, FieldValue } from "@/lib/firebase-admin";
 import { PDFParse } from "pdf-parse";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";
 import * as path from "node:path";
 import { embedText } from "../rag/embed";
 
-const db = admin.firestore();
-const bucket = admin.storage().bucket();
+const bucket = storage.bucket();
 
 function chunkText(text: string, size = 1200, overlap = 200) {
   const clean = text.replace(/\s+/g, " ").trim();
@@ -66,10 +65,10 @@ async function main() {
       //console.log("EMBEDDING_DIM=", embedding.length);return;
       await db.collection("kb-chunks").add({
         text: chunk,
-        embedding: admin.firestore.FieldValue.vector(embedding),
+        embedding: FieldValue.vector(embedding),
         source: file.name,
         chunkIndex: idx,
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        createdAt: FieldValue.serverTimestamp(),
       });
     }
 
