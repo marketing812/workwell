@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -30,7 +30,7 @@ export function MyPactExercise({ content, pathId, onComplete }: MyPactExercisePr
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setCommitment('');
@@ -102,7 +102,7 @@ ${reminder}
             <h4 className="font-semibold text-lg">Paso 2: ¿Cómo me lo recordaré?</h4>
             <p className="text-sm text-muted-foreground">Tu compromiso necesita una señal que lo mantenga vivo. Cuando estás en medio del caos, del cansancio o de la rutina… es fácil olvidarse de lo que te has propuesto. Por eso, aquí vas a elegir un recordatorio concreto, algo visible, físico o cotidiano que te recuerde volver a ti.</p>
              <div className="p-2 border-l-2 border-accent bg-accent/10 text-sm">
-                <p>💡 No se trata de una frase emocional profunda (eso vendrá en el siguiente paso), sino de algo que puedas ver, hacer o tocar para reconectar con tu ancla interna.</p>
+                <p>No se trata de una frase emocional profunda (eso vendrá en el siguiente paso), sino de algo que puedas ver, hacer o tocar para reconectar con tu ancla interna.</p>
             </div>
             <Label>¿Qué puedes usar como recordatorio?</Label>
             <RadioGroup value={reminderType} onValueChange={setReminderType}>
@@ -122,7 +122,7 @@ ${reminder}
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Una frase que me acompañe</h4>
-            <p className="text-sm text-muted-foreground">Ahora recoge lo vivido y tradúcelo en palabras que te sostengan. Esta frase no tiene que ser perfecta, solo auténtica. ¿Qué quieres decirte a ti mismo/a cuando te sientas perdido/a, agotado/a o en lucha?</p>
+            <p className="text-sm text-muted-foreground">Ahora recoge lo vivido y tradúcelo en palabras que te sostengan. Esta frase no tiene que ser perfecta. Solo auténtica. ¿Qué quieres decirte a ti mismo/a cuando te sientas perdido/a, agotado/a o en lucha?</p>
              <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                 <p><strong>Ejemplos reales:</strong></p>
                 <ul className="list-disc list-inside">
@@ -146,7 +146,8 @@ ${reminder}
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Pacto Guardado</h4>
             <p className="text-muted-foreground">
-              Este pacto no es una obligación. Es una forma de cuidarte con conciencia, de recordarte lo que vales, y de tener un faro cuando lleguen días grises. Llévalo contigo. Porque esto no se acaba… solo empieza de otra manera.
+              Este pacto no es una obligación. Es una forma de cuidarte con conciencia, de recordarte lo que vales, y de tener un faro cuando lleguen días grises. Llévalo contigo. 
+              Porque esto no se acaba… solo empieza de otra manera.
             </p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Crear otro pacto</Button>
           </div>
@@ -166,7 +167,7 @@ ${reminder}
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
-                            <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3" type="audio/mp3" />
+                            <source src={content.audioUrl} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
