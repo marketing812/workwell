@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -32,7 +31,7 @@ const emotionOptions = [
     { id: 'frustracion', label: 'Frustración' },
 ];
 
-export function InternalTensionsMapExercise({ content, pathId, onComplete }: InternalTensionsMapExerciseProps) {
+export default function InternalTensionsMapExercise({ content, pathId, onComplete }: InternalTensionsMapExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -80,25 +79,30 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
         setIsSaved(true);
         nextStep();
     };
-
+  
     const renderStep = () => {
+        const finalEmotions = emotionOptions.filter(e => emotions[e.id]).map(e => e.label);
+        if (emotions['otra'] && otherEmotion.trim()) {
+            finalEmotions.push(otherEmotion.trim());
+        }
+
         switch (step) {
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">¿Alguna vez has sentido que una parte de ti quiere ir en una dirección… pero otra parte tira hacia el lado opuesto? Ese estirón interno cansa, confunde y a veces te deja con la sensación de que no sabes qué quieres. Hoy vamos a ponerle orden a esa cuerda interna para que puedas aflojarla.</p>
+                        <p>¿Alguna vez has sentido que una parte de ti quiere ir en una dirección… pero otra parte tira hacia el lado opuesto? Ese estirón interno cansa, confunde y a veces te deja con la sensación de que no sabes qué quieres. Hoy vamos a ponerle orden a esa cuerda interna para que puedas aflojarla.</p>
                         <Button onClick={nextStep}>Empezar mi mapa <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 );
             case 1: // Ejemplo guiado
                  return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Al finalizar el ejercicio te darás cuenta de algo así…</p>
+                        <p>Al finalizar el ejercicio te darás cuenta de algo así…</p>
                         <Accordion type="single" collapsible className="w-full text-left">
                             <AccordionItem value="example">
                                 <AccordionTrigger>Ver ejemplo</AccordionTrigger>
                                 <AccordionContent>
-                                    <p className="text-sm text-muted-foreground">María nota que se enfada cuando acepta encargos extra en el trabajo. Al hacer el mapa, ve que siempre piensa: “Si digo que no, decepcionaré a mi jefe”. La emoción que surge es ansiedad. La acción es aceptar. Conclusión: necesita practicar pedir más tiempo o negociar plazos.</p>
+                                    <p className="text-sm">María nota que se enfada cuando acepta encargos extra en el trabajo. Al hacer el mapa, ve que siempre piensa: “Si digo que no, decepcionaré a mi jefe”. La emoción que surge es ansiedad. La acción es aceptar. Conclusión: necesita practicar pedir más tiempo o negociar plazos.</p>
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
@@ -136,7 +140,7 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 3: Identifica la emoción dominante</h4>
-                        <p className="text-sm text-muted-foreground">Selecciona todas las que apliquen. Si no ves tu emoción, escríbela.</p>
+                        <p>Selecciona todas las que apliquen. Si no ves tu emoción, escríbela.</p>
                         <div className="grid grid-cols-2 gap-2">
                           {emotionOptions.map(opt => (
                               <div key={opt.id} className="flex items-center space-x-2">
@@ -198,7 +202,7 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
             case 8: // Consejo y Guardado
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="italic text-muted-foreground">“No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.”</p>
+                        <p className="italic">“No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.”</p>
                         <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi mapa</Button>
                         <Button onClick={prevStep} variant="outline" className="w-full">Atrás</Button>
                     </div>
@@ -208,13 +212,13 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Mapa Guardado</h4>
-                        <p className="text-muted-foreground">Tu mapa de tensiones internas ha sido guardado. Puedes volver a él cuando necesites claridad.</p>
+                        <p>Tu mapa de tensiones internas ha sido guardado. Puedes volver a él cuando necesites claridad.</p>
                         <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
                     </div>
                 );
             default: return null;
         }
-    }
+    };
 
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
@@ -222,7 +226,7 @@ export function InternalTensionsMapExercise({ content, pathId, onComplete }: Int
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
                     {content.objective}
-                    <div className="text-sm text-muted-foreground mt-2">Tiempo aproximado: {content.duration}. Te recomiendo hacerlo 3 o 4 veces esta semana, sobre todo después de una situación que te haya dejado malestar o duda.</div>
+                    <div className="text-sm mt-2">Tiempo aproximado: {content.duration}. Te recomiendo hacerlo 3 o 4 veces esta semana, sobre todo después de una situación que te haya dejado malestar o duda.</div>
                 </CardDescription>
                 {content.audioUrl && (
                     <div className="mt-4">

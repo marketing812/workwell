@@ -36,7 +36,7 @@ interface SmallDecisionsLogExerciseProps {
   onComplete: () => void;
 }
 
-export function SmallDecisionsLogExercise({ content, pathId, onComplete }: SmallDecisionsLogExerciseProps) {
+export default function SmallDecisionsLogExercise({ content, pathId, onComplete }: SmallDecisionsLogExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -93,7 +93,7 @@ export function SmallDecisionsLogExercise({ content, pathId, onComplete }: Small
                 return (
                     <div className="p-4 space-y-6 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Registra 2 decisiones de hoy</h4>
-                        <p className="text-sm text-muted-foreground">Piensa en dos decisiones que hayas tomado hoy. Pueden ser muy simples o más complejas: Ejemplos: “He dicho sí a un plan que no me apetecía.” “Me he tomado un descanso aunque tenía cosas pendientes.” “He respondido rápido sin pensar lo que realmente quería decir.” </p>
+                        <p>Piensa en dos decisiones que hayas tomado hoy. Pueden ser muy simples o más complejas: Ejemplos: “He dicho sí a un plan que no me apetecía.” “Me he tomado un descanso aunque tenía cosas pendientes.” “He respondido rápido sin pensar lo que realmente quería decir.” </p>
                         {logs.map((log, index) => (
                              <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
                                 <Label htmlFor={`decision-${index}`}>Decisión {index + 1}:</Label>
@@ -143,7 +143,7 @@ export function SmallDecisionsLogExercise({ content, pathId, onComplete }: Small
                     <div className="p-4 text-center space-y-4">
                         <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                         <h4 className="font-semibold text-lg">Registro Guardado</h4>
-                        <p className="text-sm text-muted-foreground">Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
+                        <p>Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
                         <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
                     </div>
                 );

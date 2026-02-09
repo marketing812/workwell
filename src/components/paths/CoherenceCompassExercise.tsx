@@ -43,7 +43,7 @@ interface CoherenceCompassExerciseProps {
   onComplete: () => void;
 }
 
-export function CoherenceCompassExercise({ content, pathId, onComplete }: CoherenceCompassExerciseProps) {
+export default function CoherenceCompassExercise({ content, pathId, onComplete }: CoherenceCompassExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -159,7 +159,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
             case 0:
                 return (
                     <div className="p-4 space-y-2">
-                        <p className="text-sm text-muted-foreground">Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, piensa si lo que piensas, sientes y haces está en sintonía… o si notas contradicción o tensión.    Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia): </p>
+                        <p>A veces vivimos en piloto automático, sin darnos cuenta de que algunos de nuestros entornos o relaciones nos alejan de lo que de verdad nos importa. Este ejercicio te invita a hacer una pausa y dibujar tu propio “mapa de coherencia”. No es para juzgarte, sino para que tomes conciencia y recuperes el poder de elegir dónde poner tu energía.</p>
                         <Label className="font-semibold">Identifica tus entornos clave:</Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {environments.map(e => (
@@ -200,7 +200,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                                 <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
                                 <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
                             </div>
-                        )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
+                        )) : <p className="text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
                         <div className="flex justify-between w-full">
                             <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={nextStep} disabled={activeAreas.length === 0}>Siguiente</Button>
@@ -211,7 +211,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Selecciona tus dos zonas de mayor alineación</h4>
-                        <p className="text-sm text-muted-foreground">Ahora observa: ¿en qué dos áreas sientes más coherencia contigo misma/o? Elige esas dos y responde:</p>
+                        <p>Ahora observa: ¿en qué dos áreas sientes más coherencia contigo misma/o? Elige esas dos y responde:</p>
                         <blockquote className="p-3 border-l-2 border-accent bg-accent/10 italic text-sm">
                             Ejemplo de inspiración: “En mi relación con mi hermana he aprendido a decir lo que pienso sin miedo. Eso me da calma y orgullo.”
                         </blockquote>
@@ -233,7 +233,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Detecta una zona de desconexión</h4>
-                        <p className="text-sm text-muted-foreground">Ahora identifica una de las áreas donde sientes más contradicción o conflicto interno. ¿Qué crees que te impide ser más coherente en esa parte de tu vida? Puedes explorar si hay miedo, necesidad de agradar, cansancio, confusión…</p>
+                        <p>Ahora identifica una de las áreas donde sientes más contradicción o conflicto interno. ¿Qué crees que te impide ser más coherente en esa parte de tu vida? Puedes explorar si hay miedo, necesidad de agradar, cansancio, confusión…</p>
                          <blockquote className="p-3 border-l-2 border-accent bg-accent/10 italic text-sm">
                             Ejemplo: “En el trabajo, valoro la honestidad, pero suelo callarme para no incomodar. Me frustra y me desconecta de mí.”
                         </blockquote>
@@ -251,7 +251,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 return (
                     <div className="p-4 text-center space-y-4">
                         <h4 className="font-semibold text-lg">Tu Mapa de Coherencia</h4>
-                        <p className="text-sm text-muted-foreground">Este gráfico muestra la "coherencia" de cada entorno. Una puntuación alta indica que te apoya y no te drena. Una baja, lo contrario.</p>
+                        <p>Este gráfico muestra la "coherencia" de cada entorno. Una puntuación alta indica que te apoya y no te drena. Una baja, lo contrario.</p>
                          <ChartContainer config={chartConfig} className="w-full aspect-square h-[350px]">
                             <RadarChart data={chartData}>
                                 <ChartTooltip
@@ -282,7 +282,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                 return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                       <h4 className="font-semibold text-lg text-center">Cierre y reflexión</h4>
-                      <p className="text-sm text-muted-foreground text-center">
+                      <p className="text-sm text-center">
                         Esta brújula no tiene por qué darte todas las respuestas ahora. Solo busca que empieces a mirarte con más claridad y menos juicio. El primer paso hacia la coherencia es atreverte a ver.
                       </p>
                       <div className="space-y-2 pt-4">
@@ -314,7 +314,7 @@ export function CoherenceCompassExercise({ content, pathId, onComplete }: Cohere
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Brújula Guardada</h4>
-                        <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
+                        <p>Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
                         <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
                     </div>
                 )

@@ -212,7 +212,7 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent className="px-4 pb-4 border-t">
-                                <p className="text-sm text-muted-foreground mt-2 mb-4">{section.prompt}</p>
+                                <p className="mt-2 mb-4">{section.prompt}</p>
                                 { 'categories' in section && (
                                     <div className="space-y-4">
                                         {Object.entries(section.categories).map(([catKey, category]) => (

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -68,7 +67,7 @@ const techniques = {
   }
 };
 
-export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniquesExerciseProps) {
+export default function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniquesExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [personalizedPhrases, setPersonalizedPhrases] = useState<Record<keyof typeof techniques, string>>({
@@ -127,7 +126,7 @@ export function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTechniques
                         <p><strong className="text-foreground">¿Qué logra?</strong> {tech.goal}</p>
                         <div className="space-y-1">
                           <p><strong className="text-foreground">¿Cómo construirla?</strong></p>
-                          <p className="text-muted-foreground whitespace-pre-line">{tech.howToBuild}</p>
+                          <p className="whitespace-pre-line">{tech.howToBuild}</p>
                         </div>
                         <div className="p-2 border-l-2 border-accent bg-accent/10 italic">
                             <p><strong>Frase base de ejemplo:</strong></p>
