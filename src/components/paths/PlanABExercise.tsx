@@ -18,7 +18,7 @@ interface PlanABExerciseProps {
   onComplete: () => void;
 }
 
-export function PlanABExercise({ content, pathId, onComplete }: PlanABExerciseProps) {
+export default function PlanABExercise({ content, pathId, onComplete }: PlanABExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0); // State for multi-step flow

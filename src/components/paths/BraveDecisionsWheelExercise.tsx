@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -17,7 +18,7 @@ interface BraveDecisionsWheelExerciseProps {
   onComplete: () => void;
 }
 
-export function BraveDecisionsWheelExercise({ content, pathId, onComplete }: BraveDecisionsWheelExerciseProps) {
+export default function BraveDecisionsWheelExercise({ content, pathId, onComplete }: BraveDecisionsWheelExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

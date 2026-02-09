@@ -33,7 +33,7 @@ const IntensityScaleGuide = () => (
 );
 
 
-export function IntensityScaleExercise({ content, pathId, onComplete }: IntensityScaleExerciseProps) {
+export default function IntensityScaleExercise({ content, pathId, onComplete }: IntensityScaleExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -87,7 +87,7 @@ export function IntensityScaleExercise({ content, pathId, onComplete }: Intensit
     switch (step) {
       case 0:
         return (
-          <div className="p-4 text-center space-y-4">
+          <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">No todas las emociones intensas necesitan la misma respuesta. A veces un poco de malestar se resuelve con respirar. Otras veces necesitas parar por completo y pedir ayuda. Este ejercicio te ayudará a crear una brújula emocional para saber qué hacer según cómo te sientes.</p>
             <Button onClick={nextStep}>Crear mi plan <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
