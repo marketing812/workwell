@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -188,7 +189,7 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -212,7 +213,7 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent className="px-4 pb-4 border-t">
-                                <p className="mt-2 mb-4">{section.prompt}</p>
+                                <p className="mt-2 mb-4 text-foreground">{section.prompt}</p>
                                 { 'categories' in section && (
                                     <div className="space-y-4">
                                         {Object.entries(section.categories).map(([catKey, category]) => (
@@ -288,3 +289,4 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
     </Card>
   );
 }
+

@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -91,7 +90,7 @@ export default function StressMapExercise({ content, onComplete }: StressMapExer
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
@@ -104,7 +103,7 @@ export default function StressMapExercise({ content, onComplete }: StressMapExer
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <p className="text-sm text-foreground/80 italic">Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
+          <p className="text-foreground/80 italic">Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
           
           <div>
             <Label htmlFor="situation" className="font-semibold">1. Situación (Qué ocurrió)</Label>
@@ -291,3 +290,4 @@ export default function StressMapExercise({ content, onComplete }: StressMapExer
     </Card>
   );
 }
+

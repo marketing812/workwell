@@ -61,7 +61,7 @@ ${tomorrowPlan}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         <CardDescription>
             {content.objective}
-             <p className='text-xs'>Duración: 3–5 minutos diarios. Realizar al final del día o antes de dormir.</p>
+             <p className='text-xs'>Duración: 3–5 minutos diarios. Realizar al final del día o antes de dormir.</p>
         </CardDescription>
          <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="example">

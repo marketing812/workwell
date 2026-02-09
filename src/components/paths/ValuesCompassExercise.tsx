@@ -66,7 +66,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     const activeAreas = useMemo(() => lifeAreas.filter(area => selectedAreas[area.id]), [selectedAreas]);
 
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
     const handleSave = () => {
         let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Brújula de Valores:**\n\n`;
@@ -136,7 +136,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
           return (
               <div className="p-4 space-y-4">
                 <h3 className="font-bold text-lg text-center">Tu Brújula de Valores</h3>
-                <p className="text-sm text-muted-foreground">Te mostramos ahora un resumen visual con tus áreas prioritarias y los valores que representan. Esta brújula te ayuda a tomar decisiones con más coherencia y a reconectar contigo cuando te sientas perdida o dispersa.</p>
+                <p className="text-sm text-foreground">Te mostramos ahora un resumen visual con tus áreas prioritarias y los valores que representan. Esta brújula te ayuda a tomar decisiones con más coherencia y a reconectar contigo cuando te sientas perdida o dispersa.</p>
                 <div className="border rounded-lg overflow-hidden">
                   <Table>
                     <TableHeader>
@@ -157,7 +157,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                     </TableBody>
                   </Table>
                 </div>
-                <p className="italic text-sm text-muted-foreground text-center">Mira esta brújula cada vez que tengas que tomar una decisión difícil. Volver a tus valores es como volver a casa.</p>
+                <p className="italic text-sm text-foreground text-center">Mira esta brújula cada vez que tengas que tomar una decisión difícil. Volver a tus valores es como volver a casa.</p>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={handleSave} className="w-auto">
@@ -171,7 +171,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="p-4 text-center space-y-4">
               <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
               <h4 className="font-bold text-lg">Brújula Guardada</h4>
-              <p className="text-muted-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
+              <p className="text-foreground">Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
               <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={() => {
@@ -191,7 +191,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
                 {content.objective && (
-                    <CardDescription className="pt-2">
+                    <CardDescription>
                         {content.objective}
                         {content.audioUrl && (
                             <div className="mt-4">

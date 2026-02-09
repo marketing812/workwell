@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -42,7 +43,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && (
-            <CardDescription className="pt-2">
+            <CardDescription>
                 {content.objective}
                  <div className="mt-4 space-y-4">
                     <div>
@@ -81,7 +82,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
             <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
-                <p className="text-muted-foreground">Has practicado una forma poderosa de hablarte. Recuerda que puedes volver a este ejercicio siempre que lo necesites.</p>
+                <p className="text-foreground">Has practicado una forma poderosa de hablarte. Recuerda que puedes volver a este ejercicio siempre que lo necesites.</p>
                 <Button onClick={() => setIsCompleted(false)} variant="outline" className="w-full">Repetir Práctica</Button>
             </div>
         )}

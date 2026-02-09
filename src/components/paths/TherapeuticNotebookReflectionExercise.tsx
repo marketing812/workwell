@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,7 +11,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TherapeuticNotebookReflection } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 
-function TherapeuticNotebookReflectionExercise({
+export default function TherapeuticNotebookReflectionExercise({
   content,
   pathId,
   pathTitle,
@@ -114,4 +115,3 @@ ${reflection}
   );
 }
 
-export default TherapeuticNotebookReflectionExercise;
