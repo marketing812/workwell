@@ -37,7 +37,7 @@ export const resiliencePath: Path = {
         { type: 'resilienceTimelineExercise', title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE', objective: 'Con este ejercicio descubrirás los recursos internos que ya has usado (aunque no fueras consciente) en momentos difíciles. Te ayudará a recordar que no partes de cero, y que ya has sido resiliente más veces de las que crees.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica1.mp3' },
         { type: 'personalDefinitionExercise', title: 'Técnica 2: Mi definición personal de resiliencia', objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['<ul><li>¿Qué es realmente la resiliencia?</li><li>¿Qué he aprendido de mí en los momentos más difíciles que he atravesado?</li><li>¿Cómo quiero relacionarme con mis dificultades a partir de ahora?</li><li>¿Por qué quiero comprometerme con mi proceso de resiliencia?</li></ul>']},
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
         { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
@@ -63,8 +63,8 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min' },
         { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>']},
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion2ruta8.mp3' },
         { type: 'list', items: ['Antes de resolver, es necesario sostenerte por dentro.', 'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.', 'Las emociones se regulan mejor cuando puedes nombrarlas, respirarlas y comprenderlas.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] },
         { type: 'quote', text: 'Respira. No tienes que tenerlo todo resuelto para dar un paso.' }
@@ -89,7 +89,7 @@ export const resiliencePath: Path = {
         { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Cuando tienes miedo, tu mente tiende a encerrarse en una única salida: evitar, posponer o rendirte. Pero en realidad, hay muchas formas de mirar lo que te ocurre. Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3' },
         { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional', objective: 'A veces no tomamos decisiones por miedo a “y si no sale bien”. Pero el valor no está en garantizar el resultado. Está en atreverte a dar un paso sabiendo que puedes cuidarte si las cosas no salen como esperabas.  \n\nEsta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion3ruta8_1.mp3', prompts: ['<ul><li>¿Qué aprendí sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion3ruta8.mp3' },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
         { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
@@ -110,7 +110,11 @@ export const resiliencePath: Path = {
           { type: 'collapsible', title: 'Reescribir tu historia', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Todos tenemos una historia. Pero lo que más influye en cómo nos sentimos hoy no es el hecho en sí, sino la forma en que lo interpretamos.\nPor ejemplo:\n•\t“Fallé” puede convertirse en “Tuve el coraje de intentarlo”.\n•\t“Estaba rota” puede transformarse en “Empecé a reconstruirme desde ahí”.\nNo se trata de mentirte. Se trata de ver la otra cara que también es cierta, pero que quizás no habías reconocido.\nContarte tu historia desde un lugar más compasivo y valiente te cambia por dentro.' }] },
           { type: 'collapsible', title: 'De víctima a protagonista', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.\nCuando reconoces que lo hiciste lo mejor que pudiste.\nCuando te das cuenta de todo lo que has sostenido.\nCuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.\nY ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }] },
           { type: 'collapsible', title: 'No solo haces resiliencia. Eres resiliencia.', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.\nEs la nueva manera en la que te hablas.\nEs el permiso que te das para sentir sin romperte.\nEs el compromiso que asumes contigo, incluso cuando no hay motivación.\nTu identidad se va construyendo con cada elección cotidiana.\nY hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.' }] },
-          { type: 'collapsible', title: 'Tu historia continúa', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio8sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }] },
+          {
+            type: 'collapsible',
+            title: 'Tu historia continúa',
+            content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
+          },
           { type: 'title', text: 'Técnicas Específicas' },
           {
               type: 'changeTimelineExercise',
@@ -126,40 +130,12 @@ export const resiliencePath: Path = {
               duration: '10-15 min',
               audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3'
           },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3',
-          prompts: [
-            '<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>',
-            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
-            '<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>',
-            '<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>'
-          ] 
-        },
-        { 
-          type: 'title', 
-          text: 'Resumen Clave de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'
-        },
-        { 
-          type: 'list', 
-          items: [
-              'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
-              'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
-              'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
-              'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'
-            ]
-        },
-        {
-          type: 'quote',
-          text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'
-        },
-        {
-          type: 'paragraph',
-          text: 'Sigue adelante. Ya no caminas desde el mismo lugar.'
-        }
-      ]
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3', prompts: ['<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>','<p><b>Preguntas para tu cuaderno emocional:</b></p>','<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>','<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>']},
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'},
+        { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.']},
+        { type: 'quote', text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'},
+        { type: 'paragraph', text: 'Sigue adelante. Ya no caminas desde el mismo lugar.'}
+        ]
     },
     {
       id: 'res_cierre',
@@ -171,9 +147,7 @@ export const resiliencePath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta de Resiliencia',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionfinalruta8.mp3',
-          prompts: [
-            '<ul><li>¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?</li><li>¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?</li><li>¿Qué cambio he notado en mi forma de responder ante las dificultades?</li><li>¿Qué frase o imagen me llevo como símbolo de mi resiliencia?</li><li>¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?</li></ul>'
-          ],
+          prompts: ['<ul><li>¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?</li><li>¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?</li><li>¿Qué cambio he notado en mi forma de responder ante las dificultades?</li><li>¿Qué frase o imagen me llevo como símbolo de mi resiliencia?</li><li>¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?</li></ul>'],
         },
         {
           type: 'title',
@@ -183,10 +157,15 @@ export const resiliencePath: Path = {
         {
           type: 'list',
           items: [
-            'La resiliencia no es ausencia de dolor, sino la capacidad de reconstruirse a pesar de él.',
-            'Entender tus patrones emocionales te da poder para regularte y responder con más calma.',
-            'Decidir desde el valor y la confianza, no desde el miedo, fortalece tu autoestima y tu dirección.',
-            'Cada paso, por pequeño que sea, es un acto de resiliencia que te acerca a la vida que quieres vivir.'
+            'Comprendí que la resiliencia no es innata, sino entrenable.',
+            'Identifiqué mis detonantes internos y aprendí a regularme.',
+            'Descubrí que puedo decidir desde el valor y no solo desde el miedo.',
+            'Reescribí mi historia desde la fuerza y el aprendizaje.',
+            'Reconocí mis recursos personales y los guardé en mi caja de herramientas.',
+            'Practiqué el autocuidado emocional como un acto de fortaleza.',
+            'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
+            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.',
+            'La resiliencia no es una meta: es una forma de caminar. Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.'
           ],
         },
         { type: 'quote', text: 'No eres la misma persona que empezó esta ruta. Eres alguien que sabe cómo sostenerte. Y eso, es un superpoder.' }
@@ -195,4 +174,5 @@ export const resiliencePath: Path = {
   ]
 };
 
+    
     
