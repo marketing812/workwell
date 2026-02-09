@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState } from 'react';
@@ -101,14 +100,14 @@ ${selectedItems.map(item => `- ${item}`).join('\n')}
       <CardContent>
         {step === 0 && (
           <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Antes de actuar o tomar una decisión, te invitamos a hacer una breve pausa y revisar algunas preguntas clave. Este pequeño gesto puede ayudarte a elegir con más claridad y en sintonía con lo que realmente te importa. Solo tienes que leer cada pregunta con calma, responderte con honestidad y observar qué sensación te deja. Al final, podrás notar si la decisión que estás a punto de tomar te acerca o te aleja de tu dirección vital. No se trata de hacerlo perfecto, sino de aprender a escucharte un poco más antes de actuar.</p>
+            <p>Antes de actuar o tomar una decisión, te invitamos a hacer una breve pausa y revisar algunas preguntas clave. Este pequeño gesto puede ayudarte a elegir con más claridad y en sintonía con lo que realmente te importa. Solo tienes que leer cada pregunta con calma, responderte con honestidad y observar qué sensación te deja. Al final, podrás notar si la decisión que estás a punto de tomar te acerca o te aleja de tu dirección vital. No se trata de hacerlo perfecto, sino de aprender a escucharte un poco más antes de actuar.</p>
             <Button onClick={nextStep}>Comenzar Checklist <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         )}
         {step === 1 && (
             <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Checklist del Sentido</h4>
-                <p className="text-sm text-muted-foreground">Piensa en la decisión y marca si la pregunta tiene una respuesta clara y alineada para ti.</p>
+                <p>Piensa en la decisión y marca si la pregunta tiene una respuesta clara y alineada para ti.</p>
                 <div className="space-y-2">
                     {checklistItems.map(item => (
                         <div key={item.id} className="flex items-start space-x-2">
@@ -129,7 +128,7 @@ ${selectedItems.map(item => `- ${item}`).join('\n')}
             <div className="p-4 text-center space-y-4">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">Revisa</h4>
-                <p className="text-sm text-muted-foreground">Si hay más ✓ en la dirección de tus valores, adelante. Si hay dudas, quizá aún puedas elegir diferente.</p>
+                <p>Si hay más ✓ en la dirección de tus valores, adelante. Si hay dudas, quizá aún puedas elegir diferente.</p>
                 <p className="italic">“Cada decisión es una oportunidad de acercarte a la vida que sí quieres habitar.”</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
