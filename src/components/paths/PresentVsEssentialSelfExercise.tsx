@@ -105,7 +105,6 @@ ${smallAction}
         return (
           <div className="p-4 space-y-4 text-center">
              <p>No se trata de juzgarte ni de exigirte cambios inmediatos. Se trata de mirarte con amabilidad, como quien observa una película, para redescubrir quién eres y hacia dónde quieres ir.</p>
-             <p>En este ejercicio visualizarás dos imágenes muy valiosas:</p>
              <ul className="list-disc list-inside text-left mx-auto max-w-md">
                 <li>Tu yo actual: cómo estás viviendo hoy.</li>
                 <li>Tu yo esencial: cómo sería tu vida si actuases desde tus valores.</li>
@@ -170,7 +169,7 @@ ${smallAction}
             <p>Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
             <p>Pregúntate:</p>
             <ul className="list-disc list-inside pl-4 text-sm">
-                <li> ¿Qué diferencia más significativa noto entre mis dos versiones?</li>
+                 <li>¿Qué diferencia más significativa noto entre mis dos versiones?</li>
                 <li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</li>
             </ul>
 
@@ -188,7 +187,7 @@ ${smallAction}
             
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit" disabled={!smallAction.trim()}><Save className="mr-2 h-4 w-4"/> Guardar mis pequeñas acciones</Button>
+                <Button type="submit" disabled={!smallAction.trim()}><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -197,8 +196,14 @@ ${smallAction}
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <p>Recuerda: no se trata de transformarte de golpe, sino de acercarte poco a poco a tu esencia. Cada gesto que incorpores es un paso hacia tu autenticidad.</p>
             <ul className="text-sm list-none space-y-2 text-left">
-                <li className="flex items-start">✅ Felicítate por haberte regalado este momento de conexión.</li>
-                <li className="flex items-start">👉 Tus respuestas quedan guardadas en tu cuaderno terapéutico.</li>
+                <li className="flex items-start">
+                    <CheckCircle className="h-4 w-4 mr-2 mt-1 text-primary flex-shrink-0" />
+                    Felicítate por haberte regalado este momento de conexión.
+                </li>
+                <li className="flex items-start">
+                    <ArrowRight className="h-4 w-4 mr-2 mt-1 text-primary flex-shrink-0" />
+                    Tus respuestas quedan guardadas en tu cuaderno terapéutico.
+                </li>
             </ul>
             <Button onClick={resetExercise} variant="outline" className="w-auto">
             Hacer otra reflexión
