@@ -61,10 +61,12 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
       return;
     }
     
+    let emotionsText = `${emotion}`;
+    
     const notebookContent = `
 **Ejercicio:** ${content.title}
 
-- **Emoción principal sentida:** ${emotion}
+- **Emoción principal sentida:** ${emotionsText}
 - **Situación que ocurrió:** ${situation === 'otra' ? otherSituation : situation}
 - **Pensamientos que pasaron por mi cabeza:** ${thoughts}
 - **Disparador principal:** ${triggerSource}

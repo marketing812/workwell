@@ -18,7 +18,7 @@ interface ResilienceTimelineExerciseProps {
   onComplete: () => void;
 }
 
-export function ResilienceTimelineExercise({ content, pathId, onComplete }: ResilienceTimelineExerciseProps) {
+export default function ResilienceTimelineExercise({ content, pathId, onComplete }: ResilienceTimelineExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

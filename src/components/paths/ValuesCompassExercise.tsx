@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -42,7 +41,7 @@ interface ValuesCompassExerciseProps {
   onComplete: () => void;
 }
 
-export function ValuesCompassExercise({ content, pathId, onComplete }: ValuesCompassExerciseProps) {
+export default function ValuesCompassExercise({ content, pathId, onComplete }: ValuesCompassExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);

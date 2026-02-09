@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -11,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BlockingThoughtsExerciseContent } from '@/data/paths/pathTypes';
+import { Checkbox } from '../ui/checkbox';
 import { useUser } from '@/contexts/UserContext';
 
 interface BlockingThoughtsExerciseProps {
@@ -34,8 +34,12 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
   const [blockingThought, setBlockingThought] = useState('');
   const [distortion, setDistortion] = useState('');
   const [reformulation, setReformulation] = useState('');
-  const [nextStepAction, setNextStepAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [checklist, setChecklist] = useState({ helps: false, respects: false, energizes: false });
+
+  const handleChecklistChange = (key: keyof typeof checklist, checked: boolean) => {
+    setChecklist(prev => ({...prev, [key]: checked}));
+  };
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
@@ -45,13 +49,12 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
     setBlockingThought('');
     setDistortion('');
     setReformulation('');
-    setNextStepAction('');
     setIsSaved(false);
-  }
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!situation || !blockingThought || !reformulation || !nextStepAction) {
+    if (!situation || !blockingThought || !reformulation) {
         toast({ title: 'Campos incompletos', description: "Por favor, completa todos los pasos para guardar.", variant: 'destructive' });
         return;
     }
@@ -62,7 +65,6 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
 *Pensamiento bloqueante:* ${blockingThought}
 *Distorsión identificada:* ${distortion}
 *Reformulación:* ${reformulation}
-*Próximo paso:* ${nextStepAction}
     `;
     addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
@@ -126,12 +128,12 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
           </div>
         );
 
-      case 5: // Pantalla 6: Integración
+      case 5: // Pantalla 6: Integración y Guardado
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
             <p className="text-sm text-muted-foreground">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
-            <Textarea id="next-step-blocking" value={nextStepAction} onChange={e => setNextStepAction(e.target.value)} placeholder="Ej: La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo."/>
+            <Textarea id="next-step-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} placeholder="Ej: La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo."/>
              <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar registro</Button></div>
           </form>
         );

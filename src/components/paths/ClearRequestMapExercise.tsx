@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -19,7 +18,7 @@ interface ClearRequestMapExerciseProps {
   onComplete: () => void;
 }
 
-export function ClearRequestMapExercise({ content, pathId, onComplete }: ClearRequestMapExerciseProps) {
+export default function ClearRequestMapExercise({ content, pathId, onComplete }: ClearRequestMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [situation, setSituation] = useState('');

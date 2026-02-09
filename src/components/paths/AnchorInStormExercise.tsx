@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -19,7 +18,7 @@ interface AnchorInStormExerciseProps {
   onComplete: () => void;
 }
 
-export function AnchorInStormExercise({ content, pathId, onComplete }: AnchorInStormExerciseProps) {
+export default function AnchorInStormExercise({ content, pathId, onComplete }: AnchorInStormExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

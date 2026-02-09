@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -20,7 +19,7 @@ interface AssertivePhraseExerciseProps {
 
 const steps = ['intro', 'step1', 'step2', 'step3', 'step4', 'summary'];
 
-export function AssertivePhraseExercise({ content, pathId, onComplete }: AssertivePhraseExerciseProps) {
+export default function AssertivePhraseExercise({ content, pathId, onComplete }: AssertivePhraseExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

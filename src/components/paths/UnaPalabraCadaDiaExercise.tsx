@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -32,7 +31,7 @@ const unaPalabraEmotionOptions = [
 ];
 
 
-export function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPalabraCadaDiaExerciseProps) {
+export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete }: UnaPalabraCadaDiaExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const { user } = useUser();

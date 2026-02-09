@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -18,7 +17,7 @@ interface SelfAcceptanceAudioExerciseProps {
   audioUrl?: string; // Make audioUrl an optional prop
 }
 
-export function SelfAcceptanceAudioExercise({ content, pathId, onComplete, audioUrl }: SelfAcceptanceAudioExerciseProps) {
+export default function SelfAcceptanceAudioExercise({ content, pathId, onComplete, audioUrl }: SelfAcceptanceAudioExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);

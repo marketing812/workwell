@@ -46,7 +46,7 @@ const acceptanceEmotionOptions = [
 ];
 
 
-export function AcceptanceWritingExercise({ content, pathId, onComplete }: AcceptanceWritingExerciseProps) {
+export default function AcceptanceWritingExercise({ content, pathId, onComplete }: AcceptanceWritingExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();

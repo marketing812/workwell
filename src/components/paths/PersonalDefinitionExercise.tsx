@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -18,7 +17,7 @@ interface PersonalDefinitionExerciseProps {
   onComplete: () => void;
 }
 
-export function PersonalDefinitionExercise({ content, pathId, onComplete }: PersonalDefinitionExerciseProps) {
+export default function PersonalDefinitionExercise({ content, pathId, onComplete }: PersonalDefinitionExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -100,7 +99,7 @@ export function PersonalDefinitionExercise({ content, pathId, onComplete }: Pers
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Definición Guardada</h4>
-            <p className="text-muted-foreground">Tu definición ha sido guardada. Tendrás acceso a ella cuando necesites recordarte de lo que eres capaz.</p>
+            <p className="text-muted-foreground">Tendrás acceso a ella cuando necesites recordarte de lo que eres capaz.</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">
               Empezar de nuevo
             </Button>

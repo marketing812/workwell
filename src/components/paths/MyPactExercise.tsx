@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -19,7 +18,7 @@ interface MyPactExerciseProps {
   onComplete: () => void;
 }
 
-export function MyPactExercise({ content, pathId, onComplete }: MyPactExerciseProps) {
+export default function MyPactExercise({ content, pathId, onComplete }: MyPactExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -71,7 +70,7 @@ ${reminder}
       case 0: // Pantalla 1: Introducción
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-muted-foreground">Esta ruta no termina aquí. Pero ahora es momento de cerrar esta etapa con un gesto significativo: un pacto contigo. No desde la exigencia, sino desde el cuidado. No para hacerlo todo perfecto, sino para recordarte lo que te fortalece cuando más lo necesitas.</p>
+            <p className="text-muted-foreground">Esta ruta no termina aquí. Pero ahora es momento de cerrar esta etapa con un gesto significativo: un pacto contigo. No desde la exigencia, sino desde el cuidado. No para hacerlo todo perfecto, sino para recordarte lo que te fortalece cuando más lo necesites.</p>
             <Button onClick={nextStep}>Empezar mi pacto <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -101,9 +100,7 @@ ${reminder}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Cómo me lo recordaré?</h4>
             <p className="text-sm text-muted-foreground">Tu compromiso necesita una señal que lo mantenga vivo. Cuando estás en medio del caos, del cansancio o de la rutina… es fácil olvidarse de lo que te has propuesto. Por eso, aquí vas a elegir un recordatorio concreto, algo visible, físico o cotidiano que te recuerde volver a ti.</p>
-             <div className="p-2 border-l-2 border-accent bg-accent/10 text-sm">
-                <p>No se trata de una frase emocional profunda (eso vendrá en el siguiente paso), sino de algo que puedas ver, hacer o tocar para reconectar con tu ancla interna.</p>
-            </div>
+             <p className="text-sm text-muted-foreground">No se trata de una frase emocional profunda (eso vendrá en el siguiente paso), sino de algo que puedas ver, hacer o tocar para reconectar con tu ancla interna.</p>
             <Label>¿Qué puedes usar como recordatorio?</Label>
             <RadioGroup value={reminderType} onValueChange={setReminderType}>
               <div className="flex items-center space-x-2"><RadioGroupItem value="rutina" id="rem-routine" /><Label className="font-normal" htmlFor="rem-routine">Una rutina diaria</Label></div>

@@ -18,7 +18,7 @@ interface SelfCareContractExerciseProps {
   onComplete: () => void;
 }
 
-export function SelfCareContractExercise({ content, pathId, onComplete }: SelfCareContractExerciseProps) {
+export default function SelfCareContractExercise({ content, pathId, onComplete }: SelfCareContractExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

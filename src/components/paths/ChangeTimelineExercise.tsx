@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -18,7 +17,7 @@ interface ChangeTimelineExerciseProps {
   onComplete: () => void;
 }
 
-export function ChangeTimelineExercise({ content, pathId, onComplete }: ChangeTimelineExerciseProps) {
+export default function ChangeTimelineExercise({ content, pathId, onComplete }: ChangeTimelineExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
