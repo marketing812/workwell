@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -105,17 +104,34 @@ ${smallAction}
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-             <p className="text-sm">No se trata de juzgarte ni de exigirte cambios inmediatos. Se trata de mirarte con amabilidad, como quien observa una película, para redescubrir quién eres y hacia dónde quieres ir.</p>
+             <p>No se trata de juzgarte ni de exigirte cambios inmediatos. Se trata de mirarte con amabilidad, como quien observa una película, para redescubrir quién eres y hacia dónde quieres ir.</p>
+             <p>En este ejercicio visualizarás dos imágenes muy valiosas:</p>
+             <ul className="list-disc list-inside text-left mx-auto max-w-md">
+                <li>Tu yo actual: cómo estás viviendo hoy.</li>
+                <li>Tu yo esencial: cómo sería tu vida si actuases desde tus valores.</li>
+             </ul>
+             <p>Cuando quieras, pulsa Empezar y deja que tu imaginación te guíe.</p>
             <Button onClick={nextStep}>Empezar visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Present Self
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold">Paso 1: Tu yo actual</h4>
-            <p className="text-sm">Pregúntate: ¿Cómo me hablo en mi día a día? ¿Cómo transcurren mis jornadas? ¿Qué emociones predominan? ¿Cómo me relaciono con los demás? ¿Qué hábitos mantengo, aunque no me hagan bien?</p>
-            <Label htmlFor="present-self">Describe tu yo actual...</Label>
-            <Textarea id="present-self" value={presentSelfDesc} onChange={e => setPresentSelfDesc(e.target.value)} placeholder="Ej: Mi yo actual corre a todos lados, revisa el móvil constantemente..." />
+            <h4 className="font-semibold text-lg">Paso 1: Tu yo actual</h4>
+            <p>Antes de avanzar, piensa que este paso es como mirar una fotografía de ti hoy. No para criticarte, sino para comprenderte mejor.</p>
+            <p>Pregúntate:</p>
+             <ul className="list-disc list-inside pl-4 text-sm">
+              <li>¿Cómo me hablo en mi día a día?</li>
+              <li>¿Cómo transcurren mis jornadas?</li>
+              <li>¿Qué emociones predominan?</li>
+              <li>¿Cómo me relaciono con los demás?</li>
+              <li>¿Qué hábitos mantengo, aunque no me hagan bien?</li>
+            </ul>
+            <Label htmlFor="present-self">Escribe aquí tu descripción de tu yo actual…</Label>
+            <Textarea id="present-self" value={presentSelfDesc} onChange={e => setPresentSelfDesc(e.target.value)} />
+             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                <p>Ejemplo guía: “Mi yo actual corre a todos lados, revisa el móvil constantemente, y muchas veces dice que sí, aunque quiere decir que no. Siento tensión en el pecho y, a veces, tristeza.”</p>
+            </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!presentSelfDesc.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -124,48 +140,50 @@ ${smallAction}
         );
       case 2: // Essential Self
         return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso 2: Tu yo esencial</h4>
-            <p>Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio. </p><p>Pregúntate: <ul><li>¿Cómo se mueve esta versión de mí? </li><li>¿Cómo cuida sus espacios y se habla? </li><li>¿Qué decisiones toma? </li><li>¿Qué límites pone? </li><li>¿Qué transmite a los demás? </li></ul></p><p>Escribe aquí tu descripción de tu yo esencial… </p>
-            <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial… </Label>
-            <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} placeholder="Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad." />
-            <p className="text-xs italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={!essentialSelfDesc.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg">Paso 2: Tu yo esencial</h4>
+                <p>Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti. Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio.</p>
+                <p>Pregúntate:</p>
+                <ul className="list-disc list-inside pl-4 text-sm">
+                    <li>¿Cómo se mueve esta versión de mí?</li>
+                    <li>¿Cómo cuida sus espacios y se habla?</li>
+                    <li>¿Qué decisiones toma?</li>
+                    <li>¿Qué límites pone?</li>
+                    <li>¿Qué transmite a los demás?</li>
+                </ul>
+                <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial…</Label>
+                <Textarea id="essential-self" value={essentialSelfDesc} onChange={e => setEssentialSelfDesc(e.target.value)} />
+                 <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                    <p>Ejemplo guía: “Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con serenidad y cuida sus tiempos. Me inspira paz y claridad.”</p>
+                </div>
+                <p className="text-xs italic pt-2">La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte a esa versión de ti.</p>
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep} disabled={!essentialSelfDesc.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                </div>
             </div>
-          </div>
         );
       case 3: // Integration and choice
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Integración y elección</h4>
             <p>Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta comparación no es para sentir distancia, sino para elegir un puente que los conecte.</p>
-            
-            <div className="space-y-4 text-sm p-4 border rounded-md bg-background/50">
-                <div>
-                    <h5 className="font-medium">Tu yo actual:</h5>
-                    <p className="italic whitespace-pre-wrap">{presentSelfDesc || "No descrito."}</p>
-                </div>
-                <div>
-                    <h5 className="font-medium">Tu yo esencial:</h5>
-                    <p className="italic whitespace-pre-wrap">{essentialSelfDesc || "No descrito."}</p>
-                </div>
-            </div>
-
-            <div className="text-sm">
-                <p> Pregúntate:</p><ul><li> ¿Qué diferencia más significativa noto entre mis dos versiones? </li><li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana? </li></ul>
-            </div>
+            <p>Pregúntate:</p>
+            <ul className="list-disc list-inside pl-4 text-sm">
+                <li> ¿Qué diferencia más significativa noto entre mis dos versiones?</li>
+                <li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</li>
+            </ul>
 
             <div className="space-y-2">
-                <Label htmlFor="small-action">Mi pequeña acción para esta semana:</Label>
+                <Label htmlFor="small-action">Describe tu gesto o acción pequeña…</Label>
                 <Textarea 
                     id="small-action" 
                     value={smallAction} 
                     onChange={e => setSmallAction(e.target.value)} 
-                    placeholder="Describe tu gesto o acción pequeña…" 
                 />
-                 <p className="text-xs">Ejemplo guía: “Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para leer o simplemente descansar en calma.”</p>
+                 <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                    <p>Ejemplo guía: “Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para leer o simplemente descansar en calma.”</p>
+                </div>
             </div>
             
             <div className="flex justify-between w-full mt-4">
@@ -177,19 +195,14 @@ ${smallAction}
       case 4: // Confirmation screen
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Guardado con Éxito!</h4>
             <p>Recuerda: no se trata de transformarte de golpe, sino de acercarte poco a poco a tu esencia. Cada gesto que incorpores es un paso hacia tu autenticidad.</p>
             <ul className="text-sm list-none space-y-2 text-left">
-                <li className="flex items-start"><span className="mr-2">✅</span>Felicítate por haberte regalado este momento de conexión.</li>
-                <li className="flex items-start"><span className="mr-2">👉</span>Tus respuestas quedan guardadas en tu cuaderno terapéutico.</li>
+                <li className="flex items-start">✅ Felicítate por haberte regalado este momento de conexión.</li>
+                <li className="flex items-start">👉 Tus respuestas quedan guardadas en tu cuaderno terapéutico.</li>
             </ul>
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={resetExercise} variant="outline" className="w-auto">
-                Hacer otra reflexión
-                </Button>
-            </div>
+            <Button onClick={resetExercise} variant="outline" className="w-auto">
+            Hacer otra reflexión
+            </Button>
           </div>
         );
       default: return null;
@@ -197,22 +210,23 @@ ${smallAction}
   }
 
   return (
-    <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription>{content.objective}</CardDescription>}
-        {content.audioUrl && (
-          <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-              </audio>
-          </div>
-        )}
-      </CardHeader>
-      <CardContent>
-        {renderStep()}
-      </CardContent>
-    </Card>
+      <Card className="bg-muted/30 my-6 shadow-md">
+        <CardHeader>
+            <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
+            <CardDescription>A veces vivimos en “piloto automático” y sentimos que no somos del todo nosotros mismos. Este ejercicio te ayudará a observarte desde fuera, sin juicio, para distinguir entre tu yo presente (cómo vives ahora mismo) y tu yo esencial (cómo te gustaría vivir si actuaras desde tus valores más profundos). Al hacerlo, entrenas tu capacidad de autoconciencia —la misma que Daniel Goleman señaló como la base de la inteligencia emocional— y te orientas hacia decisiones más alineadas contigo.</CardDescription>
+             <p className="text-sm pt-1">Duración estimada: 10–15 minutos. Te recomiendo repetir este ejercicio una vez al mes, o cuando sientas que necesitas reconectar con tu dirección vital.</p>
+             {content.audioUrl && (
+                <div className="mt-4">
+                    <audio controls controlsList="nodownload" className="w-full">
+                        <source src={content.audioUrl} type="audio/mp3" />
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+             )}
+        </CardHeader>
+        <CardContent>
+            {renderStep()}
+        </CardContent>
+      </Card>
   );
 }
