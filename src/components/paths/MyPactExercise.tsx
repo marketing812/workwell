@@ -71,9 +71,7 @@ ${reminder}
       case 0: // Pantalla 1: Introducción
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-muted-foreground">
-              Esta ruta no termina aquí. Pero ahora es momento de cerrar esta etapa con un gesto significativo: un pacto contigo. No desde la exigencia, sino desde el cuidado. No para hacerlo todo perfecto, sino para recordarte lo que te fortalece cuando más lo necesitas.
-            </p>
+            <p className="text-muted-foreground">Esta ruta no termina aquí. Pero ahora es momento de cerrar esta etapa con un gesto significativo: un pacto contigo. No desde la exigencia, sino desde el cuidado. No para hacerlo todo perfecto, sino para recordarte lo que te fortalece cuando más lo necesitas.</p>
             <Button onClick={nextStep}>Empezar mi pacto <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -91,7 +89,7 @@ ${reminder}
               </ul>
             </div>
             <Label htmlFor="commitment-pact">Escribe aquí lo que te comprometes a cuidar</Label>
-            <Textarea id="commitment-pact" value={commitment} onChange={e => setCommitment(e.target.value)} />
+            <Textarea id="commitment-pact" value={commitment} onChange={e => setCommitment(e.target.value)} disabled={isSaved} />
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!commitment.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -102,8 +100,8 @@ ${reminder}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Cómo me lo recordaré?</h4>
-            <p className="text-sm text-muted-foreground">Tu compromiso necesita una señal que lo mantenga vivo. Elige un recordatorio concreto que te ayude a volver a ti.</p>
-            <div className="p-2 border-l-2 border-accent bg-accent/10 text-sm">
+            <p className="text-sm text-muted-foreground">Tu compromiso necesita una señal que lo mantenga vivo. Cuando estás en medio del caos, del cansancio o de la rutina… es fácil olvidarse de lo que te has propuesto. Por eso, aquí vas a elegir un recordatorio concreto, algo visible, físico o cotidiano que te recuerde volver a ti.</p>
+             <div className="p-2 border-l-2 border-accent bg-accent/10 text-sm">
                 <p>💡 No se trata de una frase emocional profunda (eso vendrá en el siguiente paso), sino de algo que puedas ver, hacer o tocar para reconectar con tu ancla interna.</p>
             </div>
             <Label>¿Qué puedes usar como recordatorio?</Label>
@@ -124,13 +122,14 @@ ${reminder}
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Una frase que me acompañe</h4>
-            <p className="text-sm text-muted-foreground">Ahora recoge lo vivido y tradúcelo en palabras que te sostengan. Esta frase no tiene que ser perfecta, solo auténtica.</p>
+            <p className="text-sm text-muted-foreground">Ahora recoge lo vivido y tradúcelo en palabras que te sostengan. Esta frase no tiene que ser perfecta, solo auténtica. ¿Qué quieres decirte a ti mismo/a cuando te sientas perdido/a, agotado/a o en lucha?</p>
              <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                 <p><strong>Ejemplos reales:</strong></p>
                 <ul className="list-disc list-inside">
                     <li>“No tengo que tener todo resuelto para seguir caminando.”</li>
                     <li>“He caído, pero también he aprendido a sostenerme.”</li>
                     <li>“Pase lo que pase, ahora sé cómo volver a mí.”</li>
+                     <li>“Estoy creciendo, aunque a veces duela.”</li>
                 </ul>
             </div>
             <Label htmlFor="anchor-phrase">Mi frase de acompañamiento emocional es:</Label>
@@ -141,9 +140,9 @@ ${reminder}
             </div>
           </form>
         );
-      case 4: // Pantalla 5: Cierre
+      case 4: // Pantalla 5: Cierre / Confirmation
         return (
-          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+          <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Pacto Guardado</h4>
             <p className="text-muted-foreground">
@@ -161,14 +160,19 @@ ${reminder}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        </CardDescription>}
+        {content.objective && (
+            <CardDescription className="pt-2">
+                {content.objective}
+                {content.audioUrl && (
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica2.mp3" type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
+            </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}
