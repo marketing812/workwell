@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -77,7 +76,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
       case 0: // Introducción
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">En este ejercicio vas a construir una especie de “rueda emocional” para mirar una decisión difícil desde cuatro estados internos distintos. El objetivo no es que elijas ahora, sino que ganes claridad sobre cómo influye tu estado emocional en tu forma de ver y decidir.</p>
+            <p className="text-sm">En este ejercicio vas a construir una especie de “rueda emocional” para mirar una decisión difícil desde cuatro estados internos distintos. El objetivo no es que elijas ahora, sino que ganes claridad sobre cómo influye tu estado emocional en tu forma de ver y decidir.</p>
             <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -85,7 +84,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Define tu situación actual</h4>
-            <p className="text-sm text-muted-foreground">Describe brevemente la decisión que tienes que tomar. Intenta que sea lo más concreta posible. Ejemplos: Hablar con mi pareja sobre algo que me está doliendo. Pedir un cambio de proyecto en el trabajo. Decidir si continúo en esta relación. Elegir entre quedarme o mudarme.</p>
+            <p className="text-sm">Describe brevemente la decisión que tienes que tomar. Intenta que sea lo más concreta posible. Ejemplos: Hablar con mi pareja sobre algo que me está doliendo. Pedir un cambio de proyecto en el trabajo. Decidir si continúo en esta relación. Elegir entre quedarme o mudarme.</p>
             <Label htmlFor="situation-brave">¿Cuál es la decisión que estás enfrentando?</Label>
             <Textarea id="situation-brave" value={situation} onChange={e => setSituation(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
@@ -98,8 +97,8 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Qué harías si decidieras desde el miedo?</h4>
-            <p className="text-sm text-muted-foreground">El miedo tiende a protegerte evitando el daño. Pero también puede bloquearte. Ejemplo: “Tengo miedo de que si expreso mi necesidad, me rechacen. Así que, desde el miedo, decidiría callarme y seguir acumulando malestar.”</p>
-            <div className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm">El miedo tiende a protegerte evitando el daño. Pero también puede bloquearte. Ejemplo: “Tengo miedo de que si expreso mi necesidad, me rechacen. Así que, desde el miedo, decidiría callarme y seguir acumulando malestar.”</p>
+            <div className="text-sm mt-2">
                 <p className="font-semibold">Preguntas guía:</p>
                 <ul className="list-disc list-inside pl-4">
                     <li>¿Qué decisión tomarías si el miedo dirigiera tus acciones?</li>
@@ -119,8 +118,8 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Qué harías si decidieras desde el valor?</h4>
-            <p className="text-sm text-muted-foreground">Decidir desde el valor no es hacerlo sin miedo, sino a pesar de él, priorizando lo que de verdad importa para ti. Ejemplo: “Desde el valor, hablaría con calma y honestidad. Me costaría, pero lo haría porque quiero relaciones donde se pueda hablar desde el respeto.”</p>
-            <div className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm">Decidir desde el valor no es hacerlo sin miedo, sino a pesar de él, priorizando lo que de verdad importa para ti. Ejemplo: “Desde el valor, hablaría con calma y honestidad. Me costaría, pero lo haría porque quiero relaciones donde se pueda hablar desde el respeto.”</p>
+            <div className="text-sm mt-2">
                 <p className="font-semibold">Preguntas guía:</p>
                 <ul className="list-disc list-inside pl-4">
                     <li>¿Qué acción se alinea más con tus valores?</li>
@@ -140,8 +139,8 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: ¿Qué harías si decidieras desde la confianza?</h4>
-            <p className="text-sm text-muted-foreground">La confianza no garantiza resultados, pero te recuerda que puedes afrontar lo que venga. Ejemplo: “Desde la confianza, decidiría moverme porque sé que, aunque algo salga mal, voy a saber repararlo.”</p>
-            <div className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm">La confianza no garantiza resultados, pero te recuerda que puedes afrontar lo que venga. Ejemplo: “Desde la confianza, decidiría moverme porque sé que, aunque algo salga mal, voy a saber repararlo.”</p>
+            <div className="text-sm mt-2">
                 <p className="font-semibold">Preguntas guía:</p>
                 <ul className="list-disc list-inside pl-4">
                     <li>¿Qué opción elegirías si confiaras más en ti?</li>
@@ -161,8 +160,8 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 5: ¿Qué harías si decidieras desde la desesperanza?</h4>
-            <p className="text-sm text-muted-foreground">Este paso te ayudará a reconocer tu patrón de rendición o evitación. No es para que decidas desde ahí, sino para detectar cuándo esa parte toma el control. Ejemplo: “Desde la desesperanza, probablemente no haría nada. Pensaría que ya da igual, y me aislaría.”</p>
-            <div className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm">Este paso te ayudará a reconocer tu patrón de rendición o evitación. No es para que decidas desde ahí, sino para detectar cuándo esa parte toma el control. Ejemplo: “Desde la desesperanza, probablemente no haría nada. Pensaría que ya da igual, y me aislaría.”</p>
+            <div className="text-sm mt-2">
                 <p className="font-semibold">Preguntas guía:</p>
                 <ul className="list-disc list-inside pl-4">
                     <li>¿Qué harías si sintieras que nada servirá?</li>
@@ -182,8 +181,8 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 6: Integra y elige tu camino</h4>
-            <p className="text-sm text-muted-foreground">Ahora que has visto la situación desde distintas lentes… Respira. Vuelve a conectar contigo.</p>
-            <div className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm">Ahora que has visto la situación desde distintas lentes… Respira. Vuelve a conectar contigo.</p>
+            <div className="text-sm mt-2">
                 <p className="font-semibold">Preguntas guía:</p>
                 <ul className="list-disc list-inside pl-4">
                     <li>¿Cuál de estas decisiones se alinea más contigo hoy?</li>
@@ -204,7 +203,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Elección Guardada</h4>
-            <p className="text-muted-foreground italic">“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él”.</p>
+            <p className="italic">“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él”.</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Empezar de nuevo</Button>
           </div>
         );
@@ -218,7 +217,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && (
-            <CardDescription className="pt-2">
+            <CardDescription>
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
@@ -235,3 +234,5 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
     </Card>
   );
 }
+
+    

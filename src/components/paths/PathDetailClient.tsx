@@ -379,7 +379,7 @@ function ContentItemRenderer({
             "mt-6 italic",
             contentItem.align === 'center' 
               ? "text-center border-none p-4" 
-              : "border-l-2 pl-6 text-accent-foreground/80"
+              : "border-l-2 pl-6"
           )}
           dangerouslySetInnerHTML={{ __html: contentItem.text }}
         />
@@ -844,7 +844,7 @@ export function PathDetailClient({ path }: { path: Path }) {
           </div>
         </div>
         <CardContent className="p-8">
-          <p className="text-lg text-muted-foreground mt-2 text-center">{path.description}</p>
+          <p className="text-lg mt-2 text-center">{path.description}</p>
           {path.audioUrl && (
             <div className="mt-4 flex justify-center">
               <audio
@@ -875,7 +875,7 @@ export function PathDetailClient({ path }: { path: Path }) {
                     <div>
                       <CardTitle className="text-xl text-accent">{module.title}</CardTitle>
                       {module.estimatedTime && (
-                        <CardDescription className="flex items-center text-sm text-muted-foreground">
+                        <CardDescription className="flex items-center text-sm">
                           <Clock className="h-4 w-4 mr-1" /> {module.estimatedTime}
                         </CardDescription>
                       )}
@@ -952,3 +952,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+    
