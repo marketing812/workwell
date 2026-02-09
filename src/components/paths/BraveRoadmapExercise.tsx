@@ -14,12 +14,6 @@ import type { BraveRoadmapExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
-interface BraveRoadmapExerciseProps {
-  content: BraveRoadmapExerciseContent;
-  pathId: string;
-  onComplete: () => void;
-}
-
 const valueOptions = [
     { id: 'care', label: 'Cuidado personal', description: 'Priorizar tu bienestar físico, emocional y mental sin culpa.' },
     { id: 'auth', label: 'Autenticidad', description: 'Ser tú misma o tú mismo, sin máscaras ni autoengaños.' },
@@ -42,6 +36,12 @@ const valueOptions = [
     { id: 'collaboration', label: 'Colaboración', description: 'Construir juntas o juntos, sumar, confiar en el apoyo mutuo.' },
     { id: 'tenderness', label: 'Ternura', description: 'Aportar dulzura, sensibilidad y cuidado en cómo te tratas y cómo te relacionas.' },
 ];
+
+interface BraveRoadmapExerciseProps {
+  content: BraveRoadmapExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
 
 export default function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadmapExerciseProps) {
   const { toast } = useToast();
@@ -242,7 +242,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" disabled={isSaved}>
-                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en mi hoja de ruta'}
+                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
               </Button>
             </div>
           </form>
