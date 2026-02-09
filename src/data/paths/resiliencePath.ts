@@ -6,7 +6,6 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
-  audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Introruta8.mp3',
   modules: [
     {
       id: 'res_sem1',
@@ -95,12 +94,12 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Cada decisión desde el valor fortalece tu resiliencia', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion3ruta8.mp3', content: [{ type: 'paragraph', text: '¿Sabes qué ocurre cada vez que decides desde un lugar de confianza, aunque tengas miedo?\nRefuerzas tu autoestima.\nExpandes tu tolerancia a la incertidumbre.\nY construyes una identidad basada en el coraje, no en la evitación.\nEquivocarse no invalida tu decisión.\nLo que importa no es el resultado, sino desde dónde elegiste.\nFrase para llevar contigo:\n“Hoy elijo avanzar con el miedo a mi lado, pero sin dejar que me guíe.”' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3' },
-        { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional (versión ampliada)', objective: 'Esta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
+        { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional', objective: 'Esta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion3ruta8_1.mp3', prompts: ['<ul><li>¿Qué aprendí sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion3ruta8.mp3' },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
-        { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
+        { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
       ]
     },
     {
@@ -133,7 +132,9 @@ export const resiliencePath: Path = {
               objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.',
               duration: '10-15 min'
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: ['<ul><li>¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?</li><li>¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?</li><li>¿Qué cambio he notado en mi forma de responder ante las dificultades?</li><li>¿Qué frase o imagen me llevo como símbolo de mi resiliencia?</li><li>¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?</li></ul>']},
+          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: [
+              '<ul><li>¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?</li><li>¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?</li><li>¿Qué cambio he notado en mi forma de responder ante las dificultades?</li><li>¿Qué frase o imagen me llevo como símbolo de mi resiliencia?</li><li>¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?</li></ul>'
+          ]},
           { type: 'title', text: 'Resumen Final de la Ruta' },
           { type: 'list', items: [
               'Comprendí que la resiliencia no es innata, sino entrenable.',
@@ -153,6 +154,8 @@ export const resiliencePath: Path = {
 
     
 
+
+    
 
     
 
