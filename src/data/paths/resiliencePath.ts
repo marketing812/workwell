@@ -37,7 +37,14 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'resilienceTimelineExercise', title: 'EJERCICIO 1: LÍNEA DEL TIEMPO RESILIENTE', objective: 'Con este ejercicio descubrirás los recursos internos que ya has usado (aunque no fueras consciente) en momentos difíciles. Te ayudará a recordar que no partes de cero, y que ya has sido resiliente más veces de las que crees.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica1.mp3' },
         { type: 'personalDefinitionExercise', title: 'Técnica 2: Mi definición personal de resiliencia', objective: 'Con este ejercicio crearás una definición propia de lo que significa para ti resistir sin romperte. Esto refuerza tu narrativa interna y te conecta con una visión más compasiva y consciente de ti.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', prompts: ['<ul><li>¿Qué es realmente la resiliencia? […]','¿Qué he aprendido de mí en los momentos más difíciles que he atravesado? […]','¿Cómo quiero relacionarme con mis dificultades a partir de ahora? […]','¿Por qué quiero comprometerme con mi proceso de resiliencia? […]'] },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion1ruta8.mp3', 
+          prompts: [
+            '<ul><li>¿Qué es realmente la resiliencia?</li><li>¿Qué he aprendido de mí en los momentos más difíciles que he atravesado?</li><li>¿Cómo quiero relacionarme con mis dificultades a partir de ahora?</li><li>¿Por qué quiero comprometerme con mi proceso de resiliencia?</li></ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion1ruta8.mp3' },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
@@ -146,5 +153,7 @@ export const resiliencePath: Path = {
 
     
 
+
+    
 
     
