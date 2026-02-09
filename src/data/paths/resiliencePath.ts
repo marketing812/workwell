@@ -135,10 +135,21 @@ export const resiliencePath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3',
           prompts: [
-            '<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p><ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul><p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>'
+            '<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>',
+            '<ul>',
+            '<li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li>',
+            '<li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li>',
+            '<li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li>',
+            '<li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li>',
+            '</ul>',
+            '<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>'
           ] 
         },
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'},
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'
+        },
         { 
           type: 'list', 
           items: [
@@ -167,13 +178,16 @@ export const resiliencePath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Ruta de Resiliencia',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionfinalruta8.mp3',
           prompts: [
-            '<p>Has llegado al final de este viaje. Tómate un momento para mirar atrás, no para juzgar, sino para reconocer tu fuerza.</p><ul><li>¿Cuál ha sido el mayor aprendizaje sobre tu propia resiliencia?</li><li>¿Qué herramienta o técnica de esta ruta te llevas para el futuro?</li><li>¿Cómo ha cambiado tu forma de ver las dificultades?</li><li>¿Qué compromiso asumes contigo para seguir cuidando tu resiliencia?</li></ul>'
+            '<p>Has llegado al final de este viaje. Tómate un momento para mirar atrás, no para juzgar, sino para reconocer tu fuerza.</p>',
+            '<ul><li>¿Cuál ha sido el mayor aprendizaje sobre tu propia resiliencia?</li><li>¿Qué herramienta o técnica de esta ruta te llevas para el futuro?</li><li>¿Cómo ha cambiado tu forma de ver las dificultades?</li><li>¿Qué compromiso asumes contigo para seguir cuidando tu resiliencia?</li></ul>'
           ],
         },
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionfinalruta8.mp3',
         },
         {
           type: 'list',
@@ -191,4 +205,4 @@ export const resiliencePath: Path = {
 };
 
     
-
+    
