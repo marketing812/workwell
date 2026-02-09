@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -18,7 +19,7 @@ interface UnfulfilledNeedsExerciseProps {
   onComplete: () => void;
 }
 
-export function UnfulfilledNeedsExercise({ content, pathId, onComplete }: UnfulfilledNeedsExerciseProps) {
+export default function UnfulfilledNeedsExercise({ content, pathId, onComplete }: UnfulfilledNeedsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [unfulfilledAction, setUnfulfilledAction] = useState('');

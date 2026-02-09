@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -49,7 +50,7 @@ const valueOptions = [
 const reminderTypes = ['Frase corta escrita', 'Imagen', 'Dibujo o símbolo', 'Objeto personal'];
 const reminderPlacements = ['Espejo', 'Escritorio', 'Agenda', 'Fondo de pantalla', 'Otro']; // Added "Otro"
 
-export function EssentialReminderExercise({ content, pathId, onComplete }: EssentialReminderExerciseProps) {
+export default function EssentialReminderExercise({ content, pathId, onComplete }: EssentialReminderExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

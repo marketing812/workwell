@@ -28,7 +28,7 @@ const checklistItems = [
     { id: 'check-valor', label: '¿Estoy honrando un valor o evitando un conflicto?' },
 ];
 
-export function SenseChecklistExercise({ content, pathId, onComplete }: SenseChecklistExerciseProps) {
+export default function SenseChecklistExercise({ content, pathId, onComplete }: SenseChecklistExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

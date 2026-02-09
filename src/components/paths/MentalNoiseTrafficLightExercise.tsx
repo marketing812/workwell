@@ -24,7 +24,7 @@ const amberOptions = ['Antes de una reunión', 'Durante la jornada laboral', 'En
 const greenOptions = ['Al caminar', 'Al desayunar en calma', 'Después de hacer ejercicio', 'En actividades creativas'];
 const gestureOptions = ['Respirar hondo 3 veces', 'Hacer una mini-pausa física', 'Enviar un mensaje a alguien cercano', 'Escribir en mi cuaderno una gratitud'];
 
-export function MentalNoiseTrafficLightExercise({ content, pathId, onComplete }: MentalNoiseTrafficLightExerciseProps) {
+export default function MentalNoiseTrafficLightExercise({ content, pathId, onComplete }: MentalNoiseTrafficLightExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

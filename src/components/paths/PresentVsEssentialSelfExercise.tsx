@@ -18,7 +18,7 @@ interface PresentVsEssentialSelfExerciseProps {
   onComplete: () => void;
 }
 
-export function PresentVsEssentialSelfExercise({ content, pathId, onComplete }: PresentVsEssentialSelfExerciseProps) {
+export default function PresentVsEssentialSelfExercise({ content, pathId, onComplete }: PresentVsEssentialSelfExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

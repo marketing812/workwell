@@ -39,7 +39,7 @@ const distortionOptions = [
 ];
 
 
-export function ThoughtsThatBlockPurposeExercise({ content, pathId, onComplete }: ThoughtsThatBlockPurposeExerciseProps) {
+export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onComplete }: ThoughtsThatBlockPurposeExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

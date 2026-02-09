@@ -37,7 +37,7 @@ const valueOptions = [
     { id: 'freedom', label: 'Libertad interna', description: 'Soltar el deber constante para elegir con más consciencia.' },
 ];
 
-export function DirectedDecisionsExercise({ content, pathId, onComplete }: DirectedDecisionsExerciseProps) {
+export default function DirectedDecisionsExercise({ content, pathId, onComplete }: DirectedDecisionsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

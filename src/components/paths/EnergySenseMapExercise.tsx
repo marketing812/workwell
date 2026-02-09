@@ -27,7 +27,7 @@ interface EnergySenseMapExerciseProps {
   onComplete: () => void;
 }
 
-export function EnergySenseMapExercise({ content, pathId, onComplete }: EnergySenseMapExerciseProps) {
+export default function EnergySenseMapExercise({ content, pathId, onComplete }: EnergySenseMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
