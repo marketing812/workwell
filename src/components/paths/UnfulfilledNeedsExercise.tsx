@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,6 +11,7 @@ import { Edit3, Save, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { UnfulfilledNeedsExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface UnfulfilledNeedsExerciseProps {
   content: UnfulfilledNeedsExerciseContent;
@@ -59,36 +59,49 @@ ${tomorrowPlan}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        <CardDescription>
+            {content.objective}
+             <p className='text-xs'>Duración: 3–5 minutos diarios. Realizar al final del día o antes de dormir.</p>
+        </CardDescription>
+         <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="example">
+            <AccordionTrigger className="text-sm">Ver ejemplo guía</AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-2 p-2 border bg-background rounded-md text-sm">
+                <p><strong>Acción que me habría hecho bien:</strong> No salí a caminar, aunque sabía que me despejaba.</p>
+                <p><strong>Valor asociado:</strong> bienestar y conexión con la naturaleza.</p>
+                <p><strong>Razón:</strong> me atrapó la urgencia de contestar correos.</p>
+                <p><strong>Plan para mañana:</strong> reservar 20 minutos sin móvil justo después de comer.</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Paso 1: Identifica la Acción No Realizada</h4>
-            <p className="text-sm text-muted-foreground">Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien.</p>
+            <Label htmlFor="unfulfilled-action">Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien:</Label>
             <Textarea id="unfulfilled-action" value={unfulfilledAction} onChange={e => setUnfulfilledAction(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Paso 2: Conecta con el Valor</h4>
-            <p className="text-sm text-muted-foreground">¿Qué valor estaba asociado a eso que postergaste?</p>
+            <Label htmlFor="assoc-value">¿Qué valor estaba asociado a eso que postergaste?</Label>
             <Textarea id="assoc-value" value={associatedValue} onChange={e => setAssociatedValue(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Paso 3: ¿Qué te Impidió Hacerlo?</h4>
-            <p className="text-sm text-muted-foreground">Sé honesto/a contigo: ¿fue miedo, prisa, presión, distracción?</p>
+            <Label htmlFor="reason">¿Qué te impidió hacerlo? (miedo, prisa, presión, distracción)</Label>
             <Textarea id="reason" value={reason} onChange={e => setReason(e.target.value)} disabled={isSaved} />
           </div>
           <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Paso 4: Plan para Mañana</h4>
-            <p className="text-sm text-muted-foreground">¿Qué puedes hacer mañana para proteger mejor ese valor?</p>
+            <Label htmlFor="tomorrow-plan">¿Qué puedes hacer mañana para proteger mejor ese valor?</Label>
             <Textarea id="tomorrow-plan" value={tomorrowPlan} onChange={e => setTomorrowPlan(e.target.value)} disabled={isSaved} />
           </div>
            {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar Reflexión</Button>
           ) : (
-            <div className="p-4 text-center space-y-4">
+            <div className="p-4 text-center space-y-2">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-                <p className="italic text-muted-foreground">Reconocer lo que no hice desde el cuidado… ya es un acto de cuidado.</p>
+                <p className="font-semibold">Reflexión Guardada</p>
+                <p className="italic">“Reconocer lo que no hice desde el cuidado… ya es un acto de cuidado.”</p>
             </div>
           )}
         </form>
