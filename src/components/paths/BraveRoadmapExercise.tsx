@@ -8,14 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveRoadmapExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 interface BraveRoadmapExerciseProps {
   content: BraveRoadmapExerciseContent;
@@ -50,14 +47,11 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
-
   const [chosenValue, setChosenValue] = useState('');
   const [otherChosenValue, setOtherChosenValue] = useState('');
-
   const [actions, setActions] = useState(() => 
     Array(3).fill({ action: '', courage: '', value: '', otherValue: '' })
   );
-
   const [isSaved, setIsSaved] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const storageKey = `exercise-progress-${pathId}-braveRoadmap`;
@@ -160,7 +154,14 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
                      <Select value={action.value} onValueChange={v => handleActionChange(index, 'value', v)}>
                         <SelectTrigger id={`value-${index}`}><SelectValue placeholder="Elige un valor..." /></SelectTrigger>
                         <SelectContent>
-                            {valueOptions.map(opt => <SelectItem key={opt.id} value={opt.label}>{opt.label}</SelectItem>)}
+                            {valueOptions.map(opt => (
+                                <SelectItem key={opt.id} value={opt.label}>
+                                    <div className="flex flex-col text-left">
+                                        <span className="font-semibold">{opt.label}</span>
+                                        <span className="text-xs text-muted-foreground whitespace-normal">{opt.description}</span>
+                                    </div>
+                                </SelectItem>
+                            ))}
                             <SelectItem value="Otro">Otro</SelectItem>
                         </SelectContent>
                     </Select>
@@ -186,7 +187,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     switch (step) {
       case 0:
         return (
-          <div className="p-4 text-center space-y-4">
+          <div className="p-4 space-y-4 text-center">
             <p>Una vida con sentido no se construye en grandes saltos, sino en pequeños actos valientes. Hoy vas a elegir tres acciones que reflejen quién eres y hacia dónde quieres ir.</p>
             <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -201,7 +202,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
                         <RadioGroupItem value={opt.label} id={opt.id} className="mt-1" />
                         <div className="grid gap-0.5 leading-normal">
                             <Label htmlFor={opt.id} className="font-semibold cursor-pointer text-base">{opt.label}</Label>
-                            <p>{opt.description}</p>
+                            <p className="text-sm">{opt.description}</p>
                         </div>
                     </div>
                 ))}
@@ -290,5 +291,3 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     </Card>
   );
 }
-
-    
