@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -64,11 +63,11 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
   }, [activities]);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const renderStep = () => {
     switch (step) {
-      case 0: return <div className="p-4 text-center"><p className="mb-4">Cada día invertimos nuestra energía en múltiples cosas. Algunas nos conectan, otras solo nos drenan. Este ejercicio te ayuda a distinguir entre lo que te ocupa y lo que te nutre.</p><Button onClick={nextStep}>Empezar mi mapa</Button></div>;
+      case 0: return <div className="p-4 text-center"><p className="mb-4">No todo lo que te agota es importante, y no todo lo importante te agota.</p><p className="mb-4">Cada día invertimos nuestra energía en múltiples cosas. Algunas nos conectan, otras solo nos drenan. Este ejercicio te ayuda a distinguir entre lo que te ocupa y lo que te nutre.</p><Button onClick={nextStep}>Empezar mi mapa</Button></div>;
       case 1: return (
         <div className="p-4 space-y-4">
           <h4 className="font-semibold text-lg">Paso 1: Lista tus actividades recientes</h4>
