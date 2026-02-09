@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -13,7 +11,6 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EssentialReminderExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 
@@ -111,27 +108,24 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: ¿Qué valor o propósito quieres anclar ahora?</h4>
-            <div className="space-y-1">
-                <Accordion type="multiple" className="w-full">
-                    {valueOptions.map(opt => (
-                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
-                            <div className="flex items-center justify-between py-2">
-                                <div className="flex items-center space-x-3">
-                                    <Checkbox id={opt.id} checked={!!selectedValues[opt.id]} onCheckedChange={(checked) => handleValueChange(opt.id, !!checked)} />
-                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
-                                </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4"/></AccordionTrigger>
-                            </div>
-                            <AccordionContent className="text-sm pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-                <div className="flex items-center space-x-2 pt-2">
-                    <Checkbox id="otro" checked={!!selectedValues['otro']} onCheckedChange={(checked) => handleValueChange('otro', !!checked)} />
-                    <Label htmlFor="otro" className="font-normal">Otro</Label>
-                </div>
-                {selectedValues['otro'] && <Input value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe tu valor personalizado..." className="mt-2 ml-6" />}
-            </div>
+            <div className="space-y-2">
+              {valueOptions.map(opt => (
+                  <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
+                      <Checkbox id={opt.id} checked={!!selectedValues[opt.id]} onCheckedChange={(checked) => handleValueChange(opt.id, !!checked)} className="mt-1" />
+                      <div className="grid gap-0.5 leading-normal">
+                          <Label htmlFor={opt.id} className="font-semibold cursor-pointer text-base">{opt.label}</Label>
+                          <p className="text-sm">{opt.description}</p>
+                      </div>
+                  </div>
+              ))}
+              <div className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
+                  <Checkbox id="otro" checked={!!selectedValues['otro']} onCheckedChange={(checked) => handleValueChange('otro', !!checked)} className="mt-1" />
+                  <div className="grid gap-0.5 leading-normal">
+                    <Label htmlFor="otro" className="font-semibold cursor-pointer text-base">Otro</Label>
+                  </div>
+              </div>
+              {selectedValues['otro'] && <Input value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe tu valor personalizado..." className="mt-2" />}
+          </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={Object.values(selectedValues).every(v => !v)}>Siguiente</Button>
