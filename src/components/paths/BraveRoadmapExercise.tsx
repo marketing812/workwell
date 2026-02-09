@@ -59,6 +59,35 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
   );
 
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const storageKey = `exercise-progress-${pathId}-braveRoadmap`;
+
+  useEffect(() => {
+    setIsClient(true);
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setChosenValue(data.chosenValue || '');
+        setOtherChosenValue(data.otherChosenValue || '');
+        setActions(data.actions || Array.from({ length: 3 }, () => ({ action: '', courage: '', value: '', otherValue: '' })));
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    if (!isClient) return;
+    try {
+      const stateToSave = { step, chosenValue, otherChosenValue, actions, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, chosenValue, otherChosenValue, actions, isSaved, storageKey, isClient]);
 
   const handleActionChange = (index: number, field: keyof typeof actions[0], value: string) => {
     const newActions = [...actions];
@@ -119,9 +148,9 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
                     <Label>Coraje requerido:</Label>
                     <p className="text-xs">Bajo: 1, Medio: 2, Alto: 3</p>
                     <RadioGroup value={action.courage} onValueChange={v => handleActionChange(index, 'courage', v)} className="flex gap-4 mt-1">
-                        <div className="flex items-center gap-1"><RadioGroupItem value="1" id={`c${index}-1`}/><Label htmlFor={`c${index}-1`} className="font-normal">1</Label></div>
-                        <div className="flex items-center gap-1"><RadioGroupItem value="2" id={`c${index}-2`}/><Label htmlFor={`c${index}-2`} className="font-normal">2</Label></div>
-                        <div className="flex items-center gap-1"><RadioGroupItem value="3" id={`c${index}-3`}/><Label htmlFor={`c${index}-3`} className="font-normal">3</Label></div>
+                        <div className="flex items-center gap-1"><RadioGroupItem value="1" id={`c-${index}-1`}/><Label htmlFor={`c-${index}-1`} className="font-normal">1</Label></div>
+                        <div className="flex items-center gap-1"><RadioGroupItem value="2" id={`c-${index}-2`}/><Label htmlFor={`c-${index}-2`} className="font-normal">2</Label></div>
+                        <div className="flex items-center gap-1"><RadioGroupItem value="3" id={`c-${index}-3`}/><Label htmlFor={`c-${index}-3`} className="font-normal">3</Label></div>
                     </RadioGroup>
                 </div>
                 
@@ -165,24 +194,21 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Elige tu valor guía</h4>
-             <RadioGroup value={chosenValue} onValueChange={setChosenValue}>
-                <Accordion type="single" collapsible className="w-full">
-                    {valueOptions.map(opt => (
-                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
-                            <div className="flex items-center justify-between py-2">
-                                <div className="flex items-center space-x-3">
-                                    <RadioGroupItem value={opt.label} id={opt.id} />
-                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
-                                </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4"/></AccordionTrigger>
-                            </div>
-                            <AccordionContent className="text-sm pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-                 <div className="flex items-center space-x-2 pt-2">
-                    <RadioGroupItem value="Otro" id="val-other" />
-                    <Label htmlFor="val-other" className="font-normal">Otro</Label>
+             <RadioGroup value={chosenValue} onValueChange={setChosenValue} className="space-y-2">
+                {valueOptions.map(opt => (
+                    <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
+                        <RadioGroupItem value={opt.label} id={opt.id} className="mt-1" />
+                        <div className="grid gap-0.5 leading-normal">
+                            <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
+                            <p className="text-sm">{opt.description}</p>
+                        </div>
+                    </div>
+                ))}
+                <div className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
+                    <RadioGroupItem value="Otro" id="val-other" className="mt-1"/>
+                     <div className="grid gap-0.5 leading-normal">
+                        <Label htmlFor="val-other" className="font-semibold cursor-pointer">Otro</Label>
+                    </div>
                 </div>
             </RadioGroup>
             {chosenValue === 'Otro' && <Textarea value={otherChosenValue} onChange={e => setOtherChosenValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />}
@@ -259,3 +285,4 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     </Card>
   );
 }
+    
