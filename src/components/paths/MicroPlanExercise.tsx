@@ -21,7 +21,7 @@ interface MicroPlanExerciseProps {
   onComplete: () => void;
 }
 
-export function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExerciseProps) {
+export default function MicroPlanExercise({ content, pathId, onComplete }: MicroPlanExerciseProps) {
   const { toast } = useToast();
   const router = useRouter();
   const { user } = useUser();
@@ -132,7 +132,7 @@ ${reinforce}
             return (
                 <div className="p-4 space-y-4">
                     <h4 className="font-semibold text-lg">Paso 1: ¿En qué momento cotidiano podrías activar tu gesto?</h4>
-                    <p className="text-sm text-muted-foreground">Elige un momento del día que ya forme parte de tu rutina.</p>
+                    <p>Elige un momento del día que ya forme parte de tu rutina.</p>
                     <Select onValueChange={setMoment} value={moment}>
                         <SelectTrigger>
                             <SelectValue placeholder="Elige un momento..." />
@@ -174,14 +174,14 @@ ${reinforce}
                 <div className="p-4 space-y-4 text-center">
                     <h4 className="font-bold text-lg">Tu frase final:</h4>
                     <p className="italic text-lg p-4 bg-accent/10 border-l-4 border-accent">"Cuando {finalMoment}, voy a {action}."</p>
-                    <div className="text-sm text-muted-foreground text-left">
+                    <div className="text-sm text-left">
                         <p className="font-semibold">Ejemplos reales:</p>
                         <ul className="list-disc list-inside pl-4">
                             <li>“Cuando termine de cenar, voy a salir a caminar 10 minutos.”</li>
                             <li>“Cuando llegue a casa, voy a abrir el documento del proyecto.”</li>
                         </ul>
                     </div>
-                    <p className="text-xs italic text-muted-foreground pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites. Lo importante es empezar.</p>
+                    <p className="text-xs italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites. Lo importante es empezar.</p>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
                         <Button onClick={() => setStep(1)} variant="outline" className="w-full">Volver a editar</Button>
                         <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en mi diario</Button>
@@ -193,7 +193,7 @@ ${reinforce}
                 <div className="p-4 space-y-4 text-center">
                     <CheckCircle className="h-10 w-10 text-green-500 mx-auto" />
                     <h4 className="font-bold text-lg">Ya no dependes de tus ganas del momento.</h4>
-                    <p className="text-muted-foreground">Ahora tienes un plan. Y eso lo cambia todo.</p>
+                    <p>Ahora tienes un plan. Y eso lo cambia todo.</p>
                     <blockquote className="italic border-l-4 border-primary pl-4 text-left">“La acción nace del compromiso, no de la inspiración. Hoy te has comprometido contigo.”</blockquote>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
                         <Button onClick={nextStep} className="w-full">Ir a la reflexión final</Button>
@@ -220,7 +220,7 @@ ${reinforce}
                         <Label htmlFor="reinforce">Y quiero seguir reforzando:</Label>
                         <Textarea id="reinforce" value={reinforce} onChange={e => setReinforce(e.target.value)} disabled={isReflectionSaved} />
                     </div>
-                    <p className="text-center italic text-sm text-muted-foreground pt-4">Has roto un ciclo. Has creado una dirección. Cada vez que actúas, aunque sea por un instante, estás diciendo: “No me rindo conmigo.”</p>
+                    <p className="text-center italic text-sm pt-4">Has roto un ciclo. Has creado una dirección. Cada vez que actúas, aunque sea por un instante, estás diciendo: “No me rindo conmigo.”</p>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
                         {!isReflectionSaved ? (
                              <Button type="submit" className="w-full">
@@ -249,7 +249,7 @@ ${reinforce}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStep()}

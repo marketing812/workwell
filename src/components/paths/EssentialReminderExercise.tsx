@@ -102,8 +102,8 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">A veces, una imagen o una frase puede sostenernos más que mil pensamientos. Hoy vas a crear tu recordatorio esencial.</p>
-            <p className="text-sm text-muted-foreground">Para ello, empezarás eligiendo un valor que quieras tener presente en tu día a día: ese que te conecta con lo que de verdad te importa. Después, decidirás qué forma tendrá tu recordatorio: puede ser una frase, una imagen, un dibujo o un objeto con significado para ti. Lo diseñarás con libertad y creatividad. No tiene que ser perfecto: solo tiene que resonar contigo. Por último, colócalo en un lugar visible —tu espejo, tu escritorio, tu agenda o donde lo veas cada día— como un ancla silenciosa que te devuelva a tu propósito.</p>
+            <p>A veces, una imagen o una frase puede sostenernos más que mil pensamientos. Hoy vas a crear tu recordatorio esencial.</p>
+            <p>Para ello, empezarás eligiendo un valor que quieras tener presente en tu día a día: ese que te conecta con lo que de verdad te importa. Después, decidirás qué forma tendrá tu recordatorio: puede ser una frase, una imagen, un dibujo o un objeto con significado para ti. Lo diseñarás con libertad y creatividad. No tiene que ser perfecto: solo tiene que resonar contigo. Por último, colócalo en un lugar visible —tu espejo, tu escritorio, tu agenda o donde lo veas cada día— como un ancla silenciosa que te devuelva a tu propósito.</p>
             <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -112,7 +112,7 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: ¿Qué valor o propósito quieres anclar ahora?</h4>
             <div className="space-y-1">
-                <Accordion type="single" collapsible className="w-full">
+                <Accordion type="multiple" className="w-full">
                     {valueOptions.map(opt => (
                         <AccordionItem value={opt.id} key={opt.id} className="border-b">
                             <div className="flex items-center justify-between py-2">
@@ -120,9 +120,9 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
                                     <Checkbox id={opt.id} checked={!!selectedValues[opt.id]} onCheckedChange={(checked) => handleValueChange(opt.id, !!checked)} />
                                     <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
                                 </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4 text-muted-foreground" /></AccordionTrigger>
+                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4"/></AccordionTrigger>
                             </div>
-                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
+                            <AccordionContent className="text-sm pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
                         </AccordionItem>
                     ))}
                 </Accordion>
@@ -185,7 +185,7 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
              <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Recordatorio Guardado</h4>
-                <p className="italic text-muted-foreground">"Cada vez que veas tu recordatorio, respira hondo y vuelve a ti. A tu valor. A tu dirección."</p>
+                <p className="italic">"Cada vez que veas tu recordatorio, respira hondo y vuelve a ti. A tu valor. A tu dirección."</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={() => setStep(0)} variant="outline">Crear otro recordatorio</Button>
@@ -201,7 +201,7 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
         <CardHeader>
             <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
             {content.objective && 
-                <CardDescription className="pt-2">
+                <CardDescription>
                     {content.objective}
                     {content.audioUrl && (
                         <div className="mt-4">

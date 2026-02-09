@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -57,7 +58,7 @@ const suggestionPhrases = [
     'Me cuesta un poco hablar de esto, pero prefiero hacerlo a quedarme con este malestar.',
 ];
 
-export function DiscomfortCompassExercise({ content, pathId, onComplete }: DiscomfortCompassExerciseProps) {
+export default function DiscomfortCompassExercise({ content, pathId, onComplete }: DiscomfortCompassExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -154,20 +155,12 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-            <p className="italic text-muted-foreground">Te muestro a continuación un ejemplo completo de cómo se realiza este ejercicio. Leerlo antes puede ayudarte a identificar tus propias señales, ponerle palabras a lo que sentiste y conectar mejor con tu experiencia corporal y emocional.</p>
-            <p className="text-sm text-muted-foreground">No tienes que hacerlo igual. Este ejemplo es solo una guía para que encuentres tu propia voz.</p>
-            <Button onClick={nextStep}><ArrowRight className="mr-2 h-4 w-4" />Ver ejemplo guiado</Button>
-          </div>
-        );
-      case 1: // Ejemplo guiado
-        return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary text-center">Ejemplo guiado: Brújula del malestar</h4>
+            <p className="italic">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>
-                  <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
+                  <div className="space-y-3 p-2 border bg-background rounded-md">
                     <p><strong>¿Qué situación te activó emocionalmente?</strong> Estaba por salir del trabajo cuando mi jefa pidió que me quedara para asumir una tarea urgente.</p>
                     <p><strong>¿Qué notaste en tu cuerpo?</strong> Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró.</p>
                     <p><strong>¿Qué emoción sentiste? ¿Con qué intensidad la sentiste (0–100)?</strong> Frustración (80%).</p>
@@ -181,19 +174,16 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
+             <Button onClick={nextStep}><ArrowRight className="mr-2 h-4 w-4" />Empezar mi registro</Button>
           </div>
         );
-      case 2: // Detecta la señal
+      case 1: // Detecta la señal
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 1: Detecta la señal</h4>
                 <div className="space-y-2">
                     <Label htmlFor="discomfort-situation">¿Qué situación te activó emocionalmente?</Label>
-                    <p className="text-sm text-muted-foreground">Vamos a observar qué te pasó a ti. Recuerda una situación reciente en la que sentiste malestar, incomodidad o sobrecarga emocional. </p>
+                    <p>Vamos a observar qué te pasó a ti. Recuerda una situación reciente en la que sentiste malestar, incomodidad o sobrecarga emocional. </p>
                     <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe con tus palabras lo que ocurrió: qué pasó, dónde estabas, con quién…" />
                 </div>
                  <div className="flex justify-between w-full mt-4">
@@ -202,7 +192,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 </div>
             </div>
         );
-      case 3: // Escucha tu cuerpo
+      case 2: // Escucha tu cuerpo
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 2: Escucha tu Cuerpo</h4>
@@ -220,7 +210,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                  <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 4: // Emociones y pensamientos
+      case 3: // Emociones y pensamientos
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 3: Emociones y Pensamientos</h4>
@@ -243,7 +233,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-       case 5: // Impulso e intuición
+       case 4: // Impulso e intuición
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 4: Impulso e Intuición</h4>
@@ -266,11 +256,11 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
-      case 6: // Respuesta alternativa
+      case 5: // Respuesta alternativa
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Respuesta Alternativa</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a entrenar una posible forma de expresarte la próxima vez. No tiene que ser perfecta. Solo honesta.</p>
+                <p>Ahora vamos a entrenar una posible forma de expresarte la próxima vez. No tiene que ser perfecta. Solo honesta.</p>
                 <div className="space-y-2">
                     <Label>Frases inspiradoras sugeridas:</Label>
                     <Select onValueChange={(value) => setAlternativeResponse(value)}>
@@ -294,19 +284,19 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
                 </div>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave} className="w-auto" disabled={isSaved}>
+                  <Button onClick={nextStep} className="w-auto" disabled={isSaved}>
                     {isSaved ? <CheckCircle className="mr-2 h-4 w-4"/> : <Save className="mr-2 h-4 w-4" />}
-                    {isSaved ? 'Guardado' : 'Guardar mi Brújula'}
+                    Guardar mi Brújula
                   </Button>
                 </div>
             </div>
         );
-      case 7: // Beneficio adicional
+      case 6: // Beneficio adicional
         return (
              <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">Beneficio Adicional</h4>
-                 <p className="text-muted-foreground">Cada vez que practicas este ejercicio, estás entrenando tu capacidad de reconocer tus límites, regular tus emociones y expresarte con mayor claridad.</p>
+                 <p>Cada vez que practicas este ejercicio, estás entrenando tu capacidad de reconocer tus límites, regular tus emociones y expresarte con mayor claridad.</p>
                  <p className="italic text-primary pt-2">“Tu cuerpo te habla. Este ejercicio te ayuda a escucharlo.”</p>
                  <Button onClick={resetExercise} variant="outline" className="w-full">Registrar otra situación</Button>
              </div>
@@ -319,7 +309,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full h-10">

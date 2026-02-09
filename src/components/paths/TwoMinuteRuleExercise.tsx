@@ -19,7 +19,7 @@ interface TwoMinuteRuleExerciseProps {
   onComplete: () => void;
 }
 
-export function TwoMinuteRuleExercise({ content, pathId, onComplete }: TwoMinuteRuleExerciseProps) {
+export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: TwoMinuteRuleExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -131,8 +131,8 @@ ${when}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
+        {content.duration && <p className="text-sm pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
           {renderStep()}

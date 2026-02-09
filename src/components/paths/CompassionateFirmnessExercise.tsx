@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -17,7 +18,7 @@ interface CompassionateFirmnessExerciseProps {
   onComplete: () => void;
 }
 
-export function CompassionateFirmnessExercise({ content, pathId, onComplete }: CompassionateFirmnessExerciseProps) {
+export default function CompassionateFirmnessExercise({ content, pathId, onComplete }: CompassionateFirmnessExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -55,7 +56,7 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
       case 0: // Pantalla 1: Instrucciones
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">Recuerda una situación reciente en la que alguien reaccionó con incomodidad a un límite que pusiste. Observa cómo se sintió esa persona y qué necesidad estabas defendiendo tú. Luego, completa tu frase usando el siguiente modelo.</p>
+            <p>Recuerda una situación reciente en la que alguien reaccionó con incomodidad a un límite que pusiste. Observa cómo se sintió esa persona y qué necesidad estabas defendiendo tú. Luego, completa tu frase usando el siguiente modelo.</p>
             <blockquote className="p-3 border-l-4 border-accent bg-accent/10 italic text-left">
               Veo que te sientes [emoción del otro]… y al mismo tiempo, yo necesito [tu necesidad o límite].
             </blockquote>
@@ -67,7 +68,7 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">Ejemplos guía</h4>
-            <p className="text-sm text-muted-foreground">A veces, encontrar las palabras justas no es fácil. Por eso, te dejamos aquí algunas frases que pueden inspirarte. No se trata de copiarlas tal cual, sino de usarlas como punto de partida para expresar tu verdad con firmeza y cuidado.</p>
+            <p>A veces, encontrar las palabras justas no es fácil. Por eso, te dejamos aquí algunas frases que pueden inspirarte. No se trata de copiarlas tal cual, sino de usarlas como punto de partida para expresar tu verdad con firmeza y cuidado.</p>
             <ul className="list-disc list-inside space-y-2 p-4 bg-background rounded-md border text-sm text-left">
                 <li className="italic">“Sé que esto te está afectando… y aun así, necesito mantener mi decisión.”</li>
                 <li className="italic">“Entiendo que esperabas otra cosa, pero esta vez necesito respetar mis tiempos.”</li>
@@ -84,8 +85,8 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Tu frase personalizada</h4>
-             <p className="text-sm text-muted-foreground">Ahora es tu turno. Piensa en una situación concreta en la que te haya costado mantener tu decisión ante la incomodidad del otro o la otra. A partir de esa situación, escribe una frase que te ayude a validar la emoción ajena sin perder tu centro. Usa el modelo como guía, pero hazla tuya.</p>
-             <blockquote className="p-3 border-l-4 border-accent bg-accent/10 italic text-left text-sm">
+             <p>Ahora es tu turno. Piensa en una situación concreta en la que te haya costado mantener tu decisión ante la incomodidad del otro o la otra. A partir de esa situación, escribe una frase que te ayude a validar la emoción ajena sin perder tu centro. Usa el modelo como guía, pero hazla tuya.</p>
+             <blockquote className="p-3 border-l-4 border-accent bg-accent/10 italic text-sm text-left">
                 Veo que te sientes <strong>[emoción del otro]</strong>, y al mismo tiempo necesito <strong>[tu necesidad o límite]</strong>.
             </blockquote>
              <div className="space-y-2">
@@ -96,7 +97,7 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
                 <Label htmlFor="my-need">...y al mismo tiempo, yo necesito...</Label>
                 <Textarea id="my-need" value={myNeed} onChange={e => setMyNeed(e.target.value)} placeholder="Ej: mantener mi decisión, cuidar mi tiempo..." disabled={isSaved}/>
              </div>
-             <p className="text-xs text-muted-foreground italic">Puedes escribirla en tu cuaderno emocional, repetirla en voz alta o guardarla para futuras conversaciones difíciles.</p>
+             <p className="text-xs italic">Puedes escribirla en tu cuaderno emocional, repetirla en voz alta o guardarla para futuras conversaciones difíciles.</p>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave} disabled={isSaved}>
@@ -111,7 +112,7 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
              <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Frase Guardada!</h4>
-                <p className="text-muted-foreground">Recuerda: validar al otro no significa invalidarte a ti. Puedes practicar esta frase para que te salga con más naturalidad.</p>
+                <p>Recuerda: validar al otro no significa invalidarte a ti. Puedes practicar esta frase para que te salga con naturalidad.</p>
                 <Button onClick={resetExercise} variant="outline" className="w-full">Crear otra frase</Button>
             </div>
         );
@@ -123,7 +124,7 @@ export function CompassionateFirmnessExercise({ content, pathId, onComplete }: C
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full h-10">

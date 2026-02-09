@@ -95,7 +95,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
         return (
             <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Ejemplo guía:</h4>
-                <div className="text-sm text-muted-foreground p-3 border rounded-md bg-background/50 space-y-2">
+                <div className="p-3 border rounded-md bg-background/50 space-y-2">
                     <p><strong>Situación reciente:</strong> Tenía planeado hablar con mi jefe sobre reducir mi carga de trabajo, pero no me atreví.</p>
                     <p><strong>Pensamiento automático que me bloqueó:</strong> “Seguro que piensa que me estoy quejando por nada y que no soy lo suficientemente bueno/a para el puesto.”</p>
                     <p><strong>Distorsiones que aparecieron:</strong> Inferencia arbitraria: Adivinación del pensamiento, Catastrofismo</p>
@@ -134,11 +134,11 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
                                     <Checkbox id={opt.id} checked={!!distortions[opt.id]} onCheckedChange={(checked) => handleDistortionChange(opt.id, !!checked)} />
                                     <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
                                 </div>
-                                <AccordionTrigger className="p-2 text-muted-foreground hover:no-underline [&>svg]:size-5">
+                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5">
                                     <span className="sr-only">Ver descripción</span>
                                 </AccordionTrigger>
                             </div>
-                            <AccordionContent className="pl-10 pr-2 pb-2 text-xs text-muted-foreground">
+                            <AccordionContent className="pl-10 pr-2 pb-2 text-xs">
                                 {opt.description}
                             </AccordionContent>
                         </AccordionItem>
@@ -168,7 +168,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
              <div className="p-4 space-y-4 text-center">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Práctica Guardada!</h4>
-                <p className="text-muted-foreground">Has entrenado una forma más consciente de relacionarte con tus pensamientos.</p>
+                <p>Has entrenado una forma más consciente de relacionarte con tus pensamientos.</p>
                 <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                     <Button variant="secondary" disabled>
                       <Save className="mr-2 h-4 w-4" /> Guardado en tu caja de herramientas
@@ -187,7 +187,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStep()}

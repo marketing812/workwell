@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -45,7 +46,7 @@ const valueOptions = [
     { id: 'tenderness', label: 'Ternura', description: 'Aportar dulzura, sensibilidad y cuidado en cómo te tratas y cómo te relacionas.' },
 ];
 
-export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadmapExerciseProps) {
+export default function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadmapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -184,7 +185,7 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
                     <Label htmlFor="val-other" className="font-normal">Otro</Label>
                 </div>
             </RadioGroup>
-            {chosenValue === 'Otro' && <Textarea value={otherChosenValue} onChange={e => setOtherChosenValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2 ml-6" />}
+            {chosenValue === 'Otro' && <Textarea value={otherChosenValue} onChange={e => setOtherChosenValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!chosenValue.trim()}>Siguiente</Button>
@@ -239,7 +240,7 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
-            <CardDescription className="pt-2">
+            <CardDescription>
                 {content.objective}
                 {content.audioUrl && (
                     <div className="mt-4">

@@ -26,7 +26,7 @@ type DailyProgress = {
   status?: TrackingStatus;
 };
 
-export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTrackingExerciseProps) {
+export default function GentleTrackingExercise({ content, pathId, onComplete }: GentleTrackingExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [weekWord, setWeekWord] = useState('');
@@ -135,11 +135,11 @@ export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTr
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
-          <p className="text-sm text-center md:text-left">Haz clic repetidamente en un día para marcar tu progreso.</p>
+          <p className="text-center md:text-left">Haz clic repetidamente en un día para marcar tu progreso.</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <Calendar
               mode="single"
@@ -156,8 +156,8 @@ export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTr
                 DayContent: ({ date }) => renderDayContent(date as Date),
               }}
             />
-            <div className="space-y-3 text-sm text-muted-foreground self-center md:self-start">
-              <p className="font-semibold text-foreground">Leyenda:</p>
+            <div className="space-y-3 self-center md:self-start">
+              <p className="font-semibold">Leyenda:</p>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <CheckIcon className="h-5 w-5 text-green-500" />
@@ -186,10 +186,10 @@ export function GentleTrackingExercise({ content, pathId, onComplete }: GentleTr
               <p className="font-semibold text-lg text-green-700 dark:text-green-300">
                 Has completado {completedDays} {completedDays === 1 ? 'día' : 'días'} esta semana.
               </p>
-              <p className="text-muted-foreground">
+              <p>
                 Eso es: <span className="font-bold text-primary">{weekWord}</span>.
               </p>
-              <p className="text-muted-foreground">
+              <p>
                 Eso es cuidar tu compromiso real.
               </p>
             </div>

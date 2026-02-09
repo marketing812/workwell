@@ -36,7 +36,7 @@ const perfectionismOptions = [
     { id: 'not-my-case', label: 'No fue mi caso esta vez.' },
 ];
 
-export function CompassionateReflectionExercise({ content, pathId, onComplete }: CompassionateReflectionExerciseProps) {
+export default function CompassionateReflectionExercise({ content, pathId, onComplete }: CompassionateReflectionExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -138,7 +138,7 @@ ${flexibleThought || 'No especificada.'}
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 1: Instrucción</h4>
-                <p className="text-sm text-muted-foreground">Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
+                <p>Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
                 <div className="space-y-2">
                     <Label htmlFor="advice-to-friend">Le diría que…</Label>
                     <Textarea
@@ -148,7 +148,7 @@ ${flexibleThought || 'No especificada.'}
                         placeholder="Ej: Entiendo que te bloquees, lo que estás viviendo es difícil. Vas a poder con ello poco a poco."
                     />
                 </div>
-                <p className="text-sm italic text-center text-primary pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
+                <p className="italic text-center text-primary pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
                 <div className="flex justify-between w-full">
                   <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={() => setStep(2)} disabled={!adviceToFriend.trim()}>Continuar</Button>
@@ -166,7 +166,7 @@ ${flexibleThought || 'No especificada.'}
               onChange={e => setSelfJudgment(e.target.value)}
               placeholder="Pensé que no valía para esto..."
             />
-            <p className="text-sm text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
+            <p className="text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={() => setStep(3)} disabled={!selfJudgment.trim()}>Siguiente</Button>
@@ -267,7 +267,7 @@ ${flexibleThought || 'No especificada.'}
         return (
           <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
             <h4 className="font-bold text-lg">Tu Mapa de Comprensión Emocional</h4>
-            <div className="text-left p-4 border rounded-md bg-background/50 space-y-3 text-sm">
+            <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                 <p><strong>A alguien que quiero le diría:</strong> {adviceToFriend}</p>
                 <p><strong>En ese momento pensé que:</strong> {selfJudgment}</p>
                 <p><strong>Emociones que intenté evitar:</strong> {selectedEmotions.join(', ')}</p>
@@ -275,7 +275,7 @@ ${flexibleThought || 'No especificada.'}
                 <p><strong>Exigencias detectadas:</strong> {selectedPerfectionism.join(', ')}</p>
                 <p><strong>Nueva forma de pensarlo:</strong> {flexibleThought}</p>
             </div>
-            <p className="text-sm italic text-center pt-2">
+            <p className="italic text-center pt-2">
               Has dado un paso valiente. Hablarte con amabilidad te ayuda a avanzar.
             </p>
             <div className="flex justify-between w-full mt-4">
@@ -291,7 +291,7 @@ ${flexibleThought || 'No especificada.'}
             <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto" />
                 <h4 className="font-bold text-lg">¡Reflexión Guardada!</h4>
-                <p className="text-muted-foreground">Tu reflexión se ha guardado en el Cuaderno Terapéutico. Puedes consultarla cuando quieras para recordar tus patrones y tus nuevas formas de responder.</p>
+                <p>Tu reflexión se ha guardado en el Cuaderno Terapéutico. Puedes consultarla cuando quieras para recordar tus patrones y tus nuevas formas de responder.</p>
                 <Button onClick={resetExercise} variant="outline" className="w-full">
                 Empezar de nuevo
                 </Button>
@@ -308,7 +308,7 @@ ${flexibleThought || 'No especificada.'}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>

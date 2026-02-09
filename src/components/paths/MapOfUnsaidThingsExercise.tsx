@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -42,7 +43,7 @@ const blockageOptions = [
 ];
 
 
-export function MapOfUnsaidThingsExercise({ content, pathId, onComplete }: MapOfUnsaidThingsExerciseProps) {
+export default function MapOfUnsaidThingsExercise({ content, pathId, onComplete }: MapOfUnsaidThingsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -175,12 +176,12 @@ ${nextStepOpener || 'No especificado.'}
       case 0: // Intro with example
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
+            <p className="italic">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>
-                  <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
+                  <div className="space-y-3 p-2 border bg-background rounded-md">
                     <p><strong>¿Qué ocurrió?</strong> Estaba en una reunión del trabajo. Mi jefa pidió voluntarios para asumir un nuevo proyecto urgente.</p>
                     <p><strong>¿Qué querías decir o hacer, pero no lo hiciste?</strong> Quería decir que no podía asumirlo porque ya tenía demasiada carga y me sentía saturado/a.</p>
                     <p><strong>¿Qué hiciste en su lugar?</strong> Me quedé en silencio. No levanté la mano, pero tampoco expresé que no estaba disponible. Me limité a asentir, como si todo estuviera bien.</p>
@@ -198,7 +199,7 @@ ${nextStepOpener || 'No especificado.'}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
              <h4 className="font-semibold text-lg text-primary">Registra una Situación Concreta</h4>
-             <p className="text-sm text-muted-foreground">Recuerda una situación reciente en la que no dijiste algo importante para ti.</p>
+             <p>Recuerda una situación reciente en la que no dijiste algo importante para ti.</p>
              <div className="space-y-2">
                  <Label htmlFor="sit-what-happened">¿Qué ocurrió?</Label>
                  <Textarea id="sit-what-happened" value={situation} onChange={e => setSituation(e.target.value)} />
@@ -242,7 +243,7 @@ ${nextStepOpener || 'No especificado.'}
          return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Detecta tu Patrón</h4>
-                <p className="text-sm text-muted-foreground">Después de registrar varias situaciones, puedes empezar a ver patrones. No es para etiquetarte, sino para entenderte.</p>
+                <p>Después de registrar varias situaciones, puedes empezar a ver patrones. No es para etiquetarte, sino para entenderte.</p>
                 <div className="space-y-2"><Label htmlFor="pat-emotions">¿Qué emociones se repiten cuando callas?</Label><Textarea id="pat-emotions" value={repeatedEmotions} onChange={e => setRepeatedEmotions(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="pat-contexts">¿Con qué personas o contextos te cuesta más expresarte?</Label><Textarea id="pat-contexts" value={difficultContexts} onChange={e => setDifficultContexts(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="pat-fears">¿Qué temes que ocurra si hablas?</Label><Textarea id="pat-fears" value={fears} onChange={e => setFears(e.target.value)} /></div>
@@ -264,7 +265,7 @@ ${nextStepOpener || 'No especificado.'}
          return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Replantea la Situación</h4>
-                <p className="text-sm text-muted-foreground">Mira la situación desde otro ángulo para abrir nuevas formas de actuar.</p>
+                <p>Mira la situación desde otro ángulo para abrir nuevas formas de actuar.</p>
                 <div className="space-y-2"><Label htmlFor="reframe-friend">¿Qué me diría un buen amigo si supiera esto?</Label><Textarea id="reframe-friend" value={friendAdvice} onChange={e => setFriendAdvice(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="reframe-choice">¿Estoy actuando por miedo o por elección?</Label><Textarea id="reframe-choice" value={fearOrChoice} onChange={e => setFearOrChoice(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="reframe-worstcase">¿Qué es lo peor que podría pasar si hablo? ¿Y qué haría si eso ocurre?</Label><Textarea id="reframe-worstcase" value={worstCase} onChange={e => setWorstCase(e.target.value)} /></div>
@@ -276,7 +277,7 @@ ${nextStepOpener || 'No especificado.'}
          return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Da tu Primer Paso</h4>
-                <p className="text-sm text-muted-foreground">Prepárate para actuar diferente la próxima vez. No tiene que ser perfecto, solo un paso adelante.</p>
+                <p>Prepárate para actuar diferente la próxima vez. No tiene que ser perfecto, solo un paso adelante.</p>
                 <div className="space-y-2"><Label htmlFor="step-phrase">¿Qué podrías intentar decir la próxima vez que ocurra algo parecido?</Label><Textarea id="step-phrase" value={nextStepPhrase} onChange={e => setNextStepPhrase(e.target.value)} placeholder="Ej: Gracias por contar conmigo, pero no puedo..." /></div>
                 <div className="space-y-2"><Label htmlFor="step-context">¿En qué contexto podrías practicarlo con más confianza?</Label><Textarea id="step-context" value={nextStepContext} onChange={e => setNextStepContext(e.target.value)} placeholder="Ej: En una conversación individual..." /></div>
                 <div className="space-y-2"><Label htmlFor="step-opener">¿Qué frase podrías tener preparada para empezar?</Label><Textarea id="step-opener" value={nextStepOpener} onChange={e => setNextStepOpener(e.target.value)} placeholder="Ej: Hay algo que quiero comentarte..." /></div>
@@ -287,7 +288,7 @@ ${nextStepOpener || 'No especificado.'}
         return (
              <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">¿Quieres guardar lo que has descubierto hoy?</h4>
-                <p className="text-sm">Has recorrido un camino importante. Puedes guardar todo esto en tu Cuaderno Terapéutico para volver a él cuando lo necesites.</p>
+                <p>Has recorrido un camino importante. Puedes guardar todo esto en tu Cuaderno Terapéutico para volver a él cuando lo necesites.</p>
                 <div className="space-y-2 text-left">
                     <Label htmlFor="pattern-name">Ponle un nombre a este patrón (opcional)</Label>
                     <Textarea id="pattern-name" value={patternName} onChange={e => setPatternName(e.target.value)} placeholder="Ej: Cuando me callo en el trabajo" />
@@ -301,7 +302,7 @@ ${nextStepOpener || 'No especificado.'}
              <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">¡Guardado con éxito!</h4>
-                 <p className="text-muted-foreground">Podrás volver a consultarlo siempre que lo necesites en tu Cuaderno Terapéutico.</p>
+                 <p>Podrás volver a consultarlo siempre que lo necesites en tu Cuaderno Terapéutico.</p>
                  <Button onClick={reset} variant="outline" className="w-full">Registrar otra situación</Button>
              </div>
         );
@@ -321,7 +322,7 @@ ${nextStepOpener || 'No especificado.'}
             </audio>
           </div>
         )}
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStep()}

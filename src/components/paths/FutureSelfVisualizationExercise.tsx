@@ -20,7 +20,7 @@ interface FutureSelfVisualizationExerciseProps {
   onComplete: () => void;
 }
 
-export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onComplete }: FutureSelfVisualizationExerciseProps) {
+export default function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onComplete }: FutureSelfVisualizationExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -78,12 +78,12 @@ export function FutureSelfVisualizationExercise({ content, pathId, audioUrl, onC
             case 0:
                 return (
                     <div className="p-4 space-y-4">
-                        <p className="text-sm text-muted-foreground">Busca un lugar tranquilo y cómodo. Apoya bien los pies en el suelo, relaja el cuerpo y deja que tu respiración te acompañe.</p>
-                        <p className="text-sm text-muted-foreground">Hoy vas a iniciar un breve viaje mental hacia una versión futura de ti: una versión que ya ha atravesado el bloqueo que hoy te cuesta, y ha creado el hábito que ahora deseas construir.</p>
-                        <p className="text-sm text-muted-foreground">No necesitas saber exactamente cómo lo ha hecho. Solo tienes que observar, sentir y conectar.</p>
-                        <p className="text-sm text-muted-foreground">Este ejercicio no es magia ni adivinación. Es una herramienta poderosa que utiliza tu imaginación como puente hacia el cambio. 
+                        <p>Busca un lugar tranquilo y cómodo. Apoya bien los pies en el suelo, relaja el cuerpo y deja que tu respiración te acompañe.</p>
+                        <p>Hoy vas a iniciar un breve viaje mental hacia una versión futura de ti: una versión que ya ha atravesado el bloqueo que hoy te cuesta, y ha creado el hábito que ahora deseas construir.</p>
+                        <p>No necesitas saber exactamente cómo lo ha hecho. Solo tienes que observar, sentir y conectar.</p>
+                        <p>Este ejercicio no es magia ni adivinación. Es una herramienta poderosa que utiliza tu imaginación como puente hacia el cambio. 
 Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro las mismas redes que se encienden cuando realmente actúas. Eso refuerza tu motivación, tu claridad y tu confianza.</p>
-                        <p className="text-sm text-muted-foreground">Puedes hacer esta visualización de dos formas:</p>
+                        <p>Puedes hacer esta visualización de dos formas:</p>
                         
                         <div className="flex flex-col gap-2">
 
@@ -92,7 +92,7 @@ Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro 
                                 <AccordionTrigger>
                                     Mostar la Visualización Completa
                                 </AccordionTrigger>
-                                <AccordionContent className="text-sm text-muted-foreground space-y-2">
+                                <AccordionContent className="space-y-2">
                                      <h4 className="font-semibold">Inicio – Respiración y conexión corporal</h4>
                                      <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
                                         <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejercicio2inicio.mp3" type="audio/mp3" />
@@ -192,7 +192,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Viaje al futuro</h4>
-                        <p className="text-sm text-muted-foreground">Imagina que ha pasado el tiempo suficiente para que el hábito que deseas ya forme parte de tu vida.</p>
+                        <p>Imagina que ha pasado el tiempo suficiente para que el hábito que deseas ya forme parte de tu vida.</p>
                         <Label htmlFor="futureSelf">¿Dónde estás? ¿Es por la mañana, por la tarde? ¿Qué estás haciendo justo después de completar ese hábito? ¿Cómo te ves? ¿Cómo es tu cuerpo, tu ropa, tu expresión facial? ¿Qué transmite tu mirada?</Label>
                         <Textarea id="futureSelf" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} />
                         <div className="flex justify-between mt-2">
@@ -205,10 +205,10 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                  return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Emociones y pensamientos del yo futuro</h4>
-                        <p className="text-sm text-muted-foreground">Observa las emociones que te habitan en esa escena:</p>
+                        <p>Observa las emociones que te habitan en esa escena:</p>
                         <Label htmlFor="emotions">¿Sientes orgullo? ¿Confianza? ¿Tranquilidad? ¿Qué pensamientos aparecen en tu mente? ¿Hay frases que te dices o que resuenan dentro de ti?</Label>
                         <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} />
-                        <p className="text-sm text-muted-foreground">Déjalas entrar como una luz suave que te abraza por dentro.</p>
+                        <p>Déjalas entrar como una luz suave que te abraza por dentro.</p>
                         <div className="flex justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(2)}>Atrás</Button>
                             <Button onClick={() => setStep(4)} disabled={!emotions}>Siguiente</Button>
@@ -220,7 +220,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Cambios que observas en tu vida</h4>
                         <Label htmlFor="benefits">¿Cómo ha mejorado tu bienestar físico o emocional? ¿En qué ha cambiado tu autoestima o tu energía diaria? ¿Y tus relaciones? ¿Qué dificultades lograste superar?</Label>
-                        <p className="text-sm text-muted-foreground">Observa con atención los frutos del camino recorrido.</p>
+                        <p>Observa con atención los frutos del camino recorrido.</p>
                         <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} />
                         <div className="flex justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(3)}>Atrás</Button>
@@ -276,7 +276,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+                {content.objective && <CardDescription>{content.objective}</CardDescription>}
                 {audioUrl && (
                     <div className="mt-4">
                         <audio id="main-audio" controls controlsList="nodownload" className="w-full">

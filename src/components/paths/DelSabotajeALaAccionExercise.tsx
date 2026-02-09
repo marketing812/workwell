@@ -38,7 +38,7 @@ const functionalResponses: Record<string, string> = {
     'sabotage-too-late': '“No puedo cambiar el pasado, pero sí puedo actuar ahora.”',
 };
 
-export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: DelSabotajeALaAccionExerciseProps) {
+export default function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: DelSabotajeALaAccionExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
 
@@ -116,7 +116,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Frases que alimentan la procrastinación</h4>
-                    <p className="text-sm text-muted-foreground">Marca las que sueles decirte:</p>
+                    <p>Marca las que sueles decirte:</p>
                     <div className="space-y-2">
                         {sabotageOptions.map(opt => (
                             <div key={opt.id} className="flex items-center space-x-2">
@@ -140,14 +140,14 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                         <div className="space-y-4">
                             {selectedOptions.map(opt => (
                                 <div key={opt.id} className="p-3 border rounded-md bg-background">
-                                    <p className="text-sm text-muted-foreground">Ante el pensamiento:</p>
+                                    <p className="text-sm">Ante el pensamiento:</p>
                                     <p className="font-medium italic">{opt.label}</p>
-                                    <p className="text-sm text-muted-foreground mt-2">Tu nueva respuesta amable es:</p>
+                                    <p className="text-sm mt-2">Tu nueva respuesta amable es:</p>
                                     <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
                                 </div>
                             ))}
                         </div>
-                    ) : <p className="text-muted-foreground italic">No has seleccionado ninguna frase común.</p> }
+                    ) : <p className="italic">No has seleccionado ninguna frase común.</p> }
                     <div className="flex justify-between w-full">
                         <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={nextStep}>Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
@@ -159,7 +159,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
              return (
                 <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Crea tu tabla personal</h4>
-                    <p className="text-sm text-muted-foreground">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
+                    <p>¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
                     <div className="space-y-2">
                         <Label htmlFor="custom-sabotage">Frase que te repites</Label>
                         <Textarea id="custom-sabotage" value={customSabotage} onChange={e => setCustomSabotage(e.target.value)} />
@@ -182,7 +182,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
                 <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                     <h4 className="text-xl font-bold">¡Ejercicio Guardado!</h4>
-                    <p className="text-muted-foreground">
+                    <p>
                         Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estarás construyendo un puente hacia la acción.
                     </p>
                     <Button onClick={resetExercise} variant="outline" className="w-full">
@@ -198,7 +198,7 @@ export function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: De
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.audioUrl && (
             <div className="mt-2">
                 <audio controls controlsList="nodownload" className="w-full h-10">
