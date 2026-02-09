@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -16,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
 
 interface BraveRoadmapExerciseProps {
   content: BraveRoadmapExerciseContent;
@@ -123,7 +123,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
 `;
     filledActions.forEach((a, i) => {
       const finalValue = a.value === 'Otro' ? `Otro: ${a.otherValue || ''}` : a.value;
-      notebookContent += `**Acción ${i + 1}:** ${a.action} (Coraje: ${a.courage}/3, Valor: ${finalValue})\n`;
+      notebookContent += `**Acción ${i + 1}:** ${a.action} (Coraje: ${a.courage}/3, Valor: ${finalValue})\\n`;
     });
 
     addNotebookEntry({ title: `Mi Hoja de Ruta Valiente`, content: notebookContent, pathId: pathId, userId: user?.id });
@@ -138,6 +138,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     return (
         <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Define tu acción {index + 1}</h4>
+            <p>¿Qué acción concreta, realista y sostenible podrías hacer esta semana para acercarte a ese valor?</p>
             <div className="space-y-4 p-3 border rounded-md bg-background">
                 <div>
                     <Label htmlFor={`action${index}`}>Acción concreta:</Label>
@@ -180,7 +181,7 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
         </div>
     );
   };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:
@@ -199,15 +200,15 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
                     <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
                         <RadioGroupItem value={opt.label} id={opt.id} className="mt-1" />
                         <div className="grid gap-0.5 leading-normal">
-                            <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
-                            <p className="text-sm">{opt.description}</p>
+                            <Label htmlFor={opt.id} className="font-semibold cursor-pointer text-base">{opt.label}</Label>
+                            <p>{opt.description}</p>
                         </div>
                     </div>
                 ))}
                 <div className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50 has-[:checked]:bg-accent/50 has-[:checked]:border-primary">
                     <RadioGroupItem value="Otro" id="val-other" className="mt-1"/>
                      <div className="grid gap-0.5 leading-normal">
-                        <Label htmlFor="val-other" className="font-semibold cursor-pointer">Otro</Label>
+                        <Label htmlFor="val-other" className="font-semibold cursor-pointer text-base">Otro</Label>
                     </div>
                 </div>
             </RadioGroup>
@@ -261,6 +262,10 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     }
   };
 
+  if (!isClient) {
+    return null;
+  }
+  
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
@@ -285,4 +290,5 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     </Card>
   );
 }
+
     
