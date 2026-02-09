@@ -22,7 +22,7 @@ interface ThoughtsThatBlockPurposeExerciseProps {
 
 const distortionOptions = [
     {id: 'catastrophism', label: 'Catastrofismo', description: 'Ver las situaciones como si el peor desenlace fuera inevitable o insoportable. Ejemplo: “Si fallo esta presentación, será un desastre total y arruinaré mi carrera.”' },
-    {id: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)', description: 'Ver las cosas en extremos (todo-nada, siempre-nunca, bien-mal, ...) sin matices. Todo es perfecto o un fracaso. Ejemplo: “Si no hago todo bien, entonces soy una inútil.”' },
+    {id: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)', description: 'Ver las cosas en extremos (todo-nada, siempre-nunca, bien-mal, ...) sin matices. Todo es perfecto o un fracaso. Ejemplo: “Si no lo hago todo bien, entonces soy una inútil.”' },
     {id: 'overgeneralization', label: 'Sobregeneralización', description: 'Sacar conclusiones generales a partir de un solo hecho negativo. Ejemplo: “Me equivoqué en esto, siempre lo hago mal.”' },
     {id: 'personalization', label: 'Personalización', description: 'Creer que todo lo que ocurre está relacionado contigo, incluso sin evidencia. Ejemplo: “Seguro que están serios porque yo hice algo mal.”' },
     {id: 'mind_reading', label: 'Inferencia arbitraria / Saltar a conclusiones', description: 'Sacar conclusiones negativas sin pruebas claras. Hay dos tipos: la Adivinación del Pensamiento de los demás y la Adivinación del Futuro. Ejemplo: “No me contestó el mensaje, seguro que está molesto conmigo”, “No me lo voy a pasar bien en la cena, asi que no voy a ir”.' },
@@ -101,7 +101,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
                     <p><strong>Distorsiones que aparecieron:</strong> Inferencia arbitraria: Adivinación del pensamiento, Catastrofismo</p>
                     <p><strong>Reformulación adecuada consciente:</strong> “No puedo saber lo que piensa. Estoy cuidándome al expresar mis límites, y eso es una muestra de responsabilidad y valentía.”</p>
                 </div>
-                 <Button onClick={nextStep} className="w-full">Empezar práctica <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                 <Button onClick={nextStep} className="w-full">Empezar práctica <ArrowRight className="mr-2 h-4 w-4"/></Button>
             </div>
         );
       case 1:
@@ -124,26 +124,17 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
                 <Label htmlFor="thought-block">¿Qué frase pasó por tu mente en ese momento?</Label>
                 <Textarea id="thought-block" value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-4">
                 <Label>¿Qué distorsiones cognitivas detectas?</Label>
-                <Accordion type="multiple" className="w-full">
-                    {distortionOptions.map(opt => (
-                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
-                           <div className="flex items-center justify-between py-2">
-                                <div className="flex items-center space-x-3">
-                                    <Checkbox id={opt.id} checked={!!distortions[opt.id]} onCheckedChange={(checked) => handleDistortionChange(opt.id, !!checked)} />
-                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
-                                </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5">
-                                    <span className="sr-only">Ver descripción</span>
-                                </AccordionTrigger>
-                            </div>
-                            <AccordionContent className="pl-10 pr-2 pb-2 text-xs">
-                                {opt.description}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+                {distortionOptions.map(opt => (
+                    <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3">
+                        <Checkbox id={opt.id} checked={!!distortions[opt.id]} onCheckedChange={(checked) => handleDistortionChange(opt.id, !!checked)} className="mt-1" />
+                        <div className="grid gap-1.5 leading-normal">
+                            <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
+                            <p className="text-sm">{opt.description}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
              <div className="flex justify-between mt-2">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -159,7 +150,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
             <Textarea id="reformulation-block" value={reformulation} onChange={e => setReformulation(e.target.value)} />
              <div className="flex justify-between mt-2">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar Práctica</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
