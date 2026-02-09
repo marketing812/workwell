@@ -143,12 +143,12 @@ ${response}
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="fact">Describe el hecho con honestidad</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Escribe lo que ocurrió, centrándote en los hechos y evitando juicios o interpretaciones.<br> Ejemplo: En la reunión de equipo, interrumpí a un compañero y me di cuenta después." }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Escribe lo que ocurrió, centrándote en los hechos y evitando juicios o interpretaciones.<br> Ejemplo: En la reunión de equipo, interrumpí a un compañero y me di cuenta después." }} />
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} disabled={isSaved} placeholder="Describe objetivamente lo que pasó. Céntrate solo en los hechos" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="emotion-acceptance">Ponle nombre a lo que sentiste entonces</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
             <Select onValueChange={setEmotion} value={emotion} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona la emoción que sentiste" /></SelectTrigger>
               <SelectContent>{acceptanceEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
@@ -156,22 +156,22 @@ ${response}
           </div>
           <div className="space-y-2">
             <Label htmlFor="dialogue">Reconoce tu diálogo interno</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
             <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} placeholder="Escribe tu diálogo interno" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="judgment">Distingue hechos de juicios</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
             <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} placeholder="Anota qué partes son hechos y cuáles son juicios" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="response">Elige tu respuesta actual</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Pregúntate: “Si volviera a pasar, ¿qué podría hacer diferente?”. Escríbelo como una acción concreta. <br> Ejemplo: Pedir disculpas y dejar que termine de hablar. " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Pregúntate: “Si volviera a pasar, ¿qué podría hacer diferente?”. Escríbelo como una acción concreta. <br> Ejemplo: Pedir disculpas y dejar que termine de hablar. " }} />
             <Textarea id="response" value={response} onChange={e => setResponse(e.target.value)} disabled={isSaved} placeholder="Escribe tu respuesta o acción actual " />
           </div>
           <div className="space-y-2">
             <Label htmlFor="compassion-phrase">Cierra con compasión</Label>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Escribe una frase que te ayude a dejar ir lo que pasó, reconociendo que eres más que ese momento. <br>Ejemplo: Eso pasó, aprendí y ahora sigo adelante." }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Escribe una frase que te ayude a dejar ir lo que pasó, reconociendo que eres más que ese momento. <br>Ejemplo: Eso pasó, aprendí y ahora sigo adelante." }} />
             <Textarea id="compassion-phrase" value={compassionPhrase} onChange={e => setCompassionPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe tu frase de cierre compasivo" />
           </div>
           {!isSaved ? (

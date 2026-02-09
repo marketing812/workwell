@@ -113,12 +113,12 @@ ${finalAction || 'No especificado.'}
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold text-lg">Paso 1: Sitúa el momento</h4>
-                        <p className="text-sm text-muted-foreground">Piensa en la última vez que sentiste ansiedad. No hace falta que sea algo dramático: puede ser un momento sencillo (ej. ir en el metro, hablar en una reunión, acostarte a dormir).</p>
+                        <p className="text-sm">Piensa en la última vez que sentiste ansiedad. No hace falta que sea algo dramático: puede ser un momento sencillo (ej. ir en el metro, hablar en una reunión, acostarte a dormir).</p>
                         <div className="space-y-2">
                           <Label htmlFor="situation">Describe brevemente la situación (solo hechos, sin interpretaciones):</Label>
                           <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder='Ejemplo: “Estaba en el metro y empezó a llenarse de gente.”' />
                         </div>
-                        <p className="text-xs text-muted-foreground italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
+                        <p className="text-xs italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
                         <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 );
@@ -126,7 +126,7 @@ ${finalAction || 'No especificado.'}
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold text-lg">Paso 2: Señales del cuerpo y de la mente</h4>
-                        <p className="text-sm text-muted-foreground">La ansiedad habla en dos idiomas: tu cuerpo y tus pensamientos. Vamos a escucharlos.</p>
+                        <p className="text-sm">La ansiedad habla en dos idiomas: tu cuerpo y tus pensamientos. Vamos a escucharlos.</p>
                         <div className="space-y-2">
                             <Label>Lista de síntomas físicos (selección múltiple con “otro”):</Label>
                             {symptomOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><Checkbox id={opt.id} onCheckedChange={c => setSymptoms(p => ({...p, [opt.id]: !!c}))} checked={symptoms[opt.id] || false} /><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
@@ -137,7 +137,7 @@ ${finalAction || 'No especificado.'}
                           <Label htmlFor="thoughts">Escribe los pensamientos que aparecieron en ese momento.</Label>
                           <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder='Ejemplo: “Pensaba: ‘me voy a desmayar’, ‘no voy a aguantar aquí’.”'/>
                         </div>
-                        <p className="text-xs text-muted-foreground italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
+                        <p className="text-xs italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
                         <div className="flex justify-between w-full mt-2">
                             <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                             <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
@@ -148,15 +148,15 @@ ${finalAction || 'No especificado.'}
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold text-lg">Paso 3: El pensamiento inicial de amenaza</h4>
-                        <p className="text-sm text-muted-foreground">Ahora volvamos un momento atrás: antes de que notaras el cuerpo alterado, ¿hubo alguna interpretación o pensamiento que activó la alarma?</p>
+                        <p className="text-sm">Ahora volvamos un momento atrás: antes de que notaras el cuerpo alterado, ¿hubo alguna interpretación o pensamiento que activó la alarma?</p>
                         <div className="space-y-2">
                             <Label htmlFor="initial-threat">Identifica ese pensamiento inicial de amenaza:</Label>
                             <Textarea id="initial-threat" value={initialThreat} onChange={e => setInitialThreat(e.target.value)} placeholder='Ejemplo: “Si el metro se llena, me voy a quedar atrapado/a y no podré salir.” o “Si el metro se llena y aparece la ansiedad, no podré salir”.' />
                         </div>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                            <AccordionContent className="text-xs text-muted-foreground">
+                            <AccordionTrigger className="text-xs hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionContent className="text-xs">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
                               Cuanto más practiques, más fácil será detectarlo en el momento.
@@ -187,15 +187,15 @@ ${finalAction || 'No especificado.'}
                         </div>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                            <AccordionContent className="text-xs text-muted-foreground">
+                            <AccordionTrigger className="text-xs hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionContent className="text-xs">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
                               Cuanto más practiques, más fácil será detectarlo en el momento.
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
-                        <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
+                        <p className="text-xs italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
                         <div className="flex justify-between w-full mt-2">
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={handleSave} disabled={isSaved}>

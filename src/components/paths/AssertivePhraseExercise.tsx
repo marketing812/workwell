@@ -103,7 +103,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       case 'intro':
         return (
           <div className="text-center p-4 space-y-4">
-            <p className="text-sm text-muted-foreground">Esta técnica se basa en una estructura simple que puedes usar cuando algo te molesta o necesitas expresar un límite. Te ayudará a hablar desde ti, sin atacar ni culparte.</p>
+            <p className="text-sm">Esta técnica se basa en una estructura simple que puedes usar cuando algo te molesta o necesitas expresar un límite. Te ayudará a hablar desde ti, sin atacar ni culparte.</p>
             <div className="p-3 border rounded-md bg-background text-left">
               <p className="text-sm">Piensa en una situación reciente en la que algo te incomodó.</p>
               <p className="text-sm italic">Ejemplo: “Llegaste tarde a la reunión sin avisar.”</p>
@@ -116,7 +116,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="fact" className="font-semibold text-lg">Paso 1: Describe el hecho objetivo</Label>
-            <p className="text-sm text-muted-foreground">¿Qué ocurrió? Sé concreto/a y evita juicios.</p>
+            <p className="text-sm">¿Qué ocurrió? Sé concreto/a y evita juicios.</p>
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} placeholder="Ej: Llegaste tarde a la reunión sin avisar." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -129,7 +129,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="feeling" className="font-semibold text-lg">Paso 2: Expresa tu emoción</Label>
-            <p className="text-sm text-muted-foreground">Ponle nombre a lo que sentiste. Habla desde ti.</p>
+            <p className="text-sm">Ponle nombre a lo que sentiste. Habla desde ti.</p>
             <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustración, tristeza, inseguridad..." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -142,7 +142,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
          return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="need" className="font-semibold text-lg">Paso 3: Identifica tu necesidad</Label>
-            <p className="text-sm text-muted-foreground">Conecta con lo que estaba en juego para ti.</p>
+            <p className="text-sm">Conecta con lo que estaba en juego para ti.</p>
             <Textarea id="need" value={need} onChange={e => setNeed(e.target.value)} placeholder="Ej: respeto, apoyo, claridad..." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -155,7 +155,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="request" className="font-semibold text-lg">Paso 4: Formula una petición</Label>
-            <p className="text-sm text-muted-foreground">Pide algo concreto, breve y posible.</p>
+            <p className="text-sm">Pide algo concreto, breve y posible.</p>
             <Textarea id="request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ej: Te pido que me avises si vas a llegar más tarde." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -171,7 +171,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-left">
               “Cuando {fact || '...' }, me siento {feeling || '...'}. Necesito {need || '...'}. Por eso te pido {request || '...' }.”
             </blockquote>
-            <p className="text-sm text-muted-foreground">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá.</p>
+            <p className="text-sm">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi Cuaderno</Button>

@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -15,6 +14,7 @@ import type { BraveRoadmapExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface BraveRoadmapExerciseProps {
   content: BraveRoadmapExerciseContent;
@@ -66,13 +66,13 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
   };
   
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   
   const resetExercise = () => {
     setStep(0);
     setChosenValue('');
     setOtherChosenValue('');
-    setActions(Array(3).fill({ action: '', courage: '', value: '', otherValue: '' }));
+    setActions(Array.from({ length: 3 }, () => ({ action: '', courage: '', value: '', otherValue: '' })));
     setIsSaved(false);
   };
 
@@ -116,7 +116,7 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
                 
                 <div>
                     <Label>Coraje requerido:</Label>
-                    <p className="text-xs text-muted-foreground">Bajo: 1, Medio: 2, Alto: 3</p>
+                    <p className="text-xs">Bajo: 1, Medio: 2, Alto: 3</p>
                     <RadioGroup value={action.courage} onValueChange={v => handleActionChange(index, 'courage', v)} className="flex gap-4 mt-1">
                         <div className="flex items-center gap-1"><RadioGroupItem value="1" id={`c${index}-1`}/><Label htmlFor={`c${index}-1`} className="font-normal">1</Label></div>
                         <div className="flex items-center gap-1"><RadioGroupItem value="2" id={`c${index}-2`}/><Label htmlFor={`c${index}-2`} className="font-normal">2</Label></div>
@@ -173,9 +173,9 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
                                     <RadioGroupItem value={opt.label} id={opt.id} />
                                     <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
                                 </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4 text-muted-foreground" /></AccordionTrigger>
+                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4"/></AccordionTrigger>
                             </div>
-                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
+                            <AccordionContent className="text-sm pl-9 pr-4 pb-3">{opt.description}</AccordionContent>
                         </AccordionItem>
                     ))}
                 </Accordion>
@@ -223,7 +223,7 @@ export function BraveRoadmapExercise({ content, pathId, onComplete }: BraveRoadm
             <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">Hoja de Ruta Guardada</h4>
-                <p className="italic text-muted-foreground">"Tus decisiones crean tu camino. No importa si es grande o pequeño: cada paso desde el propósito cuenta."</p>
+                <p className="italic">"Tus decisiones crean tu camino. No importa si es grande o pequeño: cada paso desde el propósito cuenta."</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={resetExercise} variant="outline" className="w-auto">Crear otra hoja de ruta</Button>

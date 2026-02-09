@@ -77,7 +77,7 @@ ${finalAnchorType}
 *Descripción de mi ancla:*
 ${anchorDesc}
     `;
-    addNotebookEntry({ title: 'Mi Ancla en la Tormenta', content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ title: 'Mi Ancla en la Tormenta', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Ancla Guardada', description: 'Tu ancla emocional ha sido guardada.' });
     setIsSaved(true);
     onComplete();
@@ -107,7 +107,7 @@ ${anchorDesc}
       case 0: // Intro
         return (
           <div className="p-4 space-y-4">
-            <p className="text-sm text-muted-foreground">En medio de una tormenta, tener un ancla puede evitar que te arrastre el oleaje. En esta práctica vas a crear tu propio ancla emocional: un recurso personal, íntimo y portátil que puedas usar cuando te sientas desbordado o desbordada.</p>
+            <p className="text-sm">En medio de una tormenta, tener un ancla puede evitar que te arrastre el oleaje. En esta práctica vas a crear tu propio ancla emocional: un recurso personal, íntimo y portátil que puedas usar cuando te sientas desbordado o desbordada.</p>
             <div className="p-3 border rounded-md bg-background/50 text-sm">
                 <p className="font-semibold">Ejemplo:</p>
                 <p><strong>Estado emocional:</strong> Cuando me abruma el miedo a equivocarme y empiezo a sentir ansiedad.</p>
@@ -121,7 +121,7 @@ ${anchorDesc}
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Elige tu tipo de ancla</h4>
-            <p className="text-sm text-muted-foreground">Elige el tipo de ancla que quieres crear en este momento. Más adelante, puedes volver a este ejercicio y crear otras anclas diferentes.</p>
+            <p className="text-sm">Elige el tipo de ancla que quieres crear en este momento. Más adelante, puedes volver a este ejercicio y crear otras anclas diferentes.</p>
             <RadioGroup value={anchorType} onValueChange={setAnchorType} disabled={isSaved}>
               <div className="flex items-center space-x-2"><RadioGroupItem value="Respiración calmante" id="anchor-breath" /><Label htmlFor="anchor-breath" className="font-normal">Respiración calmante</Label></div>
               <div className="flex items-center space-x-2"><RadioGroupItem value="Imagen segura o reconfortante" id="anchor-image" /><Label htmlFor="anchor-image" className="font-normal">Imagen segura o reconfortante</Label></div>
@@ -152,7 +152,7 @@ ${anchorDesc}
             </div>
             <div className="p-3 border-l-4 border-accent bg-accent/10">
                 <p className="font-semibold">Conecta con tu ancla ahora:</p>
-                <p className="text-sm text-muted-foreground">Hazlo en este momento. Respira, visualiza, repite tu frase o realiza el gesto. Siente su efecto en tu cuerpo.</p>
+                <p className="text-sm">Hazlo en este momento. Respira, visualiza, repite tu frase o realiza el gesto. Siente su efecto en tu cuerpo.</p>
             </div>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -165,7 +165,7 @@ ${anchorDesc}
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ancla Guardada!</h4>
-            <p className="text-muted-foreground">Recuérdala como una herramienta personal. Puedes regresar a ella en cualquier momento. Cuanto más la practiques, más fácil será volver a tu centro incluso en la tormenta.</p>
+            <p>Recuérdala como una herramienta personal. Puedes regresar a ella en cualquier momento. Cuanto más la practiques, más fácil será volver a tu centro incluso en la tormenta.</p>
             <Button onClick={resetExercise} variant="outline">Crear otra ancla</Button>
           </div>
         );

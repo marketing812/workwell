@@ -70,7 +70,7 @@ export default function CalmVisualizationExercise({ content, pathId, onComplete 
             <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
-                <p className="text-muted-foreground">Has ensayado una respuesta más calmada. Tu cerebro está aprendiendo.</p>
+                <p>Has ensayado una respuesta más calmada. Tu cerebro está aprendiendo.</p>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={() => setIsCompleted(false)} variant="outline">Repetir Visualización</Button>
                 </div>

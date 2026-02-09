@@ -128,7 +128,7 @@ ${responses.q4}
       <CardContent>
         {step === 0 && (
           <div className="space-y-6 p-2">
-            <p className="text-sm text-muted-foreground">Tómate unos minutos para integrar lo que has trabajado. No busques respuestas correctas, solo honestidad.</p>
+            <p className="text-sm">Tómate unos minutos para integrar lo que has trabajado. No busques respuestas correctas, solo honestidad.</p>
             <div className="space-y-4">
               <div className="space-y-2">
                 <h4 className="font-semibold">¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?</h4>
@@ -170,7 +170,7 @@ ${responses.q4}
                 <p><strong>Estrategia más útil:</strong><br/>{responses.q3}</p>
                 <p><strong>Mi compromiso:</strong><br/>{responses.q4}</p>
             </div>
-            <p className="text-xs italic text-muted-foreground pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
+            <p className="text-xs italic pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={resetExercise} variant="outline">Hacer otra reflexión</Button>
