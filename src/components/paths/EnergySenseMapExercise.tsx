@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -10,8 +11,13 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EnergySenseMapExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Separator } from '../ui/separator';
 import { useUser } from '@/contexts/UserContext';
 
 interface Activity {
@@ -179,7 +185,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             </div>
         </div>
       );
-      case 5: return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><p>Mapa guardado. Vuelve a él para recordar dónde enfocar tu energía.</p><div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={() => {setStep(0); setActivities(Array.from({ length: 6 }, () => ({ name: '', energy: '', value: '' })))}} variant="outline">Hacer otro registro</Button></div></div>
+      case 5: return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><p>Mapa guardado. Vuelve a él en tu Cuaderno Terapéutico para recordar dónde enfocar tu energía.</p><div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={() => {setStep(0); setActivities(Array.from({ length: 6 }, () => ({ name: '', energy: '', value: '' })))}} variant="outline">Hacer otro registro</Button></div></div>
       default: return null;
     }
   };
@@ -204,3 +210,5 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
     </Card>
   );
 }
+
+    
