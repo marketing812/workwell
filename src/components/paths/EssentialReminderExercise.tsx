@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -170,7 +171,7 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar mi Recordatorio</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el Cuaderno Terapéutico</Button>
             </div>
           </form>
         );
