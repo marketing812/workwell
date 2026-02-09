@@ -56,7 +56,15 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+
+  const resetExercise = () => {
+    setStep(0);
+    setSelectedValue('');
+    setDecisions(Array(3).fill({ decision: '', adjustment: '' }));
+    setTomorrowAction('');
+    setIsSaved(false);
+  }
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -96,7 +104,13 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
       case 0:
         return (
           <div className="p-4 text-center space-y-4">
-            <p>A veces vivimos decidiendo en automático. Pero hoy vas a practicar algo distinto: tomar decisiones pequeñas que te acerquen a lo que sí tiene sentido para ti.</p>
+            <p>A veces vivimos decidiendo en automático. Pero hoy vas a practicar algo distinto: tomar decisiones pequeñas que te acerquen a lo que sí tiene sentido para ti. Lo harás en 3 pasos y visualizarás algo así: </p>
+            <div className="text-sm p-3 border rounded-md bg-background/50 text-left">
+                <p className="font-semibold">Ejemplo guía:</p>
+                <p><strong>Valor:</strong> Cuidado personal</p>
+                <p><strong>Decisión:</strong> Comer en 10 minutos delante del ordenador.</p>
+                <p><strong>Ajuste posible:</strong> Comer sin pantalla, aunque solo sean 15 minutos.</p>
+            </div>
             <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -104,13 +118,14 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: Elige un valor central</h4>
+            <p className="text-sm">Elige un valor que quieras fortalecer esta semana:</p>
             <RadioGroup value={selectedValue} onValueChange={setSelectedValue}>
               {valueOptions.map(opt => (
                 <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3 hover:bg-accent/50">
                    <RadioGroupItem value={opt.label} id={opt.id} className="mt-1"/>
                    <div className="grid gap-1.5 leading-none">
                      <Label htmlFor={opt.id} className="font-semibold cursor-pointer">{opt.label}</Label>
-                     <p className="text-sm text-muted-foreground">{opt.description}</p>
+                     <p className="text-sm">{opt.description}</p>
                    </div>
                 </div>
               ))}
@@ -125,7 +140,7 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Microdecisiones cotidianas</h4>
-            <p className="text-sm text-muted-foreground">Revisa tu día y anota 1-3 decisiones. ¿Están alineadas con tu valor elegido? ¿Cómo podrías reajustarlas?</p>
+            <p className="text-sm">Revisa tu día y anota al menos 3 decisiones que hayas tomado hoy (o tomarás) y responde: ¿Esta decisión está alineada con el valor que elegí? Si no lo está, ¿cómo podría reajustarla o replantearla?</p>
             {decisions.map((d, index) => (
               <div key={index} className="space-y-2 p-3 border rounded-md">
                 <Label htmlFor={`decision${index}`}>Decisión {index + 1}</Label>
@@ -151,7 +166,7 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 {!isSaved ? (
-                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi acción</Button>
+                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mis decisiones con dirección</Button>
                 ) : (
                 <div className="flex items-center p-3 text-green-800 dark:text-green-200">
                     <CheckCircle className="mr-2 h-5 w-5" />
@@ -160,6 +175,19 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
                 )}
             </div>
           </form>
+        );
+      case 4:
+        return (
+            <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">Acción Guardada</h4>
+                <blockquote className="italic">“Cada vez que eliges desde un valor, fortaleces tu dirección interna.”</blockquote>
+                <p className="text-sm pt-2">Tu plan de acción se ha guardado en tu Cuaderno Terapéutico. Puedes revisarlo cuando quieras para recordar tu compromiso.</p>
+                <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+                    <Button onClick={prevStep} variant="outline">Atrás</Button>
+                    <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+                </div>
+            </div>
         );
       default: return null;
     }

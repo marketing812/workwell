@@ -6,7 +6,7 @@ export const purposePath: Path = {
   title: 'Volver a lo Importante',
   description: 'Distingue entre lo urgente y lo valioso, reduce el ruido mental y crea una hoja de ruta alineada con tus valores para vivir con más sentido y dirección.',
   dataAiHint: 'purpose values focus',
-  audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/INTRODUCCIONRUTA7.mp3',
+  audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/INTRORUTA7.mp3',
   modules: [
     {
       id: 'purpose_sem1',
@@ -129,7 +129,13 @@ export const purposePath: Path = {
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'directedDecisionsExercise', title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN', objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras.\nPorque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre.', duration: '10–15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3' },
+        { 
+          type: 'directedDecisionsExercise', 
+          title: 'EJERCICIO 1: DECISIONES CON DIRECCIÓN', 
+          objective: 'Este ejercicio te ayudará a tomar decisiones pequeñas, pero significativas, que estén alineadas con lo que realmente valoras. Porque no se trata de hacerlo todo perfecto, sino de empezar a elegir desde el cuidado, la autenticidad o la calma, en lugar de hacerlo desde la prisa o la costumbre. Te recomiendo hacerlo diariamente durante una semana. Ideal para incorporar como hábito antes de tomar decisiones cotidianas.', 
+          duration: '10–15 minutos',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3' 
+        },
         { type: 'senseChecklistExercise', title: 'EJERCICIO 2: CHECKLIST DEL SENTIDO', objective: 'A veces tomamos decisiones sin pensar mucho… y luego nos sentimos incómodos o incómodas sin saber bien por qué.\nEste ejercicio es una especie de brújula interna rápida. Te va a servir para parar un momento antes de actuar y ver si lo que vas a hacer realmente encaja con lo que valoras.', duration: '5 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3' },
         { type: 'unfulfilledNeedsExercise', title: 'MICROPRÁCTICA OPCIONAL: LO QUE NO HICE… Y SÍ ME NUTRÍA', objective: 'Este ejercicio te ayudará a tomar conciencia del costo emocional de decisiones automáticas. Identificar lo que dejamos de lado (y nos nutriría) permite reequilibrar elecciones futuras.', duration: '3–5 min diarios' },
         { 
@@ -144,7 +150,7 @@ export const purposePath: Path = {
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana3/RESUMEN.mp3' },
-        { type: 'list', items: ['El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.', 'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.', 'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.', 'Vivir sin dirección tiene un costo emocional: lo que dejamos de vivir por atender lo urgente.', 'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.', 'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'] }, { type: 'quote', text: 'Vivir con dirección no es hacerlo todo perfecto. Es elegir lo que tiene sentido, paso a paso.' }]
+        { type: 'list', items: ['El piloto automático es un modo funcional, pero nos desconecta de lo que valoramos.', 'Tomar decisiones conscientes requiere activar el sistema reflexivo: pausar, observar, elegir.', 'Los valores no son normas externas, sino brújulas internas que guían nuestras elecciones.', 'Vivir sin dirección tiene un costo emocional: lo que dejamos de lado por atender lo urgente.', 'La disonancia cognitiva es una señal de incoherencia interna: lo que hacemos no encaja con lo que sentimos.', 'Elegir desde el sentido no es hacerlo perfecto, es respetar poco a poco lo que importa.'] }, { type: 'quote', text: 'Vivir con dirección no es hacerlo todo perfecto. Es elegir lo que tiene sentido, paso a paso.' }]
     },
     {
       id: 'purpose_sem4',
@@ -165,7 +171,15 @@ export const purposePath: Path = {
         { type: 'braveRoadmapExercise', title: 'EJERCICIO 1: MI HOJA DE RUTA VALIENTE', objective: 'Hoy vas a trazar tu propia hoja de ruta, con acciones que representen lo que valoras de verdad. \nQueremos ayudarte a pasar de la intención a la acción, con pasos sostenibles y valientes que te acerquen a tu propósito.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica1.mp3' },
         { type: 'essentialReminderExercise', title: 'EJERCICIO 2: MI RECORDATORIO ESENCIAL', objective: 'Con este ejercicio aprenderás a crear un ancla visual que te recuerde cada día qué valor quieres sostener y qué dirección quieres cultivar. Será tu brújula silenciosa.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana4tecnica2.mp3' },
         { type: 'thoughtsThatBlockPurposeExercise', title: 'MICROPRÁCTICA OPCIONAL: ¿QUÉ PENSAMIENTOS ME ALEJAN DE MI PROPÓSITO?', objective: 'A veces no es la realidad, sino nuestros pensamientos, los que nos alejan de actuar desde lo que valoramos. Esta práctica te ayuda a identificarlos y transformarlos.', duration: '10 min' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', prompts: ['<p>Llega el momento de integrar lo aprendido con una reflexión personal; sin prisa. Mira dentro de ti y pon con palabras lo que ha cambiado</p>','<ul><li>¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?</li><li>¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?</li><li>¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?</li><li>¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?</li><li>¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?</li></ul>'] },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/REFLEXION.mp3', 
+          prompts: [
+            '<p>Llega el momento de integrar lo aprendido con una reflexión personal; sin prisa. Mira dentro de ti y pon con palabras lo que ha cambiado</p>',
+            '<ul><li>¿Qué he aprendido esta semana sobre lo que da sentido a mi vida?</li><li>¿Qué consecuencias he vivido (o podría vivir) cuando me desconecto de mi propósito?</li><li>¿Cómo me he sentido al actuar desde mis valores, aunque fuera en cosas pequeñas?</li><li>¿Qué beneficio concreto quiero seguir cultivando si me mantengo alineado o alineada con mi propósito?</li><li>¿Qué me comprometo a asumir ahora conmigo misma/o para avanzar en esta dirección?</li></ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana4/RESUMEN.mp3' },
         { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.', 'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.', 'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.', 'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
@@ -177,14 +191,35 @@ export const purposePath: Path = {
       title: 'Cierre de la Ruta: Integración y Próximos Pasos',
       type: 'summary',
       estimatedTime: '10-15 min',
-      content: [{ type: 'therapeuticNotebookReflection', title: 'REFLEXIÓN FINAL DE LA RUTA', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/REFLEXIONRUTA7.mp3', prompts: [
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/REFLEXIONRUTA7.mp3',
+          prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
             '<p>Preguntas para tu cuaderno emocional:</p>',
             '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
-        ] },
-        { type: 'title', text: 'RESUMEN FINAL DE LA RUTA', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3' },
-        { type: 'list', items: ['Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.', 'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.', 'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.', 'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.'] },
-        { type: 'quote', text: 'No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.' }
+          ]
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/RESUMENFINALRUTA.mp3'
+        },
+        {
+          type: 'list',
+          items: [
+            'Comprender lo que sientes, lo que necesitas y lo que valoras es una forma de cuidado profundo hacia ti misma o ti mismo.',
+            'Escuchar tus emociones con atención, conectar con tus valores y elegir desde el sentido te ayuda a vivir con más dirección y menos ruido.',
+            'No se trata de controlar todo ni de tenerlo todo claro, sino de actuar con intención, paso a paso.',
+            'Esta ruta no termina aquí: lo que has sembrado puede seguir creciendo si lo cultivas con constancia y compasión.',
+          ]
+        },
+        {
+          type: 'quote',
+          text: 'No necesitas que todo esté claro para avanzar. Solo necesitas conectar con lo que te importa… y dar un paso valiente en esa dirección.'
+        }
       ]
     }
   ]
