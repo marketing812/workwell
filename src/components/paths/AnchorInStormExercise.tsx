@@ -122,7 +122,7 @@ ${anchorDesc}
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Elige tu tipo de ancla</h4>
-            <p className="text-sm text-muted-foreground">Selecciona una o varias de estas opciones según lo que más te ayude. (Puedes crear más de una ancla).</p>
+            <p className="text-sm text-muted-foreground">Elige el tipo de ancla que quieres crear en este momento. Más adelante, puedes volver a este ejercicio y crear otras anclas diferentes.</p>
             <RadioGroup value={anchorType} onValueChange={setAnchorType} disabled={isSaved}>
               <div className="flex items-center space-x-2"><RadioGroupItem value="Respiración calmante" id="anchor-breath" /><Label htmlFor="anchor-breath" className="font-normal">Respiración calmante</Label></div>
               <div className="flex items-center space-x-2"><RadioGroupItem value="Imagen segura o reconfortante" id="anchor-image" /><Label htmlFor="anchor-image" className="font-normal">Imagen segura o reconfortante</Label></div>
