@@ -86,8 +86,8 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Decide con estrategia, no con impulsividad', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion3ruta8.mp3', content: [{ type: 'paragraph', text: 'Elegir desde el valor no es lanzarse a ciegas, es hacerlo con conciencia, paso a paso, con un plan realista y flexible.\nPuedes construir un marco para decidir mejor:\n1. Define el problema con claridad. No lo exageres ni lo minimices.\n2. Piensa en varias opciones, no solo en las que el miedo te permite ver.\n3. Haz una lista de ventajas y desventajas reales, no emocionales.\n4. Valora lo que sí puedes controlar.\n5. Diseña un Plan A (lo que deseas) y un Plan B (lo que te cuidará si no sale como esperas).\n6. Recuerda tu experiencia pasada: ya has tomado decisiones difíciles antes. Lo volverás a hacer.' }] },
         { type: 'collapsible', title: 'Cada decisión desde el valor fortalece tu resiliencia', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion3ruta8.mp3', content: [{ type: 'paragraph', text: '¿Sabes qué ocurre cada vez que decides desde un lugar de confianza, aunque tengas miedo?\nRefuerzas tu autoestima.\nExpandes tu tolerancia a la incertidumbre.\nY construyes una identidad basada en el coraje, no en la evitación.\nEquivocarse no invalida tu decisión.\nLo que importa no es el resultado, sino desde dónde elegiste.\nFrase para llevar contigo:\n“Hoy elijo avanzar con el miedo a mi lado, pero sin dejar que me guíe.”' }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3' },
-        { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional', objective: 'Esta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
+        { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Cuando tienes miedo, tu mente tiende a encerrarse en una única salida: evitar, posponer o rendirte. Pero en realidad, hay muchas formas de mirar lo que te ocurre. Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3' },
+        { type: 'planABExercise', title: 'EJERCICIO 2: Plan A / Plan B emocional', objective: 'A veces no tomamos decisiones por miedo a “y si no sale bien”. Pero el valor no está en garantizar el resultado. Está en atreverte a dar un paso sabiendo que puedes cuidarte si las cosas no salen como esperabas.  \n\nEsta técnica te enseñará a diseñar una acción clara y realista (Plan A) y un respaldo emocional para sostenerte (Plan B) si el resultado no es el deseado. Esto te permitirá tomar decisiones con más confianza, reduciendo la parálisis por miedo al error o al rechazo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion3ruta8_1.mp3', prompts: ['<ul><li>¿Qué aprendí sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion3ruta8.mp3' },
@@ -130,24 +130,38 @@ export const resiliencePath: Path = {
               duration: '10-15 min',
               audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3'
           },
-          { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Ruta', prompts: [
-              '<ul><li>¿Qué momento de esta ruta me marcó especialmente o me hizo ver las cosas de otra forma?</li><li>¿Qué cualidad descubrí en mí que no sabía que tenía o que había olvidado?</li><li>¿Qué cambio he notado en mi forma de responder ante las dificultades?</li><li>¿Qué frase o imagen me llevo como símbolo de mi resiliencia?</li><li>¿Cómo quiero recordarme a mí misma o a mí mismo cuando vuelva a estar en medio de la tormenta?</li></ul>'
-          ]},
-          { type: 'title', text: 'Resumen Final de la Ruta' },
-          { type: 'list', items: [
-              'Comprendí que la resiliencia no es innata, sino entrenable.',
-              'Identifiqué mis detonantes internos y aprendí a regularme.',
-              'Descubrí que puedo decidir desde el valor y no solo desde el miedo.',
-              'Reescribí mi historia desde la fuerza y el aprendizaje.',
-              'Reconocí mis recursos personales y los guardé en mi caja de herramientas.',
-              'Practiqué el autocuidado emocional como un acto de fortaleza.',
-              'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
-              'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
-          ]},
-          { type: 'quote', text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”' }
+          {
+            type: 'therapeuticNotebookReflection',
+            title: 'Reflexión Final de la Semana',
+            prompts: [
+              '<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>',
+              '<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>',
+              '<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>'
+            ],
+          },
+          { type: 'title', text: 'Resumen Clave de la Semana' },
+          {
+            type: 'list',
+            items: [
+              'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
+              'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
+              'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
+              'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'
+            ]
+          },
+          {
+            type: 'quote',
+            text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'
+          },
+          {
+            type: 'paragraph',
+            text: 'Sigue adelante. Ya no caminas desde el mismo lugar.'
+          }
         ]
     }
   ]
 };
+
+    
 
     
