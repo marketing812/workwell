@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +14,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { WellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface WellbeingPlanExerciseProps {
   content: WellbeingPlanExerciseContent;
@@ -119,7 +121,7 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [isSaved, setIsSaved] = useState(false);
 
-  const audioUrl = "https://workwellfut.com/audios/r1_desc/Sesion-4-tecnica-1-diseno-tu-plan-de-bienestar-emocional.mp3";
+  const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-4-tecnica-1-diseno-tu-plan-de-bienestar-emocional.mp3`;
 
   const handleCheckboxChange = (id: string, checked: boolean) => {
     setSelections(prev => ({ ...prev, [id]: checked }));

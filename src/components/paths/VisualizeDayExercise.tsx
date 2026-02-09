@@ -13,6 +13,7 @@ import type { VisualizeDayExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface VisualizeDayExerciseProps {
   content: VisualizeDayExerciseContent;
@@ -172,7 +173,7 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
           {content.audioUrl && (
               <div className="mt-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src={content.audioUrl} type="audio/mp3" />
+                      <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>

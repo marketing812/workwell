@@ -9,6 +9,7 @@ import type { SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes'
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface SelfAcceptanceAudioExerciseProps {
   content: SelfAcceptanceAudioExerciseContent;
@@ -48,21 +49,21 @@ export function SelfAcceptanceAudioExercise({ content, pathId, onComplete, audio
                     <div>
                         <h4 className="font-semibold text-foreground">Objetivo terapéutico</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica2primeraparte.mp3" type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2primeraparte.mp3`} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                     <div>
                         <h4 className="font-semibold text-foreground">Meditación</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3" type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3`} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                      <div>
                         <h4 className="font-semibold text-foreground">Micropráctica</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica2micropractica.mp3" type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2micropractica.mp3`} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
