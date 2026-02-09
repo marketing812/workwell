@@ -117,7 +117,11 @@ export const resiliencePath: Path = {
           { type: 'collapsible', title: 'Reescribir tu historia', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio5sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Todos tenemos una historia. Pero lo que más influye en cómo nos sentimos hoy no es el hecho en sí, sino la forma en que lo interpretamos.\nPor ejemplo:\n- “Fallé” puede convertirse en “Tuve el coraje de intentarlo”.\n- “Estaba rota” puede transformarse en “Empecé a reconstruirme desde ahí”.\nNo se trata de mentirte. Se trata de ver la otra cara que también es cierta, pero que quizás no habías reconocido.\nContarte tu historia desde un lugar más compasivo y valiente te cambia por dentro.' }] },
           { type: 'collapsible', title: 'De víctima a protagonista', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.\nCuando reconoces que lo hiciste lo mejor que pudiste.\nCuando te das cuenta de todo lo que has sostenido.\nCuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.\nY ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }] },
           { type: 'collapsible', title: 'No solo haces resiliencia. Eres resiliencia.', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.\nEs la nueva manera en la que te hablas.\nEs el permiso que te das para sentir sin romperte.\nEs el compromiso que asumes contigo, incluso cuando no hay motivación.\nTu identidad se va construyendo con cada elección cotidiana.\nY hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.' }] },
-          { type: 'collapsible', title: 'Tu historia continúa', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio8sesion4ruta8.mp3', content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }] },
+          {
+            type: 'collapsible',
+            title: 'Tu historia continúa',
+            content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
+          },
           { type: 'title', text: 'Técnicas Específicas' },
           {
               type: 'changeTimelineExercise',
@@ -146,7 +150,7 @@ export const resiliencePath: Path = {
               'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
               'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
           ]},
-          { type: 'quote', text: 'La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.' }
+          { type: 'quote', text: '“La resiliencia no es una meta: es una forma de caminar.\nAunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.”' }
         ]
     }
   ]
@@ -154,8 +158,6 @@ export const resiliencePath: Path = {
 
     
 
-
-    
 
     
 
