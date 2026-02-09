@@ -61,8 +61,8 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Regularte también se entrena', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio9sesion2ruta8.mp3', content: [{ type: 'paragraph', text: 'La regulación emocional no es un botón mágico.\nEs una práctica diaria de cuidado, como cepillarte los dientes o beber agua.\nCada pequeño hábito que te conecta contigo —aunque parezca mínimo— fortalece tu sistema emocional para los momentos críticos.\nRutinas que regulan:\n•\tDormir 7-8h reales, no solo estar en la cama.\n•\tComer con consciencia, sin pantallas.\n•\tTener al menos una pausa real al día: sin producir, solo estar.\n•\tHacer ejercicio suave o caminar con intención.\n•\tEstablecer tu “mínimo no negociable” (ej. 10 min de silencio diario, 1 contacto positivo al día, etc.)\nEjemplo realista: Marta empezó a regular su ansiedad no con meditaciones largas, sino dejando el móvil fuera del baño y respirando 5 veces antes de salir. Pequeño gesto, gran cambio.' }] },
         { type: 'collapsible', title: 'En resumen…', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3', content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3' },
-        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3' },
+        { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min' },
+        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3', prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion2ruta8.mp3' },
@@ -130,24 +130,25 @@ export const resiliencePath: Path = {
               duration: '10-15 min',
               audioUrl: 'https://workwellfut.com/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3'
           },
-          {
-            type: 'therapeuticNotebookReflection',
+          { 
+            type: 'therapeuticNotebookReflection', 
             title: 'Reflexión Final de la Semana',
+            audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3',
             prompts: [
               '<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>',
               '<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>',
               '<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>'
-            ],
-          },
-          { type: 'title', text: 'Resumen Clave de la Semana' },
-          {
-            type: 'list',
-            items: [
-              'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
-              'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
-              'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
-              'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'
             ]
+          },
+          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta8/descripciones/Resumensesion4ruta8.mp3'},
+          { 
+            type: 'list', 
+            items: [
+                'La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.',
+                'Has aprendido a sostenerte en medio del dolor sin perderte en él.',
+                'Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.',
+                'Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.'
+              ]
           },
           {
             type: 'quote',
@@ -158,10 +159,38 @@ export const resiliencePath: Path = {
             text: 'Sigue adelante. Ya no caminas desde el mismo lugar.'
           }
         ]
+    },
+    {
+      id: 'res_cierre',
+      title: 'Cierre de la Ruta: Integración y Próximos Pasos',
+      type: 'summary',
+      estimatedTime: '10-15 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Ruta de Resiliencia',
+          prompts: [
+            '<p>Has llegado al final de este viaje. Tómate un momento para mirar atrás, no para juzgar, sino para reconocer tu fuerza.</p>',
+            '<ul><li>¿Cuál ha sido el mayor aprendizaje sobre tu propia resiliencia?</li><li>¿Qué herramienta o técnica de esta ruta te llevas para el futuro?</li><li>¿Cómo ha cambiado tu forma de ver las dificultades?</li><li>¿Qué compromiso asumes contigo para seguir cuidando tu resiliencia?</li></ul>'
+          ],
+        },
+        {
+          type: 'title',
+          text: 'RESUMEN FINAL DE LA RUTA',
+        },
+        {
+          type: 'list',
+          items: [
+            'La resiliencia no es ausencia de dolor, sino la capacidad de reconstruirse a pesar de él.',
+            'Entender tus patrones emocionales te da poder para regularte y responder con más calma.',
+            'Decidir desde el valor y la confianza, no desde el miedo, fortalece tu autoestima y tu dirección.',
+            'Cada paso, por pequeño que sea, es un acto de resiliencia que te acerca a la vida que quieres vivir.'
+          ],
+        },
+        { type: 'quote', text: 'No eres la misma persona que empezó esta ruta. Eres alguien que sabe cómo sostenerte. Y eso, es un superpoder.' }
+      ]
     }
   ]
 };
-
-    
 
     
