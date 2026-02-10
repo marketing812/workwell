@@ -74,7 +74,7 @@ export const selfUnderstandingPath: Path = {
           type: 'unaPalabraCadaDiaExercise',
           title: 'EJERCICIO 2: “UNA PALABRA CADA DÍA”',
           objective: 'Entrena el hábito de chequear cómo te sientes cada día con honestidad y respeto, creando una relación más amable contigo.',
-          duration: '2–3 min',
+          duration: '2–3 min'
         },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion1.mp3',
@@ -133,9 +133,7 @@ export const selfUnderstandingPath: Path = {
             },
             { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio8Ruta6Sesion2.mp3',
-              prompts: [
-                '<ul><li>¿Qué emoción ha aparecido con más fuerza esta semana?</li><li>¿Qué crees que esa emoción intentaba proteger o señalar?</li><li>¿Qué aprendiste al traducir tus emociones en necesidades concretas?</li><li>¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?</li></ul>',
-            ]},
+              prompts: ['<ul><li>¿Qué emoción ha aparecido con más fuerza esta semana?</li><li>¿Qué crees que esa emoción intentaba proteger o señalar?</li><li>¿Qué aprendiste al traducir tus emociones en necesidades concretas?</li><li>¿Qué pequeño acto de cuidado has hecho (o te gustaría hacer) como respuesta a lo que sientes?</li></ul>']},
             { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion2.mp3'},
             { type: 'list', items: [
                 'Las emociones no son errores, son mensajes valiosos sobre lo que nos importa.',
@@ -227,10 +225,7 @@ export const selfUnderstandingPath: Path = {
           title: 'Cuando las emociones se sienten demasiado',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion3.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: '¿Y por qué algunas emociones parecen tan grandes que nos arrastran?',
-            },
+            { type: 'paragraph', text: '¿Y por qué algunas emociones parecen tan grandes que nos arrastran?' },
             {
               type: 'list',
               items: [
@@ -249,7 +244,16 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'No se trata de dejar de sentir, sino de empezar a entenderte.\n- Observarte sin juicio.\nTodo lo que sientes tiene una razón. No lo censures: escúchalo.\n- Nombrar lo que sientes.\n“Estoy sintiendo tristeza”, “Estoy frustrado/a” → solo con eso, ya estás empezando a regular tu sistema emocional.\n- Buscar el mensaje detrás.\n¿Qué necesidad hay debajo de esta emoción? ¿Qué parte de mí necesita atención o cuidado?\n- Interrumpir el piloto automático.\nEsta semana aprenderás dos técnicas para hacerlo:\nMapa emocional repetido\nSemáforo emocional\nAmbas te ayudarán a crear espacio antes de reaccionar… y a elegir desde la conciencia.',
+              text: 'No se trata de dejar de sentir, sino de empezar a entenderte.',
+            },
+            {
+              type: 'list',
+              items: [
+                'Observarte sin juicio.<br />Todo lo que sientes tiene una razón. No lo censures: escúchalo.',
+                'Nombrar lo que sientes.<br />“Estoy sintiendo tristeza”, “Estoy frustrado/a” → solo con eso, ya estás empezando a regular tu sistema emocional.',
+                'Buscar el mensaje detrás.<br />¿Qué necesidad hay debajo de esta emoción? ¿Qué parte de mí necesita atención o cuidado?',
+                'Interrumpir el piloto automático.<br />Esta semana aprenderás dos técnicas para hacerlo:<br />Mapa emocional repetido<br />Semáforo emocional<br />Ambas te ayudarán a crear espacio antes de reaccionar… y a elegir desde la conciencia.',
+              ],
             },
           ],
         },
@@ -257,45 +261,21 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'mapaEmocionalRepetidoExercise',
           title: 'EJERCICIO 1: MAPA EMOCIONAL REPETIDO',
-          objective:
-            'Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \n\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
+          objective: 'Este ejercicio es para ti si a veces sientes que reaccionas “de más” y no entiendes por qué. \nVas a aprender a identificar esas situaciones que te remueven una y otra vez, reconocer qué emoción se activa y qué historia interna estás repitiendo sin darte cuenta. \nAl hacer visible tu patrón emocional, podrás empezar a cuidarte de otra manera: con más comprensión, más claridad y más elección. \nPorque lo que hoy te desborda… puede estar hablándote de algo que aún merece ser mirado con ternura. \n\nDuración estimada: 15–20 minutos. Te recomiendo repetir el ejercicio 3 o 4 veces por semana, idealmente después de una reacción emocional significativa. ',
           duration: '15–20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica1.mp3',
         },
         {
           type: 'semaforoEmocionalExercise',
           title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
-          objective:
-            'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás: si estás en calma, empezando a activarte o al borde del desborde. Y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
+          objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás: si estás en calma, empezando a activarte o al borde del desborde. Y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
           duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
           audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3',
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3',
-          prompts: ['<ul><li>¿Qué emoción se ha repetido más en mí últimamente?</li><li>¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?</li><li>¿Qué patrón emocional reconozco como más habitual?</li><li>¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?</li><li>¿Qué suele ocurrirme cuando una emoción me desborda?</li><li>¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?</li></ul>'],
-        },
-        {
-          type: 'title',
-          text: 'Resumen Clave',
-        },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3',
-        },
-        {
-          type: 'list',
-          items: [
-            'Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.',
-            'Todos tenemos esquemas emocionales o heridas antiguas que, cuando se activan, generan reacciones automáticas.',
-            'Detectar nuestros “botones emocionales” es el primer paso para dejar de vivir en piloto automático.',
-            'El pensamiento moldea la emoción: lo que crees sobre lo que pasa influye mucho en cómo te sientes.',
-            'Tu cuerpo también guarda memoria emocional. Aprender a escucharlo es una vía para regularte.',
-            'Conectar con tu patrón emocional te da poder: el poder de responder diferente.',
-          ],
-        },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio11Ruta6Sesion3.mp3', prompts: ['<ul><li>¿Qué emoción se ha repetido más en mí últimamente?</li><li>¿En qué situaciones aparece? ¿Qué pensamientos suelen acompañarla?</li><li>¿Qué patrón emocional reconozco como más habitual?</li><li>¿Cuál fue el descubrimiento más importante al hacer mi mapa emocional?</li><li>¿Qué suele ocurrirme cuando una emoción me desborda?</li><li>¿Qué me gustaría empezar a hacer diferente cuando noto que un patrón se repite?</li></ul>'] },
+        { type: 'title', text: 'Resumen Clave' },
+        { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio12Ruta6Sesion3.mp3' },
+        { type: 'list', items: ['Las emociones intensas no siempre tienen que ver solo con lo que está pasando, sino con lo que ya pasó y aún duele.','Todos tenemos esquemas emocionales o heridas antiguas que, cuando se activan, generan reacciones automáticas.','Detectar nuestros “botones emocionales” es el primer paso para dejar de vivir en piloto automático.','El pensamiento moldea la emoción: lo que crees sobre lo que pasa influye mucho en cómo te sientes.','Tu cuerpo también guarda memoria emocional. Aprender a escucharlo es una vía para regularte.','Conectar con tu patrón emocional te da poder: el poder de responder diferente.'] },
         { type: 'quote', text: 'Lo que repites no dice quién eres. Lo que realmente te define es lo que eliges hacer cuando comprendes tu propio patrón.' },
       ],
     },
@@ -357,26 +337,15 @@ export const selfUnderstandingPath: Path = {
           type: 'collapsible',
           title: 'La curiosidad como medicina emocional',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
-          content: [
-            { type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\n\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.\n\nNo necesitas tener todas las respuestas\n\nLo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n\n¿Qué estoy sintiendo ahora mismo?\n\n¿Qué necesita esta emoción?\n\n¿Qué historia estoy contándome?\n\n¿Cómo puedo cuidarme un poco mejor ahora?' },
-          ],
+          content: [{ type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\n\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.\n\nNo necesitas tener todas las respuestas\n\nLo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n\n¿Qué estoy sintiendo ahora mismo?\n\n¿Qué necesita esta emoción?\n\n¿Qué historia estoy contándome?\n\n¿Cómo puedo cuidarme un poco mejor ahora?' }],
         },
         {
           type: 'collapsible',
           title: '¿Y si me cuesta observarme con calma?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:\n- Estado de seguridad: calma, conexión, reflexión.\n- Estado de alarma: lucha o huida.\n- Estado de colapso: bloqueo o desconexión.\n\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n- Respirar de forma consciente.\n- Sentir tus pies firmes en el suelo.\n- Hablarte con amabilidad.\n- Rodearte de personas que te respetan.\n- Recordarte: lo que sientes no es un error.\n\nLa seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\nCómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:\n- Estado de seguridad: calma, conexión, reflexión.\n- Estado de alarma: lucha o huida.\n- Estado de colapso: bloqueo o desconexión.\n\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n- Respirar de forma consciente.\n- Sentir tus pies firmes en el suelo.\n- Hablarte con amabilidad.\n- Rodearte de personas que te respetan.\n- Recordarte: lo que sientes no es un error.\n\nLa seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }],
         },
-        {
-          type: 'collapsible',
-          title: 'En resumen',
-          content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }],
-        },
+        { type: 'collapsible', title: 'En resumen', content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'meditacionGuiadaSinJuicioExercise',
@@ -456,4 +425,27 @@ export const selfUnderstandingPath: Path = {
   ],
 };
 
-    
+with the text content:
+
+    No se trata de dejar de sentir, sino de empezar a entenderte.
+    - Observarte sin juicio.
+    Todo lo que sientes tiene una razón. No lo censures: escúchalo.
+    - Nombrar lo que sientes.
+    “Estoy sintiendo tristeza”, “Estoy frustrado/a” → solo con eso, ya estás empezando a regular tu sistema emocional.
+    - Buscar el mensaje detrás.
+    ¿Qué necesidad hay debajo de esta emoción? ¿Qué parte de mí necesita atención o cuidado?
+    - Interrumpir el piloto automático.
+    Esta semana aprenderás dos técnicas para hacerlo:
+    Mapa emocional repetido
+    Semáforo emocional
+    Ambas te ayudarán a crear espacio antes de reaccionar… y a elegir desde la conciencia.
+
+Relevant files:
+
+    - src/components/paths/PathDetailClient.tsx
+    - src/components/paths/PathDetailClient.tsx
+    - about://React/Server/webpack-internal:///(rsc)/./src/app/(main)/paths/%5BpathId%5D/page.tsx?10
+
+And change it as follows:
+  
+no se puede dejar un elemento 'paragraph' con un guión, es como si fuera un listado y se muestra el guión. Así que cámbialo a tipo 'list' por favor.
