@@ -141,7 +141,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
   const renderStep = () => {
     switch(step) {
       case 0: return <div className="p-4 space-y-4">
-        <h4 className="font-semibold text-lg">Paso 1: Elige la emoción que sientes con más intensidad</h4>
+        <h4 className="font-semibold text-lg">Paso 1: ¿Qué estás sintiendo ahora?</h4>
         <p className="text-sm text-muted-foreground">¿Te cuesta reconocer lo que sientes? Te puedo ayudar distinguir entre: Emociones primarias: reacciones inmediatas ante algo (por ejemplo, miedo ante un peligro). Emociones secundarias: surgen tras interpretar o juzgar lo que sientes (por ejemplo, sentir culpa por haber sentido ira). Ambas son válidas. Este ejercicio te ayuda a reconocerlas sin filtros, para que puedas escucharte desde un lugar más honesto y compasivo. </p>
         <Select value={emotion} onValueChange={setEmotion}>
             <SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger>
@@ -266,7 +266,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{"Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. "}
+      <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">Quiero ayudarte a hacer algo que muchas personas no saben cómo empezar: traducir una emoción en una necesidad, y luego, transformar esa necesidad en una acción real que te cuide. Este ejercicio es como encender una luz dentro de ti: vas a observar lo que te duele, y en lugar de taparlo, vas a preguntarte qué necesita atención. Así empieza la transformación. Duración estimada: 5-10 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana. 
         <div className="mt-4"><audio controls controlsList="nodownload" className="w-full"><source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica1.mp3" type="audio/mp3" />Tu navegador no soporta el elemento de audio.</audio></div>
         </CardDescription>}
       </CardHeader>
@@ -286,5 +286,3 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
     </Card>
   );
 }
-
-    
