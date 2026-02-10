@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -64,8 +63,8 @@ Tu emoción: ${finalEmotion}
     const renderStep = () => {
         switch(step) {
             case 0: return <div className="p-4 space-y-4">
-                <h4 className="font-semibold text-lg">Paso 1: ¿Qué emoción te está pidiendo ser escuchada hoy?</h4>
-                <p className="text-sm text-muted-foreground">No tienes que justificarla. Solo reconocerla. Eso ya es un acto de valentía.</p>
+                <h4 className="font-semibold text-lg">Pantalla 1: Elige la emoción que quiere hablar contigo</h4>
+                <p className="text-sm text-muted-foreground">Imagina que hay una parte dentro de ti que siente algo muy intensamente… y quiere expresarse. ¿Qué emoción te está pidiendo ser escuchada hoy?</p>
                 <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }<Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div>;
             
             case 1: return <div className="p-4 space-y-4">
