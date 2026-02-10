@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -47,7 +48,7 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
   const [gaveOrAsked, setGaveOrAsked] = useState('');
 
   const [isClient, setIsClient] = useState(false);
-  const [isDailySaved, setIsDailySaved] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const storageKey = `exercise-progress-${pathId}-${content.type}`;
 
   // Cargar estado guardado al iniciar
@@ -64,7 +65,7 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
         setOtherAnchorAction(data.otherAnchorAction || '');
         setNeeded(data.needed || '');
         setGaveOrAsked(data.gaveOrAsked || '');
-        setIsDailySaved(data.isDailySaved || false);
+        setIsSaved(data.isSaved || false);
       }
     } catch (error) {
       console.error("Error loading exercise state:", error);
@@ -75,12 +76,12 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
   useEffect(() => {
     if (!isClient) return;
     try {
-      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isDailySaved };
+      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isDailySaved, storageKey, isClient]);
+  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isSaved, storageKey, isClient]);
 
 
   const handleSaveDailyEntry = () => {
@@ -100,7 +101,7 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
 `;
     addNotebookEntry({ title: `Diario de una palabra: ${finalEmotion}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Diario Guardado' });
-    setIsDailySaved(true);
+    setIsSaved(true);
   };
 
   const handleSaveReflection = () => {
@@ -137,7 +138,7 @@ ${gaveOrAsked}
       setOtherEmotion('');
       setAnchorAction('');
       setOtherAnchorAction('');
-      setIsDailySaved(false);
+      setIsSaved(false);
       setNeeded('');
       setGaveOrAsked('');
   }
@@ -204,19 +205,19 @@ ${gaveOrAsked}
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">Guarda tu nube emocional</h4>
-            <p className="text-sm text-muted-foreground">Tu frase queda guardada en tu “Mapa de emociones semanales”.</p>
+            <p className="text-sm text-muted-foreground">“Mis tres frases de esta semana”  Elige tus tres emociones más repetidas o significativas y respóndete: </p>
             <div className="text-left border p-3 rounded-md bg-background/50">
                 <p><strong>Emoción:</strong> {finalEmotion}</p>
                 <p><strong>Acción de anclaje:</strong> {finalAnchorAction}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                 <Button onClick={() => {
-                    if (!isDailySaved) {
+                    if (!isSaved) {
                         handleSaveDailyEntry();
                     }
                     nextStep();
                 }} className="w-full">
-                   {isDailySaved ? 'Continuar a la reflexión' : 'Guardar y continuar a la reflexión'}
+                   {isSaved ? 'Continuar a la reflexión' : 'Guardar en el cuaderno terapéutico'}
                 </Button>
             </div>
              <Button variant="link" onClick={prevStep}>Atrás</Button>
