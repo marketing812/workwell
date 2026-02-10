@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -43,15 +42,10 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
   const [anchorAction, setAnchorAction] = useState('');
   const [otherAnchorAction, setOtherAnchorAction] = useState('');
   
-  // New states for the final reflection
-  const [needed, setNeeded] = useState('');
-  const [gaveOrAsked, setGaveOrAsked] = useState('');
-
   const [isClient, setIsClient] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const storageKey = `exercise-progress-${pathId}-${content.type}`;
 
-  // Cargar estado guardado al iniciar
   useEffect(() => {
     setIsClient(true);
     try {
@@ -63,8 +57,6 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
         setOtherEmotion(data.otherEmotion || '');
         setAnchorAction(data.anchorAction || '');
         setOtherAnchorAction(data.otherAnchorAction || '');
-        setNeeded(data.needed || '');
-        setGaveOrAsked(data.gaveOrAsked || '');
         setIsSaved(data.isSaved || false);
       }
     } catch (error) {
@@ -72,19 +64,18 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
     }
   }, [storageKey]);
 
-  // Guardar estado en cada cambio
   useEffect(() => {
     if (!isClient) return;
     try {
-      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isSaved };
+      const stateToSave = { step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, needed, gaveOrAsked, isSaved, storageKey, isClient]);
+  }, [step, selectedEmotion, otherEmotion, anchorAction, otherAnchorAction, isSaved, storageKey, isClient]);
 
 
-  const handleSaveDailyEntry = () => {
+  const handleSave = () => {
     const finalEmotion = selectedEmotion === 'otra' ? otherEmotion : (unaPalabraEmotionOptions.find(e => e.value === selectedEmotion)?.label || selectedEmotion);
     const finalAnchorAction = anchorAction === 'Otra' ? otherAnchorAction : anchorAction;
 
@@ -102,33 +93,10 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
     addNotebookEntry({ title: `Diario de una palabra: ${finalEmotion}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Diario Guardado' });
     setIsSaved(true);
-  };
-
-  const handleSaveReflection = () => {
-    if (!needed.trim() || !gaveOrAsked.trim()) {
-        toast({ title: "Reflexión incompleta", description: "Por favor, completa ambos campos para guardar.", variant: "destructive"});
-        return;
-    }
-
-    const notebookContent = `
-**${content.title}: Reflexión Semanal**
-
-**Mis tres frases de esta semana:**
-(Reflexión sobre las emociones de la semana)
-
-**¿Qué necesitaba al sentir esto?**
-${needed}
-
-**¿Me lo di o lo pedí?**
-${gaveOrAsked}
-`;
-
-    addNotebookEntry({ title: 'Reflexión: Mis tres frases de la semana', content: notebookContent, pathId, userId: user?.id });
-    toast({ title: 'Reflexión Guardada' });
     onComplete();
-    setStep(5); // Go to a final confirmation step
+    nextStep();
   };
-  
+
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
@@ -139,12 +107,10 @@ ${gaveOrAsked}
       setAnchorAction('');
       setOtherAnchorAction('');
       setIsSaved(false);
-      setNeeded('');
-      setGaveOrAsked('');
   }
 
   if (!isClient) {
-    return null; // O un componente de carga
+    return null;
   }
   
   const renderStep = () => {
@@ -197,52 +163,27 @@ ${gaveOrAsked}
             )}
             <div className="flex justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={nextStep} className="w-auto" disabled={!finalAnchorAction.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={nextStep} className="w-auto" disabled={!finalAnchorAction.trim()}>Ver resumen y Guardar</Button>
             </div>
           </div>
         );
-       case 3: // Guarda tu nube emocional y continua
+       case 3: // Save your emotional cloud
         return (
           <div className="p-4 space-y-4 text-center">
-            <h4 className="font-semibold text-lg">Guarda tu nube emocional</h4>
-            <p className="text-sm text-muted-foreground">“Mis tres frases de esta semana”  Elige tus tres emociones más repetidas o significativas y respóndete: </p>
+            <h4 className="font-semibold text-lg">Tu registro de hoy</h4>
             <div className="text-left border p-3 rounded-md bg-background/50">
                 <p><strong>Emoción:</strong> {finalEmotion}</p>
                 <p><strong>Acción de anclaje:</strong> {finalAnchorAction}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
-                <Button onClick={() => {
-                    if (!isSaved) {
-                        handleSaveDailyEntry();
-                    }
-                    nextStep();
-                }} className="w-full">
-                   {isSaved ? 'Continuar a la reflexión' : 'Guardar en el cuaderno terapéutico'}
+                <Button onClick={handleSave} className="w-full" disabled={isSaved}>
+                   {isSaved ? <><CheckCircle className="mr-2 h-4 w-4"/> Guardado</> : <><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</>}
                 </Button>
             </div>
              <Button variant="link" onClick={prevStep}>Atrás</Button>
           </div>
         );
-      case 4: // Práctica reflexiva opcional
-        return (
-          <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Mis tres frases de esta semana</h4>
-            <p className="text-sm text-muted-foreground">Elige tus tres emociones más repetidas o significativas y respóndete:</p>
-            <div className="space-y-2">
-                <Label htmlFor="needed">¿Qué necesitaba al sentir esto?</Label>
-                <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} />
-            </div>
-             <div className="space-y-2">
-                <Label htmlFor="gaveOrAsked">¿Me lo di o lo pedí?</Label>
-                <Textarea id="gaveOrAsked" value={gaveOrAsked} onChange={e => setGaveOrAsked(e.target.value)} />
-            </div>
-            <div className="flex justify-between w-full mt-2">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                <Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
-            </div>
-        </div>
-        );
-      case 5: // Final confirmation
+      case 4: // Final confirmation
         return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-lg">¡Práctica Guardada!</h4><p className="text-muted-foreground">Tu reflexión ha sido guardada en el cuaderno.</p><Button onClick={resetDaily} variant="outline">Hacer otro registro</Button></div>;
       default: return null;
     }
@@ -252,20 +193,23 @@ ${gaveOrAsked}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && (
-          <CardDescription className="pt-2">
-            {content.objective}
-            <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-              </audio>
-            </div>
-          </CardDescription>
-        )}
+        {content.objective && 
+            <CardDescription className="pt-2">
+                {content.objective}
+                {content.audioUrl && (
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src={content.audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
+            </CardDescription>
+        }
       </CardHeader>
-      <CardContent>{isSaved ? <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-lg">¡Práctica Guardada!</h4><p className="text-muted-foreground">Tu reflexión ha sido guardada en el cuaderno.</p><Button onClick={resetDaily} variant="outline">Hacer otro registro</Button></div> : renderStep()}
-      </CardContent>
+      <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }
+
+    
