@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -281,7 +280,7 @@ ${flexibleThought || 'No especificada.'}
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                 <Button onClick={handleSave}>
-                    <Save className="mr-2 h-4 w-4"/> Guardar en mi diario
+                    <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico
                 </Button>
             </div>
           </div>
