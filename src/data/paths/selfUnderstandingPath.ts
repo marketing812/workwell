@@ -1,5 +1,4 @@
 
-
 import type { Path } from '../pathsData';
 
 export const selfUnderstandingPath: Path = {
@@ -63,7 +62,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'detectiveDeEmocionesExercise',
           title: 'EJERCICIO 1: “DETECTIVE DE EMOCIONES”',
-          objective: 'Objetivo terapeutico: ¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia. \n\nDuración estimada: 5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana. ',
+          objective: '¿Te pasa que todo se mezcla cuando te alteras y no sabes bien qué sientes? \nEn esta práctica vas a convertirte en un/a detective de tus propias emociones: observar lo que pasó, lo que pensaste, cómo te sentiste y qué hiciste. \nPaso a paso, vas a aprender a distinguir emoción, pensamiento e impulso, y así empezar a entenderte con más claridad y menos juicio. \n\nEsta técnica es para ti si a veces te cuesta parar, te dejas llevar por lo que sientes o simplemente no sabes qué te pasa exactamente. \nTe prometo que cuando puedes ponerle nombre a lo que sientes, algo cambia dentro: te calmas, te escuchas y puedes responder con más conciencia. \n\nDuración estimada: 5–10 minutos. Te recomiendo realizar este ejercicio todos los dias de esta semana. ',
           audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3'
         },
         {
@@ -394,5 +393,4 @@ export const selfUnderstandingPath: Path = {
 
     
 
-    
 
