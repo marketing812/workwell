@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -114,12 +115,12 @@ Tu emoción: ${finalEmotion}
                         
                         <p className="text-xs text-muted-foreground italic text-center">Recuerda: No tienes que escribir una carta perfecta. Solo deja que tu emoción se exprese tal y como lo harías con alguien que te importa de verdad: tú.</p>
 
-                        <p className="text-sm text-muted-foreground text-center mt-4">Puedes guardar esta carta en tu Cuaderno o en una sección especial llamada “Cartas a mí”. Así podrás volver a leerla cuando lo necesites, como recordatorio de que tus emociones también quieren ayudarte.</p>
+                        <p className="text-sm text-muted-foreground text-center mt-4">Puedes guardar esta carta en tu Cuaderno Terapéutico, así podrás volver a leerla cuando lo necesites, como recordatorio de que tus emociones también quieren ayudarte.</p>
             
                         <div className="flex justify-between mt-2">
                             <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={handleSave} className="w-auto" disabled={!need.trim()}>
-                                <Save className="mr-2 h-4 w-4"/>Guardar Carta
+                                <Save className="mr-2 h-4 w-4"/>Guardar Carta en el Cuaderno Terapéutico
                             </Button>
                         </div>
                     </div>
