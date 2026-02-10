@@ -53,7 +53,7 @@ const careActionsData = {
     ]
 };
 
-export function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplete }: MapaEmocionNecesidadCuidadoExerciseProps) {
+export default function MapaEmocionNecesidadCuidadoExercise({ content, pathId, onComplete }: MapaEmocionNecesidadCuidadoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const { user } = useUser();

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -20,7 +21,7 @@ interface ValidationIn3StepsExerciseProps {
   onComplete: () => void;
 }
 
-export function ValidationIn3StepsExercise({ content, pathId, onComplete }: ValidationIn3StepsExerciseProps) {
+export default function ValidationIn3StepsExercise({ content, pathId, onComplete }: ValidationIn3StepsExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const { user } = useUser();

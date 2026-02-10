@@ -21,7 +21,7 @@ interface EmotionalInvolvementTrafficLightExerciseProps {
   onComplete: () => void;
 }
 
-export function EmotionalInvolvementTrafficLightExercise({ content, pathId, onComplete }: EmotionalInvolvementTrafficLightExerciseProps) {
+export default function EmotionalInvolvementTrafficLightExercise({ content, pathId, onComplete }: EmotionalInvolvementTrafficLightExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -47,7 +47,8 @@ export function EmotionalInvolvementTrafficLightExercise({ content, pathId, onCo
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
-  const handleSave = () => {
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
     const filledRelations = relations.filter(r => r.name.trim() !== '' && r.color.trim() !== '');
     if (filledRelations.length === 0) {
       toast({ title: "Ejercicio Incompleto", description: "Completa al menos una relación con su color.", variant: 'destructive' });

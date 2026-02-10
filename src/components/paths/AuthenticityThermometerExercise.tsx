@@ -20,7 +20,7 @@ interface AuthenticityThermometerExerciseProps {
   onComplete: () => void;
 }
 
-export function AuthenticityThermometerExercise({ content, pathId, onComplete }: AuthenticityThermometerExerciseProps) {
+export default function AuthenticityThermometerExercise({ content, pathId, onComplete }: AuthenticityThermometerExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

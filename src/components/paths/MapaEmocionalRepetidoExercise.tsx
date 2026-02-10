@@ -50,7 +50,7 @@ const schemaOptions = [
     { value: 'impulsividad', label: 'Impulsividad o descontrol emocional: Me cuesta parar. Actúo o exploto cuando algo me afecta, sin pensar.' },
 ];
 
-export function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: MapaEmocionalRepetidoExerciseProps) {
+export default function MapaEmocionalRepetidoExercise({ content, pathId, onComplete }: MapaEmocionalRepetidoExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const { user } = useUser();

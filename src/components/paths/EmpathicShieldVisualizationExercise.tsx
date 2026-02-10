@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -15,7 +16,7 @@ interface EmpathicShieldVisualizationExerciseProps {
   onComplete: () => void;
 }
 
-export function EmpathicShieldVisualizationExercise({ content, pathId, onComplete }: EmpathicShieldVisualizationExerciseProps) {
+export default function EmpathicShieldVisualizationExercise({ content, pathId, onComplete }: EmpathicShieldVisualizationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [isCompleted, setIsCompleted] = useState(false);
@@ -42,7 +43,7 @@ export function EmpathicShieldVisualizationExercise({ content, pathId, onComplet
     }
     setStep(7); // Go to final confirmation screen
   };
-
+  
   const renderStep = () => {
     switch (step) {
       case 0: // Intro

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -29,7 +30,7 @@ const emotionOptions = [
     { id: 'emo-anger', label: 'Enfado o irritación' },
 ];
 
-export function PostBoundaryEmotionsExercise({ content, pathId, onComplete }: PostBoundaryEmotionsExerciseProps) {
+export default function PostBoundaryEmotionsExercise({ content, pathId, onComplete }: PostBoundaryEmotionsExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -148,7 +149,7 @@ ${reassessment}
     switch (step) {
       case 0: // Intro
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">
@@ -172,15 +173,15 @@ ${reassessment}
         );
       case 1: // Situación
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Paso 1: Situación desencadenante</h4>
-            <Label htmlFor="sit-desc">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
-            <Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: “Le dije a mi compañero que no podía cubrirle el turno.”" />
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 1: Situación desencadenante</h4>
+                <Label htmlFor="sit-desc">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
+                <Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: “Le dije a mi compañero que no podía cubrirle el turno.”" />
+                <div className="flex justify-between w-full mt-4">
+                    <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                    <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
+                </div>
             </div>
-          </div>
         );
       case 2: // Pensamientos
         return (

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -26,7 +27,7 @@ const suggestedPhrases = [
     'Necesito un momento para procesarlo antes de responder.',
 ];
 
-export function SecureBoundaryPhraseExercise({ content, pathId, onComplete }: SecureBoundaryPhraseExerciseProps) {
+export default function SecureBoundaryPhraseExercise({ content, pathId, onComplete }: SecureBoundaryPhraseExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);

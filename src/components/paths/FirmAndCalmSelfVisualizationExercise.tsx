@@ -20,7 +20,7 @@ interface FirmAndCalmSelfVisualizationExerciseProps {
   onComplete: () => void;
 }
 
-export function FirmAndCalmSelfVisualizationExercise({ content, pathId, onComplete }: FirmAndCalmSelfVisualizationExerciseProps) {
+export default function FirmAndCalmSelfVisualizationExercise({ content, pathId, onComplete }: FirmAndCalmSelfVisualizationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -28,20 +28,19 @@ export function FirmAndCalmSelfVisualizationExercise({ content, pathId, onComple
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!reflection.trim()) {
-      toast({ title: "Reflexión vacía", description: "Escribe algo en tu reflexión para guardarla.", variant: 'destructive' });
+      toast({
+        title: "Reflexión vacía",
+        description: "Escribe algo en tu reflexión para guardarla.",
+        variant: "destructive"
+      });
       return;
     }
-    addNotebookEntry({
-      title: `Reflexión: ${content.title}`,
-      content: `¿Qué sentí al verme firme y tranquilo?\n\n${reflection}`,
-      pathId: pathId,
-      userId: user?.id,
-    });
+    addNotebookEntry({ title: 'Reflexión: Visualización del Yo Firme', content: reflection, pathId: pathId, userId: user?.id });
     toast({ title: 'Reflexión guardada' });
     setIsSaved(true);
     onComplete();
@@ -160,7 +159,7 @@ Cada vez será un poco más fácil.`;
                 <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Reflexión</Button>
               </div>
             ) : (
-              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+              <div className="flex items-center justify-center p-3 mt-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
                 <CheckCircle className="mr-2 h-5 w-5" />
                 <p className="font-medium">Guardado.</p>
               </div>

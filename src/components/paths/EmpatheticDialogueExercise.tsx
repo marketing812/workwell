@@ -18,10 +18,9 @@ interface EmpatheticDialogueExerciseProps {
   onComplete: () => void;
 }
 
-export function EmpatheticDialogueExercise({ content, pathId, onComplete }: EmpatheticDialogueExerciseProps) {
+export default function EmpatheticDialogueExercise({ content, pathId, onComplete }: EmpatheticDialogueExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
-  
   const [step, setStep] = useState(0);
   const [feeling, setFeeling] = useState('');
   const [activePart, setActivePart] = useState('');
@@ -46,7 +45,7 @@ export function EmpatheticDialogueExercise({ content, pathId, onComplete }: Empa
   };
   
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   
   const renderStep = () => {
     switch (step) {

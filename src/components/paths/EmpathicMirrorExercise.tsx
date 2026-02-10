@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -54,7 +55,7 @@ interface EmpathicMirrorExerciseProps {
   onComplete: () => void;
 }
 
-export function EmpathicMirrorExercise({ content, pathId, onComplete }: EmpathicMirrorExerciseProps) {
+export default function EmpathicMirrorExercise({ content, pathId, onComplete }: EmpathicMirrorExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

@@ -20,7 +20,7 @@ interface SemaforoEmocionalExerciseProps {
   onComplete: () => void;
 }
 
-export function SemaforoEmocionalExercise({ content, pathId, onComplete }: SemaforoEmocionalExerciseProps) {
+export default function SemaforoEmocionalExercise({ content, pathId, onComplete }: SemaforoEmocionalExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

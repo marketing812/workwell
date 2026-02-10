@@ -21,7 +21,7 @@ interface CartaDesdeLaEmocionExerciseProps {
   onComplete: () => void;
 }
 
-export function CartaDesdeLaEmocionExercise({ content, pathId, onComplete }: CartaDesdeLaEmocionExerciseProps) {
+export default function CartaDesdeLaEmocionExercise({ content, pathId, onComplete }: CartaDesdeLaEmocionExerciseProps) {
     const { toast } = useToast();
     const t = useTranslations();
     const { user } = useUser();

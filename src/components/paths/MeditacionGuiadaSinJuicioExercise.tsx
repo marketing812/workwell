@@ -19,7 +19,7 @@ interface MeditacionGuiadaSinJuicioExerciseProps {
   onComplete: () => void;
 }
 
-export function MeditacionGuiadaSinJuicioExercise({ content, pathId, onComplete }: MeditacionGuiadaSinJuicioExerciseProps) {
+export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onComplete }: MeditacionGuiadaSinJuicioExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

@@ -30,7 +30,7 @@ const reflectionOptions = [
     { id: 'mas-tranquilo', label: 'Me sentí más tranquilo/a al escribirlo' },
 ];
 
-export function DetectiveDeEmocionesExercise({ content, pathId, onComplete }: DetectiveDeEmocionesExerciseProps) {
+export default function DetectiveDeEmocionesExercise({ content, pathId, onComplete }: DetectiveDeEmocionesExerciseProps) {
   const { toast } = useToast();
   const t = useTranslations();
   const { user } = useUser();

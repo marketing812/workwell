@@ -27,7 +27,7 @@ const messages = [
     "El simple hecho de mirarte con respeto… ya es transformación."
 ];
 
-export function DiarioMeDiCuentaExercise({ content, pathId, onComplete }: DiarioMeDiCuentaExerciseProps) {
+export default function DiarioMeDiCuentaExercise({ content, pathId, onComplete }: DiarioMeDiCuentaExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   

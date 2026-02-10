@@ -18,7 +18,7 @@ interface RelationalCommitmentExerciseProps {
   onComplete: () => void;
 }
 
-export function RelationalCommitmentExercise({ content, pathId, onComplete }: RelationalCommitmentExerciseProps) {
+export default function RelationalCommitmentExercise({ content, pathId, onComplete }: RelationalCommitmentExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -155,12 +155,14 @@ ${weeklyMicroAction || 'No especificada.'}
         {content.objective && 
             <CardDescription className="pt-2">
                 {content.objective}
-                <div className="mt-4">
-                  <audio controls controlsList="nodownload" className="w-full">
-                      <source src={content.audioUrl} type="audio/mp3" />
-                      Tu navegador no soporta el elemento de audio.
-                  </audio>
-                </div>
+                {content.audioUrl && (
+                    <div className="mt-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src={content.audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
             </CardDescription>
         }
       </CardHeader>

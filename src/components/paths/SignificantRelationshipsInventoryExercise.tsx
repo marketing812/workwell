@@ -20,7 +20,7 @@ interface SignificantRelationshipsInventoryExerciseProps {
   onComplete: () => void;
 }
 
-export function SignificantRelationshipsInventoryExercise({ content, pathId, onComplete }: SignificantRelationshipsInventoryExerciseProps) {
+export default function SignificantRelationshipsInventoryExercise({ content, pathId, onComplete }: SignificantRelationshipsInventoryExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
