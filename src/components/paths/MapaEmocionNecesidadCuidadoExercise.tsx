@@ -257,7 +257,7 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
             <ul className="list-disc list-inside text-left mx-auto max-w-md">
                 {allCareActions.map((action, i) => <li key={i}>{action}</li>)}
             </ul>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             <Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
         </div>;
       default: return null;
@@ -286,3 +286,5 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
     </Card>
   );
 }
+
+    
