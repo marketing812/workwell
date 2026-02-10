@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -181,10 +180,10 @@ ${reinforce}
                             <li>“Cuando llegue a casa, voy a abrir el documento del proyecto.”</li>
                         </ul>
                     </div>
-                    <p className="text-xs italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites. Lo importante es empezar.</p>
+                    <p className="text-xs italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites.</p>
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
                         <Button onClick={() => setStep(1)} variant="outline" className="w-full">Volver a editar</Button>
-                        <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en mi diario</Button>
+                        <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                     </div>
                 </div>
             );
