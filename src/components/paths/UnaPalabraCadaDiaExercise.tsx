@@ -225,7 +225,8 @@ ${gaveOrAsked}
       case 4: // Práctica reflexiva opcional
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Mis tres frases de esta semana</h4>
+            <h4 className="font-semibold text-lg">Mis tres frases de esta semana</h4>
+            <p className="text-sm text-muted-foreground">Elige tus tres emociones más repetidas o significativas y respóndete:</p>
             <div className="space-y-2">
                 <Label htmlFor="needed">¿Qué necesitaba al sentir esto?</Label>
                 <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} />
@@ -236,7 +237,7 @@ ${gaveOrAsked}
             </div>
             <div className="flex justify-between w-full mt-2">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                <Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar en el diario</Button>
+                <Button onClick={handleSaveReflection} className="w-auto"><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
             </div>
         </div>
         );
@@ -262,7 +263,8 @@ ${gaveOrAsked}
           </CardDescription>
         )}
       </CardHeader>
-      <CardContent>{renderStep()}</CardContent>
+      <CardContent>{isSaved ? <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-lg">¡Práctica Guardada!</h4><p className="text-muted-foreground">Tu reflexión ha sido guardada en el cuaderno.</p><Button onClick={resetDaily} variant="outline">Hacer otro registro</Button></div> : renderStep()}
+      </CardContent>
     </Card>
   );
 }
