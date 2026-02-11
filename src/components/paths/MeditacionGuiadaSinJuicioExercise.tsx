@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -27,7 +26,13 @@ export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onC
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+
+  const resetExercise = () => {
+    setStep(0);
+    setReflection('');
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -118,7 +123,12 @@ export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onC
                 <p className="font-medium">Guardado.</p>
               </div>
             )}
-             <p className="text-xs text-muted-foreground text-center pt-2">✅ Puedes repetir esta meditación en cualquier momento del día. Es una herramienta que entrena tu amabilidad interna y tu presencia consciente.</p>
+            {isSaved && (
+              <Button onClick={resetExercise} variant="outline" className="w-full mt-4">
+                Repetir la meditación
+              </Button>
+            )}
+             <p className="text-xs text-muted-foreground text-center pt-2">Puedes repetir esta meditación en cualquier momento del día. Es una herramienta que entrena tu amabilidad interna y tu presencia consciente.</p>
           </form>
         );
       default:
