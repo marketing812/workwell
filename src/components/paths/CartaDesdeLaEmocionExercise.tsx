@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CartaDesdeLaEmocionExerciseContent } from '@/data/paths/pathTypes';
+import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 import { useUser } from '@/contexts/UserContext';
 
@@ -19,40 +19,6 @@ interface CartaDesdeLaEmocionExerciseProps {
   pathId: string;
   onComplete: () => void;
 }
-
-const emotionOptions = [
-    { value: 'alegria', label: 'Alegría' },
-    { value: 'tristeza', label: 'Tristeza' },
-    { value: 'miedo', label: 'Miedo' },
-    { value: 'ira', label: 'Ira' },
-    { value: 'asco', label: 'Asco' },
-    { value: 'sorpresa', label: 'Sorpresa' },
-    { value: 'estres', label: 'Estrés' },
-    { value: 'ansiedad', label: 'Ansiedad' },
-    { value: 'agobio', label: 'Agobio' },
-    { value: 'tension', label: 'Tensión' },
-    { value: 'alarma', label: 'Alarma' },
-    { value: 'cansancio_emocional', label: 'Cansancio emocional' },
-    { value: 'desaliento', label: 'Desaliento' },
-    { value: 'vacio', label: 'Vacío' },
-    { value: 'ilusion', label: 'Ilusión' },
-    { value: 'entusiasmo', label: 'Entusiasmo' },
-    { value: 'esperanza', label: 'Esperanza' },
-    { value: 'frustracion', label: 'Frustración' },
-    { value: 'amor', label: 'Amor' },
-    { value: 'confianza', label: 'Confianza' },
-    { value: 'rechazo', label: 'Rechazo' },
-    { value: 'soledad', label: 'Soledad' },
-    { value: 'celos', label: 'Celos' },
-    { value: 'envidia', label: 'Envidia' },
-    { value: 'verguenza', label: 'Vergüenza' },
-    { value: 'culpa', label: 'Culpa' },
-    { value: 'inseguridad', label: 'Inseguridad' },
-    { value: 'orgullo', label: 'Orgullo' },
-    { value: 'confusion', label: 'Confusión' },
-    { value: 'ambivalencia', label: 'Ambivalencia' },
-];
-
 
 export default function CartaDesdeLaEmocionExercise({ content, pathId, onComplete }: CartaDesdeLaEmocionExerciseProps) {
     const { toast } = useToast();
@@ -66,7 +32,7 @@ export default function CartaDesdeLaEmocionExercise({ content, pathId, onComplet
     const [need, setNeed] = useState('');
     const [letterBody, setLetterBody] = useState('');
     
-    const finalEmotion = emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.label || emotion);
+    const finalEmotion = emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion);
 
     const handleSave = () => {
         if (!need.trim()) {
@@ -98,8 +64,8 @@ Tu emoción: ${finalEmotion}
         switch(step) {
             case 0: return <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Elige la emoción que quiere hablar contigo</h4>
-                <p className="text-sm text-muted-foreground">Imagina que hay una parte dentro de ti que siente algo muy intensamente… y quiere expresarse.  ¿Qué emoción te está pidiendo ser escuchada hoy?</p>
-                <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{e.label}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
+                <p className="text-sm text-muted-foreground">Imagina que hay una parte dentro de ti que siente algo muy intensamente… y quiere expresarse. ¿Qué emoción te está pidiendo ser escuchada hoy?</p>
+                <Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="Elige una emoción..." /></SelectTrigger><SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
                 {emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }
                 <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div>;
             
@@ -150,7 +116,7 @@ Tu emoción: ${finalEmotion}
                         
                         <p className="text-xs text-muted-foreground italic text-center">Recuerda: No tienes que escribir una carta perfecta. Solo deja que tu emoción se exprese tal y como lo harías con alguien que te importa de verdad: tú.</p>
 
-                        <p className="text-sm text-muted-foreground text-center mt-4">Puedes guardar esta carta en tu Cuaderno Terapéutico, así podrás volver a leerla cuando lo necesites, como recordatorio de que tus emociones también quieren ayudarte. </p>
+                        <p className="text-sm text-muted-foreground text-center mt-4">Puedes guardar esta carta en tu Cuaderno Terapéutico, así podrás volver a leerla cuando lo necesites, como recordatorio de que tus emociones también quieren ayudarte.</p>
             
                         <div className="flex justify-between mt-2">
                             <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
