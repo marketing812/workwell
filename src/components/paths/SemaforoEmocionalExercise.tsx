@@ -174,7 +174,7 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
                 <span className="text-amber-500 font-semibold">ámbar</span> = activación;{' '}
                 <span className="text-red-500 font-semibold">rojo</span> = desborde) con estrategias de regulación en cada fase.
             </span>
-            {content.objective && <p className="pt-2"><span className="font-bold">Objetivo terapéutico:</span> {content.objective}</p>}
+            {content.objective && <p className="pt-2">{content.objective}</p>}
             {content.duration && <p className="pt-1 text-sm text-muted-foreground"><span className="font-bold">Duración estimada:</span> {content.duration}</p>}
         </CardDescription>
         {content.audioUrl && (
