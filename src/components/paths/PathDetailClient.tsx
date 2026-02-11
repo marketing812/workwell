@@ -96,6 +96,7 @@ const EmpatheticDialogueExercise = dynamic(() => import('@/components/paths/Empa
 const EmpathicMirrorExercise = dynamic(() => import('@/components/paths/EmpathicMirrorExercise'), { loading: LoaderComponent, ssr: false });
 const ValidationIn3StepsExercise = dynamic(() => import('@/components/paths/ValidationIn3StepsExercise'), { loading: LoaderComponent, ssr: false });
 const EmpathicShieldVisualizationExercise = dynamic(() => import('@/components/paths/EmpathicShieldVisualizationExercise'), { loading: LoaderComponent, ssr: false });
+const ActivateShieldExercise = dynamic(() => import('@/components/paths/ActivateShieldExercise'), { loading: LoaderComponent, ssr: false });
 const EmotionalInvolvementTrafficLightExercise = dynamic(() => import('@/components/paths/EmotionalInvolvementTrafficLightExercise'), { loading: LoaderComponent, ssr: false });
 const SignificantRelationshipsInventoryExercise = dynamic(() => import('@/components/paths/SignificantRelationshipsInventoryExercise'), { loading: LoaderComponent, ssr: false });
 const RelationalCommitmentExercise = dynamic(() => import('@/components/paths/RelationalCommitmentExercise'), { loading: LoaderComponent, ssr: false });
@@ -174,7 +175,6 @@ const ExposureLadderExercise = dynamic(() => import('@/components/paths/Exposure
 const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise'), { loading: LoaderComponent, ssr: false });
 const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise'), { loading: LoaderComponent, ssr: false });
 const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise'), { loading: LoaderComponent, ssr: false });
-const TherapeuticNotebookReflectionExercise = dynamic(() => import('@/components/paths/TherapeuticNotebookReflectionExercise'), { loading: LoaderComponent, ssr: false });
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -385,7 +385,7 @@ function ContentItemRenderer({
         />
       );
     case 'stressMapExercise':
-      return <StressMapExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <StressMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'triggerExercise':
       return <TriggerExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'detectiveExercise':
@@ -405,7 +405,7 @@ function ContentItemRenderer({
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'exposureToIntoleranceExercise':
-      return <ExposureToIntoleranceExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
+      return <ExposureToIntoleranceExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'therapeuticNotebookReflection':
@@ -537,6 +537,8 @@ function ContentItemRenderer({
         />
       );
     }
+    case 'activateShieldExercise':
+      return <ActivateShieldExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'emotionalInvolvementTrafficLightExercise':
       return (
         <EmotionalInvolvementTrafficLightExercise

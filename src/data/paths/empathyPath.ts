@@ -37,7 +37,7 @@ export const empathyPath: Path = {
         { type: 'collapsible', title: 'Una nueva forma de estar en tus vínculos', content: [{ type: 'paragraph', text: 'Recuerda:\n- La empatía real no es ponerte en los zapatos del otro...\n- Es caminar a su lado, sin hacer que le queden como a ti.\nY la autenticidad florece cuando hay espacio para sentir sin disfraz.\nEse espacio también puedes creártelo tú.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3' },
-        { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Antes de tener una conversación importante, ¿te detienes a escucharte o vas directo a complacer, defenderte o evitar el malestar? Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
+        { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3' },
         { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.', 'La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.', 'Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.', 'La autenticidad florece cuando hay espacio seguro creado por la empatía.', 'Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.', 'Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.', 'Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.', 'La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
@@ -164,49 +164,11 @@ export const empathyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3',
         },
         {
-          type: 'collapsible',
+          type: 'activateShieldExercise',
           title: 'Micropráctica diaria opcional: Activa tu escudo antes de entrar',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica3.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: '¿Para qué sirve? Para ayudarte a no perderte en el malestar del otro. Es tu momento para recordar que también tú importas en cada interacción. Esta práctica breve te ancla antes de cuidar.',
-            },
-            {
-              type: 'paragraph',
-              text: '<strong>Cuándo hacerla:</strong>\nAntes de:',
-            },
-            {
-              type: 'list',
-              items: [
-                'Una conversación difícil.',
-                'Un encuentro que sabes que te remueve.',
-                'Contestar un mensaje que te genera tensión.',
-                'Acompañar emocionalmente a alguien.',
-              ],
-            },
-            { type: 'paragraph', text: '<strong>Paso a paso:</strong>' },
-            {
-              type: 'paragraph',
-              text: '<strong>1. Pausa un momento</strong>\nCierra los ojos (o baja la mirada). Toma una respiración lenta y profunda. Suelta el aire como si soltaras el peso de tener que resolverlo todo.',
-            },
-            {
-              type: 'paragraph',
-              text: '<strong>2. Hazte estas 3 preguntas</strong>\n¿Estoy emocionalmente disponible para esto ahora?\n¿Desde dónde quiero responder: desde la presión o desde la presencia?\n¿Puedo activar mi escudo interno para estar sin absorber?\nNo tienes que responder perfecto. Solo notar cómo estás… ya es un acto de presencia.',
-            },
-            {
-              type: 'paragraph',
-              text: '<strong>3. Activa tu escudo empático</strong>\nVisualiza por un instante tu escudo suave a tu alrededor. Recuerda: no es una barrera, es tu espacio seguro.\nRepite en silencio una frase que te cuide:',
-            },
-            {
-              type: 'list',
-              items: [
-                '“Puedo estar contigo… sin dejar de estar conmigo.”',
-                '“Mi cuidado también importa aquí.”',
-                '“Mi presencia es suficiente. No tengo que absorberlo todo.”',
-              ],
-            },
-          ],
+          objective: 'Para ayudarte a no perderte en el malestar del otro. Es tu momento para recordar que también tú importas en cada interacción. Esta práctica breve te ancla antes de cuidar.',
+          duration: '1-2 min',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica3.mp3'
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -346,7 +308,7 @@ export const empathyPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            '<p>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda? Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo? Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó? Si hoy pudiera revivir esa situación, ¿qué haría diferente? ¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud) ¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</p>',
+            '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
         },
         {

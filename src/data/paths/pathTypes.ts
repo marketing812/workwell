@@ -309,6 +309,14 @@ export type EmpathicShieldVisualizationExerciseContent = {
     audioUrl?: string;
 };
 
+export type ActivateShieldExerciseContent = {
+  type: 'activateShieldExercise';
+  title: string;
+  objective: string;
+  duration?: string;
+  audioUrl?: string;
+};
+
 export type EmotionalInvolvementTrafficLightExerciseContent = {
     type: 'emotionalInvolvementTrafficLightExercise';
     title: string;
@@ -928,6 +936,7 @@ export type ModuleContent =
   | EmpathicMirrorExerciseContent
   | ValidationIn3StepsExerciseContent
   | EmpathicShieldVisualizationExerciseContent
+  | ActivateShieldExerciseContent
   | EmotionalInvolvementTrafficLightExerciseContent
   | SignificantRelationshipsInventoryExerciseContent
   | RelationalCommitmentExerciseContent
