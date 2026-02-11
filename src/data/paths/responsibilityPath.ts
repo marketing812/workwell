@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const responsibilityPath: Path = {
   id: 'ni-culpa-ni-queja',
@@ -449,5 +449,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    

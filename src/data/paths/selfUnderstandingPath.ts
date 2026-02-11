@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const selfUnderstandingPath: Path = {
   id: 'comprender-mejor-cada-dia',
@@ -202,8 +202,7 @@ export const selfUnderstandingPath: Path = {
           type: 'collapsible',
           title: '¿Por qué repito siempre lo mismo?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion3.mp3',
-          content: [
-            { type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.'},
+          content: [{ type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.'},
             { type: 'list', items: ['El cerebro automatiza lo que se repite.<br />Si llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.','Buscamos lo familiar, incluso si duele.<br />Si creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.','Evitamos lo incómodo.<br />Tapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.']}
           ]
         },
@@ -247,7 +246,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'semaforoEmocionalExercise',
           title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
-          objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
+          objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y qué puedes hacer para cuidarte en cada momento.',
           duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
           audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3',
         },
@@ -334,8 +333,22 @@ export const selfUnderstandingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio9Ruta6Sesion4.mp3',
           content: [{ type: 'paragraph', text: 'Ejemplo práctico:\n“No quiero estar ansiosa” → resistencia → más ansiedad\n“Estoy sintiendo ansiedad… ¿qué necesita?” → espacio → más calma\n\nObservarte sin juicio no borra lo que sientes,\npero sí lo contiene con amabilidad, y eso ya es transformador.\n\nNo necesitas tener todas las respuestas\n\nLo más importante es hacerte mejores preguntas.\nEstas te ayudarán a escucharte sin agobiarte:\n\n¿Qué estoy sintiendo ahora mismo?\n\n¿Qué necesita esta emoción?\n\n¿Qué historia estoy contándome?\n\n¿Cómo puedo cuidarme un poco mejor ahora?' }],
         },
-        { type: 'collapsible', title: '¿Y si me cuesta observarme con calma?', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3', content: [{ type: 'paragraph', text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\n¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:\n\n- Estado de seguridad: calma, conexión, reflexión.\n- Estado de alarma: lucha o huida.\n- Estado de colapso: bloqueo o desconexión.\n\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n- Respirar de forma consciente.\n- Sentir tus pies firmes en el suelo.\n- Hablarte con amabilidad.\n- Rodearte de personas que te respetan.\n- Recordarte: lo que sientes no es un error.\n\nLa seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }] },
-        { type: 'collapsible', title: 'En resumen', content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }] },
+        {
+          type: 'collapsible',
+          title: '¿Y si me cuesta observarme con calma?',
+          audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\n¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:\n- Estado de seguridad: calma, conexión, reflexión.\n- Estado de alarma: lucha o huida.\n- Estado de colapso: bloqueo o desconexión.\n\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n- Respirar de forma consciente.\n- Sentir tus pies firmes en el suelo.\n- Hablarte con amabilidad.\n- Rodearte de personas que te respetan.\n- Recordarte: lo que sientes no es un error.\n\nLa seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.',
+            },
+          ],
+        },
+        {
+          type: 'collapsible',
+          title: 'En resumen',
+          content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }],
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'meditacionGuiadaSinJuicioExercise',
@@ -356,7 +369,8 @@ export const selfUnderstandingPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Reflexionruta6Sesion4.mp3',
           prompts: [
-            '<p>Tómate unos minutos para mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas. Solo darte espacio para reconocer lo que esta semana despertó en ti.</p><p><b>Preguntas para tu cuaderno emocional:</b></p><ul><li>¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?</li><li>¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte?  (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)</li><li>¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”?  (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)</li><li>¿Qué emociones o patrones lograste nombrar o detectar con más claridad?  (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)</li><li>¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué?  (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)</li></ul><p>Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.</p>',
+            '<ul><li>¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?</li><li>¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte?  (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)</li><li>¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”?  (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)</li><li>¿Qué emociones o patrones lograste nombrar o detectar con más claridad?  (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)</li><li>¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué?  (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)</li></ul>',
+            '<p>Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.</p>',
           ],
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenruta6Sesion4.mp3' },
@@ -412,204 +426,3 @@ export const selfUnderstandingPath: Path = {
     },
   ],
 };
-
-```
-- src/firebase/auth/use-user.tsx:
-```tsx
-'use client';
-
-import { useMemo } from 'react';
-import { useUser as useFirebaseUser } from '@/firebase/provider'; // Assuming the provider hook for user is named this
-
-/**
- * Hook to access the authenticated user object.
- *
- * IMPORTANT! This hook provides the raw user object from the underlying
- * authentication provider. It does NOT automatically fetch or include
-ditional profile data from Firestore.
- *
- * For a complete user profile including data from Firestore,
- * you should use the `useUser` hook from `UserContext`.
- *
- * @returns The authenticated Firebase user object, or null if not signed in.
- */
-export const useUser = () => {
-  const { user } = useFirebaseUser(); // Replace with the actual hook from your provider
-  return useMemo(() => user, [user]);
-};
-
-```
-- src/hooks/use-local-storage.ts:
-```ts
-
-import { useState, useEffect } from 'react';
-
-/**
- * A custom hook to manage state in localStorage.
- * It ensures that the component re-renders when the value changes and
- * that the initial state is read from localStorage only on the client side.
- *
- * @param key The key under which to store the value in localStorage.
- * @param initialValue The initial value to use if nothing is in localStorage.
- * @returns A stateful value, and a function to update it.
- */
-export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
-  // State to store our value. Initialize with a function to read from localStorage only on first render.
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    // This part only runs on the client-side, thanks to useEffect below.
-    // For server-side rendering, we'll return the initialValue.
-    if (typeof window === 'undefined') {
-      return initialValue;
-    }
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error(`Error reading localStorage key “${key}”:`, error);
-      return initialValue;
-    }
-  });
-
-  // useEffect to update localStorage when the state changes.
-  // This effect will run on the client side.
-  useEffect(() => {
-    try {
-      // Allow value to be a function so we have the same API as useState
-      const valueToStore = storedValue;
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.error(`Error setting localStorage key “${key}”:`, error);
-    }
-  }, [key, storedValue]);
-
-  // A wrapper for setStoredValue to match the useState API.
-  const setValue = (value: T | ((val: T) => T)) => {
-    try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      // Save state
-      setStoredValue(valueToStore);
-    } catch (error) {
-      console.error(`Error updating localStorage key “${key}”:`, error);
-    }
-  };
-
-  return [storedValue, setValue];
-}
-
-```
-- public/manifest.json:
-```json
-{
-  "name": "WorkWell",
-  "short_name": "WorkWell",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#F5F5F5",
-  "theme_color": "#64B5F6",
-  "description": "Tu compañero de bienestar emocional.",
-  "icons": [
-    {
-      "src": "/logo-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/logo-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
-
-```
-- public/robots.txt:
-```txt
-# Tell all web crawlers to not index any pages
-User-agent: *
-Disallow: /
-
-```
-- tailwind.config.js:
-```ts
-import type { Config } from "tailwindcss"
-
-const config = {
-  darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-} satisfies Config
-
-export default config
-```

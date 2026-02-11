@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const settingBoundariesPath: Path = {
   id: 'poner-limites',
@@ -253,5 +253,3 @@ export const settingBoundariesPath: Path = {
     }
   ]
 };
-
-

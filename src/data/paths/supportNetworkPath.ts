@@ -1,5 +1,5 @@
 
-import type { Path } from '../pathsData';
+import type { Path } from './pathTypes';
 
 export const supportNetworkPath: Path = {
   id: 'confiar-en-mi-red',
@@ -550,4 +550,3 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
-
