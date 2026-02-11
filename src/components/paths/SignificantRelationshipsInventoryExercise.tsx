@@ -99,7 +99,6 @@ ${microAction}
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.</p>
             <Button onClick={next}>Comenzar inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -177,22 +176,15 @@ ${microAction}
               <Label htmlFor="reflection3">¿Con quién me gustaría construir un vínculo así?</Label>
               <Textarea id="reflection3" value={reflection3} onChange={e => setReflection3(e.target.value)} />
             </div>
+            <div className="space-y-2 mt-4">
+                 <Label htmlFor="micro-action">Mi microacción semanal</Label>
+                 <p className="text-xs text-muted-foreground">Elige una acción pequeña para cuidar uno de estos vínculos nutritivos.</p>
+                <Textarea id="micro-action" value={microAction} onChange={e => setMicroAction(e.target.value)} placeholder="Ej: Mandarle un mensaje a [persona] agradeciéndole su apoyo."/>
+            </div>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar y Finalizar</Button>
             </div>
-          </div>
-        );
-      case 5:
-        return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Paso 5: Microacción semanal</h4>
-            <p className="text-sm text-muted-foreground">Esta semana, elige una de esas personas significativas y haz algo pequeño para cuidar ese vínculo que sí te hace bien.</p>
-            <div className="space-y-2">
-              <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
-              <Textarea id="micro-action" value={microAction} onChange={e => setMicroAction(e.target.value)} placeholder="Ej: Agradecerle, pedir ayuda, compartir cómo te sientes, pasar un rato juntos sin exigencias..." />
-            </div>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico y finalizar</Button>
           </div>
         );
       default: return null;
@@ -205,18 +197,17 @@ ${microAction}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
           <CardDescription className="pt-2">
-            ¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.
-            {content.duration && <span className="block text-xs mt-1">Duración estimada: {content.duration}</span>}
+            
+            {content.audioUrl && (
+                <div className="mt-4">
+                    <audio controls controlsList="nodownload" className="w-full">
+                        <source src={content.audioUrl} type="audio/mp3" />
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+            )}
           </CardDescription>
         }
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
       </CardHeader>
       <CardContent>
         {!isCompleted ? renderStep() : (

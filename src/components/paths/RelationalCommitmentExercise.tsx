@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -50,6 +49,11 @@ export default function RelationalCommitmentExercise({ content, pathId, onComple
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
+    if (!weeklyMicroAction.trim()) {
+      toast({ title: "Acción requerida", description: "Por favor, define tu microacción semanal.", variant: "destructive" });
+      return;
+    }
+    
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -86,10 +90,9 @@ ${weeklyMicroAction || 'No especificada.'}
   
   const renderStep = () => {
     switch (step) {
-      case 0: // Intro
+      case 0: // Introducción
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes en nuestras relaciones. Este ejercicio es una brújula emocional para que elijas conscientemente con quién y desde qué valores quieres vincularte.</p>
             <Button onClick={next}>Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -190,7 +193,7 @@ ${weeklyMicroAction || 'No especificada.'}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
             <CardDescription className="pt-2">
-                 ¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir? A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes. Este ejercicio es una brújula emocional: Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.
+                
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
@@ -219,4 +222,3 @@ ${weeklyMicroAction || 'No especificada.'}
     </Card>
   );
 }
-
