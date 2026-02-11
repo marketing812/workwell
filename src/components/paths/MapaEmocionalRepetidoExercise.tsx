@@ -134,16 +134,49 @@ ${schema || 'No especificado.'}
 
     switch (step) {
       case 0: return <div className="p-4"><p className="text-center mb-4">Piensa en una situación reciente que te haya movido emocionalmente.</p><Button onClick={nextStep} className="w-full">Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
-      case 1: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 1: ¿Qué ocurrió?</h4><p className="text-sm text-muted-foreground">Describe brevemente una situación concreta que te haya movido emocionalmente esta semana. Céntrate solo en lo que ocurrió —los hechos visibles o verificables— sin añadir aún cómo te sentiste ni lo que pensaste. Piensa que lo estás contando como si fueras una cámara que graba la escena: ¿qué pasó?, ¿quién estaba?, ¿dónde y cuándo fue?</p><Textarea id="situation-detective" value={situation} onChange={e => setSituation(e.target.value)} placeholder={'“Ayer envié un mensaje importante a una amiga y no me contestó.” \\n(No pongas: “Me sentí ignorada” o “Seguro que está enfadada conmigo” → eso lo veremos después)'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
+      case 1: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 1: ¿Qué ocurrió?</h4><p className="text-sm text-muted-foreground">Describe brevemente una situación concreta que te haya movido emocionalmente esta semana. Céntrate solo en lo que ocurrió —los hechos visibles o verificables— sin añadir aún cómo te sentiste ni lo que pensaste. Piensa que lo estás contando como si fueras una cámara que graba la escena: ¿qué pasó?, ¿quién estaba?, ¿dónde y cuándo fue?</p><Textarea id="situation-detective" value={situation} onChange={e => setSituation(e.target.value)} placeholder={'“Ayer envié un mensaje importante a una amiga y no me contestó.” \\n(No pongas: “Me sentí ignorada” o “Seguro que está enfadada conmigo” → eso lo veremos después)'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 2: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 2: Nombra la emoción principal</h4><p className="text-sm text-muted-foreground">Selecciona entre una lista o escribe libremente</p><Select value={emotion} onValueChange={setEmotion}><SelectTrigger><SelectValue placeholder="..." /></SelectTrigger><SelectContent>{mapaEmocionalRepetidoEmotionOptions.map(e => <SelectItem key={e.value} value={e.label}>{e.label}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>{emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe tu emoción aquí..." className="mt-2" />}<div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!emotion || (emotion === 'otra' && !otherEmotion.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 3: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 3: ¿Qué historia o interpretación surgió en tu mente en ese momento?</h4><Textarea id="automaticThought" value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} placeholder={'"No le importo."\\n"Soy un desastre."\\n"Siempre me dejan fuera."\\n"Seguro se están burlando de mí."'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!automaticThought}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 4: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 4: ¿Cómo reaccionaste? ¿Qué hiciste o cómo te comportaste después de esa emoción?</h4><Textarea id="behavior" value={behavior} onChange={e => setBehavior(e.target.value)} placeholder={'"Me encerré en mi habitación."\\n"Mandé un mensaje cortante."\\n"Me bloqueé y no dije nada."\\n"Me mostré sonriente, pero me dolía por dentro."'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!behavior}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 5: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 5: ¿Te suena esta reacción?</h4><RadioGroup value={isRepeated} onValueChange={setIsRepeated}><div className="flex items-center gap-2"><RadioGroupItem value="si" id="r_si"/><Label htmlFor="r_si" className="font-normal">Sí, me pasa a menudo</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="algunas" id="r_algunas" /><Label htmlFor="r_algunas" className="font-normal">Algunas veces</Label></div><div className="flex items-center gap-2"><RadioGroupItem value="no" id="r_no"/><Label htmlFor="r_no" className="font-normal">No, fue algo nuevo para mí</Label></div></RadioGroup><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={!isRepeated}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 6: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 6: ¿Qué patrón crees que se activó?</h4><Select value={schema} onValueChange={setSchema}><SelectTrigger><SelectValue placeholder="Elige un patrón..." /></SelectTrigger><SelectContent>{schemaOptions.map(s=><SelectItem key={s.value} value={s.label}>{s.label}</SelectItem>)}</SelectContent></Select><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={handleSave} className="w-auto" disabled={!schema}>Guardar y ver resumen</Button></div></div>;
       case 7: 
-        return <div className="p-4 text-center space-y-4"><h4 className="font-bold text-center text-lg">Tu Mapa Emocional</h4><p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p><div className="text-left border p-2 rounded-md bg-background"><p className="font-semibold">Tu registro:</p><p>Situación: {situation}</p><p>😔 <strong>Emoción:</strong> {finalEmotion}</p><p>💭 <strong>Pensamiento automático:</strong> {automaticThought}</p><p>🧠 <strong>Esquema activado:</strong> {schema}</p><p>🔄 <strong>Conducta:</strong> {behavior}</p></div><p className="text-sm italic text-center pt-2">
-                    Este es tu primer paso para interrumpir el patrón y empezar a transformarlo.
-                </p><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Finalizar</Button></div></div>;
+        return (
+          <div className="p-4 text-center space-y-4">
+            <h4 className="font-bold text-center text-lg">Tu Mapa Emocional</h4>
+            <p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p>
+            <div className="text-left border p-2 rounded-md bg-background">
+              <p className="font-semibold">Tu registro:</p>
+              <p>
+                <strong>Situación:</strong> {situation}
+              </p>
+              <p>
+                <strong>Emoción:</strong> {finalEmotion}
+              </p>
+              <p>
+                <strong>Pensamiento automático:</strong> {automaticThought}
+              </p>
+              <p>
+                <strong>Esquema activado:</strong> {schema}
+              </p>
+              <p>
+                <strong>Conducta:</strong> {behavior}
+              </p>
+            </div>
+            <p className="text-sm italic text-center pt-2">
+              Este es tu primer paso para interrumpir el patrón y empezar a transformarlo.
+            </p>
+            <div className="flex justify-between w-full mt-2">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={resetExercise} variant="outline">
+                Hacer otro registro
+              </Button>
+            </div>
+          </div>
+        );
       case 8:
         return (
             <div className="p-4 text-center space-y-4">
@@ -184,5 +217,3 @@ ${schema || 'No especificado.'}
     </Card>
   );
 }
-
-    
