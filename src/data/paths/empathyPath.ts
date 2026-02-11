@@ -215,7 +215,7 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'A veces creemos que estar rodeados de muchas personas es señal de bienestar. Que cuantos más vínculos, más seguridad, más apoyo, más amor.\nPero con el tiempo —y sobre todo cuando pasamos por momentos difíciles— nos damos cuenta de algo muy diferente:\nLo que de verdad alivia, sostiene y transforma no es la cantidad, sino la calidad del vínculo.\n\nUna sola relación donde puedas respirar, decir cómo te sientes sin miedo, ser tú sin tener que defenderte o explicar todo…\n…vale más que diez relaciones donde tienes que estar vigilando qué partes de ti mostrar y cuáles esconder.\n\nLas relaciones que nutren no son aquellas donde todo fluye sin conflicto.\nSon aquellas donde puedes existir tal y como eres.',
+              text: 'A veces creemos que estar rodeados de muchas personas es señal de bienestar. Que cuantos más vínculos, más seguridad, más apoyo, más amor.\nPero con el tiempo —y sobre todo cuando pasamos por momentos difíciles— nos damos cuenta de algo muy diferente:\nLo que de verdad alivia, sostiene y transforma no es la cantidad, sino la calidad del vínculo.\n\nUna sola relación donde puedas respirar, decir cómo te sientes sin miedo, ser tú sin tener que defenderte o explicar todo…\n…vale más que diez relaciones donde tienes que estar vigilando qué partes de ti mostrar y cuáles esconder.\n\nLas relaciones que nutren no son aquellas donde todo fluye sin conflicto.\nSon aquellas donde puedes existir tal como eres.',
             },
           ],
         },
@@ -289,13 +289,14 @@ export const empathyPath: Path = {
         {
           type: 'significantRelationshipsInventoryExercise',
           title: 'EJERCICIO 1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
+          objective: '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.En este ejercicio vas a crear tu propio mapa de apoyo emocional, identificando a esas personas que cumplen tres funciones clave para tu bienestar: te sostienen, te inspiran y respetan tu proceso.',
           duration: '10-15 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3',
         },
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
-          objective: '¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir?  A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes.   Este ejercicio es una brújula emocional:  Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores.  Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos. ',
+          objective: '¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir? A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes. Este ejercicio es una brújula emocional: Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos. ',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3',
         },
@@ -307,9 +308,10 @@ export const empathyPath: Path = {
             '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
         },
+        { type: 'title', text: 'Resumen Clave' },
         {
-          type: 'title',
-          text: 'Resumen Clave',
+          type: 'paragraphWithAudio',
+          text: '',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3',
         },
         {
@@ -368,5 +370,8 @@ export const empathyPath: Path = {
     }
   ]
 };
+
+    
+
 
     
