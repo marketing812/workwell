@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -52,13 +51,12 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
       case 0: // Intro
         return (
           <div className="text-center p-4 space-y-4">
-            <p className="text-sm text-muted-foreground">Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo.</p>
             <Button onClick={() => setStep(1)}>Empezar mi diálogo <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Step 1 & 2
         return (
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Detente y obsérvate</h4>
             <p>Piensa en una situación reciente o próxima en la que tengas que interactuar con alguien que te genera presión, inseguridad o emociones intensas.</p>
             <div className="space-y-2">
@@ -77,7 +75,7 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
         );
       case 2: // Step 3
         return (
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Escúchate con empatía</h4>
             <p>Imagina que eres tu mejor amiga/o. Escribe una frase de validación compasiva hacia ti. Ejemplos: “Entiendo que te sientas así, tiene sentido por lo que viviste.”, “No necesitas ser perfecta/o para estar presente.”</p>
             <div className="space-y-2">
@@ -92,7 +90,7 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
         );
       case 3: // Step 4
         return (
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Qué necesito ahora?</h4>
             <p>Pregúntate: ¿Qué necesito darme a mí en esta situación, antes de responder al otro?</p>
             <div className="space-y-2">
@@ -107,7 +105,7 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
         );
       case 4: // Step 5
         return (
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: Una intención para actuar desde tu centro</h4>
             <p>Cierra el ejercicio con una intención clara y realista para tu próxima interacción. Ejemplos: “Voy a intentar estar presente sin perderme a mí.”, “Voy a priorizarme sin dejar de cuidar el vínculo.”</p>
             <div className="space-y-2">
@@ -116,7 +114,7 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar y Continuar</Button>
+              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar y Continuar</Button>
             </div>
           </div>
         );
