@@ -40,8 +40,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             { type: 'paragraph', text: 'Cuando estamos muy activados emocionalmente, todo se mezcla: lo que sentimos, lo que pensamos, lo que queremos hacer. Pero entender la diferencia entre emoción, pensamiento e impulso es clave para poder autorregularnos.\nVamos con un ejemplo:\nImagina que alguien cercano no te devuelve una llamada importante.'},
             { type: 'list', items: ['Pensamiento: “No le importo nada.”','Emoción: tristeza… o quizás enfado.','Impulso: escribir un mensaje duro… o desaparecer por completo.']},
-            { type: 'paragraph', text: 'La emoción es el sentir profundo.\nEl pensamiento es la interpretación que haces.\nEl impulso es lo que querrías hacer justo después.\nMuchas veces, no podemos cambiar lo que sentimos… pero sí cómo pensamos sobre ello y qué hacemos con eso.\nSeparar estos tres niveles es como desenredar una madeja. Nos da claridad, espacio interno y capacidad de elegir.' }
-          ]
+            { type: 'paragraph', text: 'La emoción es el sentir profundo.\nEl pensamiento es la interpretación que haces.\nEl impulso es lo que querrías hacer justo después.\nMuchas veces, no podemos cambiar lo que sentimos… pero sí cómo pensamos sobre ello y qué hacemos con eso.\nSeparar estos tres niveles es como desenredar una madeja. Nos da claridad, espacio interno y capacidad de elegir.' }]
         },
         {
           type: 'collapsible',
@@ -205,7 +204,7 @@ export const selfUnderstandingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion3.mp3',
           content: [
             { type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.'},
-            { type: 'list', items: ['El cerebro automatiza lo que se repite.<br />Si llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.', 'Buscamos lo familiar, incluso si duele.<br />Si creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.', 'Evitamos lo incómodo.<br />Tapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.']}
+            { type: 'list', items: ['El cerebro automatiza lo que se repite.<br />Si llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.','Buscamos lo familiar, incluso si duele.<br />Si creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.','Evitamos lo incómodo.<br />Tapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.']}
           ]
         },
         {
@@ -214,7 +213,7 @@ export const selfUnderstandingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio7Ruta6Sesion3.mp3',
           content: [
             { type: 'paragraph', text: '¿Y por qué algunas emociones parecen tan grandes que nos arrastran?' },
-            { type: 'list', items: ['Porque tocan algo importante y personal.<br />Una crítica cualquiera no duele igual que una crítica que activa tu herida de desvalorización.', 'Porque están teñidas de pensamientos distorsionados.<br />Como “todo o nada”, “esto siempre me pasa”, “no hay salida”.', 'Porque reaccionamos antes de pensar.<br />El cerebro emocional (amígdala) se activa antes de que lo racional entre en juego. Por eso a veces gritas o te cierras sin saber por qué.', 'Porque el cuerpo también recuerda.<br />La ansiedad se siente en el estómago, la tristeza en el pecho, la rabia en la mandíbula. Tu cuerpo guarda memoria emocional… y te avisa cuando algo no está bien.'] }
+            { type: 'list', items: ['Porque tocan algo importante y personal.<br />Una crítica cualquiera no duele igual que una crítica que activa tu herida de desvalorización.','Porque están teñidas de pensamientos distorsionados.<br />Como “todo o nada”, “esto siempre me pasa”, “no hay salida”.','Porque reaccionamos antes de pensar.<br />El cerebro emocional (amígdala) se activa antes de que lo racional entre en juego. Por eso a veces gritas o te cierras sin saber por qué.','Porque el cuerpo también recuerda.<br />La ansiedad se siente en el estómago, la tristeza en el pecho, la rabia en la mandíbula. Tu cuerpo guarda memoria emocional… y te avisa cuando algo no está bien.'] }
           ]
         },
         {
@@ -250,7 +249,7 @@ export const selfUnderstandingPath: Path = {
           type: 'semaforoEmocionalExercise',
           title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
           objective:
-            'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás: si estás en calma, empezando a activarte o al borde del desborde. Y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
+            'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y, lo más importante, vas a elegir cómo cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
           duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
           audioUrl: 'https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3',
         },
@@ -344,19 +343,34 @@ export const selfUnderstandingPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
           content: [
             { type: 'paragraph', text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.' },
-            { type: 'paragraph', text: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:' },
-            { type: 'list', items: ['Estado de seguridad: calma, conexión, reflexión.', 'Estado de alarma: lucha o huida.', 'Estado de colapso: bloqueo o desconexión.'] },
-            { type: 'paragraph', text: 'Cuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.' },
-            { type: 'paragraph', text: 'Cómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:' },
-            { type: 'list', items: ['Respirar de forma consciente.', 'Sentir tus pies firmes en el suelo.', 'Hablarte con amabilidad.', 'Rodearte de personas que te respetan.', 'Recordarte: lo que sientes no es un error.'] },
-            { type: 'paragraph', text: 'La seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' }
+            {
+              type: 'collapsible',
+              title: '¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)',
+              content: [
+                { type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:' },
+                { type: 'list', items: ['Estado de seguridad: calma, conexión, reflexión.', 'Estado de alarma: lucha o huida.', 'Estado de colapso: bloqueo o desconexión.'] },
+                { type: 'paragraph', text: 'Cuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.' },
+              ],
+            },
+            {
+              type: 'collapsible',
+              title: 'Cómo generar seguridad dentro de ti',
+              content: [
+                { type: 'paragraph', text: 'Aquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:' },
+                { type: 'list', items: ['Respirar de forma consciente.', 'Sentir tus pies firmes en el suelo.', 'Hablarte con amabilidad.', 'Rodearte de personas que te respetan.', 'Recordarte: lo que sientes no es un error.'] },
+                { type: 'paragraph', text: 'La seguridad no se impone. Se entrena poco a poco.' },
+              ],
+            },
+            {
+              type: 'collapsible',
+              title: 'El poder de tu voz interior',
+              content: [
+                { type: 'paragraph', text: 'Tu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.' },
+              ],
+            },
           ]
         },
-        {
-          type: 'collapsible',
-          title: 'En resumen',
-          content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }],
-        },
+        { type: 'collapsible', title: 'En resumen', content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'meditacionGuiadaSinJuicioExercise',
@@ -378,7 +392,7 @@ export const selfUnderstandingPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Reflexionruta6Sesion4.mp3',
           prompts: [
-            '<p>Tómate unos minutos para mirar hacia adentro con honestidad y curiosidad. No necesitas buscar respuestas perfectas. Solo darte espacio para reconocer lo que esta semana despertó en ti.</p><p><b>Preguntas para tu cuaderno emocional:</b></p><ul><li>¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?</li><li>¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte?  (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)</li><li>¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”?  (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)</li><li>¿Qué emociones o patrones lograste nombrar o detectar con más claridad?  (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)</li><li>¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué?  (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)</li></ul><p>Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.</p>',
+            '<ul><li>¿Qué descubrí sobre mí esta semana que antes pasaba desapercibido?</li><li>¿En qué momentos de esta semana lograste observar lo que sentías sin juzgarte?  (Ej. “Cuando sentí tristeza y no intenté esconderla… solo respiré con ella.”)</li><li>¿Qué descubriste sobre ti cuando soltaste la necesidad de “arreglarte”?  (Ej. “Que no soy débil por sentir… solo necesitaba descanso.”)</li><li>¿Qué emociones o patrones lograste nombrar o detectar con más claridad?  (Ej. “Identifiqué que detrás de mi irritabilidad había miedo a no ser suficiente.”)</li><li>¿Qué herramientas de esta semana te gustaría seguir practicando? ¿Por qué?  (Ej. “La frase ancla me ayudó a calmarme en medio del caos. Me dio paz.”)</li></ul><p>Recuerda: no estás aquí para ser perfecta o perfecto, sino para aprender a habitarte con más respeto.</p>',
           ],
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Resumenruta6Sesion4.mp3' },
@@ -436,3 +450,5 @@ export const selfUnderstandingPath: Path = {
     },
   ],
 };
+
+    
