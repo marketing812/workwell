@@ -60,9 +60,16 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
   
   const renderStep = () => {
     switch(step) {
-      case 0: 
+      case 0:
         return (
           <div className="p-4 space-y-4 text-center">
+            <p className="text-sm text-muted-foreground">Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y, lo más importante, vas a elegir cómo cuidarte en cada momento.</p>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: ¿Cómo te sientes ahora?</h4>
             <p className="text-muted-foreground text-sm">Escanea tu cuerpo, tu mente y tus emociones. Selecciona en qué “luz” estás ahora:</p>
             <RadioGroup value={light} onValueChange={(v) => setLight(v as any)} className="flex flex-col sm:flex-row justify-around py-4 gap-4">
@@ -89,12 +96,12 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
               ))}
             </RadioGroup>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline" disabled><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} className="w-full" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep} className="w-auto" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
-      case 1:
+      case 2:
         let suggestions, title, placeholder;
         if(light === 'verde') { 
           title='Paso 2: Bienestar emocional presente'; 
@@ -121,7 +128,7 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
             </div>
           </div>
         );
-      case 2:
+      case 3:
         return (
              <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 3: Integración y aprendizaje</h4>
@@ -136,7 +143,7 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
                 </div>
             </div>
         );
-       case 3:
+       case 4:
         return (
             <div className="p-6 space-y-4 text-center">
                  <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg space-y-3">
