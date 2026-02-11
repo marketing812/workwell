@@ -73,15 +73,15 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
     notebookContent += `- ¿Qué vínculo te gustaría cuidar más?: ${reflection.q4 || 'No respondido.'}\n\n`;
 
     notebookContent += `**Acciones por color:**\n`;
-    if (actionPlans.green) notebookContent += `🟢 Verde - Nutritiva: ${actionPlans.green}\n`;
-    if (actionPlans.amber) notebookContent += `🟠 Ámbar - Exigente: ${actionPlans.amber}\n`;
-    if (actionPlans.red) notebookContent += `🔴 Roja - Drenante: ${actionPlans.red}\n`;
+    if (actionPlans.green) notebookContent += `Verde - Nutritiva: ${actionPlans.green}\n`;
+    if (actionPlans.amber) notebookContent += `Ámbar - Exigente: ${actionPlans.amber}\n`;
+    if (actionPlans.red) notebookContent += `Roja - Drenante: ${actionPlans.red}\n`;
 
     addNotebookEntry({ title: `Semáforo de Implicación Emocional`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
     onComplete();
-    nextStep(); // Go to confirmation
+    nextStep();
   };
   
   const renderStep = () => {
@@ -90,7 +90,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">A veces damos lo mismo a todas las personas sin notar cómo nos afecta. Este ejercicio te invita a observar cómo te sientes en tus relaciones cotidianas para que puedas decidir cómo implicarte.</p>
-            <Button onClick={nextStep}>Empezar mi semáforo <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar mi semáforo <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -108,7 +108,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="mr-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -168,22 +168,24 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
                 <h4 className="font-semibold text-lg">Paso 4: Acciones por color</h4>
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <Label className="font-semibold text-green-600">🟢 Relación verde – Nutritiva</Label>
+                        <Label className="font-semibold text-green-600">Relación verde – Nutritiva</Label>
                         <p className="text-sm text-muted-foreground">Haz algo para fortalecerla: agradece, comparte, pasa tiempo de calidad.</p>
-                        <Textarea value={actionPlans.green} onChange={e => handleActionPlanChange('green', e.target.value)} placeholder="✍️ “Voy a…”" />
+                        <Textarea value={actionPlans.green} onChange={e => handleActionPlanChange('green', e.target.value)} placeholder="“Voy a…”" />
                     </div>
                     <div className="space-y-2">
-                        <Label className="font-semibold text-amber-600">🟠 Relación ámbar – Exigente</Label>
+                        <Label className="font-semibold text-amber-600">Relación ámbar – Exigente</Label>
                         <p className="text-sm text-muted-foreground">Practica un pequeño límite o exprésate con más claridad.</p>
-                        <Textarea value={actionPlans.amber} onChange={e => handleActionPlanChange('amber', e.target.value)} placeholder="✍️ “Esta vez voy a intentar…”" />
+                        <Textarea value={actionPlans.amber} onChange={e => handleActionPlanChange('amber', e.target.value)} placeholder="“Esta vez voy a intentar…”" />
                     </div>
                     <div className="space-y-2">
-                        <Label className="font-semibold text-red-600">🔴 Relación roja – Drenante</Label>
+                        <Label className="font-semibold text-red-600">Relación roja – Drenante</Label>
                         <p className="text-sm text-muted-foreground">Marca distancia emocional o elige el silencio protector.</p>
-                        <Textarea value={actionPlans.red} onChange={e => handleActionPlanChange('red', e.target.value)} placeholder="✍️ “Para protegerme, voy a…”" />
+                        <Textarea value={actionPlans.red} onChange={e => handleActionPlanChange('red', e.target.value)} placeholder="“Para protegerme, voy a…”" />
                     </div>
                 </div>
-                <p className="text-xs text-muted-foreground italic text-center">No tienes que cortar ningún vínculo de golpe. Solo dar un paso hacia delante que te devuelva a ti.</p>
+                <p className="text-sm text-muted-foreground italic text-center">
+                    No tienes que cortar ningún vínculo de golpe. Solo dar un paso hacia delante que te devuelva a ti.
+                </p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline">Atrás</Button>
                     <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
