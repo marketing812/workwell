@@ -47,7 +47,7 @@ export const empathyPath: Path = {
       title: 'Semana 2: Escucha y Comprende con el Corazón',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' }, { type: 'title', text: 'Psicoeducación' }, { type: 'collapsible', title: '¿Escuchas para responder o para comprender?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Escuchaspararesponderoparacomprender.mp3', content: [{ type: 'paragraph', text: 'A menudo, oímos sin escuchar profundamente. Escuchamos para corregir, para dar consejos, para aliviar el malestar… pero muy pocas veces escuchamos para comprender de verdad. La escucha empática es una presencia distinta: no exige, no interrumpe, no intenta arreglar. Solo está.' }] }, { type: 'collapsible', title: '¿Qué bloquea nuestra escucha empática?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3', content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.' }] }, { type: 'collapsible', title: 'Validar no es justificar. Es comprender.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3', content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] }, { type: 'collapsible', title: '¿Por qué nos cuesta tanto escuchar así?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Porquenoscuestatantoescucharasi.mp3', content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] }, { type: 'title', text: 'Técnicas Específicas' }, { 'type':'empathicMirrorExercise', 'title':'EJERCICIO 1: EL ESPEJO EMPÁTICO', 'objective':'¿Alguna vez has sentido que alguien te escuchaba con tanta presencia que no necesitaste explicarlo todo para sentirte comprendido/a? \n\nEste ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. \nAprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica, aunque no digas muchas palabras. \n\nEsta habilidad transforma tus relaciones. Y también te ayuda a dejar de cargar con lo que no te corresponde, porque comprender no es absorber: es estar con el otro, sin perderte tú.\n\nTe recomiendo practicarlo varias veces esta semana, en diferentes conversaciones.', 'duration':'10-12 minutos', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica1.mp3' }, { 'type':'validationIn3StepsExercise', 'title':'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', 'objective':'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', 'duration':'10 min', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica2.mp3' }, { 
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' }, { type: 'title', text: 'Psicoeducación' }, { type: 'collapsible', title: '¿Escuchas para responder o para comprender?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Escuchaspararesponderoparacomprender.mp3', content: [{ type: 'paragraph', text: 'A menudo, oímos sin escuchar profundamente. Escuchamos para corregir, para dar consejos, para aliviar el malestar… pero muy pocas veces escuchamos para comprender de verdad. La escucha empática es una presencia distinta: no exige, no interrumpe, no intenta arreglar. Solo está.' }] }, { type: 'collapsible', title: '¿Qué bloquea nuestra escucha empática?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3', content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.' }] }, { type: 'collapsible', title: 'Validar no es justificar. Es comprender.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3', content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] }, { type: 'collapsible', title: '¿Por qué nos cuesta tanto escuchar así?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Porquenoscuestatantoescucharasi.mp3', content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] }, { type: 'title', text: 'Técnicas Específicas' }, { 'type':'empathicMirrorExercise', 'title':'EJERCICIO 1: EL ESPEJO EMPÁTICO', 'objective':'¿Alguna vez has sentido que alguien te escuchaba con tanta presencia que no necesitaste explicarlo todo para sentirte comprendido/a? \n\nEste ejercicio te invita a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. \nAprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica, aunque no digas muchas palabras. \n\nEsta habilidad transforma tus relaciones. Y también te ayuda a dejar de cargar con lo que no te corresponde, porque comprender no es absorber: es estar con el otro, sin perderte tú. \n\nTe recomiendo practicarlo varias veces esta semana, en diferentes conversaciones.', 'duration':'10-12 minutos', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica1.mp3' }, { 'type':'validationIn3StepsExercise', 'title':'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', 'objective':'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', 'duration':'10 min', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica2.mp3' }, { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/REFLEXION.mp3', 
@@ -162,6 +162,51 @@ export const empathyPath: Path = {
             'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3',
+        },
+        {
+          type: 'collapsible',
+          title: 'Micropráctica diaria opcional: Activa tu escudo antes de entrar',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica3.mp3',
+          content: [
+            {
+              type: 'paragraph',
+              text: '¿Para qué sirve? Para ayudarte a no perderte en el malestar del otro. Es tu momento para recordar que también tú importas en cada interacción. Esta práctica breve te ancla antes de cuidar.',
+            },
+            {
+              type: 'paragraph',
+              text: '<strong>Cuándo hacerla:</strong>\nAntes de:',
+            },
+            {
+              type: 'list',
+              items: [
+                'Una conversación difícil.',
+                'Un encuentro que sabes que te remueve.',
+                'Contestar un mensaje que te genera tensión.',
+                'Acompañar emocionalmente a alguien.',
+              ],
+            },
+            { type: 'paragraph', text: '<strong>Paso a paso:</strong>' },
+            {
+              type: 'paragraph',
+              text: '<strong>1. Pausa un momento</strong>\nCierra los ojos (o baja la mirada). Toma una respiración lenta y profunda. Suelta el aire como si soltaras el peso de tener que resolverlo todo.',
+            },
+            {
+              type: 'paragraph',
+              text: '<strong>2. Hazte estas 3 preguntas</strong>\n¿Estoy emocionalmente disponible para esto ahora?\n¿Desde dónde quiero responder: desde la presión o desde la presencia?\n¿Puedo activar mi escudo interno para estar sin absorber?\nNo tienes que responder perfecto. Solo notar cómo estás… ya es un acto de presencia.',
+            },
+            {
+              type: 'paragraph',
+              text: '<strong>3. Activa tu escudo empático</strong>\nVisualiza por un instante tu escudo suave a tu alrededor. Recuerda: no es una barrera, es tu espacio seguro.\nRepite en silencio una frase que te cuide:',
+            },
+            {
+              type: 'list',
+              items: [
+                '“Puedo estar contigo… sin dejar de estar conmigo.”',
+                '“Mi cuidado también importa aquí.”',
+                '“Mi presencia es suficiente. No tengo que absorberlo todo.”',
+              ],
+            },
+          ],
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -312,12 +357,16 @@ export const empathyPath: Path = {
         {
           type: 'list',
           items: [
-            'Las relaciones más nutritivas no son perfectas, sino honestas y coherentes.',
-            'Poner límites con firmeza y cuidado no rompe los vínculos, los fortalece.',
-            'Una relación segura se basa en respeto mutuo, comunicación clara y presencia emocional.',
-            'Es válido elegir con quién te relacionas… y también cómo eliges estar tú en ese vínculo.',
-            'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.',
+            'Las relaciones que nos cuidan no son casualidad: se construyen y se alimentan con gestos conscientes.',
+            'Estar para otros no implica perderte: el autocuidado es la base del cuidado mutuo.',
+            'El “fitness relacional” se entrena con actos de presencia, escucha y apoyo repetidos en el tiempo.',
+            'La reciprocidad es el pegamento de las relaciones sanas.',
+            'Elegir conscientemente dónde invertir energía fortalece tu red y tu bienestar emocional.',
           ],
+        },
+        {
+          type: 'quote',
+          text: 'Las relaciones que te nutren se eligen, se cuidan y se agradecen. Son el puente que une tu fuerza con la fuerza de los demás.',
         },
       ],
     },
@@ -333,6 +382,7 @@ export const empathyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
+            '<p>Preguntas para tu cuaderno emocional:</p>',
             '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
           ]
         },
