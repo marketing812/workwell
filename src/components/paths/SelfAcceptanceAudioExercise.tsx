@@ -1,10 +1,9 @@
-
 "use client";
 
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Edit3, CheckCircle } from 'lucide-react';
+import { Edit3, CheckCircle, Save } from 'lucide-react';
 import type { SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -75,7 +74,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
         {!isCompleted ? (
             <>
                 <Button onClick={handleComplete} className="w-full mt-6">
-                    <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
                 </Button>
             </>
         ) : (

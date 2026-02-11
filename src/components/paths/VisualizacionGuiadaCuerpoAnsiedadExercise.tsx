@@ -12,6 +12,7 @@ import { Edit3, ArrowRight, ArrowLeft, CheckCircle, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
+import { Slider } from '../ui/slider';
 
 interface VisualizacionGuiadaCuerpoAnsiedadExerciseProps {
   content: VisualizacionGuiadaCuerpoAnsiedadExerciseContent;
@@ -160,7 +161,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
             
             case 4: // Step 4: Naming
                 return (
-                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Nómbralo sin luchar</h4>
                         <p className="text-sm text-muted-foreground">Ahora que has explorado tu respiración, tu corazón, tu estómago y tu cabeza, haz algo importante: nombra lo que sientes sin intentar cambiarlo.</p>
                         <Label htmlFor="acceptancePhrase">Ahora mismo siento que…</Label>
@@ -194,10 +195,10 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
 
             case 6: // Closing
                 return (
-                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
-                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto"/>
-                        <h4 className="font-semibold text-lg">Cierre del ejercicio</h4>
-                        <p className="text-muted-foreground">Muy bien. Hoy has practicado observar tu ansiedad en el cuerpo sin huir de ella. Cuanto más te entrenes, más descubrirás que las sensaciones, aunque molestas, no te dañan.</p>
+                    <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                        <h4 className="font-bold text-lg">Cierre del ejercicio</h4>
+                        <p>Muy bien. Hoy has practicado observar tu ansiedad en el cuerpo sin huir de ella. Cuanto más te entrenes, más descubrirás que las sensaciones, aunque molestas, no te dañan.</p>
                         <div className="text-sm p-4 border rounded-md bg-background/50 flex justify-around items-center flex-wrap gap-2">
                            <span>Respiración</span><ArrowRight className="h-4 w-4"/>
                            <span>Corazón</span><ArrowRight className="h-4 w-4"/>
