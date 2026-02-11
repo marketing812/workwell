@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -131,7 +130,7 @@ ${whatINeed}
                 </div>
             </form>
         );
-      case 2: // PANTALLA 4: Mensajes
+      case 2: // PANTALLA 4: Mensajes y Cierre
         return (
             <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
                  <CheckCircle className="h-10 w-10 text-primary mx-auto" />
@@ -145,19 +144,12 @@ ${whatINeed}
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
-                <Button onClick={nextStep} className="w-full">Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
-            </div>
-        );
-      case 3: // PANTALLA 5: Link a cuaderno
-        return (
-             <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">¿Quieres revisar tus “me di cuenta” de la semana?</h4>
-                <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                <div className="flex flex-col sm:flex-row gap-2 justify-center pt-4">
                     <Button asChild className="w-full sm:w-auto">
-                        <Link href="/therapeutic-notebook">Sí, quiero ver mi evolución</Link>
+                        <Link href="/therapeutic-notebook">Ver mi cuaderno</Link>
                     </Button>
                     <Button onClick={resetExercise} variant="outline" className="w-full sm:w-auto">
-                        No ahora, hacer otro registro
+                        Hacer otro registro
                     </Button>
                 </div>
             </div>
@@ -168,11 +160,9 @@ ${whatINeed}
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
-      <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}<div className="mt-4"><audio controls controlsList="nodownload" className="w-full"><source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica2.mp3" type="audio/mp3" />Tu navegador no soporta el elemento de audio.</audio></div></CardDescription>}
-      </CardHeader>
+      <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{content.objective}<div className="mt-4"><audio controls controlsList="nodownload" className="w-full"><source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana4tecnica2.mp3" type="audio/mp3" />Tu navegador no soporta el elemento de audio.</audio></div></CardDescription>}</CardHeader>
       <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }
+    
