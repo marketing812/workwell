@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -100,7 +99,7 @@ ${microAction}
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">¿Sabes quiénes son esas personas que, con un gesto o una palabra, te dan calma, te inspiran o simplemente te sostienen cuando más lo necesitas? Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.</p>
+            <p className="text-sm text-muted-foreground">¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.</p>
             <Button onClick={next}>Comenzar inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -171,14 +170,14 @@ ${microAction}
               <Textarea id="reflection1" value={reflection1} onChange={e => setReflection1(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="reflection2">¿Echas de menos alguna de estas funciones en tu vida?</Label>
+              <Label htmlFor="reflection2">¿Qué tipo de apoyo echo en falta?</Label>
               <Textarea id="reflection2" value={reflection2} onChange={e => setReflection2(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="reflection3">¿Hay alguien nuevo/a con quien te gustaría construir este tipo de vínculo?</Label>
+              <Label htmlFor="reflection3">¿Con quién me gustaría construir un vínculo así?</Label>
               <Textarea id="reflection3" value={reflection3} onChange={e => setReflection3(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -188,12 +187,12 @@ ${microAction}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 5: Microacción semanal</h4>
-            <p className="text-sm text-muted-foreground">Esta semana, elige una de esas personas significativas y haz algo pequeño para cuidar ese vínculo que sí te hace bien. Puede ser agradecerle, pedir ayuda si la necesitas, compartir cómo te sientes o simplemente pasar un rato juntos, sin exigencias.</p>
+            <p className="text-sm text-muted-foreground">Esta semana, elige una de esas personas significativas y haz algo pequeño para cuidar ese vínculo que sí te hace bien.</p>
             <div className="space-y-2">
               <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
-              <Textarea id="micro-action" value={microAction} onChange={e => setMicroAction(e.target.value)} />
+              <Textarea id="micro-action" value={microAction} onChange={e => setMicroAction(e.target.value)} placeholder="Ej: Agradecerle, pedir ayuda, compartir cómo te sientes, pasar un rato juntos sin exigencias..." />
             </div>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar y Completar</Button>
+            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico y finalizar</Button>
           </div>
         );
       default: return null;
@@ -204,16 +203,19 @@ ${microAction}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && (
+        {content.objective && 
           <CardDescription className="pt-2">
-            {content.objective}
+            ¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.
+            {content.duration && <span className="block text-xs mt-1">Duración estimada: {content.duration}</span>}
+          </CardDescription>
+        }
+        {content.audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3" type="audio/mp3" />
+                    <source src={content.audioUrl} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
-          </CardDescription>
         )}
       </CardHeader>
       <CardContent>
