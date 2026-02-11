@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -72,10 +71,10 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
   const nextStep = () => {
     if (step === 1) { // When leaving the names step
       const filledRelationsCount = relations.filter(r => r.name.trim() !== '').length;
-      if (filledRelationsCount < 4) {
+      if (filledRelationsCount < 3) {
         toast({
           title: "Se requieren más relaciones",
-          description: "Por favor, completa los nombres de al menos 4 personas para continuar.",
+          description: "Por favor, completa los nombres de al menos 3 personas para continuar.",
           variant: "destructive"
         });
         return;
@@ -121,7 +120,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">Piensa en hasta 6 personas con las que te relaciones de forma habitual. Para cada una, responderás con sinceridad a unas preguntas para medir tu nivel de autenticidad en ese vínculo.</p>
+            <p className="text-sm text-muted-foreground">Piensa en al menos 3 personas (y hasta un máximo de 6) con las que te relaciones de forma habitual. Para cada una, responderás con sinceridad a unas preguntas para medir tu nivel de autenticidad en ese vínculo.</p>
             <Button onClick={nextStep}>Empezar mi termómetro</Button>
           </div>
         );
@@ -129,7 +128,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Nombra tus relaciones</h4>
-            <p className="text-sm text-muted-foreground">Escribe el nombre o inicial de hasta 6 personas de tu entorno (personal, laboral, etc.). Debes completar al menos 4.</p>
+            <p className="text-sm text-muted-foreground">Escribe el nombre o inicial de hasta 6 personas de tu entorno (personal, laboral, etc.). Debes completar al menos 3.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {relations.map((relation, index) => (
                 <div key={index} className="space-y-2">
