@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -8,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight, Save } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import type { ValidationIn3StepsExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
@@ -36,6 +35,8 @@ export default function ValidationIn3StepsExercise({ content, pathId, onComplete
   const [isCompleted, setIsCompleted] = useState(false);
 
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev - 1);
+
 
   const handleComplete = () => {
     if (step === 3 && (!blockageReflection.trim() || !nextStepReflection.trim())) {
@@ -107,7 +108,10 @@ ${nextStepReflection || 'No especificado.'}
                         <Label htmlFor="step2-phrase">Tu frase completa:</Label>
                         <Textarea id="step2-phrase" value={step2Phrase} onChange={e => setStep2Phrase(e.target.value)} />
                     </div>
-                    <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                     <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={next} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
                 </div>
             );
         case 2:
@@ -124,7 +128,10 @@ ${nextStepReflection || 'No especificado.'}
                         <Label htmlFor="step3-phrase">Tu frase para normalizar:</Label>
                         <Textarea id="step3-phrase" value={step3Phrase} onChange={e => setStep3Phrase(e.target.value)} />
                     </div>
-                    <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                     <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={next} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
                 </div>
             );
         case 3:
@@ -140,9 +147,12 @@ ${nextStepReflection || 'No especificado.'}
                         <Label htmlFor="next-step-reflection">¿Qué podrías empezar a hacer diferente para estar más presente?</Label>
                         <Textarea id="next-step-reflection" value={nextStepReflection} onChange={e => setNextStepReflection(e.target.value)} />
                     </div>
-                    <Button onClick={handleComplete} className="w-full">
-                        <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
-                    </Button>
+                    <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={handleComplete} className="w-auto">
+                            <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
+                        </Button>
+                    </div>
                 </div>
             );
         default: return null;
