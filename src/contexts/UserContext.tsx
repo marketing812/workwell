@@ -217,8 +217,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
 
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
-      setLoading(true);
       if (fbUser) {
+        setLoading(true);
         try {
           const minimalUser: User = {
             id: fbUser.uid,
@@ -227,20 +227,16 @@ export function UserProvider({ children }: { children: ReactNode }) {
           };
           setUser(minimalUser);
 
-          // We fetch user profile and notebook entries.
-          // These can fail, so they must be handled.
-          await Promise.all([
-            fetchUserProfile(fbUser.uid),
-            fetchAndSetNotebook(fbUser.uid),
-          ]);
+          // Fetch critical profile, but don't block notebook loading
+          await fetchUserProfile(fbUser.uid);
+          
+          // Fetch notebook in the background
+          fetchAndSetNotebook(fbUser.uid);
 
         } catch (error) {
           console.error("Failed to initialize user session:", error);
-          // It's important to not leave the app in a loading state.
-          // We can decide if we want to log the user out or show an error state.
-          // For now, just stopping the loading is enough to prevent the frozen spinner.
         } finally {
-          // This ensures that loading is always set to false, even if an error occurs.
+          // Unblock the UI after critical data (profile) is loaded
           setLoading(false);
         }
       } else {
