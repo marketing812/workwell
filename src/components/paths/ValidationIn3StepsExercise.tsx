@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, Save } from 'lucide-react';
 import type { ValidationIn3StepsExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
@@ -141,7 +141,7 @@ ${nextStepReflection || 'No especificado.'}
                         <Textarea id="next-step-reflection" value={nextStepReflection} onChange={e => setNextStepReflection(e.target.value)} />
                     </div>
                     <Button onClick={handleComplete} className="w-full">
-                        <CheckCircle className="mr-2 h-4 w-4" /> Marcar como completado
+                        <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
                     </Button>
                 </div>
             );
