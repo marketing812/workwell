@@ -1,7 +1,8 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,6 +17,7 @@ import { useUser } from '@/contexts/UserContext';
 interface DemandsExerciseProps {
   content: DemandsExerciseContent;
   onComplete: () => void;
+  pathId: string;
 }
 
 const originOptions = [
@@ -26,7 +28,7 @@ const originOptions = [
     { id: 'origin-insecurity', label: 'Inseguridad personal' },
 ];
 
-export default function DemandsExercise({ content, onComplete }: DemandsExerciseProps) {
+export default function DemandsExercise({ content, onComplete, pathId }: DemandsExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -61,7 +63,7 @@ export default function DemandsExercise({ content, onComplete }: DemandsExercise
     addNotebookEntry({
       title: `Registro: ${content.title}`,
       content: `Exigencia: ${demand}\nConsecuencias: ${consequences}\nNecesidad real: ${realNeed}`,
-      pathId: 'gestion-estres',
+      pathId: pathId,
       userId: user?.id,
     });
     
@@ -82,7 +84,7 @@ export default function DemandsExercise({ content, onComplete }: DemandsExercise
     addNotebookEntry({
       title: `Reflexión: ${content.title}`,
       content: `**¿Qué exigencias me están pesando más? ¿Cómo puedo transformarlas en necesidades reales que sí quiero cuidar?**\n\n${reflection}`,
-      pathId: 'gestion-estres',
+      pathId: pathId,
       userId: user?.id,
     });
     toast({

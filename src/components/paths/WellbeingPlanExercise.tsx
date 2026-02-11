@@ -18,6 +18,7 @@ import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 interface WellbeingPlanExerciseProps {
   content: WellbeingPlanExerciseContent;
   onComplete: () => void;
+  pathId: string;
 }
 
 const planSections = {
@@ -113,7 +114,7 @@ const planSections = {
 };
 
 
-export default function WellbeingPlanExercise({ content, onComplete }: WellbeingPlanExerciseProps) {
+export default function WellbeingPlanExercise({ content, onComplete, pathId }: WellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [selections, setSelections] = useState<Record<string, boolean>>({});
@@ -173,7 +174,7 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
     addNotebookEntry({
       title: content.title,
       content: notebookContent,
-      pathId: 'gestion-estres',
+      pathId: pathId,
       userId: user?.id,
     });
 
@@ -289,4 +290,3 @@ export default function WellbeingPlanExercise({ content, onComplete }: Wellbeing
     </Card>
   );
 }
-

@@ -21,9 +21,10 @@ import { StressCompass } from './StressCompass';
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
   onComplete: () => void;
+  pathId: string;
 }
 
-export default function StressMapExercise({ content, onComplete }: StressMapExerciseProps) {
+export default function StressMapExercise({ content, onComplete, pathId }: StressMapExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -72,7 +73,7 @@ export default function StressMapExercise({ content, onComplete }: StressMapExer
     addNotebookEntry({
         title: 'Mapa del Estrés Personal',
         content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmociones: ${emotionsText}\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
-        pathId: 'gestion-estres',
+        pathId: pathId,
         userId: user?.id
     });
     
@@ -290,4 +291,3 @@ export default function StressMapExercise({ content, onComplete }: StressMapExer
     </Card>
   );
 }
-

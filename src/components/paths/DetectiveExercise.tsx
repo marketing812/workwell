@@ -1,7 +1,8 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,6 +18,7 @@ import { useUser } from '@/contexts/UserContext';
 interface DetectiveExerciseProps {
   content: DetectiveExerciseContent;
   onComplete: () => void;
+  pathId: string;
 }
 
 const cognitiveDistortions = [
@@ -31,7 +33,7 @@ const cognitiveDistortions = [
     { value: 'magnification_minimization', label: 'Maximizar lo negativo / Minimizar lo positivo' },
 ];
 
-export default function DetectiveExercise({ content, onComplete }: DetectiveExerciseProps) {
+export default function DetectiveExercise({ content, onComplete, pathId }: DetectiveExerciseProps) {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
@@ -64,7 +66,7 @@ export default function DetectiveExercise({ content, onComplete }: DetectiveExer
     addNotebookEntry({
         title: 'Registro: Detective de Pensamientos',
         content: `Situación: ${situation}\nPensamiento: ${automaticThought}\nDistorsión: ${distortion}\nEmoción: ${emotion}\nReflexión: ${alternativeThought}`,
-        pathId: 'gestion-estres',
+        pathId: pathId,
         userId: user?.id,
     });
     
@@ -85,7 +87,7 @@ export default function DetectiveExercise({ content, onComplete }: DetectiveExer
     addNotebookEntry({
       title: `Reflexión: ${content.title}`,
       content: `**¿Qué aprendí al observar mis pensamientos desde fuera? ¿Qué distorsiones repito más? ¿Qué noto cuando me hablo con más comprensión?**\n\n${reflection}`,
-      pathId: 'gestion-estres',
+      pathId: pathId,
       userId: user?.id,
     });
     toast({
