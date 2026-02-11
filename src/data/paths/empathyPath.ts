@@ -289,7 +289,8 @@ export const empathyPath: Path = {
         {
           type: 'significantRelationshipsInventoryExercise',
           title: 'EJERCICIO 1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
-          duration: '10-15 min',
+          objective: '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad. Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.',
+          duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3',
         },
         {
@@ -304,7 +305,7 @@ export const empathyPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3',
           prompts: [
-            '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar, mirar atrás y anotar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
+            '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },

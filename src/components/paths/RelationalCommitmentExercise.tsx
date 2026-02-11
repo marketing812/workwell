@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -193,7 +194,7 @@ ${weeklyMicroAction || 'No especificada.'}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
             <CardDescription className="pt-2">
-                
+                {content.objective}
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
@@ -206,18 +207,7 @@ ${weeklyMicroAction || 'No especificada.'}
         }
       </CardHeader>
       <CardContent>
-        {!isSaved ? renderStep() : (
-            <div className="p-6 text-center space-y-4">
-                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado</h4>
-                 <div className="space-y-2 text-muted-foreground">
-                    <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
-                    <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
-                    <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
-                </div>
-                <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
-            </div>
-        )}
+        {renderStep()}
       </CardContent>
     </Card>
   );

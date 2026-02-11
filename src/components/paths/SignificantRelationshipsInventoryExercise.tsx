@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -96,10 +97,10 @@ ${microAction}
   
   const renderStep = () => {
     switch(step) {
-      case 0:
+      case 0: // Intro with example
         return (
           <div className="p-4 space-y-4 text-center">
-            <Button onClick={next}>Comenzar inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={next}>Empezar inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -116,8 +117,8 @@ ${microAction}
               <Textarea id="sustain-action" value={sustainAction} onChange={e => setSustainAction(e.target.value)} placeholder="Ej: Me llama cuando sabe que estoy mal. Me escucha sin juzgar." />
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -197,7 +198,7 @@ ${microAction}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
           <CardDescription className="pt-2">
-            
+            {content.objective}
             {content.audioUrl && (
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
@@ -213,7 +214,7 @@ ${microAction}
         {!isCompleted ? renderStep() : (
             <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">¡Ejercicio finalizado y guardado!</h4>
+                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
                  <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
                  <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
             </div>
