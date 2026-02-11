@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -107,14 +108,14 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: Una intención para actuar desde tu centro</h4>
-            <p>Cierra el ejercicio con una intención clara y realista para tu próxima interacción. Ejemplos: “Voy a intentar estar presente sin perderme a mí.”, “Voy a priorizarme sin dejar de cuidar el vínculo.”</p>
+            <p className="text-sm text-muted-foreground">Cierra el ejercicio con una intención clara y realista para tu próxima interacción. Ejemplos: “Voy a intentar estar presente sin perderme a mí.”, “Voy a priorizarme sin dejar de cuidar el vínculo.”</p>
             <div className="space-y-2">
               <Label htmlFor="intention">Mi intención es...</Label>
               <Textarea id="intention" value={intention} onChange={e => setIntention(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar y Continuar</Button>
+              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico y finalizar</Button>
             </div>
           </div>
         );
