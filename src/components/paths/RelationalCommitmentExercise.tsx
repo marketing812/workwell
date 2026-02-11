@@ -89,6 +89,7 @@ ${weeklyMicroAction || 'No especificada.'}
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
+            <p className="text-sm text-muted-foreground">A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes en nuestras relaciones. Este ejercicio es una brújula emocional para que elijas conscientemente con quién y desde qué valores quieres vincularte.</p>
             <Button onClick={next}>Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -109,7 +110,10 @@ ${weeklyMicroAction || 'No especificada.'}
               <p className="text-sm text-muted-foreground">Puede ser alguien con quien ya te relacionas o alguien con quien deseas cultivar algo nuevo.</p>
               <Textarea id="commitment-person" value={commitmentPerson} onChange={e => setCommitmentPerson(e.target.value)} />
             </div>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 2:
@@ -128,7 +132,10 @@ ${weeklyMicroAction || 'No especificada.'}
               <Label htmlFor="blocking-thoughts">¿Qué pensamientos te frenan cuando quieres poner un límite o ser tú misma/o?</Label>
               <Textarea id="blocking-thoughts" value={blockingThoughts} onChange={e => setBlockingThoughts(e.target.value)} placeholder="Ej: 'Si soy honesta, se enfadará'..." />
             </div>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 3:
@@ -140,7 +147,10 @@ ${weeklyMicroAction || 'No especificada.'}
               <Label htmlFor="commitment-statement">Mi compromiso relacional personal:</Label>
               <Textarea id="commitment-statement" value={commitmentStatement} onChange={e => setCommitmentStatement(e.target.value)} placeholder="Ej: Me comprometo a construir vínculos basados en el respeto y la honestidad. Me permito expresar mis necesidades con claridad, incluso cuando me da miedo hacerlo." />
             </div>
-            <Button onClick={next} className="w-full">Siguiente</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={next} disabled={!commitmentStatement.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
           </div>
         );
       case 4:
@@ -152,11 +162,25 @@ ${weeklyMicroAction || 'No especificada.'}
               <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
               <Textarea id="micro-action" value={weeklyMicroAction} onChange={e => setWeeklyMicroAction(e.target.value)} placeholder="Ej: Poner un límite sin justificarme, agradecer su presencia..." />
             </div>
-            <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Compromiso</Button>
+            </div>
           </form>
         );
       default:
-        return null;
+        return (
+           <div className="p-6 text-center space-y-4">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">Ejercicio finalizado y guardado</h4>
+                <div className="space-y-2 text-muted-foreground">
+                   <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
+                   <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
+                   <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
+               </div>
+               <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+           </div>
+        );
     }
   };
 
@@ -166,7 +190,7 @@ ${weeklyMicroAction || 'No especificada.'}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && 
             <CardDescription className="pt-2">
-                {content.objective}
+                 ¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir? A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes. Este ejercicio es una brújula emocional: Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
@@ -188,9 +212,11 @@ ${weeklyMicroAction || 'No especificada.'}
                     <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
                     <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
                 </div>
+                <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
             </div>
         )}
       </CardContent>
     </Card>
   );
 }
+
