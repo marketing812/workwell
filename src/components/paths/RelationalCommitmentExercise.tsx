@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RelationalCommitmentExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
@@ -34,6 +34,19 @@ export default function RelationalCommitmentExercise({ content, pathId, onComple
   const [isSaved, setIsSaved] = useState(false);
 
   const next = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+  const resetExercise = () => {
+    setStep(0);
+    setValues('');
+    setMisalignedRelation('');
+    setCommitmentPerson('');
+    setVulnerableBehavior('');
+    setPartToStrengthen('');
+    setBlockingThoughts('');
+    setCommitmentStatement('');
+    setWeeklyMicroAction('');
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -73,10 +86,9 @@ ${weeklyMicroAction || 'No especificada.'}
   
   const renderStep = () => {
     switch (step) {
-      case 0:
+      case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes en nuestras relaciones. Este ejercicio es una brújula emocional para que elijas conscientemente con quién y desde qué valores quieres vincularte.</p>
             <Button onClick={next}>Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );

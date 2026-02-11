@@ -38,7 +38,7 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3' },
         { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>'] },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
         { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3' },
         { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.', 'La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.', 'Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.', 'La autenticidad florece cuando hay espacio seguro creado por la empatía.', 'Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.', 'Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.', 'Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.', 'La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
     },
@@ -158,8 +158,7 @@ export const empathyPath: Path = {
         {
           type: 'emotionalInvolvementTrafficLightExercise',
           title: 'Ejercicio 2: Semáforo de implicación emocional',
-          objective:
-            'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
+          objective: 'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3',
         },
@@ -289,7 +288,7 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'significantRelationshipsInventoryExercise',
-          title: 'EJERCICIO1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
+          title: 'EJERCICIO 1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
           objective:
             '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad. En este ejercicio vas a crear tu propio mapa de apoyo emocional, identificando a esas personas que cumplen tres funciones clave para tu bienestar: te sostienen, te inspiran y respetan tu proceso.',
           duration: '10-15 min',
@@ -299,7 +298,7 @@ export const empathyPath: Path = {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
           objective:
-            'Tiempo estimado: 15-20 minutos. Te recomedamos repetir este ejercicio una vez al mes o siempre que quieras reforzar tu dirección relacional y tus valores emocionales. \nVuelve a tu frase de compromiso cada vez que te sientas tentado/a a ceder por miedo o pierdas de vista lo que necesitas realmente en un vínculo.',
+            '¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir? A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes. Este ejercicio es una brújula emocional: Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
           audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3',
         },
@@ -376,4 +375,5 @@ export const empathyPath: Path = {
     
 
   
+
 
