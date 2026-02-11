@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
@@ -64,6 +65,7 @@ const TriggerExercise = dynamic(() => import('@/components/paths/TriggerExercise
 const DetectiveExercise = dynamic(() => import('@/components/paths/DetectiveExercise'), { loading: LoaderComponent, ssr: false });
 const DemandsExercise = dynamic(() => import('@/components/paths/DemandsExercise'), { loading: LoaderComponent, ssr: false });
 const WellbeingPlanExercise = dynamic(() => import('@/components/paths/WellbeingPlanExercise'), { loading: LoaderComponent, ssr: false });
+const TherapeuticNotebookReflectionExercise = dynamic(() => import('@/components/paths/TherapeuticNotebookReflectionExercise'), { loading: LoaderComponent, ssr: false });
 // RUTA 2
 const UncertaintyMapExercise = dynamic(() => import('@/components/paths/UncertaintyMapExercise'), { loading: LoaderComponent, ssr: false });
 const ControlTrafficLightExercise = dynamic(() => import('@/components/paths/ControlTrafficLightExercise'), { loading: LoaderComponent, ssr: false });
@@ -389,11 +391,11 @@ function ContentItemRenderer({
     case 'triggerExercise':
       return <TriggerExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'detectiveExercise':
-      return <DetectiveExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <DetectiveExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'demandsExercise':
-      return <DemandsExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <DemandsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'wellbeingPlanExercise':
-      return <WellbeingPlanExercise key={index} content={contentItem} onComplete={handleComplete} />;
+      return <WellbeingPlanExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'uncertaintyMapExercise':
       return <UncertaintyMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'controlTrafficLightExercise':
@@ -405,7 +407,7 @@ function ContentItemRenderer({
     case 'ritualDeEntregaConscienteExercise':
         return <RitualDeEntregaConscienteExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'exposureToIntoleranceExercise':
-      return <ExposureToIntoleranceExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
+      return <ExposureToIntoleranceExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'delSabotajeALaAccionExercise':
       return <DelSabotajeALaAccionExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'therapeuticNotebookReflection':
