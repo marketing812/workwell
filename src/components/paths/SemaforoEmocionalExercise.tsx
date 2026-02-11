@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -31,7 +30,7 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setLight('');
@@ -160,7 +159,6 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
                     </ul>
                     <blockquote className="text-sm italic pt-4">“Tu calma no es un destino. Es una decisión que puedes entrenar.”</blockquote>
                 </div>
-                <p className="text-xs text-muted-foreground pt-2">Recomendación clínica: esta semana puede enlazarse con un recordatorio semanal automático para seguir identificando activadores.</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
