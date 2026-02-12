@@ -147,7 +147,7 @@ ${flexibleThought || 'No especificada.'}
                         placeholder="Ej: Entiendo que te bloquees, lo que estás viviendo es difícil. Vas a poder con ello poco a poco."
                     />
                 </div>
-                <p className="italic text-center text-primary pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
+                <p className="italic text-center text-foreground pt-2">Si puedes hablarle así a otra persona… también puedes empezar a hablarte así a ti.</p>
                 <div className="flex justify-between w-full">
                   <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={() => setStep(2)} disabled={!adviceToFriend.trim()}>Continuar</Button>
