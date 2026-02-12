@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -32,7 +33,7 @@ const activityChips = [
     'Otro'
 ];
 
-export function IlluminatingMemoriesAlbumExercise({ content, pathId, onComplete }: IlluminatingMemoriesAlbumExerciseProps) {
+export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onComplete }: IlluminatingMemoriesAlbumExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -95,7 +96,7 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId, onComplete 
             <div className="space-y-3">
               {moments.map((moment, index) => (
                 <div key={index}>
-                    <Label htmlFor={`moment-${index}`}>Momento {index + 1}</Label>
+                    <Label htmlFor={`moment-${index}`}>Momento ${index + 1}</Label>
                     <Textarea id={`moment-${index}`} value={moment} onChange={e => handleMomentChange(index, e.target.value)} />
                     <Label htmlFor={`sensory-${index}`} className="text-xs text-muted-foreground">Añade detalles sensoriales (lo que viste, oíste, sentiste...)</Label>
                     <Textarea id={`sensory-${index}`} value={sensoryDetails[index]} onChange={e => handleSensoryChange(index, e.target.value)} rows={2}/>
@@ -201,3 +202,5 @@ export function IlluminatingMemoriesAlbumExercise({ content, pathId, onComplete 
     </Card>
   );
 }
+
+    
