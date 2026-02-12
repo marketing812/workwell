@@ -78,24 +78,9 @@ export const settingBoundariesPath: Path = {
       title: 'Semana 2: Aprende a Decir lo que Necesitas',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-        {
-          type: 'paragraphWithAudio',
-          text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3',
-        },
+      content: [{ type: 'paragraphWithAudio', text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'},
         { type: 'title', text: 'Psicoeducación' },
-        {
-          type: 'collapsible',
-          title: '¿Qué es un estilo de comunicación?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3',
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n- Cómo pides las cosas.\n- Cómo reaccionas ante un conflicto.\n- Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.',
-            },
-          ],
-        },
+        { type: 'collapsible', title: '¿Qué es un estilo de comunicación?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3', content: [{ type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n- Cómo pides las cosas.\n- Cómo reaccionas ante un conflicto.\n- Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }] },
         {
           type: 'collapsible',
           title: '¿Desde qué lugar te colocas cuando te comunicas?',
@@ -118,9 +103,20 @@ export const settingBoundariesPath: Path = {
               type: 'paragraph',
               text: 'Cada vez que hablas con alguien, consciente o no, te colocas en una posición relacional. Esa posición influye en cómo te sientes, cómo reacciona el otro y qué tipo de relación se construye entre ambos.\nAunque a veces usamos diferentes estilos según la situación, hay uno que ha demostrado ser el más saludable, tanto para ti como para tus vínculos: el estilo asertivo.\n¿Por qué?\nPorque te permite:',
             },
-            { type: 'list', items: ['Defender lo que sientes, piensas y necesitas sin herir.','Comunicarte con claridad y firmeza, sin miedo ni culpa.','Cuidar el vínculo, sin dejarte a un lado.','Sostener tu autoestima y generar relaciones de confianza.']},
-            { type: 'paragraph', text: 'El estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.'}
-          ]
+            {
+              type: 'list',
+              items: [
+                'Defender lo que sientes, piensas y necesitas sin herir.',
+                'Comunicarte con claridad y firmeza, sin miedo ni culpa.',
+                'Cuidar el vínculo, sin dejarte a un lado.',
+                'Sostener tu autoestima y generar relaciones de confianza.',
+              ],
+            },
+            {
+              type: 'paragraph',
+              text: 'El estilo asertivo no es el más fácil al principio, pero sí el más transformador a largo plazo.\nPor eso, vamos a explorar los 4 estilos de comunicación más comunes. No para etiquetarte, sino para ayudarte a conocerte y empezar a entrenar una forma de expresarte más auténtica, libre y saludable.',
+            },
+          ],
         },
         {
           type: 'collapsible',
@@ -221,7 +217,7 @@ export const settingBoundariesPath: Path = {
               type: 'paragraph',
               text: 'Y sí, habrá momentos en los que usarás otro estilo. A veces la situación lo requiere. Lo importante es que no sea por costumbre, por miedo o por piloto automático, sino por decisión consciente.\nEsta semana estás dando un paso valiente:',
             },
-            { type: 'list', items: ['Escucharte.','Nombrar lo que necesitas.','Y atreverte a comunicarte desde tu centro, con respeto, verdad y seguridad emocional.']},
+            { type: 'list', items: ['Escucharte.','Nombrar lo que necesitas.','Y atreverte a comunicarte desde tu centro, con respeto, verdad y seguridad emocional.'] },
           ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -533,30 +529,34 @@ export const settingBoundariesPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA',
           audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionfinalruta4.mp3',
           prompts: [
-            '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>'
-          ]
+            '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>',
+          ],
         },
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Resumenfinalruta4.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Resumenfinalruta4.mp3',
         },
         {
           type: 'list',
           items: [
-            'La autenticidad es la base de cualquier relación que nutre de verdad.',
-            'La empatía se entrena: no es adivinar, es escuchar y validar sin juzgar.',
-            'Poner límites con firmeza y cuidado no rompe los vínculos, los fortalece.',
-            'Es sano sostener la incomodidad emocional tras decir “no”.',
-            'Los vínculos más valiosos se construyen con presencia, escucha y coherencia.',
-            'Puedes elegir con quién construir… y también cómo eliges estar tú en esa relación.'
+            'Un límite no es rechazo: es cuidado propio y claridad para el otro.',
+            'No necesitas justificar cada decisión para que sea válida.',
+            'Puedes sostener tu verdad, aunque haya incomodidad.',
+            'Validar la emoción del otro no implica ceder tu necesidad.',
+            'Las relaciones sanas toleran los desacuerdos sin romperse.',
+            'Tu disponibilidad constante no debe ser la base de ningún vínculo.',
+            'Aprender a decir “no” es también aprender a decir “sí” a ti.',
+            'El respeto empieza por casa: cuando te lo das tú, los demás lo aprenden.'
           ]
         },
         {
           type: 'quote',
-          text: 'Poner un límite no me aleja. Me acerca a lo que soy. Y cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.'
-        }
-      ]
-    }
-  ]
+          text: 'Poner un límite no me aleja. Me acerca a lo que soy. Y cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.',
+        },
+      ],
+    },
+  ],
 };
+
+    
