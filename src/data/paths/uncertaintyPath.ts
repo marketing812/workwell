@@ -66,7 +66,10 @@ export const uncertaintyPath: Path = {
           type: 'collapsible',
           title: 'La alternativa: flexibilidad mental',
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio6Ruta2Sesion1.mp3',
-          content: [{ type: 'paragraph', text: 'No puedes eliminar la incertidumbre. Pero sí puedes fortalecer tu capacidad para adaptarte a ella sin quedarte paralizado/a.\nA esto lo llamamos flexibilidad cognitiva: pensar de forma más abierta, matizada y adaptativa.\nLa flexibilidad:\n- Se puede entrenar (no es un rasgo fijo).\n- Implica reinterpretar lo que pasa, sin necesidad de tenerlo todo claro.\n- Es la base de una regulación emocional más sólida.'}]
+          content: [
+            { type: 'paragraph', text: 'No puedes eliminar la incertidumbre. Pero sí puedes fortalecer tu capacidad para adaptarte a ella sin quedarte paralizado/a.\nA esto lo llamamos flexibilidad cognitiva: pensar de forma más abierta, matizada y adaptativa.\nLa flexibilidad:'},
+            { type: 'list', items: ['Se puede entrenar (no es un rasgo fijo).','Implica reinterpretar lo que pasa, sin necesidad de tenerlo todo claro.','Es la base de una regulación emocional más sólida.']}
+          ]
         },
         { type: 'collapsible', title: 'En resumen…', content: [{ type: 'list', items: ['La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.','Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.','La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.','No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.','Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.']}] },
         { type: 'quote', text: 'No podemos eliminar la incertidumbre, pero sí podemos aprender a vivir con ella desde un lugar más flexible y sereno.' },
@@ -94,11 +97,23 @@ export const uncertaintyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
           content: [
             { type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como el tono de voz de alguien, una mirada o un gesto, un recuerdo doloroso, o simplemente un cambio en tu entorno, e interpreta alguna de esas señales como insegura, activando la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'},
-            { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal.”'}] },
+            { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}] },
             { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'}] },
           ]
         },
-        { type: 'collapsible', title: 'Herramientas para regular el sistema de amenaza', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion2.mp3', content: [{ type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},{ type: 'collapsible', title: 'Exposición progresiva', content: [{ type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}]},{ type: 'collapsible', title: 'Reestructuración cognitiva', content: [{ type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}]},{ type: 'collapsible', title: 'Mindfulness y ACT', content: [{ type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:   Observar tus pensamientos sin creer todo lo que dicen.   Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.   Volver al cuerpo y al momento presente.'}]}] },
+        { type: 'collapsible', title: 'Herramientas para regular el sistema de amenaza', audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio5Ruta2Sesion2.mp3', content: [
+            { type: 'paragraph', text: 'La buena noticia es que puedes reentrenar tu cuerpo y tu mente. Aquí tienes 3 herramientas fundamentales para ello:'},
+            { type: 'collapsible', title: 'Exposición progresiva', content: [{ type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.'}] },
+            { type: 'collapsible', title: 'Reestructuración cognitiva', content: [{ type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:   “¿Esto que estoy pensando es un hecho o solo una posibilidad?”   “¿Qué otras formas hay de interpretar esta situación?”   “¿Cómo la vería alguien que me quiere?”'}] },
+            {
+                type: 'collapsible',
+                title: 'Mindfulness y ACT',
+                content: [
+                    { type: 'paragraph', text: 'Estas herramientas no buscan eliminar la ansiedad, sino aprender a estar con ella sin que te domine. Te enseñan a:'},
+                    { type: 'list', items: ['Observar tus pensamientos sin creer todo lo que dicen.','Hacer espacio a lo que sientes, sin luchar ni forzarte a cambiarlo de inmediato.','Volver al cuerpo y al momento presente.']}
+                ]
+            }
+        ]},
         { type: 'title', text: 'Técnicas Específicas'},
         {
           type: 'collapsible',
@@ -120,7 +135,10 @@ export const uncertaintyPath: Path = {
               title: '¿Qué cambia cuando las practicas?',
               audioUrl: 'https://workwellfut.com/audios/ruta2/extras/R1semana2quecambia.mp3',
               content: [
-                { type: 'paragraph', text: 'En tu cuerpo:\n- Respiración más profunda y regular\n- Regulación del CO₂ (menos mareos o ahogo)\n- Reducción de tensión muscular\n- Sensaciones de alivio, calor o calma\n\nEn tu mente:\n- Recuperas el control y vuelves al presente\n- Se interrumpe el bucle de pensamientos ansiosos\n- Refuerzas el autocuidado y la conexión contigo'},
+                { type: 'paragraph', text: 'En tu cuerpo:'},
+                { type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']},
+                { type: 'paragraph', text: 'En tu mente:'},
+                { type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']},
                 { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
               ]
             },
@@ -210,7 +228,10 @@ export const uncertaintyPath: Path = {
         { type: 'collapsible', title: 'Aceptar no es rendirse: es liberarte', content: [{ type: 'paragraph', text: 'Aceptar no significa resignarse ni dejar de luchar. Significa dejar de gastar energía en lo que no puedes cambiar y redirigirla hacia lo que sí puedes cuidar: cómo lo vives, cómo lo afrontas y cómo te tratas mientras tanto.\\nDesde la Terapia de Aceptación y Compromiso (ACT), esto se llama apertura experiencial: permitir que pensamientos y emociones estén presentes, sin pelearte con ellos.\\nAceptar el dolor no es estar bien con él. Es dejar de negarlo para empezar a reconstruirte desde ahí.' }] },
         { type: 'collapsible', title: 'Confiar no es saber cómo saldrá, es saber que puedes con ello', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'A veces creemos que solo estaremos bien si lo tenemos todo claro. Pero en realidad, lo que genera estabilidad no es la certeza, sino la confianza:\\n- Confianza en que sabrás responder\\n- Confianza en que podrás adaptarte, incluso con miedo\\n- Confianza en que no necesitas hacerlo perfecto para estar bien\\nTu confianza no crece cuando todo es fácil. Crece cuando te atreves, incluso sin garantías.' }] },
         { type: 'collapsible', title: 'Caminar paso a paso: la alternativa a planearlo todo', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'Cuando intentas prever cada detalle y tener todo controlado desde el inicio, te vuelves rígido/a. Y eso, en un mundo cambiante, es agotador.\\nLa alternativa es desarrollar flexibilidad estratégica:\\n- Avanzar con intención, aunque no esté todo resuelto\\n- Dar un paso desde donde estás, con lo que tienes\\nLa confianza se construye caminando, no planificando eternamente. Y cuando algo no sale como esperabas, no es un fallo: es parte del proceso.' }] },
-        { type: 'collapsible', title: 'Aceptar, confiar y avanzar', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:'},{ type: 'list', items: ['Dejar de intentar controlar lo incontrolable','Aceptar lo que sientes, sin juzgarte','Confiar en que puedes sostenerte, incluso sin certezas','Avanzar paso a paso, sin perder de vista lo que te importa']}] },
+        { type: 'collapsible', title: 'Aceptar, confiar y avanzar', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion4.mp3', content: [
+            { type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:'},
+            { type: 'list', items: ['Dejar de intentar controlar lo incontrolable','Aceptar lo que sientes, sin juzgarte','Confiar en que puedes sostenerte, incluso sin certezas','Avanzar paso a paso, sin perder de vista lo que te importa']}
+        ]},
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'mantraExercise', title: 'Ejercicio 1: Mi mantra de confianza', objective: 'Crea una frase breve, realista y significativa que funcione como una brújula interna para recordarte que puedes sostenerte aunque no tengas todo resuelto.','duration': '7–10 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio5tecnica1.mp3' },
         { type: 'ritualDeEntregaConscienteExercise', title: 'Ejercicio 2: Mi ritual de entrega consciente', objective: 'Aprende a soltar la tensión mental o física cuando el control se vuelve agotador, a través de la escritura, la respiración o la gratitud.','duration': '5–10 minutos por opción', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio6tecnica2.mp3' },
@@ -247,3 +268,6 @@ export const uncertaintyPath: Path = {
     }
   ]
 };
+
+
+  

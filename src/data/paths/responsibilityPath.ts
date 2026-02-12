@@ -79,7 +79,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Pasar de la queja a la acción: un método en 6 pasos',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Audio6sesion1ruta10.mp3',
-          content: [{ type: 'paragraph', text: 'Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto:\n\n1. Describe la situación: solo hechos, sin juicios.\n2. Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”.\n3. Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático).\n4. Atribuye con realismo: ¿Qué parte es mía y cuál no?\n5. Define un paso pequeño: algo que dependa solo de ti.\n6. Ponlo en práctica y revisa el resultado.\n\nEjemplo:\n\n- Queja: “Nunca tengo tiempo para mí.”\n- Acción: “Reservaré 20 minutos tres veces por semana para algo que me guste.”' }],
+          content: [{ type: 'paragraph', text: '<p>Conocer la teoría está bien, pero necesitamos herramientas prácticas. Este método sencillo te ayudará a transformar una queja en un paso concreto: </p>  <ol><li>Describe la situación: solo hechos, sin juicios. </li><li> Detecta tu pensamiento: “Es injusto”, “Siempre pasa igual”. </li><li> Cuestiónalo: ¿Qué pruebas tengo a favor y en contra de este pensamiento? (Cuestionamiento socrático) </li><li> Atribuye con realismo: ¿Qué parte es mía y cuál no? (Atribución realista) </li><li> Si pasara lo que temo, ¿qué haría? (Descatastrofización) </li><li> Definir un paso pequeño y concreto. <br> Ejemplo: “Arruiné esa oportunidad” → Hoy: “Pido feedback, hago una mejora y la pruebo en la próxima ocasión.”  </li></ol> ' }],
         },
         {
           type: 'collapsible',
@@ -408,7 +408,13 @@ export const responsibilityPath: Path = {
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion4/Resumensesion4ruta10.mp3' },
         {
           type: 'list',
-          items: ['Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.', 'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.', 'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.', 'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.', 'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.'],
+          items: [
+            'Hacerse cargo no significa cargar con todo, sino elegir dónde actuar de forma consciente.',
+            'Distinguir entre lo que depende de ti y lo que no protege tu energía y te permite actuar con claridad.',
+            'La autorresponsabilidad sostenible se apoya en límites claros, autocuidado y decisiones intencionadas.',
+            'La Rueda de mi zona de influencia te ayuda a visualizar qué merece tu energía y qué puedes soltar.',
+            'Tu Declaración de compromiso personal consolida tu decisión de actuar desde la responsabilidad activa y cuidarte en el proceso.',
+          ],
         },
         { type: 'quote', text: 'La responsabilidad que eliges es más ligera que la culpa que arrastras.' },
       ],
@@ -449,3 +455,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+  

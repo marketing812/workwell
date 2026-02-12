@@ -28,13 +28,55 @@ export const empathyPath: Path = {
             { type: 'paragraph', text: 'Las relaciones que realmente nos nutren no se construyen desde la perfección ni desde la obligación. Se construyen cuando podemos estar presentes de forma genuina, sin disfraces, y cuando nos sentimos vistos, escuchados y respetados en lo que realmente sentimos.\nPero para que eso sea posible, hay algo que debe estar en el centro: la empatía verdadera y la honestidad emocional.\nSin ellas, no hay espacio seguro para mostrarnos tal como somos.' }
           ]
         },
-        { type: 'collapsible', title: '¿Qué es realmente la empatía?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3', content: [{ type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:\n- “Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”\n- “No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”' }] },
-        { type: 'collapsible', title: 'Lo que la empatía NO es', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3', content: [{ type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:\n- “Bueno, no es para tanto…”\n- “Tienes que ser más fuerte.”\n- “Eso no debería afectarte así.”\nEstas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }] },
-        { type: 'collapsible', title: 'Empatía y autenticidad van juntas', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3', content: [{ type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:\n- La empatía crea el espacio seguro.\n- La autenticidad lo habita.' }] },
+        {
+          type: 'collapsible',
+          title: '¿Qué es realmente la empatía?',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3',
+          content: [
+            { type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:' },
+            { type: 'list', items: ['“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”', '“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”']}
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Lo que la empatía NO es',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3',
+          content: [
+            { type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:'},
+            { type: 'list', items: ['“Bueno, no es para tanto…”','“Tienes que ser más fuerte.”','“Eso no debería afectarte así.”'] },
+            { type: 'paragraph', text: 'Estas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Empatía y autenticidad van juntas',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3',
+          content: [
+            { type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:'},
+            { type: 'list', items: ['La empatía crea el espacio seguro.','La autenticidad lo habita.']}
+          ]
+        },
         { type: 'collapsible', title: 'La honestidad emocional se entrena', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Lahonestidademocionalseentrena.mp3', content: [{ type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\nEs aprender a expresar lo esencial con respeto y claridad.\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }] },
-        { type: 'collapsible', title: '¿Te reconoces tras una máscara?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3', content: [{ type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:\n- Más alegres de lo que estamos.\n- Más fuertes, comprensivos, funcionales...\n- O directamente nos callamos.\nEstas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }] },
+        {
+          type: 'collapsible',
+          title: '¿Te reconoces tras una máscara?',
+          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3',
+          content: [
+            { type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:'},
+            { type: 'list', items: ['Más alegres de lo que estamos.','Más fuertes, comprensivos, funcionales...','O directamente nos callamos.']},
+            { type: 'paragraph', text: 'Estas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }
+          ]
+        },
         { type: 'collapsible', title: 'Esta semana entrenas…', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Estasemanaentrenas.mp3', content: [{ type: 'list', items: ['Detectar qué relaciones te alejan de tu autenticidad.', 'Escuchar cómo te sientes antes de actuar o responder.', 'Expresarte con más verdad y con más respeto, hacia ti y hacia el otro.'] }, { type: 'paragraph', text: 'Porque ser auténtico o auténtica no es imponer tu verdad…\nEs no dejarte fuera de lo que estás viviendo.' }] },
-        { type: 'collapsible', title: 'Una nueva forma de estar en tus vínculos', content: [{ type: 'paragraph', text: 'Recuerda:\n- La empatía real no es ponerte en los zapatos del otro...\n- Es caminar a su lado, sin hacer que le queden como a ti.\nY la autenticidad florece cuando hay espacio para sentir sin disfraz.\nEse espacio también puedes creártelo tú.' }] },
+        {
+          type: 'collapsible',
+          title: 'Una nueva forma de estar en tus vínculos',
+          content: [
+            { type: 'paragraph', text: 'Recuerda:'},
+            { type: 'list', items: ['La empatía real no es ponerte en los zapatos del otro...','Es caminar a su lado, sin hacer que le queden como a ti.']},
+            { type: 'paragraph', text: 'Y la autenticidad florece cuando hay espacio para sentir sin disfraz.\nEse espacio también puedes creártelo tú.'}
+          ]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3' },
         { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
@@ -129,10 +171,7 @@ export const empathyPath: Path = {
           title: 'Herramientas que vas a entrenar esta semana',
           audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Herramientasquevasaentrenarestasemana.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Asertividad emocional: poner palabras claras a lo que necesitas, sin agredir ni desaparecer.  \n\nAutoconciencia: detectar cómo te sientes antes de actuar. Preguntarte “¿Estoy disponible de verdad?”.  \n\nMindfulness emocional: respirar antes de absorber, darte tiempo antes de responder.  \n\nReestructuración cognitiva: cambiar pensamientos como “Tengo que aguantarlo todo” por “Puedo cuidar sin cargar”.  \n\nCompasión equilibrada: recordar que tú también mereces contención.  ',
-            },
+            { type: 'list', items: ['Asertividad emocional: poner palabras claras a lo que necesitas, sin agredir ni desaparecer.','Autoconciencia: detectar cómo te sientes antes de actuar. Preguntarte “¿Estoy disponible de verdad?”.','Mindfulness emocional: respirar antes de absorber, darte tiempo antes de responder.','Reestructuración cognitiva: cambiar pensamientos como “Tengo que aguantarlo todo” por “Puedo cuidar sin cargar”.','Compasión equilibrada: recordar que tú también mereces contención.'] }
           ],
         },
         {
@@ -377,3 +416,5 @@ export const empathyPath: Path = {
     
 
     
+
+  

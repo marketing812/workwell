@@ -93,7 +93,7 @@ export const purposePath: Path = {
           prompts: [
             '<p>Llega el momento de integrar lo aprendido con una reflexión personal; sin prisa. Mira dentro de ti y pon con palabras lo que ha cambiado</p>',
             '<ul><li>¿Qué has descubierto sobre el ruido mental en tu vida?</li><li>¿Cuáles son sus señales más frecuentes en ti (en tu cuerpo, tus pensamientos, tus decisiones)?</li><li>¿Qué efectos tiene en tu bienestar emocional o físico cuando el ruido se acumula?</li><li>¿Hay momentos del día o contextos en los que este ruido aparece con más fuerza?</li><li>¿Qué te ha ayudado a distinguir entre lo que es un desvío y lo que conecta con tu esencia?</li><li>¿Qué gesto o práctica concreta vas a proteger esta semana para reducir el ruido y volver a lo importante?</li></ul>'
-          ] 
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta7/descripciones/semana2/RESUMEN.mp3' },
@@ -225,3 +225,6 @@ export const purposePath: Path = {
   ]
 };
 
+
+
+  

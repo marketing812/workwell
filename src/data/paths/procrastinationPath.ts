@@ -154,29 +154,26 @@ export const procrastinationPath: Path = {
           type: 'collapsible',
           title: 'Planificar con intención (no con presión)',
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
-          content: [{ type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
-          { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
-          { type: 'list', items: [
-              'Realista, no perfecta.',
-              'Concreta, no ambigua.',
-              'Flexible, no rígida.',
-            ]
-          },
-          { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' }],
+          content: [
+            { type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
+            { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
+            { type: 'list', items: ['Realista, no perfecta.','Concreta, no ambigua.','Flexible, no rígida.']},
+            { type: 'paragraph', text: 'Planear con ternura también es una forma de cuidarte.' }
+          ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'twoMinuteRuleExercise',
           title: 'Ejercicio 1: La Regla de los 2 Minutos',
-          objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
+          objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3',
         },
         {
           type: 'microPlanExercise',
           title: 'Ejercicio 2: Tu Primer Microplan de Acción',
           objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
           duration: '5 a 8 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3'
+          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3',
         },
         { 
           type: 'therapeuticNotebookReflection', 
@@ -192,7 +189,11 @@ export const procrastinationPath: Path = {
             '</ul>'
           ]
         },
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' },
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana',
+          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' 
+        },
         { type: 'list', items: [
             'La motivación no llega antes: llega después de actuar.',
             'Las acciones pequeñas generan impulso real.',
@@ -442,3 +443,5 @@ export const procrastinationPath: Path = {
 };
 
     
+
+  

@@ -60,7 +60,12 @@ export const selfUnderstandingPath: Path = {
           type: 'collapsible',
           title: '¿Por qué ponerle nombre a una emoción nos ayuda tanto?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio4Ruta6Sesion1.mp3',
-          content: [{ type: 'paragraph', text: 'Porque cuando lo haces, tu cerebro cambia. Literalmente.\nSegún un estudio de Lieberman (2007), etiquetar con precisión una emoción activa zonas del córtex prefrontal, la parte del cerebro que nos ayuda a calmar, pensar y regular. Al mismo tiempo, disminuye la activación de la amígdala, la zona que reacciona con intensidad emocional.\nEs decir, ponerle nombre a una emoción es como encender una luz en una habitación oscura: te orienta, te calma, te permite actuar con más claridad.\nY algo aún más importante:\nNo hay emociones buenas o malas.\nHay emociones con una vivencia agradable (como la alegría o el amor) y otras con vivencia desagradable (como el miedo o la tristeza). Pero todas tienen una función. Todas informan. Todas merecen ser escuchadas.\nSentirse mal no significa estar mal.\nLa tristeza te dice que algo te importa.\nLa rabia te señala que hubo un límite cruzado.\nLa culpa puede recordarte un valor.\nComo decía alguien:\n“La emoción no es el problema. El problema es no saber qué hacer con ella.”' }]
+          content: [
+            { type: 'paragraph', text: 'Porque cuando lo haces, tu cerebro cambia. Literalmente.\nSegún un estudio de Lieberman (2007), etiquetar con precisión una emoción activa zonas del córtex prefrontal, la parte del cerebro que nos ayuda a calmar, pensar y regular. Al mismo tiempo, disminuye la activación de la amígdala, la zona que reacciona con intensidad emocional.\nEs decir, ponerle nombre a una emoción es como encender una luz en una habitación oscura: te orienta, te calma, te permite actuar con más claridad.\nY algo aún más importante:' },
+            { type: 'paragraph', text: 'No hay emociones buenas o malas.\nHay emociones con una vivencia agradable (como la alegría o el amor) y otras con vivencia desagradable (como el miedo o la tristeza). Pero todas tienen una función. Todas informan. Todas merecen ser escuchadas.\nSentirse mal no significa estar mal.' },
+            { type: 'list', items: ['La tristeza te dice que algo te importa.','La rabia te señala que hubo un límite cruzado.','La culpa puede recordarte un valor.'] },
+            { type: 'paragraph', text: 'Como decía alguien:\n“La emoción no es el problema. El problema es no saber qué hacer con ella.”' }
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -183,7 +188,7 @@ export const selfUnderstandingPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: '¿Y qué pasa con lo que pensamos cuando sentimos?\nLas emociones no surgen directamente de lo que ocurre, sino de cómo lo interpretamos.\nEn psicología lo explicamos así:\nAcontecimiento → Creencia → Consecuencia emocional\nPor ejemplo:\nAlguien no responde tu mensaje → “No le importo” → tristeza.\nCometes un error → “Soy un fracaso” → culpa o rabia.\nUna mirada te incomoda → “Se están burlando de mí” → ansiedad o vergüenza.\nEstos pensamientos aparecen automáticamente, sin que los elijas. Vienen de esquemas internos formados hace mucho… pero que aún hoy pueden moldear cómo sientes y cómo actúas.',
+              text: '¿Y qué pasa con lo que pensamos cuando sentimos?\nLas emociones no surgen directamente de lo que ocurre, sino de cómo lo interpretamos.\nEn psicología lo explicamos así:\nAcontecimiento → Creencia → Consecuencia emocional\nPor ejemplo:\n- Alguien no responde tu mensaje → “No le importo” → tristeza.\n- Cometes un error → “Soy un fracaso” → culpa o rabia.\n- Una mirada te incomoda → “Se están burlando de mí” → ansiedad o vergüenza.\nEstos pensamientos aparecen automáticamente, sin que los elijas. Vienen de esquemas internos formados hace mucho… pero que aún hoy pueden moldear cómo sientes y cómo actúas.',
             },
           ],
         },
@@ -202,8 +207,9 @@ export const selfUnderstandingPath: Path = {
           type: 'collapsible',
           title: '¿Por qué repito siempre lo mismo?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio6Ruta6Sesion3.mp3',
-          content: [{ type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.'},
-            { type: 'list', items: ['El cerebro automatiza lo que se repite.<br />Si llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.','Buscamos lo familiar, incluso si duele.<br />Si creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.','Evitamos lo incómodo.<br />Tapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.']}
+          content: [
+            { type: 'paragraph', text: 'Si sabes que algo te hace daño… ¿por qué sigues reaccionando igual?\nNo es que no quieras cambiar. Es que hay razones profundas para esa repetición.'},
+            { type: 'list', items: ['El cerebro automatiza lo que se repite. Si llevas años reaccionando con tristeza o rabia, tu cerebro lo convierte en “ruta rápida”.','Buscamos lo familiar, incluso si duele. Si creciste sintiéndote solo/a o exigido/a, es normal que tu cuerpo y mente vuelvan ahí sin querer.','Evitamos lo incómodo. Tapamos emociones con distracción, exigencia o complacencia. Pero al evitar lo que duele, no lo sanamos… solo lo repetimos.']}
           ]
         },
         {
@@ -338,16 +344,18 @@ export const selfUnderstandingPath: Path = {
           title: '¿Y si me cuesta observarme con calma?',
           audioUrl: 'https://workwellfut.com/audios/ruta6/descripciones/Audio10Ruta6Sesion4.mp3',
           content: [
-            {
-              type: 'paragraph',
-              text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\n¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)\n\nTu cuerpo cambia según cómo percibe el entorno:\n- Estado de seguridad: calma, conexión, reflexión.\n- Estado de alarma: lucha o huida.\n- Estado de colapso: bloqueo o desconexión.\n\nCuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:\n- Respirar de forma consciente.\n- Sentir tus pies firmes en el suelo.\n- Hablarte con amabilidad.\n- Rodearte de personas que te respetan.\n- Recordarte: lo que sientes no es un error.\n\nLa seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.',
-            },
-          ],
+            { type: 'paragraph', text: 'Es totalmente normal.\n\nCuando tu cuerpo percibe una amenaza, no puede reflexionar.\nSolo se activa para defenderse.\n\nEsto no es un fallo: es tu sistema nervioso intentando protegerte.\nPor eso, para poder mirarte con serenidad, primero necesitas sentirte a salvo.\n\n¿Cómo funciona nuestro sistema nervioso? (Teoría Polivagal)'},
+            { type: 'paragraph', text: 'Tu cuerpo cambia según cómo percibe el entorno:'},
+            { type: 'list', items: ['Estado de seguridad: calma, conexión, reflexión.','Estado de alarma: lucha o huida.','Estado de colapso: bloqueo o desconexión.'] },
+            { type: 'paragraph', text: 'Cuando estás en seguridad, puedes observarte sin pelear contigo.\nPor eso es tan importante cultivar ese estado interno.\n\nCómo generar seguridad dentro de ti\n\nAquí tienes pequeñas acciones que ayudan a tu sistema nervioso a sentirse a salvo:' },
+            { type: 'list', items: ['Respirar de forma consciente.','Sentir tus pies firmes en el suelo.','Hablarte con amabilidad.','Rodearte de personas que te respetan.','Recordarte: lo que sientes no es un error.'] },
+            { type: 'paragraph', text: 'La seguridad no se impone. Se entrena poco a poco.\n\nEl poder de tu voz interior\n\nTu cuerpo escucha cómo te hablas.\n\nUna frase amable puede calmar tu corazón.\n\nUna crítica interna puede alterarte sin que te des cuenta.\n\nHabitarte con conciencia también es esto:\ntratarte con respeto desde dentro, incluso cuando te equivocas.'}
+          ]
         },
         {
           type: 'collapsible',
           title: 'En resumen',
-          content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a cambiar, con más claridad y compasión.' }],
+          content: [{ type: 'paragraph', text: 'La autoconciencia plena es el primer paso para cambiar de verdad.\n\nObservarte con curiosidad te transforma más que criticarte.\n\nTu sistema nervioso necesita seguridad para que puedas mirarte sin miedo. \n\nLa metacognición te ayuda a elegir mejor.\n\nNo tienes que corregirte. Solo aprender a acompañarte con respeto. Desde esa base… todo empieza a transformarse.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -426,3 +434,5 @@ export const selfUnderstandingPath: Path = {
     },
   ],
 };
+
+  

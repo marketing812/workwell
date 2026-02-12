@@ -442,14 +442,20 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Insistir, ceder o alejarme?',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
           content: [
             {
               type: 'paragraph',
-              text: 'No siempre es fácil saber qué hacer ante una relación tensa. A veces dudamos entre seguir insistiendo, ceder para evitar conflicto o alejarnos para protegernos. Esta guía no te da respuestas absolutas, pero sí te ofrece señales internas para orientarte desde el respeto y la coherencia contigo.\n\nAquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.\n\nInsiste cuando:\n\n- El vínculo es importante para ti y hay apertura al diálogo.\n- Hay respeto mutuo, aunque existan diferencias.\n- El otro también está dispuesto a crecer.\n\nCede cuando:\n\n- Lo haces por elección, no por miedo.\n- Entiendes que ceder no borra tu valor ni tu dignidad.\n- Hay reciprocidad.\n\nAléjate cuando:\n\n- Poner límites siempre genera castigo, conflicto o manipulación.\n- Tus necesidades son ignoradas.\n- Sientes que tienes que desaparecer para sostener la relación.\n\nA veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.',
+              text: 'No siempre es fácil saber qué hacer ante una relación tensa. A veces dudamos entre seguir insistiendo, ceder para evitar conflicto o alejarnos para protegernos. Esta guía no te da respuestas absolutas, pero sí te ofrece señales internas para orientarte desde el respeto y la coherencia contigo.\nAquí no hay recetas exactas, pero sí puedes guiarte por algunas señales internas.'
             },
-          ],
+            { type: 'paragraph', text: 'Insiste cuando:'},
+            { type: 'list', items: ['El vínculo es importante para ti y hay apertura al diálogo.', 'Hay respeto mutuo, aunque existan diferencias.', 'El otro también está dispuesto a crecer.']},
+            { type: 'paragraph', text: 'Cede cuando:'},
+            { type: 'list', items: ['Lo haces por elección, no por miedo.', 'Entiendes que ceder no borra tu valor ni tu dignidad.', 'Hay reciprocidad.']},
+            { type: 'paragraph', text: 'Aléjate cuando:'},
+            { type: 'list', items: ['Poner límites siempre genera castigo, conflicto o manipulación.', 'Tus necesidades son ignoradas.', 'Sientes que tienes que desaparecer para sostener la relación.']},
+            { type: 'paragraph', text: 'A veces, alejarse no es rendirse. Es respetarte lo suficiente como para no quedarte donde no hay cuidado mutuo.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -484,13 +490,10 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
+          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
           prompts: [
-            '<p>Tómate unos minutos para cerrar esta semana desde un lugar de conexión contigo. No necesitas tener todas las respuestas, solo darte espacio para observarte con honestidad.</p>',
-            '<p>Responde en tu cuaderno:</p>',
-            '<ul><li>¿En qué momento reciente sentí que me respeté al mantener un límite, aunque fuera incómodo?</li><li>¿Qué sentí internamente al sostener mi decisión sin justificarme?</li><li>¿Qué vínculo ha cambiado —aunque sea ligeramente— desde que empecé a expresarme con más claridad?</li><li>¿Qué me comprometo a seguir practicando, aunque a veces me cueste?</li></ul>',
+            '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>',
           ],
         },
         {
@@ -547,8 +550,8 @@ export const settingBoundariesPath: Path = {
             'Las relaciones sanas toleran los desacuerdos sin romperse.',
             'Tu disponibilidad constante no debe ser la base de ningún vínculo.',
             'Aprender a decir “no” es también aprender a decir “sí” a ti.',
-            'El respeto empieza por casa: cuando te lo das tú, los demás lo aprenden.'
-          ]
+            'El respeto empieza por casa: cuando te lo das tú, los demás lo aprenden.',
+          ],
         },
         {
           type: 'quote',
@@ -560,3 +563,6 @@ export const settingBoundariesPath: Path = {
 };
 
     
+
+
+  

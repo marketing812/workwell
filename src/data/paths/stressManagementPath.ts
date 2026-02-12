@@ -212,7 +212,7 @@ export const stressManagementPath: Path = {
                 title: '¿Por qué estas técnicas funcionan?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3',
                 content: [
-                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\nEstas técnicas ayudan a activar tu sistema parasimpático, el encargado de enviarle al cuerpo el mensaje de que ya no hay peligro. Al practicar con regularidad, no solo te calmas en el momento, sino que estás enseñándole a tu cuerpo a recuperar el equilibrio con más facilidad.\nEstudios han demostrado que practicar respiración consciente o mindfulness durante al menos 8 semanas puede producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (centro de alerta y miedo). Es decir: te entrenas para vivir con más calma.' },
+                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\nEstas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”.\nPracticar con regularidad te ayuda a recuperar el equilibrio con más facilidad.\nEstudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro).\nEs decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.' },
                 ]
             },
             {
@@ -220,15 +220,22 @@ export const stressManagementPath: Path = {
                 title: '¿Qué cambia cuando las practicas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2quecambia.mp3',
                 content: [
-                    { type: 'paragraph', text: 'En tu cuerpo:\n- Respiración más profunda y regular\n- Regulación del CO₂ (menos mareos o ahogo)\n- Reducción de tensión muscular\n- Sensaciones de alivio, calor o calma\n\nEn tu mente:\n- Recuperas el control y vuelves al presente\n- Se interrumpe el bucle de pensamientos ansiosos\n- Refuerzas el autocuidado y la conexión contigo'},
-                    { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
+                  { type: 'paragraph', text: 'En tu cuerpo:'},
+                  { type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']},
+                  { type: 'paragraph', text: 'En tu mente:'},
+                  { type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']},
+                  { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
                 ]
             },
             {
                 type: 'collapsible',
                 title: '¿Cuándo puedes usarlas?',
                 audioUrl: 'https://workwellfut.com/audios/ruta1/extras/R1semana2cuando.mp3',
-                content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:\n•\tEn el momento: si sientes ansiedad o bloqueo\n•\tAntes de una situación desafiante\n•\tComo rutina diaria para entrenar tu equilibrio\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.' }]
+                content: [
+                  { type: 'paragraph', text: 'Puedes usar estas técnicas:'},
+                  { type: 'list', items: ['En el momento: si sientes ansiedad o bloqueo', 'Antes de una situación desafiante', 'Como rutina diaria para entrenar tu equilibrio']},
+                  { type: 'paragraph', text: 'Practicar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.'}
+                ]
             },
             {
                 type: 'collapsible',
@@ -248,7 +255,7 @@ export const stressManagementPath: Path = {
                       type: 'collapsible',
                       title: 'Técnica 6: Contacto frío breve (reset inmediato)',
                       audioUrl: 'https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3',
-                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\n1. Humedece una toalla o paño con agua fría.\n2. Aplícalo entre 10 y 20 segundos en:\n\t- La nuca\n\t- Las muñecas\n\t- La parte interna de los brazos o las mejillas\n3. Respira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
+                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\n1.\tHumedece una toalla o paño con agua fría.\n2.\tAplícalo entre 10 y 20 segundos en:\n\to\tLa nuca\n\to\tLas muñecas\n\to\tLa parte interna de los brazos o las mejillas\n3.\tRespira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
                     },
                 ]
             },
@@ -316,7 +323,7 @@ export const stressManagementPath: Path = {
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana3/Unmismohechodosemocionesdistintas.mp3',
               content: [
                   { type: 'paragraph', text: 'Situación: Tu pareja no contesta a tu mensaje en horas.'},
-                  { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia.']},
+                  { type: 'list', items: ['Pensamiento 1: “No le importo nada” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia.']},
                   { type: 'paragraph', text: 'La misma situación puede vivirse con emociones muy diferentes según el pensamiento que la acompaña.'}
               ]
           },
@@ -513,3 +520,6 @@ export const stressManagementPath: Path = {
     }
   ],
 };
+
+
+  
