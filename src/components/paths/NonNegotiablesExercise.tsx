@@ -28,7 +28,7 @@ interface NonNegotiablesExerciseProps {
   onComplete: () => void;
 }
 
-export function NonNegotiablesExercise({ content, pathId, onComplete }: NonNegotiablesExerciseProps) {
+export default function NonNegotiablesExercise({ content, pathId, onComplete }: NonNegotiablesExerciseProps) {
   const [step, setStep] = useState(0);
   const [pastSituation, setPastSituation] = useState('');
   const [initialValues, setInitialValues] = useState<Record<string, boolean>>({});
@@ -111,7 +111,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Un no negociable no es una norma impuesta por otros. Es una elección interna que nace de tus valores y tu experiencia. No se trata de tener una lista enorme, sino de elegir lo que realmente es esencial para ti.</p>
-            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -142,7 +142,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
             </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -162,7 +162,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep} disabled={nonNegotiables.length !== 3}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    <Button onClick={nextStep} disabled={nonNegotiables.length !== 3}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
                 </div>
             </div>
         );
