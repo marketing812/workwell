@@ -165,7 +165,7 @@ export const procrastinationPath: Path = {
         {
           type: 'twoMinuteRuleExercise',
           title: 'Ejercicio 1: La Regla de los 2 Minutos',
-          objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.',
+          objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3',
         },
         {
@@ -445,3 +445,5 @@ export const procrastinationPath: Path = {
     
 
   
+
+    

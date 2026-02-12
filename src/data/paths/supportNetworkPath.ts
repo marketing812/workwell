@@ -504,10 +504,7 @@ export const supportNetworkPath: Path = {
             'Elegir conscientemente dónde invertir energía fortalece tu red y tu bienestar emocional.',
           ],
         },
-        {
-          type: 'quote',
-          text: 'Las relaciones que te nutren se eligen, se cuidan y se agradecen. Son el puente que une tu fuerza con la fuerza de los demás.',
-        },
+        { type: 'quote', text: 'Las relaciones que te nutren se eligen, se cuidan y se agradecen. Son el puente que une tu fuerza con la fuerza de los demás.' },
       ],
     },
     {
@@ -550,3 +547,5 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
+
+    

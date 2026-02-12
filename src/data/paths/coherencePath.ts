@@ -76,7 +76,7 @@ export const coherencePath: Path = {
           duration: '5-10 min diarios',
           audioUrl: 'https://workwellfut.com/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3'
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…</li></ul>']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana1/RESUMEN.mp3' },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
@@ -154,7 +154,7 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta9/descripciones/semana3/REFLEXION.mp3', 
           prompts: [
-            '<p>Te invito a detenerte un momento para mirar dentro de ti. Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente. </p>',
+            '<p>Te invito a detenerte un momento para mirar dentro de ti. Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente.  </p>',
             '<ul><li>¿Qué he aprendido esta semana sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'
           ] 
         },
@@ -258,3 +258,5 @@ export const coherencePath: Path = {
     },
   ],
 };
+
+    

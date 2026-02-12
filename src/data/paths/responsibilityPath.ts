@@ -119,7 +119,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Reflexionsesion1ruta10.mp3',
           prompts: [
-            '<ul><li>¿Qué descubrimiento ha tenido más impacto en ti y por qué?</li><li>¿En qué situación lograste pasar de la queja o la culpa a la acción?</li><li>¿Qué culpa identificaste como “no mía” y pudiste soltar?</li><li>¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?</li></ul>'
+            '<ul><li>¿Qué descubrimiento ha tenido más impacto en ti y por qué?</li><li>¿En qué situación lograste pasar de la queja o la culpa a la acción?</li><li>¿Qué culpa identificaste como “no mía” y pudiste soltar?</li><li>¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta10/sesion1/Resumensesion1ruta10.mp3' },
@@ -457,3 +457,5 @@ export const responsibilityPath: Path = {
 };
 
   
+
+    

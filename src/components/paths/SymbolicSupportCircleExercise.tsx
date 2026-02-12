@@ -56,7 +56,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
   };
   
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setPillars(Array(4).fill({ name: '', contribution: '', careAction: ''}));
@@ -116,7 +116,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
             </div>
           </form>
         );
-       case 3: // Confirmation screen
+       case 3: // Confirmation
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -148,3 +148,6 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
       <CardContent>
         {renderStep()}
       </CardContent>
+    </Card>
+  );
+}

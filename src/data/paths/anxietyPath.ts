@@ -107,7 +107,7 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'El cuerpo como regulador directo',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant2cuerporegulDor.mp3`,
-          content: [{ type: 'paragraph', text: 'Dentro de ti funciona un sistema automático que no eliges de forma consciente: el sistema nervioso autónomo.\n\nComo explicamos también en la semana 1, puedes imaginarlo como un coche con dos pedales:\n\nEl acelerador (la rama simpática): te activa, sube el pulso, la tensión muscular y la respiración.\n\nEl freno (la rama parasimpática): te calma, ayuda a la digestión y al descanso.\n\nCuando la ansiedad aparece, lo que pasa es que el acelerador se queda pisado, aunque no haya tráfico ni peligro real. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\n\nLo que aprenderás aquí es a tocar el freno de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.' }]
+          content: [{ type: 'paragraph', text: 'Dentro de ti funciona un sistema automático que no eliges de forma consciente: el sistema nervioso autónomo.\n\nComo explicamos también en la semana 1, puedes imaginarlo como un coche con dos pedales:\n\nEl acelerador (la rama simpática): te activa, sube el pulso, la tensión muscular y la respiración.\n\nEl freno (la rama parasimpática): te calma, ayuda a la digestión y al descanso.\n\nCuando la ansiedad aparece, lo que pasa es que el acelerador se queda pisado, incluso en situaciones normales. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\n\nLo que aprenderás aquí es a tocar el freno de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.' }]
         },
         {
           type: 'collapsible',
@@ -176,7 +176,14 @@ export const anxietyPath: Path = {
             title: 'Registro de experiencia personal',
             prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:'],
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2reflexion.mp3`, prompts: ['<ul><li>¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?</li><li>¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?</li><li>¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?</li></ul>']},
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2reflexion.mp3`, 
+          prompts: [
+            '<ul><li>¿Qué técnica me ha resultado más útil o fácil de practicar esta semana?</li><li>¿Qué cambios he notado en mi cuerpo y en mi mente después de entrenarla?</li><li>¿Qué situación concreta podría empezar a afrontar aplicando una de estas herramientas?</li></ul>'
+          ]
+        },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2resumen.mp3`},
         { type: 'list', items: ['La ansiedad empieza en el cuerpo y se alimenta en la mente: si calmas uno, regulas al otro.','El nervio vago es tu freno natural; activarlo con la respiración o la calma corporal reduce la alarma interna.','Cuando calmas el cuerpo, tu cerebro recupera claridad.','Las sensaciones físicas (palpitaciones, mareo, nudo en el estómago) pueden ser molestas pero no son peligrosas: aprender a observarlas sin miedo reduce su impacto.','La práctica constante entrena tu sistema nervioso para responder con más equilibrio y recuperarse antes del estrés.','Las técnicas más eficaces (coherencia cardíaca, diafragmática, exhalación, RMP) ayudan a modular el sistema nervioso de forma sostenida; otras (anclaje, frío, balanceo) son recursos rápidos en picos de ansiedad.','Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia.']},
@@ -341,7 +348,9 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/R13sem4reflexion.mp3`,
-          prompts: ['<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><ul><li>¿Qué descubrí sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li></ul>']
+          prompts: [
+            '<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><ul><li>¿Qué descubrí sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li></ul>'
+          ]
         },
         { 
           type: 'title', 
@@ -437,3 +446,6 @@ export const anxietyPath: Path = {
     
 
 
+
+
+    
