@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -36,7 +35,7 @@ const valueOptions = [
     { id: 'contribucion', label: 'Contribución / ayudar a otros' },
 ];
 
-export function MotivationIn3LayersExercise({ content, pathId, onComplete }: MotivationIn3LayersExerciseProps) {
+export default function MotivationIn3LayersExercise({ content, pathId, onComplete }: MotivationIn3LayersExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -139,7 +138,7 @@ ${purpose || 'No especificado.'}
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Hay días en los que cuesta arrancar, y otros en los que ni siquiera sabemos por qué deberíamos hacerlo. Pero cuando conectas una tarea con lo que de verdad te importa, la energía cambia.</p>
             <p className="text-xs text-muted-foreground">Tiempo estimado: 7 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana, o siempre que sientas que te falta impulso para empezar.</p>
-            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Step 1: Acción concreta
@@ -245,3 +244,4 @@ ${purpose || 'No especificado.'}
     </Card>
   );
 }
+    
