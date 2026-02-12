@@ -958,3 +958,5 @@ export function PathDetailClient({ path }: { path: Path }) {
 }
 
     
+
+    
