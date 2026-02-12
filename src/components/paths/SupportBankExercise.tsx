@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -204,3 +205,10 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
             {content.objective}
           </CardDescription>
         )}
+      </CardHeader>
+      <CardContent>
+        {renderStep()}
+      </CardContent>
+    </Card>
+  );
+}

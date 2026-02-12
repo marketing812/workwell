@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -7,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
@@ -141,4 +142,8 @@ ${hiddenObjective}
             </div>
           )}
           <p className="text-xs text-center text-muted-foreground mt-4" dangerouslySetInnerHTML={{ __html: "Convertir tu crítica en guía es un acto de liderazgo interno: eliges ser una voz que <b>impulsa</b>, no que <b>derriba</b>. Cuanto más practiques, más natural será tratarte con firmeza y respeto al mismo tiempo." }} />
-        </form
+        </form>
+      </CardContent>
+    </Card>
+  );
+}

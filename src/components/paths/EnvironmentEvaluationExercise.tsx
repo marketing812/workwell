@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -255,3 +256,6 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                 </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
+        </Card>
+    );
+}

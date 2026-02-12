@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -31,7 +32,7 @@ export default function NourishingConversationExercise({ content, pathId, onComp
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -176,4 +177,7 @@ export default function NourishingConversationExercise({ content, pathId, onComp
       </CardHeader>
       <CardContent>
         {renderStep()}
-      
+      </CardContent>
+    </Card>
+  );
+}
