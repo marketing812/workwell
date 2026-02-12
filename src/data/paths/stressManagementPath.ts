@@ -270,7 +270,7 @@ export const stressManagementPath: Path = {
               title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3', 
               prompts: [
-                'Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. <p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</p>',
+                '<p>Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.</p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</p>'
               ]
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
@@ -491,9 +491,7 @@ export const stressManagementPath: Path = {
             title: 'Reflexión final de la Ruta',
             audioUrl: 'https://workwellfut.com/audios/ruta1/REFLEXIONRUTA.mp3',
             prompts: [
-              '<p>Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca.</p>',
-              '<p>Vamos ahora, a pasar a la reflexión final.</p>',
-              '<p>¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar?</p>'
+              '<p>Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca.</p><p>Vamos ahora, a pasar a la reflexión final.</p><p>¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar?</p>',
             ]
           },
           {
