@@ -35,7 +35,20 @@ export const uncertaintyPath: Path = {
             type: 'collapsible',
             title: '¿Por qué nos cuesta tanto la incertidumbre?',
             audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion1.mp3',
-            content: [{ type: 'paragraph', text: 'Porque nuestro sistema emocional busca seguridad. Preferimos incluso una mala noticia conocida antes que quedarnos en el “no sé”.\nEstudios en neurociencia han demostrado que la incertidumbre activa el sistema de amenaza cerebral (en especial, la amígdala) de forma parecida a como lo haría un peligro real.\nCuando esto ocurre, muchas personas sienten:\n- Necesidad de controlarlo todo.\n- Pensamientos de anticipación (“¿Y si…?”).\n- Evitación de decisiones o situaciones inciertas.'}]
+            content: [
+              {
+                type: 'paragraph',
+                text: 'Porque nuestro sistema emocional busca seguridad. Preferimos incluso una mala noticia conocida antes que quedarnos en el “no sé”.\nEstudios en neurociencia han demostrado que la incertidumbre activa el sistema de amenaza cerebral (en especial, la amígdala) de forma parecida a como lo haría un peligro real.\nCuando esto ocurre, muchas personas sienten:',
+              },
+              {
+                type: 'list',
+                items: [
+                  'Necesidad de controlarlo todo.',
+                  'Pensamientos de anticipación (“¿Y si…?”).',
+                  'Evitación de decisiones o situaciones inciertas.',
+                ],
+              },
+            ],
         },
         {
           type: 'collapsible',
@@ -81,7 +94,7 @@ export const uncertaintyPath: Path = {
           audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion2.mp3',
           content: [
             { type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como el tono de voz de alguien, una mirada o un gesto, un recuerdo doloroso, o simplemente un cambio en tu entorno, e interpreta alguna de esas señales como insegura, activando la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.'},
-            { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.'}] },
+            { type: 'collapsible', title: 'Errores de pensamiento', content: [{type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:   Sobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.   Imaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.   Sentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal.”'}] },
             { type: 'collapsible', title: 'Creencias aprendidas', content: [{type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.   Algunas creencias comunes son:   “No debo fallar nunca” → convierte cualquier error en un drama.   “El mundo es peligroso” → te hace vivir en estado de alerta.   “No puedo equivocarme” → te paraliza ante lo incierto.'}] },
           ]
         },
@@ -191,22 +204,13 @@ export const uncertaintyPath: Path = {
       title: 'Semana 4: Vivir desde la Confianza, no desde el Control',
       type: 'summary',
       estimatedTime: '15-20 min',
-      content: [
-        { type: 'paragraphWithAudio', text: 'A veces, cuanto más intentas tenerlo todo bajo control, más te agotas. Tu mente planea, prevé, se anticipa… creyendo que así estarás a salvo. Pero el exceso de control no siempre protege: muchas veces te encierra, te tensa y te aleja del presente.Esta semana vas a entrenar una forma distinta de sostenerte en lo incierto: desde la confianza, no desde el control. Aprenderás a aceptar lo que no puedes prever, a soltar el esfuerzo inútil por dominarlo todo y a conectar con tu capacidad de responder paso a paso, aunque no tengas todas las respuestas.Confiar no es rendirte. Es estar contigo, incluso cuando no sabes lo que va a pasar.', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion4.mp3' },
+      content: [{ type: 'paragraphWithAudio', text: 'A veces, cuanto más intentas tenerlo todo bajo control, más te agotas. Tu mente planea, prevé, se anticipa… creyendo que así estarás a salvo. Pero el exceso de control no siempre protege: muchas veces te encierra, te tensa y te aleja del presente.Esta semana vas a entrenar una forma distinta de sostenerte en lo incierto: desde la confianza, no desde el control. Aprenderás a aceptar lo que no puedes prever, a soltar el esfuerzo inútil por dominarlo todo y a conectar con tu capacidad de responder paso a paso, aunque no tengas todas las respuestas.Confiar no es rendirte. Es estar contigo, incluso cuando no sabes lo que va a pasar.', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio1Ruta2Sesion4.mp3' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: '¿Controlarlo todo te da paz… o te agota?', content: [{ type: 'paragraph', text: '¿Alguna vez has notado que cuanto más intentas tenerlo todo bajo control, más se te escapa?\\nControlar cada detalle parece una estrategia segura, pero muchas veces es una trampa. Aumenta la ansiedad, la frustración y el cansancio emocional.\\nEsta semana vas a explorar una forma distinta de vivir: confiar más en ti, en tu capacidad de adaptación y en la vida, incluso cuando no tienes todas las respuestas.' }] },
         { type: 'collapsible', title: 'Aceptar no es rendirse: es liberarte', content: [{ type: 'paragraph', text: 'Aceptar no significa resignarse ni dejar de luchar. Significa dejar de gastar energía en lo que no puedes cambiar y redirigirla hacia lo que sí puedes cuidar: cómo lo vives, cómo lo afrontas y cómo te tratas mientras tanto.\\nDesde la Terapia de Aceptación y Compromiso (ACT), esto se llama apertura experiencial: permitir que pensamientos y emociones estén presentes, sin pelearte con ellos.\\nAceptar el dolor no es estar bien con él. Es dejar de negarlo para empezar a reconstruirte desde ahí.' }] },
         { type: 'collapsible', title: 'Confiar no es saber cómo saldrá, es saber que puedes con ello', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio2Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'A veces creemos que solo estaremos bien si lo tenemos todo claro. Pero en realidad, lo que genera estabilidad no es la certeza, sino la confianza:\\n- Confianza en que sabrás responder\\n- Confianza en que podrás adaptarte, incluso con miedo\\n- Confianza en que no necesitas hacerlo perfecto para estar bien\\nTu confianza no crece cuando todo es fácil. Crece cuando te atreves, incluso sin garantías.' }] },
         { type: 'collapsible', title: 'Caminar paso a paso: la alternativa a planearlo todo', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio3Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'Cuando intentas prever cada detalle y tener todo controlado desde el inicio, te vuelves rígido/a. Y eso, en un mundo cambiante, es agotador.\\nLa alternativa es desarrollar flexibilidad estratégica:\\n- Avanzar con intención, aunque no esté todo resuelto\\n- Dar un paso desde donde estás, con lo que tienes\\nLa confianza se construye caminando, no planificando eternamente. Y cuando algo no sale como esperabas, no es un fallo: es parte del proceso.' }] },
-        {
-          type: 'collapsible',
-          title: 'Aceptar, confiar y avanzar',
-          audioUrl: 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion4.mp3',
-          content: [
-            { type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:'},
-            { type: 'list', items: ['Dejar de intentar controlar lo incontrolable','Aceptar lo que sientes, sin juzgarte','Confiar en que puedes sostenerte, incluso sin certezas','Avanzar paso a paso, sin perder de vista lo que te importa']}
-          ]
-        },
+        { type: 'collapsible', title: 'Aceptar, confiar y avanzar', 'audioUrl': 'https://workwellfut.com/audios/ruta2/descripciones/Audio4Ruta2Sesion4.mp3', content: [{ type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:'},{ type: 'list', items: ['Dejar de intentar controlar lo incontrolable','Aceptar lo que sientes, sin juzgarte','Confiar en que puedes sostenerte, incluso sin certezas','Avanzar paso a paso, sin perder de vista lo que te importa']}] },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'mantraExercise', title: 'Ejercicio 1: Mi mantra de confianza', objective: 'Crea una frase breve, realista y significativa que funcione como una brújula interna para recordarte que puedes sostenerte aunque no tengas todo resuelto.','duration': '7–10 minutos', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio5tecnica1.mp3' },
         { type: 'ritualDeEntregaConscienteExercise', title: 'Ejercicio 2: Mi ritual de entrega consciente', objective: 'Aprende a soltar la tensión mental o física cuando el control se vuelve agotador, a través de la escritura, la respiración o la gratitud.','duration': '5–10 minutos por opción', audioUrl: 'https://workwellfut.com/audios/ruta2/tecnicas/Ruta2sesion4audio6tecnica2.mp3' },
