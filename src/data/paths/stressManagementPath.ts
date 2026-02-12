@@ -224,7 +224,7 @@ export const stressManagementPath: Path = {
                   { type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']},
                   { type: 'paragraph', text: 'En tu mente:'},
                   { type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']},
-                  { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.' }
+                  { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.'}
                 ]
             },
             {
@@ -270,8 +270,7 @@ export const stressManagementPath: Path = {
               title: 'Reflexión Final de la Semana', 
               audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/REFLEXION.mp3', 
               prompts: [
-                '¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?',
-                'Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor.',
+                'Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. \n\n¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? ',
               ]
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta1/semana2/RESUMENYCIERRE.mp3'},
@@ -494,7 +493,7 @@ export const stressManagementPath: Path = {
             prompts: [
               'Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca.',
               'Vamos ahora, a pasar a la reflexión final.',
-              '¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar?'
+              '¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar?\n'
             ]
           },
           {
@@ -523,3 +522,5 @@ export const stressManagementPath: Path = {
 
 
   
+
+    
