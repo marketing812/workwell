@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,11 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Slider } from '@/components/ui/slider';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { EthicalMirrorExerciseContent } from '@/data/paths/pathTypes';
 import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
@@ -30,7 +30,7 @@ interface EthicalMirrorExerciseProps {
   onComplete: () => void;
 }
 
-export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMirrorExerciseProps) {
+export default function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMirrorExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -212,7 +212,7 @@ export function EthicalMirrorExercise({ content, pathId, onComplete }: EthicalMi
                         </div>
                          <div className="flex items-center space-x-2">
                             <Checkbox id="reflects" checked={reflectsWhoIAm} onCheckedChange={c => setReflectsWhoIAm(!!c)} />
-                            <Label htmlFor="reflects">Refleja quién soy y lo que quiero ser.</Label>
+                            <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
                             <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>

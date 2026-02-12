@@ -17,7 +17,7 @@ interface ComplaintTransformationExerciseProps {
   onComplete: () => void;
 }
 
-export function ComplaintTransformationExercise({ content, pathId, onComplete }: ComplaintTransformationExerciseProps) {
+export default function ComplaintTransformationExercise({ content, pathId, onComplete }: ComplaintTransformationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [complaint, setComplaint] = useState('');

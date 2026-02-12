@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -39,6 +38,7 @@ const emotionOptions = [
     { value: 'culpa', labelKey: 'emotionGuilt' },
     { value: 'inseguridad', labelKey: 'emotionInsecurity' },
     { value: 'confusion', labelKey: 'emotionConfusion' },
+    { value: 'ambivalencia', labelKey: 'emotionAmbivalence' },
 ];
 
 interface IntegrityDecisionsExerciseProps {
@@ -47,7 +47,7 @@ interface IntegrityDecisionsExerciseProps {
   onComplete: () => void;
 }
 
-export function IntegrityDecisionsExercise({ content, pathId, onComplete }: IntegrityDecisionsExerciseProps) {
+export default function IntegrityDecisionsExercise({ content, pathId, onComplete }: IntegrityDecisionsExerciseProps) {
     const { toast } = useToast();
     const t = useTranslations();
     const { user } = useUser();
@@ -235,6 +235,9 @@ export function IntegrityDecisionsExercise({ content, pathId, onComplete }: Inte
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                         <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
+                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                         “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
+                        </blockquote>
                         <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder='"Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."'/>
                         <div className="flex justify-between w-full pt-4">

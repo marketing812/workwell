@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -36,7 +35,7 @@ const placesOptions = [
 ];
 
 
-export function EmotionalGratificationMapExercise({ content, pathId, onComplete }: EmotionalGratificationMapExerciseProps) {
+export default function EmotionalGratificationMapExercise({ content, pathId, onComplete }: EmotionalGratificationMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -181,7 +180,7 @@ ${finalPlaces}
         );
       case 4: // Final Confirmation
          return (
-            <div className="p-4 space-y-4 text-center">
+            <div className="p-4 text-center space-y-4">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">Mi mapa de gratificación emocional</h4>
                 <p className="text-sm text-muted-foreground">Aquí tienes tu mapa, para revisarlo cuando quieras:</p>

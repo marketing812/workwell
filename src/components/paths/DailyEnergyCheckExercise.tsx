@@ -23,7 +23,7 @@ interface DailyEnergyCheckExerciseProps {
 const rechargeOptions = [
     'Actividad física', 'Alimentación equilibrada', 'Sueño reparador',
     'Tiempo en la naturaleza', 'Conversación positiva', 'Tiempo a solas de calidad',
-    'Escuchar música que me gusta',
+    'Escuchar música que me guste',
 ];
 
 const drainOptions = [
@@ -33,7 +33,7 @@ const drainOptions = [
 ];
 
 
-export function DailyEnergyCheckExercise({ content, pathId, onComplete }: DailyEnergyCheckExerciseProps) {
+export default function DailyEnergyCheckExercise({ content, pathId, onComplete }: DailyEnergyCheckExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -213,6 +213,7 @@ ${drainedBy || 'No especificado.'}
                <p className="text-sm italic text-primary">{balanceMessage}</p>
                <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                     <Button onClick={() => setStep(1)} variant="outline">Editar mi registro</Button>
+                    <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio semanal</Button>
                     <Button onClick={resetExercise}>Finalizar ejercicio</Button>
                </div>
            </div>
@@ -227,17 +228,15 @@ ${drainedBy || 'No especificado.'}
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         <CardDescription className="pt-2 whitespace-pre-line">
-          ¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?
-          
-          Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y otros que la gastan más rápido.
-          
-          Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.
-          <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3" type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-          </div>
+          {content.objective}
+          {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+          )}
         </CardDescription>
       </CardHeader>
       <CardContent>

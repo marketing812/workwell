@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { VisualizeDayExerciseContent } from '@/data/paths/pathTypes';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select';
@@ -24,7 +23,7 @@ interface VisualizeDayExerciseProps {
 const intentionOptions = ['Confianza', 'Calma', 'Energía', 'Gratitud', 'Apertura', 'Foco', 'Alegría', 'Cuidado personal', 'Fortaleza', 'Otro'];
 const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuchar música que me guste', 'Hacer ejercicio', 'Comer sano', 'Pasar tiempo con familia o amistades', 'Avanzar en un proyecto importante', 'Dedicar tiempo a un hobby', 'Meditar o practicar respiración consciente', 'Otro'];
 
-export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
+export default function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -103,7 +102,7 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
                 {intention === 'Otro' && <Input value={otherIntention} onChange={e => setOtherIntention(e.target.value)} placeholder="Escribe otra intención..." className="mt-2" />}
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={nextStep} disabled={!finalIntention.trim()}>Continuar</Button>
             </div>
           </div>
@@ -124,7 +123,7 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
                 </Select>
             </div>
              <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={nextStep} disabled={!idealDay.trim()}>Continuar</Button>
             </div>
           </div>
@@ -136,7 +135,7 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
             <p className="text-sm text-muted-foreground">Piensa en una acción sencilla que puedas repetir hoy para sostener el estado emocional que has elegido.</p>
             <Textarea value={keyGesture} onChange={e => setKeyGesture(e.target.value)} placeholder="Ej: Hacer 3 respiraciones profundas antes de una reunión."/>
              <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={handleSave} disabled={!keyGesture.trim()}>Guardar mi visualización</Button>
             </div>
           </div>
@@ -186,5 +185,3 @@ export function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeD
     </Card>
   );
 }
-
-    

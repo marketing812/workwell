@@ -43,7 +43,7 @@ interface EnvironmentEvaluationExerciseProps {
   onComplete: () => void;
 }
 
-export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: EnvironmentEvaluationExerciseProps) {
+export default function EnvironmentEvaluationExercise({ content, pathId, onComplete }: EnvironmentEvaluationExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);
@@ -255,6 +255,3 @@ export function EnvironmentEvaluationExercise({ content, pathId, onComplete }: E
                 </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
-        </Card>
-    );
-}

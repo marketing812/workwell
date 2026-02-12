@@ -17,7 +17,7 @@ interface CompassionateResponsibilityContractExerciseProps {
   onComplete: () => void;
 }
 
-export function CompassionateResponsibilityContractExercise({ content, pathId, onComplete }: CompassionateResponsibilityContractExerciseProps) {
+export default function CompassionateResponsibilityContractExercise({ content, pathId, onComplete }: CompassionateResponsibilityContractExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [initialCommitment, setInitialCommitment] = useState('');

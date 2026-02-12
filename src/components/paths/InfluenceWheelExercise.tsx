@@ -53,7 +53,7 @@ interface Situation {
     circle: 'interno' | 'externo' | '';
 }
 
-export function InfluenceWheelExercise({ content, pathId, onComplete }: InfluenceWheelExerciseProps) {
+export default function InfluenceWheelExercise({ content, pathId, onComplete }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -147,7 +147,7 @@ export function InfluenceWheelExercise({ content, pathId, onComplete }: Influenc
                 ))}
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="mr-2 h-4 w-4"/></Button>
                  </div>
             </div>
         );
@@ -251,5 +251,3 @@ export function InfluenceWheelExercise({ content, pathId, onComplete }: Influenc
         {renderStep()}
       </CardContent>
     </Card>
-  );
-}

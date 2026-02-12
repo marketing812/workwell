@@ -1,17 +1,15 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Input } from '../ui/input';
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NutritiveDrainingSupportMapExerciseContent } from '@/data/paths/pathTypes';
-import { Input } from '../ui/input';
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
 
@@ -26,7 +24,7 @@ interface Relation {
     sensation: 'nutritivo' | 'drenante' | 'neutral' | '';
 }
 
-export function NutritiveDrainingSupportMapExercise({ content, pathId, onComplete }: NutritiveDrainingSupportMapExerciseProps) {
+export default function NutritiveDrainingSupportMapExercise({ content, pathId, onComplete }: NutritiveDrainingSupportMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -172,7 +170,7 @@ export function NutritiveDrainingSupportMapExercise({ content, pathId, onComplet
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Mapa</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar Mapa</Button>
             </div>
           </form>
         );

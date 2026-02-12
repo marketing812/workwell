@@ -18,7 +18,7 @@ interface GuiltRadarExerciseProps {
   onComplete: () => void;
 }
 
-export function GuiltRadarExercise({ content, pathId, onComplete }: GuiltRadarExerciseProps) {
+export default function GuiltRadarExercise({ content, pathId, onComplete }: GuiltRadarExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [situation, setSituation] = useState('');

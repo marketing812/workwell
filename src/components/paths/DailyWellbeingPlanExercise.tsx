@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -54,10 +53,10 @@ const facilitatorOptions: { id: string; label: string; }[] = [
 ];
 
 
-const HabitStep = ({ title, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
+const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
     return (
         <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">{title}</h4>
+            <h4 className="font-semibold text-lg text-primary">{stepTitle}</h4>
             <p className="text-sm text-muted-foreground">{description}</p>
             <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
                 <Accordion type="single" collapsible className="w-full">
@@ -94,7 +93,8 @@ const HabitStep = ({ title, description, options, selected, setSelected, other, 
     );
 };
 
-export function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
+
+export default function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

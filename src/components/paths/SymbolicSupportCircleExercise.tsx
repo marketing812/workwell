@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -25,7 +24,7 @@ interface Pillar {
     careAction: string;
 }
 
-export function SymbolicSupportCircleExercise({ content, pathId, onComplete }: SymbolicSupportCircleExerciseProps) {
+export default function SymbolicSupportCircleExercise({ content, pathId, onComplete }: SymbolicSupportCircleExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -53,7 +52,7 @@ export function SymbolicSupportCircleExercise({ content, pathId, onComplete }: S
     toast({ title: 'Círculo Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(prev => prev + 1); // Move to confirmation screen
+    setStep(prev => prev + 1); // Move to confirmation
   };
   
   const nextStep = () => setStep(prev => prev + 1);
@@ -149,6 +148,3 @@ export function SymbolicSupportCircleExercise({ content, pathId, onComplete }: S
       <CardContent>
         {renderStep()}
       </CardContent>
-    </Card>
-  );
-}

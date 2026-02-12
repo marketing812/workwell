@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -28,7 +27,7 @@ const reactionOptions = [
     { id: 'reac-desconecte', label: 'Me desconecté de lo que sentía.' },
 ];
 
-export function PersonalManifestoExercise({ content, pathId, onComplete }: PersonalManifestoExerciseProps) {
+export default function PersonalManifestoExercise({ content, pathId, onComplete }: PersonalManifestoExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
     const [step, setStep] = useState(0);

@@ -27,7 +27,7 @@ const valuesList = [
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
 ];
 
-export function PersonalCommitmentDeclarationExercise({ content, pathId, onComplete }: PersonalCommitmentDeclarationExerciseProps) {
+export default function PersonalCommitmentDeclarationExercise({ content, pathId, onComplete }: PersonalCommitmentDeclarationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [selectedValues, setSelectedValues] = useState<Record<string, boolean>>({});

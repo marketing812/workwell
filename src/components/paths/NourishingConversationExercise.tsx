@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -20,7 +19,7 @@ interface NourishingConversationExerciseProps {
   onComplete: () => void;
 }
 
-export function NourishingConversationExercise({ content, pathId, onComplete }: NourishingConversationExerciseProps) {
+export default function NourishingConversationExercise({ content, pathId, onComplete }: NourishingConversationExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -177,7 +176,4 @@ export function NourishingConversationExercise({ content, pathId, onComplete }: 
       </CardHeader>
       <CardContent>
         {renderStep()}
-      </CardContent>
-    </Card>
-  );
-}
+      

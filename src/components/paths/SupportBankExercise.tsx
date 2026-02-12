@@ -1,19 +1,20 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Star } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SupportBankExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { Slider } from '../ui/slider';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { useUser } from '@/contexts/UserContext';
+import { Slider } from '../ui/slider';
 
 interface SupportBankExerciseProps {
   content: SupportBankExerciseContent;
@@ -35,7 +36,7 @@ const supportOptions = [
     'Otro'
 ];
 
-export function SupportBankExercise({ content, pathId, onComplete }: SupportBankExerciseProps) {
+export default function SupportBankExercise({ content, pathId, onComplete }: SupportBankExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -203,10 +204,3 @@ export function SupportBankExercise({ content, pathId, onComplete }: SupportBank
             {content.objective}
           </CardDescription>
         )}
-      </CardHeader>
-      <CardContent>
-        {renderStep()}
-      </CardContent>
-    </Card>
-  );
-}

@@ -59,7 +59,7 @@ interface Selections {
   frase: string;
 }
 
-export function PositiveEmotionalFirstAidKitExercise({ content, pathId, onComplete }: PositiveEmotionalFirstAidKitExerciseProps) {
+export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, onComplete }: PositiveEmotionalFirstAidKitExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);

@@ -26,7 +26,7 @@ const distortionOptions = [
     { value: 'personalization', label: 'Personalización' },
 ];
 
-export function CriticismToGuideExercise({ content, pathId, onComplete }: CriticismToGuideExerciseProps) {
+export default function CriticismToGuideExercise({ content, pathId, onComplete }: CriticismToGuideExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [criticalPhrase, setCriticalPhrase] = useState('');
@@ -141,8 +141,4 @@ ${hiddenObjective}
             </div>
           )}
           <p className="text-xs text-center text-muted-foreground mt-4" dangerouslySetInnerHTML={{ __html: "Convertir tu crítica en guía es un acto de liderazgo interno: eliges ser una voz que <b>impulsa</b>, no que <b>derriba</b>. Cuanto más practiques, más natural será tratarte con firmeza y respeto al mismo tiempo." }} />
-        </form>
-      </CardContent>
-    </Card>
-  );
-}
+        </form
