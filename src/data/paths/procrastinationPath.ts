@@ -168,8 +168,7 @@ export const procrastinationPath: Path = {
         {
           type: 'twoMinuteRuleExercise',
           title: 'Ejercicio 1: La Regla de los 2 Minutos',
-          objective: 'Este ejercicio te ayudará a romper la inercia del bloqueo cuando una tarea te parece demasiado grande o lejana. Al reducirla a una acción de menos de dos minutos, activas tu sistema de recompensa y creas el primer impulso que te saca de la parálisis.',
-          duration: '5 a 7 minutos',
+          objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3'
         },
         {
@@ -285,7 +284,7 @@ export const procrastinationPath: Path = {
           duration: '10 a 15 minutos',
           audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
         },
-        {
+        { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3', 
