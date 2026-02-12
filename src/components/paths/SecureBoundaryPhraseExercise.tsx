@@ -48,13 +48,13 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
             pathId: pathId,
             userId: user?.id,
         });
-        toast({ title: 'Frase Guardada' });
+        toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el cuaderno." });
         onComplete();
         setStep(5); // Confirmation screen
     };
 
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
     const resetExercise = () => {
       setStep(0);
       setSelectedPhrase('');
@@ -90,7 +90,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
             case 2: // Pantalla 3: Seleccionar frase
                 return (
                     <div className="p-4 space-y-4">
-                        <h4 className="font-semibold text-lg">Selecciona o edita una frase</h4>
+                        <h4 className="font-semibold text-lg">Selecciona una frase</h4>
                         <RadioGroup value={selectedPhrase} onValueChange={setSelectedPhrase}>
                             {suggestedPhrases.map((phrase, index) => (
                                 <div key={index} className="flex items-center space-x-2">
@@ -175,3 +175,4 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
         </Card>
     );
 }
+    
