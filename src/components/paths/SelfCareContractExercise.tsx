@@ -28,6 +28,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  
   const resetExercise = () => {
     setStep(0);
     setNotWilling('');
@@ -36,14 +37,20 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
     setIsSaved(false);
   };
 
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!notWilling.trim() || !commitment.trim() || !howToDo.trim()) {
-      toast({ title: 'Contrato incompleto', description: 'Por favor, completa todas las secciones del contrato.', variant: 'destructive' });
+      toast({
+        title: "Contrato incompleto",
+        description: "Por favor, completa todas las secciones del contrato.",
+        variant: "destructive",
+      });
       return;
     }
+
     const notebookContent = `
-**Ejercicio: MI CONTRATO INTERNO DE AUTOCUIDADO**
+**Ejercicio: ${content.title}**
 
 *No estoy dispuesta/o a:*
 ${notWilling}
@@ -60,19 +67,28 @@ ${howToDo}
     onComplete();
     nextStep();
   };
-  
+
   const renderStep = () => {
-    switch(step) {
-      case 0: // Intro & Instructions
+    switch (step) {
+      case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <h4 className="font-semibold text-lg">¿Por qué un contrato contigo?</h4>
             <p className="text-muted-foreground">A menudo hablamos de poner límites hacia fuera, pero ¿qué pasa con los límites internos? Este ejercicio te ayuda a identificar con claridad aquello que ya no estás dispuesto o dispuesta a seguir permitiéndote, desde un lugar de cuidado, no de juicio.</p>
-            <p className="text-muted-foreground pt-4 border-t">Busca un momento tranquilo para ti. Lee cada bloque con calma y completa las frases con sinceridad. No hay respuestas correctas: este contrato es solo tuyo, para recordarte lo que necesitas cuidar y cómo quieres comprometerte contigo.</p>
             <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
-      case 1: // No estoy dispuesta/o a...
+       case 1:
+        return (
+          <div className="p-4 space-y-4 text-center">
+            <h4 className="font-semibold text-lg">Instrucciones</h4>
+            <p className="text-muted-foreground">Busca un momento tranquilo para ti. Lee cada bloque con calma y completa las frases con sinceridad. No hay respuestas correctas: este contrato es solo tuyo, para recordarte lo que necesitas cuidar y cómo quieres comprometerte contigo.</p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">No estoy dispuesta/o a…</h4>
@@ -93,7 +109,7 @@ ${howToDo}
             </div>
           </div>
         );
-      case 2: // Me comprometo a...
+      case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Me comprometo a…</h4>
@@ -109,15 +125,15 @@ ${howToDo}
             </div>
             <Label htmlFor="commitment">Completa:</Label>
             <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} placeholder="Me comprometo a..." />
-            <div className="flex justify-between w-full mt-4">
+             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!commitment.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-      case 3: // Lo haré de forma...
+      case 4:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Lo haré de forma…</h4>
             <p className="text-sm text-muted-foreground">¿Cómo quieres ejercer ese autocuidado?</p>
             <div className="text-sm text-muted-foreground p-3 border rounded-md bg-background/50">
@@ -131,29 +147,14 @@ ${howToDo}
             <Label htmlFor="how-to-do">Completa:</Label>
             <Textarea id="how-to-do" value={howToDo} onChange={e => setHowToDo(e.target.value)} placeholder="Lo haré de forma..." />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={!howToDo.trim()}>Ver mi contrato <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
-          </div>
-        );
-      case 4: // Summary & Save
-        return (
-          <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary text-center">Tu Contrato Interno de Autocuidado</h4>
-            <div className="p-4 border rounded-md bg-background space-y-2">
-              <p><strong>No estoy dispuesta/o a:</strong><br />{notWilling}</p>
-              <p><strong>Me comprometo a:</strong><br />{commitment}</p>
-              <p><strong>Lo haré de forma:</strong><br />{howToDo}</p>
-            </div>
-            <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar mi Contrato</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar mi Contrato en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
-      case 5: // Confirmation
+      case 5:
         return (
-          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Contrato Guardado</h4>
             <p className="text-muted-foreground">Tu pacto contigo se ha guardado. Vuelve a él cuando necesites recordar tu compromiso.</p>
@@ -168,15 +169,14 @@ ${howToDo}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full h-10">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
+        {content.objective && <CardDescription className="pt-2">{content.objective}
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+                <source src="https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        </CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStep()}
