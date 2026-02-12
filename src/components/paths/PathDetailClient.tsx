@@ -633,7 +633,7 @@ function ContentItemRenderer({
     case 'internalTensionsMapExercise':
       return <InternalTensionsMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'ethicalMirrorExercise':
-      return <EthicalMirrorExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
+      return <EthicalMirrorExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     case 'integrityDecisionsExercise':
       return <IntegrityDecisionsExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'nonNegotiablesExercise':
@@ -956,7 +956,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-    
-
-    

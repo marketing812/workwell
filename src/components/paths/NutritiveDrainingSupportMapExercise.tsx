@@ -83,7 +83,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
         return (
           <div className="p-4 text-center space-y-4">
             <p className="text-sm text-muted-foreground">Imagina que tu energía emocional es como una mochila. Algunas personas la llenan con ánimo, comprensión y apoyo… y otras, sin darse cuenta, la vacían. Esta técnica te ayudará a dibujar un mapa claro de quiénes son tus verdaderas “personas vitamina” y quiénes podrían estar drenando tu fuerza.</p>
-            <Button onClick={nextStep}>Empezar mi semáforo <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar mi semáforo <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Pantalla 2 – Paso 1: Lista inicial
@@ -96,7 +96,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificar Sensación <ArrowRight className="mr-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Clasificar Sensación <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -208,4 +208,3 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
     </Card>
   );
 }
-    
