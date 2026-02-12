@@ -79,6 +79,7 @@ ${when}
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
+            <p>Ejemplos: “Escribir un email importante”, “Hacer ejercicio”, “Ordenar mi habitación”.</p>
             <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
             <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} />
             <Button onClick={nextStep} className="w-full mt-4" disabled={!task.trim()}>
@@ -90,6 +91,7 @@ ${when}
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</h4>
+            <p>Ejemplos: “Abrir el borrador del email”, “Ponerte la ropa de deporte”, “Recoger solo 3 cosas del suelo”.</p>
             <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
             <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
@@ -102,6 +104,7 @@ ${when}
         return (
           <form onSubmit={handleSave} className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</h4>
+            <p>Ejemplos: “Justo después de desayunar”, “En la pausa de las 11:00”, “Al llegar a casa”.</p>
             <Label htmlFor="when" className="sr-only">¿Cuándo lo harás?</Label>
             <Input id="when" value={when} onChange={e => setWhen(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
@@ -112,10 +115,11 @@ ${when}
         );
       case 3:
         return (
-            <div className="flex flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 rounded-lg text-center space-y-3">
-                <CheckCircle className="h-8 w-8 text-green-600" />
-                <p className="font-medium text-green-800 dark:text-green-200">¡Compromiso guardado!</p>
-                <Button onClick={resetExercise} variant="link" className="text-xs">
+            <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">¡Compromiso Guardado!</h4>
+                <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza. Te conecta con tu capacidad de actuar… sin esperar a tenerlo todo bajo control.</p>
+                <Button onClick={resetExercise} variant="outline" className="w-full">
                     Hacer otro compromiso
                 </Button>
             </div>
@@ -131,8 +135,7 @@ ${when}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && (
-          <CardDescription>
+        <CardDescription>
             {content.audioUrl && (
               <div className="mb-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -141,10 +144,8 @@ ${when}
                 </audio>
               </div>
             )}
-            {content.objective}
+            ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.
           </CardDescription>
-        )}
-        {content.duration && <p className="text-sm pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
           {renderStep()}
