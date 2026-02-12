@@ -33,7 +33,7 @@ const gestureExamples = [
   'Recordar un momento especial compartido.',
 ];
 
-export function MutualCareCommitmentExercise({ content, pathId, onComplete }: MutualCareCommitmentExerciseProps) {
+export default function MutualCareCommitmentExercise({ content, pathId, onComplete }: MutualCareCommitmentExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
