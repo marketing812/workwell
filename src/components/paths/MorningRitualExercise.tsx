@@ -84,14 +84,14 @@ const HabitStep = ({ stepTitle, description, options, selected, setSelected, oth
             {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
             <div className="flex justify-between w-full mt-4">
                 {onPrev && <Button variant="outline" onClick={onPrev} type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
-                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="mr-2 h-4 w-4"/></Button>
             </div>
         </div>
     );
 };
 
 
-export function MorningRitualExercise({ content, pathId, onComplete }: MorningRitualExerciseProps) {
+export default function MorningRitualExercise({ content, pathId, onComplete }: MorningRitualExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
