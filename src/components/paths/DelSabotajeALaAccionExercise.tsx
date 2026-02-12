@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -115,7 +116,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Frases que alimentan la procrastinación</h4>
-                    <p>Marca las que sueles decirte:</p>
+                    <p className="text-base">Marca las que sueles decirte:</p>
                     <div className="space-y-2">
                         {sabotageOptions.map(opt => (
                             <div key={opt.id} className="flex items-center space-x-2">
@@ -140,9 +141,9 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                             {selectedOptions.map(opt => (
                                 <div key={opt.id} className="p-3 border rounded-md bg-background">
                                     <p className="text-base">Ante el pensamiento:</p>
-                                    <p className="font-medium italic">{opt.label}</p>
+                                    <p className="font-medium italic text-base">{opt.label}</p>
                                     <p className="text-base mt-2">Tu nueva respuesta amable es:</p>
-                                    <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
+                                    <p className="font-semibold text-primary text-base">{functionalResponses[opt.id]}</p>
                                 </div>
                             ))}
                         </div>
@@ -158,7 +159,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
              return (
                 <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Crea tu tabla personal</h4>
-                    <p>¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
+                    <p className="text-base">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
                     <div className="space-y-2">
                         <Label htmlFor="custom-sabotage">Frase que te repites</Label>
                         <Textarea id="custom-sabotage" value={customSabotage} onChange={e => setCustomSabotage(e.target.value)} />
@@ -170,7 +171,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                     <div className="flex justify-between w-full">
                         <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button type="submit">
-                            <Save className="mr-2 h-4 w-4" /> Guardar mi tabla de diálogo interno
+                            <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                         </Button>
                     </div>
                 </form>
