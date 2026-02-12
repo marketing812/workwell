@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -248,7 +249,20 @@ ${reinforce}
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription>{content.objective}</CardDescription>}
+        {content.objective && (
+            <CardDescription>
+                {content.audioUrl && (
+                    <div className="mb-4">
+                        <audio controls controlsList="nodownload" className="w-full">
+                            <source src={content.audioUrl} type="audio/mp3" />
+                            Tu navegador no soporta el elemento de audio.
+                        </audio>
+                    </div>
+                )}
+                {content.objective}
+            </CardDescription>
+        )}
+        {content.duration && <p className="text-sm pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
         {renderStep()}
