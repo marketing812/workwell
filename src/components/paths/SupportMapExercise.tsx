@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -40,7 +39,7 @@ const supportTypes = [
 ];
 
 
-export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle, onComplete }: SupportMapExerciseProps) {
+export default function SupportMapExercise({ content, pathId, pathTitle, moduleTitle, onComplete }: SupportMapExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
@@ -115,7 +114,7 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle, on
           <div className="p-4 text-center space-y-4">
             <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
             <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="mr-2 h-4 w-4"/></Button>
           </div>
         );
       case 1:
@@ -134,7 +133,7 @@ export function SupportMapExercise({ content, pathId, pathTitle, moduleTitle, on
                 </Button>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="mr-2 h-4 w-4"/></Button>
                  </div>
             </div>
         );
