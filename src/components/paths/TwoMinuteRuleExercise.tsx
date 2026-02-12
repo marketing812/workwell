@@ -77,56 +77,73 @@ ${when}
     switch (step) {
       case 0:
         return (
-          <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
-            <p>Ejemplos: “Escribir un email importante”, “Hacer ejercicio”, “Ordenar mi habitación”.</p>
-            <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
-            <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} />
-            <Button onClick={nextStep} className="w-full mt-4" disabled={!task.trim()}>
-              Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+          <div className="text-center p-4 space-y-4">
+            {content.audioUrl && (
+              <div className="mb-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
+            <p className="mb-4">¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.</p>
+            <Button onClick={() => setStep(1)}>
+              Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4"/>
             </Button>
           </div>
         );
       case 1:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
+            <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
+            <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} placeholder="Ej: Escribir un email importante, Hacer ejercicio, Ordenar mi habitación" />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={nextStep} disabled={!task.trim()}>Siguiente</Button>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</h4>
-            <p>Ejemplos: “Abrir el borrador del email”, “Ponerte la ropa de deporte”, “Recoger solo 3 cosas del suelo”.</p>
             <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
-            <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} />
+            <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} placeholder="Ej: Escribir solo una línea, Moverme durante 2 minutos, Preparar la ropa de deporte" />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!twoMinVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-      case 2:
+      case 3:
         return (
           <form onSubmit={handleSave} className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</h4>
-            <p>Ejemplos: “Justo después de desayunar”, “En la pausa de las 11:00”, “Al llegar a casa”.</p>
             <Label htmlFor="when" className="sr-only">¿Cuándo lo harás?</Label>
-            <Input id="when" value={when} onChange={e => setWhen(e.target.value)} />
+            <Input id="when" value={when} onChange={e => setWhen(e.target.value)} placeholder="Ej: Justo después de desayunar, En la pausa de las 11:00, Al llegar a casa" />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar mi compromiso</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
-      case 3:
+      case 4:
         return (
             <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Compromiso Guardado!</h4>
-                <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza. Te conecta con tu capacidad de actuar… sin esperar a tenerlo todo bajo control.</p>
+                <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza.  Te conecta con tu capacidad de actuar… sin esperar a tenerlo todo bajo control.</p>
                 <Button onClick={resetExercise} variant="outline" className="w-full">
                     Hacer otro compromiso
                 </Button>
             </div>
         );
-      default: return null;
+      default:
+        return null;
     }
   }
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -144,7 +161,7 @@ ${when}
                 </audio>
               </div>
             )}
-            ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.
+            ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.
           </CardDescription>
       </CardHeader>
       <CardContent>
