@@ -36,6 +36,7 @@ import { useFirestore } from "@/firebase/provider";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
 import { pathsData } from '@/data/pathsData';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -104,7 +105,7 @@ export default function DashboardPage() {
     setError(null); 
     setDebugUrl(null);
     try {
-      const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+      const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
       const API_KEY = "4463";
       
       const clave = "SJDFgfds788sdfs8888KLLLL";

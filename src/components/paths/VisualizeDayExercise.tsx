@@ -41,7 +41,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
     setter(value);
     if (value !== 'Otro') {
         otherSetter('');
-        mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+        mainSetter(prev => prev ? `${prev}\\n- ${value}`.trim() : `- ${value}`);
     }
   };
 

@@ -16,6 +16,7 @@ import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import { overwriteNotebookEntries, clearAllNotebookEntries, type NotebookEntry } from '@/data/therapeuticNotebookStore';
 import { deleteLegacyData, sendLegacyData } from '@/data/userUtils'; // Importar la nueva función
 import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
 const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
@@ -43,7 +44,7 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
 const API_KEY = "4463";
 
 async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[], debugUrl: string}> {

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslations } from '@/lib/translations';
 import { ArrowRight, Info, Shield, ListChecks, UserCheck, BookOpen, FileJson } from 'lucide-react';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export default function AssessmentIntroPage() {
   const t = useTranslations();
@@ -16,7 +17,7 @@ export default function AssessmentIntroPage() {
       <Card className="w-full max-w-3xl shadow-xl my-8 overflow-hidden">
         <CardHeader className="p-0 relative h-64 w-full">
             <Image 
-                src="https://workwellfut.com/imgapp/800x300/imagenEvaluacion.jpg"
+                src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/imagenEvaluacion.jpg`}
                 alt="Evaluación de bienestar" 
                 fill 
                 className="object-cover"
@@ -24,7 +25,7 @@ export default function AssessmentIntroPage() {
                 onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null; // prevents looping
-                    target.src = 'https://workwellfut.com/imgapp/800x300/default_800x300.jpg';
+                    target.src = `${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/default_800x300.jpg`;
                 }}
             />
             <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-4">
