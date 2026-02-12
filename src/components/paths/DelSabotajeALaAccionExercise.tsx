@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -121,7 +120,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                         {sabotageOptions.map(opt => (
                             <div key={opt.id} className="flex items-center space-x-2">
                                 <Checkbox id={opt.id} checked={selections[opt.id] || false} onCheckedChange={(checked) => handleSelectionChange(opt.id, checked as boolean)} />
-                                <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                                <Label htmlFor={opt.id} className="font-normal text-base">{opt.label}</Label>
                             </div>
                         ))}
                     </div>
@@ -140,9 +139,9 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                         <div className="space-y-4">
                             {selectedOptions.map(opt => (
                                 <div key={opt.id} className="p-3 border rounded-md bg-background">
-                                    <p className="text-sm">Ante el pensamiento:</p>
+                                    <p className="text-base">Ante el pensamiento:</p>
                                     <p className="font-medium italic">{opt.label}</p>
-                                    <p className="text-sm mt-2">Tu nueva respuesta amable es:</p>
+                                    <p className="text-base mt-2">Tu nueva respuesta amable es:</p>
                                     <p className="font-semibold text-primary">{functionalResponses[opt.id]}</p>
                                 </div>
                             ))}
@@ -182,9 +181,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                 <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                     <h4 className="text-xl font-bold">¡Ejercicio Guardado!</h4>
-                    <p>
-                        Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estarás construyendo un puente hacia la acción.
-                    </p>
+                    <p>Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estás construyendo un puente hacia la acción.</p>
                     <Button onClick={resetExercise} variant="outline" className="w-full">
                         Hacer otro ejercicio
                     </Button>
