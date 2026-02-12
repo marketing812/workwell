@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -47,7 +48,8 @@ const techniques = {
     when: "Cuando la otra persona tiene parte de razón y tú quieres reconocerlo honestamente, pero sin renunciar a tu necesidad o decisión.",
     goal: "Favorece un entendimiento real, mostrando que escuchas y validas al otro, sin dejarte de lado a ti. Refuerza tu capacidad de empatía y firmeza al mismo tiempo.",
     howToBuild: "Reconoce con sinceridad lo que el otro dice. Ej.: “Tienes razón en parte…”, “Es cierto que esto es importante…” \nA continuación, reafirma tu límite o necesidad. Ej.: “…pero también necesito cuidar mis tiempos.” \nEsta técnica es un puente: valida al otro y a ti, al mismo tiempo.",
-    example: "Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos.\nSí, podría haber avisado antes, pero aun así no me siento bien con lo que ocurrió."
+    example: "Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos.\nSí, podría haber avisado antes, pero aun así no me siento bien con lo que ocurrió.",
+    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/R4sem2acuerdoparcial.mp3"
   },
   sandwich: {
     title: "Técnica: Técnica del sándwich",
