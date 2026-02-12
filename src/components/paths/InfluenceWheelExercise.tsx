@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -8,11 +7,17 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { InfluenceWheelExerciseContent } from '@/data/paths/pathTypes';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useUser } from '@/contexts/UserContext';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+
+interface Situation {
+    name: string;
+    control: 'mine' | 'not_mine' | 'partial' | '';
+    circle: 'interno' | 'externo' | '';
+}
 
 interface InfluenceWheelExerciseProps {
   content: InfluenceWheelExerciseContent;
@@ -47,12 +52,6 @@ const externalActions = [
     "Reenfocar mi energía hacia mis objetivos",
     "Otro",
 ];
-
-interface Situation {
-    name: string;
-    control: 'mine' | 'not_mine' | 'partial' | '';
-    circle: 'interno' | 'externo' | '';
-}
 
 export default function InfluenceWheelExercise({ content, pathId, onComplete }: InfluenceWheelExerciseProps) {
   const { toast } = useToast();
@@ -89,6 +88,14 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
 
+  const resetExercise = () => {
+    setStep(0);
+    setSituations(Array.from({ length: 5 }, () => ({ name: '', control: '', circle: '' })));
+    setActionPlans({});
+    setOtherActionPlans({});
+    setIsSaved(false);
+  };
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
      const filledSituations = situations.filter(sit => sit.name.trim() && sit.circle);
@@ -122,11 +129,11 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
   
   const renderStep = () => {
     switch (step) {
-      case 0:
+      case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">La responsabilidad no es cargar con todo, sino elegir dónde pones tu energía. Este ejercicio te ayuda a dibujar un mapa claro: lo que sí depende de ti y lo que es mejor soltar.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -136,7 +143,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
                 <p className="text-sm text-muted-foreground">Piensa en los últimos 7 días y anota situaciones que te han preocupado, estresado o hecho sentir responsable. Ejemplo: Preparar una presentación importante. La actitud negativa de un compañero/a. Que mi pareja esté de mal humor.</p>
                 {situations.map((sit, index) => (
                     <div key={index}>
-                        <Label htmlFor={`sit-text-${index}`} className="sr-only">Situación {index + 1}:</Label>
+                        <Label htmlFor={`sit-text-${index}`} className="sr-only">Situación ${index + 1}:</Label>
                         <Textarea
                         id={`sit-text-${index}`}
                         value={sit.name}
@@ -241,7 +248,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana4tecnica1.mp3" type="audio/mp3" />
+                        <source src={content.audioUrl} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>
