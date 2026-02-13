@@ -13,6 +13,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
@@ -79,7 +80,7 @@ ${hiddenObjective}
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
@@ -118,8 +119,8 @@ ${hiddenObjective}
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
           </div>
            <div className="space-y-2">
-              <Label className="font-semibold">Revisión y anclaje</Label>
-              <p className="text-sm text-muted-foreground">Lee tu frase reformulada y reflexiona:</p>
+              <Label className="font-semibold">Lista de verificación interactiva:</Label>
+              <p className="text-sm text-muted-foreground">Marca las casillas que tu nueva frase cumple…</p>
               <div className="flex items-center space-x-2">
                   <Checkbox id="check-helps" checked={checklist.helps} onCheckedChange={(checked) => handleChecklistChange('helps', !!checked)} disabled={isSaved} />
                   <Label htmlFor="check-helps" className="font-normal">Me ayuda a mejorar.</Label>
@@ -147,3 +148,5 @@ ${hiddenObjective}
     </Card>
   );
 }
+
+    

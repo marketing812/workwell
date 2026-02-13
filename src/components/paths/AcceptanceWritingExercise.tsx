@@ -163,7 +163,7 @@ ${response}
           </div>
           <div className="space-y-2">
             <Label htmlFor="judgment">Distingue hechos de juicios</Label>
-            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Revisa lo que escribiste y separa qué es un hecho objetivo y qué es una interpretación o juicio.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
             <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} placeholder="Anota qué partes son hechos y cuáles son juicios" />
           </div>
           <div className="space-y-2">
@@ -189,3 +189,5 @@ ${response}
     </Card>
   );
 }
+
+    

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -70,22 +71,22 @@ ${signature}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="initial-commitment">El contrato comienza con tus propias palabras</Label>
+            <Label htmlFor="initial-commitment" className="font-semibold text-lg">El contrato comienza con tus propias palabras</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Quiero que empieces escribiendo una frase que marque la intención general de tu contrato. Piensa en algo que resuma cómo quieres tratarte a partir de ahora.  <br>Ejemplo: Me comprometo a hablarme con respeto, aunque me equivoque, y a buscar siempre un aprendizaje en cada decisión." }} />
             <Textarea id="initial-commitment" value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase de compromiso inicial…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="how-to-talk">Cómo quiero hablarme cuando me equivoque</Label>
+            <Label htmlFor="how-to-talk" className="font-semibold text-lg">Cómo quiero hablarme cuando me equivoque</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
             <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="how-to-respond">Cómo quiero responder ante mis decisiones</Label>
+            <Label htmlFor="how-to-respond" className="font-semibold text-lg">Cómo quiero responder ante mis decisiones</Label>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Tanto si las cosas salen bien como si no, tu forma de responderte puede marcar la diferencia. Define qué actitudes y acciones quieres mantener después de tomar una decisión, evitando quedarte atrapado/a en la duda o el arrepentimiento. <br> Ejemplo: <br>Revisaré si la decisión estaba alineada con mis valores y aprenderé lo que pueda, en lugar de castigarme. " }} />
             <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Escribe aquí cómo quieres responder ante tus decisiones…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="signature">Firma y compromiso</Label>
+            <Label htmlFor="signature" className="font-semibold text-lg">Firma y compromiso</Label>
             <div className="text-sm text-muted-foreground space-y-2" dangerouslySetInnerHTML={{ __html: "Cuando termines, lee tu contrato completo en voz alta. Si te suena demasiado duro, ajústalo. Si te suena realista y motivador, fírmalo (puedes escribir tu nombre o solo tus iniciales).<br><b>Mi contrato:</b><br>" }} />
             <div className="p-4 border rounded-md bg-background/50 space-y-3 text-sm">
                 <p><strong>Mi compromiso inicial:</strong></p>
@@ -120,3 +121,5 @@ ${signature}
     </Card>
   );
 }
+
+    

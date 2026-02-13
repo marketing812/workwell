@@ -160,7 +160,7 @@ export const responsibilityPath: Path = {
           title: 'Aceptación activa ≠ resignación',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Audio2sesion2ruta10.mp3`,
           content: [
-            { type: 'paragraph', text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con <b>resignarse</b>. Pero no son lo mismo.' },
+            { type: 'paragraph', text: 'En muchas personas, la palabra “aceptar” despierta resistencia porque la confunden con resignarse. Pero no son lo mismo.' },
             { type: 'list', items: ['Aceptar activamente es reconocer los hechos, tus emociones y pensamientos, sin resistencia ni juicio, para poder actuar con claridad.', 'Resignarse es decir “no hay nada que hacer” y quedarse inmóvil.'] },
             { type: 'paragraph', text: 'Idea clave: la aceptación activa abre caminos, la resignación los bloquea.  Ejemplo:' },
             { type: 'list', items: ['Resignación -> “Fallé en mi presentación, mejor no vuelvo a exponer.”', 'Aceptación activa → “Fallé, me duele, pero puedo aprender y prepararme mejor para la próxima.”'] },
@@ -321,7 +321,9 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Reflexionsesion3ruta10.mp3`,
-          prompts: ['<ul><li>¿Qué descubrimiento ha tenido más impacto en ti?</li><li>¿Cómo cambió tu forma de actuar al suavizar la crítica interna?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo?</li></ul>'],
+          prompts: [
+            '<ul><li>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</li><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>'
+          ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Resumensesion3ruta10.mp3` },
         {
@@ -456,3 +458,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+    
