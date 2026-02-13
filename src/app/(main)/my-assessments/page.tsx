@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -13,9 +12,10 @@ import { useUser } from '@/contexts/UserContext';
 import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
 import { z } from 'zod';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 // API constants
-const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
 const API_KEY = "4463";
 const API_TIMEOUT_MS = 20000;
 const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';

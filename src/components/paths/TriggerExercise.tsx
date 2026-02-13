@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -17,6 +16,7 @@ import type { TriggerExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
@@ -48,7 +48,8 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   const [reflectionNextTime, setReflectionNextTime] = useState('');
   const [isReflectionSaved, setIsReflectionSaved] = useState(false);
 
-  const audioUrl = "https://workwellfut.com/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3";
+  const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`;
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -393,4 +394,3 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
     </Card>
   );
 }
-

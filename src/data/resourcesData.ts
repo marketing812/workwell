@@ -1,5 +1,5 @@
-
 import { unstable_noStore as noStore } from 'next/cache';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 // Tipos de datos para los posts y categorías de recursos.
 export type ResourcePost = {
@@ -30,7 +30,7 @@ export type ResourceCategory = {
     count: number;
 };
 
-const API_BASE_URL = "https://workwellfut.com/wp-json/wp/v2";
+const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-json/wp/v2`;
 
 // --- Obtención de datos dinámicos desde la API de WordPress ---
 

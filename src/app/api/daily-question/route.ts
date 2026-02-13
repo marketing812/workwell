@@ -1,5 +1,5 @@
-
 import { NextResponse, type NextRequest } from 'next/server';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DailyQuestionFromApi {
   numero: number;
@@ -14,7 +14,7 @@ async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ que
   const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
   const raw = `${clave}|${fecha}`;
   const token = Buffer.from(raw).toString('base64');
-  let externalUrl = `https://workwellfut.com/wp-content/programacion/traejson.php?archivo=clima&token=${encodeURIComponent(token)}`;
+  let externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima&token=${encodeURIComponent(token)}`;
 
   if (userId) {
     const base64UserId = Buffer.from(userId).toString('base64');

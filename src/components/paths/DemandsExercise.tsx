@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +12,7 @@ import { Edit3, Save, CheckCircle, NotebookText } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DemandsExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DemandsExerciseProps {
   content: DemandsExerciseContent;
@@ -43,7 +43,7 @@ export default function DemandsExercise({ content, onComplete, pathId }: Demands
 
   const [reflection, setReflection] = useState('');
   const [isReflectionSaved, setIsReflectionSaved] = useState(false);
-  const audioUrl = "https://workwellfut.com/audios/r1_desc/Sesion3tecnica2tabladeexigenciasvsdeseosreales.mp3";
+  const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion3tecnica2tabladeexigenciasvsdeseosreales.mp3`;
 
   const handleOriginChange = (optionId: string, checked: boolean) => {
     setOrigins(prev => ({ ...prev, [optionId]: checked }));

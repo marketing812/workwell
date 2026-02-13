@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -11,6 +10,7 @@ import { ArrowRight, BookCheck } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useActivePath } from '@/contexts/ActivePathContext'; // Importar el contexto
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export default function PathsPage() {
   const t = useTranslations();
@@ -53,7 +53,7 @@ export default function PathsPage() {
             <CardHeader>
               <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
                 <Image 
-                  src={`https://workwellfut.com/imgapp/600x400/${encodeURIComponent(path.title.replace(':', ''))}_600x400.jpg`} 
+                  src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/600x400/${encodeURIComponent(path.title.replace(':', ''))}_600x400.jpg`} 
                   alt={path.title} 
                   fill
                   className="object-cover"

@@ -84,7 +84,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
         return (
           <div className="text-center p-4 space-y-4">
             <p className="text-sm text-muted-foreground">La visualización es una herramienta muy utilizada en psicología y neurociencia porque activa en el cerebro las mismas redes que usamos al ejecutar una acción real. Con este ejercicio vas a diseñar mentalmente el día que quieres vivir.</p>
-            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Paso 1: Intención

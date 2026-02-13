@@ -98,7 +98,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3`,
-          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\\n\\n- Sabes diferenciar culpa, queja y responsabilidad.\\n- Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\\n- Cuentas con un método para pasar de la queja a la acción.\\n\\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.\\n\\nRecuerda no cargarte nada por favor' }],
+          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\\n\\n- Sabes diferenciar culpa, queja y responsabilidad.\\n- Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\\n- Cuentas con un método para pasar de la queja a la acción.\\n\\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {

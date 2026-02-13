@@ -1,8 +1,9 @@
 "use server";
 
 import { forceEncryptStringAES } from '@/lib/encryption';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
-const API_BASE_URL = "https://workwellfut.com/wp-content/programacion/wscontenido.php";
+const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
 const API_KEY = "4463";
 const API_TIMEOUT_MS = 15000;
 
