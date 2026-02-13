@@ -88,7 +88,7 @@ ${chosenAction}
       case 1: // Step 1: Describe la situación
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Describe la situación</h4>
+            <h4 className="font-semibold text-lg">Describe la situación</h4>
             <p className="text-sm text-muted-foreground">Piensa en algo que te haya molestado y escríbelo como hechos, sin juicios. Ejemplo: “Mi compañero entregó el informe tarde.”</p>
             <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe la situación objetivamente..." />
             <div className="flex justify-between w-full mt-4">
@@ -100,7 +100,7 @@ ${chosenAction}
        case 2: // Step 2: Detecta tu pensamiento (queja)
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Detecta tu queja</h4>
+            <h4 className="font-semibold text-lg">Detecta tu queja</h4>
             <p className="text-sm text-muted-foreground">¿Qué pensamiento automático o queja surgió? Ejemplo: “Siempre me toca a mí arreglarlo todo.”</p>
             <Textarea value={thought} onChange={e => setThought(e.target.value)} placeholder="Escribe el pensamiento que tuviste..." />
             <div className="flex justify-between w-full mt-4">
@@ -112,7 +112,7 @@ ${chosenAction}
       case 3: // Step 3: Cuestiónalo
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Cuestiona tu queja</h4>
+            <h4 className="font-semibold text-lg">Cuestiona tu queja</h4>
             <p className="text-sm text-muted-foreground">¿Qué pruebas tienes a favor y en contra de ese pensamiento? ¿Es 100% verdad?</p>
             <Textarea value={questioning} onChange={e => setQuestioning(e.target.value)} placeholder="A favor: ... En contra: ..." />
             <div className="flex justify-between w-full mt-4">
@@ -124,7 +124,7 @@ ${chosenAction}
       case 4: // NEW: Pantalla 4 – Registra tu plan
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 4: Registra tu plan</h4>
+                <h4 className="font-semibold text-lg">Registra tu plan</h4>
                 <p className="text-sm text-muted-foreground">Ahora, transforma la queja en una acción concreta que dependa de ti.</p>
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -145,7 +145,7 @@ ${chosenAction}
        case 5: // NEW: Pantalla 5 – Revisión final
         return (
             <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 5: Revisión final</h4>
+                <h4 className="font-semibold text-lg">Revisión final</h4>
                 <div className="p-4 border rounded-md bg-background/50 space-y-3">
                     <p className="font-medium">Resumen de tu plan:</p>
                     <p><strong>En lugar de quejarte de:</strong><br/> "{thought}"</p>
@@ -195,7 +195,7 @@ ${chosenAction}
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
-                            <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
+                            <source src={content.audioUrl} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
