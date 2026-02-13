@@ -163,11 +163,21 @@ ${chosenAction}
         );
        case 6: // Confirmation
         return (
-          <div className="p-6 text-center space-y-4">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
-            <p className="text-muted-foreground">Tu transformación ha sido guardada. Puedes volver a ella en tu cuaderno cuando lo necesites.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+          <div className="p-6 space-y-4">
+            <div className="text-center mb-4">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
+                <p className="text-muted-foreground">Tu transformación ha sido guardada en tu cuaderno.</p>
+            </div>
+            <div className="text-left p-4 border rounded-md bg-background/50 space-y-3 text-sm">
+                <p><strong>Situación:</strong> {situation}</p>
+                <p><strong>Queja:</strong> "{thought}"</p>
+                <p><strong>Acción definida:</strong> "{action}"</p>
+                <p><strong>Acción para hoy:</strong> "{chosenAction}"</p>
+            </div>
+            <Button onClick={resetExercise} variant="outline" className="w-full">
+                Hacer otro registro
+            </Button>
           </div>
         );
       default:
@@ -199,4 +209,3 @@ ${chosenAction}
     </Card>
   );
 }
-

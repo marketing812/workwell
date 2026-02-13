@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -13,6 +14,7 @@ import type { AcceptanceWritingExerciseContent } from '@/data/paths/pathTypes';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface AcceptanceWritingExerciseProps {
   content: AcceptanceWritingExerciseContent;
@@ -132,7 +134,7 @@ ${response}
             {content.objective}
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>

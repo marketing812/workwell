@@ -12,6 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface NoGuiltTechniquesExerciseProps {
   content: NoGuiltTechniquesExerciseContent;
@@ -25,7 +26,7 @@ const techniques = {
     goal: "Te ayuda a mantener tu decisión con calma, sin entrar en discusiones, reforzando tu firmeza interna.",
     howToBuild: "Reconoce lo que el otro dice con serenidad. Ej.: “Lo entiendo”, “Te escucho”, “Sé que no te gusta…” \nRepite tu límite sin justificarte ni cambiarlo. Ej.: “…pero mi decisión sigue siendo la misma.” \nLa clave es mantener el mensaje sin alterarte, como un disco rayado: claro, repetido (aunque puedes cambiar alguna palabra) y tranquilo.",
     example: "Lo entiendo, pero mi decisión sigue siendo la misma: esta vez no voy a poder.\nSé que lo necesitas, pero no puedo encargarme de eso esta semana.\nLo entiendo, pero no voy a asistir a la reunión.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2discoraydo.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2discoraydo.mp3`
   },
   bancoNiebla: {
     title: "Técnica: Banco de niebla",
@@ -33,7 +34,7 @@ const techniques = {
     goal: "Te ayuda a mantener tu posición sin enfrentarte ni engancharte en argumentos. Es como una niebla emocional: no choca, pero tampoco se rinde. Refuerza tu derecho a sostener tu límite sin necesidad de entrar en detalle.",
     howToBuild: "Valida de forma neutral o superficial. Ej.: “Es posible que tengas razón…”, “Entiendo tu punto…” \nSostén tu límite con tranquilidad. Ej.: “…y aun así, prefiero hacerlo de otra forma.” \nEs una forma sutil y elegante de no ceder ante la presión, sin necesidad de justificarte ni abrir debate.",
     example: "Entiendo que te moleste, pero esta vez necesito que respetes mi decisión.\nPuede parecer exagerado, pero no me siento cómodo/a con ese tipo de bromas.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2bancodeniebla.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2bancodeniebla.mp3`
   },
   aplazamientoAsertivo: {
     title: "Técnica: Aplazamiento asertivo",
@@ -41,7 +42,7 @@ const techniques = {
     goal: "Evita respuestas impulsivas y te permite actuar desde la calma. Refuerza tu derecho a pensar antes de decidir.",
     howToBuild: "Agradece o reconoce la propuesta. Ej.: “Gracias por contar conmigo.” \nIndica que necesitas tiempo para responder. Ej.: “Prefiero pensarlo con calma y darte una respuesta después.” \nLa clave está en parar el impulso de complacer y darte un espacio para pensar.",
     example: "Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde.\nDéjame revisar mis tiempos y en un rato te confirmo.\nNecesito consultarlo antes de darte una respuesta definitiva.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3`
   },
   acuerdoParcial: {
     title: "Técnica: Acuerdo parcial o asertivo",
@@ -49,7 +50,7 @@ const techniques = {
     goal: "Favorece un entendimiento real, mostrando que escuchas y validas al otro, sin dejarte de lado a ti. Refuerza tu capacidad de empatía y firmeza al mismo tiempo.",
     howToBuild: "Reconoce con sinceridad lo que el otro dice. Ej.: “Tienes razón en parte…”, “Es cierto que esto es importante…” \nA continuación, reafirma tu límite o necesidad. Ej.: “…pero también necesito cuidar mis tiempos.” \nEsta técnica es un puente: valida al otro y a ti, al mismo tiempo.",
     example: "Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos.\nSí, podría haber avisado antes, pero aun así no me siento bien con lo que ocurrió.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/R4sem2acuerdoparcial.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3`
   },
   sandwich: {
     title: "Técnica: Técnica del sándwich",
@@ -57,7 +58,7 @@ const techniques = {
     goal: "Te permite proteger el vínculo y decir que no con amabilidad. Refuerza tu empatía sin renunciar a ti.",
     howToBuild: "Empieza con algo positivo o con una validación. Ej.: “Gracias por contar conmigo…”, “Valoro tu opinión…” \nExpón tu límite o negativa con claridad. Ej.: “…pero esta vez no voy a poder.” \nCierra con un mensaje amable. Ej.: “Espero que lo resolváis genial.” \nEs como un mensaje envuelto entre cuidado y respeto.",
     example: "Me encanta que me tengas en cuenta, pero este fin de semana necesito descansar. Seguro que lo resolvéis genial.\nValoro mucho tu opinión, pero esta vez prefiero seguir mi intuición. Gracias por entenderlo.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4semana2tecsandwich.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4semana2tecsandwich.mp3`
   },
   redireccion: {
     title: "Técnica: Redirección con foco",
@@ -65,7 +66,7 @@ const techniques = {
     goal: "Te permite cuidar tus recursos sin cerrarte por completo. Refuerza tu equilibrio entre dar y cuidarte.",
     howToBuild: "Empieza expresando tu límite de forma clara. Ej.: “No puedo quedarme más tiempo hoy.” \nDespués, ofrece una alternativa posible o más saludable. Ej.: “…pero mañana puedo ayudarte a repasar el informe.” \nLa clave es mantener tu decisión sin cortar el vínculo. Estás diciendo “no” y al mismo tiempo mostrando que te importa.",
     example: "No puedo quedarme más tiempo hoy, pero mañana puedo ayudarte a repasar el informe.\nNo estoy preparado/a para abordar ese tema, pero sí podemos hablar de cómo organizamos el proyecto.",
-    audioUrl: "https://workwellfut.com/audios/ruta4/tecnicas/herramientas/R4semana2tecredirecciondefoco.mp3"
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4semana2tecredirecciondefoco.mp3`
   }
 };
 

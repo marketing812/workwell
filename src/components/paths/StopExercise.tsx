@@ -11,6 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { StopExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface StopExerciseProps {
   content: StopExerciseContent;
@@ -69,7 +70,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Interrumpe el piloto automático. Detente físicamente. Suelta los hombros, planta los pies en el suelo.</p>
             <div className="mt-4">
                 <audio key="audio-step-1" controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3" type="audio/mp3" />
+                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica1paso1stop.mp3`} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
@@ -86,7 +87,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Activa tu freno natural. Inhala por la nariz... y exhala lento por la boca. Repite 3-5 veces.</p>
             <div className="mt-4">
               <audio key="audio-step-2" controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -103,7 +104,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Mira tus pensamientos y sensaciones desde fuera. ¿Qué estás pensando? ¿Qué sientes en el cuerpo?</p>
             <div className="mt-4">
               <audio key="audio-step-3" controls controlsList="nodownload" className="w-full">
-                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semN3tecnica1observa.mp3" type="audio/mp3" />
+                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semN3tecnica1observa.mp3`} type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -121,7 +122,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Acepta lo que sientes sin luchar. Ahora, elige el siguiente paso, por pequeño que sea.</p>
             <div className="mt-4">
               <audio key="audio-step-4" controls controlsList="nodownload" className="w-full">
-                  <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3" type="audio/mp3" />
+                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3`} type="audio/mp3" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -145,7 +146,7 @@ ${nextAction}
             {content.objective}
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
