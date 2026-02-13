@@ -194,8 +194,10 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: 'Rigidez cognitiva: cuando la mente solo ve un camino',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3`,
-          content: [{ type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.' }]
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3`,
+          content: [
+            { type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.'}
+          ],
         },
         {
           type: 'collapsible',
@@ -220,6 +222,7 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio4Ruta2Sesion3.mp3`,
           content: [
             { type: 'list', items: ['Soltar el bucle de pensamientos rumiativos','Tolerar mejor la ambigüedad e incertidumbre','Recuperar perspectiva en momentos intensos','Ser más creativo/a, abierto/a y adaptativo/a']}
           ]
