@@ -10,8 +10,9 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IntensityScaleExerciseContent } from '@/data/paths/pathTypes';
-import { useUser } from '@/contexts/UserContext';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface IntensityScaleExerciseProps {
   content: IntensityScaleExerciseContent;
@@ -146,7 +147,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
                 <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                     <h4 className="font-bold text-lg">Escala Guardada</h4>
-                    <p className="text-muted-foreground">Ya tienes tu propia escala emocional con recursos asociados. Esta será tu hoja de ruta cuando todo parezca desbordarte. Puedes volver a ella siempre que lo necesites.</p>
+                    <p>Ya tienes tu propia escala emocional con recursos asociados. Esta será tu hoja de ruta cuando todo parezca desbordarte. Puedes volver a ella siempre que lo necesites.</p>
                     <p className="text-xs text-muted-foreground italic">Recuerda: tu cuerpo te habla. Cuanto antes lo escuches, más fácil será cuidarte.</p>
                     <Button onClick={resetExercise} variant="outline" className="w-full">
                         Empezar de nuevo
@@ -165,7 +166,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
           <audio controls controlsList="nodownload" className="w-full">
-            <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3" type="audio/mp3" />
+            <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
             Tu navegador no soporta el elemento de audio.
           </audio>
         </div>

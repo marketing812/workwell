@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,6 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalDefinitionExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface PersonalDefinitionExerciseProps {
   content: PersonalDefinitionExerciseContent;
@@ -117,7 +119,7 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana1tecnica2.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>

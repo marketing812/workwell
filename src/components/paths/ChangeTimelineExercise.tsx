@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,6 +11,7 @@ import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ChangeTimelineExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface ChangeTimelineExerciseProps {
   content: ChangeTimelineExerciseContent;
@@ -187,7 +189,7 @@ ${inflectionPoints}
             {content.objective}
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
