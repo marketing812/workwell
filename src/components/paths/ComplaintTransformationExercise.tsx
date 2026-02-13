@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -23,37 +22,55 @@ export default function ComplaintTransformationExercise({ content, pathId, onCom
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
-  const [complaint, setComplaint] = useState('');
-  const [controllable, setControllable] = useState('');
+
+  const [situation, setSituation] = useState('');
+  const [thought, setThought] = useState('');
+  const [questioning, setQuestioning] = useState('');
+  const [attribution, setAttribution] = useState('');
+  const [decatastrophizing, setDecatastrophizing] = useState('');
   const [action, setAction] = useState('');
+
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
+  
   const resetExercise = () => {
     setStep(0);
-    setComplaint('');
-    setControllable('');
+    setSituation('');
+    setThought('');
+    setQuestioning('');
+    setAttribution('');
+    setDecatastrophizing('');
     setAction('');
     setIsSaved(false);
   };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!complaint.trim() || !controllable.trim() || !action.trim()) {
-      toast({ title: 'Campos incompletos', description: 'Por favor, completa todos los pasos para guardar.', variant: 'destructive' });
+    if (!situation.trim() || !action.trim()) {
+      toast({ title: 'Campos incompletos', description: 'Por favor, completa al menos la situación y la acción final.', variant: 'destructive' });
       return;
     }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Me quejo de:*
-${complaint}
+*1. Situación (hechos):*
+${situation}
 
-*Lo que sí depende de mí es:*
-${controllable}
+*2. Pensamiento detectado:*
+${thought}
 
-*Lo que sí puedo hacer es:*
+*3. Cuestionamiento (evidencia a favor/en contra):*
+${questioning}
+
+*4. Atribución realista (mi parte vs. la que no es mía):*
+${attribution}
+
+*5. Descatastrofización (¿qué haría si pasara lo peor?):*
+${decatastrophizing}
+
+*6. Acción pequeña y concreta:*
 ${action}
     `;
     addNotebookEntry({ title: 'Transformación de Queja a Acción', content: notebookContent, pathId, userId: user?.id });
@@ -65,66 +82,86 @@ ${action}
 
   const renderStep = () => {
     switch(step) {
-      case 0:
+      case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">La queja te mantiene en un bucle de frustración. En este ejercicio vas a transformar ese malestar en una acción concreta, recuperando tu poder de elección.</p>
             <Button onClick={nextStep}>Empezar Transformación <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
-      case 1:
+      case 1: // Step 1: Describe la situación
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Elige tu queja</h4>
-            <p className="text-sm text-muted-foreground">Piensa en algo que te haya molestado en las últimas 24–48 horas. Escríbelo tal cual lo dirías.</p>
-            <Textarea value={complaint} onChange={e => setComplaint(e.target.value)} placeholder="Escribe aquí tu queja..." />
+            <h4 className="font-semibold text-lg">Paso 1: Describe la situación</h4>
+            <p className="text-sm text-muted-foreground">Piensa en algo que te haya molestado y escríbelo como hechos, sin juicios. Ejemplo: “Mi compañero entregó el informe tarde.”</p>
+            <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe la situación objetivamente..." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={!complaint.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-      case 2:
+       case 2: // Step 2: Detecta tu pensamiento
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Detecta lo que está bajo tu control</h4>
-            <p className="text-sm text-muted-foreground">Pregúntate: “¿Qué parte de esta situación depende de mí?"</p>
-            <Textarea value={controllable} onChange={e => setControllable(e.target.value)} placeholder="Describe la parte que sí depende de ti..." />
+            <h4 className="font-semibold text-lg">Paso 2: Detecta tu pensamiento</h4>
+            <p className="text-sm text-muted-foreground">¿Qué pensamiento automático surgió? Ejemplo: “Siempre me toca a mí arreglarlo todo.”</p>
+            <Textarea value={thought} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setThought(e.target.value)} placeholder="Escribe el pensamiento que tuviste..." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={!controllable.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep} disabled={!thought.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-      case 3:
+      case 3: // Step 3: Cuestiónalo
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Redefine en modo acción</h4>
-            <p className="text-sm text-muted-foreground">Cambia la queja por un paso concreto que puedas dar. Ejemplo: Queja → "Nunca me valoran en el trabajo". Acción → "Voy a pedir feedback a mi jefe esta semana."</p>
-            <Textarea value={action} onChange={e => setAction(e.target.value)} placeholder="Escribe tu acción concreta..." />
+            <h4 className="font-semibold text-lg">Paso 3: Cuestiónalo</h4>
+            <p className="text-sm text-muted-foreground">¿Qué pruebas tienes a favor y en contra de ese pensamiento?</p>
+            <Textarea value={questioning} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setQuestioning(e.target.value)} placeholder="A favor: ... En contra: ..." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Ver Resumen <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep} disabled={!questioning.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
-      case 4:
+      case 4: // Step 4: Atribuye con realismo
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 4: Atribuye con realismo</h4>
+            <p className="text-sm text-muted-foreground">¿Qué parte es tuya y cuál no? ¿Qué sí depende de ti? Ejemplo: “No depende de mí que él cumpla, pero sí depende de mí cómo comunico el impacto que tiene.”</p>
+            <Textarea value={attribution} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setAttribution(e.target.value)} placeholder="Mi parte es... Lo que no es mío es..." />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!attribution.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 5: // Step 5: Descatastrofización
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg">Paso 5: Si pasara lo que temo, ¿qué haría?</h4>
+            <p className="text-sm text-muted-foreground">Anticipar una estrategia de afrontamiento reduce el miedo. Ejemplo: “Si se enfada, me daré un momento para respirar y responderé con calma.”</p>
+            <Textarea value={decatastrophizing} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDecatastrophizing(e.target.value)} placeholder="Si ocurriera lo peor, yo podría..." />
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!decatastrophizing.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </div>
+          </div>
+        );
+      case 6: // Step 6: Acción concreta
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-center">Resumen de tu Transformación</h4>
-            <div className="space-y-3 p-4 border rounded-md bg-background/50">
-              <p><strong>Queja:</strong> {complaint || '...'}</p>
-              <p><strong>Bajo mi control:</strong> {controllable || '...'}</p>
-              <p><strong>Acción concreta:</strong> {action || '...'}</p>
-            </div>
-            <p className="text-center italic text-muted-foreground text-sm pt-2">Has pasado de la frustración a la acción. Guarda este registro como recordatorio de tu poder.</p>
+            <h4 className="font-semibold text-lg">Paso 6: Define un paso pequeño y concreto</h4>
+            <p className="text-sm text-muted-foreground">Cambia la queja por una acción que puedas hacer hoy o mañana. Ejemplo: “Voy a proponer una reunión breve para revisar los plazos.”</p>
+            <Textarea value={action} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setAction(e.target.value)} placeholder="Mi próximo pequeño paso es..." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Transformación</Button>
             </div>
           </form>
         );
-       case 5:
+       case 7: // Confirmation
         return (
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
