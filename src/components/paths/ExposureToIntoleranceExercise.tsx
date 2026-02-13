@@ -100,7 +100,7 @@ ${finalReflection}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Elige tu situación</h4>
             <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal.</Label>
-             <div className="text-sm text-muted-foreground p-2 border rounded-md bg-background/50">
+             <div className="text-base text-muted-foreground p-2 border rounded-md bg-background/50">
                 <p className="font-semibold">Ejemplos:</p>
                 <ul className="list-disc list-inside pl-2">
                     <li>Enviar un mensaje sin revisar 3 veces</li>
