@@ -89,34 +89,23 @@ export const uncertaintyPath: Path = {
           type: 'collapsible',
           title: '¿Por qué imaginamos lo peor?',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1psicoeducpantalla1la%20ansiedad%20molesta.mp3`,
-          content: [
-            {
-              type: 'paragraph',
-              text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta.   Esto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real.',
-            },
-          ],
+          content: [{ type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta.   Esto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real.' }]
         },
         {
-          type: 'collapsible',
-          title: '¿Cómo funciona la anticipación?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3`,
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Desde la TCC y la neurociencia afectiva, sabemos que:   La preocupación es una cadena de pensamientos negativos sobre algo que normalmente no ha ocurrido, difíciles de controlar y que buscan prepararte para lo peor. Además, la preocupación te proporciona una falsa sensacion de control.   Pero en realidad, lo que consiguen estos pensamientos es activar el sistema de amenaza del cuerpo.   Esto puede generar síntomas como palpitaciones, tensión, insomnio o dificultad para concentrarse, incluso sin que la situación temida haya ocurrido.',
-            },
-          ],
+            type: 'collapsible',
+            title: '¿Cómo funciona la anticipación?',
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3`,
+            content: [
+              { type: 'paragraph', text: 'Desde la TCC y la neurociencia afectiva, sabemos que:   La preocupación es una cadena de pensamientos negativos sobre algo que normalmente no ha ocurrido, difíciles de controlar y que buscan prepararte para lo peor. Además, la preocupación te proporciona una falsa sensacion de control.   Pero en realidad, lo que consiguen estos pensamientos es activar el sistema de amenaza del cuerpo.   Esto puede generar síntomas como palpitaciones, tensión, insomnio o dificultad para concentrarse, incluso sin que la situación temida haya ocurrido.' }
+            ]
         },
         {
-          type: 'collapsible',
-          title: '¿Te suenan estas ideas?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant3tusistnervioso.mp3`,
-          content: [
-            {
-              type: 'paragraph',
-              text: '“¿Y si digo algo ridículo en la reunión?” “¿Y si enfermo justo antes del viaje?” “¿Y si se decepcionan conmigo?”   Estas frases no son inofensivas: cuando se repiten con frecuencia, entrenan a tu cuerpo para vivir en modo defensa constante.',
-            },
-          ],
+            type: 'collapsible',
+            title: '¿Te suenan estas ideas?',
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant3tusistnervioso.mp3`,
+            content: [
+              { type: 'paragraph', text: '“¿Y si digo algo ridículo en la reunión?” “¿Y si enfermo justo antes del viaje?” “¿Y si se decepcionan conmigo?”   Estas frases no son inofensivas: cuando se repiten con frecuencia, entrenan a tu cuerpo para vivir en modo defensa constante.' }
+            ]
         },
         {
           type: 'collapsible',
@@ -200,23 +189,25 @@ export const uncertaintyPath: Path = {
       title: 'Semana 3: Entrena tu Flexibilidad Mental',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [
-        {
-          type: 'paragraphWithAudio',
-          text: 'A veces, cuando algo te preocupa o no sabes qué va a ocurrir, tu mente se aferra a una sola forma de ver las cosas. Imagina lo peor. Cree que solo hay un camino posible. Esa rigidez mental puede darte una falsa sensación de control… pero también te impide adaptarte con libertad.Esta semana vas a entrenar tu flexibilidad cognitiva: la capacidad de cambiar de perspectiva, abrirte a nuevas opciones y responder con más calma y claridad cuando lo incierto te descoloca. No se trata de forzarte a pensar en positivo, sino de recordar que hay más de una manera de interpretar lo que ocurre… y más de una forma de seguir adelante.Adaptarte no es rendirte. Es crecer desde dentro.',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio1Ruta2Sesion3.mp3`
-        },
+      content: [{ type: 'paragraphWithAudio', text: 'A veces, cuando algo te preocupa o no sabes qué va a ocurrir, tu mente se aferra a una sola forma de ver las cosas. Imagina lo peor. Cree que solo hay un camino posible. Esa rigidez mental puede darte una falsa sensación de control… pero también te impide adaptarte con libertad.Esta semana vas a entrenar tu flexibilidad cognitiva: la capacidad de cambiar de perspectiva, abrirte a nuevas opciones y responder con más calma y claridad cuando lo incierto te descoloca. No se trata de forzarte a pensar en positivo, sino de recordar que hay más de una manera de interpretar lo que ocurre… y más de una forma de seguir adelante.Adaptarte no es rendirte. Es crecer desde dentro.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio1Ruta2Sesion3.mp3`},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Rigidez cognitiva: cuando la mente solo ve un camino',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion2.mp3`,
+          content: [{ type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.' }]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Cómo se manifiesta en tu vida diaria la rigidez cognitiva?',
           content: [
-            {
-              type: 'paragraph',
-              text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.',
-            },
-          ],
+            { type: 'list', items: [
+                'Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”',
+                'Necesidad constante de certezas',
+                'Perfeccionismo y duda que paraliza',
+                'Apego a formas de actuar y pensar que ya no funcionan'
+            ]}
+          ]
         },
         {
           type: 'collapsible',
@@ -229,7 +220,6 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio4Ruta2Sesion3.mp3`,
           content: [
             { type: 'list', items: ['Soltar el bucle de pensamientos rumiativos','Tolerar mejor la ambigüedad e incertidumbre','Recuperar perspectiva en momentos intensos','Ser más creativo/a, abierto/a y adaptativo/a']}
           ]
@@ -265,7 +255,7 @@ export const uncertaintyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'mantraExercise', title: 'Ejercicio 1: Mi mantra de confianza', objective: 'Crea una frase breve, realista y significativa que funcione como una brújula interna para recordarte que puedes sostenerte aunque no tengas todo resuelto.','duration': '7–10 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion4audio5tecnica1.mp3` },
         { type: 'ritualDeEntregaConscienteExercise', title: 'Ejercicio 2: Mi ritual de entrega consciente', objective: 'Aprende a soltar la tensión mental o física cuando el control se vuelve agotador, a través de la escritura, la respiración o la gratitud.','duration': '5–10 minutos por opción', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion4audio6tecnica2.mp3` },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3`, prompts: ['<ul><li>¿Qué parte de ti se suaviza cuando dejas de intentar controlarlo todo?</li><li>¿Cómo se siente tu cuerpo cuando te permites no saberlo todo?</li><li>¿Qué cambia en tu mente cuando aceptas que no necesitas prever cada paso?</li><li>¿Qué te gustaría recordarte la próxima vez que intentes tenerlo todo bajo control?</li></ul>']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio7Ruta2Sesion4.mp3`, prompts: ['<ul><li>¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?</li><li>¿Qué recursos internos he descubierto o fortalecido?</li><li>¿Qué nuevas formas de pensar o actuar quiero seguir practicando?</li><li>¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?</li></ul>']},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio8Ruta2Sesion4.mp3` },
         { type: 'list', items: ['Controlarlo todo puede parecer seguro… pero suele alimentar tu ansiedad.','Aceptar lo que no puedes cambiar es un acto de fuerza, no de rendición.','Confiar no es tener certezas, es saber que puedes acompañarte en lo incierto.','El control no te protege como crees… tu capacidad de adaptarte, sí.','La confianza se entrena paso a paso, con cada gesto en el que eliges avanzar sin garantías.','Soltar el control te libera para vivir con más presencia, serenidad y flexibilidad.']},
         { type: 'quote', text: 'Cuando dejo de controlar, abro espacio para estar presente… y responder con lo que tengo, no con lo que imagino.'}
@@ -281,5 +271,4 @@ export const uncertaintyPath: Path = {
   ]
 };
 
-
-  
+    
