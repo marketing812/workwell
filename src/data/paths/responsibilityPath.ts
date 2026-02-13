@@ -113,7 +113,7 @@ export const responsibilityPath: Path = {
           title: 'EJERCICIO 2: MI RADAR DE CULPA',
           objective: 'Quiero ayudarte a detectar cuándo la culpa que sientes es una señal útil y cuándo es una carga que no te corresponde. Con este ejercicio vas a calibrar tu radar interno para diferenciar entre una culpa que te guía y una que solo te pesa.',
           duration: '5–7 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana1tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
