@@ -72,7 +72,7 @@ export const uncertaintyPath: Path = {
         { type: 'uncertaintyMapExercise', title: 'Ejercicio 1: Mi Mapa de la Incertidumbre', objective: 'Reconoce en qué áreas te afecta más la incertidumbre y cómo reaccionas. Al observarlo, podrás tomar decisiones más conscientes y recuperar calma.', duration: '5 a 8 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion1tecnica1.mp3`},
         { type: 'controlTrafficLightExercise', title: 'Ejercicio 2: El Semáforo del Control', objective: 'Diferencia entre lo que depende de ti, lo que puedes influir y lo que está fuera de tu control para enfocar tu energía en lo que sí puedes transformar.', duration: '6 a 9 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2Semana1Tecnica2.mp3`},
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio9Ruta2Sesion1.mp3`, prompts: ['<ul><li>¿Qué intenté controlar esta semana que no estaba en mis manos?</li><li>¿Cómo me sentí al soltarlo?</li><li>¿Qué ideas me llevo sobre mi forma de vivir lo incierto?</li></ul>']},
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio10Ruta2Sesion1.mp3`},
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio10Ruta2Sesion1.mp3` },
         { type: 'list', items: ['La incertidumbre es parte de la vida, pero muchas veces la vivimos como amenaza.','Nuestro cuerpo y mente tienden a sobreprotegernos cuando sentimos que no tenemos el control.','La intolerancia a la incertidumbre se manifiesta en necesidad de control, rigidez y evitación.','No puedes controlar todo, pero puedes aprender a moverte con flexibilidad.','Diferenciar entre lo que depende de ti y lo que no, alivia la ansiedad y te devuelve poder.']},
         { type: 'quote', text: 'No necesitas tenerlo todo claro para avanzar. Solo confiar en tu capacidad para adaptarte, un paso cada vez.'}
       ]
@@ -196,28 +196,48 @@ export const uncertaintyPath: Path = {
           title: 'Rigidez cognitiva: cuando la mente solo ve un camino',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3`,
           content: [
-            { type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.'}
-          ],
+            { type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.' }
+          ]
         },
         {
           type: 'collapsible',
-          title: '¿Cómo se manifiesta en tu vida diaria la rigidez cognitiva?',
+          title: 'De la rigidez a la flexibilidad mental',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio3Ruta2Sesion3.mp3`,
           content: [
-            { type: 'list', items: [
+            {
+              type: 'list',
+              items: [
                 'Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”',
                 'Necesidad constante de certezas',
                 'Perfeccionismo y duda que paraliza',
-                'Apego a formas de actuar y pensar que ya no funcionan'
-            ]}
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: '¿Qué es la flexibilidad cognitiva?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio3Ruta2Sesion3.mp3`,
-          content: [
-            { type: 'paragraph', text: 'La flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar.\nEs poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control.\nLa flexibilidad no es debilidad ni indecisión. Es una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. Y como cualquier habilidad mental y emocional, se puede entrenar.'}
-          ]
+                'Apego a formas de actuar y pensar que ya no funcionan',
+              ],
+            },
+            {
+              type: 'paragraph',
+              text: 'Nos aferramos a las certezas porque nos hacen sentir seguros. Pero vivir así nos convierte en cabezotas, menos espontáneos y más vulnerables a los contratiempos y el estrés.',
+            },
+            {
+              type: 'paragraph',
+              text: 'La flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Es poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control. \nEs abrir espacio a nuevas ideas, nuevas respuestas… y a ti mismo/a, cuando cambias de rumbo.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Es lo contrario a funcionar en automático: no reaccionas por impulso, sino que eliges cómo responder.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Esta habilidad está muy ligada al Sistema 2 del cerebro: esa parte más reflexiva, lógica y deliberada que te ayuda a pausar, observar con perspectiva, regular lo que sientes y adaptarte.',
+            },
+            {
+              type: 'paragraph',
+              text: 'La flexibilidad no es debilidad ni indecisión. \nEs una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. \nY como cualquier habilidad mental y emocional, se puede entrenar.',
+            },
+          ],
         },
         {
           type: 'collapsible',
@@ -227,20 +247,14 @@ export const uncertaintyPath: Path = {
             { type: 'list', items: ['Soltar el bucle de pensamientos rumiativos','Tolerar mejor la ambigüedad e incertidumbre','Recuperar perspectiva en momentos intensos','Ser más creativo/a, abierto/a y adaptativo/a']}
           ]
         },
-        {
-          type: 'collapsible',
-          title: 'Metáfora del junco y el viento',
-          content: [
-            { type: 'paragraph', text: 'Un árbol rígido puede quebrarse en una tormenta.\nUn junco, en cambio, se dobla con el viento… y luego vuelve a levantarse.\nLa flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte.\nAdaptarte sin dejar de ser tú.'}
-          ]
-        },
+        { type: 'collapsible', title: 'Metáfora del junco y el viento', content: [{ type: 'paragraph', text: 'Un árbol rígido puede quebrarse en una tormenta.\nUn junco, en cambio, se dobla con el viento… y luego vuelve a levantarse.\nLa flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte.\nAdaptarte sin dejar de ser tú.'}] },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'alternativeStoriesExercise', title: 'Ejercicio 1: Historias Alternativas', objective: 'Entrena tu flexibilidad mental imaginando más de un posible desenlace. No se trata de forzarte a pensar en positivo, sino de recordarte que lo que temes no siempre ocurre.','duration': '5–10 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion3audio5tecnica1.mp3` },
         { type: 'mantraExercise', title: 'EJERCICIO 2: ¿Y si…? pero también…', objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.', duration: '5–7 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3` },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio7Ruta2Sesion3.mp3`, prompts: ['<ul><li>¿Qué he aprendido sobre mí al observar cómo vivo la incertidumbre?</li><li>¿Qué recursos internos he descubierto o fortalecido?</li><li>¿Qué nuevas formas de pensar o actuar quiero seguir practicando?</li><li>¿Qué quiero recordarme la próxima vez que el miedo al no saber aparezca?</li></ul>']},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio8Ruta2Sesion3.mp3` },
         { type: 'list', items: ['La rigidez cognitiva aparece cuando tu mente quiere protegerte… pero puede atraparte en un único guion.','La flexibilidad mental se puede entrenar: se trata de abrir espacio a otras formas de ver, sentir y responder.','Imaginar más de un desenlace te ayuda a salir del modo “todo o nada” y a recuperar perspectiva.','Aunque no puedas evitar pensar “¿Y si…?”, sí puedes equilibrar esa voz con una más compasiva y realista, utilizando el \'pero también\'.','Adaptarte no significa rendirte, sino moverte con inteligencia emocional ante lo incierto.']},
-        { type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme.'}
+        { type: 'quote', text: 'No necesitas certezas para avanzar. Necesito confianza en mi capacidad de adaptarme, un paso cada vez.'}
       ]
     },
     {
@@ -275,3 +289,4 @@ export const uncertaintyPath: Path = {
 };
 
     
+
