@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -19,17 +18,12 @@ interface MantraExerciseProps {
   onComplete: () => void;
 }
 
-const peroTambienOptions = [
-    'Pero también podría aprender de ello.',
-    'Pero también puedo pedir ayuda si lo necesito.',
-    'Pero también he salido adelante en otras ocasiones.',
-    'Pero también puedo adaptarme si las cosas no salen como quiero.',
-];
-
-const feelingOptions = [
-    'Me siento un poco más en calma',
-    'Me siento menos atrapado/a por el pensamiento',
-    'Me sigo sintiendo igual, pero agradezco haberlo intentado',
+const ideaBaseOptions = [
+    'Puedo avanzar, aunque no lo tenga todo claro',
+    'No necesito controlar todo para estar bien',
+    'Puedo sostenerme incluso si tengo miedo',
+    'Aprenderé pase lo que pase',
+    'Soy capaz de adaptarme',
 ];
 
 export default function MantraExercise({ content, pathId, onComplete }: MantraExerciseProps) {
@@ -37,57 +31,52 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
   const { user } = useUser();
   const [step, setStep] = useState(0);
 
-  const [ySiThought, setYSiThought] = useState('');
-  const [peroTambienThought, setPeroTambienThought] = useState('');
-  const [customPeroTambien, setCustomPeroTambien] = useState('');
-  const [finalFeeling, setFinalFeeling] = useState('');
-  const [customFinalFeeling, setCustomFinalFeeling] = useState('');
+  const [blockingThought, setBlockingThought] = useState('');
+  const [ideaBase, setIdeaBase] = useState('');
+  const [customIdeaBase, setCustomIdeaBase] = useState('');
+  const [personalMantra, setPersonalMantra] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
-    setYSiThought('');
-    setPeroTambienThought('');
-    setCustomPeroTambien('');
-    setFinalFeeling('');
-    setCustomFinalFeeling('');
+    setBlockingThought('');
+    setIdeaBase('');
+    setCustomIdeaBase('');
+    setPersonalMantra('');
     setIsSaved(false);
   };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    const finalPeroTambien = peroTambienThought === 'Otra opción:' ? customPeroTambien : peroTambienThought;
-    const finalFeelingText = finalFeeling === 'Otro (escríbelo si quieres):' ? customFinalFeeling : finalFeeling;
 
-    if (!ySiThought.trim() || !finalPeroTambien?.trim() || !finalFeelingText?.trim()) {
+    if (!personalMantra.trim()) {
       toast({
         title: "Ejercicio Incompleto",
-        description: "Por favor, completa todos los pasos para guardar.",
+        description: "Por favor, crea tu frase personal para guardar.",
         variant: "destructive",
       });
       return;
     }
 
+    const finalIdeaBase = ideaBase === 'Otra:' ? customIdeaBase : ideaBase;
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Mi pensamiento "¿Y si...?":*
-"${ySiThought}"
+*Mi pensamiento de bloqueo:*
+"${blockingThought}"
 
-*Mi pensamiento "...pero también...":*
-"${finalPeroTambien}"
+*Idea base elegida para reformular:*
+"${finalIdeaBase}"
 
-*Frase completa:*
-"¿Y si ${ySiThought}? ...vale, pero también ${finalPeroTambien}."
-
-*Cómo me siento después:*
-${finalFeelingText}
+*Mi mantra personal es:*
+"${personalMantra}"
     `;
 
     addNotebookEntry({
-      title: "Cuestionando mis '¿Y si...?'",
+      title: "Mi Mantra de Confianza",
       content: notebookContent,
       pathId: pathId,
       userId: user?.id,
@@ -95,129 +84,115 @@ ${finalFeelingText}
 
     toast({
       title: "Ejercicio Guardado",
-      description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico.",
+      description: "Tu mantra de confianza se ha guardado en el Cuaderno Terapéutico.",
     });
     setIsSaved(true);
     onComplete();
-    nextStep(); // Ir a la pantalla de confirmación
+    nextStep();
   };
-  
-  const finalPeroTambien = peroTambienThought === 'Otra opción:' ? customPeroTambien : peroTambienThought;
 
   const renderStep = () => {
+      const finalIdeaBase = ideaBase === 'Otra:' ? customIdeaBase : ideaBase;
       switch (step) {
         case 0:
             return (
                 <div className="p-4 space-y-4 text-center">
-                    <p className="text-sm text-muted-foreground">
-                    Cuando te enfrentas a algo incierto o que te genera ansiedad, es común que aparezcan pensamientos automáticos del tipo: “¿Y si no puedo?”, “¿Y si me equivoco?”, “¿Y si sale mal?” Estos pensamientos suelen activar el miedo y la ansiedad porque tu mente está intentando prepararte para lo peor, aunque eso que imagina no haya ocurrido. Lo que vamos a hacer es detectar uno de esos pensamientos en ti, escribirlo con tus propias palabras y luego aprender a equilibrarlo.
-                    </p>
+                    <p className="text-sm text-muted-foreground">Cuando no tienes certezas, tu mente busca control. Esta técnica te ayuda a entrenar lo contrario: una confianza activa. Vas a crear una frase breve, realista y significativa que funcione como una autoinstrucción emocional. Una especie de brújula interna que puedas repetirte cuando la inseguridad aparezca. No se trata de frases vacías, sino de una afirmación que te recuerde que puedes sostenerte aunque no tengas todo resuelto.</p>
                     <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Escribe un pensamiento tipo “¿Y si…?”</h4>
-            <p className="text-sm text-muted-foreground">Escribe aquí, tal y como te viene a la cabeza:</p>
-            <p className="text-xs text-muted-foreground italic">Ejemplo: “¿Y si digo algo que no tiene sentido?”, “¿Y si se enfadan conmigo?”, “¿Y si me quedo en blanco durante la reunión?”, “¿Y si no soy suficiente?”</p>
-            <Label htmlFor="ySiThought" className="sr-only">Escríbelo aquí, tal y como te viene a la cabeza:</Label>
-            <Textarea id="ySiThought" value={ySiThought} onChange={e => setYSiThought(e.target.value)} />
+            <h4 className="font-semibold text-lg">Paso 1: Identifica tu pensamiento de bloqueo</h4>
+            <p className="text-sm text-muted-foreground">Piensa en lo que te sueles decir cuando el miedo o la inseguridad aparecen:</p>
+            <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                <p><strong>Ejemplos:</strong></p>
+                <ul className="list-disc list-inside">
+                    <li>“No voy a poder.”</li>
+                    <li>“Todo tiene que salir perfecto.”</li>
+                    <li>“Si me equivoco, será un desastre.”</li>
+                    <li>“Si no lo controlo, algo malo va a pasar.”</li>
+                </ul>
+            </div>
+            <Label htmlFor="blockingThought">¿Qué te dices cuando sientes que necesitas tenerlo todo bajo control?</Label>
+            <Textarea id="blockingThought" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={!ySiThought.trim()}>Siguiente</Button>
+                <Button onClick={nextStep} disabled={!blockingThought.trim()}>Siguiente</Button>
             </div>
           </div>
         );
       case 2:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Completa tu pensamiento con un “pero también…”</h4>
-                <p className="text-sm text-muted-foreground">A veces no puedes evitar que tu mente imagine lo peor: ¿Y si me equivoco? ¿Y si no puedo? ¿Y si sale mal? Esta técnica no busca que niegues ese pensamiento, sino que lo completes con otra parte de la historia que también es real: la que recuerda tu experiencia, tu fuerza, tu capacidad de adaptarte incluso cuando las cosas no salen como esperabas. Se trata de decirte: “Sí, puede pasar… pero también puedo con ello.”</p>
-                <Label>Elige la frase que más te ayude hoy para añadir a tu pensamiento:</Label>
-                <RadioGroup value={peroTambienThought} onValueChange={setPeroTambienThought}>
-                    {peroTambienOptions.map((opt, i) => (
+                <h4 className="font-semibold text-lg">Paso 2: Elige una idea base para reformular</h4>
+                <p className="text-sm text-muted-foreground">¿Qué te gustaría recordarte cuando el miedo empiece a apretar?</p>
+                <RadioGroup value={ideaBase} onValueChange={setIdeaBase}>
+                    {ideaBaseOptions.map((opt, i) => (
                         <div className="flex items-center space-x-2" key={i}>
-                            <RadioGroupItem value={opt} id={`pero-${i}`} />
-                            <Label htmlFor={`pero-${i}`} className="font-normal">{opt}</Label>
+                            <RadioGroupItem value={opt} id={`idea-${i}`} />
+                            <Label htmlFor={`idea-${i}`} className="font-normal">{opt}</Label>
                         </div>
                     ))}
                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Otra opción:" id="pero-other" />
-                        <Label htmlFor="pero-other" className="font-normal">Otra opción:</Label>
+                        <RadioGroupItem value="Otra:" id="idea-other" />
+                        <Label htmlFor="idea-other" className="font-normal">Otra:</Label>
                     </div>
                 </RadioGroup>
-                {peroTambienThought === 'Otra opción:' && (
-                    <Textarea value={customPeroTambien} onChange={e => setCustomPeroTambien(e.target.value)} className="ml-6" />
+                {ideaBase === 'Otra:' && (
+                    <Textarea value={customIdeaBase} onChange={e => setCustomIdeaBase(e.target.value)} className="ml-6" />
                 )}
-                <p className="text-sm text-muted-foreground italic">Esta parte del ejercicio te ayuda a ampliar tu mirada y confiar más en ti. Aunque ocurra lo que temes, también hay algo dentro de ti que sabe sostenerse.</p>
-                <div className="flex justify-between w-full">
+                <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline">Atrás</Button>
-                    <Button onClick={nextStep} disabled={!finalPeroTambien?.trim()}>Siguiente</Button>
+                    <Button onClick={nextStep} disabled={!finalIdeaBase?.trim()}>Siguiente</Button>
                 </div>
             </div>
         );
       case 3:
         return (
-            <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Lee tu frase completa… y date un momento para sentirla</h4>
-                <p className="text-sm text-muted-foreground">Ahora une las dos partes de tu pensamiento: el “¿Y si…?” que apareció al principio + el “pero también…” que has elegido o escrito.</p>
-                <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-left">
-                    “¿Y si ${ySiThought}? ...vale, pero también ${finalPeroTambien}.”
-                </blockquote>
-                <p className="text-sm text-muted-foreground">Léelo en voz alta o en silencio. Haz una pausa. Respira. Permite que esta frase no solo suene distinta, sino que se sienta distinta en ti. Este ejercicio no elimina el miedo, pero te recuerda que puedes sostenerlo con más recursos de los que crees. Esa también es parte de tu historia.</p>
-                <div className="flex justify-between w-full">
-                    <Button onClick={prevStep} variant="outline">Atrás</Button>
-                    <Button onClick={nextStep}>Siguiente</Button>
-                </div>
-            </div>
-        );
-      case 4:
-        return (
             <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">¿Cómo te sientes después de completar la frase?</h4>
-                <p className="text-sm text-muted-foreground">Ahora que has escrito y leído tu frase completa, detente un momento. ¿Qué ha cambiado en ti, aunque sea sutil? ¿Notas algo diferente en tu cuerpo, tu respiración o tu forma de mirar la situación? Elige lo que más se parezca a lo que estás sintiendo ahora:</p>
-                <RadioGroup value={finalFeeling} onValueChange={setFinalFeeling}>
-                    {feelingOptions.map((opt, i) => (
-                        <div className="flex items-center space-x-2" key={i}>
-                            <RadioGroupItem value={opt} id={`feel-${i}`} />
-                            <Label htmlFor={`feel-${i}`} className="font-normal">{opt}</Label>
-                        </div>
-                    ))}
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Otro (escríbelo si quieres):" id="feel-other" />
-                        <Label htmlFor="feel-other" className="font-normal">Otro (escríbelo si quieres):</Label>
-                    </div>
-                </RadioGroup>
-                 {finalFeeling === 'Otro (escríbelo si quieres):' && (
-                    <Textarea value={customFinalFeeling} onChange={e => setCustomFinalFeeling(e.target.value)} className="ml-6" />
-                )}
-                <p className="text-xs text-muted-foreground italic">No hace falta que todo cambie de golpe. A veces, darle otra forma a un pensamiento es el primer paso para vivirlo de otra manera.</p>
-                <div className="flex justify-between w-full">
+                <h4 className="font-semibold text-lg">Paso 3: Crea tu frase personal</h4>
+                <p className="text-sm text-muted-foreground">Usa tus propias palabras o inspírate con estas fórmulas:</p>
+                <ul className="list-disc list-inside text-sm pl-4">
+                    <li>“Aunque ___, puedo ___.”</li>
+                    <li>“Estoy eligiendo confiar en ___.”</li>
+                    <li>“No necesito ___ para ___.”</li>
+                </ul>
+                <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                    <p><strong>Ejemplos:</strong></p>
+                    <ul className="list-disc list-inside">
+                        <li>“No necesito tenerlo todo resuelto para seguir avanzando.”</li>
+                        <li>“Aunque me dé miedo, puedo afrontarlo paso a paso.”</li>
+                        <li>“Estoy eligiendo confiar en mi capacidad de adaptarme.”</li>
+                    </ul>
+                </div>
+                <Label htmlFor="personalMantra">Escribe tu frase aquí:</Label>
+                <Textarea id="personalMantra" value={personalMantra} onChange={e => setPersonalMantra(e.target.value)} />
+
+                <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
-                    <Button type="submit" disabled={isSaved}>
-                        <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno terapeútico
+                    <Button type="submit">
+                        <Save className="mr-2 h-4 w-4" /> Guardar mi mantra
                     </Button>
                 </div>
             </form>
         );
-      case 5:
+      case 4:
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Guardado!</h4>
-            <p className="text-muted-foreground">
-              Tu reflexión se ha guardado correctamente. Puedes volver a ella en tu cuaderno cuando lo necesites.
-            </p>
-            <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
-              </Button>
-              <Button onClick={resetExercise} variant="outline">
-                Hacer otro registro
-              </Button>
-            </div>
+            <h4 className="font-bold text-lg">Paso 4: Usa tu mantra en acción</h4>
+            <p className="text-muted-foreground">Tu mantra no es solo para tranquilizarte. Es para recordarte quién eres cuando el miedo quiera tomar las riendas. Úsalo:</p>
+            <ul className="list-disc list-inside text-left mx-auto max-w-md text-sm">
+                <li>Antes de una situación que te active inseguridad</li>
+                <li>Cuando notes que estás anticipando demasiado</li>
+                <li>Como ritual diario para conectar con tu centro</li>
+            </ul>
+             <p className="italic text-primary pt-2">Repetirlo te entrena. Cuanto más lo digas, más fácil será que tu cuerpo lo reconozca como una señal de seguridad.</p>
+            <Button onClick={resetExercise} variant="outline" className="w-full mt-4">
+              Crear otro mantra
+            </Button>
           </div>
         );
       default:
@@ -229,7 +204,6 @@ ${finalFeelingText}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
         {content.audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full h-10">
