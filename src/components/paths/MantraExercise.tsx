@@ -107,18 +107,18 @@ ${finalFeelingText}
   const renderStep = () => {
       switch (step) {
         case 0:
-        return (
-          <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">
-              Cuando te enfrentas a algo incierto o que te genera ansiedad, es común que aparezcan pensamientos automáticos del tipo: “¿Y si no puedo?”, “¿Y si me equivoco?”, “¿Y si sale mal?” Estos pensamientos suelen activar el miedo y la ansiedad porque tu mente está intentando prepararte para lo peor, aunque eso que imagina no haya ocurrido. Lo que vamos a hacer es detectar uno de esos pensamientos en ti, escribirlo con tus propias palabras y luego aprender a equilibrarlo.
-            </p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
-          </div>
-        );
+            return (
+                <div className="p-4 space-y-4 text-center">
+                    <p className="text-sm text-muted-foreground">
+                    Cuando te enfrentas a algo incierto o que te genera ansiedad, es común que aparezcan pensamientos automáticos del tipo: “¿Y si no puedo?”, “¿Y si me equivoco?”, “¿Y si sale mal?” Estos pensamientos suelen activar el miedo y la ansiedad porque tu mente está intentando prepararte para lo peor, aunque eso que imagina no haya ocurrido. Lo que vamos a hacer es detectar uno de esos pensamientos en ti, escribirlo con tus propias palabras y luego aprender a equilibrarlo.
+                    </p>
+                    <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
+            );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Escribe un pensamiento tipo “¿Y si…?”</h4>
+            <h4 className="font-semibold text-lg">Escribe un pensamiento tipo “¿Y si…?”</h4>
             <p className="text-sm text-muted-foreground">Escribe aquí, tal y como te viene a la cabeza:</p>
             <p className="text-xs text-muted-foreground italic">Ejemplo: “¿Y si digo algo que no tiene sentido?”, “¿Y si se enfadan conmigo?”, “¿Y si me quedo en blanco durante la reunión?”, “¿Y si no soy suficiente?”</p>
             <Label htmlFor="ySiThought" className="sr-only">Escríbelo aquí, tal y como te viene a la cabeza:</Label>
@@ -132,7 +132,7 @@ ${finalFeelingText}
       case 2:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 2: Completa tu pensamiento con un “pero también…”</h4>
+                <h4 className="font-semibold text-lg">Completa tu pensamiento con un “pero también…”</h4>
                 <p className="text-sm text-muted-foreground">A veces no puedes evitar que tu mente imagine lo peor: ¿Y si me equivoco? ¿Y si no puedo? ¿Y si sale mal? Esta técnica no busca que niegues ese pensamiento, sino que lo completes con otra parte de la historia que también es real: la que recuerda tu experiencia, tu fuerza, tu capacidad de adaptarte incluso cuando las cosas no salen como esperabas. Se trata de decirte: “Sí, puede pasar… pero también puedo con ello.”</p>
                 <Label>Elige la frase que más te ayude hoy para añadir a tu pensamiento:</Label>
                 <RadioGroup value={peroTambienThought} onValueChange={setPeroTambienThought}>
@@ -160,7 +160,7 @@ ${finalFeelingText}
       case 3:
         return (
             <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 3: Lee tu frase completa… y date un momento para sentirla</h4>
+                <h4 className="font-semibold text-lg">Lee tu frase completa… y date un momento para sentirla</h4>
                 <p className="text-sm text-muted-foreground">Ahora une las dos partes de tu pensamiento: el “¿Y si…?” que apareció al principio + el “pero también…” que has elegido o escrito.</p>
                 <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-left">
                     “¿Y si ${ySiThought}? ...vale, pero también ${finalPeroTambien}.”
@@ -175,7 +175,7 @@ ${finalFeelingText}
       case 4:
         return (
             <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg">Paso 4: ¿Cómo te sientes después de completar la frase?</h4>
+                <h4 className="font-semibold text-lg">¿Cómo te sientes después de completar la frase?</h4>
                 <p className="text-sm text-muted-foreground">Ahora que has escrito y leído tu frase completa, detente un momento. ¿Qué ha cambiado en ti, aunque sea sutil? ¿Notas algo diferente en tu cuerpo, tu respiración o tu forma de mirar la situación? Elige lo que más se parezca a lo que estás sintiendo ahora:</p>
                 <RadioGroup value={finalFeeling} onValueChange={setFinalFeeling}>
                     {feelingOptions.map((opt, i) => (
