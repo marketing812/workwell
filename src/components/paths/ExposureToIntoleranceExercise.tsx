@@ -91,7 +91,6 @@ ${finalReflection}
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">¿Y si no necesitas tenerlo todo bajo control?</h4>
             <p className="text-sm text-muted-foreground">Cuando anticipas lo peor, tu cuerpo reacciona como si ya estuvieras en peligro. Pero esa percepción no siempre es real: muchas veces es solo una interpretación que tu mente hace ante la incertidumbre.</p>
-            <p className="text-sm text-muted-foreground">Para entrenarte a vivir con más calma, incluso cuando no tienes todas las respuestas, necesitas practicar algo clave: Exponerte, en dosis pequeñas, a lo que no puedes controlar.</p>
             <p className="text-sm text-muted-foreground font-semibold">Este ejercicio te invita a hacerlo de forma segura y consciente.</p>
             <Button onClick={nextStep}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
@@ -101,7 +100,7 @@ ${finalReflection}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Elige tu situación</h4>
             <Label htmlFor="situation">Elige una situación cotidiana que suelas controlar en exceso o evitar por miedo a que algo salga mal.</Label>
-             <div className="text-xs text-muted-foreground p-2 border rounded-md bg-background/50">
+             <div className="text-sm text-muted-foreground p-2 border rounded-md bg-background/50">
                 <p className="font-semibold">Ejemplos:</p>
                 <ul className="list-disc list-inside pl-2">
                     <li>Enviar un mensaje sin revisar 3 veces</li>
