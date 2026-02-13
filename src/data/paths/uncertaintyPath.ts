@@ -82,8 +82,7 @@ export const uncertaintyPath: Path = {
       title: 'Semana 2: Regular la Ansiedad ante lo Incierto',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [
-        { type: 'paragraphWithAudio', text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3`},
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que, cuando estás esperando algo importante o no sabes qué va a ocurrir, tu mente empieza a imaginar mil escenarios negativos?   En esta segunda semana vamos a trabajar precisamente en eso: en comprender por qué ocurre y cómo dejar de anticipar lo peor. No se trata de controlar cada detalle de tu vida, sino de descubrir que puedes vivir con más calma incluso cuando no tienes todas las respuestas.   Vas a entender cómo funciona la anticipación ansiosa y por qué tu cuerpo reacciona con alarma ante lo incierto, aunque no haya un peligro real.  Aprenderás a entrenar tu mente para frenar los pensamientos catastrofistas y a reconectar con el presente usando técnicas de exposición, regulación y atención plena.   También comenzarás a distinguir entre lo que tu mente imagina y lo que realmente está ocurriendo. Porque esta semana no se trata de eliminar la ansiedad, sino de reducir su poder sobre ti y ganar confianza paso a paso.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio1Ruta2Sesion2.mp3`},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
@@ -126,21 +125,21 @@ export const uncertaintyPath: Path = {
             },
             {
               type: 'collapsible',
-              title: 'Errores de pensamiento',
+              title: 'Errores de pensamiento (Desplegable)',
               content: [
                 { type: 'paragraph', text: 'A veces, sin darte cuenta, caes en formas de pensar que distorsionan la realidad y aumentan el miedo. Por ejemplo:\n\nSobredimensionar el riesgo: Imaginas que algo es más peligroso de lo que realmente es. Ej.: “Si me equivoco, será un desastre”.\n\nImaginar consecuencias extremas: Das por hecho que el peor escenario va a suceder. Ej.: “Seguro que me rechazan y no podré con esto”.\n\nSentirte incapaz: Crees que no tienes recursos para afrontarlo. Ej.: “No voy a poder gestionarlo si algo sale mal”.' }
               ]
             },
             {
               type: 'collapsible',
-              title: 'Creencias aprendidas',
+              title: 'Creencias aprendidas (Desplegable)',
               content: [
                 { type: 'paragraph', text: 'Detrás de esos pensamientos, a veces hay creencias más profundas que aprendiste con el tiempo (de tu entorno, de la infancia o de experiencias difíciles). Estas creencias te hacen interpretar muchas situaciones como peligrosas, aunque no lo sean realmente.\n\nAlgunas creencias comunes son:\n\n“No debo fallar nunca” → convierte cualquier error en un drama.\n\n“El mundo es peligroso” → te hace vivir en estado de alerta.\n\n“No puedo equivocarme” → te paraliza ante lo incierto.' }
               ]
             },
             {
               type: 'collapsible',
-              title: 'Neurocepción inconsciente',
+              title: 'Neurocepción inconsciente (Desplegable)',
               content: [
                 { type: 'paragraph', text: 'Este es un concepto de la neurociencia muy importante: tu sistema nervioso evalúa todo lo que ocurre a tu alrededor sin que tú lo decidas de forma consciente. Percibe detalles como:\n\nEl tono de voz de alguien\n\nUna mirada o gesto\n\nUn recuerdo doloroso\n\nO simplemente un cambio en tu entorno\n\nY si interpreta alguna de esas señales como insegura, activa la alarma automáticamente. No es culpa tuya, es un sistema diseñado para protegerte. Pero muchas veces actúa por error.' }
               ]
@@ -154,17 +153,17 @@ export const uncertaintyPath: Path = {
           content: [
             {
               type: 'collapsible',
-              title: 'Exposición progresiva',
+              title: 'Exposición progresiva (Desplegable)',
               content: [{ type: 'paragraph', text: 'Significa acercarte poco a poco a lo que hoy temes o evitas. No de golpe ni forzándote, sino con pasos realistas y graduales. Así, tu cuerpo aprende que no está en peligro y que puede sostener esa experiencia sin consecuencias catastróficas.' }]
             },
             {
               type: 'collapsible',
-              title: 'Reestructuración cognitiva',
+              title: 'Reestructuración cognitiva (Desplegable)',
               content: [{ type: 'paragraph', text: 'Es una técnica que te ayuda a cuestionar lo que piensas cuando estás ansioso/a. Muchas veces, esos pensamientos anticipatorios no son tan ciertos ni tan útiles como parecen. Aprenderás a hacerte preguntas como:\n\n“¿Esto que estoy pensando es un hecho o solo una posibilidad?”\n\n“¿Qué otras formas hay de interpretar esta situación?”\n\n“¿Cómo la vería alguien que me quiere?”' }]
             },
             {
               type: 'collapsible',
-              title: 'Mindfulness y ACT',
+              title: 'Mindfulness y ACT (Desplegable)',
               content: [{
                 type: 'list', items: [
                   'Observar tus pensamientos sin creer todo lo que dicen.',
@@ -194,28 +193,30 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: 'Rigidez cognitiva: cuando la mente solo ve un camino',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion3.mp3`,
           content: [
-            { type: 'paragraph', text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.'}
+            {
+              type: 'paragraph',
+              text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.',
+            },
           ]
         },
         {
           type: 'collapsible',
           title: 'De la rigidez a la flexibilidad mental',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion3_1.mp3`,
           content: [
-            { type: 'list', items: ["Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”", "Necesidad constante de certezas", "Perfeccionismo y duda que paraliza", "Apego a formas de actuar y pensar que ya no funcionan"]},
-            { type: 'paragraph', text: 'Nos aferramos a las certezas porque nos hacen sentir seguros. Pero vivir así nos convierte en cabezotas, menos espontáneos y más vulnerables a los contratiempos y el estrés. \n\nLa flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar. \n\nEs poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control. \nEs abrir espacio a nuevas ideas, nuevas respuestas… y a ti mismo/a, cuando cambias de rumbo. \n\nEs lo contrario a funcionar en automático: no reaccionas por impulso, sino que eliges cómo responder. \n\nEsta habilidad está muy ligada al Sistema 2 del cerebro: esa parte más reflexiva, lógica y deliberada que te ayuda a pausar, observar con perspectiva, regular lo que sientes y adaptarte. \n\nLa flexibilidad no es debilidad ni indecisión. \nEs una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. \nY como cualquier habilidad mental y emocional, se puede entrenar.  '}
+            { type: 'list', items: ['Pensamientos de “todo o nada”: “Si no lo hago perfecto, es un fracaso.”', 'Necesidad constante de certezas', 'Perfeccionismo y duda que paraliza', 'Apego a formas de actuar y pensar que ya no funcionan'] },
+            { type: 'paragraph', text: 'Nos aferramos a las certezas porque nos hacen sentir seguros. Pero vivir así nos convierte en cabezotas, menos espontáneos y más vulnerables a los contratiempos y el estrés. \n\nLa flexibilidad mental es la capacidad de ver las cosas desde más de un ángulo, sin quedarte atrapado/a en una única forma de pensar o actuar. \n\nEs poder cambiar de opinión o de estrategia cuando el contexto lo necesita, sin sentir que por eso fallas o pierdes el control. \nEs abrir espacio a nuevas ideas, nuevas respuestas… y a ti mismo/a, cuando cambias de rumbo. \n\nEs lo contrario a funcionar en automático: no reaccionas por impulso, sino que eliges cómo responder. \n\nEsta habilidad está muy ligada al Sistema 2 del cerebro: esa parte más reflexiva, lógica y deliberada que te ayuda a pausar, observar con perspectiva, regular lo que sientes y adaptarte. \n\nLa flexibilidad no es debilidad ni indecisión. \nEs una fuerza interna que te permite ajustarte a lo inesperado sin perder tu esencia. \nY como cualquier habilidad mental y emocional, se puede entrenar.  ' }
           ]
         },
         {
           type: 'collapsible',
-          title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental? ',
+          title: '¿Qué entrenas cuando desarrollas tu flexibilidad mental?',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio4Ruta2Sesion3.mp3`,
-          content: [
-            { type: 'list', items: ['Soltar el bucle de pensamientos rumiativos','Tolerar mejor la ambigüedad e incertidumbre','Recuperar perspectiva en momentos intensos','Ser más creativo/a, abierto/a y adaptativo/a']},
-            { type: 'paragraph', text: 'Un árbol rígido puede quebrarse en una tormenta. Un junco, en cambio, se dobla con el viento… y luego vuelve a levantarse. La flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte. Adaptarte sin dejar de ser tú.'}
-          ]
-        },
+          content: [{ type: 'list', items: ['Soltar el bucle de pensamientos rumiativos', 'Tolerar mejor la ambigüedad e incertidumbre', 'Recuperar perspectiva en momentos intensos',] },
+          { type: 'paragraph', text: 'Ser más creativo/a, abierto/a y adaptativo/a \n\nUn árbol rígido puede quebrarse en una tormenta. Un junco, en cambio, se dobla con el viento… y luego vuelve a levantarse. La flexibilidad es eso: permitirte doblarte un poco ante lo incierto, en lugar de romperte. Adaptarte sin dejar de ser tú.' }
+        ]},
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'alternativeStoriesExercise', title: 'Ejercicio 1: Historias Alternativas', objective: 'Entrena tu flexibilidad mental imaginando más de un posible desenlace. No se trata de forzarte a pensar en positivo, sino de recordarte que lo que temes no siempre ocurre.','duration': '5–10 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion3audio5tecnica1.mp3` },
         { type: 'mantraExercise', title: 'EJERCICIO 2: ¿Y si…? pero también…', objective: 'Esta técnica no busca eliminar los pensamientos de duda, sino equilibrarlos con otra posibilidad más amable y realista que reconozca tu capacidad.', duration: '5–7 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion3audio6tecnica2.mp3` },
@@ -234,7 +235,7 @@ export const uncertaintyPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Aceptar no es rendirse: es liberarte', content: [{ type: 'paragraph', text: 'Aceptar no significa resignarse ni dejar de luchar. Significa dejar de gastar energía en lo que no puedes cambiar y redirigirla hacia lo que sí puedes cuidar: cómo lo vives, cómo lo afrontas y cómo te tratas mientras tanto.\nDesde la Terapia de Aceptación y Compromiso (ACT), esto se llama apertura experiencial: permitir que pensamientos y emociones estén presentes, sin pelearte con ellos.\nAceptar el dolor no es estar bien con él. Es dejar de negarlo para empezar a reconstruirte desde ahí.'}] },
         { type: 'collapsible', title: 'Confiar no es saber cómo saldrá, es saber que puedes con ello', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio2Ruta2Sesion4.mp3`, content: [{ type: 'paragraph', text: 'A veces creemos que solo estaremos bien si lo tenemos todo claro. Pero en realidad, lo que genera estabilidad no es la certeza, sino la confianza:\n- Confianza en que sabrás responder\n- Confianza en que podrás adaptarte, incluso con miedo\n- Confianza en que no necesitas hacerlo perfecto para estar bien\nTu confianza no crece cuando todo es fácil. Crece cuando te atreves, incluso sin garantías.'}] },
-        { type: 'collapsible', title: 'Caminar paso a paso: la alternativa a planearlo todo', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio3Ruta2Sesion4.mp3`, content: [{ type: 'paragraph', text: 'Cuando intentas prever cada detalle y tener todo controlado desde el inicio, te vuelves rígido/a. Y eso, en un mundo cambiante, es agotador.\nLa alternativa es desarrollar flexibilidad estratégica:\n- Avanzar con intención, aunque no esté todo resuelto\n- Dar un paso desde donde estás, con lo que tienes\nLa confianza se construye caminando, no planificando eternamente. Y cuando algo no sale como esperabas, no es un fallo: es parte del proceso.'}] },
+        { type: 'collapsible', title: 'Caminar paso a paso: la alternativa a planearlo todo', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio3Ruta2Sesion4.mp3`, content: [{ type: 'paragraph', text: 'Cuando intentas prever cada detalle y tener todo controlado desde el inicio, te vuelves rígido/a. Y eso, en un mundo cambiante, es agotador.\nLa alternativa es desarrollar flexibilidad estratégica:\n- Avanzar con intención, aunque no esté todo resuelto\n- Dar un paso desde donde estás, con lo que tienes\nLa confianza se construye caminando, no planificando eternamente. Y cuando algo no sale como esperabas, no es un fallo: es parte del proceso.' }] },
         { type: 'collapsible', title: 'Aceptar, confiar y avanzar', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/Audio4Ruta2Sesion4.mp3`, content: [{ type: 'paragraph', text: 'Esta semana vas a entrenar una nueva forma de relacionarte con la incertidumbre:'},{"type":"list","items":["Dejar de intentar controlar lo incontrolable","Aceptar lo que sientes, sin juzgarte","Confiar en que puedes sostenerte, incluso sin certezas","Avanzar paso a paso, sin perder de vista lo que te importa"]}] },
         { type: 'title', text: 'Técnicas Específicas'},
         { type: 'mantraExercise', title: 'Ejercicio 1: Mi mantra de confianza', objective: 'Crea una frase breve, realista y significativa que funcione como una brújula interna para recordarte que puedes sostenerte aunque no tengas todo resuelto.','duration': '7–10 minutos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/tecnicas/Ruta2sesion4audio5tecnica1.mp3` },
@@ -256,7 +257,3 @@ export const uncertaintyPath: Path = {
 };
 
     
-
-
-
-  
