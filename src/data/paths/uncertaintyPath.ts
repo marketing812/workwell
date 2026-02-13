@@ -88,29 +88,35 @@ export const uncertaintyPath: Path = {
         {
           type: 'collapsible',
           title: '¿Por qué imaginamos lo peor?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/semana2/porqueimaginamoslopeor.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1psicoeducpantalla1la%20ansiedad%20molesta.mp3`,
           content: [
-            { type: 'paragraph', text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta.\n\nEsto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real.' }
-          ]
+            {
+              type: 'paragraph',
+              text: 'A veces, tu cuerpo reacciona con ansiedad sin que haya pasado nada realmente peligroso. Solo hace falta un pensamiento como “¿Y si me equivoco?” o “¿Y si esto sale mal?” para que tu mente entre en bucle y tu cuerpo se ponga en alerta.   Esto es lo que llamamos anticipación ansiosa: una forma de preocupación centrada en lo que podría pasar. Aunque sea solo imaginación, activa emociones, sensaciones y comportamientos como si el peligro fuera real.',
+            },
+          ],
         },
         {
           type: 'collapsible',
           title: '¿Cómo funciona la anticipación?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/semana2/comofuncionalaanticipacion.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3`,
           content: [
             {
               type: 'paragraph',
-              text: 'Desde la TCC y la neurociencia afectiva, sabemos que:\n\nLa preocupación es una cadena de pensamientos negativos sobre algo que normalmente no ha ocurrido, difíciles de controlar y que buscan prepararte para lo peor. Además, la preocupación te proporciona una falsa sensacion de control.\n\nPero en realidad, lo que consiguen estos pensamientos es activar el sistema de amenaza del cuerpo.\n\nEsto puede generar síntomas como palpitaciones, tensión, insomnio o dificultad para concentrarse, incluso sin que la situación temida haya ocurrido.'
-            }
-          ]
+              text: 'Desde la TCC y la neurociencia afectiva, sabemos que:   La preocupación es una cadena de pensamientos negativos sobre algo que normalmente no ha ocurrido, difíciles de controlar y que buscan prepararte para lo peor. Además, la preocupación te proporciona una falsa sensacion de control.   Pero en realidad, lo que consiguen estos pensamientos es activar el sistema de amenaza del cuerpo.   Esto puede generar síntomas como palpitaciones, tensión, insomnio o dificultad para concentrarse, incluso sin que la situación temida haya ocurrido.',
+            },
+          ],
         },
         {
           type: 'collapsible',
           title: '¿Te suenan estas ideas?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta2/descripciones/semana2/tesuenanestasideas.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant3tusistnervioso.mp3`,
           content: [
-            { type: 'paragraph', text: '“¿Y si digo algo ridículo en la reunión?”\n“¿Y si enfermo justo antes del viaje?”\n“¿Y si se decepcionan conmigo?”\n\nEstas frases no son inofensivas: cuando se repiten con frecuencia, entrenan a tu cuerpo para vivir en modo defensa constante.'}
-          ]
+            {
+              type: 'paragraph',
+              text: '“¿Y si digo algo ridículo en la reunión?” “¿Y si enfermo justo antes del viaje?” “¿Y si se decepcionan conmigo?”   Estas frases no son inofensivas: cuando se repiten con frecuencia, entrenan a tu cuerpo para vivir en modo defensa constante.',
+            },
+          ],
         },
         {
           type: 'collapsible',
@@ -127,7 +133,7 @@ export const uncertaintyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:'
+              text: 'Cuando te sientes ansioso o en alerta sin un peligro real delante, es porque tu mente o tu sistema nervioso han interpretado algo como una posible amenaza. Esto puede ocurrir por varios motivos:',
             },
             {
               type: 'collapsible',
@@ -208,9 +214,9 @@ export const uncertaintyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.\n\nTu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.\n\nSistema 1: es la vía rápida\nFunciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.\n\nCuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”\n\nSistema 2: es la vía lenta\nEntra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.'
-            }
-          ]
+              text: '¿Te ha pasado que sientes que solo hay una manera de ver las cosas? Como si tu mente se cerrara y te costara encontrar otras formas de entender lo que pasa.  Eso es rigidez cognitiva: cuando te cuesta adaptarte, cambiar de perspectiva o imaginar más de una posibilidad.   Es como tener una mente que solo acepta un camino, incluso cuando hay otros más seguros o adecuados. Todo parece blanco o negro, y cualquier cambio de plan genera incomodidad.   Tu cerebro tiene dos formas principales de procesar lo que ocurre: una rápida y automática, y otra más pausada y reflexiva. Ambas son útiles, pero cumplen funciones distintas.   Sistema 1: es la vía rápida   Funciona en piloto automático, sin que lo pienses demasiado.  Es el que actúa cuando reaccionas de forma automatica, por instinto, te anticipas al peligro o interpretas las cosas de forma inmediata. Es emocional, veloz, y está muy influido por tus hábitos, experiencias pasadas y miedos. Te protege, pero a veces… se adelanta demasiado.   Cuando te riges solo por esta vía, puedes acabar atrapado/a en ideas como: “Esto va a salir mal”, “Necesito tenerlo todo claro ya”, “No puedo soportar la incertidumbre”   Sistema 2: es la vía lenta   Entra en juego cuando paras, piensas, analizas y te das un momento para valorar diferentes opciones. Es más lógico, deliberado y consciente. Te permite tomar distancia del primer impulso y ver con más claridad lo que está pasando realmente.',
+            },
+          ],
         },
         {
           type: 'collapsible',
