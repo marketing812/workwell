@@ -11,7 +11,6 @@ import { Edit3, CheckCircle, ArrowRight, Save, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ChangeTimelineExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface ChangeTimelineExerciseProps {
   content: ChangeTimelineExerciseContent;
@@ -187,12 +186,14 @@ ${inflectionPoints}
         {content.objective && (
           <CardDescription className="pt-2">
             {content.objective}
-            <div className="mt-4">
-              <audio controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-              </audio>
-            </div>
+            {content.audioUrl && (
+                <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+                </div>
+            )}
           </CardDescription>
         )}
       </CardHeader>

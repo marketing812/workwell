@@ -13,7 +13,6 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
@@ -77,14 +76,15 @@ ${hiddenObjective}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana3tecnica2.mp3`} type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        </CardDescription>}
+        {content.audioUrl && (
+            <div className="mt-2">
+                <audio controls controlsList="nodownload" className="w-full h-10">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
+        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">

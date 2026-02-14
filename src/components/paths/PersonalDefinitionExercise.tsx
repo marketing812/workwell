@@ -11,7 +11,6 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PersonalDefinitionExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface PersonalDefinitionExerciseProps {
   content: PersonalDefinitionExerciseContent;
@@ -117,12 +116,14 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-            <audio controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
+        {content.audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
         </CardDescription>}
       </CardHeader>
       <CardContent>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -12,7 +13,6 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetoursInventoryExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DetoursInventoryExerciseProps {
   content: DetoursInventoryExerciseContent;
@@ -321,12 +321,14 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}
-        <div className="mt-4">
-          <audio controls controlsList="nodownload" className="w-full">
-            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta7/tecnicas/Ruta7semana2tecnica1.mp3`} type="audio/mp3" />
-            Tu navegador no soporta el elemento de audio.
-          </audio>
-        </div>
+        {content.audioUrl && (
+            <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+                <source src={content.audioUrl} type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+            </div>
+        )}
         </CardDescription>}
       </CardHeader>
       <CardContent>
