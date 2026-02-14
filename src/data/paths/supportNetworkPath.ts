@@ -1,12 +1,13 @@
 
 import type { Path } from './pathTypes';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const supportNetworkPath: Path = {
   id: 'confiar-en-mi-red',
   title: 'Confiar en mi Red y Dejarme Sostener',
   description: 'Aprende a detectar apoyos nutritivos, pedir ayuda sin culpa y construir vínculos que te sostengan de verdad.',
   dataAiHint: 'support network friends community',
-  audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/INTRORUTA11.mp3',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/INTRORUTA11.mp3`,
   modules: [
     {
       id: 'apoyo_sem1',
@@ -17,13 +18,13 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Cuántas veces has pensado “mejor no digo nada, no quiero molestar”? Esta semana vamos a romper con esa idea. Pedir ayuda no te resta valor, te humaniza. Descubrirás por qué a veces nos cuesta tanto pedir y cómo esos miedos nacen de creencias aprendidas (como “si pido, soy una carga”). Juntos/as vamos a darle la vuelta: aprenderás a ver el apoyo como un recurso legítimo y valioso.',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Pedir ayuda no es debilidad, es inteligencia emocional',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Pedirayudanoesdebilidadesinteligenciaemocional.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Pedirayudanoesdebilidadesinteligenciaemocional.mp3`,
           content: [
             { type: 'paragraph', text: '<p>Pedir ayuda no te hace frágil, te hace humano. Y saber hacerlo con claridad y equilibrio es una forma avanzada de inteligencia emocional. El ser humano es una especie profundamente social. Nuestro cerebro está literalmente diseñado para la conexión.</p><p> Según la neurociencia social (Lieberman, 2013), las mismas áreas que se activan cuando sentimos dolor físico también se activan cuando nos sentimos rechazados o desconectados.</p><p>En cambio, cuando vivimos relaciones positivas y de apoyo, se encienden circuitos neuronales vinculados al bienestar, la recompensa y la seguridad. </p>' }
           ],
@@ -31,7 +32,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El mito de “Yo puedo siempre con todo”',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/ElmitodeYopuedosiemprecontodo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/ElmitodeYopuedosiemprecontodo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -42,7 +43,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: '“Mejor no molestar” o el miedo a ser una carga',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Mejornomolestar.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Mejornomolestar.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -53,7 +54,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: '“Ya me las apañaré” o la evitación de la vulnerabilidad',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Yamelasapanare.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Yamelasapanare.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -64,7 +65,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Apoyo social percibido vs. apoyo real',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Apoyosocial.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Apoyosocial.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -75,7 +76,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El miedo a depender, decepcionar o ser una carga',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/Elmiedo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Elmiedo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -89,18 +90,19 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO1: MAPA DE RELACIONES Y APOYO',
           objective: 'Esta técnica te ayudará a visualizar de forma clara tu red de apoyo y reflexionar sobre cómo te relacionas con las personas que forman parte de ella. Comprenderás qué tipo de apoyo te ofrece cada una (emocional, práctico, validación, consejo…) y si estás aprovechando ese recurso. Esto aumenta la conciencia y el uso activo de tu red, algo que según Holt-Lunstad et al. (2015) se asocia con mejor salud mental y física.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana1tecnica1.mp3`,
         },
         {
           type: 'blockingThoughtsExercise',
           title: 'EJERCICIO 2: REGISTRO DE PENSAMIENTOS BLOQUEANTES AL PEDIR AYUDA',
           objective: 'Con esta técnica aprenderás a detectar y reformular los pensamientos que te frenan al pedir ayuda.    La Terapia Cognitivo-Conductual (Beck, 2011) demuestra que cuestionar creencias disfuncionales reduce la ansiedad y mejora la disposición a buscar apoyo.',
           duration: '8-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana1tecnica2.mp3`,
         },
         {
           type: 'collapsible',
           title: 'Microprácticas opcionales para Semana 1',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana1micro.mp3`,
           content: [
             { type: 'paragraph', text: 'Pequeñas acciones diarias para entrenar el músculo de pedir y recibir apoyo.' },
             { type: 'list', items: [
@@ -115,7 +117,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/REFLEXION.mp3`,
           prompts: [
             '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
@@ -124,7 +126,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana1/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -148,13 +150,13 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'No todas las personas que “ayudan” lo hacen de forma que te fortalece. Esta semana aprenderás a reconocer esas diferencias y a identificar tus relaciones nutritivas. Piensa en ello como elegir alimentos: algunos te nutren, otros solo te llenan… o incluso te hacen daño.',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/INTRODUCCIONSEMANA2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/INTRODUCCIONSEMANA2.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'La diferencia entre sentirte ligero/a o drenado/a',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Ladiferenciaentresentirteligeroodrenado.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -165,7 +167,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'No toda ayuda es nutritiva',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Notodaayudaesnutritiva.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Notodaayudaesnutritiva.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -176,7 +178,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tres caras del apoyo: dependencia, exigencia y acompañamiento',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Trescarasdelapoyodependenciaexigenciayacompanamiento.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -187,7 +189,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Señales de un vínculo nutritivo',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Senalesdeunvinculonutritivo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Senalesdeunvinculonutritivo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -198,7 +200,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El acompañamiento genuino: un faro en la oscuridad',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Elacompanamientogenuinounfaroenlaoscuridad.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -209,7 +211,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Cómo cultivar apoyos seguros',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Comocultivarapoyosseguros.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Comocultivarapoyosseguros.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -220,7 +222,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Mapa de tu red de apoyo',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/Mapadetureddeapoyo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/Mapadetureddeapoyo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -234,29 +236,26 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 1: MAPA DE APOYOS NUTRITIVOS Y DRENANTES',
           objective: 'Dibuja un mapa claro de quiénes en tu vida te suman y quiénes te restan, para que puedas cuidar mejor tu energía emocional.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3`,
         },
         {
           type: 'nourishingConversationExercise',
           title: 'EJERCICIO 2: LA CONVERSACIÓN QUE NUTRE',
           objective: 'Aprende a provocar más momentos de conexión real y profunda usando claves sencillas de escucha, empatía y autenticidad.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2tecnica2.mp3`,
         },
         {
-          type: 'collapsible',
-          title: 'Micropráctica opcional: "Mi momento vitamina"',
-          content: [
-            { type: 'paragraph', text: 'Objetivo: entrenar la atención para detectar y reforzar microvínculos positivos en el día a día.' },
-            { type: 'paragraph', text: 'Cada noche, antes de dormir, recuerda un momento del día en el que alguien te haya hecho sentir escuchado/a, acompañado/a o simplemente bien. Puede ser un mensaje, una sonrisa, una llamada o un gesto.' },
-            { type: 'paragraph', text: 'Anótalo en una frase en tu cuaderno o en la sección de notas de la app.' },
-            { type: 'paragraph', text: 'Beneficio: refuerza tu percepción de que sí tienes apoyos y ayuda a tu cerebro a fijar las experiencias positivas (según la neurociencia, dedicar unos segundos extra a saborear el recuerdo fortalece las conexiones neuronales asociadas a la gratitud y la seguridad emocional)' },
-          ],
+          type: 'vitaminMomentExercise',
+          title: 'Micropráctica: "Mi momento vitamina"',
+          objective: 'Objetivo: entrenar la atención para detectar y reforzar microvínculos positivos en el día a día. Cada noche, antes de dormir, recuerda un momento del día en el que alguien te haya hecho sentir escuchado/a, acompañado/a o simplemente bien. Puede ser un mensaje, una sonrisa, una llamada o un gesto.',
+          duration: '2-3 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2micro.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/REFLEXION.mp3`,
           prompts: [
             '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
@@ -265,7 +264,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana2/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana2/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -288,13 +287,13 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Pedir no es suplicar ni imponer, es comunicar lo que necesitas de forma sencilla y respetuosa. Esta semana entrenaremos cómo hacerlo: qué decir, cómo decirlo y en qué momento. Descubrirás que cuando pides con claridad, das a la otra persona la oportunidad de decidir libremente.',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/INTRODUCCIONSEMANA3.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/INTRODUCCIONSEMANA3.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Pedir ayuda no es “molestar”',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Pedirayudanoesmolestar.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/Pedirayudanoesmolestar.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -305,7 +304,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Necesidad legítima ≠ deuda emocional',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Necesidadlegitimadeudaemocional.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/Necesidadlegitimadeudaemocional.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -316,7 +315,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Cuanto más claro, más fácil decir “sí”',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Cuantomasclaromasfacildecirsi.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/Cuantomasclaromasfacildecirsi.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -327,7 +326,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'El mito de “puedo con todo”',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Elmitodepuedocontodo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/Elmitodepuedocontodo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -338,7 +337,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Recibir sin culpa, dar valor a lo que llega',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/Recibirsinculpadarvaloraloquellega.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/Recibirsinculpadarvaloraloquellega.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -352,19 +351,19 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 1: EL MAPA DE PETICIONES CLARAS',
           objective: 'Aprende a formular peticiones tan claras que la otra persona sabrá exactamente qué hacer para apoyarte.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana3tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana3tecnica1.mp3`,
         },
         {
           type: 'supportBankExercise',
           title: 'EJERCICIO 2: EL BANCO DE APOYOS',
           objective: 'Crea tu propio mapa de apoyos para saber a quién pedir ayuda según el momento y la necesidad.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana3tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana3tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/REFLEXION.mp3`,
           prompts: [
             '<p>Tómate unos minutos para responder, sin juzgarte, a estas preguntas. El objetivo no es tener “la respuesta correcta”, sino conocerte mejor y tomar conciencia de tus patrones:</p><ul><li>A lo largo de la semana, ¿qué he descubierto acerca de mis creencias sobre pedir ayuda?</li><li>Mirando la semana en conjunto, qué he descubierto sobre mí mismo/a con relación a cómo me vínculo con los demás y cómo me permito recibir apoyo?</li><li>Esta semana, ¿en qué momento me di cuenta de que podía haber pedido ayuda y no lo hice? ¿Qué me frenó?</li><li>Si hoy pudiera revivir esa situación, ¿qué haría diferente?</li><li>¿Qué emoción suele aparecer cuando pienso en pedir apoyo? (Ej. vergüenza, miedo, alivio, gratitud)</li><li>¿Cómo me imagino que sería mi vida si pedir ayuda fuera algo natural para mí?</li></ul>',
           ],
@@ -373,7 +372,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana3/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana3/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -396,13 +395,13 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'Las redes de apoyo no se improvisan: se cultivan con gestos pequeños y constantes. Esta semana trabajaremos cómo fortalecer vínculos desde la conciencia, el respeto y la reciprocidad. Diseñarás tu propio “círculo de sostén” y un plan simple para mantenerlo vivo.',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/INTRODUCCIONSEMANA4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/INTRODUCCIONSEMANA4.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Las relaciones se entrenan',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Lasrelacionesseentrenan.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Lasrelacionesseentrenan.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -413,7 +412,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Estar para otros sin perderte',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Estarparaotrossinperderte.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Estarparaotrossinperderte.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -424,7 +423,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Fitness relacional: entrenar los vínculos',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Fitnessrelacionalentrenarlosvinculos.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Fitnessrelacionalentrenarlosvinculos.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -435,7 +434,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Reciprocidad y cuidado mutuo',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Reciprocidadycuidadomutuo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Reciprocidadycuidadomutuo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -446,7 +445,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Tu red como autocuidado emocional',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Turedcomoautocuidadoemocional.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Turedcomoautocuidadoemocional.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -457,7 +456,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'collapsible',
           title: 'Construir con conciencia',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/Construirconconciencia.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/Construirconconciencia.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -471,19 +470,19 @@ export const supportNetworkPath: Path = {
           title: 'EJERCICIO 1: MI COMPROMISO CON EL CUIDADO MUTUO',
           objective: 'Elige tres acciones concretas para fortalecer las relaciones que te nutren. Son pequeños actos que, repetidos en el tiempo, construyen confianza y conexión.',
           duration: '8-10 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana4tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana4tecnica1.mp3`,
         },
         {
           type: 'symbolicSupportCircleExercise',
           title: 'EJERCICIO 2: CÍRCULO DE SOSTÉN SIMBÓLICO',
           objective: 'Crea un símbolo que represente tu red de apoyo, para que puedas acudir a él cuando necesites fuerza o calma.',
           duration: '10-12 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana4tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana4tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
             '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
           ],
@@ -492,7 +491,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/semana4/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana4/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -516,7 +515,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión final de la ruta',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/REFLEXIONRUTA.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/REFLEXIONRUTA.mp3`,
           prompts: [
             '<p>Has llegado al final de esta ruta. Durante estas semanas te has detenido a observar tu red de apoyo con más claridad, descubriendo qué vínculos te fortalecen y cuáles quizás te restan energía.</p>',
             '<p>No es un camino fácil, porque mirar de cerca nuestras relaciones también toca fibras sensibles. Aun así, cada paso que has dado te ha acercado a una vida más consciente, sostenida y enraizada en lo que de verdad importa.</p>',
@@ -528,7 +527,7 @@ export const supportNetworkPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN CLAVE DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta11/descripciones/RESUMENRUTA.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/RESUMENRUTA.mp3`
         },
         {
           type: 'list',
@@ -538,7 +537,7 @@ export const supportNetworkPath: Path = {
             'Aprendimos a distinguir entre dependencia, exigencia y acompañamiento genuino.',
             'Reconocer señales de un vínculo sano: coherencia, empatía, respeto, equilibrio entre dar y recibir.',
             'La neurociencia confirma que los vínculos seguros activan nuestro sistema de calma y resiliencia.',
-            'Cuidar la red de apoyo implica tanto elegir bien lo que recibimos como ser un apoyo nutritivo para los demás.',
+            'Cuidar tu red de apoyo implica tanto elegir bien lo que recibimos como ser un apoyo nutritivo para los demás.',
             'Mapear la red y priorizar vínculos nutritivos fortalece la capacidad de afrontar la vida con más seguridad y confianza.',
           ],
         },
@@ -547,5 +546,3 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
-
-    

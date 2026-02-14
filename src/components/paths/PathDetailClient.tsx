@@ -159,6 +159,7 @@ const ClearRequestMapExercise = dynamic(() => import('@/components/paths/ClearRe
 const SupportBankExercise = dynamic(() => import('@/components/paths/SupportBankExercise'), { loading: LoaderComponent, ssr: false });
 const MutualCareCommitmentExercise = dynamic(() => import('@/components/paths/MutualCareCommitmentExercise'), { loading: LoaderComponent, ssr: false });
 const SymbolicSupportCircleExercise = dynamic(() => import('@/components/paths/SymbolicSupportCircleExercise'), { loading: LoaderComponent, ssr: false });
+const VitaminMomentExercise = dynamic(() => import('@/components/paths/VitaminMomentExercise'), { loading: LoaderComponent, ssr: false });
 // RUTA 12
 const EmotionalGratificationMapExercise = dynamic(() => import('@/components/paths/EmotionalGratificationMapExercise'), { loading: LoaderComponent, ssr: false });
 const DailyEnergyCheckExercise = dynamic(() => import('@/components/paths/DailyEnergyCheckExercise'), { loading: LoaderComponent, ssr: false });
@@ -678,6 +679,8 @@ function ContentItemRenderer({
         return <MutualCareCommitmentExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
     case 'symbolicSupportCircleExercise':
         return <SymbolicSupportCircleExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
+    case 'vitaminMomentExercise':
+        return <VitaminMomentExercise key={index} content={contentItem as any} pathId={path.id} onComplete={handleComplete} />;
     // RUTA 12
     case 'emotionalGratificationMapExercise':
         return <EmotionalGratificationMapExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;

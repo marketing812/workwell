@@ -755,6 +755,14 @@ export type SymbolicSupportCircleExerciseContent = {
     audioUrl?: string;
 };
 
+export type VitaminMomentExerciseContent = {
+    type: 'vitaminMomentExercise';
+    title: string;
+    objective: string;
+    duration: string;
+    audioUrl?: string;
+};
+
 // RUTA 12
 export type EmotionalGratificationMapExerciseContent = {
   type: 'emotionalGratificationMapExercise';
@@ -997,6 +1005,7 @@ export type ModuleContent =
   | SupportBankExerciseContent
   | MutualCareCommitmentExerciseContent
   | SymbolicSupportCircleExerciseContent
+  | VitaminMomentExerciseContent
   // RUTA 12
   | EmotionalGratificationMapExerciseContent
   | DailyEnergyCheckExerciseContent
