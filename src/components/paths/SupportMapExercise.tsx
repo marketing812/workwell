@@ -72,7 +72,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -111,9 +111,9 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
     switch (step) {
       case 0:
         return (
-          <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
-            <p className="text-sm text-muted-foreground">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
+          <div className="p-4 space-y-4 text-center">
+            <p className="text-sm">Saber quién está ahí para ti es como tener un mapa en mitad de un viaje: no garantiza que el camino sea fácil, pero sí que no tendrás que recorrerlo en soledad.</p>
+            <p className="text-sm">Hoy vas a dibujar tu propio Mapa de Relaciones y Apoyo, para identificar qué personas forman tu red y de qué manera te sostienen.</p>
             <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="mr-2 h-4 w-4"/></Button>
           </div>
         );
@@ -121,7 +121,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 1: Identifica a tus personas clave</h4>
-                <p className="text-sm text-muted-foreground">Piensa en familiares, amistades, compañeros/as de trabajo, o cualquier persona con quien tengas un vínculo significativo.</p>
+                <p className="text-sm">Piensa en familiares, amistades, compañeros/as de trabajo, o cualquier persona con quien tengas un vínculo significativo.</p>
                  <div className="space-y-3">
                   {relations.map((rel, index) => (
                     <Input key={index} value={rel.name} onChange={e => handleRelationNameChange(index, e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, María)`} />
@@ -141,7 +141,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Clasifica el tipo de apoyo</h4>
-            <p className="text-sm text-muted-foreground">Para cada persona, selecciona qué tipo de apoyo recibes.</p>
+            <p className="text-sm">Para cada persona, selecciona qué tipo de apoyo recibes.</p>
             {relations.filter(r => r.name.trim()).map((rel, index) => (
               <div key={index} className="p-3 border rounded-md">
                 <p className="font-semibold">{rel.name}</p>
@@ -162,7 +162,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Valora la calidad del apoyo</h4>
-            <p className="text-sm text-muted-foreground">Del 1 al 5, puntúa la calidad del apoyo (1 = muy bajo, 5 = muy alto). Recuerda: calidad significa que es genuino, consistente y respetuoso.</p>
+            <p className="text-sm">Del 1 al 5, puntúa la calidad del apoyo (1 = muy bajo, 5 = muy alto). Recuerda: calidad significa que es genuino, consistente y respetuoso.</p>
             {relations.filter(r => r.name.trim()).map((rel, index) => (
               <div key={index} className="p-3 border rounded-md">
                 <Label htmlFor={`quality-${index}`} className="font-semibold">{rel.name}: Nivel {rel.quality}</Label>
@@ -178,7 +178,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
             <h4 className="font-semibold text-lg">Paso 4: Reflexión y síntesis</h4>
             <div className="space-y-2">
               <Label htmlFor="reflection">Observa tu mapa y responde:</Label>
-              <ul className="list-disc list-inside text-sm text-muted-foreground pl-4">
+              <ul className="list-disc list-inside text-sm pl-4">
                   <li>¿Tienes apoyos muy concentrados en una sola persona?</li>
                   <li>¿Faltan ciertos tipos de apoyo?</li>
                   <li>¿Hay vínculos que sería bueno cuidar más?</li>

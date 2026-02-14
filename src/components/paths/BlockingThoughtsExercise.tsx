@@ -22,10 +22,17 @@ interface BlockingThoughtsExerciseProps {
 }
 
 const distortionOptions = [
-    { value: 'catastrophism', label: 'Catastrofismo' },
-    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
-    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
-    { value: 'personalization', label: 'Personalización' },
+    { value: 'pensamiento-todo-o-nada', label: 'Pensamiento todo o nada' },
+    { value: 'sobregeneralizacion', label: 'Sobregeneralización' },
+    { value: 'filtro-mental', label: 'Filtro mental' },
+    { value: 'descalificar-lo-positivo', label: 'Descalificar lo positivo' },
+    { value: 'lectura-de-mente', label: 'Lectura de mente' },
+    { value: 'adivinacion-del-futuro', label: 'Adivinación del futuro' },
+    { value: 'catastrofismo', label: 'Catastrofismo' },
+    { value: 'razonamiento-emocional', label: 'Razonamiento emocional' },
+    { value: 'deberias-o-tengo-que', label: 'Deberías o tengo que' },
+    { value: 'etiquetado', label: 'Etiquetado' },
+    { value: 'personalizacion', label: 'Personalización' },
 ];
 
 export default function BlockingThoughtsExercise({ content, pathId, onComplete }: BlockingThoughtsExerciseProps) {
@@ -44,7 +51,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setSituation('');
@@ -80,7 +87,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
       case 0: // Pantalla 1: Introducción
         return (
           <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Muchas veces, lo que nos impide pedir ayuda no es la situación en sí, sino lo que pensamos sobre ella. Hoy vas a registrar esos pensamientos para entenderlos y empezar a cambiarlos.</p>
+            <p className="text-sm">Muchas veces, lo que nos impide pedir ayuda no es la situación en sí, sino lo que pensamos sobre ella. Hoy vas a registrar esos pensamientos para entenderlos y empezar a cambiarlos.</p>
             <Button onClick={nextStep}>Empezar registro <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
@@ -89,9 +96,12 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="sit-blocking" className="font-semibold text-lg">Paso 1: Recuerda una situación reciente</Label>
-            <p className="text-sm text-muted-foreground">Piensa en un momento en el que necesitaste algo, pero dudaste o decidiste no pedirlo.</p>
+            <p className="text-sm">Piensa en un momento en el que necesitaste algo, pero dudaste o decidiste no pedirlo.</p>
             <Textarea id="sit-blocking" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: La semana pasada no pedí que me sustituyeran en la reunión aunque estaba enferma." maxLength={200} />
-            <div className="flex justify-end"><Button onClick={nextStep}>Siguiente</Button></div>
+            <div className="flex justify-between w-full mt-4">
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={nextStep}>Siguiente</Button>
+            </div>
           </div>
         );
 
@@ -99,7 +109,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="thought-blocking" className="font-semibold text-lg">Paso 2: Anota el pensamiento bloqueante</Label>
-             <p className="text-sm text-muted-foreground">¿Qué frase pasó por tu mente en ese momento?</p>
+             <p className="text-sm">¿Qué frase pasó por tu mente en ese momento?</p>
             <Textarea id="thought-blocking" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} placeholder="Ej: No quiero molestar. / Si lo pido, pensarán que no soy capaz." />
             <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
           </div>
@@ -109,8 +119,8 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
         return (
            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="distortion-select" className="font-semibold text-lg">Paso 3: Detecta la distorsión cognitiva</Label>
-            <p className="text-sm text-muted-foreground">Identifica si tu pensamiento se parece a alguna de estas distorsiones.</p>
-            <Select onValueChange={setDistortion} value={distortion}>
+            <p className="text-sm">Identifica si tu pensamiento se parece a alguna de estas distorsiones.</p>
+            <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
                 <SelectTrigger id="distortion-select"><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
                 <SelectContent>
                     {distortionOptions.map(opt => <SelectItem key={opt.value} value={opt.label}>{opt.label}</SelectItem>)}
@@ -124,7 +134,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="reformulation-blocking" className="font-semibold text-lg">Paso 4: Reformulación</Label>
-            <p className="text-sm text-muted-foreground">Transforma tu pensamiento en uno más realista y útil.</p>
+            <p className="text-sm">Transforma tu pensamiento en uno más realista y útil.</p>
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} placeholder="Ej: Pedir ayuda me permite avanzar más rápido. / A las personas que me aprecian les gusta estar ahí para mí."/>
             <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
           </div>
@@ -134,7 +144,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
-            <p className="text-sm text-muted-foreground">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
+            <p className="text-sm">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
             <Textarea id="next-step-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} placeholder="Ej: La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo."/>
              <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar registro</Button></div>
           </form>
