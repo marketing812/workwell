@@ -14,7 +14,7 @@ import type { NutritiveDrainingSupportMapExerciseContent } from '@/data/paths/pa
 import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
 import { Textarea } from '../ui/textarea';
-
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 interface NutritiveDrainingSupportMapExerciseProps {
   content: NutritiveDrainingSupportMapExerciseContent;
   pathId: string;
@@ -196,7 +196,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
         {content.objective && <CardDescription className="pt-2">{content.objective}
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3" type="audio/mp3" />
+                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3`} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>

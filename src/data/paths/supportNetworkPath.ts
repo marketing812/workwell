@@ -1,4 +1,3 @@
-
 import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -250,7 +249,7 @@ export const supportNetworkPath: Path = {
           title: 'Micropráctica: "Mi momento vitamina"',
           objective: 'Objetivo: entrenar la atención para detectar y reforzar microvínculos positivos en el día a día. Cada noche, antes de dormir, recuerda un momento del día en el que alguien te haya hecho sentir escuchado/a, acompañado/a o simplemente bien. Puede ser un mensaje, una sonrisa, una llamada o un gesto.',
           duration: '2-3 min',
-          audioUrl: '/audios/ruta11/tecnicas/Ruta11semana2micro.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2micro.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -546,5 +545,3 @@ export const supportNetworkPath: Path = {
     }
   ]
 };
-
-    
