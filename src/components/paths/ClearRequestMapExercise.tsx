@@ -61,16 +61,24 @@ export default function ClearRequestMapExercise({ content, pathId, onComplete }:
         <form onSubmit={handleSave} className="space-y-6">
           <div className="space-y-2">
             <h4 className="font-semibold text-lg">Describe una situación en la que necesites ayuda</h4>
-            <Textarea id="sit-clear-req" value={situation} onChange={e => setSituation(e.target.value)} disabled={isSaved}/>
+            <Textarea id="sit-clear-req" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Voy a cambiar de casa y necesito ayuda para mover cajas pesadas.”" disabled={isSaved}/>
           </div>
           <div className="space-y-2">
             <h4 className="font-semibold text-lg">Define qué, cuándo y cómo</h4>
+            <p className="text-sm text-muted-foreground">Cuanto más claro seas, más fácil será para la otra persona decidir si puede ayudarte. Sé específico/a.</p>
+            <div className="text-sm italic p-2 border-l-2 border-accent bg-accent/10">
+              Ejemplo: “Necesito que me ayuden el sábado por la mañana, de 10 a 12, para cargar y bajar cajas.”
+            </div>
             <Textarea value={need} onChange={e => setNeed(e.target.value)} placeholder="Qué necesito exactamente..." disabled={isSaved}/>
             <Textarea value={when} onChange={e => setWhen(e.target.value)} placeholder="Cuándo lo necesito..." disabled={isSaved}/>
             <Textarea value={how} onChange={e => setHow(e.target.value)} placeholder="Cómo quiero que me ayuden..." disabled={isSaved}/>
           </div>
           <div className="space-y-2">
             <h4 className="font-semibold text-lg">Formula tu petición final</h4>
+            <p className="text-sm text-muted-foreground">Ahora vamos a convertirlo en una frase breve, amable y concreta.</p>
+            <div className="text-sm italic p-2 border-l-2 border-accent bg-accent/10">
+              Ejemplo: “¿Podrías venir el sábado de 10 a 12 a ayudarme a cargar cajas para la mudanza?”
+            </div>
             <Textarea id="final-phrase-req" value={finalPhrase} onChange={e => setFinalPhrase(e.target.value)} disabled={isSaved}/>
           </div>
           <div className="space-y-2">
@@ -80,7 +88,7 @@ export default function ClearRequestMapExercise({ content, pathId, onComplete }:
             <div className="flex items-center gap-2"><Checkbox id="isEasy" onCheckedChange={c => setChecklist(p => ({...p, isEasy: !!c}))} disabled={isSaved}/><Label htmlFor="isEasy" className="font-normal">¿Es fácil de responder?</Label></div>
           </div>
           {!isSaved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Petición</Button>
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapeútico</Button>
           ) : (
             <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
               <CheckCircle className="mr-2 h-5 w-5" />
