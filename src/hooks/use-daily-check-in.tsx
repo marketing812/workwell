@@ -1,3 +1,4 @@
+
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
@@ -55,10 +56,9 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       
       const filteredQuestions = allQuestions.filter(q => !answeredToday.includes(q.id));
       
-      const shuffledQuestions = [...filteredQuestions].sort(() => 0.5 - Math.random());
-      
-      setUnansweredQuestions(shuffledQuestions);
-      return shuffledQuestions;
+      // Removed the random shuffle to ensure questions appear in order
+      setUnansweredQuestions(filteredQuestions);
+      return filteredQuestions;
 
     } catch (error) {
       console.error("Error processing daily questions:", error);
