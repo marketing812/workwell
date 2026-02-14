@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -44,9 +45,11 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
       toast({ title: 'Círculo vacío', description: 'Por favor, añade al menos un pilar a tu círculo de sostén.', variant: 'destructive' });
       return;
     }
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Círculo de Sostén Simbólico:**\n\n`;
     filledPillars.forEach(p => {
-        notebookContent += `**Pilar:** ${p.name}\n- Aporta: ${p.contribution || 'No especificado'}\n- Gesto de cuidado: ${p.careAction || 'No especificado'}\n\n`;
+        notebookContent += `**Pilar de mi red:** ${p.name}\n`;
+        notebookContent += `- **Palabra que describe lo que aporta:** ${p.contribution || 'No especificado'}\n`;
+        notebookContent += `- **Gesto concreto para cuidar el vínculo:** ${p.careAction || 'No especificado'}\n\n`;
     });
     addNotebookEntry({ title: 'Mi Círculo de Sostén Simbólico', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Círculo Guardado' });

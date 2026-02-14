@@ -59,11 +59,14 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Banco de Apoyos:**\n\n`;
     filledPeople.forEach(p => {
         const finalSupportType = p.supportType === 'Otro' ? p.otherSupportType : p.supportType;
-        notebookContent += `**Persona:** ${p.name}\n- Tipo de apoyo: ${finalSupportType || 'No especificado'}\n- Grado de confianza: ${p.confidence}/5\n\n`;
+        notebookContent += `**Persona:** ${p.name}\n`;
+        notebookContent += `- **Tipo de apoyo que puede ofrecerme:** ${finalSupportType || 'No especificado'}\n`;
+        notebookContent += `- **Grado de confianza y disponibilidad (1-5):** ${p.confidence}/5\n\n`;
     });
+
     addNotebookEntry({ title: 'Mi Banco de Apoyos', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Banco de Apoyos Guardado' });
     setIsSaved(true);
@@ -97,7 +100,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
             <p className="text-sm text-muted-foreground">Piensa en tu familia, amistades, compañeros/as de trabajo, vecinos/as… Cualquiera que conozcas y con quien tengas algo de confianza.</p>
             <div className="space-y-3">
               {people.map((p, i) => (
-                <Input key={i} value={p.name} onChange={e => handlePersonChange(i, 'name', e.target.value)} placeholder={`Persona ${i + 1}...`} />
+                <Input key={i} value={p.name} onChange={e => handlePersonChange(i, 'name', e.target.value)} placeholder={`Persona ${i + 1}... (Ej: Ana, Carlos, Marta)`} />
               ))}
             </div>
             <div className="flex justify-between w-full mt-4">

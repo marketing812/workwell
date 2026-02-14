@@ -1,15 +1,15 @@
+
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ClearRequestMapExerciseContent } from '@/data/paths/pathTypes';
-import { Checkbox } from '../ui/checkbox';
 import { useUser } from '@/contexts/UserContext';
 
 interface ClearRequestMapExerciseProps {
@@ -34,8 +34,16 @@ export default function ClearRequestMapExercise({ content, pathId, onComplete }:
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Situación:* ${situation}
-*Petición final:* ${finalPhrase}
+**Situación en la que necesito ayuda:**
+${situation}
+
+**Petición (Qué, Cuándo, Cómo):**
+- **Qué necesito:** ${need}
+- **Cuándo lo necesito:** ${when}
+- **Cómo me pueden ayudar:** ${how}
+
+**Formulación de la petición final:**
+"${finalPhrase}"
     `;
     addNotebookEntry({ title: 'Mi Petición Clara', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Petición Guardada' });

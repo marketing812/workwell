@@ -70,10 +70,17 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Situación:* ${situation}
-*Pensamiento bloqueante:* ${blockingThought}
-*Distorsión identificada:* ${distortion}
-*Reformulación:* ${reformulation}
+**Situación en la que dudé en pedir ayuda:**
+${situation}
+
+**Pensamiento bloqueante que apareció:**
+"${blockingThought}"
+
+**Distorsión cognitiva que detecté:**
+${distortion}
+
+**Reformulación consciente y amable:**
+"${reformulation}"
     `;
     addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });

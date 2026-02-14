@@ -63,14 +63,15 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mis Compromisos de Cuidado Mutuo:**\n\n`;
     filledCommitments.forEach(c => {
-        notebookContent += `**Con ${c.name}:**\n`;
-        notebookContent += `- Gesto de cuidado: ${c.action}\n`;
+        notebookContent += `**Persona a cuidar:** ${c.name}\n`;
+        notebookContent += `- **Gesto concreto de cuidado:** ${c.action}\n`;
         if (c.date) {
-            notebookContent += `- Fecha programada: ${format(c.date, 'PPP', { locale: es })} ${c.time ? `a las ${c.time}` : ''}\n`;
+            notebookContent += `- **Cuándo lo haré:** ${format(c.date, "PPP", { locale: es })}${c.time ? ` a las ${c.time}` : ''}\n\n`;
+        } else {
+            notebookContent += `\n`;
         }
-        notebookContent += '\n';
     });
 
     addNotebookEntry({ title: 'Mi Compromiso de Cuidado Mutuo', content: notebookContent, pathId: pathId, userId: user?.id });

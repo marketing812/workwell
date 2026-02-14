@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -47,18 +48,17 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
-    notebookContent += "**Mapa de relaciones y su color:**\n";
+    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mapa de relaciones y su sensación asociada:**\n`;
     filledRelations.forEach(r => {
         let sensationLabel = r.sensation.charAt(0).toUpperCase() + r.sensation.slice(1);
-        if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde)';
-        if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo)';
-        if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ámbar)';
-        notebookContent += `- ${r.name}: ${sensationLabel}\n`;
+        if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento más tranquilo/a y animado/a.';
+        if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo): Me siento agotado/a o tenso/a.';
+        if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ámbar): Me siento igual que antes.';
+        notebookContent += `- **Persona:** ${r.name}\n  - **Sensación:** ${sensationLabel}\n`;
     });
     notebookContent += `\n**Reflexión guiada:**\n`;
-    notebookContent += `- Quiero acercarme a: ${reflection.approach || 'No respondido.'}\n`;
-    notebookContent += `- Necesito tomar distancia de: ${reflection.distance || 'No respondido.'}\n`;
+    notebookContent += `- **¿A quién quieres acercarte más en las próximas semanas?**\n  ${reflection.approach || 'No respondido.'}\n`;
+    notebookContent += `- **¿De quién necesitas poner distancia o limitar el contacto?**\n  ${reflection.distance || 'No respondido.'}\n`;
 
     addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado' });
@@ -90,13 +90,13 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Lista inicial</h4>
-            <Label>Escribe los nombres de las personas con las que interactúas de forma frecuente (familia, amistades, trabajo, comunidad).</Label>
+            <p className="text-sm text-muted-foreground">Escribe los nombres de las personas con las que interactúas de forma frecuente (familia, amistades, trabajo, comunidad).</p>
             {relations.map((rel, index) => (
               <Input key={index} value={rel.name} onChange={e => handleRelationChange(index, 'name', e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, Marta)`}/>
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificar Sensación <ArrowRight className="mr-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Clasificar Sensación <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -117,7 +117,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificación Visual <ArrowRight className="mr-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Clasificación Visual <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -153,7 +153,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Reflexión <ArrowRight className="mr-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Reflexión <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );

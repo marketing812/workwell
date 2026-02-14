@@ -47,15 +47,18 @@ export default function NourishingConversationExercise({ content, pathId, onComp
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Persona:** ${person}
-**Contexto:** ${context}
-**Tema compartido:** ${topic}
-**Pregunta abierta:** ${question}
+**Paso 1: Persona y Contexto**
+- **Persona con quien conversaré:** ${person}
+- **Contexto elegido:** ${context}
 
-**Reflexión post-conversación:**
-- Después de hablar me sentí: ${reflection.after}
-- Descubrí: ${reflection.discovered}
-- Para fortalecer el vínculo: ${reflection.strengthen}
+**Paso 2: Preparación de la conversación**
+- **Tema que quiero compartir:** ${topic}
+- **Pregunta abierta para el otro/a:** ${question}
+
+**Paso 4: Reflexión post-conversación**
+- **¿Cómo me sentí durante y después de hablar?:** ${reflection.after}
+- **¿Qué descubrí sobre esta persona?:** ${reflection.discovered}
+- **¿Cómo puedo seguir fortaleciendo este vínculo?:** ${reflection.strengthen}
     `;
     addNotebookEntry({ title: 'Registro de Conversación Nutritiva', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
