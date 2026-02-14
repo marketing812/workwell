@@ -26,6 +26,7 @@ interface SupportBankExerciseProps {
 interface Person {
     name: string;
     supportType: string;
+    otherSupportType: string;
     confidence: number;
 }
 
@@ -41,7 +42,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
-  const [people, setPeople] = useState<Person[]>(Array(5).fill({ name: '', supportType: '', confidence: 3 }));
+  const [people, setPeople] = useState<Person[]>(Array(8).fill({ name: '', supportType: '', otherSupportType: '', confidence: 3 }));
   const [isSaved, setIsSaved] = useState(false);
 
   const handlePersonChange = <K extends keyof Person>(index: number, field: K, value: Person[K]) => {
@@ -60,20 +61,21 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
     
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
     filledPeople.forEach(p => {
-        notebookContent += `**Persona:** ${p.name}\n- Tipo de apoyo: ${p.supportType || 'No especificado'}\n- Grado de confianza: ${p.confidence}/5\n\n`;
+        const finalSupportType = p.supportType === 'Otro' ? p.otherSupportType : p.supportType;
+        notebookContent += `**Persona:** ${p.name}\n- Tipo de apoyo: ${finalSupportType || 'No especificado'}\n- Grado de confianza: ${p.confidence}/5\n\n`;
     });
     addNotebookEntry({ title: 'Mi Banco de Apoyos', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Banco de Apoyos Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(prev => prev + 1);
+    setStep(prev => prev + 1); // Move to confirmation
   };
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
   const resetExercise = () => {
     setStep(0);
-    setPeople(Array(5).fill({ name: '', supportType: '', confidence: 3 }));
+    setPeople(Array(8).fill({ name: '', supportType: '', otherSupportType: '', confidence: 3 }));
     setIsSaved(false);
   }
 
@@ -118,6 +120,14 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                     {supportOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                   </SelectContent>
                 </Select>
+                 {p.supportType === 'Otro' && (
+                    <Textarea 
+                        value={p.otherSupportType}
+                        onChange={(e) => handlePersonChange(i, 'otherSupportType', e.target.value)}
+                        placeholder="Describe el otro tipo de apoyo..."
+                        className="mt-2"
+                    />
+                )}
               </div>
             ))}
              <div className="flex justify-between w-full mt-4">
@@ -163,7 +173,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                             {filledPeople.map((p, i) => (
                                 <TableRow key={i}>
                                     <TableCell className="font-medium">{p.name}</TableCell>
-                                    <TableCell>{p.supportType || "No clasificado"}</TableCell>
+                                    <TableCell>{p.supportType === 'Otro' ? p.otherSupportType : p.supportType || "No clasificado"}</TableCell>
                                     <TableCell className="text-right flex justify-end items-center gap-1">{p.confidence} <Star className="h-4 w-4 text-amber-400 fill-amber-400"/></TableCell>
                                 </TableRow>
                             ))}
@@ -172,7 +182,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                  </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4"/>Guardar Mapa</Button>
+                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4"/>Guardar mapa en el cuaderno</Button>
                 </div>
             </form>
         );
