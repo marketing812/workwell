@@ -16,6 +16,7 @@ import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { useUser } from '@/contexts/UserContext';
 import { Slider } from '../ui/slider';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface SupportBankExerciseProps {
   content: SupportBankExerciseContent;
@@ -75,7 +76,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setPeople(Array(8).fill({ name: '', supportType: '', otherSupportType: '', confidence: 3 }));
@@ -211,7 +212,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
           <CardDescription className="pt-2">
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta11/tecnicas/Ruta11semana3tecnica2.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana3tecnica2.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>

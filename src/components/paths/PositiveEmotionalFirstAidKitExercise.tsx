@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -14,6 +15,7 @@ import { Input } from '../ui/input';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface PositiveEmotionalFirstAidKitExerciseProps {
   content: PositiveEmotionalFirstAidKitExerciseContent;
@@ -209,7 +211,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>

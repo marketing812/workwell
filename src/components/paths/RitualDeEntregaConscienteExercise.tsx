@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,6 +11,7 @@ import { Edit3, CheckCircle, Save, PlayCircle, BookOpen, Feather, Wind } from 'l
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/pathsData';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
@@ -118,11 +120,11 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         <p className="text-sm text-muted-foreground">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
         <div className="space-y-2">
             <p className="font-medium">Respiración 4-2-6</p>
-            <audio controls controlsList="nodownload" className="w-full h-10"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3"/></audio>
+            <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
         </div>
          <div className="space-y-2">
             <p className="font-medium">Respiración diafragmática</p>
-             <audio controls controlsList="nodownload" className="w-full h-10"><source src="https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3" type="audio/mp3"/></audio>
+             <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`} type="audio/mp3"/></audio>
         </div>
         <Button variant="link" onClick={() => setStep(0)}>Volver a opciones</Button>
     </div>

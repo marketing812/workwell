@@ -11,7 +11,7 @@ import { Edit3, CheckCircle, ArrowRight, ArrowLeft, Save } from 'lucide-react';
 import type { SenseChecklistExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface SenseChecklistExerciseProps {
   content: SenseChecklistExerciseContent;
@@ -39,7 +39,7 @@ export default function SenseChecklistExercise({ content, pathId, onComplete }: 
   };
   
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setSelections({});
@@ -90,7 +90,7 @@ ${selectedItems.map(item => `- ${item}`).join('\n')}
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3" type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3`} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

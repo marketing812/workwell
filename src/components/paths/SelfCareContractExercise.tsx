@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,6 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SelfCareContractExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface SelfCareContractExerciseProps {
   content: SelfCareContractExerciseContent;
@@ -27,8 +29,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
-  
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setNotWilling('');
@@ -148,7 +149,7 @@ ${howToDo}
             <Textarea id="how-to-do" value={howToDo} onChange={e => setHowToDo(e.target.value)} placeholder="Lo haré de forma..." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar mi Contrato en el cuaderno terapéutico</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi Contrato en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -172,7 +173,7 @@ ${howToDo}
         {content.objective && <CardDescription className="pt-2">{content.objective}
           <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-                <source src="https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3" type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>

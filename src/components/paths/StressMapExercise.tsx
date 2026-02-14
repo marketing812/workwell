@@ -17,6 +17,7 @@ import type { StressMapExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
@@ -47,7 +48,7 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
   const [triggerSource, setTriggerSource] = useState<'externo' | 'interno' | 'ambos' | ''>('');
 
 
-  const audioUrl = "https://workwellfut.com/audios/r1_desc/Tecnica-1-mapa-del-estres-personal.mp3";
+  const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-1-mapa-del-estres-personal.mp3`;
 
 
   const handleSubmit = (e: FormEvent) => {

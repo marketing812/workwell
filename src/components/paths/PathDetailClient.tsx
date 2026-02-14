@@ -56,6 +56,7 @@ import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
@@ -836,7 +837,7 @@ export function PathDetailClient({ path }: { path: Path }) {
       <Card className="mb-12 shadow-xl overflow-hidden">
         <div className="relative h-64 w-full">
           <Image
-            src={`https://workwellfut.com/imgapp/800x300/${encodeURIComponent(
+            src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/${encodeURIComponent(
               path.title.replace(':', '')
             )}_800x300.jpg`}
             alt={path.title}
