@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -13,6 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetoursInventoryExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DetoursInventoryExerciseProps {
   content: DetoursInventoryExerciseContent;
@@ -96,7 +96,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
   }, [detours, otherDetour]);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleReflectionCheckboxChange = (detourId: string, field: 'values' | 'emotions' | 'parts', subfield: string, checked: boolean) => {
     setReflections(prev => ({
@@ -323,7 +323,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
           <audio controls controlsList="nodownload" className="w-full">
-            <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana2tecnica1.mp3" type="audio/mp3" />
+            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta7/tecnicas/Ruta7semana2tecnica1.mp3`} type="audio/mp3" />
             Tu navegador no soporta el elemento de audio.
           </audio>
         </div>

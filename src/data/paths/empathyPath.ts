@@ -1,12 +1,12 @@
-
 import type { Path } from './pathTypes';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const empathyPath: Path = {
   id: 'relaciones-autenticas',
   title: 'Relaciones Auténticas con Empatía',
   description: 'Aprende a expresarte con claridad, a cuidar tus vínculos sin perderte a ti y a construir relaciones más nutritivas, equilibradas y verdaderas.',
   dataAiHint: 'empathy authentic relationships',
-  audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/INTRODUCCIONRUTA.mp3',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/INTRODUCCIONRUTA.mp3`,
   modules: [
     {
       id: 'empatia_sem1',
@@ -16,33 +16,33 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/INTRODUCCIONSEMANA1.mp3',
+          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué hace que una relación sea de verdad nutritiva?',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Quehacequeunarelacionseadeverdadnutritiva.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Quehacequeunarelacionseadeverdadnutritiva.mp3`,
           content: [
-            { type: 'paragraph', text: 'Las relaciones que realmente nos nutren no se construyen desde la perfección ni desde la obligación. Se construyen cuando podemos estar presentes de forma genuina, sin disfraces, y cuando nos sentimos vistos, escuchados y respetados en lo que realmente sentimos.\nPero para que eso sea posible, hay algo que debe estar en el centro: la empatía verdadera y la honestidad emocional.\nSin ellas, no hay espacio seguro para mostrarnos tal como somos.' }
+            { type: 'paragraph', text: 'Las relaciones que realmente nos nutren no se construyen desde la perfección ni desde la obligación. Se construyen cuando podemos estar presentes de forma genuina, sin disfraces, y cuando nos sentimos vistos, escuchados y respetados en lo que realmente sentimos.\\nPero para que eso sea posible, hay algo que debe estar en el centro: la empatía verdadera y la honestidad emocional.\\nSin ellas, no hay espacio seguro para mostrarnos tal como somos.' }
           ]
         },
         {
           type: 'collapsible',
           title: '¿Qué es realmente la empatía?',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Queesrealmentelaempatia.mp3`,
           content: [
-            { type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\n“¿Si esto me pasara a mí, cómo me sentiría?”\nPero eso no es empatía real.\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\nLa empatía verdadera es diferente:' },
+            { type: 'paragraph', text: 'Mucha gente cree que empatizar es preguntarse:\\n“¿Si esto me pasara a mí, cómo me sentiría?”\\nPero eso no es empatía real.\\nEso es imaginarte a ti en el lugar del otro, y al hacerlo, sin darte cuenta, filtras la vivencia del otro a través de tu historia, tus emociones, tus creencias.\\nLa empatía verdadera es diferente:' },
             { type: 'list', items: ['“Voy a intentar comprender cómo se siente el otro... desde su mundo, no desde el mío.”', '“No necesito estar de acuerdo. Solo quiero estar presente, sin juicio ni correcciones.”']}
           ]
         },
         {
           type: 'collapsible',
           title: 'Lo que la empatía NO es',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Loquelaempatianoes.mp3`,
           content: [
-            { type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\nY, desde luego, no minimiza con frases como:'},
+            { type: 'paragraph', text: 'La empatía no juzga, no analiza, no interrumpe.\\nY, desde luego, no minimiza con frases como:'},
             { type: 'list', items: ['“Bueno, no es para tanto…”','“Tienes que ser más fuerte.”','“Eso no debería afectarte así.”'] },
             { type: 'paragraph', text: 'Estas frases, aunque bienintencionadas, generan invalidación emocional. Y cuando invalidamos al otro, lo que suele pasar es que se cierra, se esconde o se siente solo.' }
           ]
@@ -50,24 +50,24 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Empatía y autenticidad van juntas',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Empatiayautenticidadvanjuntas.mp3`,
           content: [
-            { type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\nPor eso, la empatía y la autenticidad no se pueden separar:'},
+            { type: 'paragraph', text: 'Nadie puede mostrarse como es si siente que va a ser corregido, juzgado o ignorado.\\nY tú tampoco puedes ser auténtico o auténtica si vives desde el miedo a decepcionar, incomodar o “no estar a la altura”.\\nPor eso, la empatía y la autenticidad no se pueden separar:'},
             { type: 'list', items: ['La empatía crea el espacio seguro.','La autenticidad lo habita.']}
           ]
         },
-        { type: 'collapsible', title: 'La honestidad emocional se entrena', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Lahonestidademocionalseentrena.mp3', content: [{ type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\nEs aprender a expresar lo esencial con respeto y claridad.\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }] },
+        { type: 'collapsible', title: 'La honestidad emocional se entrena', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Lahonestidademocionalseentrena.mp3`, content: [{ type: 'paragraph', text: 'Ser auténtico no es “decirlo todo sin filtro”.\\nEs aprender a expresar lo esencial con respeto y claridad.\\nLa honestidad emocional no es una etiqueta moral, es una habilidad.\\nEs reconocer lo que sientes, validarlo internamente y comunicarlo sin herirte ni herir.\\nTienes derecho a sentir lo que sientes, a decirlo o a guardar silencio si eso te cuida mejor.\\nY antes de pedir validación fuera... necesitas practicar auto-validación emocional.' }] },
         {
           type: 'collapsible',
           title: '¿Te reconoces tras una máscara?',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Tereconocestrasunamascara.mp3`,
           content: [
             { type: 'paragraph', text: 'A veces, por miedo a no ser aceptados, nos mostramos como creemos que deberíamos ser:'},
             { type: 'list', items: ['Más alegres de lo que estamos.','Más fuertes, comprensivos, funcionales...','O directamente nos callamos.']},
-            { type: 'paragraph', text: 'Estas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\nLa autenticidad se pierde cuando tu presencia no está presente.' }
+            { type: 'paragraph', text: 'Estas máscaras pueden protegerte, sí, pero también te desconectan de ti y de los demás.\\nLa autenticidad se pierde cuando tu presencia no está presente.' }
           ]
         },
-        { type: 'collapsible', title: 'Esta semana entrenas…', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/Estasemanaentrenas.mp3', content: [{ type: 'list', items: ['Detectar qué relaciones te alejan de tu autenticidad.', 'Escuchar cómo te sientes antes de actuar o responder.', 'Expresarte con más verdad y con más respeto, hacia ti y hacia el otro.'] }, { type: 'paragraph', text: 'Porque ser auténtico o auténtica no es imponer tu verdad…\nEs no dejarte fuera de lo que estás viviendo.' }] },
+        { type: 'collapsible', title: 'Esta semana entrenas…', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/Estasemanaentrenas.mp3`, content: [{ type: 'list', items: ['Detectar qué relaciones te alejan de tu autenticidad.', 'Escuchar cómo te sientes antes de actuar o responder.', 'Expresarte con más verdad y con más respeto, hacia ti y hacia el otro.'] }, { type: 'paragraph', text: 'Porque ser auténtico o auténtica no es imponer tu verdad…\nEs no dejarte fuera de lo que estás viviendo.' }] },
         {
           type: 'collapsible',
           title: 'Una nueva forma de estar en tus vínculos',
@@ -78,10 +78,10 @@ export const empathyPath: Path = {
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3' },
-        { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3' },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/REFLEXION.mp3', prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3' },
+        { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3` },
+        { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3` },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/REFLEXION.mp3`, prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
+        { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3` },
         { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.','La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.','Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.','La autenticidad florece cuando hay espacio seguro creado por la empatía.','Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.','Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.','Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.','La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
     },
     {
@@ -89,15 +89,15 @@ export const empathyPath: Path = {
       title: 'Semana 2: Escucha y Comprende con el Corazón',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3' }, { type: 'title', text: 'Psicoeducación' }, { type: 'collapsible', title: '¿Escuchas para responder o para comprender?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Escuchaspararesponderoparacomprender.mp3', content: [{ type: 'paragraph', text: 'A menudo, oímos sin escuchar profundamente. Escuchamos para corregir, para dar consejos, para aliviar el malestar… pero muy pocas veces escuchamos para comprender de verdad. La escucha empática es una presencia distinta: no exige, no interrumpe, no intenta arreglar. Solo está.' }] }, { type: 'collapsible', title: '¿Qué bloquea nuestra escucha empática?', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3', content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.' }] }, { type: 'collapsible', title: 'Validar no es justificar. Es comprender.', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3', content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] }, { type: 'collapsible', title: '¿Por qué nos cuesta tanto escuchar así?', audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/Porquenoscuestatantoescucharasi.mp3', content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] }, { type: 'title', text: 'Técnicas Específicas' }, { 'type':'empathicMirrorExercise', 'title':'EJERCICIO 1: EL ESPEJO EMPÁTICO', 'objective':'En este ejercicio vas a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. \nAprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica, aunque no digas muchas palabras. \n\nEsta habilidad transforma tus relaciones. Y también te ayuda a dejar de cargar con lo que no te corresponde, porque comprender no es absorber: es estar con el otro, sin perderte tú. \n\nTe recomiendo practicarlo varias veces esta semana, en diferentes conversaciones.', 'duration':'10-12 minutos', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica1.mp3' }, { 'type':'validationIn3StepsExercise', 'title':'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', 'objective':'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', 'duration':'10 min', 'audioUrl':'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion2tecnica2.mp3' }, { 
+      content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado alguna vez que alguien te escuchaba, pero sentías que no estaba realmente contigo?\nQuizás te miraba, pero su mente estaba en otro sitio, o te respondía tan rápido que parecía tener la solución antes de que acabaras de hablar.\nEsta semana vamos a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. Aprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/INTRODUCCIONSEMANA2.mp3` }, { type: 'title', text: 'Psicoeducación' }, { type: 'collapsible', title: '¿Escuchas para responder o para comprender?', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/Escuchaspararesponderoparacomprender.mp3`, content: [{ type: 'paragraph', text: 'A menudo, oímos sin escuchar profundamente. Escuchamos para corregir, para dar consejos, para aliviar el malestar… pero muy pocas veces escuchamos para comprender de verdad. La escucha empática es una presencia distinta: no exige, no interrumpe, no intenta arreglar. Solo está.' }] }, { type: 'collapsible', title: '¿Qué bloquea nuestra escucha empática?', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/Quebloqueanuestraescuchaempatica.mp3`, content: [{ type: 'paragraph', text: 'Incluso cuando queremos ayudar, hay reacciones automáticas que interrumpen la conexión emocional:' }, { type: 'list', items: ['Intentar calmar demasiado rápido (“No te pongas así”).', 'Ofrecer soluciones sin validar (“Lo que tienes que hacer es…”).', 'Minimizar o comparar (“A mí me pasó algo peor y aquí estoy”).', 'Estar físicamente presente pero emocionalmente ausente (mirar el móvil).', 'Anticipar y no dejar terminar (“Ya sé lo que vas a decir”).'] }, { type: 'paragraph', text: 'Estas actitudes, aunque habituales, hacen que el otro se sienta solo o incomprendido.' }] }, { type: 'collapsible', title: 'Validar no es justificar. Es comprender.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/Validarnoesjustificarescomprender.mp3`, content: [{ type: 'paragraph', text: 'Validar emocionalmente no significa que estés de acuerdo con todo. Significa decir (con palabras o sin ellas): “Entiendo que lo que sientes tiene sentido desde tu vivencia”. En vez de “No deberías sentirte así”, puedes decir “Puedo ver que esto te está afectando mucho”. Validar es sostener la emoción del otro sin juzgarla ni querer cambiarla.' }] }, { type: 'collapsible', title: '¿Por qué nos cuesta tanto escuchar así?', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/Porquenoscuestatantoescucharasi.mp3`, content: [{ type: 'paragraph', text: 'Porque no nos lo enseñaron. Aprendimos a resolver, a tranquilizar, a corregir… pero no a quedarnos presentes mientras el otro siente algo incómodo. Escuchar de verdad implica estar ahí, aunque no sepamos qué decir. Y para poder hacerlo con el otro, necesitas practicarlo primero contigo.' }] }, { type: 'title', text: 'Técnicas Específicas' }, { 'type':'empathicMirrorExercise', 'title':'EJERCICIO 1: EL ESPEJO EMPÁTICO', 'objective':'En este ejercicio vas a entrenar una forma de escucha profunda y sin juicio, en la que puedas acompañar emocionalmente a otra persona sin interrumpir, sin aconsejar y sin hablar de ti. \nAprenderás a reflejar lo que el otro siente, creando un espacio de validación auténtica, aunque no digas muchas palabras. \n\nEsta habilidad transforma tus relaciones. Y también te ayuda a dejar de cargar con lo que no te corresponde, porque comprender no es absorber: es estar con el otro, sin perderte tú. \n\nTe recomiendo practicarlo varias veces esta semana, en diferentes conversaciones.', 'duration':'10-12 minutos', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion2tecnica1.mp3` }, { 'type':'validationIn3StepsExercise', 'title':'EJERCICIO 2: VALIDACIÓN EN 3 PASOS', 'objective':'Este ejercicio te muestra una forma sencilla y poderosa de estar presente con el otro sin intentar arreglar nada. Aprenderás a validar emocionalmente en tres pasos muy concretos, para que la otra persona sienta que su experiencia tiene sentido y que no está sola.', 'duration':'10 min', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion2tecnica2.mp3` }, { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana2/REFLEXION.mp3', 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/REFLEXION.mp3`, 
           prompts: [
             '<p>Te invito a detenerte un momento para mirar dentro de ti.  Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente.  </p>',
             '<ul><li>¿Cuándo fue la última vez que alguien me escuchó de verdad, sin juicio ni prisa?</li><li>¿Qué hizo esa persona para que yo me sintiera tan visto/a y comprendido/a?</li><li>¿Qué impacto emocional tiene en mis vínculos cuando interrumpo, comparo o minimizo lo que el otro siente?</li><li>¿Qué me gustaría empezar a ofrecer más en mis relaciones: más silencio, más validación, más presencia...?</li><li>¿Qué me llevo esta semana como recordatorio para ser mejor compañía, para los demás y para mí?</li></ul>'
           ] 
-        }, { type: 'title', text: 'Resumen Clave', 'audioUrl':'https://workwellfut.com/audios/ruta5/descripciones/semana2/RESUMEN.mp3' }, { 'type':'list', 'items':['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] }, { 'type':'quote', 'text':'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }]
+        }, { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/RESUMEN.mp3` }, { 'type':'list', 'items':['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] }, { 'type':'quote', 'text':'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }]
     },
     {
       id: 'empatia_sem3',
@@ -108,13 +108,13 @@ export const empathyPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Te ha pasado que alguien que quieres está mal… y sientes la necesidad de hacer algo, aunque estés agotado o confundida? \n¿O que, después de acompañar a alguien, te quedas sin energía, vacía o incluso resentida? \n\nEso tiene nombre, y no es solo “ser sensible” ni “tener un gran corazón”. \nSe llama fusión emocional. Y es muy diferente de la verdadera empatía. ',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Tepasaestocuandoalguienloestapasandomal.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Tepasaestocuandoalguienloestapasandomal.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué es realmente la empatía?',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Queesrealmentelaempatia.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Queesrealmentelaempatia.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -125,7 +125,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Fusión emocional: cuando te pierdes por cuidar',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Fusionemocionalcuandotepierdesporcuidar.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Fusionemocionalcuandotepierdesporcuidar.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -136,7 +136,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Resonancia, empatía y fusión: no es lo mismo',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Resonanciaempatiayfusionnoeslomismo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Resonanciaempatiayfusionnoeslomismo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -147,7 +147,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Por qué nos fundimos emocionalmente',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Porquenosfundimosemocionalmente.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Porquenosfundimosemocionalmente.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -158,7 +158,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'La empatía sana sí existe',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Laempatiasanasiexiste.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Laempatiasanasiexiste.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -169,7 +169,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Herramientas que vas a entrenar esta semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Herramientasquevasaentrenarestasemana.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Herramientasquevasaentrenarestasemana.mp3`,
           content: [
             { type: 'list', items: ['Asertividad emocional: poner palabras claras a lo que necesitas, sin agredir ni desaparecer.','Autoconciencia: detectar cómo te sientes antes de actuar. Preguntarte “¿Estoy disponible de verdad?”.','Mindfulness emocional: respirar antes de absorber, darte tiempo antes de responder.','Reestructuración cognitiva: cambiar pensamientos como “Tengo que aguantarlo todo” por “Puedo cuidar sin cargar”.','Compasión equilibrada: recordar que tú también mereces contención.'] }
           ],
@@ -177,7 +177,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Una metáfora para recordarlo',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/Unametaforapararecordarlo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/Unametaforapararecordarlo.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -192,26 +192,26 @@ export const empathyPath: Path = {
           objective:
             '¿Te sientes a veces agotado/a después de acompañar a alguien? ¿Te cuesta distinguir entre estar presente… y quedarte vacía/o por dentro? \n\nEste ejercicio está hecho para ti. \nVamos a entrenar una forma de cuidar sin romperte: una visualización breve, pero poderosa, que te ayudará a crear tu escudo emocional interno. \nNo es una barrera. Es un filtro que te protege mientras sigues siendo tú. \nPara que puedas escuchar… sin absorber. Acompañar… sin fundirte. Y cuidar… sin desaparecer. \n\nTe recomiendo repetir esta visualización 2 o 3 veces por semana, especialmente antes de conversaciones emocionalmente exigentes o relaciones que te remueven.',
           duration: '6-8 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3`,
         },
         {
           type: 'emotionalInvolvementTrafficLightExercise',
           title: 'Ejercicio 2: Semáforo de implicación emocional',
           objective: 'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3`,
         },
         {
           type: 'activateShieldExercise',
           title: 'Micropráctica diaria opcional: Activa tu escudo antes de entrar',
           objective: 'Para ayudarte a no perderte en el malestar del otro. Es tu momento para recordar que también tú importas en cada interacción. Esta práctica breve te ancla antes de cuidar.',
           duration: '1-2 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion3tecnica3.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica3.mp3`
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/REFLEXION.mp3`,
           prompts: [
             '<p>Esta pausa es para integrar todo lo que has vivido esta semana </p>',
             '<ul><li>¿En qué momentos te has sentido fundido/a emocionalmente sin darte cuenta?</li><li>¿Qué cambios has notado al observar tus relaciones desde el semáforo emocional?</li><li>¿Qué frases o ideas de esta semana te gustaría recordar cuando vuelvas a estar con alguien que te necesita?</li><li>¿Qué pequeño paso puedes dar esta semana para cuidar tu llama sin apagarla por estar al lado de otra persona?</li></ul>',
@@ -220,7 +220,7 @@ export const empathyPath: Path = {
         {
           type: 'title',
           text: 'Resumen Clave',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana3/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana3/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -243,14 +243,14 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3',
+          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'No necesitas muchas personas. Necesitas relaciones que te sostengan de verdad.',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO1.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -261,7 +261,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Las relaciones honestas a veces duelen… pero sanan',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO2.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -272,7 +272,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'No necesitas esconder lo que sientes para que la relación funcione',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO3.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO3.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -283,7 +283,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'La seguridad relacional no aparece sola: se construye paso a paso',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -294,7 +294,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Lo que hace que una relación merezca la pena no es que todo sea fácil, sino que tú te sientas libre en ella',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO5.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO5.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -305,7 +305,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Cuando sabes que tus vínculos son sólidos, poner límites no da tanto miedo',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO6.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO6.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -316,7 +316,7 @@ export const empathyPath: Path = {
         {
           type: 'collapsible',
           title: 'Autocompasión después de elegir cuidarte',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/AUDIO7.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO7.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -330,19 +330,19 @@ export const empathyPath: Path = {
           title: 'EJERCICIO 1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
           objective: '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad. Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3`,
         },
         {
           type: 'relationalCommitmentExercise',
           title: 'EJERCICIO 2: MI COMPROMISO RELACIONAL',
           objective: '¿Te ha pasado que sabes lo que no quieres en una relación, pero no tienes tan claro lo que sí deseas construir? A veces nos enfocamos en protegernos… pero olvidamos definir cómo queremos estar presentes. Este ejercicio es una brújula emocional: Una oportunidad para que tú elijas conscientemente con quién deseas vincularte y desde qué valores. Vas a crear tu propio compromiso relacional, para recordarte cómo cuidar tu bienestar también en los vínculos.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion4tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
             '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
           ],
@@ -351,7 +351,7 @@ export const empathyPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/semana4/RESUMEN.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/RESUMEN.mp3`,
         },
         {
           type: 'list',
@@ -378,7 +378,7 @@ export const empathyPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/REFLEXIONRUTA.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/REFLEXIONRUTA.mp3`,
           prompts: [
             '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
             '<p>Preguntas para tu cuaderno emocional:</p>',
@@ -388,7 +388,7 @@ export const empathyPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta5/descripciones/RESUMENRUTA.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/RESUMENRUTA.mp3`
         },
         {
           type: 'list',
@@ -409,14 +409,3 @@ export const empathyPath: Path = {
     }
   ]
 };
-
-    
-
-
-    
-
-    
-
-  
-
-    

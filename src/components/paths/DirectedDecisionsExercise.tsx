@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,6 +11,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DirectedDecisionsExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DirectedDecisionsExerciseProps {
   content: DirectedDecisionsExerciseContent;
@@ -202,7 +202,7 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3" type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta7/tecnicas/Ruta7semana3tecnica1.mp3`} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

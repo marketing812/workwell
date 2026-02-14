@@ -1,4 +1,3 @@
-
 import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -98,7 +97,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3`,
-          content: [{ type: 'paragraph', text: 'Ahora ya tienes un mapa:\n\n- Sabes diferenciar culpa, queja y responsabilidad.\n- Reconoces las trampas de la hiperexigencia y la hiperresponsabilidad.\n- Cuentas con un método para pasar de la queja a la acción.\n\nEn las técnicas de esta semana, vamos a entrenar estos pasos de forma guiada, para que la teoría se convierta en hábitos reales y sostenibles.' }],
+          content: [{ type: 'paragraph', text: 'Aceptar lo que fue no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -232,7 +231,7 @@ export const responsibilityPath: Path = {
           title: 'EJERCICIO 1: ESO PASÓ. ¿Y AHORA QUÉ?',
           objective: 'Usar la escritura para poner en orden lo que pasó, soltar el juicio y convertir el pasado en un punto de partida, no en una condena.',
           duration: '10–12 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3`,
         },
         {
           type: 'selfAcceptanceAudioExercise',
@@ -244,7 +243,9 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3`,
-          prompts: ['<ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>'],
+          prompts: [
+            '<p>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</p><ul><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
+          ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Resumensesion2ruta10.mp3` },
         {
@@ -322,7 +323,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Reflexionsesion3ruta10.mp3`,
           prompts: [
-            '<ul><li>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</li><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>',
+            '<p>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</p><ul><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Resumensesion3ruta10.mp3` },
@@ -404,7 +405,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3`,
           prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p>Preguntas para reflexionar:</p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+            '<div class="prose prose-sm dark:prose-invert max-w-none"><p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte.</p><p>Preguntas para reflexionar:</p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul></div>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Resumensesion4ruta10.mp3` },
@@ -457,5 +458,3 @@ export const responsibilityPath: Path = {
     },
   ],
 };
-
-    

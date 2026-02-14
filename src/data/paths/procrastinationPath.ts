@@ -1,13 +1,12 @@
-
-
 import type { Path } from './pathTypes';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const procrastinationPath: Path = {
   id: 'superar-procrastinacion',
   title: 'Superar la Procrastinación y Crear Hábitos',
   description: 'Aprende a desbloquearte, a comenzar sin esperar la motivación perfecta y a sostener lo que empiezas, cultivando una constancia amable y flexible.',
   dataAiHint: 'procrastination habits focus',
-  audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/INTRODUCCIONRUTA.mp3',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/INTRODUCCIONRUTA.mp3`,
   modules: [
     {
       id: 'procrast_sem1',
@@ -18,7 +17,7 @@ export const procrastinationPath: Path = {
         { 
             type: 'paragraphWithAudio', 
             text: '¿Te ha pasado que tienes claro lo que quieres hacer, pero algo dentro de ti te frena una y otra vez? Esta semana te acompaño a entender qué hay realmente detrás de la procrastinación —más allá de la pereza o la falta de voluntad— y cómo tu mente y tu cuerpo intentan protegerte del malestar emocional.\nVamos a observar ese ciclo con más claridad y menos juicio. Descubrirás que postergar no te hace débil, sino humano/a. Y que al comprenderlo, puedes empezar a transformarlo desde un lugar más amable y consciente.',
-            audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/INTRODUCCIONSEMANA1.mp3'
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`
         },
         { 
             type: 'title', 
@@ -27,7 +26,7 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'Procrastinar no es flojear: es evitar sentir',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Porquepostergoloquemeimporta.mp3`,
           content: [
             { type: 'paragraph', text: 'Muchas personas se juzgan duramente cuando procrastinan. Se dicen cosas como “soy un flojo o una floja”, “no tengo fuerza de voluntad” o “soy un desastre”.\nPero la verdad es que la procrastinación no es pereza: es una forma de protegerte emocionalmente.\nEvitas ciertas tareas porque, aunque sean importantes, despiertan en ti emociones incómodas:\n- Ansiedad (por no saber cómo hacerlo o por todo lo que implica)\n- Miedo al juicio (a fallar, a hacerlo mal, a que no sea suficiente)\n- Inseguridad (dudas sobre si eres capaz)\n- Tristeza o agotamiento emocional\nAl aplazarlas, tu mente siente un alivio momentáneo. Pero ese alivio dura poco, y con el tiempo aparece otra cadena de emociones: culpa, frustración, estrés o baja autoestima.\nNo es que no quieras hacer la tarea. Es que no quieres sentir lo que la tarea despierta.' },
           ],
@@ -35,13 +34,13 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'El círculo de la procrastinación',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Elcirculodelaprocrastinacion.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Elcirculodelaprocrastinacion.mp3`,
           content: [{ type: 'paragraph', text: 'Cuando postergas una tarea, tu cerebro experimenta un alivio inmediato. Y eso… le gusta.\nCada vez que evitas algo que te causa malestar, tu cerebro aprende:\n“¡Uy, esto me hizo sentir mejor! Vamos a repetirlo.”\nEste patrón se conoce como refuerzo negativo: no porque sea “malo”, sino porque refuerza una conducta al quitar algo desagradable (la ansiedad, el miedo, la tensión…).\nEs decir: te sientes mejor por evitar… y eso hace que sigas evitando.\nPero a la larga, ese círculo te atrapa:\nEvitas → Te sientes bien un rato → La tarea sigue pendiente → Te sientes peor → Vuelves a evitar…\nEl alivio es real, pero no soluciona el problema. Solo lo posterga… y lo agranda.' }]
         },
         {
           type: 'collapsible',
           title: 'Pensamientos que te bloquean',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Pensamientosquetebloquean.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Pensamientosquetebloquean.mp3`,
           content: [
             { type: 'paragraph', text: 'A menudo no procrastinamos por las tareas en sí, sino por los pensamientos que tenemos sobre ellas. Estos pensamientos actúan como barreras invisibles que paralizan tu acción. A veces son tan automáticos que ni te das cuenta de que te están frenando.\nAquí tienes algunos ejemplos comunes:' },
             { type: 'collapsible', title: '“O lo hago perfecto, o no sirve.”', content: [{ type: 'paragraph', text: 'Este pensamiento es una trampa del perfeccionismo. Te exige un resultado ideal desde el principio, y eso puede hacer que ni siquiera empieces. Si no puedes hacerlo perfecto, tu mente prefiere no hacerlo en absoluto.' }] },
@@ -55,13 +54,13 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'No siempre es miedo: a veces es agotamiento',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Nosiempreesmiedoavecesesagotamiento.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Nosiempreesmiedoavecesesagotamiento.mp3`,
           content: [{ type: 'paragraph', text: 'No toda procrastinación nace del miedo. A veces, simplemente estás emocionalmente agotado o agotada.\nTe sientes sin ganas, vacío o vacía por dentro, desconectado o desconectada de lo que antes te importaba.\nY en ese estado, cualquier tarea parece una montaña.\nEste tipo de bloqueo no se resuelve con fuerza de voluntad, ni con frases motivadoras. Se resuelve con descanso real, autocompasión y reconexión emocional.\nNo es que no te importe. Es que estás tan cansado o cansada que ya no puedes demostrar que te importa.\nUna mente saturada y un cuerpo agotado necesitan cuidado, no exigencia.\nA veces la mejor forma de avanzar… es parar con ternura.' }]
         },
         {
           type: 'collapsible',
           title: 'En resumen',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Enresumen.mp3`,
           content: [{ type: 'list', items: ['La procrastinación es una forma de calmar emociones incómodas','El alivio que ofrece es breve, pero refuerza el problema','Comprenderla es el primer paso para transformarla','No se trata de hacerlo perfecto, sino de empezar. Una y otra vez']}]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -70,19 +69,19 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3`
         },
         {
           type: 'compassionateReflectionExercise',
           title: 'Ejercicio 2: Reflexiona sin Culparte',
           objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
           duration: '8 a 12 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/REFLEXION.mp3`,
           prompts: [
             '<p>Has llegado al final de la primera sesión. Ahora toca poner por escrito lo que has aprendido.</p>',
             '<ul>',
@@ -90,7 +89,11 @@ export const procrastinationPath: Path = {
             '</ul>'
           ]
         },
-        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3'},
+        { 
+          type: 'title', 
+          text: 'Resumen Clave de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/RESUMENYCIERRE.mp3`
+        },
         { type: 'list', items: [
             'La procrastinación no es pereza: es una forma aprendida de evitar emociones difíciles.',
             'El alivio que sentimos al evitar refuerza el bloqueo, pero es temporal.',
@@ -108,30 +111,30 @@ export const procrastinationPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que esperas a sentirte motivado para arrancar, pero la motivación nunca llega? Esta semana te acompaño a darle la vuelta a ese ciclo.\nDescubrirás que no necesitas energía para empezar… sino que empezar es lo que genera energía. Aprenderás a romper el bloqueo con acciones mínimas que activan tu sistema de recompensa, y a planificar sin exigencia desde tu realidad.\nEl primer paso no tiene que ser perfecto. Solo tiene que ser real.',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/INTRODUCCIONSEMANA2.mp3'},
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/INTRODUCCIONSEMANA2.mp3`},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'El mito de la motivación',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Elmitodelamotivacion.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Elmitodelamotivacion.mp3`,
           content: [{ type: 'paragraph', text: '¿Alguna vez te has dicho “lo haré cuando me sienta con ganas”? Es una idea muy extendida… pero poco útil. La motivación no siempre aparece antes de actuar. De hecho, casi siempre es al revés: actuar es lo que genera motivación.' }],
         },
         {
           type: 'collapsible',
           title: 'Movimiento primero, motivación después',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Movimientoprimeromotivaciondespues.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Movimientoprimeromotivaciondespues.mp3`,
           content: [{ type: 'paragraph', text: 'Muchas veces esperamos a sentirnos motivados o motivadas para empezar una tarea. Pero desde la psicología conductual y la neurociencia, sabemos que la motivación no es lo que da lugar al movimiento… es al revés. Cuando realizas una acción, aunque sea muy pequeña, tu cerebro libera dopamina, una sustancia asociada al placer, la activación y el sistema de recompensa. Esa pequeña dosis de "logro" crea una sensación de avance que alimenta tu energía y tu confianza. No esperes a tener ganas para actuar: empieza con un pequeño paso, y las ganas vendrán después.' }],
         },
         {
           type: 'collapsible',
           title: 'Tu cerebro necesita arrancar',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Tucerebronecesitaarrancar.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Tucerebronecesitaarrancar.mp3`,
           content: [{ type: 'paragraph', text: 'Imagina que estás en una cuesta arriba con una bicicleta parada. Al principio, moverla parece imposible. Pero si logras impulsarla un poco… empieza a rodar. Tu mente funciona igual. Cuando estás bloqueado o bloqueada, lo difícil no es continuar: lo difícil es arrancar. Y por eso, necesitas un impulso inicial que rompa la inercia. No tienes que tener todo resuelto para empezar. Solo tienes que dar el primer paso.' }],
         },
         {
           type: 'collapsible',
           title: 'Microcomienzos: la clave para romper la inercia',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Microcomienzoslaclavepararomperlainercia.mp3`,
           content: [
             { type: 'paragraph', text: 'Un microcomienzo es una acción tan pequeña que no te abruma… pero que activa tu sistema de acción.'},
             { type: 'list', items: [
@@ -147,13 +150,13 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'Cada paso es una prueba de identidad',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Cadapasoesunapruebadeidentidad.mp3`,
           content: [{ type: 'paragraph', text: 'Cada vez que actúas, incluso con un gesto mínimo, le estás enviando un mensaje a tu cerebro: “No soy alguien que siempre procrastina. Soy alguien que hoy ha empezado.” Tu identidad no se construye con grandes logros, sino con pequeñas decisiones repetidas. Y ese mensaje, repetido a lo largo del tiempo, transforma tu autoconcepto. Dejas de verte como alguien bloqueado o bloqueada, y comienzas a sentirte en marcha. Cada paso cuenta. Cada paso te define.' }],
         },
          {
           type: 'collapsible',
           title: 'Planificar con intención (no con presión)',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/Planificarconintencionnoconpresion.mp3`,
           content: [
             { type: 'paragraph', text: 'Planificar no es exigirte más. Es prepararte mejor. Cuando defines con claridad cuándo, dónde y cómo harás una tarea, le das a tu cerebro una señal concreta de acción. Esto se llama intención de implementación, y ha demostrado en estudios que aumenta mucho la probabilidad de cumplir lo que te propones.' },
             { type: 'paragraph', text: 'Ejemplo: En lugar de decir “tengo que caminar más”, te dices: “Cuando termine de cenar, saldré a caminar 10 minutos alrededor de mi casa.”' },
@@ -166,19 +169,19 @@ export const procrastinationPath: Path = {
           type: 'twoMinuteRuleExercise',
           title: 'Ejercicio 1: La Regla de los 2 Minutos',
           objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3`,
         },
         {
           type: 'microPlanExercise',
           title: 'Ejercicio 2: Tu Primer Microplan de Acción',
           objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
           duration: '5 a 8 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana: Rompe el Ciclo',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/REFLEXION.mp3`,
           prompts: [
             '<p>Cada pequeña acción que hiciste esta semana ha sido un paso contra el estancamiento. Este es tu espacio para integrarlo y reconocerte:</p>',
             '<ul>',
@@ -192,7 +195,7 @@ export const procrastinationPath: Path = {
         { 
           type: 'title', 
           text: 'Resumen Clave de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana2/RESUMEN.mp3' 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana2/RESUMEN.mp3` 
         },
         { type: 'list', items: [
             'La motivación no llega antes: llega después de actuar.',
@@ -211,24 +214,24 @@ export const procrastinationPath: Path = {
       type: 'skill_practice',
       estimatedTime: '20-25 min',
       content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que te dices cosas como “ahora no es el momento” o “cuando me sienta mejor lo haré”… y los días siguen pasando? Esta semana te acompaño a detectar esas excusas internas que, sin querer, te mantienen bloqueado o bloqueada. Verás que muchas veces no son la causa real, sino la máscara de emociones más profundas: miedo, perfeccionismo, agotamiento o inseguridad. No vamos a atacarlas, sino a comprenderlas. Y desde ahí, empezar a construir un nuevo diálogo contigo: más realista, más flexible y más compasivo.',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3'},
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/INTRODUCCIONSEMANA3.mp3`},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Por qué postergas, si sabes lo que tienes que hacer?',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Porquepostergassisabesloquetienesquehacer.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/Porquepostergassisabesloquetienesquehacer.mp3`,
           content: [{ type: 'paragraph', text: '¿Te ha pasado que sabes perfectamente lo que “deberías” estar haciendo, pero aun así no te pones con ello? Esa distancia entre lo que quieres hacer y lo que haces no se debe a falta de voluntad. Muchas veces, en medio de esa brecha hay una voz silenciosa pero poderosa: tu diálogo interno. Frases que parecen lógicas o razonables, pero que en realidad te alejan de tus objetivos. Esta semana vamos a observar con más atención qué te dices por dentro cuando postergas, y a entrenar nuevas formas de responderte con más conciencia y amabilidad.' }],
         },
         {
           type: 'collapsible',
           title: 'No son excusas: son formas de protegerte del malestar',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Nosonexcusassonformasdeprotegertedelmalestar.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/Nosonexcusassonformasdeprotegertedelmalestar.mp3`,
           content: [{ type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual y la neurociencia, sabemos que lo que llamamos “excusas” no son simple pereza o falta de interés. Son mecanismos automáticos que tu mente utiliza para protegerte de emociones incómodas: como la ansiedad, la inseguridad, el miedo a equivocarte o el aburrimiento. Tu mente no trata de boicotearte. En realidad, intenta cuidarte. Pero a veces, ese cuidado malentendido te bloquea, te mantiene en pausa, y te aleja de lo que te hace bien.' }],
         },
         {
           type: 'collapsible',
           title: 'Diálogos internos que te frenan',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Dialogosinternosquetefrenan.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/Dialogosinternosquetefrenan.mp3`,
           content: [
             { type: 'paragraph', text: 'Estas frases son más comunes de lo que imaginas, y todos o todas las hemos dicho alguna vez:'},
             { type: 'list', items: [
@@ -246,7 +249,7 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'Lo que hay detrás de esas frases',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/Loquehaydetrasdeesasfrases.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/Loquehaydetrasdeesasfrases.mp3`,
           content: [
             { type: 'paragraph', text: 'Estas frases actúan como máscaras. Detrás de ellas se esconden emociones reales que merecen ser escuchadas:'},
             { type: 'list', items: [
@@ -261,13 +264,13 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'No eres flojo o floja: estás defendiéndote',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Noeresflojooflojaestasdefendiendote.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Noeresflojooflojaestasdefendiendote.mp3`,
           content: [{ type: 'paragraph', text: 'Esa distancia entre lo que quieres hacer y lo que haces tiene un nombre: disonancia cognitiva. <br>Tu mente está dividida: una parte quiere avanzar, y otra intenta protegerte. Cuanto más postergas, más frustración, culpa o impotencia puedes sentir. <br>Pero recuerda: tu diálogo interno no es tu enemigo. Solo necesita ser escuchado y reentrenado. Aquí no se trata de pelear contigo, sino de aprender a responderte desde otro lugar.' }],
         },
         {
           type: 'collapsible',
           title: 'En resumen',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana1/Enresumen.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana1/Enresumen.mp3`,
           content: [
             { type: 'paragraph', text: 'Las excusas internas no son señales de flojera. Son intentos de evitar emociones difíciles.<br>Reconocerlas no significa criticarte, sino entenderte mejor.<br>Cuando aprendes a identificar estas frases y las emociones que esconden, puedes responderte con más claridad, menos culpa y más acción. <br>Cambiar tu forma de hablarte es el primer paso para actuar con menos castigo interno y más amabilidad hacia ti mismo o ti misma.<br>Recuerda: cada vez que observas una excusa interna sin juzgarla, estás fortaleciendo tu autoconciencia y abriendo espacio para avanzar.'}
             ]
@@ -278,19 +281,19 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Del Sabotaje a la Acción',
           objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
           duration: '10 a 15 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3`,
         },
         {
           type: 'futureSelfVisualizationExercise',
           title: 'Ejercicio 2: Visualización del Yo Futuro',
           objective: 'Este ejercicio te permite conectar con una imagen clara y emocionalmente poderosa de ti misma o de ti mismo sosteniendo el hábito que deseas. Te ayuda a motivarte desde la identidad, no solo desde la obligación. Visualizarte avanzando te impulsa a actuar hoy.',
           duration: '10 a 15 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/REFLEXION.mp3', 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/REFLEXION.mp3`, 
           prompts: [
             '<p>Te proponemos un momento para integrar lo que has trabajado:</p>',
             '<ul>',
@@ -302,7 +305,7 @@ export const procrastinationPath: Path = {
         { 
           type: 'title', 
           text: 'Resumen Clave de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana3/RESUMEN.mp3' 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana3/RESUMEN.mp3` 
         },
         { type: 'list', items: [
               'Muchas excusas internas son formas de evitar emociones difíciles.',
@@ -321,18 +324,18 @@ export const procrastinationPath: Path = {
       type: 'summary',
       estimatedTime: '15-20 min',
       content: [{ type: 'paragraphWithAudio', text: '¿Te ha pasado que empiezas con fuerza un nuevo hábito, pero al poco tiempo lo dejas? Esta semana te acompaño a consolidar lo que has empezado, sin exigencia y sin rigidez. Vas a aprender a diseñar hábitos que se ajusten a ti —no al revés—, a sostenerlos desde el cuidado y no desde la presión, y a entender que la constancia amable vale más que la perfección. No estás buscando control. Estás construyendo continuidad.',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3'},
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/INTRODUCCIONSEMANA4.mp3`},
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Un hábito no se impone: se construye',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Unhabitonoseimponeseconstruye.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/Unhabitonoseimponeseconstruye.mp3`,
           content: [{ type: 'paragraph', text: 'Ya diste varios pasos: reconociste bloqueos, te activaste, desarmaste pensamientos saboteadores. Ahora toca consolidar. Y eso no significa forzarte, sino encontrar un ritmo que puedas sostener desde tu realidad.' }],
         },
         {
           type: 'collapsible',
           title: '¿Qué hace que un hábito perdure?',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Quehacequeunhabitoperdure.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/Quehacequeunhabitoperdure.mp3`,
           content: [
             { type: 'paragraph', text: 'Crear un hábito no es solo repetir una acción. Es diseñarla de forma que tu mente y tu cuerpo puedan sostenerla sin agotamiento ni autoexigencia. Desde la TCC y la psicología del hábito, sabemos que los hábitos más duraderos suelen tener cinco ingredientes clave:'},
             { type: 'collapsible', title: '1. Repetible (aunque no sea diario)', content: [{ type: 'paragraph', text: 'No necesitas hacerlo todos los días. Solo con repetirlo varias veces por semana, tu cerebro empieza a integrarlo como parte de tu vida. Lo importante es la regularidad, no la perfección.' }] },
@@ -345,13 +348,13 @@ export const procrastinationPath: Path = {
         {
           type: 'collapsible',
           title: 'No busques perfección: busca continuidad amable',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/Nobusquesperfeccionbuscacontinuidadamable.mp3`,
           content: [{ type: 'paragraph', text: 'No pasa nada si fallas un día. Lo importante es que vuelvas al hábito sin culpa ni juicio. Como dice James Clear: “No se trata de no romper la cadena. Se trata de no romperla dos veces seguidas.”' }],
         },
         {
           type: 'collapsible',
           title: 'Tu hábito no tiene que ser perfecto',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/Tuhabitonotienequeserperfectosolotienequeestarvivo.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/Tuhabitonotienequeserperfectosolotienequeestarvivo.mp3`,
           content: [{ type: 'paragraph', text: 'Muchos hábitos fallan porque los diseñamos como si fueran mandatos. Queremos cumplirlos todos los días, sin errores, sin fallos, como si solo sirvieran si se hacen al 100%. Pero <b>un hábito realista y vivo vale más que uno perfecto e inalcanzable</b>.'}]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -360,19 +363,19 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Diseña tu Ritual Realista',
           objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
           duration: '7-10 minutos',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
         },
         {
           type: 'gentleTrackingExercise',
           title: 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual',
           objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
           duration: '3 a 5 minutos al día',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/REFLEXION.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
             '<p>Ahora es momento de integrar lo que has descubierto. En este espacio podrás concretar qué hábito quieres mantener a largo plazo. Escribir lo que has aprendido consolida la conciencia.</p>',
             
@@ -381,7 +384,7 @@ export const procrastinationPath: Path = {
         { 
           type: 'title', 
           text: 'Resumen Clave de la Semana',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/semana4/RESUMEN.mp3' 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/RESUMEN.mp3` 
         },
         { type: 'list', items: [
             'La procrastinación no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
@@ -403,7 +406,7 @@ export const procrastinationPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/REFLEXIONRUTA.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/REFLEXIONRUTA.mp3`,
           prompts: [
             '<p>Hemos llegado casi al final de la Ruta 3. Este es un buen momento para mirar tu recorrido con perspectiva; en un espacio idóneo para nombrar y decidir como quieres acompañarte cuando vuelvas a sentir bloqueo.</p>',
             '<ul>',
@@ -418,7 +421,7 @@ export const procrastinationPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta3/descripciones/RESUMENRUTA.mp3'
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/RESUMENRUTA.mp3`
         },
         {
           type: 'list',
@@ -438,9 +441,3 @@ export const procrastinationPath: Path = {
     }
   ],
 };
-
-    
-
-  
-
-    

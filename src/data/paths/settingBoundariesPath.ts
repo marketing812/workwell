@@ -1,13 +1,12 @@
-
 import type { Path } from './pathTypes';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const settingBoundariesPath: Path = {
   id: 'poner-limites',
   title: 'Poner Límites con Respeto y Firmeza',
   description: 'Aprende a decir “no” sin culpa y a proteger tu espacio emocional, construyendo relaciones más sanas y una conexión más auténtica contigo.',
   dataAiHint: 'boundaries respect communication',
-  audioUrl:
-    'https://workwellfut.com/audios/ruta4/descripciones/Introruta4.mp3',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Introruta4.mp3`,
   modules: [
     {
       id: 'limites_sem1',
@@ -18,14 +17,14 @@ export const settingBoundariesPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio2Ruta4Sesion1.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué es un límite personal?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio3Ruta4Sesion1.mp3`,
           content: [
             { type: 'paragraph', text: 'Un límite no es un rechazo. Tampoco es egoísmo, ni frialdad, ni falta de empatía.\nUn límite es una forma de autocuidado. Es decirle al mundo: esto es lo que necesito para estar bien.\nEs marcar dónde termina lo que puedes sostener sin dañarte, y dónde empieza lo que ya no es negociable para ti.\nPoner límites es una forma de proteger lo que te importa: tu energía, tu tiempo, tu dignidad, tu espacio interno.\nUn límite no siempre se expresa con un “no” tajante. A veces es un silencio interrumpido por una frase honesta. A veces es una distancia, una aclaración, un cambio de ritmo.\nLo importante no es la forma, sino la intención: cuidar de ti sin dañar al otro.\nCuando te atreves a marcar un límite:' },
             { type: 'list', items: ['Te haces visible en la relación.','Enseñas a los demás cómo deseas ser tratada o tratado.','Previenes el desgaste emocional que viene de acumular malestar.','Ganas coherencia interna, porque empiezas a vivir en sintonía con lo que sientes y valoras.']}
@@ -35,21 +34,21 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: 'Mitos y bloqueos más comunes',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio4Ruta4Sesion1.mp3`,
           content: [{ type: 'paragraph', text: 'Lo que más cuesta a la hora de poner un límite no es encontrar las palabras adecuadas…\nsino lidiar con lo que sentimos cuando lo intentamos.\nTal vez aparece el miedo al conflicto, el temor a decepcionar, la culpa por priorizarte o la sensación de que si hablas, algo se va a romper.\nOtras veces hay una vocecita dentro de ti que dice:\n- “No quiero parecer exagerada/o”\n- “mejor no molesto”\n- “igual estoy siendo egoísta”\nEstos pensamientos y emociones no te hacen débil. Te hacen humana, humano.\nTodos arrastramos creencias aprendidas sobre lo que “se espera de nosotros”: agradar, ceder, adaptarte, callarte o imponerte.\nPero también podemos revisarlas.\nY esta semana vas a empezar a hacerlo:\n- sin juicio,\n- con herramientas concretas,\n- y al ritmo que tú elijas.' }]
         },
         {
           type: 'collapsible',
           title: '¿Qué pasa cuando callas lo que necesitas?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio5Ruta4Sesion1.mp3`,
           content: [{ type: 'paragraph', text: 'A veces no decir nada parece lo más fácil: evitamos una discusión, una incomodidad, un momento tenso…\nPero con el tiempo, ese silencio se acumula. Y lo que empieza como una “pequeña concesión” termina convirtiéndose en frustración, cansancio, tristeza o incluso en una sensación de desconexión contigo misma o contigo mismo.\nCuando callas lo que necesitas:\n- Puedes sentirte poco valorada/o o invisible.\n- Empiezas a dudar de tus propias emociones.\n- Te desconectas de tu autenticidad.\n- Te agotas por dentro, aunque por fuera parezcas en calma.\nCallar para no incomodar a alguien puede parecer una forma de cuidar…\nPero si eso te hace traicionarte, el precio es demasiado alto.\nY a la larga, ese conflicto que intentaste evitar… termina estallando por dentro y, a veces, hacia fuera.' }]
         },
         {
           type: 'collapsible',
           title: 'Enfoque terapéutico que vamos a usar',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio6Ruta4Sesion1.mp3`,
           content: [{ type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual (TCC), la Terapia de Aceptación y Compromiso (ACT) y el mindfulness, te proponemos este camino:\n- Aprenderás a identificar los pensamientos automáticos que te bloquean.\n- Observarás tus emociones difíciles sin juzgarlas ni reprimirlas.\n- Empezarás a actuar desde tus valores, no desde el miedo.\nNo necesitas sentirte 100 % segura o seguro para empezar a expresarte.\nDe hecho, muchas veces la seguridad no viene antes de actuar, sino después de haberte atrevido a hacerlo.\nAquí no buscamos perfección. Buscamos coherencia.\nY eso se entrena paso a paso, con amabilidad hacia ti.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -58,17 +57,17 @@ export const settingBoundariesPath: Path = {
           title: 'Ejercicio 1: Mapa de Mis No Dichos',
           objective: 'A veces eliges callar para evitar conflictos o proteger un vínculo. Este ejercicio te ayudará a observar cuándo y por qué eliges no expresarte, para que esas decisiones sean más libres y menos automáticas.',
           duration: '15-20 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3`,
         },
         {
           type: 'discomfortCompassExercise',
           title: 'Ejercicio 2: La Brújula del Malestar',
           objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.',
           duration: '10-15 min',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3`,
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3', prompts: ['<ul><li>¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?</li><li>¿Qué has comprendido sobre ti que antes no veías tan claro?</li><li>¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?</li><li>¿Cómo sería tu vida si te expresaras con más firmeza y respeto?</li><li>¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?</li></ul>']},
-        { type: 'title', text: 'Resumen Clave', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3' },
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio9Ruta4Sesion1.mp3`, prompts: ['<ul><li>¿Qué has descubierto esta semana sobre ti y tu forma de relacionarte con los demás?</li><li>¿Qué has comprendido sobre ti que antes no veías tan claro?</li><li>¿Qué papel juega el silencio en tus relaciones? ¿Te protege o te desconecta?</li><li>¿Cómo sería tu vida si te expresaras con más firmeza y respeto?</li><li>¿Qué impacto tendría, en ti y en los demás, empezar a poner límites desde el cuidado?</li></ul>']},
+        { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio10Ruta4Sesion1.mp3` },
         { type: 'list', items: ['Un límite sano no separa: organiza, protege y cuida.','Evitar el conflicto tiene un coste emocional si te obliga a traicionarte.','Detectar tu malestar es el primer aviso de que algo importante no está siendo dicho.','Poner límites no es egoísmo, es autorrespeto.','Todos tenemos bloqueos, pero también podemos elegir responder de otra forma.','Empezar a expresarte con claridad es empezar a vivir con coherencia.']},
         { type: 'quote', text: 'Cada vez que eliges expresarte con respeto, te eliges a ti sin dejar de cuidar el vínculo con el otro.' }
       ]
@@ -78,13 +77,13 @@ export const settingBoundariesPath: Path = {
       title: 'Semana 2: Aprende a Decir lo que Necesitas',
       type: 'skill_practice',
       estimatedTime: '20-25 min',
-      content: [{ type: 'paragraphWithAudio', text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3'},
+      content: [{ type: 'paragraphWithAudio', text: '¿Te cuesta decir lo que sientes o necesitas sin sentir culpa? ¿Te da miedo que el otro se aleje si dices “no”?\nEsta semana vas a entrenar una habilidad esencial para tu bienestar emocional y relacional: comunicarte desde el respeto, sin herir y sin herirte.\nAprenderás a identificar tu estilo de comunicación y a expresarte con mayor claridad, firmeza y cuidado mutuo.\nPorque decir lo que piensas, sientes y necesitas no es egoísmo: es respeto.\nRespeto hacia ti, hacia el otro… y hacia el vínculo que comparten.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio1Ruta4Sesion2.mp3`},
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: '¿Qué es un estilo de comunicación?', audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3', content: [{ type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n- Cómo pides las cosas.\n- Cómo reaccionas ante un conflicto.\n- Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }] },
+        { type: 'collapsible', title: '¿Qué es un estilo de comunicación?', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio2Ruta4Sesion2.mp3`, content: [{ type: 'paragraph', text: 'Para poder mejorar la forma en que te expresas, primero necesitas entender cómo lo haces ahora.\nY aquí entra un concepto clave: tu estilo de comunicación.\nNo se trata solo de lo que dices, sino de cómo lo dices:\n- Cómo pides las cosas.\n- Cómo reaccionas ante un conflicto.\n- Cómo dices que no (o si lo haces).\nEste estilo no es algo fijo. Está influido por tu historia: lo que viste en casa, lo que viviste en relaciones pasadas, lo que aprendiste sobre lo que “se puede” y “no se puede” decir.\nLa buena noticia es que todo eso se puede revisar y transformar. Cuando tomas conciencia de tu estilo, ganas libertad para elegir nuevas formas de comunicarte más honestas, cuidadosas y coherentes contigo y con los demás.' }] },
         {
           type: 'collapsible',
           title: '¿Desde qué lugar te colocas cuando te comunicas?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio3Ruta4Sesion2.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -121,7 +120,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: 'Estilos de comunicación',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio4Ruta4Sesion2.mp3`,
           content: [
             {
               type: 'collapsible',
@@ -161,7 +160,7 @@ export const settingBoundariesPath: Path = {
               type: 'collapsible',
               title: '3. Estilo Pasivo-Agresivo – “No lo digo, pero lo dejo caer”',
               audioUrl:
-                'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3',
+                `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio5Ruta4Sesion2.mp3`,
               content: [
                 {
                   type: 'list',
@@ -199,7 +198,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: 'Cierre motivador',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio6Ruta4Sesion2.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -228,7 +227,7 @@ export const settingBoundariesPath: Path = {
             'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.',
           duration: '10-15 min',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana2audio7tecnica1.mp3`,
         },
         {
           type: 'noGuiltTechniquesExercise',
@@ -236,7 +235,7 @@ export const settingBoundariesPath: Path = {
           objective:
             'Quiero ayudarte a sentir que tienes derecho a decir ‘no’ sin sentirte egoísta, brusco o culpable. Estas frases son como pequeñas llaves para cuidar tus límites sin romper el vínculo.',
           duration: '5-10 min por técnica',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/tecnicas/R4sem2acuerdoparcial.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R4sem2acuerdoparcial.mp3`,
         },
         {
           type: 'secureBoundaryPhraseExercise',
@@ -245,13 +244,13 @@ export const settingBoundariesPath: Path = {
             'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.',
           duration: '5 minutos',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana2audio8tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio9Ruta4Sesion2.mp3`,
           prompts: [
             '<ul><li>¿Hubo alguna frase o situación que te haya resonado especialmente?</li><li>¿Cómo te sentiste al practicar tus frases de límite?</li><li>¿Notaste cambios en tu forma de expresarte o en tu sensación interna?</li><li>¿Qué te llevas de esta semana que te gustaría conservar?</li></ul>',
           ],
@@ -260,7 +259,7 @@ export const settingBoundariesPath: Path = {
           type: 'title',
           text: 'Resumen Clave',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio10Ruta4Sesion2.mp3`,
         },
         {
           type: 'list',
@@ -289,14 +288,14 @@ export const settingBoundariesPath: Path = {
           type: 'paragraphWithAudio',
           text: '¿Te ha pasado que después de poner un límite te invade una sensación rara?\nComo si, en lugar de sentir alivio, apareciera culpa, duda o miedo.\nEsa incomodidad no significa que te hayas equivocado. Muchas veces, sentirte mal justo después de cuidar tus propios límites es una señal de que estás creciendo.\nEsta semana no vamos a evitar esa incomodidad. Vamos a mirarla de frente, comprenderla y sostenerla sin ceder.',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio1Ruta4Sesion3.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Por qué me siento mal si hice lo correcto?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio2Ruta4Sesion3.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -308,7 +307,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: '¿Qué tipo de malestar estás sintiendo?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio3Ruta4Sesion3.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -320,7 +319,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: '¿Por qué cuesta tanto sostenerse?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio4Ruta4Sesion3.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -336,7 +335,7 @@ export const settingBoundariesPath: Path = {
             'Cuando te atreves a marcar un límite, puede aparecer culpa, duda o ansiedad. Este ejercicio te ayuda a identificar y validar lo que sientes después, y a responderte con comprensión, no con juicio.',
           duration: '10-15 min',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana3audio5ejercicio1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana3audio5ejercicio1.mp3`,
         },
         {
           type: 'firmAndCalmSelfVisualizationExercise',
@@ -345,13 +344,13 @@ export const settingBoundariesPath: Path = {
             'A veces, lo que necesitas no es más fuerza… sino más conexión contigo. Esta visualización te ayuda a conectar con esa parte tuya que puede sostener un límite sin romperse, sin gritar, sin justificarse. Una parte firme, clara y tranquila.',
           duration: '5–8 minutos',
           audioUrl:
-            'https://workwellfut.com/audios/rm/R4_visualizacion_del_yo_firme_y_tranquilo.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R4_visualizacion_del_yo_firme_y_tranquilo.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio7Ruta4Sesion3.mp3`,
           prompts: [
             '¿Qué sensaciones aparecen en ti cuando mantienes un límite que antes habrías retirado? ',
           ],
@@ -360,7 +359,7 @@ export const settingBoundariesPath: Path = {
           type: 'title',
           text: 'Resumen Clave de la Semana',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio8Ruta4Sesion3.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio8Ruta4Sesion3.mp3`,
         },
         {
           type: 'list',
@@ -388,14 +387,14 @@ export const settingBoundariesPath: Path = {
           type: 'paragraphWithAudio',
           text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\nEsta semana vas a dar un paso profundo: integrar que poner límites no solo te cuida a ti… también transforma tus relaciones.\nVerás que quienes te quieren bien se adaptan, incluso si al principio les cuesta. Y también descubrirás que algunas relaciones solo se sostenían si tú te callabas, cedías o desaparecías un poco.',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio1Ruta4Sesion4.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Poner límites también es un acto relacional',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio2Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio2Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -407,7 +406,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: '¿Qué pasa cuando empiezo a poner límites?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio3Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -419,7 +418,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: 'Límites sanos: respeto, claridad y conexión real',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio4Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -431,7 +430,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: '¿Actúo desde mi verdad o para evitar el malestar del otro?',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio5Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -442,7 +441,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'collapsible',
           title: '¿Insistir, ceder o alejarme?',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio6Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -461,7 +460,7 @@ export const settingBoundariesPath: Path = {
           type: 'collapsible',
           title: 'Quererte también es una forma de vincularte',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Audio7Ruta4Sesion4.mp3`,
           content: [
             {
               type: 'paragraph',
@@ -477,7 +476,7 @@ export const settingBoundariesPath: Path = {
             'Entrenar tu capacidad para sostener una decisión sin retroceder, incluso cuando el otro muestre incomodidad o decepción. Aprenderás a validar la emoción ajena sin anular tu necesidad.',
           duration: '5-10 min',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana4audio7tecnica1.mp3`,
         },
         {
           type: 'selfCareContractExercise',
@@ -486,12 +485,12 @@ export const settingBoundariesPath: Path = {
             'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.',
           duration: '10-15 min',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana4audio8tecnica2.mp3`,
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3`,
           prompts: [
             '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>',
           ],
@@ -500,7 +499,7 @@ export const settingBoundariesPath: Path = {
           type: 'title',
           text: 'Resumen Clave de la Semana',
           audioUrl:
-            'https://workwellfut.com/audios/ruta4/descripciones/Resumensesioon4ruta4.mp3',
+            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Resumensesioon4ruta4.mp3`,
         },
         {
           type: 'list',
@@ -512,7 +511,7 @@ export const settingBoundariesPath: Path = {
             'Sostener tu decisión sin culpa fortalece tu dignidad emocional.',
             'Alejarte de vínculos que no respetan tus límites no es egoísmo, es autocuidado.',
             'La coherencia entre lo que sientes, piensas y haces es el cimiento de relaciones auténticas.',
-            'El respeto hacia ti es una brújula: te muestra dónde quedarte, con quién reajustar, y de qué alejarte.',
+            'El respeto empieza por casa: cuando te lo das tú, los demás lo aprenden.',
           ],
         },
         {
@@ -530,7 +529,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Reflexionfinalruta4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Reflexionfinalruta4.mp3`,
           prompts: [
             '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>',
           ],
@@ -538,7 +537,7 @@ export const settingBoundariesPath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: 'https://workwellfut.com/audios/ruta4/descripciones/Resumenfinalruta4.mp3',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Resumenfinalruta4.mp3`,
         },
         {
           type: 'list',
@@ -561,8 +560,3 @@ export const settingBoundariesPath: Path = {
     },
   ],
 };
-
-    
-
-
-  
