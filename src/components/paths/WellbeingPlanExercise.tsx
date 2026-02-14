@@ -14,6 +14,8 @@ import type { WellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { StressCompass } from './StressCompass';
 
 interface WellbeingPlanExerciseProps {
   content: WellbeingPlanExerciseContent;

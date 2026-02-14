@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -10,6 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveDecisionsWheelExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface BraveDecisionsWheelExerciseProps {
   content: BraveDecisionsWheelExerciseContent;
@@ -30,7 +32,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -221,7 +223,7 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3" type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3`} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>
@@ -234,5 +236,3 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
     </Card>
   );
 }
-
-    

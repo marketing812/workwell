@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import { Edit3, Save, CheckCircle } from 'lucide-react';
 import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface NoGuiltTechniquesExerciseProps {
   content: NoGuiltTechniquesExerciseContent;

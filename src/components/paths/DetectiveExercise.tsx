@@ -14,6 +14,7 @@ import { emotions } from '@/components/dashboard/EmotionalEntryForm';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DetectiveExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DetectiveExerciseProps {
   content: DetectiveExerciseContent;
@@ -50,7 +51,7 @@ export default function DetectiveExercise({ content, onComplete, pathId }: Detec
 
   const [reflection, setReflection] = useState('');
   const [isReflectionSaved, setIsReflectionSaved] = useState(false);
-  const audioUrl = "https://workwellfut.com/audios/r1_desc/Sesion-3-tecnica-1-detective-de-pensamientos.mp3";
+  const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-3-tecnica-1-detective-de-pensamientos.mp3`;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -72,7 +73,7 @@ export default function DetectiveExercise({ content, onComplete, pathId }: Detec
     
     toast({
       title: "Ejercicio Guardado",
-      description: "Tu registro del 'Detective de Pensamientos' ha sido guardado.",
+      description: "Tu registro del 'Detective de Pensamientos' ha sido guardado exitosamente.",
     });
     setIsSaved(true);
     onComplete();

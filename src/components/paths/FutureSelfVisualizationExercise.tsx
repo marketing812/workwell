@@ -12,6 +12,7 @@ import type { ModuleContent } from '@/data/paths/pathTypes';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface FutureSelfVisualizationExerciseProps {
   content: ModuleContent;
@@ -35,7 +36,7 @@ export default function FutureSelfVisualizationExercise({ content, pathId, audio
     if (content.type !== 'futureSelfVisualizationExercise') return null;
     
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
     const resetExercise = () => {
         setStep(0);
         setHabit('');
@@ -95,7 +96,7 @@ Cuando visualizas con detalle una versión posible de ti, activas en tu cerebro 
                                 <AccordionContent className="space-y-2">
                                      <h4 className="font-semibold">Inicio – Respiración y conexión corporal</h4>
                                      <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
-                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejercicio2inicio.mp3" type="audio/mp3" />
+                                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/R3sem3ejercicio2inicio.mp3`} type="audio/mp3" />
                                         Tu navegador no soporta el elemento de audio.
                                     </audio>
                                     <p>Cierra los ojos suavemente si te sientes cómoda o cómodo con ello. 
@@ -110,7 +111,7 @@ Y que ha construido poco a poco ese hábito que tú también deseas crear.</p>
                                     
                                     <h4 className="font-semibold pt-2">Parte 1 – Visualización del entorno futuro</h4>
                                     <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
-                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejercicio2parte1visuLizentornofuturo.mp3" type="audio/mp3" />
+                                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/R3sem3ejercicio2parte1visuLizentornofuturo.mp3`} type="audio/mp3" />
                                         Tu navegador no soporta el elemento de audio.
                                     </audio>
                                     <p>Imagina que ha pasado el tiempo necesario. 
@@ -128,7 +129,7 @@ Nota si hay algo en tu expresión que te transmite calma, determinación, satisf
                                     
                                     <h4 className="font-semibold pt-2">Parte 2 – Integración emocional y somática</h4>
                                     <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
-                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3sem3ejerccio2parte2integracionemocional.mp3" type="audio/mp3" />
+                                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/R3sem3ejerccio2parte2integracionemocional.mp3`} type="audio/mp3" />
                                         Tu navegador no soporta el elemento de audio.
                                     </audio>
                                     <p>Ahora trata de sentir lo que esa versión de ti siente: 
@@ -145,7 +146,7 @@ Una semilla de posibilidad.</p>
 
                                     <h4 className="font-semibold pt-2">Parte 3 – Diálogo con tu yo futuro</h4>
                                     <audio controls controlsList="nodownload" className="w-full h-10 mt-2">
-                                        <source src="https://workwellfut.com/audios/ruta3/tecnicas/R3seman3ejerci2parte3dialogoyofuturoycierre.mp3" type="audio/mp3" />
+                                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/R3seman3ejerci2parte3dialogoyofuturoycierre.mp3`} type="audio/mp3" />
                                         Tu navegador no soporta el elemento de audio.
                                     </audio>
                                     <p>Ahora, si lo deseas, puedes acercarte a esa versión futura de ti. 

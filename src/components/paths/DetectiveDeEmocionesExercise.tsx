@@ -16,6 +16,7 @@ import type { DetectiveDeEmocionesExerciseContent } from '@/data/paths/pathTypes
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface DetectiveDeEmocionesExerciseProps {
   content: DetectiveDeEmocionesExerciseContent;
@@ -163,7 +164,7 @@ ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('
                 {content.objective}
                  <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3" type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3`} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

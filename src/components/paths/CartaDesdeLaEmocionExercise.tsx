@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -11,6 +12,7 @@ import { Edit3, CheckCircle, Save, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CartaDesdeLaEmocionExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface CartaDesdeLaEmocionExerciseProps {
   content: CartaDesdeLaEmocionExerciseContent;
@@ -109,11 +111,11 @@ Tu emoción: ${finalEmotion}
             case 1: return <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 2: Elige el Tono de la Carta</h4>
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
-                  Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\\n\\n'}
-                  Tristeza → Voz compasiva y suave {'\\n\\n'}
-                  Ira → Voz clara, firme y directa {'\\n\\n'}
-                  Ansiedad → Voz serena y tranquilizadora {'\\n\\n'}
-                  Culpa → Voz amable y reparadora {'\\n\\n'}
+                  Según la emoción que elijas, puedes seleccionar un estilo de carta que te ayude a conectar mejor con lo que sientes. Imagina… {'\n\n'}
+                  Tristeza → Voz compasiva y suave {'\n\n'}
+                  Ira → Voz clara, firme y directa {'\n\n'}
+                  Ansiedad → Voz serena y tranquilizadora {'\n\n'}
+                  Culpa → Voz amable y reparadora {'\n\n'}
                   Otra emoción → Elige el tono que más te ayude
                 </p>
                 <Select value={tone} onValueChange={setTone}><SelectTrigger><SelectValue placeholder="Elige un tono..." /></SelectTrigger><SelectContent><SelectItem value="compasivo">Compasivo y suave</SelectItem><SelectItem value="firme">Claro, firme y directo</SelectItem><SelectItem value="sereno">Sereno y tranquilizador</SelectItem><SelectItem value="otra">Otra...</SelectItem></SelectContent></Select>
@@ -185,7 +187,7 @@ Tu emoción: ${finalEmotion}
     
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
-            <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{content.objective}<div className="mt-4"><audio controls controlsList="nodownload" className="w-full"><source src="https://workwellfut.com/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3" type="audio/mp3" />Tu navegador no soporta el elemento de audio.</audio></div></CardDescription>}</CardHeader>
+            <CardHeader><CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>{content.objective && <CardDescription className="pt-2">{content.objective}<div className="mt-4"><audio controls controlsList="nodownload" className="w-full"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3`} type="audio/mp3" />Tu navegador no soporta el elemento de audio.</audio></div></CardDescription>}</CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>
     );
