@@ -144,12 +144,12 @@ ${response}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="fact">Describe el hecho con honestidad</Label>
+            <h4 className="font-semibold text-lg">Describe el hecho con honestidad</h4>
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Escribe lo que ocurrió, centrándote en los hechos y evitando juicios o interpretaciones.<br> Ejemplo: En la reunión de equipo, interrumpí a un compañero y me di cuenta después." }} />
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} disabled={isSaved} placeholder="Describe objetivamente lo que pasó. Céntrate solo en los hechos" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="emotion-acceptance">Ponle nombre a lo que sentiste entonces</Label>
+            <h4 className="font-semibold text-lg">Ponle nombre a lo que sentiste entonces</h4>
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
             <Select onValueChange={setEmotion} value={emotion} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona la emoción que sentiste" /></SelectTrigger>
@@ -157,22 +157,22 @@ ${response}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dialogue">Reconoce tu diálogo interno</Label>
-            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
+            <h4 className="font-semibold text-lg">Reconoce tu diálogo interno</h4>
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Revisa lo que escribiste y separa qué es un hecho objetivo y qué es una interpretación o juicio.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
             <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} placeholder="Escribe tu diálogo interno" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="judgment">Distingue hechos de juicios</Label>
+            <h4 className="font-semibold text-lg">Distingue hechos de juicios</h4>
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Revisa lo que escribiste y separa qué es un hecho objetivo y qué es una interpretación o juicio.<br> Ejemplo: <ul><li>Hecho: Interrumpí a un compañero.</li><li>Juicio: Siempre meto la pata.</li></ul> " }} />
             <Textarea id="judgment" value={judgment} onChange={e => setJudgment(e.target.value)} disabled={isSaved} placeholder="Anota qué partes son hechos y cuáles son juicios" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="response">Elige tu respuesta actual</Label>
+            <h4 className="font-semibold text-lg">Elige tu respuesta actual</h4>
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Pregúntate: “Si volviera a pasar, ¿qué podría hacer diferente?”. Escríbelo como una acción concreta. <br> Ejemplo: Pedir disculpas y dejar que termine de hablar. " }} />
             <Textarea id="response" value={response} onChange={e => setResponse(e.target.value)} disabled={isSaved} placeholder="Escribe tu respuesta o acción actual " />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="compassion-phrase">Cierra con compasión</Label>
+            <h4 className="font-semibold text-lg">Cierra con compasión</h4>
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Escribe una frase que te ayude a dejar ir lo que pasó, reconociendo que eres más que ese momento. <br>Ejemplo: Eso pasó, aprendí y ahora sigo adelante." }} />
             <Textarea id="compassion-phrase" value={compassionPhrase} onChange={e => setCompassionPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe tu frase de cierre compasivo" />
           </div>
@@ -189,5 +189,3 @@ ${response}
     </Card>
   );
 }
-
-    

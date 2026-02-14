@@ -76,7 +76,7 @@ ${hiddenObjective}
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
@@ -89,12 +89,12 @@ ${hiddenObjective}
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="critical-phrase" className="font-semibold">Detecta tu frase crítica</Label>
+            <h4 className="font-semibold text-lg">Detecta tu frase crítica</h4>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en una frase que te hayas dicho recientemente y que te haya hecho sentir mal. Escríbela tal y como la piensas, sin suavizarla.  <br>Ejemplos de frases críticas: <ul><li>Nunca hago nada bien.</li><li>Tendría que haberlo hecho perfecto.</li><li>Soy un desastre.</li></ul>" }} />
             <Textarea id="critical-phrase" value={criticalPhrase} onChange={e => setCriticalPhrase(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase crítica…" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="hidden-objective" className="font-semibold">Identifica el objetivo oculto </Label>
+            <h4 className="font-semibold text-lg">Identifica el objetivo oculto </h4>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Detrás de la crítica suele haber un deseo de mejorar, evitar un error o protegerte de algo. Identificarlo es clave para poder reformular la frase. <br>Ejemplo: <ul><li>Frase crítica: Nunca hago nada bien.</li><li>Objetivo oculto: Quiero mejorar en lo que hago.</li></ul>" }} />
             <Select onValueChange={setHiddenObjective} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona cuál crees que es el objetivo oculto de tu frase crítica…" /></SelectTrigger>
@@ -105,7 +105,7 @@ ${hiddenObjective}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="distortion-select">Identifica la distorsión</Label>
+            <h4 className="font-semibold text-lg">Identifica la distorsión</h4>
             <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
                 <SelectTrigger><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
                 <SelectContent>
@@ -114,12 +114,12 @@ ${hiddenObjective}
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="reformulation-blocking" className="font-semibold">Reformula en guía</Label>
+            <h4 className="font-semibold text-lg">Reformula en guía</h4>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos: <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li><li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
           </div>
            <div className="space-y-2">
-              <Label className="font-semibold">Lista de verificación interactiva:</Label>
+              <h4 className="font-semibold text-lg">Lista de verificación interactiva:</h4>
               <p className="text-sm text-muted-foreground">Marca las casillas que tu nueva frase cumple…</p>
               <div className="flex items-center space-x-2">
                   <Checkbox id="check-helps" checked={checklist.helps} onCheckedChange={(checked) => handleChecklistChange('helps', !!checked)} disabled={isSaved} />
@@ -148,5 +148,3 @@ ${hiddenObjective}
     </Card>
   );
 }
-
-    
