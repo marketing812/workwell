@@ -17,7 +17,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te has pillado quejándote una y otra vez de lo mismo, o castigándote mentalmente por algo que hiciste hace tiempo?\\nEsta semana aprenderás a diferenciar la culpa que te impulsa a reparar de la que solo te paraliza, a entender qué papel juega la queja en tu vida y a descubrir que la responsabilidad activa es el camino para recuperar tu poder de acción.',
+          text: '¿Te has pillado quejándote una y otra vez de lo mismo, o castigándote mentalmente por algo que hiciste hace tiempo?\nEsta semana aprenderás a diferenciar la culpa que te impulsa a reparar de la que solo te paraliza, a entender qué papel juega la queja en tu vida y a descubrir que la responsabilidad activa es el camino para recuperar tu poder de acción.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Introsesion1ruta10.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -28,7 +28,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Todos y todas, cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. Es como si tuviéramos tres carreteras delante y, sin pensar mucho, eligiéramos una de ellas.\\n\\nEn psicología, observamos que esas “carreteras” suelen ser:\\n\\n- Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\\n- Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\\n- Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\\n\\nLas dos primeras parecen distintas, pero tienen algo en común: nos dejan atascados. La tercera, en cambio, nos impulsa a avanzar… siempre que sepamos cómo aplicarla.\\n\\nEsta semana vamos a entrenar ese tercer camino. No se trata de cargar con todo, sino de asumir tu parte con claridad, soltar lo que no es tuyo y dar pasos reales.',
+              text: 'Todos y todas, cuando nos enfrentamos a un problema, solemos reaccionar de forma casi automática. Es como si tuviéramos tres carreteras delante y, sin pensar mucho, eligiéramos una de ellas.\n\nEn psicología, observamos que esas “carreteras” suelen ser:\n\n- Culpa: me enfoco en que todo es mi culpa y me quedo atrapado o atrapada en el autocastigo.\n- Queja: señalo todo lo que está mal fuera de mí, pero no paso a la acción.\n- Responsabilidad activa: identifico qué parte depende de mí y actúo en consecuencia.\n\nLas dos primeras parecen distintas, pero tienen algo en común: nos dejan atascados. La tercera, en cambio, nos impulsa a avanzar… siempre que sepamos cómo aplicarla.\n\nEsta semana vamos a entrenar ese tercer camino. No se trata de cargar con todo, sino de asumir tu parte con claridad, soltar lo que no es tuyo y dar pasos reales.',
             },
           ],
         },
@@ -39,7 +39,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Imagina que la culpa es como una alarma. Suena cuando percibes que has hecho algo mal o que no has hecho lo suficiente.\\n\\nSi está bien calibrada, es útil: te motiva a reparar el daño, pedir perdón o aprender algo nuevo.\\n\\nSi está desajustada, suena constantemente, incluso por cosas que no dependen de ti. Ahí deja de ayudarte y empieza a hundirte.\\n\\nEn psicología distinguimos dos formas de culpa:\\n\\n- Culpa útil: centrada en la acción reparadora. Ejemplo: “Me equivoqué en el informe, lo corregiré y avisaré.”\\n- Culpa improductiva: centrada en el ataque personal. Ejemplo: “Soy un desastre, siempre fallo.”\\n\\nEs importante diferenciarla de la vergüenza:\\n\\n- Culpa = “He hecho algo mal” (foco en la conducta).\\n- Vergüenza = “Soy malo/a” (foco en la identidad).\\n\\nCuando distingues hecho de identidad y pones nombre a la emoción, tu cerebro activa regiones de autorregulación (Lieberman, 2007), lo que reduce la intensidad emocional y mejora tu claridad mental.',
+              text: 'Imagina que la culpa es como una alarma. Suena cuando percibes que has hecho algo mal o que no has hecho lo suficiente.\n\nSi está bien calibrada, es útil: te motiva a reparar el daño, pedir perdón o aprender algo nuevo.\n\nSi está desajustada, suena constantemente, incluso por cosas que no dependen de ti. Ahí deja de ayudarte y empieza a hundirte.\n\nEn psicología distinguimos dos formas de culpa:\n\n- Culpa útil: centrada en la acción reparadora. Ejemplo: “Me equivoqué en el informe, lo corregiré y avisaré.”\n- Culpa improductiva: centrada en el ataque personal. Ejemplo: “Soy un desastre, siempre fallo.”\n\nEs importante diferenciarla de la vergüenza:\n\n- Culpa = “He hecho algo mal” (foco en la conducta).\n- Vergüenza = “Soy malo/a” (foco en la identidad).\n\nCuando distingues hecho de identidad y pones nombre a la emoción, tu cerebro activa regiones de autorregulación (Lieberman, 2007), lo que reduce la intensidad emocional y mejora tu claridad mental.',
             },
           ],
         },
@@ -50,7 +50,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, nada cambia.\\n\\nMuchas quejas se alimentan de distorsiones cognitivas como:\\n\\n- Sobregeneralización: “Siempre me pasa lo mismo.”\\n- Pensamiento dicotómico: “Nunca me tienen en cuenta.”\\n- Deberías rígidos: “Esto no debería ser así.”\\n\\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\\n\\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
+              text: 'Quejarse es como abrir una válvula de escape: alivia durante unos minutos, pero si no va acompañada de acción, nada cambia.\n\nMuchas quejas se alimentan de distorsiones cognitivas como:\n\n- Sobregeneralización: “Siempre me pasa lo mismo.”\n- Pensamiento dicotómico: “Nunca me tienen en cuenta.”\n- Deberías rígidos: “Esto no debería ser así.”\n\nEl problema es que la queja nos coloca en un papel pasivo: esperamos que otros cambien o que la situación se arregle sola.\n\nEsto no significa que esté prohibido quejarse —a veces es un desahogo necesario—, pero es importante aprender a no instalarnos ahí. En esta ruta, entrenaremos a transformar quejas en pasos concretos que nos devuelvan el control.',
             },
           ],
         },
@@ -61,7 +61,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La responsabilidad activa es la carretera central, la que combina realismo con acción.\\n\\nConsiste en reconocer tu parte, distinguir lo que está bajo tu control y actuar de manera proporcional. Ni perfeccionismo inalcanzable, ni resignación pasiva.\\n\\nLa pregunta clave aquí es:\\n\\n“¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”\\n\\nTrabajar así fortalece tu autoeficacia (Bandura, 1977), es decir, la confianza en que tus acciones pueden producir cambios reales.',
+              text: 'La responsabilidad activa es la carretera central, la que combina realismo con acción.\n\nConsiste en reconocer tu parte, distinguir lo que está bajo tu control y actuar de manera proporcional. Ni perfeccionismo inalcanzable, ni resignación pasiva.\n\nLa pregunta clave aquí es:\n\n“¿Qué parte de esta situación sí está bajo mi influencia y qué puedo hacer hoy con ella?”\n\nTrabajar así fortalece tu autoeficacia (Bandura, 1977), es decir, la confianza en que tus acciones pueden producir cambios reales.',
             },
           ],
         },
@@ -72,7 +72,7 @@ export const responsibilityPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\\n\\n- Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”), miedo extremo al error y comparación constante con los demás.\\n- Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\\n\\nAunque a veces parecen virtudes, en exceso agotan y llevan al bloqueo. El antídoto es simple en teoría, pero poderoso en la práctica:\\n\\n“¿Qué parte de esto sí depende de mí y qué parte no?”\\n\\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.',
+              text: 'Incluso practicando la responsabilidad activa, hay dos desvíos frecuentes:\n\n- Hiperexigencia: imponer reglas internas imposibles (“Debo hacerlo perfecto siempre”), miedo extremo al error y comparación constante con los demás.\n- Hiperresponsabilidad: asumir como propia la culpa por todo, incluso por lo que sienten, piensan o hacen otras personas.\n\nAunque a veces parecen virtudes, en exceso agotan y llevan al bloqueo. El antídoto es simple en teoría, pero poderoso en la práctica:\n\n“¿Qué parte de esto sí depende de mí y qué parte no?”\n\nSoltar lo que no te corresponde es tan importante como hacerte cargo de lo que sí.',
             },
           ],
         },
@@ -145,7 +145,7 @@ export const responsibilityPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Notas que a veces, por más que pienses y repienses algo, no llegas a ninguna solución?\\nEsta semana vas a practicar cómo cortar el circuito de la culpa improductiva, cómo cuestionar pensamientos rígidos y cómo abrir espacio para respuestas más constructivas.\\nLa clave estará en pasar de rumiar a actuar con claridad y autocompasión.',
+          text: '¿Notas que a veces, por más que pienses y repienses algo, no llegas a ninguna solución?\nEsta semana vas a practicar cómo cortar el circuito de la culpa improductiva, cómo cuestionar pensamientos rígidos y cómo abrir espacio para respuestas más constructivas.\nLa clave estará en pasar de rumiar a actuar con claridad y autocompasión.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Introsesion2ruta10.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -366,13 +366,11 @@ export const responsibilityPath: Path = {
         {
           type: 'collapsible',
           title: 'El mapa de la influencia real',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: '<p>Imagina tu vida como tres círculos concéntricos: </p>1 - Zona de control directo – Lo que depende solo de ti (acciones, actitudes, elecciones). <br>2 - Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>3 - Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br><p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. <br>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p>- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>' }],
         },
         {
           type: 'collapsible',
           title: 'Compromiso con una vida elegida, no impuesta',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: '<p>Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras. </p><p>Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro. </p><p>Ejemplo: <br>- Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”<br>- Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.” </p>' }],
         },
         {
@@ -384,7 +382,6 @@ export const responsibilityPath: Path = {
         {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:<br>Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde. <br>Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso. <br>La responsabilidad que eliges es más ligera que la culpa que arrastras. \\nAhora vamos a entrenarla. ' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -406,7 +403,9 @@ export const responsibilityPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3`,
-          prompts: ['<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'],
+          prompts: [
+            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p>Preguntas para reflexionar:</p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+          ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Resumensesion4ruta10.mp3` },
         {
@@ -458,3 +457,5 @@ export const responsibilityPath: Path = {
     },
   ],
 };
+
+    
