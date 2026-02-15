@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -32,7 +31,13 @@ const registerSchema = z.object({
   token: z.string().optional(), // New field for department code
   initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
   agreeTerms: z.boolean().refine((val) => val === true, {
-    message: "Debes aceptar los términos y condiciones.",
+    message: "Debes aceptar la Política de Privacidad.",
+  }),
+  agreeHealthData: z.boolean().refine((val) => val === true, {
+    message: "Debes consentir el tratamiento de datos de salud.",
+  }),
+  agreeAI: z.boolean().refine((val) => val === true, {
+    message: "Debes autorizar el uso de IA para recomendaciones.",
   }),
 });
 
@@ -45,7 +50,7 @@ export function RegisterForm() {
   const auth = useAuth();
   const db = useFirestore();
 
-  const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms' | 'initialEmotionalState'>>({
+  const [formData, setFormData] = useState<Omit<RegisterFormData, 'agreeTerms' | 'initialEmotionalState' | 'agreeHealthData' | 'agreeAI'>>({
     name: '',
     email: '',
     password: '',
@@ -55,6 +60,8 @@ export function RegisterForm() {
   });
   const [initialEmotionalState, setInitialEmotionalState] = useState(3);
   const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreeHealthData, setAgreeHealthData] = useState(false);
+  const [agreeAI, setAgreeAI] = useState(false);
   const [errors, setErrors] = useState<z.ZodError<RegisterFormData> | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -80,7 +87,7 @@ export function RegisterForm() {
     setServerError(null);
     setIsSubmitting(true);
 
-    const dataToValidate = { ...formData, initialEmotionalState, agreeTerms };
+    const dataToValidate = { ...formData, initialEmotionalState, agreeTerms, agreeHealthData, agreeAI };
     const validationResult = registerSchema.safeParse(dataToValidate);
 
     if (!validationResult.success) {
@@ -199,6 +206,7 @@ export function RegisterForm() {
           <div>
             <Label htmlFor="token">Código de Departamento (opcional)</Label>
             <Input id="token" name="token" value={formData.token || ''} onChange={handleInputChange} />
+            <p className="text-xs text-muted-foreground mt-1">Si indicas un dato válido en el campo "Código de Departamento" estarás a punto de unirte al entorno corporativo de tu organización. Esto permitirá que tu cuenta quede asociada a dicha organización.</p>
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
           <div>
@@ -237,19 +245,53 @@ export function RegisterForm() {
             />
             {fieldErrors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{fieldErrors.initialEmotionalState[0]}</p>}
           </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox id="agreeTerms" name="agreeTerms" checked={agreeTerms} onCheckedChange={(checked) => setAgreeTerms(checked as boolean)} />
-            <div className="text-sm text-muted-foreground">
-              <Label htmlFor="agreeTerms" className="font-normal">
-                Acepto la{' '}
-                <Link href="/settings/legal" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">
-                  política de privacidad y aviso legal
-                </Link>
-                .
-              </Label>
-            </div>
+          
+          <div className="space-y-4 pt-4 border-t">
+              <div className="text-xs text-muted-foreground bg-muted/50 p-3 rounded-md space-y-1">
+                  <p className="font-bold">Información básica de protección de datos</p>
+                  <p><strong>Responsable:</strong> FUTUVER CONSULTING, S.L.</p>
+                  <p><strong>Finalidad:</strong> gestionar tu cuenta y prestar el servicio de seguimiento y acompañamiento emocional.</p>
+                  <p><strong>Base legal:</strong> ejecución del servicio y consentimiento explícito para el tratamiento de datos de salud.</p>
+                  <p><strong>Conservación:</strong> mientras la cuenta esté activa y hasta 24 meses tras la última actividad.</p>
+                  <p><strong>Destinatarios:</strong> proveedores tecnológicos necesarios (Firebase, hosting y proveedores de IA).</p>
+                  <p><strong>Derechos:</strong> acceso, rectificación y supresión en lopd@futuver.com</p>
+                  <p><strong>Delegado de protección de datos:</strong> dpo@futuver.com</p>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox id="agreeTerms" name="agreeTerms" checked={agreeTerms} onCheckedChange={(checked) => setAgreeTerms(checked as boolean)} />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="agreeTerms" className="text-sm font-normal">
+                    He leído y acepto la{' '}
+                    <Link href="/settings/legal" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">
+                      Política de Privacidad
+                    </Link>
+                    {' '}y entiendo el tratamiento de mis datos personales.
+                  </Label>
+                  {fieldErrors?.agreeTerms && <p className="text-sm text-destructive">{fieldErrors.agreeTerms[0]}</p>}
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox id="agreeHealthData" name="agreeHealthData" checked={agreeHealthData} onCheckedChange={(checked) => setAgreeHealthData(checked as boolean)} />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="agreeHealthData" className="text-sm font-normal">
+                      Consiento de forma explícita el tratamiento de mis datos de salud y bienestar emocional, incluyendo información relacionada con mi estado psicológico, con la finalidad de prestar el servicio de acompañamiento y seguimiento terapéutico.
+                  </Label>
+                  {fieldErrors?.agreeHealthData && <p className="text-sm text-destructive">{fieldErrors.agreeHealthData[0]}</p>}
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <Checkbox id="agreeAI" name="agreeAI" checked={agreeAI} onCheckedChange={(checked) => setAgreeAI(checked as boolean)} />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="agreeAI" className="text-sm font-normal">
+                      Autorizo el uso de sistemas de inteligencia artificial para generar recomendaciones personalizadas y respuestas automáticas, siendo consciente de que no sustituyen la intervención de un profesional sanitario.
+                  </Label>
+                  {fieldErrors?.agreeAI && <p className="text-sm text-destructive">{fieldErrors.agreeAI[0]}</p>}
+                </div>
+              </div>
           </div>
-          {fieldErrors?.agreeTerms && <p className="text-sm text-destructive pt-1">{fieldErrors.agreeTerms[0]}</p>}
           
           {serverError && <p className="text-sm font-medium text-destructive">{serverError}</p>}
           
