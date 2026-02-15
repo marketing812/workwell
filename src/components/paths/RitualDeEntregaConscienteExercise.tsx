@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -81,7 +81,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
   const renderWriteAndRelease = () => (
     <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
       <h4 className="font-semibold text-lg">Opción 1: Escribir y Soltar</h4>
-      <p className="text-xs text-muted-foreground">Ideal si tu mente está llena de pensamientos anticipatorios o autoexigencias.</p>
+      <p className="text-sm text-muted-foreground">Ideal si tu mente está llena de pensamientos anticipatorios o autoexigencias.</p>
       
       <div className="space-y-2">
         <Label htmlFor="inquietud" className="font-semibold">Paso 1: Escribe todo lo que te inquieta</Label>
@@ -121,27 +121,20 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         <h4 className="font-semibold text-lg">Opción 2: Respirar con Intención</h4>
         <p className="text-sm text-muted-foreground">Ideal si sientes tu cuerpo tenso o activado.</p>
         <p className="text-sm text-muted-foreground">Selecciona una respiración guiada que te ayude a soltar el control:</p>
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-                <AccordionTrigger>Respiración 4-2-6</AccordionTrigger>
-                <AccordionContent>
-                    <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-                <AccordionTrigger>Respiración diafragmática suave</AccordionTrigger>
-                <AccordionContent>
-                    <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`} type="audio/mp3"/></audio>
-                </AccordionContent>
-            </AccordionItem>
-             <AccordionItem value="item-3">
-                <AccordionTrigger>Anclaje corporal con exhalación prolongada</AccordionTrigger>
-                <AccordionContent>
-                    {/* Assuming I don't have a third audio, I will leave it empty or add a placeholder text */}
-                    <p className="text-xs text-muted-foreground p-2">Audio no disponible. Puedes practicar una exhalación lenta y larga, centrando la atención en cómo tu cuerpo se relaja.</p>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+         <div className="space-y-4">
+            <div>
+                <h5 className="font-semibold">Respiración 4-2-6</h5>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
+            </div>
+            <div>
+                <h5 className="font-semibold">Respiración diafragmática suave</h5>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_diafragmatica.mp3`} type="audio/mp3"/></audio>
+            </div>
+            <div>
+                <h5 className="font-semibold">Anclaje corporal con exhalación prolongada</h5>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.mp3`} type="audio/mp3"/></audio>
+            </div>
+        </div>
         <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
         <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
     </div>
