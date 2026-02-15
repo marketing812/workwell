@@ -7,7 +7,7 @@ import { useUser } from '@/contexts/UserContext';
 import { getDailyQuestion, DailyQuestionApiResponse } from '@/data/dailyQuestion';
 import { useToast } from '@/hooks/use-toast';
 
-const DAILY_CHECKIN_COMPLETED_KEY = 'workwell-daily-checkin-answered-ids';
+const DAILY_CHECKIN_COMPLETED_KEY_PREFIX = 'workwell-daily-checkin-answered-ids-'; // Appending userId
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
 
 interface DailyCheckInData extends Array<string> {}
@@ -28,9 +28,15 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   const [unansweredQuestions, setUnansweredQuestions] = useState<DailyQuestion[]>([]);
   const [isForcedOpen, setIsForcedOpen] = useState(false);
   const [wasDismissedThisSession, setWasDismissedThisSession] = useState(false);
+  
+  const getStorageKey = useCallback(() => {
+    return user?.id ? `${DAILY_CHECKIN_COMPLETED_KEY_PREFIX}${user.id}` : null;
+  }, [user?.id]);
+
 
   const loadAndFilterQuestions = useCallback(async (): Promise<DailyQuestion[]> => {
-    if (!user?.id) {
+    const storageKey = getStorageKey();
+    if (!user?.id || !storageKey) {
       setUnansweredQuestions([]);
       return [];
     }
@@ -45,7 +51,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     const allQuestionsOrdered = apiResponse.questions;
 
     try {
-      const storedData = localStorage.getItem(DAILY_CHECKIN_COMPLETED_KEY);
+      const storedData = localStorage.getItem(storageKey);
       const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
       
       const nextUnansweredQuestion = allQuestionsOrdered.find(q => !answeredIds.includes(q.id));
@@ -56,7 +62,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       } else {
         // All questions have been answered, reset the cycle.
         console.log("useDailyCheckIn: All questions answered. Resetting progress for next cycle.");
-        localStorage.removeItem(DAILY_CHECKIN_COMPLETED_KEY);
+        localStorage.removeItem(storageKey);
         // The first question of the new cycle is the first one from the API.
         if (allQuestionsOrdered.length > 0) {
           setUnansweredQuestions([allQuestionsOrdered[0]]);
@@ -71,7 +77,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       setUnansweredQuestions(allQuestionsOrdered.length > 0 ? [allQuestionsOrdered[0]] : []); // Fallback
       return allQuestionsOrdered.length > 0 ? [allQuestionsOrdered[0]] : [];
     }
-  }, [user?.id]);
+  }, [user?.id, getStorageKey]);
   
   useEffect(() => {
     const initialTimer = setTimeout(() => {
@@ -110,19 +116,22 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   }, []);
 
   const closePopup = useCallback((questionId: string) => {
+    const storageKey = getStorageKey();
+    if (!storageKey) return;
+    
     setIsForcedOpen(false);
     setWasDismissedThisSession(false);
     setUnansweredQuestions(prev => prev.filter(q => q.id !== questionId));
     
     try {
-      const storedData = localStorage.getItem(DAILY_CHECKIN_COMPLETED_KEY);
+      const storedData = localStorage.getItem(storageKey);
       const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
       
       if (!answeredIds.includes(questionId)) {
         answeredIds.push(questionId);
       }
       
-      localStorage.setItem(DAILY_CHECKIN_COMPLETED_KEY, JSON.stringify(answeredIds));
+      localStorage.setItem(storageKey, JSON.stringify(answeredIds));
 
       // Immediately check for the next question to update the state
       loadAndFilterQuestions();
@@ -130,7 +139,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     } catch (error) {
         console.error("Error setting daily check-in as completed:", error);
     }
-  }, [loadAndFilterQuestions]);
+  }, [getStorageKey, loadAndFilterQuestions]);
 
   const showPopup = isForcedOpen || (unansweredQuestions.length > 0 && !wasDismissedThisSession);
 

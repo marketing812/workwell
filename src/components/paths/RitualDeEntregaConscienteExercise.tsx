@@ -9,9 +9,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, CheckCircle, Save, PlayCircle, BookOpen, Feather, Wind } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-import type { ModuleContent } from '@/data/pathsData';
+import type { ModuleContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
@@ -84,18 +85,19 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
       
       <div className="space-y-2">
         <Label htmlFor="inquietud" className="font-semibold">Paso 1: Escribe todo lo que te inquieta</Label>
-        <Textarea id="inquietud" value={writtenInquietud} onChange={e => setWrittenInquietud(e.target.value)} placeholder="Frases cortas, sin filtro..."/>
+        <Textarea id="inquietud" value={writtenInquietud} onChange={e => setWrittenInquietud(e.target.value)} placeholder='Ejemplo guía: “Estoy bloqueada con este proyecto. Me exijo tenerlo todo claro desde el principio. Me da miedo equivocarme. Siento que si fallo, decepcionaré a los demás.”'/>
       </div>
       
       <div className="space-y-2">
         <Label className="font-semibold">Paso 2: Léelo en voz baja y reflexiona</Label>
-        <p className="text-xs text-muted-foreground">• ¿Es esto cierto? • ¿Me ayuda pensar así? • ¿Podría verlo de forma más realista?</p>
+        <p className="text-sm text-muted-foreground">Reflexiona con estas preguntas (pueden mostrarse como desplegables o como texto animado): <br/>• ¿Es esto cierto? <br/>• ¿Me ayuda pensar así? <br/>• ¿Podría verlo de forma más realista?</p>
         <Textarea value={writtenReflection} onChange={e => setWrittenReflection(e.target.value)} placeholder="Tu reflexión..."/>
       </div>
       
       <div className="space-y-2">
         <Label htmlFor="reformulation" className="font-semibold">Paso 3: Reformula una frase más útil</Label>
-        <Textarea id="reformulation" value={writtenReformulation} onChange={e => setWrittenReformulation(e.target.value)} placeholder="Ej: No tengo que saberlo todo para empezar."/>
+        <p className="text-sm text-muted-foreground">Crea tu frase alternativa desde la confianza.</p>
+        <Textarea id="reformulation" value={writtenReformulation} onChange={e => setWrittenReformulation(e.target.value)} placeholder='Ejemplo guía: "No tengo que saberlo todo para empezar."'/>
       </div>
 
       <div className="space-y-2">
@@ -115,36 +117,51 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
   );
 
   const renderBreatheWithIntention = () => (
-     <div className="space-y-4 p-2 text-center animate-in fade-in-0 duration-500">
+     <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
         <h4 className="font-semibold text-lg">Opción 2: Respirar con Intención</h4>
-        <p className="text-sm text-muted-foreground">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
-        <div className="space-y-2">
-            <p className="font-medium">Respiración 4-2-6</p>
-            <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
-        </div>
-         <div className="space-y-2">
-            <p className="font-medium">Respiración diafragmática</p>
-             <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`} type="audio/mp3"/></audio>
-        </div>
-        <Button variant="link" onClick={() => setStep(0)}>Volver a opciones</Button>
+        <p className="text-sm text-muted-foreground">Ideal si sientes tu cuerpo tenso o activado.</p>
+        <p className="text-sm text-muted-foreground">Selecciona una respiración guiada que te ayude a soltar el control:</p>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+                <AccordionTrigger>Respiración 4-2-6</AccordionTrigger>
+                <AccordionContent>
+                    <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+                <AccordionTrigger>Respiración diafragmática suave</AccordionTrigger>
+                <AccordionContent>
+                    <audio controls controlsList="nodownload" className="w-full h-10"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`} type="audio/mp3"/></audio>
+                </AccordionContent>
+            </AccordionItem>
+             <AccordionItem value="item-3">
+                <AccordionTrigger>Anclaje corporal con exhalación prolongada</AccordionTrigger>
+                <AccordionContent>
+                    {/* Assuming I don't have a third audio, I will leave it empty or add a placeholder text */}
+                    <p className="text-xs text-muted-foreground p-2">Audio no disponible. Puedes practicar una exhalación lenta y larga, centrando la atención en cómo tu cuerpo se relaja.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
+        <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
     </div>
   );
 
   const renderGratitudeClosing = () => (
     <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
         <h4 className="font-semibold text-lg">Opción 3: Cerrar el Día con Gratitud</h4>
-         <p className="text-sm text-muted-foreground">Hacer esto cada noche entrena a tu mente a cerrar el día con amabilidad, no con autoexigencia.</p>
+        <p className="text-sm text-muted-foreground">Ideal para terminar el día desde la confianza, no desde la exigencia. Cuando cierras el día reconociendo lo bueno —aunque sea pequeño— tu sistema emocional aprende a soltar el control y descansar desde la confianza. Antes de dormir, tómate un momento para responder con calma a estas preguntas:</p>
         <div className="space-y-2">
             <Label htmlFor="gratitude">¿Qué agradezco hoy?</Label>
-            <Textarea id="gratitude" value={gratitude} onChange={e => setGratitude(e.target.value)}/>
+            <Textarea id="gratitude" value={gratitude} onChange={e => setGratitude(e.target.value)} placeholder='Ejemplo guía: Agradezco que mi amiga me haya escrito solo para saber cómo estaba. Sentí que no estoy solo/a.'/>
         </div>
         <div className="space-y-2">
             <Label htmlFor="advancement">¿Qué pequeño avance hice?</Label>
-            <Textarea id="advancement" value={advancement} onChange={e => setAdvancement(e.target.value)}/>
+            <Textarea id="advancement" value={advancement} onChange={e => setAdvancement(e.target.value)} placeholder='Ejemplo guía: “Aunque me sentía inseguro/a, he enviado ese correo que llevaba días posponiendo.”'/>
         </div>
         <div className="space-y-2">
             <Label htmlFor="calm-moment">¿Qué momento me conectó con la calma?</Label>
-            <Textarea id="calm-moment" value={calmMoment} onChange={e => setCalmMoment(e.target.value)}/>
+            <Textarea id="calm-moment" value={calmMoment} onChange={e => setCalmMoment(e.target.value)} placeholder='Ejemplo guía: “Me sentí en paz cuando salí a caminar al atardecer sin mirar el reloj. Solo respiré.”'/>
         </div>
         <Button onClick={() => {
             const content = `**Agradezco:**\n${gratitude}\n\n**Avance:**\n${advancement}\n\n**Momento de calma:**\n${calmMoment}`;
