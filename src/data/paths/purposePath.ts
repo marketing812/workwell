@@ -1,3 +1,4 @@
+
 import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 

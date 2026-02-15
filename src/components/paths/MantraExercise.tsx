@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -64,13 +65,13 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Mi pensamiento de bloqueo:*
+**Identifica tu pensamiento de bloqueo. ¿Qué te dices cuando sientes que necesitas tenerlo todo bajo control?**
 "${blockingThought}"
 
-*Idea base elegida para reformular:*
+**Elige una idea base para reformular. ¿Qué te gustaría recordarte cuando el miedo empiece a apretar?**
 "${finalIdeaBase}"
 
-*Mi mantra personal es:*
+**Crea tu frase personal:**
 "${personalMantra}"
     `;
     addNotebookEntry({ title: 'Mi Mantra de Confianza', content: notebookContent, pathId: pathId, userId: user?.id });

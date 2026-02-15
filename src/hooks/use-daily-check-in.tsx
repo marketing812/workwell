@@ -7,7 +7,7 @@ import { useUser } from '@/contexts/UserContext';
 import { getDailyQuestion, DailyQuestionApiResponse } from '@/data/dailyQuestion';
 import { useToast } from '@/hooks/use-toast';
 
-const DAILY_CHECKIN_COMPLETED_KEY_PREFIX = 'workwell-daily-checkin-answered-ids-'; // Appending userId
+const DAILY_CHECKIN_COMPLETED_KEY_PREFIX = 'workwell-daily-checkin-answered-ids-v2-'; // NEW KEY
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
 
 interface DailyCheckInData extends Array<string> {}

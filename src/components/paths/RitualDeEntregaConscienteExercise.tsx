@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -12,7 +12,6 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ModuleContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 interface RitualDeEntregaConscienteExerciseProps {
   content: ModuleContent;
@@ -36,8 +35,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
   const [calmMoment, setCalmMoment] = useState('');
 
   const handleSave = (option: string, entryContent: string) => {
-    // FIX: Add validation to ensure content is not empty before saving.
-    if (!writtenInquietud.trim() && !writtenReflection.trim() && !writtenReformulation.trim() && option === "Escribir y Soltar") {
+    if (option === "Escribir y Soltar" && !writtenInquietud.trim() && !writtenReflection.trim() && !writtenReformulation.trim()) {
         toast({
             title: "Ejercicio Incompleto",
             description: "Por favor, escribe al menos en uno de los campos para guardar tu reflexión.",
@@ -45,7 +43,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         });
         return;
     }
-    if (!gratitude.trim() && !advancement.trim() && !calmMoment.trim() && option === "Cierre con Gratitud") {
+    if (option === "Cierre con Gratitud" && !gratitude.trim() && !advancement.trim() && !calmMoment.trim()) {
         toast({
             title: "Ejercicio Incompleto",
             description: "Por favor, completa al menos un campo de gratitud para guardar.",
@@ -109,7 +107,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
 
       <Button onClick={() => {
           const content = `
-**Paso 1: ¿Qué te inquieta?**
+**Paso 1: ¿Qué te inquieta?:**
 ${writtenInquietud || 'No respondido.'}
 
 **Paso 2: Tu reflexión al leerlo:**

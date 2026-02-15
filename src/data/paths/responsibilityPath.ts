@@ -97,7 +97,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Audio9sesion1ruta10.mp3`,
-          content: [{ type: 'paragraph', text: 'Aceptar lo que fue no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.' }],
+          content: [{ type: 'paragraph', text: 'Aceptar lo que pasó no te ata, te libera: te da espacio para elegir el siguiente paso en vez de quedarte luchando contra lo inevitable. Esta semana entrenarás: Escritura compasiva y orientada al presente → “Eso pasó. ¿Y ahora qué?” Práctica guiada de autoaceptación → Soltar el juicio y dar un paso útil.' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -405,7 +405,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3`,
           prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p><p>Preguntas para reflexionar:</p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p><p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Resumensesion4ruta10.mp3` },

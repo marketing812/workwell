@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -57,14 +58,16 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
     let notebookContent = `
 **Ejercicio: ${content.title}**
 
-${situation ? `*Situación analizada:* ${situation}\n\n` : ''}
-**🟢 Depende de mí:**
+**Describe la situación que te está generando estrés, preocupación o malestar:**
+${situation || 'No especificada.'}
+
+**Zona Verde: Lo que SÍ depende de mí:**
 ${greenZone || 'Sin entradas.'}
 
-**🟠 Puedo influir:**
+**Zona Ámbar: Lo que puedo influir:**
 ${amberZone || 'Sin entradas.'}
 
-**🔴 No depende de mí:**
+**Zona Roja: Lo que NO depende de mí:**
 ${redZone || 'Sin entradas.'}
     `;
 

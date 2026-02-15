@@ -64,15 +64,23 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
 **Situación elegida:**
 ${situation || 'No especificada.'}
 
-**Antes de actuar:**
-- ¿Qué creo que podría salir mal?: ${whatCouldGoWrong || 'No especificado.'}
-- ¿Qué haría si eso pasara?: ${howToHandle || 'No especificado.'}
-- Experiencia pasada que me dio fuerza: ${pastExperience || 'No especificado.'}
+**Antes de actuar, ¿Qué creo que podría salir mal?:**
+${whatCouldGoWrong || 'No especificado.'}
 
-**Observación posterior:**
-- En mi cuerpo: ${bodyReflection || 'No especificado.'}
-- En mi mente: ${mindReflection || 'No especificado.'}
-- En la realidad: ${realityReflection || 'No especificado.'}
+**Antes de actuar, ¿Qué haría si eso pasara?:**
+${howToHandle || 'No especificado.'}
+
+**Antes de actuar, ¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza?:**
+${pastExperience || 'No especificado.'}
+
+**Observación posterior en mi cuerpo (¿Se activó algo? ¿Hubo tensión? ¿Cómo fue cambiando?):**
+${bodyReflection || 'No especificado.'}
+
+**Observación posterior en mi mente (¿Qué pensamientos aparecieron? ¿Se cumplieron tus predicciones?):**
+${mindReflection || 'No especificado.'}
+
+**Observación posterior en la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?):**
+${realityReflection || 'No especificado.'}
 
 **Reflexión final para mi cuaderno terapéutico:**
 ${finalReflection}
@@ -81,7 +89,7 @@ ${finalReflection}
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
     onComplete();
-    nextStep();
+    setStep(5);
   };
   
   const renderStep = () => {

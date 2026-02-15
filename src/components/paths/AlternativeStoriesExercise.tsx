@@ -80,19 +80,20 @@ export default function AlternativeStoriesExercise({ content, pathId, onComplete
     let notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Situación incierta que me preocupa:*
+**Elige una situación incierta que te preocupe:**
 ${situation}
 
-*Tres versiones posibles que imaginé:*
+**Imagina tres versiones posibles:**
 - **Historia Negativa:** ${negativeStory}
 - **Historia Neutral:** ${neutralStory}
 - **Historia Positiva:** ${positiveStory}
 
-*La historia que suelo anticipar más es la ${usualAnticipation}.*
-${anticipationReason ? `*Creo que es por esto:* ${anticipationReason}` : ''}
+**¿Cuál sueles anticipar más?**
+La historia ${usualAnticipation}.
+${anticipationReason ? `\n*¿Por qué crees que sueles imaginar esa opción?* ${anticipationReason}` : ''}
 
-*Otras formas de ver la situación que podría considerar:*
-${newPossibilities}
+**Abre nuevas posibilidades. ¿Qué otras formas de ver esta situación podrías empezar a considerar?**
+${newPossibilities || 'No especificado.'}
     `;
 
     addNotebookEntry({

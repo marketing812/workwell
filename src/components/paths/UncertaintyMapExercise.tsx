@@ -94,10 +94,10 @@ export default function UncertaintyMapExercise({ content, pathId, onComplete }: 
     let notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Áreas donde siento más incertidumbre:*
+**¿En qué áreas sientes más incertidumbre?:**
 ${finalAreas.length > 0 ? finalAreas.map(item => `- ${item}`).join('\n') : 'Ninguna especificada.'}
 
-*Mis reacciones habituales ante la incertidumbre:*
+**¿Cómo sueles responder?:**
 ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n') : 'Ninguna especificada.'}
     `;
 
@@ -107,7 +107,7 @@ ${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n')
       pathId: pathId,
       userId: user?.id,
     });
-
+    
     toast({
       title: "Ejercicio Guardado",
       description: "Tu 'Mapa de la Incertidumbre' se ha guardado en el Cuaderno Terapéutico.",
