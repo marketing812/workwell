@@ -156,11 +156,17 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
             <Label htmlFor="calm-moment">¿Qué momento me conectó con la calma?</Label>
             <Textarea id="calm-moment" value={calmMoment} onChange={e => setCalmMoment(e.target.value)} placeholder='Ejemplo guía: “Me sentí en paz cuando salí a caminar al atardecer sin mirar el reloj. Solo respiré.”'/>
         </div>
+        
+        <div className="text-sm text-muted-foreground pt-4 space-y-2">
+            <p className="font-semibold">¿Cómo convertir este ritual en hábito?</p>
+            <p>Usa este ritual al final del día, antes de una situación incierta o cuando tu mente esté acelerada.<br/>No hace falta hacerlo perfecto.<br/>Solo estar presente en el gesto es suficiente.</p>
+        </div>
+        
         <Button onClick={() => {
             const content = `**Agradezco:**\n${gratitude}\n\n**Avance:**\n${advancement}\n\n**Momento de calma:**\n${calmMoment}`;
             handleSave("Cierre con Gratitud", content);
-        }}><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
-        <Button variant="link" onClick={() => setStep(0)}>Volver a opciones</Button>
+        }} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
+        <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
     </div>
   );
   
