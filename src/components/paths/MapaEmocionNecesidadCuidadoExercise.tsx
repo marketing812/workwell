@@ -120,9 +120,13 @@ export default function MapaEmocionNecesidadCuidadoExercise({ content, pathId, o
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Emoción sentida:* ${emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion)}
-*Necesidades detectadas:* ${selectedNeeds.join(', ')}
-*Acciones de cuidado elegidas:*
+**1. ¿Qué estás sintiendo ahora?:**
+${emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion)}
+
+**2. ¿Qué podrías estar necesitando?:**
+${selectedNeeds.join(', ')}
+
+**3. ¿Qué podrías hacer hoy para cuidar esa necesidad?:**
 ${allCareActions.map(action => `- ${action}`).join('\n')}
     `;
 
@@ -247,16 +251,19 @@ ${allCareActions.map(action => `- ${action}`).join('\n')}
             </div>
         );
       case 3: 
-        const finalLaboral = careActions.laboral === 'Otra' ? otherCareActions.laboral : careActions.laboral;
-        const finalFamiliar = careActions.familiar === 'Otra' ? otherCareActions.familiar : careActions.familiar;
-        const finalPersonal = careActions.personal === 'Otra' ? otherCareActions.personal : careActions.personal;
-        const allCareActions = [finalLaboral, finalFamiliar, finalPersonal].filter(Boolean);
+        const selectedNeeds = needOptions.filter(n=>needs[n.id]).map(n=>n.label);
+        if(needs.otra && otherNeed) selectedNeeds.push(otherNeed);
+
+        const finalLaboralAction = careActions.laboral === 'Otra' ? otherCareActions.laboral : careActions.laboral;
+        const finalFamiliarAction = careActions.familiar === 'Otra' ? otherCareActions.familiar : careActions.familiar;
+        const finalPersonalAction = careActions.personal === 'Otra' ? otherCareActions.personal : careActions.personal;
+        const allActions = [finalLaboralAction, finalFamiliarAction, finalPersonalAction].filter(Boolean);
 
         return <div className="p-4 space-y-4 text-center">
-            <p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{needOptions.filter(n=>needs[n.id]).map(n=>n.label).join(', ')}</strong>.</p>
+            <p>Hoy sentí: <strong>{emotion==='otra' ? otherEmotion : emotion}</strong>. Porque estoy necesitando: <strong>{selectedNeeds.join(', ')}</strong>.</p>
             <p className="font-semibold">Me propongo cuidarme así:</p>
             <ul className="list-disc list-inside text-left mx-auto max-w-md">
-                {allCareActions.map((action, i) => <li key={i}>{action}</li>)}
+                {allActions.map((action, i) => <li key={i}>{action}</li>)}
             </ul>
             <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             <Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>

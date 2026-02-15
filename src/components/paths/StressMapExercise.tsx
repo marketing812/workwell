@@ -63,17 +63,39 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
       return;
     }
     
-    let emotionsText = `${selectedEmotion1} (${emotionIntensity1}%)`;
+    let emotionsText = `${t[emotions.find(e => e.value === selectedEmotion1)?.labelKey as keyof typeof t] || selectedEmotion1} (${emotionIntensity1}%)`;
     if (selectedEmotion2 && emotionIntensity2 > 0) {
-      emotionsText += `, ${selectedEmotion2} (${emotionIntensity2}%)`;
+      emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion2)?.labelKey as keyof typeof t] || selectedEmotion2} (${emotionIntensity2}%)`;
     }
     if (selectedEmotion3 && emotionIntensity3 > 0) {
-      emotionsText += `, ${selectedEmotion3} (${emotionIntensity3}%)`;
+      emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion3)?.labelKey as keyof typeof t] || selectedEmotion3} (${emotionIntensity3}%)`;
     }
 
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**1. Situación (Qué ocurrió):**
+${situation}
+
+**2. Pensamientos (Qué pensaste):**
+${thoughts}
+
+**3. Emociones (Cómo te sentiste):**
+${emotionsText}
+
+**4. Reacciones físicas (Qué sintió tu cuerpo):**
+${physicalReactions}
+
+**5. Respuesta/acción (Qué hiciste):**
+${responseAction}
+
+**6. Mis Reflexiones:**
+${reflections || 'No especificado.'}
+`;
+    
     addNotebookEntry({
         title: 'Mapa del Estrés Personal',
-        content: `Situación: ${situation}\nPensamientos: ${thoughts}\nEmociones: ${emotionsText}\nReacciones Físicas: ${physicalReactions}\nRespuesta: ${responseAction}\nReflexiones: ${reflections}`,
+        content: notebookContent,
         pathId: pathId,
         userId: user?.id
     });

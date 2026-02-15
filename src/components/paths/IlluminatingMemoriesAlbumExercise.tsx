@@ -65,8 +65,10 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
 
   const handleSave = () => {
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
+    let hasContent = false;
     moments.forEach((moment, index) => {
       if (moment.trim()) {
+        hasContent = true;
         notebookContent += `**Recuerdo ${index + 1}:** ${moment}\n`;
         if (sensoryDetails[index].trim()) {
             notebookContent += `*Detalles sensoriales:* ${sensoryDetails[index]}\n`;
@@ -76,7 +78,13 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
     });
 
     if (finalReflection.trim()) {
+        hasContent = true;
         notebookContent += `**Reencuadre de situación difícil:**\n${finalReflection}\n`;
+    }
+    
+    if(!hasContent) {
+        toast({ title: 'Ejercicio vacío', description: 'Por favor, añade al menos un recuerdo o reflexión para guardar.', variant: 'destructive'});
+        return;
     }
 
     addNotebookEntry({ title: 'Mi Álbum de Recuerdos que Iluminan', content: notebookContent, pathId: pathId, userId: user?.id });
@@ -202,5 +210,3 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
     </Card>
   );
 }
-
-    

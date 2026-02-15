@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -39,12 +40,19 @@ export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onC
     if (!reflection.trim()) {
       toast({
         title: "Reflexión vacía",
-        description: "Escribe algo en tu reflexión para guardarla.",
+        description: "Escribe tu reflexión para guardarla.",
         variant: "destructive"
       });
       return;
     }
-    addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: reflection, pathId: pathId, userId: user?.id });
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**¿Qué sentí al observarme sin intentar corregirme?**
+${reflection}
+`;
+
+    addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Reflexión guardada' });
     setIsSaved(true);
     onComplete();
@@ -105,18 +113,20 @@ export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onC
             <h4 className="font-semibold text-center">¿Cómo fue esta experiencia?</h4>
             <p className="text-sm text-muted-foreground text-center">No hay respuestas correctas. Lo importante es haber estado contigo sin juicio.</p>
             <div className="space-y-2">
-                <Label htmlFor="reflection-meditation" className="sr-only">¿Qué sentí al observarme sin intentar corregirme?</Label>
+                <Label htmlFor="reflection-meditation">¿Qué sentí al observarme sin intentar corregirme?</Label>
                 <Textarea
                   id="reflection-meditation"
                   value={reflection}
                   onChange={e => setReflection(e.target.value)}
-                  placeholder="¿Qué sentí al observarme sin intentar corregirme?"
-                  disabled={isSaved}
+                  placeholder="Escribe aquí tu reflexión..."
                   rows={4}
+                  disabled={isSaved}
                 />
             </div>
             {!isSaved ? (
-              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" />Guardar Reflexión</Button>
+              <Button type="submit" className="w-full">
+                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
+              </Button>
             ) : (
               <div className="flex items-center justify-center p-3 mt-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
                 <CheckCircle className="mr-2 h-5 w-5" />

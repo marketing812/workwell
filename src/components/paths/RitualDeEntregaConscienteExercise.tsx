@@ -108,7 +108,18 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
       </div>
 
       <Button onClick={() => {
-          const content = `**Inquietud:**\n${writtenInquietud}\n\n**Reflexión:**\n${writtenReflection}\n\n**Reformulación:**\n${writtenReformulation}`;
+          const content = `
+**Paso 1: ¿Qué te inquieta?**
+${writtenInquietud || 'No respondido.'}
+
+**Paso 2: Tu reflexión al leerlo:**
+${writtenReflection || 'No respondido.'}
+
+**Paso 3: Tu reformulación más útil:**
+"${writtenReformulation || 'No respondido.'}"
+
+**Paso 4: Pensamiento final de entrega:**
+"Hoy elijo confiar en mi capacidad de avanzar paso a paso."`;
           handleSave("Escribir y Soltar", content);
       }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como "Entrega consciente"</Button>
       
@@ -163,7 +174,16 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         </div>
         
         <Button onClick={() => {
-            const content = `**Agradezco:**\n${gratitude}\n\n**Avance:**\n${advancement}\n\n**Momento de calma:**\n${calmMoment}`;
+            const content = `
+**¿Qué agradezco hoy?:**
+${gratitude || 'No respondido.'}
+
+**¿Qué pequeño avance hice?:**
+${advancement || 'No respondido.'}
+
+**¿Qué momento me conectó con la calma?:**
+${calmMoment || 'No respondido.'}
+`;
             handleSave("Cierre con Gratitud", content);
         }} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
         <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>

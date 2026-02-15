@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -75,11 +76,13 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Nivel de energía de hoy:** ${energyLevel} ${energyNuance ? `(${energyNuance})` : ''}
-**Me recargó:**
+**Paso 1: Nivel de energía de hoy:**
+${energyLevel} ${energyNuance ? `(${energyNuance})` : ''}
+
+**Paso 2: Me recargó:**
 ${rechargedBy || 'No especificado.'}
 
-**Me drenó:**
+**Paso 3: Me drenó:**
 ${drainedBy || 'No especificado.'}
     `;
     addNotebookEntry({ title: 'Mi Balance de Energía Diario', content: notebookContent, pathId: pathId, userId: user?.id });

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -63,18 +64,36 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
       return;
     }
     
-    let emotionsText = `${emotion}`;
-    
-    const notebookContent = `
-**Ejercicio:** ${content.title}
+    const finalSituation = situation === 'otra' ? otherSituation : situation;
+    const finalCoping = copingResponse === 'otra' ? otherCopingResponse : copingResponse;
 
-- **Emoción principal sentida:** ${emotionsText}
-- **Situación que ocurrió:** ${situation === 'otra' ? otherSituation : situation}
-- **Pensamientos que pasaron por mi cabeza:** ${thoughts}
-- **Disparador principal:** ${triggerSource}
-- **Mi respuesta o acción posterior:** ${copingResponse === 'otra' ? otherCopingResponse : copingResponse}
-- **Reflexión final:** ${reflections || 'Sin reflexión adicional.'}
-    `;
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**1. Emoción principal sentida:**
+${t[emotions.find(e => e.value === emotion)?.labelKey as keyof typeof t] || emotion}
+
+**2. Situación que ocurrió:**
+${finalSituation}
+
+**3. Pensamientos que pasaron por mi cabeza:**
+${thoughts}
+
+**4. ¿Tuve alguna imagen o recuerdo automático?:**
+${hadAutomaticImage ? `Sí: ${automaticImageDesc}` : 'No'}
+
+**5. ¿Qué pensé que podría pasar? (Anticipación de amenaza):**
+${anticipation}
+
+**6. Origen del disparador principal:**
+${triggerSource}
+
+**7. Mi respuesta o acción posterior:**
+${finalCoping}
+
+**8. Reflexión final:**
+${reflections || 'Sin reflexión adicional.'}
+`;
     
     addNotebookEntry({
         title: 'Registro de Disparador',
@@ -104,7 +123,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
     }
     
     const reflectionEntry = `
-      **Ejercicio:** ${content.title}
+      **Ejercicio: ${content.title}**
 
       **¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?**
       ${reflectionSituations}

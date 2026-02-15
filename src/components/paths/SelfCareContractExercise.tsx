@@ -53,13 +53,13 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*No estoy dispuesta/o a:*
+**No estoy dispuesta/o a…:**
 ${notWilling}
 
-*Me comprometo a:*
+**Me comprometo a…:**
 ${commitment}
 
-*Lo haré de forma:*
+**Lo haré de forma…:**
 ${howToDo}
     `;
     addNotebookEntry({ title: 'Mi Contrato Interno de Autocuidado', content: notebookContent, pathId: pathId, userId: user?.id });
@@ -75,7 +75,7 @@ ${howToDo}
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-muted-foreground">A menudo hablamos de poner límites hacia fuera, pero ¿qué pasa con los límites internos? Este ejercicio te ayuda a identificar con claridad aquello que ya no estás dispuesto o dispuesta a seguir permitiéndote, desde un lugar de cuidado, no de juicio.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
        case 1:

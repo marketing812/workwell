@@ -64,9 +64,33 @@ export default function DetectiveExercise({ content, onComplete, pathId }: Detec
       return;
     }
     
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**1. Situación: ¿Qué ocurrió?**
+${situation}
+
+**2. Pensamiento automático: ¿Qué pasó por tu mente?**
+"${automaticThought}"
+
+**3. Distorsión cognitiva: ¿Reconoces algún filtro mental?**
+${distortion}
+
+**4. Emoción asociada: ¿Qué emoción principal sentiste?**
+${emotion}
+
+**5. Preguntas de verificación:**
+- **¿Es 100% cierto este pensamiento?:** ${is100PercentTrue}
+- **¿Estoy exagerando o anticipando el peor escenario?:** ${isAnticipating}
+- **¿Qué le diría a alguien que quiero si pensara esto?:** ${adviceToFriend}
+
+**6. Pensamiento alternativo: ¿Cómo puedes reformularlo?**
+"${alternativeThought}"
+`;
+
     addNotebookEntry({
         title: 'Registro: Detective de Pensamientos',
-        content: `Situación: ${situation}\nPensamiento: ${automaticThought}\nDistorsión: ${distortion}\nEmoción: ${emotion}\nReflexión: ${alternativeThought}`,
+        content: notebookContent,
         pathId: pathId,
         userId: user?.id,
     });

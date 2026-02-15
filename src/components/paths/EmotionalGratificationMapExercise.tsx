@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -55,7 +56,7 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSelectChange = (setter: React.Dispatch<React.SetStateAction<string>>, otherSetter: React.Dispatch<React.SetStateAction<string>>, mainSetter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
     setter(value);
@@ -73,13 +74,13 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Actividades que me recargan:**
+**Paso 1: Actividades que me recargan:**
 ${finalActivities}
 
-**Personas que me inspiran o dan calma:**
+**Paso 2: Personas que me inspiran o dan calma:**
 ${finalPeople}
 
-**Lugares que me llenan de energía:**
+**Paso 3: Lugares que me llenan de energía:**
 ${finalPlaces}
     `;
     addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId, userId: user?.id });

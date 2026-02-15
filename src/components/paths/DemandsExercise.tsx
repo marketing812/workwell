@@ -61,9 +61,31 @@ export default function DemandsExercise({ content, onComplete, pathId }: Demands
       return;
     }
     
+    const selectedOrigins = originOptions.filter(o => origins[o.id]).map(o => o.label);
+    if(origins['origin-other-check'] && otherOrigin) selectedOrigins.push(otherOrigin);
+    
+    const notebookContent = `
+**Ejercicio: ${content.title}**
+
+**1. Exigencia detectada:**
+${demand}
+
+**2. Origen probable:**
+${selectedOrigins.length > 0 ? selectedOrigins.join(', ') : 'No especificado.'}
+
+**3. Consecuencias (coste):**
+${consequences}
+
+**4. Deseo o necesidad real:**
+${realNeed}
+
+**5. Reformulación compasiva:**
+"${compassionateReformulation}"
+    `;
+
     addNotebookEntry({
       title: `Registro: ${content.title}`,
-      content: `Exigencia: ${demand}\nConsecuencias: ${consequences}\nNecesidad real: ${realNeed}`,
+      content: notebookContent,
       pathId: pathId,
       userId: user?.id,
     });
