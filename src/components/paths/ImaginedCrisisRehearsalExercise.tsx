@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -37,13 +38,13 @@ export default function ImaginedCrisisRehearsalExercise({ content, pathId, onCom
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*¿Qué harías diferente?*
+**¿Qué harías diferente?**
 ${reflection.differentAction || 'No especificado.'}
 
-*¿Qué te dirías?*
+**¿Qué te dirías?**
 ${reflection.selfTalk || 'No especificado.'}
 
-*¿Qué herramienta usarías primero?*
+**¿Qué herramienta usarías primero?**
 ${reflection.toolUsed || 'No especificado.'}
     `;
 

@@ -67,19 +67,19 @@ export default function DemandsExercise({ content, onComplete, pathId }: Demands
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**1. Exigencia detectada:**
+**1. Exigencia detectada: ¿Qué te estás diciendo?**
 ${demand}
 
-**2. Origen probable:**
+**2. Origen probable: ¿De dónde crees que viene esta exigencia?**
 ${selectedOrigins.length > 0 ? selectedOrigins.join(', ') : 'No especificado.'}
 
-**3. Consecuencias (coste):**
+**3. Consecuencias: ¿Qué te está costando esta exigencia?**
 ${consequences}
 
-**4. Deseo o necesidad real:**
+**4. Deseo o necesidad real: ¿Qué necesitas o quieres de verdad?**
 ${realNeed}
 
-**5. Reformulación compasiva:**
+**5. Reformulación compasiva: ¿Qué podrías decirte con más amabilidad?**
 "${compassionateReformulation}"
     `;
 

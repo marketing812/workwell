@@ -260,7 +260,7 @@ ${reflections || 'Sin reflexión adicional.'}
           </div>
           
           <div>
-            <Label htmlFor="anticipation" className="font-semibold">5. ¿Qué pensaste que podría pasar? (Anticipación de amenaza)</Label>
+            <Label htmlFor="anticipation" className="font-semibold">5. ¿Qué pensé que podría pasar? (Anticipación de amenaza)</Label>
             <Textarea
               id="anticipation"
               value={anticipation}
