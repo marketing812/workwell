@@ -7,10 +7,9 @@ import { useUser } from '@/contexts/UserContext';
 import { getDailyQuestion, DailyQuestionApiResponse } from '@/data/dailyQuestion';
 import { useToast } from '@/hooks/use-toast';
 
-const DAILY_CHECKIN_COMPLETED_KEY = 'workwell-daily-checkin-completed';
+const DAILY_CHECKIN_COMPLETED_KEY = 'workwell-daily-checkin-answered-ids';
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
 
-// The data is now a simple array of answered question IDs
 interface DailyCheckInData extends Array<string> {}
 
 interface DailyCheckInContextType {
@@ -43,29 +42,34 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       return [];
     }
     
-    const allQuestions = apiResponse.questions;
+    const allQuestionsOrdered = apiResponse.questions;
 
     try {
       const storedData = localStorage.getItem(DAILY_CHECKIN_COMPLETED_KEY);
-      // New logic: answeredIds is just an array of strings
       const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
       
-      let filteredQuestions = allQuestions.filter(q => !answeredIds.includes(q.id));
+      const nextUnansweredQuestion = allQuestionsOrdered.find(q => !answeredIds.includes(q.id));
 
-      // NEW: If all questions have been answered, reset the progress.
-      if (filteredQuestions.length === 0 && allQuestions.length > 0) {
-        console.log("useDailyCheckIn: All questions answered. Resetting progress.");
+      if (nextUnansweredQuestion) {
+        setUnansweredQuestions([nextUnansweredQuestion]);
+        return [nextUnansweredQuestion];
+      } else {
+        // All questions have been answered, reset the cycle.
+        console.log("useDailyCheckIn: All questions answered. Resetting progress for next cycle.");
         localStorage.removeItem(DAILY_CHECKIN_COMPLETED_KEY);
-        filteredQuestions = allQuestions; // Show all questions again from the start.
+        // The first question of the new cycle is the first one from the API.
+        if (allQuestionsOrdered.length > 0) {
+          setUnansweredQuestions([allQuestionsOrdered[0]]);
+          return [allQuestionsOrdered[0]];
+        }
+        setUnansweredQuestions([]);
+        return [];
       }
-      
-      setUnansweredQuestions(filteredQuestions);
-      return filteredQuestions;
 
     } catch (error) {
       console.error("Error processing daily questions:", error);
-      setUnansweredQuestions(allQuestions); // Fallback to all questions on error
-      return allQuestions;
+      setUnansweredQuestions(allQuestionsOrdered.length > 0 ? [allQuestionsOrdered[0]] : []); // Fallback
+      return allQuestionsOrdered.length > 0 ? [allQuestionsOrdered[0]] : [];
     }
   }, [user?.id]);
   
@@ -111,7 +115,6 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     setUnansweredQuestions(prev => prev.filter(q => q.id !== questionId));
     
     try {
-      // New logic: append to a simple array of answered IDs
       const storedData = localStorage.getItem(DAILY_CHECKIN_COMPLETED_KEY);
       const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
       
@@ -120,10 +123,14 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       }
       
       localStorage.setItem(DAILY_CHECKIN_COMPLETED_KEY, JSON.stringify(answeredIds));
+
+      // Immediately check for the next question to update the state
+      loadAndFilterQuestions();
+
     } catch (error) {
         console.error("Error setting daily check-in as completed:", error);
     }
-  }, []);
+  }, [loadAndFilterQuestions]);
 
   const showPopup = isForcedOpen || (unansweredQuestions.length > 0 && !wasDismissedThisSession);
 
