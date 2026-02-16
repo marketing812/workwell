@@ -26,7 +26,10 @@ export const anxietyPath: Path = {
             title: 'La ansiedad: molesta, pero con sentido',
             audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1psicoeducpantalla1la%20ansiedad%20molesta.mp3`,
             content: [
-                { type: 'paragraph', text: 'La ansiedad no es tu enemiga, aunque a veces lo parezca.\nEs esa compañera molesta e incómoda que aparece justo cuando menos la quieres: antes de una reunión importante, en la cama cuando intentas dormir, o de camino a un sitio que te importa. Te fastidia, y mucho. Nadie quiere vivir con el corazón acelerado, la mente disparada y esa sensación de no estar en control.\nPero, si la miramos desde otra perspectiva, la ansiedad tiene un propósito: tu cuerpo se activa para protegerte, como si se encendiera una alarma interna. El problema aparece cuando esa alarma salta demasiado fuerte o demasiado a menudo, incluso sin peligro real. Y ahí es cuando pasa de ser útil a ser un obstáculo.\nEn esta ruta no vamos a “eliminar la ansiedad”, sino a aprender a regularla. A bajarle el volumen para que deje de dirigir tu vida.' }
+                { type: 'paragraph', text: 'La ansiedad no es tu enemiga, aunque a veces lo parezca.' },
+                { type: 'paragraph', text: 'Es esa compañera molesta e incómoda que aparece justo cuando menos la quieres: antes de una reunión importante, en la cama cuando intentas dormir, o de camino a un sitio que te importa. Te fastidia, y mucho. Nadie quiere vivir con el corazón acelerado, la mente disparada y esa sensación de no estar en control.' },
+                { type: 'paragraph', text: 'Pero, si la miramos desde otra perspectiva, la ansiedad tiene un propósito: tu cuerpo se activa para protegerte, como si se encendiera una alarma interna. El problema aparece cuando esa alarma salta demasiado fuerte o demasiado a menudo, incluso sin peligro real. Y ahí es cuando pasa de ser útil a ser un obstáculo.' },
+                { type: 'paragraph', text: 'En esta ruta no vamos a “eliminar la ansiedad”, sino a aprender a regularla. A bajarle el volumen para que deje de dirigir tu vida.' }
             ]
         },
         { 
@@ -47,8 +50,8 @@ export const anxietyPath: Path = {
           title: 'Tu sistema nervioso en acción',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant3tusistnervioso.mp3`,
           content: [
-            { type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:'},
-            { type: 'list', items: ['La rama simpático pisa el acelerador (sube la frecuencia cardíaca, la respiración, la tensión muscular).','La rama parasimpático actúa como freno (calma, ayuda a la digestión y al descanso).']},
+            { type: 'paragraph', text: 'La ansiedad vive en tu cuerpo, no solo en tu mente.\nTu sistema nervioso autónomo funciona como los pedales de un coche:' },
+            { type: 'list', items: ['La rama simpático pisa el acelerador (sube la frecuencia cardíaca, la respiración, la tensión muscular).','La rama parasimpático actúa como freno (calma, ayuda a la digestión y al descanso).'] },
             { type: 'paragraph', text: 'Cuando la ansiedad aparece, es como si tu pedal del acelerador se quedara atascado, incluso en situaciones normales. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\nAdemás, tu cuerpo libera adrenalina y cortisol, las hormonas del estrés. A corto plazo te ponen en alerta, pero cuando se repiten demasiadas veces, te dejan agotado/a.' }
           ]
         },
@@ -75,8 +78,8 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant5ansiedadlenguaje.mp3`,
           content: [
             { type: 'paragraph', text: 'La ansiedad se comunica contigo a través de síntomas. Algunos son más físicos (palpitaciones, sudor, tensión muscular) y otros más mentales (preocupaciones, pensamientos de “y si…”).\nPiensa en ella como un mensajero pesado: insiste en llamar a tu puerta, aunque no siempre traiga noticias importantes.'},
-            { type: 'list', items: ['Si le cierras de golpe, insiste más.','Si le escuchas con calma, puedes decidir qué hacer con el mensaje.']},
-            { type: 'paragraph', text: 'Este proceso suele convertirse en un círculo de la ansiedad:\n1.\tAparece un síntoma (ej. taquicardia).\n2.\tTu mente lo interpreta como peligro (“me va a dar algo”).\n3.\tEsa interpretación dispara más síntomas.\n4. \tY así se forma la bola de nieve.\nLo que rompe el círculo no es evitar, sino aprender a interpretar de otra forma lo que ocurre.' }
+            { type: 'list', items: ['Si le cierras de golpe, insiste más.','Si le escuchas con calma, puedes decidir qué hacer con el mensaje.'] },
+            { type: 'paragraph', text: 'Este proceso suele convertirse en un círculo de la ansiedad:\n1.\tAparece un síntoma (ej. taquicardia).\n2.\tTu mente lo interpreta como peligro (“me va a dar algo”).\n3.\tEsa interpretación dispara más síntomas.\n4. \tY así se forma la bola de nieve.\nLo que rompe el círculo no es evitar, sino aprender a interpretar de otra forma lo que ocurre.'}
           ]
         },
         {
@@ -85,8 +88,8 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant6noluchescontraNsied.mp3`,
           content: [
             { type: 'paragraph', text: 'Cuando la ansiedad aparece, lo primero que solemos pensar es: “¡Quiero que se vaya ya!”. Pero aquí ocurre algo paradójico: cuanto más intentas forzarla a desaparecer, más se intensifica. Es como si tu cerebro interpretara: “Esto es tan peligroso que necesito luchar con todas mis fuerzas”.\nY entonces, en lugar de calmarse, tu sistema nervioso se activa aún más.\nLa ciencia —desde la psicología cognitivo-conductual hasta la neurociencia— nos muestra otra vía mucho más eficaz:'},
-            { type: 'list', items: ['Observar sin juzgar → como si vieras pasar una nube en el cielo, que se desplaza sola sin que tengas que empujarla.','Darle un espacio controlado → dejar que esté ahí, pero sin que ocupe todo tu campo de visión.','Usar técnicas corporales y mentales → tu respiración, tu atención y tus recursos internos actúan como anclas que ayudan a que la ola de ansiedad suba… y después vuelva a bajar, como siempre lo hace.']},
-            { type: 'paragraph', text: 'Ejemplo: imagina un globo que intentas meter bajo el agua. Cuanto más lo fuerzas hacia abajo, más salta hacia arriba. Pero si lo sueltas, el globo se queda flotando. Lo mismo pasa con la ansiedad: si dejas de pelearte con ella, pierde fuerza y tú recuperas la capacidad de decidir cómo sostenerla.\nImportante: muchas veces recurrimos a la evitación para lidiar con la ansiedad (no ir a un sitio, no hacer algo). Eso da alivio inmediato, pero refuerza el miedo: tu cerebro aprende que “menos mal que lo esquivé, porque era peligroso”. Con el tiempo, la evitación se convierte en gasolina para la ansiedad.\nNo se trata de eliminar la ansiedad, sino de recuperar el mando. Tú puedes estar en el asiento del conductor, incluso cuando la ansiedad viaja de copiloto.' }
+            { type: 'list', items: ['Observar sin juzgar → como si vieras pasar una nube en el cielo, que se desplaza sola sin que tengas que empujarla.','Darle un espacio controlado → dejar que esté ahí, pero sin que ocupe todo tu campo de visión.','Usar técnicas corporales y mentales → tu respiración, tu atención y tus recursos internos actúan como anclas que ayudan a que la ola de ansiedad suba… y después vuelva a bajar, como siempre lo hace.'] },
+            { type: 'paragraph', text: 'Ejemplo: imagina un globo que intentas meter bajo el agua. Cuanto más lo fuerzas hacia abajo, más salta hacia arriba. Pero si lo sueltas, el globo se queda flotando. Lo mismo pasa con la ansiedad: si dejas de pelearte con ella, pierde fuerza y tú recuperas la capacidad de decidir cómo sostenerla.\nImportante: muchas veces recurrimos a la evitación para lidiar con la ansiedad (no ir a un sitio, no hacer algo). Eso da alivio inmediato, pero refuerza el miedo: tu cerebro aprende que “menos mal que lo esquivé, porque era peligroso”. Con el tiempo, la evitación se convierte en gasolina para la ansiedad.\nNo se trata de eliminar la ansiedad, sino de recuperar el mando. Tú puedes estar en el asiento del conductor, incluso cuando la ansiedad viaja de copiloto.'}
           ]
         },
         { type: 'title', text: 'Técnicas Específicas'},
@@ -159,8 +162,8 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant4frenoVagal.mp3`,
           content: [
             { type: 'paragraph', text: 'Hay un “cable maestro” que conecta tu cuerpo con tu cerebro: el nervio vago.\n\nPuedes imaginarlo como un freno interno que, cuando lo activas, manda el mensaje a tu cerebro de: “no hay peligro, puedes bajar la guardia”.\n\n¿Cómo se activa? Con cosas muy sencillas:' },
-            { type: 'list', items: ['Respirar lento y profundo.', 'Alargar la exhalación más que la inhalación.', 'Hacer pausas de calma en el cuerpo.']},
-            { type: 'paragraph', text: 'Cuando lo entrenas, tu corazón se desacelera, la respiración se regula y la sensación de alarma baja.\n\nEn neurociencia se ha visto que este “tono vagal alto” está asociado a más resiliencia emocional y mayor capacidad de mantener la calma en momentos difíciles. El tono vagal alto significa que tu nervio vago funciona bien y se activa con facilidad.\n\nHoy en día sabemos que las personas con tono vagal alto, suelen recuperarse antes del estrés, tener un corazón más estable y sentirse más equilibradas emocionalmente.'}
+            { type: 'list', items: ['Respirar lento y profundo.','Alargar la exhalación más que la inhalación.','Hacer pausas de calma en el cuerpo.'] },
+            { type: 'paragraph', text: 'Cuando lo entrenas, tu corazón se desacelera, la respiración se regula y la sensación de alarma baja.\n\nEn neurociencia se ha visto que este “tono vagal alto” está asociado a más resiliencia emocional y mayor capacidad de mantener la calma en momentos difíciles. El tono vagal alto significa que tu nervio vago funciona bien y se activa con facilidad.\n\nHoy en día sabemos que las personas con tono vagal alto, suelen recuperarse antes del estrés, tener un corazón más estable y sentirse más equilibradas emocionalmente.' }
           ]
         },
         {
@@ -169,7 +172,7 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant5cerebroCalma.mp3`,
           content: [
             { type: 'paragraph', text: 'Tu cerebro tiene dos modos principales de funcionamiento, que se activan según percibas amenaza o seguridad:' },
-            { type: 'list', items: ['Modo alarma: la amígdala (tu detector de humo interno) grita: “¡cuidado, cuidado!”. Tu cuerpo se prepara para huir o luchar y la parte racional de tu cerebro se apaga un poco.', 'Modo calma: la corteza prefrontal (tu parte racional, pensante y reflexiva) recupera el mando, analiza la situación y decide con claridad.'] },
+            { type: 'list', items: ['Modo alarma: la amígdala (tu detector de humo interno) grita: “¡cuidado, cuidado!”. Tu cuerpo se prepara para huir o luchar y la parte racional de tu cerebro se apaga un poco.','Modo calma: la corteza prefrontal (tu parte racional, pensante y reflexiva) recupera el mando, analiza la situación y decide con claridad.'] },
             { type: 'paragraph', text: '\nEn un pico de ansiedad, la amígdala es tan ruidosa que apenas escuchas a tu parte racional. Por eso piensas en bucle o sientes que te bloqueas. A esto se le llama secuestro emocional: la parte más instintiva y emocional de tu cerebro toma el mando y “apaga” temporalmente a la parte racional, como si la alarma interna se adueñara de todo el sistema. \n\nLa buena noticia es que, al calmar el cuerpo, ese secuestro pierde fuerza y tu mente pensante puede recuperar el control.\n\nEl resultado: menos caos, más claridad y más sensación de control real.' }
           ]
         },
@@ -179,7 +182,7 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant6Interocepcion.mp3`,
           content: [
             { type: 'paragraph', text: 'La interocepción es la capacidad de sentir tu propio cuerpo por dentro: tu pulso, tu respiración, el nudo en el estómago, el calor en la cara…\n\nEn la ansiedad, lo difícil no son esas sensaciones en sí, sino cómo las interpretamos:' },
-            { type: 'list', items: ['“Me late fuerte el corazón → seguro es un infarto.”', '“Me mareo → me voy a caer.”', '“Me tiembla el cuerpo → voy a perder el control.”']},
+            { type: 'list', items: ['“Me late fuerte el corazón → seguro es un infarto.”','“Me mareo → me voy a caer.”','“Me tiembla el cuerpo → voy a perder el control.”'] },
             { type: 'paragraph', text: '\nPero en realidad, son respuestas normales de un cuerpo que está en alarma. No son peligrosas, aunque si son molestas.\n\nPracticar a observarlas sin juzgarlas te permite comprobar que esas sensaciones, aunque incómodas, siempre suben y bajan.\n\nEs como mirar cómo pasa una nube por el cielo: no necesitas empujarla, se moverá sola.'}
           ]
         },
@@ -195,13 +198,7 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant8cierrePsicoeduc.mp3`,
           content: [
             { type: 'paragraph', text: 'En resumen:' },
-            { type: 'list', items: [
-                'La ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.',
-                'Tu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.',
-                'Cuando calmas el cuerpo, tu cerebro recupera claridad.',
-                'Las sensaciones no son peligrosas: observarlas sin miedo es clave para que su fuerza disminuya.',
-                'Con práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.'
-            ]},
+            { type: 'list', items: ['La ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.','Tu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.','Cuando calmas el cuerpo, tu cerebro recupera claridad.','Las sensaciones no son peligrosas: observarlas sin miedo es clave para que su fuerza disminuya.','Con práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.'] },
             { type: 'paragraph', text: '\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }
           ]
         },
@@ -272,7 +269,7 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana3/R13sem3pant1invitadopesado.mp3`,
           content: [
             { type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como:' },
-            { type: 'list', items: ['“¿Y si me da un ataque en medio del trabajo?”', '“¿Y si pierdo el control delante de todos?”', '“¿Y si me pasa algo malo?”'] },
+            { type: 'list', items: ['“¿Y si me da un ataque en medio del trabajo?”','“¿Y si pierdo el control delante de todos?”','“¿Y si me pasa algo malo?”'] },
             { type: 'paragraph', text: 'Estos se llaman pensamientos anticipatorios: no hablan de lo que ocurre ahora, sino de lo que podría pasar mañana o dentro de unos minutos. Son como un “adelanto de cine” donde tu cerebro solo te enseña las escenas de terror.\n\nLa neurociencia ha demostrado que el cerebro humano está diseñado para anticipar, porque así aumenta las posibilidades de supervivencia (LeDoux, 2015). El problema es que, en la ansiedad, ese mecanismo se dispara y todo se percibe como amenaza.' }
           ]
         },
