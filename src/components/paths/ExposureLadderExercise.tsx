@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -12,6 +11,7 @@ import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { ExposureLadderExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import { cn } from '@/lib/utils';
 
 interface ExposureLadderExerciseProps {
   content: ExposureLadderExerciseContent;
@@ -27,8 +27,39 @@ export default function ExposureLadderExercise({ content, pathId, onComplete }: 
   const [steps, setSteps] = useState(Array(7).fill(''));
   const [firstStep, setFirstStep] = useState('');
 
+  const [orderedSteps, setOrderedSteps] = useState<string[]>([]);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (step === 3) {
+      setOrderedSteps(steps.filter(s => s.trim()));
+    }
+  }, [step, steps]);
+
+  const handleDragStart = useCallback((index: number) => {
+    setDraggedIndex(index);
+  }, []);
+
+  const handleDragOver = useCallback((e: DragEvent<HTMLLIElement>) => {
+    e.preventDefault();
+  }, []);
+
+  const handleDrop = useCallback((index: number) => {
+    if (draggedIndex === null || draggedIndex === index) {
+      setDraggedIndex(null);
+      return;
+    };
+
+    const newOrderedSteps = [...orderedSteps];
+    const [draggedItem] = newOrderedSteps.splice(draggedIndex, 1);
+    newOrderedSteps.splice(index, 0, draggedItem);
+    
+    setOrderedSteps(newOrderedSteps);
+    setDraggedIndex(null);
+  }, [draggedIndex, orderedSteps]);
+
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleStepChange = (index: number, value: string) => {
     const newSteps = [...steps];
@@ -86,13 +117,34 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
        case 3: return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 3: Ordena tus escalones</h4>
-            <p className="text-sm text-muted-foreground">Ordena tus escalones del más fácil al más difícil. (Funcionalidad de arrastrar y ordenar no disponible, por favor ordénalos mentalmente por ahora)</p>
-            <ul className="list-decimal list-inside p-2 border rounded-md">
-                {steps.filter(s => s.trim()).map((s, i) => <li key={i}>{s}</li>)}
+            <p className="text-sm text-muted-foreground">Arrastra y suelta los escalones para ordenarlos del más fácil (arriba) al más difícil (abajo).</p>
+            <ul className="space-y-2">
+              {orderedSteps.map((s, i) => (
+                <li
+                  key={s + i}
+                  draggable
+                  onDragStart={() => handleDragStart(i)}
+                  onDragOver={handleDragOver}
+                  onDrop={() => handleDrop(i)}
+                  className={cn(
+                      "p-3 border rounded-md cursor-grab bg-background shadow-sm hover:shadow-md transition-shadow",
+                      draggedIndex === i && "opacity-50 ring-2 ring-primary"
+                  )}
+                >
+                    {i + 1}. {s}
+                </li>
+              ))}
             </ul>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente</Button>
+                <Button onClick={() => {
+                    const newSteps = [...orderedSteps];
+                    while (newSteps.length < 7) {
+                      newSteps.push('');
+                    }
+                    setSteps(newSteps);
+                    nextStep();
+                }}>Siguiente</Button>
             </div>
           </div>
         );
