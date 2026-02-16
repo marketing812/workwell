@@ -120,7 +120,7 @@ ${finalAction || 'No especificado.'}
                           <Label htmlFor="situation">Describe brevemente la situación (solo hechos, sin interpretaciones):</Label>
                           <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder='Ejemplo: “Estaba en el metro y empezó a llenarse de gente.”' />
                         </div>
-                        <p className="text-xs italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
+                        <p className="text-sm italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
                         <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 );
