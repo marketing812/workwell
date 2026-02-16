@@ -60,16 +60,16 @@ export const anxietyPath: Path = {
           title: 'Ansiedad, trastorno de ansiedad y ataque de pánico',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3`,
           content: [
-            { type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:' },
+            { type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:'},
             { type: 'paragraph', text: '<b>Ansiedad normal o adaptativa</b>' },
             { type: 'list', items: ['Surge ante un reto real (ej. entrevista, examen).','Es pasajera y baja sola cuando pasa la situación.'] },
             { type: 'paragraph', text: '<b>Trastorno de ansiedad</b>' },
             { type: 'list', items: ['La activación es excesiva, frecuente o sin causa clara.','Afecta tu vida diaria: trabajo, descanso, relaciones.','Puede llevarte a evitar lugares o situaciones.','Necesita abordaje terapéutico para recuperar equilibrio.'] },
             { type: 'paragraph', text: '<b>Ataque de pánico</b>' },
             { type: 'list', items: ['Irrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.','Aunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.','Puede aparecer dentro de un trastorno de pánico o de forma aislada.'] },
-            { type: 'paragraph', text: 'Ejemplo sencillo:' },
+            { type: 'paragraph', text: 'Ejemplo sencillo:'},
             { type: 'list', items: ['Ansiedad → nervios antes de una charla.','Trastorno de ansiedad → semanas sin dormir porque temes no dar la charla.','Ataque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.'] },
-            { type: 'paragraph', text: 'No es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.' }
+            { type: 'paragraph', text: 'No es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.'}
           ]
         },
         {
@@ -124,90 +124,17 @@ export const anxietyPath: Path = {
       title: 'Semana 2: Calma el Cuerpo para Calmar la Mente',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [
-        { 
-            type: 'paragraphWithAudio', 
-            text: 'Cuando la ansiedad llega, parece que no hay botón de pausa. El cuerpo se acelera y la mente se llena de pensamientos catastróficos. Esta semana vas a descubrir que sí existe una forma de frenar: aprenderás técnicas sencillas para interrumpir la escalada, bajar la activación y recuperar el control. Como un piloto que activa el freno de emergencia para estabilizar el avión, tú también puedes activar tus recursos internos para volver a sentir seguridad.', 
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2introducc.mp3`
-        },
+      content: [{ type: 'paragraphWithAudio', text: 'Cuando la ansiedad llega, parece que no hay botón de pausa. El cuerpo se acelera y la mente se llena de pensamientos catastróficos. Esta semana vas a descubrir que sí existe una forma de frenar: aprenderás técnicas sencillas para interrumpir la escalada, bajar la activación y recuperar el control. Como un piloto que activa el freno de emergencia para estabilizar el avión, tú también puedes activar tus recursos internos para volver a sentir seguridad.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2introducc.mp3`},
         { type: 'title', text: 'Psicoeducación' },
-        {
-          type: 'collapsible',
-          title: 'Gancho emocional: “Cuando el cuerpo corre, la mente corre”',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant1ganchoemoc.mp3`,
-          content: [
-            { type: 'paragraph', text: '¿Has notado que la ansiedad empieza en el cuerpo antes de que te des cuenta en la cabeza?\n\nDe repente, el corazón se acelera, el estómago se encoge o la respiración se agita… y ahí, como por arte de magia, aparecen los pensamientos: “¿y si me pasa algo malo? ¿y si no lo controlo? ¿y si me da algo aquí mismo?”.\n\nEsto ocurre porque cuerpo y mente son como dos bailarines atados con la misma cuerda: cuando uno se acelera, arrastra al otro.\n\nLa buena noticia es que este vínculo también funciona en positivo: si aprendes a calmar tu cuerpo, tu mente se relaja automáticamente.\n\nEsta semana vas a entrenar esa palanca: empezar por el cuerpo para que tu mente tenga un lugar donde descansar.'}
-          ]
-        },
-        {
-            type: 'collapsible',
-            title: 'El cuerpo como regulador directo',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant2cuerporegulDor.mp3`,
-            content: [
-                { type: 'paragraph', text: 'Dentro de ti funciona un sistema automático que no eliges de forma consciente: el sistema nervioso autónomo.\n\nComo explicamos también en la semana 1, puedes imaginarlo como un coche con dos pedales:'},
-                { type: 'list', items: ['El acelerador (la rama simpática): te activa, sube el pulso, la tensión muscular y la respiración.','El freno (la rama parasimpática): te calma, ayuda a la digestión y al descanso.']},
-                { type: 'paragraph', text: '\nCuando la ansiedad aparece, lo que pasa es que el acelerador se queda pisado, incluso en situaciones normales. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\n\nLo que aprenderás aquí es a tocar el freno de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.'}
-            ]
-        },
-        {
-            type: 'collapsible',
-            title: 'Por qué empezar por el cuerpo antes que por la mente',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant3porqEmpezXcorpo.mp3`,
-            content: [
-                { type: 'paragraph', text: 'La ansiedad funciona como un círculo que se alimenta a sí mismo:'},
-                { type: 'list', items: ['Sientes un síntoma (ej. taquicardia).','Lo interpretas como peligro (“me va a dar algo”).','Esa interpretación te asusta más y provoca más síntomas. Sin querer, hace que la ansiedad y el miedo suban más.']},
-                { type: 'paragraph', text: 'Es como si tu cuerpo encendiera la alarma y tu mente cogiera el micrófono para amplificarla.\n\nMuchas veces intentamos romper este círculo solo con pensamientos positivos: “tranquilo, no pasa nada”. Pero cuando el cuerpo ya está disparado, a veces la mente no lo cree.\n\nPor eso, esta semana, empezamos por el cuerpo: al bajar la respiración, soltar los músculos o enfriar el cuerpo, el cerebro recibe una señal poderosa de calma que corta el círculo.'}
-            ]
-        },
-        {
-            type: 'collapsible',
-            title: 'El freno vagal: tu sistema de calma natural',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant4frenoVagal.mp3`,
-            content: [
-                { type: 'paragraph', text: 'Hay un “cable maestro” que conecta tu cuerpo con tu cerebro: el nervio vago.\n\nPuedes imaginarlo como un freno interno que, cuando lo activas, manda el mensaje a tu cerebro de: “no hay peligro, puedes bajar la guardia”.\n\n¿Cómo se activa? Con cosas muy sencillas:'},
-                { type: 'list', items: ['Respirar lento y profundo.','Alargar la exhalación más que la inhalación.','Hacer pausas de calma en el cuerpo.']},
-                { type: 'paragraph', text: 'Cuando lo entrenas, tu corazón se desacelera, la respiración se regula y la sensación de alarma baja.\n\nEn neurociencia se ha visto que este “tono vagal alto” está asociado a más resiliencia emocional y mayor capacidad de mantener la calma en momentos difíciles. El tono vagal alto significa que tu nervio vago funciona bien y se activa con facilidad.\n\nHoy en día sabemos que las personas con tono vagal alto, suelen recuperarse antes del estrés, tener un corazón más estable y sentirse más equilibradas emocionalmente.'}
-            ]
-        },
-        {
-            type: 'collapsible',
-            title: 'El cerebro bajo calma y bajo ansiedad',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant5cerebroCalma.mp3`,
-            content: [
-                { type: 'paragraph', text: 'Tu cerebro tiene dos modos principales de funcionamiento, que se activan según percibas amenaza o seguridad:'},
-                { type: 'list', items: ['Modo alarma: la amígdala (tu detector de humo interno) grita: “¡cuidado, cuidado!”. Tu cuerpo se prepara para huir o luchar y la parte racional de tu cerebro se apaga un poco.','Modo calma: la corteza prefrontal (tu parte racional, pensante y reflexiva) recupera el mando, analiza la situación y decide con claridad.']},
-                { type: 'paragraph', text: '\nEn un pico de ansiedad, la amígdala es tan ruidosa que apenas escuchas a tu parte racional. Por eso piensas en bucle o sientes que te bloqueas. A esto se le llama secuestro emocional: la parte más instintiva y emocional de tu cerebro toma el mando y “apaga” temporalmente a la parte racional, como si la alarma interna se adueñara de todo el sistema. \n\nLa buena noticia es que, al calmar el cuerpo, ese secuestro pierde fuerza y tu mente pensante puede recuperar el control.\n\nEl resultado: menos caos, más claridad y más sensación de control real.'}
-            ]
-        },
-        {
-            type: 'collapsible',
-            title: 'La interocepción: escuchar sin miedo',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant6Interocepcion.mp3`,
-            content: [
-                { type: 'paragraph', text: 'La interocepción es la capacidad de sentir tu propio cuerpo por dentro: tu pulso, tu respiración, el nudo en el estómago, el calor en la cara…\n\nEn la ansiedad, lo difícil no son esas sensaciones en sí, sino cómo las interpretamos:'},
-                { type: 'list', items: ['“Me late fuerte el corazón → seguro es un infarto.”','“Me mareo → me voy a caer.”','“Me tiembla el cuerpo → voy a perder el control.”']},
-                { type: 'paragraph', text: '\nPero en realidad, son respuestas normales de un cuerpo que está en alarma. No son peligrosas, aunque si son molestas.\n\nPracticar a observarlas sin juzgarlas te permite comprobar que esas sensaciones, aunque incómodas, siempre suben y bajan.\n\nEs como mirar cómo pasa una nube por el cielo: no necesitas empujarla, se moverá sola.'}
-            ]
-        },
-        {
-            type: 'collapsible',
-            title: 'Entrenamiento y constancia: el cerebro también se entrena',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant7entrenamConstanc.mp3`,
-            content: [
-                { type: 'paragraph', text: 'Aquí entra en juego la neuroplasticidad, la capacidad del cerebro de aprender y cambiar con la práctica.\n\nCada vez que respiras de forma calmada, relajas tus músculos o haces un ejercicio de anclaje, tu cerebro registra una nueva asociación: “cuando siento ansiedad, también puedo encontrar calma.”\n\nSi lo repites una y otra vez, esas conexiones se fortalecen. Con el tiempo, tu cuerpo empezará a responder con menos alarma de forma más automática.\n\nNo se trata de hacerlo perfecto, sino de volver una y otra vez al entrenamiento, como quien ejercita un músculo. 5–10 minutos diarios son más potentes que una práctica larga de vez en cuando.'}
-            ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Cierre de la psicoeducación',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant8cierrePsicoeduc.mp3`,
-          content: [
-            { type: 'paragraph', text: 'En resumen:'},
-            { type: 'list', items: ['La ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.','Tu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.','Cuando calmas el cuerpo, tu cerebro recupera claridad.','Las sensaciones no son peligrosas: observarlas sin miedo es clave para que su fuerza disminuya.','Con práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.']},
-            { type: 'paragraph', text: '\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad'}
-          ]
-        },
-        { type: 'title', text: 'Técnicas Específicas de Relajación'},
+        { type: 'collapsible', title: 'Gancho emocional: “Cuando el cuerpo corre, la mente corre”', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant1ganchoemoc.mp3`, content: [{ type: 'paragraph', text: '¿Has notado que la ansiedad empieza en el cuerpo antes de que te des cuenta en la cabeza?\n\nDe repente, el corazón se acelera, el estómago se encoge o la respiración se agita… y ahí, como por arte de magia, aparecen los pensamientos: “¿y si me pasa algo malo? ¿y si no lo controlo? ¿y si me da algo aquí mismo?”.\n\nEsto ocurre porque cuerpo y mente son como dos bailarines atados con la misma cuerda: cuando uno se acelera, arrastra al otro.\n\nLa buena noticia es que este vínculo también funciona en positivo: si aprendes a calmar tu cuerpo, tu mente se relaja automáticamente.\n\nEsta semana vas a entrenar esa palanca: empezar por el cuerpo para que tu mente tenga un lugar donde descansar.' }] },
+        { type: 'collapsible', title: 'El cuerpo como regulador directo', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant2cuerporegulDor.mp3`, content: [{ type: 'paragraph', text: 'Dentro de ti funciona un sistema automático que no eliges de forma consciente: el sistema nervioso autónomo.\n\nComo explicamos también en la semana 1, puedes imaginarlo como un coche con dos pedales:' }, { type: 'list', items: ['El acelerador (la rama simpática): te activa, sube el pulso, la tensión muscular y la respiración.', 'El freno (la rama parasimpática): te calma, ayuda a la digestión y al descanso.'] }, { type: 'paragraph', text: '\nCuando la ansiedad aparece, lo que pasa es que el acelerador se queda pisado, incluso en situaciones normales. Tu cuerpo se pone en “modo emergencia” para protegerte… pero en realidad no hace falta.\n\nLo que aprenderás aquí es a tocar el freno de forma intencional con técnicas sencillas de respiración, relajación y movimiento consciente.' }] },
+        { type: 'collapsible', title: 'Por qué empezar por el cuerpo antes que por la mente', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant3porqEmpezXcorpo.mp3`, content: [{ type: 'paragraph', text: 'La ansiedad funciona como un círculo que se alimenta a sí mismo:' }, { type: 'list', items: ['Sientes un síntoma (ej. taquicardia).', 'Lo interpretas como peligro (“me va a dar algo”).', 'Esa interpretación te asusta más y provoca más síntomas. Sin querer, hace que la ansiedad y el miedo suban más.'] }, { type: 'paragraph', text: 'Es como si tu cuerpo encendiera la alarma y tu mente cogiera el micrófono para amplificarla.\n\nMuchas veces intentamos romper este círculo solo con pensamientos positivos: “tranquilo, no pasa nada”. Pero cuando el cuerpo ya está disparado, a veces la mente no lo cree.\n\nPor eso, esta semana, empezamos por el cuerpo: al bajar la respiración, soltar los músculos o enfriar el cuerpo, el cerebro recibe una señal poderosa de calma que corta el círculo.' }] },
+        { type: 'collapsible', title: 'El freno vagal: tu sistema de calma natural', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant4frenoVagal.mp3`, content: [{ type: 'paragraph', text: 'Hay un “cable maestro” que conecta tu cuerpo con tu cerebro: el nervio vago.\n\nPuedes imaginarlo como un freno interno que, cuando lo activas, manda el mensaje a tu cerebro de: “no hay peligro, puedes bajar la guardia”.\n\n¿Cómo se activa? Con cosas muy sencillas:' }, { type: 'list', items: ['Respirar lento y profundo.', 'Alargar la exhalación más que la inhalación.', 'Hacer pausas de calma en el cuerpo.'] }, { type: 'paragraph', text: 'Cuando lo entrenas, tu corazón se desacelera, la respiración se regula y la sensación de alarma baja.\n\nEn neurociencia se ha visto que este “tono vagal alto” está asociado a más resiliencia emocional y mayor capacidad de mantener la calma en momentos difíciles. El tono vagal alto significa que tu nervio vago funciona bien y se activa con facilidad.\n\nHoy en día sabemos que las personas con tono vagal alto, suelen recuperarse antes del estrés, tener un corazón más estable y sentirse más equilibradas emocionalmente.' }] },
+        { type: 'collapsible', title: 'El cerebro bajo calma y bajo ansiedad', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant5cerebroCalma.mp3`, content: [{ type: 'paragraph', text: 'Tu cerebro tiene dos modos principales de funcionamiento, que se activan según percibas amenaza o seguridad:' }, { type: 'list', items: ['Modo alarma: la amígdala (tu detector de humo interno) grita: “¡cuidado, cuidado!”. Tu cuerpo se prepara para huir o luchar y la parte racional de tu cerebro se apaga un poco.', 'Modo calma: la corteza prefrontal (tu parte racional, pensante y reflexiva) recupera el mando, analiza la situación y decide con claridad.'] }, { type: 'paragraph', text: '\nEn un pico de ansiedad, la amígdala es tan ruidosa que apenas escuchas a tu parte racional. Por eso piensas en bucle o sientes que te bloqueas. A esto se le llama secuestro emocional: la parte más instintiva y emocional de tu cerebro toma el mando y “apaga” temporalmente a la parte racional, como si la alarma interna se adueñara de todo el sistema. \n\nLa buena noticia es que, al calmar el cuerpo, ese secuestro pierde fuerza y tu mente pensante puede recuperar el control.\n\nEl resultado: menos caos, más claridad y más sensación de control real.' }] },
+        { type: 'collapsible', title: 'La interocepción: escuchar sin miedo', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant6Interocepcion.mp3`, content: [{ type: 'paragraph', text: 'La interocepción es la capacidad de sentir tu propio cuerpo por dentro: tu pulso, tu respiración, el nudo en el estómago, el calor en la cara…\n\nEn la ansiedad, lo difícil no son esas sensaciones en sí, sino cómo las interpretamos:' }, { type: 'list', items: ['“Me late fuerte el corazón → seguro es un infarto.”', '“Me mareo → me voy a caer.”', '“Me tiembla el cuerpo → voy a perder el control.”'] }, { type: 'paragraph', text: '\nPero en realidad, son respuestas normales de un cuerpo que está en alarma. No son peligrosas, aunque si son molestas.\n\nPracticar a observarlas sin juzgarlas te permite comprobar que esas sensaciones, aunque incómodas, siempre suben y bajan.\n\nEs como mirar cómo pasa una nube por el cielo: no necesitas empujarla, se moverá sola.' }] },
+        { type: 'collapsible', title: 'Entrenamiento y constancia: el cerebro también se entrena', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant7entrenamConstanc.mp3`, content: [{ type: 'paragraph', text: 'Aquí entra en juego la neuroplasticidad, la capacidad del cerebro de aprender y cambiar con la práctica.\n\nCada vez que respiras de forma calmada, relajas tus músculos o haces un ejercicio de anclaje, tu cerebro registra una nueva asociación: “cuando siento ansiedad, también puedo encontrar calma.”\n\nSi lo repites una y otra vez, esas conexiones se fortalecen. Con el tiempo, tu cuerpo empezará a responder con menos alarma de forma más automática.\n\nNo se trata de hacerlo perfecto, sino de volver una y otra vez al entrenamiento, como quien ejercita un músculo. 5–10 minutos diarios son más potentes que una práctica larga de vez en cuando.' }] },
+        { type: 'collapsible', title: 'Cierre de la psicoeducación', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana2/R13sem2pant8cierrePsicoeduc.mp3`, content: [{ type: 'paragraph', text: 'En resumen:' }, { type: 'list', items: ['La ansiedad se alimenta del cuerpo y de la mente, pero puedes interrumpirla empezando por el cuerpo.', 'Tu sistema tiene un freno natural (nervio vago) que puedes aprender a activar.', 'Cuando calmas el cuerpo, tu cerebro recupera claridad.', 'Las sensaciones no son peligrosas: observarlas sin miedo es clave para que su fuerza disminuya.', 'Con práctica constante, entrenas a tu sistema nervioso para volver al equilibrio cada vez más rápido.'] }, { type: 'paragraph', text: '\nAhora vas a aprender herramientas concretas para activar ese freno natural. Elige las que más te encajen y hazlas tuyas: son tu kit personal de calma frente a la ansiedad' }] },
+        { type: 'title', text: 'Técnicas Específicas de Relajación' },
         { 
             type: 'collapsible',
             title: 'Selección de técnicas',
@@ -233,7 +160,7 @@ export const anxietyPath: Path = {
                 { type: 'collapsible', title: 'Técnica 7: Movimiento consciente / estiramientos lentos', content: [{ type: 'paragraph', text: 'Cómo funciona: Realizas estiramientos suaves (cuello, hombros, espalda) al mismo tiempo que prestas atención a tu respiración. Esto libera tensión física y evita que el cuerpo quede en “modo rígido” propio de la ansiedad.\n\nEfecto: Produce una sensación de descarga y conexión con el cuerpo. También ayuda a salir del estado de alerta, ya que el movimiento lento es incompatible con la respuesta de lucha-huida.'}]},
                 { type: 'collapsible', title: 'Técnica 8: Anclaje sensorial 5–4–3–2–1', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.m4a`, content: [{ type: 'paragraph', text: 'Cómo funciona: Rediriges la atención a tus sentidos: 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles y 1 que saboreas. Así cortas el bucle de pensamientos ansiosos y llevas la mente al presente.\n\nEfecto: Te ayuda a romper la rumiación y los “¿y si…?”, aterrizando en lo que realmente está ocurriendo aquí y ahora. Es especialmente eficaz en crisis de ansiedad con pensamientos repetitivos.'}]},
                 { type: 'collapsible', title: 'Técnica 9: Balanceo corporal o presión profunda', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R16balanceocorporal.mp3`, content: [{ type: 'paragraph', text: 'Cómo funciona: Abrazarte fuerte, usar una manta con peso o balancearte suavemente estimula la propiocepción (la percepción del cuerpo en el espacio). Esto envía una señal de seguridad y contención al sistema nervioso.\n\nEfecto: Genera una sensación de calma, calor interno y seguridad, como un “abrazo regulador”. Muy útil en momentos de agitación o cuando la ansiedad viene acompañada de nerviosismo físico.'}]},
-                { type: 'collapsible', title: 'Técnica 10: Contacto frío breve', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`, content: [{ type: 'paragraph', text: 'Cómo aplicarlo:'},{ type: 'list', items: ['Humedece una toalla o paño con agua fría.','Aplícalo entre 10 y 20 segundos en la nuca, las muñecas o la parte interna de los brazos o mejillas.','Respira mientras sientes el contacto del frío.']},{ type: 'paragraph', text: 'Este pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.'}]},
+                { type: 'collapsible', title: 'Técnica 10: Contacto frío breve', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`, content: [{ type: 'paragraph', text: 'Cómo aplicarlo:'},{ type: 'list', items: ['Humedece una toalla o paño con agua fría.','Aplícalo entre 10 y 20 segundos en la nuca, las muñecas o la parte interna de los brazos o mejillas.','Respira mientras sientes el contacto del frío.']},{ type: 'paragraph', text: 'Si estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.'}]},
                 { type: 'collapsible', title: 'Técnica 11: Respiración 4–7–8 (avanzada, para calma y sueño)', content: [{ type: 'paragraph', text: 'Cómo funciona: Inhalas 4 segundos, retienes 7 y exhalas 8. Esta retención larga, combinada con la exhalación prolongada, produce un efecto sedante.\n\nEfecto: Induce estados de calma profunda y favorece la conciliación del sueño. No es recomendable en plena hiperventilación, pero sí como práctica regular para entrenar la calma y preparar el cuerpo para dormir.'}]},
                 { type: 'paragraph', text: 'Nota rápida: El orden prioriza lo que modula con más consistencia el SNA y mantiene el efecto (coherencia, diafragmática, exhalación y RMP) frente a recursos útiles, pero más situacionales o breves (anclaje, frío, presión profunda, 4–7–8). Tu experiencia y preferencia personal también cuentan: si una técnica “te engancha”, su eficacia real sube porque la practicarás más.'},
                 { type: 'therapeuticNotebookReflection', title: 'Registro de experiencia personal', prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:']},
@@ -290,19 +217,15 @@ export const anxietyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica2.mp3`
         },
         {
-          type: 'therapeuticNotebookReflection',
+          type: 'anxietyReframingExercise',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana3/R13sem3reflexion.mp3`,
           prompts: [
-            '<p>Esta semana has explorado la diferencia entre evitar y exponerte poco a poco, y cómo ese proceso va construyendo confianza real. Ahora te invito a mirar hacia dentro y responder con sinceridad:</p>',
-            '<ul>',
-            '<li>¿Qué descubrimientos has hecho sobre tu manera de reaccionar ante lo que te da ansiedad?</li>',
-            '<li>¿En qué momentos sueles elegir la evitación, y cómo te hace sentir a corto y a largo plazo?</li>',
-            '<li>¿Qué has comprobado en ti cuando has dado un paso, aunque fuera pequeño, en dirección a la exposición?</li>',
-            '<li>¿Qué escalón de tu propia “escalera de confianza” te gustaría comprometerte a practicar en las próximas semanas?</li>',
-            '<li>¿Qué recordatorio o frase te ayudaría a no rendirte cuando aparezca la tentación de evitar?</li>',
-            '</ul>',
-            '<p>Escribe con libertad, sin juzgarte. Este espacio es solo tuyo: lo que pongas aquí se convierte en una brújula para tu futuro, un compromiso contigo mismo o contigo misma para seguir avanzando, paso a paso, con cuidado y constancia.</p>'
+              '<p>Tómate unos minutos para integrar lo que has trabajado. No busques respuestas correctas, solo honestidad.</p>',
+              '<ul><li>¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?</li>',
+              '<li>¿Qué me pasa cuando confundo posibilidad con probabilidad? ¿Qué efecto tiene en mis decisiones?</li>',
+              '<li>¿Qué me ha servido más para tomar distancia de los pensamientos: la técnica STOP, el cuestionamiento de “¿y si…?” u otra estrategia personal?</li>',
+              '<li>¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?</li></ul>'
           ]
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -327,33 +250,31 @@ export const anxietyPath: Path = {
         { type: 'collapsible', title: 'La confianza se entrena', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/R13sem4psicoeduc6.mp3`, content: [{ type: 'paragraph', text: 'Cada exposición que realizas es como añadir una ficha a tu “banco de confianza”. Al principio parece que el bote se llena muy despacio, pero poco a poco la evidencia interna se acumula: “ya lo hice antes, puedo hacerlo otra vez”. Este proceso se llama autoeficacia. Albert Bandura, uno de los psicólogos más influyentes, lo resumía así: “La autoeficacia es la creencia en la propia capacidad de organizar y ejecutar las acciones necesarias para manejar situaciones futuras”. En otras palabras: no buscamos eliminar la ansiedad, sino aumentar la confianza en ti mismo o en ti misma. Y la confianza crece cada vez que eliges exponerte un poco más. Con el tiempo, esa sensación de “no puedo” se transforma en “sí puedo, aunque me cueste.”' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'exposureLadderExercise', title: 'EJERCICIO 1: ESCALERA DE EXPOSICIÓN PERSONAL', objective: 'Construye, peldaño a peldaño, un camino seguro hacia esas situaciones que hoy parecen demasiado grandes. Diseñarás tu propio plan progresivo para entrenar a tu cerebro y a tu cuerpo a confiar más en ti.', duration: '10-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana4tecnica1.mp3` },
-        {
-          type: 'calmVisualizationExercise',
-          title: 'EJERCICIO 2: “ME VEO HACIÉNDOLO CON CALMA”',
-          objective: 'Usa tu imaginación como herramienta. Cuando visualizas que te enfrentas a una situación temida de forma calmada, entrenas a tu sistema nervioso para responder con menos alarma en la vida real. Esta práctica es como un ensayo mental que reduce la anticipación ansiosa y prepara tu cuerpo para exponerte en pasos pequeños. Tiempo estimado: 8-10 minutos. Te recomiendo hacerlo 3-4 veces por semana, ideal antes de cada exposición real.',
-          duration: '8-10 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana4tecnica2.mp3`
-        },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/R13sem4reflexion.mp3`,
-          prompts: ['<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><ul><li>¿Qué descubrí sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li></ul>']
-        },
-        { type: 'title', text: 'RESUMEN CLAVE DE LA RUTA' },
+        { type: 'calmVisualizationExercise', title: 'EJERCICIO 2: “ME VEO HACIÉNDOLO CON CALMA”', objective: 'Usa tu imaginación como herramienta. Cuando visualizas que te enfrentas a una situación temida de forma calmada, entrenas a tu sistema nervioso para responder con menos alarma en la vida real. Esta práctica es como un ensayo mental que reduce la anticipación ansiosa y prepara tu cuerpo para exponerte en pasos pequeños. Tiempo estimado: 8-10 minutos. Te recomiendo hacerlo 3-4 veces por semana, ideal antes de cada exposición real.', duration: '8-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana4tecnica2.mp3` },
+        { type: 'anxietyReframingExercise', title: 'REFLEXIÓN FINAL DE LA SEMANA', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/R13sem4reflexion.mp3`, prompts: [
+            '<p>Esta semana has explorado la diferencia entre evitar y exponerte poco a poco, y cómo ese proceso va construyendo confianza real. Ahora te invito a mirar hacia dentro y responder con sinceridad:</p>',
+            '<ul>',
+            '<li>¿Qué descubrimientos has hecho sobre tu manera de reaccionar ante lo que te da ansiedad?</li>',
+            '<li>¿En qué momentos sueles elegir la evitación, y cómo te hace sentir a corto y a largo plazo?</li>',
+            '<li>¿Qué has comprobado en ti cuando has dado un paso, aunque fuera pequeño, en dirección a la exposición?</li>',
+            '<li>¿Qué escalón de tu propia “escalera de confianza” te gustaría comprometerte a practicar en las próximas semanas?</li>',
+            '<li>¿Qué recordatorio o frase te ayudaría a no rendirte cuando aparezca la tentación de evitar?</li>',
+            '</ul>',
+            '<p>Escribe con libertad, sin juzgarte. Este espacio es solo tuyo: lo que pongas aquí se convierte en una brújula para tu futuro, un compromiso contigo mismo o contigo misma a seguir avanzando, paso a paso, con cuidado y constancia.</p>'
+        ]},
+        { type: 'title', text: 'RESUMEN CLAVE' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/R13sem4resumenclave.mp3` },
-        { type: 'list', items: ['La evitación alivia la ansiedad a corto plazo, pero la alimenta a largo plazo.', 'La neurociencia muestra que la ansiedad disminuye al exponerte de forma gradual: el cerebro aprende que no hay un peligro real.', 'La exposición progresiva es como subir una escalera: un peldaño tras otro, con repeticiones, paciencia y descansos cuando lo necesites.', 'La repetición genera habituación: tu cuerpo se acostumbra y la ansiedad pierde fuerza.', 'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.', 'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.', 'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.', 'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.\"'] },
-        { type: 'quote', text: 'No tienes que eliminar la ansiedad para avanzar. Solo necesitas dar un paso pequeño, constante y consciente en dirección a lo que valoras. Cada vez que lo haces, tu fuerza crece y tu libertad también.' },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'REFLEXION FINAL PARA EL CUADERNO',
-          prompts: [
-            '<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p><p>Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.</p><ul><li>¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li><li>¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?</li><li>¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?</li><li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li><li>¿Si pudieras enviarle un mensaje a tu “yo” del futuro, qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?</li></ul>'
-          ]
-        },
-        { type: 'title', text: 'RESUMEN FINAL' },
-        { type: 'list', items: ['La ansiedad es una alarma interna que se activa aunque no haya un peligro real.', 'El cuerpo y la mente pueden entrenarse para interpretar las sensaciones sin catastrofizar.', 'Técnicas como el registro de pensamientos ansiosos, el recorrido por el cuerpo y la respiración regulada ayudan a reducir la intensidad inmediata de los síntomas.', 'La exposición progresiva es la clave para que la ansiedad baje de forma duradera: cuanto más evitamos, más crece; cuanto más nos enfrentamos poco a poco, más confianza ganamos.', 'La repetición fortalece la autoeficacia: cada paso superado demuestra que eres capaz de sostener la ansiedad y avanzar.', 'La visualización calmada es un recurso extra que prepara al cerebro y al sistema nervioso para afrontar mejor la situación real.', 'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice.'] },
-        { type: 'quote', text: 'La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.' }
+        { type: 'list', items: [
+            'La evitación alivia la ansiedad a corto plazo, pero la alimenta a largo plazo.', 
+            'La neurociencia muestra que la ansiedad disminuye al exponerte de forma gradual: el cerebro aprende que no hay un peligro real.', 
+            'La exposición progresiva es como subir una escalera: un peldaño tras otro, con repeticiones, paciencia y descansos cuando lo necesites.',
+            'La repetición genera habituación: tu cuerpo se acostumbra y la ansiedad pierde fuerza.', 
+            'No se trata de forzarte ni de ser valiente todo el tiempo, sino de dar pequeños pasos constantes en dirección contraria a la evitación.',
+            'Técnica 1: Escalera de exposición personal → construir tu propia lista de pasos, de lo más fácil a lo más difícil, y avanzar cuando lo ya practicado genere menos ansiedad.',
+            'Técnica 2: Visualización calmada → imaginarte enfrentando la situación con serenidad y éxito prepara tu mente y tu cuerpo para afrontarlo en la realidad.',
+            'Cada paso, por pequeño que sea, es un entrenamiento que acumula evidencias internas: “puedo estar aquí, puedo avanzar, aunque la ansiedad me acompañe”.'
+        ]},
+        { type: 'quote', text: 'No tienes que eliminar la ansiedad para avanzar. Solo necesitas dar un paso pequeño, constante y consciente en dirección a lo que valoras. Cada vez que lo haces, tu fuerza crece y tu libertad también.' }
       ]
     },
     {
@@ -364,26 +285,39 @@ export const anxietyPath: Path = {
       content: [
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión final de la ruta',
+          title: 'REFLEXION FINAL PARA EL CUADERNO',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/Reflexionfinalruta13.mp3`,
           prompts: [
-            '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
-            '<p>Preguntas para tu cuaderno emocional:</p>',
-            '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
+            '<p>Ahora que has recorrido este proceso, es momento de detenerte y mirar hacia dentro:</p>',
+            '<p>Escribe tus reflexiones con honestidad y sin juzgarte. Lo importante no es la perfección, sino reconocer tus avances y comprometerte contigo mismo o contigo misma a seguir practicando, incluso en pasos pequeños.</p>',
+            '<ul>',
+            '<li>¿Qué descubriste sobre cómo funciona tu ansiedad y las señales que te da tu cuerpo?</li>',
+            '<li>¿Qué estrategias has comprobado que te ayudan más a calmarte o a recuperar el control?</li>',
+            '<li>¿En qué momentos notaste que la evitación aumentaba tu malestar y cuándo experimentaste que dar un pequeño paso hacia adelante te fortalecía?</li>',
+            '<li>¿Qué peldaños de tu escalera de exposición ya has subido y qué aprendizajes trajeron consigo?</li>',
+            '<li>Si pudieras enviarle un mensaje a tu “yo” del futuro, ¿qué recordatorio le dejarías sobre tu capacidad de afrontar la ansiedad?</li>',
+            '</ul>'
           ]
         },
         {
           type: 'title',
-          text: 'RESUMEN FINAL DE LA RUTA',
+          text: 'RESUMEN FINAL',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana4/Resumenfinalruta13.mp3`
         },
         {
           type: 'list',
-          items: ['La ansiedad es una alarma interna que se activa aunque no haya un peligro real.', 'El cuerpo y la mente pueden entrenarse para interpretar las sensaciones sin catastrofizar.', 'Técnicas como el registro de pensamientos ansiosos, el recorrido por el cuerpo y la respiración regulada ayudan a reducir la intensidad inmediata de los síntomas.', 'La exposición progresiva es la clave para que la ansiedad baje de forma duradera: cuanto más evitamos, más crece; cuanto más nos enfrentamos poco a poco, más confianza ganamos.', 'La repetición fortalece la autoeficacia: cada paso superado demuestra que eres capaz de sostener la ansiedad y avanzar.', 'La visualización calmada es un recurso extra que prepara al cerebro y al sistema nervioso para afrontar mejor la situación real.', 'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice.'] },
+          items: [
+            'La ansiedad es una alarma interna que se activa aunque no haya un peligro real.',
+            'El cuerpo y la mente pueden entrenarse para interpretar las sensaciones sin catastrofizar.',
+            'Técnicas como el registro de pensamientos ansiosos, el recorrido por el cuerpo y la respiración regulada ayudan a reducir la intensidad inmediata de los síntomas.',
+            'La exposición progresiva es la clave para que la ansiedad baje de forma duradera: cuanto más evitamos, más crece; cuanto más nos enfrentamos poco a poco, más confianza ganamos.',
+            'La repetición fortalece la autoeficacia: cada paso superado demuestra que eres capaz de sostener la ansiedad y avanzar.',
+            'La visualización calmada es un recurso extra que prepara al cerebro y al sistema nervioso para afrontar mejor la situación real.',
+            'El objetivo no es eliminar la ansiedad por completo, sino recuperar la confianza en tu capacidad para vivir con ella sin que te paralice'
+          ]
+        },
         { type: 'quote', text: 'La ansiedad no desaparece huyendo de ella, sino aprendiendo a caminar con ella hasta que deja de asustar.' }
       ]
     }
   ]
 };
-
-    
