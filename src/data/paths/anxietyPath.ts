@@ -1,3 +1,4 @@
+
 import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -32,10 +33,14 @@ export const anxietyPath: Path = {
             type: 'collapsible',
             title: 'Ansiedad adaptativa vs. ansiedad disfuncional',
             audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13semana1pantalla2ansiedadadPtativa.mp3`,
-            content: [{
-                "type": "paragraph",
-                "text": "No toda ansiedad es mala, aunque lo parezca.\n\nAnsiedad adaptativa\n- Te mantiene alerta y enfocado/a.\n- Por ejemplo, esos nervios antes de un examen que te ayudan a estudiar con más energía.\n\nAnsiedad disfuncional\n- Se enciende sin motivo claro o de forma desproporcionada.\n- En lugar de ayudarte, te bloquea: no duermes, evitas situaciones, piensas sin parar en lo peor.\n- Es como una alarma que suena cada dos por tres, incluso sin fuego.\nLa clave no es luchar contra la ansiedad, sino distinguir cuándo te está ayudando y cuándo te está saboteando.\nPiensa en tu ansiedad como un detector de humo demasiado sensible: no distingue entre el vapor de la ducha y un incendio real. El problema no eres tú, es que tu sistema de alarma está calibrado demasiado alto."
-            }]
+            content: [
+              { type: 'paragraph', text: 'No toda ansiedad es mala, aunque lo parezca.' },
+              { type: 'paragraph', text: '<b>Ansiedad adaptativa</b>' },
+              { type: 'list', items: ['Te mantiene alerta y enfocado/a.','Por ejemplo, esos nervios antes de un examen que te ayudan a estudiar con más energía.'] },
+              { type: 'paragraph', text: '<b>Ansiedad disfuncional</b>' },
+              { type: 'list', items: ['Se enciende sin motivo claro o de forma desproporcionada.','En lugar de ayudarte, te bloquea: no duermes, evitas situaciones, piensas sin parar en lo peor.','Es como una alarma que suena cada dos por tres, incluso sin fuego.'] },
+              { type: 'paragraph', text: 'La clave no es luchar contra la ansiedad, sino distinguir cuándo te está ayudando y cuándo te está saboteando.\nPiensa en tu ansiedad como un detector de humo demasiado sensible: no distingue entre el vapor de la ducha y un incendio real. El problema no eres tú, es que tu sistema de alarma está calibrado demasiado alto.' }
+            ]
         },
         {
           type: 'collapsible',
@@ -47,7 +52,18 @@ export const anxietyPath: Path = {
           type: 'collapsible',
           title: 'Ansiedad, trastorno de ansiedad y ataque de pánico',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13sem1pant4Nsiedadtrastorno.mp3`,
-          content: [{ type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:\nAnsiedad normal o adaptativa\n- Surge ante un reto real (ej. entrevista, examen).\n- Es pasajera y baja sola cuando pasa la situación.\nTrastorno de ansiedad\n- La activación es excesiva, frecuente o sin causa clara.\n- Afecta tu vida diaria: trabajo, descanso, relaciones.\n- Puede llevarte a evitar lugares o situaciones.\n- Necesita abordaje terapéutico para recuperar equilibrio.\nAtaque de pánico\n- Irrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.\n- Aunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.\n- Puede aparecer dentro de un trastorno de pánico o de forma aislada.\nEjemplo sencillo:\n- Ansiedad → nervios antes de una charla.\n- Trastorno de ansiedad → semanas sin dormir porque temes no dar la charla.\n- Ataque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.\nNo es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.' }]
+          content: [
+            { type: 'paragraph', text: 'Si alguna vez te has preguntado: “¿Esto que me pasa es normal o es un trastorno?”, tranquilo/a: no eres el único. Aquí tienes una guía sencilla para ponerle nombre a lo que vives:' },
+            { type: 'paragraph', text: '<b>Ansiedad normal o adaptativa</b>' },
+            { type: 'list', items: ['Surge ante un reto real (ej. entrevista, examen).', 'Es pasajera y baja sola cuando pasa la situación.'] },
+            { type: 'paragraph', text: '<b>Trastorno de ansiedad</b>' },
+            { type: 'list', items: ['La activación es excesiva, frecuente o sin causa clara.', 'Afecta tu vida diaria: trabajo, descanso, relaciones.', 'Puede llevarte a evitar lugares o situaciones.', 'Necesita abordaje terapéutico para recuperar equilibrio.'] },
+            { type: 'paragraph', text: '<b>Ataque de pánico</b>' },
+            { type: 'list', items: ['Irrumpe de golpe, con síntomas intensos: taquicardia, falta de aire, mareo, sensación de “morirme” o “perder el control”.', 'Aunque asusta mucho, no es peligroso: el cuerpo no puede sostener esa activación y termina bajando.', 'Puede aparecer dentro de un trastorno de pánico o de forma aislada.'] },
+            { type: 'paragraph', text: 'Ejemplo sencillo:' },
+            { type: 'list', items: ['Ansiedad → nervios antes de una charla.', 'Trastorno de ansiedad → semanas sin dormir porque temes no dar la charla.', 'Ataque de pánico → de repente tu cuerpo explota en síntomas, aunque estés tranquilo/a en casa.'] },
+            { type: 'paragraph', text: 'No es para etiquetarte, sino para que sepas reconocer lo que vives y cómo trabajarlo. Y recuerda: incluso en los casos más intensos, la ansiedad se puede mejorar.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -204,10 +220,10 @@ export const anxietyPath: Path = {
           content: [{ type: 'paragraph', text: 'Cuando la ansiedad aparece, tu mente suele adelantarse al futuro con preguntas como:\n\n“¿Y si me da un ataque en medio del trabajo?”\n“¿Y si pierdo el control delante de todos?”\n“¿Y si me pasa algo malo?”\n\nEstos se llaman pensamientos anticipatorios: no hablan de lo que ocurre ahora, sino de lo que podría pasar mañana o dentro de unos minutos. Son como un “adelanto de cine” donde tu cerebro solo te enseña las escenas de terror.\n\nLa neurociencia ha demostrado que el cerebro humano está diseñado para anticipar, porque así aumenta las posibilidades de supervivencia (LeDoux, 2015). El problema es que, en la ansiedad, ese mecanismo se dispara y todo se percibe como amenaza.' }]
         },
         {
-          type: 'collapsible',
-          title: 'El catastrofismo: cuando la mente imagina lo peor',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana3/R13sem3pant2catastrof.mp3`,
-          content: [{ type: 'paragraph', text: 'El segundo invitado es el pensamiento catastrofista. No basta con que tu mente imagine lo que puede pasar: además lo pinta con el peor final posible.\n\nEjemplo:\n\nTe duele el pecho → la mente dice “seguro es un infarto”.\nNotas mareo → “me voy a desmayar en plena calle y nadie me ayudará”.\n\nEs como si tu cerebro tuviera un noticiero interno que siempre da la peor versión de los hechos.\n\nLa psicología cognitivo-conductual (TCC) ha estudiado esto durante décadas y lo llama sesgo atencional hacia la amenaza: tu mente se queda atrapada en la posibilidad más negativa, ignorando todo lo demás.' }]
+            type: 'collapsible',
+            title: 'El catastrofismo: cuando la mente imagina lo peor',
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana3/R13sem3pant2catastrof.mp3`,
+            content: [{ type: 'paragraph', text: 'El segundo invitado es el pensamiento catastrofista. No basta con que tu mente imagine lo que puede pasar: además lo pinta con el peor final posible.\n\nEjemplo:\n\nTe duele el pecho → la mente dice “seguro es un infarto”.\nNotas mareo → “me voy a desmayar en plena calle y nadie me ayudará”.\n\nEs como si tu cerebro tuviera un noticiero interno que siempre da la peor versión de los hechos.\n\nLa psicología cognitivo-conductual (TCC) ha estudiado esto durante décadas y lo llama sesgo atencional hacia la amenaza: tu mente se queda atrapada en la posibilidad más negativa, ignorando todo lo demás.' }]
         },
         {
           type: 'collapsible',
@@ -448,3 +464,4 @@ export const anxietyPath: Path = {
 
 
     
+
