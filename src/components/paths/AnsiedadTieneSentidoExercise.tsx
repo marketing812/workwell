@@ -139,7 +139,7 @@ ${finalAction || 'No especificado.'}
                           <Label htmlFor="thoughts">Escribe los pensamientos que aparecieron en ese momento.</Label>
                           <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder='Ejemplo: “Pensaba: ‘me voy a desmayar’, ‘no voy a aguantar aquí’.”'/>
                         </div>
-                        <p className="text-xs italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
+                        <p className="text-sm italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
                         <div className="flex justify-between w-full mt-2">
                             <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                             <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
@@ -178,10 +178,10 @@ ${finalAction || 'No especificado.'}
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold text-lg">Paso 4: Reconstruye el círculo de la ansiedad</h4>
                         <div className="space-y-3 p-4 border rounded-md bg-background/50">
-                            <p><strong>Situación (hechos):</strong> {situation}</p>
-                            <p><strong>Pensamiento amenazante inicial:</strong> {initialThreat}</p>
-                            <p><strong>Síntomas físicos y mentales:</strong> {selectedSymptoms.join(', ')}</p>
-                            <p><strong>Interpretación de los síntomas (miedo a la ansiedad):</strong> {thoughts}</p>
+                            <p><strong>Situación (hechos):</strong> ${situation}</p>
+                            <p><strong>Pensamiento amenazante inicial:</strong> ${initialThreat}</p>
+                            <p><strong>Síntomas físicos y mentales:</strong> ${selectedSymptoms.join(', ')}</p>
+                            <p><strong>Interpretación de los síntomas (miedo a la ansiedad):</strong> ${thoughts}</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="final-action">Efecto final: ¿qué hiciste o qué sentiste después?</Label>
@@ -202,7 +202,7 @@ ${finalAction || 'No especificado.'}
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={handleSave} disabled={isSaved}>
                              <Save className="mr-2 h-4 w-4" />
-                             {isSaved ? 'Guardado' : 'Guardar y Ver Cierre'}
+                             ${isSaved ? 'Guardado' : 'Guardar y Ver Cierre'}
                            </Button>
                         </div>
                     </div>
@@ -233,7 +233,7 @@ ${finalAction || 'No especificado.'}
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 {content.objective && (
                     <CardDescription className="pt-2">
-                        {content.objective}
+                        ${content.objective}
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
                                 <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana1tecnica1.mp3`} type="audio/mp3" />
