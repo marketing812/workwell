@@ -159,6 +159,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Explora el estómago y la cabeza</h4>
+                        <p className="text-sm text-muted-foreground">La ansiedad también afecta a tu digestión y a tu claridad mental.</p>
                          <div className="space-y-2">
                              <Label>En el estómago, noto principalmente:</Label>
                              <RadioGroup value={stomach} onValueChange={setStomach}>
@@ -281,3 +282,5 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         </Card>
     );
 }
+
+    
