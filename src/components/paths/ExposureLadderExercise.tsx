@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
@@ -162,7 +163,7 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
              </RadioGroup>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi escalera</Button>
+                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi escalera en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
