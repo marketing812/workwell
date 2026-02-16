@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
@@ -60,6 +61,15 @@ export default function ExposureLadderExercise({ content, pathId, onComplete }: 
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+  
+  const resetExercise = () => {
+    setStep(0);
+    setGoal('');
+    setSteps(Array(7).fill(''));
+    setFirstStep('');
+    setOrderedSteps([]);
+    setDraggedIndex(null);
+  };
 
   const handleStepChange = (index: number, value: string) => {
     const newSteps = [...steps];
@@ -67,14 +77,15 @@ export default function ExposureLadderExercise({ content, pathId, onComplete }: 
     setSteps(newSteps);
   };
   
-  const handleSave = () => {
+  const handleSave = (e: FormEvent) => {
+    e.preventDefault();
     const filledSteps = steps.filter(s => s.trim() !== '');
     if (!goal.trim() || filledSteps.length === 0 || !firstStep.trim()) {
         toast({title: 'Datos incompletos', description: 'Por favor, define tu meta, al menos un escalón y elige tu primer paso.', variant: 'destructive'});
         return;
     }
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**Ejercicio: ${"Mi Escalera de Exposición"}**
 
 **Meta:** ${goal}
 **Escalones:**
@@ -85,11 +96,12 @@ ${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
     addNotebookEntry({ title: 'Mi Escalera de Exposición', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Escalera Guardada' });
     onComplete();
+    nextStep();
   };
   
   const renderCurrentStep = () => {
     switch (step) {
-      case 0: return <div className="p-4 text-center"><p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
+      case 0: return <div className="p-4 text-center"><p className="text-sm mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
       case 1:
         return (
           <div className="p-4 space-y-4">
@@ -106,7 +118,7 @@ ${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Divide en escalones</h4>
             <p className="text-sm text-muted-foreground">Ahora divide esa situación en escalones más pequeños.</p>
-            <div className="text-sm text-muted-foreground p-2 border-l-2 border-accent bg-accent/10 italic">
+            <div className="text-sm italic p-2 border-l-2 border-accent bg-accent/10">
               <p>Cada escalón debe ser lo bastante sencillo para poder intentarlo y lo bastante desafiante para activar algo de ansiedad sin bloquearte.</p>
               <p className="font-semibold mt-2">Ejemplo:</p>
               <ul className="list-disc list-inside">
@@ -163,7 +175,7 @@ ${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
           </div>
         );
       case 4: return (
-          <div className="p-4 space-y-4">
+          <form onSubmit={handleSave} className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 4: Elige tu primer paso</h4>
             <p className="text-sm text-muted-foreground">¿Cuál será el primer paso realista que puedes poner en práctica esta semana?</p>
              <RadioGroup value={firstStep} onValueChange={setFirstStep}>
@@ -175,9 +187,20 @@ ${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
                 ))}
              </RadioGroup>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi escalera en el cuaderno terapéutico</Button>
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar mi escalera en el cuaderno terapéutico</Button>
             </div>
+          </form>
+        );
+      case 5:
+        return (
+          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">Has diseñado tu propia escalera de exposición.</h4>
+            <p className="text-muted-foreground">Cada peldaño que subas será un entrenamiento para tu confianza. Recuerda: no necesitas subir de golpe. Basta con dar un paso, mantenerte, y volver a intentarlo. Con cada práctica, tu cerebro aprende que eres más capaz de lo que imaginas.</p>
+            <Button onClick={resetExercise} variant="outline" className="w-full">
+              Hacer otra escalera
+            </Button>
           </div>
         );
       default: return null;
