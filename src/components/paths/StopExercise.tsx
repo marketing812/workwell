@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -28,7 +27,7 @@ export default function StopExercise({ content, pathId, onComplete }: StopExerci
   const [nextAction, setNextAction] = useState('');
   
   const next = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -58,6 +57,14 @@ ${nextAction}
              <p className="mb-4">
               La técnica STOP es como tener un semáforo interno. Cuando la ansiedad acelera tus pensamientos, este semáforo te recuerda que puedes parar y elegir cómo seguir.
             </p>
+            <div className="text-sm text-muted-foreground text-left">
+              <p className="font-semibold text-foreground">Sirve para:</p>
+              <ul className="list-disc list-inside pl-4">
+                <li>Interrumpir pensamientos anticipatorios y catastrofistas.</li>
+                <li>Recuperar el control cuando la amígdala te secuestra.</li>
+                <li>Volver al “modo calma” de tu cerebro.</li>
+              </ul>
+            </div>
             <Button onClick={() => setStep(1)}>
               Comenzar práctica <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -87,7 +94,7 @@ ${nextAction}
             <p className="text-sm text-muted-foreground">Activa tu freno natural. Inhala por la nariz... y exhala lento por la boca. Repite 3-5 veces.</p>
             <div className="mt-4">
               <audio key="audio-step-2" controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3`} type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1respira.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
