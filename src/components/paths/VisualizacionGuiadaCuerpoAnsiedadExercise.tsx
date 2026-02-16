@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -93,6 +92,10 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
       };
 
     const renderStep = () => {
+        const finalHeart = heart === 'Otra' ? otherHeart : heart;
+        const finalStomach = stomach === 'Otra' ? otherStomach : stomach; // New
+        const finalHead = head === 'Otra' ? otherHead : head; // New
+
         switch (step) {
             case 0: // Intro
                 return (
@@ -159,7 +162,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                 return (
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Explora el estómago y la cabeza</h4>
-                        <p className="text-sm text-muted-foreground">La ansiedad también afecta a tu digestión y a tu claridad mental.</p>
+                        <p className="text-sm text-muted-foreground">La ansiedad también afecta a tu digestión y a tu claridad mental. </p>
                          <div className="space-y-2">
                              <Label>En el estómago, noto principalmente:</Label>
                              <RadioGroup value={stomach} onValueChange={setStomach}>
@@ -246,7 +249,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                            <span>Nombrar</span><ArrowRight className="h-4 w-4"/>
                            <span>Ola</span>
                         </div>
-                        <p className="italic text-primary pt-2">“Tu cuerpo grita con la ansiedad, pero tú puedes aprender a escucharlo sin miedo. Cada vez que lo haces, la ola pierde fuerza.”</p>
+                        <p className="text-foreground pt-2">Tu cuerpo grita con la ansiedad, pero tú puedes aprender a escucharlo sin miedo. Cada vez que lo haces, la ola pierde fuerza.</p>
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
@@ -282,5 +285,3 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         </Card>
     );
 }
-
-    
