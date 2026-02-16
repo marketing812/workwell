@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
@@ -79,7 +78,7 @@ export default function ExposureLadderExercise({ content, pathId, onComplete }: 
 
 **Meta:** ${goal}
 **Escalones:**
-${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
+${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
 
 **Mi primer paso será:** ${firstStep}
     `;
@@ -107,9 +106,9 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Divide en escalones</h4>
             <p className="text-sm text-muted-foreground">Ahora divide esa situación en escalones más pequeños.</p>
-            <p className="text-sm text-muted-foreground">Cada escalón debe ser lo bastante sencillo para poder intentarlo y lo bastante desafiante para activar algo de ansiedad sin bloquearte.</p>
             <div className="text-sm text-muted-foreground p-2 border-l-2 border-accent bg-accent/10 italic">
-              <p><strong>Ejemplo:</strong></p>
+              <p>Cada escalón debe ser lo bastante sencillo para poder intentarlo y lo bastante desafiante para activar algo de ansiedad sin bloquearte.</p>
+              <p className="font-semibold mt-2">Ejemplo:</p>
               <ul className="list-disc list-inside">
                 <li>Hablar 2 minutos frente al espejo.</li>
                 <li>Grabarme en audio y escucharme.</li>
