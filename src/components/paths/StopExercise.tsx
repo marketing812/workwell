@@ -28,8 +28,14 @@ export default function StopExercise({ content, pathId, onComplete }: StopExerci
   const [nextAction, setNextAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
-  const next = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+  const resetExercise = () => {
+    setStep(0);
+    setObservedState('');
+    setNextAction('');
+    setIsSaved(false);
+  };
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -53,32 +59,25 @@ ${nextAction}
     setStep(5); // Go to new confirmation screen
   };
 
-  const resetExercise = () => {
-    setStep(0);
-    setObservedState('');
-    setNextAction('');
-    setIsSaved(false);
-  };
-  
   const renderStep = () => {
     switch (step) {
-      case 0: // Pantalla 1
+      case 0:
         return (
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold text-lg">La técnica STOP es como tener un semáforo interno siempre contigo.</h4>
             <p className="text-sm text-muted-foreground">
               Cuando la ansiedad acelera tus pensamientos o tu cuerpo se activa como si hubiera una emergencia, este semáforo te recuerda que puedes parar, respirar, observar y elegir cómo seguir.
             </p>
-             <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               No se trata de “apagar” la ansiedad de golpe, sino de crear un espacio entre lo que sientes y lo que haces. Ese pequeño espacio es lo que te permite recuperar el control y avanzar con más calma y claridad.
             </p>
-             <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               La neurociencia lo confirma: cuando introduces esta pausa consciente, das tiempo a tu corteza prefrontal (la parte racional) para volver a tomar el mando, en lugar de dejar que la amígdala (la alarma emocional) dirija todo.
             </p>
             <p className="text-sm text-muted-foreground">
               Hoy vamos a practicarlo juntos, paso a paso.
             </p>
-            <Button onClick={next} className="w-full">Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep} className="w-full">Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Pantalla 2 — S: STOP / Para
@@ -116,8 +115,8 @@ ${nextAction}
               </ul>
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={next} >Siguiente</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} >Siguiente</Button>
             </div>
           </div>
         );
@@ -157,7 +156,7 @@ ${nextAction}
              </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                <Button onClick={next}>Siguiente</Button>
+                <Button onClick={nextStep}>Siguiente</Button>
             </div>
           </div>
         );
@@ -200,7 +199,7 @@ ${nextAction}
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: ‘Voy a hacer el ridículo si entro solo o sola a esa sala’ y siento un nudo en el estómago."/>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                <Button onClick={next} disabled={!observedState.trim()}>Siguiente</Button>
+                <Button onClick={nextStep} disabled={!observedState.trim()}>Siguiente</Button>
             </div>
           </div>
         );
@@ -215,7 +214,7 @@ ${nextAction}
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
-             <div className="text-sm space-y-2 p-3 border rounded-md bg-background/30">
+            <div className="text-sm space-y-2 p-3 border rounded-md bg-background/30">
                <p><strong>Cómo actúa (cuerpo/mente):</strong></p>
                 <ul className="list-disc pl-4 space-y-1">
                     <li><strong>Permitir ≠ rendirse:</strong> es como surfear una ola sin pelear con ella, mientras sigues tu camino.</li>
@@ -223,9 +222,9 @@ ${nextAction}
                 </ul>
                 <p className="font-semibold pt-2">Efecto inmediato:</p>
                 <ul className="list-disc pl-4 space-y-1">
-                    <li>Rompe la evitación (gasolina de la ansiedad).</li>
-                    <li>Aumenta la sensación de autoeficacia.</li>
-                    <li>La activación comienza a descender sin “hacer nada mágico”.</li>
+                  <li>Rompe la evitación (gasolina de la ansiedad).</li>
+                  <li>Aumenta la sensación de autoeficacia.</li>
+                  <li>La activación comienza a descender sin “hacer nada mágico”.</li>
                 </ul>
                  <p className="font-semibold pt-2">Efecto acumulado:</p>
                 <ul className="list-disc pl-4 space-y-1">
@@ -242,7 +241,10 @@ ${nextAction}
             <Textarea value={nextAction} onChange={e => setNextAction(e.target.value)} placeholder="Ej: ...dar tres pasos, entrar y saludar, aunque aún me sienta nervioso o nerviosa." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit" disabled={!nextAction.trim()}><Save className="mr-2 h-4 w-4" /> Guardar mi frase permisiva</Button>
+                <Button type="submit" disabled={!nextAction.trim() || isSaved}>
+                    {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
+                    {isSaved ? 'Guardado' : 'Guardar mi frase en el cuaderno terapéutico'}
+                </Button>
             </div>
           </form>
         );
@@ -294,6 +296,3 @@ ${nextAction}
     </Card>
   );
 }
-
-
-    
