@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -28,7 +29,9 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const [heart, setHeart] = useState('');
     const [otherHeart, setOtherHeart] = useState('');
     const [stomach, setStomach] = useState('');
+    const [otherStomach, setOtherStomach] = useState(''); // New state
     const [head, setHead] = useState('');
+    const [otherHead, setOtherHead] = useState(''); // New state
     const [acceptancePhrase, setAcceptancePhrase] = useState('');
     const [wavePhrase, setWavePhrase] = useState('');
     const [isSaved, setIsSaved] = useState(false);
@@ -41,7 +44,9 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         setHeart('');
         setOtherHeart('');
         setStomach('');
+        setOtherStomach(''); // Reset
         setHead('');
+        setOtherHead(''); // Reset
         setAcceptancePhrase('');
         setWavePhrase('');
         setIsSaved(false);
@@ -59,14 +64,16 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         }
 
         const finalHeart = heart === 'Otra' ? otherHeart : heart;
+        const finalStomach = stomach === 'Otra' ? otherStomach : stomach; // New
+        const finalHead = head === 'Otra' ? otherHead : head; // New
 
         const notebookContent = `
     **Ejercicio: ${content.title}**
     
     **Respiración:** ${breathing || 'No especificada.'}
     **Corazón:** ${finalHeart || 'No especificado.'}
-    **Estómago:** ${stomach || 'No especificado.'}
-    **Cabeza:** ${head || 'No especificado.'}
+    **Estómago:** ${finalStomach || 'No especificado.'}
+    **Cabeza:** ${finalHead || 'No especificado.'}
     
     **Frase de aceptación:** "${acceptancePhrase || 'No escrita.'}"
     **Frase de la ola:** "${wavePhrase}"
@@ -158,7 +165,16 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Nudo o vacío" id="s-nudo" /><Label htmlFor="s-nudo" className="font-normal">Nudo o vacío</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Retortijones o molestias" id="s-retortijones" /><Label htmlFor="s-retortijones" className="font-normal">Retortijones o molestias</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Ganas urgentes de ir al baño" id="s-bano" /><Label htmlFor="s-bano" className="font-normal">Ganas urgentes de ir al baño</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Otra" id="s-otra" /><Label htmlFor="s-otra" className="font-normal">Otra:</Label></div>
                             </RadioGroup>
+                            {stomach === 'Otra' && (
+                                <Textarea 
+                                    value={otherStomach} 
+                                    onChange={e => setOtherStomach(e.target.value)} 
+                                    placeholder="Describe la otra sensación en el estómago..." 
+                                    className="mt-2 ml-6"
+                                />
+                            )}
                         </div>
                         <div className="space-y-2">
                             <Label>En la cabeza, siento:</Label>
@@ -166,10 +182,19 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Mareo o inestabilidad" id="head-mareo" /><Label htmlFor="head-mareo" className="font-normal">Mareo o inestabilidad</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Dolor o presión" id="head-dolor" /><Label htmlFor="head-dolor" className="font-normal">Dolor o presión en la frente/ sienes</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Desconexión" id="head-desconexion" /><Label htmlFor="head-desconexion" className="font-normal">Sensación de desconexión (“irrealidad”)</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Otra" id="head-otra" /><Label htmlFor="head-otra" className="font-normal">Otra:</Label></div>
                             </RadioGroup>
+                             {head === 'Otra' && (
+                                <Textarea 
+                                    value={otherHead} 
+                                    onChange={e => setOtherHead(e.target.value)} 
+                                    placeholder="Describe la otra sensación en la cabeza..." 
+                                    className="mt-2 ml-6"
+                                />
+                            )}
                         </div>
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || !head}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || (stomach === 'Otra' && !otherStomach.trim()) || !head || (head === 'Otra' && !otherHead.trim())}>Siguiente</Button></div>
                     </div>
                 );
             
