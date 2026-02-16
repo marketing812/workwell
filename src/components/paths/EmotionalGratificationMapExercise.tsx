@@ -198,9 +198,8 @@ ${finalPlaces}
                     </div>
                 </div>
                 <p className="text-xs text-muted-foreground italic pt-2">Recuerda: No tienes que hacerlas todas a la vez. Incluso una sola de estas actividades, personas o lugares puede marcar la diferencia en tu día.</p>
-                <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                      <Button onClick={() => setStep(1)} variant="outline">Editar mi mapa</Button>
-                     <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio semanal</Button>
                      <Button onClick={resetExercise}>Finalizar ejercicio</Button>
                 </div>
             </div>
