@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -34,7 +33,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const [isSaved, setIsSaved] = useState(false);
 
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
     const resetExercise = () => {
         setStep(0);
         setBreathing('');
@@ -85,10 +84,10 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         switch (step) {
             case 0: // Intro
                 return (
-                    <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
+                    <div className="p-4 space-y-4 text-left animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Explorar el cuerpo sin miedo</h4>
                         <p className="text-sm text-muted-foreground">La ansiedad es como una alarma interna: salta aunque no haya fuego real. Y lo que más nos asusta no es la alarma en sí, sino las sensaciones que trae consigo. Muchas veces, el problema no está en los síntomas, sino en cómo los interpretamos:</p>
-                        <ul className="list-none text-sm space-y-1">
+                        <ul className="list-none text-sm space-y-1 pl-4">
                             <li>“¿Y si este dolor en el pecho significa que tengo un problema en el corazón?”</li>
                             <li>“¿Y si me mareo y me desmayo delante de todos?”</li>
                             <li>“¿Y si me estoy volviendo loco/a y pierdo el control?”</li>
@@ -109,7 +108,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Superficial" id="b-superficial" /><Label htmlFor="b-superficial">Superficial</Label></div>
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Con presión en el pecho" id="b-presion" /><Label htmlFor="b-presion">Con presión en el pecho</Label></div>
                         </RadioGroup>
-                        <p className="text-sm text-muted-foreground italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
+                        <p className="text-sm italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing}>Siguiente</Button></div>
                     </div>
                 );
@@ -155,7 +154,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Desconexión" id="head-desconexion" /><Label htmlFor="head-desconexion">Sensación de desconexión (“irrealidad”)</Label></div>
                             </RadioGroup>
                         </div>
-                        <p className="text-sm text-muted-foreground italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
+                        <p className="text-sm italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || !head}>Siguiente</Button></div>
                     </div>
                 );
@@ -243,3 +242,4 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         </Card>
     );
 }
+    
