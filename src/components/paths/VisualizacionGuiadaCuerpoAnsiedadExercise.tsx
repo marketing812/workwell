@@ -26,6 +26,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const [step, setStep] = useState(0);
     const [breathing, setBreathing] = useState('');
     const [heart, setHeart] = useState('');
+    const [otherHeart, setOtherHeart] = useState('');
     const [stomach, setStomach] = useState('');
     const [head, setHead] = useState('');
     const [acceptancePhrase, setAcceptancePhrase] = useState('');
@@ -38,6 +39,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         setStep(0);
         setBreathing('');
         setHeart('');
+        setOtherHeart('');
         setStomach('');
         setHead('');
         setAcceptancePhrase('');
@@ -55,11 +57,14 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
           });
           return;
         }
+
+        const finalHeart = heart === 'Otra' ? otherHeart : heart;
+
         const notebookContent = `
     **Ejercicio: ${content.title}**
     
     **Respiración:** ${breathing || 'No especificada.'}
-    **Corazón:** ${heart || 'No especificado.'}
+    **Corazón:** ${finalHeart || 'No especificado.'}
     **Estómago:** ${stomach || 'No especificado.'}
     **Cabeza:** ${head || 'No especificado.'}
     
@@ -87,7 +92,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                     <div className="p-4 space-y-4 text-left animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Explorar el cuerpo sin miedo</h4>
                         <p className="text-sm text-muted-foreground">La ansiedad es como una alarma interna: salta aunque no haya fuego real. Y lo que más nos asusta no es la alarma en sí, sino las sensaciones que trae consigo. Muchas veces, el problema no está en los síntomas, sino en cómo los interpretamos:</p>
-                        <ul className="list-none text-sm space-y-1 pl-4">
+                        <ul className="list-disc list-inside text-sm space-y-1 pl-4">
                             <li>“¿Y si este dolor en el pecho significa que tengo un problema en el corazón?”</li>
                             <li>“¿Y si me mareo y me desmayo delante de todos?”</li>
                             <li>“¿Y si me estoy volviendo loco/a y pierdo el control?”</li>
@@ -103,10 +108,10 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                         <h4 className="font-semibold text-lg">Paso 1: Escanea tu respiración</h4>
                         <p className="text-sm text-muted-foreground">Cierra los ojos (si te resulta cómodo) y presta atención a tu respiración. No intentes cambiarla, solo obsérvala: ¿es rápida, superficial, entrecortada?</p>
                         <RadioGroup value={breathing} onValueChange={setBreathing}>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Normal" id="b-normal" /><Label htmlFor="b-normal">Normal</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Rápida" id="b-rapida" /><Label htmlFor="b-rapida">Rápida</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Superficial" id="b-superficial" /><Label htmlFor="b-superficial">Superficial</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Con presión en el pecho" id="b-presion" /><Label htmlFor="b-presion">Con presión en el pecho</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Normal" id="b-normal" /><Label htmlFor="b-normal" className="font-normal">Normal</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Rápida" id="b-rapida" /><Label htmlFor="b-rapida" className="font-normal">Rápida</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Superficial" id="b-superficial" /><Label htmlFor="b-superficial" className="font-normal">Superficial</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Con presión en el pecho" id="b-presion" /><Label htmlFor="b-presion" className="font-normal">Con presión en el pecho</Label></div>
                         </RadioGroup>
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing}>Siguiente</Button></div>
@@ -119,18 +124,27 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                         <h4 className="font-semibold text-lg">Paso 2: Escucha tu corazón</h4>
                         <p className="text-sm text-muted-foreground">Ahora lleva la atención a tu pecho. ¿Cómo late tu corazón?</p>
                         <RadioGroup value={heart} onValueChange={setHeart}>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Normal" id="h-normal" /><Label htmlFor="h-normal">Normal</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Muy rápido (taquicardia)" id="h-rapido" /><Label htmlFor="h-rapido">Muy rápido (taquicardia)</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Fuerte" id="h-fuerte" /><Label htmlFor="h-fuerte">Fuerte, como si se notara en todo el cuerpo</Label></div>
-                            <div className="flex items-center space-x-2"><RadioGroupItem value="Irregular" id="h-irregular" /><Label htmlFor="h-irregular">Irregular o con saltos</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Normal" id="h-normal" /><Label htmlFor="h-normal" className="font-normal">Normal</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Muy rápido (taquicardia)" id="h-rapido" /><Label htmlFor="h-rapido" className="font-normal">Muy rápido (taquicardia)</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Fuerte" id="h-fuerte" /><Label htmlFor="h-fuerte" className="font-normal">Fuerte, como si se notara en todo el cuerpo</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Irregular" id="h-irregular" /><Label htmlFor="h-irregular" className="font-normal">Irregular o con saltos</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Otra" id="h-otra" /><Label htmlFor="h-otra" className="font-normal">Otra:</Label></div>
                         </RadioGroup>
+                        {heart === 'Otra' && (
+                          <Textarea 
+                              value={otherHeart} 
+                              onChange={e => setOtherHeart(e.target.value)} 
+                              placeholder="Describe la otra sensación..." 
+                              className="mt-2 ml-6"
+                          />
+                        )}
                         <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
                                 <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
                                 <AccordionContent className="text-sm text-muted-foreground">El corazón se acelera para prepararte para correr o luchar. Aunque lo sientas intenso, no significa que vaya a fallar: es una reacción normal del cuerpo bajo ansiedad.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!heart}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!heart || (heart === 'Otra' && !otherHeart.trim())}>Siguiente</Button></div>
                     </div>
                 );
 
@@ -141,17 +155,17 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                          <div className="space-y-2">
                              <Label>En el estómago, noto principalmente:</Label>
                              <RadioGroup value={stomach} onValueChange={setStomach}>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Nudo o vacío" id="s-nudo" /><Label htmlFor="s-nudo">Nudo o vacío</Label></div>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Retortijones o molestias" id="s-retortijones" /><Label htmlFor="s-retortijones">Retortijones o molestias</Label></div>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Ganas urgentes de ir al baño" id="s-bano" /><Label htmlFor="s-bano">Ganas urgentes de ir al baño</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Nudo o vacío" id="s-nudo" /><Label htmlFor="s-nudo" className="font-normal">Nudo o vacío</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Retortijones o molestias" id="s-retortijones" /><Label htmlFor="s-retortijones" className="font-normal">Retortijones o molestias</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Ganas urgentes de ir al baño" id="s-bano" /><Label htmlFor="s-bano" className="font-normal">Ganas urgentes de ir al baño</Label></div>
                             </RadioGroup>
                         </div>
                         <div className="space-y-2">
                             <Label>En la cabeza, siento:</Label>
                             <RadioGroup value={head} onValueChange={setHead}>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Mareo o inestabilidad" id="head-mareo" /><Label htmlFor="head-mareo">Mareo o inestabilidad</Label></div>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Dolor o presión" id="head-dolor" /><Label htmlFor="head-dolor">Dolor o presión en la frente/ sienes</Label></div>
-                                <div className="flex items-center space-x-2"><RadioGroupItem value="Desconexión" id="head-desconexion" /><Label htmlFor="head-desconexion">Sensación de desconexión (“irrealidad”)</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Mareo o inestabilidad" id="head-mareo" /><Label htmlFor="head-mareo" className="font-normal">Mareo o inestabilidad</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Dolor o presión" id="head-dolor" /><Label htmlFor="head-dolor" className="font-normal">Dolor o presión en la frente/ sienes</Label></div>
+                                <div className="flex items-center space-x-2"><RadioGroupItem value="Desconexión" id="head-desconexion" /><Label htmlFor="head-desconexion" className="font-normal">Sensación de desconexión (“irrealidad”)</Label></div>
                             </RadioGroup>
                         </div>
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
@@ -242,4 +256,3 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         </Card>
     );
 }
-    
