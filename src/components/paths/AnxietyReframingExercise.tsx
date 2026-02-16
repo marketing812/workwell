@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -170,7 +171,7 @@ ${responses.q4}
                 <p><strong>Estrategia más útil:</strong><br/>{responses.q3}</p>
                 <p><strong>Mi compromiso:</strong><br/>{responses.q4}</p>
             </div>
-            <p className="text-xs italic pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
+            <p className="text-sm italic pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={resetExercise} variant="outline">Hacer otra reflexión</Button>

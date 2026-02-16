@@ -157,8 +157,8 @@ ${finalAction || 'No especificado.'}
                         </div>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                            <AccordionContent className="text-xs">
+                            <AccordionTrigger className="text-sm hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionContent className="text-sm">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
                               Cuanto más practiques, más fácil será detectarlo en el momento.
@@ -189,15 +189,15 @@ ${finalAction || 'No especificado.'}
                         </div>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-xs hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                            <AccordionContent className="text-xs">
+                            <AccordionTrigger className="text-sm hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionContent className="text-sm">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
                               Cuanto más practiques, más fácil será detectarlo en el momento.
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
-                        <p className="text-xs italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
+                        <p className="text-sm italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
                         <div className="flex justify-between w-full mt-2">
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={handleSave} disabled={isSaved}>

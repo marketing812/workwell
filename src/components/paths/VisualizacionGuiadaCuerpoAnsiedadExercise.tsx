@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -108,7 +109,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Superficial" id="b-superficial" /><Label htmlFor="b-superficial">Superficial</Label></div>
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Con presión en el pecho" id="b-presion" /><Label htmlFor="b-presion">Con presión en el pecho</Label></div>
                         </RadioGroup>
-                        <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
+                        <p className="text-sm text-muted-foreground italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing}>Siguiente</Button></div>
                     </div>
                 );
@@ -126,8 +127,8 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                         </RadioGroup>
                         <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                                <AccordionContent className="text-xs text-muted-foreground">El corazón se acelera para prepararte para correr o luchar. Aunque lo sientas intenso, no significa que vaya a fallar: es una reacción normal del cuerpo bajo ansiedad.</AccordionContent>
+                                <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                                <AccordionContent className="text-sm text-muted-foreground">El corazón se acelera para prepararte para correr o luchar. Aunque lo sientas intenso, no significa que vaya a fallar: es una reacción normal del cuerpo bajo ansiedad.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!heart}>Siguiente</Button></div>
@@ -154,7 +155,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="Desconexión" id="head-desconexion" /><Label htmlFor="head-desconexion">Sensación de desconexión (“irrealidad”)</Label></div>
                             </RadioGroup>
                         </div>
-                        <p className="text-xs text-muted-foreground italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
+                        <p className="text-sm text-muted-foreground italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
                         <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || !head}>Siguiente</Button></div>
                     </div>
                 );
@@ -179,8 +180,8 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
                         <Textarea id="wavePhrase" value={wavePhrase} onChange={e => setWavePhrase(e.target.value)} placeholder="Ejemplo: “Mi ansiedad es una ola: viene y se va.”"/>
                          <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger className="text-xs text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
-                                <AccordionContent className="text-xs text-muted-foreground">Las investigaciones muestran que una emoción intensa dura entre 60 y 90 segundos si no la alimentas con pensamientos catastróficos.</AccordionContent>
+                                <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                                <AccordionContent className="text-sm text-muted-foreground">Las investigaciones muestran que una emoción intensa dura entre 60 y 90 segundos si no la alimentas con pensamientos catastróficos.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
                         <div className="flex justify-between mt-4">
