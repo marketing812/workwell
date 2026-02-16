@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -109,7 +108,6 @@ ${finalPlaces}
       case 0:
         return (
           <div className="text-center p-4">
-            <p className="mb-4">¿Has notado que a veces olvidas lo que te hacía sentir bien? Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo. Este ejercicio te ayudará a reconectar con esas fuentes de bienestar que, en algún momento, te han hecho sentir bien. Al recordarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.</p>
             <Button onClick={nextStep}>Empezar mi mapa</Button>
           </div>
         );
