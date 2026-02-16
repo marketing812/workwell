@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -58,9 +59,7 @@ export default function CalmVisualizationExercise({ content, pathId, onComplete 
       <CardContent>
         {!isCompleted ? (
             <>
-                <div className="space-y-4 p-4 border rounded-lg bg-background animate-in fade-in-0 duration-500">
-                  <p className="text-sm whitespace-pre-line">{meditationText}</p>
-                </div>
+                <p className="text-base leading-relaxed whitespace-pre-line">{meditationText}</p>
                 
                 <Button onClick={handleComplete} className="w-full mt-6">
                     <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
