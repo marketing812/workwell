@@ -91,14 +91,15 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
   const renderCurrentStep = () => {
     switch (step) {
       case 0: return <div className="p-4 text-center"><p className="mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
-      case 1: return (
+      case 1:
+        return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 1: Define tu meta</h4>
             <p className="text-sm text-muted-foreground">¿Qué situación ansiosa quieres poder afrontar en el futuro?</p>
             <Textarea id="goal" value={goal} onChange={e => setGoal(e.target.value)} placeholder="Ej: Hablar en público en una reunión de trabajo"/>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={!goal.trim()}>Siguiente</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={nextStep} disabled={!goal.trim()}>Siguiente</Button>
             </div>
           </div>
         );
@@ -106,6 +107,19 @@ ${filledSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Divide en escalones</h4>
             <p className="text-sm text-muted-foreground">Ahora divide esa situación en escalones más pequeños.</p>
+            <p className="text-sm text-muted-foreground">Cada escalón debe ser lo bastante sencillo para poder intentarlo y lo bastante desafiante para activar algo de ansiedad sin bloquearte.</p>
+            <div className="text-sm text-muted-foreground p-2 border-l-2 border-accent bg-accent/10 italic">
+              <p><strong>Ejemplo:</strong></p>
+              <ul className="list-disc list-inside">
+                <li>Hablar 2 minutos frente al espejo.</li>
+                <li>Grabarme en audio y escucharme.</li>
+                <li>Mandar el audio a varias personas de mi confianza.</li>
+                <li>Contarle la presentación a una persona de confianza.</li>
+                <li>Hacerlo en un grupo de 3 personas.</li>
+                <li>Presentar en una reunión pequeña.</li>
+                <li>Presentar en la reunión general.</li>
+              </ul>
+            </div>
             {steps.map((s, i) => (
                 <Textarea key={i} value={s} onChange={e => handleStepChange(i, e.target.value)} placeholder={`Escalón ${i+1}`}/>
             ))}
