@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -13,12 +14,42 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Switch } from '@/components/ui/switch';
+
+const physicalHabitOptions = [
+  { id: 'caminar', label: 'Caminar 15 minutos al día', importance: 'Caminar a diario no solo cuida tu salud física (mejora la circulación, fortalece el corazón y regula la presión arterial), sino que también activa la liberación de endorfinas y serotonina, neurotransmisores que elevan el estado de ánimo y reducen el estrés. Además, rompe la inercia de la pasividad: un gesto tan simple como ponerse en movimiento envía a tu cerebro el mensaje de que te estás cuidando activamente, lo que refuerza la motivación para otras acciones saludables.' },
+  { id: 'agua', label: 'Beber un vaso grande de agua al despertar', importance: 'Durante la noche, tu cuerpo pierde líquidos y necesita rehidratarse para funcionar bien. Tomar agua nada más levantarte reactiva tu metabolismo, favorece la oxigenación cerebral y mejora la concentración desde las primeras horas. Según estudios de neurociencia, incluso una leve deshidratación puede afectar tu atención y estado de ánimo. Este sencillo hábito es una forma consciente de empezar el día cuidando de ti, sin esfuerzo extra.' },
+  { id: 'estirar', label: 'Estirarte 2 minutos al levantarte', importance: 'Estirarte suavemente al iniciar el día activa la circulación, aumenta la movilidad y libera la tensión acumulada durante el sueño. Además, le envía señales al sistema nervioso de que es hora de “ponerse en marcha”, despertando cuerpo y mente. Es un ritual breve que conecta contigo desde el primer momento, ayudándote a iniciar el día con más presencia y energía.' },
+  { id: 'sol', label: 'Tomar el sol 10 minutos', importance: 'La exposición moderada al sol estimula la producción de vitamina D, esencial para el sistema inmunitario y la salud ósea, y favorece la regulación del ritmo circadiano, lo que mejora el sueño. Además, la luz solar incrementa la liberación de serotonina, la hormona del bienestar, contribuyendo a un estado de ánimo más equilibrado. Es como darle a tu cuerpo una recarga natural de energía y buen humor.' },
+  { id: 'fruta', label: 'Comer una fruta o verdura extra', importance: 'Aumentar la ingesta de frutas y verduras aporta vitaminas, minerales y fibra que estabilizan los niveles de energía y ayudan a regular el azúcar en sangre, evitando los bajones de ánimo que provocan algunos alimentos procesados. Además, sus antioxidantes protegen las células del estrés oxidativo. Es un microgesto que nutre tanto tu cuerpo como tu salud emocional.' },
+  { id: 'ropa', label: 'Preparar la ropa de ejercicio la noche anterior', importance: 'Dejar lista tu ropa deportiva reduce la “fricción” para empezar a moverte: elimina una excusa y aumenta las probabilidades de que cumplas tu plan, incluso si la motivación está baja. Este hábito es un ejemplo de cómo pequeñas decisiones estratégicas facilitan cambios grandes en tu bienestar.' },
+  { id: 'escaleras', label: 'Subir escaleras en vez de ascensor', importance: 'Optar por las escaleras incrementa tu gasto energético diario, fortalece piernas y corazón, y mejora la capacidad pulmonar. Más allá del beneficio físico, es un recordatorio constante de que cada elección suma en tu salud: no siempre hacen falta grandes esfuerzos para sentirte más fuerte y con más energía.' },
+];
+
+const emotionalHabitOptions = [
+  { id: 'gratitud', label: 'Escribir una frase de gratitud al final del día', importance: 'Practicar gratitud entrena tu cerebro para fijarse en lo positivo, lo que reduce la atención excesiva en lo negativo. Según investigaciones en psicología positiva (Emmons & McCullough, 2003), este hábito mejora el ánimo y la satisfacción vital. Además, escribirlo antes de dormir ayuda a cerrar el día con una sensación de calma y bienestar.' },
+  { id: 'amabilidad', label: 'Decir algo amable a alguien', importance: 'Los actos de amabilidad liberan oxitocina y dopamina, hormonas vinculadas al bienestar y la conexión social. Este gesto no solo mejora el día de la otra persona, también refuerza tu autoestima y fortalece vínculos.' },
+  { id: 'musica', label: 'Escuchar una canción que te inspire', importance: 'La música puede regular tus emociones de forma rápida y eficaz. Investigaciones en neurociencia han demostrado que escuchar canciones que te gustan activa el sistema de recompensa del cerebro, elevando el ánimo y reduciendo el estrés.' },
+  { id: 'abrazo', label: 'Dar un abrazo (o autoabrazo consciente)', importance: 'Abrazar —o abrazarte— estimula la liberación de oxitocina, que genera calma y conexión. Un autoabrazo consciente, acompañado de respiración lenta, también reduce la activación del sistema nervioso simpático, ayudándote a relajarte.' },
+  { id: 'vela', label: 'Encender una vela y respirar profundamente', importance: 'Este pequeño ritual combina estímulos sensoriales (luz suave, aroma) con respiración profunda, favoreciendo la relajación y reduciendo el ritmo cardíaco. Es un ancla que te ayuda a pasar del “modo estrés” al “modo calma”.' },
+  { id: 'paisaje', label: 'Observar un paisaje, planta o cielo 5 minutos', importance: 'Mirar elementos naturales, aunque sea desde una ventana, tiene efectos restauradores en la atención y el estado de ánimo. Según la teoría de la restauración de la atención (Kaplan, 1995), este contacto con la naturaleza recarga la mente y reduce la fatiga mental.' },
+  { id: 'foto', label: 'Colocar una foto que te motive en un lugar visible', importance: 'Ver una imagen que te conecta con algo valioso para ti (personas, lugares, metas) genera emociones positivas y te recuerda qué es importante, ayudando a mantener la motivación en tu día a día.' },
+];
+
+const mentalHabitOptions = [
+  { id: 'respiracion', label: 'Respiración consciente 5 minutos', importance: 'La respiración consciente reduce la activación del sistema de estrés y mejora la concentración. Practicarla unos minutos al día entrena tu mente para volver al presente y gestionar mejor la ansiedad.' },
+  { id: 'lectura', label: 'Leer una página de un libro', importance: 'La lectura estimula la mente, amplía el vocabulario y mejora la concentración. Incluso leer una sola página antes de dormir puede ayudarte a desconectar de las preocupaciones y relajar la mente.' },
+  { id: 'aprendizaje', label: 'Anotar una idea o aprendizaje del día', importance: 'Registrar tus ideas o aprendizajes fortalece la memoria, te ayuda a integrar lo aprendido y genera una sensación de progreso personal.' },
+  { id: 'meditacion', label: 'Meditación guiada breve', importance: 'La meditación guiada entrena tu atención y regula el sistema nervioso. Incluso sesiones cortas (3-5 minutos) han demostrado reducir el estrés y aumentar la sensación de calma.' },
+  { id: 'intencion', label: 'Escribir una meta o intención diaria', importance: 'Poner por escrito una meta concreta orienta tu energía y tu atención hacia lo que de verdad importa, aumentando la probabilidad de cumplirlo.' },
+  { id: 'planificar', label: 'Planificar 3 tareas clave para mañana', importance: 'La planificación anticipada reduce la sobrecarga mental, previene olvidos y libera espacio mental para enfocarte en el presente.' },
+  { id: 'descanso', label: 'Hacer un descanso sin pantallas cada hora', importance: 'Darle un respiro a tu cerebro y a tu vista reduce la fatiga mental y visual. Estos microdescansos mejoran el rendimiento y la creatividad.' },
+];
+
+const momentOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios', 'Otro'];
+const reminderOptions = ['Poner una alarma en el móvil', 'Dejar una nota visible', 'Vincularlo a otra acción (ej. después de lavarme los dientes)', 'Aviso en la app', 'Otro'];
 
 interface DailyWellbeingPlanExerciseProps {
   content: DailyWellbeingPlanExerciseContent;
@@ -26,167 +57,56 @@ interface DailyWellbeingPlanExerciseProps {
   onComplete: () => void;
 }
 
-const firstGestureOptions = [
-  { id: 'respirar', label: 'Respirar profundamente 1 minuto', importance: 'Comenzar con una respiración lenta y profunda regula tu sistema nervioso, reduce la activación del modo alerta y prepara tu mente para un inicio más sereno.' },
-  { id: 'agua', label: 'Beber un vaso grande de agua', importance: 'Hidratarte nada más despertar reactiva tu metabolismo, mejora la concentración y contrarresta la ligera deshidratación de la noche.' },
-  { id: 'luz', label: 'Abrir la ventana y dejar entrar luz y aire', importance: 'La luz natural activa tu ritmo circadiano, mejora el estado de ánimo y ayuda a tu cuerpo a “entender” que es hora de iniciar el día.' },
-  { id: 'frase', label: 'Decir una frase positiva o motivadora', importance: 'La forma en la que te hablas al empezar el día influye en tu actitud. Una frase breve pero significativa puede enfocar tu mente hacia lo constructivo.' },
-];
-const bodyCareOptions = [
-  { id: 'estirar', label: 'Estiramientos suaves 2-3 minutos', importance: 'Movilizar el cuerpo al despertar mejora la circulación, aumenta la flexibilidad y reduce la rigidez muscular acumulada durante la noche.' },
-  { id: 'caminar', label: 'Caminar un poco por casa mientras te preparas', importance: 'El movimiento temprano activa la energía, mejora la oxigenación y ayuda a despejar la mente.' },
-  { id: 'desayuno', label: 'Preparar y tomar un desayuno nutritivo', importance: 'Un desayuno equilibrado estabiliza los niveles de glucosa, evitando bajones de energía y cambios bruscos de ánimo en las horas siguientes.' },
-  { id: 'higiene', label: 'Higiene consciente (lavarte la cara con agua fresca, ducha breve, etc.)', importance: 'Más que un hábito mecánico, puede convertirse en un momento de presencia y cuidado personal que marca el inicio de tu día.' },
-];
-const mentalPrepOptions = [
-  { id: 'intencion', label: 'Anotar una intención o prioridad del día', importance: 'Te ayuda a enfocar tu energía y a no dispersarte entre tareas menos importantes.' },
-  { id: 'gratitud', label: 'Escribir 3 cosas por las que estás agradecido/a', importance: 'Entrena tu mente para fijarse en lo positivo, mejorando tu estado de ánimo y tu resiliencia emocional.' },
-  { id: 'musica', label: 'Escuchar una canción o audio inspirador', importance: 'La música o las palabras motivadoras pueden elevar tu energía emocional y predisponerte a un día más positivo.' },
-  { id: 'meditacion', label: 'Práctica breve de mindfulness o meditación guiada (2-5 minutos)', importance: 'Mejora la regulación emocional y entrena tu atención para responder en lugar de reaccionar de forma automática.' },
-];
-const facilitatorOptions: { id: string; label: string; }[] = [
-    { id: 'facilitator-agua', label: 'Dejar preparado el vaso de agua o la tetera la noche anterior.' },
-    { id: 'facilitator-alarma', label: 'Poner el despertador 5 minutos antes.' },
-    { id: 'facilitator-ropa', label: 'Dejar ropa cómoda o deportiva lista.' },
-    { id: 'facilitator-libreta', label: 'Tener a mano tu libreta o lista de intenciones.' },
-    { id: 'facilitator-movil', label: 'Guardar el móvil en otro lugar para evitar distracciones al despertar.' },
-];
-
-
-const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
-    return (
-        <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">{stepTitle}</h4>
-            <p className="text-sm text-muted-foreground">{description}</p>
-            <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
-                <Accordion type="single" collapsible className="w-full">
-                    {options.map((opt: any) => (
-                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
-                            <div className="flex items-center justify-between py-2">
-                                <div className="flex items-center space-x-3">
-                                    <RadioGroupItem value={opt.label} id={opt.id} />
-                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">
-                                        {opt.label}
-                                    </Label>
-                                </div>
-                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5">
-                                    <Info className="h-4 w-4 text-muted-foreground" />
-                                </AccordionTrigger>
-                            </div>
-                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.importance}</AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-            </RadioGroup>
-            <div className="flex items-center space-x-2 pt-4">
-                <RadioGroup value={selected} onValueChange={setSelected} className="flex items-center space-x-2">
-                    <RadioGroupItem value="Otro" id="other-habit" />
-                    <Label htmlFor="other-habit" className="font-normal">Otro:</Label>
-                </RadioGroup>
-            </div>
-            {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
-            <div className="flex justify-between w-full mt-4">
-                {onPrev && <Button variant="outline" onClick={onPrev} type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
-                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="ml-2 h-4 w-4"/></Button>
-            </div>
-        </div>
-    );
-};
-
-
 export default function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
-  const [isClient, setIsClient] = useState(false);
 
-  // States for selected habits
-  const [firstGesture, setFirstGesture] = useState('');
-  const [otherFirstGesture, setOtherFirstGesture] = useState('');
-  const [bodyCare, setBodyCare] = useState('');
-  const [otherBodyCare, setOtherBodyCare] = useState('');
-  const [mentalPrep, setMentalPrep] = useState('');
-  const [otherMentalPrep, setOtherMentalPrep] = useState('');
+  const [physicalHabit, setPhysicalHabit] = useState('');
+  const [otherPhysicalHabit, setOtherPhysicalHabit] = useState('');
+  const [emotionalHabit, setEmotionalHabit] = useState('');
+  const [otherEmotionalHabit, setOtherEmotionalHabit] = useState('');
+  const [mentalHabit, setMentalHabit] = useState('');
+  const [otherMentalHabit, setOtherMentalHabit] = useState('');
+
+  const [moments, setMoments] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
+  const [otherMoments, setOtherMoments] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
+
+  const [reminders, setReminders] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
+  const [otherReminders, setOtherReminders] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
   
-  // States for scheduling and reminders
-  const [durations, setDurations] = useState({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
-  const [facilitators, setFacilitators] = useState<Record<string, boolean>>({});
-  const [otherFacilitator, setOtherFacilitator] = useState('');
-  
-  const storageKey = `exercise-progress-${pathId}-dailyWellbeingPlan`;
+  const [remindersOn, setRemindersOn] = useState<{ [key: string]: boolean }>({ physical: true, emotional: true, mental: true });
 
-  useEffect(() => {
-    setIsClient(true);
-    try {
-      const savedState = localStorage.getItem(storageKey);
-      if (savedState) {
-        const data = JSON.parse(savedState);
-        setStep(data.step || 0);
-        setFirstGesture(data.firstGesture || '');
-        setOtherFirstGesture(data.otherFirstGesture || '');
-        setBodyCare(data.bodyCare || '');
-        setOtherBodyCare(data.otherBodyCare || '');
-        setMentalPrep(data.mentalPrep || '');
-        setOtherMentalPrep(data.otherMentalPrep || '');
-        setDurations(data.durations || { firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
-        setFacilitators(data.facilitators || {});
-        setOtherFacilitator(data.otherFacilitator || '');
-        setIsSaved(data.isSaved || false);
-      }
-    } catch (error) {
-      console.error("Error loading exercise state:", error);
-    }
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (!isClient) return;
-    try {
-      const stateToSave = { step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved };
-      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
-    } catch (error) {
-      console.error("Error saving exercise state:", error);
-    }
-  }, [step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved, storageKey, isClient]);
-
-
-  const finalFirstGesture = firstGesture === 'Otro' ? otherFirstGesture : firstGesture;
-  const finalBodyCare = bodyCare === 'Otro' ? otherBodyCare : bodyCare;
-  const finalMentalPrep = mentalPrep === 'Otro' ? otherMentalPrep : mentalPrep;
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
-  
-  const resetExercise = () => {
-    setStep(0);
-    setFirstGesture(''); setOtherFirstGesture('');
-    setBodyCare(''); setOtherBodyCare('');
-    setMentalPrep(''); setOtherMentalPrep('');
-    setDurations({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
-    setFacilitators({}); setOtherFacilitator('');
-    setIsSaved(false);
-    localStorage.removeItem(storageKey);
-  };
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = () => {
-    if (!finalFirstGesture || !finalBodyCare || !finalMentalPrep) {
+    const finalPhysicalHabit = physicalHabit === 'Otro' ? otherPhysicalHabit : physicalHabit;
+    const finalEmotionalHabit = emotionalHabit === 'Otro' ? otherEmotionalHabit : emotionalHabit;
+    const finalMentalHabit = mentalHabit === 'Otro' ? otherMentalHabit : mentalHabit;
+
+    if (!finalPhysicalHabit || !finalEmotionalHabit || !finalMentalHabit) {
       toast({ title: "Incompleto", description: "Por favor, elige un microhábito para cada área.", variant: 'destructive' });
       return;
     }
-
-    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
-    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
-
+    
     const notebookContent = `
 **${content.title}**
 
-*Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
-*Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
-*Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
+*Mi microhábito físico:* ${finalPhysicalHabit}
+*Cuándo:* ${moments.physical === 'Otro' ? otherMoments.physical : moments.physical}
+*Recordatorio:* ${reminders.physical === 'Otro' ? otherReminders.physical : reminders.physical} (${remindersOn.physical ? 'Activado' : 'Desactivado'})
 
-*Cómo lo facilitaré:*
-${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join('\n') : 'Sin facilitadores definidos.'}
-    `;
+*Mi microhábito emocional:* ${finalEmotionalHabit}
+*Cuándo:* ${moments.emotional === 'Otro' ? otherMoments.emotional : moments.emotional}
+*Recordatorio:* ${reminders.emotional === 'Otro' ? otherReminders.emotional : reminders.emotional} (${remindersOn.emotional ? 'Activado' : 'Desactivado'})
+
+*Mi microhábito mental:* ${finalMentalHabit}
+*Cuándo:* ${moments.mental === 'Otro' ? otherMoments.mental : moments.mental}
+*Recordatorio:* ${reminders.mental === 'Otro' ? otherReminders.mental : reminders.mental} (${remindersOn.mental ? 'Activado' : 'Desactivado'})
+`;
 
     addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Plan Guardado' });
@@ -194,110 +114,151 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
     onComplete();
     setStep(6);
   };
+  
+  const HabitSelectorStep = ({ title, description, options, selected, setSelected, other, setOther }: any) => (
+    <div className="space-y-4">
+      <h4 className="font-semibold text-lg text-primary">{title}</h4>
+      <p className="text-sm text-muted-foreground">{description}</p>
+      <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
+        <Accordion type="single" collapsible className="w-full">
+          {options.map((opt: any) => (
+            <AccordionItem value={opt.id} key={opt.id}>
+              <div className="flex items-center justify-between py-2">
+                <div className="flex items-center space-x-3">
+                  <RadioGroupItem value={opt.label} id={opt.id} />
+                  <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
+                </div>
+                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4 text-muted-foreground" /></AccordionTrigger>
+              </div>
+              <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.importance}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </RadioGroup>
+      <div className="flex items-center space-x-2 pt-2">
+        <RadioGroup value={selected} onValueChange={setSelected}>
+            <RadioGroupItem value="Otro" id="other-option" />
+        </RadioGroup>
+        <Label htmlFor="other-option" className="font-normal">Otro:</Label>
+      </div>
+      {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-8" />}
+    </div>
+  );
 
-  if (!isClient) {
-    return null;
-  }
-
-  const renderStepContent = () => {
-    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
-    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
+  const renderStep = () => {
+    const habits = [
+        { key: 'physical', label: 'Físico', value: physicalHabit === 'Otro' ? otherPhysicalHabit : physicalHabit },
+        { key: 'emotional', label: 'Emocional', value: emotionalHabit === 'Otro' ? otherEmotionalHabit : emotionalHabit },
+        { key: 'mental', label: 'Mental', value: mentalHabit === 'Otro' ? otherMentalHabit : mentalHabit },
+    ].filter(h => h.value);
 
     switch(step) {
-      case 0:
-        return (
-          <div className="text-center p-4 space-y-4">
-             <p className="mb-4">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
-            <Button onClick={nextStep}>Empezar mi plan de bienestar</Button>
-          </div>
-        );
-      case 1:
-        return <HabitStep stepTitle="Paso 1: Elige tu primer gesto al despertar" description="Lo que haces en los primeros minutos después de abrir los ojos marca el tono del resto del día. Vamos a elegir un gesto amable y consciente que te ayude a conectar contigo antes de sumergirte en las demandas externas." options={firstGestureOptions} selected={firstGesture} setSelected={setFirstGesture} other={otherFirstGesture} setOther={setOtherFirstGesture} onNext={nextStep} onPrev={prevStep} />;
-      case 2:
-        return <HabitStep stepTitle="Paso 2: Añade un cuidado para tu cuerpo" description="Tu cuerpo es tu base para todo lo que harás después. Aquí vamos a elegir un gesto físico breve que te active sin agobio." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} onPrev={prevStep} />;
-      case 3:
-        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} onPrev={prevStep} />;
-      case 4:
-        return (
-            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 4: Decide el orden y la duración</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a ordenar tus tres gestos para que encajen en tu mañana sin prisa. No necesitas más de 10-15 minutos en total.</p>
-                <div className="space-y-4">
-                    {[
-                        {label: finalFirstGesture, key: 'firstGesture'},
-                        {label: finalBodyCare, key: 'bodyCare'},
-                        {label: finalMentalPrep, key: 'mentalPrep'}
-                    ].filter(item => item.label).map(item => (
-                        <div key={item.key} className="p-3 border rounded-md bg-background flex items-center justify-between">
-                            <span className="font-medium text-sm">{item.label}</span>
-                            <div className="flex items-center gap-2">
-                                <Input type="number" value={durations[item.key as keyof typeof durations]} onChange={e => setDurations(p => ({...p, [item.key]: e.target.value}))} className="w-16 h-8 text-center" />
-                                <span className="text-sm text-muted-foreground">min</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
+      case 0: return (
+        <div className="text-center p-4 space-y-4">
+            <p className="text-sm text-muted-foreground">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente. Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles. Estos serán tus anclas: puntos fijos que mantendrán tu bienestar estable sin importar lo que pase fuera.</p>
+            <Button onClick={nextStep}>Empezar</Button>
+        </div>
+      );
+      case 1: return (
+        <div className="p-4 space-y-4">
+          <HabitSelectorStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabitOptions} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysicalHabit} setOther={setOtherPhysicalHabit} />
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!physicalHabit}>Siguiente <ArrowRight/></Button></div>
+        </div>
+      );
+      case 2: return (
+        <div className="p-4 space-y-4">
+          <HabitSelectorStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabitOptions} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotionalHabit} setOther={setOtherEmotionalHabit} />
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!emotionalHabit}>Siguiente <ArrowRight/></Button></div>
+        </div>
+      );
+      case 3: return (
+        <div className="p-4 space-y-4">
+          <HabitSelectorStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabitOptions} selected={mentalHabit} setSelected={setMentalHabit} other={otherMentalHabit} setOther={setOtherMentalHabit} />
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!mentalHabit}>Siguiente <ArrowRight/></Button></div>
+        </div>
+      );
+      case 4: return (
+        <div className="p-4 space-y-4">
+          <h4 className="font-semibold text-lg">Paso 4: ¿Cuándo lo harás?</h4>
+          <p className="text-sm text-muted-foreground">Cuanto más los vincules a un momento concreto, más fácil será que se conviertan en parte natural de tu día.</p>
+          {habits.map(habit => (
+            <div key={habit.key} className="space-y-2">
+                <Label>{habit.value}</Label>
+                <Select onValueChange={(v) => setMoments(p => ({...p, [habit.key]: v}))} value={moments[habit.key]}>
+                    <SelectTrigger><SelectValue placeholder="Elige un momento..."/></SelectTrigger>
+                    <SelectContent>{momentOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}</SelectContent>
+                </Select>
+                {moments[habit.key] === 'Otro' && <Input value={otherMoments[habit.key]} onChange={e => setOtherMoments(p => ({...p, [habit.key]: e.target.value}))} placeholder="Describe el otro momento..." />}
             </div>
-        );
-       case 5:
-        return (
-            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste.</p>
-                <div className="space-y-2">
-                {facilitatorOptions.map(opt => (
-                    <div key={opt.id} className="flex items-center space-x-2">
-                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, [opt.id]: c}))} />
-                        <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
-                    </div>
-                ))}
-                 <div className="flex items-center space-x-2">
-                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, ['facilitator-other']: c}))} />
-                    <Label htmlFor="facilitator-other" className="font-normal">Otro:</Label>
-                </div>
-                {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
-                </div>
-                 <div className="flex justify-between w-full mt-4">
-                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                     <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar mi mañana amable</Button>
-                 </div>
+          ))}
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight/></Button></div>
+        </div>
+      );
+      case 5: return (
+        <div className="p-4 space-y-4">
+          <h4 className="font-semibold text-lg">Paso 5: ¿Cómo recordarlo?</h4>
+          <p className="text-sm text-muted-foreground">Decide cómo te vas a recordar que es momento de hacer cada microhábito.</p>
+          {habits.map(habit => (
+            <div key={habit.key} className="space-y-2">
+                <Label>{habit.value}</Label>
+                <Select onValueChange={(v) => setReminders(p => ({...p, [habit.key]: v}))} value={reminders[habit.key]}>
+                    <SelectTrigger><SelectValue placeholder="Elige un recordatorio..."/></SelectTrigger>
+                    <SelectContent>{reminderOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}</SelectContent>
+                </Select>
+                {reminders[habit.key] === 'Otro' && <Input value={otherReminders[habit.key]} onChange={e => setOtherReminders(p => ({...p, [habit.key]: e.target.value}))} placeholder="Describe otro recordatorio..." />}
             </div>
-        );
-      case 6:
-        return (
-             <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h4 className="font-bold text-lg">Rutina Guardada</h4>
-                <p className="text-muted-foreground">“Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido.”</p>
-                <div className="flex gap-2 justify-center">
-                    <Button onClick={() => setStep(1)} variant="outline">Editar mi rutina</Button>
-                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
-                </div>
-            </div>
-        );
+          ))}
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight/></Button></div>
+        </div>
+      );
+      case 6: return (
+        <div className="p-4 space-y-4">
+          <h4 className="font-semibold text-lg text-center">Paso 6: Tu plan de microhábitos</h4>
+          <p className="text-sm text-muted-foreground">Aquí tienes tu plan personalizado. Has elegido qué hacer y cuándo hacerlo.</p>
+          <Table>
+            <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Momento</TableHead><TableHead className="text-right">Recordatorio</TableHead></TableRow></TableHeader>
+            <TableBody>
+              {habits.map(h => (
+                <TableRow key={h.key}>
+                    <TableCell>{h.value}</TableCell>
+                    <TableCell>{moments[h.key] === 'Otro' ? otherMoments[h.key] : moments[h.key]}</TableCell>
+                    <TableCell className="text-right"><Switch checked={remindersOn[h.key]} onCheckedChange={(c) => setRemindersOn(p => ({...p, [h.key]: c}))} /></TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <p className="text-xs italic text-muted-foreground pt-2">Ya tienes tu kit personal: tres gestos sencillos pero poderosos. Recuerda: en el próximo ejercicio nos centraremos en el primer instante al despertar.</p>
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={handleSave}><Save className="mr-2"/> Guardar mi plan diario</Button></div>
+        </div>
+      );
+      case 7: return (
+        <div className="p-6 text-center space-y-4">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">Plan Guardado</h4>
+            <p className="italic text-muted-foreground">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
+        </div>
+      );
       default: return null;
     }
-  }
+  };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        <CardDescription className="pt-2 whitespace-pre-line">
-          Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
-          {content.audioUrl && (
-              <div className="mt-4">
-                  <audio controls controlsList="nodownload" className="w-full">
-                      <source src={content.audioUrl} type="audio/mp3" />
-                      Tu navegador no soporta el elemento de audio.
-                  </audio>
-              </div>
-          )}
-        </CardDescription>
+        <CardDescription className="pt-2">{content.objective}</CardDescription>
+        <p className="text-sm pt-1">Duración estimada: {content.duration}</p>
+        {content.audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={content.audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>
-        {renderStepContent()}
+        {renderStep()}
       </CardContent>
     </Card>
   );
