@@ -14,7 +14,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Switch } from '@/components/ui/switch';
 
@@ -57,205 +62,273 @@ interface DailyWellbeingPlanExerciseProps {
   onComplete: () => void;
 }
 
+const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
+    return (
+        <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">{stepTitle}</h4>
+            <p className="text-sm text-muted-foreground">{description}</p>
+            <RadioGroup value={selected} onValueChange={setSelected}>
+                <Accordion type="single" collapsible className="w-full">
+                    {options.map((opt: any) => (
+                        <AccordionItem value={opt.id} key={opt.id} className="border-b">
+                            <div className="flex items-center justify-between py-2">
+                                <div className="flex items-center space-x-3">
+                                    <RadioGroupItem value={opt.label} id={opt.id} />
+                                    <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
+                                </div>
+                                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4 text-muted-foreground" /></AccordionTrigger>
+                            </div>
+                            <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.importance}</AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </RadioGroup>
+            <div className="flex items-center space-x-2 pt-4">
+                <RadioGroup value={selected} onValueChange={setSelected} className="flex items-center space-x-2">
+                    <RadioGroupItem value="Otro" id="other-habit" />
+                    <Label htmlFor="other-habit" className="font-normal">Otro:</Label>
+                </RadioGroup>
+            </div>
+            {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
+            <div className="flex justify-between w-full mt-4">
+                {onPrev && <Button variant="outline" onClick={onPrev} type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
+                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="mr-2 h-4 w-4"/></Button>
+            </div>
+        </div>
+    );
+};
+
+
 export default function DailyWellbeingPlanExercise({ content, pathId, onComplete }: DailyWellbeingPlanExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  const [physicalHabit, setPhysicalHabit] = useState('');
-  const [otherPhysicalHabit, setOtherPhysicalHabit] = useState('');
-  const [emotionalHabit, setEmotionalHabit] = useState('');
-  const [otherEmotionalHabit, setOtherEmotionalHabit] = useState('');
-  const [mentalHabit, setMentalHabit] = useState('');
-  const [otherMentalHabit, setOtherMentalHabit] = useState('');
-
-  const [moments, setMoments] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
-  const [otherMoments, setOtherMoments] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
-
-  const [reminders, setReminders] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
-  const [otherReminders, setOtherReminders] = useState<{ [key: string]: string }>({ physical: '', emotional: '', mental: '' });
+  // States for selected habits
+  const [firstGesture, setFirstGesture] = useState('');
+  const [otherFirstGesture, setOtherFirstGesture] = useState('');
+  const [bodyCare, setBodyCare] = useState('');
+  const [otherBodyCare, setOtherBodyCare] = useState('');
+  const [mentalPrep, setMentalPrep] = useState('');
+  const [otherMentalPrep, setOtherMentalPrep] = useState('');
   
-  const [remindersOn, setRemindersOn] = useState<{ [key: string]: boolean }>({ physical: true, emotional: true, mental: true });
+  // States for scheduling and reminders
+  const [durations, setDurations] = useState({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+  const [facilitators, setFacilitators] = useState<Record<string, boolean>>({});
+  const [otherFacilitator, setOtherFacilitator] = useState('');
+  
+  const storageKey = `exercise-progress-${pathId}-dailyWellbeingPlan`;
 
+  useEffect(() => {
+    setIsClient(true);
+    try {
+      const savedState = localStorage.getItem(storageKey);
+      if (savedState) {
+        const data = JSON.parse(savedState);
+        setStep(data.step || 0);
+        setFirstGesture(data.firstGesture || '');
+        setOtherFirstGesture(data.otherFirstGesture || '');
+        setBodyCare(data.bodyCare || '');
+        setOtherBodyCare(data.otherBodyCare || '');
+        setMentalPrep(data.mentalPrep || '');
+        setOtherMentalPrep(data.otherMentalPrep || '');
+        setDurations(data.durations || { firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+        setFacilitators(data.facilitators || {});
+        setOtherFacilitator(data.otherFacilitator || '');
+        setIsSaved(data.isSaved || false);
+      }
+    } catch (error) {
+      console.error("Error loading exercise state:", error);
+    }
+  }, [storageKey]);
+
+  useEffect(() => {
+    if (!isClient) return;
+    try {
+      const stateToSave = { step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved };
+      localStorage.setItem(storageKey, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error("Error saving exercise state:", error);
+    }
+  }, [step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, facilitators, otherFacilitator, isSaved, storageKey, isClient]);
+
+
+  const finalFirstGesture = firstGesture === 'Otro' ? otherFirstGesture : firstGesture;
+  const finalBodyCare = bodyCare === 'Otro' ? otherBodyCare : bodyCare;
+  const finalMentalPrep = mentalPrep === 'Otro' ? otherMentalPrep : mentalPrep;
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
-  const handleSave = () => {
-    const finalPhysicalHabit = physicalHabit === 'Otro' ? otherPhysicalHabit : physicalHabit;
-    const finalEmotionalHabit = emotionalHabit === 'Otro' ? otherEmotionalHabit : emotionalHabit;
-    const finalMentalHabit = mentalHabit === 'Otro' ? otherMentalHabit : mentalHabit;
+  const resetExercise = () => {
+    setStep(0);
+    setFirstGesture('');
+    setOtherFirstGesture('');
+    setBodyCare('');
+    setOtherBodyCare('');
+    setMentalPrep('');
+    setOtherMentalPrep('');
+    setDurations({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
+    setFacilitators({});
+    setOtherFacilitator('');
+    setIsSaved(false);
+    localStorage.removeItem(storageKey);
+  };
 
-    if (!finalPhysicalHabit || !finalEmotionalHabit || !finalMentalHabit) {
+  const handleSave = () => {
+    if (!finalFirstGesture || !finalBodyCare || !finalMentalPrep) {
       toast({ title: "Incompleto", description: "Por favor, elige un microhábito para cada área.", variant: 'destructive' });
       return;
     }
     
+    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
+    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
+
     const notebookContent = `
 **${content.title}**
 
-*Mi microhábito físico:* ${finalPhysicalHabit}
-*Cuándo:* ${moments.physical === 'Otro' ? otherMoments.physical : moments.physical}
-*Recordatorio:* ${reminders.physical === 'Otro' ? otherReminders.physical : reminders.physical} (${remindersOn.physical ? 'Activado' : 'Desactivado'})
+*Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
+*Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
+*Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
 
-*Mi microhábito emocional:* ${finalEmotionalHabit}
-*Cuándo:* ${moments.emotional === 'Otro' ? otherMoments.emotional : moments.emotional}
-*Recordatorio:* ${reminders.emotional === 'Otro' ? otherReminders.emotional : reminders.emotional} (${remindersOn.emotional ? 'Activado' : 'Desactivado'})
-
-*Mi microhábito mental:* ${finalMentalHabit}
-*Cuándo:* ${moments.mental === 'Otro' ? otherMoments.mental : moments.mental}
-*Recordatorio:* ${reminders.mental === 'Otro' ? otherReminders.mental : reminders.mental} (${remindersOn.mental ? 'Activado' : 'Desactivado'})
+*Cómo lo facilitaré:*
+${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join('\n') : 'Sin facilitadores definidos.'}
 `;
 
     addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Plan Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(6);
+    setStep(7);
   };
   
-  const HabitSelectorStep = ({ title, description, options, selected, setSelected, other, setOther }: any) => (
-    <div className="space-y-4">
-      <h4 className="font-semibold text-lg text-primary">{title}</h4>
-      <p className="text-sm text-muted-foreground">{description}</p>
-      <RadioGroup value={selected} onValueChange={setSelected} className="space-y-1">
-        <Accordion type="single" collapsible className="w-full">
-          {options.map((opt: any) => (
-            <AccordionItem value={opt.id} key={opt.id}>
-              <div className="flex items-center justify-between py-2">
-                <div className="flex items-center space-x-3">
-                  <RadioGroupItem value={opt.label} id={opt.id} />
-                  <Label htmlFor={opt.id} className="font-normal cursor-pointer">{opt.label}</Label>
-                </div>
-                <AccordionTrigger className="p-2 hover:no-underline [&>svg]:size-5"><Info className="h-4 w-4 text-muted-foreground" /></AccordionTrigger>
-              </div>
-              <AccordionContent className="text-sm text-muted-foreground pl-9 pr-4 pb-3">{opt.importance}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </RadioGroup>
-      <div className="flex items-center space-x-2 pt-2">
-        <RadioGroup value={selected} onValueChange={setSelected}>
-            <RadioGroupItem value="Otro" id="other-option" />
-        </RadioGroup>
-        <Label htmlFor="other-option" className="font-normal">Otro:</Label>
-      </div>
-      {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-8" />}
-    </div>
-  );
+  if (!isClient) {
+    return null; // or a loading skeleton
+  }
 
   const renderStep = () => {
+    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
+    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
+
     const habits = [
-        { key: 'physical', label: 'Físico', value: physicalHabit === 'Otro' ? otherPhysicalHabit : physicalHabit },
-        { key: 'emotional', label: 'Emocional', value: emotionalHabit === 'Otro' ? otherEmotionalHabit : emotionalHabit },
-        { key: 'mental', label: 'Mental', value: mentalHabit === 'Otro' ? otherMentalHabit : mentalHabit },
+        { key: 'firstGesture', label: 'Físico', value: finalFirstGesture },
+        { key: 'bodyCare', label: 'Emocional', value: finalBodyCare },
+        { key: 'mentalPrep', label: 'Mental', value: finalMentalPrep },
     ].filter(h => h.value);
 
     switch(step) {
-      case 0: return (
-        <div className="text-center p-4 space-y-4">
-            <p className="text-sm text-muted-foreground">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente. Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles. Estos serán tus anclas: puntos fijos que mantendrán tu bienestar estable sin importar lo que pase fuera.</p>
-            <Button onClick={nextStep}>Empezar</Button>
-        </div>
-      );
-      case 1: return (
-        <div className="p-4 space-y-4">
-          <HabitSelectorStep title="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar." options={physicalHabitOptions} selected={physicalHabit} setSelected={setPhysicalHabit} other={otherPhysicalHabit} setOther={setOtherPhysicalHabit} />
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!physicalHabit}>Siguiente <ArrowRight/></Button></div>
-        </div>
-      );
-      case 2: return (
-        <div className="p-4 space-y-4">
-          <HabitSelectorStep title="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional." options={emotionalHabitOptions} selected={emotionalHabit} setSelected={setEmotionalHabit} other={otherEmotionalHabit} setOther={setOtherEmotionalHabit} />
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!emotionalHabit}>Siguiente <ArrowRight/></Button></div>
-        </div>
-      );
-      case 3: return (
-        <div className="p-4 space-y-4">
-          <HabitSelectorStep title="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalHabitOptions} selected={mentalHabit} setSelected={setMentalHabit} other={otherMentalHabit} setOther={setOtherMentalHabit} />
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep} disabled={!mentalHabit}>Siguiente <ArrowRight/></Button></div>
-        </div>
-      );
-      case 4: return (
-        <div className="p-4 space-y-4">
-          <h4 className="font-semibold text-lg">Paso 4: ¿Cuándo lo harás?</h4>
-          <p className="text-sm text-muted-foreground">Cuanto más los vincules a un momento concreto, más fácil será que se conviertan en parte natural de tu día.</p>
-          {habits.map(habit => (
-            <div key={habit.key} className="space-y-2">
-                <Label>{habit.value}</Label>
-                <Select onValueChange={(v) => setMoments(p => ({...p, [habit.key]: v}))} value={moments[habit.key]}>
-                    <SelectTrigger><SelectValue placeholder="Elige un momento..."/></SelectTrigger>
-                    <SelectContent>{momentOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}</SelectContent>
-                </Select>
-                {moments[habit.key] === 'Otro' && <Input value={otherMoments[habit.key]} onChange={e => setOtherMoments(p => ({...p, [habit.key]: e.target.value}))} placeholder="Describe el otro momento..." />}
+      case 0:
+        return (
+          <div className="text-center p-4 space-y-4">
+             <p className="text-sm text-muted-foreground">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
+            <Button onClick={nextStep}>Empezar mi plan de bienestar</Button>
+          </div>
+        );
+      case 1:
+        return <HabitStep stepTitle="Paso 1: Elige tu primer gesto al despertar" description="Lo que haces en los primeros minutos después de abrir los ojos marca el tono del resto del día. Vamos a elegir un gesto amable y consciente que te ayude a conectar contigo antes de sumergirte en las demandas externas." options={firstGestureOptions} selected={firstGesture} setSelected={setFirstGesture} other={otherFirstGesture} setOther={setOtherFirstGesture} onNext={nextStep} onPrev={prevStep} />;
+      case 2:
+        return <HabitStep stepTitle="Paso 2: Añade un cuidado para tu cuerpo" description="Tu cuerpo es tu base para todo lo que harás después. Aquí vamos a elegir un gesto físico breve que te active sin agobio." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} onPrev={prevStep} />;
+      case 3:
+        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} onPrev={prevStep} />;
+      case 4:
+        return (
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Decide el orden y la duración</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a ordenar tus tres gestos para que encajen en tu mañana sin prisa. No necesitas más de 10-15 minutos en total.</p>
+                <div className="space-y-4">
+                    {[
+                        {label: finalFirstGesture, key: 'firstGesture'},
+                        {label: finalBodyCare, key: 'bodyCare'},
+                        {label: finalMentalPrep, key: 'mentalPrep'}
+                    ].filter(item => item.label).map(item => (
+                        <div key={item.key} className="p-3 border rounded-md bg-background flex items-center justify-between">
+                            <span className="font-medium text-sm">{item.label}</span>
+                            <div className="flex items-center gap-2">
+                                <Input type="number" value={durations[item.key as keyof typeof durations]} onChange={e => setDurations(p => ({...p, [item.key]: e.target.value}))} className="w-16 h-8 text-center" />
+                                <span className="text-sm text-muted-foreground">min</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
             </div>
-          ))}
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight/></Button></div>
-        </div>
-      );
-      case 5: return (
-        <div className="p-4 space-y-4">
-          <h4 className="font-semibold text-lg">Paso 5: ¿Cómo recordarlo?</h4>
-          <p className="text-sm text-muted-foreground">Decide cómo te vas a recordar que es momento de hacer cada microhábito.</p>
-          {habits.map(habit => (
-            <div key={habit.key} className="space-y-2">
-                <Label>{habit.value}</Label>
-                <Select onValueChange={(v) => setReminders(p => ({...p, [habit.key]: v}))} value={reminders[habit.key]}>
-                    <SelectTrigger><SelectValue placeholder="Elige un recordatorio..."/></SelectTrigger>
-                    <SelectContent>{reminderOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}</SelectContent>
-                </Select>
-                {reminders[habit.key] === 'Otro' && <Input value={otherReminders[habit.key]} onChange={e => setOtherReminders(p => ({...p, [habit.key]: e.target.value}))} placeholder="Describe otro recordatorio..." />}
+        );
+       case 5:
+        return (
+            <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste.</p>
+                <div className="space-y-2">
+                {facilitatorOptions.map(opt => (
+                    <div key={opt.id} className="flex items-center space-x-2">
+                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, [opt.id]: c}))} />
+                        <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
+                    </div>
+                ))}
+                 <div className="flex items-center space-x-2">
+                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, ['facilitator-other']: c}))} />
+                    <Label htmlFor="facilitator-other" className="font-normal">Otro:</Label>
+                </div>
+                {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
+                </div>
+                 <div className="flex justify-between w-full mt-4">
+                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                     <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                 </div>
             </div>
-          ))}
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight/></Button></div>
-        </div>
-      );
+        );
       case 6: return (
         <div className="p-4 space-y-4">
           <h4 className="font-semibold text-lg text-center">Paso 6: Tu plan de microhábitos</h4>
           <p className="text-sm text-muted-foreground">Aquí tienes tu plan personalizado. Has elegido qué hacer y cuándo hacerlo.</p>
           <Table>
-            <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Momento</TableHead><TableHead className="text-right">Recordatorio</TableHead></TableRow></TableHeader>
+            <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Duración</TableHead><TableHead className="text-right">Recordatorio</TableHead></TableRow></TableHeader>
             <TableBody>
               {habits.map(h => (
                 <TableRow key={h.key}>
                     <TableCell>{h.value}</TableCell>
-                    <TableCell>{moments[h.key] === 'Otro' ? otherMoments[h.key] : moments[h.key]}</TableCell>
-                    <TableCell className="text-right"><Switch checked={remindersOn[h.key]} onCheckedChange={(c) => setRemindersOn(p => ({...p, [h.key]: c}))} /></TableCell>
+                    <TableCell>{durations[h.key as keyof typeof durations]} min</TableCell>
+                    <TableCell className="text-right"><Switch checked={facilitators[h.key as keyof typeof facilitators] || false} onCheckedChange={(c) => setFacilitators(p => ({...p, [h.key]: c}))} /></TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
           <p className="text-xs italic text-muted-foreground pt-2">Ya tienes tu kit personal: tres gestos sencillos pero poderosos. Recuerda: en el próximo ejercicio nos centraremos en el primer instante al despertar.</p>
-          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={handleSave}><Save className="mr-2"/> Guardar mi plan diario</Button></div>
+          <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft/> Atrás</Button><Button onClick={handleSave}><Save className="mr-2"/> Guardar mi plan diario en mi cuaderno terapéutico</Button></div>
         </div>
       );
-      case 7: return (
-        <div className="p-6 text-center space-y-4">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">Plan Guardado</h4>
-            <p className="italic text-muted-foreground">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
-        </div>
-      );
+      case 7:
+        return (
+            <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">¡Plan Guardado!</h4>
+                <blockquote className="italic text-primary pt-2">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</blockquote>
+                <Button onClick={resetExercise} variant="outline" className="w-full">
+                    Crear un nuevo plan
+                </Button>
+            </div>
+        );
       default: return null;
     }
-  };
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        <CardDescription className="pt-2">{content.objective}</CardDescription>
-        <p className="text-sm pt-1">Duración estimada: {content.duration}</p>
-        {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
+        <CardDescription className="pt-2 whitespace-pre-line">
+          Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan. La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.
+          {content.audioUrl && (
+              <div className="mt-4">
+                  <audio controls controlsList="nodownload" className="w-full">
+                      <source src={content.audioUrl} type="audio/mp3" />
+                      Tu navegador no soporta el elemento de audio.
+                  </audio>
+              </div>
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {renderStep()}
@@ -263,3 +336,5 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
     </Card>
   );
 }
+
+    
