@@ -198,7 +198,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                 return (
                     <div className="p-4 space-y-4 text-center">
                         <p className="text-sm text-muted-foreground">{content.objective}</p>
-                        <p className="text-xs text-muted-foreground">Tiempo estimado: 10–12 minutos para crearla la primera vez. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana.</p>
+                        <p className="text-xs text-muted-foreground">Tiempo estimado: {content.duration}. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana.</p>
                         <Button onClick={nextStep}>Empezar mi álbum <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 );
@@ -260,7 +260,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg text-primary">Paso 3: Amplía tu colección</h4>
-                        <p className="text-sm text-muted-foreground">Las emociones positivas se entrenan. Si incorporas acciones agradables y sencillas en tu día, estarás generando nuevos momentos para añadir a tu galería.</p>
+                        <p className="text-sm text-muted-foreground">Si incorporas acciones agradables y sencillas en tu día, estarás generando nuevos momentos para añadir a tu galería.</p>
                         <div className="space-y-2">
                             <Label>Elige una actividad placentera para hoy:</Label>
                             <Select onValueChange={setSelectedActivity} value={selectedActivity}>
@@ -293,7 +293,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg text-primary">Paso 4: Reencuadra y fortalece</h4>
-                        <p className="text-sm text-muted-foreground">Incluso en situaciones difíciles puede haber algo valioso que rescatar. Este paso te ayuda a mirar esas escenas con otros ojos.</p>
+                        <p className="text-sm text-muted-foreground">Aprender a reencuadrar significa mirar lo ocurrido con otros ojos: en vez de quedarte solo con lo doloroso, encuentras un aprendizaje o una señal de avance.</p>
                         <div className="space-y-2">
                             <Label htmlFor="uncomfortable-sit">Elige una situación incómoda reciente:</Label>
                             <Textarea id="uncomfortable-sit" value={uncomfortableSituation} onChange={e => setUncomfortableSituation(e.target.value)} />
@@ -312,7 +312,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg text-primary">Paso 5: Tu galería siempre contigo</h4>
-                        <p className="text-sm text-muted-foreground">En un día difícil, ¿no te vendría bien recordar que también tienes escenas que te sostienen? Elige el recuerdo que quieras tener más presente como fuente de fuerza, o selecciona todos.</p>
+                        <p className="text-sm text-muted-foreground">Elige el recuerdo que quieras tener más presente como fuente de fuerza, o selecciona todos.</p>
                         <div className="space-y-2">
                             <Label>¿Cuál de los momentos de hoy quieres guardar como tu “recurso estrella” para esta semana?</Label>
                             {filledMomentsForSelection.map((item, index) => (
@@ -338,7 +338,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                         </div>
                     </div>
                 );
-            case 6: // Pantalla 6: Final
+            case 6: // Pantalla 6 - final
                 return (
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -363,6 +363,3 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
         </Card>
     );
 }
-
-
-  
