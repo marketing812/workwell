@@ -181,7 +181,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
     onComplete();
     setStep(7);
   };
-
+  
   if (!isClient) {
     return null;
   }
@@ -249,7 +249,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
                 </div>
                  <div className="flex justify-between w-full mt-4">
                      <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                     <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                     <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="mr-2 h-4 w-4" /></Button>
                  </div>
             </div>
         );
@@ -272,8 +272,9 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
                 </Table>
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">Si un día no puedes hacerlos todos, haz al menos el primero: será suficiente para recordarte que tú decides cómo empezar.</p>
+            <p className="text-xs italic text-muted-foreground pt-2">Y ahora, con tu mañana amable lista y tus tres microhábitos definidos, tu bienestar diario tiene un punto de partida y un plan de continuidad.</p>
             <Button onClick={handleSave} className="w-full">
-                Guardar en mi cuaderno terapéutico
+                Guardar mi cuaderno terapéutico
             </Button>
              <Button onClick={prevStep} variant="link" className="w-full">Atrás</Button>
         </div>
@@ -309,4 +310,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
       </CardHeader>
       <CardContent>
         {renderStep()}
-      
+      </CardContent>
+    </Card>
+  );
+}
