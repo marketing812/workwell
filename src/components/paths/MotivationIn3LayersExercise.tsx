@@ -14,7 +14,6 @@ import type { MotivationIn3LayersExerciseContent } from '@/data/paths/pathTypes'
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 
-
 interface MotivationIn3LayersExerciseProps {
   content: MotivationIn3LayersExerciseContent;
   pathId: string;
@@ -112,7 +111,7 @@ ${purpose || 'No especificado.'}
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const resetExercise = () => {
     setStep(0);
@@ -210,7 +209,7 @@ ${purpose || 'No especificado.'}
                   <p><strong>Valor personal:</strong><br/>{valueReason} <em>({finalSelectedValues.join(', ')})</em></p>
                   <p><strong>Sentido mayor:</strong><br/>{purpose}</p>
               </div>
-              <p className="text-xs italic text-muted-foreground pt-2">"Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste."</p>
+              <p className="text-base text-foreground pt-4">Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste.</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
@@ -244,6 +243,3 @@ ${purpose || 'No especificado.'}
     </Card>
   );
 }
-    
-
-    
