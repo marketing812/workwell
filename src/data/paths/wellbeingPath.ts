@@ -129,7 +129,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'La fuerza de los pequeños pasos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”' }]
+          content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }]
         },
         {
           type: 'collapsible',
@@ -144,15 +144,17 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' }, { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] }, { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
         },
         {
-          type: 'collapsible',
-          title: 'Tu misión esta semana',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio8sesion2ruta12.mp3`,
-          content: [
-              {
-                type: 'paragraph',
-                text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable. No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles. En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.',
-              },
-          ],
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionssesion2ruta12.mp3`,
+          prompts: [
+              '<ul>',
+                '<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>',
+                '<li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>',
+                '<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>',
+                '<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>',
+              '</ul>'
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
@@ -168,12 +170,6 @@ export const wellbeingPath: Path = {
           objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', 
           duration: '8-10 min', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3` 
-        },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionssesion2ruta12.mp3`, 
-          prompts: ["<p>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</p><ul><li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>"]
         },
         { type: 'title', text: 'Resumen Clave' },
         { 
@@ -205,7 +201,16 @@ export const wellbeingPath: Path = {
         { type: 'collapsible', title: 'Del “tengo que” al “quiero elegir”', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:' }, { type: 'list', items: ["“Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.", "“Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia."] }, { type: 'paragraph', text: 'Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.\n\nEste cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.\nY para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }] },
         { type: 'collapsible', title: 'Las capas de la motivación', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio6sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'La motivación tiene varias capas, como una cebolla:' }, { type: 'list', items: ["Acción concreta: lo que harás hoy.", "Valor personal: por qué eso es importante para ti.", "Sentido mayor: cómo encaja con la vida que quieres construir."] }, { type: 'paragraph', text: 'Por ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.\n\nCuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.\n\nIncluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.' }] },
         { type: 'collapsible', title: 'El círculo de la activación', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando. Aquí entra un principio clave: la acción puede venir antes que las ganas. La acción y la motivación se alimentan mutuamente:' }, { type: 'list', items: ["Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.", "Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción."] }, { type: 'paragraph', text: 'Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' }] },
-        { type: 'collapsible', title: 'Lo que vamos a entrenar esta semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:' }, { type: 'list', items: ["Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.", "Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día."] }, { type: 'paragraph', text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }] },
+        {
+          type: 'collapsible',
+          title: 'Lo que vamos a entrenar esta semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:' },
+            { type: 'list', items: ["Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.", "Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día."] },
+            { type: 'paragraph', text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }
+          ],
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'motivationIn3LayersExercise', title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS', objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.', duration: '7 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3` },
         { type: 'visualizeDayExercise', title: 'EJERCICIO 2: Visualización: El Día que Elijo Vivir', objective: 'Con este ejercicio vas a diseñar mentalmente el día que quieres vivir, conectándolo con sensaciones y comportamientos que te acerquen a tu mejor versión. Al practicarlo, tu mente y tu cuerpo se preparan para vivir lo que has imaginado.', duration: '5-7 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana3tecnica2.mp3` },
@@ -257,3 +262,5 @@ export const wellbeingPath: Path = {
     }
   ]
 };
+
+    
