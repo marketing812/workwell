@@ -128,7 +128,9 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
               <SelectContent>{unaPalabraEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{e.label}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent>
             </Select>
             {selectedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe tu emoción aquí..." className="mt-2" />}
-            <Button onClick={nextStep} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-end w-full mt-2">
+              <Button onClick={nextStep} disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         );
       case 1: // Acknowledge Emotion
@@ -211,5 +213,3 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
     </Card>
   );
 }
-
-    
