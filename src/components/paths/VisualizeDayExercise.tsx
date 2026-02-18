@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -20,7 +21,6 @@ interface VisualizeDayExerciseProps {
   onComplete: () => void;
 }
 
-const intentionOptions = ['Confianza', 'Calma', 'Energía', 'Gratitud', 'Apertura', 'Foco', 'Alegría', 'Cuidado personal', 'Fortaleza', 'Otro'];
 const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuchar música que me guste', 'Hacer ejercicio', 'Comer sano', 'Pasar tiempo con familia o amistades', 'Avanzar en un proyecto importante', 'Dedicar tiempo a un hobby', 'Meditar o practicar respiración consciente', 'Otro'];
 
 export default function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
@@ -30,6 +30,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
   const [intention, setIntention] = useState('');
   const [otherIntention, setOtherIntention] = useState('');
   const [idealDay, setIdealDay] = useState('');
+  const [selectedActivity, setSelectedActivity] = useState('');
   const [otherActivity, setOtherActivity] = useState('');
   const [keyGesture, setKeyGesture] = useState('');
   const [isSaved, setIsSaved] = useState(false);
@@ -41,7 +42,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
     setter(value);
     if (value !== 'Otro') {
         otherSetter('');
-        mainSetter(prev => prev ? `${prev}\\n- ${value}`.trim() : `- ${value}`);
+        mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
     }
   };
 
@@ -71,6 +72,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
     setIntention('');
     setOtherIntention('');
     setIdealDay('');
+    setSelectedActivity('');
     setOtherActivity('');
     setKeyGesture('');
     setIsSaved(false);
@@ -115,12 +117,13 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
             <Textarea value={idealDay} onChange={e => setIdealDay(e.target.value)} placeholder="Ej: Desayuno tranquilo escuchando música, camino al trabajo disfrutando del aire..." rows={5}/>
              <div className="space-y-2">
                 <Label className="text-xs">O inspírate con esta lista:</Label>
-                <Select onValueChange={(value) => handleSelectChange(setIdealDay, setOtherActivity, setIdealDay, value)}>
+                <Select onValueChange={(value) => handleSelectChange(setSelectedActivity, setOtherActivity, setIdealDay, value)} value={selectedActivity}>
                     <SelectTrigger><SelectValue placeholder="Selecciona una actividad para añadir..."/></SelectTrigger>
                     <SelectContent>
                         {activityOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                     </SelectContent>
                 </Select>
+                {selectedActivity === 'Otro' && <Input value={otherActivity} onChange={e => {setOtherActivity(e.target.value); setIdealDay(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Escribe otra actividad" className="mt-2"/>}
             </div>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
