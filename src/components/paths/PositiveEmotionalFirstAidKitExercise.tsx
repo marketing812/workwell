@@ -1,14 +1,13 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { PositiveEmotionalFirstAidKitExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
@@ -61,18 +60,20 @@ interface Selections {
   frase: string;
 }
 
+const activationOptions = ['Guardar en favoritos del móvil', 'Escribirlo en mi cuaderno terapéutico', 'Tenerlo en un post-it visible'];
+
 export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, onComplete }: PositiveEmotionalFirstAidKitExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
   const [step, setStep] = useState(0);
   const [selections, setSelections] = useState<Selections>({ persona: '', actividad: '', musica: '', gesto: '', frase: '' });
   const [otherValues, setOtherValues] = useState<Partial<Selections>>({});
-  const [personalization, setPersonalization] = useState<Record<ResourceKey, { why: string; how: string }>>({
-    persona: { why: '', how: '' },
-    actividad: { why: '', how: '' },
-    musica: { why: '', how: '' },
-    gesto: { why: '', how: '' },
-    frase: { why: '', how: '' },
+  const [personalization, setPersonalization] = useState<Record<ResourceKey, { why: string; how: string; otherHow: string; }>>({
+    persona: { why: '', how: '', otherHow: '' },
+    actividad: { why: '', how: '', otherHow: '' },
+    musica: { why: '', how: '', otherHow: '' },
+    gesto: { why: '', how: '', otherHow: '' },
+    frase: { why: '', how: '', otherHow: '' },
   });
   const [isSaved, setIsSaved] = useState(false);
 
@@ -83,8 +84,8 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
   const handleOtherChange = (category: ResourceKey, value: string) => {
     setOtherValues(prev => ({ ...prev, [category]: value }));
   };
-
-  const handlePersonalizationChange = (category: ResourceKey, field: 'why' | 'how', value: string) => {
+  
+  const handlePersonalizationChange = (category: ResourceKey, field: 'why' | 'how' | 'otherHow', value: string) => {
     setPersonalization(prev => ({
         ...prev,
         [category]: { ...prev[category], [field]: value }
@@ -94,7 +95,8 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
   const handleSave = () => {
     const finalSelections = Object.entries(selections).map(([key, value]) => {
         const finalValue = value === 'Otro' ? otherValues[key as ResourceKey] : value;
-        return { category: resourceCategories[key as ResourceKey].label, value: finalValue, ...personalization[key as ResourceKey] };
+        const finalHow = personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how;
+        return { category: resourceCategories[key as ResourceKey].label, value: finalValue, why: personalization[key as ResourceKey].why, how: finalHow };
     }).filter(s => s.value);
 
     if (finalSelections.length === 0) {
@@ -113,9 +115,25 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
     toast({ title: 'Botiquín Guardado', description: 'Tu botiquín emocional ha sido guardado.' });
     setIsSaved(true);
     onComplete();
-    setStep(3); // Go to summary
+    setStep(4); // Go to summary
   };
-
+  
+  const nextStep = () => setStep(prev => prev + 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+  const resetExercise = () => {
+    setStep(0);
+    setSelections({ persona: '', actividad: '', musica: '', gesto: '', frase: '' });
+    setOtherValues({});
+    setPersonalization({
+        persona: { why: '', how: '', otherHow: '' },
+        actividad: { why: '', how: '', otherHow: '' },
+        musica: { why: '', how: '', otherHow: '' },
+        gesto: { why: '', how: '', otherHow: '' },
+        frase: { why: '', how: '', otherHow: '' },
+      });
+    setIsSaved(false);
+  };
+  
   const renderStepContent = () => {
     const finalSelections = Object.fromEntries(
         Object.entries(selections).map(([key, value]) => [
@@ -128,7 +146,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño te cambió el estado de ánimo? Con este ejercicio vas a reunir esas estrategias en un solo lugar: tu Botiquín Emocional Positivo, listo para usar cuando lo necesites.</p>
+            <p className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño —una charla con alguien querido, una canción, un paseo— te cambió el estado de ánimo? Con este ejercicio vas a reunir esas estrategias en un solo lugar: tu Botiquín Emocional Positivo, listo para usar cuando lo necesites.</p>
             <Button onClick={() => setStep(1)}>Crear mi botiquín</Button>
           </div>
         );
@@ -148,7 +166,10 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                         {selections[key as ResourceKey] === 'Otro' && <Input value={otherValues[key as ResourceKey] || ''} onChange={e => handleOtherChange(key as ResourceKey, e.target.value)} placeholder="Escribe tu opción personalizada" className="mt-2 ml-6" />}
                     </div>
                 ))}
-                <Button onClick={() => setStep(2)} className="w-full mt-4">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <div className="flex justify-between mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={() => setStep(2)} className="w-full mt-4">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
             </div>
         );
       case 2: // Personalization
@@ -157,32 +178,42 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                  <h4 className="font-semibold text-lg">Paso 2: Personaliza tu botiquín</h4>
                  <p className="text-sm text-muted-foreground">Haz que cada recurso sea tuyo: cuanta más claridad tengas, más fácil será aplicarlo.</p>
                  {Object.entries(selections).filter(([, value]) => value).map(([key, value]) => (
-                    <div key={key} className="p-3 border rounded-md space-y-2">
+                    <div key={key} className="p-3 border rounded-md space-y-3 bg-background">
                         <p className="font-medium text-primary">{finalSelections[key as ResourceKey]}</p>
                         <div className="space-y-1">
-                            <Label htmlFor={`why-${key}`} className="text-xs">¿Por qué te ayuda?</Label>
-                            <Textarea id={`why-${key}`} value={personalization[key as ResourceKey].why} onChange={e => handlePersonalizationChange(key as ResourceKey, 'why', e.target.value)} rows={2}/>
+                            <Label htmlFor={`why-${key}`}>¿Por qué te ayuda?</Label>
+                            <Textarea id={`why-${key}`} value={personalization[key as ResourceKey].why} onChange={e => handlePersonalizationChange(key as ResourceKey, 'why', e.target.value)} placeholder="Ej: “Llamar a Marta me calma porque me escucha sin juzgar.”" rows={2}/>
                         </div>
                         <div className="space-y-1">
-                            <Label htmlFor={`how-${key}`} className="text-xs">¿Cómo lo activaré?</Label>
-                            <Textarea id={`how-${key}`} value={personalization[key as ResourceKey].how} onChange={e => handlePersonalizationChange(key as ResourceKey, 'how', e.target.value)} placeholder="Ej: Dejarlo en un lugar visible, poner un recordatorio..." rows={2}/>
+                            <Label htmlFor={`how-${key}`}>¿Cómo lo vas a activar?</Label>
+                            <Select onValueChange={(val) => handlePersonalizationChange(key as ResourceKey, 'how', val)} value={personalization[key as ResourceKey].how}>
+                                <SelectTrigger><SelectValue placeholder="Elige cómo activarlo..." /></SelectTrigger>
+                                <SelectContent>
+                                    {activationOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                                    <SelectItem value="Otro">Otro</SelectItem>
+                                </SelectContent>
+                            </Select>
+                             {personalization[key as ResourceKey].how === 'Otro' && <Textarea value={personalization[key as ResourceKey].otherHow} onChange={e => handlePersonalizationChange(key as ResourceKey, 'otherHow', e.target.value)} placeholder="Describe cómo lo activarás..." className="mt-2 ml-6"/>}
                         </div>
                     </div>
                  ))}
-                 <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar mi botiquín</Button>
+                 <div className="flex justify-between mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={() => setStep(3)} className="w-full mt-4">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                 </div>
             </div>
         );
       case 3: // Summary
         return (
             <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-                <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-                <h4 className="font-semibold text-lg">¡Tu botiquín está listo!</h4>
+                <h4 className="font-semibold text-lg">Paso 3: Tu botiquín listo</h4>
                  <div className="border rounded-lg overflow-hidden">
                     <Table>
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Categoría</TableHead>
                                 <TableHead>Recurso</TableHead>
+                                <TableHead>Estrategia de activación</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -190,13 +221,26 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                                 <TableRow key={key}>
                                     <TableCell className="font-medium">{resourceCategories[key as ResourceKey].label}</TableCell>
                                     <TableCell>{finalSelections[key as ResourceKey]}</TableCell>
+                                    <TableCell>{personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                  </div>
-                <p className="text-sm italic text-muted-foreground pt-2">"Tu botiquín ya está listo. Cada recurso es una herramienta de apoyo emocional diseñada para ti. Cuanto más lo uses, más automático será para tu mente recurrir a él en los momentos difíciles.”</p>
-                <Button onClick={() => setStep(0)} variant="outline">Editar mi botiquín</Button>
+                 <p className="text-sm italic text-muted-foreground pt-2">“Tu botiquín ya está listo. Cada recurso es una herramienta de apoyo emocional diseñada para ti. Cuanto más lo uses, más automático será para tu mente recurrir a él en los momentos difíciles.”</p>
+                <div className="flex justify-between w-full mt-4">
+                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                  <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar mi botiquín</Button>
+                </div>
+            </div>
+        );
+      case 4: // Confirmation
+        return (
+            <div className="p-6 text-center space-y-4">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                <h4 className="font-bold text-lg">Botiquín Guardado</h4>
+                <p className="text-muted-foreground">Tu botiquín emocional ha sido guardado. Puedes volver a consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
+                <Button onClick={resetExercise} variant="outline">Crear otro botiquín</Button>
             </div>
         );
       default:
