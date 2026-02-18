@@ -1,4 +1,3 @@
-
 import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -145,7 +144,7 @@ export const wellbeingPath: Path = {
         { 
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3`, 
           prompts: [
             '<ul>',
             '<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>',
@@ -286,7 +285,7 @@ export const wellbeingPath: Path = {
               type: 'paragraph',
               text: 'Recuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.',
             },
-          ],
+          ]
         },
         {
           type: 'collapsible',
@@ -294,7 +293,7 @@ export const wellbeingPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio5sesion4ruta12.mp3`,
           content: [
             { type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad, y esta inactividad alimenta más el malestar.\n\nPor eso, en psicología usamos el principio acción → emoción:' },
-            { type: 'list', items: ['Primero actúas, incluso sin ganas.', 'Luego, con la repetición, el estado de ánimo empieza a mejorar.'] },
+            { type: 'list', items: ["Primero actúas, incluso sin ganas.", "Luego, con la repetición, el estado de ánimo empieza a mejorar."] },
             { type: 'paragraph', text: 'Claves para aplicarlo: ' },
             { type: 'list', items: ["Programar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota.", "Incluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve.", "Combinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida."] },
             { type: 'paragraph', text: 'Ejemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' }
@@ -310,7 +309,19 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Estrategias para llenar tu reserva emocional',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio7sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Registro de momentos agradables: anota incluso los más pequeños.\n\nRecuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.\n\nMicroacciones sociales: saludar, enviar un mensaje, compartir algo breve.\n\nAnclajes sensoriales: olores, música o texturas que evoquen calma o alegría.\n\nHumor y juego: integrar pequeñas dosis de ligereza cada día.\n\nPaciencia: aceptar que los resultados se acumulan con el tiempo.' }]
+          content: [
+            {
+              type: 'list',
+              items: [
+                'Registro de momentos agradables: anota incluso los más pequeños.',
+                'Recuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.',
+                'Microacciones sociales: saludar, enviar un mensaje, compartir algo breve.',
+                'Anclajes sensoriales: olores, música o texturas que evoquen calma o alegría.',
+                'Humor y juego: integrar pequeñas dosis de ligereza cada día.',
+                'Paciencia: aceptar que los resultados se acumulan con el tiempo.'
+              ]
+            }
+          ]
         },
         {
           type: 'collapsible',
@@ -335,8 +346,15 @@ export const wellbeingPath: Path = {
         { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.", "Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.", "Sostienen tu resiliencia, dándote energía para seguir en días difíciles."] },
         { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.' },
         { type: 'paragraph', text: 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar mi ánimo en momentos difíciles?' },
-        { type: 'paragraph', text: 'Estrategias sencillas que nutren tu reserva emocional:' },
-        { type: 'list', items: ["Recordar momentos agradables y revivirlos con detalle.", "Realizar microacciones sociales (mandar un mensaje, tomar un café).", "Usar música, humor y gestos como la sonrisa.", "Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza."] },
+        {
+          type: 'list',
+          items: [
+            'Recordar momentos agradables y revivirlos con detalle.',
+            'Realizar microacciones sociales (mandar un mensaje, tomar un café).',
+            'Usar música, humor y gestos como la sonrisa.',
+            'Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza.',
+          ],
+        },
         { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte.' }
       ]
     },
@@ -350,7 +368,7 @@ export const wellbeingPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'REFLEXIÓN FINAL PARA EL CUADERNO',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3`,
-          prompts: ["<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>"]
+          prompts: ["<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación y cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>"]
         },
         {
           type: 'title',
@@ -374,4 +392,4 @@ export const wellbeingPath: Path = {
     }
   ]
 };
-
+```
