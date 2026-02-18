@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -24,6 +25,7 @@ const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuch
 
 const intentionOptions = ['Calma', 'Foco', 'Energía', 'Gratitud', 'Presencia', 'Amabilidad', 'Otro'];
 
+
 export default function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -45,7 +47,8 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
         otherSetter('');
         mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
     } else {
-        mainSetter(prev => prev);
+        // Clear otherActivity when "Otro" is re-selected, but don't modify the main text area yet
+        otherSetter('');
     }
   };
 
@@ -117,7 +120,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Visualiza tu día ideal</h4>
             <p className="text-sm text-muted-foreground">Imagina y escribe cómo transcurre tu día. Incluye acciones, sensaciones y personas o entornos.</p>
-            <Textarea value={idealDay} onChange={e => setIdealDay(e.target.value)} placeholder="Ej: Desayuno tranquilo escuchando música, camino al trabajo disfrutando del aire..." rows={5}/>
+            <Textarea value={idealDay} onChange={e => setIdealDay(e.target.value)} placeholder="Ej: Desayuno tranquilo escuchando música, camino al trabajo disfrutando del aire fresco..." rows={5}/>
              <div className="space-y-2">
                 <Label className="text-xs">O inspírate con esta lista:</Label>
                 <Select onValueChange={(value) => handleSelectChange(setSelectedActivity, setOtherActivity, setIdealDay, value)} value={selectedActivity}>
@@ -146,17 +149,28 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
             </div>
           </div>
         );
-      case 4: // Pantalla final
+      case 4: // Final summary
         return (
-           <div className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
+           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
               <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
               <h4 className="font-semibold text-lg">Mi visualización para hoy</h4>
-              <div className="text-left p-4 border rounded-md bg-background/50 space-y-2 text-sm">
-                  <p><strong>Intención:</strong> {finalIntention}</p>
-                  <p><strong>Mi día ideal:</strong> {idealDay}</p>
-                  <p><strong>Gesto clave:</strong> {keyGesture}</p>
+               <p className="text-sm text-muted-foreground">Aquí tienes tu visualización para revisarla cuando quieras:</p>
+              <div className="text-left p-4 border rounded-md bg-background/50 space-y-3 text-sm">
+                  <div>
+                    <p className="font-semibold">Intención para hoy:</p>
+                    <p className="italic">“{finalIntention}”</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Mi día ideal:</p>
+                    <p className="italic">“{idealDay}”</p>
+                  </div>
+                   <div>
+                    <p className="font-semibold">Gesto clave:</p>
+                    <p className="italic">“{keyGesture}”</p>
+                  </div>
               </div>
-              <p className="text-xs italic text-muted-foreground pt-2">"Tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas."</p>
+              <p className="text-xs italic text-muted-foreground pt-2">Recuerda… tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas.</p>
+              <p className="text-xs italic text-muted-foreground">Si lo lees cada mañana, tu cerebro lo recordará más fácilmente durante el día.</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
@@ -167,7 +181,6 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
         return null;
     }
   }
-
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
