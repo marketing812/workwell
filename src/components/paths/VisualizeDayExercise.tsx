@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -44,11 +43,10 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
   const handleSelectChange = (setter: React.Dispatch<React.SetStateAction<string>>, otherSetter: React.Dispatch<React.SetStateAction<string>>, mainSetter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
     setter(value);
     if (value !== 'Otro') {
-        otherSetter('');
-        mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+      mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+      otherSetter(''); 
     } else {
-        // Clear otherActivity when "Otro" is re-selected, but don't modify the main text area yet
-        otherSetter('');
+      otherSetter('');
     }
   };
 
@@ -169,8 +167,8 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
                     <p className="italic">“{keyGesture}”</p>
                   </div>
               </div>
-              <p className="text-xs italic text-muted-foreground pt-2">Recuerda… tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas.</p>
-              <p className="text-xs italic text-muted-foreground">Si lo lees cada mañana, tu cerebro lo recordará más fácilmente durante el día.</p>
+              <p className="text-sm text-foreground pt-4">Recuerda… tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas.</p>
+              <p className="text-sm text-foreground pt-2">Si lo lees cada mañana, tu cerebro lo recordará más fácilmente durante el día.</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
