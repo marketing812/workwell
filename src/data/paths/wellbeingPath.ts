@@ -165,19 +165,12 @@ export const wellbeingPath: Path = {
             '<li>Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>',
             '<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>',
             '<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>',
-            '</ul>'
-          ]
+            '</ul>',
+          ],
         },
         { type: 'title', text: 'Resumen Clave' },
-        {
-          type: 'paragraphWithAudio',
-          text: '',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3`
-        },
-        {
-          type: 'list',
-          items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.", "Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.", "Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.", "La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.", "Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."]
-        },
+        { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3` },
+        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.", "Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.", "Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.", "La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.", "Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."] },
         { type: 'quote', text: 'El autocuidado no es un premio que te das cuando has sido productivo; es el punto de partida para poder serlo.' }
       ]
     },
@@ -251,7 +244,7 @@ export const wellbeingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3`, prompts: ["<p>Tómate un momento para integrar lo que has trabajado:</p><ul><li>¿Qué has descubierto sobre la motivación y las ganas esta semana?</li><li>¿Qué conclusiones sacas sobre tu manera habitual de hacerte cargo de tu motivación y qué mejorarías?</li><li>¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?</li><li>¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?</li><li>¿En qué situaciones de esta semana sentiste que la motivación aumentó después de ponerte en marcha?</li><li>¿Qué compromiso concreto puedes asumir para seguir practicando la activación conductual y no depender solo de las ganas?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3` },
-        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención."] },
+        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.", "Mantener gestos clave durante el día ayuda a sostener el estado emocional elegido, incluso si hay imprevistos."] },
         { type: 'quote', text: 'Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.' }
       ]
     },
@@ -356,5 +349,3 @@ export const wellbeingPath: Path = {
     }
   ]
 };
-
-    
