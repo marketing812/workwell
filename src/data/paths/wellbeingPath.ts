@@ -73,7 +73,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Empezar por las actividades: un primer paso probado por la ciencia',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion1/Audio9sesion1ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
+          content: [{ type: 'paragraph', text: "Cuando el ánimo está bajo, la mente tiende a decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad." }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'emotionalGratificationMapExercise', title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL', objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.', duration: '7-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3` },
@@ -125,7 +125,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'La fuerza de los pequeños pasos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }]
+          content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: "Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”." }]
         },
         {
           type: 'collapsible',
@@ -140,33 +140,15 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' }, { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] }, { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        {
-          type: 'dailyWellbeingPlanExercise',
-          title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE',
-          objective: 'Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.',
-          duration: '6-8 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3`
-        },
-        {
-          type: 'morningRitualExercise',
-          title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE',
-          objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.',
-          duration: '8-10 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3`
-        },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
+        { type: 'dailyWellbeingPlanExercise', title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE', objective: 'Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.', duration: '6-8 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3` },
+        { type: 'morningRitualExercise', title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE', objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', duration: '8-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3` },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3`,
           prompts: [
-            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
-            '<ul>',
-            '<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>',
-            '<li>Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>',
-            '<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>',
-            '<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>',
-            '</ul>',
-          ],
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p><ul><li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li><li>Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li><li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li><li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li></ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3` },
@@ -196,11 +178,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'La motivación: algo más que ganas',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio2sesion3ruta12.mp3`,
-          content: [
-            { type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.\nPuede nacer de: ' },
-            { type: 'list', items: ["Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).", "Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.", "La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar."] },
-            { type: 'paragraph', text: 'En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }
-          ]
+          content: [{ type: 'paragraph', text: 'En pocas palabras, la motivación es ese empujón interno que nos mueve a hacer cosas que nos acercan a lo que nos hace bien y nos alejan de lo que nos perjudica.\nPuede nacer de: ' }, { type: 'list', items: ["Un deseo de cambiar cómo nos sentimos (relajarnos, tener más energía, ganar claridad mental).", "Una emoción que nos impulsa: incluso las decisiones más “lógicas” tienen un fondo emocional.", "La anticipación de una recompensa: imaginar lo bien que nos sentiremos después activa la dopamina en el cerebro, una sustancia que nos empuja a actuar."] }, { type: 'paragraph', text: 'En otras palabras: no solemos buscar la acción por sí misma, sino la sensación que creemos que nos dará. Y, aun así, hay momentos en los que este motor parece apagarse. Veamos por qué.' }]
         },
         {
           type: 'collapsible',
@@ -244,7 +222,7 @@ export const wellbeingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3`, prompts: ["<p>Tómate un momento para integrar lo que has trabajado:</p><ul><li>¿Qué has descubierto sobre la motivación y las ganas esta semana?</li><li>¿Qué conclusiones sacas sobre tu manera habitual de hacerte cargo de tu motivación y qué mejorarías?</li><li>¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?</li><li>¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?</li><li>¿En qué situaciones de esta semana sentiste que la motivación aumentó después de ponerte en marcha?</li><li>¿Qué compromiso concreto puedes asumir para seguir practicando la activación conductual y no depender solo de las ganas?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3` },
-        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.", "Mantener gestos clave durante el día ayuda a sostener el estado emocional elegido, incluso si hay imprevistos."] },
+        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.", "Mantener gestos clave durante el día ayuda a sostener el estado emocional elegido, incluso si hay imprevistos." ] },
         { type: 'quote', text: 'Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.' }
       ]
     },
@@ -282,7 +260,16 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Por qué es clave en la recuperación',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría. La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.' }, { type: 'paragraph', text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar.' }, { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.", "Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.", "Sostienen tu resiliencia, dándote energía para seguir en días difíciles."] }, { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.' }, { type: 'paragraph', text: 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar mi ánimo en momentos difíciles?' }, { type: 'paragraph', text: 'Estrategias sencillas que nutren tu reserva emocional:' }, { type: 'list', items: ["Recordar momentos agradables y revivirlos con detalle.", "Realizar microacciones sociales (mandar un mensaje, tomar un café).", "Usar música, humor y gestos como la sonrisa.", "Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza."] }]
+          content: [
+            { type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. Cuando están presentes de forma regular:' },
+            { type: 'list', items: [
+                'Amplían la perspectiva: te permiten ver más ángulos de la misma situación, no quedarte solo en la parte dolorosa o negativa. Esto facilita la creatividad, el pensamiento flexible y la capacidad de encontrar soluciones que antes no veías. Ejemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora.',
+                'Equilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental.',
+                'Sostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen.'
+              ]
+            },
+            { type: 'paragraph', text: 'Recuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' }
+          ]
         },
         {
           type: 'collapsible',
@@ -343,7 +330,7 @@ export const wellbeingPath: Path = {
           prompts: ["<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>"]
         },
         { type: 'title', text: 'RESUMEN FINAL DE LA RUTA', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Resumenfinalruta12.mp3` },
-        { type: 'list', items: ['El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales, y que se puede regular con estrategias concretas.', 'Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.', 'Las rutinas y microhábitos son anclas de cuidado: pequeños gestos diarios que estabilizan cuerpo, mente y emociones.', 'La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.', 'Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.', 'Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.', 'Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio.'] },
+        { type: 'list', items: ["El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales, y que se puede regular con estrategias concretas.", "Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.", "Las rutinas y microhábitos son anclas de cuidado: pequeños gestos diarios que estabilizan cuerpo, mente y emociones.", "La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.", "Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.", "Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.", "Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio."] },
         { type: 'quote', text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.' }
       ]
     }
