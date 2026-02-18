@@ -303,16 +303,14 @@ export const wellbeingPath: Path = {
         {
           type: 'illuminatingMemoriesAlbumExercise',
           title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN',
-          objective:
-            '¿Has notado que tu mente tiende a dar más vueltas a lo que salió mal que a lo que fue bonito o satisfactorio? \n\nEsto no es casualidad: el cerebro humano tiene un “sesgo negativo”, una especie de radar evolutivo que nos hace recordar más fácilmente lo doloroso que lo agradable. Sirvió para sobrevivir en el pasado (evitar peligros), pero hoy puede hacer que las cosas buenas pasen casi desapercibidas. \n\nCon esta técnica vas a entrenar a tu mente para equilibrar esa balanza. En lugar de quedarte solo o sola con los fallos y dificultades, aprenderás a capturar y conservar los momentos que te nutren. Hacerlo no solo te ayudará a revivir emociones agradables en los días complicados, sino que también fortalecerá tu resiliencia, aumentará tu motivación y te dará calma interior. \n\nPiensa en esto como en crear un álbum secreto de bienestar: una galería personal con recuerdos valiosos que siempre estarán disponibles para ti. Cada vez que la visites, será como abrir una ventana de luz en medio de un día nublado. \n\nTiempo estimado: 10–12 minutos para crearla la primera vez. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana. ',
+          objective: '¿Has notado que tu mente tiende a dar más vueltas a lo que salió mal que a lo que fue bonito o satisfactorio? \n\nEsto no es casualidad: el cerebro humano tiene un “sesgo negativo”, una especie de radar evolutivo que nos hace recordar más fácilmente lo doloroso que lo agradable. Sirvió para sobrevivir en el pasado (evitar peligros), pero hoy puede hacer que las cosas buenas pasen casi desapercibidas. \n\nCon esta técnica vas a entrenar a tu mente para equilibrar esa balanza. En lugar de quedarte solo o sola con los fallos y dificultades, aprenderás a capturar y conservar los momentos que te nutren. Hacerlo no solo te ayudará a revivir emociones agradables en los días complicados, sino que también fortalecerá tu resiliencia, aumentará tu motivación y te dará calma interior. \n\nPiensa en esto como en crear un álbum secreto de bienestar: una galería personal con recuerdos valiosos que siempre estarán disponibles para ti. Cada vez que la visites, será como abrir una ventana de luz en medio de un día nublado. \n\nTiempo estimado: 10–12 minutos para crearla la primera vez. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana. ',
           duration: '10-12 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3`,
         },
         {
           type: 'positiveEmotionalFirstAidKitExercise',
           title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO',
-          objective:
-            'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.',
+          objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.',
           duration: '12-15 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3`,
         },
@@ -365,7 +363,7 @@ export const wellbeingPath: Path = {
           title: 'REFLEXIÓN FINAL PARA EL CUADERNO',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3`,
           prompts: [
-            '<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>',
+            '<p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>',
           ],
         },
         {
@@ -394,3 +392,5 @@ export const wellbeingPath: Path = {
     },
   ],
 };
+
+    
