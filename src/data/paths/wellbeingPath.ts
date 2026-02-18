@@ -90,22 +90,76 @@ export const wellbeingPath: Path = {
       title: 'Semana 2: Recupera Rutinas que te Nutran',
       type: 'skill_practice',
       estimatedTime: '15-20 min',
-      content: [{ type: 'paragraphWithAudio', text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3` },
+      content: [
+        {
+          type: 'paragraphWithAudio',
+          text: 'Cuando estamos bajos de ánimo, lo primero que suele romperse es lo más básico: dormir bien, comer con calma, mover el cuerpo. Esto aumenta el malestar y nos deja más vulnerables. Esta semana aprenderás a reinstalar pequeños rituales de cuidado —microhábitos físicos, emocionales y mentales— que actúan como anclas en tu día. No se trata de hacer todo perfecto, sino de tener gestos breves, amables y repetidos que te devuelvan estabilidad y energía.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Introsesion2ruta12.mp3`
+        },
         { type: 'title', text: 'Psicoeducación' },
-        { type: 'collapsible', title: 'Cuando lo básico empieza a fallar', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?\nDormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.\nEsta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.' }] },
-        { type: 'collapsible', title: 'Rutinas que son anclas', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' }] },
-        { type: 'collapsible', title: 'El papel de las rutinas en tu equilibrio emocional', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' }] },
-        { type: 'collapsible', title: 'Cuando las rutinas se rompen', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:' }, { type: 'list', items: ["Dormimos peor.", "Nos movemos menos.", "Comemos rápido o poco nutritivo."] }, { type: 'paragraph', text: 'Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.\n\nVolver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }] },
-        { type: 'collapsible', title: 'La fuerza de los pequeños pasos', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }] },
-        { type: 'collapsible', title: 'Rutina rígida vs. ritual de cuidado', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.' }, { type: 'list', items: ["Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.", "Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”."] }, { type: 'paragraph', text: 'Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' }] },
-        { type: 'collapsible', title: 'Ideas para tus rituales de cuidado', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3`, content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' }, { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] }, { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }] },
+        {
+          type: 'collapsible',
+          title: 'Cuando lo básico empieza a fallar',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio1sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: '¿Te ha pasado que, en momentos difíciles, lo primero que se desordena es lo que te sostiene?\nDormimos peor, comemos rápido, dejamos de movernos… y, sin darnos cuenta, el malestar crece.\nEsta semana vamos a volver a lo esencial: recuperar esas rutinas que te alimentan por dentro y por fuera, que estabilizan tus días y te devuelven energía. No hablamos de forzarte a hacer todo perfecto, sino de crear pequeños anclajes que te ayuden a sentirte más estable y con más fuerza para afrontar lo que venga.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Rutinas que son anclas',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio2sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'Las rutinas saludables no son simples tareas repetidas: son anclas emocionales que estabilizan tu día, regulan tu estado de ánimo y alimentan tu motivación. Desde la neurociencia del estrés sabemos que cuando cuidas lo básico —alimentación, descanso y movimiento— tu sistema nervioso interpreta que estás a salvo, lo que reduce la sobreactivación de la amígdala (la “alarma” emocional) y te ayuda a pensar con más claridad. Si además incluyes actividades que disfrutas y te hacen sentir logro —como caminar, bailar, cocinar algo rico o retomar un hobby—, activas circuitos de recompensa que liberan dopamina y serotonina, potenciando tu bienestar y tu motivación.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'El papel de las rutinas en tu equilibrio emocional',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio3sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'Recuperar rutinas que te nutren no solo mejora tu energía física: fortalece tu estabilidad emocional. Las acciones que repites cada día actúan como un hilo conductor que te ayuda a mantener el rumbo incluso cuando hay turbulencias. Cuando estás en tus rutinas de cuidado: pones nombre a lo que sientes, aceptas sin juicio y eliges cómo responder. Esto te da más claridad y paz mental. Además, practicar habilidades como la asertividad, la solución de problemas o el mindfulness, según Jon Kabat-Zinn, reduce la reactividad automática y te ayuda a mantenerte centrado/a incluso en momentos difíciles.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Cuando las rutinas se rompen',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio4sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'En momentos duros, solemos descuidar justo lo que más nos sostiene:' }, { type: 'list', items: ["Dormimos peor.", "Nos movemos menos.", "Comemos rápido o poco nutritivo."] }, { type: 'paragraph', text: 'Esto aumenta la vulnerabilidad física y emocional. En psicología lo llamamos un bucle de vulnerabilidad: cuanto peor te sientes, menos haces lo que te cuida, y cuanto menos te cuidas, peor te sientes.\n\nVolver a hábitos que nos cuidan no solo aporta estructura y previsibilidad: le devuelve a tu cuerpo y a tu mente la sensación de seguridad, y eso es la base para tomar mejores decisiones y recuperar energía.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'La fuerza de los pequeños pasos',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio5sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'La Terapia Cognitivo-Conductual y la psicología del hábito coinciden: no necesitas un cambio radical para notar mejoras.' }, { type: 'list', items: ["Moverte 10 minutos al día.", "Preparar un desayuno nutritivo.", "Reservar un rato para algo que disfrutas."] }, { type: 'paragraph', text: 'Estos gestos, aunque parezcan mínimos, generan una sensación de logro que alimenta tu motivación. En palabras de BJ Fogg, experto en hábitos, “el cambio se crea sintiéndote bien con lo que haces, no castigándote por lo que no haces”.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Rutina rígida vs. ritual de cuidado',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.' }, { type: 'list', items: ["Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.", "Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”."] }, { type: 'paragraph', text: 'Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Ideas para tus rituales de cuidado',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3`,
+          content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' }, { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] }, { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
+        },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'dailyWellbeingPlanExercise', title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE', objective: 'Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.', duration: '6-8 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3` },
-        { type: 'morningRitualExercise', title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE', objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', duration: '8-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3` },
+        {
+          type: 'dailyWellbeingPlanExercise',
+          title: 'EJERCICIO 1: MI PLAN DIARIO DE BIENESTAR: 3 MICROHÁBITOS CLAVE',
+          objective: 'Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles, para que actúen como anclas que sostengan tu bienestar.',
+          duration: '6-8 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica1.mp3`
+        },
+        {
+          type: 'morningRitualExercise',
+          title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE',
+          objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.',
+          duration: '8-10 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3`
+        },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3`, prompts: ["<ul>", "<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>", "<li>Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>", "<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>", "<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>", "</ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Resumensesion2ruta12.mp3` },
-        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.", "Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.", "Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.", "La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.", "Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."] }, { type: 'quote', text: 'El autocuidado no es un premio que te das cuando has sido productivo; es el punto de partida para poder serlo.' }]
+        { type: 'list', items: ["Tus rutinas son anclas emocionales que estabilizan tu día y te ayudan a pensar con más claridad.", "Cuidar lo básico (descanso, alimentación, movimiento) reduce la activación del sistema de alarma y mejora tu regulación emocional.", "Los microhábitos pequeños y realistas tienen un efecto acumulativo enorme en tu bienestar y motivación.", "La diferencia entre rutina rígida y ritual de cuidado está en la flexibilidad y la conexión con tu bienestar.", "Un buen inicio de día (mañana amable) actúa como chispa que enciende tu energía y tu foco para el resto de la jornada."] },
+        { type: 'quote', text: 'El autocuidado no es un premio que te das cuando has sido productivo; es el punto de partida para poder serlo.' }
+      ]
     },
     {
       id: 'bienestar_sem3',
@@ -120,16 +174,7 @@ export const wellbeingPath: Path = {
         { type: 'collapsible', title: 'Acción sin ganas: cómo es posible', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio4sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'Si esperamos a “tener ganas” para movernos, podemos quedarnos atrapados en la inacción. La clave está en aprender a actuar incluso cuando la motivación está baja, usando tres apoyos:' }, { type: 'list', items: ["Disciplina: seguir adelante por compromiso con nuestros objetivos, no por un impulso momentáneo.", "Planificación clara: decidir de antemano cuándo y dónde haremos algo reduce las dudas y evita que lo posterguemos.", "Facilidad: ponértelo tan fácil que sea casi imposible no empezar (en terapia lo llamamos “bajar la rampa”)."] }, { type: 'paragraph', text: 'Así, el primer paso requiere muy poca energía y es más probable que lo des. Pero tan importante como cómo te pones en marcha, es desde dónde lo haces.' }] },
         { type: 'collapsible', title: 'Del “tengo que” al “quiero elegir”', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio5sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'La forma en la que te hablas cambia cómo percibes una tarea:' }, { type: 'list', items: ["“Tengo que”: suena a obligación, activa resistencia y nos lleva a evitar o postergar. Además, si no cumplimos los “tengo que”, luego nos sentimos muy mal.", "“Quiero” o “elijo”: conecta con lo que valoras y despierta motivación propia."] }, { type: 'paragraph', text: 'Ejemplo: “Tengo que hacer ejercicio” → “Quiero moverme para sentirme con más energía y cuidar mi salud”.\n\nEste cambio no es solo de palabras: también modifica cómo el cerebro procesa la tarea, activando zonas relacionadas con el sentido y la recompensa.\nY para que este cambio no se quede en palabras bonitas, vamos a conectar cada acción con algo más profundo: su valor y su sentido.' }] },
         { type: 'collapsible', title: 'Las capas de la motivación', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio6sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'La motivación tiene varias capas, como una cebolla:' }, { type: 'list', items: ["Acción concreta: lo que harás hoy.", "Valor personal: por qué eso es importante para ti.", "Sentido mayor: cómo encaja con la vida que quieres construir."] }, { type: 'paragraph', text: 'Por ejemplo: “Hoy voy a salir a caminar (acción concreta) porque valoro mi bienestar físico (valor personal) y quiero tener energía para jugar con mis hijos (sentido mayor)”.\n\nCuantas más capas actives, más fuerte será tu impulso para empezar y mantenerte.\n\nIncluso así, iniciar puede costar. Aquí es donde las microacciones se convierten en tu mejor aliado.' }] },
-        {
-          type: 'collapsible',
-          title: 'El círculo de la activación',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando. Aquí entra un principio clave: la acción puede venir antes que las ganas. La acción y la motivación se alimentan mutuamente:' },
-            { type: 'list', items: ["Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.", "Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción."] },
-            { type: 'paragraph', text: 'Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' },
-          ],
-        },
+        { type: 'collapsible', title: 'El círculo de la activación', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio7sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'Hasta ahora hemos visto cómo dar sentido a lo que haces para que tenga más fuerza. Aun así, puede que iniciar siga costando. Aquí entra un principio clave: la acción puede venir antes que las ganas. La acción y la motivación se alimentan mutuamente:' }, { type: 'list', items: ["Si no haces nada: menos satisfacción o sensación de logro → menos ganas → más bloqueo.", "Si das un paso (aunque pequeño): más satisfacción o logro → más ganas → más acción."] }, { type: 'paragraph', text: 'Este es el núcleo de la “activación conductual” (una estrategia muy usada en psicología): romper el ciclo de la inacción con gestos pequeños que pongan la rueda en marcha.   Ejemplos: abrir un libro y leer una página, mandar un mensaje corto, salir a la puerta con las zapatillas puestas.   Ahora que sabes cómo funciona este ciclo, vamos a practicarlo con dos ejercicios que te ayudarán a generar las ganas en lugar de esperarlas.' }] },
         { type: 'collapsible', title: 'Lo que vamos a entrenar esta semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Audio8sesion3ruta12.mp3`, content: [{ type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:' }, { type: 'list', items: ["Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.", "Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día."] }, { type: 'paragraph', text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'motivationIn3LayersExercise', title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS', objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.', duration: '7 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3` },
@@ -137,7 +182,9 @@ export const wellbeingPath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Reflexionssesion3ruta12.mp3`, prompts: ["<p>Tómate un momento para integrar lo que has trabajado:</p><ul><li>¿Qué has descubierto sobre la motivación y las ganas esta semana?</li><li>¿Qué conclusiones sacas sobre tu manera habitual de hacerte cargo de tu motivación y qué mejorarías?</li><li>¿Qué ejercicio o técnica te resultó más útil para activar tus ganas cuando estabas bloqueado/a?</li><li>¿Cómo ha cambiado tu forma de ver la motivación tras trabajar con las tres capas (acción–valor–sentido)?</li><li>¿En qué situaciones de esta semana sentiste que la motivación aumentó después de ponerte en marcha?</li><li>¿Qué compromiso concreto puedes asumir para seguir practicando la activación conductual y no depender solo de las ganas?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion3/Resumensesion3ruta12.mp3` },
-        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.", "Mantener gestos clave durante el día ayuda a sostener el estado emocional elegido, incluso si hay imprevistos."] }, { type: 'quote', text: 'Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.' }]
+        { type: 'list', items: ["La motivación no siempre precede a la acción; a menudo, la acción genera motivación.", "Cambiar el “tengo que” por “quiero” o “elijo” aumenta la motivación propia.", "Conectar cada acción con un valor personal y un sentido mayor le da fuerza y continuidad.", "La activación conductual rompe el ciclo de la inacción con gestos pequeños y fáciles.", "La visualización del día ideal prepara tu mente y tu cuerpo para actuar de forma coherente con tu intención.", "Mantener gestos clave durante el día ayuda a sostener el estado emocional elegido, incluso si hay imprevistos."] },
+        { type: 'quote', text: 'Las ganas pueden tardar en llegar, pero si das el primer paso, siempre sabrán encontrarte.' }
+      ]
     },
     {
       id: 'bienestar_sem4',
@@ -148,45 +195,32 @@ export const wellbeingPath: Path = {
         {
           type: 'paragraphWithAudio',
           text: 'El ánimo bajo reduce los momentos agradables y aumenta la presencia de lo negativo. Para equilibrar la balanza, necesitas crear tu propia mochila de recursos positivos: recuerdos, hábitos, apoyos y actitudes que te sostengan en los días grises. Esta semana aprenderás a entrenar tu mente para capturar lo bueno, revivir recuerdos positivos y diseñar un botiquín emocional con recursos listos para usar cuando lo necesites.',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Introsesion4ruta12.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Introsesion4ruta12.mp3`
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: 'Gancho emocional: tu “mochila de reserva” para los días grises',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio1sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Imagina que cada gesto amable, cada momento de calma o cada risa que compartes, fuera como una moneda que guardas en una mochila invisible.\nEn los días soleados casi no notas que la llevas… pero cuando llega una tormenta emocional, esa reserva te sostiene y te ayuda a seguir.\nA esta mochila la llamamos reserva emocional positiva.' }],
+          content: [{ type: 'paragraph', text: 'Imagina que cada gesto amable, cada momento de calma o cada risa que compartes, fuera como una moneda que guardas en una mochila invisible.\nEn los días soleados casi no notas que la llevas… pero cuando llega una tormenta emocional, esa reserva te sostiene y te ayuda a seguir.\nA esta mochila la llamamos reserva emocional positiva.' }]
         },
         {
           type: 'collapsible',
           title: 'Qué es la reserva emocional positiva',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio2sesion4ruta12.mp3`,
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles.\nNo se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido, para poder usarlo cuando más lo necesites.\nEsta reserva se alimenta de tres fuentes principales: ',
-            },
-            { type: 'list', items: ['Hábitos: acciones diarias que favorecen el bienestar.', 'Relaciones: vínculos que nos sostienen y nos nutren emocionalmente.', 'Actitudes: la forma en que interpretamos y respondemos a lo que ocurre.'] },
-          ],
+          content: [{ type: 'paragraph', text: 'Es la capacidad de generar y mantener estados emocionales que nos fortalecen, junto con recursos internos y externos para afrontar momentos difíciles.\nNo se trata solo de “sentirse bien”, sino de cultivar activamente aquello que nos aporta calma, energía y sentido, para poder usarlo cuando más lo necesites.\nEsta reserva se alimenta de tres fuentes principales: ' }, { type: 'list', items: ["Hábitos: acciones diarias que favorecen el bienestar.", "Relaciones: vínculos que nos sostienen y nos nutren emocionalmente.", "Actitudes: la forma en que interpretamos y respondemos a lo que ocurre."] }]
         },
         {
           type: 'collapsible',
           title: 'Conexión con el ánimo bajo y la depresión',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio3sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo o hay depresión, no solo aumentan las emociones negativas: también disminuyen los momentos agradables y placenteros.\nEsto provoca un desequilibrio que alimenta el malestar y la llamada anhedonia: la dificultad para disfrutar o interesarse por lo que antes nos gustaba.\nImportante: al principio, cultivar emociones positivas no siempre se siente natural. Puede que parezca forzado o que no tengas ganas, y eso es completamente normal.\nCon práctica y repetición, los circuitos cerebrales de motivación y recompensa se reactivan.' }],
+          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo o hay depresión, no solo aumentan las emociones negativas: también disminuyen los momentos agradables y placenteros.\nEsto provoca un desequilibrio que alimenta el malestar y la llamada anhedonia: la dificultad para disfrutar o interesarse por lo que antes nos gustaba.\nImportante: al principio, cultivar emociones positivas no siempre se siente natural. Puede que parezca forzado o que no tengas ganas, y eso es completamente normal.\nCon práctica y repetición, los circuitos cerebrales de motivación y recompensa se reactivan.' }]
         },
         {
           type: 'collapsible',
           title: 'Por qué es clave en la recuperación',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio4sesion4ruta12.mp3`,
-          content: [
-            {
-              type: 'paragraph',
-              text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. Cuando están presentes de forma regular:',
-            },
-            { type: 'list', items: ['Amplían la perspectiva: te permiten ver más ángulos de la misma situación, no quedarte solo en la parte dolorosa o negativa. Esto facilita la creatividad, el pensamiento flexible y la capacidad de encontrar soluciones que antes no veías. Ejemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora.', 'Equilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental.', 'Sostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen.'] },
-            { type: 'paragraph', text: 'Recuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' },
-          ],
+          content: [{ type: 'paragraph', text: 'Las emociones positivas no son solo “sensaciones agradables” que acompañan los buenos momentos; cumplen un papel activo y medible en la recuperación del ánimo bajo. Cuando están presentes de forma regular:' }, { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad. Ejemplo: en un día difícil, recordar que alguien te apoyó en el pasado puede abrir la idea de pedir ayuda ahora.", "Equilibran la balanza emocional: ayudan a contrarrestar la carga de las emociones negativas y reducen el riesgo de quedarte atrapado o atrapada en bucles de preocupación, culpa o miedo. No se trata de eliminar lo difícil, sino de equilibrarlo para que no ocupe todo el espacio mental.", "Sostienen en el tiempo: fortalecen tu resiliencia, es decir, tu capacidad de adaptarte y recuperarte después de un golpe emocional. También mejoran la tolerancia al malestar: aprendes a convivir con las emociones desagradables sin que te bloqueen."] }, { type: 'paragraph', text: 'Recuerda: no es un optimismo ingenuo que niega lo difícil, sino un optimismo realista que reconoce lo que sí funciona y lo que aún es posible.' }]
         },
         {
           type: 'collapsible',
@@ -194,74 +228,71 @@ export const wellbeingPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio5sesion4ruta12.mp3`,
           content: [
             { type: 'paragraph', text: 'Cuando el ánimo está bajo, esperar a “sentirse con energía” para actuar suele llevar a la inactividad, y esta inactividad alimenta más el malestar.\n\nPor eso, en psicología usamos el principio acción → emoción:' },
-            { type: 'list', items: ['Primero actúas, incluso sin ganas.', 'Luego, con la repetición, el estado de ánimo empieza a mejorar.'] },
-            { type: 'paragraph', text: 'Claves para aplicarlo: ' },
             {
-              type: 'list',
-              items: [
-                'Programar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota.',
-                'Incluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve.',
-                'Combinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida.',
-              ],
+                type: 'list',
+                items: [
+                    'Primero actúas, incluso sin ganas.',
+                    'Luego, con la repetición, el estado de ánimo empieza a mejorar.',
+                ],
             },
-            { type: 'paragraph', text: 'Ejemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' },
-          ],
+            { type: 'paragraph', text: 'Claves para aplicarlo: ' },
+            { type: 'list', items: ["Programar actividades agradables: pequeñas acciones que te den placer, calma o conexión, como tomar un café en un lugar con luz natural, escuchar tu canción favorita o acariciar a tu mascota.", "Incluir actividades de logro: tareas que, aunque no sean placenteras, te den una sensación de propósito o dominio, como completar una tarea pendiente, ordenar un espacio o aprender algo breve.", "Combinar ambas en tu día: el equilibrio entre placer y logro genera un círculo de motivación sostenida."] },
+            { type: 'paragraph', text: 'Ejemplo práctico: Si tu energía es muy baja, en lugar de “hacer ejercicio 30 min”, proponte “poner música y mover el cuerpo 3 min” o “caminar hasta la esquina y volver”. Lo pequeño y repetido es lo que activa el cambio.' }
+          ]
         },
         {
           type: 'collapsible',
           title: 'Qué dice la neurociencia',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio6sesion4ruta12.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Las emociones positivas no solo “se sienten”, también producen cambios reales en el cerebro:' },
-            {
-              type: 'list',
-              items: [
-                'Activan el sistema dopaminérgico: este circuito de motivación y recompensa nos impulsa a repetir conductas que nos hacen sentir bien. Con la práctica, aumenta la probabilidad de buscar y generar más de esos momentos.',
-                'Calman la hiperactividad de la amígdala: en el ánimo bajo, la amígdala puede estar sobreactivada, amplificando el miedo, la preocupación y la visión negativa. Las emociones positivas actúan como un “freno” que reduce esta intensidad.',
-                'Favorecen la neuroplasticidad: cada vez que entrenas una emoción positiva, refuerzas conexiones neuronales que facilitan que aparezca de nuevo. Es como crear un “camino” más transitado en tu cerebro, que luego se recorre de forma más automática.',
-                'Efecto acumulativo: un momento positivo aislado puede levantar el ánimo de forma breve, pero repetirlo a diario construye una base más estable y resistente frente a futuros bajones.',
-              ],
-            },
-            { type: 'paragraph', text: 'Idea para llevarte: piensa en las emociones positivas como en regar una planta: no basta con un gran riego un día, necesita pequeñas dosis constantes para crecer y mantenerse fuerte.' },
-          ],
+          content: [{ type: 'paragraph', text: 'Las emociones positivas no solo “se sienten”, también producen cambios reales en el cerebro:' }, { type: 'list', items: ["Activan el sistema dopaminérgico: este circuito de motivación y recompensa nos impulsa a repetir conductas que nos hacen sentir bien. Con la práctica, aumenta la probabilidad de buscar y generar más de esos momentos.", "Calman la hiperactividad de la amígdala: en el ánimo bajo, la amígdala puede estar sobreactivada, amplificando el miedo, la preocupación y la visión negativa. Las emociones positivas actúan como un “freno” que reduce esta intensidad.", "Favorecen la neuroplasticidad: cada vez que entrenas una emoción positiva, refuerzas conexiones neuronales que facilitan que aparezca de nuevo. Es como crear un “camino” más transitado en tu cerebro, que luego se recorre de forma más automática.", "Efecto acumulativo: un momento positivo aislado puede levantar el ánimo de forma breve, pero repetirlo a diario construye una base más estable y resistente frente a futuros bajones."] }, { type: 'paragraph', text: 'Idea para llevarte: piensa en las emociones positivas como en regar una planta: no basta con un gran riego un día, necesita pequeñas dosis constantes para crecer y mantenerse fuerte.' }]
         },
         {
           type: 'collapsible',
           title: 'Estrategias para llenar tu reserva emocional',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio7sesion4ruta12.mp3`,
-          content: [{
+          content: [
+            {
               type: 'list',
-              items: ['Registro de momentos agradables: anota incluso los más pequeños.','Recuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.','Microacciones sociales: saludar, enviar un mensaje, compartir algo breve.','Anclajes sensoriales: olores, música o texturas que evoquen calma o alegría.','Humor y juego: integrar pequeñas dosis de ligereza cada día.','Paciencia: aceptar que los resultados se acumulan con el tiempo.']
-            }
-          ],
+              items: [
+                'Registro de momentos agradables: anota incluso los más pequeños.',
+                'Recuerdos positivos: revive mentalmente experiencias agradables para activar las mismas emociones.',
+                'Microacciones sociales: saludar, enviar un mensaje, compartir algo breve.',
+                'Anclajes sensoriales: olores, música o texturas que evoquen calma o alegría.',
+                'Humor y juego: integrar pequeñas dosis de ligereza cada día.',
+                'Paciencia: aceptar que los resultados se acumulan con el tiempo.',
+              ],
+            },
+          ]
         },
         {
           type: 'collapsible',
           title: 'Prevención de recaídas',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio8sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Mantener tu reserva emocional llena no significa que no tendrás problemas, pero sí que tendrás más fuerza, flexibilidad y recursos para afrontarlos.\n\nInvertir en ella es una forma de cuidarte hoy y protegerte para el futuro.' }],
+          content: [{ type: 'paragraph', text: 'Mantener tu reserva emocional llena no significa que no tendrás problemas, pero sí que tendrás más fuerza, flexibilidad y recursos para afrontarlos.\n\nInvertir en ella es una forma de cuidarte hoy y protegerte para el futuro.' }]
         },
         {
           type: 'collapsible',
           title: 'Mensaje motivador final',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Audio9sesion4ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma.\n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena.\n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' }],
+          content: [{ type: 'paragraph', text: 'No necesitas esperar a “sentirte con ganas” para empezar. Aquí, la clave es la repetición: cada pequeño gesto suma.\n\nLas emociones positivas no son un lujo ni un rasgo fijo, son una habilidad que se entrena.\n\nHoy puedes empezar a llenarte de aquello que mañana te sostendrá.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        {
-          type: 'illuminatingMemoriesAlbumExercise',
-          title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN',
-          objective: '¿Has notado que tu mente tiende a dar más vueltas a lo que salió mal que a lo que fue bonito o satisfactorio? \n\nEsto no es casualidad: el cerebro humano tiene un “sesgo negativo”, una especie de radar evolutivo que nos hace recordar más fácilmente lo doloroso que lo agradable. Sirvió para sobrevivir en el pasado (evitar peligros), pero hoy puede hacer que las cosas buenas pasen casi desapercibidas. \n\nCon esta técnica vas a entrenar a tu mente para equilibrar esa balanza. En lugar de quedarte solo o sola con los fallos y dificultades, aprenderás a capturar y conservar los momentos que te nutren. Hacerlo no solo te ayudará a revivir emociones agradables en los días complicados, sino que también fortalecerá tu resiliencia, aumentará tu motivación y te dará calma interior. \n\nPiensa en esto como en crear un álbum secreto de bienestar: una galería personal con recuerdos valiosos que siempre estarán disponibles para ti. Cada vez que la visites, será como abrir una ventana de luz en medio de un día nublado. \n\nTiempo estimado: 10–12 minutos para crearla la primera vez. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana.',
-          duration: '10-12 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3`,
-        },
+        { type: 'illuminatingMemoriesAlbumExercise', title: 'EJERCICIO 1: MI ÁLBUM DE RECUERDOS QUE ILUMINAN', objective: '¿Has notado que tu mente tiende a dar más vueltas a lo que salió mal que a lo que fue bonito o satisfactorio? \n\nEsto no es casualidad: el cerebro humano tiene un “sesgo negativo”, una especie de radar evolutivo que nos hace recordar más fácilmente lo doloroso que lo agradable. Sirvió para sobrevivir en el pasado (evitar peligros), pero hoy puede hacer que las cosas buenas pasen casi desapercibidas. \n\nCon esta técnica vas a entrenar a tu mente para equilibrar esa balanza. En lugar de quedarte solo o sola con los fallos y dificultades, aprenderás a capturar y conservar los momentos que te nutren. Hacerlo no solo te ayudará a revivir emociones agradables en los días complicados, sino que también fortalecerá tu resiliencia, aumentará tu motivación y te dará calma interior. \n\nPiensa en esto como en crear un álbum secreto de bienestar: una galería personal con recuerdos valiosos que siempre estarán disponibles para ti. Cada vez que la visites, será como abrir una ventana de luz en medio de un día nublado. \n\nTiempo estimado: 10–12 minutos para crearla la primera vez. Te recomiendo revisarla o añadir un nuevo momento al menos 3 veces por semana. ', duration: '10-12 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica1.mp3` },
         { type: 'positiveEmotionalFirstAidKitExercise', title: 'EJERCICIO 2: MI BOTIQUÍN EMOCIONAL POSITIVO', objective: 'Este ejercicio te ayudará a diseñar un kit personal de recursos prácticos para regular tu ánimo y recuperar el equilibrio, basado en estrategias que la ciencia ha demostrado efectivas.', duration: '12-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3` },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionssesion4ruta12.mp3`, prompts: ["<p>Esta semana has explorado el poder de cultivar emociones positivas como una forma de cuidar tu bienestar a largo plazo.</p><ul><li>¿Qué descubriste esta semana sobre tu capacidad para reconocer y generar emociones positivas?</li><li>¿Qué quieres ajustar en tu día a día para que tu capacidad de generar emociones positivas funcione mejor?</li><li>¿Qué cosas, personas o experiencias forman parte de tu propia “mochila de reserva”?</li><li>¿Qué hábitos sencillos (ej. dormir bien, caminar, escuchar música) notas que te ayudan a mantenerte más sereno/a y equilibrado/a?</li><li>Cuando reviviste un recuerdo positivo o usaste uno de tus recursos, ¿qué cambió en tu estado de ánimo?</li><li>¿Qué tres pequeñas acciones concretas podrías repetir la próxima semana para seguir fortaleciendo tu reserva emocional?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Resumenruta12.mp3` },
-        { type: 'list', items: ['Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría. La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.', 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar.', 'Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.', 'Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.', 'Sostienen tu resiliencia, dándote energía para seguir en días difíciles.', 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.', 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar mi ánimo en momentos difíciles?', 'Estrategias sencillas que nutren tu reserva emocional:', 'Recordar momentos agradables y revivirlos con detalle.', 'Realizar microacciones sociales (mandar un mensaje, tomar un café).', 'Usar música, humor y gestos como la sonrisa.', 'Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza.'] },
+        { type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a fijarse más en lo negativo y a olvidar lo que nos da calma o alegría. La reserva emocional positiva funciona como una mochila de recursos que puedes llenar con recuerdos, hábitos y apoyos. Esa mochila no elimina los problemas, pero te da más fuerza para sostenerlos.' },
+        { type: 'paragraph', text: 'Las emociones positivas no son un lujo: cumplen funciones esenciales para tu salud mental y tu bienestar.' },
+        { type: 'list', items: ["Amplían la mirada, ayudándote a ver soluciones y a pensar con más flexibilidad.", "Equilibran el peso de lo negativo, evitando que todo se vea más oscuro de lo que es.", "Sostienen tu resiliencia, dándote energía para seguir en días difíciles."] },
+        { type: 'paragraph', text: 'Al principio puede sentirse forzado “buscar lo positivo”, pero la práctica reactiva circuitos cerebrales de motivación y recompensa (dopamina, serotonina, calma de la amígdala). El camino no es esperar a sentirte bien para actuar, sino al revés: primero actúas (un pequeño gesto) y después aparece la emoción.' },
+        { type: 'paragraph', text: 'Para reflexionar: ¿qué hábitos, rutinas o pequeños gestos te ayudan a sentirte con más calma o energía? ¿Qué has comprendido sobre la relación entre acción y motivación y cómo puedes aplicarlo en los días con menos ganas? ¿Qué recuerdos, apoyos o recursos de tu “mochila positiva” son los más poderosos para levantar mi ánimo en momentos difíciles?' },
+        {
+          type: 'list',
+          items: ["Recordar momentos agradables y revivirlos con detalle.", "Realizar microacciones sociales (mandar un mensaje, tomar un café).", "Usar música, humor y gestos como la sonrisa.", "Cuidar hábitos básicos: descanso, movimiento, alimentación y contacto con la naturaleza."]
+        },
         { type: 'quote', text: 'En cada recuerdo luminoso, cada gesto amable y cada momento positivo que eliges cultivar es como poner una moneda brillante en tu mochila interior. No evitará las tormentas, pero hará que siempre tengas con qué resguardarte.' }
-      ],
+      ]
     },
     {
       id: 'bienestar_cierre',
@@ -269,806 +300,13 @@ export const wellbeingPath: Path = {
       type: 'summary',
       estimatedTime: '10-15 min',
       content: [
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL PARA EL CUADERNO',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3`,
-          prompts: [
-            '<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>',
-          ],
-        },
+        { type: 'therapeuticNotebookReflection', title: 'REFLEXIÓN FINAL PARA EL CUADERNO', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3`, prompts: ["<p>A lo largo de estas cuatro semanas has recorrido un camino que no siempre es fácil: mirar de frente el ánimo bajo, comprenderlo y aprender a cuidarlo.</p><p>Has descubierto que no se trata de esperar a tener ganas para actuar, sino de dar pasos pequeños que, repetidos, construyen bienestar duradero. Paso a paso, fuiste recuperando lo que te hace sentir bien:</p><ul><li>Semana 1 te ayudó a reconectar con tus fuentes de energía y gratificación.</li><li>Semana 2 te mostró la fuerza de las rutinas y microhábitos como anclas que sostienen tu día.</li><li>Semana 3 te enseñó a provocar motivación cuando las ganas no aparecen, conectando cada acción con tu sentido personal.</li><li>Semana 4 te permitió crear una reserva emocional positiva: tu mochila interior para los días difíciles.</li></ul><p>Este recorrido no busca que vivas siempre en “modo positivo”, sino que tengas recursos reales y prácticos para equilibrar lo difícil con lo que te da calma, fuerza y esperanza.</p><p>Ahora, tomate unos minutos para reflexionar:</p><ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>"] },
         { type: 'title', text: 'RESUMEN FINAL DE LA RUTA', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Resumenfinalruta12.mp3` },
-        { type: 'list', items: ['El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales, y que se puede regular con estrategias concretas.', 'Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.', 'Las rutinas y microhábitos son anclas de cuidado: pequeños gestos diarios que estabilizan cuerpo, mente y emociones.', 'La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.', 'Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.', 'Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.', 'Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio.'] },
-        { type: 'quote', text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.' },
-      ],
-    },
-  ],
-};
-
-```
-- src/lib/firebase-admin.ts:
-```ts
-import * as admin from 'firebase-admin';
-
-let app: admin.app.App | undefined;
-
-function getAdminApp(): admin.app.App {
-  if (app) {
-    return app;
-  }
-
-  if (admin.apps.length > 0 && admin.apps[0]) {
-    app = admin.apps[0];
-    return app;
-  }
-
-  console.log("🕵️ Intentando inicializar Firebase Admin...");
-
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
-  if (process.env.FIREBASE_CLIENT_EMAIL && privateKey) {
-    app = admin.initializeApp({
-      credential: admin.credential.cert({
-        projectId: process.env.FIREBASE_PROJECT_ID || 'workwell-c4rlk',
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: privateKey,
-      }),
-      storageBucket: "workwell-c4rlk.appspot.com",
-    });
-    console.log("✅ Firebase Admin inicializado con credenciales de Certificado (variables de entorno).");
-    return app;
-  }
-
-  try {
-    app = admin.initializeApp({
-      credential: admin.credential.applicationDefault(),
-      projectId: process.env.FIREBASE_PROJECT_ID || 'workwell-c4rlk',
-      storageBucket: "workwell-c4rlk.appspot.com",
-    });
-    console.log("✅ Firebase Admin inicializado con Credenciales de Aplicación por Defecto (ADC).");
-    return app;
-  } catch (error: any) {
-    console.warn("⚠️  La inicialización con ADC falló. Esto es normal si no estás en un entorno de Google Cloud o no has configurado ADC localmente.", error.message);
-  }
-
-  throw new Error("❌ ERROR: No se pudo inicializar Firebase Admin. Asegúrate de tener configuradas las credenciales (ADC o variables de entorno).");
-}
-
-export const getDb = () => admin.firestore(getAdminApp());
-export const getStorage = () => admin.storage(getAdminApp());
-export const getAuthAdmin = () => admin.auth(getAdminApp());
-export const FieldValue = admin.firestore.FieldValue;
-
-export { admin };
-
-```
-- src/lib/firebase.ts:
-```ts
-// This file is intentionally left blank to avoid confusion.
-// All Firebase configuration and initialization is now handled in:
-// - src/firebase/config.ts (for the config object)
-// - src/firebase/provider.tsx (for client-side initialization)
-// Please use hooks from @/firebase/provider.
-
-```
-- src/lib/progressStore.ts:
-```ts
-
-"use client";
-
-// Funciones para interactuar con localStorage para el progreso de las rutas
-
-const PROGRESS_PREFIX = "workwell-progress-";
-const ACTIVE_PATH_KEY = "workwell-active-path-details";
-
-export interface ActivePathDetails {
-  id: string;
-  title: string;
-  totalModules: number;
-  completedModuleIds: string[]; // Almacenamos IDs
-}
-
-/**
- * Obtiene los IDs de los módulos completados para una ruta específica.
- */
-export function getCompletedModules(pathId: string): Set<string> {
-  if (typeof window === "undefined") return new Set();
-  try {
-    const item = localStorage.getItem(`${PROGRESS_PREFIX}${pathId}`);
-    return item ? new Set(JSON.parse(item) as string[]) : new Set();
-  } catch (error) {
-    console.error("Error reading completed modules from localStorage:", error);
-    return new Set();
-  }
-}
-
-/**
- * Guarda los IDs de los módulos completados para una ruta específica.
- */
-export function saveCompletedModules(pathId: string, completedModules: Set<string>): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(`${PROGRESS_PREFIX}${pathId}`, JSON.stringify(Array.from(completedModules)));
-    // Despachar evento para notificar a otros componentes
-    window.dispatchEvent(new CustomEvent(`progress-updated-${pathId}`));
-  } catch (error) {
-    console.error("Error saving completed modules to localStorage:", error);
-  }
-}
-
-/**
- * Obtiene los detalles de la ruta activa.
- */
-export function getActivePathDetails(): ActivePathDetails | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const item = localStorage.getItem(ACTIVE_PATH_KEY);
-    return item ? JSON.parse(item) as ActivePathDetails : null;
-  } catch (error) {
-    console.error("Error reading active path details from localStorage:", error);
-    return null;
-  }
-}
-
-/**
- * Establece los detalles de la ruta activa.
- */
-export function setActivePathDetails(details: ActivePathDetails): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(ACTIVE_PATH_KEY, JSON.stringify(details));
-  } catch (error) {
-    console.error("Error saving active path details to localStorage:", error);
-  }
-}
-
-/**
- * Limpia los detalles de la ruta activa.
- */
-export function clearActivePathDetails(): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.removeItem(ACTIVE_PATH_KEY);
-  } catch (error) {
-    console.error("Error clearing active path details from localStorage:", error);
-  }
-}
-
-```
-- src/lib/translations.ts:
-```ts
-
-// For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
-// All text literals should be sourced from here.
-
-export const t = {
-  appName: "EMOTIVA",
-  // General
-  welcome: "¡Hola!",
-  loading: "Cargando...",
-  submit: "Enviar",
-  save: "Guardar",
-  errorOccurred: "Ocurrió un error. Por favor, inténtalo de nuevo.",
-  // Auth
-  login: "Inicia Sesión",
-  register: "Registrarse",
-  logout: "Cerrar Sesión",
-  email: "Correo Electrónico",
-  password: "Contraseña",
-  showPassword: "Mostrar contraseña",
-  hidePassword: "Ocultar contraseña",
-  name: "Nombre",
-  ageRange: "Rango de Edad",
-  ageRangePlaceholder: "Selecciona tu rango de edad",
-  gender: "Género (opcional)",
-  genderPlaceholder: "Selecciona tu género",
-  initialEmotionalState: "Estado emocional inicial (1-5)",
-  forgotPassword: "¿Olvidaste tu contraseña?",
-  noAccount: "¿No tienes cuenta?",
-  alreadyHaveAccount: "¿Ya tienes cuenta? Inicia Sesión",
-  agreeToTerms: "Acepto la política de privacidad y aviso legal.",
-  registrationSuccessTitle: "¡Registro Exitoso!",
-  registrationSuccessMessage: "Serás redirigido en breve.", // Original message, can be deprecated if not used.
-  registrationSuccessLoginPrompt: "¡Registro completado! Ahora puedes iniciar sesión.", // New message
-  loginSuccessMessage: "Inicio de sesión exitoso.", // Added for direct comparison
-  loginFailed: "Error al iniciar sesión. Verifica tus credenciales.",
-  registrationFailed: "Error al registrar. Inténtalo de nuevo.",
-  // Sidebar Navigation
-  navDashboard: "Panel",
-  navAssessment: "Evaluación",
-  navInteractiveAssessment: "Evaluación Guiada",
-  navPaths: "Rutas",
-  navChatbot: "Mentor IA",
-  navKnowledgeAssistant: "Asistente",
-  navResources: "Recursos",
-  navSettings: "Configuración",
-  navMyAssessments: "Mis Evaluaciones",
-  navTherapeuticNotebook: "Cuaderno Terapéutico",
-  navMyEmotions: "Mis Emociones",
-  navAssessmentReview: "Ver Preguntas",
-  // Welcome Page / Dashboard (Old, parts might be reused or removed)
-  welcomeToWorkWell: "Te damos la bienvenida a EMOTIVA, un espacio para reconectar contigo. Este viaje es personal.",
-  startYourJourney: "Comienza tu viaje hacia el bienestar",
-  takeInitialAssessment: "Realizar Evaluación Inicial",
-  continueYourPath: "Continúa tu Ruta",
-  // Assessment
-  assessmentTitle: "Evaluación Psicológica Inicial",
-  assessmentIntro: "Conocer cómo estás hoy es el primer paso para cuidarte. Tómate unos minutos, este espacio es solo para ti.",
-  startAssessment: "Comenzar Evaluación",
-  dimensionProgress: "Dimensión {current} de {total}",
-  itemProgress: "Ítem {currentItem} de {totalItems} (Sección {currentDim}/{totalDims})",
-  nextItem: "Siguiente",
-  previousItem: "Ítem Anterior",
-  nextDimension: "Siguiente Dimensión",
-  previousDimension: "Dimensión Anterior",
-  finishAssessment: "Finalizar Evaluación",
-  assessmentResultsTitle: "Resultados de tu Evaluación",
-  emotionalProfile: "Perfil Emocional (Puntuación)",
-  priorityAreas: "Tus Áreas Prioritarias",
-  summaryAndRecommendations: "Resumen General y Recomendaciones",
-  startPathFor: "Comenzar ruta para {area}",
-  dimensionCompletedTitle: "Sección Completada",
-  dimensionCompletedMessage: "¡Muy bien! Has completado la sección {dimensionNumber} de {totalDimensions}.",
-  continueButton: "Continuar",
-  saveForLaterButton: "Guardar y Continuar Luego",
-  radarChartDescription: "Visualización de tu perfil en las diferentes dimensiones.",
-  priorityAreasDescription: "Dimensiones clave para tu desarrollo actual.",
-  detailedAnalysisTitle: "Análisis Detallado por Dimensión",
-  scoreLevelLow: "Bajo",
-  scoreLevelMedium: "Medio",
-  scoreLevelHigh: "Alto",
-  scoreLevelVeryHigh: "Muy Alto",
-  generatedAssessmentSaveUrlLabel: "URL de Guardado de Evaluación (Depuración)",
-  assessmentCompletedModalTitle: "Evaluación Completada",
-  assessmentProcessingModalMessage: "Estamos preparando tu perfil emocional…",
-  assessmentResultsReadyTitle: "¡Resultados Listos!",
-  assessmentResultsReadyMessage: "Tu perfil emocional personalizado ya está disponible.",
-  assessmentSavedSuccessTitle: "Evaluación Guardada",
-  assessmentSavedSuccessMessage: "Tus resultados de evaluación han sido guardados en el servidor.",
-  assessmentSavedErrorTitle: "Error al Guardar Evaluación",
-  assessmentSavedErrorMessageApi: "El servidor respondió con un error: {message}",
-  assessmentSavedErrorNetworkTitle: "Error de Comunicación",
-  assessmentSavedErrorNetworkMessage: "No se pudo guardar la evaluación en el servidor (HTTP {status}). Detalles: {details}",
-  assessmentSavedErrorGeneric: "Ocurrió un error desconocido al intentar guardar tu evaluación.",
-  assessmentSavedErrorTimeout: "Tiempo de espera agotado al guardar la evaluación.",
-  assessmentSavedErrorFetchFailed: "Fallo en la comunicación con el servicio de guardado. Esto podría deberse a un problema de red o una restricción CORS del servidor. Revisa la consola del navegador para más detalles.",
-  assessmentSaveSkippedTitle: "Guardado Omitido",
-  assessmentSaveSkippedMessage: "No se pudo identificar al usuario para guardar la evaluación. Podrás ver tus resultados, pero no se sincronizarán.",
-  // My Assessments Page
-  myAssessmentsTitle: "Mis Evaluaciones",
-  myAssessmentsDescription: "Aquí puedes ver el historial de tus evaluaciones completadas.",
-  viewAssessmentResultsButton: "Ver Resultados",
-  assessmentDateLabel: "Evaluación del {date}",
-  noAssessmentsFound: "Aún no has completado ninguna evaluación.",
-
-
-  // Assessment Intro Page
-  assessmentIntroPageTitle: "Bienvenido/a a tu primer paso",
-  assessmentIntroPageTagline: "Este cuestionario no es solo una evaluación. Es un momento contigo. Una invitación a mirar hacia dentro con honestidad, curiosidad y sin juicio.",
-  assessmentIntroPageMainText1: "Vas a encontrar frases que hablan de ti: cómo sueles sentirte, pensar, actuar… y cómo estás viviendo tu presente emocional.\nAlgunas te resultarán fáciles. Otras te harán parar y reflexionar. Y eso está bien.\nCada respuesta es un paso más hacia tu bienestar.",
-  assessmentIntroPagePurposeTitle: "¿Para qué sirve?",
-  assessmentIntroPagePurpose1: "Conocerte mejor.",
-  assessmentIntroPagePurpose2: "Detectar tus necesidades actuales.",
-  assessmentIntroPagePurpose3: "Activar rutas de desarrollo personal adaptadas a ti.",
-  assessmentIntroPageWhatToKnowTitle: "¿Qué necesitas saber?",
-  assessmentIntroPageWhatToKnowDurationLabel: "Duración:",
-  assessmentIntroPageWhatToKnowDurationText: "5–7 minutos.",
-  assessmentIntroPageWhatToKnowContentLabel: "Contenido:",
-  assessmentIntroPageWhatToKnowContentText: "Aspectos clave de tu personalidad, estado emocional y forma de afrontar retos.",
-  assessmentIntroPageWhatToKnowFormatLabel: "Formato:",
-  assessmentIntroPageWhatToKnowFormatText: "Escala tipo Likert del 1 al 5 (según tu grado de acuerdo o identificación con cada afirmación).",
-  assessmentIntroPageWhatToKnowResultsLabel: "Resultados:",
-  assessmentIntroPageWhatToKnowResultsText: "Perfil emocional interpretado + recomendaciones personalizadas.",
-  assessmentIntroPageWhatToKnowPrivacyLabel: "Privacidad:",
-  assessmentIntroPageWhatToKnowPrivacyText: "Tus respuestas son confidenciales y no se comparten.",
-  assessmentIntroPageImportantLabel: "Importante:",
-  assessmentIntroPageImportantText: "Esta evaluación no es un diagnóstico formal ni sustituye un proceso terapéutico clínico.",
-  assessmentIntroPageFinalWords: "Tómate tu tiempo. Respira. Responde con sinceridad.\nEste camino empieza en ti. Y no estarás solo/a.",
-  assessmentIntroPageStartButton: "Comenzar Evaluación",
-
-  // Assessment Results Intro Page
-  assessmentResultsIntroTitle: "Gracias por este momento contigo",
-  assessmentResultsIntroMainText1: "Tus respuestas han trazado un mapa emocional único: un reflejo sincero de cómo estás, cómo sientes y cómo afrontas la vida.",
-  assessmentResultsIntroMainText2: "En la siguiente pantalla, descubrirás tu perfil personal-emocional interpretado:",
-  assessmentResultsIntroListItem1: "Un resumen visual claro.",
-  assessmentResultsIntroListItem2: "Una lectura profesional de tus fortalezas y ámbitos en desarrollo.",
-  assessmentResultsIntroListItem3: "Sugerencias prácticas para cuidarte desde dentro.",
-  assessmentResultsIntroMainText3: "Este perfil no te etiqueta ni te limita. Es una guía flexible para avanzar con más consciencia, claridad y dirección.",
-  assessmentResultsIntroMainText4: "Además, hemos activado para ti rutas personalizadas basadas en tu estilo emocional.",
-  assessmentResultsIntroViewProfileButton: "Ver mi perfil emocional",
-
-  // Paths
-  pathsTitle: "Rutas de Desarrollo",
-  selectPathPrompt: "Elige una ruta para trabajar en tu bienestar.",
-  module: "Módulo",
-  startModule: "Comenzar Módulo",
-  markAsCompleted: "Marcar como completado",
-  markAsNotCompleted: "Marcar como No Completado",
-  completed: "Completado",
-  startReading: "Iniciar Lectura",
-  moduleCompletedTitle: "¡Módulo Completado!",
-  moduleCompletedMessage: "Has completado el módulo '{moduleTitle}'.",
-  pathCompletedTitle: "¡Ruta Completada!",
-  pathCompletedMessage: "¡Enhorabuena! Has completado todos los módulos de la ruta '{pathTitle}'. ¡Sigue así explorando tu bienestar!",
-  continueLearning: "Seguir Aprendiendo",
-  modulesLeftTooltip: "{count} módulos restantes en '{pathTitle}'",
-  allPaths: "Volver a todas las Rutas",
-  myPathsSummaryTitle: "Mi Resumen de Rutas",
-  myPathsSummaryDescription: "Aquí puedes ver tu progreso en todas las rutas de desarrollo.",
-  viewMyPathsSummaryButton: "Ver mi resumen de rutas",
-  completedModules: "{completed} de {total} módulos",
-  continuePath: "Continuar Ruta",
-  startPath: "Comenzar Ruta",
-  pathNotStarted: "Aún no has comenzado esta ruta.",
-  // Chatbot
-  chatbotTitle: "Mentor Emocional IA",
-  chatbotWelcome: "Hola, estoy aquí para escucharte y acompañarte. ¿En qué quieres trabajar hoy?",
-  chatbotInputPlaceholder: "Escribe tu mensaje aquí...",
-  // Resources
-  resourcesTitle: "Biblioteca de Recursos",
-  resourcesIntro: "Aquí encontrarás herramientas que nutren tu bienestar emocional. Explora a tu ritmo.",
-  resourceTypeArticle: "Artículo",
-  resourceTypeAudio: "Audio",
-  resourceTypeExercise: "Ejercicio",
-  // Settings
-  settingsTitle: "Configuración de Cuenta",
-  personalInformation: "Información Personal",
-  objectives: "Objetivos Personales",
-  notificationPreferences: "Preferencias de Notificación",
-  privacyAndSecurity: "Privacidad y Seguridad",
-  language: "Idioma",
-  saveChanges: "Guardar Cambios",
-  devUtilitiesTitle: "Utilidades de Desarrollo",
-  clearEmotionalEntriesButton: "Borrar Registros Emocionales",
-  clearEmotionalEntriesSuccessTitle: "Registros Borrados",
-  clearEmotionalEntriesSuccessMessage: "Todos los registros emocionales han sido eliminados.",
-  activateEmotionalDashboardButton: "Activar Dashboard Emocional",
-  deactivateEmotionalDashboardButton: "Desactivar Dashboard Emocional",
-  emotionalDashboardActivated: "Dashboard Emocional activado.",
-  emotionalDashboardDeactivated: "Dashboard Emocional desactivado.",
-  settingsSkipIntroScreensTitle: "Omitir Pantallas Introductorias",
-  settingsSkipIntroScreensDescription: "Accede directamente al contenido principal de secciones como la evaluación o los resultados, omitiendo las pantallas informativas previas.",
-  
-  // Change Password
-  changePasswordTitle: "Cambiar Contraseña",
-  changePasswordButtonLabel: "Cambiar Contraseña",
-  newPasswordLabel: "Nueva Contraseña",
-  confirmNewPasswordLabel: "Confirmar Nueva Contraseña",
-  passwordsDoNotMatchError: "Las contraseñas no coinciden.",
-  passwordChangedSuccessTitle: "Contraseña Cambiada",
-  passwordChangedSuccessMessage: "Tu contraseña ha sido actualizada exitosamente. Serás redirigido para iniciar sesión.",
-  passwordChangeErrorTitle: "Error al Cambiar Contraseña",
-  passwordTooShortError: "La nueva contraseña debe tener al menos 6 caracteres.",
-  passwordChangeGenericError: "No se pudo cambiar la contraseña. Inténtalo de nuevo.",
-  userEmailMissingError: "No se pudo obtener el email del usuario para el cambio de contraseña.",
-  validationError: "Error de validación.",
-  securitySettings: "Seguridad de la Cuenta",
-
-  // Delete Account
-  deleteAccountSectionTitle: "Borrar mi usuario", 
-  deleteAccountButtonLabel: "Dar de baja mi cuenta",
-  deleteAccountPageTitle: "Confirmar Baja de Cuenta",
-  deleteAccountWarningTitle: "¡Atención! Estás a punto de eliminar tu cuenta.",
-  deleteAccountWarningMessage: "Esta acción es irreversible. Todos tus datos, incluyendo tu perfil, progreso en rutas, registros emocionales y cualquier otra información asociada a tu cuenta, serán eliminados permanentemente del sistema. No podrás recuperarlos una vez que confirmes la baja.",
-  deleteAccountConfirmationPrompt: "¿Estás seguro/a de que deseas proceder con la baja definitiva de tu cuenta?",
-  confirmDeleteAccountButton: "Sí, eliminar mi cuenta permanentemente",
-  cancelDeleteAccountButton: "Cancelar, mantener mi cuenta",
-  deleteAccountSuccessTitle: "Cuenta Eliminada",
-  deleteAccountSuccessMessage: "Tu cuenta ha sido eliminada exitosamente. Serás redirigido.",
-  deleteAccountErrorTitle: "Error al Eliminar Cuenta",
-  deleteAccountErrorMessage: "No se pudo eliminar tu cuenta en este momento. Por favor, inténtalo de nuevo más tarde o contacta con soporte.",
-  // Age Ranges
-  age_under_18: "Menor de 18",
-  age_18_24: "18-24",
-  age_25_34: "25-34",
-  age_35_44: "35-44",
-  age_45_54: "45-54",
-  age_55_64: "55-64",
-  age_65_plus: "65 o más",
-  // Genders
-  gender_male: "Masculino",
-  gender_female: "Femenino",
-  gender_non_binary: "No binario",
-  gender_other: "Otro",
-  gender_prefer_not_to_say: "Prefiero no decirlo",
-  // Theme
-  theme: "Tema",
-  themeSettingsTitle: "Apariencia",
-  themeLight: "Claro",
-  themeDark: "Oscuro",
-  themeSystem: "Sistema",
-  selectThemePrompt: "Elige cómo quieres que se vea la aplicación.",
-
-  // Dashboard Emocional
-  dashboardGreeting: "Así va tu camino",
-  quickSummary: "Resumen Rápido",
-  currentWellbeing: "Tu Bienestar Hoy",
-  wellbeingPlaceholder: "Estable",
-  wellbeingDescription: "Basado en tu último registro emocional.",
-  progressSinceLast: "Ruta en Curso",
-  progressPlaceholder: "Ninguna",
-  progressDescription: "Inicia una ruta desde la sección de Rutas",
-  inFocus: "Área Prioritaria",
-  inFocusPlaceholder: "Autoconocimiento",
-  inFocusDescription: "Tu principal área de enfoque según tu última evaluación.",
-  nextStep: "Registros esta Semana",
-  nextStepPlaceholder: "0 registros",
-  nextStepDescription: "¡Sigue así para conocerte mejor!",
-  emotionalRegistry: "Registro Emocional",
-  registerEmotion: "Autorregistro",
-  myEmotionalProfile: "Mi Perfil Emocional",
-  myEmotionalProfileDescription: "Una vista multidimensional de tu estado.",
-  myEvolution: "Mi Evolución del Ánimo",
-  myEvolutionDescription: "Sigue tus cambios a lo largo del tiempo.",
-  viewDetails: "Ver detalles",
-  emotionalDashboardDisabledMessage: "El registro emocional y las visualizaciones avanzadas están desactivadas.",
-
-  // Emotional Entry Form
-  registerEmotionDialogTitle: "Nuevo Registro Emocional",
-  registerEmotionDialogDescription: "Describe cómo te sientes. Este espacio es para ti.",
-  situationLabel: "¿Qué situación relevante viviste hoy o recientemente?",
-  situationPlaceholder: "Ej: Tuve una reunión importante, recibí una noticia, tuve una conversación difícil...",
-  thoughtLabel: "¿Qué pensaste en ese momento?",
-  thoughtPlaceholder: "Ej: 'No soy capaz', 'Todo va a salir mal', 'Esto es injusto'...",
-  emotionLabel: "¿Qué emoción principal sentiste?",
-  emotionPlaceholder: "Selecciona una emoción",
-  saveEntryButton: "Guardar Registro",
-  emotionalEntrySavedTitle: "Registro Guardado",
-  emotionalEntrySavedMessage: "Tu entrada emocional ha sido guardada con éxito.",
-  fillAllFields: "Por favor, completa todos los campos requeridos.",
-  
-  // Expanded Emotions
-  emotionJoy: "Alegría",
-  emotionSadness: "Tristeza",
-  emotionFear: "Miedo",
-  emotionAnger: "Ira",
-  emotionDisgust: "Asco",
-  emotionSurprise: "Sorpresa",
-  emotionStress: "Estrés",
-  emotionAnxiety: "Ansiedad",
-  emotionOverwhelm: "Agobio",
-  emotionTension: "Tensión",
-  emotionAlarm: "Alarma",
-  emotionEmotionalTiredness: "Cansancio emocional",
-  emotionDiscouragement: "Desaliento",
-  emotionEmptiness: "Vacío",
-  emotionHope: "Ilusión",
-  emotionEnthusiasm: "Entusiasmo",
-  emotionHopefulness: "Esperanza",
-  emotionFrustration: "Frustración",
-  emotionLove: "Amor",
-  emotionTrust: "Confianza",
-  emotionRejection: "Rechazo",
-  emotionLoneliness: "Soledad",
-  emotionJealousy: "Celos",
-  emotionEnvy: "Envidia",
-  emotionShame: "Vergüenza",
-  emotionGuilt: "Culpa",
-  emotionInsecurity: "Inseguridad",
-  emotionPride: "Orgullo",
-  emotionConfusion: "Confusión",
-  emotionAmbivalence: "Ambivalencia",
-
-  // Recent Emotional Entries
-  recentEmotionalEntriesTitle: "Mis Registros Emocionales Recientes",
-  noRecentEntries: "Aún no tienes registros emocionales. ¡Anímate a crear el primero!",
-  entryRegisteredOn: "Registrado el {date}:",
-  viewAllEntriesButton: "Ver todos los registros",
-
-  // Mood Evolution Chart
-  notEnoughDataForChart: "Registra al menos dos emociones para ver tu evolución.",
-  moodScoreLabel: "Puntuación de Ánimo",
-
-  // Full Emotional History Page
-  fullEmotionalHistoryTitle: "Historial Emocional Completo",
-  backToDashboard: "Volver al Panel",
-  myEvolutionFullHistoryDescription: "Evolución completa de tu estado de ánimo a lo largo del tiempo.",
-  allEmotionalEntriesTitle: "Todos los Registros Emocionales",
-  allEmotionalEntriesDescription: "Aquí puedes ver todas tus entradas emocionales ordenadas por fecha.",
-  noEntriesYet: "Aún no tienes registros emocionales.",
-
-  // Therapeutic Notebook Page
-  therapeuticNotebookTitle: "Cuaderno Terapéutico",
-  therapeuticNotebookDescription: "Un espacio privado para tus reflexiones y ejercicios.",
-  noNotebookEntries: "Aún no tienes entradas en tu cuaderno. Completa los ejercicios de reflexión en las rutas para empezar.",
-
-  // Welcome Page
-  welcomePageTitle: "Bienvenido/a: Este espacio es para ti",
-  welcomePageMainText1: "Hay momentos en los que algo dentro de nosotros pide atención.\\nTal vez te sientes apagado/a, desbordado/a, desconectado/a… o simplemente sabes que podrías estar mejor, con más claridad, energía o sentido.",
-  welcomePageMainText2: "Esta app nace para acompañarte en ese camino.\\nAquí no hay etiquetas, diagnósticos ni exigencias. Solo un espacio íntimo, diseñado con base científica y con mucho respeto, para ayudarte a entender cómo estás, qué necesitas y por dónde puedes empezar a cuidarte de verdad.\\nA través de una evaluación breve y sencilla, descubrirás tu perfil personal y emocional actual. No para juzgarte, sino para ofrecerte un mapa que te oriente. A partir de ahí, activaremos rutas personalizadas con prácticas breves, validadas y pensadas para mejorar tu bienestar día a día.",
-  welcomePageLegalDisclaimer: "Aviso legal: Esta app no sustituye un proceso terapéutico clínico. Es una herramienta profesional de acompañamiento emocional y crecimiento personal.",
-  welcomePageMotivationalQuote: "Estás a un clic de comenzar a escucharte de verdad.\\nY eso, aunque no lo parezca, ya es un acto de valentía.",
-  welcomePageStartAssessmentButton: "Iniciar mi evaluación personalizada",
-  welcomePageSkipToDashboardButton: "Ir al Panel Principal",
-
-  // Daily Check-in Page
-  dailyCheckInPageTitle: "Pregunta del Día",
-  dailyCheckInPageDescription: "Una pequeña pausa para conectar contigo.",
-};
-
-export type Translations = typeof t;
-
-// A simple hook to access translations for V1. Can be replaced with a full i18n library.
-export function useTranslations(): Translations {
-  return t;
-}
-
-```
-- src/lib/utils.ts:
-```ts
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-```
-- src/next.config.js:
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-      },
-      {
-        protocol: 'https',
-        hostname: 'workwellfut.com',
-      },
-      {
-        protocol: 'http',
-        hostname: 'workwellfut.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'workwellfut.hl1450.dinaserver.com',
-      },
-      {
-        protocol: 'http',
-        hostname: 'workwellfut.hl1450.dinaserver.com',
-      }
-    ],
-  },
-  productionBrowserSourceMaps: false, // Deshabilita source maps en producción
-};
-
-module.exports = nextConfig;
-
-```
-- src/package.json:
-```json
-{}
-
-```
-- src/types/daily-question.ts:
-```ts
-
-export interface DailyQuestion {
-  id: string; // This will map from 'codigo'
-  text: string; // This will map from 'pregunta'
-}
-
-```
-- src/types/mood-check-in.ts:
-```ts
-
-export interface MoodCheckIn {
-  id: string;
-  mood: string; // 'muy-mal', 'mal', etc.
-  score: number;
-  timestamp: Date; // Now always a Date object for consistency
-}
-
-```
-- src/types/page-props.ts:
-```ts
-// This file is intentionally left blank.
-// Defining global page prop types can conflict with Next.js's internal type generation.
-// It's safer to define props locally within each page component file.
-
-```
-- tailwind.config.ts:
-```ts
-import type { Config } from "tailwindcss";
-
-export default {
-    darkMode: ["class"],
-    content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-  	extend: {
-  		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			},
-  			sidebar: {
-  				DEFAULT: 'hsl(var(--sidebar-background))',
-  				foreground: 'hsl(var(--sidebar-foreground))',
-  				primary: 'hsl(var(--sidebar-primary))',
-  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-  				accent: 'hsl(var(--sidebar-accent))',
-  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-  				border: 'hsl(var(--sidebar-border))',
-  				ring: 'hsl(var(--sidebar-ring))'
-  			}
-  		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
-  		keyframes: {
-  			'accordion-down': {
-  				from: {
-  					height: '0'
-  				},
-  				to: {
-  					height: 'var(--radix-accordion-content-height)'
-  				}
-  			},
-  			'accordion-up': {
-  				from: {
-  					height: 'var(--radix-accordion-content-height)'
-  				},
-  				to: {
-  					height: '0'
-  				}
-  			}
-  		},
-  		animation: {
-  			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
-  	}
-  },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-} satisfies Config;
-
-```
-- tsconfig.json:
-```json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
+        { type: 'list', items: ["El estado de ánimo bajo no es debilidad ni pereza: es un conjunto de factores físicos, emocionales y mentales, y que se puede regular con estrategias concretas.", "Tu energía vital se sostiene en tres pilares: hábitos básicos, chispa emocional y dirección mental.", "Las rutinas y microhábitos son anclas de cuidado: pequeños gestos diarios que estabilizan cuerpo, mente y emociones.", "La motivación no siempre precede a la acción: muchas veces aparece después de dar el primer paso.", "Conectar cada acción con un valor y un sentido mayor le da fuerza y continuidad.", "Cultivar una reserva emocional positiva —recuerdos, apoyos, hábitos, gestos— es una inversión que protege tu bienestar y fortalece tu resiliencia.", "Lo importante no es la perfección, sino la repetición amable: cada intento cuenta como un paso hacia tu equilibrio."] },
+        { type: 'quote', text: 'Volver a lo que te hace sentir bien no es regresar al pasado, sino construir, paso a paso, un presente más habitable. Cada gesto, cada recuerdo y cada elección consciente son semillas de bienestar que seguirán creciendo dentro de ti.' }
       ]
-    },
-    "target": "ES2018",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "workspaceOLD",
-    ".next"
+    }
   ]
-}
+};
 
-```
-- workspaceOLD/apphosting.yaml:
-```yaml
-# This file is deprecated.
-
-```
-- workspaceOLD/package.json:
-```json
-{}
-
-```
-- workspaceOLD/src/ai/actions/chatbot.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/flows/emotional-chatbot.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/genkit.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/rag/embed.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/rag/retrieve.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/scripts/index-storage.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/scripts/test-retrieve.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/ai/scripts/trace-retrieve.ts:
-```ts
-// This file is deprecated.
-
-```
-- workspaceOLD/src/lib/firebase-admin.ts:
-```ts
-// This file is deprecated.
-
-```
+  
