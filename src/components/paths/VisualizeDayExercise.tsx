@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -23,6 +22,8 @@ interface VisualizeDayExerciseProps {
 
 const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuchar música que me guste', 'Hacer ejercicio', 'Comer sano', 'Pasar tiempo con familia o amistades', 'Avanzar en un proyecto importante', 'Dedicar tiempo a un hobby', 'Meditar o practicar respiración consciente', 'Otro'];
 
+const intentionOptions = ['Calma', 'Foco', 'Energía', 'Gratitud', 'Presencia', 'Amabilidad', 'Otro'];
+
 export default function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
@@ -36,13 +37,15 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   
   const handleSelectChange = (setter: React.Dispatch<React.SetStateAction<string>>, otherSetter: React.Dispatch<React.SetStateAction<string>>, mainSetter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
     setter(value);
     if (value !== 'Otro') {
         otherSetter('');
         mainSetter(prev => prev ? `${prev}\n- ${value}`.trim() : `- ${value}`);
+    } else {
+        mainSetter(prev => prev);
     }
   };
 
@@ -156,7 +159,6 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
               <p className="text-xs italic text-muted-foreground pt-2">"Tu día no tiene que ser perfecto para que sea valioso. Cada vez que vuelvas a tu intención, estarás entrenando tu mente para vivirlo como lo deseas."</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
-                   <Button onClick={() => toast({ title: "Próximamente", description: "La función de recordatorios estará disponible pronto." })}>Programar recordatorio</Button>
                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
               </div>
           </div>
@@ -165,6 +167,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
         return null;
     }
   }
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
