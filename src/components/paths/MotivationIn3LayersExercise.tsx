@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -200,19 +201,18 @@ ${purpose || 'No especificado.'}
         );
       case 4: // Final summary
         return (
-          <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
-            <h4 className="font-semibold text-lg">Mi motivación en 3 capas</h4>
-            <p className="text-sm text-muted-foreground">Acabas de construir un puente entre lo que haces hoy y la persona que quieres ser. Ese puente es tu motor.</p>
-            <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
-              <p><strong>Acción concreta:</strong><br/>{action}</p>
-              <p><strong>Valor personal:</strong><br/>{valueReason} <em>({finalSelectedValues.join(', ')})</em></p>
-              <p><strong>Sentido mayor:</strong><br/>{purpose}</p>
-            </div>
-            <p className="text-xs italic text-muted-foreground pt-2">"Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste."</p>
-            <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
+              <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
+              <h4 className="font-semibold text-lg">Mi motivación en 3 capas</h4>
+              <p className="text-sm text-muted-foreground">Acabas de construir un puente entre lo que haces hoy y la persona que quieres ser. Ese puente es tu motor.</p>
+              <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
+                  <p><strong>Acción concreta:</strong><br/>{action}</p>
+                  <p><strong>Valor personal:</strong><br/>{valueReason} <em>({finalSelectedValues.join(', ')})</em></p>
+                  <p><strong>Sentido mayor:</strong><br/>{purpose}</p>
+              </div>
+              <p className="text-xs italic text-muted-foreground pt-2">"Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste."</p>
+              <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
-                   <Button onClick={() => toast({title: "Próximamente", description: "La función de recordatorios estará disponible pronto."})}>Programar recordatorio</Button>
                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
               </div>
           </div>
@@ -244,4 +244,6 @@ ${purpose || 'No especificado.'}
     </Card>
   );
 }
+    
+
     
