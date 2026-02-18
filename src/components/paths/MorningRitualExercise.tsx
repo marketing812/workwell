@@ -18,6 +18,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Switch } from '@/components/ui/switch';
 import { useUser } from '@/contexts/UserContext';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 interface MorningRitualExerciseProps {
   content: MorningRitualExerciseContent;
@@ -48,11 +49,7 @@ const facilitatorOptions = [
     { id: 'facilitator-alarma', label: 'Poner una alarma en el móvil' },
     { id: 'facilitator-nota', label: 'Dejar una nota visible' },
     { id: 'facilitator-vincular', label: 'Vincularlo a otra acción (ej. después de lavarme los dientes)' },
-    { id: 'facilitator-app', label: 'Aviso en la app' },
 ];
-
-const momentOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios'];
-
 
 const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
     return (
@@ -94,6 +91,7 @@ const HabitStep = ({ stepTitle, description, options, selected, setSelected, oth
 export default function MorningRitualExercise({ content, pathId, onComplete }: MorningRitualExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -169,25 +167,19 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
       return;
     }
 
-    const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
-    if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
-
     const notebookContent = `
 **${content.title}**
 
 *Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
 *Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
 *Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
-
-*Cómo lo facilitaré:*
-${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join('\n') : 'Sin facilitadores definidos.'}
-    `;
+`;
 
     addNotebookEntry({ title: 'Mi Ritual de Mañana Amable', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ritual Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(6);
+    setStep(7);
   };
 
   if (!isClient) {
@@ -208,6 +200,7 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
              <p className="text-sm text-muted-foreground">En el ejercicio anterior trazaste tu plan maestro para cuidar de ti durante todo el día. Ahora vamos a encender ese plan desde el primer instante de la mañana, para que empiece a funcionar con tu primera respiración.</p>
              <p className="text-sm text-muted-foreground">Tus primeras acciones al despertar marcan el tono de todo lo que viene después. Si empiezas acelerado o en piloto automático, el día puede arrastrarte. Si empiezas con calma, intención y energía positiva, tendrás más control y claridad para todo lo demás.</p>
              <p className="text-sm text-muted-foreground">En este ejercicio vas a diseñar una rutina inicial breve —aunque sea de pocos minutos— que te permita aterrizar en tu día con presencia y equilibrio.</p>
+             <p className="text-xs text-muted-foreground">Tiempo estimado: 8-10 minutos para diseñarla. Hazlo una vez y revisa cuando sientas que tu mañana necesita un ajuste.</p>
             <Button onClick={nextStep}>Empezar</Button>
           </div>
         );
@@ -261,22 +254,18 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
             </div>
         );
       case 6:
-        const selectedFacilitators = facilitatorOptions.filter(opt => facilitators[opt.id]).map(opt => opt.label);
-        if(facilitators['facilitator-other'] && otherFacilitator) selectedFacilitators.push(otherFacilitator);
-
         return (
         <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg text-primary">Paso 6: Tu rutina de mañana amable</h4>
             <p className="text-sm text-muted-foreground">Aquí tienes tu rutina inicial para empezar el día con más equilibrio y presencia. Es breve, realista y pensada para que puedas mantenerla incluso en días ocupados.</p>
             <div className="border rounded-lg overflow-hidden">
                 <Table>
-                    <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Duración</TableHead><TableHead className="text-right">Recordatorio</TableHead></TableRow></TableHeader>
+                    <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Duración</TableHead></TableRow></TableHeader>
                     <TableBody>
                         {habits.map(h => (
                             <TableRow key={h.key}>
                                 <TableCell>{h.label}</TableCell>
                                 <TableCell>{h.duration} min</TableCell>
-                                <TableCell className="text-right"><Switch checked={!!facilitators[h.key]} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -284,7 +273,7 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">Si un día no puedes hacerlos todos, haz al menos el primero: será suficiente para recordarte que tú decides cómo empezar.</p>
             <Button onClick={handleSave} className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar mi mañana amable ✅
+                Guardar en mi cuaderno terapéutico
             </Button>
              <Button onClick={prevStep} variant="link" className="w-full">Atrás</Button>
         </div>
@@ -293,7 +282,7 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
         return (
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <p className="font-semibold">Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.</p>
+            <p className="font-semibold">"Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido."</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Crear un nuevo plan</Button>
           </div>
         );
@@ -320,7 +309,4 @@ ${selectedFacilitators.length > 0 ? selectedFacilitators.map(f => `- ${f}`).join
       </CardHeader>
       <CardContent>
         {renderStep()}
-      </CardContent>
-    </Card>
-  );
-}
+      

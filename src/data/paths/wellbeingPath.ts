@@ -42,11 +42,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Qué ocurre en tu cuerpo y tu mente',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion1/Audio4sesion1ruta12.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar en positivo”.' },
-            { type: 'list', items: ["Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.", "Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.", "Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”."] },
-            { type: 'paragraph', text: 'Según la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' }
-          ]
+          content: [{ type: 'paragraph', text: 'Cuando el ánimo baja, no es solo cuestión de “pensar en positivo”.' }, { type: 'list', items: ["Tu cerebro emocional (amígdala) envía señales de alerta constantes, activando tensión y cansancio.", "Tu cerebro pensante (corteza prefrontal) pierde un poco de claridad y energía para planificar o decidir.", "Tus músculos, tu respiración y tu postura cambian, enviando mensajes silenciosos de que “todo pesa más”."] }, { type: 'paragraph', text: 'Según la neurociencia afectiva, estos cambios forman un bucle: menos energía → menos acción → menos placer → más ánimo bajo.\nPara romperlo, necesitamos entender de dónde viene nuestra energía vital y cómo mantenerla.' }]
         },
         {
           type: 'collapsible',
@@ -79,7 +75,7 @@ export const wellbeingPath: Path = {
           content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente suele decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'emotionalGratificationMapExercise', title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL', objective: 'Este ejercicio te ayudará a reconectar con tus fuentes de bienestar (actividades, personas o lugares) y a tener un mapa personal al que acudir cuando necesites recargar energía emocional.', duration: '7-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3` },
+        { type: 'emotionalGratificationMapExercise', title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL', objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.', duration: '7-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3` },
         { type: 'dailyEnergyCheckExercise', title: 'EJERCICIO 2: MINI-CHECK DE ENERGÍA DIARIA', objective: '¿Te has fijado en que hay días en los que terminas con más energía que otros, incluso haciendo cosas parecidas?    Esto ocurre porque, a lo largo de la jornada, hay actividades, personas y entornos que recargan tu batería y cuáles la gastan más rápido.   Este ejercicio te ayudará a identificar ambos tipos para que, poco a poco, puedas elegir más de lo que te suma y reducir lo que te drena. En pocas semanas, empezarás a ver patrones claros sobre qué cuidar y qué evitar.', duration: '3-5 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana1tecnica2.mp3` },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion1/Reflexionssesion1ruta12.mp3`, prompts: ["<p>Esta semana hemos explorado de dónde viene nuestra energía y cómo podemos recargarla de forma más sostenible. Ahora es momento de parar, mirar atrás y anotar lo que descubriste en tu propio camino.</p><p><b>Preguntas para reflexionar y escribir:</b></p><ul><li>¿Qué he descubierto sobre mis niveles de energía y cómo suelo hacerme cargo de ellos?</li><li>¿Hubo algo que me sorprendiera al observar mi energía día a día?</li><li>¿Qué cosas identifiqué como “drenaje” y cómo puedo reducir su impacto?</li><li>Si tuviera que elegir una sola acción para mantener mi energía la próxima semana, ¿cuál sería?</li><li>¿Cómo puedo recordarme a mí mismo/a que no tengo que esperar a tener ganas para empezar a cuidarme?</li></ul>"] },
         { type: 'title', text: 'Resumen Clave' },
@@ -135,51 +131,29 @@ export const wellbeingPath: Path = {
           title: 'Rutina rígida vs. ritual de cuidado',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio6sesion2ruta12.mp3`,
           content: [
-            {
-              type: 'paragraph',
-              text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.',
-            },
-            {
-              type: 'list',
-              items: [
-                'Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.',
-                'Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.',
-              ],
-            },
-            {
-              type: 'paragraph',
-              text: 'Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.',
-            },
-          ],
+            { type: 'paragraph', text: 'No todas las rutinas son iguales: algunas se vuelven rígidas y limitantes, mientras que otras actúan como un refugio flexible que te recarga.' },
+            { type: 'list', items: ['Rutina rígida disfuncional → Inflexible, vivida como obligación, genera ansiedad ante cambios.  Ejemplo: “Tengo que correr 5 km todos los días o no vale la pena”.', 'Ritual de cuidado → Intencional, flexible y enfocado en tu bienestar, adaptable a tus circunstancias.  Ejemplo: “Hoy no puedo correr, pero haré 15 minutos de estiramientos en casa”.'] },
+            { type: 'paragraph', text: 'Un ritual de cuidado no depende de que todo vaya bien para existir. Según la neurociencia del hábito, la flexibilidad y la asociación con emociones positivas aumentan la probabilidad de mantenerlo en el tiempo.' }
+          ]
         },
         {
           type: 'collapsible',
           title: 'Ideas para tus rituales de cuidado',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3`,
           content: [
-            { type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' },
-            { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.","Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.","Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).","Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] },
+            { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] },
             { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }
-          ],
+          ]
         },
         {
           type: 'collapsible',
           title: 'Tu misión esta semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio8sesion2ruta12.mp3`,
           content: [
-            {
-              type: 'paragraph',
-              text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.',
-            },
-            {
-              type: 'paragraph',
-              text: 'No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.',
-            },
-            {
-              type: 'paragraph',
-              text: 'En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.',
-            },
-          ],
+            { type: 'paragraph', text: 'Identifica y recupera al menos una rutina que te nutra. Hazlo pequeño, realista y disfrutable.' },
+            { type: 'paragraph', text: 'No se trata solo de “hacer cosas sanas”: se trata de reconectar con lo que de verdad te hace sentir bien y mantenerlo incluso en días difíciles.' },
+            { type: 'paragraph', text: 'En las próximas técnicas aprenderás a elegirla, adaptarla y mantenerla como una aliada para tu bienestar, pase lo que pase.' }
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
@@ -192,7 +166,7 @@ export const wellbeingPath: Path = {
         { 
           type: 'morningRitualExercise', 
           title: 'EJERCICIO 2: MI RITUAL DE INICIO: UNA MAÑANA AMABLE E CONSCIENTE', 
-          objective: 'En el ejercicio anterior trazaste tu plan maestro para cuidar de ti durante todo el día. Ahora vamos a encender ese plan desde el primer instante de la mañana, para que empiece a funcionar con tu primera respiración. \n\nTus primeras acciones al despertar marcan el tono de todo lo que viene después. Si empiezas acelerado o en piloto automático, el día puede arrastrarte. Si empiezas con calma, intención y energía positiva, tendrás más control y claridad para todo lo demás.  \n\nEn este ejercicio vas a diseñar una rutina inicial breve —aunque sea de pocos minutos— que te permita aterrizar en tu día con presencia y equilibrio.  \n\nTiempo estimado: 8-10 minutos para diseñarla. Hazlo una vez y revisa cuando sientas que tu mañana necesita un ajuste.', 
+          objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', 
           duration: '8-10 min', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3`
         },
@@ -320,4 +294,4 @@ export const wellbeingPath: Path = {
   ]
 };
 
-    
+```
