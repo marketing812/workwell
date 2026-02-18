@@ -77,7 +77,7 @@ export const wellbeingPath: Path = {
           type: 'collapsible',
           title: 'Empezar por las actividades: un primer paso probado por la ciencia',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion1/Audio9sesion1ruta12.mp3`,
-          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente suele decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
+          content: [{ type: 'paragraph', text: 'Cuando el ánimo está bajo, la mente tiende a decir: “No tengo fuerzas, primero necesito sentirme mejor para hacer cosas”.\nLa investigación en Terapia Cognitivo-Conductual muestra justo lo contrario: empezar a hacer cosas que te aportan placer o logro es uno de los primeros pasos más efectivos para mejorar el estado de ánimo, incluso en depresión.\nEs como encender una luz tenue en una habitación oscura: al principio no ilumina todo, pero te permite moverte, encontrar otros interruptores y, poco a poco, llenar la habitación de claridad.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'emotionalGratificationMapExercise', title: 'EJERCICIO 1: MAPA DE GRATIFICACIÓN EMOCIONAL', objective: '¿Has notado que a veces olvidas lo que te hacía sentir bien?    Cuando el ánimo baja, nuestra memoria tiende a centrarse más en lo negativo y a dejar de lado lo que antes nos aportaba calma, alegría o motivación.   Este ejercicio te ayudará a reconectar con esas fuentes de bienestar: actividades, personas o lugares que, en algún momento de tu vida, te han hecho sentir bien.    Al recordarlos y registrarlos, tendrás un mapa personal al que acudir cuando necesites recargar energía emocional.', duration: '7-10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana1tecnica1.mp3` },
@@ -143,19 +143,6 @@ export const wellbeingPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Audio7sesion2ruta12.mp3`,
           content: [{ type: 'paragraph', text: 'Aquí tienes inspiración para crear los tuyos:' }, { type: 'list', items: ["Autorreforzarte: darte pequeños premios o autoelogios sinceros cuando cumples tu objetivo.", "Priorizar el placer diario: dar espacio a lo que te gusta sin sentir culpa.", "Actividades agradables y de dominio: que te den sensación de logro y satisfacción (cocinar algo nuevo, aprender una habilidad).", "Mindfulness y flexibilidad emocional: aceptar emociones y sensaciones sin juicio, dejando que pasen por sí solas."] }, { type: 'paragraph', text: 'Recuerda que el objetivo no es “tachar tareas”, sino crear experiencias que nutran tu cuerpo, tu mente y tu ánimo.' }]
         },
-        {
-          type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionssesion2ruta12.mp3`,
-          prompts: [
-              '<ul>',
-                '<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>',
-                '<li>¿Cuando tus hábitos se debilitan o desaparecen, cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>',
-                '<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>',
-                '<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>',
-              '</ul>'
-          ]
-        },
         { type: 'title', text: 'Técnicas Específicas' },
         { 
           type: 'dailyWellbeingPlanExercise', 
@@ -170,6 +157,20 @@ export const wellbeingPath: Path = {
           objective: 'Tus primeras acciones al despertar marcan el tono de todo lo que viene después. En este ejercicio vas a diseñar una rutina inicial breve que te permita aterrizar en tu día con presencia y equilibrio.', 
           duration: '8-10 min', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana2tecnica2.mp3` 
+        },
+        { 
+          type: 'therapeuticNotebookReflection', 
+          title: 'Reflexión Final de la Semana', 
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion2/Reflexionsesion2ruta12.mp3`, 
+          prompts: [
+            '<p><b>Preguntas para tu cuaderno emocional:</b></p>',
+            '<ul>',
+            '<li>En tu experiencia pasada, ¿qué papel crees que han jugado los hábitos en tu bienestar físico, emocional y mental?</li>',
+            '<li>Cuando tus hábitos se debilitan o desaparecen, ¿cómo sueles reaccionar y qué podrías hacer para asumir un papel más activo en recuperarlos?</li>',
+            '<li>¿Qué microhábitos o rituales has puesto en marcha y cómo te han hecho sentir?</li>',
+            '<li>¿Cómo cambia tu ánimo y tu energía cuando cuidas lo básico de tu cuerpo, tus emociones y tu mente?</li>',
+            '</ul>'
+          ]
         },
         { type: 'title', text: 'Resumen Clave' },
         { 
@@ -209,7 +210,7 @@ export const wellbeingPath: Path = {
             { type: 'paragraph', text: 'Esta semana trabajaremos con dos herramientas clave:' },
             { type: 'list', items: ["Motivación en 3 capas: para que cada acción esté conectada con un valor y un sentido que realmente te importen.", "Visualización del día que quiero vivir: para que cada mañana puedas imaginar cómo quieres sentirte y actuar, y usar esa imagen como guía para tu día."] },
             { type: 'paragraph', text: 'El objetivo no es esperar a que las ganas lleguen, sino aprender a provocarlas. El primer paso lo das tú… y las ganas te encuentran en el camino.' }
-          ],
+          ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'motivationIn3LayersExercise', title: 'EJERCICIO 1: MOTIVACIÓN EN 3 CAPAS', objective: 'Con este ejercicio vas a descubrir las tres capas que dan fuerza a la motivación: lo que haces, por qué lo haces y para qué mayor lo haces. Al completarla, tendrás un recordatorio claro que te ayudará a empezar incluso en días de poca energía.', duration: '7 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana3tecnica1.mp3` },
@@ -262,5 +263,3 @@ export const wellbeingPath: Path = {
     }
   ]
 };
-
-    
