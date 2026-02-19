@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -127,7 +126,7 @@ ${reflections || 'No especificado.'}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <p className="text-foreground/80 italic">Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
+          <p className="text-foreground/80 italic">Piensa en una situación reciente que te haya generado estrés. Luego, completa paso a paso este registro guiado. Te acompañaré con preguntas breves para que puedas ir registrando lo que viviste:</p>
           
           <div>
             <Label htmlFor="situation" className="font-semibold">1. Situación (Qué ocurrió)</Label>
@@ -314,3 +313,5 @@ ${reflections || 'No especificado.'}
     </Card>
   );
 }
+
+    
