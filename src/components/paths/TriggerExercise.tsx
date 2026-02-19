@@ -30,7 +30,6 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   const { toast } = useToast();
   const { user } = useUser();
 
-  const [emotion, setEmotion] = useState('');
   const [situation, setSituation] = useState('');
   const [otherSituation, setOtherSituation] = useState('');
   const [thoughts, setThoughts] = useState('');
@@ -43,6 +42,12 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   const [isSaved, setIsSaved] = useState(false);
   const [showCompass, setShowCompass] = useState(false);
   const [reflections, setReflections] = useState('');
+  const [emotion, setEmotion] = useState('');
+  const [emotionIntensity1, setEmotionIntensity1] = useState(50);
+  const [selectedEmotion2, setSelectedEmotion2] = useState('');
+  const [emotionIntensity2, setEmotionIntensity2] = useState(0);
+  const [selectedEmotion3, setSelectedEmotion3] = useState('');
+  const [emotionIntensity3, setEmotionIntensity3] = useState(0);
 
   const [reflectionSituations, setReflectionSituations] = useState('');
   const [reflectionActions, setReflectionActions] = useState('');
@@ -67,11 +72,19 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
     const finalSituation = situation === 'otra' ? otherSituation : situation;
     const finalCoping = copingResponse === 'otra' ? otherCopingResponse : copingResponse;
 
+    let emotionsText = `${t[emotions.find(e => e.value === emotion)?.labelKey as keyof typeof t] || emotion} (${emotionIntensity1}%)`;
+    if (selectedEmotion2 && emotionIntensity2 > 0) {
+      emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion2)?.labelKey as keyof typeof t] || selectedEmotion2} (${emotionIntensity2}%)`;
+    }
+    if (selectedEmotion3 && emotionIntensity3 > 0) {
+      emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion3)?.labelKey as keyof typeof t] || selectedEmotion3} (${emotionIntensity3}%)`;
+    }
+
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
 **1. Emoción principal sentida:**
-${t[emotions.find(e => e.value === emotion)?.labelKey as keyof typeof t] || emotion}
+${emotionsText}
 
 **2. Situación que ocurrió:**
 ${finalSituation}
@@ -171,18 +184,9 @@ ${reflections || 'Sin reflexión adicional.'}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
-        {audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <p className="text-foreground/80 italic">Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
           
           <div>
             <Label htmlFor="emotion" className="font-semibold">1. ¿Cómo te sentiste en ese momento?</Label>
@@ -314,12 +318,15 @@ ${reflections || 'Sin reflexión adicional.'}
           </div>
           
           <div>
-            <Label htmlFor="reflections" className="font-semibold">8. Reflexión final del ejercicio</Label>
+            <Label htmlFor="reflections" className="font-semibold">Reflexión final del ejercicio</Label>
             <Textarea
               id="reflections"
               value={reflections}
               onChange={(e) => setReflections(e.target.value)}
-              placeholder="¿Qué patrón reconoces? Por ejemplo: &quot;Siempre que me hacen un comentario crítico, pienso que no valgo, siento ansiedad y me sobreexijo&quot;.   Este ejercicio te ayuda a tomar distancia, ver tus reacciones con claridad, y empezar a transformar automatismos en elecciones conscientes. Tus emociones tienen sentido, y también pueden regularse. "
+              placeholder="¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?
+¿Qué hice en esos momentos?
+¿Qué podría probar diferente la próxima vez?"
+              rows={5}
               disabled={isSaved}
             />
           </div>
@@ -413,3 +420,5 @@ ${reflections || 'Sin reflexión adicional.'}
     </Card>
   );
 }
+
+    
