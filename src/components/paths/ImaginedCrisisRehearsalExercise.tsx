@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -80,9 +79,14 @@ ${reflection.toolUsed || 'No especificado.'}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-6">
-          <p className="text-sm text-foreground/80 italic">
-            Instrucciones: Primero, escucha el audio para realizar la visualización. Luego, con esa experiencia fresca en tu mente, responde a las siguientes preguntas para anclar tu aprendizaje.
-          </p>
+          <div className="text-sm text-foreground/80 space-y-2">
+            <p className="font-semibold">Cómo hacerlo:</p>
+            <ul className="list-disc list-inside pl-4 space-y-1">
+                <li>Visualiza un momento en que el estrés te haya superado en el pasado.</li>
+                <li>Imagina esa misma situación con los recursos que tienes hoy.</li>
+                <li>Reflexiona y escribe:</li>
+            </ul>
+          </div>
           <div className="space-y-2">
             <h4 className="font-semibold">¿Qué harías diferente?</h4>
             <Textarea
@@ -134,5 +138,3 @@ ${reflection.toolUsed || 'No especificado.'}
     </Card>
   );
 }
-
-  
