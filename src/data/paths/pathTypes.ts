@@ -561,6 +561,14 @@ export type MyPactExerciseContent = {
     audioUrl?: string;
 };
 
+export type ImaginedCrisisRehearsalExerciseContent = {
+    type: 'imaginedCrisisRehearsalExercise';
+    title: string;
+    objective: string;
+    duration?: string;
+    audioUrl?: string;
+};
+
 // RUTA 9
 export type CoherenceCompassExerciseContent = {
     type: 'coherenceCompassExercise';
@@ -1063,3 +1071,5 @@ export type Path = {
   dataAiHint?: string;
   audioUrl?: string; // Optional audio URL for the entire path
 };
+
+  

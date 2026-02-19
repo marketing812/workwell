@@ -57,8 +57,12 @@ ${reflection.toolUsed || 'No especificado.'}
 
     toast({ title: 'Ensayo Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });
     setIsSaved(true);
-    onComplete(); // Marcar el módulo como completado
+    onComplete(); // Mark the module as completed
   };
+
+  function handleInputChange(field: keyof typeof reflection, value: string) {
+    setReflection(prev => ({ ...prev, [field]: value }));
+  }
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -129,8 +133,6 @@ ${reflection.toolUsed || 'No especificado.'}
       </CardContent>
     </Card>
   );
-
-  function handleInputChange(field: keyof typeof reflection, value: string) {
-    setReflection(prev => ({ ...prev, [field]: value }));
-  }
 }
+
+  

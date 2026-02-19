@@ -67,6 +67,7 @@ const DetectiveExercise = dynamic(() => import('@/components/paths/DetectiveExer
 const DemandsExercise = dynamic(() => import('@/components/paths/DemandsExercise'), { loading: LoaderComponent, ssr: false });
 const WellbeingPlanExercise = dynamic(() => import('@/components/paths/WellbeingPlanExercise'), { loading: LoaderComponent, ssr: false });
 const TherapeuticNotebookReflectionExercise = dynamic(() => import('@/components/paths/TherapeuticNotebookReflectionExercise'), { loading: LoaderComponent, ssr: false });
+const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise'), { loading: LoaderComponent, ssr: false });
 // RUTA 2
 const UncertaintyMapExercise = dynamic(() => import('@/components/paths/UncertaintyMapExercise'), { loading: LoaderComponent, ssr: false });
 const ControlTrafficLightExercise = dynamic(() => import('@/components/paths/ControlTrafficLightExercise'), { loading: LoaderComponent, ssr: false });
@@ -178,7 +179,6 @@ const QuestionYourIfsExercise = dynamic(() => import('@/components/paths/Questio
 const ExposureLadderExercise = dynamic(() => import('@/components/paths/ExposureLadderExercise'), { loading: LoaderComponent, ssr: false });
 const CalmVisualizationExercise = dynamic(() => import('@/components/paths/CalmVisualizationExercise'), { loading: LoaderComponent, ssr: false });
 const AnxietyReframingExercise = dynamic(() => import('@/components/paths/AnxietyReframingExercise'), { loading: LoaderComponent, ssr: false });
-const ImaginedCrisisRehearsalExercise = dynamic(() => import('@/components/paths/ImaginedCrisisRehearsalExercise'), { loading: LoaderComponent, ssr: false });
 
 // =================== ERROR BOUNDARIES ===================
 
@@ -713,9 +713,8 @@ function ContentItemRenderer({
     case 'calmVisualizationExercise': {
         return <CalmVisualizationExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete}/>;
     }
-    case 'imaginedCrisisRehearsalExercise': {
+    case 'imaginedCrisisRehearsalExercise':
       return <ImaginedCrisisRehearsalExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
-    }
     case 'anxietyReframingExercise':
         return <AnxietyReframingExercise key={index} content={contentItem} pathId={path.id} onComplete={handleComplete} />;
 
@@ -960,3 +959,5 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+
+  

@@ -227,7 +227,7 @@ export const stressManagementPath: Path = {
                 {
                   type: 'collapsible',
                   title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
-                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.mp3`,
+                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica18anclaje.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
                 },
                 {
@@ -370,10 +370,15 @@ export const stressManagementPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-4-tecnica-1-diseno-tu-plan-de-bienestar-emocional.mp3`
         },
         {
+          type: 'imaginedCrisisRehearsalExercise',
+          title: 'EJERCICIO 2: ENSAYO DE CRISIS IMAGINARIA',
+          objective: 'Este ejercicio te permite imaginar una situación de alto estrés desde el yo que eres hoy, con más herramientas, conciencia y autocompasión. Visualizar cómo te cuidarías ante una crisis fortalece tu confianza y refuerza la sensación de que sí puedes afrontarlo. El objetivo es que ganes seguridad emocional y sientas que tienes un camino posible cuando todo se vuelve difícil.',
+        },
+        {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Reflexionsemana4.mp3`,
-          prompts: ['<p>Tómate un momento para escribir tus últimos aprendizajes de esta ruta.</p><ul><li>¿Qué he aprendido sobre cómo el estrés afecta mi vida y cómo puedo cuidarme?</li><li>¿Qué técnica de esta ruta me ha sido más útil y por qué?</li><li>¿Qué compromiso quiero llevarme para mi día a día?</li></ul>']
+          prompts: ['<p>Tómate un momento para responder esta pregunta en tu cuaderno:</p><p><b>¿Qué quiero recordarme cuando vuelva a sentirme desbordado/a?</b></p>']
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Resumensemana4.mp3` },
         { type: 'list', items: ['La resiliencia se construye con hábitos diarios.', 'Tu Plan de Bienestar es tu hoja de ruta personalizada.', 'Identificar tus señales de alerta te permite actuar antes de desbordarte.', 'Saber qué necesitas y cómo pedirlo es clave.'] },
@@ -415,3 +420,5 @@ export const stressManagementPath: Path = {
 
 
     
+
+  
