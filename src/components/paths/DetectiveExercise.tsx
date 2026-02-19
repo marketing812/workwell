@@ -159,8 +159,10 @@ ${reflection}
           <div className="space-y-2">
             <Label htmlFor="distortion" className="font-semibold">3. Distorsión cognitiva: ¿Reconoces algún filtro mental?</Label>
             <Select value={distortion} onValueChange={setDistortion} disabled={isSaved}>
-              <SelectTrigger id="distortion"><SelectValue placeholder="Elige la distorsión principal" /></SelectTrigger>
-              <SelectContent className="w-[var(--radix-select-trigger-width)]">
+              <SelectTrigger id="distortion" className="w-full">
+                <SelectValue placeholder="Elige la distorsión principal" />
+              </SelectTrigger>
+              <SelectContent className="w-[--radix-select-trigger-width]">
                 {cognitiveDistortions.map(d => (
                   <SelectItem key={d.value} value={d.label}>
                     <div className="flex flex-col text-left py-1">
@@ -184,7 +186,7 @@ ${reflection}
           </div>
 
           <div className="space-y-4 rounded-md border p-4 bg-background">
-            <h4 className="font-semibold text-center">5. Preguntas de verificación</h4>
+            <Label className="font-semibold">5. Preguntas de verificación</Label>
             <div className="space-y-2">
                 <Label htmlFor="is100PercentTrue">¿Es 100% cierto este pensamiento?</Label>
                 <Textarea id="is100PercentTrue" value={is100PercentTrue} onChange={e => setIs100PercentTrue(e.target.value)} disabled={isSaved} rows={2} />
@@ -221,7 +223,6 @@ ${reflection}
             </div>
           )}
         </form>
-
       </CardContent>
     </Card>
   );
