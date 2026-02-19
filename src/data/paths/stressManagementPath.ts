@@ -227,32 +227,32 @@ export const stressManagementPath: Path = {
                 {
                   type: 'collapsible',
                   title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
-                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica18anclaje.mp3`,
+                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.m4a`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 3: Escaneo corporal sin juicio (body scan)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R_body_scan_breve.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 4: Relajación muscular progresiva (Jacobson)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R16balanceocorporal.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 6: Contacto frío breve (reset inmediato)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en: \n\n- Nuca \n\n- Muñecas \n\n- Parte interna de los brazos o mejillas \n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en: \n\n- Nuca \n\n- Muñecas \n\n- Parte interna de los brazos o mejillas \n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). ' }]
                 },
                  { type: 'therapeuticNotebookReflection', title: 'Registro de experiencia personal', showOverloadSignals: true, prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:']},
             ]
@@ -373,6 +373,7 @@ export const stressManagementPath: Path = {
           type: 'imaginedCrisisRehearsalExercise',
           title: 'EJERCICIO 2: ENSAYO DE CRISIS IMAGINARIA',
           objective: 'Este ejercicio te permite imaginar una situación de alto estrés desde el yo que eres hoy, con más herramientas, conciencia y autocompasión. Visualizar cómo te cuidarías ante una crisis fortalece tu confianza y refuerza la sensación de que sí puedes afrontarlo. El objetivo es que ganes seguridad emocional y sientas que tienes un camino posible cuando todo se vuelve difícil.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-4-tecnica-2-ensayo-de-crisis-imaginaria.mp3`
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -416,9 +417,3 @@ export const stressManagementPath: Path = {
 };
 
     
-
-
-
-    
-
-  
