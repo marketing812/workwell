@@ -121,7 +121,7 @@ export const stressManagementPath: Path = {
         {
           type: 'stressMapExercise',
           title: 'Ejercicio 1: Mapa del Estrés Personal',
-          objective: 'Recuerda un momento reciente de estrés. Responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.',
+          objective: 'Piensa en una situación reciente que te haya generado estrés. Luego, completa paso a paso este registro guiado. Te acompañaré con preguntas breves para que puedas ir registrando lo que viviste: ',
           duration: '5 a 10 minutos',
         },
         {
