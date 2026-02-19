@@ -65,6 +65,7 @@ export type TherapeuticNotebookReflection = {
     title: string;
     prompts: string[];
     audioUrl?: string;
+    showOverloadSignals?: boolean;
 }
 
 export type DetectiveExerciseContent = {
