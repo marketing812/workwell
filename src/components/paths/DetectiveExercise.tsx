@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -161,7 +160,7 @@ ${reflection}
             <Label htmlFor="distortion" className="font-semibold">3. Distorsión cognitiva: ¿Reconoces algún filtro mental?</Label>
             <Select value={distortion} onValueChange={setDistortion} disabled={isSaved}>
               <SelectTrigger id="distortion"><SelectValue placeholder="Elige la distorsión principal" /></SelectTrigger>
-              <SelectContent className="max-w-[90vw] lg:max-w-lg">
+              <SelectContent className="w-[var(--radix-select-trigger-width)]">
                 {cognitiveDistortions.map(d => (
                   <SelectItem key={d.value} value={d.label}>
                     <div className="flex flex-col text-left py-1">
