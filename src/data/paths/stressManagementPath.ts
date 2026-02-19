@@ -127,7 +127,7 @@ export const stressManagementPath: Path = {
         {
           type: 'triggerExercise',
           title: 'Ejercicio 2: Identifica tu disparador',
-          objective: 'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en modo automático.',
+          objective: 'Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.   Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.   Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.   Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.   Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.',
           duration: '5 a 8 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`
         },
@@ -204,73 +204,43 @@ export const stressManagementPath: Path = {
                     { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\n- Tu respiración se regula sola.\n- Tu expresión facial se relaja.\n- Tu cuerpo se afloja.\n- Tu mente se siente más presente.\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
                 ]
             },
-            { 
-              type: 'title', 
-              text: 'Técnicas Específicas', 
-              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3`
-            },
             {
-                type: 'collapsible',
-                title: '¿Por qué estas técnicas funcionan?',
-                content: [
-                    { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente.\nEstas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”.\nPracticar con regularidad te ayuda a recuperar el equilibrio con más facilidad.\nEstudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro).\nEs decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.' },
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: '¿Qué cambia cuando las practicas?',
-                content: [
-                  { type: 'paragraph', text: 'En tu cuerpo:'},
-                  { type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']},
-                  { type: 'paragraph', text: 'En tu mente:'},
-                  { type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']},
-                  { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: '¿Cuándo puedes usarlas?',
-                content: [
-                  { type: 'paragraph', text: 'Puedes usar estas técnicas:'},
-                  { type: 'list', items: ['En el momento: si sientes ansiedad o bloqueo', 'Antes de una situación desafiante', 'Como rutina diaria para entrenar tu equilibrio']},
-                  { type: 'paragraph', text: 'Practicar no solo te calma en el momento. Te transforma a largo plazo.\nLa calma también se entrena.'}
-                ]
-            },
-            {
-                type: 'collapsible',
-                title: 'Selección de técnicas',
-                content: [
-                    { type: 'collapsible', title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`, content: [{ type: 'paragraph', text: 'Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.' }] },
-                    { type: 'collapsible', title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.m4a`, content: [{ type: 'paragraph', text: 'Úsala cuando tu mente se inunde de pensamientos anticipatorios.' }] },
-                    { type: 'collapsible', title: 'Técnica 3: Escaneo corporal sin juicio (body scan)', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R_body_scan_breve.mp3`, content: [{ type: 'paragraph', text: 'Útil para relajarte al final del día o facilitar el descanso.' }] },
-                    { type: 'collapsible', title: 'Técnica 4: Relajación muscular progresiva (Jacobson)', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`, content: [{ type: 'paragraph', text: 'Si sientes ansiedad física o mucha tensión corporal.' }] },
-                    {
-                        type: 'collapsible',
-                        title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
-                        audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R16balanceocorporal.mp3`,
-                        content: [{ type: 'paragraph', text: 'Especialmente útiles en momentos de desregulación intensa.' }]
-                    },
-                     {
-                      type: 'collapsible',
-                      title: 'Técnica 6: Contacto frío breve (reset inmediato)',
-                      audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`,
-                      content: [{ type: 'paragraph', text: 'Cómo aplicarlo:\n1.\tHumedece una toalla o paño con agua fría.\n2.\tAplícalo entre 10 y 20 segundos en:\n\to\tLa nuca\n\to\tLas muñecas\n\to\tLa parte interna de los brazos o las mejillas\n3.\tRespira mientras sientes el contacto del frío.\nSi estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela.\nEste pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.' }]
-                    },
+                type: 'therapeuticNotebookReflection',
+                title: 'Técnicas Específicas',
+                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3`,
+                prompts: [
+                    '<p>A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia. Cuando la ansiedad aparece, el cuerpo se activa como si hubiera un peligro real: corazón acelerado, respiración rápida, músculos tensos… Estas técnicas tienen un objetivo claro: enseñarle a tu cuerpo que puede volver a la calma y, al hacerlo, ayudar también a tu mente a relajarse. Al practicarlas de forma regular, estarás entrenando a tu sistema nervioso para que responda con más equilibrio, de modo que la ansiedad deje de sentirse como una ola que te arrastra y se convierta en una ola que sabes surfear. Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia. Te recomiendo practicarlas varias veces al día o en momentos de ansiedad elevada.</p>',
+                    
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Por qué estas técnicas funcionan?</summary><div class="pt-2 text-sm text-muted-foreground"><p>Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.</p></div></details>',
+                    
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Qué cambia cuando las practicas?</summary><div class="pt-2 text-sm text-muted-foreground"><p><b>En tu cuerpo:</b></p><ul><li>Respiración más profunda y regular</li><li>Regulación del CO₂ (menos mareos o ahogo)</li><li>Reducción de tensión muscular</li><li>Sensaciones de alivio, calor o calma</li></ul><p class="mt-2"><b>En tu mente:</b></p><ul><li>Recuperas el control y vuelves al presente</li><li>Se interrumpe el bucle de pensamientos ansiosos</li><li>Refuerzas el autocuidado y la conexión contigo</li></ul><p class="mt-2">Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.</p></div></details>',
+
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Cuándo puedes usarlas?</summary><div class="pt-2 text-sm text-muted-foreground"><p>Puedes usar estas técnicas:</p><ul><li>En el momento: si sientes ansiedad o bloqueo</li><li>Antes de una situación desafiante</li><li>Como rutina diaria para entrenar tu equilibrio</li></ul><p class="mt-2">Practicar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.</p></div></details>',
+                    
+                    '<h4 class="font-bold mt-4 mb-2">Selección de técnicas</h4>',
+
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 1: Respiración 4–2–6 con gesto de autocuidado</summary><div class="pt-2 text-sm text-muted-foreground"><p>Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3" /></audio></div></details>',
+
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)</summary><div class="pt-2 text-sm text-muted-foreground"><p>Úsala cuando tu mente se inunde de pensamientos anticipatorios.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a" type="audio/mp3" /></audio></div></details>',
+
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 3: Escaneo corporal sin juicio (body scan)</summary><div class="pt-2 text-sm text-muted-foreground"><p>Útil para relajarte al final del día o facilitar el descanso.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R_body_scan_breve.mp3" type="audio/mp3" /></audio></div></details>',
+                    
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 4: Relajación muscular progresiva (Jacobson)</summary><div class="pt-2 text-sm text-muted-foreground"><p>Si sientes ansiedad física o mucha tensión corporal.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3" type="audio/mp3" /></audio></div></details>',
+                    
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 5: Técnicas de presión profunda y balanceo corporal</summary><div class="pt-2 text-sm text-muted-foreground"><p>Especialmente útiles en momentos de desregulación intensa.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R16balanceocorporal.mp3" type="audio/mp3" /></audio></div></details>',
+                    
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 6: Contacto frío breve (reset inmediato)</summary><div class="pt-2 text-sm text-muted-foreground"><p>Cómo aplicarlo:</p><ol class="list-decimal list-inside"><li>Humedece una toalla o paño con agua fría.</li><li>Aplícalo entre 10 y 20 segundos en: la nuca, las muñecas, la parte interna de los brazos o las mejillas.</li><li>Respira mientras sientes el contacto del frío.</li></ol><p>Si estás fuera de casa, puedes usar agua del grifo o un cubito envuelto en tela. Este pequeño “shock” activa una respuesta calmante en tu cuerpo y te ayuda a pausar el bucle de ansiedad.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3" type="audio/mp3" /></audio></div></details>',
+                    
+                    '<hr class="my-4"/><p><b>Registro de experiencia personal:</b></p><p>¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:</p>'
                 ]
             },
              {
                 type: 'therapeuticNotebookReflection',
-                title: 'Registro de experiencia personal',
-                prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:'],
-            },
-          
-            { 
-              type: 'therapeuticNotebookReflection', 
-              title: 'Reflexión Final de la Semana', 
-              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`, 
-              prompts: [
-                '<p>Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><br></p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
-              ]
+                title: 'Reflexión Final de la Semana', 
+                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`, 
+                prompts: [
+                    '<p>Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><br></p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
+                ]
             },
             { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/RESUMENYCIERRE.mp3`},
             { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
@@ -280,5 +250,7 @@ export const stressManagementPath: Path = {
     // ... rest of the file
   ],
 };
+
+    
 
     
