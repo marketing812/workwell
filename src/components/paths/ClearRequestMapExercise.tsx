@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -59,7 +60,7 @@ ${situation}
         {content.objective && <CardDescription className="pt-2">
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana3tecnica1.mp3`} type="audio/mp3" />
+                    <source src={content.audioUrl} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>

@@ -134,7 +134,7 @@ ${response}
             {content.objective}
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica1.mp3`} type="audio/mp3" />
+                <source src={content.audioUrl} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>

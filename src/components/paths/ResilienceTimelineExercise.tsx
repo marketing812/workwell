@@ -209,7 +209,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
           {content.objective}
           <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
+              <source src={content.audioUrl} type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
             </audio>
           </div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -21,17 +22,10 @@ interface BlockingThoughtsExerciseProps {
 }
 
 const distortionOptions = [
-    { value: 'pensamiento-todo-o-nada', label: 'Pensamiento todo o nada' },
-    { value: 'sobregeneralizacion', label: 'Sobregeneralización' },
-    { value: 'filtro-mental', label: 'Filtro mental' },
-    { value: 'descalificar-lo-positivo', label: 'Descalificar lo positivo' },
-    { value: 'lectura-de-mente', label: 'Lectura de mente' },
-    { value: 'adivinacion-del-futuro', label: 'Adivinación del futuro' },
-    { value: 'catastrofismo', label: 'Catastrofismo' },
-    { value: 'razonamiento-emocional', label: 'Razonamiento emocional' },
-    { value: 'deberias-o-tengo-que', label: 'Deberías o tengo que' },
-    { value: 'etiquetado', label: 'Etiquetado' },
-    { value: 'personalizacion', label: 'Personalización' },
+    { value: 'catastrophism', label: 'Catastrofismo' },
+    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
+    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
+    { value: 'personalization', label: 'Personalización' },
 ];
 
 export default function BlockingThoughtsExercise({ content, pathId, onComplete }: BlockingThoughtsExerciseProps) {
@@ -42,7 +36,6 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
   const [blockingThought, setBlockingThought] = useState('');
   const [distortion, setDistortion] = useState('');
   const [reformulation, setReformulation] = useState('');
-  const [finalReflection, setFinalReflection] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
@@ -50,7 +43,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!situation.trim() || !blockingThought.trim() || !reformulation.trim() || !finalReflection.trim()) {
+    if (!situation.trim() || !blockingThought.trim() || !reformulation.trim()) {
       toast({
         title: "Campos Incompletos",
         description: "Por favor, completa todos los pasos del ejercicio para guardar.",
@@ -72,9 +65,6 @@ ${distortion || 'No especificada.'}
 
 **Reformulación consciente y amable:**
 "${reformulation}"
-
-**Próximo paso/aprendizaje:**
-${finalReflection}
     `;
     addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
@@ -141,7 +131,7 @@ ${finalReflection}
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
             <p className="text-sm">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
-            <Textarea id="next-step-blocking" value={finalReflection} onChange={e => setFinalReflection(e.target.value)} placeholder="Ej: La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo." disabled={isSaved}/>
+            <Textarea id="next-step-blocking" disabled={isSaved}/>
              <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar registro</Button></div>
           </form>
         );
@@ -165,7 +155,7 @@ ${finalReflection}
         {content.audioUrl && (
             <div className="mt-2">
                 <audio controls controlsList="nodownload" className="w-full h-10">
-                    <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
+                    <source src={content.audioUrl} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>

@@ -13,6 +13,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { CriticismToGuideExerciseContent } from '@/data/paths/pathTypes';
 import { Checkbox } from '../ui/checkbox';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface CriticismToGuideExerciseProps {
   content: CriticismToGuideExerciseContent;
