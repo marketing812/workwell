@@ -337,7 +337,7 @@ export default function DashboardPage() {
             iconColorClass="text-blue-600 dark:text-blue-400"
           />
           <DashboardSummaryCard
-            title="Registros esta Semana"
+            title="Autorregistros esta Semana"
             value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'registro' : 'registros'}`}
             description="¡Sigue así para conocerte mejor!"
             icon={Activity}
