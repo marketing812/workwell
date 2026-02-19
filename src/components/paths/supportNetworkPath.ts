@@ -1,4 +1,5 @@
-import type { Path } from './pathTypes';
+
+import type { Path } from '@/data/paths/pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const supportNetworkPath: Path = {
