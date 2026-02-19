@@ -136,7 +136,7 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/REFLEXION.mp3`,
           prompts: [
-            '<ul><li>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</li></ul>',
+            '<ul><li>¿Qué he aprendido sobre mí esta semana…</li><li>¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?</li><li>¿Qué hice en esos momentos?</li><li>¿Qué podría probar diferente la próxima vez?</li></ul>',
           ],
         },
           { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/RESUMENYCIERRE.mp3`},
@@ -154,7 +154,6 @@ export const stressManagementPath: Path = {
         }
       ]
     },
-    // ... rest of the file
     {
       id: 'estres_sem2',
       title: 'Semana 2: Activa tu Regulación Fisiológica',
@@ -211,7 +210,7 @@ export const stressManagementPath: Path = {
                 prompts: [
                     '<p>A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia. Cuando la ansiedad aparece, el cuerpo se activa como si hubiera un peligro real: corazón acelerado, respiración rápida, músculos tensos… Estas técnicas tienen un objetivo claro: enseñarle a tu cuerpo que puede volver a la calma y, al hacerlo, ayudar también a tu mente a relajarse. Al practicarlas de forma regular, estarás entrenando a tu sistema nervioso para que responda con más equilibrio, de modo que la ansiedad deje de sentirse como una ola que te arrastra y se convierta en una ola que sabes surfear. Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia. Te recomiendo practicarlas varias veces al día o en momentos de ansiedad elevada.</p>',
                     
-                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Por qué estas técnicas funcionan?</summary><div class="pt-2 text-foreground/80"><p>Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.</p></div></details>',
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Por qué estas técnicas funcionan?</summary><div class="pt-2 text-foreground/80"><p>Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3" type="audio/mp3"></audio></div></details>',
                     
                     '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Qué cambia cuando las practicas?</summary><div class="pt-2 text-foreground/80"><p><b>En tu cuerpo:</b></p><ul><li>Respiración más profunda y regular</li><li>Regulación del CO₂ (menos mareos o ahogo)</li><li>Reducción de tensión muscular</li><li>Sensaciones de alivio, calor o calma</li></ul><p class="mt-2"><b>En tu mente:</b></p><ul><li>Recuperas el control y vuelves al presente</li><li>Se interrumpe el bucle de pensamientos ansiosos</li><li>Refuerzas el autocuidado y la conexión contigo</li></ul><p class="mt-2">Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.</p></div></details>',
 
@@ -219,7 +218,7 @@ export const stressManagementPath: Path = {
                     
                     '<h4 class="font-bold mt-4 mb-2">Selección de técnicas</h4>',
 
-                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 1: Respiración 4–2–6 con gesto de autocuidado</summary><div class="pt-2 text-foreground/80"><p>Ideal antes de dormir o al comenzar el día. Inhala por la nariz durante 4 segundos. Mantén el aire 2 segundos. Exhala lentamente por la boca durante 6 segundos. Mientras respiras, coloca una mano sobre el pecho o el abdomen, como gesto de cuidado hacia ti. Practica esta respiración durante 1 o 2 minutos, varias veces al día o en momentos de tensión.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3" /></audio></div></details>',
+                    '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 1: Respiración 4–2–6 con gesto de autocuidado</summary><div class="pt-2 text-foreground/80"><p><strong>Objetivo:</strong><br/>Calmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda.</p><p><strong>Cómo se hace:</strong></p><ul><li>Coloca una mano sobre el pecho y otra sobre el abdomen.</li><li>Inhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho).</li><li>Mantén el aire 2 segundos.</li><li>Exhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda.</li><li>Mantén un ritmo lento y constante, sin forzar.</li></ul><p><strong>Practica:</strong><br/>Durante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3" /></audio></div></details>',
                     
                     '<details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)</summary><div class="pt-2 text-foreground/80"><p>Úsala cuando tu mente se inunde de pensamientos anticipatorios.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/R1_anclaje_sensorial_inmediato.m4a" type="audio/mp3" /></audio></div></details>',
 
@@ -250,9 +249,3 @@ export const stressManagementPath: Path = {
     // ... rest of the file
   ],
 };
-
-    
-
-    
-
-    
