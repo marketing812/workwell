@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -136,8 +137,12 @@ ${finalCoping}
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         <CardDescription>
-        <div className="space-y-4 text-sm pt-2">
-            <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.   Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.   Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.   Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.   Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.</p>
+        <div className="space-y-4 text-base pt-2">
+            <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.</p>
+            <p>Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.</p>
+            <p>Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.</p>
+            <p>Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.</p>
+            <p>Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.</p>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-sm">¿Qué es un estresor y qué es el estrés?</AccordionTrigger>
