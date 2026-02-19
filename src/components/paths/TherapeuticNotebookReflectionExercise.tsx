@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -10,6 +9,13 @@ import { Save, CheckCircle, NotebookText } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TherapeuticNotebookReflection } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export default function TherapeuticNotebookReflectionExercise({
   content,
@@ -38,7 +44,6 @@ export default function TherapeuticNotebookReflectionExercise({
       return;
     }
     
-    // Use the raw HTML from prompts directly to ensure correct formatting
     const promptsHtml = content.prompts.join('');
     
     const fullContent = `
@@ -69,33 +74,37 @@ ${reflection}
   };
   
   return (
-    <div className="my-6">
-        <div className="flex items-center gap-4 mt-6 mb-3">
-            <h3 className="text-xl font-bold text-primary flex items-center gap-4">
-                <NotebookText className="h-6 w-6" />
-                <span>{content.title}</span>
-            </h3>
-            {content.audioUrl && (
-                <audio
-                src={content.audioUrl}
-                controls
-                controlsList="nodownload"
-                className="h-8 max-w-[200px] sm:max-w-xs"
-                />
-            )}
-        </div>
-        
+    <Card className="bg-muted/30 my-6 shadow-md">
+      <CardHeader>
+        <CardTitle className="text-lg text-accent flex items-center gap-4">
+          <NotebookText className="h-6 w-6" />
+          <span>{content.title}</span>
+        </CardTitle>
+        {content.audioUrl && (
+          <div className="mt-4">
+            <audio
+              src={content.audioUrl}
+              controls
+              controlsList="nodownload"
+              className="w-full"
+            />
+          </div>
+        )}
+         <CardDescription asChild>
+           <div className="prose prose-sm dark:prose-invert max-w-none pt-2" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
           <div className="space-y-2">
-            <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
-            <Label htmlFor={`reflection-${pathId}`} className="sr-only">
-              Tu reflexión
+            <Label htmlFor={`reflection-${pathId}`} className="font-semibold">
+              Escribe aquí tu reflexión personal:
             </Label>
             <Textarea
               id={`reflection-${pathId}`}
               value={reflection}
               onChange={e => setReflection(e.target.value)}
-              placeholder="Escribe aquí tu reflexión personal..."
+              placeholder="Lo que he descubierto esta semana es..."
               rows={5}
               disabled={isSaved}
             />
@@ -111,6 +120,7 @@ ${reflection}
             </div>
           )}
         </form>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
