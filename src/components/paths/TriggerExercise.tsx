@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -18,6 +17,7 @@ import { useUser } from '@/contexts/UserContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface TriggerExerciseProps {
   content: TriggerExerciseContent;
@@ -138,7 +138,75 @@ ${reflections || 'Sin reflexión adicional.'}
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription>{content.objective}</CardDescription>}
+        <CardDescription>
+            <div className="space-y-4 text-sm pt-2">
+                <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.</p>
+                <p>Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.</p>
+                <p>Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.</p>
+                <p>Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.</p>
+                <p>Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.</p>
+                
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger className="text-sm">¿Qué es un estresor y qué es el estrés?</AccordionTrigger>
+                        <AccordionContent>
+                            <p>El estresor es el desencadenante, eso que genera presión o malestar. Puede ser algo externo (como una crítica, una discusión, una fecha límite) o interno (como un pensamiento, un recuerdo o una sensación física).</p>
+                            <p className="mt-2">El estrés es cómo lo vives: tensión, ansiedad, insomnio, pensamientos acelerados, bloqueos, irritabilidad...</p>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger className="text-sm">¿Es externo o interno lo que te estresa?</AccordionTrigger>
+                        <AccordionContent>
+                            <p>Muchos estresores son visibles: una carga laboral, una discusión, una demanda del entorno. Pero otras veces el origen está dentro: tus creencias, tus expectativas, tu historia emocional.</p>
+                            <p className="font-semibold mt-2">Ejemplos de estresores externos:</p>
+                            <ul className="list-disc list-inside ml-4">
+                                <li>Cargas laborales excesivas</li>
+                                <li>Críticas o conflictos</li>
+                                <li>Cambios inesperados</li>
+                                <li>Ruido, interrupciones, caos</li>
+                            </ul>
+                            <p className="font-semibold mt-2">Ejemplos de estresores internos:</p>
+                             <ul className="list-disc list-inside ml-4">
+                                <li>"Tengo que hacerlo perfecto"</li>
+                                <li>"Seguro que se enfadó conmigo"</li>
+                                <li>"No puedo fallar"</li>
+                                <li>Recuerdos dolorosos</li>
+                                <li>Sensaciones físicas malinterpretadas (como palpitaciones que generan miedo)</li>
+                            </ul>
+                            <p className="mt-2">Saber si lo que te activa es externo, interno o una mezcla te da poder. No puedes controlar todo lo que pasa fuera, pero sí puedes transformar cómo lo interpretas y cómo lo enfrentas.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="item-3">
+                        <AccordionTrigger className="text-sm">¿Estás reaccionando o estás respondiendo?</AccordionTrigger>
+                        <AccordionContent>
+                            <p>Una reacción es rápida, impulsiva, automática. Viene del miedo o del cansancio. No hay espacio entre lo que pasa y lo que haces.</p>
+                            <p className="mt-2">Una respuesta es consciente. Dejas un pequeño espacio entre el estímulo y tu decisión. Ese espacio es libertad. Por ejemplo: alguien te grita → tú sientes el impulso de gritar → respiras → eliges responder con firmeza, pero sin perder el control.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4">
+                        <AccordionTrigger className="text-sm">¿Por qué es importante esta diferencia?</AccordionTrigger>
+                        <AccordionContent>
+                            <p>Porque no puedes controlar todo lo que ocurre, pero sí puedes aprender a regular lo que ocurre dentro de ti.</p>
+                            <p className="mt-2">Cuando entiendes qué te estresa y de dónde viene, puedes:</p>
+                            <ul className="list-disc list-inside ml-4">
+                                <li>Elegir tus batallas</li>
+                                <li>Cuestionar tus pensamientos automáticos</li>
+                                <li>Regular tu cuerpo</li>
+                                <li>Pedir ayuda cuando lo necesites</li>
+                                <li>Poner límites sin culpa</li>
+                                <li>Cuidarte con amabilidad</li>
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-5">
+                        <AccordionTrigger className="text-sm">Un recordatorio para ti</AccordionTrigger>
+                        <AccordionContent>
+                            No todo lo que duele es una amenaza. No todo lo que piensas es verdad. Y no todo lo que sientes necesita una reacción inmediata.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </CardDescription>
         {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
@@ -151,6 +219,7 @@ ${reflections || 'Sin reflexión adicional.'}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+          <p className="text-foreground/80 italic">Piensa en una situación reciente que te haya generado estrés. Luego, completa paso a paso este registro guiado. Te acompañaré con preguntas breves para que puedas ir registrando lo que viviste: </p>
           
           <div>
             <Label htmlFor="emotion" className="font-semibold">1. ¿Cómo te sentiste en ese momento?</Label>
@@ -287,8 +356,10 @@ ${reflections || 'Sin reflexión adicional.'}
               id="reflections"
               value={reflections}
               onChange={(e) => setReflections(e.target.value)}
-              placeholder="¿Qué has descubierto sobre tus patrones de estrés?"
-              rows={3}
+              placeholder="¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?
+¿Qué hice en esos momentos?
+¿Qué podría probar diferente la próxima vez?"
+              rows={4}
               disabled={isSaved}
             />
           </div>
@@ -326,6 +397,3 @@ ${reflections || 'Sin reflexión adicional.'}
     </Card>
   );
 }
-
-
-    
