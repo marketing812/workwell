@@ -49,11 +49,6 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   const [selectedEmotion3, setSelectedEmotion3] = useState('');
   const [emotionIntensity3, setEmotionIntensity3] = useState(0);
 
-  const [reflectionSituations, setReflectionSituations] = useState('');
-  const [reflectionActions, setReflectionActions] = useState('');
-  const [reflectionNextTime, setReflectionNextTime] = useState('');
-  const [isReflectionSaved, setIsReflectionSaved] = useState(false);
-
   const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`;
 
 
@@ -123,45 +118,6 @@ ${reflections || 'Sin reflexión adicional.'}
     setIsSaved(true);
     onComplete();
   };
-  
-  const handleSaveReflection = (e: FormEvent) => {
-    e.preventDefault();
-     if (!reflectionSituations.trim() || !reflectionActions.trim() || !reflectionNextTime.trim()) {
-      toast({
-        title: "Reflexión Incompleta",
-        description: "Por favor, responde a todas las preguntas de reflexión para guardarla.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    const reflectionEntry = `
-      **Ejercicio: ${content.title}**
-
-      **¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?**
-      ${reflectionSituations}
-
-      **¿Qué hice en esos momentos?**
-      ${reflectionActions}
-
-      **¿Qué podría probar diferente la próxima vez?**
-      ${reflectionNextTime}
-    `;
-
-    addNotebookEntry({
-        title: `Reflexión: ${content.title}`,
-        content: reflectionEntry,
-        pathId: pathId,
-        userId: user?.id,
-    });
-
-    toast({
-      title: "Reflexión Guardada",
-      description: "Tu reflexión ha sido guardada en tu Cuaderno Terapéutico.",
-    });
-    
-    setIsReflectionSaved(true);
-  }
 
   const situationOptions = [
       { id: 'situation-hurtful-comment', label: 'Alguien me dijo algo que me dolió' },
@@ -331,10 +287,8 @@ ${reflections || 'Sin reflexión adicional.'}
               id="reflections"
               value={reflections}
               onChange={(e) => setReflections(e.target.value)}
-              placeholder="¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?
-¿Qué hice en esos momentos?
-¿Qué podría probar diferente la próxima vez?"
-              rows={5}
+              placeholder="¿Qué has descubierto sobre tus patrones de estrés?"
+              rows={3}
               disabled={isSaved}
             />
           </div>
@@ -372,5 +326,6 @@ ${reflections || 'Sin reflexión adicional.'}
     </Card>
   );
 }
+
 
     
