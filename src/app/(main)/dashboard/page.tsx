@@ -337,14 +337,16 @@ export default function DashboardPage() {
             cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
             iconColorClass="text-blue-600 dark:text-blue-400"
           />
-          <DashboardSummaryCard
-            title="Autorregistros esta Semana"
-            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'autorregistro' : 'autorregistros'}`}
-            description="¡Sigue así para conocerte mejor!"
-            icon={Activity}
-            cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
-            iconColorClass="text-yellow-600 dark:text-yellow-500"
-          />
+          <Link href="/emotional-log" className="block h-full">
+            <DashboardSummaryCard
+              title="Autorregistros esta Semana"
+              value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'autorregistro' : 'autorregistros'}`}
+              description="¡Sigue así para conocerte mejor!"
+              icon={Activity}
+              cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
+              iconColorClass="text-yellow-600 dark:text-yellow-500"
+            />
+          </Link>
         </div>
       </section>
 
