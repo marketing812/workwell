@@ -1,4 +1,5 @@
 
+
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -252,8 +253,8 @@ export const t = {
   inFocus: "Área Prioritaria",
   inFocusPlaceholder: "Autoconocimiento",
   inFocusDescription: "Tu principal área de enfoque según tu última evaluación.",
-  nextStep: "Registros esta Semana",
-  nextStepPlaceholder: "0 registros",
+  nextStep: "Autorregistros esta Semana",
+  nextStepPlaceholder: "0 autorregistros",
   nextStepDescription: "¡Sigue así para conocerte mejor!",
   emotionalRegistry: "Registro Emocional",
   registerEmotion: "Autorregistro",
@@ -324,7 +325,7 @@ export const t = {
   fullEmotionalHistoryTitle: "Historial Emocional Completo",
   backToDashboard: "Volver al Panel",
   myEvolutionFullHistoryDescription: "Evolución completa de tu estado de ánimo a lo largo del tiempo.",
-  allEmotionalEntriesTitle: "Todos los Registros Emocionales",
+  allEmotionalEntriesTitle: "Todos mis autorregistros",
   allEmotionalEntriesDescription: "Aquí puedes ver todas tus entradas emocionales ordenadas por fecha.",
   noEntriesYet: "Aún no tienes registros emocionales.",
 
