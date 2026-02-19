@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -338,7 +339,7 @@ export default function DashboardPage() {
           />
           <DashboardSummaryCard
             title="Autorregistros esta Semana"
-            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'registro' : 'registros'}`}
+            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'autorregistro' : 'autorregistros'}`}
             description="¡Sigue así para conocerte mejor!"
             icon={Activity}
             cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
