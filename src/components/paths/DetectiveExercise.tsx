@@ -53,15 +53,14 @@ export default function DetectiveExercise({ content, onComplete, pathId }: Detec
   const [isAnticipating, setIsAnticipating] = useState('');
   const [adviceToFriend, setAdviceToFriend] = useState('');
   const [alternativeThought, setAlternativeThought] = useState('');
+  const [reflection, setReflection] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
-  const [reflection, setReflection] = useState('');
-  const [isReflectionSaved, setIsReflectionSaved] = useState(false);
   const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-3-tecnica-1-detective-de-pensamientos.mp3`;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!situation || !automaticThought || !distortion || !emotion || !is100PercentTrue || !isAnticipating || !adviceToFriend || !alternativeThought) {
+    if (!situation || !automaticThought || !distortion || !emotion || !is100PercentTrue || !isAnticipating || !adviceToFriend || !alternativeThought || !reflection) {
       toast({
         title: "Campos Incompletos",
         description: "Por favor, completa todos los pasos del ejercicio.",
@@ -92,6 +91,9 @@ ${emotion}
 
 **6. Pensamiento alternativo: ¿Cómo puedes reformularlo?**
 "${alternativeThought}"
+
+**7. Reflexión final:**
+${reflection}
 `;
 
     addNotebookEntry({
@@ -125,7 +127,6 @@ ${emotion}
       title: "Reflexión Guardada",
       description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico.",
     });
-    setIsReflectionSaved(true);
   };
 
   return (
@@ -160,7 +161,7 @@ ${emotion}
             <Label htmlFor="distortion" className="font-semibold">3. Distorsión cognitiva: ¿Reconoces algún filtro mental?</Label>
             <Select value={distortion} onValueChange={setDistortion} disabled={isSaved}>
               <SelectTrigger id="distortion"><SelectValue placeholder="Elige la distorsión principal" /></SelectTrigger>
-              <SelectContent>
+              <SelectContent className="max-w-[90vw] lg:max-w-lg">
                 {cognitiveDistortions.map(d => (
                   <SelectItem key={d.value} value={d.label}>
                     <div className="flex flex-col text-left py-1">
@@ -204,6 +205,12 @@ ${emotion}
             <Textarea id="alternativeThought" value={alternativeThought} onChange={e => setAlternativeThought(e.target.value)} placeholder="Escribe una versión más realista, flexible y amable." disabled={isSaved} />
           </div>
 
+          <div className="space-y-2 pt-4 border-t">
+            <Label htmlFor="reflection" className="font-semibold">Reflexión final (en el cuaderno terapéutico)</Label>
+            <p className="text-sm text-muted-foreground">¿Qué aprendí al observar mis pensamientos desde fuera? ¿Qué distorsiones repito más? ¿Qué noto cuando me hablo con más comprensión?</p>
+            <Textarea id="reflection" value={reflection} onChange={e => setReflection(e.target.value)} placeholder="Escribe aquí tu reflexión..." disabled={isSaved} />
+          </div>
+
           {!isSaved ? (
              <Button type="submit" className="w-full">
                 <Save className="mr-2 h-4 w-4" /> Guardar Ejercicio
@@ -216,35 +223,6 @@ ${emotion}
           )}
         </form>
 
-        {isSaved && (
-          <form onSubmit={handleSaveReflection} className="mt-8 pt-6 border-t">
-            <h4 className="font-semibold text-md text-primary mb-4 flex items-center">
-              <NotebookText className="mr-2 h-5 w-5" />
-              Reflexión Final (Para el Cuaderno Terapéutico)
-            </h4>
-            <div className="space-y-2">
-               <Label htmlFor="reflection-notebook" className="font-normal text-sm">¿Qué aprendí al observar mis pensamientos desde fuera? ¿Qué distorsiones repito más? ¿Qué noto cuando me hablo con más comprensión?</Label>
-               <Textarea
-                id="reflection-notebook"
-                value={reflection}
-                onChange={e => setReflection(e.target.value)}
-                placeholder="Escribe tu reflexión aquí..."
-                rows={4}
-                disabled={isReflectionSaved}
-               />
-            </div>
-             {!isReflectionSaved ? (
-              <Button type="submit" className="w-full mt-4">
-                  <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
-              </Button>
-            ) : (
-              <div className="mt-4 flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  <p className="font-medium">Tu reflexión ha sido guardada.</p>
-              </div>
-            )}
-          </form>
-        )}
       </CardContent>
     </Card>
   );
