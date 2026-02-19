@@ -1,3 +1,4 @@
+
 import type { Path } from '@/data/paths/pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -116,7 +117,7 @@ export const stressManagementPath: Path = {
             ]
         },
         { type: 'quote', text: 'Tu cuerpo no está en tu contra. Te está hablando. La clave está en aprender a escucharlo con compasión.' },
-        { type: 'title', text: 'Técnicas Específicas' },
+        { type: 'title', text: 'Técnicas Específicas'},
         {
           type: 'stressMapExercise',
           title: 'Ejercicio 1: Mapa del Estrés Personal',
@@ -124,55 +125,61 @@ export const stressManagementPath: Path = {
           duration: '5 a 10 minutos',
         },
         {
-          type: 'paragraph',
-          text: 'Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.\n\nUn estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.\n\nEntender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.\n\nY aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.\n\nEste ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.',
-        },
-        {
           type: 'collapsible',
-          title: '¿Qué es un estresor y qué es el estrés?',
-          content: [
-            { type: 'paragraph', text: 'El estresor es el desencadenante, eso que genera presión o malestar. Puede ser algo externo (como una crítica, una discusión, una fecha límite) o interno (como un pensamiento, un recuerdo o una sensación física).\n\nEl estrés es cómo lo vives: tensión, ansiedad, insomnio, pensamientos acelerados, bloqueos, irritabilidad...' },
-          ],
-        },
-        {
-          type: 'collapsible',
-          title: '¿Es externo o interno lo que te estresa?',
-          content: [
-            { type: 'paragraph', text: 'Muchos estresores son visibles: una carga laboral, una discusión, una demanda del entorno. Pero otras veces el origen está dentro: tus creencias, tus expectativas, tu historia emocional.' },
-            { type: 'paragraph', text: 'Ejemplos de estresores externos:' },
-            { type: 'list', items: ['Cargas laborales excesivas', 'Críticas o conflictos', 'Cambios inesperados', 'Ruido, interrupciones, caos'] },
-            { type: 'paragraph', text: 'Ejemplos de estresores internos:' },
-            { type: 'list', items: ['"Tengo que hacerlo perfecto"', '"Seguro que se enfadó conmigo"', '"No puedo fallar"', 'Recuerdos dolorosos', 'Sensaciones físicas malinterpretadas (como palpitaciones que generan miedo)'] },
-            { type: 'paragraph', text: 'Saber si lo que te activa es externo, interno o una mezcla te da poder. No puedes controlar todo lo que pasa fuera, pero sí puedes transformar cómo lo interpretas y cómo lo enfrentas.' },
-          ],
-        },
-        {
-          type: 'collapsible',
-          title: '¿Estás reaccionando o estás respondiendo?',
-          content: [
-            { type: 'paragraph', text: 'Una reacción es rápida, impulsiva, automática. Viene del miedo o del cansancio. No hay espacio entre lo que pasa y lo que haces.\n\nUna respuesta es consciente. Dejas un pequeño espacio entre el estímulo y tu decisión. Ese espacio es libertad. Por ejemplo: alguien te grita → tú sientes el impulso de gritar → respiras → eliges responder con firmeza, pero sin perder el control.' },
-          ],
-        },
-        {
-          type: 'collapsible',
-          title: '¿Por qué es importante esta diferencia?',
-          content: [
-            { type: 'paragraph', text: 'Porque no puedes controlar todo lo que ocurre, pero sí puedes aprender a regular lo que ocurre dentro de ti.\n\nCuando entiendes qué te estresa y de dónde viene, puedes:' },
-            { type: 'list', items: ['Elegir tus batallas', 'Cuestionar tus pensamientos automáticos', 'Regular tu cuerpo', 'Pedir ayuda cuando lo necesites', 'Poner límites sin culpa', 'Cuidarte con amabilidad'] },
-          ],
-        },
-        {
-          type: 'collapsible',
-          title: 'Un recordatorio para ti',
-          content: [
-            { type: 'paragraph', text: 'No todo lo que duele es una amenaza. No todo lo que piensas es verdad. Y no todo lo que sientes necesita una reacción inmediata.' },
-          ],
-        },
-        {
-          type: 'triggerExercise',
           title: 'Ejercicio 2: Identifica tu disparador',
-          objective: 'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en modo automático.',
-          duration: '5 a 8 minutos',
+          content: [
+            {
+              type: 'paragraph',
+              text: 'Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.\n\nUn estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.\n\nEntender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.\n\nY aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.\n\nEste ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.'
+            },
+            {
+              type: 'collapsible',
+              title: '¿Qué es un estresor y qué es el estrés?',
+              content: [
+                { type: 'paragraph', text: 'El estresor es el desencadenante, eso que genera presión o malestar. Puede ser algo externo (como una crítica, una discusión, una fecha límite) o interno (como un pensamiento, un recuerdo o una sensación física).\n\nEl estrés es cómo lo vives: tensión, ansiedad, insomnio, pensamientos acelerados, bloqueos, irritabilidad...' }
+              ]
+            },
+            {
+                type: 'collapsible',
+                title: '¿Es externo o interno lo que te estresa?',
+                content: [
+                    { type: 'paragraph', text: 'Muchos estresores son visibles: una carga laboral, una discusión, una demanda del entorno. Pero otras veces el origen está dentro: tus creencias, tus expectativas, tu historia emocional.' },
+                    { type: 'paragraph', text: 'Ejemplos de estresores externos:' },
+                    { type: 'list', items: ['Cargas laborales excesivas', 'Críticas o conflictos', 'Cambios inesperados', 'Ruido, interrupciones, caos'] },
+                    { type: 'paragraph', text: 'Ejemplos de estresores internos:' },
+                    { type: 'list', items: ['"Tengo que hacerlo perfecto"', '"Seguro que se enfadó conmigo"', '"No puedo fallar"', 'Recuerdos dolorosos', 'Sensaciones físicas malinterpretadas (como palpitaciones que generan miedo)'] },
+                    { type: 'paragraph', text: 'Saber si lo que te activa es externo, interno o una mezcla te da poder. No puedes controlar todo lo que pasa fuera, pero sí puedes transformar cómo lo interpretas y cómo lo enfrentas.' }
+                ]
+            },
+            {
+                type: 'collapsible',
+                title: '¿Estás reaccionando o estás respondiendo?',
+                content: [
+                    { type: 'paragraph', text: 'Una reacción es rápida, impulsiva, automática. Viene del miedo o del cansancio. No hay espacio entre lo que pasa y lo que haces.\n\nUna respuesta es consciente. Dejas un pequeño espacio entre el estímulo y tu decisión. Ese espacio es libertad. Por ejemplo: alguien te grita → tú sientes el impulso de gritar → respiras → eliges responder con firmeza, pero sin perder el control.' }
+                ]
+            },
+            {
+                type: 'collapsible',
+                title: '¿Por qué es importante esta diferencia?',
+                content: [
+                    { type: 'paragraph', text: 'Porque no puedes controlar todo lo que ocurre, pero sí puedes aprender a regular lo que ocurre dentro de ti.\n\nCuando entiendes qué te estresa y de dónde viene, puedes:' },
+                    { type: 'list', items: ['Elegir tus batallas', 'Cuestionar tus pensamientos automáticos', 'Regular tu cuerpo', 'Pedir ayuda cuando lo necesites', 'Poner límites sin culpa', 'Cuidarte con amabilidad'] }
+                ]
+            },
+            {
+                type: 'collapsible',
+                title: 'Un recordatorio para ti',
+                content: [
+                    { type: 'paragraph', text: 'No todo lo que duele es una amenaza. No todo lo que piensas es verdad. Y no todo lo que sientes necesita una reacción inmediata.' }
+                ]
+            },
+            {
+              type: 'triggerExercise',
+              title: 'Inicio del ejercicio',
+              objective: 'Aprender a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en modo automático.',
+              duration: '5 a 8 minutos',
+            },
+          ]
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -197,12 +204,13 @@ export const stressManagementPath: Path = {
         }
       ]
     },
+    // ... rest of the file
     {
-        id: 'estres_sem2',
-        title: 'Semana 2: Activa tu Regulación Fisiológica',
-        type: 'skill_practice',
-        estimatedTime: '15-20 min',
-        content: [
+      id: 'estres_sem2',
+      title: 'Semana 2: Activa tu Regulación Fisiológica',
+      type: 'skill_practice',
+      estimatedTime: '15-20 min',
+      content: [
             {
                 type: 'paragraphWithAudio',
                 text: '¿Sabías que tu cuerpo también forma parte del proceso de autorregulación emocional? Bienvenida o bienvenido a la segunda sesión de esta ruta: “Activa tu regulación fisiológica”.   Esta semana vas a descubrir cómo tu cuerpo participa en la gestión del estrés. El objetivo es que empieces a conocer tu sistema nervioso, entiendas por qué se activa en ciertos momentos y aprendas a enviarle señales de seguridad. Vas a entrenar técnicas que te ayuden a decirle a tu cuerpo: “ya estás a salvo”.   Mientras escuchas este audio, piensa en algún momento reciente en que tu cuerpo te haya ayudado a calmarte sin proponértelo.   En el siguiente audio te explicaré por qué esto no es casualidad.',
@@ -389,7 +397,7 @@ export const stressManagementPath: Path = {
                               '“Deberías” rígidos: Imponerse normas estrictas que generan culpa o presión. Ejemplo: “Debería poder con todo sin quejarme.”',
                               'Minimizar lo positivo / Maximizar lo negativo: Restar valor a los logros y agrandar los errores. Ejemplo: “Sí, me felicitaron, pero seguro fue por compromiso.”',
                               'Perfeccionismo: Necesidad de cumplir con estándares imposibles. Ejemplo: “Si no es perfecto, no vale la pena.”',
-                              'Comparación negativa: Compararte solo con lo que te falta respecto a otros. Ejemplo: “Ella gana más que yo, así que soy un fracaso.”',
+                              'Comparación negativa: Compararte solo con lo que te falta respecto a otros. Ejemplo: “Ella gana más que yo, entonces soy un fracaso.”',
                               'Falacia del control: Creer que todo depende de ti o que no tienes control en absoluto. Ejemplo: “Si mi hijo no está bien, es culpa mía.”',
                               'Exageración de la responsabilidad: Sentirse culpable de todo lo que ocurre, incluso sin pruebas. Ejemplo: “Si algo sale mal, será por mi culpa.”',
               'Distorsión del tiempo: Creer que lo que vives ahora será así para siempre. Ejemplo: “Nunca voy a salir de esto.”',
@@ -559,5 +567,3 @@ export const stressManagementPath: Path = {
     }
   ],
 };
-
-    

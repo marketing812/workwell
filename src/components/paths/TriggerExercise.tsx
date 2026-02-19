@@ -104,7 +104,7 @@ ${triggerSource}
 **7. Mi respuesta o acción posterior:**
 ${finalCoping}
 
-**8. Reflexión final:**
+**8. Reflexión final del ejercicio:**
 ${reflections || 'Sin reflexión adicional.'}
 `;
     
@@ -184,6 +184,14 @@ ${reflections || 'Sin reflexión adicional.'}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         {content.objective && <CardDescription>{content.objective}</CardDescription>}
         {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
+        {audioUrl && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={audioUrl} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -318,7 +326,7 @@ ${reflections || 'Sin reflexión adicional.'}
           </div>
           
           <div>
-            <Label htmlFor="reflections" className="font-semibold">Reflexión final del ejercicio</Label>
+            <Label htmlFor="reflections" className="font-semibold">8. Reflexión final del ejercicio</Label>
             <Textarea
               id="reflections"
               value={reflections}
@@ -360,62 +368,6 @@ ${reflections || 'Sin reflexión adicional.'}
             </div>
           )}
         </form>
-
-        {isSaved && (
-          <form onSubmit={handleSaveReflection} className="mt-8 pt-6 border-t">
-            <h4 className="font-semibold text-md text-primary mb-4 flex items-center">
-              <NotebookText className="mr-2 h-5 w-5" />
-              Reflexión Final (Para el Cuaderno Terapéutico)
-            </h4>
-            <div className="space-y-4">
-               <div>
-                  <Label htmlFor="reflection-situations" className="font-semibold text-sm">¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?</Label>
-                  <Textarea 
-                    id="reflection-situations"
-                    value={reflectionSituations}
-                    onChange={e => setReflectionSituations(e.target.value)}
-                    placeholder="Escribe aquí tu reflexión..."
-                    rows={3}
-                    disabled={isReflectionSaved}
-                  />
-               </div>
-               <div>
-                  <Label htmlFor="reflection-actions" className="font-semibold text-sm">¿Qué hice en esos momentos?</Label>
-                   <Textarea 
-                    id="reflection-actions"
-                    value={reflectionActions}
-                    onChange={e => setReflectionActions(e.target.value)}
-                    placeholder="Escribe aquí tu reflexión..."
-                    rows={3}
-                    disabled={isReflectionSaved}
-                  />
-               </div>
-                <div>
-                  <Label htmlFor="reflection-next-time" className="font-semibold text-sm">¿Qué podría probar diferente la próxima vez?</Label>
-                   <Textarea 
-                    id="reflection-next-time"
-                    value={reflectionNextTime}
-                    onChange={e => setReflectionNextTime(e.target.value)}
-                    placeholder="Escribe aquí tu reflexión..."
-                    rows={3}
-                    disabled={isReflectionSaved}
-                  />
-               </div>
-            </div>
-
-            {!isReflectionSaved ? (
-              <Button type="submit" className="w-full mt-4">
-                  <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
-              </Button>
-            ) : (
-              <div className="mt-4 flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  <p className="font-medium">Tu reflexión ha sido guardada.</p>
-              </div>
-            )}
-          </form>
-        )}
-
       </CardContent>
     </Card>
   );
