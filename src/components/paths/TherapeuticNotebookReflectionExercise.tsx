@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -91,7 +92,7 @@ ${reflection}
           </div>
         )}
          <CardDescription asChild>
-           <div className="prose prose-sm dark:prose-invert max-w-none pt-2" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
+           <div className="prose dark:prose-invert max-w-none pt-2" dangerouslySetInnerHTML={{ __html: content.prompts.join('') }} />
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -124,3 +125,5 @@ ${reflection}
     </Card>
   );
 }
+
+    
