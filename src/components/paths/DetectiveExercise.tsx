@@ -23,15 +23,21 @@ interface DetectiveExerciseProps {
 }
 
 const cognitiveDistortions = [
-    { value: 'catastrophism', label: 'Catastrofismo' },
-    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
-    { value: 'overgeneralization', label: 'Sobregeneralización' },
-    { value: 'personalization', label: 'Personalización' },
-    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
-    { value: 'selective_abstraction', label: 'Abstracción selectiva' },
-    { value: 'emotional_reasoning', label: 'Razonamiento emocional' },
-    { value: 'should_statements', label: '“Deberías” rígidos' },
-    { value: 'magnification_minimization', label: 'Maximizar lo negativo / Minimizar lo positivo' },
+    { value: 'catastrophism', label: 'Catastrofismo', description: 'Ver las situaciones como si el peor desenlace fuera inevitable o insoportable. Ejemplo: “Si fallo esta presentación, será un desastre total y arruinaré mi carrera.”' },
+    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)', description: 'Ver las cosas en extremos (todo-nada, siempre-nunca, bien-mal, ...) sin matices. Todo es perfecto o un fracaso. Ejemplo: “Si no hago todo bien, entonces soy una inútil.”' },
+    { value: 'overgeneralization', label: 'Sobregeneralización', description: 'Sacar conclusiones generales a partir de un solo hecho negativo. Ejemplo: “Me equivoqué en esto, siempre lo hago mal.”' },
+    { value: 'personalization', label: 'Personalización', description: 'Creer que todo lo que ocurre está relacionado contigo, incluso sin evidencia. Ejemplo: “Seguro que están serios porque yo hice algo mal.”' },
+    { value: 'mind_reading', label: 'Inferencia arbitraria / Saltar a conclusiones', description: 'Sacar conclusiones negativas sin pruebas claras. Hay dos tipos: la Adivinación del Pensamiento de los demás y la Adivinación del Futuro. Ejemplo: “No me contestó el mensaje, seguro que está molesto conmigo”, “No me lo voy a pasar bien en la cena, asi que no voy a ir”.' },
+    { value: 'selective_abstraction', label: 'Abstracción selectiva', description: 'Fijarse solo en lo negativo, ignorando el resto de los acontecimientos y hechos de la experiencia. Ejemplo: “Todo salió mal porque me equivoqué en una palabra”, aunque el resto de la reunión fue bien.' },
+    { value: 'emotional_reasoning', label: 'Razonamiento emocional', description: 'Creer que algo es cierto solo porque lo sientes intensamente. Ejemplo: “Me siento insegura, así que debo ser incompetente.”' },
+    { value: 'should_statements', label: '“Deberías” rígidos', description: 'Imponerse reglas a uno mismo o a los demás, absolutas y exigentes que generan culpa o presión. Ejemplo: “Debería estar siempre tranquila”, “No debería fallar nunca.”' },
+    { value: 'magnification_minimization', label: 'Minimizar lo positivo y Maximizar lo negativo', description: 'Rechazar o minimizar cualquier logro o aspecto positivo y maximizar cualquier error o aspecto negativo. Ejemplo: “Sí, me felicitaron… pero seguro fue por compromiso”, “Mi pareja me señala un error...soy lo peor, es imperdonable”.' },
+    { value: 'perfectionism', label: 'Perfeccionismo', description: 'Necesidad de cumplir estándares imposiblemente altos, sin permitir errores. Ejemplo: “Si no lo hago todo perfecto, no vale la pena.”' },
+    { value: 'approval_dependency', label: 'Valía personal dependiente de la aprobación', description: 'Sentir que tu valor depende de lo que piensan los demás. Ejemplo: “Si no me valoran en el trabajo, entonces no valgo nada.”' },
+    { value: 'negative_comparison', label: 'Comparación negativa', description: 'Compararse con otros en lo que uno cree que falla, sin ver el conjunto. Ejemplo: “Ella tiene más éxito que yo (porque tiene un salario más alto), entonces soy un fracaso.”' },
+    { value: 'responsibility_exaggeration', label: 'Exageración de la responsabilidad', description: 'Asumir que todo depende de ti, incluso cuando no está en tus manos. Ejemplo: “Si el grupo falla, será por mi culpa.”' },
+    { value: 'time_distortion', label: 'Distorsión del tiempo', description: 'Pensar que lo que sientes o vives ahora durará para siempre. Ejemplo: “Nunca voy a salir de esto.”' },
+    { value: 'negative_attentional_tunnel', label: 'Túnel atencional negativo', description: 'Enfocarse solo en los peligros o en lo que falta, y no ver lo que sí está bien. Ejemplo: “Hoy ha sido horrible porque tuve una discusión”, ignorando que el resto del día fue tranquilo.' }
 ];
 
 export default function DetectiveExercise({ content, onComplete, pathId }: DetectiveExerciseProps) {
@@ -155,7 +161,14 @@ ${emotion}
             <Select value={distortion} onValueChange={setDistortion} disabled={isSaved}>
               <SelectTrigger id="distortion"><SelectValue placeholder="Elige la distorsión principal" /></SelectTrigger>
               <SelectContent>
-                {cognitiveDistortions.map(d => <SelectItem key={d.value} value={d.value}>{d.label}</SelectItem>)}
+                {cognitiveDistortions.map(d => (
+                  <SelectItem key={d.value} value={d.label}>
+                    <div className="flex flex-col text-left py-1">
+                      <span className="font-semibold">{d.label}</span>
+                      <span className="text-xs text-muted-foreground whitespace-normal">{d.description}</span>
+                    </div>
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
