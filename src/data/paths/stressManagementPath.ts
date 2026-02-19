@@ -15,14 +15,14 @@ export const stressManagementPath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { 
-            type: 'paragraphWithAudio', 
-            text: 'Esta semana vas a descubrir qué es realmente el estrés, por qué no es tu enemigo y cómo se manifiesta en ti. El objetivo es que empieces a escucharlo sin miedo y comprendas que es una señal valiosa: algo en tu vida necesita atención, cuidado o un cambio.',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/INTROSEMANA1.mp3`
+        {
+          type: 'paragraphWithAudio',
+          text: 'Esta semana vas a descubrir qué es realmente el estrés, por qué no es tu enemigo y cómo se manifiesta en ti. El objetivo es que empieces a escucharlo sin miedo y comprendas que es una señal valiosa: algo en tu vida necesita atención, cuidado o un cambio.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/INTROSEMANA1.mp3`
         },
-        { 
-            type: 'title', 
-            text: 'Psicoeducación'
+        {
+          type: 'title',
+          text: 'Psicoeducación'
         },
         {
           type: 'collapsible',
@@ -34,90 +34,96 @@ export const stressManagementPath: Path = {
           ]
         },
         {
-            type: 'collapsible',
-            title: 'No todas las personas viven el estrés igual',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Comovivestuelestres.mp3`,
-            content: [
-              { type: 'paragraph', text: 'Lo que para una persona puede ser un reto motivador, para otra puede ser una amenaza angustiante. Esto depende de nuestras experiencias, nuestra forma de pensar y nuestra manera de ver el mundo. Si llevas unas “gafas” mentales teñidas por la autoexigencia, la anticipación del fracaso o el miedo a decepcionar, es más fácil que sientas muchas situaciones como amenazantes.\nPor eso es tan importante empezar por entender cómo funciona el estrés en ti.' },
-            ],
+          type: 'collapsible',
+          title: 'No todas las personas viven el estrés igual',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Comovivestuelestres.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Lo que para una persona puede ser un reto motivador, para otra puede ser una amenaza angustiante. Esto depende de nuestras experiencias, nuestra forma de pensar y nuestra manera de ver el mundo. Si llevas unas “gafas” mentales teñidas por la autoexigencia, la anticipación del fracaso o el miedo a decepcionar, es más fácil que sientas muchas situaciones como amenazantes.\nPor eso es tan importante empezar por entender cómo funciona el estrés en ti.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: 'Tipos de estrés',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Tiposdeestres.mp3`,
-            content: [
-                { type: 'list', items: [
-                    'Estrés agudo: aparece de forma puntual, como antes de un examen o tras una discusión. Puede ser útil si te moviliza.',
-                    'Estrés crónico: se mantiene en el tiempo y agota tus recursos, como cuando lidias con una carga laboral constante o preocupaciones familiares continuas.',
-                    'Eustrés: es el “estrés bueno”, el que te activa y motiva, como antes de una entrevista importante.',
-                    'Distrés: es el que te desborda, te bloquea o te enferma.',
-                ]},
-                { type: 'paragraph', text: 'No todo el estrés es negativo. Lo que marca la diferencia es la duración, la intensidad y la sensación de control que tienes sobre lo que ocurre.'}
-            ],
+          type: 'collapsible',
+          title: 'Tipos de estrés',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Tiposdeestres.mp3`,
+          content: [
+            {
+              type: 'list', items: [
+                'Estrés agudo: aparece de forma puntual, como antes de un examen o tras una discusión. Puede ser útil si te moviliza.',
+                'Estrés crónico: se mantiene en el tiempo y agota tus recursos, como cuando lidias con una carga laboral constante o preocupaciones familiares continuas.',
+                'Eustrés: es el “estrés bueno”, el que te activa y motiva, como antes de una entrevista importante.',
+                'Distrés: es el que te desborda, te bloquea o te enferma.',
+              ]
+            },
+            { type: 'paragraph', text: 'No todo el estrés es negativo. Lo que marca la diferencia es la duración, la intensidad y la sensación de control que tienes sobre lo que ocurre.' }
+          ],
         },
         {
-            type: 'collapsible',
-            title: '¿Por qué sentimos estrés?',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Porquesentimosestres.mp3`,
-            content: [
-              { type: 'paragraph', text: 'El estrés no depende solo de lo que pasa fuera, sino de cómo lo interpretas y con qué recursos cuentas para enfrentarlo.\nAlgunos factores que influyen:' },
-              { type: 'list', items: [
-                  'Tu estilo de pensamiento: Si sueles exigirte mucho, anticipar lo peor o pensar que todo depende de ti, es más fácil que actives la respuesta de estrés.',
-                  'Tu historia personal: Si creciste con mucha inseguridad, crítica o miedo, es posible que tu sistema nervioso sea más sensible.',
-                  'Tu tolerancia a la incertidumbre: Las personas que necesitan tenerlo todo bajo control suelen sufrir más ante lo imprevisible.',
-                  'Tus recursos y límites: Si sueles decir que sí a todo, cargas con más de lo que puedes sostener o te olvidas de ti para cuidar a los demás, es normal que tu cuerpo acabe agotado.'
-              ]}
-            ]
+          type: 'collapsible',
+          title: '¿Por qué sentimos estrés?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Porquesentimosestres.mp3`,
+          content: [
+            { type: 'paragraph', text: 'El estrés no depende solo de lo que pasa fuera, sino de cómo lo interpretas y con qué recursos cuentas para enfrentarlo.\nAlgunos factores que influyen:' },
+            {
+              type: 'list', items: [
+                'Tu estilo de pensamiento: Si sueles exigirte mucho, anticipar lo peor o pensar que todo depende de ti, es más fácil que actives la respuesta de estrés.',
+                'Tu historia personal: Si creciste con mucha inseguridad, crítica o miedo, es posible que tu sistema nervioso sea más sensible.',
+                'Tu tolerancia a la incertidumbre: Las personas que necesitan tenerlo todo bajo control suelen sufrir más ante lo imprevisible.',
+                'Tus recursos y límites: Si sueles decir que sí a todo, cargas con más de lo que puedes sostener o te olvidas de ti para cuidar a los demás, es normal que tu cuerpo acabe agotado.'
+              ]
+            }
+          ]
         },
         {
-            type: 'collapsible',
-            title: '¿Qué pasa si no lo gestionamos?',
-            audioUrl:
-            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Quepasasinologestionamos.mp3`,
-            content: [
-              { type: 'paragraph', text: 'El estrés mantenido afecta a todos los niveles:' },
-              { type: 'list', items: [
+          type: 'collapsible',
+          title: '¿Qué pasa si no lo gestionamos?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Quepasasinologestionamos.mp3`,
+          content: [
+            { type: 'paragraph', text: 'El estrés mantenido afecta a todos los niveles:' },
+            {
+              type: 'list', items: [
                 'Físico: dolores musculares, problemas digestivos, alteraciones hormonales, insomnio.',
                 'Emocional: ansiedad, tristeza, irritabilidad, desconexión emocional.',
                 'Mental: dificultad para concentrarte, rumiaciones constantes, visión negativa de ti o del futuro.',
                 'Relacional y conductual: conflictos, aislamiento, impulsividad, pérdida de hábitos saludables.',
-              ]}
-            ]
+              ]
+            }
+          ]
         },
         {
-            type: 'collapsible',
-            title: 'Tus “mínimos no negociables”',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Tusminimosnonegociables.mp3`,
-            content: [
-              { type: 'paragraph', text: 'Cuando el estrés aparece, lo primero que solemos dejar de lado son las cosas que más nos sostienen: dormir bien, comer con calma, mover el cuerpo, hablar con alguien que nos escucha.\nEstas pequeñas acciones no son lujos, son necesidades básicas. Las llamamos “mínimos no negociables” porque son el suelo emocional sobre el que puedes caminar cada día. Si los abandonas, el estrés encuentra terreno fértil para crecer.\nDormir entre 7 y 8 horas, moverte al menos 15 minutos al día, comer con conciencia, tener pausas reales de desconexión y mantener vínculos afectivos de calidad… son tu mejor red de protección.' },
-            ],
+          type: 'collapsible',
+          title: 'Tus “mínimos no negociables”',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Tusminimosnonegociables.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Cuando el estrés aparece, lo primero que solemos dejar de lado son las cosas que más nos sostienen: dormir bien, comer con calma, mover el cuerpo, hablar con alguien que nos escucha.\nEstas pequeñas acciones no son lujos, son necesidades básicas. Las llamamos “mínimos no negociables” porque son el suelo emocional sobre el que puedes caminar cada día. Si los abandonas, el estrés encuentra terreno fértil para crecer.\nDormir entre 7 y 8 horas, moverte al menos 15 minutos al día, comer con conciencia, tener pausas reales de desconexión y mantener vínculos afectivos de calidad… son tu mejor red de protección.' },
+          ],
         },
         {
-            type: 'collapsible',
-            title: '¿Cómo saber si el estrés te está sobrepasando?',
-            audioUrl:
-            `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Comosabersielestresteestasobrepasando.mp3`,
-            content: [
-              { type: 'paragraph', text: 'A veces el cuerpo lo sabe antes que tú:' },
-              { type: 'list', items: [
+          type: 'collapsible',
+          title: '¿Cómo saber si el estrés te está sobrepasando?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Comosabersielestresteestasobrepasando.mp3`,
+          content: [
+            { type: 'paragraph', text: 'A veces el cuerpo lo sabe antes que tú:' },
+            {
+              type: 'list', items: [
                 '¿Te cuesta dormir o te despiertas cansado/a?',
                 '¿Tienes tensión constante en el cuello, la espalda o la mandíbula?',
                 '¿Te irritas con facilidad o sientes que “todo te da igual”?',
                 '¿Comes, trabajas o ves pantallas de forma compulsiva para desconectarte?'
-              ]},
-              { type: 'paragraph', text: 'La buena noticia es que el primer paso no es hacer nada, sino darte cuenta. Observar. Ponerle nombre. Escucharte sin juicio. Eso ya empieza a transformarte.' }
-            ]
+              ]
+            },
+            { type: 'paragraph', text: 'La buena noticia es que el primer paso no es hacer nada, sino darte cuenta. Observar. Ponerle nombre. Escucharte sin juicio. Eso ya empieza a transformarte.' }
+          ]
         },
         {
-            type: 'collapsible',
-            title: 'El estrés como brújula',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Elestrescomobrujulaycierredelapsicoeducacion.mp3`,
-            content: [
-              { type: 'paragraph', text: 'El estrés no es una señal de que estés rota o roto. Es una brújula que te está mostrando que algo en tu vida necesita atención, cambio o cuidado.\nIgnorarlo o luchar contra él solo lo hace más fuerte. Aprender a escucharlo con curiosidad y compasión es el verdadero camino hacia la calma.\nVer el estrés con conciencia no significa eliminarlo, sino recuperar el poder sobre tu vida. Y ese poder empieza aquí, ahora, con tu decisión de mirar hacia dentro con valentía.' }
-            ]
+          type: 'collapsible',
+          title: 'El estrés como brújula',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/Elestrescomobrujulaycierredelapsicoeducacion.mp3`,
+          content: [
+            { type: 'paragraph', text: 'El estrés no es una señal de que estés rota o roto. Es una brújula que te está mostrando que algo en tu vida necesita atención, cambio o cuidado.\nIgnorarlo o luchar contra él solo lo hace más fuerte. Aprender a escucharlo con curiosidad y compasión es el verdadero camino hacia la calma.\nVer el estrés con conciencia no significa eliminarlo, sino recuperar el poder sobre tu vida. Y ese poder empieza aquí, ahora, con tu decisión de mirar hacia dentro con valentía.' }
+          ]
         },
         { type: 'quote', text: 'Tu cuerpo no está en tu contra. Te está hablando. La clave está en aprender a escucharlo con compasión.' },
-        { type: 'title', text: 'Técnicas Específicas'},
+        { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'stressMapExercise',
           title: 'Ejercicio 1: Mapa del Estrés Personal',
@@ -125,11 +131,11 @@ export const stressManagementPath: Path = {
           duration: '5 a 10 minutos',
         },
         {
-            type: 'triggerExercise',
-            title: 'Ejercicio 2: Identifica tu disparador',
-            objective: 'Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.   Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.   Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.   Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.   Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo. ',
-            duration: '5 a 8 minutos',
-            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`
+          type: 'triggerExercise',
+          title: 'Ejercicio 2: Identifica tu disparador',
+          objective: 'Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control. Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta. Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti. Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad. Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo. ',
+          duration: '5 a 8 minutos',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`
         },
         {
           type: 'therapeuticNotebookReflection',
@@ -139,18 +145,18 @@ export const stressManagementPath: Path = {
             '<ul><li>¿Qué he aprendido sobre mí esta semana…</li><li>¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?</li><li>¿Qué hice en esos momentos?</li><li>¿Qué podría probar diferente la próxima vez?</li></ul>',
           ],
         },
-          { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/RESUMENYCIERRE.mp3`},
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/RESUMENYCIERRE.mp3` },
         {
-            type: 'list',
-            items: [
-                'El estrés es una respuesta natural del cuerpo, no un enemigo.',
-                'Cada persona vive el estrés de forma distinta, según sus pensamientos, historia y entorno.',
-                'Existen diferentes tipos de estrés: agudo, crónico, positivo (eustrés) y negativo (distrés).',
-                'El estrés prolongado puede afectar tu cuerpo, tus emociones, tu mente y tus relaciones.',
-                'Tus hábitos básicos (dormir, comer, moverte, conectar) son esenciales para regularte.',
-                'Observar qué te estresa y cómo reaccionas te ayuda a responder con mayor claridad.',
-                'Aprender a distinguir entre lo externo y lo interno te devuelve el poder sobre ti.',
-            ]
+          type: 'list',
+          items: [
+            'El estrés es una respuesta natural del cuerpo, no un enemigo.',
+            'Cada persona vive el estrés de forma distinta, según sus pensamientos, historia y entorno.',
+            'Existen diferentes tipos de estrés: agudo, crónico, positivo (eustrés) y negativo (distrés).',
+            'El estrés prolongado puede afectar tu cuerpo, tus emociones, tu mente y tus relaciones.',
+            'Tus hábitos básicos (dormir, comer, moverte, conectar) son esenciales para regularte.',
+            'Observar qué te estresa y cómo reaccionas te ayuda a responder con mayor claridad.',
+            'Aprender a distinguir entre lo externo y lo interno te devuelve el poder sobre ti.',
+          ]
         }
       ]
     },
@@ -160,71 +166,208 @@ export const stressManagementPath: Path = {
       type: 'skill_practice',
       estimatedTime: '15-20 min',
       content: [
+        {
+          type: 'paragraphWithAudio',
+          text: '¿Sabías que tu cuerpo también forma parte del proceso de autorregulación emocional? Bienvenida o bienvenido a la segunda sesión de esta ruta: “Activa tu regulación fisiológica”. Esta semana vas a descubrir cómo tu cuerpo participa en la gestión del estrés. El objetivo es que empieces a conocer tu sistema nervioso, entiendas por qué se activa en ciertos momentos y aprendas a enviarle señales de seguridad. Vas a entrenar técnicas que te ayuden a decirle a tu cuerpo: “ya estás a salvo”. Mientras escuchas este audio, piensa en algún momento reciente en que tu cuerpo te haya ayudado a calmarte sin proponértelo. En el siguiente audio te explicaré por qué esto no es casualidad.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/INTROSEMANA2.mp3`,
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3`,
+          content: [
+            { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.' },
             {
-                type: 'paragraphWithAudio',
-                text: '¿Sabías que tu cuerpo también forma parte del proceso de autorregulación emocional? Bienvenida o bienvenido a la segunda sesión de esta ruta: “Activa tu regulación fisiológica”.   Esta semana vas a descubrir cómo tu cuerpo participa en la gestión del estrés. El objetivo es que empieces a conocer tu sistema nervioso, entiendas por qué se activa en ciertos momentos y aprendas a enviarle señales de seguridad. Vas a entrenar técnicas que te ayuden a decirle a tu cuerpo: “ya estás a salvo”.   Mientras escuchas este audio, piensa en algún momento reciente en que tu cuerpo te haya ayudado a calmarte sin proponértelo.   En el siguiente audio te explicaré por qué esto no es casualidad.',
-                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/INTROSEMANA2.mp3`,
-            },
-            { type: 'title', text: 'Psicoeducación' },
-            {
-                type: 'collapsible',
-                title: 'No es solo una cuestión de pensar en positivo: El sistema nervioso autónomo',
-                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Tucuerpotambienregulatusemociones.mp3`,
-                content: [
-                    { type: 'paragraph', text: '¿Te ha pasado alguna vez que estás nervioso/a, con la cabeza llena de cosas, y de pronto respiras más lento o te estiras… y sientes que algo empieza a aflojarse por dentro?\nEso no es casualidad: es tu cuerpo haciendo su parte para ayudarte a recuperar la calma.\nY es que no solo la mente participa en la gestión del estrés. Tu cuerpo tiene un papel clave. Muchas veces, aunque tú quieras estar tranquilo/a, tu cuerpo reacciona como si estuvieras en medio de una emergencia.'},
-                    { 
-                        type: 'collapsible',
-                        title: 'Rama simpática: tu sistema de alarma',
-                        audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Ramasimpatica.mp3`,
-                        content: [{ type: 'paragraph', text: 'Esta es la parte que se enciende cuando algo se percibe como una amenaza. Y no hace falta que sea un peligro real. El cuerpo no distingue entre un león y un correo urgente: si tu sistema cree que algo puede salir mal, activa la alarma igual.\nEn ese momento, tu corazón se acelerada, respiras más rápido, tus músculos se tensan… Es tu cuerpo preparándose para “luchar o huir”. A corto plazo, esta reacción puede ayudarte a resolver un problema. Pero si se mantiene encendida mucho tiempo, te agota, te desconecta y puede dejar encendida la ansiedad.' }]
-                    },
-                    { 
-                        type: 'collapsible',
-                        title: 'Rama parasimpática: tu sistema de descanso y seguridad',
-                        audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Ramaparasimpatica.mp3`,
-                        content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n- Tu respiración se vuelve más lenta.\n- Tus músculos se relajan.\n- Se reduce la tensión.\n- Tu cuerpo recupera energía.\n- Se activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
-                    },
-                ]
+              type: 'collapsible',
+              title: 'Rama simpática: tu sistema de alarma',
+              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Ramasimpatica.mp3`,
+              content: [{ type: 'paragraph', text: 'Esta es la parte que se enciende cuando algo se percibe como una amenaza. Y no hace falta que sea un peligro real. El cuerpo no distingue entre un león y un correo urgente: si tu sistema cree que algo puede salir mal, activa la alarma igual.\nEn ese momento, tu corazón se acelerada, respiras más rápido, tus músculos se tensan… Es tu cuerpo preparándose para “luchar o huir”. A corto plazo, esta reacción puede ayudarte a resolver un problema. Pero si se mantiene encendida mucho tiempo, te agota, te desconecta y puede dejar encendida la ansiedad.' }]
             },
             {
-                type: 'collapsible',
-                title: 'Tu detector interno de seguridad',
-                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/TudetectorinternodeseguridadylaTeoriaPolivagal.mp3`,
-                content: [
-                    { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\nEste sistema se activa por cosas muy sutiles, como:\n- Una mirada que percibes como crítica.\n- Un tono de voz tenso.\n- Un ambiente impredecible.\n- Un recuerdo que se activa sin querer.\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
-                    { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\n1. Conexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\n2. Lucha o huida: tu cuerpo se activa para defenderse.\n3. Colapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
-                ]
+              type: 'collapsible',
+              title: 'Rama parasimpática: tu sistema de descanso y seguridad',
+              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Ramaparasimpatica.mp3`,
+              content: [{ type: 'paragraph', text: 'Esta es la parte que le dice al cuerpo: “Ya estás a salvo, puedes bajar la guardia”.\nCuando se activa:\n- Tu respiración se vuelve más lenta.\n- Tus músculos se relajan.\n- Se reduce la tensión.\n- Tu cuerpo recupera energía.\n- Se activa un estado de bienestar profundo.\nY lo más importante: tu mente también se aclara. Puedes pensar con más calma, decidir mejor y sentirte más conectado/a contigo.' }]
             },
-            {
-                type: 'collapsible',
-                title: '¿Qué genera seguridad?',
-                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Quegeneraseguridad.mp3`,
-                content: [
-                    { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\n- Tu respiración se regula sola.\n- Tu expresión facial se relaja.\n- Tu cuerpo se afloja.\n- Tu mente se siente más presente.\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
-                ]
-            },
-             {
-              type: 'therapeuticNotebookReflection',
-              title: 'Técnicas Específicas',
-              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3`,
-              prompts: [
-                  '<div class="prose dark:prose-invert max-w-none"><p class="mb-2">A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia. Cuando la ansiedad aparece, el cuerpo se activa como si hubiera un peligro real: corazón acelerado, respiración rápida, músculos tensos… Estas técnicas tienen un objetivo claro: enseñarle a tu cuerpo que puede volver a la calma y, al hacerlo, ayudar también a tu mente a relajarse. Al practicarlas de forma regular, estarás entrenando a tu sistema nervioso para que responda con más equilibrio, de modo que la ansiedad deje de sentirse como una ola que te arrastra y se convierta en una ola que sabes surfear. Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia. Te recomiendo practicarlas varias veces al día o en momentos de ansiedad elevada.</p><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Por qué estas técnicas funcionan?</summary><div class="pt-2 text-foreground/80"><p>Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Qué cambia cuando las practicas?</summary><div class="pt-2 text-foreground/80"><p><b>En tu cuerpo:</b></p><ul><li>Respiración más profunda y regular</li><li>Regulación del CO₂ (menos mareos o ahogo)</li><li>Reducción de tensión muscular</li><li>Sensaciones de alivio, calor o calma</li></ul><p class="mt-2"><b>En tu mente:</b></p><ul><li>Recuperas el control y vuelves al presente</li><li>Se interrumpe el bucle de pensamientos ansiosos</li><li>Refuerzas el autocuidado y la conexión contigo</li></ul><p class="mt-2">Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.</p></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Cuándo puedes usarlas?</summary><div class="pt-2 text-foreground/80"><p>Puedes usar estas técnicas:</p><ul><li>En el momento: si sientes ansiedad o bloqueo</li><li>Antes de una situación desafiante</li><li>Como rutina diaria para entrenar tu equilibrio</li></ul><p class="mt-2">Practicar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.</p></div></details><h4 class="font-bold mt-4 mb-2">Selección de técnicas</h4><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 1: Respiración 4–2–6 con gesto de autocuidado</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nCalmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda. \n\nCómo se hace: \n\nColoca una mano sobre el pecho y otra sobre el abdomen. \n\nInhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho). \n\nMantén el aire 2 segundos. \n\nExhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda. \n\nMantén un ritmo lento y constante, sin forzar. \n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_anclaje_sensorial_inmediato.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 3: Escaneo corporal sin juicio (body scan)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R_body_scan_breve.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 4: Relajación muscular progresiva (Jacobson)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 5: Técnicas de presión profunda y balanceo corporal</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R16balanceocorporal.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 6: Contacto frío breve (reset inmediato)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en:\n- Nuca\n- Muñecas\n- Parte interna de los brazos o mejillas\n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3" type="audio/mp3"></audio></div></details><hr class="my-4"/></div><p><b>Registro de experiencia personal:</b></p><p>¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:</p>'
-              ]
-          },
-             {
-                type: 'therapeuticNotebookReflection',
-                title: 'Reflexión Final de la Semana', 
-                audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`, 
-                prompts: [
-                    '<p>Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><br></p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
-                ]
-            },
-            { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/RESUMENYCIERRE.mp3`},
-            { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
-            { type: 'quote', text: 'Respirar con conciencia es el gesto más pequeño y poderoso que puedes hacer por ti.'}
-        ]
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Tu detector interno de seguridad',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/TudetectorinternodeseguridadylaTeoriaPolivagal.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Tu cuerpo tiene un sistema que está constantemente vigilando si estás en un entorno seguro o si hay algún riesgo. Se llama neurocepción, y funciona sin que tú te des cuenta.\nEste sistema se activa por cosas muy sutiles, como:\n- Una mirada que percibes como crítica.\n- Un tono de voz tenso.\n- Un ambiente impredecible.\n- Un recuerdo que se activa sin querer.\nY cuando detecta algo que “no cuadra”, activa el modo defensa: ansiedad, tensión, malestar.' },
+            { type: 'paragraph', text: 'Aquí entra en juego la Teoría Polivagal, desarrollada por el neurocientífico Stephen Porges. Esta teoría nos dice que no hay solo “estrés” o “calma”. El cuerpo tiene tres estados principales, como una escalera:\n1. Conexión y calma: puedes pensar con claridad, estar presente, sentirte a gusto.\n2. Lucha o huida: tu cuerpo se activa para defenderse.\n3. Colapso o desconexión: si el peligro se siente abrumador, el cuerpo se apaga. Aparece la sensación de bloqueo, vacío, desconexión o “no estar aquí”.\nMuchos síntomas de ansiedad, tristeza o confusión no son fallos tuyos: son respuestas de un cuerpo que intenta protegerte, a su manera.' },
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿Qué genera seguridad?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/Quegeneraseguridad.mp3`,
+          content: [
+            { type: 'paragraph', text: 'La seguridad no es solo un pensamiento. Es un estado que se siente en el cuerpo. Cuando te sientes en confianza:\n- Tu respiración se regula sola.\n- Tu expresión facial se relaja.\n- Tu cuerpo se afloja.\n- Tu mente se siente más presente.\nY eso puede pasar por estar con alguien que te escucha, envolverte en una manta suave o simplemente sentir que respiras sin tensión. Son pequeños gestos que le dicen a tu cuerpo: “Estás bien, puedes soltar”.' }
+          ]
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Técnicas Específicas',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3`,
+          prompts: [
+            '<div class="prose dark:prose-invert max-w-none"><p class="mb-2">A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia. Cuando la ansiedad aparece, el cuerpo se activa como si hubiera un peligro real: corazón acelerado, respiración rápida, músculos tensos… Estas técnicas tienen un objetivo claro: enseñarle a tu cuerpo que puede volver a la calma y, al hacerlo, ayudar también a tu mente a relajarse. Al practicarlas de forma regular, estarás entrenando a tu sistema nervioso para que responda con más equilibrio, de modo que la ansiedad deje de sentirse como una ola que te arrastra y se convierta en una ola que sabes surfear. Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia. Te recomiendo practicarlas varias veces al día o en momentos de ansiedad elevada.</p><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Por qué estas técnicas funcionan?</summary><div class="pt-2 text-foreground/80"><p>Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.</p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta1/extras/R1semana2porquesonimportantes.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Qué cambia cuando las practicas?</summary><div class="pt-2 text-foreground/80"><p><b>En tu cuerpo:</b></p><ul><li>Respiración más profunda y regular</li><li>Regulación del CO₂ (menos mareos o ahogo)</li><li>Reducción de tensión muscular</li><li>Sensaciones de alivio, calor o calma</li></ul><p class="mt-2"><b>En tu mente:</b></p><ul><li>Recuperas el control y vuelves al presente</li><li>Se interrumpe el bucle de pensamientos ansiosos</li><li>Refuerzas el autocuidado y la conexión contigo</li></ul><p class="mt-2">Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.</p></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">¿Cuándo puedes usarlas?</summary><div class="pt-2 text-foreground/80"><p>Puedes usar estas técnicas:</p><ul><li>En el momento: si sientes ansiedad o bloqueo</li><li>Antes de una situación desafiante</li><li>Como rutina diaria para entrenar tu equilibrio</li></ul><p class="mt-2">Practicar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.</p></div></details><h4 class="font-bold mt-4 mb-2">Selección de técnicas</h4><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 1: Respiración 4–2–6 con gesto de autocuidado</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nCalmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda. \n\nCómo se hace: \n\nColoca una mano sobre el pecho y otra sobre el abdomen. \n\nInhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho). \n\nMantén el aire 2 segundos. \n\nExhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda. \n\nMantén un ritmo lento y constante, sin forzar. \n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_respiracion_4-2-6.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1_anclaje_sensorial_inmediato.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 3: Escaneo corporal sin juicio (body scan)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R_body_scan_breve.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 4: Relajación muscular progresiva (Jacobson)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 5: Técnicas de presión profunda y balanceo corporal</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/rm/R16balanceocorporal.mp3" type="audio/mp3"></audio></div></details><details class="my-2 border-t pt-2"><summary class="font-semibold cursor-pointer">Técnica 6: Contacto frío breve (reset inmediato)</summary><div class="pt-2 text-foreground/80"><p class="whitespace-pre-line">Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en:\n- Nuca\n- Muñecas\n- Parte interna de los brazos o mejillas\n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). </p><audio controls controlsList="nodownload" class="w-full h-10 mt-2"><source src="https://workwellfut.com/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3" type="audio/mp3"></audio></div></details><hr class="my-4"/></div><p><b>Registro de experiencia personal:</b></p><p>¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:</p>'
+          ]
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`,
+          prompts: [
+            '<p>Tómate unos minutos para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><br></p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
+          ]
+        },
+        { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/RESUMENYCIERRE.mp3` },
+        { type: 'list', items: ['Tu cuerpo también forma parte de tu sistema de regulación emocional.', 'El sistema nervioso reacciona con alarma incluso ante estímulos cotidianos.', 'Puedes activar el sistema de calma mediante técnicas sencillas y efectivas.', 'La respiración, el movimiento suave o el contacto físico envían señales de seguridad al cerebro.', 'Cuanto más entrenas estas técnicas, más fácil te resulta acceder a la calma cuando la necesitas.'] },
+        { type: 'quote', text: 'Respirar con conciencia es el gesto más pequeño y poderoso que puedes hacer por ti.' }
+      ]
     },
-  ],
+    {
+      id: 'estres_sem3',
+      title: 'Semana 3: Entrena tu Mente para Responder con Calma',
+      type: 'introduction',
+      estimatedTime: '20-25 min',
+      content: [
+        {
+          type: 'paragraphWithAudio',
+          text: 'Esta semana aprenderás a identificar las “trampas mentales” o distorsiones cognitivas que aumentan tu estrés, y a usar técnicas sencillas para cuestionarlas. No se trata de “pensar en positivo”, sino de pensar con más claridad, realismo y amabilidad.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Introsemana3.mp3`
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'La Mente Bajo Estrés: ¿Cómo Salir del Bucle?',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio1semana3.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Cuando el estrés se activa, tu mente puede volverse tu peor enemiga: empieza a repetir pensamientos negativos, a imaginar escenarios terribles o a criticarte sin piedad. No es que quieras hacerlo, es que el estrés “secuestra” tu atención y la enfoca en la amenaza.' },
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'El diálogo interno que alimenta el estrés',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio2semana3.mp3`,
+          content: [
+            { type: 'paragraph', text: 'El estrés no solo se siente en el cuerpo: se piensa. Frases como “no puedo más”, “esto va a salir mal” o “es mi culpa” no son inofensivas. Activan y mantienen la respuesta de estrés en tu cuerpo, creando un círculo vicioso.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Distorsiones cognitivas: cuando tu mente te engaña',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio3semana3.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Las distorsiones cognitivas son patrones de pensamiento que nos hacen interpretar la realidad de forma negativa o poco realista. Algunas de las más comunes en el estrés son:' },
+            { type: 'list', items: ['Catastrofismo: Imaginar siempre el peor resultado.', 'Filtro mental: Fijarte solo en lo negativo.', 'Pensamiento “todo o nada”: O es perfecto o es un desastre.'] }
+          ]
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'detectiveExercise',
+          title: 'EJERCICIO 1: DETECTIVE DE PENSAMIENTOS',
+          objective: 'Identifica y cuestiona un pensamiento estresante para recuperar una perspectiva más equilibrada y reducir su impacto emocional.',
+          duration: '10 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-3-tecnica-1-detective-de-pensamientos.mp3`
+        },
+        {
+          type: 'demandsExercise',
+          title: 'EJERCICIO 2: TABLA DE EXIGENCIAS VS. DESEOS REALES',
+          objective: 'Diferencia entre lo que “debes” hacer y lo que realmente necesitas, para reducir la presión interna y actuar desde un lugar más auténtico.',
+          duration: '10-15 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion3tecnica2tabladeexigenciasvsdeseosreales.mp3`
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Reflexionsemana3.mp3`,
+          prompts: ['<p>Tómate un momento para anotar lo que has descubierto. Cada palabra te ayuda a conocerte y cuidarte mejor.</p><ul><li>¿Qué he aprendido sobre los pensamientos que me generan estrés?</li><li>¿Qué cambió en mí al cuestionar un pensamiento en lugar de darlo por cierto?</li><li>¿Qué frases o “deberías” me pesan más en mi día a día?</li><li>¿Cómo puedo empezar a diferenciar entre lo que me exijo y lo que de verdad necesito?</li></ul>']
+        },
+        { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Resumensemana3.mp3` },
+        { type: 'list', items: ['Tus pensamientos no son hechos, son interpretaciones.', 'Las distorsiones cognitivas alimentan el estrés.', 'Cuestionar tus pensamientos te devuelve poder y calma.', 'Diferenciar entre “deber” y “querer” reduce la presión interna.'] },
+        { type: 'quote', text: 'No eres lo que piensas. Eres quien elige qué hacer con esos pensamientos.' }
+      ]
+    },
+    {
+      id: 'estres_sem4',
+      title: 'Semana 4: Construye un Estilo de Vida Resiliente',
+      type: 'summary',
+      estimatedTime: '15-20 min',
+      content: [
+        {
+          type: 'paragraphWithAudio',
+          text: 'En esta última semana, vas a integrar todo lo aprendido para construir un plan de vida que te proteja del estrés crónico. No se trata de eliminar el estrés, sino de crear un día a día que te dé más recursos para gestionarlo. Diseñarás tu propio Plan de Bienestar, identificando tus señales de alerta y tus estrategias de cuidado. Porque la mejor forma de manejar el estrés es construir una vida donde la calma tenga más espacio.',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Introsemana4.mp3`
+        },
+        { type: 'title', text: 'Psicoeducación' },
+        {
+          type: 'collapsible',
+          title: 'Más allá de la emergencia: la prevención',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Audio1semana4.mp3`,
+          content: [{ type: 'paragraph', text: 'Gestionar el estrés no es solo apagar fuegos. Es, sobre todo, evitar que se inicien. Construir un estilo de vida resiliente significa crear hábitos y rutinas que protejan tu energía y tu equilibrio, para que los inevitables picos de estrés no te desborden.' }]
+        },
+        {
+          type: 'collapsible',
+          title: 'Los 4 pilares del bienestar',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Audio2semana4.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Tu bienestar se sostiene sobre cuatro pilares:' },
+            { type: 'list', items: ['Cuerpo: sueño, alimentación y movimiento.', 'Mente: pausas, enfoque y gestión de pensamientos.', 'Emociones: expresión sana y autorregulación.', 'Conexión: vínculos sociales que te nutran.'] },
+            { type: 'paragraph', text: 'Si uno de ellos falla, todo el sistema se resiente.' }
+          ]
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+          type: 'wellbeingPlanExercise',
+          title: 'EJERCICIO 1: MI PLAN DE BIENESTAR EMOCIONAL',
+          objective: 'Crearás un plan de acción personalizado para identificar tus señales de estrés y saber qué hacer para regularte.',
+          duration: '15 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Sesion-4-tecnica-1-diseno-tu-plan-de-bienestar-emocional.mp3`
+        },
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Reflexionsemana4.mp3`,
+          prompts: ['<p>Tómate un momento para escribir tus últimos aprendizajes de esta ruta.</p><ul><li>¿Qué he aprendido sobre cómo el estrés afecta mi vida y cómo puedo cuidarme?</li><li>¿Qué técnica de esta ruta me ha sido más útil y por qué?</li><li>¿Qué compromiso quiero llevarme para mi día a día?</li></ul>']
+        },
+        { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Resumensemana4.mp3` },
+        { type: 'list', items: ['La resiliencia se construye con hábitos diarios.', 'Tu Plan de Bienestar es tu hoja de ruta personalizada.', 'Identificar tus señales de alerta te permite actuar antes de desbordarte.', 'Saber qué necesitas y cómo pedirlo es clave.'] },
+        { type: 'quote', text: 'No esperes a estar mal para cuidarte. Cuídate para estar bien.' }
+      ]
+    },
+    {
+      id: 'estres_cierre',
+      title: 'Cierre de la Ruta',
+      type: 'summary',
+      estimatedTime: '10 min',
+      content: [
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Ruta de Gestión del Estrés',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Reflexionfinalruta1.mp3`,
+          prompts: [
+            '<p>Has completado un camino importante. Tómate un momento para reconocer tu esfuerzo y tus aprendizajes.</p><ul><li>¿Qué ha cambiado en mi forma de ver el estrés?</li><li>¿Qué herramienta me llevo que antes no tenía?</li><li>¿Cómo quiero seguir cuidándome a partir de ahora?</li></ul>',
+          ],
+        },
+        { type: 'title', text: 'Resumen Final de la Ruta', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Resumenfinalruta1.mp3` },
+        {
+          type: 'list',
+          items: [
+            'El estrés es una señal, no un enemigo. Aprender a escucharlo es el primer paso.',
+            'Tu cuerpo y tu mente están conectados. Calmar uno ayuda a calmar al otro.',
+            'Tus pensamientos no siempre son la realidad. Cuestionarlos te da libertad.',
+            'La prevención es la mejor gestión: construir un estilo de vida que te cuide es tu mayor fortaleza.',
+          ],
+        },
+        { type: 'quote', text: 'No puedes controlar todas las olas, pero puedes aprender a surfear. Y eso es lo que has estado entrenando.' }
+      ]
+    }
+  ]
 };
 
     
