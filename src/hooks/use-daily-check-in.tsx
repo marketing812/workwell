@@ -1,10 +1,10 @@
 
 "use client";
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
-import type { DailyQuestion } from '@/types/daily-question';
+import React, { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
+import type { DailyQuestion, DailyQuestionApiResponse } from '@/types/daily-question';
 import { useUser } from '@/contexts/UserContext';
-import { getDailyQuestion, DailyQuestionApiResponse } from '@/data/dailyQuestion';
+import { getDailyQuestion } from '@/data/dailyQuestion';
 import { useToast } from '@/hooks/use-toast';
 
 const DAILY_CHECKIN_COMPLETED_KEY_PREFIX = 'workwell-daily-checkin-answered-ids-v2-';
@@ -120,12 +120,49 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     const storageKey = getStorageKey();
     if (!user?.id || !storageKey) return;
 
-    const apiResponse: DailyQuestionApiResponse | null = await getDailyQuestion(user.id);
+    const apiResponse = await getDailyQuestion(user.id);
     
-    if (!apiResponse || !Array.isArray(apiResponse.questions) || apiResponse.questions.length === 0) {
+    if (!apiResponse) {
+      toast({
+        title: "Error de Conexión",
+        description: "No se pudo comunicar con el servidor para obtener las preguntas.",
+        variant: "destructive",
+        duration: 9000,
+      });
+      return;
+    }
+
+    if (apiResponse.error) {
+       toast({
+        title: "Error del Servidor",
+        description: `El servidor respondió con un error: ${apiResponse.error}. Revisa la consola para más detalles.`,
+        variant: "destructive",
+        duration: 9000,
+      });
+      console.error("Server Error Details:", apiResponse.details);
+      return;
+    }
+
+    if (!apiResponse.questions || apiResponse.questions.length === 0) {
+      let description: React.ReactNode = "No se recibieron preguntas del servidor.";
+      if (apiResponse.debugUrl) {
+        description = (
+          <div>
+            <p>No se encontraron preguntas en la respuesta del servidor.</p>
+            <p className="mt-2 text-xs">
+              Puedes{" "}
+              <a href={apiResponse.debugUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-500">
+                abrir la URL de la API
+              </a>{" "}
+              para comprobar la respuesta.
+            </p>
+          </div>
+        );
+      }
       toast({
         title: "No hay preguntas diarias",
-        description: "No se pudieron cargar las preguntas para hoy.",
+        description: description,
+        duration: 9000,
       });
       return;
     }
@@ -135,7 +172,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
 
     try {
       const storedData = localStorage.getItem(storageKey);
-      const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
+      const answeredIds: string[] = storedData ? JSON.parse(storedData) : [];
       
       questionToShow = allQuestionsOrdered.find(q => !answeredIds.includes(q.id));
 
@@ -143,7 +180,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
         questionToShow = allQuestionsOrdered[0];
         toast({
           title: "Has completado las preguntas de hoy",
-          description: "Mostrando la primera pregunta de nuevo.",
+          description: "Mostrando la primera pregunta de nuevo para que puedas revisarla.",
         });
       }
 

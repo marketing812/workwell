@@ -1,22 +1,26 @@
+
 "use client";
 
-import type { DailyQuestion } from '@/types/daily-question';
-
-export interface DailyQuestionApiResponse {
-    questions: DailyQuestion[];
-    debugUrl?: string;
-}
+import type { DailyQuestion, DailyQuestionApiResponse } from '@/types/daily-question';
 
 export async function getDailyQuestion(userId?: string | null): Promise<DailyQuestionApiResponse | null> {
   try {
-    // The userId is no longer used in the API call as per the fix.
     const url = '/api/daily-question';
     const response = await fetch(url, { cache: 'no-store' });
-    // We don't check for response.ok here, so we can pass the error JSON to the component for debugging
+    
+    // We get the JSON regardless of the status code
     const data = await response.json();
-    return data;
+
+    if (!response.ok) {
+        console.error("Error fetching daily question from client-side proxy:", data);
+        // We still return the data object as it might contain useful error details
+        return data as DailyQuestionApiResponse;
+    }
+
+    return data as DailyQuestionApiResponse;
   } catch (error) {
-    console.error("Error fetching daily question from client-side proxy:", error);
+    console.error("Critical error fetching or parsing daily question from client-side proxy:", error);
     return null;
   }
 }
+
