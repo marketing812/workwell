@@ -2,9 +2,13 @@ import { NextResponse } from 'next/server';
 import { encryptDataAES } from '@/lib/encryption';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
+// Force Node.js runtime to use Buffer
+export const runtime = 'nodejs';
+
 const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
 const API_KEY = "4463";
 const API_TIMEOUT_MS = 15000;
+const SECRET_KEY = 'SJDFgfds788sdfs8888KLLLL';
 
 interface CheckInData {
   userId: string;
@@ -28,8 +32,14 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    const base64UserId = btoa(userId);
-    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
+    const base64UserId = Buffer.from(userId).toString('base64');
+
+    // Generate token
+    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const rawToken = `${SECRET_KEY}|${fecha}`;
+    const token = Buffer.from(rawToken).toString('base64');
+    
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}&token=${encodeURIComponent(token)}`;
 
     console.log("API Route (save-daily-check-in): Attempting to save. URL constructed.");
 
