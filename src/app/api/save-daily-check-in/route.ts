@@ -28,8 +28,7 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    // CORRECTION: Encode the userId in base64 to match the GET request format.
-    const base64UserId = Buffer.from(userId).toString('base64');
+    const base64UserId = btoa(userId);
     saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log("API Route (save-daily-check-in): Attempting to save. URL constructed.");
@@ -66,7 +65,10 @@ export async function POST(request: Request) {
     let errorMessage = "Error interno en el proxy de guardado.";
     if (error.name === 'AbortError') {
         errorMessage = "Tiempo de espera agotado al conectar con el servidor externo.";
+    } else if (error instanceof SyntaxError) {
+        errorMessage = "El cuerpo de la petición no es un JSON válido.";
     }
+    
     return NextResponse.json(
       { success: false, message: errorMessage, debugUrl: saveUrl || "URL not constructed" },
       { status: 500 }
