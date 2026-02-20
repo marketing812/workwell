@@ -8,10 +8,10 @@ interface DailyQuestionFromApi {
   pregunta: string;
 }
 
-// Reverting to the original, simpler URL as suggested.
+const API_KEY = "4463";
+
 async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  // Corrected URL structure for fetching daily questions
-  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima`;
+  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php?apikey=${API_KEY}&tipo=getclima`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
