@@ -8,24 +8,15 @@ interface DailyQuestionFromApi {
   pregunta: string;
 }
 
-const clave = "SJDFgfds788sdfs8888KLLLL";
-const API_KEY = "4463";
-
-async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-  const raw = `${clave}|${fecha}`;
-  const token = btoa(raw);
-  let externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php?apikey=${API_KEY}&tipo=clima&token=${encodeURIComponent(token)}`;
-
-  if (userId) {
-    const base64UserId = btoa(userId);
-    externalUrl += `&idusuario=${encodeURIComponent(base64UserId)}`;
-  }
-
+// Reverting to the original, simpler URL as suggested.
+async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
+  // Original URL structure for fetching daily questions
+  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/themes/workwell/traejson.php?archivo=clima`;
+  
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
   const response = await fetch(externalUrl, {
-    cache: 'no-store',
+    cache: 'no-store', // Ensure fresh data is fetched every time
   });
 
   const responseText = await response.text();
@@ -43,17 +34,16 @@ async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ que
   }
 
   const data = JSON.parse(jsonToParse);
+  // The API returns an array of questions directly
   const questionsArray = Array.isArray(data) ? data : [data];
   
   return { questions: questionsArray, debugUrl: externalUrl };
 }
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const userId = searchParams.get('userId');
-
   try {
-    const { questions: externalQuestions, debugUrl } = await fetchExternalDailyQuestion(userId);
+    // No longer need userId for this fetch
+    const { questions: externalQuestions, debugUrl } = await fetchExternalDailyQuestion();
     
     const questions = externalQuestions.map(q => ({
       id: q.codigo,
