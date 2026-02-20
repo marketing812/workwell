@@ -26,11 +26,14 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
     throw new Error(`Failed to fetch external daily question. Status: ${response.statusText}`);
   }
   
+  // More robust JSON parsing
   let jsonToParse = responseText.trim();
-  // The API might return characters before the JSON array. Find the start of the array.
-  const startIndex = jsonToParse.indexOf('[');
-  if (startIndex > 0) { // Only substring if there's leading text.
-      jsonToParse = jsonToParse.substring(startIndex);
+  if (!jsonToParse.startsWith('[')) {
+      const startIndex = jsonToParse.indexOf('[');
+      const endIndex = jsonToParse.lastIndexOf(']');
+      if (startIndex !== -1 && endIndex > startIndex) {
+        jsonToParse = jsonToParse.substring(startIndex, endIndex + 1);
+      }
   }
 
   const data = JSON.parse(jsonToParse);
