@@ -181,10 +181,10 @@ export default function EmotionalLogPage() {
                 return (
                   <li key={entry.id} className="p-4 border rounded-lg bg-muted/30 shadow-sm">
                     <p className="text-xs text-muted-foreground">{formatEntryTimestamp(entry.timestamp)}</p>
-                    <p className="font-semibold text-primary mt-1">{emotionLabel}</p>
                     <p className="text-sm text-foreground mt-1 whitespace-pre-wrap break-words">
                       {entry.situation}
                     </p>
+                    <p className="font-semibold text-primary mt-1">{emotionLabel}</p>
                      {entry.thought && (
                         <p className="text-sm text-muted-foreground mt-2 italic border-l-2 pl-2">
                            "{entry.thought}"
