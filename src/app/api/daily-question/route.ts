@@ -9,12 +9,13 @@ interface DailyQuestionFromApi {
 }
 
 const clave = "SJDFgfds788sdfs8888KLLLL";
+const API_KEY = "4463";
 
 async function fetchExternalDailyQuestion(userId?: string | null): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
   const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
   const raw = `${clave}|${fecha}`;
   const token = Buffer.from(raw).toString('base64');
-  let externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima&token=${encodeURIComponent(token)}`;
+  let externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php?apikey=${API_KEY}&tipo=clima&token=${encodeURIComponent(token)}`;
 
   if (userId) {
     const base64UserId = Buffer.from(userId).toString('base64');
