@@ -13,12 +13,9 @@ const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wsco
 const API_KEY = "4463";
 
 async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  const clave = "SJDFgfds788sdfs8888KLLLL";
-  const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-  const raw = `${clave}|${fecha}`;
-  const token = btoa(raw);
-
-  const externalUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getclima&token=${encodeURIComponent(token)}`;
+  // FIX: The `token` parameter is not required for the `getclima` endpoint.
+  // Sending it was causing the API to return an empty array without an error.
+  const externalUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getclima`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
