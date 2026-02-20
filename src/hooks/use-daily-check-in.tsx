@@ -117,18 +117,52 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   
 
   const forceOpen = useCallback(async () => {
-    const questions = await loadAndFilterQuestions();
-    if (questions.length > 0) {
-      setWasDismissedThisSession(false);
+    const storageKey = getStorageKey();
+    if (!user?.id || !storageKey) return;
+
+    const apiResponse: DailyQuestionApiResponse | null = await getDailyQuestion(user.id);
+    
+    if (!apiResponse || !Array.isArray(apiResponse.questions) || apiResponse.questions.length === 0) {
+      toast({
+        title: "No hay preguntas diarias",
+        description: "No se pudieron cargar las preguntas para hoy.",
+      });
+      return;
+    }
+
+    const allQuestionsOrdered = apiResponse.questions;
+    let questionToShow: DailyQuestion | undefined;
+
+    try {
+      const storedData = localStorage.getItem(storageKey);
+      const answeredIds: DailyCheckInData = storedData ? JSON.parse(storedData) : [];
+      
+      questionToShow = allQuestionsOrdered.find(q => !answeredIds.includes(q.id));
+
+      if (!questionToShow) {
+        questionToShow = allQuestionsOrdered[0];
+        toast({
+          title: "Has completado las preguntas de hoy",
+          description: "Mostrando la primera pregunta de nuevo.",
+        });
+      }
+
+    } catch (error) {
+        console.error("Error processing daily questions for forceOpen:", error);
+        questionToShow = allQuestionsOrdered[0]; 
+    }
+
+    if (questionToShow) {
+      setUnansweredQuestions([questionToShow]);
+      setWasDismissedThisSession(false); 
       setIsForcedOpen(true);
     } else {
-      toast({
-        title: "¡Todo listo por hoy!",
-        description: "Ya has respondido a todas las preguntas diarias. ¡Gracias por tu participación!",
-      });
-      setIsForcedOpen(false);
+         toast({
+            title: "¡Todo listo por hoy!",
+            description: "No hay preguntas disponibles en este momento.",
+        });
     }
-  }, [loadAndFilterQuestions, toast]);
+  }, [user?.id, getStorageKey, toast]);
   
   const dismissPopup = useCallback(() => {
     setIsForcedOpen(false);
@@ -139,7 +173,6 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     const storageKey = getStorageKey();
     if (!storageKey) return;
     
-    // Close popup and mark as dismissed for this session
     setIsForcedOpen(false);
     setWasDismissedThisSession(true); 
     setUnansweredQuestions([]);
@@ -153,8 +186,6 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       }
       
       localStorage.setItem(storageKey, JSON.stringify(answeredIds));
-      
-      // Do NOT call loadAndFilterQuestions() here. Let the interval handle the next check.
       
     } catch (error) {
         console.error("Error setting daily check-in as completed:", error);
