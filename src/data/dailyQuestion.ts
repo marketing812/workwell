@@ -4,8 +4,13 @@
 import type { DailyQuestion, DailyQuestionApiResponse } from '@/types/daily-question';
 
 export async function getDailyQuestion(userId?: string | null): Promise<DailyQuestionApiResponse | null> {
+  if (!userId) {
+    console.warn("getDailyQuestion called without a userId.");
+    return { questions: [], error: 'User ID is required on the client before calling the API.' };
+  }
+
   try {
-    const url = '/api/daily-question';
+    const url = `/api/daily-question?userId=${encodeURIComponent(userId)}`;
     const response = await fetch(url, { cache: 'no-store' });
     
     // We get the JSON regardless of the status code
@@ -20,7 +25,10 @@ export async function getDailyQuestion(userId?: string | null): Promise<DailyQue
     return data as DailyQuestionApiResponse;
   } catch (error) {
     console.error("Critical error fetching or parsing daily question from client-side proxy:", error);
-    return null;
+    return {
+        questions: [],
+        error: error instanceof Error ? error.message : "Error desconocido al contactar la API.",
+        details: error
+    };
   }
 }
-
