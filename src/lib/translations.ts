@@ -1,5 +1,4 @@
 
-
 // For V1, directly use Spanish. This structure allows easy replacement with a full i18n solution.
 // All text literals should be sourced from here.
 
@@ -46,7 +45,7 @@ export const t = {
   navSettings: "Configuración",
   navMyAssessments: "Mis Evaluaciones",
   navTherapeuticNotebook: "Cuaderno Terapéutico",
-  navMyEmotions: "Mis Emociones",
+  navMyEmotions: "Mis Autorregistros",
   navAssessmentReview: "Ver Preguntas",
   // Welcome Page / Dashboard (Old, parts might be reused or removed)
   welcomeToWorkWell: "Te damos la bienvenida a EMOTIVA, un espacio para reconectar contigo. Este viaje es personal.",
@@ -324,7 +323,6 @@ export const t = {
   // Full Emotional History Page
   fullEmotionalHistoryTitle: "Historial Emocional Completo",
   backToDashboard: "Volver al Panel",
-  myEvolutionFullHistoryDescription: "Evolución completa de tu estado de ánimo a lo largo del tiempo.",
   allEmotionalEntriesTitle: "Todos mis autorregistros",
   allEmotionalEntriesDescription: "Aquí puedes ver todas tus entradas emocionales ordenadas por fecha.",
   noEntriesYet: "Aún no tienes registros emocionales.",
@@ -354,3 +352,5 @@ export type Translations = typeof t;
 export function useTranslations(): Translations {
   return t;
 }
+
+    
