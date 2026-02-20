@@ -9,23 +9,28 @@ interface DailyQuestionFromApi {
   pregunta: string;
 }
 
-// No API_KEY is needed for this endpoint
+const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
+const API_KEY = "4463";
 
 async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima`;
+  const clave = "SJDFgfds788sdfs8888KLLLL";
+  const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
+  const raw = `${clave}|${fecha}`;
+  const token = btoa(raw);
+
+  const externalUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getclima&token=${encodeURIComponent(token)}`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
   const response = await fetch(externalUrl, {
-    cache: 'no-store', // Ensure fresh data is fetched every time
+    cache: 'no-store',
   });
-
+  
   const responseText = await response.text();
 
   if (!response.ok) {
     console.error(`API Route (daily-question): Failed to fetch. Status: ${response.status}. Body: ${responseText}`);
-    // Throw a more specific error to be caught below
-    throw new Error(`Failed to fetch external daily question. Status: ${response.status}. Body: ${responseText}`);
+    throw new Error(`Failed to fetch external daily question. Status: ${response.status}. Body: ${responseText.substring(0, 200)}`);
   }
   
   if (!responseText.trim()) {
@@ -33,7 +38,6 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
     return { questions: [], debugUrl: externalUrl };
   }
 
-  // More robust JSON parsing to handle potential non-JSON characters in the response
   let jsonToParse = responseText.trim();
   if (!jsonToParse.startsWith('[')) {
       const startIndex = jsonToParse.indexOf('[');
@@ -41,13 +45,11 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
       if (startIndex !== -1 && endIndex > startIndex) {
         jsonToParse = jsonToParse.substring(startIndex, endIndex + 1);
       } else {
-        // If we can't find a JSON array, throw an error
         throw new Error(`Could not parse JSON from response: ${responseText.substring(0, 200)}...`);
       }
   }
 
   const data = JSON.parse(jsonToParse);
-  // The API returns an array of questions directly
   const questionsArray = Array.isArray(data) ? data : [data];
   
   return { questions: questionsArray, debugUrl: externalUrl };
@@ -66,7 +68,6 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('[API /api/daily-question] Error:', error);
     
-    // Provide a more detailed error response for debugging purposes.
     const errorDetails = error instanceof Error 
         ? { message: error.message, stack: process.env.NODE_ENV === 'development' ? error.stack : undefined } 
         : { message: 'An unknown error occurred.' };
