@@ -8,10 +8,11 @@ interface DailyQuestionFromApi {
   pregunta: string;
 }
 
-const API_KEY = "4463";
+// No API_KEY is needed for this endpoint
 
 async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php?apikey=${API_KEY}&tipo=getclima`;
+  // Corrected URL as per user guidance, points to a different endpoint than other services
+  const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
@@ -26,7 +27,7 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
     throw new Error(`Failed to fetch external daily question. Status: ${response.statusText}`);
   }
   
-  // More robust JSON parsing
+  // More robust JSON parsing to handle potential non-JSON characters in the response
   let jsonToParse = responseText.trim();
   if (!jsonToParse.startsWith('[')) {
       const startIndex = jsonToParse.indexOf('[');
@@ -45,7 +46,6 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
 
 export async function GET(request: NextRequest) {
   try {
-    // No longer need userId for this fetch
     const { questions: externalQuestions, debugUrl } = await fetchExternalDailyQuestion();
     
     const questions = externalQuestions.map(q => ({
