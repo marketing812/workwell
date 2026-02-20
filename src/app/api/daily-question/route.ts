@@ -1,3 +1,4 @@
+
 import { NextResponse, type NextRequest } from 'next/server';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -11,7 +12,6 @@ interface DailyQuestionFromApi {
 // No API_KEY is needed for this endpoint
 
 async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionFromApi[], debugUrl: string }> {
-  // Corrected URL as per user guidance, points to a different endpoint than other services
   const externalUrl = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traejson.php?archivo=clima`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
@@ -24,9 +24,15 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
 
   if (!response.ok) {
     console.error(`API Route (daily-question): Failed to fetch. Status: ${response.status}. Body: ${responseText}`);
-    throw new Error(`Failed to fetch external daily question. Status: ${response.statusText}`);
+    // Throw a more specific error to be caught below
+    throw new Error(`Failed to fetch external daily question. Status: ${response.status}. Body: ${responseText}`);
   }
   
+  if (!responseText.trim()) {
+    console.warn("API Route (daily-question): External response was empty.");
+    return { questions: [], debugUrl: externalUrl };
+  }
+
   // More robust JSON parsing to handle potential non-JSON characters in the response
   let jsonToParse = responseText.trim();
   if (!jsonToParse.startsWith('[')) {
@@ -34,6 +40,9 @@ async function fetchExternalDailyQuestion(): Promise<{ questions: DailyQuestionF
       const endIndex = jsonToParse.lastIndexOf(']');
       if (startIndex !== -1 && endIndex > startIndex) {
         jsonToParse = jsonToParse.substring(startIndex, endIndex + 1);
+      } else {
+        // If we can't find a JSON array, throw an error
+        throw new Error(`Could not parse JSON from response: ${responseText.substring(0, 200)}...`);
       }
   }
 
@@ -55,10 +64,18 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ questions, debugUrl });
   } catch (error) {
-    console.error('Error in /api/daily-question proxy route:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Internal Server Error';
+    console.error('[API /api/daily-question] Error:', error);
+    
+    // Provide a more detailed error response for debugging purposes.
+    const errorDetails = error instanceof Error 
+        ? { message: error.message, stack: process.env.NODE_ENV === 'development' ? error.stack : undefined } 
+        : { message: 'An unknown error occurred.' };
+
     return NextResponse.json(
-      { error: 'Internal Server Error while proxying daily question.', details: errorMessage },
+      { 
+        error: 'Internal Server Error while proxying the daily question request.', 
+        details: errorDetails
+      },
       { status: 500 }
     );
   }
