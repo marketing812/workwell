@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -17,6 +18,7 @@ import { useUser } from '@/contexts/UserContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { StressCompass } from './StressCompass';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface StressMapExerciseProps {
   content: StressMapExerciseContent;
@@ -70,27 +72,14 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
       emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion3)?.labelKey as keyof typeof t] || selectedEmotion3} (${emotionIntensity3}%)`;
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-**1. Situación (Qué ocurrió):**
-${situation}
-
-**2. Pensamientos (Qué pensaste):**
-${thoughts}
-
-**3. Emociones (Cómo te sentiste):**
-${emotionsText}
-
-**4. Reacciones físicas (Qué sintió tu cuerpo):**
-${physicalReactions}
-
-**5. Respuesta/acción (Qué hiciste):**
-${responseAction}
-
-**6. Mis Reflexiones:**
-${reflections || 'No especificado.'}
-`;
+    const notebookContent = [
+      `Pregunta: Situación (Qué ocurrió) | Respuesta: ${situation || '(vacío)'}`,
+      `Pregunta: Pensamientos (Qué pensaste) | Respuesta: ${thoughts || '(vacío)'}`,
+      `Pregunta: Emociones (Cómo te sentiste) | Respuesta: ${emotionsText || '(vacío)'}`,
+      `Pregunta: Reacciones físicas (Qué sintió tu cuerpo) | Respuesta: ${physicalReactions || '(vacío)'}`,
+      `Pregunta: Respuesta/acción (Qué hiciste) | Respuesta: ${responseAction || '(vacío)'}`,
+      `Pregunta: Mis Reflexiones | Respuesta: ${reflections || '(vacío)'}`
+    ].join('\n');
     
     addNotebookEntry({
         title: 'Mapa del Estrés Personal',

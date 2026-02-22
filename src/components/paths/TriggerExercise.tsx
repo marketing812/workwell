@@ -75,30 +75,15 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
       emotionsText += `, ${t[emotions.find(e => e.value === selectedEmotion3)?.labelKey as keyof typeof t] || selectedEmotion3} (${emotionIntensity3}%)`;
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-**1. Emoción principal sentida:**
-${emotionsText}
-
-**2. Situación que ocurrió:**
-${finalSituation}
-
-**3. Pensamientos que pasaron por mi cabeza:**
-${thoughts}
-
-**4. ¿Tuve alguna imagen o recuerdo automático?:**
-${hadAutomaticImage ? `Sí: ${automaticImageDesc}` : 'No'}
-
-**5. ¿Qué pensé que podría pasar? (Anticipación de amenaza):**
-${anticipation}
-
-**6. Origen del disparador principal:**
-${triggerSource}
-
-**7. Mi respuesta o acción posterior:**
-${finalCoping}
-`;
+    const notebookContent = [
+      `Pregunta: Emoción principal sentida | Respuesta: ${emotionsText || '(vacío)'}`,
+      `Pregunta: Situación que ocurrió | Respuesta: ${finalSituation || '(vacío)'}`,
+      `Pregunta: Pensamientos que pasaron por mi cabeza | Respuesta: ${thoughts || '(vacío)'}`,
+      `Pregunta: ¿Tuve alguna imagen o recuerdo automático? | Respuesta: ${hadAutomaticImage ? `Sí: ${automaticImageDesc}` : 'No'}`,
+      `Pregunta: ¿Qué pensé que podría pasar? (Anticipación de amenaza) | Respuesta: ${anticipation || '(vacío)'}`,
+      `Pregunta: Origen del disparador principal | Respuesta: ${triggerSource || '(vacío)'}`,
+      `Pregunta: Mi respuesta o acción posterior | Respuesta: ${finalCoping || '(vacío)'}`
+    ].join('\n');
     
     addNotebookEntry({
         title: 'Registro de Disparador',
@@ -138,11 +123,7 @@ ${finalCoping}
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
         <CardDescription>
         <div className="space-y-4 text-base pt-2">
-            <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control.</p>
-            <p>Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta.</p>
-            <p>Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti.</p>
-            <p>Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad.</p>
-            <p>Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo.</p>
+            <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control. Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta. Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti. Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad. Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo. </p>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-sm">¿Qué es un estresor y qué es el estrés?</AccordionTrigger>
@@ -369,3 +350,4 @@ ${finalCoping}
     </Card>
   );
 }
+
