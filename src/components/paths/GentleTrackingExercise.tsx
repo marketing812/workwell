@@ -87,14 +87,26 @@ export default function GentleTrackingExercise({ content, pathId, onComplete }: 
     e.preventDefault();
     const progressText = Object.entries(progress)
       .map(([date, data]) => {
-        const statusSymbol = data.status === 'done' ? '✔' : data.status === 'partial' ? '~' : 'X';
+        let statusSymbol: string;
+        switch(data.status) {
+            case 'done': statusSymbol = '✔ Lo hice'; break;
+            case 'partial': statusSymbol = '~ Lo hice parcialmente'; break;
+            case 'skipped': statusSymbol = 'X No lo hice'; break;
+            default: statusSymbol = '?';
+        }
         return `${format(new Date(date), 'dd/MM/yyyy')}: ${statusSymbol}`;
       })
       .join('\n');
+      
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: Seguimiento del Hábito | Respuesta:\n${progressText || 'No se registraron días.'}`,
+      `Pregunta: Mi palabra de la semana para este hábito ha sido | Respuesta: ${weekWord || 'No especificada.'}`
+    ].join('\n\n');
 
     addNotebookEntry({
         title: 'Mi Seguimiento Amable',
-        content: `**Seguimiento del Hábito:**\n${progressText || 'No se registraron días.'}\n\n*Mi palabra de la semana para este hábito ha sido:*\n**${weekWord || 'No especificada.'}**`,
+        content: notebookContent,
         pathId,
         ruta: 'Superar la Procrastinación y Crear Hábitos',
         userId: user?.id

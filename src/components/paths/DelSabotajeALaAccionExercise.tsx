@@ -72,16 +72,16 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
         return;
     }
 
-    let notebookContent = `**${content.title}**\n\n**Mis frases de sabotaje y mis nuevas respuestas:**\n\n`;
+    let notebookContent = `**${content.title}**\n\n`;
     
     selectedOptions.forEach(opt => {
-        notebookContent += `*Frase que me repito:*\n> ${opt.label}\n`;
-        notebookContent += `*Respuesta realista y amable:*\n> ${functionalResponses[opt.id]}\n\n`;
+        notebookContent += `Pregunta: Frase de sabotaje que me repito | Respuesta: "${opt.label}"\n`;
+        notebookContent += `Pregunta: Respuesta realista y amable | Respuesta: "${functionalResponses[opt.id]}"\n\n`;
     });
 
     if (customSabotage.trim() && customResponse.trim()) {
-        notebookContent += `*Mi frase personal:*\n> ${customSabotage}\n`;
-        notebookContent += `*Mi respuesta personal:*\n> ${customResponse}\n\n`;
+        notebookContent += `Pregunta: Mi frase de sabotaje personal | Respuesta: "${customSabotage}"\n`;
+        notebookContent += `Pregunta: Mi respuesta personal amable | Respuesta: "${customResponse}"\n\n`;
     }
 
     addNotebookEntry({

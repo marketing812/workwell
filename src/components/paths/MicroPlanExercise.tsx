@@ -61,12 +61,12 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
       });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Mi microplan de acción es:*
-Cuando ${finalMoment}, voy a ${action}.
-    `;
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: ¿En qué momento cotidiano podrías activar tu gesto? | Respuesta: ${finalMoment}`,
+      `Pregunta: ¿Qué pequeña acción puedes vincular a ese momento? | Respuesta: ${action}`,
+      `\n**Frase de acción final:**\n"Cuando ${finalMoment}, voy a ${action}."`
+    ].join('\n\n');
     addNotebookEntry({ 
       title: 'Mi Microplan de Acción', 
       content: notebookContent, 
@@ -89,21 +89,14 @@ Cuando ${finalMoment}, voy a ${action}.
       });
       return;
     }
-    const reflectionContent = `
-**Reflexión de Cierre: Microplan de Acción**
-
-*Esta semana, activé:*
-${activated}
-
-*Me sentí:*
-${felt}
-
-*Descubrí que:*
-${discovered}
-
-*Y quiero seguir reforzando:*
-${reinforce}
-    `;
+    const reflectionContent = [
+      `**Reflexión de Cierre: Microplan de Acción**`,
+      `Pregunta: Esta semana, activé | Respuesta: ${activated}`,
+      `Pregunta: Me sentí | Respuesta: ${felt}`,
+      `Pregunta: Descubrí que | Respuesta: ${discovered}`,
+      `Pregunta: Y quiero seguir reforzando | Respuesta: ${reinforce}`
+    ].join('\n\n');
+    
     addNotebookEntry({ 
       title: 'Cierre Personal: Microplan', 
       content: reflectionContent, 
@@ -252,13 +245,13 @@ ${reinforce}
         {content.objective && (
             <CardDescription>
                 {content.audioUrl && (
-                    <div className="mb-4">
-                        <audio controls controlsList="nodownload" className="w-full">
-                            <source src={content.audioUrl} type="audio/mp3" />
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                    </div>
-                )}
+              <div className="mb-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
                 {content.objective}
             </CardDescription>
         )}

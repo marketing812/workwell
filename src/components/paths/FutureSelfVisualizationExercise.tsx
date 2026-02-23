@@ -50,16 +50,16 @@ export default function FutureSelfVisualizationExercise({ content, pathId, audio
 
     const handleSave = async (e: FormEvent) => {
         e.preventDefault();
-        const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Hábito visualizado:* ${habit}
-*Cómo era mi yo futuro:* ${futureSelf}
-*Emociones que sentí:* ${emotions}
-*Pensamientos que aparecieron:* ${thoughts}
-*Beneficios en mi vida:* ${benefits}
-*Pasos que me ayudaron:* ${journeySteps}
-        `;
+        
+        const notebookContent = [
+            `**Ejercicio: ${content.title}**`,
+            `Pregunta: Hábito visualizado | Respuesta: ${habit || 'No especificado.'}`,
+            `Pregunta: ¿Cómo era mi yo futuro? | Respuesta: ${futureSelf || 'No especificado.'}`,
+            `Pregunta: Emociones que sentí | Respuesta: ${emotions || 'No especificado.'}`,
+            `Pregunta: Pensamientos que aparecieron | Respuesta: ${thoughts || 'No especificado.'}`,
+            `Pregunta: Beneficios en mi vida | Respuesta: ${benefits || 'No especificado.'}`,
+            `Pregunta: Pasos que me ayudaron a llegar hasta ahí | Respuesta: ${journeySteps || 'No especificado.'}`
+        ].join('\n\n');
         
         addNotebookEntry({
             title: 'Mi Visualización del Yo Futuro',

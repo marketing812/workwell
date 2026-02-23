@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -59,27 +60,15 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
     
     const selectedPerfectionism = perfectionismOptions.filter(opt => perfectionism[opt.id]).map(opt => opt.label);
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*A alguien que quiero le diría:*
-${adviceToFriend || 'No especificado.'}
-
-*En ese momento pensé que:*
-${selfJudgment || 'No especificado.'}
-
-*Emociones que intenté evitar:*
-${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}
-
-*¿Qué sentí después de evitarlo?:*
-${aftermathEmotion || 'No especificado.'}
-
-*Exigencias detectadas:*
-${selectedPerfectionism.length > 0 ? selectedPerfectionism.join(', ') : 'Ninguna.'}
-
-*Nueva forma de pensarlo:*
-${flexibleThought || 'No especificada.'}
-    `;
+    const notebookContent = [
+        `**Ejercicio: ${content.title}**`,
+        `Pregunta: A alguien que quiero le diría que… | Respuesta: ${adviceToFriend || 'No especificado.'}`,
+        `Pregunta: Cuando me bloqueé, pensé sobre mí que… | Respuesta: ${selfJudgment || 'No especificado.'}`,
+        `Pregunta: Emociones que intenté evitar | Respuesta: ${selectedEmotions.length > 0 ? `[${selectedEmotions.join(', ')}]` : 'No especificadas.'}`,
+        `Pregunta: ¿Qué sentí después de evitarlo? | Respuesta: ${aftermathEmotion || 'No especificado.'}`,
+        `Pregunta: Exigencias detectadas | Respuesta: ${selectedPerfectionism.length > 0 ? `[${selectedPerfectionism.join(', ')}]` : 'Ninguna.'}`,
+        `Pregunta: Nueva forma de pensarlo con más flexibilidad | Respuesta: ${flexibleThought || 'No especificada.'}`
+    ].join('\n\n');
     
     addNotebookEntry({
         title: 'Mi Reflexión Compasiva',

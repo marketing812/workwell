@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -53,24 +54,15 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
       selectedEmotions.push(otherEmotion);
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: Tarea concreta que llevas tiempo evitando | Respuesta: ${avoidedTask || 'No especificada.'}`,
+      `Pregunta: Pensamientos que aparecen cuando piensas en esa tarea | Respuesta: ${blockingThoughts || 'No especificados.'}`,
+      `Pregunta: Emociones o sensaciones físicas que intentas evitar | Respuesta: ${selectedEmotions.length > 0 ? `[${selectedEmotions.join(', ')}]` : 'No especificadas.'}`,
+      `Pregunta: ¿Qué haces para evitarla? | Respuesta: ${escapeBehaviors || 'No especificadas.'}`,
+      `Pregunta: Consecuencias de seguir evitándolo | Respuesta: ${consequences || 'No especificadas.'}`
+    ].join('\n\n');
 
-*Tarea evitada:*
-${avoidedTask || 'No especificada.'}
-
-*Pensamientos bloqueadores:*
-${blockingThoughts || 'No especificados.'}
-
-*Emociones evitadas:*
-${selectedEmotions.length > 0 ? selectedEmotions.map(e => `- ${e}`).join('\n') : 'No especificadas.'}
-
-*Conductas de escape:*
-${escapeBehaviors || 'No especificadas.'}
-
-*Consecuencias:*
-${consequences || 'No especificadas.'}
-    `;
 
     addNotebookEntry({
         title: 'Mi Mapa del Bloqueo Personal',

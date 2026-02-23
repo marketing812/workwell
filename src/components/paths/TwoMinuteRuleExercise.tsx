@@ -48,18 +48,13 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: Tarea que pospongo | Respuesta: ${task}`,
+      `Pregunta: Mi versión de 2 minutos es | Respuesta: ${twoMinVersion}`,
+      `Pregunta: Me comprometo a hacerlo | Respuesta: ${when}`
+    ].join('\n\n');
 
-*Tarea que pospongo:*
-${task}
-
-*Mi versión de 2 minutos es:*
-${twoMinVersion}
-
-*Me comprometo a hacerlo:*
-${when}
-    `;
     addNotebookEntry({ 
       title: 'Mi Compromiso de 2 Minutos', 
       content: notebookContent, 

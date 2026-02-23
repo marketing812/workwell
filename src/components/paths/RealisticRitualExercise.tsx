@@ -47,21 +47,14 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       toast({ title: 'Campos incompletos', description: 'Por favor, rellena todos los campos.', variant: 'destructive' });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Hábito que quiero mantener:*
-${habit}
-
-*Mi versión mínima viable:*
-${minVersion}
-
-*Lo vincularé a:*
-${link}
-
-*Para recordarlo o facilitarlo, voy a:*
-${reminder}
-    `;
+    const notebookContent = [
+        `**Ejercicio: ${content.title}**`,
+        `Pregunta: Hábito que quiero mantener | Respuesta: ${habit}`,
+        `Pregunta: Mi versión mínima viable | Respuesta: ${minVersion}`,
+        `Pregunta: Lo vincularé a | Respuesta: ${link}`,
+        `Pregunta: Para recordarlo o facilitarlo, voy a | Respuesta: ${reminder}`
+    ].join('\n\n');
+    
     addNotebookEntry({ 
       title: 'Mi Ritual Realista', 
       content: notebookContent, 
@@ -99,9 +92,9 @@ ${reminder}
         );
       case 2:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+          <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: ¿Cuál es su versión mínima viable?</h4>
-            <p>Ejemplos: “Escribir solo una línea”, “Moverme durante 2 minutos”, “Preparar la ropa deportiva”</p>
+            <p>Ejemplos: “Escribir solo una línea”, “Moverme durante 2 minutos”, “Preparar la ropa de deporte”</p>
             <Label htmlFor="min-version" className="sr-only">¿Cuál es su versión mínima viable?</Label>
             <Textarea id="min-version" value={minVersion} onChange={e => setMinVersion(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
@@ -152,6 +145,7 @@ ${reminder}
         return null;
     }
   }
+
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
