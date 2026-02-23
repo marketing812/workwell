@@ -32,14 +32,10 @@ export async function POST(request: Request) {
     };
     const encryptedPayload = encryptDataAES(payloadToEncrypt);
     
-    const base64UserId = Buffer.from(userId).toString('base64');
-
-    // Generate token
-    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const rawToken = `${SECRET_KEY}|${fecha}`;
-    const token = Buffer.from(rawToken).toString('base64');
-    
-    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(base64UserId)}&datos=${encodeURIComponent(encryptedPayload)}&token=${encodeURIComponent(token)}`;
+    // CONSISTENCY FIX: Based on other 'wscontenido.php' calls (like guardarcuaderno),
+    // the userId is sent raw, not base64 encoded. And the token is empty.
+    // The previous implementation was incorrectly mimicking 'traerjson.php' auth.
+    saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
     console.log("API Route (save-daily-check-in): Attempting to save. URL constructed.");
 
