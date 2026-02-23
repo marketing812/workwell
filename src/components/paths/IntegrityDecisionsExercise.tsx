@@ -271,7 +271,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 );
             default: return null;
         }
-    }
+    };
 
 
     return (
@@ -294,5 +294,3 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         </Card>
     );
 }
-
-    
