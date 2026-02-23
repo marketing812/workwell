@@ -1,4 +1,3 @@
-"use server";
 
 import { forceEncryptStringAES } from '@/lib/encryption';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
