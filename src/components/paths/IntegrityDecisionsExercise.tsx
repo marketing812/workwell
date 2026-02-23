@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -54,11 +55,13 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
     const [step, setStep] = useState(0);
 
     const [decision, setDecision] = useState('');
-    const [selectedValues, setSelectedValues] = useState<Record<string, boolean>>({});
+    const [person, setPerson] = useState('');
+    const [otherPerson, setOtherPerson] = useState('');
+    const [whyPerson, setWhyPerson] = useState('');
+    const [motives, setMotives] = useState('');
+    const [explanationForOther, setExplanationForOther] = useState('');
+    const [values, setValues] = useState<Record<string, boolean>>({});
     const [otherValue, setOtherValue] = useState('');
-    const [selectedEmotions, setSelectedEmotions] = useState<Record<string, boolean>>({});
-    const [otherEmotion, setOtherEmotion] = useState('');
-    const [impact, setImpact] = useState('');
     const [isProud, setIsProud] = useState(false);
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
     const [coherence, setCoherence] = useState(1);
@@ -71,11 +74,13 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
     const resetExercise = () => {
         setStep(0);
         setDecision('');
-        setSelectedValues({});
+        setPerson('');
+        setOtherPerson('');
+        setWhyPerson('');
+        setMotives('');
+        setExplanationForOther('');
+        setValues({});
         setOtherValue('');
-        setSelectedEmotions({});
-        setOtherEmotion('');
-        setImpact('');
         setIsProud(false);
         setReflectsWhoIAm(false);
         setCoherence(1);
@@ -85,13 +90,15 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
-        const finalValues = valuesList.filter(v => selectedValues[v]);
-        if (selectedValues['Otro'] && otherValue) finalValues.push(otherValue);
+        const finalValues = valuesList.filter(v => values[v]);
+        if (values['Otro'] && otherValue) {
+            finalValues.push(otherValue);
+        }
 
         const finalEmotions = emotionOptions.filter(e => selectedEmotions[e.value]).map(e => t[e.labelKey as keyof typeof t]);
         if (selectedEmotions['otra'] && otherEmotion) finalEmotions.push(otherEmotion);
 
-        if (finalValues.length === 0 || finalEmotions.length === 0 || !decision.trim()) {
+        if (finalValues.length === 0 || !decision.trim()) {
             toast({ title: 'Campos incompletos', description: 'Por favor, completa los pasos principales.', variant: 'destructive'});
             return;
         }
@@ -99,10 +106,12 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Decisión a tomar:** ${decision}
-**Valores implicados:** ${finalValues.join(', ')}
-**Emociones predominantes:** ${finalEmotions.join(', ')}
-**Impacto a largo plazo:** ${impact || 'No especificado.'}
+**Decisión a explorar:** ${decision}
+**Persona espejo:** ${person === 'Otra' ? otherPerson : person}
+**Explicación como si fuera real:**
+- Motivos principales: ${motives}
+- Cómo se lo explicaría: ${explanationForOther}
+**Valores en juego:** ${finalValues.join(', ')}
 **¿Me sentiría orgulloso/a?:** ${isProud ? 'Sí' : 'No'}
 **¿Refleja quién soy?:** ${reflectsWhoIAm ? 'Sí' : 'No'}
 **Nivel de coherencia percibido:** ${coherence}/10
@@ -127,84 +136,81 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
             case 1:
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-                        <Label className="font-semibold text-lg">Paso 1: ¿Qué decisión tienes que tomar?</Label>
+                        <Label className="font-semibold text-lg">Paso 1: Elige la decisión que quieres explorar</Label>
                         <p className="text-sm text-muted-foreground">Describe la decisión de forma concreta y breve.</p>
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                           <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
             case 2:
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 2: Filtro 1 – Tus valores</h4>
-                        <p className="text-sm text-muted-foreground">Piensa en lo que es importante para ti, no en lo que crees que es importante para los demás.</p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
-                            {valuesList.map(v => (
-                                <div key={v} className="flex items-center space-x-2">
-                                    <Checkbox id={`val-${v}`} checked={!!selectedValues[v]} onCheckedChange={c => setSelectedValues(p => ({ ...p, [v]: !!c }))} />
-                                    <Label htmlFor={`val-${v}`} className="font-normal text-xs">{v}</Label>
-                                </div>
-                            ))}
-                            <div className="flex items-center space-x-2">
-                                <Checkbox id="val-otro" checked={!!selectedValues['Otro']} onCheckedChange={c => setSelectedValues(p => ({ ...p, 'Otro': !!c }))} />
-                                <Label htmlFor="val-otro" className="font-normal text-xs">Otro</Label>
-                            </div>
-                        </div>
-                        {selectedValues['Otro'] && (
-                            <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />
-                        )}
-                        <div className="flex justify-between w-full mt-4">
+                        <h4 className="font-semibold text-lg">Paso 2: Escoge a la persona a la que se lo explicarás</h4>
+                        <Select value={person} onValueChange={setPerson}>
+                            <SelectTrigger><SelectValue placeholder="Elige..."/></SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Amigo/a">Amigo/a</SelectItem>
+                                <SelectItem value="Familiar">Familiar</SelectItem>
+                                <SelectItem value="Mentor/a">Mentor/a</SelectItem>
+                                <SelectItem value="Mi yo futuro">“Mi yo futuro”</SelectItem>
+                                <SelectItem value="Otra">Otra</SelectItem>
+                            </SelectContent>
+                        </Select>
+                        {person === 'Otra' && <Textarea value={otherPerson} onChange={e => setOtherPerson(e.target.value)} placeholder="Describe a la otra persona..."/>}
+                         <div className="space-y-2">
+                             <Label htmlFor="why-person">¿Por qué esa persona?</Label>
+                             <Textarea id="why-person" value={whyPerson} onChange={e => setWhyPerson(e.target.value)} placeholder="Ejemplo: “Elegí a mi hermano mayor porque siempre me escucha sin juzgar y me anima a crecer.”"/>
+                         </div>
+                        <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep} disabled={Object.values(selectedValues).every(v => !v)}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                            <Button onClick={nextStep} disabled={!person || (person === 'Otra' && !otherPerson.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
             case 3:
-                return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 3: Filtro 2 – Tus emociones</h4>
-                        <p className="text-sm text-muted-foreground">Ejemplo: "Ilusión, miedo, curiosidad, inseguridad."</p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
-                            {emotionOptions.map(e => (
-                                <div key={e.value} className="flex items-center space-x-2">
-                                    <Checkbox id={`emo-${e.value}`} checked={!!selectedEmotions[e.value]} onCheckedChange={c => setSelectedEmotions(p => ({...p, [e.value]: !!c}))} />
-                                    <Label htmlFor={`emo-${e.value}`} className="font-normal text-xs">{t[e.labelKey as keyof typeof t]}</Label>
+                return(
+                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 3: Escribe tu explicación como si fuera real</h4>
+                        <div className="space-y-2">
+                            <Label>Los motivos principales de mi decisión son...</Label>
+                            <Textarea value={motives} onChange={e => setMotives(e.target.value)} placeholder="Ejemplo: “Quiero crecer y el nuevo puesto me reta.”" />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>¿Cómo se lo explicarías para que lo entienda?</Label>
+                            <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo. Sé que implica un cambio grande, pero he ahorrado, he valorado pros y contras, y creo que es el momento adecuado para dar este paso.”" />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>Valores en juego (Selecciona los que mejor representen lo que quieres respetar con tu decisión)</Label>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
+                                {valuesList.map(v => (
+                                    <div key={v} className="flex items-center space-x-2">
+                                        <Checkbox id={v} checked={!!values[v]} onCheckedChange={c => setValues(p => ({...p, [v]: !!c}))} />
+                                        <Label htmlFor={v} className="font-normal text-xs">{v}</Label>
+                                    </div>
+                                ))}
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="Otra" checked={!!values['Otra']} onCheckedChange={c => setValues(p => ({...p, ['Otra']: !!c}))} />
+                                    <Label htmlFor="Otra" className="font-normal text-xs">Otro</Label>
                                 </div>
-                            ))}
-                             <div className="flex items-center space-x-2">
-                                <Checkbox id="emo-otra" checked={!!selectedEmotions['otra']} onCheckedChange={c => setSelectedEmotions(p => ({...p, 'otra': !!c}))} />
-                                <Label htmlFor="emo-otra" className="font-normal text-xs">Otra</Label>
                             </div>
+                            {values['Otro'] && (
+                                <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
+                            )}
                         </div>
-                        {selectedEmotions['otra'] && (
-                            <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la otra emoción..." className="mt-2 ml-6" />
-                        )}
-                        <p className="text-xs italic text-center pt-2">Sentir emociones encontradas es normal. Aquí no hay emociones correctas o incorrectas.</p>
-                        <div className="flex justify-between w-full mt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                            <Button onClick={nextStep} className="w-auto" disabled={Object.values(selectedEmotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        <div className="flex justify-between w-full pt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep} disabled={!motives.trim() || !explanationForOther.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
-                    </div>
+                     </div>
                 );
             case 4:
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 4: Filtro 3 – Impacto a largo plazo</h4>
-                        <Label>Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y dentro de 5 años?</Label>
-                        <Textarea value={impact} onChange={e => setImpact(e.target.value)} placeholder='Ejemplo: "A 1 año: tendré más ingresos pero estaré lejos de mi familia. A 5 años: habré crecido profesionalmente y podré volver con más opciones."' />
-                        <div className="flex justify-between w-full mt-4">
-                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
-                        </div>
-                    </div>
-                );
-            case 5:
-                return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
+                        <p className="text-base text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
                             <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
@@ -229,36 +235,38 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         </div>
                     </div>
                 );
-            case 6:
+            case 5:
                 return (
-                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                      <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
+                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                        <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                         <div className="text-sm text-muted-foreground space-y-2">
-                          <p className="font-semibold text-foreground">Guía de uso:</p>
-                          <ul className="list-disc list-inside pl-4 space-y-1">
-                              <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
-                              <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
-                              <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
-                          </ul>
-                          <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
-                      </div>
-                      <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarías</Label>
-                      <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                      <div className="flex justify-between w-full mt-4">
-                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                        <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
-                      </div>
+                            <p className="font-semibold text-foreground">Guía de uso:</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
+                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
+                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
+                            </ul>
+                            <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
+                        </div>
+                        <Label htmlFor="adjustment">Escribe aquí qué cambiarías</Label>
+                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
+                        <div className="flex justify-between w-full pt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
                     </div>
                 );
-            case 7:
+            case 6:
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
-                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir. </blockquote>
+                       <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
+                        “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
+                        </blockquote>
                         <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
                         <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
                 );
-            case 8:
+            case 7:
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -292,4 +300,5 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         </Card>
     );
 }
+    
     
