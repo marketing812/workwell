@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -121,7 +120,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
             case 0:
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">A veces tomamos decisiones rápidas para salir de la incomodidad, y luego nos quedamos con la sensación de que algo no encaja. Esta herramienta es como una linterna que ilumina tres puntos clave para decidir con calma: lo que valoras, lo que sientes y cómo te afectará en el tiempo.</p>
+                        <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente.   En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
                         <Button onClick={nextStep}>Empezar a decidir con integridad <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
@@ -159,7 +158,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         )}
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep} disabled={Object.values(selectedValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                            <Button onClick={nextStep} disabled={Object.values(selectedValues).every(v => !v)}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -186,7 +185,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         <p className="text-xs italic text-center pt-2">Sentir emociones encontradas es normal. Aquí no hay emociones correctas o incorrectas.</p>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                            <Button onClick={nextStep} disabled={Object.values(selectedEmotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                            <Button onClick={nextStep} className="w-auto" disabled={Object.values(selectedEmotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                         </div>
                     </div>
                 );
@@ -230,31 +229,31 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         </div>
                     </div>
                 );
-            case 6: // Paso 5: Ajusta si es necesario
+            case 6:
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <div className="space-y-2 text-sm text-muted-foreground">
-                            <p className="font-semibold text-foreground">Guía de uso:</p>
-                            <ul className="list-disc list-inside pl-4 space-y-1">
-                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
-                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
-                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
-                            </ul>
-                            <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
-                        </div>
-                        <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarías</Label>
-                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between w-full pt-4">
-                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
-                        </div>
+                      <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
+                        <div className="text-sm text-muted-foreground space-y-2">
+                          <p className="font-semibold text-foreground">Guía de uso:</p>
+                          <ul className="list-disc list-inside pl-4 space-y-1">
+                              <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
+                              <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
+                              <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
+                          </ul>
+                          <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
+                      </div>
+                      <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarías</Label>
+                      <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
+                      <div className="flex justify-between w-full mt-4">
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                      </div>
                     </div>
                 );
             case 7:
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites.</p>
+                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir. </blockquote>
                         <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
                         <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
@@ -293,3 +292,4 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         </Card>
     );
 }
+    
