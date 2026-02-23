@@ -145,15 +145,19 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   const radarChartDescriptionText = (t.radarChartDescription || "Visualización de tu perfil en las diferentes dimensiones.") + 
                                    " Los puntos en el gráfico se colorean según la puntuación: Rojo (1.0-2.49), Naranja (2.5-3.99), Verde (4.0-5.0), Azul (< 1.0 o no evaluado).";
   
-  const CustomRadarDot = (props: DotProps & { payload?: any, value?: number }) => {
-    const { cx, cy, payload } = props;
+  const CustomRadarDot = (props: DotProps & { payload?: any; value?: number }) => {
+    const { cx, cy, payload, value } = props;
   
     if (typeof cx !== 'number' || typeof cy !== 'number' || isNaN(cx) || isNaN(cy)) {
       console.error(`CustomRadarDot: cx (${cx}) or cy (${cy}) is not a valid number for dimension ${payload?.dimension || 'Unknown'}. Cannot render dot.`);
       return null;
     }
   
-    const scoreValue = typeof payload.score === 'number' && !isNaN(payload.score) ? payload.score : 0;
+    // Use `value` prop first, which is directly passed by Recharts for the dataKey.
+    // Fallback to payload.score if value is not available.
+    const scoreValue = typeof value === 'number' && !isNaN(value) 
+      ? value 
+      : (payload && typeof payload.score === 'number' && !isNaN(payload.score) ? payload.score : 0);
   
     let dotColor = "hsl(var(--chart-2))"; // Default Blue for scores < 1.0
     
