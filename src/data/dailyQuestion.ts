@@ -5,8 +5,8 @@ import type { DailyQuestion, DailyQuestionApiResponse } from '@/types/daily-ques
 
 export async function getDailyQuestion(userId?: string | null): Promise<DailyQuestionApiResponse | null> {
   if (!userId) {
-    console.warn("getDailyQuestion called without a userId.");
-    return { questions: [], error: 'User ID is required on the client before calling the API.' };
+    console.warn("getDailyQuestion called without a userId. Aborting API call.");
+    return { questions: [], error: 'User ID is required.' };
   }
 
   try {
