@@ -130,6 +130,7 @@ export default function InternalTensionsMapExercise({ content, pathId, onComplet
                         <h4 className="font-semibold">Paso 2: Escribe tu pensamiento principal en ese momento</h4>
                         <Label htmlFor="thought">¿Qué te dijiste?</Label>
                         <Textarea id="thought" value={thought} onChange={e => setThought(e.target.value)} placeholder="Ejemplo: “Si digo que no, pensarán que soy una aburrida.”" />
+                        <p className="text-sm text-muted-foreground">Escribe las frases que pasaron por tu mente, tal y como las recuerdes</p>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!thought.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -149,14 +150,14 @@ export default function InternalTensionsMapExercise({ content, pathId, onComplet
                               </div>
                           ))}
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2 pt-2">
                           <Checkbox id="otra" checked={!!emotions['otra']} onCheckedChange={c => setEmotions(p => ({...p, otra: !!c}))} />
                           <Label htmlFor="otra" className="font-normal">Otra:</Label>
                         </div>
                         {emotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} />}
-                        <div className="flex justify-between w-full mt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep} disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        <div className="flex justify-between w-full mt-2">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+                            <Button onClick={nextStep} className="w-auto" disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                         </div>
                     </div>
                 );
