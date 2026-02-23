@@ -22,25 +22,30 @@ export default function CurrentResultsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    try {
-      const item = localStorage.getItem(SESSION_STORAGE_ASSESSMENT_RESULTS_KEY);
-      if (item) {
-        const parsedResults = JSON.parse(item) as StoredAssessmentResults;
-        // Basic validation
-        if (parsedResults && parsedResults.aiInterpretation && parsedResults.rawAnswers && parsedResults.assessmentDimensions) {
-          setStoredResults(parsedResults);
+    if (typeof window !== 'undefined') {
+      try {
+        const item = localStorage.getItem(SESSION_STORAGE_ASSESSMENT_RESULTS_KEY);
+        if (item) {
+          const parsedResults = JSON.parse(item) as StoredAssessmentResults;
+          // Basic validation
+          if (parsedResults && parsedResults.aiInterpretation && parsedResults.rawAnswers && parsedResults.assessmentDimensions) {
+            setStoredResults(parsedResults);
+          } else {
+            setError("Los datos de la evaluación guardados son inválidos o incompletos.");
+            console.error("CurrentResultsPage: Invalid assessment data structure in sessionStorage", parsedResults);
+          }
         } else {
-          setError("Los datos de la evaluación guardados son inválidos o incompletos.");
-          console.error("CurrentResultsPage: Invalid assessment data structure in sessionStorage", parsedResults);
+          setError("No se encontraron resultados de la evaluación actual. Por favor, completa la evaluación primero.");
+          console.warn("CurrentResultsPage: No assessment results found in sessionStorage.");
         }
-      } else {
-        setError("No se encontraron resultados de la evaluación actual. Por favor, completa la evaluación primero.");
-        console.warn("CurrentResultsPage: No assessment results found in sessionStorage.");
+      } catch (e) {
+        console.error("CurrentResultsPage: Error parsing assessment results from sessionStorage:", e);
+        setError("Error al cargar los resultados de la evaluación actual.");
+      } finally {
+        setIsLoading(false);
       }
-    } catch (e) {
-      console.error("CurrentResultsPage: Error parsing assessment results from sessionStorage:", e);
-      setError("Error al cargar los resultados de la evaluación actual.");
-    } finally {
+    } else {
+      // If we're on the server, we can't get results.
       setIsLoading(false);
     }
   }, []);
