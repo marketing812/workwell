@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -215,8 +216,8 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                             <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
-                            <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>
-                            <p className="text-xs text-muted-foreground italic mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
+                            <Label className="font-semibold text-lg">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <p className="text-sm text-muted-foreground italic mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
