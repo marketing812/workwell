@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -121,7 +122,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 return (
                     <div className="p-4 space-y-4 text-center">
                         <p className="text-sm text-muted-foreground">A veces tomamos decisiones rápidas para salir de la incomodidad, y luego nos quedamos con la sensación de que algo no encaja. Esta herramienta es como una linterna que ilumina tres puntos clave para decidir con calma: lo que valoras, lo que sientes y cómo te afectará en el tiempo.</p>
-                        <Button onClick={nextStep}>Empezar a decidir con integridad <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        <Button onClick={nextStep}>Empezar a decidir con integridad <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
             case 1:
@@ -234,12 +235,17 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <p className="text-base text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
-                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                         “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
-                        </blockquote>
-                        <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder='"Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."'/>
+                        <div className="space-y-2 text-sm text-muted-foreground">
+                            <p className="font-semibold text-foreground">Guía de uso:</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
+                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
+                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
+                            </ul>
+                            <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
+                        </div>
+                        <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarias</Label>
+                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -288,3 +294,5 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         </Card>
     );
 }
+
+    
