@@ -106,18 +106,12 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
       </div>
 
       <Button onClick={() => {
-          const content = `
-**Paso 1: ¿Qué te inquieta?:**
-${writtenInquietud || 'No respondido.'}
-
-**Paso 2: Tu reflexión al leerlo:**
-${writtenReflection || 'No respondido.'}
-
-**Paso 3: Tu reformulación más útil:**
-"${writtenReformulation || 'No respondido.'}"
-
-**Paso 4: Pensamiento final de entrega:**
-"Hoy elijo confiar en mi capacidad de avanzar paso a paso."`;
+          const content = [
+            `Pregunta: ¿Qué te inquieta? | Respuesta: ${writtenInquietud || 'No respondido.'}`,
+            `Pregunta: Tu reflexión al leerlo | Respuesta: ${writtenReflection || 'No respondido.'}`,
+            `Pregunta: Tu reformulación más útil | Respuesta: "${writtenReformulation || 'No respondido.'}"`,
+            `Pregunta: Pensamiento final de entrega | Respuesta: "Hoy elijo confiar en mi capacidad de avanzar paso a paso."`
+          ].join('\n');
           handleSave("Escribir y Soltar", content);
       }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como "Entrega consciente"</Button>
       
@@ -141,7 +135,7 @@ ${writtenReflection || 'No respondido.'}
             </div>
             <div>
                 <h5 className="font-semibold">Anclaje corporal con exhalación prolongada</h5>
-                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.mp3`} type="audio/mp3"/></audio>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.m4a`} type="audio/mp3"/></audio>
             </div>
         </div>
         <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
@@ -172,16 +166,11 @@ ${writtenReflection || 'No respondido.'}
         </div>
         
         <Button onClick={() => {
-            const content = `
-**¿Qué agradezco hoy?:**
-${gratitude || 'No respondido.'}
-
-**¿Qué pequeño avance hice?:**
-${advancement || 'No respondido.'}
-
-**¿Qué momento me conectó con la calma?:**
-${calmMoment || 'No respondido.'}
-`;
+            const content = [
+              `Pregunta: ¿Qué agradezco hoy? | Respuesta: ${gratitude || 'No respondido.'}`,
+              `Pregunta: ¿Qué pequeño avance hice? | Respuesta: ${advancement || 'No respondido.'}`,
+              `Pregunta: ¿Qué momento me conectó con la calma? | Respuesta: ${calmMoment || 'No respondido.'}`
+            ].join('\n');
             handleSave("Cierre con Gratitud", content);
         }} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
         <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>

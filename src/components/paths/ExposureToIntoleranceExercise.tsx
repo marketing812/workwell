@@ -37,7 +37,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
     setStep(0);
     setSituation('');
@@ -58,34 +58,18 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
       return;
     }
 
-    const notebookContent = `
-**Ejercicio: Pequeños Actos de Exposición a lo Incierto**
+    const notebookContent = [
+      `Pregunta: Situación elegida | Respuesta: ${situation || 'No especificada.'}`,
+      `Pregunta: Antes de actuar, ¿Qué creo que podría salir mal? | Respuesta: ${whatCouldGoWrong || 'No especificado.'}`,
+      `Pregunta: Antes de actuar, ¿Qué haría si eso pasara? | Respuesta: ${howToHandle || 'No especificado.'}`,
+      `Pregunta: Antes de actuar, ¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza? | Respuesta: ${pastExperience || 'No especificado.'}`,
+      `Pregunta: Observación posterior en mi cuerpo (¿Se activó algo? ¿Hubo tensión? ¿Cómo fue cambiando?) | Respuesta: ${bodyReflection || 'No especificado.'}`,
+      `Pregunta: Observación posterior en mi mente (¿Qué pensamientos aparecieron? ¿Se cumplieron tus predicciones?) | Respuesta: ${mindReflection || 'No especificado.'}`,
+      `Pregunta: Observación posterior en la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?) | Respuesta: ${realityReflection || 'No especificado.'}`,
+      `Pregunta: Reflexión final para mi cuaderno terapéutico | Respuesta: ${finalReflection}`
+    ].join('\n');
 
-**Situación elegida:**
-${situation || 'No especificada.'}
-
-**Antes de actuar, ¿Qué creo que podría salir mal?:**
-${whatCouldGoWrong || 'No especificado.'}
-
-**Antes de actuar, ¿Qué haría si eso pasara?:**
-${howToHandle || 'No especificado.'}
-
-**Antes de actuar, ¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza?:**
-${pastExperience || 'No especificado.'}
-
-**Observación posterior en mi cuerpo (¿Se activó algo? ¿Hubo tensión? ¿Cómo fue cambiando?):**
-${bodyReflection || 'No especificado.'}
-
-**Observación posterior en mi mente (¿Qué pensamientos aparecieron? ¿Se cumplieron tus predicciones?):**
-${mindReflection || 'No especificado.'}
-
-**Observación posterior en la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?):**
-${realityReflection || 'No especificado.'}
-
-**Reflexión final para mi cuaderno terapéutico:**
-${finalReflection}
-`;
-    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20)}`, content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ title: `Exposición a la Incertidumbre: ${situation.substring(0, 20) || 'Reflexión'}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
     setIsSaved(true);
     onComplete();

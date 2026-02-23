@@ -62,18 +62,12 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
 
     const finalIdeaBase = ideaBase === 'Otra:' ? customIdeaBase : ideaBase;
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `Pregunta: Identifica tu pensamiento de bloqueo. ¿Qué te dices cuando sientes que necesitas tenerlo todo bajo control? | Respuesta: "${blockingThought}"`,
+      `Pregunta: Elige una idea base para reformular. ¿Qué te gustaría recordarte cuando el miedo empiece a apretar? | Respuesta: "${finalIdeaBase}"`,
+      `Pregunta: Crea tu frase personal | Respuesta: "${personalMantra}"`
+    ].join('\n');
 
-**Identifica tu pensamiento de bloqueo. ¿Qué te dices cuando sientes que necesitas tenerlo todo bajo control?**
-"${blockingThought}"
-
-**Elige una idea base para reformular. ¿Qué te gustaría recordarte cuando el miedo empiece a apretar?**
-"${finalIdeaBase}"
-
-**Crea tu frase personal:**
-"${personalMantra}"
-    `;
     addNotebookEntry({ title: 'Mi Mantra de Confianza', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu mantra de confianza ha sido guardado." });
     setIsSaved(true);

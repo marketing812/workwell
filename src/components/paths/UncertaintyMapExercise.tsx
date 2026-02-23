@@ -91,15 +91,11 @@ export default function UncertaintyMapExercise({ content, pathId, onComplete }: 
         finalResponses.push(`Otra: ${otherResponse.trim()}`);
     }
 
-    let notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `Pregunta: ¿En qué áreas sientes más incertidumbre? | Respuesta: ${finalAreas.length > 0 ? finalAreas.join(', ') : 'Ninguna especificada.'}`,
+      `Pregunta: ¿Cómo sueles responder? | Respuesta: ${finalResponses.length > 0 ? finalResponses.join(', ') : 'Ninguna especificada.'}`
+    ].join('\n');
 
-**¿En qué áreas sientes más incertidumbre?:**
-${finalAreas.length > 0 ? finalAreas.map(item => `- ${item}`).join('\n') : 'Ninguna especificada.'}
-
-**¿Cómo sueles responder?:**
-${finalResponses.length > 0 ? finalResponses.map(item => `- ${item}`).join('\n') : 'Ninguna especificada.'}
-    `;
 
     addNotebookEntry({
       title: "Mi Mapa de la Incertidumbre",

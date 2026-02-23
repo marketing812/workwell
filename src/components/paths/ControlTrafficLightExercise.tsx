@@ -55,21 +55,12 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
         return;
     }
 
-    let notebookContent = `
-**Ejercicio: ${content.title}**
-
-**Describe la situación que te está generando estrés, preocupación o malestar:**
-${situation || 'No especificada.'}
-
-**Zona Verde: Lo que SÍ depende de mí:**
-${greenZone || 'Sin entradas.'}
-
-**Zona Ámbar: Lo que puedo influir:**
-${amberZone || 'Sin entradas.'}
-
-**Zona Roja: Lo que NO depende de mí:**
-${redZone || 'Sin entradas.'}
-    `;
+    const notebookContent = [
+      `Pregunta: Describe la situación que te está generando estrés, preocupación o malestar | Respuesta: ${situation || 'No especificada.'}`,
+      `Pregunta: Zona Verde: Lo que SÍ depende de mí | Respuesta: ${greenZone || 'Sin entradas.'}`,
+      `Pregunta: Zona Ámbar: Lo que puedo influir | Respuesta: ${amberZone || 'Sin entradas.'}`,
+      `Pregunta: Zona Roja: Lo que NO depende de mí | Respuesta: ${redZone || 'Sin entradas.'}`
+    ].join('\n');
 
     addNotebookEntry({
       title: `Semáforo del Control: ${situation.substring(0, 30) || 'Reflexión'}`,
