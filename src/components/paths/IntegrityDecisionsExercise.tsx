@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -62,7 +61,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
     const [impact, setImpact] = useState('');
     const [isProud, setIsProud] = useState(false);
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
-    const [coherence, setCoherence] = useState(5);
+    const [coherence, setCoherence] = useState(1);
     const [adjustment, setAdjustment] = useState('');
     const [isSaved, setIsSaved] = useState(false);
     
@@ -79,7 +78,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         setImpact('');
         setIsProud(false);
         setReflectsWhoIAm(false);
-        setCoherence(5);
+        setCoherence(1);
         setAdjustment('');
         setIsSaved(false);
     };
@@ -130,7 +129,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 1: ¿Qué decisión tienes que tomar?</Label>
                         <p className="text-sm text-muted-foreground">Describe la decisión de forma concreta y breve.</p>
-                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Aceptar un nuevo puesto de trabajo en otra ciudad.”"/>
+                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -206,7 +205,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
-                        <p className="text-sm text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
+                        <p className="text-base text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
                             <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
@@ -235,7 +234,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
+                        <p className="text-base text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                          “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
                         </blockquote>

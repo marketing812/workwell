@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -45,7 +44,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
     const [otherValue, setOtherValue] = useState('');
     const [isProud, setIsProud] = useState(false);
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
-    const [coherence, setCoherence] = useState(5);
+    const [coherence, setCoherence] = useState(1);
     const [adjustment, setAdjustment] = useState('');
     const [isSaved, setIsSaved] = useState(false);
     
@@ -64,7 +63,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
         setOtherValue('');
         setIsProud(false);
         setReflectsWhoIAm(false);
-        setCoherence(5);
+        setCoherence(1);
         setAdjustment('');
         setIsSaved(false);
     };
@@ -106,7 +105,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                 return (
                     <div className="p-4 space-y-4 text-center">
                         <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
-                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
             case 1: // Ejemplo guiado
@@ -125,7 +124,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                         </Accordion>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -203,10 +202,10 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                      </div>
                 );
             case 5: // Paso 4: Autoevaluación
-                return(
+                return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 4: Autoevaluación</h4>
-                        <p className="text-sm text-muted-foreground">Antes de cerrar tu decisión, vamos a mirarla desde dentro. No pienses solo en si es ‘correcta’ o ‘incorrecta’, sino en cómo resuena contigo y con la persona que quieres ser.</p>
+                        <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
+                        <p className="text-base text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
                             <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
@@ -234,8 +233,8 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
             case 6: // Paso 5: Ajusta si es necesario
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-                        <h4 className="font-semibold text-lg">Paso 5: Ajusta si es necesario</h4>
-                        <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
+                        <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
+                        <p className="text-base text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                          “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
                         </blockquote>
