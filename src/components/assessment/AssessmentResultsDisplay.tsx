@@ -142,8 +142,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     };
   });
   
-  const radarChartDescriptionText = (t.radarChartDescription || "Visualización de tu perfil en las diferentes dimensiones.") + 
-                                   " Los puntos en el gráfico se colorean según la puntuación: Rojo (1.0-2.49), Naranja (2.5-3.99), Verde (4.0-5.0), Azul (< 1.0 o no evaluado).";
+  const radarChartDescriptionText = t.radarChartDescription || "Visualización de tu perfil en las diferentes dimensiones.";
   
   const CustomRadarDot = (props: DotProps & { payload?: any; value?: number }) => {
     const { cx, cy, payload, value } = props;
@@ -476,3 +475,5 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     </div>
   );
 }
+
+    
