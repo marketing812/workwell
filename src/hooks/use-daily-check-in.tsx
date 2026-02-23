@@ -71,7 +71,14 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   
 
   const forceOpen = useCallback(async () => {
-    if (!user?.id) return;
+    if (!user?.id) {
+        toast({
+            title: "Usuario no identificado",
+            description: "Es necesario iniciar sesión para ver la pregunta del día.",
+            variant: "destructive"
+        });
+        return;
+    }
 
     const apiResponse = await getDailyQuestion(user.id);
     
@@ -125,8 +132,8 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     // El backend devuelve este código cuando se completa el ciclo.
     if (questionToShow.id === "00000") {
         toast({
-            title: "¡Todo listo por hoy!",
-            description: "Ya has completado todas las preguntas del ciclo.",
+            title: "¡Ciclo completado!",
+            description: "¡Enhorabuena! Has respondido todas las preguntas. La próxima vez que uses esta función, el ciclo comenzará de nuevo.",
         });
         return;
     }
