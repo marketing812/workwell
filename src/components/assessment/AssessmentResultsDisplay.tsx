@@ -146,17 +146,14 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                                    " Los puntos en el gráfico se colorean según la puntuación: Rojo (1.0-2.49), Naranja (2.5-3.99), Verde (4.0-5.0), Azul (< 1.0 o no evaluado).";
   
   const CustomRadarDot = (props: DotProps & { payload?: any, value?: number }) => {
-    // We get cx, cy, and value from the props passed by Recharts
-    const { cx, cy, payload, value } = props;
+    const { cx, cy, payload } = props;
   
-    // Basic validation to prevent rendering errors if coordinates are invalid
     if (typeof cx !== 'number' || typeof cy !== 'number' || isNaN(cx) || isNaN(cy)) {
       console.error(`CustomRadarDot: cx (${cx}) or cy (${cy}) is not a valid number for dimension ${payload?.dimension || 'Unknown'}. Cannot render dot.`);
       return null;
     }
   
-    // Use the `value` prop directly, which corresponds to the `dataKey` ("score")
-    const scoreValue = typeof value === 'number' && !isNaN(value) ? value : 0;
+    const scoreValue = typeof payload.score === 'number' && !isNaN(payload.score) ? payload.score : 0;
   
     let dotColor = "hsl(var(--chart-2))"; // Default Blue for scores < 1.0
     
