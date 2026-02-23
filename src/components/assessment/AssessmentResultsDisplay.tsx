@@ -146,24 +146,26 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                                    " Los puntos en el gráfico se colorean según la puntuación: Rojo (1.0-2.49), Naranja (2.5-3.99), Verde (4.0-5.0), Azul (< 1.0 o no evaluado).";
   
   const CustomRadarDot = (props: DotProps & { payload?: any, value?: number }) => {
-    const { cx, cy, payload } = props;
-    const value = payload?.score;
+    // We get cx, cy, and value from the props passed by Recharts
+    const { cx, cy, payload, value } = props;
   
+    // Basic validation to prevent rendering errors if coordinates are invalid
     if (typeof cx !== 'number' || typeof cy !== 'number' || isNaN(cx) || isNaN(cy)) {
       console.error(`CustomRadarDot: cx (${cx}) or cy (${cy}) is not a valid number for dimension ${payload?.dimension || 'Unknown'}. Cannot render dot.`);
       return null;
     }
   
+    // Use the `value` prop directly, which corresponds to the `dataKey` ("score")
     const scoreValue = typeof value === 'number' && !isNaN(value) ? value : 0;
   
-    let dotColor = "hsl(var(--chart-2))"; // Azul (por defecto para < 1.0)
+    let dotColor = "hsl(var(--chart-2))"; // Default Blue for scores < 1.0
     
     if (scoreValue >= 4.0) {
-      dotColor = "hsl(var(--primary))"; // Verde
+      dotColor = "hsl(var(--primary))"; // Green for 4.0 - 5.0
     } else if (scoreValue >= 2.5) {
-      dotColor = "hsl(var(--chart-5))"; // Naranja
+      dotColor = "hsl(var(--chart-5))"; // Orange for 2.5 - 3.99
     } else if (scoreValue >= 1.0) {
-      dotColor = "hsl(var(--destructive))"; // Rojo
+      dotColor = "hsl(var(--destructive))"; // Red for 1.0 - 2.49
     }
         
     return <circle cx={cx} cy={cy} r={5} fill={dotColor} stroke="hsl(var(--background))" strokeWidth={1.5} />;
