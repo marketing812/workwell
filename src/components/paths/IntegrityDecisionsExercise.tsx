@@ -196,7 +196,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                                     <Label htmlFor="Otra" className="font-normal text-xs">Otro</Label>
                                 </div>
                             </div>
-                            {values['Otro'] && (
+                            {values['Otra'] && (
                                 <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
                             )}
                         </div>
@@ -220,7 +220,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                             <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
-                            <Label className="font-semibold text-xl">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <Label className="font-semibold text-lg">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
@@ -237,7 +237,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 );
             case 5:
                 return (
-                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                         <div className="text-sm text-muted-foreground space-y-2">
                             <p className="font-semibold text-foreground">Guía de uso:</p>
@@ -248,11 +248,11 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                             </ul>
                             <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
                         </div>
-                        <Label htmlFor="adjustment">Escribe aquí qué cambiarías</Label>
-                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
+                        <Label>Escribe aquí qué cambiarías</Label>
+                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
