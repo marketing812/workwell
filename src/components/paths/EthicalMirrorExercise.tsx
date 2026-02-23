@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -215,8 +216,8 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                             <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
-                            <Label>¿Qué nivel de coherencia percibo? {coherence}/10</Label>
-                            <p className="text-xs text-muted-foreground italic mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
+                            <Label className="font-semibold text-xl">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <p className="text-base text-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
@@ -232,21 +233,29 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                 );
             case 6: // Paso 5: Ajusta si es necesario
                 return (
-                    <form onSubmit={handleSave} className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Ajusta si es necesario</h4>
                         <p className="text-sm text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                          “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
                         </blockquote>
                         <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder="Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses…”" />
+                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder='"Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."'/>
                         <div className="flex justify-between w-full pt-4">
-                           <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi Cuaderno</Button>
+                           <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                           <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
+                    </div>
+                );
+            case 7:
+                 return (
+                    <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
+                        <p className="text-sm text-muted-foreground">Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites.</p>
+                        <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
+                        <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
                 );
-            case 7: // Confirmation
+            case 8:
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
@@ -258,6 +267,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
             default: return null;
         }
     }
+
 
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
