@@ -217,7 +217,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         </div>
                         <div>
                             <Label className="font-semibold text-xl">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
-                            <p className="text-base text-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
+                            <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
@@ -231,7 +231,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         </div>
                     </div>
                 );
-            case 6:
+            case 6: // Paso 5: Ajusta si es necesario
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
