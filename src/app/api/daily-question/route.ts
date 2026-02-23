@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 
 // This is the function that will be called by the GET handler.
 async function fetchExternalDailyQuestion(userId: string): Promise<{ question: any, debugUrl: string }> {
-  // CORRECT PATH based on the provided PHP file
+  // CORRECT PATH based on user feedback
   const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/traerjson.php`;
   const SECRET_KEY = 'SJDFgfds788sdfs8888KLLLL';
 
@@ -15,11 +15,11 @@ async function fetchExternalDailyQuestion(userId: string): Promise<{ question: a
   const rawToken = `${SECRET_KEY}|${fecha}`;
   const token = Buffer.from(rawToken).toString('base64');
   
-  // 2. Base64-encode the user ID as required by the PHP script
-  const base64UserId = Buffer.from(userId).toString('base64');
+  // 2. Send user ID without base64 encoding as per user request
+  const rawUserId = userId;
   
   // 3. Construct the final URL with ALL required parameters
-  const externalUrl = `${API_BASE_URL}?archivo=clima&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
+  const externalUrl = `${API_BASE_URL}?archivo=clima&idusuario=${encodeURIComponent(rawUserId)}&token=${encodeURIComponent(token)}`;
   
   console.log("API Route (daily-question): Fetching from external URL:", externalUrl);
 
