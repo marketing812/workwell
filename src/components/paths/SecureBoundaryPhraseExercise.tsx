@@ -42,9 +42,16 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
             toast({ title: 'Frase vacía', description: 'Por favor, escribe o selecciona tu frase para guardarla.', variant: 'destructive' });
             return;
         }
+
+        const notebookContent = [
+            `**Ejercicio: ${(content as any).title}**`,
+            `Pregunta: Frase de límite seguro | Respuesta: "${finalPhrase}"`,
+            `Pregunta: Micropráctica diaria (opcional) | Respuesta: ${dailyPractice || 'No realizada.'}`
+        ].join('\n\n');
+
         addNotebookEntry({
             title: `Mi Frase de Límite Seguro`,
-            content: `Mi frase: "${finalPhrase}"\n\nPráctica diaria opcional: ${dailyPractice || 'No realizada.'}`,
+            content: notebookContent,
             pathId: pathId,
             userId: user?.id,
         });

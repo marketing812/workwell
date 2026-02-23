@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -35,7 +35,14 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
       return;
     }
     
-    addNotebookEntry({ title: "Mi Frase de Firmeza Compasiva", content: `"${finalPhrase}"`, pathId: pathId, userId: user?.id });
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: Veo que te sientes... | Respuesta: ${otherEmotion}`,
+      `Pregunta: ...y al mismo tiempo, yo necesito... | Respuesta: ${myNeed}`,
+      `\n**Frase final de firmeza compasiva:**\n"${finalPhrase}"`
+    ].join('\n\n');
+
+    addNotebookEntry({ title: "Mi Frase de Firmeza Compasiva", content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el cuaderno." });
     setIsSaved(true);
     onComplete();

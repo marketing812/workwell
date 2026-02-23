@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
-import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
+import type { NoGuiltTechniquesExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -88,12 +88,11 @@ export default function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTe
         return;
     }
 
-    const notebookContent = `
-**Ejercicio: ${techniques[techniqueKey].title}**
+    const notebookContent = [
+        `**Técnica asertiva: ${techniques[techniqueKey].title}**`,
+        `Pregunta: Mi versión personalizada de la frase | Respuesta: "${phrase}"`
+    ].join('\n\n');
 
-*Mi frase personalizada:*
-"${phrase}"
-    `;
     addNotebookEntry({ title: `Técnica asertiva: ${techniques[techniqueKey].title}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Frase Guardada", description: "Tu frase se ha guardado en el Cuaderno Terapéutico."});
   };

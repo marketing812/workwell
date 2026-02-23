@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -80,7 +81,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
   const [isSaved, setIsSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   const resetExercise = () => {
       setStep(0);
       setSituation('');
@@ -111,27 +112,17 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
     let finalEmotion = emotion === 'otra' ? otherEmotion : localEmotionOptions.find(o => o.id === emotion)?.label;
     let finalImpulse = impulse === 'Otra opción (campo abierto)' ? otherImpulse : impulse;
     
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-**Situación que me activó:**
-${situation || 'No especificada.'}
-
-**Señales de mi cuerpo:**
-${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ninguna especificada.'}
-
-**Emoción y pensamientos:**
-- Emoción: ${finalEmotion || 'No especificada'} (Intensidad: ${emotionIntensity}%)
-- Pensamiento: "${thoughts || 'No especificado'}" (Creído al ${thoughtBelief}%)
-
-**Impulso y necesidad:**
-- Ganas de hacer: ${finalImpulse || 'No especificado.'}
-- ¿Necesitaba poner un límite?: ${neededLimit || 'No especificado.'}
-- ¿Mi cuerpo me decía algo?: ${bodyToldMe || 'No especificado.'}
-
-**Respuesta alternativa:**
-- Podría decir: "${alternativeResponse || 'No especificada'}" (Confianza en esta respuesta: ${responseConfidence}%)
-`;
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: ¿Qué situación te activó emocionalmente? | Respuesta: ${situation || 'No especificada.'}`,
+      `Pregunta: ¿Qué notaste en tu cuerpo? | Respuesta: ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ninguna especificada.'}`,
+      `Pregunta: ¿Qué emoción sentiste? (e intensidad) | Respuesta: ${finalEmotion || 'No especificada'} (${emotionIntensity}%)`,
+      `Pregunta: ¿Qué pensaste en ese momento? (y creencia) | Respuesta: "${thoughts || 'No especificado'}" (${thoughtBelief}%)`,
+      `Pregunta: ¿Qué te dieron ganas de hacer? | Respuesta: ${finalImpulse || 'No especificado.'}`,
+      `Pregunta: ¿Crees que necesitabas poner un límite? | Respuesta: ${neededLimit || 'No especificado.'}`,
+      `Pregunta: ¿Tu cuerpo y tus emociones estaban intentando decirte algo? | Respuesta: ${bodyToldMe || 'No especificado.'}`,
+      `Pregunta: ¿Qué podrías decir la próxima vez? (y confianza) | Respuesta: "${alternativeResponse || 'No especificada'}" (${responseConfidence}%)`
+    ].join('\n\n');
 
     addNotebookEntry({
       title: `Brújula del Malestar: ${situation.substring(0,25) || 'Reflexión'}`,
@@ -151,7 +142,7 @@ ${selectedBodySensations.length > 0 ? selectedBodySensations.join(', ') : 'Ningu
   
   const renderStep = () => {
     switch(step) {
-      case 0: // Intro
+      case 0: // Intro with example
         return (
           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -77,12 +78,14 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       return;
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Mi Frase Asertiva Construida:*
-"Cuando ${fact}, me siento ${feeling}. Necesito ${need}. Por eso te pido ${request}."
-    `;
+    const notebookContent = [
+        `**Ejercicio: ${content.title}**`,
+        `Pregunta: Describe el hecho objetivo | Respuesta: ${fact || 'No especificado.'}`,
+        `Pregunta: Expresa tu emoción | Respuesta: ${feeling || 'No especificado.'}`,
+        `Pregunta: Identifica tu necesidad | Respuesta: ${need || 'No especificado.'}`,
+        `Pregunta: Formula una petición | Respuesta: ${request || 'No especificado.'}`,
+        `\n**Frase Asertiva Final:**\n"Cuando ${fact}, me siento ${feeling}. Necesito ${need}. Por eso te pido ${request}."`
+    ].join('\n\n');
 
     addNotebookEntry({
       title: "Mi Frase Asertiva en 4 Pasos",
