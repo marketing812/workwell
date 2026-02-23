@@ -133,7 +133,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                           <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -206,7 +206,6 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
-                        <p className="text-base text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
                             <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
@@ -233,7 +232,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                 );
             case 6: // Paso 5: Ajusta si es necesario
                 return (
-                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                    <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                         <div className="space-y-2 text-sm text-muted-foreground">
                             <p className="font-semibold text-foreground">Guía de uso:</p>
@@ -244,7 +243,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                             </ul>
                             <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
                         </div>
-                        <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarias</Label>
+                        <Label htmlFor="adjustment" className='pt-2 block'>Escribe aquí qué cambiarías</Label>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
