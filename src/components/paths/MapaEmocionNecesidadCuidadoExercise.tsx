@@ -118,16 +118,13 @@ export default function MapaEmocionNecesidadCuidadoExercise({ content, pathId, o
     }
 
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**${content.title}**
 
-**1. ¿Qué estás sintiendo ahora?:**
-${emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion)}
+Pregunta: ¿Qué estás sintiendo ahora? | Respuesta: ${emotion === 'otra' ? otherEmotion : (emotionOptions.find(e => e.value === emotion)?.labelKey ? t[emotionOptions.find(e => e.value === emotion)!.labelKey as keyof typeof t] : emotion)}
 
-**2. ¿Qué podrías estar necesitando?:**
-${selectedNeeds.join(', ')}
+Pregunta: ¿Qué podrías estar necesitando? | Respuesta: ${selectedNeeds.join(', ')}
 
-**3. ¿Qué podrías hacer hoy para cuidar esa necesidad?:**
-${allCareActions.map(action => `- ${action}`).join('\n')}
+Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${allCareActions.map(action => `- ${action}`).join('\n')}
     `;
 
     addNotebookEntry({ title: 'Mi Mapa Emoción-Necesidad-Cuidado', content: notebookContent, pathId: pathId, userId: user?.id });

@@ -60,16 +60,13 @@ export default function DiarioMeDiCuentaExercise({ content, pathId, onComplete }
     }
 
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**${content.title}**
 
-*¿Qué noté en mí hoy?:*
-${noticed}
+Pregunta: ¿Qué noté en mí hoy? | Respuesta: ${noticed}
 
-*¿Qué me ayudó a notarlo?:*
-${howNoticed}
+Pregunta: ¿Qué me ayudó a notarlo? | Respuesta: ${howNoticed}
 
-*¿Qué necesito ahora que me he dado cuenta de esto?:*
-${whatINeed}
+Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${whatINeed}
 `;
     addNotebookEntry({ title: 'Mi "Me di cuenta" del día', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Entrada Guardada' });

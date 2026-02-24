@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -48,7 +49,13 @@ export default function SemaforoEmocionalExercise({ content, pathId, onComplete 
         });
         return;
     }
-    const notebookContent = `**Ejercicio: ${content.title}**\n\nEstado: ${light}.\nAcción de cuidado: ${action}\n\nReflexión: ${learning || 'Sin reflexión.'}`;
+    const notebookContent = `
+**${content.title}**
+
+Pregunta: ¿Cómo te sientes ahora? | Respuesta: ${light}
+Pregunta: Tu acción de cuidado elegida | Respuesta: ${action}
+Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin reflexión.'}
+`;
 
     addNotebookEntry({ title: 'Registro de Semáforo Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });

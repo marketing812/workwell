@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -85,10 +86,11 @@ export default function UnaPalabraCadaDiaExercise({ content, pathId, onComplete 
     }
 
     const notebookContent = `
-**${content.title}: Registro Diario**
+**${content.title}**
 
-*Mi emoción de hoy:* ${finalEmotion}
-*Mi microacción de anclaje:* ${finalAnchorAction}
+Pregunta: ¿Qué emoción resume mejor tu día hasta ahora? | Respuesta: ${finalEmotion}
+
+Pregunta: ¿Qué microacción de anclaje elegiste? | Respuesta: ${finalAnchorAction}
 `;
     addNotebookEntry({ title: `Diario de una palabra: ${finalEmotion}`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Diario Guardado' });

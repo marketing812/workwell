@@ -83,22 +83,17 @@ export default function DetectiveDeEmocionesExercise({ content, pathId, onComple
     }
 
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**${content.title}**
 
-*Situación vivida:*
-${situation || 'No especificada.'}
+Pregunta: ¿Qué ocurrió? | Respuesta: ${situation || 'No especificada.'}
 
-*Pensamiento automático:*
-"${automaticThought || 'No especificado.'}"
+Pregunta: ¿Qué pasó por tu mente? | Respuesta: "${automaticThought || 'No especificado.'}"
 
-*Emoción(es) sentida(s):*
-${finalEmotions.length > 0 ? finalEmotions.join(', ') : 'No especificada'} (Intensidad: ${emotionIntensity}%)
+Pregunta: ¿Qué emoción sentiste y con qué intensidad? | Respuesta: ${finalEmotions.length > 0 ? finalEmotions.join(', ') : 'No especificada'} (${emotionIntensity}%)
 
-*Impulso o conducta:*
-${impulse || 'No especificado.'}
+Pregunta: ¿Qué hiciste o te dieron ganas de hacer? | Respuesta: ${impulse || 'No especificado.'}
 
-*Reflexión (¿Qué aprendiste?):*
-${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('\n') : 'Sin reflexión.'}
+Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedReflections.length > 0 ? selectedReflections.map(r => `- ${r}`).join('\n') : 'Sin reflexión.'}
 `;
     addNotebookEntry({ title: 'Mi Registro de Detective de Emociones', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado', description: 'Tu registro se ha guardado en el cuaderno.' });

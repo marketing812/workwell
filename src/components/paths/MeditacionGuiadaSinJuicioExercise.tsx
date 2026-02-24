@@ -46,10 +46,9 @@ export default function MeditacionGuiadaSinJuicioExercise({ content, pathId, onC
       return;
     }
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**${content.title}**
 
-**¿Qué sentí al observarme sin intentar corregirme?**
-${reflection}
+Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${reflection}
 `;
 
     addNotebookEntry({ title: 'Reflexión: Meditación sin Juicio', content: notebookContent, pathId: pathId, userId: user?.id });
@@ -125,7 +124,7 @@ ${reflection}
             </div>
             {!isSaved ? (
               <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
+                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
               </Button>
             ) : (
               <div className="flex items-center justify-center p-3 mt-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
