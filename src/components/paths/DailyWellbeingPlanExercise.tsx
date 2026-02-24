@@ -19,6 +19,11 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { CalendarIcon } from 'lucide-react';
 
 const firstGestureOptions = [
   { id: 'respirar', label: 'Respirar profundamente 1 minuto', importance: 'Comenzar con una respiración lenta y profunda regula tu sistema nervioso, reduce la activación del modo alerta y prepara tu mente para un inicio más sereno.' },
@@ -207,11 +212,10 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-             <p className="text-sm text-muted-foreground">Hay días en los que sentimos que el tiempo se nos escapa y que nuestras rutinas se desordenan.</p>
-             <p className="text-sm text-muted-foreground">La buena noticia es que no necesitas cambios drásticos para recuperar la sensación de control: basta con anclar tu día a tres gestos pequeños, pero estratégicos, que sostengan tu cuerpo, tus emociones y tu mente.</p>
-             <p className="text-sm text-muted-foreground">Este ejercicio es tu “plan maestro de autocuidado”: vas a elegir un microhábito físico, uno emocional y uno mental que puedas mantener incluso en días ocupados o difíciles.</p>
-             <p className="text-sm text-muted-foreground">Estos serán tus anclas: puntos fijos que mantendrán tu bienestar estable sin importar lo que pase fuera.</p>
-             <p className="text-xs text-muted-foreground">Tiempo estimado: 6-8 minutos. Hazlo al inicio de la semana y repite siempre que sientas que has perdido tus rutinas.</p>
+             <p className="text-sm text-muted-foreground">En el ejercicio anterior trazaste tu plan maestro para cuidar de ti durante todo el día. Ahora vamos a encender ese plan desde el primer instante de la mañana, para que empiece a funcionar con tu primera respiración.</p>
+             <p className="text-sm text-muted-foreground">Tus primeras acciones al despertar marcan el tono de todo lo que viene después. Si empiezas acelerado o en piloto automático, el día puede arrastrarte. Si empiezas con calma, intención y energía positiva, tendrás más control y claridad para todo lo demás.</p>
+             <p className="text-sm text-muted-foreground">En este ejercicio vas a diseñar una rutina inicial breve —aunque sea de pocos minutos— que te permita aterrizar en tu día con presencia y equilibrio.</p>
+             <p className="text-xs text-muted-foreground">Tiempo estimado: 8-10 minutos para diseñarla. Hazlo una vez y revisa cuando sientas que tu mañana necesita un ajuste.</p>
             <Button onClick={nextStep}>Empezar</Button>
           </div>
         );
@@ -224,32 +228,16 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
       case 4:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 4: Cuándo lo harás</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cuándo realizarás cada uno de los microhábitos que elegiste en los pasos anteriores.</p>
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Decide el orden y la duración</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a ordenar tus tres gestos para que encajen en tu mañana sin prisa. No necesitas más de 10-15 minutos en total.</p>
                 <div className="space-y-4">
-                    {habits.map((item, index) => (
-                        <div key={item.key} className="p-3 border rounded-md bg-background space-y-2">
-                           <Label htmlFor={`moment-select-${index}`} className="font-medium">{item.label}</Label>
-                            <Select 
-                                value={moments[item.key as keyof typeof moments]} 
-                                onValueChange={(value) => setMoments(p => ({...p, [item.key]: value}))}
-                            >
-                                <SelectTrigger id={`moment-select-${index}`}>
-                                    <SelectValue placeholder="Elige un momento..." />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {momentOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
-                                     <SelectItem value="Otro">Otro</SelectItem>
-                                </SelectContent>
-                            </Select>
-                             {moments[item.key as keyof typeof moments] === 'Otro' && (
-                                <Input 
-                                    value={otherMoments[item.key] || ''} 
-                                    onChange={e => setOtherMoments(p => ({...p, [item.key]: e.target.value}))} 
-                                    placeholder="Describe el otro momento"
-                                    className="mt-2 ml-6"
-                                />
-                            )}
+                    {habits.map(item => (
+                        <div key={item.key} className="p-3 border rounded-md bg-background flex items-center justify-between">
+                            <span className="font-medium text-sm">{item.label}</span>
+                            <div className="flex items-center gap-2">
+                                <Input type="number" value={item.duration} onChange={e => setDurations(p => ({...p, [item.key]: e.target.value}))} className="w-16 h-8 text-center" />
+                                <span className="text-sm text-muted-foreground">min</span>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -259,7 +247,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
        case 5:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo recordarlo</h4>
+                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
                 <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste. Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
                 <div className="space-y-2">
                 {facilitatorOptions.map(opt => (
@@ -324,7 +312,8 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-          {content.objective && <p className="pt-2 whitespace-pre-line">{content.objective}</p>}
+        <CardDescription className="pt-2 whitespace-pre-line">
+          {content.objective}
           {content.audioUrl && (
               <div className="mt-4">
                   <audio controls controlsList="nodownload" className="w-full">
@@ -333,6 +322,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
                   </audio>
               </div>
           )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {renderStep()}
@@ -340,3 +330,5 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
     </Card>
   );
 }
+
+    

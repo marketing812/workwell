@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -58,7 +59,7 @@ export function RegisterForm() {
     gender: '',
     token: '',
   });
-  const [initialEmotionalState, setInitialEmotionalState] = useState(3);
+  const [initialEmotionalState, setInitialEmotionalState] = useState(1);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeHealthData, setAgreeHealthData] = useState(false);
   const [agreeAI, setAgreeAI] = useState(false);
@@ -311,3 +312,5 @@ export function RegisterForm() {
     </Card>
   );
 }
+
+    

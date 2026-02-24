@@ -64,7 +64,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
     const [otherActivity, setOtherActivity] = useState('');
     const [activityDate, setActivityDate] = useState<Date | undefined>(new Date());
     const [activityTime, setActivityTime] = useState('08:00');
-    const [activityDuration, setActivityDuration] = useState(5);
+    const [activityDuration, setActivityDuration] = useState(1);
     const [uncomfortableSituation, setUncomfortableSituation] = useState('');
     const [positiveLearning, setPositiveLearning] = useState('');
     const [starResource, setStarResource] = useState<string[]>([]);
@@ -85,7 +85,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                 setOtherActivity(data.otherActivity || '');
                 setActivityDate(data.activityDate ? new Date(data.activityDate) : new Date());
                 setActivityTime(data.activityTime || '08:00');
-                setActivityDuration(data.activityDuration || 5);
+                setActivityDuration(data.activityDuration || 1);
                 setUncomfortableSituation(data.uncomfortableSituation || '');
                 setPositiveLearning(data.positiveLearning || '');
                 setStarResource(data.starResource || []);
@@ -117,7 +117,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
         setOtherActivity('');
         setActivityDate(new Date());
         setActivityTime('08:00');
-        setActivityDuration(5);
+        setActivityDuration(1);
         setUncomfortableSituation('');
         setPositiveLearning('');
         setStarResource([]);
@@ -367,3 +367,5 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
         </Card>
     );
 }
+
+    
