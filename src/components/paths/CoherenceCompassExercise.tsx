@@ -101,6 +101,9 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
 
     const handleSave = () => {
         const activeAreas = environments.filter(e => selectedEnvs[e.id]);
+        if (selectedEnvs['otro'] && otherEnvironment) {
+            activeAreas.push({id: 'otro', label: otherEnvironment})
+        }
         const filledEnvironments = activeAreas.filter(area => ratings[area.id]);
         if (filledEnvironments.length === 0) {
             toast({
@@ -116,19 +119,20 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
             const rating = ratings[area.id];
             if (rating) {
                 notebookContent += `**Área:** ${area.label}\n`;
-                notebookContent += `- Apoyo a mis valores (1-5): ${rating.support}\n`;
-                notebookContent += `- Me aleja de mis valores (1-5): ${rating.drain}\n\n`;
+                notebookContent += `Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? | Respuesta: ${rating.support}/5\n`;
+                notebookContent += `Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? | Respuesta: ${rating.drain}/5\n`;
+                notebookContent += `Pregunta: Ejemplo de cómo me apoya o me dificulta. | Respuesta: ${rating.example || 'No especificado.'}\n\n`;
             }
         });
         
         notebookContent += `\n**Reflexión sobre zonas de alineación:**\n`;
-        notebookContent += `- Lo que hago bien: ${highCoherenceReflection || 'No respondido.'}\n`;
-        notebookContent += `- Emociones que despierta: ${highCoherenceEmotions || 'No respondido.'}\n\n`;
+        notebookContent += `Pregunta: ¿Qué estás haciendo bien en ellas que te hace sentirte en paz o en equilibrio? | Respuesta: ${highCoherenceReflection || 'No respondido.'}\n`;
+        notebookContent += `Pregunta: ¿Qué emociones te despierta vivir en coherencia en esas áreas? | Respuesta: ${highCoherenceEmotions || 'No respondido.'}\n\n`;
         
         notebookContent += `**Reflexión sobre zona de desconexión:**\n`;
-        notebookContent += `- Lo que me impide ser coherente: ${disconnectionReflection || 'No respondido.'}\n\n`;
+        notebookContent += `Pregunta: ¿Qué te impide ser más coherente en esa área? | Respuesta: ${disconnectionReflection || 'No respondido.'}\n\n`;
         
-        notebookContent += `**Pequeño gesto para ser más coherente:**\n${smallGesture || 'No especificado.'}\n`;
+        notebookContent += `**Pequeño gesto para ser más coherente:**\nPregunta: ¿Qué pequeño gesto podrías dar esta semana para ser un poco más coherente en el área que te duele? | Respuesta: ${smallGesture || 'No especificado.'}\n`;
 
         addNotebookEntry({
             title: 'Mi Brújula de Coherencia',
@@ -156,6 +160,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
     };
 
     const renderStep = () => {
+        const filledEnvironments = selectedEnvironments.filter(area => ratings[area.id]);
         switch(step) {
             case 0:
                 return (
@@ -327,19 +332,17 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && (
-                    <CardDescription className="pt-2">
-                        {content.objective}
-                        {content.audioUrl && (
-                            <div className="mt-4">
-                                <audio controls controlsList="nodownload" className="w-full">
-                                    <source src={content.audioUrl} type="audio/mp3" />
-                                    Tu navegador no soporta el elemento de audio.
-                                </audio>
-                            </div>
-                        )}
-                    </CardDescription>
-                )}
+                <CardDescription className="pt-2">
+                    {content.objective}
+                    {content.audioUrl && (
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src={content.audioUrl} type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    )}
+                </CardDescription>
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>

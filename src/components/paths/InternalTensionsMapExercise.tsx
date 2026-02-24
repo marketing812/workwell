@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -66,12 +67,12 @@ export default function InternalTensionsMapExercise({ content, pathId, onComplet
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Situación:** ${situation}
-**Pensamiento:** ${thought}
-**Emoción(es):** ${selectedEmotions.join(', ') || 'No especificada'}
-**Acción:** ${action}
-**Alineación:** ${alignment}
-**¿Qué habría necesitado?:** ${needed}
+Pregunta: Elige una situación reciente | Respuesta: ${situation || 'No especificada.'}
+Pregunta: Escribe tu pensamiento principal en ese momento | Respuesta: ${thought || 'No especificado.'}
+Pregunta: Identifica la emoción dominante | Respuesta: ${selectedEmotions.join(', ') || 'No especificada.'}
+Pregunta: Describe la acción que tomaste | Respuesta: ${action || 'No especificada.'}
+Pregunta: Evalúa la alineación | Respuesta: ${alignment || 'No especificada.'}
+Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo que sentía y pensaba? | Respuesta: ${needed || 'No especificada.'}
         `;
         addNotebookEntry({ title: 'Mapa de Tensiones Internas', content: notebookContent, pathId, userId: user?.id });
         toast({ title: 'Mapa Guardado' });
@@ -238,9 +239,7 @@ export default function InternalTensionsMapExercise({ content, pathId, onComplet
                     </div>
                 )}
             </CardHeader>
-            <CardContent>
-                {renderStep()}
-            </CardContent>
+            <CardContent>{renderStep()}</CardContent>
         </Card>
     );
 }

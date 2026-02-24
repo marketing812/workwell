@@ -62,6 +62,14 @@ export default function NonNegotiablesExercise({ content, pathId, onComplete }: 
     setCommitments(prev => ({...prev, [value]: text}));
   };
 
+  const getFilteredValues = () => {
+      const selected = valuesList.filter(v => initialValues[v]);
+      if (initialValues['Otro'] && otherInitialValue) {
+          selected.push(otherInitialValue);
+      }
+      return selected;
+  };
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (nonNegotiables.length !== 3 || nonNegotiables.some(v => !commitments[v]?.trim())) {
@@ -71,11 +79,14 @@ export default function NonNegotiablesExercise({ content, pathId, onComplete }: 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
+Pregunta: Situación en la que actué en contra de mis valores | Respuesta: ${pastSituation || 'No especificada.'}
+Pregunta: Valores que se rompieron | Respuesta: ${getFilteredValues().join(', ') || 'No especificados.'}
+
 **Mis 3 no negociables:**
-${nonNegotiables.join(', ')}
+${nonNegotiables.map((v, i) => `Pregunta: No negociable ${i + 1} | Respuesta: ${v}`).join('\n')}
 
 **Mis compromisos para cuidarlos:**
-${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
+${nonNegotiables.map((v) => `Pregunta: Compromiso para: ${v} | Respuesta: ${commitments[v]}`).join('\n')}
     `;
     addNotebookEntry({ title: 'Mis No Negociables', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'No Negociables Guardados' });
@@ -87,14 +98,6 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
   const prevStep = () => setStep(prev => prev - 1);
   const nextStep = () => setStep(prev => prev + 1);
 
-  const getFilteredValues = () => {
-      const selected = valuesList.filter(v => initialValues[v]);
-      if (initialValues['Otro'] && otherInitialValue) {
-          selected.push(otherInitialValue);
-      }
-      return selected;
-  };
-  
   const resetExercise = () => {
     setStep(0);
     setPastSituation('');
@@ -111,7 +114,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Un no negociable no es una norma impuesta por otros. Es una elección interna que nace de tus valores y tu experiencia. No se trata de tener una lista enorme, sino de elegir lo que realmente es esencial para ti.</p>
-            <Button onClick={nextStep}>Empezar <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
@@ -142,7 +145,7 @@ ${nonNegotiables.map((v) => `- ${v}: ${commitments[v]}`).join('\n')}
             </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );

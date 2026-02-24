@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,13 +13,7 @@ import { Edit3, Save, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
-
-
-interface PersonalManifestoExerciseProps {
-  content: PersonalManifestoExerciseContent;
-  pathId: string;
-  onComplete: () => void;
-}
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const reactionOptions = [
     { id: 'reac-prisa', label: 'Actué desde la prisa.' },
@@ -68,11 +63,11 @@ export default function PersonalManifestoExercise({ content, pathId, onComplete 
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Situación:* ${situation || 'No especificada.'}
-*Reacción sin juicio:* ${selectedReactions.join(', ') || 'No especificada.'}
-*Evaluación de coherencia:* ${coherenceChoice || 'No evaluado.'}
-*Frase compasiva:* "${compassionatePhrase || 'No escrita.'}"
-*Ajuste para la próxima vez:* ${adjustment}
+Pregunta: Recuerda la situación | Respuesta: ${situation || 'No especificada.'}
+Pregunta: Nombra tu reacción sin juicio | Respuesta: ${selectedReactions.join(', ') || 'No especificada.'}
+Pregunta: Evaluación de coherencia | Respuesta: ${coherenceChoice || 'No evaluado.'}
+Pregunta: Si pudieras hablarte con ternura, ¿qué frase te dirías ahora? | Respuesta: "${compassionatePhrase || 'No escrita.'}"
+Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
         `;
 
         addNotebookEntry({ title: 'Mi Manifiesto de Coherencia', content: notebookContent, pathId: pathId, userId: user?.id });

@@ -112,9 +112,9 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
             const rating = ratings[area.id];
             if (rating) {
                 notebookContent += `**Área:** ${area.label}\n`;
-                notebookContent += `- Apoyo a mis valores (0-10): ${rating.support}\n`;
-                notebookContent += `- Me aleja de mis valores (0-10): ${rating.drain}\n`;
-                if(rating.example) notebookContent += `- Ejemplo: ${rating.example}\n\n`;
+                notebookContent += `Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? | Respuesta: ${rating.support}/10\n`;
+                notebookContent += `Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? | Respuesta: ${rating.drain}/10\n`;
+                if(rating.example) notebookContent += `Pregunta: Ejemplo de cómo me apoya o me dificulta. | Respuesta: ${rating.example}\n\n`;
             }
         });
 

@@ -25,23 +25,6 @@ const valuesList = [
     'Conexión', 'Autonomía', 'Paz interior', 'Solidaridad', 'Humildad', 'Tolerancia'
 ];
 
-const emotionOptions = [
-    { value: 'tristeza', labelKey: 'emotionSadness' },
-    { value: 'miedo', labelKey: 'emotionFear' },
-    { value: 'ira', labelKey: 'emotionAnger' },
-    { value: 'asco', labelKey: 'emotionDisgust' },
-    { value: 'estres', labelKey: 'emotionStress' },
-    { value: 'ansiedad', labelKey: 'emotionAnxiety' },
-    { value: 'agobio', labelKey: 'emotionOverwhelm' },
-    { value: 'ilusion', labelKey: 'emotionHope' },
-    { value: 'entusiasmo', labelKey: 'emotionEnthusiasm' },
-    { value: 'esperanza', labelKey: 'emotionHopefulness' },
-    { value: 'culpa', labelKey: 'emotionGuilt' },
-    { value: 'inseguridad', labelKey: 'emotionInsecurity' },
-    { value: 'confusion', labelKey: 'emotionConfusion' },
-    { value: 'ambivalencia', labelKey: 'emotionAmbivalence' },
-];
-
 interface IntegrityDecisionsExerciseProps {
   content: IntegrityDecisionsExerciseContent;
   pathId: string;
@@ -95,9 +78,6 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
             finalValues.push(otherValue);
         }
 
-        const finalEmotions = emotionOptions.filter(e => selectedEmotions[e.value]).map(e => t[e.labelKey as keyof typeof t]);
-        if (selectedEmotions['otra'] && otherEmotion) finalEmotions.push(otherEmotion);
-
         if (finalValues.length === 0 || !decision.trim()) {
             toast({ title: 'Campos incompletos', description: 'Por favor, completa los pasos principales.', variant: 'destructive'});
             return;
@@ -106,16 +86,19 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Decisión a explorar:** ${decision}
-**Persona espejo:** ${person === 'Otra' ? otherPerson : person}
+Pregunta: Elige la decisión que quieres explorar | Respuesta: ${decision || 'No especificada.'}
+Pregunta: Escoge a la persona a la que se lo explicarás | Respuesta: ${person === 'Otra' ? otherPerson : person || 'No especificada.'}
+Pregunta: ¿Por qué esa persona? | Respuesta: ${whyPerson || 'No especificada.'}
+
 **Explicación como si fuera real:**
-- Motivos principales: ${motives}
-- Cómo se lo explicaría: ${explanationForOther}
-**Valores en juego:** ${finalValues.join(', ')}
-**¿Me sentiría orgulloso/a?:** ${isProud ? 'Sí' : 'No'}
-**¿Refleja quién soy?:** ${reflectsWhoIAm ? 'Sí' : 'No'}
-**Nivel de coherencia percibido:** ${coherence}/10
-**Ajuste necesario:** ${adjustment || 'Ninguno.'}
+Pregunta: Los motivos principales de mi decisión son... | Respuesta: ${motives || 'No especificado.'}
+Pregunta: ¿Cómo se lo explicarías para que lo entienda? | Respuesta: ${explanationForOther || 'No especificado.'}
+
+Pregunta: Valores en juego | Respuesta: ${finalValues.join(', ') || 'Ninguno seleccionado.'}
+Pregunta: ¿Me sentiría orgulloso/a de dar esta explicación? | Respuesta: ${isProud ? 'Sí' : 'No'}
+Pregunta: ¿Refleja quién soy y quiero ser? | Respuesta: ${reflectsWhoIAm ? 'Sí' : 'No'}
+Pregunta: ¿Qué nivel de coherencia percibo? | Respuesta: ${coherence}/10
+Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
         `;
         addNotebookEntry({ title: 'Reflexión: Decisiones con Integridad', content: notebookContent, pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
@@ -222,7 +205,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                         <div>
                             <Label className="font-semibold text-lg">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
-                            <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
+                            <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={1} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
                                 <span>5 (Medio)</span>
@@ -246,13 +229,15 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
                                 <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
                                 <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
                             </ul>
-                            <p className="italic pt-2">Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”</p>
                         </div>
-                        <Label>Escribe aquí qué cambiarías</Label>
+                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm mt-2">
+                            Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
+                        </blockquote>
+                        <Label htmlFor="adjustment">Escribe aquí qué cambiarías</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                           <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -300,5 +285,3 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         </Card>
     );
 }
-    
-    

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -74,23 +75,23 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
         if (values['Otra'] && otherValue) {
             selectedValues.push(otherValue);
         }
-        if (!adjustment.trim()) {
-            toast({ title: "Ajuste opcional no rellenado", description: "Puedes continuar, pero reflexionar sobre un ajuste puede ser útil.", variant: "default"});
-        }
         
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Decisión a explorar:** ${decision}
-**Persona espejo:** ${person === 'Otra' ? otherPerson : person}
+Pregunta: Elige la decisión que quieres explorar | Respuesta: ${decision || 'No especificada.'}
+Pregunta: Escoge a la persona a la que se lo explicarás | Respuesta: ${person === 'Otra' ? otherPerson : person || 'No especificada.'}
+Pregunta: ¿Por qué esa persona? | Respuesta: ${whyPerson || 'No especificada.'}
+
 **Explicación como si fuera real:**
-- Motivos principales: ${motives}
-- Cómo se lo explicaría: ${explanationForOther}
-**Valores en juego:** ${selectedValues.join(', ')}
-**¿Me sentiría orgulloso/a?:** ${isProud ? 'Sí' : 'No'}
-**¿Refleja quién soy?:** ${reflectsWhoIAm ? 'Sí' : 'No'}
-**Nivel de coherencia percibido:** ${coherence}/10
-**Ajuste necesario:** ${adjustment || 'Ninguno.'}
+Pregunta: Los motivos principales de mi decisión son... | Respuesta: ${motives || 'No especificado.'}
+Pregunta: ¿Cómo se lo explicarías para que lo entienda? | Respuesta: ${explanationForOther || 'No especificado.'}
+
+Pregunta: Valores en juego | Respuesta: ${selectedValues.join(', ') || 'Ninguno seleccionado.'}
+Pregunta: ¿Me sentiría orgulloso/a de dar esta explicación? | Respuesta: ${isProud ? 'Sí' : 'No'}
+Pregunta: ¿Refleja quién soy y quiero ser? | Respuesta: ${reflectsWhoIAm ? 'Sí' : 'No'}
+Pregunta: ¿Qué nivel de coherencia percibo? | Respuesta: ${coherence}/10
+Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
         `;
         addNotebookEntry({ title: 'Reflexión: Espejo Ético', content: notebookContent, pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
@@ -104,7 +105,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente. En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
+                        <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente.   En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
                         <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
@@ -215,8 +216,8 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                             <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
                         </div>
                         <div>
-                            <Label className="font-semibold text-xl">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
-                            <p className="text-base text-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
+                            <Label className="font-semibold text-lg">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
@@ -234,12 +235,19 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <p className="text-base text-muted-foreground">Si al mirarlo sientes que algo no encaja del todo, no significa que la decisión esté mal, sino que quizá necesita un ajuste para que puedas sentirte en paz con ella.</p>
+                         <div className="text-sm text-muted-foreground space-y-2">
+                            <p className="font-semibold text-foreground">Guía de uso:</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
+                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
+                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
+                            </ul>
+                        </div>
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                         “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
+                            Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
                         </blockquote>
-                        <Label>Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder='"Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."'/>
+                        <Label htmlFor="adjustment">Escribe aquí qué cambiarías</Label>
+                        <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -249,7 +257,9 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
             case 7:
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites.</p>
+                       <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
+                        “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
+                        </blockquote>
                         <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
                         <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
@@ -265,7 +275,7 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
                 );
             default: return null;
         }
-    }
+    };
 
 
     return (

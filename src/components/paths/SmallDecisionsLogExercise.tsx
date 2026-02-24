@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -68,11 +69,12 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
         let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
         filledLogs.forEach((log, index) => {
             const finalAftermath = log.aftermath === 'Otro' ? log.otherAftermath : log.aftermath;
-            notebookContent += `**Decisión ${index + 1}:** ${log.decision}\n`;
-            notebookContent += `- Elegí desde: ${log.choiceType || 'No especificado'}\n`;
-            notebookContent += `- Razón: ${log.reason || 'No especificado'}\n`;
-            notebookContent += `- Cómo me sentí: ${finalAftermath || 'No especificado'}\n`;
-            notebookContent += `- Próxima vez: ${log.nextTime || 'No especificado'}\n\n`;
+            notebookContent += `**Decisión ${index + 1}:**\n`;
+            notebookContent += `Pregunta: Decisión | Respuesta: ${log.decision}\n`;
+            notebookContent += `Pregunta: ¿Actuaste desde el “querer” o el “deber”? | Respuesta: ${log.choiceType || 'No especificado'}\n`;
+            notebookContent += `Pregunta: ¿Qué te llevó a elegir así? | Respuesta: ${log.reason || 'No especificado'}\n`;
+            notebookContent += `Pregunta: ¿Cómo te sentiste después? | Respuesta: ${finalAftermath || 'No especificado'}\n`;
+            notebookContent += `Pregunta: ¿Qué harías distinto la próxima vez? | Respuesta: ${log.nextTime || 'No especificado'}\n\n`;
         });
         addNotebookEntry({ title: 'Registro de Decisiones Pequeñas', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({ title: 'Registro Guardado' });
