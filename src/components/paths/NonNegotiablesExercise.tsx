@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useMemo } from 'react';
+import { useState, type FormEvent, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -86,7 +86,7 @@ Pregunta: Valores que se rompieron | Respuesta: ${getFilteredValues().join(', ')
 ${nonNegotiables.map((v, i) => `Pregunta: No negociable ${i + 1} | Respuesta: ${v}`).join('\n')}
 
 **Mis compromisos para cuidarlos:**
-${nonNegotiables.map((v) => `Pregunta: Compromiso para: ${v} | Respuesta: ${commitments[v]}`).join('\n')}
+${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commitments[v]}`).join('\n')}
     `;
     addNotebookEntry({ title: 'Mis No Negociables', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'No Negociables Guardados' });
@@ -122,11 +122,11 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para: ${v} | Respuesta: ${comm
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Piensa en tu historia y explora tus valores</h4>
             <div className="space-y-2">
-                <Label htmlFor="past-situation">Recuerda una situación en la que actuaste en contra de lo que sentías correcto y eso te dejó malestar. ¿Qué valor se rompió? (Opcional)</Label>
+                <Label htmlFor="past-situation">Pregunta: Recuerda una situación en la que actuaste en contra de lo que sentías correcto y eso te dejó malestar. ¿Qué valor se rompió? (Opcional)</Label>
                 <Textarea id="past-situation" value={pastSituation} onChange={e => setPastSituation(e.target.value)} placeholder='Ejemplo: "Acepté un trato injusto por miedo a perder el trabajo. El valor que se rompió fue la justicia."' />
             </div>
             <div className="space-y-2">
-              <Label>Elige los valores que, si los traicionas, sentirías que te pierdes a ti mismo o a ti misma. (Puedes elegir más de uno)</Label>
+              <Label>Pregunta: Elige los valores que, si los traicionas, sentirías que te pierdes a ti mismo o a ti misma. (Puedes elegir más de uno)</Label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
                   {valuesList.map(v => (
                       <div key={v} className="flex items-center space-x-2">
@@ -165,8 +165,8 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para: ${v} | Respuesta: ${comm
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep} disabled={nonNegotiables.length !== 3}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button>
-                </div>
+                    <Button onClick={nextStep} disabled={nonNegotiables.length !== 3}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                 </div>
             </div>
         );
       case 3:
@@ -176,7 +176,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para: ${v} | Respuesta: ${comm
                  <p className="text-sm text-muted-foreground italic">Ejemplo: "Me comprometo a decir la verdad, incluso cuando es incómodo."</p>
                 {nonNegotiables.map((v, i) => (
                     <div key={i} className="space-y-1">
-                        <Label htmlFor={`commit-${i}`}>Compromiso para: <strong>{v}</strong></Label>
+                        <Label htmlFor={`commit-${i}`}>Pregunta: Compromiso para <strong>{v}</strong></Label>
                         <Textarea id={`commit-${i}`} value={commitments[v] || ''} onChange={e => handleCommitmentChange(v, e.target.value)} />
                     </div>
                 ))}

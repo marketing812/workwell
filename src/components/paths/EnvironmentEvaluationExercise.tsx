@@ -179,13 +179,13 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                     {activeAreas.length > 0 ? activeAreas.map(e => (
                         <div key={e.id} className="p-3 border rounded-md space-y-3 bg-background">
                             <h4 className="font-semibold">{e.label}</h4>
-                            <Label htmlFor={`support-${e.id}`}>¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
+                            <Label htmlFor={`support-${e.id}`}>Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
                             <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
+                            <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
                             <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} />
                             
-                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Ejemplo de cómo me apoya o me dificulta.</Label>
+                            <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta: Ejemplo de cómo me apoya o me dificulta.</Label>
                             <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} rows={2}/>
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}

@@ -117,7 +117,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 1: Elige una situación reciente</h4>
-                        <Label htmlFor="situation">¿Qué ocurrió?</Label>
+                        <Label htmlFor="situation">Pregunta: ¿Qué ocurrió?</Label>
                         <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté un plan aunque quería quedarme en casa.”" />
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -129,7 +129,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                 return (
                      <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 2: Escribe tu pensamiento principal en ese momento</h4>
-                        <Label htmlFor="thought">¿Qué te dijiste?</Label>
+                        <Label htmlFor="thought">Pregunta: ¿Qué te dijiste?</Label>
                         <Textarea id="thought" value={thought} onChange={e => setThought(e.target.value)} placeholder="Ejemplo: “Si digo que no, pensarán que soy una aburrida.”" />
                         <p className="text-sm text-muted-foreground">Escribe las frases que pasaron por tu mente, tal y como las recuerdes</p>
                         <div className="flex justify-between w-full mt-4">
@@ -151,7 +151,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                               </div>
                           ))}
                         </div>
-                        <div className="flex items-center space-x-2 pt-2">
+                        <div className="flex items-center gap-2 pt-2">
                           <Checkbox id="otra" checked={!!emotions['otra']} onCheckedChange={c => setEmotions(p => ({...p, otra: !!c}))} />
                           <Label htmlFor="otra" className="font-normal">Otra:</Label>
                         </div>
@@ -166,7 +166,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                 return (
                      <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 4: Describe la acción que tomaste</h4>
-                        <Label htmlFor="action">¿Qué hiciste finalmente?</Label>
+                        <Label htmlFor="action">Pregunta: ¿Qué hiciste finalmente?</Label>
                         <Textarea id="action" value={action} onChange={e => setAction(e.target.value)} placeholder="Ejemplo: Fui al plan y volví tarde, cansado/a y molesto/a conmigo mismo/a." />
                          <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -193,23 +193,15 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 6: Reflexiona</h4>
-                        <Label htmlFor="needed">¿Qué hubiera necesitado para actuar de forma más coherente con lo que sentía y pensaba?</Label>
+                        <Label htmlFor="needed">Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo que sentía y pensaba?</Label>
                         <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} placeholder="Ejemplo: “Haberme dado permiso para decir que no y descansar.”" />
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep} disabled={!needed.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                            <Button onClick={handleSave} className="w-auto" disabled={!needed.trim()}><Save className="mr-2 h-4 w-4"/>Guardar</Button>
                         </div>
                     </div>
                 );
-            case 8: // Consejo y Guardado
-                return (
-                    <div className="p-4 space-y-4 text-center">
-                        <p className="italic">“No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.”</p>
-                        <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar mi mapa</Button>
-                        <Button onClick={prevStep} variant="outline" className="w-full">Atrás</Button>
-                    </div>
-                );
-            case 9: // Confirmation
+            case 8: // Confirmation
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />

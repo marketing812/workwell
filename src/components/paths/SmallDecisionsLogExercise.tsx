@@ -98,20 +98,20 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
                         <p>Piensa en dos decisiones que hayas tomado hoy. Pueden ser muy simples o más complejas: Ejemplos: “He dicho sí a un plan que no me apetecía.” “Me he tomado un descanso aunque tenía cosas pendientes.” “He respondido rápido sin pensar lo que realmente quería decir.” </p>
                         {logs.map((log, index) => (
                              <div key={index} className="p-3 border rounded-md space-y-3 bg-background">
-                                <Label htmlFor={`decision-${index}`}>Decisión {index + 1}:</Label>
+                                <Label htmlFor={`decision-${index}`}>Pregunta: Decisión {index + 1}:</Label>
                                 <Textarea id={`decision-${index}`} value={log.decision} onChange={e => handleLogChange(index, 'decision', e.target.value)} />
                                 
-                                <Label>¿Actuaste desde el “querer” o el “deber”?</Label>
+                                <Label>Pregunta: ¿Actuaste desde el “querer” o el “deber”?</Label>
                                 <RadioGroup value={log.choiceType} onValueChange={v => handleLogChange(index, 'choiceType', v as any)} className="space-y-2">
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="querer" id={`choice-${index}-q`}/><Label htmlFor={`choice-${index}-q`} className="font-normal">Querer (autenticidad, deseo, conexión)</Label></div>
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="deber" id={`choice-${index}-d`}/><Label htmlFor={`choice-${index}-d`} className="font-normal">Deber (exigencia, miedo, costumbre)</Label></div>
                                     <div className="flex items-center space-x-2"><RadioGroupItem value="mixto" id={`choice-${index}-m`}/><Label htmlFor={`choice-${index}-m`} className="font-normal">Mixto (una mezcla – cuéntalo brevemente)</Label></div>
                                 </RadioGroup>
                                 
-                                <Label htmlFor={`reason-${index}`}>¿Qué te llevó a elegir así?</Label>
+                                <Label htmlFor={`reason-${index}`}>Pregunta: ¿Qué te llevó a elegir así?</Label>
                                 <Textarea id={`reason-${index}`} value={log.reason} onChange={e => handleLogChange(index, 'reason', e.target.value)} placeholder={'Ejemplo: \n"Decisión: Ir a cenar con mi familia. \nLa tomé más desde el deber, porque estaba cansada pero sentía que tenía que estar presente. Me costó disfrutarlo."'} />
 
-                                <Label>¿Cómo te sentiste después?</Label>
+                                <Label>Pregunta: ¿Cómo te sentiste después?</Label>
                                 <RadioGroup value={log.aftermath} onValueChange={v => handleLogChange(index, 'aftermath', v as any)} className="space-y-2">
                                     {aftermathOptions.map(opt => (
                                         <div key={opt.value} className="flex items-center space-x-2">
@@ -128,7 +128,7 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
                                     <Textarea value={log.otherAftermath} onChange={e => handleLogChange(index, 'otherAftermath', e.target.value)} className="ml-6 mt-2" placeholder="Escribe aquí cómo te sentiste..." />
                                 )}
                                 
-                                <Label htmlFor={`nextTime-${index}`}>¿Qué harías distinto la próxima vez?</Label>
+                                <Label htmlFor={`nextTime-${index}`}>Pregunta: ¿Qué harías distinto la próxima vez?</Label>
                                 <Textarea id={`nextTime-${index}`} value={log.nextTime} onChange={e => handleLogChange(index, 'nextTime', e.target.value)} placeholder="Ejemplo: Después me sentí frustrada porque necesitaba descansar. La próxima vez me gustaría proponer un encuentro más breve o en otro momento." />
                             </div>
                         ))}

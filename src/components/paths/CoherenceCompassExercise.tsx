@@ -119,9 +119,9 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
             const rating = ratings[area.id];
             if (rating) {
                 notebookContent += `**Área:** ${area.label}\n`;
-                notebookContent += `Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? | Respuesta: ${rating.support}/5\n`;
-                notebookContent += `Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? | Respuesta: ${rating.drain}/5\n`;
-                notebookContent += `Pregunta: Ejemplo de cómo me apoya o me dificulta. | Respuesta: ${rating.example || 'No especificado.'}\n\n`;
+                notebookContent += `Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? | Respuesta: ${rating.support}/10\n`;
+                notebookContent += `Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? | Respuesta: ${rating.drain}/10\n`;
+                if (rating.example) notebookContent += `Pregunta: Ejemplo de cómo me apoya o me dificulta. | Respuesta: ${rating.example}\n\n`;
             }
         });
         
@@ -197,13 +197,13 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                         {activeAreas.length > 0 ? activeAreas.map(e => (
                             <div key={e.id} className="p-3 border rounded-md">
                                 <h4 className="font-semibold">{e.label}</h4>
-                                <Label htmlFor={`support-${e.id}`}>Pregunta 1: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 1}/5</Label>
-                                <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 1]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                                <Label htmlFor={`support-${e.id}`}>Pregunta: ¿En qué medida este entorno apoya mis valores y me ayuda a ser coherente? {ratings[e.id]?.support ?? 5}/10</Label>
+                                <Slider id={`support-${e.id}`} value={[ratings[e.id]?.support || 5]} onValueChange={v => handleRatingChange(e.id, 'support', v)} min={0} max={10} step={1} disabled={isSaved}/>
                                 
-                                <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta 2: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 1}/5</Label>
-                                <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 1]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={1} max={5} step={1} disabled={isSaved}/>
+                                <Label htmlFor={`drain-${e.id}`} className="mt-4 block">Pregunta: ¿Cuánto me aleja este entorno de lo que quiero sostener? {ratings[e.id]?.drain ?? 5}/10</Label>
+                                <Slider id={`drain-${e.id}`} value={[ratings[e.id]?.drain || 5]} onValueChange={v => handleRatingChange(e.id, 'drain', v)} min={0} max={10} step={1} disabled={isSaved}/>
                                 
-                                <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta 3: Ejemplo de cómo me apoya o me dificulta.</Label>
+                                <Label htmlFor={`example-${e.id}`} className="mt-4 block">Pregunta: Ejemplo de cómo me apoya o me dificulta.</Label>
                                 <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} />
                             </div>
                         )) : <p className="text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
@@ -222,11 +222,11 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                             Ejemplo de inspiración: “En mi relación con mi hermana he aprendido a decir lo que pienso sin miedo. Eso me da calma y orgullo.”
                         </blockquote>
                         <div className="space-y-2">
-                            <Label htmlFor="high-coherence-doing-well">¿Qué estás haciendo bien en ellas que te hace sentirte en paz o en equilibrio?</Label>
+                            <Label htmlFor="high-coherence-doing-well">Pregunta: ¿Qué estás haciendo bien en ellas que te hace sentirte en paz o en equilibrio?</Label>
                             <Textarea id="high-coherence-doing-well" value={highCoherenceReflection} onChange={e => setHighCoherenceReflection(e.target.value)} />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="high-coherence-emotions">¿Qué emociones te despierta vivir en coherencia en esas áreas?</Label>
+                            <Label htmlFor="high-coherence-emotions">Pregunta: ¿Qué emociones te despierta vivir en coherencia en esas áreas?</Label>
                             <Textarea id="high-coherence-emotions" value={highCoherenceEmotions} onChange={e => setHighCoherenceEmotions(e.target.value)} />
                         </div>
                         <div className="flex justify-between w-full mt-4">
@@ -244,7 +244,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                             Ejemplo: “En el trabajo, valoro la honestidad, pero suelo callarme para no incomodar. Me frustra y me desconecta de mí.”
                         </blockquote>
                         <div className="space-y-2">
-                            <Label htmlFor="disconnection-reason">¿Qué te impide ser más coherente en esa área?</Label>
+                            <Label htmlFor="disconnection-reason">Pregunta: ¿Qué te impide ser más coherente en esa área?</Label>
                             <Textarea id="disconnection-reason" value={disconnectionReflection} onChange={e => setDisconnectionReflection(e.target.value)} />
                         </div>
                         <div className="flex justify-between w-full mt-4">
@@ -293,7 +293,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                       </p>
                       <div className="space-y-2 pt-4">
                         <Label htmlFor="small-gesture">
-                          Pregunta interactiva opcional: ¿Qué pequeño gesto podrías dar esta semana para ser un poco más coherente en el área que te duele?
+                          Pregunta: ¿Qué pequeño gesto podrías dar esta semana para ser un poco más coherente en el área que te duele?
                         </Label>
                         <Textarea id="small-gesture" value={smallGesture} onChange={(e) => setSmallGesture(e.target.value)} disabled={isSaved} />
                       </div>
@@ -319,9 +319,9 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                        <h4 className="font-bold text-lg">Brújula Guardada</h4>
-                        <p>Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.</p>
-                        <Button onClick={resetExercise} variant="outline">Empezar de nuevo</Button>
+                        <h4 className="font-bold text-lg">Guardado</h4>
+                        <p className="text-muted-foreground">Tu mapa de coherencia ha sido guardado. Puedes volver a él cuando lo necesites.</p>
+                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
                     </div>
                 )
             default: return null;

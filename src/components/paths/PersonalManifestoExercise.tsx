@@ -90,7 +90,8 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold">Paso 1: Recuerda la situación</h4>
-                        <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
+                        <Label htmlFor="situation">Pregunta: ¿Qué ocurrió?</Label>
+                        <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -116,7 +117,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                             {reactions['reac-otro'] && <Textarea value={otherReaction} onChange={e => setOtherReaction(e.target.value)} />}
                         </div>
                         <div className="space-y-2 pt-4">
-                            <Label>¿Lo que hiciste fue una adaptación consciente o una incoherencia?</Label>
+                            <Label>Pregunta: ¿Lo que hiciste fue una adaptación consciente o una incoherencia?</Label>
                             <RadioGroup value={coherenceChoice} onValueChange={v => setCoherenceChoice(v as any)}>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="flexibilidad" id="choice-flex" /><Label htmlFor="choice-flex" className="font-normal">Flexibilidad consciente → Adapté mi decisión, pero sin traicionar lo esencial de mis valores.</Label></div>
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="incoherencia" id="choice-incoh" /><Label htmlFor="choice-incoh" className="font-normal">Incoherencia → Actué de forma contraria a lo que valoro, por miedo, presión o costumbre.</Label></div>
@@ -143,7 +144,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                         <h4 className="font-semibold">Paso 3: Mira con compasión</h4>
                         <p className="p-4 bg-accent/10 border-l-4 border-accent text-sm">{reminderText}</p>
                         <div className="space-y-2">
-                            <Label htmlFor="compassion-phrase">Si pudieras hablarte con ternura, ¿qué frase te dirías ahora?</Label>
+                            <Label htmlFor="compassion-phrase">Pregunta: Si pudieras hablarte con ternura, ¿qué frase te dirías ahora?</Label>
                             <Textarea id="compassion-phrase" value={compassionatePhrase} onChange={e => setCompassionatePhrase(e.target.value)} placeholder="Ejemplo: “Entiendo que estabas cansada y no querías problemas. Está bien, lo importante es cómo eliges a partir de ahora.”"/>
                         </div>
                         <div className="flex justify-between mt-2">
@@ -164,7 +165,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                                 <li>Si fue incoherencia: “La próxima vez, diré que necesito pensarlo antes de aceptar un compromiso.”</li>
                             </ul>
                         </div>
-                        <Label htmlFor="adjustment">Pequeño paso:</Label>
+                        <Label htmlFor="adjustment">Pregunta: Pequeño paso:</Label>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -188,15 +189,17 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
         <Card className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
-                {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-                {content.audioUrl && (
-                    <div className="mt-4">
-                        <audio controls controlsList="nodownload" className="w-full">
-                            <source src={content.audioUrl} type="audio/mp3" />
-                            Tu navegador no soporta el elemento de audio.
-                        </audio>
-                    </div>
-                )}
+                <CardDescription className="pt-2">
+                    {content.objective}
+                    {content.audioUrl && (
+                        <div className="mt-4">
+                            <audio controls controlsList="nodownload" className="w-full">
+                                <source src={content.audioUrl} type="audio/mp3" />
+                                Tu navegador no soporta el elemento de audio.
+                            </audio>
+                        </div>
+                    )}
+                </CardDescription>
             </CardHeader>
             <CardContent>
                 {renderStep()}
