@@ -63,8 +63,7 @@ export default function SenseChecklistExercise({ content, pathId, onComplete }: 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Preguntas que resonaron conmigo:**
-${selectedItems.map(item => `- ${item}`).join('\n')}
+Pregunta: Preguntas del checklist que resonaron conmigo | Respuesta: [${selectedItems.join(', ')}]
     `;
 
     addNotebookEntry({
@@ -90,7 +89,7 @@ ${selectedItems.map(item => `- ${item}`).join('\n')}
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta7/tecnicas/Ruta7semana3tecnica2.mp3`} type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

@@ -15,13 +15,6 @@ import type { EssentialReminderExerciseContent } from '@/data/paths/pathTypes';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
 
-interface EssentialReminderExerciseProps {
-  content: EssentialReminderExerciseContent;
-  pathId: string;
-  onComplete: () => void;
-}
-
-// New detailed value options
 const valueOptions = [
     { id: 'care', label: 'Cuidado personal', description: 'Priorizar tu bienestar físico, emocional y mental sin culpa.' },
     { id: 'auth', label: 'Autenticidad', description: 'Ser tú misma o tú mismo, sin máscaras ni autoengaños.' },
@@ -47,6 +40,12 @@ const valueOptions = [
 
 const reminderTypes = ['Frase corta escrita', 'Imagen', 'Dibujo o símbolo', 'Objeto personal'];
 const reminderPlacements = ['Espejo', 'Escritorio', 'Agenda', 'Fondo de pantalla', 'Otro']; // Added "Otro"
+
+interface EssentialReminderExerciseProps {
+  content: EssentialReminderExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
 
 export default function EssentialReminderExercise({ content, pathId, onComplete }: EssentialReminderExerciseProps) {
   const { toast } = useToast();
@@ -83,10 +82,10 @@ export default function EssentialReminderExercise({ content, pathId, onComplete 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Valor(es) guía:** ${finalValues.join(', ')}
-**Tipo de recordatorio:** ${reminderType}
-**Contenido:** ${reminderContent}
-**Ubicación:** ${finalPlacement}
+Pregunta: Valor(es) guía | Respuesta: [${finalValues.join(', ')}]
+Pregunta: ¿Qué forma tendrá tu recordatorio? | Respuesta: ${reminderType}
+Pregunta: Tu recordatorio (frase, descripción de imagen...) | Respuesta: ${reminderContent}
+Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día? | Respuesta: ${finalPlacement}
     `;
     addNotebookEntry({ title: `Mi Recordatorio Esencial`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Recordatorio Guardado", description: "Tu recordatorio esencial ha sido guardado." });

@@ -73,10 +73,10 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Situación:** ${situation || 'No especificada.'}
-**Pensamiento automático:** "${automaticThought || 'No especificado.'}"
-**Distorsiones detectadas:** ${selectedDistortions.join(', ') || 'Ninguna.'}
-**Reformulación consciente:** "${reformulation}"
+Pregunta: ¿Qué situación reciente te bloqueó para actuar desde tu propósito? | Respuesta: ${situation || 'No especificada.'}
+Pregunta: ¿Qué frase pasó por tu mente en ese momento? | Respuesta: "${automaticThought || 'No especificado.'}"
+Pregunta: ¿Qué distorsiones cognitivas detectas? | Respuesta: [${selectedDistortions.join(', ') || 'Ninguna.'}]
+Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo | Respuesta: "${reformulation}"
     `;
     addNotebookEntry({ title: `Micropráctica: Pensamientos que Bloquean`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Práctica Guardada", description: "Tu ejercicio ha sido guardado." });

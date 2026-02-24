@@ -77,20 +77,23 @@ export default function DirectedDecisionsExercise({ content, pathId, onComplete 
     let notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Valor elegido a fortalecer:** ${selectedValue || 'No especificado.'}
+Pregunta: Valor elegido a fortalecer | Respuesta: ${selectedValue || 'No especificado.'}
 `;
 
     decisions.forEach((d, i) => {
       if (d.decision.trim()) {
         notebookContent += `
-**Decisión ${i + 1}:** ${d.decision}
-- *Ajuste posible:* ${d.adjustment || 'Ninguno.'}
+---
+**Decisión ${i + 1}**
+Pregunta: Decisión del día | Respuesta: ${d.decision}
+Pregunta: Ajuste posible para alinearla a mi valor | Respuesta: ${d.adjustment || 'Ninguno.'}
 `;
       }
     });
 
     notebookContent += `
-**Acción para mañana:** ${tomorrowAction}
+---
+Pregunta: ¿Qué pequeña acción puedes tomar mañana que honre ese valor? | Respuesta: ${tomorrowAction}
     `;
     
     addNotebookEntry({ title: `Decisiones con Dirección`, content: notebookContent, pathId, userId: user?.id });

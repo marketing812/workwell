@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useMemo } from 'react';
+import { useState, type FormEvent, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -47,6 +47,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     const { user } = useUser();
     const [step, setStep] = useState(0);
     const [selectedAreas, setSelectedAreas] = useState<Record<string, boolean>>({});
+    const [otherEnvironment, setOtherEnvironment] = useState('');
     const [reflections, setReflections] = useState<Record<string, { importance: string; howToLive: string; value: string }>>({});
     
     const handleAreaChange = (id: string, checked: boolean) => {
@@ -69,13 +70,25 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
     const handleSave = () => {
-        let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Brújula de Valores:**\n\n`;
-        activeAreas.forEach(area => {
-            const reflection = reflections[area.id] || { importance: '', howToLive: '', value: '' };
-            notebookContent += `**Área: ${area.label}**\n`;
-            notebookContent += `- ¿Por qué es importante?: ${reflection.importance || 'No respondido.'}\n`;
-            notebookContent += `- ¿Cómo me gustaría vivirla?: ${reflection.howToLive || 'No respondido.'}\n`;
-            notebookContent += `- Valor asociado: ${reflection.value || 'No respondido.'}\n\n`;
+        const filledAreas = activeAreas.filter(area => reflections[area.id]);
+        if (filledAreas.length === 0) {
+            toast({
+                title: "Ejercicio Incompleto",
+                description: "Por favor, completa al menos un área para guardar.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        let notebookContent = `**${content.title}**\n\n`;
+        filledAreas.forEach(area => {
+            const reflection = reflections[area.id];
+            if (reflection) {
+                notebookContent += `**Área: ${area.label}**\n`;
+                notebookContent += `Pregunta: ¿Por qué esta área es importante para ti? | Respuesta: ${reflection.importance || 'No respondido.'}\n`;
+                notebookContent += `Pregunta: ¿Cómo te gustaría vivirla de forma más plena? | Respuesta: ${reflection.howToLive || 'No respondido.'}\n`;
+                notebookContent += `Pregunta: ¿Qué valor personal representa esta área? | Respuesta: ${reflection.value || 'No respondido.'}\n\n`;
+            }
         });
         addNotebookEntry({ title: 'Mi Brújula de Valores', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({ title: 'Brújula Guardada', description: 'Tu brújula de valores ha sido guardada en el cuaderno.' });
@@ -97,10 +110,10 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="p-4 space-y-2">
               <Label className="font-semibold">Selecciona las áreas que sientes importantes en tu vida actual:</Label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {lifeAreas.map(area => (
-                  <div key={area.id} className="flex items-center space-x-2">
-                    <Checkbox id={area.id} checked={!!selectedAreas[area.id]} onCheckedChange={c => handleAreaChange(area.id, !!c)} />
-                    <Label htmlFor={area.id} className="font-normal">{area.label}</Label>
+                {lifeAreas.map(e => (
+                  <div key={e.id} className="flex items-center space-x-2">
+                    <Checkbox id={e.id} checked={!!selectedAreas[e.id]} onCheckedChange={c => handleAreaChange(e.id, !!c)} />
+                    <Label htmlFor={e.id} className="font-normal">{e.label}</Label>
                   </div>
                 ))}
               </div>

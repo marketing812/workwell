@@ -37,17 +37,13 @@ export default function UnfulfilledNeedsExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Acción que me habría hecho bien hoy:*
-${unfulfilledAction}
+Pregunta: Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien | Respuesta: ${unfulfilledAction}
 
-*Valor asociado:*
-${associatedValue}
+Pregunta: ¿Qué valor estaba asociado a eso que postergaste? | Respuesta: ${associatedValue}
 
-*¿Qué me impidió hacerlo?:*
-${reason}
+Pregunta: ¿Qué te impidió hacerlo? (miedo, prisa, presión, distracción) | Respuesta: ${reason}
 
-*Plan para mañana:*
-${tomorrowPlan}
+Pregunta: ¿Qué puedes hacer mañana para proteger mejor ese valor? | Respuesta: ${tomorrowPlan}
     `;
     addNotebookEntry({ title: `Micropráctica: Necesidades No Atendidas`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Reflexión Guardada", description: "Tu reflexión ha sido guardada en el cuaderno." });

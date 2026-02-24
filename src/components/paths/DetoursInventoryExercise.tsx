@@ -148,14 +148,15 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
         const selectedParts = partOptions.filter(p => reflection.parts?.[p.id]).map(p => p.label);
         if(reflection.parts?.['part-other'] && reflection.otherPart) selectedParts.push(reflection.otherPart);
 
-        notebookContent += `**Reflexión sobre el desvío: "${detour.label}"**\n`;
-        notebookContent += ` - Valores afectados: ${selectedValues.length > 0 ? selectedValues.join(', ') : 'No especificados.'}\n`;
-        notebookContent += ` - Emociones que deja: ${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}\n`;
-        notebookContent += ` - Parte de mí que se activa: ${selectedParts.length > 0 ? selectedParts.join(', ') : 'No especificada.'}\n\n`;
+        notebookContent += `**Desvío: "${detour.label}"**\n`;
+        notebookContent += `Pregunta: ¿Qué valor personal estás dejando de lado? | Respuesta: [${selectedValues.length > 0 ? selectedValues.join(', ') : 'No especificados.'}]\n`;
+        notebookContent += `Pregunta: ¿Qué sientes después de actuar así? | Respuesta: [${selectedEmotions.length > 0 ? selectedEmotions.join(', ') : 'No especificadas.'}]\n`;
+        notebookContent += `Pregunta: ¿Qué parte de ti busca protección o alivio en ese desvío? | Respuesta: [${selectedParts.length > 0 ? selectedParts.join(', ') : 'No especificada.'}]\n\n`;
     });
     
-    notebookContent += `**Mi compromiso de cambio:**\nSi... entonces... ${commitment || 'No especificado.'}\n\n`;
-    notebookContent += `**Mis gestos de reconexión:**\n${reconnectionGestures || 'No especificados.'}`;
+    notebookContent += `--- \n**Mi Compromiso de Cambio y Reconexión**\n\n`;
+    notebookContent += `Pregunta: Escribe aquí tu gesto de cambio en formato: Si… entonces… | Respuesta: ${commitment || 'No especificado.'}\n`;
+    notebookContent += `Pregunta: Escribe aquí tu gesto de reconexión | Respuesta: ${reconnectionGestures || 'No especificados.'}`;
     
     addNotebookEntry({ title: `Inventario de Desvíos`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu inventario ha sido guardado." });

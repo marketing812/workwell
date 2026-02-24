@@ -11,8 +11,9 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { BraveRoadmapExerciseContent } from '@/data/paths/pathTypes';
-import { useUser } from '@/contexts/UserContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Input } from '../ui/input';
+import { useUser } from '@/contexts/UserContext';
 
 const valueOptions = [
     { id: 'care', label: 'Cuidado personal', description: 'Priorizar tu bienestar físico, emocional y mental sin culpa.' },
@@ -112,12 +113,17 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     let notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Valor ancla de la semana:** ${finalChosenValue}
+Pregunta: Valor ancla de la semana | Respuesta: ${finalChosenValue}
 
 `;
     filledActions.forEach((a, i) => {
       const finalValue = a.value === 'Otro' ? `Otro: ${a.otherValue || ''}` : a.value;
-      notebookContent += `**Acción ${i + 1}:** ${a.action} (Coraje: ${a.courage}/3, Valor: ${finalValue})\\n`;
+      notebookContent += `---
+**Acción ${i + 1}**
+Pregunta: Acción concreta | Respuesta: ${a.action}
+Pregunta: Coraje requerido | Respuesta: ${a.courage}/3
+Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
+`;
     });
 
     addNotebookEntry({ title: `Mi Hoja de Ruta Valiente`, content: notebookContent, pathId: pathId, userId: user?.id });
@@ -182,6 +188,10 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
         </div>
     );
   };
+  
+  if (!isClient) {
+    return null;
+  }
   
   const renderStep = () => {
     switch (step) {
@@ -263,10 +273,6 @@ export default function BraveRoadmapExercise({ content, pathId, onComplete }: Br
     }
   };
 
-  if (!isClient) {
-    return null;
-  }
-  
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>

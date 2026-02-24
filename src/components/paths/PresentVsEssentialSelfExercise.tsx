@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -27,7 +28,6 @@ export default function PresentVsEssentialSelfExercise({ content, pathId, onComp
   const [smallAction, setSmallAction] = useState('');
   const [isSaved, setIsSaved] = useState(false);
   const [isClient, setIsClient] = useState(false);
-
   const storageKey = `exercise-progress-${pathId}-presentVsEssential`;
 
   useEffect(() => {
@@ -79,14 +79,11 @@ export default function PresentVsEssentialSelfExercise({ content, pathId, onComp
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Mi yo actual:**
-${presentSelfDesc || 'No descrito.'}
+Pregunta: ¿Cómo es mi yo actual? | Respuesta: ${presentSelfDesc || 'No descrito.'}
 
-**Mi yo esencial:**
-${essentialSelfDesc || 'No descrito.'}
+Pregunta: ¿Cómo es mi yo esencial? | Respuesta: ${essentialSelfDesc || 'No descrito.'}
 
-**Mi pequeña acción para esta semana:**
-${smallAction}
+Pregunta: ¿Qué gesto o acción pequeña voy a hacer para acercarme a mi yo esencial? | Respuesta: ${smallAction}
     `;
     addNotebookEntry({ title: `Visualización: Yo Presente vs. Yo Esencial`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu visualización ha sido guardada." });

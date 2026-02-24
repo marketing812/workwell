@@ -45,10 +45,15 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
   
   const handleSave = () => {
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
-    activities.filter(a => a.name.trim()).forEach(a => {
-      notebookContent += `**Actividad:** ${a.name} (Energía: ${a.energy}, Valor: ${a.value})\n`;
+    activities.filter(a => a.name.trim()).forEach((a, i) => {
+      notebookContent += `**Actividad ${i+1}:** ${a.name}\n`;
+      notebookContent += `Pregunta: ¿Cuánta energía te consume? | Respuesta: ${a.energy || 'No especificado.'}\n`;
+      notebookContent += `Pregunta: ¿Se alinea con tus valores? | Respuesta: ${a.value || 'No especificado.'}\n\n`;
     });
-    notebookContent += `\n**Reflexión:**\n- Hacer más: ${reflection.moreOf}\n- Hacer menos/diferente: ${reflection.lessOf}\n\n**Compromiso:** ${commitment}\n`;
+    notebookContent += `--- \n**Reflexión y Compromiso**\n\n`;
+    notebookContent += `Pregunta: ¿Qué actividad te gustaría hacer más? | Respuesta: ${reflection.moreOf || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué actividad podrías reducir o reajustar? | Respuesta: ${reflection.lessOf || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: Hoy me comprometo a... | Respuesta: ${commitment || 'No respondido.'}\n`;
 
     addNotebookEntry({ title: 'Mi Mapa de Energía y Sentido', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Mapa guardado', description: 'Tu mapa de energía se ha guardado en el cuaderno terapéutico.' });

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, ArrowRight, CheckCircle, TrafficCone, ArrowLeft } from 'lucide-react';
+import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { MentalNoiseTrafficLightExerciseContent } from '@/data/paths/pathTypes';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -73,17 +73,13 @@ export default function MentalNoiseTrafficLightExercise({ content, pathId, onCom
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**🔴 Zona Roja (Saturación):**
-${finalRed}
+Pregunta: ¿Cuándo sientes más saturación mental o emocional? (Zona Roja) | Respuesta: ${finalRed}
 
-**🟡 Zona Ámbar (Tensión creciente):**
-${finalAmber}
+Pregunta: ¿Cuándo notas que la tensión va subiendo? (Zona Ámbar) | Respuesta: ${finalAmber}
 
-**🟢 Zona Verde (Claridad y presencia):**
-${finalGreen}
+Pregunta: ¿En qué momentos sientes más calma y conexión contigo? (Zona Verde) | Respuesta: ${finalGreen}
 
-**Mi gesto de protección verde:**
-${finalGesture}
+Pregunta: Tu gesto de protección (para momentos verdes) | Respuesta: ${finalGesture}
     `;
     addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
