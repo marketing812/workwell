@@ -51,37 +51,27 @@ export default function RelationalCommitmentExercise({ content, pathId, onComple
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!weeklyMicroAction.trim()) {
-      toast({ title: "Acción requerida", description: "Por favor, define tu microacción semanal.", variant: "destructive" });
-      return;
+        toast({ title: "Acción requerida", description: "Por favor, define tu microacción semanal.", variant: "destructive" });
+        return;
     }
     
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Valores importantes para mí en una relación:**
-${values || 'No especificado.'}
+Pregunta: ¿Qué valores son importantes para ti en una relación saludable? | Respuesta: ${values || 'No especificado.'}
+Pregunta: ¿Hay alguna relación actual que no esté alineada con estos valores? ¿Qué señales lo indican? | Respuesta: ${misalignedRelation || 'No especificado.'}
+Pregunta: ¿Con quién te gustaría comprometerte a construir un vínculo más honesto y equilibrado? | Respuesta: ${commitmentPerson || 'No especificado.'}
 
-**Relación que no se alinea y por qué:**
-${misalignedRelation || 'No especificado.'}
-
-**Me gustaría construir un vínculo más honesto con:**
-${commitmentPerson || 'No especificado.'}
-
-**Cuando me siento vulnerable, suelo:**
-${vulnerableBehavior || 'No especificado.'}
-
-**Parte de mí que quiero fortalecer:**
-${partToStrengthen || 'No especificado.'}
-
-**Pensamientos que me frenan:**
-${blockingThoughts || 'No especificado.'}
+Pregunta: ¿Cómo sueles actuar en relaciones cuando te sientes inseguro/a o vulnerable? | Respuesta: ${vulnerableBehavior || 'No especificado.'}
+Pregunta: ¿Qué parte de ti te gustaría fortalecer para estar más presente emocionalmente? | Respuesta: ${partToStrengthen || 'No especificado.'}
+Pregunta: ¿Qué pensamientos te frenan cuando quieres poner un límite o ser tú misma/o? | Respuesta: ${blockingThoughts || 'No especificado.'}
 
 ---
 **MI COMPROMISO RELACIONAL PERSONAL:**
-*${commitmentStatement}*
+Pregunta: Declaración de compromiso | Respuesta: *${commitmentStatement}*
 
 **Mi microacción para esta semana:**
-${weeklyMicroAction || 'No especificada.'}
+Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo? | Respuesta: ${weeklyMicroAction || 'No especificada.'}
 `;
     addNotebookEntry({ title: `Mi Compromiso Relacional`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu compromiso relacional se ha guardado en el cuaderno." });
@@ -176,7 +166,7 @@ ${weeklyMicroAction || 'No especificada.'}
         return (
            <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h4 className="font-bold text-lg">Ejercicio finalizado y guardado</h4>
+                <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
                 <div className="space-y-2 text-muted-foreground">
                    <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
                    <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
@@ -207,7 +197,14 @@ ${weeklyMicroAction || 'No especificada.'}
         }
       </CardHeader>
       <CardContent>
-        {renderStep()}
+        {!isCompleted ? renderStep() : (
+            <div className="p-6 text-center space-y-4">
+                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
+                 <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
+                 <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
+            </div>
+        )}
       </CardContent>
     </Card>
   );

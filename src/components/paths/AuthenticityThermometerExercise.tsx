@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -96,17 +97,17 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
 
     filledRelations.forEach(r => {
       notebookContent += `**Relación con: ${r.name}**\n`;
-      notebookContent += `- Cómo me muestro: ${r.howIShow || 'No especificado.'}\n`;
-      notebookContent += `- Qué me callo: ${r.whatIHide || 'No especificado.'}\n`;
-      notebookContent += `- Por qué lo hago: ${r.whyIHide || 'No especificado.'}\n`;
-      notebookContent += `- Nivel de autenticidad: ${r.authenticity}/10\n\n`;
+      notebookContent += `Pregunta: ¿Cómo me suelo mostrar con esta persona? | Respuesta: ${r.howIShow || 'No especificado.'}\n`;
+      notebookContent += `Pregunta: ¿Qué emociones suelo callarme o modificar? | Respuesta: ${r.whatIHide || 'No especificado.'}\n`;
+      notebookContent += `Pregunta: ¿Qué me lo impide? | Respuesta: ${r.whyIHide || 'No especificado.'}\n`;
+      notebookContent += `Pregunta: ¿Qué tan auténtico/a me siento? | Respuesta: ${r.authenticity}/10\n\n`;
     });
 
     notebookContent += `**Reflexión Integradora:**\n`;
-    notebookContent += `- Vínculos más libres: ${reflection.q1 || 'No respondido.'}\n`;
-    notebookContent += `- ¿Qué lo permite?: ${reflection.q2 || 'No respondido.'}\n`;
-    notebookContent += `- Patrón en relaciones difíciles: ${reflection.q3 || 'No respondido.'}\n`;
-    notebookContent += `- Próximo pequeño paso: ${reflection.q4 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿En qué tipo de vínculos me siento más libre para ser yo? | Respuesta: ${reflection.q1 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué me lo permite? (¿Hay confianza, escucha real, poco juicio?) | Respuesta: ${reflection.q2 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué patrón detecto en las relaciones donde me cuesta más mostrarme auténtico/a? | Respuesta: ${reflection.q3 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué pequeña acción podría probar para empezar a mostrarme un poco más como soy? | Respuesta: ${reflection.q4 || 'No respondido.'}\n`;
 
     addNotebookEntry({ title: 'Mi Termómetro de Autenticidad', content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión ha sido guardada en el Cuaderno Terapéutico." });

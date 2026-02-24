@@ -63,25 +63,25 @@ export default function SignificantRelationshipsInventoryExercise({ content, pat
     const notebookContent = `
 **${content.title}**
 
-**Persona que me sostiene:** ${sustainPerson || 'No especificado.'}
-*¿Cómo me sostiene?:* ${sustainAction || 'No especificado.'}
+Pregunta: ¿Quién te sostiene? (Nombre o relación) | Respuesta: ${sustainPerson || 'No especificado.'}
+Pregunta: ¿Qué hace o dice que te hace sentir acompañado/a? | Respuesta: ${sustainAction || 'No especificado.'}
 
-**Persona que me inspira:** ${inspirePerson || 'No especificado.'}
-*¿Qué aspecto me inspira?:* ${inspireAspect || 'No especificado.'}
+Pregunta: ¿Quién te inspira? (Nombre o relación) | Respuesta: ${inspirePerson || 'No especificado.'}
+Pregunta: ¿Qué aspectos de esa persona te inspiran? ¿Cómo influye en ti? | Respuesta: ${inspireAspect || 'No especificado.'}
 
-**Persona que respeta mi ritmo:** ${respectPerson || 'No especificado.'}
-*¿Cómo respeta mi ritmo?:* ${respectAction || 'No especificado.'}
+Pregunta: ¿Quién respeta tu ritmo? (Nombre o relación) | Respuesta: ${respectPerson || 'No especificado.'}
+Pregunta: ¿Cómo notas que esa persona respeta tus procesos? | Respuesta: ${respectAction || 'No especificado.'}
 
 ---
 **Reflexión Guiada:**
-- *¿Relación que necesito revisar?:* ${reflection1 || 'No respondido.'}
-- *¿Qué tipo de apoyo echo en falta?:* ${reflection2 || 'No respondido.'}
-- *¿Con quién me gustaría construir un vínculo así?:* ${reflection3 || 'No respondido.'}
+Pregunta: ¿Hay alguna relación que creías cercana pero no te permite crecer libremente? | Respuesta: ${reflection1 || 'No respondido.'}
+Pregunta: ¿Qué tipo de apoyo echo en falta? | Respuesta: ${reflection2 || 'No respondido.'}
+Pregunta: ¿Con quién me gustaría construir un vínculo así? | Respuesta: ${reflection3 || 'No respondido.'}
 
 ---
 **Mi Microacción Semanal:**
-${microAction}
-    `;
+Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritivos | Respuesta: ${microAction}
+`;
     
     addNotebookEntry({
         title: 'Inventario de Relaciones Significativas',

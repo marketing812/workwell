@@ -5,20 +5,26 @@ import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Input } from '../ui/input';
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { EmotionalInvolvementTrafficLightExerciseContent } from '@/data/paths/pathTypes';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
+import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
-
+import { Textarea } from '../ui/textarea';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 interface EmotionalInvolvementTrafficLightExerciseProps {
   content: EmotionalInvolvementTrafficLightExerciseContent;
   pathId: string;
   onComplete: () => void;
+}
+
+interface Relation {
+    name: string;
+    color: 'Verde' | 'Ámbar' | 'Rojo' | '';
+    reason: string;
 }
 
 export default function EmotionalInvolvementTrafficLightExercise({ content, pathId, onComplete }: EmotionalInvolvementTrafficLightExerciseProps) {
@@ -30,7 +36,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
   const [actionPlans, setActionPlans] = useState({ green: '', amber: '', red: '' });
   const [isSaved, setIsSaved] = useState(false);
 
-  const handleRelationChange = (index: number, field: string, value: string) => {
+  const handleRelationChange = <K extends keyof Relation>(index: number, field: K, value: Relation[K]) => {
     const newRelations = [...relations];
     newRelations[index] = { ...newRelations[index], [field]: value };
     setRelations(newRelations);
@@ -45,7 +51,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -57,25 +63,23 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
 
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
 
-    notebookContent += "**Mapa de relaciones y su color:**\n";
-    filledRelations.forEach(r => {
-      notebookContent += `- ${r.name}: ${r.color}`;
-      if (r.reason) {
-        notebookContent += ` (Razón: ${r.reason})\n`;
-      } else {
-        notebookContent += `\n`;
-      }
+    filledRelations.forEach((r, index) => {
+      notebookContent += `**Relación ${index + 1}:**\n`;
+      notebookContent += `Pregunta: Nombre | Respuesta: ${r.name}\n`;
+      notebookContent += `Pregunta: Color | Respuesta: ${r.color}\n`;
+      notebookContent += `Pregunta: ¿Por qué has elegido ese color? | Respuesta: ${r.reason || 'No especificado.'}\n\n`;
     });
-    notebookContent += `\n**Reflexión guiada:**\n`;
-    notebookContent += `- ¿Te ha sorprendido el color?: ${reflection.q1 || 'No respondido.'}\n`;
-    notebookContent += `- ¿Notas patrones?: ${reflection.q2 || 'No respondido.'}\n`;
-    notebookContent += `- ¿Qué relación sientes que necesitas revisar?: ${reflection.q3 || 'No respondido.'}\n`;
-    notebookContent += `- ¿Qué vínculo te gustaría cuidar más?: ${reflection.q4 || 'No respondido.'}\n\n`;
+    
+    notebookContent += `**Reflexión guiada:**\n`;
+    notebookContent += `Pregunta: ¿Te ha sorprendido el color que le diste a alguna relación? | Respuesta: ${reflection.q1 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Notas patrones? ¿Relaciones que antes eran verdes y ahora son ámbar? | Respuesta: ${reflection.q2 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué relación sientes que necesitas revisar, proteger o alejarte un poco? | Respuesta: ${reflection.q3 || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿Qué vínculo te gustaría cuidar más conscientemente? | Respuesta: ${reflection.q4 || 'No respondido.'}\n\n`;
 
     notebookContent += `**Acciones por color:**\n`;
-    if (actionPlans.green) notebookContent += `Verde - Nutritiva: ${actionPlans.green}\n`;
-    if (actionPlans.amber) notebookContent += `Ámbar - Exigente: ${actionPlans.amber}\n`;
-    if (actionPlans.red) notebookContent += `Roja - Drenante: ${actionPlans.red}\n`;
+    if (actionPlans.green) notebookContent += `Pregunta: Relación verde – Nutritiva | Respuesta: ${actionPlans.green}\n`;
+    if (actionPlans.amber) notebookContent += `Pregunta: Relación ámbar – Exigente | Respuesta: ${actionPlans.amber}\n`;
+    if (actionPlans.red) notebookContent += `Pregunta: Relación roja – Drenante | Respuesta: ${actionPlans.red}\n`;
 
     addNotebookEntry({ title: `Semáforo de Implicación Emocional`, content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu reflexión se ha guardado en el Cuaderno Terapéutico." });
@@ -86,7 +90,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
   
   const renderStep = () => {
     switch (step) {
-      case 0:
+      case 0: // Introducción
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">A veces damos lo mismo a todas las personas sin notar cómo nos afecta. Este ejercicio te invita a observar cómo te sientes en tus relaciones cotidianas para que puedas decidir cómo implicarte.</p>
@@ -108,7 +112,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="mr-2 h-4 w-4"/></Button>
+              <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -125,7 +129,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
             {relations.filter(r => r.name).map((rel, index) => (
               <div key={index} className="space-y-3 border-t pt-3">
                 <Label className="font-semibold">{rel.name}</Label>
-                <RadioGroup value={rel.color} onValueChange={v => handleRelationChange(index, 'color', v)}>
+                <RadioGroup value={rel.color} onValueChange={v => handleRelationChange(index, 'color', v as any)}>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Verde" id={`c-${index}-g`} /><Label htmlFor={`c-${index}-g`} className="font-normal">Verde</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Ámbar" id={`c-${index}-a`} /><Label htmlFor={`c-${index}-a`} className="font-normal">Ámbar</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="Rojo" id={`c-${index}-r`} /><Label htmlFor={`c-${index}-r`} className="font-normal">Rojo</Label></div>

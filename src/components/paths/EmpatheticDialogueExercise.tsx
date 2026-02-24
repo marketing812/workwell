@@ -32,11 +32,11 @@ export default function EmpatheticDialogueExercise({ content, pathId, onComplete
     const notebookContent = `
 **${content.title}**
 
-- **Sentimiento:** ${feeling}
-- **Parte activa:** ${activePart}
-- **Frase empática hacia mí:** ${empatheticPhrase}
-- **Lo que necesito darme:** ${myNeed}
-- **Mi intención:** ${intention}
+Pregunta: ¿Qué siento ahora que pienso en esta situación o persona? | Respuesta: ${feeling || 'No especificado.'}
+Pregunta: ¿Qué parte de mí está más activa en este momento? | Respuesta: ${activePart || 'No especificado.'}
+Pregunta: Tu frase empática hacia ti: | Respuesta: "${empatheticPhrase || 'No escrita.'}"
+Pregunta: Lo que necesito darme ahora es... | Respuesta: ${myNeed || 'No especificado.'}
+Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
     `;
     addNotebookEntry({ title: 'Mi Diálogo Interno Empático', content: notebookContent, pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu diálogo interno ha sido guardado en el cuaderno." });

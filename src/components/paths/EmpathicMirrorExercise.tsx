@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -88,20 +89,12 @@ export default function EmpathicMirrorExercise({ content, pathId, onComplete }: 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Conversación con:** ${conversationWith || 'No especificado.'}
-**Tema:** ${conversationTopic || 'No especificado.'}
-
-**Emoción percibida en el otro:**
-${finalEmotion || 'No especificada.'}
-
-**Mi frase-espejo:**
-"${mirrorPhrase || 'No escrita.'}"
-
-**Posibles frases invalidantes que suelo usar (para evitar):**
-${invalidatingPhrases.length > 0 ? invalidatingPhrases.map(p => `- ${p}`).join('\n') : 'Ninguna seleccionada.'}
-
-**Mi compromiso para practicar:**
-${commitment}
+Pregunta: ¿Con quién fue esa conversación? | Respuesta: ${conversationWith || 'No especificado.'}
+Pregunta: ¿Qué te compartió o qué tema estaba en juego? | Respuesta: ${conversationTopic || 'No especificado.'}
+Pregunta: ¿Qué emoción crees que predominaba en su mensaje? | Respuesta: ${finalEmotion || 'No especificada.'}
+Pregunta: Tu frase-espejo | Respuesta: "${mirrorPhrase || 'No escrita.'}"
+Pregunta: Posibles frases invalidantes que suelo usar (para evitar) | Respuesta: ${invalidatingPhrases.length > 0 ? `[${invalidatingPhrases.join(', ')}]` : 'Ninguna seleccionada.'}
+Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”) | Respuesta: ${commitment}
 `;
 
     addNotebookEntry({ 
@@ -121,7 +114,7 @@ ${commitment}
     switch (step) {
       case 0: // Intro with example
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" collapsible className="w-full text-left">
               <AccordionItem value="example">

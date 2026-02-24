@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -49,17 +50,12 @@ export default function ValidationIn3StepsExercise({ content, pathId, onComplete
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Emoción percibida en el otro:** ${finalEmotion || 'No especificada.'}
-
-*Paso 1 (Reconocer):* "${step1Phrase || 'No escrita.'}"
-*Paso 2 (Nombrar y dar sentido):* "${step2Phrase || 'No escrita.'}"
-*Paso 3 (Normalizar):* "${step3Phrase || 'No escrita.'}"
-
-**Reflexión sobre mis bloqueos:**
-${blockageReflection || 'No especificado.'}
-
-**Mi próximo paso para estar más presente:**
-${nextStepReflection || 'No especificado.'}
+Pregunta: ¿Qué emoción crees que sentía? | Respuesta: ${finalEmotion || 'No especificada.'}
+Pregunta: Tu frase para reconocer | Respuesta: "${step1Phrase || 'No escrita.'}"
+Pregunta: Tu frase completa | Respuesta: "${step2Phrase || 'No escrita.'}"
+Pregunta: Tu frase para normalizar | Respuesta: "${step3Phrase || 'No escrita.'}"
+Pregunta: ¿En qué situaciones me resulta más difícil validar emocionalmente a alguien? | Respuesta: ${blockageReflection || 'No especificado.'}
+Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | Respuesta: ${nextStepReflection || 'No especificado.'}
     `;
 
     addNotebookEntry({
@@ -140,11 +136,11 @@ ${nextStepReflection || 'No especificado.'}
                     <h4 className="font-semibold text-lg text-primary">Paso 4: Toma conciencia de tus bloqueos</h4>
                      <p className="text-sm text-muted-foreground">Reflexiona con honestidad sobre tus propias barreras a la hora de escuchar.</p>
                      <div className="space-y-2">
-                        <Label htmlFor="blockage-reflection">¿En qué situaciones te resulta más difícil validar emocionalmente a alguien?</Label>
+                        <Label htmlFor="blockage-reflection">¿En qué situaciones me resulta más difícil validar emocionalmente a alguien?</Label>
                         <Textarea id="blockage-reflection" value={blockageReflection} onChange={e => setBlockageReflection(e.target.value)} />
                     </div>
                      <div className="space-y-2">
-                        <Label htmlFor="next-step-reflection">¿Qué podrías empezar a hacer diferente para estar más presente?</Label>
+                        <Label htmlFor="next-step-reflection">¿Qué podría empezar a hacer diferente para estar más presente?</Label>
                         <Textarea id="next-step-reflection" value={nextStepReflection} onChange={e => setNextStepReflection(e.target.value)} />
                     </div>
                     <div className="flex justify-between w-full mt-4">
