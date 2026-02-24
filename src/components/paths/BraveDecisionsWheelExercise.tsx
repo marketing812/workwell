@@ -45,16 +45,19 @@ export default function BraveDecisionsWheelExercise({ content, pathId, onComplet
         return;
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = `**${content.title}**
 
-*Situación:* ${situation || 'No especificada.'}
-*Decisión desde el miedo:* ${fearDecision || 'No especificado.'}
-*Decisión desde el valor:* ${valueDecision || 'No especificado.'}
-*Decisión desde la confianza:* ${confidenceDecision || 'No especificado.'}
-*Decisión desde la desesperanza:* ${despairDecision || 'No especificado.'}
-*Mi elección final:* ${finalChoice || 'No especificada.'}
-`;
+Pregunta: ¿Cuál es la decisión que estás enfrentando? | Respuesta: ${situation || 'No especificada.'}
+
+Pregunta: ¿Qué harías si decidieras desde el miedo? | Respuesta: ${fearDecision || 'No especificado.'}
+
+Pregunta: ¿Qué harías si decidieras desde el valor? | Respuesta: ${valueDecision || 'No especificado.'}
+
+Pregunta: ¿Qué harías si decidieras desde la confianza? | Respuesta: ${confidenceDecision || 'No especificado.'}
+
+Pregunta: ¿Qué harías si decidieras desde la desesperanza? | Respuesta: ${despairDecision || 'No especificado.'}
+
+Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalChoice || 'No especificada.'}`;
     addNotebookEntry({ title: 'Rueda de Decisiones Valientes', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Decisión Guardada', description: 'Tu reflexión ha sido guardada.' });
     setIsSaved(true);

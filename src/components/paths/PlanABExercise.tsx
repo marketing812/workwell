@@ -46,28 +46,26 @@ export default function PlanABExercise({ content, pathId, onComplete }: PlanABEx
       return;
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = `**${content.title}**
 
-**Decisión a tomar:**
-${decision}
+Pregunta: Describe en una frase clara la decisión que estás enfrentando. | Respuesta: ${decision}
 
 ---
 **Plan A (Paso con intención):**
-* Acción: ${planA.action}
-* Valor: ${planA.value}
-* Resultado esperado: ${planA.outcome}
+Pregunta: Acción concreta | Respuesta: ${planA.action}
+Pregunta: Valor asociado | Respuesta: ${planA.value}
+Pregunta: Resultado deseado | Respuesta: ${planA.outcome}
 
 ---
 **Plan B (Red de cuidado emocional):**
-* Miedo principal: ${planB.fear}
-* Estrategia de cuidado: ${planB.strategy}
-* Apoyo disponible: ${planB.support}
-* Frase personal de contención: "${planB.phrase}"
+Pregunta: ¿Qué es lo que más temes que ocurra? | Respuesta: ${planB.fear}
+Pregunta: ¿Qué harías si eso sucede? | Respuesta: ${planB.strategy}
+Pregunta: ¿A quién podrías acudir? | Respuesta: ${planB.support}
+Pregunta: ¿Qué frase o imagen podrías recordarte para sostenerte? | Respuesta: "${planB.phrase}"
 
 ---
 **Mi compromiso realista:**
-${commitment}
+Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para poner en marcha este plan? | Respuesta: ${commitment}
     `;
 
     addNotebookEntry({ title: 'Mi Plan A/B Emocional', content: notebookContent, pathId: pathId, userId: user?.id });

@@ -67,17 +67,13 @@ export default function AnchorInStormExercise({ content, pathId, onComplete }: A
       toast({ title: 'Campos incompletos', description: 'Por favor, completa todos los campos del ancla.', variant: 'destructive' });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = `**${content.title}**
 
-*Estado emocional frecuente:*
-${emotionalState}
+Pregunta: Nombra tu estado emocional frecuente: ¿En qué momentos sientes que necesitas un ancla? | Respuesta: ${emotionalState}
 
-*Tipo de ancla:*
-${finalAnchorType}
+Pregunta: Tipo de ancla | Respuesta: ${finalAnchorType}
 
-*Descripción de mi ancla:*
-${anchorDesc}
+Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o frase usarás? | Respuesta: ${anchorDesc}
     `;
     addNotebookEntry({ title: 'Mi Ancla en la Tormenta', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Ancla Guardada', description: 'Tu ancla emocional ha sido guardada.' });

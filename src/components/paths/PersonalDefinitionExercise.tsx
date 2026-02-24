@@ -34,12 +34,8 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
       toast({ title: 'Definición vacía', description: 'Por favor, escribe tu definición personal.', variant: 'destructive' });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
-
-*Mi definición personal de resiliencia es:*
-"${definition}"
-    `;
+    const notebookContent = `**${content.title}**\n\nPregunta: Para mí, ser resiliente es... | Respuesta: ${definition}`;
+    
     addNotebookEntry({ title: 'Mi Definición de Resiliencia', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Definición Guardada', description: 'Tu definición de resiliencia se ha guardado en el cuaderno.' });
     setIsSaved(true);

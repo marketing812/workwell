@@ -72,9 +72,9 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
     Object.entries(scale).forEach(([level, data]) => {
       if (data.signals.trim() || data.needs.trim() || data.strategy.trim()) {
         notebookContent += `**Nivel ${level}:**\n`;
-        notebookContent += `- Señales: ${data.signals || 'No descrito'}\n`;
-        notebookContent += `- Necesidades: ${data.needs || 'No descrito'}\n`;
-        notebookContent += `- Estrategias: ${data.strategy || 'No descrito'}\n\n`;
+        notebookContent += `Pregunta: ¿Qué siento en el cuerpo y en la mente? | Respuesta: ${data.signals || 'No descrito'}\n`;
+        notebookContent += `Pregunta: ¿Qué necesito realmente en este nivel? | Respuesta: ${data.needs || 'No descrito'}\n`;
+        notebookContent += `Pregunta: ¿Qué estrategias puedo usar para regularme? | Respuesta: ${data.strategy || 'No descrito'}\n\n`;
       }
     });
     addNotebookEntry({ title: 'Mi Escala de Intensidad Emocional', content: notebookContent, pathId, userId: user?.id });

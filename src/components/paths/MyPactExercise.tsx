@@ -47,17 +47,13 @@ export default function MyPactExercise({ content, pathId, onComplete }: MyPactEx
       toast({ title: 'Pacto incompleto', description: 'Por favor, completa todas las secciones del pacto.', variant: 'destructive' });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = `**${content.title}**
 
-*Me comprometo a cuidar:*
-${commitment}
+Pregunta: ¿Qué me comprometo a cuidar? | Respuesta: ${commitment}
 
-*Mi recordatorio tangible será:*
-${reminder}
+Pregunta: ¿Cómo me lo recordaré? (${reminderType}) | Respuesta: ${reminder}
 
-*Mi frase de acompañamiento emocional es:*
-"${anchorPhrase}"
+Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase}"
     `;
     addNotebookEntry({ title: 'Mi Pacto Conmigo', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Pacto Guardado', description: 'Tu pacto contigo se ha guardado en el cuaderno.' });

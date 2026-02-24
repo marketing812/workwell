@@ -66,10 +66,10 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
 
       filledSituations.forEach(item => {
           notebookContent += `**Situación:** ${item.situation}\n`;
-          notebookContent += `- Lo más difícil: ${item.reflection.difficult || 'No especificado.'}\n`;
-          notebookContent += `- Recursos que usé: ${item.reflection.resources || 'No especificado.'}\n`;
-          notebookContent += `- Lo que aprendí: ${item.reflection.learned || 'No especificado.'}\n`;
-          notebookContent += `- Lo que me sorprendió de mí: ${item.reflection.surprised || 'No especificado.'}\n\n---\n\n`;
+          notebookContent += `Pregunta: ¿Qué fue lo más difícil? | Respuesta: ${item.reflection.difficult || 'No especificado.'}\n`;
+          notebookContent += `Pregunta: ¿Qué recursos usé? | Respuesta: ${item.reflection.resources || 'No especificado.'}\n`;
+          notebookContent += `Pregunta: ¿Qué aprendí? | Respuesta: ${item.reflection.learned || 'No especificado.'}\n`;
+          notebookContent += `Pregunta: ¿Qué me sorprendió de mí? | Respuesta: ${item.reflection.surprised || 'No especificado.'}\n\n---\n\n`;
       });
       
       addNotebookEntry({ title: 'Mi Línea del Tiempo Resiliente', content: notebookContent, pathId, userId: user?.id });
@@ -78,7 +78,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
       onComplete();
       next(); // Move to confirmation screen
   }
-
+  
   const renderStep = () => {
     switch (step) {
       case 0:

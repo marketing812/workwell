@@ -44,28 +44,27 @@ export default function ChangeTimelineExercise({ content, pathId, onComplete }: 
   const prevStep = () => setStep(prev => prev - 1);
 
   const handleComplete = () => {
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = `**${content.title}**
 
 **Punto de Partida:**
-- Sentimientos: ${startPoint.feelings}
-- Pensamientos: ${startPoint.thoughts}
-- Creencias: ${startPoint.beliefs}
-- Dificultades: ${startPoint.struggles}
+Pregunta: ¿Qué sentías? | Respuesta: ${startPoint.feelings || 'No especificado.'}
+Pregunta: ¿Qué pensamientos dominaban tu mente? | Respuesta: ${startPoint.thoughts || 'No especificado.'}
+Pregunta: ¿Qué creías sobre ti? | Respuesta: ${startPoint.beliefs || 'No especificado.'}
+Pregunta: ¿Qué cosas te costaban? | Respuesta: ${startPoint.struggles || 'No especificado.'}
 
 **Momentos de Inflexión:**
-${inflectionPoints}
+Pregunta: Recuerda 2 o 3 momentos importantes del proceso. | Respuesta: ${inflectionPoints || 'No especificado.'}
 
 **Momento Presente:**
-- Pensamientos ahora: ${presentMoment.thoughts}
-- Cómo me hablo ahora: ${presentMoment.talk}
-- Recursos desarrollados: ${presentMoment.resources}
-- Lo que valoro de mí: ${presentMoment.values}
+Pregunta: ¿Qué ha cambiado en tu forma de pensar? | Respuesta: ${presentMoment.thoughts || 'No especificado.'}
+Pregunta: ¿Cómo te hablas ahora? | Respuesta: ${presentMoment.talk || 'No especificado.'}
+Pregunta: ¿Qué recursos has desarrollado? | Respuesta: ${presentMoment.resources || 'No especificado.'}
+Pregunta: ¿Qué cosas valoras de ti? | Respuesta: ${presentMoment.values || 'No especificado.'}
 
 **Símbolo de Evolución:**
-- Imagen: ${symbol.image}
-- Porqué: ${symbol.why}
-    `;
+Pregunta: ¿Qué imagen se te viene a la mente? | Respuesta: ${symbol.image || 'No especificado.'}
+Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.'}
+`;
 
     addNotebookEntry({ title: 'Mi Línea del Cambio', content: notebookContent, pathId, userId: user?.id });
     setIsCompleted(true);
