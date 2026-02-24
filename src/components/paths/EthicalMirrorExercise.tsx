@@ -105,7 +105,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente.   En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
+                        
                         <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
@@ -171,15 +171,15 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Escribe tu explicación como si fuera real</h4>
                         <div className="space-y-2">
-                            <Label>Los motivos principales de mi decisión son...</Label>
+                            <Label>Pregunta: Los motivos principales de mi decisión son...</Label>
                             <Textarea value={motives} onChange={e => setMotives(e.target.value)} placeholder="Ejemplo: “Quiero crecer y el nuevo puesto me reta.”" />
                         </div>
                         <div className="space-y-2">
-                            <Label>¿Cómo se lo explicarías para que lo entienda?</Label>
+                            <Label>Pregunta: ¿Cómo se lo explicarías para que lo entienda?</Label>
                             <Textarea value={explanationForOther} onChange={e => setExplanationForOther(e.target.value)} placeholder="Ejemplo: “Quiero mudarme porque siento que esta ciudad me ofrece un entorno más inspirador y me permitirá crecer en mi proyecto creativo. Sé que implica un cambio grande, pero he ahorrado, he valorado pros y contras, y creo que es el momento adecuado para dar este paso.”" />
                         </div>
                         <div className="space-y-2">
-                            <Label>Valores en juego (Selecciona los que mejor representen lo que quieres respetar con tu decisión)</Label>
+                            <Label>Pregunta: Valores en juego (Selecciona los que mejor representen lo que quieres respetar con tu decisión)</Label>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
                                 {valuesList.map(v => (
                                     <div key={v} className="flex items-center space-x-2">
@@ -209,16 +209,16 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         <p className="text-base text-muted-foreground">Haz un chequeo rápido: ¿Esta decisión me representa? ¿Me sentiría orgulloso/a de contarla? Usa las casillas y el medidor para verlo con claridad.</p>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="isProud" checked={isProud} onCheckedChange={c => setIsProud(!!c)} />
-                            <Label htmlFor="isProud">Me sentiría orgulloso/a de dar esta explicación.</Label>
+                            <Label htmlFor="isProud">Pregunta: ¿Me sentiría orgulloso/a de dar esta explicación?</Label>
                         </div>
                          <div className="flex items-center space-x-2">
                             <Checkbox id="reflects" checked={reflectsWhoIAm} onCheckedChange={c => setReflectsWhoIAm(!!c)} />
-                            <Label htmlFor="reflects">Refleja quién soy y quiero ser.</Label>
+                            <Label htmlFor="reflects">Pregunta: ¿Refleja quién soy y quiero ser?</Label>
                         </div>
                         <div>
-                            <Label className="font-semibold text-lg">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <Label className="font-semibold text-lg">Pregunta: ¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
-                            <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} />
+                            <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={1} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
                                 <span>5 (Medio)</span>
@@ -233,7 +233,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                 );
             case 6: // Paso 5: Ajusta si es necesario
                 return (
-                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                          <div className="text-sm text-muted-foreground space-y-2">
                             <p className="font-semibold text-foreground">Guía de uso:</p>
@@ -243,10 +243,10 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                                 <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
                             </ul>
                         </div>
-                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm mt-2">
                             Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
                         </blockquote>
-                        <Label htmlFor="adjustment">Escribe aquí qué cambiarías</Label>
+                        <Label htmlFor="adjustment">Pregunta: Escribe aquí qué cambiarías</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
