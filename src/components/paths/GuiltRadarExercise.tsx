@@ -87,7 +87,7 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Recuerda la situación</h4>
-            <p className="text-sm text-muted-foreground">Piensa en un momento reciente en el que hayas sentido culpa.</p>
+            <p className="text-sm text-muted-foreground">Piensa en un momento reciente en el que no actuaste como hubieras querido.</p>
             <Textarea id="situation-guilt" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe brevemente la situación" disabled={isSaved} />
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
