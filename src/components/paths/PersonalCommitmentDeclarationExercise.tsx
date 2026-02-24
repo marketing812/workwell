@@ -43,16 +43,14 @@ export default function PersonalCommitmentDeclarationExercise({ content, pathId,
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Valores inspiradores:*
-${Object.keys(selectedValues).filter(k => selectedValues[k] && k !== 'other').join(', ')}${selectedValues['other'] && otherValue ? `, ${otherValue}`: ''}
+Pregunta: Valores inspiradores | Respuesta: ${Object.keys(selectedValues).filter(k => selectedValues[k] && k !== 'other').join(', ')}${selectedValues['other'] && otherValue ? `, ${otherValue}`: ''}
 
-*Declaración de compromiso:*
-- Elijo: ${commitments.elijo}
-- Me comprometo a: ${commitments.meComprometo}
-- Decido: ${commitments.decido}
+**Declaración de compromiso:**
+Pregunta: Elijo | Respuesta: ${commitments.elijo}
+Pregunta: Me comprometo a | Respuesta: ${commitments.meComprometo}
+Pregunta: Decido | Respuesta: ${commitments.decido}
 
-*Recordatorio:*
-${reminder.type === 'Otro' ? reminder.custom : reminder.type}
+Pregunta: Recordatorio | Respuesta: ${reminder.type === 'Otro' ? reminder.custom : reminder.type}
     `;
     addNotebookEntry({ title: 'Mi Declaración de Compromiso Personal', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Declaración Guardada', description: 'Tu declaración de compromiso ha sido guardada.' });

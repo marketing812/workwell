@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -86,7 +87,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const resetExercise = () => {
     setStep(0);
@@ -111,11 +112,11 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
     let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
     filledSituations.forEach((sit, index) => {
       notebookContent += `**Situación ${index + 1}:** ${sit.name}\n`;
-      notebookContent += `- Círculo: ${sit.circle}\n`;
+      notebookContent += `Pregunta: Círculo | Respuesta: ${sit.circle || 'No especificado.'}\n`;
       const action = actionPlans[index];
       if (action) {
           const finalAction = action === 'Otro' ? otherActionPlans[index] || '' : action;
-          notebookContent += `- Plan de acción: ${finalAction}\n`;
+          notebookContent += `Pregunta: Plan de acción | Respuesta: ${finalAction}\n`;
       }
       notebookContent += '\n';
     });

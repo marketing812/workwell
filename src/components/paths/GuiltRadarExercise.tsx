@@ -57,20 +57,15 @@ export default function GuiltRadarExercise({ content, pathId, onComplete }: Guil
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Situación que me generó culpa:*
-${situation}
+Pregunta: Situación que me generó culpa | Respuesta: ${situation}
 
-*Mi frase interna fue:*
-"${internalPhrase}"
+Pregunta: Mi frase interna fue | Respuesta: "${internalPhrase}"
 
-*Nivel de control real:*
-${controlLevel}
+Pregunta: Nivel de control real | Respuesta: ${controlLevel}
 
-*Mi respuesta/acción elegida:*
-${responseAction}
+Pregunta: Mi respuesta/acción elegida | Respuesta: ${responseAction}
 
-*Aprendizaje y cuidado para la próxima vez:*
-${learning}
+Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
     `;
     addNotebookEntry({ title: 'Mi Radar de Culpa', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Radar Guardado', description: 'Tu radar de culpa ha sido guardado.' });

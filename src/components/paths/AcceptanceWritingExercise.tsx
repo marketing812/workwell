@@ -97,23 +97,17 @@ export default function AcceptanceWritingExercise({ content, pathId, onComplete 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Hecho objetivo:*
-${fact}
+Pregunta: Hecho objetivo | Respuesta: ${fact}
 
-*Emoción(es) sentida(s):*
-${emotion}
+Pregunta: Emoción(es) sentida(s) | Respuesta: ${emotion}
 
-*Diálogo interno:*
-"${dialogue}"
+Pregunta: Diálogo interno | Respuesta: "${dialogue}"
 
-*Hecho vs. Juicio:*
-${judgment}
+Pregunta: Hecho vs. Juicio | Respuesta: ${judgment}
 
-*Respuesta actual:*
-${response}
+Pregunta: Respuesta actual | Respuesta: ${response}
 
-*Frase de cierre compasivo:*
-"${compassionPhrase}"
+Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
     `;
     addNotebookEntry({ title: 'Ejercicio de Aceptación Escrita', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu reflexión ha sido guardada en el cuaderno.' });

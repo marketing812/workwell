@@ -58,14 +58,11 @@ export default function CriticismToGuideExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Mi frase crítica:*
-"${criticalPhrase}"
+Pregunta: Mi frase crítica | Respuesta: "${criticalPhrase}"
 
-*El objetivo oculto era:*
-${hiddenObjective}
+Pregunta: El objetivo oculto era | Respuesta: ${hiddenObjective}
 
-*Mi frase reformulada como guía:*
-"${reformulation}"
+Pregunta: Mi frase reformulada como guía | Respuesta: "${reformulation}"
     `;
     addNotebookEntry({ title: 'Transformación de Crítica a Guía', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado', description: 'Tu transformación ha sido guardada.' });

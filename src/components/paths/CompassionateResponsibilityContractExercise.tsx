@@ -32,17 +32,13 @@ export default function CompassionateResponsibilityContractExercise({ content, p
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Mi compromiso inicial:*
-${initialCommitment}
+Pregunta: Mi compromiso inicial | Respuesta: ${initialCommitment}
 
-*Cómo quiero hablarme cuando me equivoque:*
-${howToTalk}
+Pregunta: Cómo quiero hablarme cuando me equivoque | Respuesta: ${howToTalk}
 
-*Cómo quiero responder ante mis decisiones:*
-${howToRespond}
+Pregunta: Cómo quiero responder ante mis decisiones | Respuesta: ${howToRespond}
 
-*Firma del contrato:*
-${signature}
+Pregunta: Firma del contrato | Respuesta: ${signature}
     `;
     addNotebookEntry({ title: 'Mi Contrato de Autorresponsabilidad Compasiva', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Contrato Guardado', description: 'Tu contrato ha sido guardado.' });
