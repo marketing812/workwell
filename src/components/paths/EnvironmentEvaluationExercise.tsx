@@ -13,13 +13,19 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/ui/chart"
 import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
   Radar,
-  PolarRadiusAxis
+  PolarRadiusAxis,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  LabelList
 } from "recharts";
 import { Textarea } from '../ui/textarea';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -88,7 +94,17 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
         },
     };
     
-    const nextStep = () => setStep(prev => prev + 1);
+    const nextStep = () => {
+      if (step === 1 && Object.values(selectedEnvs).filter(Boolean).length < 3) {
+        toast({
+          title: "Selección insuficiente",
+          description: "Por favor, elige al menos 3 áreas de vida para continuar.",
+          variant: "destructive",
+        });
+        return;
+      }
+      setStep(prev => prev + 1);
+    };
     const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
     const handleNextStep1 = () => {
@@ -214,8 +230,10 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                     <form onSubmit={handleSave} className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Síntesis visual</h4>
                         <p className="text-sm text-muted-foreground">Aquí tienes tu mapa de entornos. No es para juzgarte ni para que tomes decisiones inmediatas, sino para que tengas claridad. Y recuerda: un entorno que ahora es saboteador, puede transformarse si introduces cambios.</p>
-                         <ChartContainer config={chartConfig} className="w-full aspect-square h-[350px]">
-                            <RadarChart data={chartData}>
+                        <div className="w-full h-[350px]">
+                          {chartData.length >= 3 ? (
+                            <ChartContainer config={chartConfig} className="w-full h-full">
+                              <RadarChart data={chartData}>
                                 <ChartTooltip
                                     cursor={false}
                                     content={<ChartTooltipContent indicator="line" />}
@@ -232,8 +250,33 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                                         fillOpacity: 1,
                                     }}
                                 />
-                            </RadarChart>
-                        </ChartContainer>
+                              </RadarChart>
+                            </ChartContainer>
+                          ) : (
+                            <ChartContainer config={chartConfig} className="w-full h-full">
+                              <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 30 }}>
+                                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                <XAxis type="number" domain={[0, 10]} tickCount={11} />
+                                <YAxis
+                                  dataKey="area"
+                                  type="category"
+                                  width={100}
+                                  tickLine={false}
+                                  axisLine={false}
+                                  tick={{ fontSize: 12, width: 100 }}
+                                  interval={0}
+                                />
+                                <ChartTooltip
+                                  cursor={{ fill: 'hsl(var(--background))' }}
+                                  content={<ChartTooltipContent hideLabel />}
+                                />
+                                <Bar dataKey="score" fill="var(--color-score)" radius={[0, 4, 4, 0]}>
+                                  <LabelList dataKey="score" position="right" offset={8} fontSize={12} />
+                                </Bar>
+                              </BarChart>
+                            </ChartContainer>
+                          )}
+                        </div>
                          <div className="flex justify-between w-full mt-4">
                              <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                              <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
@@ -251,7 +294,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                 );
             default: return null;
         }
-    }
+    };
     
     return (
         <Card className="bg-muted/30 my-6 shadow-md">
