@@ -105,11 +105,31 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">Cuando tenemos que tomar una decisión difícil, a veces nos quedamos atrapados en un bucle de dudas. Hoy vas a mirarte en un ‘espejo’ muy especial: la mirada de alguien a quien respetas y que siempre te ha inspirado a ser tu mejor versión. Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras. Lo haremos imaginando que explicas tu decisión a alguien importante para ti. Si la explicación te da paz, probablemente sea coherente.   En este ejercicio no se trata de que te convenzas, sino de que te escuches con honestidad.</p>
-                        <Button onClick={nextStep}>Empezar a decidir con integridad <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                        
+                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
-            case 1:
+            case 1: // Ejemplo guiado
+                return (
+                    <div className="p-4 space-y-4 text-center">
+                        <Accordion type="single" collapsible className="w-full text-left">
+                            <AccordionItem value="example">
+                                <AccordionTrigger>Ejemplo guiado</AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="space-y-3 text-sm p-2">
+                                        <p>Al finalizar el ejercicio podrías descubrir algo como esto…</p>
+                                        <p className="italic">Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia. En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es la decisión correcta para él.</p>
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+            case 2: // Paso 1: Elige la decisión
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 1: Elige la decisión que quieres explorar</Label>
@@ -121,7 +141,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </div>
                     </div>
                 );
-            case 2:
+            case 3: // Paso 2: Escoge a la persona
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Escoge a la persona a la que se lo explicarás</h4>
@@ -137,7 +157,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </Select>
                         {person === 'Otra' && <Textarea value={otherPerson} onChange={e => setOtherPerson(e.target.value)} placeholder="Describe a la otra persona..."/>}
                          <div className="space-y-2">
-                             <Label htmlFor="why-person">Pregunta: ¿Por qué esa persona?</Label>
+                             <Label htmlFor="why-person">¿Por qué esa persona?</Label>
                              <Textarea id="why-person" value={whyPerson} onChange={e => setWhyPerson(e.target.value)} placeholder="Ejemplo: “Elegí a mi hermano mayor porque siempre me escucha sin juzgar y me anima a crecer.”"/>
                          </div>
                         <div className="flex justify-between w-full pt-4">
@@ -146,7 +166,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </div>
                     </div>
                 );
-            case 3:
+            case 4: // Paso 3: Escribe tu explicación
                 return(
                      <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Escribe tu explicación como si fuera real</h4>
@@ -182,7 +202,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </div>
                      </div>
                 );
-            case 4:
+            case 5: // Paso 4: Autoevaluación
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
@@ -211,11 +231,11 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </div>
                     </div>
                 );
-            case 5:
+            case 6: // Paso 5: Ajusta si es necesario
                 return (
                      <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <div className="text-sm text-muted-foreground space-y-2">
+                         <div className="text-sm text-muted-foreground space-y-2">
                             <p className="font-semibold text-foreground">Guía de uso:</p>
                             <ul className="list-disc list-inside pl-4 space-y-1">
                                 <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
@@ -226,7 +246,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm mt-2">
                             Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
                         </blockquote>
-                        <Label htmlFor="adjustment">Pregunta: Escribe aquí qué cambiarías</Label>
+                        <Label htmlFor="adjustment">Escribe aquí lo qué cambiarías</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -234,7 +254,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </div>
                     </div>
                 );
-            case 6:
+            case 7:
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
@@ -244,7 +264,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
                 );
-            case 7:
+            case 8:
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
