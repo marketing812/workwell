@@ -96,7 +96,25 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
   };
   
   const prevStep = () => setStep(prev => prev - 1);
-  const nextStep = () => setStep(prev => prev + 1);
+  const nextStep = () => {
+      if (step === 1 && Object.values(initialValues).filter(Boolean).length === 0) {
+        toast({
+          title: "Selección requerida",
+          description: "Por favor, elige al menos un valor para continuar.",
+          variant: "destructive",
+        });
+        return;
+    }
+     if (step === 2 && nonNegotiables.length !== 3) {
+        toast({
+          title: "Selección requerida",
+          description: "Por favor, elige exactamente 3 valores no negociables.",
+          variant: "destructive",
+        });
+        return;
+    }
+    setStep(prev => prev + 1);
+  };
 
   const resetExercise = () => {
     setStep(0);
@@ -127,7 +145,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
             </div>
             <div className="space-y-2">
               <Label>Pregunta: Elige los valores que, si los traicionas, sentirías que te pierdes a ti mismo o a ti misma. (Puedes elegir más de uno)</Label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 border rounded-md">
                   {valuesList.map(v => (
                       <div key={v} className="flex items-center space-x-2">
                           <Checkbox id={`val-${v}`} checked={!!initialValues[v]} onCheckedChange={c => handleInitialValueChange(v, !!c)} />
@@ -145,7 +163,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
             </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={Object.values(initialValues).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -165,7 +183,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={nextStep} disabled={nonNegotiables.length !== 3}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                    <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                  </div>
             </div>
         );
@@ -173,7 +191,14 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 3: Escríbelos como compromisos</h4>
-                 <p className="text-sm text-muted-foreground italic">Ejemplo: "Me comprometo a decir la verdad, incluso cuando es incómodo."</p>
+                 <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
+                    <p><strong>Ejemplos:</strong></p>
+                    <ul className="list-disc list-inside">
+                        <li>“Me comprometo a decir la verdad, incluso cuando es incómodo.”</li>
+                        <li>“No acepto relaciones donde no haya respeto mutuo.”</li>
+                        <li>“Mantengo tiempo para mi salud física y mental.”</li>
+                    </ul>
+                </div>
                 {nonNegotiables.map((v, i) => (
                     <div key={i} className="space-y-1">
                         <Label htmlFor={`commit-${i}`}>Pregunta: Compromiso para <strong>{v}</strong></Label>
