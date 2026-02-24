@@ -90,6 +90,20 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
     
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+
+    const handleNextStep1 = () => {
+      const selectedCount = Object.values(selectedEnvs).filter(Boolean).length;
+      if (selectedCount < 3) {
+        toast({
+          title: "Selección insuficiente",
+          description: "Por favor, elige al menos 3 áreas de vida para continuar.",
+          variant: "destructive",
+        });
+        return;
+      }
+      nextStep();
+    };
+
     const resetExercise = () => {
         setStep(0);
         setSelectedEnvs({});
@@ -145,7 +159,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 1: Identifica tus entornos clave</h4>
-                        <p className="text-sm text-muted-foreground">Piensa en las áreas más importantes de tu vida. Vamos a evaluarlas una a una.</p>
+                        <p className="text-sm text-muted-foreground">Piensa en las áreas más importantes de tu vida. Vamos a evaluarlas una a una (al menos 3).</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                             {environments.map(e => (
                                 <div key={e.id} className="flex items-center space-x-2">
@@ -168,7 +182,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                         )}
                         <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep} disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
+                            <Button onClick={handleNextStep1}>Siguiente</Button>
                         </div>
                     </div>
                 );
@@ -259,5 +273,3 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
         </Card>
     );
 }
-
-    
