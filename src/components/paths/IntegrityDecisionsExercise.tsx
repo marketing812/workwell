@@ -38,8 +38,6 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
     const { user } = useUser();
     const t = useTranslations();
     const [step, setStep] = useState(0);
-
-    // State for all steps
     const [decision, setDecision] = useState('');
     const [values, setValues] = useState<Record<string, boolean>>({});
     const [otherValue, setOtherValue] = useState('');
@@ -48,7 +46,7 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
     const [longTermImpact, setLongTermImpact] = useState('');
     const [isProud, setIsProud] = useState(false);
     const [reflectsWhoIAm, setReflectsWhoIAm] = useState(false);
-    const [coherence, setCoherence] = useState(5);
+    const [coherence, setCoherence] = useState(1);
     const [adjustment, setAdjustment] = useState('');
     const [isSaved, setIsSaved] = useState(false);
     
@@ -65,24 +63,23 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
         setLongTermImpact('');
         setIsProud(false);
         setReflectsWhoIAm(false);
-        setCoherence(5);
+        setCoherence(1);
         setAdjustment('');
         setIsSaved(false);
     };
 
     const handleSave = (e: FormEvent) => {
         e.preventDefault();
-
         const selectedValues = valuesList.filter(v => values[v]);
-        if (values['Otro'] && otherValue.trim()) {
-            selectedValues.push(otherValue.trim());
+        if (values['Otro'] && otherValue) {
+            selectedValues.push(otherValue);
         }
-
+        
         const selectedEmotions = emotionOptions
             .filter(e => emotions[e.value])
             .map(e => t[e.labelKey as keyof typeof t]);
-        if (emotions['otra'] && otherEmotion.trim()) {
-            selectedEmotions.push(otherEmotion.trim());
+        if (emotions['otra'] && otherEmotion) {
+            selectedEmotions.push(otherEmotion);
         }
 
         if (!decision.trim()){
@@ -94,11 +91,8 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
 **Ejercicio: ${content.title}**
 
 Pregunta: Elige la decisión que quieres explorar | Respuesta: ${decision || 'No especificada.'}
-
-Pregunta: ¿Qué valores están implicados en esta decisión? | Respuesta: ${selectedValues.join(', ') || 'No especificados.'}
-
+Pregunta: ¿Qué valores están implicados en esta decisión? | Respuesta: ${selectedValues.join(', ') || 'Ninguno seleccionado.'}
 Pregunta: ¿Qué emociones predominan cuando piensas en esta decisión? | Respuesta: ${selectedEmotions.join(', ') || 'No especificadas.'}
-
 Pregunta: Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y dentro de 5 años? | Respuesta: ${longTermImpact || 'No especificado.'}
 
 **Autoevaluación:**
@@ -120,23 +114,42 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
             case 0: // Introducción
                 return (
                     <div className="p-4 space-y-4 text-center">
-                       <p className="text-sm text-muted-foreground">A veces tomamos decisiones rápidas para salir de la incomodidad, y luego nos quedamos con la sensación de que algo no encaja. Esta herramienta es como una linterna que ilumina tres puntos clave para decidir con calma: lo que valoras, lo que sientes y cómo te afectará en el tiempo.</p>
-                        <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
-            case 1: // Paso 1: Describe la decisión
+            case 1: // Ejemplo guiado
+                return (
+                    <div className="p-4 space-y-4 text-center">
+                        <Accordion type="single" collapsible className="w-full text-left">
+                            <AccordionItem value="example">
+                                <AccordionTrigger>Ejemplo guiado</AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="space-y-3 text-sm p-2">
+                                        <p>Al finalizar el ejercicio podrías descubrir algo como esto…</p>
+                                        <p className="italic">Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia. En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es la decisión correcta para él.</p>
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                        </div>
+                    </div>
+                );
+            case 2: // Paso 1: Describe la decisión
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 1: Describe la decisión</Label>
                          <p className="text-sm text-muted-foreground">¿Qué decisión tienes que tomar?</p>
-                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Aceptar un nuevo puesto de trabajo en otra ciudad.”"/>
+                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 2: // Paso 2: Filtro 1 – Tus valores
+            case 3: // Paso 2: Filtro 1 – Tus valores
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Filtro 1 – Tus valores</h4>
@@ -161,7 +174,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 3: // Paso 3: Filtro 2 – Tus emociones
+            case 4: // Paso 3: Filtro 2 – Tus emociones
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Filtro 2 – Tus emociones</h4>
@@ -180,14 +193,14 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                             </div>
                         </div>
                         {emotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe otra emoción..." className="mt-2" />}
-                        <p className="text-xs italic text-muted-foreground pt-2">"Sentir emociones encontradas es normal. Aquí no hay emociones correctas o incorrectas."</p>
+                        <p className="text-sm text-muted-foreground pt-2">Sentir emociones encontradas es normal. Aquí no hay emociones correctas o incorrectas.</p>
                          <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 4: // Paso 4: Filtro 3 – Impacto a largo plazo
+            case 5: // Paso 4: Filtro 3 – Impacto a largo plazo
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Filtro 3 – Impacto a largo plazo</h4>
@@ -200,7 +213,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 5: // Paso 5: Autoevaluación
+            case 6: // Paso 5: Autoevaluación
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
@@ -229,12 +242,22 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 6: // Paso 6: Ajusta si es necesario
+            case 7: // Paso 6: Ajusta si es necesario
                 return (
                      <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <Label htmlFor="adjustment">Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                         <p className="text-sm text-muted-foreground">Ejemplo: "Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."</p>
+                         <div className="text-sm text-muted-foreground space-y-2">
+                            <p className="font-semibold text-foreground">Guía de uso:</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
+                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
+                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
+                            </ul>
+                        </div>
+                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm mt-2">
+                            Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
+                        </blockquote>
+                        <Label htmlFor="adjustment">Escribe aquí lo que cambiarías</Label>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -242,7 +265,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 7: // Cierre y guardado
+            case 8: // Cierre y guardado
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <p className="text-sm text-muted-foreground">"Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites."</p>
@@ -250,7 +273,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
                     </form>
                 );
-            case 8: // Confirmation
+            case 9: // Confirmation
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
