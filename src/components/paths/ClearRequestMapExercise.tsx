@@ -34,18 +34,13 @@ export default function ClearRequestMapExercise({ content, pathId, onComplete }:
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     const notebookContent = `
-**Ejercicio: ${content.title}**
+**${content.title}**
 
-**Situación en la que necesito ayuda:**
-${situation}
-
-**Petición (Qué, Cuándo, Cómo):**
-- **Qué necesito:** ${need}
-- **Cuándo lo necesito:** ${when}
-- **Cómo me pueden ayudar:** ${how}
-
-**Formulación de la petición final:**
-"${finalPhrase}"
+Pregunta: Situación en la que necesito ayuda | Respuesta: ${situation}
+Pregunta: Qué necesito exactamente | Respuesta: ${need}
+Pregunta: Cuándo lo necesito | Respuesta: ${when}
+Pregunta: Cómo me pueden ayudar | Respuesta: ${how}
+Pregunta: Formulación de la petición final | Respuesta: "${finalPhrase}"
     `;
     addNotebookEntry({ title: 'Mi Petición Clara', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Petición Guardada' });

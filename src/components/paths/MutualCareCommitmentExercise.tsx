@@ -64,12 +64,12 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mis Compromisos de Cuidado Mutuo:**\n\n`;
+    let notebookContent = `**${content.title}**\n\n`;
     filledCommitments.forEach(c => {
-        notebookContent += `**Persona a cuidar:** ${c.name}\n`;
-        notebookContent += `- **Gesto concreto de cuidado:** ${c.action}\n`;
+        notebookContent += `**Compromiso con: ${c.name}**\n`;
+        notebookContent += `Pregunta: Gesto concreto de cuidado | Respuesta: ${c.action}\n`;
         if (c.date) {
-            notebookContent += `- **Cuándo lo haré:** ${format(c.date, "PPP", { locale: es })}${c.time ? ` a las ${c.time}` : ''}\n\n`;
+            notebookContent += `Pregunta: Cuándo lo haré | Respuesta: ${format(c.date, "PPP", { locale: es })}${c.time ? ` a las ${c.time}` : ''}\n\n`;
         } else {
             notebookContent += `\n`;
         }

@@ -35,9 +35,15 @@ export default function VitaminMomentExercise({ content, pathId, onComplete }: V
       });
       return;
     }
+    const notebookContent = `
+**${content.title}**
+
+Pregunta: Anótalo en una frase en tu cuaderno | Respuesta: ${reflection}
+    `;
+
     addNotebookEntry({ 
-      title: content.title, 
-      content: `**Mi momento vitamina del día fue:**\n${reflection}`,
+      title: 'Mi Momento Vitamina',
+      content: notebookContent,
       pathId: pathId, 
       userId: user?.id 
     });

@@ -48,17 +48,20 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mapa de relaciones y su sensación asociada:**\n`;
+    let notebookContent = `**${content.title}**\n\n`;
     filledRelations.forEach(r => {
         let sensationLabel = r.sensation.charAt(0).toUpperCase() + r.sensation.slice(1);
         if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento más tranquilo/a y animado/a.';
         if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo): Me siento agotado/a o tenso/a.';
         if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ámbar): Me siento igual que antes.';
-        notebookContent += `- **Persona:** ${r.name}\n  - **Sensación:** ${sensationLabel}\n`;
+        
+        notebookContent += `**Relación: ${r.name}**\n`;
+        notebookContent += `Pregunta: Sensación habitual después de interactuar | Respuesta: ${sensationLabel}\n\n`;
     });
-    notebookContent += `\n**Reflexión guiada:**\n`;
-    notebookContent += `- **¿A quién quieres acercarte más en las próximas semanas?**\n  ${reflection.approach || 'No respondido.'}\n`;
-    notebookContent += `- **¿De quién necesitas poner distancia o limitar el contacto?**\n  ${reflection.distance || 'No respondido.'}\n`;
+    notebookContent += `--- \n**Reflexión Final**\n\n`;
+    notebookContent += `Pregunta: ¿A quién quieres acercarte más en las próximas semanas? | Respuesta: ${reflection.approach || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿De quién necesitas poner distancia o limitar el contacto? | Respuesta: ${reflection.distance || 'No respondido.'}\n`;
+
 
     addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado' });
@@ -68,7 +71,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
 
   const resetExercise = () => {
     setStep(0);

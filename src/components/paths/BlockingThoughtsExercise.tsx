@@ -51,21 +51,16 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
       });
       return;
     }
-    const notebookContent = `
-**Ejercicio: ${content.title}**
 
-**Situación en la que dudé en pedir ayuda:**
-${situation}
+    const notebookContent = [
+        `**${content.title}**`,
+        `Pregunta: Situación en la que dudé en pedir ayuda | Respuesta: ${situation}`,
+        `Pregunta: Pensamiento bloqueante que apareció | Respuesta: "${blockingThought}"`,
+        `Pregunta: Distorsión cognitiva que detecté | Respuesta: ${distortion || 'No especificada.'}`,
+        `Pregunta: Reformulación consciente y amable | Respuesta: "${reformulation}"`
+    ].join('\n\n');
 
-**Pensamiento bloqueante que apareció:**
-"${blockingThought}"
 
-**Distorsión cognitiva que detecté:**
-${distortion || 'No especificada.'}
-
-**Reformulación consciente y amable:**
-"${reformulation}"
-    `;
     addNotebookEntry({ title: 'Registro de Pensamientos Bloqueantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Registro Guardado' });
     setIsSaved(true);
@@ -87,10 +82,10 @@ ${distortion || 'No especificada.'}
           <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
             <Label className="font-semibold text-lg">Paso 1: Recuerda una situación reciente</Label>
             <p className="text-sm">Piensa en un momento en el que necesitaste algo, pero dudaste o decidiste no pedirlo.</p>
-            <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: La semana pasada no pedí que me sustituyeran en la reunión aunque estaba enferma." />
+            <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: La semana pasada no pedí que me sustituyeran en la reunión aunque estaba enferma." disabled={isSaved} />
             <div className="flex justify-between w-full pt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+               <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
         );
@@ -99,7 +94,7 @@ ${distortion || 'No especificada.'}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="thought-blocking" className="font-semibold text-lg">Paso 2: Anota el pensamiento bloqueante</Label>
             <p className="text-sm">¿Qué frase pasó por tu mente en ese momento?</p>
-            <Textarea id="thought-blocking" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} placeholder="Ej: No quiero molestar. / Si lo pido, pensarán que no soy capaz." />
+            <Textarea id="thought-blocking" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} placeholder="Ej: No quiero molestar. / Si lo pido, pensarán que no soy capaz." disabled={isSaved} />
             <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep} disabled={!blockingThought.trim()}>Siguiente</Button></div>
           </div>
         );

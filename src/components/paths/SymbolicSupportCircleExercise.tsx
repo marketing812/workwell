@@ -46,11 +46,11 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
       toast({ title: 'Círculo vacío', description: 'Por favor, añade al menos un pilar a tu círculo de sostén.', variant: 'destructive' });
       return;
     }
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Círculo de Sostén Simbólico:**\n\n`;
+    let notebookContent = `**${content.title}**\n\n`;
     filledPillars.forEach(p => {
-        notebookContent += `**Pilar de mi red:** ${p.name}\n`;
-        notebookContent += `- **Palabra que describe lo que aporta:** ${p.contribution || 'No especificado'}\n`;
-        notebookContent += `- **Gesto concreto para cuidar el vínculo:** ${p.careAction || 'No especificado'}\n\n`;
+        notebookContent += `**Pilar de mi red: ${p.name}**\n`;
+        notebookContent += `Pregunta: Palabra que describe lo que aporta | Respuesta: ${p.contribution || 'No especificado'}\n`;
+        notebookContent += `Pregunta: Gesto concreto para cuidar el vínculo | Respuesta: ${p.careAction || 'No especificado'}\n\n`;
     });
     addNotebookEntry({ title: 'Mi Círculo de Sostén Simbólico', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Círculo Guardado' });

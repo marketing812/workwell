@@ -60,13 +60,14 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
       return;
     }
     
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Banco de Apoyos:**\n\n`;
+    let notebookContent = `**${content.title}**\n\n`;
     filledPeople.forEach(p => {
         const finalSupportType = p.supportType === 'Otro' ? p.otherSupportType : p.supportType;
-        notebookContent += `**Persona:** ${p.name}\n`;
-        notebookContent += `- **Tipo de apoyo que puede ofrecerme:** ${finalSupportType || 'No especificado'}\n`;
-        notebookContent += `- **Grado de confianza y disponibilidad (1-5):** ${p.confidence}/5\n\n`;
+        notebookContent += `**Recurso: ${p.name}**\n`;
+        notebookContent += `Pregunta: Tipo de apoyo que puede ofrecerme | Respuesta: ${finalSupportType || 'No especificado'}\n`;
+        notebookContent += `Pregunta: Grado de confianza y disponibilidad | Respuesta: ${p.confidence}/5\n\n`;
     });
+
 
     addNotebookEntry({ title: 'Mi Banco de Apoyos', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Banco de Apoyos Guardado' });
@@ -91,7 +92,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Tu red de apoyo es como un banco: a veces necesitas hacer un depósito y otras, una retirada. Pero para poder usarlo, primero necesitas saber qué tienes en tu cuenta.</p>
-            <Button onClick={nextStep}>Comenzar mi inventario <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Comenzar mi inventario <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Paso 1: Lista inicial
@@ -195,7 +196,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
             <div className="p-6 text-center space-y-4">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Mapa de Apoyos Guardado</h4>
-                <p className="text-muted-foreground">Ya tienes tu mapa personal. Puedes volver a consultarlo en tu cuaderno cuando lo necesites.</p>
+                <p className="text-muted-foreground">Ya tienes tu mapa personal. Puedes volver a consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
                 <Button onClick={resetExercise} variant="outline">Hacer otro mapa</Button>
             </div>
         );
