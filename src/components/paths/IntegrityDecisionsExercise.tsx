@@ -105,7 +105,6 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        
                         <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
@@ -125,7 +124,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </Accordion>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -216,7 +215,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                             <Label htmlFor="reflects">Pregunta: ¿Refleja quién soy y quiero ser?</Label>
                         </div>
                         <div>
-                            <Label className="font-semibold text-lg">Pregunta: ¿Qué nivel de coherencia percibo? {coherence}/10</Label>
+                            <Label className="font-semibold">¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={1} max={10} step={1} />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
