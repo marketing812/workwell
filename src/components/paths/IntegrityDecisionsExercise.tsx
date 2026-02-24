@@ -85,6 +85,11 @@ export default function IntegrityDecisionsExercise({ content, pathId, onComplete
             selectedEmotions.push(otherEmotion.trim());
         }
 
+        if (!decision.trim()){
+            toast({ title: 'Ejercicio Incompleto', description: 'Por favor, completa al menos la descripción de tu decisión para guardar.', variant: 'destructive'});
+            return;
+        }
+
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
@@ -99,11 +104,11 @@ Pregunta: Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y den
 **Autoevaluación:**
 Pregunta: ¿Me sentiría orgulloso/a de dar esta explicación? | Respuesta: ${isProud ? 'Sí' : 'No'}
 Pregunta: ¿Refleja quién soy y quiero ser? | Respuesta: ${reflectsWhoIAm ? 'Sí' : 'No'}
-Pregunta: Nivel de coherencia percibida | Respuesta: ${coherence}/10
+Nivel de coherencia percibida: ${coherence}/10
 
 Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta: ${adjustment || 'Ninguno.'}
     `;
-        addNotebookEntry({ title: 'Decisiones con Integridad', content: notebookContent, pathId, userId: user?.id });
+        addNotebookEntry({ title: 'Decisiones con Integridad', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
         setIsSaved(true);
         onComplete();
@@ -115,16 +120,16 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
             case 0: // Introducción
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <p className="text-sm text-muted-foreground">A veces tomamos decisiones rápidas para salir de la incomodidad, y luego nos quedamos con la sensación de que algo no encaja. Esta herramienta es como una linterna que ilumina tres puntos clave para decidir con calma: lo que valoras, lo que sientes y cómo te afectará en el tiempo.</p>
-                        <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                       <p className="text-sm text-muted-foreground">A veces tomamos decisiones rápidas para salir de la incomodidad, y luego nos quedamos con la sensación de que algo no encaja. Esta herramienta es como una linterna que ilumina tres puntos clave para decidir con calma: lo que valoras, lo que sientes y cómo te afectará en el tiempo.</p>
+                        <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
             case 1: // Paso 1: Describe la decisión
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <Label className="font-semibold text-lg">Paso 1: Describe la decisión</Label>
-                        <p className="text-sm text-muted-foreground">¿Qué decisión tienes que tomar?</p>
-                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: Aceptar un nuevo puesto de trabajo en otra ciudad."/>
+                         <p className="text-sm text-muted-foreground">¿Qué decisión tienes que tomar?</p>
+                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Aceptar un nuevo puesto de trabajo en otra ciudad.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -135,8 +140,8 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Filtro 1 – Tus valores</h4>
-                        <Label>¿Qué valores están implicados en esta decisión? (Selecciona los que mejor representen lo que quieres respetar. Puedes elegir más de uno)</Label>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-60 overflow-y-auto p-2 border rounded-md">
+                        <Label>¿Qué valores están implicados en esta decisión? (Selecciona los que mejor representen lo que quieres respetar con tu decisión. Puedes elegir más de uno)</Label>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 border rounded-md">
                             {valuesList.map(v => (
                                 <div key={v} className="flex items-center space-x-2">
                                     <Checkbox id={`val-${v}`} checked={!!values[v]} onCheckedChange={c => setValues(p => ({...p, [v]: !!c}))} />
@@ -149,10 +154,10 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                             </div>
                         </div>
                         {values['Otro'] && <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />}
-                         <p className="text-xs italic text-muted-foreground pt-2">"Piensa en lo que es importante para ti, no en lo que crees que es importante para los demás."</p>
+                         <p className="text-sm text-muted-foreground pt-2">Piensa en lo que es importante para ti, no en lo que crees que es importante para los demás.</p>
                         <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                            <Button onClick={nextStep} disabled={Object.values(values).every(v => !v) && !otherValue.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
@@ -161,6 +166,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Filtro 2 – Tus emociones</h4>
                         <Label>¿Qué emociones predominan cuando piensas en esta decisión?</Label>
+                        <p className="text-sm text-muted-foreground">Ejemplo: "Ilusión, miedo, curiosidad, inseguridad."</p>
                         <div className="grid grid-cols-2 gap-2 max-h-60 overflow-y-auto p-2 border rounded-md">
                             {emotionOptions.map(emo => (
                                 <div key={emo.value} className="flex items-center space-x-2">
@@ -186,7 +192,8 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Filtro 3 – Impacto a largo plazo</h4>
                         <Label htmlFor="long-term-impact">Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y dentro de 5 años?</Label>
-                        <Textarea id="long-term-impact" value={longTermImpact} onChange={e => setLongTermImpact(e.target.value)} placeholder="Ejemplo: A 1 año: tendré más ingresos pero estaré lejos de mi familia. A 5 años: habré crecido profesionalmente y podré volver con más opciones." rows={4} />
+                        <p className="text-sm text-muted-foreground">Ejemplo: "A 1 año: tendré más ingresos pero estaré lejos de mi familia. A 5 años: habré crecido profesionalmente y podré volver con más opciones."</p>
+                        <Textarea id="long-term-impact" value={longTermImpact} onChange={e => setLongTermImpact(e.target.value)} rows={4} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!longTermImpact.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -209,7 +216,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                             </div>
                         </div>
                         <div className="pt-4">
-                            <Label className="font-normal">¿Qué nivel de coherencia percibo? <span className="font-bold">{coherence}/10</span></Label>
+                            <Label className="font-semibold">Nivel de coherencia percibida: {coherence}/10</Label>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} className="mt-2" />
                             <div className="flex justify-between text-xs text-muted-foreground mt-1">
                                 <span>Nada coherente</span>
@@ -224,10 +231,11 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                 );
             case 6: // Paso 6: Ajusta si es necesario
                 return (
-                    <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
+                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
                         <Label htmlFor="adjustment">Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
-                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} placeholder="Ejemplo: Negociaría trabajar en remoto algunos días para pasar más tiempo en casa." />
+                         <p className="text-sm text-muted-foreground">Ejemplo: "Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."</p>
+                        <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -261,7 +269,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
                     {content.objective}
-                    <p className="text-xs text-muted-foreground mt-1">Tiempo aproximado: {content.duration}. Te recomiendo practicarlo cada vez que tengas una decisión importante o que te genere dudas, incluso si no es urgente. Hazlo 2-3 veces por semana en momentos clave.</p>
+                     <p className="text-xs text-muted-foreground mt-1">Tiempo aproximado: {content.duration}</p>
                     {content.audioUrl && (
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
@@ -276,4 +284,3 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
         </Card>
     );
 }
-
