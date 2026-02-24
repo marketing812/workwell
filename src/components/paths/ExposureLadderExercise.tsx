@@ -87,11 +87,11 @@ export default function ExposureLadderExercise({ content, pathId, onComplete }: 
     const notebookContent = `
 **Ejercicio: ${"Mi Escalera de Exposición"}**
 
-**Meta:** ${goal}
-**Escalones:**
-${steps.filter(s => s.trim()).map((s, i) => `${i + 1}. ${s}`).join('\n')}
+Pregunta: Meta final | Respuesta: ${goal}
+Pregunta: Escalones | Respuesta: 
+${steps.filter(s => s.trim()).map((s, i) => `- Escalón ${i + 1}: ${s}`).join('\n')}
 
-**Mi primer paso será:** ${firstStep}
+Pregunta: Mi primer paso será | Respuesta: ${firstStep}
     `;
     addNotebookEntry({ title: 'Mi Escalera de Exposición', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Escalera Guardada' });

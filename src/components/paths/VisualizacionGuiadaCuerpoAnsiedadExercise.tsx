@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -63,19 +64,19 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         }
 
         const finalHeart = heart === 'Otra' ? otherHeart : heart;
-        const finalStomach = stomach === 'Otra' ? otherStomach : stomach; // New
-        const finalHead = head === 'Otra' ? otherHead : head; // New
+        const finalStomach = stomach === 'Otra' ? otherStomach : stomach;
+        const finalHead = head === 'Otra' ? otherHead : head;
 
         const notebookContent = `
-    **Ejercicio: ${content.title}**
-    
-    **Respiración:** ${breathing || 'No especificada.'}
-    **Corazón:** ${finalHeart || 'No especificado.'}
-    **Estómago:** ${finalStomach || 'No especificado.'}
-    **Cabeza:** ${finalHead || 'No especificado.'}
-    
-    **Frase de aceptación:** "${acceptancePhrase || 'No escrita.'}"
-    **Frase de la ola:** "${wavePhrase}"
+**Ejercicio: ${content.title}**
+
+Pregunta: ¿Cómo es tu respiración? | Respuesta: ${breathing || 'No especificada.'}
+Pregunta: ¿Cómo late tu corazón? | Respuesta: ${finalHeart || 'No especificado.'}
+Pregunta: ¿Qué notas en el estómago? | Respuesta: ${finalStomach || 'No especificado.'}
+Pregunta: ¿Qué sientes en la cabeza? | Respuesta: ${finalHead || 'No especificado.'}
+
+Pregunta: Nombra lo que sientes sin luchar | Respuesta: "${acceptancePhrase || 'No escrita.'}"
+Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
         `;
     
         addNotebookEntry({
@@ -93,8 +94,8 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
 
     const renderStep = () => {
         const finalHeart = heart === 'Otra' ? otherHeart : heart;
-        const finalStomach = stomach === 'Otra' ? otherStomach : stomach; // New
-        const finalHead = head === 'Otra' ? otherHead : head; // New
+        const finalStomach = stomach === 'Otra' ? otherStomach : stomach;
+        const finalHead = head === 'Otra' ? otherHead : head;
 
         switch (step) {
             case 0: // Intro

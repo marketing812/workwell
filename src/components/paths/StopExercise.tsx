@@ -46,12 +46,9 @@ export default function StopExercise({ content, pathId, onComplete }: StopExerci
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Mi observación (pensamiento y sensación):*
-${observedState}
-
-*Mi siguiente paso elegido (Permitir/Prosigue):*
-${nextAction}
-    `;
+Pregunta: Observa tu pensamiento y sensación | Respuesta: ${observedState}
+Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
+`;
     addNotebookEntry({ title: `Práctica STOP`, content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Práctica Guardada' });
     onComplete();

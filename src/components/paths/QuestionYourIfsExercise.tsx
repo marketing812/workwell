@@ -52,14 +52,13 @@ export default function QuestionYourIfsExercise({ content, pathId, onComplete }:
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-*Pensamiento ansioso:* "${thought}"
-*Evidencia a favor:* ${evidence.pro}
-*Evidencia en contra:* ${evidence.con}
-*Alternativas:*
-- ${alternatives[0]}
-- ${alternatives[1]}
-*Gravedad real (0-10):* ${severity}
-*Reformulación final:* "${reformulation}"
+Pregunta: ¿Cuál es tu pensamiento ansioso “¿Y si…?”? | Respuesta: "${thought}"
+Pregunta: ¿Qué evidencias tengo a favor? | Respuesta: ${evidence.pro}
+Pregunta: ¿Qué evidencias tengo en contra? | Respuesta: ${evidence.con}
+Pregunta: Alternativa 1 | Respuesta: ${alternatives[0]}
+Pregunta: Alternativa 2 | Respuesta: ${alternatives[1]}
+Pregunta: Gravedad real (0-10) | Respuesta: ${severity}/10
+Pregunta: Reformulación final | Respuesta: "${reformulation}"
     `;
     addNotebookEntry({ title: 'Cuestionando mis "¿Y si...?"', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ejercicio Guardado' });

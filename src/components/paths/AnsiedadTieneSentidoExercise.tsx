@@ -66,20 +66,15 @@ export default function AnsiedadTieneSentidoExercise({ content, pathId, onComple
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Situación (hechos):**
-${situation}
+Pregunta: Describe la situación (solo hechos, sin interpretaciones) | Respuesta: ${situation}
 
-**Pensamiento amenazante inicial:**
-${initialThreat}
+Pregunta: Identifica ese pensamiento inicial de amenaza | Respuesta: "${initialThreat}"
 
-**Síntomas físicos y mentales:**
-${selectedSymptoms.length > 0 ? selectedSymptoms.join(', ') : 'No especificados.'}
+Pregunta: Síntomas físicos y mentales | Respuesta: [${selectedSymptoms.length > 0 ? selectedSymptoms.join(', ') : 'No especificados.'}]
 
-**Interpretación de los síntomas (miedo a la ansiedad):**
-${thoughts || 'No especificado.'}
+Pregunta: Pensamientos que aparecieron en ese momento (miedo a la ansiedad) | Respuesta: "${thoughts || 'No especificado.'}"
 
-**Efecto final (qué hiciste o sentiste):**
-${finalAction || 'No especificado.'}
+Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${finalAction || 'No especificado.'}
         `;
         
         addNotebookEntry({
@@ -247,3 +242,4 @@ ${finalAction || 'No especificado.'}
         </Card>
     );
 }
+

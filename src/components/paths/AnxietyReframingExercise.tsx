@@ -73,17 +73,13 @@ export default function AnxietyReframingExercise({ content, pathId, onComplete }
     const notebookContent = `
 **Ejercicio: ${(content as any).title}**
 
-**1. ¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios?**
-${responses.q1}
+Pregunta: ¿Qué he descubierto sobre la manera en que mi mente anticipa y exagera escenarios? | Respuesta: ${responses.q1}
 
-**2. ¿Qué me pasa cuando confundo posibilidad con probabilidad? ¿Qué efecto tiene en mis decisiones?**
-${responses.q2}
+Pregunta: ¿Qué me pasa cuando confundo posibilidad con probabilidad? ¿Qué efecto tiene en mis decisiones? | Respuesta: ${responses.q2}
 
-**3. ¿Qué me ha servido más para tomar distancia de los pensamientos: la técnica STOP, el cuestionamiento de “¿y si…?” u otra estrategia personal?**
-${responses.q3}
+Pregunta: ¿Qué me ha servido más para tomar distancia de los pensamientos: la técnica STOP, el cuestionamiento de “¿y si…?” u otra estrategia personal? | Respuesta: ${responses.q3}
 
-**4. ¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad?**
-${responses.q4}
+Pregunta: ¿Qué compromiso quiero llevarme para el futuro cuando aparezca la ansiedad? (ejemplo: “darme una pausa y observar antes de reaccionar”) | Respuesta: ${responses.q4}
 `;
 
     addNotebookEntry({

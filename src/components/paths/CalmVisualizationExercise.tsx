@@ -46,11 +46,8 @@ export default function CalmVisualizationExercise({ content, pathId, onComplete 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Situación a visualizar:**
-${situation || 'No especificada.'}
-
-**Mi guion interno de calma:**
-"${calmScript}"
+Pregunta: Situación a visualizar | Respuesta: ${situation || 'No especificada.'}
+Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
     `;
     addNotebookEntry({ title: 'Mi Ensayo Mental Calmado', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: "Ejercicio Guardado", description: "Tu ensayo mental ha sido guardado." });
