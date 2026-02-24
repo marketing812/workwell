@@ -167,13 +167,12 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
       return;
     }
 
-    const notebookContent = `
-**${content.title}**
-
-*Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
-*Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
-*Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
-`;
+    const notebookContent = [
+      `**${content.title}**`,
+      `Pregunta: Mi primer gesto al despertar | Respuesta: ${finalFirstGesture} (${durations.firstGesture} min)`,
+      `Pregunta: Mi cuidado para el cuerpo | Respuesta: ${finalBodyCare} (${durations.bodyCare} min)`,
+      `Pregunta: Mi preparación mental | Respuesta: ${finalMentalPrep} (${durations.mentalPrep} min)`,
+    ].join('\n\n');
 
     addNotebookEntry({ title: 'Mi Ritual de Mañana Amable', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Ritual Guardado' });

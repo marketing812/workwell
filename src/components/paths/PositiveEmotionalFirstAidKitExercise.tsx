@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -104,11 +105,11 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
         return;
     }
 
-    let notebookContent = `**Ejercicio: ${content.title}**\n\n**Mi Botiquín Emocional Positivo:**\n\n`;
+    let notebookContent = `**${content.title}**\n\n**Mi Botiquín Emocional Positivo:**\n\n`;
     finalSelections.forEach(s => {
-        notebookContent += `**${s.category}:** ${s.value}\n`;
-        notebookContent += `- *Por qué me ayuda:* ${s.why || 'No especificado.'}\n`;
-        notebookContent += `- *Cómo lo activaré:* ${s.how || 'No especificado.'}\n\n`;
+        notebookContent += `**Recurso: ${s.value}** (${s.category})\n`;
+        notebookContent += `Pregunta: ¿Por qué me ayuda? | Respuesta: ${s.why || 'No especificado.'}\n`;
+        notebookContent += `Pregunta: ¿Cómo lo activaré? | Respuesta: ${s.how || 'No especificado.'}\n\n`;
     });
 
     addNotebookEntry({ title: 'Mi Botiquín Emocional Positivo', content: notebookContent, pathId: pathId, userId: user?.id });
@@ -213,7 +214,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                             <TableRow>
                                 <TableHead>Categoría</TableHead>
                                 <TableHead>Recurso</TableHead>
-                                <TableHead>Estrategia de activación</TableHead>
+                                <TableHead className="text-right">Estrategia de activación</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -221,7 +222,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                                 <TableRow key={key}>
                                     <TableCell className="font-medium">{resourceCategories[key as ResourceKey].label}</TableCell>
                                     <TableCell>{finalSelections[key as ResourceKey]}</TableCell>
-                                    <TableCell>{personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how}</TableCell>
+                                    <TableCell className="text-right">{personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

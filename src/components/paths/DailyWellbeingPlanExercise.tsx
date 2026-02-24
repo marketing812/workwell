@@ -178,15 +178,14 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
       return;
     }
     
-    const notebookContent = `
-**${content.title}**
+    const notebookContent = [
+      `**${content.title}**`,
+      `Pregunta: Mi primer gesto al despertar | Respuesta: ${finalFirstGesture} (${durations.firstGesture} min)`,
+      `Pregunta: Mi cuidado para el cuerpo | Respuesta: ${finalBodyCare} (${durations.bodyCare} min)`,
+      `Pregunta: Mi preparación mental | Respuesta: ${finalMentalPrep} (${durations.mentalPrep} min)`,
+    ].join('\n\n');
 
-*Mi primer gesto al despertar:* ${finalFirstGesture} (${durations.firstGesture} min)
-*Mi cuidado para el cuerpo:* ${finalBodyCare} (${durations.bodyCare} min)
-*Mi preparación mental:* ${finalMentalPrep} (${durations.mentalPrep} min)
-`;
-
-    addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Plan Guardado' });
     setIsSaved(true);
     onComplete();
@@ -199,10 +198,10 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
 
   const renderStep = () => {
     const habits = [
-        { key: 'firstGesture', label: 'Físico', value: finalFirstGesture },
-        { key: 'bodyCare', label: 'Emocional', value: finalBodyCare },
-        { key: 'mentalPrep', label: 'Mental', value: finalMentalPrep },
-    ].filter(h => h.value);
+        { key: 'firstGesture', label: finalFirstGesture, duration: durations.firstGesture },
+        { key: 'bodyCare', label: finalBodyCare, duration: durations.bodyCare },
+        { key: 'mentalPrep', label: finalMentalPrep, duration: durations.mentalPrep }
+    ].filter(h => h.label);
 
     switch(step) {
       case 0:
@@ -217,11 +216,11 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
           </div>
         );
       case 1:
-        return <HabitStep stepTitle="Paso 1: Microhábito físico" description="Vamos a empezar por tu cuerpo. Pequeños gestos físicos repetidos cada día pueden tener un gran impacto en tu bienestar. No se trata de hacer mucho, sino de acciones simples que activan tu cuerpo, regulan tu energía y mejoran tu estado de ánimo." options={firstGestureOptions} selected={firstGesture} setSelected={setFirstGesture} other={otherFirstGesture} setOther={setOtherFirstGesture} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 1: Elige tu primer gesto al despertar" description="Lo que haces en los primeros minutos después de abrir los ojos marca el tono del resto del día. Vamos a elegir un gesto amable y consciente que te ayude a conectar contigo antes de sumergirte en las demandas externas." options={firstGestureOptions} selected={firstGesture} setSelected={setFirstGesture} other={otherFirstGesture} setOther={setOtherFirstGesture} onNext={nextStep} onPrev={prevStep} />;
       case 2:
-        return <HabitStep stepTitle="Paso 2: Microhábito emocional" description="Ahora piensa en algo pequeño que alimente tu mundo emocional. Puede ser conectar con alguien, darte un momento de calma o buscar una sensación agradable que te recargue por dentro." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 2: Añade un cuidado para tu cuerpo" description="Tu cuerpo es tu base para todo lo que harás después. Aquí vamos a elegir un gesto físico breve que te active sin agobio." options={bodyCareOptions} selected={bodyCare} setSelected={setBodyCare} other={otherBodyCare} setOther={setOtherBodyCare} onNext={nextStep} onPrev={prevStep} />;
       case 3:
-        return <HabitStep stepTitle="Paso 3: Microhábito mental" description="Ahora vamos a por tu mente: elige una práctica breve que te ayude a enfocarte, aprender o desconectar de la sobrecarga mental." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} onPrev={prevStep} />;
+        return <HabitStep stepTitle="Paso 3: Prepara tu mente" description="Antes de sumergirte en mensajes, trabajo o tareas, elige un gesto que oriente tu mente hacia la calma, el enfoque o la gratitud." options={mentalPrepOptions} selected={mentalPrep} setSelected={setMentalPrep} other={otherMentalPrep} setOther={setOtherMentalPrep} onNext={nextStep} onPrev={prevStep} />;
       case 4:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
@@ -230,7 +229,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
                 <div className="space-y-4">
                     {habits.map((item, index) => (
                         <div key={item.key} className="p-3 border rounded-md bg-background space-y-2">
-                           <Label htmlFor={`moment-select-${index}`} className="font-medium">{item.value}</Label>
+                           <Label htmlFor={`moment-select-${index}`} className="font-medium">{item.label}</Label>
                             <Select 
                                 value={moments[item.key as keyof typeof moments]} 
                                 onValueChange={(value) => setMoments(p => ({...p, [item.key]: value}))}
@@ -261,8 +260,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo recordarlo</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste.</p>
-                <p className="text-xs text-muted-foreground">Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
+                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste. Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
                 <div className="space-y-2">
                 {facilitatorOptions.map(opt => (
                     <div key={opt.id} className="flex items-center space-x-2">
@@ -285,16 +283,16 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
       case 6:
         return (
         <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-primary">Paso 6: Tu plan de microhábitos</h4>
-            <p className="text-sm text-muted-foreground">Aquí tienes tu plan personalizado de microhábitos: tres gestos simples, pero con un gran impacto en tu bienestar. Has elegido qué hacer y cuándo hacerlo… ahora vamos a darle un lugar fijo en tu día para que se conviertan en parte natural de tu vida.</p>
+            <h4 className="font-semibold text-lg text-primary">Paso 6: Tu rutina de mañana amable</h4>
+            <p className="text-sm text-muted-foreground">Aquí tienes tu rutina inicial para empezar el día con más equilibrio y presencia. Es breve, realista y pensada para que puedas mantenerla incluso en días ocupados.</p>
             <div className="border rounded-lg overflow-hidden">
                 <Table>
-                    <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Momento elegido</TableHead></TableRow></TableHeader>
+                    <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Duración</TableHead></TableRow></TableHeader>
                     <TableBody>
                         {habits.map(h => (
                             <TableRow key={h.key}>
-                                <TableCell>{h.value}</TableCell>
-                                <TableCell>{moments[h.key as keyof typeof moments] === 'Otro' ? otherMoments[h.key] : moments[h.key as keyof typeof moments]}</TableCell>
+                                <TableCell>{h.label}</TableCell>
+                                <TableCell>{h.duration} min</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -303,7 +301,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
             <p className="text-xs italic text-muted-foreground pt-2">Si un día no puedes hacerlos todos, haz al menos el primero: será suficiente para recordarte que tú decides cómo empezar.</p>
             <p className="text-xs italic text-muted-foreground pt-2">Y ahora, con tu mañana amable lista y tus tres microhábitos definidos, tu bienestar diario tiene un punto de partida y un plan de continuidad.</p>
             <Button onClick={handleSave} className="w-full">
-                Guardar mi plan diario en mi cuaderno terapéutico
+                Guardar mi cuaderno terapéutico
             </Button>
              <Button onClick={prevStep} variant="link" className="w-full">Atrás</Button>
         </div>
@@ -312,7 +310,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
         return (
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <p className="font-semibold">"Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia."</p>
+            <p className="font-semibold">"Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido."</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Crear un nuevo plan</Button>
           </div>
         );

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -13,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface EmotionalGratificationMapExerciseProps {
   content: EmotionalGratificationMapExerciseContent;
@@ -70,18 +72,13 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
     const finalPeople = people || 'No especificado.';
     const finalPlaces = places || 'No especificado.';
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+        `**Ejercicio: ${content.title}**`,
+        `Pregunta: Actividades que me recargan | Respuesta:\n${finalActivities}`,
+        `Pregunta: Personas que me inspiran o dan calma | Respuesta:\n${finalPeople}`,
+        `Pregunta: Lugares que me llenan de energía | Respuesta:\n${finalPlaces}`,
+    ].join('\n\n');
 
-**Paso 1: Actividades que me recargan:**
-${finalActivities}
-
-**Paso 2: Personas que me inspiran o dan calma:**
-${finalPeople}
-
-**Paso 3: Lugares que me llenan de energía:**
-${finalPlaces}
-    `;
     addNotebookEntry({ title: 'Mi Mapa de Gratificación Emocional', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado', description: 'Tu mapa ha sido guardado en el cuaderno.' });
     setIsSaved(true);

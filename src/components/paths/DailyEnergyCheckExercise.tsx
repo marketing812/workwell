@@ -43,9 +43,11 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
   const [rechargedBy, setRechargedBy] = useState('');
   const [drainedBy, setDrainedBy] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const storageKey = `exercise-progress-${pathId}-dailyEnergyCheck`;
 
   useEffect(() => {
+    setIsClient(true);
     try {
       const savedState = localStorage.getItem(storageKey);
       if (savedState) {
@@ -63,28 +65,24 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
   }, [storageKey]);
 
   useEffect(() => {
+    if (!isClient) return;
     try {
       const stateToSave = { step, energyLevel, energyNuance, rechargedBy, drainedBy, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, energyLevel, energyNuance, rechargedBy, drainedBy, isSaved, storageKey]);
+  }, [step, energyLevel, energyNuance, rechargedBy, drainedBy, isSaved, storageKey, isClient]);
 
 
   const handleSave = () => {
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `**Ejercicio: ${content.title}**`,
+      `Pregunta: Nivel de energía de hoy | Respuesta: ${energyLevel}${energyNuance ? ` (${energyNuance})` : ''}`,
+      `Pregunta: Lo que me recargó hoy | Respuesta:\n${rechargedBy || 'No especificado.'}`,
+      `Pregunta: Lo que me drenó hoy | Respuesta:\n${drainedBy || 'No especificado.'}`
+    ].join('\n\n');
 
-**Paso 1: Nivel de energía de hoy:**
-${energyLevel} ${energyNuance ? `(${energyNuance})` : ''}
-
-**Paso 2: Me recargó:**
-${rechargedBy || 'No especificado.'}
-
-**Paso 3: Me drenó:**
-${drainedBy || 'No especificado.'}
-    `;
     addNotebookEntry({ title: 'Mi Balance de Energía Diario', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Registro Guardado', description: 'Tu registro de energía ha sido guardado.' });
     setIsSaved(true);
@@ -102,7 +100,7 @@ ${drainedBy || 'No especificado.'}
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
   
   const appendToList = (setter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
     if (value && value !== 'Otro') {

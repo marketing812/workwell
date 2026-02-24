@@ -161,24 +161,28 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
             return;
         }
 
-        let notebookContent = `**Ejercicio: ${content.title}**\n\n`;
-        notebookContent += '**Momentos que iluminan:**\n';
-        filledMoments.forEach((item, index) => {
-            notebookContent += `*Momento ${index + 1}:* ${item.moment}\n`;
+        let notebookContent = `**${content.title}**\n\n`;
+        
+        const momentChunks = filledMoments.map((item, index) => {
+            let chunk = `Pregunta: Momento que ilumina ${index + 1} | Respuesta: ${item.moment}`;
             if (item.details.length > 0) {
-                notebookContent += `*Detalles sensoriales:* ${item.details.join(', ')}\n`;
+                chunk += `\nPregunta: Detalles sensoriales | Respuesta: ${item.details.join(', ')}`;
             }
-            notebookContent += '\n';
+            return chunk;
         });
 
+        if(momentChunks.length > 0) {
+          notebookContent += "**Momentos que iluminan:**\n" + momentChunks.join('\n\n');
+        }
+
         if (uncomfortableSituation.trim() || positiveLearning.trim()) {
-            notebookContent += `**Reencuadre de situación difícil:**\n`;
-            notebookContent += `- *Situación incómoda:* ${uncomfortableSituation || 'No especificada.'}\n`;
-            notebookContent += `- *Aprendizaje o fortaleza:* ${positiveLearning || 'No especificado.'}\n\n`;
+            notebookContent += `\n\n**Reencuadre de situación difícil:**\n`;
+            notebookContent += `Pregunta: Situación incómoda | Respuesta: ${uncomfortableSituation || 'No especificada.'}\n`;
+            notebookContent += `Pregunta: Aprendizaje o fortaleza | Respuesta: ${positiveLearning || 'No especificado.'}`;
         }
 
         if (starResource.length > 0) {
-            notebookContent += `**Mi recurso estrella de la semana:**\n${starResource.join(', ')}\n`;
+            notebookContent += `\n\n**Mi recurso estrella de la semana:**\nPregunta: Recuerdo estrella | Respuesta: ${starResource.join(', ')}`;
         }
 
         addNotebookEntry({ title: 'Mi Álbum de Recuerdos que Iluminan', content: notebookContent, pathId: pathId, userId: user?.id });

@@ -90,19 +90,13 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
         finalSelectedValues.push(otherValue);
     }
 
-    const notebookContent = `
-**Ejercicio: ${content.title}**
+    const notebookContent = [
+      `**${content.title}**`,
+      `Pregunta: Acción concreta | Respuesta: ${action || 'No especificada.'}`,
+      `Pregunta: Valor personal | Respuesta: ${valueReason || 'No especificado.'} (Valores asociados: ${finalSelectedValues.length > 0 ? finalSelectedValues.join(', ') : 'Ninguno'})`,
+      `Pregunta: Sentido mayor | Respuesta: ${purpose || 'No especificado.'}`
+    ].join('\n\n');
 
-**Acción concreta:**
-${action || 'No especificada.'}
-
-**Valor personal:**
-${valueReason || 'No especificado.'}
-(Valores asociados: ${finalSelectedValues.length > 0 ? finalSelectedValues.join(', ') : 'Ninguno'})
-
-**Sentido mayor:**
-${purpose || 'No especificado.'}
-    `;
     addNotebookEntry({ title: 'Mi Motivación en 3 Capas', content: notebookContent, pathId: pathId, userId: user?.id });
     toast({ title: 'Motivación Guardada', description: 'Tu motivación en 3 capas ha sido guardada.' });
     setIsSaved(true);
@@ -112,7 +106,6 @@ ${purpose || 'No especificado.'}
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
-
   const resetExercise = () => {
     setStep(0);
     setAction('');
@@ -138,7 +131,7 @@ ${purpose || 'No especificado.'}
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Hay días en los que cuesta arrancar, y otros en los que ni siquiera sabemos por qué deberíamos hacerlo. Pero cuando conectas una tarea con lo que de verdad te importa, la energía cambia.</p>
             <p className="text-xs text-muted-foreground">Tiempo estimado: 7 minutos. Te recomiendo hacerlo 3 o 4 veces esta semana, o siempre que sientas que te falta impulso para empezar.</p>
-            <Button onClick={nextStep}>Empezar <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Step 1: Acción concreta
@@ -203,7 +196,7 @@ ${purpose || 'No especificado.'}
            <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
               <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
               <h4 className="font-semibold text-lg">Mi motivación en 3 capas</h4>
-              <p className="text-sm text-muted-foreground">Acabas de construir un puente entre lo que haces hoy y la persona que quieres ser. Ese puente es tu motor.</p>
+               <p className="text-sm text-muted-foreground">Acabas de construir un puente entre lo que haces hoy y la persona que quieres ser. Ese puente es tu motor.</p>
               <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                   <p><strong>Acción concreta:</strong><br/>{action}</p>
                   <p><strong>Valor personal:</strong><br/>{valueReason} <em>({finalSelectedValues.join(', ')})</em></p>
