@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -13,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
 import { useTranslations } from '@/lib/translations';
+import { saveDailyCheckInAction } from '@/actions/save-daily-check-in';
 
 const iconMap: Record<string, React.ElementType> = {
   Frown, Annoyed, Meh, Smile, Laugh,
@@ -52,20 +52,18 @@ export function DailyCheckInPopup({ isOpen, questions, onClose, onDismiss }: Dai
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/save-daily-check-in', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user.id, questionCode: currentQuestion.id, answer: currentAnswer }),
+      const result = await saveDailyCheckInAction({
+        userId: user.id,
+        questionCode: currentQuestion.id,
+        answer: currentAnswer,
       });
-
-      const result = await response.json();
       
       if (result.debugUrl && typeof window !== 'undefined') {
         sessionStorage.setItem(DAILY_CHECKIN_URL_KEY, result.debugUrl);
         window.dispatchEvent(new Event('daily-checkin-url-updated'));
       }
 
-      if (response.ok && result.success) {
+      if (result.success) {
         toast({ title: "Respuesta Guardada", description: "Gracias por tu registro diario." });
         onClose(currentQuestion.id); // Close and mark this specific question as done
       } else {
