@@ -3,6 +3,8 @@
 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
+import type { Timestamp } from 'firebase/firestore';
+import { saveNotebookEntryAction } from '@/actions/save-notebook-entry';
 
 export interface NotebookEntry {
   id: string;
@@ -16,34 +18,24 @@ export interface NotebookEntry {
 
 const NOTEBOOK_ENTRIES_KEY = "workwell-therapeutic-notebook";
 const MAX_NOTEBOOK_ENTRIES = 100;
-const API_PROXY_URL = "/api/save-notebook-entry"; // The internal API route that proxies to the external service
 
-
-// This async function sends the data to the internal API route
+// This async function sends the data to the server action
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
         const payload = { userId, entryData: entry };
-        console.log("--- DEBUG: Información de la llamada API para guardar en el cuaderno ---");
-        console.log("URL Destino (Proxy Interno):", API_PROXY_URL);
-        console.log("Método HTTP:", "POST");
-        console.log("Payload (Cuerpo de la petición):", JSON.stringify(payload, null, 2));
-        console.log("--------------------------------------------------------------------");
+        console.log("--- DEBUG: Calling Server Action to save notebook entry ---");
+        console.log("Payload:", JSON.stringify(payload, null, 2));
+        console.log("----------------------------------------------------------");
+        
+        const result = await saveNotebookEntryAction(payload);
 
-        const response = await fetch(API_PROXY_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            console.error(`[Client] Notebook sync failed with status: ${response.status}.`, result);
+        if (!result.success) {
+            console.error(`[Client] Notebook sync via Server Action failed.`, result);
         } else {
-            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully.`);
+            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully via Server Action.`);
         }
     } catch (error) {
-        console.error("[Client] Error calling internal notebook sync API:", error);
+        console.error("[Client] Error calling saveNotebookEntryAction Server Action:", error);
     }
 }
 
