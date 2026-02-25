@@ -1,75 +1,23 @@
-"use client";
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Clock, ArrowLeft, AlertTriangle, Loader2 } from 'lucide-react';
-import { type ResourcePost } from '@/data/resourcesData';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { Clock, ArrowLeft } from 'lucide-react';
+import { getPostBySlug } from '@/data/resourcesData';
+import { notFound } from 'next/navigation';
 
-export default function PostPage() {
-    const params = useParams();
-    const slug = params.slug as string;
+interface PostPageProps {
+  params: {
+    slug: string;
+  };
+}
 
-    const [post, setPost] = useState<ResourcePost | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+export default async function PostPage({ params }: PostPageProps) {
+    const { slug } = params;
+    const post = await getPostBySlug(slug);
 
-    useEffect(() => {
-        if (!slug) return;
-        
-        async function fetchData() {
-            setLoading(true);
-            setError(null);
-            try {
-                const res = await fetch(`/api/resources/post/${slug}`);
-                if (!res.ok) {
-                    if (res.status === 404) {
-                        setError("Artículo no encontrado.");
-                    } else {
-                        throw new Error('No se pudo cargar el artículo');
-                    }
-                } else {
-                    const data = await res.json();
-                    setPost(data);
-                }
-            } catch (e: any) {
-                setError(e.message || "No se pudo cargar el artículo. Por favor, inténtalo de nuevo más tarde.");
-                console.error(`Error fetching post ${slug}:`, e);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchData();
-    }, [slug]);
-
-    if (loading) {
-        return (
-        <div className="container mx-auto py-8 text-center">
-            <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
-        </div>
-        );
-    }
-
-    if (error || !post) {
-        return (
-            <div className="container mx-auto py-8 text-center">
-                <Alert variant="destructive" className="max-w-2xl mx-auto">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>{error || 'Artículo no encontrado.'}</AlertDescription>
-                </Alert>
-                <div className="mt-8">
-                    <Button variant="outline" asChild>
-                    <Link href="/resources">
-                        <ArrowLeft className="mr-2 h-4 w-4" /> Volver a Recursos
-                    </Link>
-                    </Button>
-                </div>
-            </div>
-        );
+    if (!post) {
+      notFound();
     }
 
     let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;

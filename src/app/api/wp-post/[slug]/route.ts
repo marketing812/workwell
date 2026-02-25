@@ -1,24 +1,14 @@
+import { NextResponse } from 'next/server';
 
-import { NextResponse, type NextRequest } from 'next/server';
-import { getPostBySlug } from '@/data/resourcesData';
+// This API route is deprecated as it was a duplicate of a route under /api/resources.
+// Furthermore, all resource data fetching has been moved directly into Server Components to support static site generation.
+// This file can be safely deleted.
 
-interface WPPostRouteContext {
-  params: {
-    slug: string;
-  };
-}
-
-export async function GET(request: NextRequest, context: WPPostRouteContext) {
-    const { slug } = context.params;
-
-    try {
-        const post = await getPostBySlug(slug);
-        if (!post) {
-            return NextResponse.json({ error: 'Post not found' }, { status: 404 });
-        }
-        return NextResponse.json(post);
-    } catch (error) {
-        console.error(`Error fetching post with slug ${slug}:`, error);
-        return NextResponse.json({ error: 'Failed to load post data' }, { status: 500 });
-    }
+export async function GET(request: Request) {
+  return NextResponse.json(
+    {
+      error: 'This API route is deprecated and no longer functional.',
+    },
+    { status: 410 } // 410 Gone
+  );
 }

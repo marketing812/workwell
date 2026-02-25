@@ -1,28 +1,14 @@
+import { NextResponse } from 'next/server';
 
-import { NextResponse, type NextRequest } from 'next/server';
-import { getPostsByCategory, getCategoryBySlug } from '@/data/resourcesData';
+// This API route is deprecated.
+// Data fetching has been moved directly into Server Components to support static site generation.
+// This file can be safely deleted.
 
-interface CategoryRouteContext {
-  params: {
-    slug: string;
-  };
-}
-
-export async function GET(
-  request: NextRequest,
-  context: CategoryRouteContext
-) {
-  const { slug } = context.params;
-
-  try {
-    const category = await getCategoryBySlug(slug);
-    if (!category) {
-      return NextResponse.json({ error: 'Category not found' }, { status: 404 });
-    }
-    const posts = await getPostsByCategory(slug);
-    return NextResponse.json({ category, posts });
-  } catch (error) {
-    console.error(`Error fetching data for category ${slug}:`, error);
-    return NextResponse.json({ error: 'Failed to load category data' }, { status: 500 });
-  }
+export async function GET(request: Request) {
+  return NextResponse.json(
+    {
+      error: 'This API route is deprecated and no longer functional.',
+    },
+    { status: 410 } // 410 Gone
+  );
 }

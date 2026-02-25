@@ -1,13 +1,14 @@
-
 import { NextResponse } from 'next/server';
-import { getResourceCategories } from '@/data/resourcesData';
+
+// This API route is deprecated.
+// Data fetching has been moved directly into Server Components to support static site generation.
+// This file can be safely deleted.
 
 export async function GET(request: Request) {
-  try {
-    const categories = await getResourceCategories();
-    return NextResponse.json(categories);
-  } catch (error) {
-    console.error("Error fetching resource categories:", error);
-    return NextResponse.json({ error: 'Failed to load resource categories' }, { status: 500 });
-  }
+  return NextResponse.json(
+    {
+      error: 'This API route is deprecated and no longer functional.',
+    },
+    { status: 410 } // 410 Gone
+  );
 }

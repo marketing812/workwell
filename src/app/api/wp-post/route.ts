@@ -1,8 +1,14 @@
-
-// This route is no longer needed as the logic is handled by [slug]/route.ts
-// It can be safely deleted.
 import { NextResponse } from 'next/server';
 
+// This API route is deprecated as it was a duplicate of a route under /api/resources.
+// Furthermore, all resource data fetching has been moved directly into Server Components to support static site generation.
+// This file can be safely deleted.
+
 export async function GET(request: Request) {
-  return NextResponse.json({ error: 'This route is deprecated. Use /api/resources/post/[slug]' }, { status: 404 });
+  return NextResponse.json(
+    {
+      error: 'This API route is deprecated and no longer functional.',
+    },
+    { status: 410 } // 410 Gone
+  );
 }
