@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
+import { triggerReminderAction } from '@/actions/trigger-reminder';
 
 const MOOD_CHECKIN_KEY = 'workwell-mood-checkin-last-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 60; // Check every hour
@@ -47,23 +48,21 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
 
   useEffect(() => {
     if (showPopup) {
-      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via API route.");
+      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via server action.");
       const triggerEmailReminder = async () => {
         try {
-          // Call the internal API route which handles server-side logic
-          const response = await fetch('/api/trigger-reminder');
-          if (!response.ok) {
-            const errorData = await response.json();
-            console.error("useMoodCheckIn: API route /api/trigger-reminder failed.", errorData);
+          // Call the server action directly
+          const result = await triggerReminderAction();
+          if (!result.success) {
+            console.error("useMoodCheckIn: triggerReminderAction failed.", result.message);
           } else {
-            const result = await response.json();
-            console.log("useMoodCheckIn: API route /api/trigger-reminder responded.", result.message);
+            console.log("useMoodCheckIn: triggerReminderAction responded.", result.message);
           }
         } catch (error) {
-          console.error("useMoodCheckIn: Error calling /api/trigger-reminder.", error);
+          console.error("useMoodCheckIn: Error calling triggerReminderAction.", error);
         }
       };
-
+  
       triggerEmailReminder();
     } else {
       console.log("useMoodCheckIn: showPopup is false, not triggering email reminder.");
