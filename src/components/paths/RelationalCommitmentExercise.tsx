@@ -10,7 +10,9 @@ import { useToast } from '@/hooks/use-toast';
 import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RelationalCommitmentExerciseContent } from '@/data/paths/pathTypes';
+import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
+import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface RelationalCommitmentExerciseProps {
   content: RelationalCommitmentExerciseContent;
@@ -80,8 +82,8 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
   };
   
   const renderStep = () => {
-    switch (step) {
-      case 0: // Introducción
+    switch(step) {
+      case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
             <Button onClick={next}>Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4" /></Button>
@@ -165,14 +167,10 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
       default:
         return (
            <div className="p-6 text-center space-y-4">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
-                <div className="space-y-2 text-muted-foreground">
-                   <p>¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?</p>
-                   <p>¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?</p>
-                   <p className="italic pt-2">Tómate unos minutos para responderte con honestidad.</p>
-               </div>
-               <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
+                 <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
+                 <Button onClick={resetExercise} variant="outline">Practicar de nuevo</Button>
            </div>
         );
     }
@@ -197,7 +195,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
         }
       </CardHeader>
       <CardContent>
-        {!isCompleted ? renderStep() : (
+        {!isSaved ? renderStep() : (
             <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
