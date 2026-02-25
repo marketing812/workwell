@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -163,7 +162,7 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ancla Guardada!</h4>
-            <p>Recuérdala como una herramienta personal. Puedes regresar a ella en cualquier momento. Cuanto más la practiques, más fácil será volver a tu centro incluso en la tormenta.</p>
+            <p>Recuérdala como una herramienta personal. Puedes volver a ella en cualquier momento. Cuanto más la practiques, más fácil será volver a tu centro incluso en la tormenta.</p>
             <Button onClick={resetExercise} variant="outline">Crear otra ancla</Button>
           </div>
         );
@@ -171,14 +170,12 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
     }
   }
 
-  const newObjective = '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.';
-
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         <CardDescription className="pt-2">
-            {newObjective}
+            {content.objective}
             {content.audioUrl && (
               <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">

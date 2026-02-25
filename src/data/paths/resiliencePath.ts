@@ -1,4 +1,3 @@
-
 import type { Path } from '@/data/paths/pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -7,7 +6,6 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
-  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introruta8.mp3`,
   modules: [
     {
       id: 'res_sem1',
@@ -59,7 +57,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion1ruta8.mp3` },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.']},
-        { type: 'quote', text: 'Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.' }
+        { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
       ]
     },
     {
@@ -80,7 +78,13 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Regularte también se entrena', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio9sesion2ruta8.mp3`, content: [{ type: 'paragraph', text: 'La regulación emocional no es un botón mágico.\nEs una práctica diaria de cuidado, como cepillarte los dientes o beber agua.\nCada pequeño hábito que te conecta contigo —aunque parezca mínimo— fortalece tu sistema emocional para los momentos críticos.\nRutinas que regulan:\n•\tDormir 7-8h reales, no solo estar en la cama.\n•\tComer con consciencia, sin pantallas.\n•\tTener al menos una pausa real al día: sin producir, solo estar.\n•\tHacer ejercicio suave o caminar con intención.\n•\tEstablecer tu “mínimo no negociable” (ej. 10 min de silencio diario, 1 contacto positivo al día, etc.)\nEjemplo realista: Marta empezó a regular su ansiedad no con meditaciones largas, sino dejando el móvil fuera del baño y respirando 5 veces antes de salir. Pequeño gesto, gran cambio.' }] },
         { type: 'collapsible', title: 'En resumen…', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3`, content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: 'Vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min' },
+        { 
+          type: 'anchorInStormExercise', 
+          title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', 
+          objective: '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', 
+          duration: '10 min',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3`
+        },
         { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min' },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3`, prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave' },
@@ -241,3 +245,4 @@ export const resiliencePath: Path = {
 };
 
     
+
