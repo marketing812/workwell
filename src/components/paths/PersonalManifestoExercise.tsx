@@ -22,6 +22,12 @@ const reactionOptions = [
     { id: 'reac-desconecte', label: 'Me desconecté de lo que sentía.' },
 ];
 
+interface PersonalManifestoExerciseProps {
+  content: PersonalManifestoExerciseContent;
+  pathId: string;
+  onComplete: () => void;
+}
+
 export default function PersonalManifestoExercise({ content, pathId, onComplete }: PersonalManifestoExerciseProps) {
     const { toast } = useToast();
     const { user } = useUser();
