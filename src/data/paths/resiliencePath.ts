@@ -70,11 +70,11 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'En resumen…', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3`, content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3` },
-        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min' },
+        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min'},
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3`, prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'] },
-        { type: 'title', text: 'Resumen Clave' },
+        { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion2ruta8.mp3` },
-        { type: 'list', items: ['Antes de resolver, es necesario sostenerte por dentro.', 'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.', 'Las emociones se regulan mejor cuando puedes nombrarlas, respirarlas y comprenderlas.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] },
+        { type: 'list', items: ['Antes de resolver, es necesario sostenerte por dentro.', 'Tu cuerpo reacciona de forma automática al estrés: obsérvalo con curiosidad, no con juicio.', 'Las emociones se regulan mejor cuando puedes nombrarlas, respirarlas y comprenderlas.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.']},
         { type: 'quote', text: 'Respira. No tienes que tenerlo todo resuelto para dar un paso.' }
       ]
     },
@@ -87,58 +87,11 @@ export const resiliencePath: Path = {
         { type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introsesion3ruta8.mp3`, text: 'Entre el miedo y el valor… no hay un muro, hay un camino. Y tú puedes aprender a recorrerlo.\nEsta semana trabajaremos cómo tomar decisiones cuando el miedo aparece. No para eliminarlo, sino para reconocerlo, entenderlo y no dejar que decida por ti.\nVas a practicar cómo ampliar tu mirada, cómo generar alternativas, cómo reconectar con tus valores y responder desde lo que quieres construir, no desde lo que temes evitar.\nElegir desde el valor no es ausencia de miedo: es presencia de propósito.' },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Cuando hay que decidir… y todo dentro de ti tiembla', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio1sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'Hay decisiones que no se sienten fáciles. A veces no hay una opción que lo resuelva todo. Otras veces, elegir implica perder algo, decepcionar a alguien o asumir un riesgo. Es ahí donde entra esta pregunta clave: ¿desde dónde vas a decidir?\nEsta semana vamos a trabajar una capacidad esencial para tu resiliencia: tomar decisiones difíciles con valentía, no desde la urgencia del miedo, sino desde la claridad de lo que valoras y necesitas.\nPorque decidir con miedo es actuar desde el pánico o la evitación.\nPero decidir con valor no significa “no tener miedo”…\nSignifica poder avanzar incluso cuando sientes miedo, pero ya no lo dejas decidir por ti.' }] },
-        {
-          type: 'collapsible',
-          title: 'El miedo no es tu enemigo: es una señal que puedes aprender a leer',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio2sesion3ruta8.mp3`,
-          content: [
-            { type: 'paragraph', text: 'El miedo no es una emoción negativa. De hecho, es una emoción sabia. Está ahí para protegerte, para avisarte de que algo importante está en juego. Pero si no lo sabes regular, puede volverse ruidoso, invasivo, paralizante.\n¿Cómo se manifiesta el miedo cuando no está gestionado?'},
-            { type: 'list', items: ['Te bloqueas y evitas decidir.','Tomas decisiones precipitadas solo para aliviar el malestar.','Te convences de que no eres capaz, que va a salir mal, que es mejor no hacer nada.']},
-            { type: 'paragraph', text: 'Pero puedes cambiar esta dinámica.\nEl primer paso es dejar de pelearte con el miedo y empezar a escucharlo con curiosidad:'},
-            { type: 'list', items: ['¿Qué parte de mí se siente amenazada?','¿Qué necesidad hay detrás de este miedo?','¿Qué quiere proteger?']}
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'La mente también juega su papel… y no siempre ayuda',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio3sesion3ruta8.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Cuando estamos en momentos de incertidumbre, nuestra mente quiere respuestas rápidas. Y para ello usa atajos. El problema es que esos atajos mentales —llamados distorsiones cognitivas— a veces nos hacen ver fantasmas donde no los hay.\nAlgunos ejemplos comunes:'},
-            { type: 'list', items: ['Pensamiento catastrófico: “Seguro que sale fatal.”','Todo o nada: “O me va perfecto o es un fracaso.”','Lectura de mente: “Ya sé lo que van a pensar de mí.”','Sesgo del pasado: “Antes salió mal, así que volverá a pasar.”']},
-            { type: 'paragraph', text: 'Estos pensamientos no te dan poder. Te lo quitan.\nPor eso, es clave que empieces a observar tu diálogo interno cuando tienes que tomar una decisión.\nUna forma sencilla de empezar es preguntarte:'},
-            { type: 'list', items: ['¿Qué parte de este pensamiento es una certeza?','¿Qué evidencia real tengo?','¿Hay otra forma más equilibrada de verlo?']},
-            { type: 'paragraph', text: 'Esto no significa “pensar en positivo”.\nSignifica pensar con más realidad, menos ruido y más cuidado.'}
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'No decidas cuando la emoción está en su punto más alto',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio4sesion3ruta8.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Hay momentos en los que tomar una decisión es lo último que necesitas hacer.\n¿Sabes cuándo? Cuando estás inundado por la emoción.\nTomar decisiones importantes con el miedo a flor de piel, la rabia desbordada o la tristeza sin contención, suele llevar a impulsos o evitaciones. Y luego llega el arrepentimiento.\nAntes de decidir, date un espacio para:'},
-            { type: 'list', items: ['Poner nombre a lo que sientes.','Respirar con conciencia durante unos minutos.','Recordarte que no todo tiene que resolverse ya.']},
-            { type: 'paragraph', text: 'Ejemplo: Si acabas de tener una discusión con alguien y sientes la necesidad de cortar el vínculo “ya”, espera. No decidas desde el pico emocional. Regula primero. Decide después.'}
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'No necesitas certezas absolutas para actuar',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio5sesion3ruta8.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Uno de los grandes mitos del cerebro racional es que necesitamos “estar seguros” para tomar buenas decisiones.\nPero en la vida real, la mayoría de las decisiones importantes se toman con cierta incertidumbre.\nPiensa en esto:'},
-            { type: 'list', items: ['Elegir una pareja.','Cambiar de trabajo.','Empezar una terapia.','Hablar de algo incómodo.']},
-            { type: 'paragraph', text: '¿Tienes certezas de que va a salir bien? No.\n¿Tienes recursos para afrontar lo que venga? Sí.\nLa clave no es controlar el resultado, sino fortalecer tu capacidad de adaptación.'}
-          ]
-        },
-        {
-          type: 'collapsible',
-          title: 'Decide con estrategia, no con impulsividad',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio6sesion3ruta8.mp3`,
-          content: [
-            { type: 'paragraph', text: 'Elegir desde el valor no es lanzarse a ciegas, es hacerlo con conciencia, paso a paso, con un plan realista y flexible.\nPuedes construir un marco para decidir mejor:'},
-            { type: 'list', items: ['Define el problema con claridad. No lo exageres ni lo minimices.','Piensa en varias opciones, no solo en las que el miedo te permite ver.','Haz una lista de ventajas y desventajas reales, no emocionales.','Valora lo que sí puedes controlar.','Diseña un Plan A (lo que deseas) y un Plan B (lo que te cuidará si no sale como esperas).','Recuerda tu experiencia pasada: ya has tomado decisiones difíciles antes. Lo volverás a hacer.']}
-          ]
-        },
+        { type: 'collapsible', title: 'El miedo no es tu enemigo: es una señal que puedes aprender a leer', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio2sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'El miedo no es una emoción negativa. De hecho, es una emoción sabia. Está ahí para protegerte, para avisarte de que algo importante está en juego. Pero si no lo sabes regular, puede volverse ruidoso, invasivo, paralizante.\n¿Cómo se manifiesta el miedo cuando no está gestionado?' }, { type: 'list', items: ['Te bloqueas y evitas decidir.', 'Tomas decisiones precipitadas solo para aliviar el malestar.', 'Te convences de que no eres capaz, que va a salir mal, que es mejor no hacer nada.'] }, { type: 'paragraph', text: 'Pero puedes cambiar esta dinámica.\nEl primer paso es dejar de pelearte con el miedo y empezar a escucharlo con curiosidad:' }, { type: 'list', items: ['¿Qué parte de mí se siente amenazada?', '¿Qué necesidad hay detrás de este miedo?', '¿Qué quiere proteger?'] }] },
+        { type: 'collapsible', title: 'La mente también juega su papel… y no siempre ayuda', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio3sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'Cuando estamos en momentos de incertidumbre, nuestra mente quiere respuestas rápidas. Y para ello usa atajos. El problema es que esos atajos mentales —llamados distorsiones cognitivas— a veces nos hacen ver fantasmas donde no los hay.\nAlgunos ejemplos comunes:' }, { type: 'list', items: ['Pensamiento catastrófico: “Seguro que sale fatal.”', 'Todo o nada: “O me va perfecto o es un fracaso.”', 'Lectura de mente: “Ya sé lo que van a pensar de mí.”', 'Sesgo del pasado: “Antes salió mal, así que volverá a pasar.”'] }, { type: 'paragraph', text: 'Estos pensamientos no te dan poder. Te lo quitan.\nPor eso, es clave que empieces a observar tu diálogo interno cuando tienes que tomar una decisión.\nUna forma sencilla de empezar es preguntarte:' }, { type: 'list', items: ['¿Qué parte de este pensamiento es una certeza?', '¿Qué evidencia real tengo?', '¿Hay otra forma más equilibrada de verlo?'] }, { type: 'paragraph', text: 'Esto no significa “pensar en positivo”.\nSignifica pensar con más realidad, menos ruido y más cuidado.' }] },
+        { type: 'collapsible', title: 'No decidas cuando la emoción está en su punto más alto', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio4sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'Hay momentos en los que tomar una decisión es lo último que necesitas hacer.\n¿Sabes cuándo? Cuando estás inundado por la emoción.\nTomar decisiones importantes con el miedo a flor de piel, la rabia desbordada o la tristeza sin contención, suele llevar a impulsos o evitaciones. Y luego llega el arrepentimiento.\nAntes de decidir, date un espacio para:' }, { type: 'list', items: ['Poner nombre a lo que sientes.', 'Respirar con conciencia durante unos minutos.', 'Recordarte que no todo tiene que resolverse ya.'] }, { type: 'paragraph', text: 'Ejemplo: Si acabas de tener una discusión con alguien y sientes la necesidad de cortar el vínculo “ya”, espera. No decidas desde el pico emocional. Regula primero. Decide después.' }] },
+        { type: 'collapsible', title: 'No necesitas certezas absolutas para actuar', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio5sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'Uno de los grandes mitos del cerebro racional es que necesitamos “estar seguros” para tomar buenas decisiones.\nPero en la vida real, la mayoría de las decisiones importantes se toman con cierta incertidumbre.\nPiensa en esto:' }, { type: 'list', items: ['Elegir una pareja.', 'Cambiar de trabajo.', 'Empezar una terapia.', 'Hablar de algo incómodo.'] }, { type: 'paragraph', text: '¿Tienes certezas de que va a salir bien? No.\n¿Tienes recursos para afrontar lo que venga? Sí.\nLa clave no es controlar el resultado, sino fortalecer tu capacidad de adaptación.' }] },
+        { type: 'collapsible', title: 'Decide con estrategia, no con impulsividad', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio6sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: 'Elegir desde el valor no es lanzarse a ciegas, es hacerlo con conciencia, paso a paso, con un plan realista y flexible.\nPuedes construir un marco para decidir mejor:' }, { type: 'list', items: ['Define el problema con claridad. No lo exageres ni lo minimices.', 'Piensa en varias opciones, no solo en las que el miedo te permite ver.', 'Haz una lista de ventajas y desventajas reales, no emocionales.', 'Valora lo que sí puedes controlar.', 'Diseña un Plan A (lo que deseas) y un Plan B (lo que te cuidará si no sale como esperas).', 'Recuerda tu experiencia pasada: ya has tomado decisiones difíciles antes. Lo volverás a hacer.'] }] },
         { type: 'collapsible', title: 'Cada decisión desde el valor fortalece tu resiliencia', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio7sesion3ruta8.mp3`, content: [{ type: 'paragraph', text: '¿Sabes qué ocurre cada vez que decides desde un lugar de confianza, aunque tengas miedo?\nRefuerzas tu autoestima.\nExpandes tu tolerancia a la incertidumbre.\nY construyes una identidad basada en el coraje, no en la evitación.\nEquivocarse no invalida tu decisión.\nLo que importa no es el resultado, sino desde dónde elegiste.\nFrase para llevar contigo:\n“Hoy elijo avanzar con el miedo a mi lado, pero sin dejar que me guíe.”' }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'braveDecisionsWheelExercise', title: 'EJERCICIO 1: RUEDA DE DECISIONES VALIENTES', objective: 'Esta técnica te ayudará a desbloquear decisiones difíciles explorando tu situación desde cuatro lentes emocionales: miedo, valor, confianza y desesperanza. Esto te permitirá identificar patrones, ampliar alternativas y tomar decisiones más conscientes y alineadas con tus valores.', duration: '15-20 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana3tecnica1.mp3` },
@@ -146,45 +99,72 @@ export const resiliencePath: Path = {
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion3ruta8_1.mp3`, prompts: ['<ul><li>¿Qué aprendí sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion3ruta8.mp3` },
-        { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.']},
+        { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
         { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
       ]
     },
     {
-        id: 'res_sem4',
-        title: 'Semana 4: Integra lo Aprendido y Sigue Caminando',
-        type: 'summary',
-        estimatedTime: '15-20 min',
-        content: [
-          { type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introsesion4ruta8.mp3`, text: 'No eres la misma persona que empezó esta ruta. Has atravesado cosas, y mereces darte cuenta de ello.\nEn esta última semana vas a mirar hacia atrás con honestidad y hacia adelante con intención. Te propongo integrar lo vivido, recoger lo que te ha servido, dejar atrás lo que ya no necesitas y escribir un cierre que te acompañe.\nAquí no termina tu camino. Solo cierras una etapa para caminar con más claridad, más herramientas y más confianza.\nPorque la resiliencia no es solo resistir. Es crecer desde lo vivido.' },
-          { type: 'title', text: 'Psicoeducación' },
-          { type: 'collapsible', title: 'Bienvenida a esta última semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio1sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Llegaste a la última semana de esta ruta. Y aunque pueda parecer el final, en realidad es solo el principio de una forma nueva de estar contigo.\nHas entrenado tu resiliencia paso a paso. Has aprendido a sostenerte cuando parecía que todo se caía.\nAhora, toca integrar.\nNo para que todo esté “resuelto”, sino para poder seguir caminando con más claridad, fuerza y confianza.' }] },
-          { type: 'collapsible', title: 'La resiliencia se entrena, no se hereda', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio2sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Es fácil pensar que hay personas que “ya son fuertes” por naturaleza.\nPero la verdad es que la resiliencia no es un rasgo con el que naces, sino una capacidad que se cultiva.\nY tú la has estado entrenando.\n\tCada vez que elegiste respirar en lugar de reaccionar.\n\tCada vez que te hablaste con amabilidad en lugar de exigencia.\n\tCada vez que dijiste: “No puedo con todo… pero puedo con este paso”.\nEso es practicar resiliencia.' }] },
-          { type: 'collapsible', title: '¿El secreto? Repetir, repetir, repetir', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio3sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'A veces creemos que con entender algo, ya basta. Pero no.\nPara que algo cale, hay que repetirlo.\nPiensa en una senda entre la maleza: cada vez que pasas por ahí, se va marcando más.\nLo mismo ocurre con tus recursos emocionales.\n\tCada vez que repites una técnica, fortaleces una red interna.\n\tCada vez que eliges cuidarte, entrenas tu sistema nervioso.\nNo necesitas hacerlo perfecto. Solo necesitas volver.\nY volver. Y volver.' }] },
-          { type: 'collapsible', title: 'Aceptar no es rendirse', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio4sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Aceptar no es decir “esto está bien”.\nAceptar es decir: “Esto es lo que hay. Y desde aquí, ¿qué puedo hacer?”.\nCuando dejas de pelearte con la realidad, liberas energía.\n👉 Energía que puedes usar para decidir.\n👉 Energía que puedes usar para reconstruirte.\nAceptar el dolor, el cambio o la incertidumbre no es pasividad.\nEs la base de una acción más sabia, más enraizada y más libre.' }] },
-          { type: 'collapsible', title: 'Reescribir tu historia', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio5sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Todos tenemos una historia. Pero lo que más influye en cómo nos sentimos hoy no es el hecho en sí, sino la forma en que lo interpretamos.\nPor ejemplo:\n•\t“Fallé” puede convertirse en “Tuve el coraje de intentarlo”.\n•\t“Estaba rota” puede transformarse en “Empecé a reconstruirme desde ahí”.\nNo se trata de mentirte. Se trata de ver la otra cara que también es cierta, pero que quizás no habías reconocido.\nContarte tu historia desde un lugar más compasivo y valiente te cambia por dentro.' }] },
-          { type: 'collapsible', title: 'De víctima a protagonista', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.\nCuando reconoces que lo hiciste lo mejor que pudiste.\nCuando te das cuenta de todo lo que has sostenido.\nCuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.\nY ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }] },
-          { type: 'collapsible', title: 'No solo haces resiliencia. Eres resiliencia.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.\nEs la nueva manera en la que te hablas.\nEs el permiso que te das para sentir sin romperte.\nEs el compromiso que asumes contigo, incluso cuando no hay motivación.\nTu identidad se va construyendo con cada elección cotidiana.\nY hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.' }] },
-          {
-            type: 'collapsible',
-            title: 'Tu historia continúa',
-            content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
-          },
-          { type: 'title', text: 'Técnicas Específicas' },
-          {
-              type: 'changeTimelineExercise',
-              title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO',
-              objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.',
-              duration: '15-20 min',
-              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3`
-          },
-          {
-              type: 'myPactExercise',
-              title: 'EJERCICIO 2: MI PACTO CONMIGO',
-              objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.',
-              duration: '10-15 min',
-              audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3`
-          },
+      id: 'res_sem4',
+      title: 'Semana 4: Integra lo Aprendido y Sigue Caminando',
+      type: 'summary',
+      estimatedTime: '15-20 min',
+      content: [
+        { type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introsesion4ruta8.mp3`, text: 'No eres la misma persona que empezó esta ruta. Has atravesado cosas, y mereces darte cuenta de ello.\nEn esta última semana vas a mirar hacia atrás con honestidad y hacia adelante con intención. Te propongo integrar lo vivido, recoger lo que te ha servido, dejar atrás lo que ya no necesitas y escribir un cierre que te acompañe.\nAquí no termina tu camino. Solo cierras una etapa para caminar con más claridad, más herramientas y más confianza.\nPorque la resiliencia no es solo resistir. Es crecer desde lo vivido.' },
+        { type: 'title', text: 'Psicoeducación' },
+        { type: 'collapsible', title: 'Bienvenida a esta última semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio1sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Llegaste a la última semana de esta ruta. Y aunque pueda parecer el final, en realidad es solo el principio de una forma nueva de estar contigo.\nHas entrenado tu resiliencia paso a paso. Has aprendido a sostenerte cuando parecía que todo se caía.\nAhora, toca integrar.\nNo para que todo esté “resuelto”, sino para poder seguir caminando con más claridad, fuerza y confianza.' }] },
+        {
+          type: 'collapsible',
+          title: 'La resiliencia se entrena, no se hereda',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio2sesion4ruta8.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Es fácil pensar que hay personas que “ya son fuertes” por naturaleza.\nPero la verdad es que la resiliencia no es un rasgo con el que naces, sino una capacidad que se cultiva.\nY tú la has estado entrenando.' },
+            { type: 'list', items: ['Cada vez que elegiste respirar en lugar de reaccionar.', 'Cada vez que te hablaste con amabilidad en lugar de exigencia.', 'Cada vez que dijiste: “No puedo con todo… pero puedo con este paso”.']},
+            { type: 'paragraph', text: 'Eso es practicar resiliencia.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: '¿El secreto? Repetir, repetir, repetir',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio3sesion4ruta8.mp3`,
+          content: [
+            { type: 'paragraph', text: 'A veces creemos que con entender algo, ya basta. Pero no.\nPara que algo cale, hay que repetirlo.\nPiensa en una senda entre la maleza: cada vez que pasas por ahí, se va marcando más.\nLo mismo ocurre con tus recursos emocionales.' },
+            { type: 'list', items: ['Cada vez que repites una técnica, fortaleces una red interna.','Cada vez que eliges cuidarte, entrenas tu sistema nervioso.'] },
+            { type: 'paragraph', text: 'No necesitas hacerlo perfecto. Solo necesitas volver.\nY volver. Y volver.'}
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Aceptar no es rendirse',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio4sesion4ruta8.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Aceptar no es decir “esto está bien”.\nAceptar es decir: “Esto es lo que hay. Y desde aquí, ¿qué puedo hacer?”.\nCuando dejas de pelearte con la realidad, liberas energía.' },
+            { type: 'list', items: ['Energía que puedes usar para decidir.','Energía que puedes usar para reconstruirte.'] },
+            { type: 'paragraph', text: 'Aceptar el dolor, el cambio o la incertidumbre no es pasividad.\nEs la base de una acción más sabia, más enraizada y más libre.' }
+          ]
+        },
+        { type: 'collapsible', title: 'Reescribir tu historia', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio5sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Todos tenemos una historia. Pero lo que más influye en cómo nos sentimos hoy no es el hecho en sí, sino la forma en que lo interpretamos.\nPor ejemplo:\n•\t“Fallé” puede convertirse en “Tuve el coraje de intentarlo”.\n•\t“Estaba rota” puede transformarse en “Empecé a reconstruirme desde ahí”.\nNo se trata de mentirte. Se trata de ver la otra cara que también es cierta, pero que quizás no habías reconocido.\nContarte tu historia desde un lugar más compasivo y valiente te cambia por dentro.' }] },
+        { type: 'collapsible', title: 'De víctima a protagonista', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio6sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'Sí, puede que la vida te haya sacudido. Que hayas sufrido cosas que no elegiste.\nY es válido sentirte así.\nPero también hay otro momento: el momento en que eliges tomar el timón.\nCuando reconoces que lo hiciste lo mejor que pudiste.\nCuando te das cuenta de todo lo que has sostenido.\nCuando dejas de esperar que alguien venga a rescatarte… porque tú ya empezaste a hacerlo.\nY ahí, sin dramatismos pero con fuerza, te conviertes en protagonista de tu historia.' }] },
+        { type: 'collapsible', title: 'No solo haces resiliencia. Eres resiliencia.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio7sesion4ruta8.mp3`, content: [{ type: 'paragraph', text: 'La resiliencia ya no es solo algo que haces en momentos difíciles.\nEs una forma de estar en el mundo.\nEs la nueva manera en la que te hablas.\nEs el permiso que te das para sentir sin romperte.\nEs el compromiso que asumes contigo, incluso cuando no hay motivación.\nTu identidad se va construyendo con cada elección cotidiana.\nY hoy, esa identidad está más cerca de alguien que sabe sostenerse, adaptarse y cuidarse sin dejar de avanzar.' }] },
+        {
+          type: 'collapsible',
+          title: 'Tu historia continúa',
+          content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
+        },
+        { type: 'title', text: 'Técnicas Específicas' },
+        {
+            type: 'changeTimelineExercise',
+            title: 'EJERCICIO 1: MI LÍNEA DEL CAMBIO',
+            objective: 'Esta técnica te invita a mirar tu historia con nuevos ojos, reconocer cómo te has transformado y consolidar los aprendizajes para seguir avanzando con más confianza.',
+            duration: '15-20 min',
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana4tecnica1.mp3`
+        },
+        {
+            type: 'myPactExercise',
+            title: 'EJERCICIO 2: MI PACTO CONMIGO',
+            objective: 'Esta técnica te ayuda a cerrar este proceso con sentido y presencia, creando tu propio pacto emocional para seguir cuidándote con conciencia y coherencia.',
+            duration: '10-15 min',
+            audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3`
+        },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3`, prompts: ['<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>','<p><b>Preguntas para tu cuaderno emocional:</b></p>','<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>','<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>']},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion4ruta8.mp3`},
         { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.']},
