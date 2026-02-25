@@ -1,3 +1,4 @@
+
 import type { Path } from '@/data/paths/pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -78,10 +79,10 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'Regularte también se entrena', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio9sesion2ruta8.mp3`, content: [{ type: 'paragraph', text: 'La regulación emocional no es un botón mágico.\nEs una práctica diaria de cuidado, como cepillarte los dientes o beber agua.\nCada pequeño hábito que te conecta contigo —aunque parezca mínimo— fortalece tu sistema emocional para los momentos críticos.\nRutinas que regulan:\n•\tDormir 7-8h reales, no solo estar en la cama.\n•\tComer con consciencia, sin pantallas.\n•\tTener al menos una pausa real al día: sin producir, solo estar.\n•\tHacer ejercicio suave o caminar con intención.\n•\tEstablecer tu “mínimo no negociable” (ej. 10 min de silencio diario, 1 contacto positivo al día, etc.)\nEjemplo realista: Marta empezó a regular su ansiedad no con meditaciones largas, sino dejando el móvil fuera del baño y respirando 5 veces antes de salir. Pequeño gesto, gran cambio.' }] },
         { type: 'collapsible', title: 'En resumen…', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3`, content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
-        { 
-          type: 'anchorInStormExercise', 
-          title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', 
-          objective: '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', 
+        {
+          type: 'anchorInStormExercise',
+          title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA',
+          objective: '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.',
           duration: '10 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3`
         },
@@ -162,7 +163,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion3ruta8.mp3` },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
-        { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
+        { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
       ]
     },
     {
