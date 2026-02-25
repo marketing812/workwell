@@ -6,6 +6,7 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introruta8.mp3`,
   modules: [
     {
       id: 'res_sem1',
