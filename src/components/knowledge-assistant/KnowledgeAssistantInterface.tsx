@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { sendMessageToKnowledgeAssistant } from '@/actions/knowledge-assistant';
-import type { ServerKnowledgeAssistantResult } from '@/actions/knowledge-assistant';
 import { useTranslations } from '@/lib/translations';
 import { Loader2, Send, User, Bot } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
@@ -19,6 +17,10 @@ interface Message {
   sender: 'user' | 'bot';
   timestamp: Date;
 }
+
+type ServerKnowledgeAssistantResult =
+  | { success: true; data: { response: string } }
+  | { success: false; error: string };
 
 export function KnowledgeAssistantInterface() {
   const t = useTranslations();
@@ -73,7 +75,19 @@ export function KnowledgeAssistantInterface() {
       .map(msg => `${msg.sender === 'user' ? 'Usuario' : 'Asistente'}: ${msg.text}`)
       .join('\n');
 
-    const result: ServerKnowledgeAssistantResult = await sendMessageToKnowledgeAssistant({ question: userMessage.text, context });
+    let result: ServerKnowledgeAssistantResult;
+    try {
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(`${base}/knowledge-assistant`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: userMessage.text, context }),
+      });
+      const json = await response.json();
+      result = response.ok ? json : { success: false, error: json.error || `HTTP ${response.status}` };
+    } catch (error: any) {
+      result = { success: false, error: error?.message || 'Error al comunicarse con el asistente.' };
+    }
 
     setIsLoading(false);
     if (result.success) {

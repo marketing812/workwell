@@ -219,11 +219,10 @@ export const resiliencePath: Path = {
             'Reconocí mis recursos personales y los guardé en mi caja de herramientas.',
             'Practiqué el autocuidado emocional como un acto de fortaleza.',
             'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
-            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.',
-            'La resiliencia no es una meta: es una forma de caminar. Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.'
+            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
           ],
         },
-        { type: 'quote', text: 'No eres la misma persona que empezó esta ruta. Eres alguien que sabe cómo sostenerte. Y eso, es un superpoder.' }
+        { type: 'paragraph', text: 'La resiliencia no es una meta: es una forma de caminar. Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.' }
       ]
     }
   ]

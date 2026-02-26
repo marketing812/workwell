@@ -18,7 +18,6 @@ import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import Link from 'next/link';
 import { pathsData } from '@/data/pathsData';
 import type { Path } from '@/data/pathsData';
-import { saveUser } from '@/actions/user';
 
 
 export default function SettingsPage() {
@@ -76,29 +75,11 @@ export default function SettingsPage() {
     setIsSaving(true);
     
     try {
-      const profileData = {
-        userId: user.id,
-        name,
-        email: user.email!,
-        ageRange,
-        gender,
-      };
-
-      const result = await saveUser(profileData);
-      
-      if (result.success) {
-        await updateUser({ name, ageRange, gender });
-        toast({
-          title: "Configuración Guardada",
-          description: "Tus cambios han sido guardados exitosamente.",
-        });
-      } else {
-         toast({
-          title: "Error al Guardar",
-          description: result.error || "No se pudieron guardar los cambios.",
-          variant: "destructive",
-        });
-      }
+      await updateUser({ name, ageRange, gender });
+      toast({
+        title: "Configuracion Guardada",
+        description: "Tus cambios han sido guardados exitosamente.",
+      });
     } catch (error) {
       console.error("Error in handleSubmit:", error);
       toast({
@@ -295,3 +276,4 @@ export default function SettingsPage() {
     </div>
   );
 }
+

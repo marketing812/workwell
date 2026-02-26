@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { sendMessageToChatbot, ServerChatbotResult } from '@/actions/chatbot';
 import { useTranslations } from '@/lib/translations';
 import { Loader2, Send, User, Bot } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
@@ -17,6 +16,10 @@ interface Message {
   sender: 'user' | 'bot';
   timestamp: Date;
 }
+
+type ServerChatbotResult =
+  | { success: true; data: { response: string } }
+  | { success: false; error: string };
 
 export function ChatInterface() {
   const t = useTranslations();
@@ -77,12 +80,24 @@ export function ChatInterface() {
       .map(msg => `${msg.sender === 'user' ? 'User' : 'Bot'}: ${msg.text}`)
       .join('\n');
 
-    const result: ServerChatbotResult = await sendMessageToChatbot({ 
-        message: userMessage.text, 
-        context,
-        userName: currentUser?.name || undefined,
-    });
-console.log("SERVER ACTION RESULT:", result);
+    const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+    let result: ServerChatbotResult;
+    try {
+      const response = await fetch(`${base}/chatbot`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage.text,
+          context,
+          userName: currentUser?.name || undefined,
+        }),
+      });
+      const json = await response.json();
+      result = response.ok ? json : { success: false, error: json.error || `HTTP ${response.status}` };
+    } catch (error: any) {
+      result = { success: false, error: error?.message || 'Error conectando con el chatbot.' };
+    }
+
     setIsLoading(false);
     if (result.success) {
       const botMessage: Message = {

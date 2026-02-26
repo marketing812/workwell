@@ -9,7 +9,6 @@ import { useUser } from '@/contexts/UserContext';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { moodCheckInOptions, type MoodOption } from '@/data/moodCheckInOptions';
-import { saveMoodCheckIn } from '@/actions/mood-check-in';
 
 interface MoodCheckInPopupProps {
   isOpen: boolean;
@@ -29,11 +28,23 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
     }
     setIsSubmitting(true);
 
-    const result = await saveMoodCheckIn({
-      userId: user.id,
-      mood: selectedMood.value,
-      score: selectedMood.score,
-    });
+    let result: { success: boolean; error?: string; debugUrl?: string };
+    try {
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(`${base}/save-mood-check-in`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.id,
+          mood: selectedMood.value,
+          score: selectedMood.score,
+        }),
+      });
+      const json = await response.json();
+      result = response.ok ? json : { success: false, error: json.error || `HTTP ${response.status}`, debugUrl: json.debugUrl };
+    } catch (error: any) {
+      result = { success: false, error: error?.message || "No se pudo comunicar con el servidor." };
+    }
 
     setIsSubmitting(false);
 

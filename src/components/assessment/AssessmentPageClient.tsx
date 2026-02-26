@@ -3,7 +3,6 @@
 
 import { useState, type FormEvent, useEffect } from 'react';
 import { QuestionnaireForm } from '@/components/assessment/QuestionnaireForm';
-import { submitAssessment, type ServerAssessmentResult } from '@/actions/assessment';
 import { useTranslations } from '@/lib/translations';
 import { useToast } from '@/hooks/use-toast';
 import type { InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
@@ -30,6 +29,10 @@ interface AssessmentSavePayload {
   assessmentTimestamp: string;
 }
 
+type ServerAssessmentResult = 
+  | { success: true; data: InitialAssessmentOutput }
+  | { success: false; error: string };
+
 export interface StoredAssessmentResults {
     aiInterpretation: InitialAssessmentOutput;
     rawAnswers: Record<string, { score: number; weight: number }>;
@@ -49,6 +52,23 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [generatedSaveUrl, setGeneratedSaveUrl] = useState<string | null>(null);
   const [isProcessingModalVisible, setIsProcessingModalVisible] = useState(false);
+
+  const submitAssessment = async (
+    answers: Record<string, { score: number; weight: number }>
+  ): Promise<ServerAssessmentResult> => {
+    try {
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(`${base}/submit-assessment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answers }),
+      });
+      const json = await response.json();
+      return response.ok ? json : { success: false, error: json.error || `HTTP ${response.status}` };
+    } catch (error: any) {
+      return { success: false, error: error?.message || "Error desconocido al procesar la evaluación." };
+    }
+  };
 
   // Si no hay dimensiones, muestra un estado de error para evitar fallos.
   if (!assessmentDimensions || assessmentDimensions.length === 0) {

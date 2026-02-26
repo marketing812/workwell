@@ -165,7 +165,7 @@ export const resiliencePath: Path = {
             duration: '10-15 min',
             audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/R8sem4ejer2mipactoconmigo.mp3`
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3`, prompts: ['<p>Tómate un momento para mirar hacia atrás. Esta semana no era solo para seguir avanzando, sino para darte cuenta de cuánto has aprendido, sostenido y transformado desde el inicio de esta ruta.</p>','<p><b>Preguntas para tu cuaderno emocional:</b></p>','<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>','<p>Puedes responder con palabras, frases sueltas, dibujos o lo que necesites. Este espacio es tuyo.</p>']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion4ruta8.mp3`, prompts: ['<p><b>Preguntas para tu cuaderno emocional:</b></p>','<ul><li>¿Qué aprendizajes me llevo de esta ruta que no tenía al principio?</li><li>¿En qué momentos recientes he notado que estoy respondiendo desde la resiliencia?</li><li>¿Qué actitudes o recursos quiero seguir cultivando a partir de ahora?</li><li>¿Qué me digo a mí mismo/a cuando me miro con compasión y valentía?</li></ul>']},
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion4ruta8.mp3`},
         { type: 'list', items: ['La resiliencia no es un destino: es una forma de caminar, incluso con cicatrices.','Has aprendido a sostenerte en medio del dolor sin perderte en él.','Tu historia no termina en lo que viviste, sino en cómo eliges continuarla.','Cerrar un ciclo no es olvidar: es integrar lo vivido para avanzar con más fuerza, más conciencia y más ternura hacia ti.']},
         { type: 'quote', text: '“No vuelvo al pasado, pero camino con todo lo que aprendí de él.” — Tu nueva versión'},
@@ -199,11 +199,10 @@ export const resiliencePath: Path = {
             'Reconocí mis recursos personales y los guardé en mi caja de herramientas.',
             'Practiqué el autocuidado emocional como un acto de fortaleza.',
             'Me comprometí conmigo, con lo que soy y con lo que quiero construir.',
-            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.',
-            'La resiliencia no es una meta: es una forma de caminar. Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.'
-          ],
+            'Hoy sé que no estoy empezando de cero… estoy empezando desde la experiencia.'
+                      ],
         },
-        { type: 'quote', text: 'No eres la misma persona que empezó esta ruta. Eres alguien que sabe cómo sostenerte. Y eso, es un superpoder.' }
+        { type: 'paragraph', text: 'La resiliencia no es una meta: es una forma de caminar. Aunque tiemblen las piernas, sigo avanzando. Aunque me duela el pecho, sigo respirando. Aunque no vea el final, sigo eligiendo volver a mí.' }
       ]
     }
   ]

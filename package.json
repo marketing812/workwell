@@ -9,10 +9,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "backend:dev": "tsx src/backend/server.js"
   },
   "dependencies": {
-    "@genkit-ai/google-genai": "^1.27.0",
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0",
+    "@capacitor/ios": "^8.1.0",
+    "@genkit-ai/google-genai": "^1.29.0",
     "@google-cloud/firestore": "^8.2.0",
     "@hookform/resolvers": "^3.9.0",
     "@opentelemetry/exporter-jaeger": "^1.27.0",

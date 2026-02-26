@@ -4,7 +4,6 @@
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { Timestamp } from 'firebase/firestore';
-import { saveNotebookEntryAction } from '@/actions/save-notebook-entry';
 
 export interface NotebookEntry {
   id: string;
@@ -23,19 +22,21 @@ const MAX_NOTEBOOK_ENTRIES = 100;
 async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry) {
     try {
         const payload = { userId, entryData: entry };
-        console.log("--- DEBUG: Calling Server Action to save notebook entry ---");
-        console.log("Payload:", JSON.stringify(payload, null, 2));
-        console.log("----------------------------------------------------------");
-        
-        const result = await saveNotebookEntryAction(payload);
+        const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+        const response = await fetch(`${base}/save-notebook-entry`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json();
 
-        if (!result.success) {
+        if (!response.ok || !result.success) {
             console.error(`[Client] Notebook sync via Server Action failed.`, result);
         } else {
-            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully via Server Action.`);
+            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully.`);
         }
     } catch (error) {
-        console.error("[Client] Error calling saveNotebookEntryAction Server Action:", error);
+        console.error("[Client] Error calling save-notebook-entry backend endpoint:", error);
     }
 }
 

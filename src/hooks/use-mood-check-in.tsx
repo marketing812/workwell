@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
-import { triggerReminderAction } from '@/actions/trigger-reminder';
 
 const MOOD_CHECKIN_KEY = 'workwell-mood-checkin-last-completed';
 const CHECK_INTERVAL_MS = 1000 * 60 * 60; // Check every hour
@@ -51,15 +50,16 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
       console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via server action.");
       const triggerEmailReminder = async () => {
         try {
-          // Call the server action directly
-          const result = await triggerReminderAction();
-          if (!result.success) {
-            console.error("useMoodCheckIn: triggerReminderAction failed.", result.message);
+          const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+          const response = await fetch(`${base}/trigger-reminder`);
+          const result = await response.json();
+          if (!response.ok || !result.success) {
+            console.error("useMoodCheckIn: trigger-reminder failed.", result?.message || result?.error);
           } else {
-            console.log("useMoodCheckIn: triggerReminderAction responded.", result.message);
+            console.log("useMoodCheckIn: trigger-reminder responded.", result.message);
           }
         } catch (error) {
-          console.error("useMoodCheckIn: Error calling triggerReminderAction.", error);
+          console.error("useMoodCheckIn: Error calling trigger-reminder endpoint.", error);
         }
       };
   

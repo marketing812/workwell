@@ -26,7 +26,8 @@ export default function CategoryPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`/api/resources/category/${slug}`);
+        const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+        const res = await fetch(`${base}/resources/category/${slug}`);
         if (!res.ok) {
           throw new Error('No se pudo cargar la categoría');
         }
