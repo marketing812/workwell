@@ -151,7 +151,7 @@ ${reassessment}
         return (
           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
-            <Accordion type="single" collapsible className="w-full text-left">
+            <Accordion type="single" defaultValue="example" className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>

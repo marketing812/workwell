@@ -489,10 +489,10 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'therapeuticNotebookReflection',
-          title: 'REFLEXIÓN FINAL DE LA RUTA',
+          title: 'Reflexión final de la semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3`,
           prompts: [
-            '<ul><li>¿Qué he descubierto sobre mí a lo largo de esta ruta?</li><li>¿Qué tipo de relaciones deseo seguir construyendo desde ahora?</li><li>¿Qué necesito recordarme cuando vuelva a dudar de mi derecho a poner un límite?</li><li>¿Cómo ha cambiado mi forma de cuidarme desde que empecé esta ruta?</li><li>¿Qué frase quiero llevar conmigo como recordatorio de todo lo que he aprendido?</li></ul>',
+            '<p>¿En qué momento reciente sentí que me respeté al mantener un límite, aunque fuera incómodo?</p><p>¿Qué sentí internamente al sostener mi decisión sin justificarme?</p><p>¿Qué vínculo ha cambiado —aunque sea ligeramente— desde que empecé a expresarme con más claridad?</p><p>¿Qué me comprometo a seguir practicando, aunque a veces me cueste?</p>',
           ],
         },
         {

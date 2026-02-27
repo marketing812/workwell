@@ -112,7 +112,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 1: // Ejemplo guiado
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <Accordion type="single" collapsible className="w-full text-left">
+                        <Accordion type="single" defaultValue="example" className="w-full text-left">
                             <AccordionItem value="example">
                                 <AccordionTrigger>Ejemplo guiado</AccordionTrigger>
                                 <AccordionContent>

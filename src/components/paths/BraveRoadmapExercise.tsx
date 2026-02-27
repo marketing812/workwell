@@ -138,7 +138,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
     return (
         <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Define tu acción {index + 1}</h4>
-            <p>¿Qué acción concreta, realista y sostenible podrías hacer esta semana para acercarte a ese valor?</p>
+            <p>¿Qué valor te gustaría honrar esta semana?</p>
             <div className="space-y-4 p-3 border rounded-md bg-background">
                 <div>
                     <Label htmlFor={`action${index}`}>Acción concreta:</Label>

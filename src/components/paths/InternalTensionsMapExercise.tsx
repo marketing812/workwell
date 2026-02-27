@@ -99,7 +99,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                  return (
                     <div className="p-4 space-y-4 text-center">
                         <p>Al finalizar el ejercicio te darás cuenta de algo así…</p>
-                        <Accordion type="single" collapsible className="w-full text-left">
+                        <Accordion type="single" defaultValue="example" className="w-full text-left">
                             <AccordionItem value="example">
                                 <AccordionTrigger>Ver ejemplo</AccordionTrigger>
                                 <AccordionContent>

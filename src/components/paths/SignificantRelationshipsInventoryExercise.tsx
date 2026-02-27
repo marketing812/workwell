@@ -214,8 +214,10 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
         {!isCompleted ? renderStep() : (
             <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
-                 <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
+                 <h4 className="font-bold text-lg">Reflexión y cierre</h4>
+                 <p className="text-muted-foreground whitespace-pre-line">{`¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?
+¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?
+Tómate unos minutos para responderte con honestidad.`}</p>
                  <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
             </div>
         )}

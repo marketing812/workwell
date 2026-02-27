@@ -1,4 +1,4 @@
-import type { Path } from './pathTypes';
+﻿import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const selfUnderstandingPath: Path = {
@@ -135,7 +135,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'cartaDesdeLaEmocionExercise',
           title: 'EJERCICIO 2: CARTA DESDE LA EMOCIÓN',
-          objective: 'Permite que tu emoción se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.',
+          objective: 'A veces sentimos algo muy fuerte, pero no sabemos explicarlo. Es como si hubiera una parte dentro de nosotros gritando por atención… y no supiéramos cómo escucharla.\n\nEsta carta te invita a imaginar que tu emoción quiere hablar contigo, no para desbordarte, sino para ayudarte a entender qué está ocurriendo dentro de ti.\n\nVas a permitirle que se exprese sin juicio, con honestidad, como si fuera una voz interior que quiere cuidarte, no herirte.\n\nEste ejercicio puede ayudarte a desactivar el piloto automático emocional y a reconectar contigo desde la comprensión.',
           duration: '10 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6semana2tecnica2.mp3`
         },
@@ -407,9 +407,7 @@ export const selfUnderstandingPath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/descripciones/Reflexionfinalruta6.mp3`,
           prompts: [
-            '<p>Has recorrido un viaje profundo: el de mirarte con honestidad, sin juicio y con curiosidad. Has aprendido a poner nombre a lo que sientes, a escuchar tus necesidades, a detectar patrones… y a estar contigo con más presencia.</p>',
             '<p>Quizás en el camino aparecieron emociones incómodas o revelaciones inesperadas. Pero cada paso ha sido un acto de cuidado, una forma de decirte: “Estoy aquí para mí”.</p>',
-            '<p>Ahora te invito a hacer una pausa sincera. No para evaluarte, sino para reconocer lo que ha cambiado dentro de ti.</p>',
             '<ul><li>¿Qué he aprendido sobre mí que antes no veía con claridad?</li><li>¿Qué emociones o patrones he comenzado a entender mejor?</li><li>¿Cómo ha cambiado la forma en que me hablo y me observo?</li><li>¿Qué necesito recordarme cuando empiece a juzgarme o a querer controlarlo todo?</li><li>¿Qué frase me llevo como ancla de esta ruta para seguir habitándome con presencia?</li></ul>',
           ],
         },
@@ -421,15 +419,21 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'list',
           items: [
-            'La autoconciencia plena es el primer paso para cambiar de verdad.',
-            'Observarte con curiosidad te transforma más que criticarte.',
-            'Tu sistema nervioso necesita seguridad para que puedas mirarte sin miedo.',
-            'La metacognición te ayuda a elegir mejor.',
-            'No tienes que corregirte. Solo aprender a acompañarte con respeto.',
+            'Nombrar lo que sientes te ayuda a comprenderte y a regularte.',
+            'Toda emoción encierra una necesidad que merece atención.',
+            'Tus patrones emocionales repetidos no son errores: son puertas a tu historia.',
+            'La autoconciencia no es autoexigencia, es presencia sin juicio.',
+            'Observarte con curiosidad abre espacio para elegir, no solo reaccionar.',
+            'No eres lo que sientes ni lo que piensas: eres quien observa.',
+            'El juicio interno alimenta el malestar; la compasión lo transforma.',
+            'La seguridad interna es la base para poder mirarte sin miedo.',
+            'Tu sistema nervioso necesita cuidado, no presión.',
+            'La metacognición te permite salir del piloto automático y actuar con conciencia.',
+            'Escribir y registrar lo que descubres te ayuda a integrar y sanar.',
             'Comprenderte mejor no es llegar a un destino, sino acompañarte cada día con más verdad.',
           ],
         },
-        { type: 'quote', text: 'Cada vez que me observo con presencia y sin juicio, doy un paso hacia mi versión más consciente, más libre… y más compasiva.' },
+        { type: 'quote', text: 'Cada vez que me observo con presencia y sin juicio, doy un paso hacia mi versión más consciente, más libre... y más compasiva.' },
       ],
     },
   ],
