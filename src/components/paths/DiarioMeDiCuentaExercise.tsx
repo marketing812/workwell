@@ -144,7 +144,7 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
                 </Accordion>
                 <div className="flex flex-col sm:flex-row gap-2 justify-center pt-4">
                     <Button asChild className="w-full sm:w-auto">
-                        <Link href="/therapeutic-notebook">Ver mi cuaderno</Link>
+                        <Link href={`/therapeutic-notebook/path/${pathId}`}>Ver mi cuaderno</Link>
                     </Button>
                     <Button onClick={resetExercise} variant="outline" className="w-full sm:w-auto">
                         Hacer otro registro

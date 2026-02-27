@@ -85,7 +85,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">Todos hemos atravesado dificultades. Hoy te propongo mirar atrás no para quedarte ahí, sino para descubrir qué te ayudó a salir adelante.</p>
-            <Accordion type="single" collapsible className="w-full text-left">
+            <Accordion type="single" defaultValue="example" className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplos</AccordionTrigger>
                 <AccordionContent>

@@ -97,7 +97,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg text-center">Ejemplo guía de la escala</h4>
-             <Accordion type="single" collapsible className="w-full">
+             <Accordion type="single" defaultValue="example" className="w-full">
               <AccordionItem value="example">
                 <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Ver ejemplo guía</AccordionTrigger>
                 <AccordionContent>

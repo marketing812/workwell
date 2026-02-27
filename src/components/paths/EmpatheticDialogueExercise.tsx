@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -38,91 +37,129 @@ Pregunta: Tu frase empática hacia ti: | Respuesta: "${empatheticPhrase || 'No e
 Pregunta: Lo que necesito darme ahora es... | Respuesta: ${myNeed || 'No especificado.'}
 Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
     `;
-    addNotebookEntry({ title: 'Mi Diálogo Interno Empático', content: notebookContent, pathId, userId: user?.id });
-    toast({ title: "Ejercicio Guardado", description: "Tu diálogo interno ha sido guardado en el cuaderno." });
+
+    addNotebookEntry({
+      title: 'Mi Diálogo Interno Empático',
+      content: notebookContent,
+      pathId,
+      userId: user?.id,
+    });
+    toast({ title: 'Ejercicio guardado', description: 'Tu diálogo interno ha sido guardado en el cuaderno.' });
     onComplete();
-    setStep(prev => prev + 1);
+    setStep((prev) => prev + 1);
   };
-  
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
-  
+
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => (prev > 0 ? prev - 1 : 0));
+
   const renderStep = () => {
     switch (step) {
-      case 0: // Intro
+      case 0:
         return (
           <div className="text-center p-4 space-y-4">
-            <Button onClick={() => setStep(1)}>Empezar mi diálogo <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={() => setStep(1)}>
+              Empezar mi diálogo <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         );
-      case 1: // Step 1 & 2
+      case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Detente y obsérvate</h4>
             <p>Piensa en una situación reciente o próxima en la que tengas que interactuar con alguien que te genera presión, inseguridad o emociones intensas.</p>
             <div className="space-y-2">
               <Label htmlFor="feeling">¿Qué siento ahora que pienso en esta situación o persona?</Label>
-              <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Me siento..."/>
+              <Textarea id="feeling" value={feeling} onChange={(e) => setFeeling(e.target.value)} placeholder="Me siento..." />
             </div>
             <div className="space-y-2">
               <Label htmlFor="active-part">¿Qué parte de mí está más activa en este momento?</Label>
-              <Textarea id="active-part" value={activePart} onChange={e => setActivePart(e.target.value)} placeholder="Ej: mi parte complaciente, insegura, defensiva…"/>
+              <Textarea
+                id="active-part"
+                value={activePart}
+                onChange={(e) => setActivePart(e.target.value)}
+                placeholder="Ej: mi parte complaciente, insegura, defensiva..."
+              />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
               <Button onClick={() => setStep(2)}>Siguiente</Button>
             </div>
           </div>
         );
-      case 2: // Step 3
+      case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Escúchate con empatía</h4>
-            <p>Imagina que eres tu mejor amiga/o. Escribe una frase de validación compasiva hacia ti. Ejemplos: “Entiendo que te sientas así, tiene sentido por lo que viviste.”, “No necesitas ser perfecta/o para estar presente.”</p>
+            <p>
+              Imagina que eres tu mejor amiga/o. Escribe una frase de validación compasiva hacia ti.
+              Ejemplos: "Entiendo que te sientas así, tiene sentido por lo que viviste.", "No necesitas ser perfecta/o para estar presente."
+            </p>
             <div className="space-y-2">
               <Label htmlFor="empathetic-phrase">Tu frase empática hacia ti:</Label>
-              <Textarea id="empathetic-phrase" value={empatheticPhrase} onChange={e => setEmpatheticPhrase(e.target.value)} />
+              <Textarea id="empathetic-phrase" value={empatheticPhrase} onChange={(e) => setEmpatheticPhrase(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
               <Button onClick={() => setStep(3)}>Siguiente</Button>
             </div>
           </div>
         );
-      case 3: // Step 4
+      case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Qué necesito ahora?</h4>
             <p>Pregúntate: ¿Qué necesito darme a mí en esta situación, antes de responder al otro?</p>
             <div className="space-y-2">
               <Label htmlFor="my-need">Lo que necesito darme ahora es...</Label>
-              <Textarea id="my-need" value={myNeed} onChange={e => setMyNeed(e.target.value)} placeholder="Ej: más claridad, más calma, permiso para poner un límite..."/>
+              <Textarea
+                id="my-need"
+                value={myNeed}
+                onChange={(e) => setMyNeed(e.target.value)}
+                placeholder="Ej: más claridad, más calma, permiso para poner un límite..."
+              />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
               <Button onClick={() => setStep(4)}>Siguiente</Button>
             </div>
           </div>
         );
-      case 4: // Step 5
+      case 4:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: Una intención para actuar desde tu centro</h4>
-            <p className="text-sm text-muted-foreground">Cierra el ejercicio con una intención clara y realista para tu próxima interacción. Ejemplos: “Voy a intentar estar presente sin perderme a mí.”, “Voy a priorizarme sin dejar de cuidar el vínculo.”</p>
+            <p className="text-sm text-muted-foreground">
+              Cierra el ejercicio con una intención clara y realista para tu próxima interacción.
+              Ejemplos: "Voy a intentar estar presente sin perderme a mí.", "Voy a priorizarme sin dejar de cuidar el vínculo."
+            </p>
             <div className="space-y-2">
               <Label htmlFor="intention">Mi intención es...</Label>
-              <Textarea id="intention" value={intention} onChange={e => setIntention(e.target.value)} />
+              <Textarea id="intention" value={intention} onChange={(e) => setIntention(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico y finalizar</Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={handleSave}>
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+              </Button>
             </div>
           </div>
         );
-       case 5: // New screen
+      case 5:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">MINIPRÁCTICA DIARIA (OPCIONAL) – “Recordar mis derechos emocionales”</h4>
+            <h4 className="font-semibold text-lg text-primary">MINIPRÁCTICA DIARIA (OPCIONAL) - "Recordar mis derechos emocionales"</h4>
             <p className="text-sm text-muted-foreground">Antes de cualquier interacción o decisión, dedica 1 minuto a recordarte esto:</p>
             <ul className="list-disc list-inside text-sm space-y-1 pl-4">
               <li>Tengo derecho a sentir lo que siento, sin pedir perdón por ello.</li>
@@ -130,44 +167,49 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
               <li>Tengo derecho a no justificar mis emociones para que sean válidas.</li>
             </ul>
             <blockquote className="mt-4 p-4 italic border-l-4 bg-accent/10 text-accent-foreground border-accent">
-              Puedes repetir mentalmente esta frase: “Lo que siento es válido. No necesito explicarlo para merecer respeto.”
+              Puedes repetir mentalmente esta frase: "Lo que siento es válido. No necesito explicarlo para merecer respeto."
             </blockquote>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep} type="button">Finalizar Ejercicio</Button>
+              <Button onClick={prevStep} variant="outline" type="button">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={nextStep} type="button">Finalizar ejercicio</Button>
             </div>
           </div>
         );
-       case 6: // Confirmation
+      case 6:
         return (
           <div className="text-center p-6 space-y-4">
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto"/>
-            <h4 className="font-bold text-lg">Diálogo Guardado</h4>
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">Diálogo guardado</h4>
             <p>Has practicado una forma poderosa de escucharte. Recuerda que puedes volver a este ejercicio siempre que lo necesites.</p>
             <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
           </div>
         );
-      default: return null;
+      default:
+        return null;
     }
   };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent flex items-center">
+          <Edit3 className="mr-2" />
+          {content.title}
+        </CardTitle>
         {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
-         {content.audioUrl && (
-            <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full h-10">
-                    <source src={content.audioUrl} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
+        {content.audioUrl && (
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full h-10">
+              <source src={content.audioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
         )}
       </CardHeader>
-      <CardContent>
-        {renderStep()}
-      </CardContent>
+      <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }

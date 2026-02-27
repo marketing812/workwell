@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -184,7 +184,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
             </div>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar y Finalizar</Button>
+              <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -214,8 +214,10 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
         {!isCompleted ? renderStep() : (
             <div className="p-6 text-center space-y-4">
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                 <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
-                 <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
+                 <h4 className="font-bold text-lg">Reflexión y cierre</h4>
+                 <p className="text-muted-foreground whitespace-pre-line">{`¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?
+¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?
+Tómate unos minutos para responderte con honestidad.`}</p>
                  <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
             </div>
         )}
