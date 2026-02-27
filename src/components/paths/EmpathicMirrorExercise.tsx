@@ -116,7 +116,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
         return (
           <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
-            <Accordion type="single" collapsible className="w-full text-left">
+            <Accordion type="single" defaultValue="example" className="w-full text-left">
               <AccordionItem value="example">
                 <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>
@@ -177,7 +177,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 3: Practica tu frase-espejo</h4>
-            <p className="text-sm text-muted-foreground">Ahora vas a reflejar esa emoción, sin interpretar ni corregir. Usa esta fórmula como guía:</p>
+            <p className="text-sm text-muted-foreground">Ahora vas a reflejar esa emoción, sin interpretar ni corregir. Solo poner en palabras lo que el otro puede estar sintiendo desde una presencia compasiva y cercana. Usa esta fórmula como guía:</p>
             <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic">“Entiendo que estés [emoción] porque [situación].”</blockquote>
             <p className="text-xs text-muted-foreground">Ejemplo: “Entiendo que estés agotada porque llevas muchos días tirando sola de todo esto.”</p>
             <div className="space-y-2">
@@ -212,7 +212,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
               </div>
               {selectedInvalidating['inv-other'] && <Textarea value={otherInvalidating} onChange={e => setOtherInvalidating(e.target.value)} placeholder="Escribe otra frase que suelas usar..." className="ml-6"/>}
             </div>
-            <p className="text-sm italic pt-2">Tu intención: Quiero intentar evitar estas respuestas automáticas y practicar el silencio como espacio seguro para el otro.</p>
+            <p className="text-base italic pt-2">Tu intención: Quiero intentar evitar estas respuestas automáticas y practicar el silencio como espacio seguro para el otro.</p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente</Button>
@@ -230,7 +230,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Marcar como completado</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );

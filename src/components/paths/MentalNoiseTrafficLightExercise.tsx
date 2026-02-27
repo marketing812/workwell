@@ -1,17 +1,16 @@
-
 "use client";
 
-import { useState, type FormEvent } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, TrafficCone, ArrowRight, ArrowLeft } from 'lucide-react';
-import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
-import type { MentalNoiseTrafficLightExerciseContent } from '@/data/paths/pathTypes';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useUser } from '@/contexts/UserContext';
+import { useState, type FormEvent } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useToast } from "@/hooks/use-toast";
+import { ArrowLeft, ArrowRight, CheckCircle, Edit3, Save } from "lucide-react";
+import { addNotebookEntry } from "@/data/therapeuticNotebookStore";
+import type { MentalNoiseTrafficLightExerciseContent } from "@/data/paths/pathTypes";
+import { useUser } from "@/contexts/UserContext";
 
 interface MentalNoiseTrafficLightExerciseProps {
   content: MentalNoiseTrafficLightExerciseContent;
@@ -19,177 +18,433 @@ interface MentalNoiseTrafficLightExerciseProps {
   onComplete: () => void;
 }
 
-const redOptions = ['Antes de dormir', 'Tras una discusión', 'Al empezar la semana', 'Durante atascos de trabajo'];
-const amberOptions = ['Antes de una reunión', 'Durante la jornada laboral', 'En conversaciones difíciles', 'Al final del día con tareas pendientes'];
-const greenOptions = ['Al caminar', 'Al desayunar en calma', 'Después de hacer ejercicio', 'En actividades creativas'];
-const gestureOptions = ['Respirar hondo 3 veces', 'Hacer una mini-pausa física', 'Enviar un mensaje a alguien cercano', 'Escribir en mi cuaderno una gratitud'];
+const redOptions = [
+  "Antes de dormir",
+  "Tras una discusion",
+  "Al empezar la semana",
+  "Durante atascos de trabajo",
+];
 
-export default function MentalNoiseTrafficLightExercise({ content, pathId, onComplete }: MentalNoiseTrafficLightExerciseProps) {
+const amberOptions = [
+  "Antes de una reunion",
+  "Durante la jornada laboral",
+  "En conversaciones dificiles",
+  "Al final del dia con tareas pendientes",
+];
+
+const greenOptions = [
+  "Al caminar",
+  "Al desayunar en calma",
+  "Despues de hacer ejercicio",
+  "En actividades creativas",
+];
+
+const gestureOptions = [
+  "Respirar hondo 3 veces",
+  "Hacer una mini-pausa fisica",
+  "Enviar un mensaje a alguien cercano",
+  "Escribir en mi cuaderno una gratitud",
+];
+
+const Dot = ({ colorClass }: { colorClass: string }) => (
+  <span className={`inline-block h-3 w-3 rounded-full ${colorClass}`} aria-hidden="true" />
+);
+
+export default function MentalNoiseTrafficLightExercise({
+  content,
+  pathId,
+  onComplete,
+}: MentalNoiseTrafficLightExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
-  const [step, setStep] = useState(0);
 
-  const [redZone, setRedZone] = useState('');
-  const [otherRed, setOtherRed] = useState('');
-  const [amberZone, setAmberZone] = useState('');
-  const [otherAmber, setOtherAmber] = useState('');
-  const [greenZone, setGreenZone] = useState('');
-  const [otherGreen, setOtherGreen] = useState('');
-  const [greenGesture, setGreenGesture] = useState('');
-  const [otherGesture, setOtherGesture] = useState('');
+  const [step, setStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
 
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const [redChoice, setRedChoice] = useState("");
+  const [redOther, setRedOther] = useState("");
+  const [redDescription, setRedDescription] = useState("");
+
+  const [amberChoice, setAmberChoice] = useState("");
+  const [amberOther, setAmberOther] = useState("");
+  const [amberDescription, setAmberDescription] = useState("");
+
+  const [greenChoice, setGreenChoice] = useState("");
+  const [greenOther, setGreenOther] = useState("");
+  const [greenDescription, setGreenDescription] = useState("");
+
+  const [gestureChoice, setGestureChoice] = useState("");
+  const [gestureOther, setGestureOther] = useState("");
+  const [gestureDescription, setGestureDescription] = useState("");
+
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => (prev > 0 ? prev - 1 : 0));
+
+  const resolveChoice = (choice: string, otherValue: string) => {
+    if (choice === "Otro") return otherValue.trim() || "No especificado.";
+    return choice || "No especificado.";
+  };
 
   const resetExercise = () => {
     setStep(0);
-    setRedZone('');
-    setOtherRed('');
-    setAmberZone('');
-    setOtherAmber('');
-    setGreenZone('');
-    setOtherGreen('');
-    setGreenGesture('');
-    setOtherGesture('');
     setIsSaved(false);
+    setRedChoice("");
+    setRedOther("");
+    setRedDescription("");
+    setAmberChoice("");
+    setAmberOther("");
+    setAmberDescription("");
+    setGreenChoice("");
+    setGreenOther("");
+    setGreenDescription("");
+    setGestureChoice("");
+    setGestureOther("");
+    setGestureDescription("");
   };
 
-  const handleSave = (e: FormEvent) => {
-    e.preventDefault();
-    
-    const formatZone = (radioSelection: string, otherText: string) => {
-        if (radioSelection && otherText.trim()) {
-            return `${radioSelection} (Detalles: ${otherText.trim()})`;
-        }
-        return radioSelection || otherText.trim() || 'No especificado.';
-    };
+  const handleSave = (event: FormEvent) => {
+    event.preventDefault();
 
-    const finalRed = formatZone(redZone, otherRed);
-    const finalAmber = formatZone(amberZone, otherAmber);
-    const finalGreen = formatZone(greenZone, otherGreen);
-    const finalGesture = greenGesture === 'Otro' ? otherGesture : (greenGesture || 'No especificado.');
+    const resolvedGesture = resolveChoice(gestureChoice, gestureOther);
+    if (!gestureDescription.trim() && resolvedGesture === "No especificado.") {
+      toast({
+        title: "Micropractica incompleta",
+        description: "Completa al menos un gesto de proteccion antes de guardar.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pregunta: ¿Cuándo sientes más saturación mental o emocional? (Zona Roja) | Respuesta: ${finalRed}
+**Zona roja - Saturacion**
+Pregunta: Cuando sientes mas saturacion mental o emocional? | Respuesta: ${resolveChoice(redChoice, redOther)}
+Pregunta: Describe tu momento rojo aqui | Respuesta: ${redDescription || "No especificado."}
 
-Pregunta: ¿Cuándo notas que la tensión va subiendo? (Zona Ámbar) | Respuesta: ${finalAmber}
+**Zona amarilla - Tension creciente**
+Pregunta: Cuando notas que la tension va subiendo? | Respuesta: ${resolveChoice(amberChoice, amberOther)}
+Pregunta: Describe tu momento amarillo aqui | Respuesta: ${amberDescription || "No especificado."}
 
-Pregunta: ¿En qué momentos sientes más calma y conexión contigo? (Zona Verde) | Respuesta: ${finalGreen}
+**Zona verde - Claridad y presencia**
+Pregunta: En que momentos sientes mas calma y conexion contigo? | Respuesta: ${resolveChoice(greenChoice, greenOther)}
+Pregunta: Describe tu momento verde aqui | Respuesta: ${greenDescription || "No especificado."}
 
-Pregunta: Tu gesto de protección (para momentos verdes) | Respuesta: ${finalGesture}
+**Tu gesto de proteccion**
+Pregunta: Elige un gesto pequeno para proteger o ampliar los momentos verdes | Respuesta: ${resolvedGesture}
+Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especificado."}
     `;
-    addNotebookEntry({ title: `Mi Semáforo del Ruido Mental`, content: notebookContent, pathId, userId: user?.id });
-    toast({ title: "Ejercicio Guardado", description: "Tu semáforo ha sido guardado." });
+
+    addNotebookEntry({
+      title: "Mi Semaforo del Ruido Mental",
+      content: notebookContent,
+      pathId,
+      userId: user?.id,
+    });
+
+    toast({ title: "Semaforo guardado", description: "Tu semaforo se guardo en el cuaderno." });
     setIsSaved(true);
     onComplete();
-    nextStep();
   };
-  
+
   const renderStep = () => {
-    switch(step) {
+    switch (step) {
       case 0:
         return (
           <div className="p-4 text-center space-y-4">
-            <p>Tu mente a veces es como una calle llena de tráfico: hay momentos de atasco, momentos de tensión creciente y también momentos de calma. Este ejercicio te ayudará a reconocerlos y a entrenar tu capacidad de detenerte cuando más lo necesites.</p>
-            <Button onClick={nextStep}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <p>
+              Tu mente a veces es como una calle llena de trafico: hay momentos de atasco, momentos de tension
+              creciente y tambien momentos de calma. Este ejercicio te ayudara a reconocerlos y a entrenar tu
+              capacidad de detenerte cuando mas lo necesites.
+            </p>
+            <Button onClick={nextStep}>
+              Empezar practica
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         );
+
       case 1:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-red-600 flex items-center gap-2"><TrafficCone/>Zona Roja: Saturación</h4>
-            <Label>¿Cuándo sientes más saturación mental o emocional?</Label>
-            <RadioGroup value={redZone} onValueChange={setRedZone}>
-                {redOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`red-${opt}`} /><Label htmlFor={`red-${opt}`} className="font-normal">{opt}</Label></div>)}
+            <h4 className="font-semibold text-lg flex items-center gap-2 text-red-600">
+              <Dot colorClass="bg-red-500" />
+              Zona roja: Saturacion
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              Cuando sientes mas saturacion mental o emocional? Ejemplos: justo antes de acostarte, despues de una
+              discusion, los lunes por la manana.
+            </p>
+
+            <RadioGroup value={redChoice} onValueChange={setRedChoice}>
+              {redOptions.map((option) => (
+                <div key={option} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option} id={`red-${option}`} />
+                  <Label htmlFor={`red-${option}`} className="font-normal">
+                    {option}
+                  </Label>
+                </div>
+              ))}
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Otro" id="red-other-option" />
+                <Label htmlFor="red-other-option" className="font-normal">
+                  Otro
+                </Label>
+              </div>
             </RadioGroup>
-            <Textarea value={otherRed} onChange={e => setOtherRed(e.target.value)} placeholder="Describe tu momento rojo aquí..." />
+            {redChoice === "Otro" && (
+              <Textarea
+                value={redOther}
+                onChange={(e) => setRedOther(e.target.value)}
+                placeholder="Escribe tu opcion roja..."
+              />
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="red-description">Describe tu momento rojo aqui...</Label>
+              <Textarea
+                id="red-description"
+                value={redDescription}
+                onChange={(e) => setRedDescription(e.target.value)}
+              />
+            </div>
+
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              <Button onClick={nextStep}>
+                Siguiente
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         );
-       case 2:
+
+      case 2:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-amber-600 flex items-center gap-2"><TrafficCone/>Zona Ámbar: Tensión creciente</h4>
-            <Label>¿Cuándo notas que la tensión va subiendo?</Label>
-             <RadioGroup value={amberZone} onValueChange={setAmberZone}>
-                {amberOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`amber-${opt}`} /><Label htmlFor={`amber-${opt}`} className="font-normal">{opt}</Label></div>)}
+            <h4 className="font-semibold text-lg flex items-center gap-2 text-amber-600">
+              <Dot colorClass="bg-amber-500" />
+              Zona amarilla: Tension creciente
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              Cuando notas que la tension va subiendo, como si estuvieras a punto de desbordarte? Ejemplos: a mitad de
+              jornada laboral, antes de una reunion importante.
+            </p>
+
+            <RadioGroup value={amberChoice} onValueChange={setAmberChoice}>
+              {amberOptions.map((option) => (
+                <div key={option} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option} id={`amber-${option}`} />
+                  <Label htmlFor={`amber-${option}`} className="font-normal">
+                    {option}
+                  </Label>
+                </div>
+              ))}
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Otro" id="amber-other-option" />
+                <Label htmlFor="amber-other-option" className="font-normal">
+                  Otro
+                </Label>
+              </div>
             </RadioGroup>
-            <Textarea value={otherAmber} onChange={e => setOtherAmber(e.target.value)} placeholder="Describe tu momento ámbar aquí..." />
+            {amberChoice === "Otro" && (
+              <Textarea
+                value={amberOther}
+                onChange={(e) => setAmberOther(e.target.value)}
+                placeholder="Escribe tu opcion amarilla..."
+              />
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="amber-description">Describe tu momento amarillo aqui...</Label>
+              <Textarea
+                id="amber-description"
+                value={amberDescription}
+                onChange={(e) => setAmberDescription(e.target.value)}
+              />
+            </div>
+
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              <Button onClick={nextStep}>
+                Siguiente
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         );
+
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-green-600 flex items-center gap-2"><TrafficCone/>Zona Verde: Claridad y presencia</h4>
-            <Label>¿En qué momentos sientes más calma y conexión contigo?</Label>
-            <RadioGroup value={greenZone} onValueChange={setGreenZone}>
-                {greenOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`green-${opt}`} /><Label htmlFor={`green-${opt}`} className="font-normal">{opt}</Label></div>)}
+            <h4 className="font-semibold text-lg flex items-center gap-2 text-green-600">
+              <Dot colorClass="bg-green-500" />
+              Zona verde: Claridad y presencia
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              En que momentos sientes mas calma y conexion contigo? Ejemplos: al caminar, al desayunar en silencio,
+              despues de hacer algo creativo.
+            </p>
+
+            <RadioGroup value={greenChoice} onValueChange={setGreenChoice}>
+              {greenOptions.map((option) => (
+                <div key={option} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option} id={`green-${option}`} />
+                  <Label htmlFor={`green-${option}`} className="font-normal">
+                    {option}
+                  </Label>
+                </div>
+              ))}
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Otro" id="green-other-option" />
+                <Label htmlFor="green-other-option" className="font-normal">
+                  Otro
+                </Label>
+              </div>
             </RadioGroup>
-            <Textarea value={otherGreen} onChange={e => setOtherGreen(e.target.value)} placeholder="Describe tu momento verde aquí..." />
+            {greenChoice === "Otro" && (
+              <Textarea
+                value={greenOther}
+                onChange={(e) => setGreenOther(e.target.value)}
+                placeholder="Escribe tu opcion verde..."
+              />
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="green-description">Describe tu momento verde aqui...</Label>
+              <Textarea
+                id="green-description"
+                value={greenDescription}
+                onChange={(e) => setGreenDescription(e.target.value)}
+              />
+            </div>
+
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              <Button onClick={nextStep}>
+                Siguiente
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         );
+
       case 4:
         return (
-          <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Tu gesto de protección</h4>
-            <Label>Elige un gesto pequeño para proteger o ampliar los momentos verdes:</Label>
-             <RadioGroup value={greenGesture} onValueChange={setGreenGesture}>
-                {gestureOptions.map(opt => <div key={opt} className="flex items-center space-x-2"><RadioGroupItem value={opt} id={`gesture-${opt}`} /><Label htmlFor={`gesture-${opt}`} className="font-normal">{opt}</Label></div>)}
-                <div className="flex items-center space-x-2"><RadioGroupItem value="Otro" id="gesture-other" /><Label htmlFor="gesture-other" className="font-normal">Otro:</Label></div>
-            </RadioGroup>
-            {greenGesture === 'Otro' && <Textarea value={otherGesture} onChange={e => setOtherGesture(e.target.value)} />}
-            <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                {!isSaved ? (
-                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar mi semáforo</Button>
-                ) : (
-                <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                    <CheckCircle className="mr-2 h-5 w-5" />
-                    <p className="font-medium">Guardado.</p>
+          <div className="p-4 space-y-4">
+            <h4 className="font-semibold text-lg">Tu gesto de proteccion</h4>
+            <p className="text-sm text-muted-foreground">
+              Elige un gesto pequeno para proteger o ampliar los momentos verdes. Ejemplos: pausar 3 respiraciones
+              profundas, salir a caminar 5 minutos, escribir una frase de gratitud.
+            </p>
+
+            <RadioGroup value={gestureChoice} onValueChange={setGestureChoice}>
+              {gestureOptions.map((option) => (
+                <div key={option} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option} id={`gesture-${option}`} />
+                  <Label htmlFor={`gesture-${option}`} className="font-normal">
+                    {option}
+                  </Label>
                 </div>
-                )}
+              ))}
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="Otro" id="gesture-other-option" />
+                <Label htmlFor="gesture-other-option" className="font-normal">
+                  Otro
+                </Label>
+              </div>
+            </RadioGroup>
+            {gestureChoice === "Otro" && (
+              <Textarea
+                value={gestureOther}
+                onChange={(e) => setGestureOther(e.target.value)}
+                placeholder="Escribe tu gesto..."
+              />
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="gesture-description">Mi gesto verde sera...</Label>
+              <Textarea
+                id="gesture-description"
+                value={gestureDescription}
+                onChange={(e) => setGestureDescription(e.target.value)}
+              />
             </div>
-          </form>
-        );
-      case 5:
-        return (
-          <div className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto" />
-            <h4 className="font-semibold text-lg">Tu Semáforo Personal</h4>
-            <p className="text-sm text-muted-foreground">Ya tienes tu semáforo personal: rojo para detectar saturación, amarillo para anticipar tensión y verde para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el ruido mental, sino aprender a escucharlo como señal para volver a ti.</p>
+
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              <Button onClick={nextStep}>
+                Siguiente
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         );
-      default: return null;
+
+      case 5:
+        return (
+          <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
+            <CheckCircle className="h-10 w-10 text-primary mx-auto" />
+            <h4 className="font-semibold text-lg">Tu semaforo personal</h4>
+            <p className="text-sm text-muted-foreground">
+              Ya tienes tu semaforo personal: rojo para detectar saturacion, amarillo para anticipar tension y verde
+              para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el
+              ruido mental, sino aprender a escucharlo como senal para volver a ti.
+            </p>
+            <div className="flex justify-between w-full mt-4">
+              <Button onClick={prevStep} variant="outline" type="button">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              <Button type="submit" disabled={isSaved}>
+                <Save className="mr-2 h-4 w-4" />
+                {isSaved ? "Semaforo guardado" : "Guardar mi semaforo en el cuaderno"}
+              </Button>
+            </div>
+            {isSaved && (
+              <Button type="button" variant="outline" onClick={resetExercise}>
+                Hacer otro registro
+              </Button>
+            )}
+          </form>
+        );
+
+      default:
+        return null;
     }
-  }
+  };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        <CardTitle className="text-lg text-accent flex items-center">
+          <Edit3 className="mr-2" />
+          {content.title}
+        </CardTitle>
+        {content.objective && (
+          <CardDescription className="pt-2">
+            {content.objective}
+            <p className="mt-2">
+              Muchas veces el ruido mental (preocupaciones, pensamientos repetitivos, tension emocional) aparece sin que
+              nos demos cuenta. Esta micropractica te ayudara a identificar en que momentos del dia se activa mas ese
+              ruido y a usar esas senales como recordatorio para frenar, respirar y reconectar contigo.
+            </p>
+          </CardDescription>
+        )}
       </CardHeader>
-      <CardContent>
-        {renderStep()}
-      </CardContent>
+      <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }

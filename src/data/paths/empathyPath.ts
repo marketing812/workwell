@@ -1,4 +1,4 @@
-import type { Path } from './pathTypes';
+﻿import type { Path } from './pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const empathyPath: Path = {
@@ -328,7 +328,7 @@ export const empathyPath: Path = {
         {
           type: 'significantRelationshipsInventoryExercise',
           title: 'EJERCICIO 1: INVENTARIO DE RELACIONES SIGNIFICATIVAS',
-          objective: '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo? No todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan. Y muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad. Este ejercicio es una invitación a hacer un inventario emocional de tu red de apoyo: reconocer quiénes son, cómo te ayudan y qué puedes hacer tú para cuidar esos vínculos.',
+          objective: '¿Alguna vez te has sentido rodeado o rodeada de gente, pero emocionalmente sola o solo?\nNo todas las relaciones nos sostienen. Algunas nos llenan. Otras nos drenan.\nY muchas veces, no nos detenemos a mirar con honestidad qué vínculos sí nos nutren de verdad.\n\nEn este ejercicio vas a crear tu propio mapa de apoyo emocional.\nIdentificarás a esas personas que cumplen tres funciones clave para tu bienestar:\nte sostienen, te inspiran y respetan tu proceso.\n\nNo se trata de juzgar a nadie, sino de mirar con claridad, y tomar conciencia de cómo están configuradas tus relaciones hoy.',
           duration: '15-20 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion4tecnica1.mp3`,
         },
