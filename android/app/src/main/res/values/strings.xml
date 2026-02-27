@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">WorkWell</string>
+    <string name="title_activity_main">WorkWell</string>
+    <string name="package_name">com.workwell.app</string>
+    <string name="custom_url_scheme">com.workwell.app</string>
+</resources>

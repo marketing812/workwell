@@ -4,7 +4,7 @@
             "outputFile": "com.workwell.app.test.app-mergeDebugAndroidTestResources-1:/values/values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\javier.blanco\\.gradle\\caches\\8.14.3\\transforms\\f3c8c5ab594c56ca9009b89515fbb52f\\transformed\\core-1.7.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\javier.blanco\\AppData\\Local\\Android\\Sdk\\caches\\8.14.3\\transforms\\f3c8c5ab594c56ca9009b89515fbb52f\\transformed\\core-1.7.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "4,11",
                         "startColumns": "0,0",
