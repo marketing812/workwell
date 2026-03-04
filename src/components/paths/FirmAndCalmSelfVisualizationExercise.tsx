@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -141,7 +141,9 @@ Cada vez será un poco más fácil.`;
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button onClick={nextStep} className="w-full mt-4">Continuar a la reflexión</Button>
+            <div className="flex justify-end w-full mt-4">
+              <Button onClick={nextStep}>Continuar a la reflexión</Button>
+            </div>
           </div>
         );
       case 1:
@@ -156,7 +158,7 @@ Cada vez será un poco más fácil.`;
             {!isSaved ? (
               <div className="flex justify-between w-full">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Reflexión</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               </div>
             ) : (
               <div className="flex items-center justify-center p-3 mt-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -183,3 +185,4 @@ Cada vez será un poco más fácil.`;
     </Card>
   );
 }
+

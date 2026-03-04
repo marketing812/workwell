@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -55,9 +55,11 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-muted-foreground">La resiliencia no es una fórmula universal. Tiene que ver con cómo tú vives el dolor, el cambio y la transformación. Te invito a escribir tu propia definición.</p>
-            <Button onClick={nextStep} className="w-full">
-              Comenzar <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="flex justify-end w-full">
+              <Button onClick={nextStep}>
+                Comenzar <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         );
       case 1: // Guiding questions
@@ -86,7 +88,7 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button type="submit" disabled={isSaved || !definition.trim()}>
-                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar mi Definición'}
+                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
               </Button>
             </div>
           </form>
@@ -128,3 +130,4 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -184,7 +184,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
             </div>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar y Finalizar</Button>
+              <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -223,3 +223,4 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
     </Card>
   );
 }
+

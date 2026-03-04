@@ -150,7 +150,9 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
             <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}<SelectItem value="otra">Otra...</SelectItem></SelectContent>
         </Select>
         {emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} /> }
-        <Button onClick={nextStep} className="w-full mt-2" disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+        <div className="flex justify-end w-full mt-2">
+          <Button onClick={nextStep} disabled={!emotion}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+        </div>
         </div>;
       case 1: return <div className="p-4 space-y-4">
         <h4 className="font-semibold text-lg">Paso 2: ¿Qué podrías estar necesitando?</h4>
@@ -262,8 +264,8 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
             <ul className="list-disc list-inside text-left mx-auto max-w-md">
                 {allActions.map((action, i) => <li key={i}>{action}</li>)}
             </ul>
-            <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
-            <Button onClick={prevStep} variant="outline" className="w-full mt-2"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+            <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
         </div>;
       default: return null;
     }
@@ -291,3 +293,4 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
     </Card>
   );
 }
+

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -12,6 +11,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { TwoMinuteRuleExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
 import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 interface TwoMinuteRuleExerciseProps {
   content: TwoMinuteRuleExerciseContent;
@@ -25,7 +25,9 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
   const [step, setStep] = useState(0);
   const [task, setTask] = useState('');
   const [twoMinVersion, setTwoMinVersion] = useState('');
-  const [when, setWhen] = useState('');
+  const [whenOption, setWhenOption] = useState('');
+  const [whenAfter, setWhenAfter] = useState('');
+  const [whenOther, setWhenOther] = useState('');
   const [saved, setSaved] = useState(false);
 
   const nextStep = () => setStep(prev => prev + 1);
@@ -34,13 +36,31 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
     setStep(0);
     setTask('');
     setTwoMinVersion('');
-    setWhen('');
+    setWhenOption('');
+    setWhenAfter('');
+    setWhenOther('');
     setSaved(false);
   };
-  
+
+  const getFinalWhen = () => {
+    if (whenOption === 'now') return 'Ahora';
+    if (whenOption === 'next10') return 'En los próximos 10 minutos';
+    if (whenOption === 'after') return `Después de ${whenAfter.trim()}`;
+    if (whenOption === 'tonight') return 'Esta tarde / noche';
+    if (whenOption === 'other') return whenOther.trim();
+    return '';
+  };
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
-    if (!task.trim() || !twoMinVersion.trim() || !when.trim()) {
+
+    if (
+      !task.trim() ||
+      !twoMinVersion.trim() ||
+      !whenOption ||
+      (whenOption === 'after' && !whenAfter.trim()) ||
+      (whenOption === 'other' && !whenOther.trim())
+    ) {
       toast({
         title: 'Campos incompletos',
         description: 'Por favor, rellena todos los campos para guardar tu compromiso.',
@@ -48,19 +68,22 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       });
       return;
     }
+
+    const finalWhen = getFinalWhen();
+
     const notebookContent = [
       `**Ejercicio: ${content.title}**`,
       `Pregunta: Tarea que pospongo | Respuesta: ${task}`,
       `Pregunta: Mi versión de 2 minutos es | Respuesta: ${twoMinVersion}`,
-      `Pregunta: Me comprometo a hacerlo | Respuesta: ${when}`
+      `Pregunta: Me comprometo a hacerlo | Respuesta: ${finalWhen}`
     ].join('\n\n');
 
-    addNotebookEntry({ 
-      title: 'Mi Compromiso de 2 Minutos', 
-      content: notebookContent, 
-      pathId, 
+    addNotebookEntry({
+      title: 'Mi Compromiso de 2 Minutos',
+      content: notebookContent,
+      pathId,
       ruta: 'Superar la Procrastinación y Crear Hábitos',
-      userId: user?.id 
+      userId: user?.id
     });
     toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
     setSaved(true);
@@ -73,17 +96,8 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-            {content.audioUrl && (
-              <div className="mb-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-                </audio>
-              </div>
-            )}
-            <p className="mb-4">¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.</p>
             <Button onClick={() => setStep(1)}>
-              Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4"/>
+              Crear mi compromiso <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         );
@@ -106,8 +120,8 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
             <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
             <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} placeholder="Ej: Escribir solo una línea, Moverme durante 2 minutos, Preparar la ropa de deporte" />
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep} disabled={!twoMinVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={nextStep} disabled={!twoMinVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
@@ -115,30 +129,59 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
         return (
           <form onSubmit={handleSave} className="space-y-4 p-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</h4>
-            <Label htmlFor="when" className="sr-only">¿Cuándo lo harás?</Label>
-            <Input id="when" value={when} onChange={e => setWhen(e.target.value)} placeholder="Ej: Justo después de desayunar, En la pausa de las 11:00, Al llegar a casa" />
+            <Label htmlFor="when-option">Elige una opción</Label>
+            <Select value={whenOption} onValueChange={setWhenOption}>
+              <SelectTrigger id="when-option">
+                <SelectValue placeholder="Selecciona un momento" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="now">Ahora</SelectItem>
+                <SelectItem value="next10">En los próximos 10 minutos</SelectItem>
+                <SelectItem value="after">Después de...</SelectItem>
+                <SelectItem value="tonight">Esta tarde / noche</SelectItem>
+                <SelectItem value="other">Otro</SelectItem>
+              </SelectContent>
+            </Select>
+
+            {whenOption === 'after' && (
+              <Input
+                id="when-after"
+                value={whenAfter}
+                onChange={e => setWhenAfter(e.target.value)}
+                placeholder="Después de [_________]"
+              />
+            )}
+
+            {whenOption === 'other' && (
+              <Input
+                id="when-other"
+                value={whenOther}
+                onChange={e => setWhenOther(e.target.value)}
+                placeholder="Otro: [campo libre]"
+              />
+            )}
+
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
       case 4:
         return (
-            <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h4 className="font-bold text-lg">¡Compromiso Guardado!</h4>
-                <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza.  Te conecta con tu capacidad de actuar… sin esperar a tenerlo todo bajo control.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">
-                    Hacer otro compromiso
-                </Button>
-            </div>
+          <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
+            <h4 className="font-bold text-lg">¡Compromiso Guardado!</h4>
+            <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza. Te conecta con tu capacidad de actuar sin esperar a tenerlo todo bajo control.</p>
+            <Button onClick={resetExercise} variant="outline" className="w-full">
+              Hacer otro compromiso
+            </Button>
+          </div>
         );
       default:
         return null;
     }
-  }
-
+  };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
@@ -148,19 +191,19 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
           {content.title}
         </CardTitle>
         <CardDescription>
-            {content.audioUrl && (
-              <div className="mb-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
-                  Tu navegador no soporta el elemento de audio.
-                </audio>
-              </div>
-            )}
-            ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.
-          </CardDescription>
+          {content.audioUrl && (
+            <div className="mb-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src={content.audioUrl} type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+          )}
+          ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.
+        </CardDescription>
       </CardHeader>
       <CardContent>
-          {renderStep()}
+        {renderStep()}
       </CardContent>
     </Card>
   );

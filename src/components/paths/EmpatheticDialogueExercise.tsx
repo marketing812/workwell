@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -115,7 +115,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico y finalizar</Button>
+              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -171,3 +171,4 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -127,7 +127,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
             <p className="text-sm">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
             <Textarea id="next-step-blocking" disabled={isSaved}/>
-             <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar registro</Button></div>
+             <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button></div>
           </form>
         );
       case 6: // Confirmation
@@ -163,3 +163,4 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+

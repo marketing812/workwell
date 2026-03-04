@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -113,9 +113,9 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
             `Pregunta: Pensamiento final de entrega | Respuesta: "Hoy elijo confiar en mi capacidad de avanzar paso a paso."`
           ].join('\n');
           handleSave("Escribir y Soltar", content);
-      }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como "Entrega consciente"</Button>
+      }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
       
-      <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
+      <Button variant="link" onClick={() => setStep(0)} className="w-auto px-0">Volver a opciones</Button>
     </div>
   );
 
@@ -139,7 +139,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
             </div>
         </div>
         <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
-        <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
+        <Button variant="link" onClick={() => setStep(0)} className="w-auto px-0">Volver a opciones</Button>
     </div>
   );
 
@@ -172,8 +172,8 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
               `Pregunta: ¿Qué momento me conectó con la calma? | Respuesta: ${calmMoment || 'No respondido.'}`
             ].join('\n');
             handleSave("Cierre con Gratitud", content);
-        }} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
-        <Button variant="link" onClick={() => setStep(0)} className="w-full">Volver a opciones</Button>
+        }} className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+        <Button variant="link" onClick={() => setStep(0)} className="w-auto px-0">Volver a opciones</Button>
     </div>
   );
   
@@ -207,3 +207,4 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
     </Card>
   );
 }
+

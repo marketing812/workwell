@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -89,7 +89,9 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
                         <Label htmlFor="step1-phrase">Tu frase para reconocer:</Label>
                         <Textarea id="step1-phrase" value={step1Phrase} onChange={e => setStep1Phrase(e.target.value)} placeholder="Ej: Entiendo que estés triste..." />
                     </div>
-                    <Button onClick={next} className="w-full">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    <div className="flex justify-end w-full">
+                        <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                    </div>
                 </div>
             );
         case 1:
@@ -146,7 +148,7 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
                     <div className="flex justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={handleComplete} className="w-auto">
-                            <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
+                            <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                         </Button>
                     </div>
                 </div>
@@ -182,3 +184,4 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
     </Card>
   );
 }
+

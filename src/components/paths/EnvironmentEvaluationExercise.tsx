@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -279,7 +279,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                         </div>
                          <div className="flex justify-between w-full mt-4">
                              <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
-                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
+                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                          </div>
                     </form>
                 );
@@ -316,3 +316,4 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
         </Card>
     );
 }
+

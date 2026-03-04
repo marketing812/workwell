@@ -76,7 +76,7 @@ export default function WelcomePage() {
               visible ? "opacity-100" : "opacity-0"
             )}
           >
-            <Logo className="mb-12 text-primary-foreground" />
+            <Logo className="mb-12 text-primary-foreground" white />
             <h1 className="text-6xl md:text-8xl font-bold mb-12">
               ¿Cómo estás hoy?
             </h1>

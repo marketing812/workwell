@@ -89,9 +89,11 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">A veces olvidamos todo lo que ya hemos logrado. Este ejercicio es una invitación a mirar hacia atrás con más conciencia y gratitud, y reconocer que no eres la misma persona que al inicio de este proceso.</p>
             <p className="text-sm text-muted-foreground">Vas a crear una línea del tiempo emocional, donde podrás ver con más claridad tu camino, tus aprendizajes y tu evolución personal.</p>
-            <Button onClick={next} className="w-full">
-              Empezar mi línea del tiempo <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="flex justify-end w-full">
+              <Button onClick={next}>
+                Empezar mi línea del tiempo <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         );
       case 1: // OLD STEP 0: Punto de partida

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -297,3 +297,4 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
     </Card>
   );
 }
+

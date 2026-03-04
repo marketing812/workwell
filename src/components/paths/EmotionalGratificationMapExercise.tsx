@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -170,7 +170,7 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
             </div>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}>Guardar mi mapa de gratificación</Button>
+                <Button onClick={handleSave}>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -183,15 +183,15 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
                 <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                     <div>
                         <h5 className="font-semibold">Actividades que me recargan:</h5>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{activities || 'Sin definir'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{activities || 'Sin definir'}</pre>
                     </div>
                      <div>
                         <h5 className="font-semibold">Personas que me inspiran o me dan calma:</h5>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{people || 'Sin definir'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{people || 'Sin definir'}</pre>
                     </div>
                      <div>
                         <h5 className="font-semibold">Lugares que me llenan de energía:</h5>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{places || 'Sin definir'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{places || 'Sin definir'}</pre>
                     </div>
                 </div>
                 <p className="text-xs text-muted-foreground italic pt-2">Recuerda: No tienes que hacerlas todas a la vez. Incluso una sola de estas actividades, personas o lugares puede marcar la diferencia en tu día.</p>
@@ -228,3 +228,4 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
     </Card>
   );
 }
+

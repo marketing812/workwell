@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -83,7 +83,9 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
                 <p className="text-sm text-muted-foreground">La mente ansiosa confunde ambas cosas: puede que sea posible que tropieces al hablar, pero la probabilidad real de que ocurra y de que tenga un gran impacto es mucho menor de lo que imaginas. La ansiedad se engancha a la posibilidad extrema y se olvida de la probabilidad realista.</p>
                 <p className="text-sm text-muted-foreground">El objetivo de este ejercicio es romper la fusión con esos pensamientos ansiosos. Es decir, dejar de verlos como una realidad absoluta, ganar perspectiva y abrir alternativas más realistas.</p>
                 <p className="text-sm text-muted-foreground">Vamos a hacerlo con una herramienta clásica de la terapia cognitivo-conductual: el cuestionamiento socrático.</p>
-                <Button onClick={next} className="w-full mt-4">Empezar práctica <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <div className="flex justify-end w-full mt-4">
+                    <Button onClick={next}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                </div>
             </div>
         );
       case 1: 
@@ -204,3 +206,4 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
     </Card>
   );
 }
+

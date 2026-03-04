@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -174,7 +174,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit">
-                        <Save className="mr-2 h-4 w-4" /> Guardar mi mantra en el Cuaderno Terapéutico
+                        <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                     </Button>
                 </div>
               </form>
@@ -215,3 +215,4 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
     </Card>
   );
 }
+

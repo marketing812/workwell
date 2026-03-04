@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -106,7 +106,7 @@ Tu emoción: ${finalEmotion}
                     </SelectContent>
                 </Select>
                 {emotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe tu emoción aquí..." /> }
-                <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div>;
+                <div className="flex justify-end w-full mt-2"><Button onClick={() => setStep(1)} disabled={!finalEmotion.trim()}>Siguiente <ArrowRight className="mr-2 h-4 w-4" /></Button></div></div>;
             
             case 1: return <div className="p-4 space-y-4">
                 <h4 className="font-semibold text-lg">Paso 2: Elige el Tono de la Carta</h4>
@@ -160,7 +160,7 @@ Tu emoción: ${finalEmotion}
                         <div className="flex justify-between mt-2">
                             <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={handleSave} className="w-auto" disabled={!need.trim()}>
-                                <Save className="mr-2 h-4 w-4"/>Guardar Carta en el Cuaderno Terapéutico
+                                <Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico
                             </Button>
                         </div>
                     </div>
@@ -192,3 +192,4 @@ Tu emoción: ${finalEmotion}
         </Card>
     );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -283,8 +283,10 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <p className="text-sm text-muted-foreground">"Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites."</p>
-                        <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno terapéutico</Button>
-                        <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
+                        <div className="flex justify-between w-full gap-2">
+                            <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
+                            <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+                        </div>
                     </form>
                 );
             case 9: // Confirmation

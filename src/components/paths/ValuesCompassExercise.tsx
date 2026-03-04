@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -174,7 +174,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={handleSave} className="w-auto">
-                      <Save className="mr-2 h-4 w-4" /> Guardar Brújula
+                      <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                   </Button>
                 </div>
               </div>
@@ -221,3 +221,4 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
         </Card>
     );
 }
+

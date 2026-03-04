@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -174,7 +174,9 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                                 </AccordionItem>
                             </Accordion>
                         </div>
-                        <Button onClick={() => setStep(1)} className="w-full">Comenzar ejercicio de escritura</Button>
+                        <div className="flex w-full justify-end">
+                            <Button onClick={() => setStep(1)}>Comenzar ejercicio de escritura</Button>
+                        </div>
                     </div>
                 );
             case 1:
@@ -254,7 +256,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         {!isSaved ? (
                             <div className="flex justify-between w-full mt-4">
                                 <Button variant="outline" onClick={() => setStep(5)} type="button">Atrás</Button>
-                                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar mi visualización</Button>
+                                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                             </div>
                         ) : null}
                     </form>
@@ -293,3 +295,4 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
         </Card>
     );
 }
+

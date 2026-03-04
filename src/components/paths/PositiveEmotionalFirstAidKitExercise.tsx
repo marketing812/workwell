@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -169,7 +169,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                 ))}
                 <div className="flex justify-between mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={() => setStep(2)} className="w-full mt-4">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             </div>
         );
@@ -200,7 +200,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                  ))}
                  <div className="flex justify-between mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={() => setStep(3)} className="w-full mt-4">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button onClick={() => setStep(3)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                  </div>
             </div>
         );
@@ -231,7 +231,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                  <p className="text-sm italic text-muted-foreground pt-2">“Tu botiquín ya está listo. Cada recurso es una herramienta de apoyo emocional diseñada para ti. Cuanto más lo uses, más automático será para tu mente recurrir a él en los momentos difíciles.”</p>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar mi botiquín</Button>
+                  <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
         );
@@ -268,3 +268,4 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
     </Card>
   );
 }
+

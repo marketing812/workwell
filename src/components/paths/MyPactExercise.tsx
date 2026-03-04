@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -130,7 +130,7 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
             <Textarea id="anchor-phrase" value={anchorPhrase} onChange={e => setAnchorPhrase(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi pacto</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -175,3 +175,4 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
     </Card>
   );
 }
+
