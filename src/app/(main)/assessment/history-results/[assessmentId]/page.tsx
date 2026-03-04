@@ -3,15 +3,15 @@ import { HistoricalResultsPageClient } from '@/components/assessment/HistoricalR
 import type { Metadata } from 'next';
 
 interface HistoryResultsPageProps {
-  params: { assessmentId: string };
+  params: Promise<{ assessmentId: string }>;
 }
 
-export default function Page({ params }: HistoryResultsPageProps) {
-  const { assessmentId } = params;
+export default async function Page({ params }: HistoryResultsPageProps) {
+  const { assessmentId } = await params;
   return <HistoricalResultsPageClient assessmentId={assessmentId} />;
 }
 
 export async function generateMetadata({ params }: HistoryResultsPageProps): Promise<Metadata> {
-  const { assessmentId } = params;
+  const { assessmentId } = await params;
   return { title: `Resultados de Evaluación ${assessmentId}` };
 }

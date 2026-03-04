@@ -115,6 +115,16 @@ Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
     onComplete();
   };
 
+  const handleNewRecord = () => {
+    setFact('');
+    setEmotion('');
+    setDialogue('');
+    setJudgment('');
+    setResponse('');
+    setCompassionPhrase('');
+    setIsSaved(false);
+  };
+
   if (!isClient) {
     return null; // O un componente de carga
   }
@@ -147,7 +157,7 @@ Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
             <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Identifica las emociones que surgieron en ese momento.<br> Ejemplo: Vergüenza, incomodidad, culpa. " }} />
             <Select onValueChange={setEmotion} value={emotion} disabled={isSaved}>
               <SelectTrigger><SelectValue placeholder="Selecciona la emoción que sentiste" /></SelectTrigger>
-              <SelectContent>{acceptanceEmotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
+              <SelectContent>{emotionOptions.map(e => <SelectItem key={e.value} value={e.value}>{t[e.labelKey as keyof typeof t]}</SelectItem>)}</SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
@@ -173,9 +183,14 @@ Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
           {!isSaved ? (
             <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">Guardado.</p>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                <CheckCircle className="mr-2 h-5 w-5" />
+                <p className="font-medium">Guardado.</p>
+              </div>
+              <Button type="button" variant="outline" className="w-full" onClick={handleNewRecord}>
+                Hacer otro registro
+              </Button>
             </div>
           )}
         </form>

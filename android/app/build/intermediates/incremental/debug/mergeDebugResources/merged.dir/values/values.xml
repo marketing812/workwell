@@ -330,8 +330,14 @@
     <string name="call_notification_ongoing_text">Ongoing call</string>
     <string name="call_notification_screening_text">Screening an incoming call</string>
     <string name="custom_url_scheme">com.workwell.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">1051738167084</string>
+    <string name="google_api_key" translatable="false">AIzaSyBPwqvZ3BMNrK6szu81hkKWxLIvpWSz9gI</string>
+    <string name="google_app_id" translatable="false">1:1051738167084:android:dd2a408c1c0968c9c5be89</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBPwqvZ3BMNrK6szu81hkKWxLIvpWSz9gI</string>
+    <string name="google_storage_bucket" translatable="false">workwell-c4rlk.firebasestorage.app</string>
     <string name="no_webview_text">This app requires a WebView to work</string>
     <string name="package_name">com.workwell.app</string>
+    <string name="project_id" translatable="false">workwell-c4rlk</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_main">WorkWell</string>

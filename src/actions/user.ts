@@ -45,7 +45,7 @@ export async function saveUser(
     } else {
       app = getApp();
     }
-    const serverDb = getFirestore(app);
+    const serverDb = getFirestore(app, "defaultue");
 
     await setDoc(doc(serverDb, "users", userId), {
       ...profileData,

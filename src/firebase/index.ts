@@ -33,12 +33,25 @@ export function initializeFirebase() {
 }
 
 export function getSdks(firebaseApp: FirebaseApp) {
+  // App Check (init una sola vez)
+  if (typeof window !== 'undefined') {
+    initializeAppCheck(firebaseApp, {
+      provider: new ReCaptchaV3Provider(
+        process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY!
+      ),
+      isTokenAutoRefreshEnabled: true,
+    });
+  }
   return {
     firebaseApp,
     auth: getAuth(firebaseApp),
-    firestore: getFirestore(firebaseApp)
+    firestore: getFirestore(firebaseApp, "defaultue")
   };
 }
+
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+
+
 
 export * from './provider';
 export * from './client-provider';

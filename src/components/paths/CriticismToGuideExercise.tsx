@@ -21,11 +21,17 @@ interface CriticismToGuideExerciseProps {
   onComplete: () => void;
 }
 
+
 const distortionOptions = [
-    { value: 'catastrophism', label: 'Catastrofismo' },
-    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
-    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
-    { value: 'personalization', label: 'Personalización' },
+    { value: 'catastrophism0', label: 'Catastrofismo “Si cometo un error, será un desastre irreparable”  ' },
+    { value: 'catastrophism1', label: 'Pensamiento catastrófico: “Seguro que sale fatal.”  ' },
+    { value: '0', label: 'Todo o nada: “O me va perfecto o es un fracaso.”' },
+    { value: 'mind_reading', label: 'Lectura de mente: “Ya sé lo que van a pensar de mí.”' },
+    { value: 'sesgo', label: 'Sesgo del pasado: “Antes salió mal, así que volverá a pasar.” ' },
+    { value: 'sobregeneralizacion', label: 'Sobregeneralización: “Siempre me pasa lo mismo.”' },
+    { value: 'dichotomous1', label: 'Pensamiento dicotómico: “Nunca me tienen en cuenta.”' },
+    { value: 'rigidez', label: 'Deberías rígidos: “Esto no debería ser así.”' }
+
 ];
 
 export default function CriticismToGuideExercise({ content, pathId, onComplete }: CriticismToGuideExerciseProps) {
@@ -100,15 +106,6 @@ Pregunta: Mi frase reformulada como guía | Respuesta: "${reformulation}"
                 {objectiveOptions.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
                 <SelectItem value="otro">Otro...</SelectItem>
               </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Identifica la distorsión</h4>
-            <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
-                <SelectTrigger><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
-                <SelectContent>
-                    {distortionOptions.map(opt => <SelectItem key={opt.value} value={opt.label}>{opt.label}</SelectItem>)}
-                </SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
