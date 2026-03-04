@@ -147,7 +147,19 @@ export default function GentleTrackingExercise({ content, pathId, onComplete }: 
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription>{content.objective}</CardDescription>}
+        {(content.audioUrl || content.objective) && (
+          <CardDescription>
+            {content.audioUrl && (
+              <div className="mb-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
+            {content.objective}
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSave} className="space-y-4">
@@ -188,11 +200,20 @@ export default function GentleTrackingExercise({ content, pathId, onComplete }: 
             </div>
           </div>
           <div className="space-y-2 pt-4">
-            <Label htmlFor="week-word">Tu palabra de la semana</Label>
-            <Textarea id="week-word" value={weekWord} onChange={e => setWeekWord(e.target.value)} placeholder="Ej: Constancia, Presencia, Avance..." disabled={saved} />
+            <Label htmlFor="week-word" className="font-bold">Tu palabra de la semana</Label>
+            <p className="text-sm text-muted-foreground">
+              ¿Qué palabra representa cómo te sentiste al sostener tu hábito esta semana?
+            </p>
+            <Textarea
+              id="week-word"
+              value={weekWord}
+              onChange={e => setWeekWord(e.target.value)}
+              placeholder='Ejemplos: "Presente", "Constancia amable", "Orgulloso u orgullosa", "Estoy en ello"'
+              disabled={saved}
+            />
           </div>
           {!saved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Palabra de la Semana</Button>
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
           ) : (
             <div className="text-center p-4 mt-4 border-t space-y-2">
               <p className="font-semibold text-lg text-green-700 dark:text-green-300">
@@ -211,3 +232,4 @@ export default function GentleTrackingExercise({ content, pathId, onComplete }: 
     </Card>
   );
 }
+

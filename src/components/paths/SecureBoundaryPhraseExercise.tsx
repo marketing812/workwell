@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -76,7 +76,9 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                 return (
                     <div className="p-4 space-y-4">
                         <p>Este ejercicio te ayuda a tener preparada una frase clara y amable para poner límites cuando lo necesites. Primero, leerás algunas frases sugeridas que puedes usar como punto de partida. Después, elegirás una o crearás la tuya propia. La idea es que la practiques varias veces, en voz alta o por escrito, hasta que te salga con naturalidad. Si lo deseas, también puedes usarla como entrenamiento emocional: imaginarte situaciones pasadas o futuras donde te hubiera gustado decir algo y ensayar tu frase. Al final, reflexionarás sobre lo que sentiste al practicar.</p>
-                        <Button onClick={nextStep} className="w-full">Comenzar</Button>
+                        <div className="flex justify-end w-full">
+                            <Button onClick={nextStep}>Comenzar</Button>
+                        </div>
                     </div>
                 );
             case 1: // Pantalla 2: Ejemplo
@@ -142,7 +144,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                         <p className="text-xs text-muted-foreground italic">Este ensayo mental o escrito fortalece tus circuitos de autoafirmación. Es un entrenamiento emocional real.</p>
                          <div className="flex justify-between w-full">
                             <Button variant="outline" onClick={prevStep}>Atrás</Button>
-                             <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno</Button>
+                             <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                         </div>
                     </div>
                 );
@@ -183,3 +185,4 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
     );
 }
     
+

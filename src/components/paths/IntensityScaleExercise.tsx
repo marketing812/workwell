@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -137,7 +137,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" disabled={isSaved}>
-                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar mi escala'}
+                <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
               </Button>
             </div>
           </form>
@@ -179,3 +179,4 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
     </Card>
   );
 }
+

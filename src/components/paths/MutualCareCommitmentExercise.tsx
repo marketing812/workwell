@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -210,7 +210,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                 <p className="text-sm font-semibold">Guardar datos y gesto de cuidado, todo en un esquema circular</p>
                 <div className="flex justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar Compromiso</Button>
+                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
           </form>
@@ -253,3 +253,4 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
     </Card>
   );
 }
+

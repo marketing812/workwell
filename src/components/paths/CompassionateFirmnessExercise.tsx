@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -109,7 +109,7 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave} disabled={isSaved}>
-                  {isSaved ? <><CheckCircle className="mr-2 h-4 w-4"/> Guardado</> : <><Save className="mr-2 h-4 w-4" /> Guardar mi Frase</>}
+                  {isSaved ? <><CheckCircle className="mr-2 h-4 w-4"/> Guardado</> : <><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</>}
                 </Button>
             </div>
           </div>
@@ -151,3 +151,4 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -146,7 +146,7 @@ Pregunta: ¿Qué compromiso quiero llevarme para el futuro cuando aparezca la an
             </div>
             {!isSaved ? (
               <Button onClick={handleSave} className="w-full mt-4">
-                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
               </Button>
             ) : (
               <div className="flex items-center justify-center p-3 mt-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -178,3 +178,4 @@ Pregunta: ¿Qué compromiso quiero llevarme para el futuro cuando aparezca la an
     </Card>
   );
 }
+

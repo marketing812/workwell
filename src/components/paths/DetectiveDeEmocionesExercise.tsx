@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -111,7 +111,7 @@ Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedRefl
     }
 
     switch (step) {
-      case 0: return <div className="p-4"><p className="text-center mb-4">Piensa en una situación reciente que te haya movido emocionalmente.</p><Button onClick={nextStep} className="w-full">Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button></div>;
+      case 0: return <div className="p-4"><p className="text-center mb-4">Piensa en una situación reciente que te haya movido emocionalmente.</p><div className="flex w-full justify-end"><Button onClick={nextStep}>Comenzar <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 1: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 1: ¿Qué ocurrió?</h4><p className="text-sm text-muted-foreground">Describe brevemente una situación concreta que te haya movido emocionalmente esta semana. Céntrate solo en lo que ocurrió —los hechos visibles o verificables— sin añadir aún cómo te sentiste ni lo que pensaste. Piensa que lo estás contando como si fueras una cámara que graba la escena: ¿qué pasó?, ¿quién estaba?, ¿dónde y cuándo fue?</p><Textarea id="situation-detective" value={situation} onChange={e => setSituation(e.target.value)} placeholder={'“Ayer envié un mensaje importante a una amiga y no me contestó.” \n(No pongas: “Me sentí ignorada” o “Seguro que está enfadada conmigo” → eso lo veremos después)'} /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 2: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 2: ¿Qué pensaste en ese momento?</h4><p className="text-sm text-muted-foreground">Captura la primera idea o ideas que pasaron por tu mente. No las juzgues. Solo obsérvalas y escríbelas.  </p><Textarea id="automaticThought" value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} placeholder="“Seguro que está enfadada conmigo.”" /><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
       case 3: return <div className="p-4 space-y-4"><h4 className="font-semibold text-lg">Paso 3: ¿Qué emoción sentiste con más fuerza?</h4><p className="text-sm text-muted-foreground">Elige una emoción o varias del diccionario de emociones o escríbela tú. También puedes añadir otras emociones que hayan estado presentes.</p><div className="grid grid-cols-2 gap-2 max-h-60 overflow-y-auto p-2 border rounded-md">{emotionOptions.map(e => <div key={e.value} className="flex items-center gap-2"><Checkbox id={e.value} checked={selectedEmotions[e.value] || false} onCheckedChange={c => setSelectedEmotions(prev => ({ ...prev, [e.value]: !!c }))} /><Label htmlFor={e.value} className="font-normal">{t[e.labelKey as keyof typeof t]}</Label></div>)}</div><div className="flex items-center gap-2"><Checkbox id="emotion-other" checked={selectedEmotions['otra'] || false} onCheckedChange={c => setSelectedEmotions(prev => ({ ...prev, ['otra']: !!c }))} /><Label htmlFor="emotion-other" className="font-normal">Otra:</Label></div>{selectedEmotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} />}<div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto" disabled={Object.values(selectedEmotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div></div>;
@@ -138,7 +138,7 @@ Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedRefl
                 </div>
                 <div className="flex justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                    <Button onClick={handleSave} className="w-auto" disabled={Object.values(reflectionSelections).every(v => !v) && !otherReflection.trim()}><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+                    <Button onClick={handleSave} className="w-auto" disabled={Object.values(reflectionSelections).every(v => !v) && !otherReflection.trim()}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
         );
@@ -170,3 +170,4 @@ Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedRefl
     </Card>
   );
 }
+

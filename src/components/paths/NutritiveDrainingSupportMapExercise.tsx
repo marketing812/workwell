@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -15,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
 import { Textarea } from '../ui/textarea';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+
 interface NutritiveDrainingSupportMapExerciseProps {
   content: NutritiveDrainingSupportMapExerciseContent;
   pathId: string;
@@ -22,8 +22,8 @@ interface NutritiveDrainingSupportMapExerciseProps {
 }
 
 interface Relation {
-    name: string;
-    sensation: 'nutritivo' | 'drenante' | 'neutral' | '';
+  name: string;
+  sensation: 'nutritivo' | 'drenante' | 'neutral' | '';
 }
 
 export default function NutritiveDrainingSupportMapExercise({ content, pathId, onComplete }: NutritiveDrainingSupportMapExerciseProps) {
@@ -34,156 +34,176 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
   const [reflection, setReflection] = useState({ approach: '', distance: '' });
   const [isSaved, setIsSaved] = useState(false);
 
+  const namedRelations = relations
+    .map((rel, originalIndex) => ({ rel, originalIndex }))
+    .filter(({ rel }) => rel.name.trim());
+
   const handleRelationChange = <K extends keyof Relation>(index: number, field: K, value: Relation[K]) => {
     const newRelations = [...relations];
     newRelations[index] = { ...newRelations[index], [field]: value };
     setRelations(newRelations);
   };
-  
+
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     const filledRelations = relations.filter(r => r.name.trim() !== '' && r.sensation.trim() !== '');
     if (filledRelations.length === 0) {
-      toast({ title: 'Ejercicio Incompleto', description: 'Completa al menos una relación con su sensación para guardar.', variant: 'destructive' });
+      toast({
+        title: 'Ejercicio Incompleto',
+        description: 'Completa al menos una relacion con su sensacion para guardar.',
+        variant: 'destructive',
+      });
       return;
     }
-    
+
     let notebookContent = `**${content.title}**\n\n`;
     filledRelations.forEach(r => {
-        let sensationLabel = r.sensation.charAt(0).toUpperCase() + r.sensation.slice(1);
-        if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento más tranquilo/a y animado/a.';
-        if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo): Me siento agotado/a o tenso/a.';
-        if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ámbar): Me siento igual que antes.';
-        
-        notebookContent += `**Relación: ${r.name}**\n`;
-        notebookContent += `Pregunta: Sensación habitual después de interactuar | Respuesta: ${sensationLabel}\n\n`;
+      let sensationLabel = r.sensation.charAt(0).toUpperCase() + r.sensation.slice(1);
+      if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento mas tranquilo/a y animado/a.';
+      if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo): Me siento agotado/a o tenso/a.';
+      if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ambar): Me siento igual que antes.';
+
+      notebookContent += `**Relacion: ${r.name}**\n`;
+      notebookContent += `Pregunta: Sensacion habitual despues de interactuar | Respuesta: ${sensationLabel}\n\n`;
     });
-    notebookContent += `--- \n**Reflexión Final**\n\n`;
-    notebookContent += `Pregunta: ¿A quién quieres acercarte más en las próximas semanas? | Respuesta: ${reflection.approach || 'No respondido.'}\n`;
-    notebookContent += `Pregunta: ¿De quién necesitas poner distancia o limitar el contacto? | Respuesta: ${reflection.distance || 'No respondido.'}\n`;
+    notebookContent += `--- \n**Reflexion Final**\n\n`;
+    notebookContent += `Pregunta: A quien quieres acercarte mas en las proximas semanas? | Respuesta: ${reflection.approach || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: De quien necesitas poner distancia o limitar el contacto? | Respuesta: ${reflection.distance || 'No respondido.'}\n`;
 
-
-    addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId: pathId, userId: user?.id });
+    addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado' });
     setIsSaved(true);
     onComplete();
-    setStep(prev => prev + 1); // Move to final screen
+    setStep(prev => prev + 1);
   };
 
   const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+  const prevStep = () => setStep(prev => (prev > 0 ? prev - 1 : 0));
+
+  const goToVisualClassificationStep = () => {
+    const resetForSemaforo: Relation[] = relations.map(r => (r.name.trim() ? { ...r, sensation: '' as const } : r));
+    setRelations(resetForSemaforo);
+    setStep(3);
+  };
 
   const resetExercise = () => {
     setStep(0);
     setRelations(Array(5).fill({ name: '', sensation: '' }));
-    setReflection({ approach: '', distance: ''});
+    setReflection({ approach: '', distance: '' });
     setIsSaved(false);
   };
-  
+
   const renderStep = () => {
     switch (step) {
-      case 0: // Pantalla 1 – Introducción
+      case 0:
         return (
           <div className="p-4 text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Imagina que tu energía emocional es como una mochila. Algunas personas la llenan con ánimo, comprensión y apoyo… y otras, sin darse cuenta, la vacían. Esta técnica te ayudará a dibujar un mapa claro de quiénes son tus verdaderas “personas vitamina” y quiénes podrían estar drenando tu fuerza.</p>
-            <Button onClick={nextStep}>Empezar mi semáforo <ArrowRight className="mr-2 h-4 w-4" /></Button>
+            <p className="text-sm text-muted-foreground">
+              Imagina que tu energia emocional es como una mochila. Algunas personas la llenan con animo, comprension y apoyo... y otras, sin darse cuenta, la vacian. Esta tecnica te ayudara a dibujar un mapa claro de quienes son tus verdaderas "personas vitamina" y quienes podrian estar drenando tu fuerza.
+            </p>
+            <Button onClick={nextStep}>Empezar mi semaforo <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
-      case 1: // Pantalla 2 – Paso 1: Lista inicial
+      case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Lista inicial</h4>
-            <p className="text-sm text-muted-foreground">Escribe los nombres de las personas con las que interactúas de forma frecuente (familia, amistades, trabajo, comunidad).</p>
+            <p className="text-sm text-muted-foreground">Escribe los nombres de las personas con las que interactuas de forma frecuente (familia, amistades, trabajo, comunidad).</p>
             {relations.map((rel, index) => (
-              <Input key={index} value={rel.name} onChange={e => handleRelationChange(index, 'name', e.target.value)} placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, Marta)`}/>
+              <Input
+                key={index}
+                value={rel.name}
+                onChange={e => handleRelationChange(index, 'name', e.target.value)}
+                placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, Marta)`}
+              />
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificar Sensación <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={nextStep}>Siguiente: Clasificar Sensacion <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
-      case 2: // Pantalla 3 – Paso 2: Sensación después de interactuar
+      case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Sensación después de interactuar</h4>
-            <p className="text-sm text-muted-foreground">Para cada nombre, elige la sensación más habitual después de pasar tiempo con esa persona.</p>
-            {relations.filter(r => r.name.trim()).map((rel, index) => (
-              <div key={index} className="p-3 border rounded-md space-y-2 bg-background">
+            <h4 className="font-semibold text-lg">Paso 2: Sensacion despues de interactuar</h4>
+            <p className="text-sm text-muted-foreground">Para cada nombre, elige la sensacion mas habitual despues de pasar tiempo con esa persona.</p>
+            {namedRelations.map(({ rel, originalIndex }) => (
+              <div key={originalIndex} className="p-3 border rounded-md space-y-2 bg-background">
                 <Label className="font-semibold">{rel.name}</Label>
-                <RadioGroup value={rel.sensation} onValueChange={v => handleRelationChange(index, 'sensation', v as any)}>
-                  <div className="flex items-center space-x-2"><RadioGroupItem value="nutritivo" id={`s-${index}-n`} /><Label htmlFor={`s-${index}-n`} className="font-normal">Me siento más tranquilo/a y animado/a</Label></div>
-                  <div className="flex items-center space-x-2"><RadioGroupItem value="neutral" id={`s-${index}-neu`} /><Label htmlFor={`s-${index}-neu`} className="font-normal">Me siento igual que antes</Label></div>
-                  <div className="flex items-center space-x-2"><RadioGroupItem value="drenante" id={`s-${index}-d`} /><Label htmlFor={`s-${index}-d`} className="font-normal">Me siento agotado/a o tenso/a</Label></div>
+                <RadioGroup value={rel.sensation} onValueChange={v => handleRelationChange(originalIndex, 'sensation', v as any)}>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="nutritivo" id={`s-${originalIndex}-n`} /><Label htmlFor={`s-${originalIndex}-n`} className="font-normal">Me siento mas tranquilo/a y animado/a</Label></div>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="neutral" id={`s-${originalIndex}-neu`} /><Label htmlFor={`s-${originalIndex}-neu`} className="font-normal">Me siento igual que antes</Label></div>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="drenante" id={`s-${originalIndex}-d`} /><Label htmlFor={`s-${originalIndex}-d`} className="font-normal">Me siento agotado/a o tenso/a</Label></div>
                 </RadioGroup>
               </div>
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Clasificación Visual <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={goToVisualClassificationStep}>Siguiente: Clasificacion Visual <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
-      case 3: // Pantalla 4 – Paso 3: Clasificación visual
+      case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Clasificación visual</h4>
-            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde), Neutral (ámbar) o Apoyo drenante (rojo), según la sensación que predomina.</p>
-            {relations.filter(r => r.name.trim()).map((rel, index) => (
-              <div key={index} className="flex items-center justify-between p-3 border rounded-md bg-background">
+            <h4 className="font-semibold text-lg">Paso 3: Clasificacion visual</h4>
+            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde), Neutral (ambar) o Apoyo drenante (rojo), segun la sensacion que predomina.</p>
+            {namedRelations.map(({ rel, originalIndex }) => (
+              <div key={originalIndex} className="flex items-center justify-between p-3 border rounded-md bg-background">
                 <Label className="font-semibold">{rel.name}</Label>
                 <RadioGroup
                   value={rel.sensation}
-                  onValueChange={(value) => handleRelationChange(index, 'sensation', value as any)}
+                  onValueChange={value => handleRelationChange(originalIndex, 'sensation', value as any)}
                   className="flex gap-2"
                 >
-                  <Label htmlFor={`s-${index}-nutritivo`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'nutritivo' ? 'bg-green-600 text-white border-green-800' : 'bg-green-200 text-green-800 hover:bg-green-300')}>
+                  <Label htmlFor={`s-${originalIndex}-nutritivo`} className={cn('px-3 py-1 rounded-md cursor-pointer border-2 border-transparent', rel.sensation === 'nutritivo' ? 'bg-green-600 text-white border-green-800' : 'bg-green-200 text-green-800 hover:bg-green-300')}>
                     Verde
                   </Label>
-                  <RadioGroupItem value="nutritivo" id={`s-${index}-nutritivo`} className="sr-only" />
-                  
-                  <Label htmlFor={`s-${index}-neutral`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'neutral' ? 'bg-amber-500 text-white border-amber-700' : 'bg-amber-200 text-amber-800 hover:bg-amber-300')}>
-                    Ámbar
-                  </Label>
-                  <RadioGroupItem value="neutral" id={`s-${index}-neutral`} className="sr-only" />
+                  <RadioGroupItem value="nutritivo" id={`s-${originalIndex}-nutritivo`} className="sr-only" />
 
-                  <Label htmlFor={`s-${index}-drenante`} className={cn("px-3 py-1 rounded-md cursor-pointer border-2 border-transparent", rel.sensation === 'drenante' ? 'bg-red-600 text-white border-red-800' : 'bg-red-200 text-red-800 hover:bg-red-300')}>
+                  <Label htmlFor={`s-${originalIndex}-neutral`} className={cn('px-3 py-1 rounded-md cursor-pointer border-2 border-transparent', rel.sensation === 'neutral' ? 'bg-amber-500 text-white border-amber-700' : 'bg-amber-200 text-amber-800 hover:bg-amber-300')}>
+                    Ambar
+                  </Label>
+                  <RadioGroupItem value="neutral" id={`s-${originalIndex}-neutral`} className="sr-only" />
+
+                  <Label htmlFor={`s-${originalIndex}-drenante`} className={cn('px-3 py-1 rounded-md cursor-pointer border-2 border-transparent', rel.sensation === 'drenante' ? 'bg-red-600 text-white border-red-800' : 'bg-red-200 text-red-800 hover:bg-red-300')}>
                     Rojo
                   </Label>
-                  <RadioGroupItem value="drenante" id={`s-${index}-drenante`} className="sr-only" />
+                  <RadioGroupItem value="drenante" id={`s-${originalIndex}-drenante`} className="sr-only" />
                 </RadioGroup>
               </div>
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Reflexión <ArrowRight className="ml-2 h-4 w-4"/></Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={nextStep}>Siguiente: Reflexion <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
-      case 4: // Pantalla 5 – Paso 4: Reflexión guiada
+      case 4:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 4: Reflexión guiada</h4>
+            <h4 className="font-semibold text-lg">Paso 4: Reflexion guiada</h4>
             <div className="space-y-2">
-              <Label htmlFor="reflection-approach">¿A quién quieres acercarte más en las próximas semanas?</Label>
-              <Textarea id="reflection-approach" value={reflection.approach} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, approach: e.target.value }))} placeholder="Ej: Quiero pasar más tiempo con Ana y mis tíos..." />
+              <Label htmlFor="reflection-approach">A quien quieres acercarte mas en las proximas semanas?</Label>
+              <Textarea id="reflection-approach" value={reflection.approach} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, approach: e.target.value }))} placeholder="Ej: Quiero pasar mas tiempo con Ana y mis tios..." />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="reflection-distance">¿De quién necesitas poner distancia o limitar el contacto?</Label>
-              <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafés con Marta..." />
+              <Label htmlFor="reflection-distance">De quien necesitas poner distancia o limitar el contacto?</Label>
+              <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafes con Marta..." />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar Mapa</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Mapa</Button>
             </div>
           </form>
         );
-      case 5: // Confirmation Screen
+      case 5:
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Mapa Guardado</h4>
-            <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
+            <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapeutico cuando lo necesites.</p>
             <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro mapa</Button>
           </div>
         );
@@ -195,19 +215,21 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        {content.objective && (
+          <CardDescription className="pt-2">
+            {content.objective}
             <div className="mt-4">
-                <audio controls controlsList="nodownload" className="w-full">
-                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3`} type="audio/mp3" />
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2tecnica1.mp3`} type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
             </div>
-        </CardDescription>}
+          </CardDescription>
+        )}
       </CardHeader>
-      <CardContent>
-        {renderStep()}
-      </CardContent>
+      <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }
+

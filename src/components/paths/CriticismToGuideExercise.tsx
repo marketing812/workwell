@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -21,11 +21,17 @@ interface CriticismToGuideExerciseProps {
   onComplete: () => void;
 }
 
+
 const distortionOptions = [
-    { value: 'catastrophism', label: 'Catastrofismo' },
-    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
-    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
-    { value: 'personalization', label: 'Personalización' },
+    { value: 'catastrophism0', label: 'Catastrofismo “Si cometo un error, será un desastre irreparable”  ' },
+    { value: 'catastrophism1', label: 'Pensamiento catastrófico: “Seguro que sale fatal.”  ' },
+    { value: '0', label: 'Todo o nada: “O me va perfecto o es un fracaso.”' },
+    { value: 'mind_reading', label: 'Lectura de mente: “Ya sé lo que van a pensar de mí.”' },
+    { value: 'sesgo', label: 'Sesgo del pasado: “Antes salió mal, así que volverá a pasar.” ' },
+    { value: 'sobregeneralizacion', label: 'Sobregeneralización: “Siempre me pasa lo mismo.”' },
+    { value: 'dichotomous1', label: 'Pensamiento dicotómico: “Nunca me tienen en cuenta.”' },
+    { value: 'rigidez', label: 'Deberías rígidos: “Esto no debería ser así.”' }
+
 ];
 
 export default function CriticismToGuideExercise({ content, pathId, onComplete }: CriticismToGuideExerciseProps) {
@@ -103,15 +109,6 @@ Pregunta: Mi frase reformulada como guía | Respuesta: "${reformulation}"
             </Select>
           </div>
           <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Identifica la distorsión</h4>
-            <Select onValueChange={setDistortion} value={distortion} disabled={isSaved}>
-                <SelectTrigger><SelectValue placeholder="Elige una distorsión..."/></SelectTrigger>
-                <SelectContent>
-                    {distortionOptions.map(opt => <SelectItem key={opt.value} value={opt.label}>{opt.label}</SelectItem>)}
-                </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
             <h4 className="font-semibold text-lg">Reformula en guía</h4>
             <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Ahora transforma tu frase crítica en una frase que mantenga la intención de mejora, pero sin atacarte.<br>Ejemplos: <ul><li>Antes: Nunca hago nada bien. → Después: A veces me equivoco, pero puedo mejorar paso a paso.</li><li>Antes: Tendría que haberlo hecho perfecto. → Después: La próxima vez puedo prepararme mejor y pedir ayuda si la necesito.</li></ul>" }} />
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase reformulada…" />
@@ -133,7 +130,7 @@ Pregunta: Mi frase reformulada como guía | Respuesta: "${reformulation}"
               </div>
           </div>
           {!isSaved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Frase Guía</Button>
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
           ) : (
             <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
               <CheckCircle className="mr-2 h-5 w-5" />
@@ -146,3 +143,4 @@ Pregunta: Mi frase reformulada como guía | Respuesta: "${reformulation}"
     </Card>
   );
 }
+

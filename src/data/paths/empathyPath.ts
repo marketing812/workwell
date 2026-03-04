@@ -10,13 +10,13 @@ export const empathyPath: Path = {
   modules: [
     {
       id: 'empatia_sem1',
-      title: 'Semana 1: ¿Quién Soy en mis Vínculos?',
+      title: 'Semana 1: La base de los vínculos reales: empatía y autenticidad',
       type: 'introduction',
       estimatedTime: '25-30 min',
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que dices que "sí" aunque querías decir "no"?\\n¿O que sales de una conversación con una sensación de incomodidad por no haber expresado algo importante?\\nEsta semana vamos a explorar el verdadero significado de los límites: no como un muro que separa, sino como un puente que te conecta contigo y con los demás desde el respeto. Aprenderás por qué nos cuesta tanto ponerlos, qué emociones aparecen y cuáles son tus patrones más comunes cuando no logras expresarte.\\nVerás que poner un límite no es rechazar a nadie: es incluirte también a ti en la relación.\\nCada vez que te eliges con respeto, estás entrenando tu autoestima.',
+          text: 'En esta primera semana vamos a sentar las bases de las relaciones que de verdad nutren: la empatía real y la honestidad emocional.\\n\\nNo se trata de ser perfecto o perfecta, ni de decirlo todo sin filtro, sino de aprender a estar presente sin disfraces y a no dejarte fuera de lo que sientes.\\n\\nVas a descubrir que la empatía no es imaginarte en el lugar del otro, sino intentar comprender su mundo sin juicios ni correcciones. Y que la autenticidad no es imponerte, sino expresarte con respeto y verdad.\\n\\nDurante esta semana empezarás a observar en qué relaciones puedes ser tú con libertad y en cuáles te pones una máscara para protegerte o agradar. Entrenarás a escucharte antes de responder y a comunicarte desde un lugar más conectado contigo.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -80,7 +80,7 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3` },
         { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3` },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/REFLEXION.mp3`, prompts: ['<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/REFLEXION.mp3`, prompts: ['<p>Tómate unos minutos para responder con sinceridad. No hay respuestas correctas. Solo tu verdad, tal como se presenta hoy.</p>','<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
         { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3` },
         { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.','La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.','Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.','La autenticidad florece cuando hay espacio seguro creado por la empatía.','Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.','Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.','Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.','La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
     },
@@ -97,7 +97,7 @@ export const empathyPath: Path = {
             '<p>Te invito a detenerte un momento para mirar dentro de ti.  Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente.  </p>',
             '<ul><li>¿Cuándo fue la última vez que alguien me escuchó de verdad, sin juicio ni prisa?</li><li>¿Qué hizo esa persona para que yo me sintiera tan visto/a y comprendido/a?</li><li>¿Qué impacto emocional tiene en mis vínculos cuando interrumpo, comparo o minimizo lo que el otro siente?</li><li>¿Qué me gustaría empezar a ofrecer más en mis relaciones: más silencio, más validación, más presencia...?</li><li>¿Qué me llevo esta semana como recordatorio para ser mejor compañía, para los demás y para mí?</li></ul>'
           ] 
-        }, { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/RESUMEN.mp3` }, { 'type':'list', 'items':['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] }, { 'type':'quote', 'text':'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }]
+        }, { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana2/RESUMEN.mp3` }, { 'type':'list', 'items':['Escuchar de verdad no es lo mismo que oír: requiere presencia, pausa y conexión emocional.','La mayoría de las veces, respondemos para corregir o tranquilizar, no para comprender.','Frases como “No es para tanto” o “Mira el lado bueno” pueden invalidar profundamente al otro.','Validar no significa justificar. Es decir: “Lo que sientes tiene sentido desde tu vivencia.”','Escuchar con el corazón también implica escucharte a ti mismo/a cuando sientes que te saturas o no puedes sostener a alguien más.','La empatía empieza en el silencio y se cultiva en la atención y la práctica.'] }, { 'type':'quote', 'text':'Escuchar de verdad es una forma profunda de amar sin condiciones. A veces, basta con quedarte al lado del otro… sin apagar lo que siente.' }]
     },
     {
       id: 'empatia_sem3',
@@ -118,7 +118,19 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La empatía real es una habilidad emocional compleja, que se entrena. \n\nImplica tres cosas: \n\nPrimero, percibir la emoción del otro sin juicio. \n\nDespués, comprenderla desde su historia, no desde la tuya. \n\nY, por último, acompañar con presencia, sin intentar corregir ni resolver. ',
+              text: 'La empatía real es una habilidad emocional compleja que se entrena.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Implica tres cosas:',
+            },
+            {
+              type: 'list',
+              items: [
+                'Percibir la emoción del otro sin juicio.',
+                'Comprenderla desde su historia, no desde la tuya.',
+                'Acompañar con presencia, sin intentar corregir ni resolver.',
+              ],
             },
           ],
         },
@@ -129,7 +141,11 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La fusión emocional ocurre cuando el dolor del otro te inunda por completo. \n\nDejas de escuchar tus propias emociones y actúas desde la culpa, la urgencia o el miedo. ',
+              text: 'La fusión emocional ocurre cuando el dolor del otro te inunda por completo.',
+            },
+            {
+              type: 'paragraph',
+              text: 'Dejas de escuchar tus propias emociones y actúas desde la culpa, la urgencia o el miedo.',
             },
           ],
         },
@@ -140,7 +156,15 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Resonancia afectiva: es una reacción emocional automática e instintiva ante lo que siente otra persona. El cuerpo responde sin reflexión ni distancia. \n\nEmpatía: es la capacidad consciente y regulada de comprender y acompañar la emoción del otro, sin perderse en ella. \n\nFusión emocional: es la pérdida de límites emocionales donde se carga con lo que no te corresponde, confundiendo cuidar con hacerse responsable del malestar ajeno. ',
+              text: 'No es lo mismo resonar, empatizar y fusionarte:',
+            },
+            {
+              type: 'list',
+              items: [
+                '<strong>Resonancia afectiva:</strong> reacción emocional automática e instintiva ante lo que siente otra persona. El cuerpo responde sin reflexión ni distancia.',
+                '<strong>Empatía:</strong> capacidad consciente y regulada de comprender y acompañar la emoción del otro, sin perderse en ella.',
+                '<strong>Fusión emocional:</strong> pérdida de límites emocionales donde se carga con lo que no te corresponde, confundiendo cuidar con hacerse responsable del malestar ajeno.',
+              ],
             },
           ],
         },
@@ -151,7 +175,11 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Nos fundimos porque muchas veces aprendimos a hacerlo así.  \nDe pequeños, nos premiaron por “ser buenos”, “no molestar”, o “hacer feliz a los demás”.  Y sin darnos cuenta, asociamos el amor con el sacrificio.  ',
+              text: 'Nos fundimos porque muchas veces aprendimos a hacerlo así.',
+            },
+            {
+              type: 'paragraph',
+              text: 'De pequeños, nos premiaron por “ser buenos”, “no molestar” o “hacer feliz a los demás”. Sin darnos cuenta, asociamos el amor con el sacrificio.',
             },
           ],
         },
@@ -162,7 +190,15 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'La empatía sana es acompañar sin absorber. Es sostener con una presencia clara, firme y compasiva.  \n\nNo necesitas tener todas las respuestas. No necesitas apagar tu luz para que el otro brille.  \n\nLa empatía real respeta al otro… y también te respeta a ti.  ',
+              text: 'La empatía sana es acompañar sin absorber. Es sostener con una presencia clara, firme y compasiva.',
+            },
+            {
+              type: 'list',
+              items: [
+                'No necesitas tener todas las respuestas.',
+                'No necesitas apagar tu luz para que el otro brille.',
+                'La empatía real respeta al otro y también te respeta a ti.',
+              ],
             },
           ],
         },
@@ -181,7 +217,18 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Imagina que tu energía emocional es como una llama encendida.  \nSi te expones al viento todo el tiempo, se apaga.  \nSi la encierras, se asfixia.  \n\nPero si la proteges con ternura, puede seguir ardiendo y también alumbrar a los demás.',
+              text: 'Imagina que tu energía emocional es como una llama encendida:',
+            },
+            {
+              type: 'list',
+              items: [
+                'Si te expones al viento todo el tiempo, se apaga.',
+                'Si la encierras, se asfixia.',
+              ],
+            },
+            {
+              type: 'paragraph',
+              text: 'Si la proteges con ternura, puede seguir ardiendo y también alumbrar a los demás.',
             },
           ],
         },
@@ -227,9 +274,12 @@ export const empathyPath: Path = {
           items: [
             'La fusión emocional no es empatía: es perderte mientras intentas cuidar.',
             'La empatía real es estar presente sin desaparecer, comprender sin absorber.',
+            'La resonancia afectiva es automática, la empatía es consciente, la fusión es sobrecarga.',
             'Cuidar desde la culpa o el miedo agota y genera autoabandono.',
             'Puedes entender al otro sin compartir su opinión ni justificar su dolor.',
+            'La empatía entrenada respeta al otro… y también te respeta a ti.',
             'Técnicas como el escudo empático o el semáforo emocional te ayudan a proteger tu energía sin dejar de vincularte.',
+            'No eres egoísta por decir “ahora no puedo”. También tú mereces espacio y contención emocional.',
           ],
         },
         { type: 'quote', text: 'Puedes estar con el otro sin dejar de estar contigo. La empatía que no te borra… es la que más alumbra.' },
@@ -249,12 +299,12 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'No necesitas muchas personas. Necesitas relaciones que te sostengan de verdad.',
+          title: 'No necesitas muchas personas, necesitas relaciones que te sostengan',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO1.mp3`,
           content: [
             {
               type: 'paragraph',
-              text: 'A veces creemos que estar rodeados de muchas personas es señal de bienestar. Que cuantos más vínculos, más seguridad, más apoyo, más amor.\nPero con el tiempo —y sobre todo cuando pasamos por momentos difíciles— nos damos cuenta de algo muy diferente:\nLo que de verdad alivia, sostiene y transforma no es la cantidad, sino la calidad del vínculo.\n\nUna sola relación donde puedas respirar, decir cómo te sientes sin miedo, ser tú sin tener que defenderte o explicar todo…\n…vale más que diez relaciones donde tienes que estar vigilando qué partes de ti mostrar y cuáles esconder.\n\nLas relaciones que nutren no son aquellas donde todo fluye sin conflicto.\nSon aquellas donde puedes existir tal como eres.',
+              text: 'A veces creemos que estar rodeados de mucha gente es señal de bienestar.\n\nPero lo que realmente alivia y transforma no es la cantidad, sino la calidad. Una sola relación donde puedas respirar y ser tú vale más que diez donde tengas que medir cada palabra.',
             },
           ],
         },
@@ -265,7 +315,7 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Cuando aprendemos a poner límites o a decir lo que realmente sentimos, no todo se vuelve más fácil al instante.\nDe hecho, al principio puede doler.\nPuedes sentirte incómoda/o, culpable o insegura/o.\nY eso es completamente normal. Porque estás empezando a mostrarte sin máscaras en relaciones donde antes te adaptabas para no molestar.\n\nPero ese paso es necesario.\nPorque una relación honesta no es perfecta:\nes aquella donde puede haber incomodidad, desacuerdo o frustración…\n…y aun así el vínculo se sostiene con respeto mutuo.\n\nPoner límites claros también es una forma de cuidar lo que construyes con el otro.',
+              text: 'Al principio, poner límites o decir lo que sientes puede generar culpa o incomodidad. Pero ese malestar no es señal de error: es señal de crecimiento.\n\nLas relaciones honestas no son las que evitan el conflicto, sino las que pueden atravesarlo con respeto.',
             },
           ],
         },
@@ -276,18 +326,18 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'En relaciones realmente nutritivas no hace falta que te muestres fuerte todo el tiempo.\nTampoco necesitas fingir que todo está bien, o callarte cuando algo te duele.\nPorque la confianza no se fortalece con silencios, sino con autenticidad.\n\nHablar claro, desde tu vivencia, es un acto de conexión.\nY aquí es importante recordar una diferencia fundamental:\nno es lo mismo criticar que comunicar.\n\nNo es igual decir:\n“Eres muy egoísta, nunca piensas en mí”\n…que decir:\n“Cuando tomas decisiones sin contar conmigo, siento que mi opinión no se tiene en cuenta. Y eso me duele.”\n\nUna comunicación honesta no dramatiza ni ataca.\nNombra lo que ocurre desde lo vivido, desde el cuerpo, desde el vínculo que se quiere cuidar.',
+              text: 'Las relaciones nutritivas no te piden que finjas estar bien todo el tiempo. La confianza se construye con autenticidad, no con silencios.',
             },
           ],
         },
         {
           type: 'collapsible',
-          title: 'La seguridad relacional no aparece sola: se construye paso a paso',
+          title: 'La seguridad relacional se construye paso a paso',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO4.mp3`,
           content: [
             {
               type: 'paragraph',
-              text: 'Es fácil pensar que los vínculos seguros nacen de forma natural, como si la afinidad, el tiempo o la buena voluntad bastaran.\nPero la realidad es otra:\nlas relaciones sanas se construyen con conciencia, palabra y coherencia.\n\nEso implica cuidar cómo te expresas, cómo escuchas, cómo corriges y cómo agradeces.\nImplica dejar de asumir que el otro sabe lo que te pasa, y empezar a nombrarlo con respeto.\nImplica no solo señalar lo que falta, sino también reconocer lo que sí hay.\n\nA veces, un “gracias por estar” o un “me hizo bien que me escucharas” fortalece más un vínculo que horas de discusión.',
+              text: 'Las relaciones seguras se construyen con conciencia, palabra y coherencia. Cada gesto importa: cómo expresas, cómo agradeces, cómo corriges. Y también cómo reconoces lo que sí funciona.',
             },
           ],
         },
@@ -298,7 +348,7 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Puede que tengas muchas personas a tu alrededor, pero si no puedes ser tú en esas relaciones… ¿de qué sirven?\nUna relación que te respeta, que te cuida, que no necesita que finjas…\n…esa relación vale más que muchas que te exigen esfuerzo constante para mantenerte en pie.\n\nY no es que todo tenga que ser perfecto.\nLo importante es que puedas sentirte libre para estar como estés:\nconfusa/o, alegre, cansada/o, vulnerable.\nPorque si necesitas ocultarte para mantener un vínculo, ese vínculo ya te está pidiendo demasiado.',
+              text: 'Puede que tengas muchas personas a tu alrededor, pero si no puedes ser tú en esas relaciones… ¿de qué sirven?\n\nPorque si necesitas ocultarte para mantener un vínculo, ese vínculo ya te está pidiendo demasiado.',
             },
           ],
         },
@@ -309,7 +359,7 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Una pista importante:\ncuanto más sólida y segura es una relación, menos culpa sientes al poner límites.\nPorque sabes que ese vínculo no depende de que digas siempre “sí”, ni de que estés disponible todo el tiempo.\nDepende de la confianza que se han ido dando… incluso cuando las decisiones no son cómodas.\n\nEn una relación segura, tu “no” no destruye. Fortalece.\n\nY cuanto más practiques poner límites con respeto, más cerca estarás de crear relaciones que te incluyan, no que te exijan borrarte.',
+              text: 'Una relación sana no se basa en disponibilidad constante, sino en la certeza de que ambas partes se respetan incluso cuando no están de acuerdo.\n\nCada límite bien puesto protege el espacio donde ambos pueden seguir siendo quienes son.',
             },
           ],
         },
@@ -320,7 +370,15 @@ export const empathyPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'A veces, después de poner un límite o decir lo que sientes, aparece un malestar que no esperabas:\ndudas, tristeza, miedo a haber hecho daño, ganas de volver atrás.\nEs normal. Porque estás saliendo de patrones donde cuidar al otro era más fácil que cuidarte a ti.\n\nPero justo ahí es donde necesitas practicar algo esencial:\nautocompasión.\n\nDecirte internamente:\n\n“No necesito ser perfecta/o para ser querida/o.”\n“Poner un límite no significa dejar de amar.”\n“Este malestar es parte del cambio, no una señal de error.”\n\nApóyate en las relaciones donde puedes respirar.\nDonde no necesitas justificarte.\nDonde ser tú no es una amenaza, sino una bienvenida.',
+              text: 'Después de poner un límite, puede aparecer la duda, la tristeza o el miedo a haber hecho daño. Ahí es cuando más necesitas tu propia compasión.\n\nRecuérdate:',
+            },
+            {
+              type: 'list',
+              items: [
+                '“No tengo que ser perfecta para merecer amor.”',
+                '“Poner un límite no es dejar de querer.”',
+                '“Este malestar es parte del cambio.”',
+              ],
             },
           ],
         },
@@ -344,7 +402,8 @@ export const empathyPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
-            '<p>Esta semana hemos puesto el foco en algo que a veces damos por sentado: las relaciones que nos sostienen. Cuidar un vínculo no es un acto aislado, es una decisión repetida que requiere atención, autenticidad y reciprocidad. Ahora es momento de parar un instante y mirar lo que descubriste sobre tu forma de construir, cuidar y nutrir tu red de apoyo.</p><ul><li>¿Qué descubrí esta semana sobre la manera en que cuido mis relaciones?</li><li>¿En qué momentos sentí que estaba presente de verdad para otra persona?</li><li>¿Qué gestos de cuidado recibí que me hicieron sentir bien?</li><li>¿Hay algún vínculo que necesite reforzar… o quizás dejar en pausa para cuidarme mejor?</li><li>¿Qué he aprendido sobre el equilibrio entre dar y recibir?</li></ul>',
+            '<p>Responde con honestidad, sin juicio. Estas preguntas no buscan respuestas perfectas, sino verdaderas.</p>',
+            '<ul><li>¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?</li><li>¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?</li><li>¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?</li><li>¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -356,16 +415,16 @@ export const empathyPath: Path = {
         {
           type: 'list',
           items: [
-            'Las relaciones que nos cuidan no son casualidad: se construyen y se alimentan con gestos conscientes.',
-            'Estar para otros no implica perderte: el autocuidado es la base del cuidado mutuo.',
-            'El “fitness relacional” se entrena con actos de presencia, escucha y apoyo repetidos en el tiempo.',
-            'La reciprocidad es el pegamento de las relaciones sanas.',
-            'Elegir conscientemente dónde invertir energía fortalece tu red y tu bienestar emocional.',
+            'Las relaciones más nutritivas no son perfectas, sino honestas y coherentes.',
+            'Poner límites con firmeza también es una forma de cuidar los vínculos reales.',
+            'Una relación segura se basa en respeto mutuo, comunicación clara y presencia emocional.',
+            'Es válido elegir con quién te relacionas… y también cómo eliges estar tú en ese vínculo.',
+            'Construir desde el amor propio no excluye a los demás: los incluye de forma más sana.',
           ],
         },
         {
           type: 'quote',
-          text: 'Las relaciones que te nutren se eligen, se cuidan y se agradecen. Son el puente que une tu fuerza con la fuerza de los demás.',
+          text: 'Cuando te relacionas desde el respeto y la autenticidad, atraes vínculos que merecen quedarse.',
         },
       ],
     },
@@ -403,7 +462,7 @@ export const empathyPath: Path = {
         },
         {
           type: 'quote',
-          text: 'Poner un límite no me aleja. Me acerca a lo que soy. Y cada vez que lo hago con respeto, me convierto en un lugar seguro para mí mismo/a y para los demás.'
+          text: 'Ser tú en los vínculos no es un riesgo. Es el único camino hacia relaciones que de verdad te hagan bien.'
         }
       ]
     }

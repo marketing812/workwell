@@ -110,8 +110,8 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
   const handleDetourToggle = (id: string, checked: boolean) => {
     if (checked && !detours[id] && selectedDetours.length >= 3) {
       toast({
-        title: "Maximo 3 desvios",
-        description: "Elige hasta 3 desvios para trabajar hoy.",
+        title: "Maximo 3 desvíos",
+        description: "Elige hasta 3 desvíos para trabajar hoy.",
         variant: "destructive",
       });
       return;
@@ -227,13 +227,13 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     notebookContent += `Pregunta: Escribe tu gesto de reconexion | Respuesta: ${reconnectionGestures}\n`;
 
     addNotebookEntry({
-      title: "Inventario de Desvios",
+      title: "Inventario de Desvíos",
       content: notebookContent,
       pathId,
       userId: user?.id,
     });
 
-    toast({ title: "Ejercicio guardado", description: "Tu inventario de desvios ha sido guardado." });
+    toast({ title: "Ejercicio guardado", description: "Tu inventario de desvíos ha sido guardado." });
     onComplete();
     nextStep();
   };
@@ -258,7 +258,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">
-              Antes de mirar tus propios desvios, observa un ejemplo realista. No es para copiarlo, sino para
+              Antes de mirar tus propios desvíos, observa un ejemplo realista. No es para copiarlo, sino para
               inspirarte en como se identifica un desvio, el valor que toca y la reflexion que ayuda a reconectar.
             </p>
             <div className="p-4 border rounded-md bg-background/50 text-left text-sm">
@@ -277,10 +277,10 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep}>
-                Ir a mis desvios
+                Ir a mis desvíos
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -290,13 +290,13 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 1: Tus desvios mas frecuentes</h4>
+            <h4 className="font-semibold text-lg">Paso 1: Tus desvíos mas frecuentes</h4>
             <p className="text-sm text-muted-foreground">
               Ahora haremos inventario. El objetivo no es juzgarte, sino poner nombre a lo que te aparta de tus
               valores en el dia a dia.
             </p>
             <p className="text-sm text-muted-foreground">
-              Marca o escribe los desvios que reconoces en tu vida actual. Elige maximo 3 para trabajar hoy.
+              Marca o escribe los desvíos que reconoces en tu vida actual. Elige maximo 3 para trabajar hoy.
             </p>
             <div className="space-y-2">
               {frequentDetours.map((detour) => (
@@ -332,7 +332,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button
                 onClick={() => {
@@ -360,7 +360,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <h4 className="font-semibold text-lg">Paso 2: Como afectan a tu bienestar?</h4>
             <p className="text-sm text-muted-foreground">
               Vamos a profundizar en un desvio importante. Aqui descubriras que valor personal dejas de lado y que
-              parte de ti busca proteccion o alivio en ese desvio. Puedes repetir este paso con mas desvios.
+              parte de ti busca proteccion o alivio en ese desvio. Puedes repetir este paso con mas desvíos.
             </p>
 
             {selectedDetours.map((detour, idx) => (
@@ -497,7 +497,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex flex-wrap gap-2 justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button type="button" variant="outline" onClick={handleSaveDetourStep}>
                 Guardar mi desvio
@@ -539,7 +539,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!commitment.trim()}>
                 Guardar compromiso
@@ -586,7 +586,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
@@ -602,13 +602,13 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Inventario guardado</h4>
             <p className="text-muted-foreground">
-              Tu inventario de desvios ha sido guardado. Puedes consultarlo en tu Cuaderno Terapeutico cuando lo
+              Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapeutico cuando lo
               necesites.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={() => setStep(0)} variant="outline">
                 Hacer otro registro
@@ -647,3 +647,4 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+

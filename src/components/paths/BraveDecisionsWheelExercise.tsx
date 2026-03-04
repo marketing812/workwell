@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -199,7 +199,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             <Textarea id="final-choice" value={finalChoice} onChange={e => setFinalChoice(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi elección</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -239,3 +239,4 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -271,7 +271,7 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
 
           {!isSaved ? (
              <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Registro
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
             </Button>
           ) : (
             <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -279,22 +279,7 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
                     <CheckCircle className="mr-2 h-5 w-5" />
                     <p className="font-medium">Tu registro ha sido guardado.</p>
                 </div>
-                <Dialog open={showCompass} onOpenChange={setShowCompass}>
-                  <DialogTrigger asChild>
-                    <Button variant="link" className="text-green-800 dark:text-green-200 mt-2">
-                        <Compass className="mr-2 h-4 w-4" /> Ver mi Brújula de Estrés
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Brújula de Estrés</DialogTitle>
-                      <DialogDescription>
-                        Esta brújula visual muestra si la principal fuente de tu estrés fue interna, externa o una combinación de ambas.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <StressCompass sourceType={triggerSource} />
-                  </DialogContent>
-                </Dialog>
+                
             </div>
           )}
         </form>
@@ -304,3 +289,4 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
 }
 
     
+

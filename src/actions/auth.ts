@@ -30,7 +30,7 @@ export async function getUserProfile(userId: string): Promise<User | null> {
     } else {
       app = getApp();
     }
-    const db = getFirestore(app);
+    const db = getFirestore(app, "defaultue");
 
     const userDocRef = doc(db, "users", userId);
     const userDoc = await getDoc(userDocRef);

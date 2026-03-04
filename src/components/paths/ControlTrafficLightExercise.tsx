@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -169,15 +169,15 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
                 <div className="grid md:grid-cols-3 gap-4">
                     <div className="border-2 border-green-500 rounded-lg p-3 bg-green-50/50 dark:bg-green-900/20">
                         <h4 className="font-semibold text-green-700 dark:text-green-300 flex items-center gap-2 mb-2">🟢 Depende de mí</h4>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{greenZone || '...'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{greenZone || '...'}</pre>
                     </div>
                     <div className="border-2 border-amber-500 rounded-lg p-3 bg-amber-50/50 dark:bg-amber-900/20">
                         <h4 className="font-semibold text-amber-700 dark:text-amber-300 flex items-center gap-2 mb-2">🟠 Puedo influir</h4>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{amberZone || '...'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{amberZone || '...'}</pre>
                     </div>
                      <div className="border-2 border-red-500 rounded-lg p-3 bg-red-50/50 dark:bg-red-900/20">
                         <h4 className="font-semibold text-red-700 dark:text-red-300 flex items-center gap-2 mb-2">🔴 No depende de mí</h4>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{redZone || '...'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{redZone || '...'}</pre>
                     </div>
                 </div>
                  <p className="text-center text-muted-foreground italic text-sm pt-4">
@@ -186,7 +186,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit">
-                        <Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno
+                        <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                     </Button>
                 </div>
             </form>
@@ -206,3 +206,4 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
     </Card>
   );
 }
+

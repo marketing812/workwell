@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -187,7 +187,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                  </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4"/>Guardar mapa en el cuaderno</Button>
+                    <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>
             </form>
         );
@@ -227,3 +227,4 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
     </Card>
   );
 }
+

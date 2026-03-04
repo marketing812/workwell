@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -117,7 +117,9 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
         case 0:
             return (
                 <div className="text-center p-4">
-                    <p className="mb-4">Planear con realismo es lo que necesitamos para avanzar. Crea tu microplan: una frase corta que una lo cotidiano con lo que quieres empezar.</p>
+                    <p className="mb-3">A veces, planear con realismo es lo que necesitamos para avanzar.</p>
+                    <p className="mb-3">En este ejercicio vas a crear tu microplan de acción personalizado: una frase corta que una lo cotidiano con lo que quieres empezar. No es una exigencia, es una brújula.</p>
+                    <p className="mb-4">Cuando hay claridad, es más fácil comenzar.</p>
                     <Button onClick={() => setStep(1)}>Crear mi frase de acción <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             );
@@ -174,10 +176,10 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                             <li>“Cuando llegue a casa, voy a abrir el documento del proyecto.”</li>
                         </ul>
                     </div>
-                    <p className="text-xs italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites.</p>
-                    <div className="flex flex-col sm:flex-row gap-2 mt-4">
-                        <Button onClick={() => setStep(1)} variant="outline" className="w-full">Volver a editar</Button>
-                        <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
+                    <p className="text-sm italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites. Lo importante es empezar.</p>
+                    <div className="flex justify-between items-center gap-2 mt-4">
+                        <Button onClick={() => setStep(1)} variant="outline">Volver a editar</Button>
+                        <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                     </div>
                 </div>
             );
@@ -188,8 +190,8 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                     <h4 className="font-bold text-lg">Ya no dependes de tus ganas del momento.</h4>
                     <p>Ahora tienes un plan. Y eso lo cambia todo.</p>
                     <blockquote className="italic border-l-4 border-primary pl-4 text-left">“La acción nace del compromiso, no de la inspiración. Hoy te has comprometido contigo.”</blockquote>
-                    <div className="flex flex-col sm:flex-row gap-2 mt-4">
-                        <Button onClick={nextStep} className="w-full">Ir a la reflexión final</Button>
+                    <div className="flex justify-end mt-4">
+                        <Button onClick={nextStep}>Ir a la reflexión final</Button>
                     </div>
                 </div>
             );
@@ -217,7 +219,7 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                     <div className="flex flex-col sm:flex-row gap-2 mt-4">
                         {!isReflectionSaved ? (
                              <Button type="submit" className="w-full">
-                                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
+                                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                             </Button>
                         ) : (
                              <div className="w-full flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -255,7 +257,6 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                 {content.objective}
             </CardDescription>
         )}
-        {content.duration && <p className="text-sm pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
         {renderStep()}
@@ -263,3 +264,4 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
     </Card>
   );
 }
+

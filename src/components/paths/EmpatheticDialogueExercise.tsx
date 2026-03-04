@@ -213,3 +213,4 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
     </Card>
   );
 }
+

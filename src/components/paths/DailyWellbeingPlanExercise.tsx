@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -81,9 +81,9 @@ const HabitStep = ({ stepTitle, description, options, selected, setSelected, oth
                 </RadioGroup>
             </div>
             {selected === 'Otro' && <Textarea value={other} onChange={e => setOther(e.target.value)} placeholder="Describe tu hábito personalizado..." className="ml-6" />}
-            <div className="flex justify-between w-full mt-4">
+            <div className={cn("flex w-full mt-4", onPrev ? "justify-between" : "justify-end")}>
                 {onPrev && <Button variant="outline" onClick={onPrev} type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>}
-                <Button onClick={onNext} className={cn(!onPrev && "w-full")} disabled={!selected}>Continuar <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                <Button onClick={onNext} disabled={!selected}>Continuar <ArrowRight className="mr-2 h-4 w-4"/></Button>
             </div>
         </div>
     );
@@ -288,10 +288,12 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">Si un día no puedes hacerlos todos, haz al menos el primero: será suficiente para recordarte que tú decides cómo empezar.</p>
             <p className="text-xs italic text-muted-foreground pt-2">Y ahora, con tu mañana amable lista y tus tres microhábitos definidos, tu bienestar diario tiene un punto de partida y un plan de continuidad.</p>
-            <Button onClick={handleSave} className="w-full">
-                Guardar mi cuaderno terapéutico
-            </Button>
-             <Button onClick={prevStep} variant="link" className="w-full">Atrás</Button>
+            <div className="flex justify-between w-full mt-2">
+                <Button onClick={prevStep} variant="link" className="px-0">Atrás</Button>
+                <Button onClick={handleSave}>
+                    Guardar en el cuaderno terapéutico
+                </Button>
+            </div>
         </div>
       );
       case 7:

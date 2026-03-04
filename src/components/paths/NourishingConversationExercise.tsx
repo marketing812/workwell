@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -156,7 +156,7 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
             {!isSaved ? (
               <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Registro</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               </div>
             ) : (
               <div className="flex items-center justify-center p-3 mt-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -175,7 +175,19 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}</CardDescription>}
+        {content.objective && (
+          <CardDescription className="pt-2">
+            {content.objective}
+            {content.audioUrl && (
+              <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}
@@ -183,3 +195,4 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
     </Card>
   );
 }
+

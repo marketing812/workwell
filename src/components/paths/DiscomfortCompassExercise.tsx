@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -276,7 +276,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={handleSave} className="w-auto" disabled={isSaved}>
                     {isSaved ? <CheckCircle className="mr-2 h-4 w-4"/> : <Save className="mr-2 h-4 w-4" />}
-                    Guardar mi Brújula
+                    Guardar en el cuaderno terapéutico
                   </Button>
                 </div>
             </div>
@@ -315,3 +315,4 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
     </Card>
   );
 }
+

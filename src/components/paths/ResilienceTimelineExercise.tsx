@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -180,7 +180,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
                 <Button onClick={handleSave} disabled={isSaved}>
                     <Save className="mr-2 h-4 w-4" />
-                    {isSaved ? 'Guardado' : 'Guardar en mi Cuaderno'}
+                    {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
                 </Button>
             </div>
           </div>
@@ -221,3 +221,4 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
     </Card>
   );
 }
+

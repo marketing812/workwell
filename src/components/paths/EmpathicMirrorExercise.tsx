@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -272,3 +272,4 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
     </Card>
   );
 }
+

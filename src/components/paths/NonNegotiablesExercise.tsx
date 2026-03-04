@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -226,7 +226,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 </div>
                  <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en mi Cuaderno</Button>
+                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
         );
@@ -265,3 +265,4 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
     </Card>
   );
 }
+

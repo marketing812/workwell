@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState } from "react";
@@ -13,20 +13,20 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc } from "firebase/firestore";
-import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
-import { sendLegacyData } from "@/data/userUtils";
-
-const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Correo electrónico inválido."),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres."),
+  password: z.string()
+    .min(8, "La contraseña debe tener al menos 8 caracteres.")
+    .regex(/[A-Z]/, "La contraseña debe incluir al menos una letra mayúscula.")
+    .regex(/[a-z]/, "La contraseña debe incluir al menos una letra minúscula.")
+    .regex(/[0-9]/, "La contraseña debe incluir al menos un número.")
+    .regex(/[^A-Za-z0-9]/, "La contraseña debe incluir al menos un símbolo (por ejemplo: *, $, %, !)."),
   ageRange: z.string().optional(),
   gender: z.string().optional(),
   token: z.string().optional(), // New field for department code
@@ -104,42 +104,18 @@ export function RegisterForm() {
         validationResult.data.password
       );
       const firebaseUser = userCredential.user;
+      auth.languageCode = "es";
+      await sendEmailVerification(firebaseUser);
 
-      const { name, email, ageRange, gender, initialEmotionalState, token } = validationResult.data;
-      const userProfileData = {
-        id: firebaseUser.uid,
-        name,
-        email,
-        ageRange: ageRange || null,
-        gender: gender || null,
-        token: token || null,
-        initialEmotionalState: initialEmotionalState || null,
-        createdAt: new Date().toISOString(),
-      };
-      
-      const userDocRef = doc(db, "users", firebaseUser.uid);
-      setDocumentNonBlocking(userDocRef, userProfileData, { merge: false });
-
-      // Prepare data for the legacy platform
-      const legacyPayload = {
-        id: firebaseUser.uid,
-        department_code: userProfileData.token, // This is the department code from the form
-        // Other profile data can be sent here, excluding name and email as requested
-        ageRange: userProfileData.ageRange,
-        gender: userProfileData.gender,
-        initialEmotionalState: userProfileData.initialEmotionalState,
-        createdAt: userProfileData.createdAt,
-      };
-
-      // Send data to legacy URL and store debug URL
-      const { debugUrl } = await sendLegacyData(legacyPayload, 'usuario');
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem(DEBUG_REGISTER_FETCH_URL_KEY, debugUrl);
+      try {
+        await signOut(auth);
+      } catch (signOutError) {
+        console.warn("No se pudo cerrar sesi\u00f3n tras registro, redirigiendo igualmente a login.", signOutError);
       }
 
       toast({
-        title: t.registrationSuccessTitle,
-        description: t.registrationSuccessLoginPrompt,
+        title: "Verifica tu correo",
+        description: "Te hemos enviado un email de verificación. Confírmalo antes de iniciar sesión.",
       });
       router.push("/login");
 
@@ -202,12 +178,17 @@ export function RegisterForm() {
           <div>
             <Label htmlFor="password">{t.password}</Label>
             <Input id="password" name="password" type="password" required value={formData.password} onChange={handleInputChange} />
+            <p className="text-xs text-muted-foreground mt-1">
+              Usa mínimo 8 caracteres con mayúscula, minúscula, número y símbolo.
+            </p>
             {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
           </div>
           <div>
             <Label htmlFor="token">Código de Departamento (opcional)</Label>
             <Input id="token" name="token" value={formData.token || ''} onChange={handleInputChange} />
-            <p className="text-xs text-muted-foreground mt-1">Si indicas un dato válido en el campo "Código de Departamento" estarás a punto de unirte al entorno corporativo de tu organización. Esto permitirá que tu cuenta quede asociada a dicha organización.</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Si indicas un dato válido en el campo "Código de Departamento" estarás a punto de unirte al entorno corporativo de tu organización. Esto permitirá que tu cuenta quede asociada a dicha organización.
+            </p>
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
           <div>
@@ -314,3 +295,5 @@ export function RegisterForm() {
 }
 
     
+
+

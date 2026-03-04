@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -22,10 +22,15 @@ interface BlockingThoughtsExerciseProps {
 }
 
 const distortionOptions = [
-    { value: 'catastrophism', label: 'Catastrofismo' },
-    { value: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)' },
-    { value: 'mind_reading', label: 'Adivinación del pensamiento o futuro' },
-    { value: 'personalization', label: 'Personalización' },
+    { value: 'catastrophism0', label: 'Catastrofismo “Si cometo un error, será un desastre irreparable”  ' },
+    { value: 'catastrophism1', label: 'Pensamiento catastrófico: “Seguro que sale fatal.”  ' },
+    { value: '0', label: 'Todo o nada: “O me va perfecto o es un fracaso.”' },
+    { value: 'mind_reading', label: 'Lectura de mente: “Ya sé lo que van a pensar de mí.”' },
+    { value: 'sesgo', label: 'Sesgo del pasado: “Antes salió mal, así que volverá a pasar.” ' },
+    { value: 'sobregeneralizacion', label: 'Sobregeneralización: “Siempre me pasa lo mismo.”' },
+    { value: 'dichotomous1', label: 'Pensamiento dicotómico: “Nunca me tienen en cuenta.”' },
+    { value: 'rigidez', label: 'Deberías rígidos: “Esto no debería ser así.”' }
+
 ];
 
 export default function BlockingThoughtsExercise({ content, pathId, onComplete }: BlockingThoughtsExerciseProps) {
@@ -127,7 +132,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
             <p className="text-sm">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
             <Textarea id="next-step-blocking" disabled={isSaved}/>
-             <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar registro</Button></div>
+             <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button></div>
           </form>
         );
       case 6: // Confirmation
@@ -163,3 +168,4 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -191,7 +191,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
              </div>
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar Ejercicio y Reflexión</Button>
+                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
              </div>
           </div>
         );
@@ -234,3 +234,4 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
     </Card>
   );
 }
+

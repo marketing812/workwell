@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -187,7 +187,7 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
             </div>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}>Guardar Balance</Button>
+                <Button onClick={handleSave}>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -204,11 +204,11 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                 <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                     <div>
                         <h5 className="font-semibold text-green-600">Me recargó:</h5>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{rechargedBy || 'Sin definir'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{rechargedBy || 'Sin definir'}</pre>
                     </div>
                      <div>
                         <h5 className="font-semibold text-red-600">Me drenó:</h5>
-                        <pre className="text-sm whitespace-pre-wrap font-sans">{drainedBy || 'Sin definir'}</pre>
+                        <pre className="text-sm whitespace-pre-wrap">{drainedBy || 'Sin definir'}</pre>
                     </div>
                 </div>
                <p className="text-sm italic text-primary">{balanceMessage}</p>
@@ -246,3 +246,4 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+

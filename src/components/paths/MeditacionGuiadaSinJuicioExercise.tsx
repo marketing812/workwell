@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -93,7 +93,9 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
               <source src={content.audioUrl} type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
             </audio>
-            <Button onClick={() => setStep(4)} className="w-full mt-4">Ir a la reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-end w-full mt-4">
+              <Button onClick={() => setStep(4)}>Ir a la reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
             <Button onClick={() => setStep(1)} variant="link" className="text-xs">Elegir otra opción</Button>
           </div>
         );
@@ -102,7 +104,9 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-center">Meditación guiada (versión texto)</h4>
             <p className="text-muted-foreground whitespace-pre-line text-center">{meditationText}</p>
-            <Button onClick={() => setStep(4)} className="w-full mt-4">Ir a la reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-end w-full mt-4">
+              <Button onClick={() => setStep(4)}>Ir a la reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
             <Button onClick={() => setStep(1)} variant="link" className="w-full text-xs">Elegir otra opción</Button>
           </div>
         );
@@ -124,7 +128,7 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
             </div>
             {!isSaved ? (
               <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Reflexión en mi Cuaderno
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
               </Button>
             ) : (
               <div className="flex items-center justify-center p-3 mt-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -157,3 +161,4 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
     </Card>
   );
 }
+

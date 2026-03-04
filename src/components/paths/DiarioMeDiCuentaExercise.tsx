@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -99,7 +99,9 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
                         <li>¿Qué puedes hacer con eso ahora?</li>
                     </ol>
                 </div>
-                <Button onClick={nextStep} className="w-full mt-4">Comenzar mi registro <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <div className="flex justify-end w-full mt-4">
+                    <Button onClick={nextStep}>Comenzar mi registro <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </div>
             </div>
         );
       case 1: // PANTALLA 3: Formulario
@@ -123,7 +125,7 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
                 <div className="flex justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                     <Button type="submit" disabled={isSaved}>
-                        {isSaved ? <><CheckCircle className="mr-2 h-4 w-4" /> Guardado</> : <><Save className="mr-2 h-4 w-4"/> Guardar entrada</>}
+                        {isSaved ? <><CheckCircle className="mr-2 h-4 w-4" /> Guardado</> : <><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</>}
                     </Button>
                 </div>
             </form>
@@ -180,3 +182,4 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
     </Card>
   );
 }
+

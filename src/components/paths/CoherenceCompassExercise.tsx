@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, useMemo, type FormEvent, useEffect } from 'react';
@@ -188,7 +188,9 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                                 disabled={isSaved}
                             />
                         )}
-                        <Button onClick={nextStep} className="w-full mt-4" disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
+                        <div className="flex justify-end w-full mt-4">
+                            <Button onClick={nextStep} disabled={Object.values(selectedEnvs).every(v => !v)}>Siguiente</Button>
+                        </div>
                     </div>
                 );
             case 1: 
@@ -304,7 +306,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                         </Button>
                         {!isSaved ? (
                           <Button type="submit">
-                            <Save className="mr-2 h-4 w-4" /> Guardar en mi Cuaderno
+                            <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                           </Button>
                         ) : (
                           <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -348,3 +350,4 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
         </Card>
     );
 }
+

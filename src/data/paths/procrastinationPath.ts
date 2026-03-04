@@ -74,7 +74,14 @@ export const procrastinationPath: Path = {
         {
           type: 'compassionateReflectionExercise',
           title: 'Ejercicio 2: Reflexiona sin Culparte',
-          objective: 'Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas. El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.',
+          objective: `Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas.
+Vas a explorar tus pensamientos, emociones y exigencias internas sin juzgarte, como lo harías con alguien a quien quieres.
+El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.
+
+Has completado registros importantes. Ahora te propongo ir un paso más allá: mirar dentro de ti, con respeto y sin crítica.
+
+No vamos a buscar explicaciones perfectas. Solo vamos a entender qué te estaba pasando por dentro.
+Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
           duration: '8 a 12 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion1tecnica2.mp3`,
         },
@@ -363,14 +370,14 @@ export const procrastinationPath: Path = {
           title: 'Ejercicio 1: Diseña tu Ritual Realista',
           objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
           duration: '7-10 minutos',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
+          audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
         },
         {
           type: 'gentleTrackingExercise',
           title: 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual',
           objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
           duration: '3 a 5 minutos al día',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,
+          audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 
@@ -378,7 +385,7 @@ export const procrastinationPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
             '<p>Ahora es momento de integrar lo que has descubierto. En este espacio podrás concretar qué hábito quieres mantener a largo plazo. Escribir lo que has aprendido consolida la conciencia.</p>',
-            
+            '<ul><li>¿Qué hábito me gustaría mantener a largo plazo? Ejemplo: “Empezar el día con un gesto de autocuidado”.</li><li>¿Qué me ha ayudado a mantenerlo? Ejemplo: “Vincularlo a una rutina ya existente”.</li><li>¿Qué quiero ajustar para que me funcione mejor? Ejemplo: “Reducir la duración para no agobiarme”.</li><li>¿Cómo me quiero hablar si un día fallo? Ejemplo: “Quiero recordarme que puedo volver mañana sin castigo”.</li></ul>',
           ]
         },
         { 
@@ -387,14 +394,13 @@ export const procrastinationPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/descripciones/semana4/RESUMEN.mp3` 
         },
         { type: 'list', items: [
-            'La procrastinación no es solo “pereza”: suele haber emociones incómodas detrás (miedo, inseguridad, agotamiento).',
-            'Activarse no requiere esperar motivación perfecta: el movimiento puede venir primero.',
-            'Pensar diferente cambia tu forma de actuar: reestructurar tus creencias te ayuda a desbloquearte.',
-            'Un hábito funciona cuando es realista, sencillo, emocionalmente significativo y se adapta a ti.',
-            'La constancia amable es más poderosa que la exigencia rígida.',
+            'Un hábito se mantiene cuando es adaptado, vinculado y emocionalmente significativo.',
+            'Repetir sin exigencia es más efectivo que hacerlo perfecto.',
+            'Fallar no rompe el hábito: no volver a él, sí.',
+            'Lo importante no es la cadena perfecta, sino la constancia amable.',
           ] 
         },
-        { type: 'quote', text: 'No hace falta que lo hagas todo hoy. Basta con empezar, seguir con suavidad, y volver cada vez que te alejes. Eso… ya es un nuevo camino.' },
+        { type: 'quote', text: 'No necesitas fuerza de voluntad infinita. Solo consistencia con amabilidad. Esa es tu nueva forma de avanzar.' },
     ],
     },
     {
@@ -441,3 +447,4 @@ export const procrastinationPath: Path = {
     }
   ],
 };
+

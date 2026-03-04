@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -236,7 +236,9 @@ ${nextStepOpener || 'No especificado.'}
                  <Label htmlFor="sit-aftermath">¿Qué pasó después?</Label>
                  <Textarea id="sit-aftermath" value={aftermath} onChange={e => setAftermath(e.target.value)} />
              </div>
-             <Button onClick={next} className="w-full">Siguiente: Detectar Patrón <ArrowRight className="ml-2 h-4 w-4" /></Button>
+             <div className="flex justify-end w-full">
+                <Button onClick={next}>Siguiente: Detectar Patrón <ArrowRight className="ml-2 h-4 w-4" /></Button>
+             </div>
           </div>
         );
       case 2: // DETECTA TU PATRÓN
@@ -293,8 +295,10 @@ ${nextStepOpener || 'No especificado.'}
                     <Label htmlFor="pattern-name">Ponle un nombre a este patrón (opcional)</Label>
                     <Textarea id="pattern-name" value={patternName} onChange={e => setPatternName(e.target.value)} placeholder="Ej: Cuando me callo en el trabajo" />
                 </div>
-                 <Button onClick={handleSave} className="w-full"><Save className="mr-2 h-4 w-4" />Guardar patrón y alternativa en mi cuaderno</Button>
-                 <Button onClick={back} variant="outline" className="w-full">Atrás</Button>
+                 <div className="flex justify-between w-full gap-2">
+                    <Button onClick={back} variant="outline">Atrás</Button>
+                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
+                 </div>
              </div>
         );
        case 6: // Final confirmation
@@ -330,3 +334,4 @@ ${nextStepOpener || 'No especificado.'}
     </Card>
   );
 }
+

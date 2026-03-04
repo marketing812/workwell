@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -260,8 +260,10 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
                         “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
                         </blockquote>
-                        <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en mi cuaderno</Button>
-                        <Button onClick={prevStep} variant="outline" type="button" className="w-full">Atrás</Button>
+                        <div className="flex justify-between w-full gap-2">
+                            <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
+                            <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+                        </div>
                     </form>
                 );
             case 8:
@@ -298,3 +300,4 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
         </Card>
     );
 }
+

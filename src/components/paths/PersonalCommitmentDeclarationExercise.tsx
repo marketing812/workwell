@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -115,7 +115,7 @@ Pregunta: Recordatorio | Respuesta: ${reminder.type === 'Otro' ? reminder.custom
             {reminder.type === 'Otro' && <Textarea value={reminder.custom} onChange={e => setReminder(p => ({ ...p, custom: e.target.value }))} placeholder="Describe tu recordatorio personalizado" disabled={isSaved} />}
           </div>
           {!isSaved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Declaración</Button>
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
           ) : (
             <>
               <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -130,3 +130,4 @@ Pregunta: Recordatorio | Respuesta: ${reminder.type === 'Otro' ? reminder.custom
     </Card>
   );
 }
+

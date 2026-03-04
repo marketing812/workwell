@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -197,7 +197,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} placeholder="Ejemplo: “Haberme dado permiso para decir que no y descansar.”" />
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={handleSave} className="w-auto" disabled={!needed.trim()}><Save className="mr-2 h-4 w-4"/>Guardar</Button>
+                            <Button onClick={handleSave} className="w-auto" disabled={!needed.trim()}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                         </div>
                     </div>
                 );
@@ -235,3 +235,4 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
         </Card>
     );
 }
+

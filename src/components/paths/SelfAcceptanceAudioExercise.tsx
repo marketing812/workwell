@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState } from 'react';
@@ -54,7 +54,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
                         </audio>
                     </div>
                     <div>
-                        <h4 className="font-semibold text-foreground">Meditación</h4>
+                        <h4 className="font-semibold text-foreground">Práctica de autoaceptación guiada</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
                             <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3`} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.
@@ -75,7 +75,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
         {!isCompleted ? (
             <>
                 <Button onClick={handleComplete} className="w-full mt-6">
-                    <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                 </Button>
             </>
         ) : (
@@ -90,3 +90,4 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
     </Card>
   );
 }
+
