@@ -127,7 +127,7 @@ export const stressManagementPath: Path = {
         {
           type: 'stressMapExercise',
           title: 'Ejercicio 1: Mapa del Estrés Personal',
-          objective: 'Piensa en una situación reciente que te haya generado estrés. Luego, completa paso a paso este registro guiado. Te acompañaré con preguntas breves para que puedas ir registrando lo que viviste: ',
+          objective: 'Con este ejercicio empezarás a reconocer cómo se manifiesta el estrés en ti. Al explorar tus pensamientos, emociones, sensaciones físicas y comportamientos cuando te sientes bajo presión, podrás comprender mejor lo que te ocurre y dar los primeros pasos para recuperar el equilibrio y sentirte más en calma. ',
           duration: '5 a 10 minutos',
         },
         {
@@ -142,7 +142,7 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/REFLEXION.mp3`,
           prompts: [
-            '<ul><li>¿Qué he aprendido sobre mí esta semana…</li><li>¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?</li><li>¿Qué hice en esos momentos?</li><li>¿Qué podría probar diferente la próxima vez?</li></ul>',
+            '<p>Tómate un momento para integrar todo lo aprendido y anota tus reflexiones de forma libre y sin juicio.</p><ul><li>¿Qué he aprendido sobre mí esta semana?</li><li>¿Qué situaciones me han hecho sentir más sobrepasado/a últimamente?</li><li>¿Qué hice en esos momentos?</li><li>¿Qué podría probar diferente la próxima vez?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana1/RESUMENYCIERRE.mp3` },
@@ -216,53 +216,60 @@ export const stressManagementPath: Path = {
             content: [
                 { type: 'paragraphWithAudio', text: 'A continuación, te presentamos una serie de técnicas físicas de regulación emocional, validadas por la ciencia, que puedes practicar a diario. Elige las que más te ayuden y repítelas con constancia. Cuando la ansiedad aparece, el cuerpo se activa como si hubiera un peligro real: corazón acelerado, respiración rápida, músculos tensos… Estas técnicas tienen un objetivo claro: enseñarle a tu cuerpo que puede volver a la calma y, al hacerlo, ayudar también a tu mente a relajarse. Al practicarlas de forma regular, estarás entrenando a tu sistema nervioso para que responda con más equilibrio, de modo que la ansiedad deje de sentirse como una ola que te arrastra y se convierta en una ola que sabes surfear. Lo más importante no es probar todas, sino elegir 2 o 3 que encajen contigo y repetirlas con constancia. Te recomiendo practicarlas varias veces al día o en momentos de ansiedad elevada.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2tecnicasespecificas.mp3`},
                 { type: 'collapsible', title: '¿Por qué estas técnicas funcionan?', content: [ { type: 'paragraph', text: 'Cuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte. Pero si esa activación se mantiene, tu bienestar se resiente. Estas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”. Practicar con regularidad te ayuda a recuperar el equilibrio con más facilidad. Estudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden producir cambios reales en el cerebro, como la reducción del volumen de la amígdala (el centro del miedo en el cerebro). Es decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.' }, {type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2porquesonimportantes.mp3`, text:''}]},
-                { type: 'collapsible', title: '¿Qué cambia cuando las practicas?', content: [{ type: 'paragraph', text: '<b>En tu cuerpo:</b>'},{ type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']}, { type: 'paragraph', text: '<b>En tu mente:</b>'},{ type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']}, { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.'}]},
-                { type: 'collapsible', title: '¿Cuándo puedes usarlas?', content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:'}, { type: 'list', items: ['En el momento: si sientes ansiedad o bloqueo', 'Antes de una situación desafiante', 'Como rutina diaria para entrenar tu equilibrio']}, { type: 'paragraph', text: 'Practicar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.'}]},
+                { type: 'collapsible', title: '¿Qué cambia cuando las practicas?', content: [{ type: 'paragraph', text: '<b>En tu cuerpo:</b>'},{ type: 'list', items: ['Respiración más profunda y regular','Regulación del CO₂ (menos mareos o ahogo)','Reducción de tensión muscular','Sensaciones de alivio, calor o calma']}, { type: 'paragraph', text: '<b>En tu mente:</b>'},{ type: 'list', items: ['Recuperas el control y vuelves al presente','Se interrumpe el bucle de pensamientos ansiosos','Refuerzas el autocuidado y la conexión contigo']}, { type: 'paragraph', text: 'Estas herramientas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial... Todas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.'}, {type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2quecambia.mp3`, text:''}]},
+                { type: 'collapsible', title: '¿Cuándo puedes usarlas?', content: [{ type: 'paragraph', text: 'Puedes usar estas técnicas:'}, { type: 'list', items: ['En el momento: si sientes ansiedad o bloqueo', 'Antes de una situación desafiante', 'Como rutina diaria para entrenar tu equilibrio']}, { type: 'paragraph', text: 'Practicar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.'}, {type: 'paragraphWithAudio', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/extras/R1semana2puedesusarlas.mp3`, text:''}]},
                 {
                   type: 'collapsible',
                   title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado',
                    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nCalmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda. \n\nCómo se hace: \n\nColoca una mano sobre el pecho y otra sobre el abdomen. \n\nInhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho). \n\nMantén el aire 2 segundos. \n\nExhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda. \n\nMantén un ritmo lento y constante, sin forzar. \n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad. '}]
                 },
+
+               
+          {
+                  type: 'collapsible',
+                  title: 'Técnica 2:  Respiración diafragmática (versión guiada paso a paso)',
+                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_respiracioon_diafragmatica.mp3`,
+                  content: [{ type: 'paragraph', text: 'Objetivo:  Calmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda.\nCómo se hace:\n\n1 - Coloca una mano sobre el pecho y otra sobre el abdomen. \n2 - Inhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho).\n 3 - Mantén el aire 2 segundos.\n 4 - Exhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda.\n 5 - Mantén un ritmo lento y constante, sin forzar.\n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad.   '}]
+                },        
                 {
                   type: 'collapsible',
-                  title: 'Técnica 2: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
+                  title: 'Técnica 3: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.m4a`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
                 },
                 {
                   type: 'collapsible',
-                  title: 'Técnica 3: Escaneo corporal sin juicio (body scan)',
+                  title: 'Técnica 4: Escaneo corporal sin juicio (body scan)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R_body_scan_breve.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. ' }]
                 },
                 {
                   type: 'collapsible',
-                  title: 'Técnica 4: Relajación muscular progresiva (Jacobson)',
+                  title: 'Técnica 5: Relajación muscular progresiva (Jacobson)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. ' }]
                 },
                 {
                   type: 'collapsible',
-                  title: 'Técnica 5: Técnicas de presión profunda y balanceo corporal',
+                  title: 'Técnica 6: Técnicas de presión profunda y balanceo corporal',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R16balanceocorporal.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. ' }]
                 },
                 {
                   type: 'collapsible',
-                  title: 'Técnica 6: Contacto frío breve (reset inmediato)',
+                  title: 'Técnica 7 Contacto frío breve (reset inmediato)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en: \n\n- Nuca \n\n- Muñecas \n\n- Parte interna de los brazos o mejillas \n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). ' }]
-                },
-                 { type: 'therapeuticNotebookReflection', title: 'Registro de experiencia personal', showOverloadSignals: true, prompts: ['¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:']},
-            ]
+                }
+                      ]
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`,
           prompts: [
-            '<p>Tómate un momento para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><br></p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
+            '<p>Tómate un momento para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/RESUMENYCIERRE.mp3` },
@@ -278,34 +285,85 @@ export const stressManagementPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: 'Esta semana aprenderás a identificar las “trampas mentales” o distorsiones cognitivas que aumentan tu estrés, y a usar técnicas sencillas para cuestionarlas. No se trata de “pensar en positivo”, sino de pensar con más claridad, realismo y amabilidad.',
+          text: 'Esta semana vas a entrenar una habilidad fundamental para reducir el estrés: identificar y transformar los pensamientos que te sobrecargan. El objetivo es que aprendas a detectar cuándo tu mente se activa en modo exigencia, catastrofismo o rigidez, y puedas responder con mayor flexibilidad, realismo y amabilidad hacia ti.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Introsemana3.mp3`
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'La Mente Bajo Estrés: ¿Cómo Salir del Bucle?',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio1semana3.mp3`,
+          title: 'Lo que piensas puede calmarte… o estresarte aún más',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Loquepiensaspuedecalmarteoestresarteaunmas.mp3`,
           content: [
-            { type: 'paragraph', text: 'Cuando el estrés se activa, tu mente puede volverse tu peor enemiga: empieza a repetir pensamientos negativos, a imaginar escenarios terribles o a criticarte sin piedad. No es que quieras hacerlo, es que el estrés “secuestra” tu atención y la enfoca en la amenaza.' },
+            { type: 'paragraph', text: '¿Te has dicho alguna vez cosas como “no voy a poder”, “todo depende de mí” o “si no lo hago perfecto, es un fracaso”? Estos pensamientos no son solo frases: son como unas gafas que se colocan solas y tiñen todo lo que vives. Muchas veces el estrés no viene solo de lo que ocurre, sino de lo que te dices cuando eso ocurre.' },
           ]
         },
         {
           type: 'collapsible',
-          title: 'El diálogo interno que alimenta el estrés',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio2semana3.mp3`,
+          title: 'Pensamientos automáticos',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Pensamientosautomaticos.mp3`,
           content: [
-            { type: 'paragraph', text: 'El estrés no solo se siente en el cuerpo: se piensa. Frases como “no puedo más”, “esto va a salir mal” o “es mi culpa” no son inofensivas. Activan y mantienen la respuesta de estrés en tu cuerpo, creando un círculo vicioso.' }
+            { type: 'paragraph', text: 'Son ideas breves y espontáneas que aparecen en tu mente casi sin darte cuenta. Aunque parecen simples, influyen mucho en cómo te sientes y en cómo actúas. Por ejemplo, si alguien dice “tenemos que hablar”, puedes sentir ansiedad solo porque aparece el pensamiento “algo va mal”.<br>Estos pensamientos no siempre son racionales, pero sí muy poderosos. Por eso, aprender a identificarlos y cuestionarlos puede ayudarte a transformar tu forma de sentir y actuar.  ' }
           ]
         },
         {
           type: 'collapsible',
-          title: 'Distorsiones cognitivas: cuando tu mente te engaña',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Audio3semana3.mp3`,
+          title: 'Creencias exigentes: una fuente silenciosa de tensión',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Creenciasexigentesunafuentesilenciosadetension.mp3`,
           content: [
-            { type: 'paragraph', text: 'Las distorsiones cognitivas son patrones de pensamiento que nos hacen interpretar la realidad de forma negativa o poco realista. Algunas de las más comunes en el estrés son:' },
-            { type: 'list', items: ['Catastrofismo: Imaginar siempre el peor resultado.', 'Filtro mental: Fijarte solo en lo negativo.', 'Pensamiento “todo o nada”: O es perfecto o es un desastre.'] }
+            { type: 'paragraph', text: 'Muchas personas viven con un diálogo interno muy exigente:' },
+            { type: 'list', items: ['"Tengo que poder con todo"', '“No puedo permitirme fallar.” ', '“Los demás lo hacen mejor que yo.”'] },
+            { type: 'paragraph', text: 'Estas creencias generan tensión constante, te ponen en deuda contigo y con los demás, y te hacen vivir como si nunca fuera suficiente.' }
           ]
+        },
+        {
+          type: 'collapsible',
+          title: 'El modelo ABC: pensamiento, emoción y acción',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/ElmodeloABCpensamientoemocionyaccion.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Desde la Terapia Cognitivo-Conductual usamos el modelo A-B-C:' },
+            { type: 'list', items: ['A (Acontecimiento): Lo que pasa. Ej: Tu jefe te encarga algo urgente.', 'B (Creencia o pensamiento): Lo que piensas. Ej: “No voy a dar la talla”.', 'C (Consecuencia): Cómo te sientes y actúas. Ej: Ansiedad + bloqueo + trabajar con angustia. '] },
+            { type: 'paragraph', text: 'Solemos creer que A causa directamente C, pero en realidad, lo que te estresa no es solo lo que pasa, sino cómo lo interpretas.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Un mismo hecho, dos emociones distintas',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Unmismohechodosemocionesdistintas.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Situación: Tu pareja no contesta a tu mensaje en horas.' },
+            { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia”.'] },
+            { type: 'paragraph', text: 'La misma situación puede vivirse con emociones muy diferentes según el pensamiento que la acompaña. ' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Distorsiones cognitivas',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Distorsionescognitivas.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Nuestro cerebro tiende a interpretar la realidad con atajos que a veces fallan. Estas distorsiones son formas automáticas y poco realistas de pensar que exageran lo negativo, minimizan lo positivo o interpretan las cosas de forma rígida. Aprender a identificarlas te permite ganar claridad y aliviar tu carga emocional. Aquí tienes una descripción breve de las más frecuentes, con ejemplos:' },
+            { type: 'list', items: ['Catastrofismo: Imaginar el peor escenario como inevitable. Ejemplo: “Si fallo esta presentación, arruinaré mi carrera.”', 'Pensamiento dicotómico (todo o nada): ver todo en extremos, sin matices. Ejemplo: “Si no lo hago perfecto, es un fracaso.”','Sobregeneralización: Extraer una conclusión general a partir de un solo hecho negativo. Ejemplo: “Me equivoqué una vez, siempre lo hago mal.”','Personalización: creer que todo lo que pasa tiene que ver contigo. Ejemplo: “Están serios, seguro hice algo mal.”','Adivinación del pensamiento o del futuro: suponer sin evidencia qué piensan los demás o lo que ocurrirá. Ejemplo: “No respondió el mensaje, seguro está molesto conmigo.”','Abstracción selectiva: fijarse solo en lo negativo y pasar por alto lo positivo. Ejemplo: “Me equivoqué en una palabra, así que todo salió mal.”','Razonamiento emocional: creer que algo es verdad solo porque lo sientes intensamente. Ejemplo: “Me siento inútil, así que debo serlo.”','“Deberías” rígidos: imponerse normas estrictas que generan culpa o presión. Ejemplo: “Debería poder con todo sin quejarme.”','Minimizar lo positivo / Maximizar lo negativo: restar valor a los logros y agrandar los errores. Ejemplo: “Sí, me felicitaron, pero seguro fue por compromiso.”','Perfeccionismo: necesidad de cumplir con estándares imposibles. Ejemplo: “Si no es perfecto, no vale la pena.”','Comparación negativa: compararte solo con lo que te falta respecto a otros. Ejemplo: “Ella gana más que yo, así que soy un fracaso.”','Falacia del control: creer que todo depende de ti o que no tienes control en absoluto. Ejemplo: “Si mi hijo no está bien, es culpa mía.”','Exageración de la responsabilidad: sentirse culpable de todo lo que ocurre, incluso sin pruebas. Ejemplo: “Si algo sale mal, será por mi culpa.”','Distorsión del tiempo: creer que lo que vives ahora será así para siempre. Ejemplo: “Nunca voy a salir de esto.”','Túnel atencional negativo: solo ver lo que falta o lo que está mal. Ejemplo: “Hoy ha sido horrible porque tuve una discusión”, ignorando que el resto del día fue positivo.'] },
+            { type: 'paragraph', text: 'Detectarlas no significa eliminarlas de golpe, pero sí abrir un espacio para mirar con más claridad y cuidarte mejor.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Qué hacer cuando detectas un pensamiento negativo',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Quehacercuandodetectasunpensamientonegativo.mp3`,
+          content: [
+            { type: 'paragraph', text: 'No se trata de forzarte a “pensar en positivo”, sino de pensar de forma más realista y compasiva. Puedes preguntarte:' },
+            { type: 'list', items: ['¿Qué evidencia tengo de que esto sea cierto?', '¿Estoy exagerando o anticipando?','¿Qué le diría a alguien que quiero si pensara esto?','¿Este pensamiento me ayuda o me hace daño?'] },
+            { type: 'paragraph', text: 'Este proceso se llama reestructuración cognitiva: es como entrenar tu mente para dejar de castigarte y empezar a hablarte de otra forma. ' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Desde la neurociencia: por qué funciona',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Desdelaneurocienciaporquefunciona.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Cuando reinterpretas una situación, activas nuevas redes neuronales. Tu corteza prefrontal (la parte que decide) toma protagonismo frente al sistema límbico (la parte reactiva). Así, pasas de reaccionar por impulso a responder con claridad.'},
+              { type: 'paragraph', text: 'Tus pensamientos no siempre son verdad. Son interpretaciones de la realidad. Y puedes aprender a elegir las que te cuidan.'},
+                { type: 'paragraph', text:'“No puedes parar las olas, pero puedes aprender a surfear tus pensamientos.” ' },
+            ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
         {
@@ -326,39 +384,67 @@ export const stressManagementPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Reflexionsemana3.mp3`,
-          prompts: ['<p>Tómate un momento para anotar lo que has descubierto. Cada palabra te ayuda a conocerte y cuidarte mejor.</p><ul><li>¿Qué he aprendido sobre los pensamientos que me generan estrés?</li><li>¿Qué cambió en mí al cuestionar un pensamiento en lugar de darlo por cierto?</li><li>¿Qué frases o “deberías” me pesan más en mi día a día?</li><li>¿Cómo puedo empezar a diferenciar entre lo que me exijo y lo que de verdad necesito?</li></ul>']
+          prompts: ['<ul><li>¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?</li><li>¿Qué exigencias internas me alejan de mis verdaderas necesidades?</li><li>¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio? </li></ul>']
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Resumensemana3.mp3` },
-        { type: 'list', items: ['Tus pensamientos no son hechos, son interpretaciones.', 'Las distorsiones cognitivas alimentan el estrés.', 'Cuestionar tus pensamientos te devuelve poder y calma.', 'Diferenciar entre “deber” y “querer” reduce la presión interna.'] },
-        { type: 'quote', text: 'No eres lo que piensas. Eres quien elige qué hacer con esos pensamientos.' }
+        { type: 'list', items: ['El estrés no solo viene de fuera, sino de cómo interpretas lo que ocurre.','Tus pensamientos automáticos pueden aumentar o aliviar tu malestar.','Las distorsiones cognitivas son filtros mentales que puedes aprender a detectar.','Restructurar es entrenar la mente para pensar con más claridad, flexibilidad y compasión.' ] },
+        { type: 'quote', text: 'No eres lo que piensas: eres quien decide cómo responder a lo que piensa.' }
       ]
     },
     {
       id: 'estres_sem4',
-      title: 'Semana 4: Construye un Estilo de Vida Resiliente',
+      title: 'Semana 4: Plan de acción y prevención de recaídas',
       type: 'summary',
       estimatedTime: '15-20 min',
       content: [
         {
           type: 'paragraphWithAudio',
-          text: 'En esta última semana, vas a integrar todo lo aprendido para construir un plan de vida que te proteja del estrés crónico. No se trata de eliminar el estrés, sino de crear un día a día que te dé más recursos para gestionarlo. Diseñarás tu propio Plan de Bienestar, identificando tus señales de alerta y tus estrategias de cuidado. Porque la mejor forma de manejar el estrés es construir una vida donde la calma tenga más espacio.',
+          text: 'Esta semana vas a consolidar todo lo aprendido creando tu propio plan de bienestar emocional. El objetivo es que desarrolles una herramienta personalizada para prevenir recaídas, cuidarte en los momentos difíciles y responder con más conciencia cuando el estrés reaparezca. Tener un plan no significa eliminar el estrés, sino recordarte que tienes recursos para afrontarlo con calma, flexibilidad y autocompasión.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Introsemana4.mp3`
         },
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Más allá de la emergencia: la prevención',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Audio1semana4.mp3`,
-          content: [{ type: 'paragraph', text: 'Gestionar el estrés no es solo apagar fuegos. Es, sobre todo, evitar que se inicien. Construir un estilo de vida resiliente significa crear hábitos y rutinas que protejan tu energía y tu equilibrio, para que los inevitables picos de estrés no te desborden.' }]
+          title: 'De la teoría a la práctica: tu plan personal',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Delateoriaalapracticatuplanpersonal.mp3`,
+          content: [{ type: 'paragraph', text: 'El estrés no desaparece para siempre. Vuelve en forma de tareas acumuladas, expectativas, interrupciones o pensamientos exigentes. Por eso, el objetivo de esta semana es ayudarte a crear tu propio plan de acción: un mapa de recursos, señales de alerta y estrategias que te ayuden a cuidarte cuando lo necesites.' },{ type: 'paragraph', text: 'Más adelante, en la Técnica 1, empezarás a diseñar tu plan personalizado.' },{ type: 'paragraph', text: 'Pero antes, necesitas entender para qué sirve, cuáles son sus partes y cómo te ayuda a sostenerte en los momentos difíciles. Este contexto será tu base para crear algo realmente útil y tuyo.' },{ type: 'paragraph', text: 'Este plan no es un protocolo rígido. Es una herramienta viva, ajustada a tu realidad y fortalecida por todo lo que has aprendido. Aquí no buscamos perfección, sino continuidad. Porque prevenir recaídas no es evitar el estrés, sino prepararte para responder con mayor conciencia cuando vuelva a aparecer.' }]
         },
         {
           type: 'collapsible',
-          title: 'Los 4 pilares del bienestar',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Audio2semana4.mp3`,
+          title: 'Etapa 1: Evaluación y conciencia',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Etapa1Evaluacionyconciencia.mp3`,
           content: [
-            { type: 'paragraph', text: 'Tu bienestar se sostiene sobre cuatro pilares:' },
-            { type: 'list', items: ['Cuerpo: sueño, alimentación y movimiento.', 'Mente: pausas, enfoque y gestión de pensamientos.', 'Emociones: expresión sana y autorregulación.', 'Conexión: vínculos sociales que te nutran.'] },
-            { type: 'paragraph', text: 'Si uno de ellos falla, todo el sistema se resiente.' }
+            { type: 'paragraph', text: 'Todo buen plan empieza por observarte.' },
+            { type: 'paragraph', text: 'Durante estas semanas, has aprendido a identificar cómo se activa el estrés en ti: qué lo dispara, cómo reacciona tu cuerpo, qué pensamientos se repiten y qué emociones se intensifican. Ahora es momento de consolidar esa información para que se convierta en una alerta temprana que te ayude a actuar antes de desbordarte.' },
+            { type: 'paragraph', text: '¿Cómo saber que el estrés está empezando a subir?' },
+            { type: 'list', items: ['Me cuesta dormir o me despierto cansada/o','Tensión muscular (cuello, mandíbula, pecho)','Me irrito o me siento desconectada/o sin saber por qué','Me aíslo o aumento conductas evasivas (pantallas, comida, control excesivo)','Vuelvo a pensar “no puedo con esto” o “tengo que hacerlo todo perfecto”'] },
+            { type: 'paragraph', text: 'Detectar estas señales no es debilidad. Es autoconocimiento.' }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Etapa 2: Objetivos y estrategias',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Etapa2Objetivosyestrategias.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Tu plan de acción se construye sobre lo que ya has practicado. No necesitas hacerlo perfecto, sino contar con algunas herramientas bien integradas que puedas activar cuando lo necesites.' },
+            { type: 'paragraph', text: 'Estrategias cognitivas:' },
+            { type: 'list', items: ['Reestructuración cognitiva: detectar pensamientos automáticos y transformarlos en versiones más amables','Autoinstrucciones positivas: Ej. “Estoy haciendo lo que puedo con lo que tengo”','Identificación de pensamientos exigentes (Semana 3)'] },
+            { type: 'paragraph', text: 'Estrategias conductuales:' },
+            { type: 'list', items: ['Respiración diafragmática, 4-2-6','Anclaje sensorial 5-4-3-2-1','Escaneo corporal breve','Registro emocional y frases ancla compasivas'] },
+            { type: 'paragraph', text: 'Contenido extra disponible en la app: (otras rutas o recursos) ' },
+            { type: 'list', items: ['Resolución de problemas','Planificación del placer y tiempo','Asertividad y habilidades sociales','Otros recursos (Gestión del estrés y ansiedad)'] }
+          ]
+        },
+        {
+          type: 'collapsible',
+          title: 'Etapa 3: Prevención de recaídas',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Etapa3Prevencionderecaidas.mp3`,
+          content: [
+            { type: 'paragraph', text: 'Recaer no es fracasar. Es aplicar lo aprendido en un nuevo ciclo.' },
+            { type: 'paragraph', text: 'Señales tempranas de recaída:' },
+            { type: 'list', items: ['Autoexigencia creciente','Abandono de rutinas de autocuidado','Pensamientos rígidos o catastrofistas'] },
+            { type: 'paragraph', text: 'Qué hacer si te sientes desbordada/o:' },
+            { type: 'list', items: ['Pausa y observa: “¿Qué me está activando? ¿Qué parte de mí necesita cuidado?”','Evita la catastrofización: Un mal día no borra tus avances','Vuelve a lo básico: respiración, frase ancla, conectar contigo','Activa tu red de apoyo: no tienes que sostenerte sola/o'] }
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -379,11 +465,11 @@ export const stressManagementPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Reflexionsemana4.mp3`,
-          prompts: ['<p>Tómate un momento para responder esta pregunta en tu cuaderno:</p><p><b>¿Qué quiero recordarme cuando vuelva a sentirme desbordado/a?</b></p>']
+          prompts: ['<p>Pon en palabras tu aprendizaje y haz más tuya la experiencia.</p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</p>']
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Resumensemana4.mp3` },
-        { type: 'list', items: ['La resiliencia se construye con hábitos diarios.', 'Tu Plan de Bienestar es tu hoja de ruta personalizada.', 'Identificar tus señales de alerta te permite actuar antes de desbordarte.', 'Saber qué necesitas y cómo pedirlo es clave.'] },
-        { type: 'quote', text: 'No esperes a estar mal para cuidarte. Cuídate para estar bien.' }
+        { type: 'list', items: ['El estrés no desaparece, pero puedes prepararte para atravesarlo con más conciencia.','Tener un plan personal te permite actuar antes de desbordarte.','Reconocer tus señales tempranas es una forma de autocuidado.','Recaer no es fracasar: es una oportunidad de aplicar lo aprendido.'] },
+        { type: 'quote', text: 'Tener un plan no evita el estrés, pero te recuerda que sabes cómo cuidarte cuando aparezca.' }
       ]
     },
     {
@@ -397,20 +483,18 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Ruta de Gestión del Estrés',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Reflexionfinalruta1.mp3`,
           prompts: [
-            '<p>Has completado un camino importante. Tómate un momento para reconocer tu esfuerzo y tus aprendizajes.</p><ul><li>¿Qué ha cambiado en mi forma de ver el estrés?</li><li>¿Qué herramienta me llevo que antes no tenía?</li><li>¿Cómo quiero seguir cuidándome a partir de ahora?</li></ul>',
+            '<p>Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca. Ahora pasaremos a la reflexión final.</p><ul><li>¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar? </li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Final de la Ruta', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Resumenfinalruta1.mp3` },
         {
           type: 'list',
           items: [
-            'El estrés es una señal, no un enemigo. Aprender a escucharlo es el primer paso.',
-            'Tu cuerpo y tu mente están conectados. Calmar uno ayuda a calmar al otro.',
-            'Tus pensamientos no siempre son la realidad. Cuestionarlos te da libertad.',
-            'La prevención es la mejor gestión: construir un estilo de vida que te cuide es tu mayor fortaleza.',
+            'Has aprendido que el estrés no es tu enemigo, sino una señal que merece ser escuchada.','Comprendiste cómo se activa en tu cuerpo, tus pensamientos y emociones.','Descubriste técnicas prácticas para regularte desde dentro, tanto en lo físico como en lo mental.','Identificaste tus patrones de autoexigencia y aprendiste a hablarte con más compasión.','Has creado tu propio plan de acción para afrontar los momentos difíciles con mayor claridad y cuidado.',
           ],
         },
-        { type: 'quote', text: 'No puedes controlar todas las olas, pero puedes aprender a surfear. Y eso es lo que has estado entrenando.' }
+         { type: 'paragraph', text: 'Esta ruta no termina aquí: empieza tu camino con más herramientas, conciencia y confianza para cuidarte.' },
+          { type: 'paragraph', text: 'Aprender a gestionar el estrés no significa evitarlo, sino descubrir que dentro de ti hay recursos para sostenerte, incluso en los días difíciles.' }
       ]
     }
   ]

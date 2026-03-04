@@ -11,7 +11,7 @@ import { useTranslations } from "@/lib/translations";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut } from "firebase/auth";
 import { useAuth } from "@/firebase/provider"; 
 import { sendLegacyData } from "@/data/userUtils";
 
@@ -65,6 +65,15 @@ export function LoginForm() {
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        await userCredential.user.reload();
+
+        if (userCredential.user.email && !userCredential.user.emailVerified) {
+          auth.languageCode = "es";
+          await sendEmailVerification(userCredential.user);
+          await signOut(auth);
+          setLoginError("Debes verificar tu correo antes de entrar. Te hemos reenviado un email de verificación.");
+          return;
+        }
         
         if (userCredential.user) {
             sendLegacyData({ id: userCredential.user.uid }, 'guardarlogin');

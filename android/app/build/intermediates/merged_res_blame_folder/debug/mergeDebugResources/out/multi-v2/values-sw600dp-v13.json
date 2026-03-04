@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.workwell.app-mergeDebugResources-2:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "com.workwell.app-mergeDebugResources-3:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\javier.blanco\\.gradle\\caches\\8.14.3\\transforms\\c3f09e8abd8bb01c9314454bd06bb337\\transformed\\appcompat-1.7.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\javier.blanco\\AppData\\Local\\Android\\Sdk\\caches\\8.14.3\\transforms\\c3f09e8abd8bb01c9314454bd06bb337\\transformed\\appcompat-1.7.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

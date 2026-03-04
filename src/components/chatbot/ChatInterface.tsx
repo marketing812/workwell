@@ -9,6 +9,7 @@ import { useTranslations } from '@/lib/translations';
 import { Loader2, Send, User, Bot } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
 import { cn } from '@/lib/utils';
+import { renderSimpleMarkdown } from '@/lib/chatFormatting';
 
 interface Message {
   id: string;
@@ -146,7 +147,9 @@ export function ChatInterface() {
                   : "bg-muted text-foreground rounded-tl-none"
               )}
             >
-              <p className="text-sm whitespace-pre-line">{msg.text}</p>
+              <p className="text-sm whitespace-pre-line">
+                {msg.sender === 'bot' ? renderSimpleMarkdown(msg.text) : msg.text}
+              </p>
               <p className={cn(
                   "text-xs mt-1",
                   msg.sender === 'user' ? "text-primary-foreground/70 text-right" : "text-muted-foreground/70 text-left"

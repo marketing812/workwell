@@ -54,7 +54,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
                         </audio>
                     </div>
                     <div>
-                        <h4 className="font-semibold text-foreground">Meditación</h4>
+                        <h4 className="font-semibold text-foreground">Práctica de autoaceptación guiada</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
                             <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3`} type="audio/mp3" />
                             Tu navegador no soporta el elemento de audio.

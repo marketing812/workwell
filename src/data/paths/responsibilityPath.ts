@@ -103,8 +103,8 @@ export const responsibilityPath: Path = {
         {
           type: 'complaintTransformationExercise',
           title: 'EJERCICIO 1: TABLA “ME QUEJO DE… / LO QUE SÍ PUEDO HACER ES…”',
-          objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración.',
-          duration: '10 min',
+          objective: 'Quiero ayudarte a transformar tus quejas en pasos concretos que dependan de ti. Porque cuando cambias el “esto está mal” por un “esto es lo que haré”, recuperas tu poder y dejas de quedarte atascado o atascada en la frustración. Quejarte no es malo: a veces es la forma de decir que algo no funciona. El problema es quedarse a vivir ahí. Este ejercicio es tu entrenamiento para dar el salto a la acción. ',
+          duration: '10 min por práctica. Hazlo 3 o 4 veces por semana, especialmente en días en los que notes que te estás quejando más de lo habitual. ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana1tecnica1.mp3`,
         },
         {
@@ -119,7 +119,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Reflexionsesion1ruta10.mp3`,
           prompts: [
-            '<ul><li>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</li><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>',
+            '<ul><li>¿Cuál fue el descubrimiento más importante para ti y por qué?</li><li>¿Cuál fue la situación más significativa en la que lograste pasar de la queja o la culpa a la acción?</li><li>¿Qué culpa identificaste como “no mía” y pudiste soltar?</li><li>¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Resumensesion1ruta10.mp3` },
@@ -152,7 +152,7 @@ export const responsibilityPath: Path = {
           type: 'collapsible',
           title: 'El punto de partida: del “¿por qué pasó?” al “¿qué hago ahora?”',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Audio1sesion2ruta10.mp3`,
-          content: [{ type: 'paragraph', text: 'En la semana anterior, hemos visto cómo pasar de la culpa y la queja a la acción, cómo aceptar sin resignarse y cómo practicar la autorresponsabilidad compasiva.  Ahora damos un paso más: vamos a mirar hacia adentro, hacia esa voz interna que te habla todo el día… aunque a veces no te des cuenta.   Todos tenemos un diálogo interno. A veces es un susurro amable que nos impulsa; otras, un juez implacable que no deja pasar ni un fallo.    En psicología cognitivo-conductual sabemos que este diálogo influye directamente en nuestra motivación, en cómo gestionamos los errores y en la capacidad para aprender y avanzar. La neurociencia confirma que las palabras que nos decimos activan redes cerebrales relacionadas con la amenaza o con la calma, según su tono y contenido.   No podemos evitar que la mente nos hable, pero sí podemos entrenarla para que lo haga de una manera que nos ayude a crecer, no a castigarnos.' }],
+          content: [{ type: 'paragraph', text: 'En la semana anterior entrenaste a reconocer tres caminos ante un problema: culpa, queja y responsabilidad activa.<br>Hoy vamos a dar un paso más: dejar de pelear con lo que ya pasó para enfocar tu energía en lo que puedes decidir y hacer hoy.<p>Esto implica practicar lo que llamamos aceptación activa: mirar la realidad de frente, sin quedarte atrapado o atrapada en el pasado.</p><p>Aceptar no es rendirse. Es soltar la lucha inútil contra lo que ya ocurrió, para abrir espacio a lo que sí puedes construir ahora.</p> ' }],
         },
         {
           type: 'collapsible',
@@ -236,15 +236,15 @@ export const responsibilityPath: Path = {
         {
           type: 'selfAcceptanceAudioExercise',
           title: 'EJERCICIO 2: PRÁCTICA DE AUTOACEPTACIÓN GUIADA',
-          objective: 'Entrenar la autoaceptación para reconocer lo que pasó sin castigo, tratándote con la misma amabilidad que tendrías con alguien querido.',
-          duration: '7–10 min',
+          objective: '¿Alguna vez has sentido que eres tu peor juez o jueza, repitiéndote una y otra vez lo que hiciste “mal”? Quiero ayudarte a bajar el volumen de esa voz crítica y encender una voz más amable, que te recuerde que mereces respeto, incluso cuando te equivocas. En esta práctica guiada, entrenaremos la autoaceptación: reconocer lo que pasó sin castigo, tratándote como tratarías a alguien que quieres y respetas. ',
+          duration: '7–10 minutos por práctica. Te recomiendo hacerla al menos 3 o 4 veces esta semana, o cada vez que notes que te estás hablando con dureza por algo que ocurrió.',
         },
         {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3`,
           prompts: [
-            '<p>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</p><ul><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
+            '<p>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</p><ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Resumensesion2ruta10.mp3` },
@@ -307,7 +307,7 @@ export const responsibilityPath: Path = {
         {
           type: 'compassionateResponsibilityContractExercise',
           title: 'EJERCICIO 1: MI CONTRATO DE AUTORRESPONSABILIDAD COMPASIVA',
-          objective: 'Crear un compromiso interno que combine la autorresponsabilidad con la autocompasión, dándote un marco claro para responder a tus errores.',
+          objective: 'El objetivo de este ejercicio es ayudarte a crear un compromiso interno que combine la autorresponsabilidad (hacerte cargo de lo que depende de ti) con la autocompasión (tratarte con la misma amabilidad que tendrías con alguien querido). Este ejercicio te dará un marco claro para saber cómo responderte cuando cometas errores y cómo guiarte en tus decisiones, evitando caer en el castigo o la autoexigencia extrema. ',
           duration: '10–15 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana3tecnica1.mp3`,
         },
@@ -323,7 +323,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Reflexionsesion3ruta10.mp3`,
           prompts: [
-            '<p>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</p><ul><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>',
+            '<ul><li>¿Qué descubrimiento de esta semana ha tenido más impacto en ti?</li><li>¿Qué cambió en tu forma de actuar cuando suavizaste la crítica interna?</li><li>¿Qué consecuencias podrías notar a largo plazo si sigues practicando esta autorresponsabilidad compasiva?</li><li>¿Qué cambió en ti cuando distinguiste entre conducta e identidad?</li><li>¿En qué momento reciente aplicaste una respuesta más compasiva contigo mismo/a?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion3/Resumensesion3ruta10.mp3` },
@@ -367,11 +367,13 @@ export const responsibilityPath: Path = {
         {
           type: 'collapsible',
           title: 'El mapa de la influencia real',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio4sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: '<p>Imagina tu vida como tres círculos concéntricos: </p>1 - Zona de control directo – Lo que depende solo de ti (acciones, actitudes, elecciones). <br>2 - Zona de influencia – Lo que puedes impactar, pero no decidir por completo (relaciones, trabajo en equipo). <br>3 - Zona fuera de tu control – Lo que no puedes cambiar (pasado, clima, decisiones ajenas). <br><p>Concentrarte en la zona de control directo y parte de tu zona de influencia multiplica tu eficacia y protege tu energía. <br>Ejemplo: Si tu equipo no entrega a tiempo, no puedes controlar sus decisiones, pero sí puedes: </p>- Comunicar plazos claros.<br> - Pedir reuniones de seguimiento.<br> - Ajustar tu parte para prevenir retrasos. <br>' }],
         },
         {
           type: 'collapsible',
           title: 'Compromiso con una vida elegida, no impuesta',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio5sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: '<p>Hacerse cargo no es vivir a la defensiva, apagando fuegos. Es diseñar una vida en la que tus acciones reflejen lo que valoras. </p><p>Cuando actúas así, dejas de vivir para cumplir expectativas ajenas y empiezas a construir desde dentro. </p><p>Ejemplo: <br>- Vida impuesta: “Tengo que estar disponible siempre, o decepcionaré a los demás.”<br>- Vida elegida: “Estoy disponible en estos horarios, y fuera de ellos descanso y recargo energía para dar lo mejor de mí.” </p>' }],
         },
         {
@@ -383,6 +385,7 @@ export const responsibilityPath: Path = {
         {
           type: 'collapsible',
           title: 'Cierre y puente a la práctica',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Audio7sesion4ruta10.mp3`,
           content: [{ type: 'paragraph', text: 'Esta semana vas a trabajar dos ejercicios clave para reforzar esta habilidad:<br>Rueda de mi zona de influencia – para visualizar y delimitar lo que sí y lo que no te corresponde. <br>Mi declaración de compromiso personal – para definir en tres frases cómo quieres vivir desde la responsabilidad activa y cuidarte en el proceso. <br>La responsabilidad que eliges es más ligera que la culpa que arrastras. \\nAhora vamos a entrenarla. ' }],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -405,7 +408,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/NUEVAReflexionsesion4ruta10.mp3`,
           prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p><p><b>Preguntas para reflexionar:</b></p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+            '<ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Resumensesion4ruta10.mp3` },
@@ -433,7 +436,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión final de la Ruta',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Reflexionfinalruta10.mp3`,
           prompts: [
-            '<p>A lo largo de estas semanas, has explorado cómo dejar de vivir desde la culpa o la queja, y cómo pasar a la responsabilidad activa. Has aprendido a diferenciar lo que puedes cambiar de lo que no, a cuestionar pensamientos que te frenaban, a transformar la autocrítica en guía y a cuidar tu energía mientras te haces cargo de tu vida.</p><p>Piensa ahora:</p><ul><li>¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?</li><li>¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad?</li><li>¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?</li></ul>',
+            '<ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?</li></ul>',
           ],
         },
         {

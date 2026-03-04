@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.workwell.app-mergeReleaseResources-2:/values-cs/values-cs.xml",
+            "outputFile": "com.workwell.app-mergeReleaseResources-3:/values-cs/values-cs.xml",
             "map": [
                 {
                     "source": "C:\\Users\\javier.blanco\\.gradle\\caches\\8.14.3\\transforms\\11094a199bb7945826b161d8a9c17beb\\transformed\\core-1.17.0\\res\\values-cs\\values-cs.xml",

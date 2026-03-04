@@ -7,11 +7,11 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 interface PathDetailPageProps {
-  params: { pathId: string };
+  params: Promise<{ pathId: string }>;
 }
 
-export default function Page({ params }: PathDetailPageProps) {
-  const { pathId } = params;
+export default async function Page({ params }: PathDetailPageProps) {
+  const { pathId } = await params;
   const path = pathsData.find(p => p.id === pathId);
 
   if (!path) {
@@ -24,7 +24,7 @@ export default function Page({ params }: PathDetailPageProps) {
 export async function generateMetadata(
   { params }: PathDetailPageProps
 ): Promise<Metadata> {
-  const { pathId } = params;
+  const { pathId } = await params;
   const path = pathsData.find(p => p.id === pathId);
   return { title: path?.title || "Ruta de Desarrollo" };
 }

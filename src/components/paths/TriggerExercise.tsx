@@ -50,6 +50,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   const [emotionIntensity3, setEmotionIntensity3] = useState(0);
 
   const audioUrl = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-identifica-tu-disparador.mp3`;
+  const audioUrlpre = `${EXTERNAL_SERVICES_BASE_URL}/audios/r1_desc/Tecnica-2-psicoeducacion-identifica-tu-disparador.mp3`;
 
 
   const handleSubmit = (e: FormEvent) => {
@@ -120,7 +121,17 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle><p>
+        Aprende a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en modo automático.   </p><p>Recuerda un momento reciente de estrés y responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
+         {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: 5 minutos</p>}
+        {audioUrlpre && (
+            <div className="mt-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                    <source src={audioUrlpre} type="audio/mp3" />
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        )}
         <CardDescription>
         <div className="space-y-4 text-base pt-2">
             <p>Cuando sientes que todo te supera, es fácil pensar que lo que te estresa está fuera de ti. Pero muchas veces, lo que más influye es lo que ocurre en tu interior. Por eso, aprender a diferenciar entre lo que pasa fuera (el estresor) y lo que sientes por dentro (la respuesta de estrés) es un paso clave para recuperar el control. Un estresor puede ser una situación externa como una discusión, un cambio inesperado o una carga laboral. Pero también puede ser algo más invisible: una creencia rígida, una expectativa alta o un recuerdo que se activa sin que te des cuenta. Entender esta diferencia te permite dejar de reaccionar en automático y empezar a responder desde un lugar más consciente. Porque no puedes controlar todo lo que ocurre a tu alrededor, pero sí puedes aprender a regular lo que ocurre dentro de ti. Y aquí está lo importante: entre lo que ocurre y lo que haces, hay un espacio. Ese espacio es donde puedes parar, respirar, pensar y decidir. Ese espacio es libertad. Este ejercicio te ayudará a explorar ese espacio y a entrenar tu capacidad de respuesta. Cada vez que lo haces, aunque sea por unos segundos, estás construyendo una versión más tranquila, consciente y libre de ti misma o de ti mismo. </p>
@@ -174,7 +185,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
             </Accordion>
         </div>
         </CardDescription>
-        {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
+          {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
         {audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full">
@@ -327,22 +338,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
                     <CheckCircle className="mr-2 h-5 w-5" />
                     <p className="font-medium">Tu registro ha sido guardado.</p>
                 </div>
-                <Dialog open={showCompass} onOpenChange={setShowCompass}>
-                  <DialogTrigger asChild>
-                    <Button variant="link" className="text-green-800 dark:text-green-200 mt-2">
-                        <Compass className="mr-2 h-4 w-4" /> Ver mi Brújula de Estrés
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Brújula de Estrés</DialogTitle>
-                      <DialogDescription>
-                        Esta brújula visual muestra si la principal fuente de tu estrés fue interna, externa o una combinación de ambas.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <StressCompass sourceType={triggerSource} />
-                  </DialogContent>
-                </Dialog>
+                
             </div>
           )}
         </form>

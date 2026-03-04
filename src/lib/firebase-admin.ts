@@ -1,4 +1,5 @@
 import * as admin from 'firebase-admin';
+import { getFirestore as getAdminFirestore } from 'firebase-admin/firestore';
 
 let app: admin.app.App | undefined;
 
@@ -22,7 +23,8 @@ function getAdminApp(): admin.app.App {
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         privateKey: privateKey,
       }),
-      storageBucket: "workwell-c4rlk.appspot.com",
+      storageBucket: "workwell-c4rlk.firebasestorage.app",
+
     });
     console.log("✅ Firebase Admin inicializado con credenciales de Certificado (variables de entorno).");
     return app;
@@ -32,7 +34,8 @@ function getAdminApp(): admin.app.App {
     app = admin.initializeApp({
       credential: admin.credential.applicationDefault(),
       projectId: process.env.FIREBASE_PROJECT_ID || 'workwell-c4rlk',
-      storageBucket: "workwell-c4rlk.appspot.com",
+      storageBucket: "workwell-c4rlk.firebasestorage.app",
+
     });
     console.log("✅ Firebase Admin inicializado con Credenciales de Aplicación por Defecto (ADC).");
     return app;
@@ -43,7 +46,7 @@ function getAdminApp(): admin.app.App {
   throw new Error("❌ ERROR: No se pudo inicializar Firebase Admin. Asegúrate de tener configuradas las credenciales (ADC o variables de entorno).");
 }
 
-export const getDb = () => admin.firestore(getAdminApp());
+export const getDb = () => getAdminFirestore(getAdminApp(), "defaultue");
 export const getStorage = () => admin.storage(getAdminApp());
 export const getAuthAdmin = () => admin.auth(getAdminApp());
 export const FieldValue = admin.firestore.FieldValue;
