@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -98,7 +98,7 @@ Pregunta: Firma del contrato | Respuesta: ${signature}
           </div>
           {!isSaved ? (
             <>
-              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar Contrato</Button>
+              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               <p className="text-xs text-muted-foreground text-center mt-2">Recuerda: este contrato no es un castigo ni una lista de exigencias, sino una guía.</p>
             </>
           ) : (
@@ -117,3 +117,4 @@ Pregunta: Firma del contrato | Respuesta: ${signature}
     </Card>
   );
 }
+

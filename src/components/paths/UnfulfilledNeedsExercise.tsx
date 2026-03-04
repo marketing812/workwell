@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -92,7 +92,7 @@ Pregunta: ¿Qué puedes hacer mañana para proteger mejor ese valor? | Respuesta
             <Textarea id="tomorrow-plan" value={tomorrowPlan} onChange={e => setTomorrowPlan(e.target.value)} disabled={isSaved} />
           </div>
            {!isSaved ? (
-            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar Reflexión</Button>
+            <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
           ) : (
             <div className="p-4 text-center space-y-2">
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
@@ -105,3 +105,4 @@ Pregunta: ¿Qué puedes hacer mañana para proteger mejor ese valor? | Respuesta
     </Card>
   );
 }
+

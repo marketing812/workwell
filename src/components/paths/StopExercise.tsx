@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -74,7 +74,9 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm text-muted-foreground">
               Hoy vamos a practicarlo juntos, paso a paso.
             </p>
-            <Button onClick={nextStep} className="w-full">Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <div className="flex justify-end w-full">
+              <Button onClick={nextStep}>Empezar práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </div>
           </div>
         );
       case 1: // Pantalla 2 — S: STOP / Para
@@ -240,7 +242,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit" disabled={!nextAction.trim() || isSaved}>
                     {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
-                    {isSaved ? 'Guardado' : 'Guardar mi frase en el cuaderno terapéutico'}
+                    {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
                 </Button>
             </div>
           </form>
@@ -293,3 +295,4 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
     </Card>
   );
 }
+

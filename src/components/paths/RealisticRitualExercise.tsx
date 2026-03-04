@@ -11,7 +11,6 @@ import { Edit3, Save, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { RealisticRitualExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
-import { Input } from '../ui/input';
 
 interface RealisticRitualExerciseProps {
   content: RealisticRitualExerciseContent;
@@ -126,7 +125,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button type="submit" disabled={!reminder.trim()}>
-                <Save className="mr-2 h-4 w-4" /> Guardar mi ritual
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
               </Button>
             </div>
           </form>
@@ -154,8 +153,19 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
           <Edit3 className="mr-2" />
           {content.title}
         </CardTitle>
-        {content.objective && <CardDescription>{content.objective}</CardDescription>}
-        {content.duration && <p className="text-sm pt-1">Duración estimada: {content.duration}</p>}
+        {(content.audioUrl || content.objective) && (
+          <CardDescription>
+            {content.audioUrl && (
+              <div className="mb-4">
+                <audio controls controlsList="nodownload" className="w-full">
+                  <source src={content.audioUrl} type="audio/mp3" />
+                  Tu navegador no soporta el elemento de audio.
+                </audio>
+              </div>
+            )}
+            {content.objective}
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent>
           {renderStep()}
@@ -163,3 +173,4 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
     </Card>
   );
 }
+

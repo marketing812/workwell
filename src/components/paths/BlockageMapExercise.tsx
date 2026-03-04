@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -119,7 +119,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               id="avoided-task"
               value={avoidedTask}
               onChange={e => setAvoidedTask(e.target.value)}
-              placeholder="Ej: Escribir un email importante"
+              placeholder="Ej: “Escribir un email importante”, “Retomar una conversación difícil”, “Ordenar papeles”, “Volver a hacer ejercicio”"
             />
             <div className="flex justify-between w-full">
               <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
@@ -136,7 +136,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               id="blocking-thoughts"
               value={blockingThoughts}
               onChange={e => setBlockingThoughts(e.target.value)}
-              placeholder="Ej: Lo haré mal y me juzgarán"
+              placeholder="Ej: “Lo haré mal y me juzgarán”, “Seguro no soy capaz”, “No me va a salir perfecto, mejor no lo intento”, “Ya lo he pospuesto tanto que no tiene sentido”"
             />
              <div className="flex justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
@@ -198,7 +198,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               id="escape-behaviors"
               value={escapeBehaviors}
               onChange={e => setEscapeBehaviors(e.target.value)}
-              placeholder="Ej: Miro redes sociales, limpio compulsivamente..."
+              placeholder="Ej: “Miro redes sociales”, “Limpio compulsivamente”, “Me digo que ya lo haré mañana”, “Planifico sin actuar”, “Me aíslo”"
             />
              <div className="flex justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
@@ -239,12 +239,12 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
             <p className="text-sm italic text-center pt-2">
               Este mapa no es para juzgarte. Es para ayudarte a ver el ciclo completo con más claridad. Entenderlo es el primer paso para liberarte.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2 mt-4">
-              <Button onClick={prevStep} variant="outline" className="w-full">
+            <div className="flex w-full justify-between gap-2 mt-4">
+              <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Atrás
               </Button>
-              <Button onClick={handleSave} className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno
+              <Button onClick={handleSave}>
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
               </Button>
             </div>
           </div>
@@ -278,3 +278,4 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
     </Card>
   );
 }
+

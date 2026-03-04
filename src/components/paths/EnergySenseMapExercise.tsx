@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -181,7 +181,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             </div>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave} disabled={!commitment.trim()}>Guardar <Save className="ml-2 h-4 w-4"/></Button>
+                <Button onClick={handleSave} disabled={!commitment.trim()}>Guardar en el cuaderno terapéutico<Save className="ml-2 h-4 w-4"/></Button>
             </div>
         </div>
       );
@@ -212,3 +212,4 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
     </Card>
   );
 }
+

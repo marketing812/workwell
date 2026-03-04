@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -135,7 +135,7 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={handleSave} className="w-auto">
-                                <Save className="mr-2 h-4 w-4"/> Guardar Registro
+                                <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico
                             </Button>
                         </div>
                     </div>
@@ -175,3 +175,4 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
         </Card>
     );
 }
+

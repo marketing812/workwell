@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -270,9 +270,9 @@ ${reassessment}
                 {!isSaved ? (
                      <div className="flex justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                        <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Registro</Button>
+                        <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                     </div>
-                ) : <Button onClick={nextStep} className="w-full">Ver frases de apoyo</Button>}
+                ) : <div className="flex justify-end w-full"><Button onClick={nextStep}>Ver frases de apoyo</Button></div>}
             </form>
         );
       case 7: // Frases de apoyo
@@ -322,3 +322,4 @@ ${reassessment}
     </Card>
   );
 }
+

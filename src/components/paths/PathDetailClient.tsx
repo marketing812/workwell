@@ -373,8 +373,41 @@ function ContentItemRenderer({
           </AccordionItem>
         </Accordion>
       );
-    case 'exercise': // Fallback for old/generic exercises
-      return null;
+    case 'exercise':
+      return (
+        <Card key={index} className="bg-muted/30 my-6 shadow-md">
+          <CardHeader>
+            <CardTitle className="text-lg text-accent flex items-center">
+              <Edit3 className="mr-2" />
+              {contentItem.title}
+            </CardTitle>
+            {contentItem.audioUrl && (
+              <div className="mt-2">
+                <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
+              </div>
+            )}
+            {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
+            {contentItem.duration && (
+              <p className="text-xs text-muted-foreground pt-1">
+                <Clock className="inline h-3 w-3 mr-1" />
+                Duracion estimada: {contentItem.duration}
+              </p>
+            )}
+          </CardHeader>
+          <CardContent>
+            {contentItem.content.map((item, i) => (
+              <ContentItemRenderer
+                key={`${index}-exercise-${i}`}
+                contentItem={item}
+                index={i}
+                path={path}
+                module={module}
+                onExerciseComplete={onExerciseComplete}
+              />
+            ))}
+          </CardContent>
+        </Card>
+      );
     case 'quote':
       return (
         <blockquote
@@ -959,5 +992,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-
-  

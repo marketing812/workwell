@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -109,7 +109,9 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                             <li>“¿Y si me estoy volviendo loco/a y pierdo el control?”</li>
                         </ul>
                         <p className="text-sm text-muted-foreground">Hoy vamos a hacer un recorrido por tu cuerpo para mirar esas sensaciones con calma, sin añadirles interpretaciones de peligro. La meta no es eliminar nada, sino comprobar que las sensaciones, aunque intensas y molestas, no son peligrosas.</p>
-                        <Button onClick={nextStep} className="w-full mt-2">Comenzar visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        <div className="flex justify-end w-full mt-2">
+                            <Button onClick={nextStep}>Comenzar visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        </div>
                     </div>
                 );
             
@@ -231,7 +233,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                             <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button type="submit" disabled={!wavePhrase.trim() || isSaved}>
                                 {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
-                                {isSaved ? 'Guardado' : 'Guardar y ver cierre'}
+                                {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
                             </Button>
                         </div>
                     </form>
@@ -286,3 +288,4 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
         </Card>
     );
 }
+

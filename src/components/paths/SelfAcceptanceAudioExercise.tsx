@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState } from 'react';
@@ -75,7 +75,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
         {!isCompleted ? (
             <>
                 <Button onClick={handleComplete} className="w-full mt-6">
-                    <Save className="mr-2 h-4 w-4" /> Guardar en el Cuaderno Terapéutico
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                 </Button>
             </>
         ) : (
@@ -90,3 +90,4 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
     </Card>
   );
 }
+

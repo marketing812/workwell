@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -177,7 +177,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <p className="text-sm">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi Cuaderno</Button>
+                <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -207,3 +207,4 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
     </Card>
   );
 }
+

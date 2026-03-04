@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -192,7 +192,7 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
                 </p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline">Atrás</Button>
-                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en mi cuaderno</Button>
+                    <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
         );
@@ -229,3 +229,4 @@ export default function EmotionalInvolvementTrafficLightExercise({ content, path
     </Card>
   );
 }
+

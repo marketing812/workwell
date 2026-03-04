@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -143,7 +143,7 @@ export default function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTe
                                 placeholder="Escribe aquí cómo lo dirías tú..."
                              />
                              <Button onClick={() => handleSave(key as keyof typeof techniques)} size="sm" className="w-full">
-                                <Save className="mr-2 h-4 w-4"/> Guardar en mi Cuaderno
+                                <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico
                              </Button>
                         </div>
                     </div>
@@ -155,3 +155,4 @@ export default function NoGuiltTechniquesExercise({ content, pathId }: NoGuiltTe
     </Card>
   );
 }
+

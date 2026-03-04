@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -149,7 +149,7 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               {!isSaved ? (
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Radar</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               ) : (
                 <div className="flex items-center p-3 text-green-800 dark:text-green-200">
                   <CheckCircle className="mr-2 h-5 w-5" />
@@ -192,3 +192,4 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
     </Card>
   );
 }
+

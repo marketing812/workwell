@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -271,7 +271,7 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
 
           {!isSaved ? (
              <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar Registro
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
             </Button>
           ) : (
             <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
@@ -304,3 +304,4 @@ export default function StressMapExercise({ content, onComplete, pathId }: Stres
 }
 
     
+

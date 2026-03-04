@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -152,7 +152,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
                 <div className="flex justify-between w-full">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit" disabled={!finalReflection.trim()}>
-                        <Save className="mr-2 h-4 w-4"/> Guardar en Cuaderno
+                        <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico
                     </Button>
                 </div>
             ) : (
@@ -194,3 +194,4 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
     </Card>
   );
 }
+

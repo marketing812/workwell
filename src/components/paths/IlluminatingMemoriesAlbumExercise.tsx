@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -286,7 +286,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                             <Label>Duración: {activityDuration} minutos (Hazlo ridículamente fácil: si dudas, elige 3–5 minutos)</Label>
                             <Slider defaultValue={[activityDuration]} onValueChange={(v) => setActivityDuration(v[0])} min={1} max={15} step={1} />
                         </div>
-                        <Button onClick={handleSavePlan} className="w-full"><Save className="mr-2 h-4 w-4" />Guardar plan de hoy</Button>
+                        <Button onClick={handleSavePlan} className="w-full"><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
@@ -338,7 +338,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                         <Button onClick={() => setStarResource(filledMomentsForSelection.map(item => item.moment))} variant="secondary" className="w-full">Seleccionar todos mis recuerdos</Button>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-                            <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar mi álbum</Button>
+                            <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
                         </div>
                     </div>
                 );

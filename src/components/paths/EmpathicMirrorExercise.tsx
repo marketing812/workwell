@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -230,7 +230,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Marcar como completado</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -272,3 +272,4 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
     </Card>
   );
 }
+

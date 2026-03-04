@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -186,7 +186,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                     <Label htmlFor="reflection">Observa tu mapa y responde: ¿Tienes apoyos muy concentrados en una sola persona? ¿Faltan ciertos tipos de apoyo? ¿Hay vínculos que sería bueno cuidar más?</Label>
                     <Textarea id="reflection" value={reflection} onChange={e => setReflection(e.target.value)} />
                 </div>
-                <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar y continuar</Button></div>
+                <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button></div>
             </div>
         );
        case 5:
@@ -222,3 +222,4 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
     </Card>
   );
 }
+

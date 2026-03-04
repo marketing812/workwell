@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -129,7 +129,7 @@ ${reflection.toolUsed || 'No especificado.'}
                     <ArrowLeft className="mr-2 h-4 w-4"/>Atrás
                 </Button>
                 <Button type="submit" className="w-auto">
-                    <Save className="mr-2 h-4 w-4" /> Guardar Reflexión
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                 </Button>
             </div>
           ) : (

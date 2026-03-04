@@ -101,7 +101,9 @@ Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo
                     <p><strong>Distorsiones que aparecieron:</strong> Inferencia arbitraria: Adivinación del pensamiento, Catastrofismo</p>
                     <p><strong>Reformulación adecuada consciente:</strong> “No puedo saber lo que piensa. Estoy cuidándome al expresar mis límites, y eso es una muestra de responsabilidad y valentía.”</p>
                 </div>
-                 <Button onClick={nextStep} className="w-full">Empezar práctica <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                 <div className="flex justify-end w-full">
+                    <Button onClick={nextStep}>Empezar práctica <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                 </div>
             </div>
         );
       case 1:

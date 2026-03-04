@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -116,7 +116,9 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                           <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder='Ejemplo: “Estaba en el metro y empezó a llenarse de gente.”' />
                         </div>
                         <p className="text-sm italic">En realidad, lo primero que suele aparecer tras la situación es un pensamiento rápido de amenaza (‘esto es peligroso’), incluso aunque no lo recuerdes claramente. No te preocupes si ahora no lo tienes claro: lo retomaremos más adelante.</p>
-                        <Button onClick={() => setStep(1)} className="w-full mt-2" disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        <div className="flex justify-end w-full mt-2">
+                            <Button onClick={() => setStep(1)} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                        </div>
                     </div>
                 );
             case 1: // Pantalla 2
@@ -197,7 +199,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={handleSave} disabled={isSaved}>
                              <Save className="mr-2 h-4 w-4" />
-                             ${isSaved ? 'Guardado' : 'Guardar y Ver Cierre'}
+                             {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
                            </Button>
                         </div>
                     </div>
@@ -242,4 +244,5 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
         </Card>
     );
 }
+
 

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -144,7 +144,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
             <Textarea value={keyGesture} onChange={e => setKeyGesture(e.target.value)} placeholder="Ej: Hacer 3 respiraciones profundas antes de una reunión."/>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
-              <Button onClick={handleSave} disabled={!keyGesture.trim()}>Guardar mi visualización</Button>
+              <Button onClick={handleSave} disabled={!keyGesture.trim()}>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -203,3 +203,4 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
     </Card>
   );
 }
+

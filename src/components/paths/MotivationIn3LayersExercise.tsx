@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -187,7 +187,7 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
             <Textarea id="purpose" value={purpose} onChange={e => setPurpose(e.target.value)} placeholder="Ej: “Quiero tener energía para jugar con mis hijos”, “Quiero sentirme más libre y tranquila con mis finanzas”." />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button onClick={handleSave} disabled={!purpose.trim()}>Guardar mi motivación en 3 capas</Button>
+              <Button onClick={handleSave} disabled={!purpose.trim()}>Guardar en el cuaderno terapéutico</Button>
             </div>
           </div>
         );
@@ -236,3 +236,4 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -175,7 +175,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                           <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar mi ajuste compasivo</Button>
+                           <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
                         </div>
                     </form>
                 );
@@ -213,3 +213,4 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
         </Card>
     );
 }
+

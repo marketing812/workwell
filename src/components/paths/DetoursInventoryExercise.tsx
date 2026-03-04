@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -297,7 +297,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <p className="text-sm text-muted-foreground font-semibold text-center">Cada gesto guardado será un recordatorio de tu fuerza y de tu camino.</p>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en Mis gestos de reconexión</Button>
+              <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -338,3 +338,4 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+

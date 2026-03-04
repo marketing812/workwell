@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -111,7 +111,9 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
                 <p><strong>Mi ancla:</strong> Cierro los ojos, respiro profundo y me repito: “Estoy a salvo. Puedo ir paso a paso.”</p>
                 <p><strong>Efecto:</strong> Mi corazón se calma y puedo pensar con más claridad.</p>
             </div>
-            <Button onClick={nextStep} className="w-full">Empezar a Crear mi Ancla</Button>
+            <div className="flex w-full justify-end">
+              <Button onClick={nextStep}>Empezar a Crear mi Ancla</Button>
+            </div>
           </div>
         );
       case 1: // Choose anchor type
@@ -153,7 +155,7 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
             </div>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar Ancla</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -192,3 +194,4 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
@@ -188,7 +188,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
              </RadioGroup>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar mi escalera en el cuaderno terapéutico</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -229,3 +229,4 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
     </Card>
   );
 }
+
