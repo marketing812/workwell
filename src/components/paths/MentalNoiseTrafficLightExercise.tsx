@@ -212,7 +212,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -270,7 +270,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -328,7 +328,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -383,7 +383,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -406,7 +406,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" />

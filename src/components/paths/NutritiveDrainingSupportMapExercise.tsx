@@ -193,8 +193,8 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafes con Marta..." />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atras</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Mapa</Button>
             </div>
           </form>
         );

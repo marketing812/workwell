@@ -245,7 +245,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
           <div className="p-4 space-y-4 text-center">
             <p>
               A veces no es que no sepas lo que quieres... sino que hay interferencias que te desvían del camino. Hoy
-              vamos a ponerles nombre para empezar a recuperar dirección.
+              vamos a ponerles nombre para empezar a recuperar direccion.
             </p>
             <Button onClick={nextStep}>
               Empezar mi inventario
@@ -277,7 +277,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Ir a mis desvios
@@ -332,7 +332,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button
                 onClick={() => {
@@ -497,7 +497,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex flex-wrap gap-2 justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button type="button" variant="outline" onClick={handleSaveDetourStep}>
                 Guardar mi desvio
@@ -539,7 +539,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep} disabled={!commitment.trim()}>
                 Guardar compromiso
@@ -586,7 +586,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
@@ -608,7 +608,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={() => setStep(0)} variant="outline">
                 Hacer otro registro

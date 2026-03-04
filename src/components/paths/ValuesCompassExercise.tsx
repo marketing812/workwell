@@ -208,7 +208,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button
                 onClick={() => {
@@ -298,7 +298,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep} className="w-auto">
                 Ver mi brujula
@@ -347,7 +347,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={handleSave} className="w-auto">
                 <Save className="mr-2 h-4 w-4" />
@@ -368,7 +368,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button
                 onClick={() => {

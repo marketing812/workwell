@@ -85,7 +85,7 @@ export default function DirectedDecisionsExercise({
     if (!tomorrowAction.trim()) {
       toast({
         title: "Accion no definida",
-        description: "Define tu accion para mañana.",
+        description: "Define tu accion para manana.",
         variant: "destructive",
       });
       return;
@@ -193,7 +193,7 @@ Pregunta: Que pequena accion puedes tomar manana que honre ese valor? | Respuest
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button
                 onClick={nextStep}
@@ -238,7 +238,7 @@ Pregunta: Que pequena accion puedes tomar manana que honre ese valor? | Respuest
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                Atras
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -253,14 +253,20 @@ Pregunta: Que pequena accion puedes tomar manana que honre ese valor? | Respuest
           <form onSubmit={handleSave} className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 3: Elige una accion para mañana</h4>
             <div className="space-y-2">
-              <Label htmlFor="tomorrow-action">Que pequena accion puedes tomar mañana que honre ese valor?</Label>
+              <Label htmlFor="tomorrow-action">Que pequena accion puedes tomar manana que honre ese valor?</Label>
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={(e) => setTomorrowAction(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                {!isSaved ? (
-                <Button type="submit" className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
-                ) : (
+              <Button onClick={prevStep} variant="outline" type="button">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atras
+              </Button>
+              {!isSaved ? (
+                <Button type="submit">
+                  <Save className="mr-2 h-4 w-4" />
+                  Guardar mis decisiones con direccion
+                </Button>
+              ) : (
                 <div className="flex items-center p-3 text-green-800 dark:text-green-200">
                   <CheckCircle className="mr-2 h-5 w-5" />
                   <p className="font-medium">Guardado.</p>
@@ -276,7 +282,7 @@ Pregunta: Que pequena accion puedes tomar manana que honre ese valor? | Respuest
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Accion guardada</h4>
             <blockquote className="italic">
-              "Cada vez que eliges desde un valor, fortaleces tu dirección interna."
+              "Cada vez que eliges desde un valor, fortaleces tu direccion interna."
             </blockquote>
             <p className="text-sm pt-2">
               Tu plan de accion se ha guardado en tu Cuaderno Terapeutico. Puedes revisarlo cuando quieras para recordar
@@ -284,7 +290,7 @@ Pregunta: Que pequena accion puedes tomar manana que honre ese valor? | Respuest
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
               <Button onClick={prevStep} variant="outline">
-                Atrás
+                Atras
               </Button>
               <Button onClick={resetExercise} variant="outline">
                 Hacer otro registro
