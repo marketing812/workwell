@@ -51,7 +51,7 @@ Pregunta: Que valor estaba asociado a eso que postergaste? | Respuesta: ${associ
 
 Pregunta: Que te impidio hacerlo? (miedo, prisa, presion, distraccion) | Respuesta: ${reason}
 
-Pregunta: Que puedes hacer manana para proteger mejor ese valor? | Respuesta: ${tomorrowPlan}
+Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${tomorrowPlan}
     `;
 
     addNotebookEntry({
@@ -90,7 +90,7 @@ Pregunta: Que puedes hacer manana para proteger mejor ese valor? | Respuesta: ${
             <strong>Razon:</strong> me atrapo la urgencia de contestar correos.
           </p>
           <p>
-            <strong>Plan para manana:</strong> reservar 20 minutos sin movil justo despues de comer.
+            <strong>Plan para mañana:</strong> reservar 20 minutos sin movil justo despues de comer.
           </p>
         </div>
       </CardHeader>
@@ -125,7 +125,7 @@ Pregunta: Que puedes hacer manana para proteger mejor ese valor? | Respuesta: ${
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="tomorrow-plan">Que puedes hacer manana para proteger mejor ese valor?</Label>
+            <Label htmlFor="tomorrow-plan">Que puedes hacer mañana para proteger mejor ese valor?</Label>
             <Textarea
               id="tomorrow-plan"
               value={tomorrowPlan}

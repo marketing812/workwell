@@ -118,7 +118,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               />
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atras</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente: Clasificar Sensacion <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               </div>
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atras</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={goToVisualClassificationStep}>Siguiente: Clasificacion Visual <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               </div>
             ))}
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atras</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente: Reflexion <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafes con Marta..." />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atras</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Mapa</Button>
             </div>
           </form>

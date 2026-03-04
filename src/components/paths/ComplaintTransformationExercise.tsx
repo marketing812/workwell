@@ -124,7 +124,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!complaint.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -147,7 +147,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!underControl.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -175,7 +175,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!concreteAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -213,7 +213,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!tableComplaint.trim() || !tableAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -238,7 +238,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atras
+                Atrás
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
