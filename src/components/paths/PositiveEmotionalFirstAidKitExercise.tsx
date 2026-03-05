@@ -147,7 +147,6 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño —una charla con alguien querido, una canción, un paseo— te cambió el estado de ánimo? Con este ejercicio vas a reunir esas estrategias en un solo lugar: tu Botiquín Emocional Positivo, listo para usar cuando lo necesites.</p>
             <Button onClick={() => setStep(1)}>Crear mi botiquín</Button>
           </div>
         );
@@ -155,7 +154,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
         return (
             <div className="p-4 space-y-6 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg">Paso 1: Elige tus recursos</h4>
-                <p className="text-sm text-muted-foreground">Cada recurso está basado en estrategias que tu cerebro reconoce como calmantes o estimulantes. Selecciona al menos uno de cada categoría.</p>
+                <p className="text-sm text-muted-foreground">Cada recurso está basado en estrategias que tu cerebro reconoce como calmantes o estimulantes. Selecciona uno de cada categoría. (puedes añadir el tuyo con “Otro”)</p>
                 {Object.entries(resourceCategories).map(([key, category]) => (
                     <div key={key} className="space-y-2">
                         <Label className="font-semibold">{category.label}</Label>
@@ -212,9 +211,9 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Categoría</TableHead>
-                                <TableHead>Recurso</TableHead>
-                                <TableHead className="text-right">Estrategia de activación</TableHead>
+                                <TableHead className="text-center">Categoría</TableHead>
+                                <TableHead className="text-center">Recurso</TableHead>
+                                <TableHead className="text-center">Estrategia de activación</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -222,7 +221,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                                 <TableRow key={key}>
                                     <TableCell className="font-medium">{resourceCategories[key as ResourceKey].label}</TableCell>
                                     <TableCell>{finalSelections[key as ResourceKey]}</TableCell>
-                                    <TableCell className="text-right">{personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how}</TableCell>
+                                    <TableCell className="text-center">{personalization[key as ResourceKey].how === 'Otro' ? personalization[key as ResourceKey].otherHow : personalization[key as ResourceKey].how}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -231,7 +230,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                  <p className="text-sm italic text-muted-foreground pt-2">“Tu botiquín ya está listo. Cada recurso es una herramienta de apoyo emocional diseñada para ti. Cuanto más lo uses, más automático será para tu mente recurrir a él en los momentos difíciles.”</p>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave} className="w-full mt-4"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
+                  <Button onClick={handleSave} className="w-half mt-4"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                 </div>
             </div>
         );
@@ -253,13 +252,14 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
-        {content.objective && <CardDescription className="pt-2">{content.objective}
+        {content.objective && <CardDescription className="text-sm text-muted-foreground">{content.objective}
         <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
                 <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/tecnicas/Ruta12semana4tecnica2.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
+        <p className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño —una charla con alguien querido, una canción, un paseo— te cambió el estado de ánimo? Con este ejercicio vas a reunir esas estrategias en un solo lugar: tu Botiquín Emocional Positivo, listo para usar cuando lo necesites.</p><p className="text-sm text-muted-foreground">Eso no es casualidad: tu cerebro responde a ciertos estímulos que actúan como “medicina natural” para regular emociones. <br/>- Conectar con alguien activa circuitos de seguridad en tu sistema nervioso. <br/>- Moverte o hacer una actividad placentera libera neurotransmisores como serotonina y dopamina, que elevan tu ánimo.<br/>- La música regula directamente tu sistema límbico, influyendo en tus emociones.<br/>- Sonreír o reír dispara endorfinas que reducen tensión. <br/>- Hablarte con frases constructivas cambia cómo interpretas lo que vives. <br/>- Hoy vas a reunir todas estas estrategias en un solo lugar: tu Botiquín Emocional Positivo. Un plan listo para usar, que te recordará qué hacer cuando lo necesites.</p>
         </CardDescription>}
       </CardHeader>
       <CardContent>

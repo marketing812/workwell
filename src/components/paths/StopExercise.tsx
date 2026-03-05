@@ -60,7 +60,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
     switch (step) {
       case 0:
         return (
-          <div className="p-4 space-y-4 text-center">
+          <div className="p-4 space-y-4 text-left">
             <h4 className="font-semibold text-lg">La técnica STOP es como tener un semáforo interno siempre contigo.</h4>
             <p className="text-sm text-muted-foreground">
               Cuando la ansiedad acelera tus pensamientos o tu cuerpo se activa como si hubiera una emergencia, este semáforo te recuerda que puedes parar, respirar, observar y elegir cómo seguir.
@@ -86,7 +86,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm text-muted-foreground">El objetivo de este primer paso es interrumpir el piloto automático ansioso (la reacción impulsiva de la amígdala) y crear un micro-espacio entre lo que pasa y lo que haces.</p>
             <div className="mt-4">
                 <audio key="audio-step-1" controls controlsList="nodownload" className="w-full">
-                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica1paso1stop.mp3`} type="audio/mp3" />
+                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3`} type="audio/mp3" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
@@ -126,7 +126,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
              <p className="text-sm text-muted-foreground">El objetivo del paso 2 es activar el freno parasimpático (nervio vago), reducir la hiperventilación y bajar la activación del cuerpo.</p>
              <div className="mt-4">
               <audio key="audio-step-2" controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1respira.mp3`} type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3`} type="audio/mp3" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -276,6 +276,14 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
         </CardTitle>
         <CardDescription className="pt-2">
           {contentTyped.objective}
+          {contentTyped.audioUrl && (
+            <div className="mt-4">
+              <audio controls controlsList="nodownload" className="w-full">
+                <source src={contentTyped.audioUrl} type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+          )}
           <div className="pt-2">
              <p className="mb-2">
               <span className="font-semibold">Sirve para:</span>

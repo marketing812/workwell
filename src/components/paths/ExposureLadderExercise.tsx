@@ -100,6 +100,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
   };
   
   const renderCurrentStep = () => {
+    const filledStepsCount = steps.filter(s => s.trim() !== '').length;
     switch (step) {
       case 0: return <div className="p-4 text-center"><p className="text-sm mb-4">Imagina que cada situación que temes es un escalón de una escalera. Hoy vamos a construir juntos tu escalera de exposición: desde lo más sencillo hasta lo más desafiante.</p><Button onClick={nextStep}>Empezar a construir <ArrowRight className="ml-2 h-4 w-4"/></Button></div>;
       case 1:
@@ -116,7 +117,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
         );
       case 2: return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 2: Divide en escalones</h4>
+            <h4 className="font-semibold text-lg">Paso 2: Piensa en pequeños pasos</h4>
             <p className="text-sm text-muted-foreground">Ahora divide esa situación en escalones más pequeños.</p>
             <div className="text-sm italic p-2 border-l-2 border-accent bg-accent/10">
               <p>Cada escalón debe ser lo bastante sencillo para poder intentarlo y lo bastante desafiante para activar algo de ansiedad sin bloquearte.</p>
@@ -130,13 +131,15 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
                 <li>Presentar en una reunión pequeña.</li>
                 <li>Presentar en la reunión general.</li>
               </ul>
+              
             </div>
+            <p>Escribe tus propios escalones:</p>
             {steps.map((s, i) => (
                 <Textarea key={i} value={s} onChange={e => handleStepChange(i, e.target.value)} placeholder={`Escalón ${i+1}`}/>
             ))}
              <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                <Button onClick={nextStep}>Siguiente</Button>
+                <Button onClick={nextStep} disabled={filledStepsCount < 3}>Siguiente</Button>
             </div>
           </div>
         );
@@ -176,8 +179,8 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
         );
       case 4: return (
           <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 4: Elige tu primer paso</h4>
-            <p className="text-sm text-muted-foreground">¿Cuál será el primer paso realista que puedes poner en práctica esta semana?</p>
+            <h4 className="font-semibold text-lg">Paso 4: marca tu primer peldaño</h4>
+            <p className="text-sm text-muted-foreground">Elige cuál será el primer paso realista que puedes poner en práctica esta semana. <br/>Criterio para avanzar: repite un peldaño varias veces hasta que la ansiedad se reduzca de forma notable (por ejemplo, de un nivel 7/10 a un 3-2/10). Entonces sabrás que estás preparado o preparada para subir al siguiente. <br />Recuerda: lo importante no es la rapidez, sino la constancia.<br />Selecciona tu primer peldaño (ejercicio de seleccionar de la lista anterior) </p>
              <RadioGroup value={firstStep} onValueChange={setFirstStep}>
                 {steps.filter(s => s.trim()).map((s, i) => (
                      <div key={i} className="flex items-center space-x-2">

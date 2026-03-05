@@ -121,8 +121,7 @@ export default function TriggerExercise({ content, onComplete, pathId }: Trigger
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle><p>
-        Aprende a diferenciar si lo que te está generando estrés viene del entorno (externo) o de ti mismo/a (interno), para empezar a responder con conciencia en lugar de reaccionar en modo automático.   </p><p>Recuerda un momento reciente de estrés y responde al cuestionario guiado. Al finalizar, recibirás un resumen visual tipo "brújula del estrés", que te mostrará si tus estresores habituales son externos, internos o mixtos.</p>
+        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2"/>{content.title}</CardTitle>
          {content.duration && <p className="text-sm text-muted-foreground pt-1">Duración estimada: 5 minutos</p>}
         {audioUrlpre && (
             <div className="mt-4">

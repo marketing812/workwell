@@ -26,6 +26,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const { user } = useUser();
     const [step, setStep] = useState(0);
     const [breathing, setBreathing] = useState('');
+    const [otherBreathing, setOtherBreathing] = useState('');
     const [heart, setHeart] = useState('');
     const [otherHeart, setOtherHeart] = useState('');
     const [stomach, setStomach] = useState('');
@@ -41,6 +42,7 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const resetExercise = () => {
         setStep(0);
         setBreathing('');
+        setOtherBreathing('');
         setHeart('');
         setOtherHeart('');
         setStomach('');
@@ -64,13 +66,14 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
         }
 
         const finalHeart = heart === 'Otra' ? otherHeart : heart;
+        const finalBreathing = breathing === 'Otra' ? otherBreathing : breathing;
         const finalStomach = stomach === 'Otra' ? otherStomach : stomach;
         const finalHead = head === 'Otra' ? otherHead : head;
 
         const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pregunta: ¿Cómo es tu respiración? | Respuesta: ${breathing || 'No especificada.'}
+Pregunta: ¿Cómo es tu respiración? | Respuesta: ${finalBreathing || 'No especificada.'}
 Pregunta: ¿Cómo late tu corazón? | Respuesta: ${finalHeart || 'No especificado.'}
 Pregunta: ¿Qué notas en el estómago? | Respuesta: ${finalStomach || 'No especificado.'}
 Pregunta: ¿Qué sientes en la cabeza? | Respuesta: ${finalHead || 'No especificado.'}
@@ -125,9 +128,18 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Rápida" id="b-rapida" /><Label htmlFor="b-rapida" className="font-normal">Rápida</Label></div>
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Superficial" id="b-superficial" /><Label htmlFor="b-superficial" className="font-normal">Superficial</Label></div>
                             <div className="flex items-center space-x-2"><RadioGroupItem value="Con presión en el pecho" id="b-presion" /><Label htmlFor="b-presion" className="font-normal">Con presión en el pecho</Label></div>
+                            <div className="flex items-center space-x-2"><RadioGroupItem value="Otra" id="b-otra" /><Label htmlFor="b-otra" className="font-normal">Otra:</Label></div>
                         </RadioGroup>
+                        {breathing === 'Otra' && (
+                          <Textarea
+                            value={otherBreathing}
+                            onChange={e => setOtherBreathing(e.target.value)}
+                            placeholder="Describe otra sensación en la respiración..."
+                            className="mt-2 ml-6"
+                          />
+                        )}
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing}>Siguiente</Button></div>
+                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing || (breathing === 'Otra' && !otherBreathing.trim())}>Siguiente</Button></div>
                     </div>
                 );
             
@@ -153,7 +165,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                         )}
                         <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                                <AccordionTrigger className="text-sm font-semibold text-primary hover:no-underline bg-primary/10 border border-primary/20 rounded-md px-3">Mini psicoeducación</AccordionTrigger>
                                 <AccordionContent className="text-sm text-muted-foreground">El corazón se acelera para prepararte para correr o luchar. Aunque lo sientas intenso, no significa que vaya a fallar: es una reacción normal del cuerpo bajo ansiedad.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
@@ -225,7 +237,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                         <Textarea id="wavePhrase" value={wavePhrase} onChange={e => setWavePhrase(e.target.value)} placeholder="Ejemplo: “Mi ansiedad es una ola: viene y se va.”"/>
                          <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                                <AccordionTrigger className="text-sm font-semibold text-primary hover:no-underline bg-primary/10 border border-primary/20 rounded-md px-3">Mini psicoeducación</AccordionTrigger>
                                 <AccordionContent className="text-sm text-muted-foreground">Las investigaciones muestran que una emoción intensa dura entre 60 y 90 segundos si no la alimentas con pensamientos catastróficos.</AccordionContent>
                             </AccordionItem>
                         </Accordion>

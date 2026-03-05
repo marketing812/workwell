@@ -127,7 +127,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                         <h4 className="font-semibold text-lg">Paso 2: Señales del cuerpo y de la mente</h4>
                         <p className="text-sm">La ansiedad habla en dos idiomas: tu cuerpo y tus pensamientos. Vamos a escucharlos.</p>
                         <div className="space-y-2">
-                            <Label>Lista de síntomas físicos (selección múltiple con “otro”):</Label>
+                            <Label>Lista de síntomas físicos (selección múltiple):</Label>
                             {symptomOptions.map(opt => <div key={opt.id} className="flex items-center space-x-2"><Checkbox id={opt.id} onCheckedChange={c => setSymptoms(p => ({...p, [opt.id]: !!c}))} checked={symptoms[opt.id] || false} /><Label htmlFor={opt.id} className="font-normal">{opt.label}</Label></div>)}
                             <div className="flex items-center space-x-2"><Checkbox id="symptom-other" onCheckedChange={c => setSymptoms(p => ({...p, 'symptom-other': !!c}))} checked={symptoms['symptom-other'] || false} /><Label htmlFor="symptom-other" className="font-normal">Otro (especificar):</Label></div>
                             {symptoms['symptom-other'] && <Textarea value={otherSymptom} onChange={e => setOtherSymptom(e.target.value)} />}
@@ -154,7 +154,9 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                         </div>
                         <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-sm hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionTrigger className="text-sm font-semibold text-primary hover:no-underline bg-primary/10 border border-primary/20 rounded-md px-3">
+                              Mini psicoeducación
+                            </AccordionTrigger>
                             <AccordionContent className="text-sm">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
@@ -175,10 +177,10 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold text-lg">Paso 4: Reconstruye el círculo de la ansiedad</h4>
                         <div className="space-y-3 p-4 border rounded-md bg-background/50">
-                            <p><strong>Situación (hechos):</strong> ${situation}</p>
-                            <p><strong>Pensamiento amenazante inicial:</strong> ${initialThreat}</p>
-                            <p><strong>Síntomas físicos y mentales:</strong> ${selectedSymptoms.join(', ')}</p>
-                            <p><strong>Interpretación de los síntomas (miedo a la ansiedad):</strong> ${thoughts}</p>
+                            <p><strong>Situación (hechos):</strong> {situation}</p>
+                            <p><strong>Pensamiento amenazante inicial:</strong> {initialThreat}</p>
+                            <p><strong>Síntomas físicos y mentales:</strong> {selectedSymptoms.join(', ')}</p>
+                            <p><strong>Interpretación de los síntomas (miedo a la ansiedad):</strong> {thoughts}</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="final-action">Efecto final: ¿qué hiciste o qué sentiste después?</Label>
@@ -186,7 +188,9 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                         </div>
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-sm hover:no-underline">Mini psicoeducación</AccordionTrigger>
+                            <AccordionTrigger className="text-sm font-semibold text-primary hover:no-underline bg-primary/10 border border-primary/20 rounded-md px-3">
+                              Mini psicoeducación
+                            </AccordionTrigger>
                             <AccordionContent className="text-sm">
                               Muchas veces este pensamiento pasa tan rápido que no lo registras. 
                               Aunque ahora lo recuerdes después de los síntomas, en realidad suele ser el detonante. 
@@ -230,7 +234,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 {content.objective && (
                     <CardDescription className="pt-2">
-                        ${content.objective}
+                        {content.objective}
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
                                 <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana1tecnica1.mp3`} type="audio/mp3" />
