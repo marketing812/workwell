@@ -44,6 +44,35 @@ const registerSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 
+async function validateDepartmentCode(departmentId: string): Promise<{ valid: boolean; message?: string }> {
+  const response = await fetch("/api/department/validate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ departmentId }),
+  });
+
+  let payload: any = null;
+  try {
+    payload = await response.json();
+  } catch {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    return {
+      valid: false,
+      message:
+        payload?.error ||
+        "No se pudo validar el codigo de departamento en este momento. Intentalo de nuevo.",
+    };
+  }
+
+  return {
+    valid: payload?.valid === true,
+    message: payload?.message,
+  };
+}
+
 export function RegisterForm() {
   const t = useTranslations();
   const { toast } = useToast();
@@ -95,6 +124,24 @@ export function RegisterForm() {
       setErrors(validationResult.error);
       setIsSubmitting(false);
       return;
+    }
+
+    const departmentCode = String(validationResult.data.token || "").trim();
+    if (departmentCode) {
+      const departmentValidation = await validateDepartmentCode(departmentCode);
+      if (!departmentValidation.valid) {
+        const errorMessage =
+          departmentValidation.message ||
+          "El código de departamento no es válido. Revisa el dato e inténtalo de nuevo.";
+        setServerError(errorMessage);
+        toast({
+          title: t.errorOccurred,
+          description: errorMessage,
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
     }
 
     try {

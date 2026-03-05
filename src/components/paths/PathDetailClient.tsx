@@ -60,6 +60,37 @@ import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
+const EXERCISE_TYPES_WITH_INTERNAL_DURATION = new Set<string>([
+  'activateShieldExercise',
+  'complaintTransformationExercise',
+  'demandsExercise',
+  'detectiveExercise',
+  'empathicMirrorExercise',
+  'guiltRadarExercise',
+  'illuminatingMemoriesAlbumExercise',
+  'integrityDecisionsExercise',
+  'internalTensionsMapExercise',
+  'semaforoEmocionalExercise',
+  'stressMapExercise',
+  'triggerExercise',
+  'vitaminMomentExercise',
+]);
+
+function getSharedDuration(contentItem: ModuleContent): string | null {
+  if (!contentItem.type.endsWith('Exercise')) {
+    return null;
+  }
+  if (EXERCISE_TYPES_WITH_INTERNAL_DURATION.has(contentItem.type)) {
+    return null;
+  }
+  const duration = (contentItem as Partial<ExerciseContent>).duration;
+  if (typeof duration !== 'string') {
+    return null;
+  }
+  const normalized = duration.trim();
+  return normalized.length > 0 ? normalized : null;
+}
+
 // RUTA 1
 const StressMapExercise = dynamic(() => import('@/components/paths/StressMapExercise'), { loading: LoaderComponent, ssr: false });
 const TriggerExercise = dynamic(() => import('@/components/paths/TriggerExercise'), { loading: LoaderComponent, ssr: false });
@@ -941,6 +972,12 @@ export function PathDetailClient({ path }: { path: Path }) {
                   index={i}
                   contentItem={contentItem}
                 >
+                  {getSharedDuration(contentItem) && (
+                    <p className="text-sm text-muted-foreground mb-2">
+                      <span className="font-medium">Duración estimada:</span>{' '}
+                      {getSharedDuration(contentItem)}
+                    </p>
+                  )}
                   <ContentItemRenderer
                     contentItem={contentItem}
                     index={i}

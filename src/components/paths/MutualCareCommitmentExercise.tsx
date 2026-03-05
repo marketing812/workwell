@@ -93,6 +93,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
   
   const renderStep = () => {
     const filledPeople = commitments.filter(c => c.name.trim() !== '');
+    const filledCommitments = commitments.filter(c => c.name.trim() !== '' && c.action.trim() !== '');
 
     switch (step) {
       case 0: // Introducción

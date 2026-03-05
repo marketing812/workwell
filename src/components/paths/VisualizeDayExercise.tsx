@@ -25,6 +25,15 @@ const activityOptions = ['Desayunar con calma', 'Caminar al aire libre', 'Escuch
 
 const intentionOptions = ['Calma', 'Foco', 'Energía', 'Gratitud', 'Presencia', 'Amabilidad', 'Otro'];
 
+function resolveAudioUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  const trimmed = url.trim();
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  return `${EXTERNAL_SERVICES_BASE_URL}${trimmed}`;
+}
+
 
 export default function VisualizeDayExercise({ content, pathId, onComplete }: VisualizeDayExerciseProps) {
   const { toast } = useToast();
@@ -190,7 +199,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
           {content.audioUrl && (
               <div className="mt-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
+                      <source src={resolveAudioUrl(content.audioUrl)} type="audio/mp3" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>
