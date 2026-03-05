@@ -5,16 +5,19 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
-
+import DisableLegacySw from './DisableLegacySw';
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="es" suppressHydrationWarning>
       <head />
       <body className={`antialiased`}>
+        <DisableLegacySw />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

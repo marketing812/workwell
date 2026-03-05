@@ -34,14 +34,24 @@ export function initializeFirebase() {
 
 export function getSdks(firebaseApp: FirebaseApp) {
   // App Check (init una sola vez)
-  if (typeof window !== 'undefined') {
+ /* if (typeof window !== 'undefined') {
     initializeAppCheck(firebaseApp, {
       provider: new ReCaptchaV3Provider(
         process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY!
       ),
       isTokenAutoRefreshEnabled: true,
     });
-  }
+  }*/
+ const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY;
+
+if (typeof window !== 'undefined' && siteKey) {
+  initializeAppCheck(firebaseApp, {
+    provider: new ReCaptchaV3Provider(siteKey),
+    isTokenAutoRefreshEnabled: true,
+  });
+} else if (typeof window !== 'undefined') {
+  console.warn('App Check no inicializado: falta NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY');
+}
   return {
     firebaseApp,
     auth: getAuth(firebaseApp),
