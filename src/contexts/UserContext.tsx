@@ -20,6 +20,8 @@ import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
 const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
+const LAST_LOGIN_AT_KEY = "workwell-last-login-at";
+const MAX_SESSION_AGE_MS = 5 * 24 * 60 * 60 * 1000; // 5 dias
 
 export interface User {
   id: string;
@@ -221,6 +223,32 @@ export function UserProvider({ children }: { children: ReactNode }) {
       if (fbUser) {
         setLoading(true);
         try {
+          if (typeof window !== 'undefined') {
+            const now = Date.now();
+            const lastLoginAtRaw = localStorage.getItem(LAST_LOGIN_AT_KEY);
+            if (lastLoginAtRaw) {
+              const lastLoginAt = Number(lastLoginAtRaw);
+              const isValidTimestamp = Number.isFinite(lastLoginAt) && lastLoginAt > 0;
+              if (isValidTimestamp && (now - lastLoginAt) > MAX_SESSION_AGE_MS) {
+                await signOut(auth);
+                localStorage.removeItem(LAST_LOGIN_AT_KEY);
+                setUser(null);
+                setNotebookEntries([]);
+                toast({
+                  title: "Sesión expirada",
+                  description: "Por seguridad, vuelve a iniciar sesión.",
+                  variant: "destructive",
+                });
+                router.push('/login');
+                setLoading(false);
+                return;
+              }
+            } else {
+              // Backfill for existing sessions created before this policy.
+              localStorage.setItem(LAST_LOGIN_AT_KEY, String(now));
+            }
+          }
+
           const minimalUser: User = {
             id: fbUser.uid,
             name: fbUser.displayName || 'Usuario',
@@ -248,7 +276,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [auth, db, fetchUserProfile, fetchAndSetNotebook]);
+  }, [auth, db, fetchUserProfile, fetchAndSetNotebook, router, toast]);
 
   useEffect(() => {
     const handleNotebookUpdate = () => {
@@ -308,7 +336,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
 
       // Then, proceed to delete Firestore data
-      const collectionsToDelete = ["emotional_entries", "notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
+      const collectionsToDelete = ["notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
       const batch = writeBatch(db);
 
       for (const collectionName of collectionsToDelete) {

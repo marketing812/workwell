@@ -18,6 +18,7 @@ import {
   Check,
   Save,
   NotebookText,
+  ArrowLeft,
   ArrowRight,
   X as XIcon,
   Minus as MinusIcon,
@@ -292,6 +293,143 @@ class ContentItemErrorBoundary extends React.Component<{
 
 // =================== COMPONENTES DE EJERCICIOS ===================
 
+function ExerciseCardWithSteps({
+  contentItem,
+  index,
+  path,
+  module,
+  onExerciseComplete,
+}: {
+  contentItem: ExerciseContent;
+  index: number;
+  path: Path;
+  module: PathModule;
+  onExerciseComplete: () => void;
+}) {
+  const isCalmBodyMindExercise =
+    contentItem.title === 'Ejercicio 1: Calmar tu Cuerpo para Calmar tu Mente';
+
+  const calmBodyMindSteps: ModuleContent[] = isCalmBodyMindExercise
+    ? [
+        {
+          type: 'paragraphWithAudio',
+          text:
+            '¿Sientes que tu cuerpo se acelera cuando estás en tensión? Respirar más lento, mover el cuerpo o sentir el contacto con tu entorno puede ayudarte más de lo que imaginas.\n\nAquí encontrarás técnicas validadas por la ciencia para calmar tu sistema nervioso. Elige las que más te ayuden y practica durante unos minutos.\nPuedes usarlas cuando notes ansiedad o como parte de tu rutina diaria.\n\nSi lo prefieres, activa el audio y déjate guiar.',
+          audioUrl:
+            contentItem.content[0]?.type === 'paragraphWithAudio'
+              ? contentItem.content[0].audioUrl
+              : undefined,
+        },
+        {
+          type: 'paragraph',
+          text:
+            '¿Por qué estas técnicas funcionan?\n\n¿Por qué ayudan estas técnicas?\nCuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte.\nPero si esa activación se mantiene, tu bienestar se ve afectado.\n\nEstas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”.\n\nPracticar con regularidad te ayuda a recuperar el equilibrio con más facilidad.\n\nEstudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden reducir el volumen de la amígdala, el centro del miedo en el cerebro.\nEs decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.',
+        },
+        {
+          type: 'paragraph',
+          text:
+            '¿Qué cambia cuando las practicas?\n\nEn tu cuerpo:\n• Respiración más profunda y regular\n• Regulación del CO₂ (menos mareos o ahogo)\n• Reducción de tensión muscular\n• Sensaciones de alivio, calor o calma\n\nEn tu mente:\n• Recuperas el control y vuelves al presente\n• Se interrumpe el bucle de pensamientos ansiosos\n• Refuerzas el autocuidado y la conexión contigo\n\nEstas técnicas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial...\nTodas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.',
+        },
+        {
+          type: 'paragraph',
+          text: '¿Cuándo puedes usarlas?\n\nPuedes usar estas técnicas en el momento, si sientes ansiedad o bloqueo; antes de una situación desafiante; o como rutina diaria para entrenar tu equilibrio.\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.',
+        },
+        contentItem.content.find(
+          (item): item is ModuleContent => item.type === 'collapsible'
+        ) ?? contentItem.content[0],
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Registro de experiencia personal',
+          prompts: [
+            '¿Cómo te sentiste después de practicar alguna de estas técnicas? Escribe aquí tus palabras clave, sensaciones o una breve reflexión que quieras recordar:',
+          ],
+          savedSummaryText:
+            'RESUMEN\n\nCada vez que practicas una técnica de calma, estás enviando un mensaje claro a tu sistema nervioso:\n“No estás en peligro. Puedes estar en paz.”\n\nEstas experiencias repetidas se convierten en nuevas referencias internas. Lo incierto se vuelve más manejable.\nTu cuerpo aprende a activarse menos, calmarse antes y recuperar el equilibrio con mayor facilidad.\n\nEstás construyendo dentro de ti un pequeño refugio al que volver cuando todo alrededor es incierto.\nLa calma deja de ser solo una técnica… y se convierte en una capacidad que forma parte de ti.',
+        },
+      ]
+    : contentItem.content;
+
+  const renderedExerciseContent = isCalmBodyMindExercise ? calmBodyMindSteps : contentItem.content;
+
+  const [currentStep, setCurrentStep] = useState(0);
+  const totalSteps = renderedExerciseContent.length;
+  const isStepMode = (contentItem.stepMode === true || isCalmBodyMindExercise) && totalSteps > 1;
+
+  const nextStep = () => {
+    setCurrentStep((prev) => Math.min(prev + 1, totalSteps - 1));
+  };
+
+  const prevStep = () => {
+    setCurrentStep((prev) => Math.max(prev - 1, 0));
+  };
+
+  return (
+    <Card key={index} className="bg-muted/30 my-6 shadow-md">
+      <CardHeader>
+        <CardTitle className="text-lg text-accent flex items-center">
+          <Edit3 className="mr-2" />
+          {contentItem.title}
+        </CardTitle>
+        {contentItem.audioUrl && (
+          <div className="mt-2">
+            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
+          </div>
+        )}
+        {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
+        {contentItem.duration && (
+          <p className="text-xs text-muted-foreground pt-1">
+            <Clock className="inline h-3 w-3 mr-1" />
+            Duracion estimada: {contentItem.duration}
+          </p>
+        )}
+        {isStepMode && (
+          <p className="text-xs text-muted-foreground pt-1">
+            Paso {currentStep + 1} de {totalSteps}
+          </p>
+        )}
+      </CardHeader>
+      <CardContent>
+        {isStepMode ? (
+          <ContentItemRenderer
+            key={`${index}-exercise-step-${currentStep}`}
+            contentItem={renderedExerciseContent[currentStep]}
+            index={currentStep}
+            path={path}
+            module={module}
+            onExerciseComplete={onExerciseComplete}
+          />
+        ) : (
+          renderedExerciseContent.map((item, i) => (
+            <ContentItemRenderer
+              key={`${index}-exercise-${i}`}
+              contentItem={item}
+              index={i}
+              path={path}
+              module={module}
+              onExerciseComplete={onExerciseComplete}
+            />
+          ))
+        )}
+      </CardContent>
+      {isStepMode && (
+        <CardFooter className="flex justify-between">
+          <Button onClick={prevStep} variant="outline" disabled={currentStep === 0}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Atrás
+          </Button>
+          <Button
+            onClick={nextStep}
+            disabled={currentStep === totalSteps - 1}
+          >
+            Siguiente
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </CardFooter>
+      )}
+    </Card>
+  );
+}
+
 // Renderizador principal de contenido
 function ContentItemRenderer({
   contentItem,
@@ -299,12 +437,14 @@ function ContentItemRenderer({
   path,
   module,
   onExerciseComplete,
+  insideCollapsible = false,
 }: {
   contentItem: ModuleContent;
   index: number;
   path: Path;
   module: PathModule;
   onExerciseComplete: () => void;
+  insideCollapsible?: boolean;
 }) {
   if (!contentItem) {
     console.error(`ContentItemRenderer: contentItem at index ${index} is undefined.`);
@@ -317,18 +457,30 @@ function ContentItemRenderer({
   const handleComplete = () => {
     onExerciseComplete();
   };
+  const stripBoldTags = (html: string): string => html.replace(/<\/?(b|strong)>/gi, '');
+  const emphasizeStepPrefixes = (html: string): string =>
+    html.replace(/(^|<br\s*\/?>)\s*(Paso\s+\d+:)/gi, '$1<strong>$2</strong>');
+  const normalizeContentHtml = (html: string): string => {
+    const base = insideCollapsible ? stripBoldTags(html) : html;
+    return emphasizeStepPrefixes(base);
+  };
+  const normalizeQuoteHtml = (html: string): string =>
+    normalizeContentHtml(html)
+      .trim()
+      .replace(/^[\s"'“”‘’«»]+/, '')
+      .replace(/[\s"'“”‘’«»]+$/, '');
 
   switch (contentItem.type) {
     case 'title':
       return (
-        <div className="flex items-center gap-4 mt-6 mb-3">
+        <div className="mt-6 mb-3 space-y-3">
           <h3 className="text-xl font-bold text-primary">{contentItem.text}</h3>
           {contentItem.audioUrl && (
             <audio
               src={contentItem.audioUrl}
               controls
               controlsList="nodownload"
-              className="h-8 max-w-[200px] sm:max-w-xs"
+              className="w-full"
             />
           )}
         </div>
@@ -337,11 +489,11 @@ function ContentItemRenderer({
       return (
         <div key={index} className="space-y-4 mb-4">
           {contentItem.audioUrl && (
-            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
+            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full" />
           )}
           <p
             className="text-base leading-relaxed whitespace-pre-line"
-            dangerouslySetInnerHTML={{ __html: contentItem.text.replace(/\\n/g, '<br />') }}
+            dangerouslySetInnerHTML={{ __html: normalizeContentHtml(contentItem.text).replace(/\\n/g, '<br />') }}
           />
         </div>
       );
@@ -350,7 +502,7 @@ function ContentItemRenderer({
         <p
           key={index}
           className="text-base leading-relaxed whitespace-pre-line mb-4"
-          dangerouslySetInnerHTML={{ __html: contentItem.text.replace(/\\n/g, '<br />') }}
+          dangerouslySetInnerHTML={{ __html: normalizeContentHtml(contentItem.text).replace(/\\n/g, '<br />') }}
         />
       );
     case 'list':
@@ -360,7 +512,7 @@ function ContentItemRenderer({
             <li
               key={i}
               dangerouslySetInnerHTML={{
-                __html: item.replace(
+                __html: normalizeContentHtml(item).replace(
                   /☐/g,
                   '<span class="inline-block w-4 h-4 border border-foreground/50 rounded-sm mr-2"></span>'
                 ),
@@ -373,22 +525,33 @@ function ContentItemRenderer({
       return (
         <Accordion key={index} type="single" collapsible className="w-full mb-4">
           <AccordionItem value={`item-${index}`} className="border rounded-lg shadow-sm bg-background">
-            <AccordionTrigger className="p-4 text-base font-semibold hover:no-underline text-left">
-              <div className="flex items-center justify-between w-full gap-3">
+            <div className="px-3 py-2 sm:px-4 sm:py-2.5">
+              <AccordionTrigger className="p-0 py-1 text-base font-semibold hover:no-underline text-left">
                 <span>{contentItem.title}</span>
-                {contentItem.audioUrl && (
+              </AccordionTrigger>
+              {contentItem.audioUrl && (
+                <div className="mt-2">
                   <audio
                     src={contentItem.audioUrl}
                     controls
                     controlsList="nodownload"
-                    className="h-8 max-w-[200px] sm:max-w-xs"
-                    onClick={e => e.stopPropagation()}
+                    className="h-8 w-full max-w-full sm:w-auto sm:max-w-md"
                   />
-                )}
-              </div>
-            </AccordionTrigger>
+                </div>
+              )}
+            </div>
             <AccordionContent className="px-4 pb-4">
               <div className="border-t pt-4">
+                {contentItem.audioUrl && (
+                  <div className="mb-4">
+                    <audio
+                      src={contentItem.audioUrl}
+                      controls
+                      controlsList="nodownload"
+                      className="w-full"
+                    />
+                  </div>
+                )}
                 {contentItem.content.map((item, i) => (
                   <ContentItemRenderer
                     key={`${index}-child-${i}`}
@@ -397,6 +560,7 @@ function ContentItemRenderer({
                     path={path}
                     module={module}
                     onExerciseComplete={onExerciseComplete}
+                    insideCollapsible={true}
                   />
                 ))}
               </div>
@@ -406,50 +570,20 @@ function ContentItemRenderer({
       );
     case 'exercise':
       return (
-        <Card key={index} className="bg-muted/30 my-6 shadow-md">
-          <CardHeader>
-            <CardTitle className="text-lg text-accent flex items-center">
-              <Edit3 className="mr-2" />
-              {contentItem.title}
-            </CardTitle>
-            {contentItem.audioUrl && (
-              <div className="mt-2">
-                <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full h-10" />
-              </div>
-            )}
-            {contentItem.objective && <CardDescription className="pt-2">{contentItem.objective}</CardDescription>}
-            {contentItem.duration && (
-              <p className="text-xs text-muted-foreground pt-1">
-                <Clock className="inline h-3 w-3 mr-1" />
-                Duracion estimada: {contentItem.duration}
-              </p>
-            )}
-          </CardHeader>
-          <CardContent>
-            {contentItem.content.map((item, i) => (
-              <ContentItemRenderer
-                key={`${index}-exercise-${i}`}
-                contentItem={item}
-                index={i}
-                path={path}
-                module={module}
-                onExerciseComplete={onExerciseComplete}
-              />
-            ))}
-          </CardContent>
-        </Card>
+        <ExerciseCardWithSteps
+          contentItem={contentItem}
+          index={index}
+          path={path}
+          module={module}
+          onExerciseComplete={onExerciseComplete}
+        />
       );
     case 'quote':
       return (
         <blockquote
           key={index}
-          className={cn(
-            "mt-6 italic",
-            contentItem.align === 'center' 
-              ? "text-center border-none p-4" 
-              : "border-l-2 pl-6"
-          )}
-          dangerouslySetInnerHTML={{ __html: contentItem.text }}
+          className={cn("mt-6 italic text-muted-foreground", contentItem.align === 'center' ? "text-center" : "")}
+          dangerouslySetInnerHTML={{ __html: normalizeQuoteHtml(contentItem.text) }}
         />
       );
     case 'stressMapExercise':
@@ -788,6 +922,66 @@ function ContentItemRenderer({
   }
 }
 
+function RepeatableContentItemRenderer({
+  contentItem,
+  index,
+  path,
+  module,
+  onExerciseComplete,
+}: {
+  contentItem: ModuleContent;
+  index: number;
+  path: Path;
+  module: PathModule;
+  onExerciseComplete: () => void;
+}) {
+  const [instanceKey, setInstanceKey] = useState(0);
+  const [completedOnce, setCompletedOnce] = useState(false);
+  const isRepeatableExercise = contentItem.type === 'exercise' || contentItem.type.endsWith('Exercise');
+
+  const handleExerciseComplete = useCallback(() => {
+    setCompletedOnce(true);
+    onExerciseComplete();
+  }, [onExerciseComplete]);
+
+  const handleRepeat = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      const prefix = `exercise-progress-${path.id}-`;
+      const keysToDelete: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(prefix)) {
+          keysToDelete.push(key);
+        }
+      }
+      keysToDelete.forEach(key => localStorage.removeItem(key));
+    }
+    setCompletedOnce(false);
+    setInstanceKey(prev => prev + 1);
+  }, [path.id]);
+
+  return (
+    <div className="space-y-3">
+      <div key={`repeatable-${module.id}-${index}-${instanceKey}`}>
+        <ContentItemRenderer
+          contentItem={contentItem}
+          index={index}
+          path={path}
+          module={module}
+          onExerciseComplete={handleExerciseComplete}
+        />
+      </div>
+      {isRepeatableExercise && completedOnce && (
+        <div className="flex justify-end">
+          <Button type="button" variant="outline" onClick={handleRepeat}>
+            Realizar ejercicio de nuevo
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function PathDetailClient({ path }: { path: Path }) {
   const t = useTranslations();
   const { toast } = useToast();
@@ -978,7 +1172,7 @@ export function PathDetailClient({ path }: { path: Path }) {
                       {getSharedDuration(contentItem)}
                     </p>
                   )}
-                  <ContentItemRenderer
+                  <RepeatableContentItemRenderer
                     contentItem={contentItem}
                     index={i}
                     path={path}
@@ -1029,3 +1223,4 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
+

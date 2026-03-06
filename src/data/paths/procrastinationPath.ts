@@ -66,14 +66,14 @@ export const procrastinationPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'blockageMapExercise',
-          title: 'Ejercicio 1: Mi Mapa del Bloqueo Personal',
+          title: 'EJERCICIO 1: MI MAPA DEL BLOQUEO PERSONAL',
           objective: 'Con este ejercicio vas a descubrir por qué postergas ciertas tareas y qué emociones, pensamientos o situaciones están detrás. Al observarlo con claridad, podrás empezar a desmontarlo con más comprensión y menos culpa.',
           duration: '8 a 12 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion1tecnica1.mp3`
         },
         {
           type: 'compassionateReflectionExercise',
-          title: 'Ejercicio 2: Reflexiona sin Culparte',
+          title: 'EJERCICIO 2: REFLEXIONA SIN CULPARTE',
           objective: `Este ejercicio te invita a observar con más comprensión lo que ocurre dentro de ti cuando procrastinas.
 Vas a explorar tus pensamientos, emociones y exigencias internas sin juzgarte, como lo harías con alguien a quien quieres.
 El objetivo no es encontrar culpables, sino desarrollar una mirada más compasiva que te permita avanzar sin exigencia.
@@ -174,13 +174,13 @@ Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'twoMinuteRuleExercise',
-          title: 'Ejercicio 1: La Regla de los 2 Minutos',
+          title: 'EJERCICIO 1: LA REGLA DE LOS 2 MINUTOS',
           objective: '¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza?  La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no.  Este microcomienzo te ayudará a pasar de la idea a la acción.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion2tecnica1.mp3`,
         },
         {
           type: 'microPlanExercise',
-          title: 'Ejercicio 2: Tu Primer Microplan de Acción',
+          title: 'EJERCICIO 2: TU PRIMER MICROPLAN DE ACCIÓN',
           objective: 'Con este ejercicio vas a crear una pequeña acción concreta para ponerte en marcha. No necesitas fuerza de voluntad infinita, solo claridad. Aprenderás a vincular un gesto sencillo a un momento cotidiano, para que tu cerebro lo reconozca como una señal de empezar.',
           duration: '5 a 8 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion2tecnica2.mp3`,
@@ -285,14 +285,14 @@ Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'delSabotajeALaAccionExercise',
-          title: 'Ejercicio 1: Del Sabotaje a la Acción',
+          title: 'EJERCICIO 1: DEL SABOTAJE A LA ACCIÓN',
           objective: 'Este ejercicio te ayuda a identificar las frases internas que alimentan tu procrastinación y a entrenar respuestas más realistas, amables y útiles. No se trata de eliminar tus pensamientos, sino de aprender a responderte con una voz que te acompañe, no que te paralice.',
           duration: '10 a 15 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion3tecnica1.mp3`,
         },
         {
           type: 'futureSelfVisualizationExercise',
-          title: 'Ejercicio 2: Visualización del Yo Futuro',
+          title: 'EJERCICIO 2: VISUALIZACIÓN DEL YO FUTURO',
           objective: 'Este ejercicio te permite conectar con una imagen clara y emocionalmente poderosa de ti misma o de ti mismo sosteniendo el hábito que deseas. Te ayuda a motivarte desde la identidad, no solo desde la obligación. Visualizarte avanzando te impulsa a actuar hoy.',
           duration: '10 a 15 minutos',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion3tecnica2.mp3`,
@@ -367,14 +367,14 @@ Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'realisticRitualExercise',
-          title: 'Ejercicio 1: Diseña tu Ritual Realista',
+          title: 'EJERCICIO 1: DISEÑA TU RITUAL REALISTA',
           objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
           duration: '7-10 minutos',
           audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
         },
         {
           type: 'gentleTrackingExercise',
-          title: 'Ejercicio 2: Seguimiento Amable + Refuerzo Visual',
+          title: 'EJERCICIO 2: SEGUIMIENTO AMABLE + REFORZO VISUAL',
           objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
           duration: '3 a 5 minutos al día',
           audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,

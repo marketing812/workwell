@@ -1,7 +1,7 @@
 ﻿
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -65,6 +65,8 @@ export default function TherapeuticNotebookReflectionExercise({
   const { toast } = useToast();
   const { user } = useUser();
   const [reflection, setReflection] = useState('');
+  const [guidedResponses, setGuidedResponses] = useState<Record<string, string>>({});
+  const [guidedStepIndex, setGuidedStepIndex] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
 
   const [overloadSignals, setOverloadSignals] = useState<Record<string, boolean>>({});
@@ -75,6 +77,23 @@ export default function TherapeuticNotebookReflectionExercise({
     physical: '',
   });
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const normalizePromptsHtml = (html: string) => html.replace(/<\/?(b|strong)>/gi, '');
+  const hasGuidedFields = Boolean(content.guidedFields && content.guidedFields.length > 0);
+  const isGuidedStepMode = Boolean(hasGuidedFields && content.guidedStepMode);
+
+  useEffect(() => {
+    if (!content.guidedFields || content.guidedFields.length === 0) {
+      setGuidedResponses({});
+      return;
+    }
+
+    const initialState = content.guidedFields.reduce<Record<string, string>>((acc, field) => {
+      acc[field.id] = '';
+      return acc;
+    }, {});
+    setGuidedResponses(initialState);
+    setGuidedStepIndex(0);
+  }, [content.guidedFields]);
 
   const handleOverloadSignalChange = (id: string, checked: boolean) => {
     setOverloadSignals(prev => ({...prev, [id]: checked}));
@@ -84,10 +103,44 @@ export default function TherapeuticNotebookReflectionExercise({
     setNotes(prev => ({ ...prev, [id]: value }));
   };
 
+  const handleGuidedFieldChange = (id: string, value: string) => {
+    setGuidedResponses(prev => ({ ...prev, [id]: value }));
+  };
+
+  const currentGuidedField = hasGuidedFields ? content.guidedFields?.[guidedStepIndex] : undefined;
+  const totalGuidedSteps = content.guidedFields?.length ?? 0;
+  const isLastGuidedStep = guidedStepIndex === totalGuidedSteps - 1;
+
+  const handleNextGuidedStep = () => {
+    if (!currentGuidedField) return;
+    const currentValue = (guidedResponses[currentGuidedField.id] || '').trim();
+    if (currentGuidedField.required && !currentValue) {
+      toast({
+        title: "Respuesta pendiente",
+        description: "Completa este campo antes de continuar.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setGuidedStepIndex(prev => Math.min(prev + 1, totalGuidedSteps - 1));
+  };
+
 
   const handleSaveReflection = async (e: FormEvent) => {
     e.preventDefault();
-    if (!reflection.trim() && !content.showOverloadSignals) { // Only require reflection if no signals
+    if (hasGuidedFields) {
+      const missingRequiredField = content.guidedFields?.find(
+        field => field.required && !(guidedResponses[field.id] || '').trim()
+      );
+      if (missingRequiredField) {
+        toast({
+          title: "Reflexión Incompleta",
+          description: "Por favor, completa todos los campos obligatorios antes de guardar.",
+          variant: "destructive",
+        });
+        return;
+      }
+    } else if (!reflection.trim() && !content.showOverloadSignals) { // Only require reflection if no signals
       toast({
         title: "Reflexión Incompleta",
         description: "Por favor, escribe tu reflexión antes de guardar.",
@@ -96,7 +149,7 @@ export default function TherapeuticNotebookReflectionExercise({
       return;
     }
     
-    const promptsHtml = content.prompts.join('');
+    const promptsHtml = normalizePromptsHtml(content.prompts.join(''));
     
     let fullContent = `
 **${content.title}**
@@ -105,8 +158,11 @@ export default function TherapeuticNotebookReflectionExercise({
     ${promptsHtml}
 </div>
 
-**Mi reflexión:**
-${reflection}
+${hasGuidedFields
+  ? `**Mi reflexión guiada:**\n${(content.guidedFields ?? [])
+      .map(field => `\n**${field.label}**\n${(guidedResponses[field.id] || '').trim()}`)
+      .join('\n')}`
+  : `**Mi reflexión:**\n${reflection}`}
     `;
 
     if (content.showOverloadSignals) {
@@ -272,36 +328,107 @@ ${reflection}
           </div>
         )}
         <div
-          className="prose dark:prose-invert max-w-none pt-2 text-base"
-          dangerouslySetInnerHTML={{ __html: content.prompts.join('') }}
+          className="pt-2 text-base leading-relaxed [&_ul]:list-disc [&_ul]:list-inside [&_ul]:space-y-2 [&_ul]:mb-4 [&_ul]:pl-4"
+          dangerouslySetInnerHTML={{ __html: normalizePromptsHtml(content.prompts.join('')) }}
         />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSaveReflection} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor={`reflection-${pathId}`} className="font-semibold">
-              Escribe aquí tu reflexión personal:
-            </Label>
-            <Textarea
-              id={`reflection-${pathId}`}
-              value={reflection}
-              onChange={e => setReflection(e.target.value)}
-              placeholder="Lo que he descubierto esta semana es..."
-              rows={5}
-              disabled={isSaved}
-            />
-          </div>
+          {hasGuidedFields ? (
+            <div className="space-y-4">
+              {isGuidedStepMode && currentGuidedField ? (
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground">
+                    Pregunta {guidedStepIndex + 1} de {totalGuidedSteps}
+                  </p>
+                  <div className="space-y-2">
+                    <Label htmlFor={`guided-${pathId}-${currentGuidedField.id}`} className="font-semibold">
+                      {currentGuidedField.label}
+                    </Label>
+                    <Textarea
+                      id={`guided-${pathId}-${currentGuidedField.id}`}
+                      value={guidedResponses[currentGuidedField.id] || ''}
+                      onChange={e => handleGuidedFieldChange(currentGuidedField.id, e.target.value)}
+                      placeholder={currentGuidedField.placeholder}
+                      rows={currentGuidedField.rows ?? 5}
+                      disabled={isSaved}
+                    />
+                  </div>
+                </div>
+              ) : (
+                content.guidedFields?.map(field => (
+                  <div key={field.id} className="space-y-2">
+                    <Label htmlFor={`guided-${pathId}-${field.id}`} className="font-semibold">
+                      {field.label}
+                    </Label>
+                    <Textarea
+                      id={`guided-${pathId}-${field.id}`}
+                      value={guidedResponses[field.id] || ''}
+                      onChange={e => handleGuidedFieldChange(field.id, e.target.value)}
+                      placeholder={field.placeholder}
+                      rows={field.rows ?? 4}
+                      disabled={isSaved}
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <Label htmlFor={`reflection-${pathId}`} className="font-semibold">
+                Escribe aquí tu reflexión personal:
+              </Label>
+              <Textarea
+                id={`reflection-${pathId}`}
+                value={reflection}
+                onChange={e => setReflection(e.target.value)}
+                placeholder="Lo que he descubierto esta semana es..."
+                rows={5}
+                disabled={isSaved}
+              />
+            </div>
+          )}
 
           {content.showOverloadSignals && <OverloadSignalsSection />}
 
           {!isSaved ? (
-            <Button type="submit" className="w-full">
-              <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
-            </Button>
+            isGuidedStepMode && hasGuidedFields ? (
+              <div className="flex gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => setGuidedStepIndex(prev => Math.max(prev - 1, 0))}
+                  disabled={guidedStepIndex === 0}
+                >
+                  Atras
+                </Button>
+                {!isLastGuidedStep ? (
+                  <Button type="button" className="flex-1" onClick={handleNextGuidedStep}>
+                    Siguiente
+                  </Button>
+                ) : (
+                  <Button type="submit" className="flex-1">
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+                  </Button>
+                )}
+              </div>
+            ) : (
+              <Button type="submit" className="w-full">
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+              </Button>
+            )
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <CheckCircle className="mr-2 h-5 w-5" />
-              <p className="font-medium">Tu reflexión ha sido guardada.</p>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                <CheckCircle className="mr-2 h-5 w-5" />
+                <p className="font-medium">Tu reflexión ha sido guardada.</p>
+              </div>
+              {content.savedSummaryText && (
+                <div className="rounded-md border bg-background/60 p-4">
+                  <p className="text-sm whitespace-pre-line">{content.savedSummaryText}</p>
+                </div>
+              )}
             </div>
           )}
         </form>

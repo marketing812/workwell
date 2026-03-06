@@ -18,6 +18,8 @@ import { useAuth, useFirestore } from "@/firebase/provider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
 
+const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
+
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Correo electrónico inválido."),
@@ -153,6 +155,22 @@ export function RegisterForm() {
       const firebaseUser = userCredential.user;
       auth.languageCode = "es";
       await sendEmailVerification(firebaseUser);
+
+      if (typeof window !== "undefined") {
+        const pendingLegacyPayload = {
+          id: firebaseUser.uid,
+          name: validationResult.data.name || "",
+          email: validationResult.data.email || "",
+          gender: validationResult.data.gender || "",
+          ageRange: validationResult.data.ageRange || "",
+          initialEmotionalState: validationResult.data.initialEmotionalState ?? "",
+          department_code: departmentCode || "",
+        };
+        localStorage.setItem(
+          `${LEGACY_PENDING_USER_DATA_PREFIX}${firebaseUser.uid}`,
+          JSON.stringify(pendingLegacyPayload)
+        );
+      }
 
       try {
         await signOut(auth);

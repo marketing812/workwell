@@ -132,8 +132,8 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <Label htmlFor="feeling" className="font-semibold text-lg">Paso 2: Expresa tu emoción</Label>
-            <p className="text-sm">Ponle nombre a lo que sentiste. Habla desde ti.</p>
-            <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustración, tristeza, inseguridad..." />
+            <p className="text-sm">Cómo te sentiste.</p>
+            <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustrado, triste, inseguro..." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -174,7 +174,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-left">
               “Cuando {fact || '...' }, me siento {feeling || '...'}. Necesito {need || '...'}. Por eso te pido {request || '...' }.”
             </blockquote>
-            <p className="text-sm">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá.</p>
+            <p className="text-sm">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá. Si ves que la frase está mal construida, repite los pasos.</p>
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>

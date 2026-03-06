@@ -16,11 +16,19 @@ export const coherencePath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado alguna vez que dices que sí cuando por dentro gritas un no?\\n¿O que te encuentras actuando como se espera de ti, aunque eso te aleje de lo que de verdad sientes o piensas?\\nEsta semana vamos a comenzar un camino importante: reconectar contigo y aprender a vivir con coherencia personal. No desde la exigencia, sino desde el cuidado. No desde el juicio, sino desde la honestidad. No se trata de hacerlo perfecto, sino de escucharte mejor.',
+          text: 'El primer paso para vivir con coherencia es reconocer dónde y cuándo te estás desviando de ti. Esta semana aprenderás a escuchar esas señales internas que te indican que algo no encaja: pensamientos que dicen una cosa, emociones que apuntan a otra y acciones que siguen un camino diferente. Al poner orden en este mapa interno, descubrirás patrones y entenderás qué provoca esas tensiones, para poder empezar a elegir de forma más consciente. ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`
         },
         { type: 'title', text: 'Psicoeducación' },
         {
+          type: 'collapsible',
+          title: 'Gancho emocional + apertura',
+             content: [
+            { type: 'paragraph', text: '¿Te ha pasado alguna vez que dices que sí cuando por dentro gritas un no?\\n¿O que te encuentras actuando como se espera de ti, aunque eso te aleje de lo que de verdad sientes o piensas?' },
+            { type: 'paragraph', text: 'Esta semana vamos a comenzar un camino importante: reconectar contigo y aprender a vivir con coherencia personal. No desde la exigencia, sino desde el cuidado. No desde el juicio, sino desde la honestidad. No se trata de hacerlo perfecto, sino de escucharte mejor.' }
+          ]
+        },
+      {
           type: 'collapsible',
           title: '¿Qué es la coherencia personal?',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/Queeslacoherenciapersonal.mp3`,
@@ -76,7 +84,7 @@ export const coherencePath: Path = {
           duration: '5-10 min diarios',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3`
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/REFLEXION.mp3`, prompts: ['<ul><li>¿Qué he aprendido sobre mí esta semana…','Qué pasa en mi vida cuando no actúo en coherencia…','Ventajas que noto cuando alineo lo que pienso, siento y hago…','Un compromiso personal que me llevo…</li></ul>']},
+        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/REFLEXION.mp3`, prompts: ['<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p><p>Lo que he aprendido sobre mí:</p><p>(Escribe aquí 2-3 ideas clave que te lleves de esta semana)</p><p>Ejemplo: “Me he dado cuenta de que en mis relaciones soy coherente, pero en el trabajo suelo callar lo que pienso.”</p><p>Consecuencias de no cuidar mi coherencia:</p><p>(Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)</p><p>Ejemplo: “Me siento agotada, con menos motivación y más frustrada.”</p><p>Ventajas de vivir con coherencia personal:</p><p>(Enumera los beneficios que te inspira buscar esta alineación)</p><p>Ejemplo: “Me siento más ligera, segura y con energía para lo que importa.”</p><p>Mi compromiso para esta semana:</p><p>(Define un gesto concreto para acercarte a tu coherencia)</p><p>Ejemplo: “Decir que no a una petición que no puedo atender sin sentirme culpable.”</p>']},
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/RESUMEN.mp3` },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
@@ -107,14 +115,44 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'internalTensionsMapExercise', title: 'EJERCICIO 1: MAPA DE TENSIONES INTERNAS', objective: 'Detecta cuándo lo que piensas, sientes y haces no están en sintonía, para entender qué lo provoca y decidir qué quieres cambiar o mantener.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/tecnicas/Ruta9semana2tecnica1.mp3`, duration: '15 min' },
         { type: 'ethicalMirrorExercise', title: 'EJERCICIO 2: EL ESPEJO ÉTICO', objective: 'Con este ejercicio quiero ayudarte a aclarar si lo que estás a punto de decidir está alineado con lo que eres y lo que valoras.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/tecnicas/Ruta9semana2tecnica2.mp3`, 'duration': '10-12 min' },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana2/REFLEXION.mp3`, 
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana2/REFLEXION.mp3`,
           prompts: [
-            '<p>Te invito a detenerte un momento para mirar dentro de ti.  Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente.  </p>',
-            '<ul><li>¿Qué he aprendido esta semana sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'
-          ] 
+            '<p>Hoy has explorado momentos en los que tu pensamiento, tu emocion y tu accion no iban al mismo ritmo. Esa incoherencia interna es como una brujula que te avisa de que algo no encaja del todo. Ahora, vamos a dejar por escrito lo que te llevas de esta semana, para que lo tengas siempre presente en tu cuaderno personal.</p>',
+            '<p>Campos guiados:</p>'
+          ],
+          guidedFields: [
+            {
+              id: 'aprendizaje-semanal',
+              label: 'Lo que he aprendido sobre mi esta semana...',
+              placeholder: 'Ej: Me doy cuenta de que suelo decir que si aunque quiera decir que no...',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'incoherencia-impacto',
+              label: 'Que pasa en mi vida cuando no actuo en coherencia...',
+              placeholder: 'Ej: Me siento agotado/a y con menos motivacion...',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'ventajas-coherencia',
+              label: 'Ventajas que noto cuando alineo lo que pienso, siento y hago...',
+              placeholder: 'Ej: Me siento mas en paz y seguro/a de mis decisiones...',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'compromiso-personal',
+              label: 'Un compromiso personal que me llevo...',
+              placeholder: 'Ej: Escucharme antes de responder a una propuesta...',
+              required: true,
+              rows: 4,
+            },
+          ],
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana2/RESUMEN.mp3` },
@@ -130,7 +168,7 @@ export const coherencePath: Path = {
       content: [{ type: 'paragraphWithAudio', text: 'Ser coherente no significa ser inflexible. Esta semana aprenderás a sostener tus principios sin caer en el perfeccionismo moral, a definir qué es negociable y qué no, y a tomar decisiones difíciles con claridad y responsabilidad. Porque tu coherencia crece cuando sabes adaptarte sin traicionarte. ', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/INTRODUCCIONSEMANA3.mp3` },
         { type: 'title', text: 'Psicoeducación' },
         { type: 'collapsible', title: 'Coherencia ≠ Rigidez', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/CoherenciaRigidez.mp3`, content: [{ type: 'paragraph', text: 'A veces pensamos que “ser coherente” es no desviarse nunca del camino, aunque eso suponga pasar por encima de nuestras propias necesidades o de la realidad del momento. Eso no es coherencia, es rigidez, y la rigidez nos quiebra.\\nLa verdadera coherencia es flexible: sostiene tus principios pero te permite moverte con inteligencia.\\nEjemplo: Si valoras el respeto, puedes expresar una queja de forma firme y respetuosa, o decidir esperar a un momento más adecuado para hablar. Ambas opciones mantienen tu valor, pero se adaptan al contexto.' }] },
-        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3`, content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\\nEn la Terapia de Aceptación y Compromiso, Steven Hayes y Kelly Wilson explican que los valores son como una brújula: no llegas a un destino final, pero te orientan en cada paso.\\nPor ejemplo, si uno de tus valores es la honestidad, quizás decidas ser honesto o honesta en una conversación difícil, aunque el camino más fácil fuera callar. Esa brújula interna no evita la incomodidad, pero sí te da un norte claro.' }] },
+        { type: 'collapsible', title: 'Tus valores como brújula interna', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/Tusvalorescomobrujulainterna.mp3`, content: [{ type: 'paragraph', text: 'Imagina que estás en medio de una niebla espesa y no sabes hacia dónde ir. Tus valores son esa brújula que siempre apunta hacia tu “norte personal”.\\nCuando tienes claros tus valores, es más fácil decidir sin sentir que te traicionas. Pero si están difusos, es fácil perderte: acabas tomando decisiones para agradar, evitar conflictos o por miedo a equivocarte.\\nEsta semana te voy a ayudar a identificar tus valores no negociables, esos que no quieres soltar incluso si la presión es alta. ' }] },
         { type: 'collapsible', title: 'El arte de adaptarse sin perderte', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/Elartedeadaptarsesinperderte.mp3`, content: [{ type: 'paragraph', text: 'La flexibilidad no es sinónimo de rendición. Es como un árbol firme: sus raíces están profundas en la tierra (tus valores), pero sus ramas se mueven con el viento (las circunstancias).\\nAdaptarte significa buscar la forma más saludable de mantener tu esencia, aunque no sea la que imaginabas.\\nEjemplo: Si valoras la salud y durante un viaje no tienes tus rutinas, en vez de frustrarte, puedes buscar la mejor opción disponible —caminar más, hidratarte, descansar bien— y volver a tu plan al regresar.' }] },
         { type: 'collapsible', title: 'Decisiones difíciles con paz interior', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/Decisionesdificilesconpazinterior.mp3`, content: [{ type: 'paragraph', text: 'Tomar decisiones alineadas con tus valores no siempre es fácil ni cómodo. Puede implicar que otras personas no estén de acuerdo, o que te enfrentes a consecuencias a corto plazo.\\nLa diferencia está en que, cuando actúas desde tu integridad, duermes tranquilo o tranquila. Puedes mirar atrás y sentir orgullo, porque tu decisión te representó de verdad.\\nEse es el objetivo de esta semana: que puedas tomar decisiones que te dejen en paz contigo, incluso cuando no son las más fáciles.' }] },
         { type: 'collapsible', title: 'Lo que vamos a trabajar esta semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/Loquevamosatrabajar.mp3`, content: [{ type: 'paragraph', text: 'En las técnicas de esta semana aprenderás:\\nA tomar decisiones importantes con tres filtros: tus valores, tus emociones y el impacto a largo plazo.\\nA definir tu lista de no negociables personales, esos principios que son tu línea roja incluso bajo presión.\\nCon esta claridad, podrás sostener lo que te importa sin caer en la rigidez, y adaptarte con confianza cuando sea necesario.' }] },
@@ -149,14 +187,47 @@ export const coherencePath: Path = {
           duration: '10-15 min', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/tecnicas/Ruta9semana3tecnica2.mp3` 
         },
-        { 
-          type: 'therapeuticNotebookReflection', 
-          title: 'Reflexión Final de la Semana', 
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/REFLEXION.mp3`, 
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexion Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/REFLEXION.mp3`,
           prompts: [
-            '<p>Te invito a detenerte un momento para mirar dentro de ti. Piensa en las personas que te rodean, en las conversaciones que has tenido estos días, y sobre todo… en cómo te has sentido al practicar una escucha más presente.  </p>',
-            '<ul><li>¿Qué he aprendido esta semana sobre mi forma de reaccionar ante la incertidumbre o el miedo?</li><li>¿Qué diferencia noté al explorar mis opciones desde el valor o la confianza?</li><li>¿Qué me ha ayudado a decidir con más claridad y menos ruido mental?</li><li>¿Qué decisión, aunque pequeña, tomé desde un lugar de coherencia conmigo misma o conmigo mismo?</li><li>¿Qué quiero recordarme la próxima vez que tenga que elegir en medio del miedo?</li></ul>'
-          ] 
+            '<p>Llegamos al final de esta semana. Ahora es momento de mirar atras y reconocer que ha cambiado dentro de ti al trabajar tu integridad y flexibilidad. Recuerda: aqui no hay respuestas correctas o incorrectas. Solo honestidad contigo mismo/a.</p>',
+            '<p>Preguntas guiadas:</p>'
+          ],
+          guidedStepMode: true,
+          guidedFields: [
+            {
+              id: 'idea-clave-clic',
+              label: 'Que idea o descubrimiento de esta semana me ha hecho mas clic por dentro?',
+              required: true,
+              rows: 5,
+            },
+            {
+              id: 'comprension-decisiones',
+              label: 'Que he comprendido sobre mi al observar como tomo decisiones importantes?',
+              required: true,
+              rows: 5,
+            },
+            {
+              id: 'coherencia-rigidez',
+              label: 'Como ha cambiado mi forma de ver la relacion entre coherencia y rigidez?',
+              required: true,
+              rows: 5,
+            },
+            {
+              id: 'equilibrio-no-negociables',
+              label: 'Que he aprendido sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?',
+              required: true,
+              rows: 5,
+            },
+            {
+              id: 'proximo-paso',
+              label: 'Que puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?',
+              required: true,
+              rows: 5,
+            },
+          ],
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana3/RESUMEN.mp3` },
@@ -201,10 +272,36 @@ export const coherencePath: Path = {
         },
         {
           type: 'therapeuticNotebookReflection',
-          title: 'Reflexión Final de la Semana',
+          title: 'Reflexion Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
-            '<p>Esta semana has explorado qué significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta. </p><p>Has aprendido a distinguir entre lo que está dentro de tu círculo de influencia y lo que no, y a comprometerte con decisiones que respeten tus límites y tu energía. </p><p>Piensa ahora en cómo este enfoque puede transformar tu manera de actuar y de cuidarte. </p> <p>Preguntas para reflexionar:</p><ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que sí depende de ti?</li></ul>'
+            '<p>Esta semana has explorado que significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta.</p><p>Has aprendido a distinguir entre lo que esta dentro de tu circulo de influencia y lo que no, y a comprometerte con decisiones que respeten tus limites y tu energia.</p><p>Piensa ahora en como este enfoque puede transformar tu manera de actuar y de cuidarte.</p><p>Preguntas para reflexionar:</p>'
+          ],
+          guidedFields: [
+            {
+              id: 'descubrimiento-revelador',
+              label: 'Que descubrimiento de esta semana ha sido mas revelador para ti sobre la forma en que asumes la responsabilidad?',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'situaciones-no-me-corresponde',
+              label: 'En que situaciones recientes has podido decir "esto no me corresponde" y sentirte en paz con ello?',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'cambio-dialogo-interno',
+              label: 'Como ha cambiado tu forma de hablarte a ti mismo o a ti misma despues de realizar las tecnicas propuestas?',
+              required: true,
+              rows: 4,
+            },
+            {
+              id: 'compromisos-cuidado',
+              label: 'Que compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que si depende de ti?',
+              required: true,
+              rows: 4,
+            },
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana4/RESUMEN.mp3` },
@@ -235,15 +332,15 @@ export const coherencePath: Path = {
           title: 'REFLEXIÓN FINAL DE LA RUTA',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/REFLEXIONRUTA7.mp3`,
           prompts: [
-            '<p>Has recorrido un camino valiente: el de poner límites con respeto, firmeza y cuidado. Tal vez no haya sido fácil. Quizás has tenido que enfrentar viejas culpas, miedos o dudas. Pero también has recuperado algo valioso: tu voz. Ahora te invito a hacer una pausa y mirar hacia dentro. No para exigirte más, sino para reconocer todo lo que ya has practicado. Escribe con honestidad y sin exigencias:</p>',
-            '<p>Preguntas para tu cuaderno emocional:</p>',
-            '<ul><li>¿Qué me ha revelado esta ruta sobre mi forma de relacionarme?</li><li>¿Qué barreras me he atrevido a cruzar para ser más auténtico/a?</li><li>¿Qué quiero empezar a hacer diferente en mis relaciones?</li><li>¿Qué vínculo me gustaría cultivar desde un lugar más sano y más yo?</li><li>¿Qué me recordaré cuando sienta miedo de decepcionar por ser quien soy?</li></ul>'
+            '<p>Este es un buen momento para mirar el camino recorrido. No se trata de evaluar si lo hiciste ‘bien o mal’, sino de descubrir cómo ha cambiado tu manera de verte y de actuar.</p>',
+            '<p>Preguntas guiadas:</p>',
+            '<ul><li>Si pienso en el yo que empezó esta ruta y el yo que la termina, ¿qué ha cambiado en mi manera de tomar decisiones? </li><li>¿Qué descubrí sobre mis valores y cómo influyen en mi bienestar y mis elecciones?</li><li>¿En qué momentos noté que mantener mi coherencia me dio paz, fuerza o claridad?</li><li>¿Qué estrategias o ejercicios de esta ruta quiero seguir practicando para sostener mi coherencia en el tiempo?</li><li>¿Cómo me voy a recordar, en días de duda o presión externa, quién soy y qué quiero sostener?</li></ul>'
           ]
         },
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/RESUMENFINALRUTA.mp3`
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/RESUMENRUTA.mp3`
         },
         {
           type: 'list',
