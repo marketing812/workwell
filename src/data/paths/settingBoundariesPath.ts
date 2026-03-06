@@ -54,14 +54,14 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'mapOfUnsaidThingsExercise',
-          title: 'Ejercicio 1: Mapa de Mis No Dichos',
+          title: 'EJERCICIO 1: MAPA DE MIS NO DICHOS',
           objective: 'A veces eliges callar para evitar conflictos o proteger un vínculo. Este ejercicio te ayudará a observar cuándo y por qué eliges no expresarte, para que esas decisiones sean más libres y menos automáticas.',
           duration: '15-20 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana1audio7tecnica1.mp3`,
         },
         {
           type: 'discomfortCompassExercise',
-          title: 'Ejercicio 2: La Brújula del Malestar',
+          title: 'EJERCICIO 2: LA BRÚJULA DEL MALESTAR',
           objective: 'Este ejercicio te ayuda a entrenar esa conciencia: escuchar tus sensaciones físicas y emocionales como señales que te indican cuándo necesitas poner un límite.',
           duration: '10-15 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/Ruta4semana1audio8tecnica2.mp3`,
@@ -222,7 +222,7 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'assertivePhraseExercise',
-          title: 'Ejercicio 1: Tu Frase Asertiva en 4 Pasos',
+          title: 'EJERCICIO 1: TU FRASE ACTIVA EN CUATRO PASOS',
           objective:
             'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.',
           duration: '10-15 min',
@@ -239,7 +239,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'secureBoundaryPhraseExercise',
-          title: 'Ejercicio 2: Tu Frase de Límite Seguro',
+          title: 'EJERCICIO 2: TU FRASE DE LÍMITE SEGURO',
           objective:
             'Tener una frase clara y amable preparada te puede salvar en situaciones incómodas. Este ejercicio te da recursos simples para no bloquearte, y para empezar a poner límites de forma serena y respetuosa.',
           duration: '5 minutos',
@@ -330,7 +330,7 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'postBoundaryEmotionsExercise',
-          title: 'Ejercicio 1: Registro de Emociones Post-Límite',
+          title: 'EJERCICIO 1: REGISTRO DE EMOCIONES POST-LÍMITE',
           objective:
             'Cuando te atreves a marcar un límite, puede aparecer culpa, duda o ansiedad. Este ejercicio te ayuda a identificar y validar lo que sientes después, y a responderte con comprensión, no con juicio.',
           duration: '10-15 min',
@@ -339,7 +339,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'firmAndCalmSelfVisualizationExercise',
-          title: 'Ejercicio 2: Visualización del Yo Firme y Tranquilo',
+          title: 'EJERCICIO 2: VISUALIZACIÓN DEL YO FIRME Y TRANQUILO',
           objective:
             'A veces, lo que necesitas no es más fuerza… sino más conexión contigo. Esta visualización te ayuda a conectar con esa parte tuya que puede sostener un límite sin romperse, sin gritar, sin justificarse. Una parte firme, clara y tranquila.',
           duration: '5–8 minutos',
@@ -471,7 +471,7 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'compassionateFirmnessExercise',
-          title: 'Ejercicio 1: Tu Frase de Firmeza Compasiva',
+          title: 'EJERCICIO 1: TU FRASE DE FIRMEZA COMPASIVA',
           objective:
             'Entrenar tu capacidad para sostener una decisión sin retroceder, incluso cuando el otro muestre incomodidad o decepción. Aprenderás a validar la emoción ajena sin anular tu necesidad.',
           duration: '5-10 min',
@@ -480,7 +480,7 @@ export const settingBoundariesPath: Path = {
         },
         {
           type: 'selfCareContractExercise',
-          title: 'Ejercicio 2: Mi Contrato Interno de Autocuidado',
+          title: 'EJERCICIO 2: MI CONTRATO INTERNO DE AUTOCUIDADO',
           objective:
             'Crear un compromiso contigo misma o contigo mismo para honrar tus límites internos. Es un acuerdo simbólico que te recuerda que también mereces respeto, y que puedes cuidarte sin culpas ni exigencias.',
           duration: '10-15 min',

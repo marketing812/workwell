@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -33,11 +33,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
-import { useFirestore } from "@/firebase/provider";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
 import { pathsData } from '@/data/pathsData';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -52,7 +51,6 @@ export default function DashboardPage() {
   const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
-  const db = useFirestore();
   const { forceOpen: forceDailyCheckInOpen } = useDailyCheckIn();
 
   const [isClient, setIsClient] = useState(false);
@@ -70,30 +68,33 @@ export default function DashboardPage() {
     }), []);
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
-    if (!user || !user.id || !db) {
+    if (!user?.id) {
       toast({
         title: "Error de Usuario o Conexión",
-        description: "No se pudo identificar al usuario o la base de datos.",
+        description: "No se pudo identificar al usuario.",
         variant: "destructive",
       });
       return;
     }
     setIsEntryDialogOpen(false);
-    
+
     try {
-      const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      await addDoc(entriesRef, {
-        ...data,
-        timestamp: serverTimestamp()
-      });
-      
-      toast({
-        title: t.emotionalEntrySavedTitle,
-        description: "Tu registro se ha guardado en la nube.",
+      const result = await saveAutoregistroLegacy({
+        userId: user.id,
+        entry: data,
       });
 
-    } catch (error) {
-       toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
+      if (!result.success) {
+        toast({ title: "Error al Guardar", description: result.message, variant: "destructive" });
+        return;
+      }
+
+      toast({
+        title: t.emotionalEntrySavedTitle,
+        description: "Tu autorregistro se ha guardado.",
+      });
+    } catch (_error) {
+      toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
     }
   };
 
@@ -337,16 +338,16 @@ export default function DashboardPage() {
             cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
             iconColorClass="text-blue-600 dark:text-blue-400"
           />
-          <Link href="/emotional-log" className="block h-full">
-            <DashboardSummaryCard
-              title="Autorregistros esta Semana"
-              value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'autorregistro' : 'autorregistros'}`}
-              description="¡Sigue así para conocerte mejor!"
-              icon={Activity}
-              cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
-              iconColorClass="text-yellow-600 dark:text-yellow-500"
-            />
-          </Link>
+          <DashboardSummaryCard
+            title="Autorregistros esta Semana"
+            value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'autorregistro' : 'autorregistros'}`}
+            description="¡Sigue así para conocerte mejor!"
+            ctaLink="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas"
+            ctaLabel="¿Qué es el autoregistro?"
+            icon={Activity}
+            cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
+            iconColorClass="text-yellow-600 dark:text-yellow-500"
+          />
         </div>
       </section>
 
@@ -399,3 +400,7 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+
+
+

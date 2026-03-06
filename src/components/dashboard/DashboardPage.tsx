@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -28,8 +28,7 @@ import Link from "next/link";
 import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
-import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
+import { getAutoregistrosLegacy, saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
 
 const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
 const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
@@ -53,7 +52,6 @@ export default function DashboardPage() {
   const { user, fetchUserProfile } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
-  const db = useFirestore();
 
   const [isClient, setIsClient] = useState(false);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
@@ -70,24 +68,13 @@ export default function DashboardPage() {
     }), []);
 
   const loadEntries = useCallback(async () => {
-    if (!user?.id || !db) {
+    if (!user?.id) {
         setIsLoadingEntries(false);
         return;
     };
     setIsLoadingEntries(true);
     try {
-      const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      const q = query(entriesRef, orderBy("timestamp", "desc"));
-      const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          const timestamp = data.timestamp as Timestamp | null;
-          return { 
-              id: doc.id, 
-              ...data,
-              timestamp: timestamp ? timestamp.toDate().toISOString() : new Date().toISOString() 
-          } as EmotionalEntry
-      });
+      const entries = await getAutoregistrosLegacy(user.id);
 
       setAllEntries(entries);
       setRecentEntries(entries.slice(0, NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD));
@@ -107,11 +94,11 @@ export default function DashboardPage() {
     } finally {
       setIsLoadingEntries(false);
     }
-  }, [user?.id, db, t, toast]);
+  }, [user?.id, t, toast]);
 
   useEffect(() => {
     setIsClient(true);
-    if (user?.id && db) {
+    if (user?.id) {
       loadEntries();
       const assessmentHistory = getAssessmentHistory();
       if (assessmentHistory.length > 0) {
@@ -120,10 +107,10 @@ export default function DashboardPage() {
     } else {
         setIsLoadingEntries(false);
     }
-     if (user && user.id && !user.ageRange && db) { 
+     if (user && user.id && !user.ageRange) { 
       fetchUserProfile(user.id);
     }
-  }, [user, fetchUserProfile, loadEntries, db]);
+  }, [user, fetchUserProfile, loadEntries]);
 
 
   const chartData = useMemo(() => {
@@ -148,41 +135,43 @@ export default function DashboardPage() {
 
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
-    if (!user || !user.id || !db) {
+    if (!user?.id) {
       toast({
         title: "Error de Usuario o Conexión",
-        description: "No se pudo identificar al usuario o la conexión con la base de datos. Intenta recargar la página.",
+        description: "No se pudo identificar al usuario. Intenta recargar la página.",
         variant: "destructive",
       });
       return;
     }
-    
+
     setIsEntryDialogOpen(false);
 
     try {
-      const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      await addDoc(entriesRef, {
-        ...data,
-        timestamp: serverTimestamp() 
+      const result = await saveAutoregistroLegacy({
+        userId: user.id,
+        entry: data,
       });
-      
+
+      if (!result.success) {
+        toast({ title: "Error al Guardar", description: result.message, variant: "destructive" });
+        return;
+      }
+
       toast({
         title: t.emotionalEntrySavedTitle,
-        description: "Tu registro emocional ha sido guardado y sincronizado.",
+        description: "Tu autorregistro se ha guardado.",
       });
 
       await loadEntries();
-
     } catch (error) {
-       console.error("Error saving emotional entry to Firestore:", error);
-       toast({
+      console.error("Error saving emotional entry via web service:", error);
+      toast({
         title: "Error al Guardar",
-        description: "No se pudo guardar tu registro emocional en la nube.",
+        description: "No se pudo guardar tu autorregistro.",
         variant: "destructive",
       });
     }
   };
-  
   const weeklyEntryCount = useMemo(() => {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
@@ -261,6 +250,8 @@ export default function DashboardPage() {
             title="Registros esta Semana"
             value={`${weeklyEntryCount} ${weeklyEntryCount === 1 ? 'registro' : 'registros'}`}
             description="¡Sigue así para conocerte mejor!"
+            ctaLink="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas"
+            ctaLabel="¿Qué es el autoregistro?"
             icon={Activity}
             cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
             iconColorClass="text-yellow-600 dark:text-yellow-500"
@@ -387,3 +378,7 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+
+
+

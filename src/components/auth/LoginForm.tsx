@@ -10,21 +10,34 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "@/lib/translations";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Eye, EyeOff } from "lucide-react";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
-import { signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut } from "firebase/auth";
-import { useAuth } from "@/firebase/provider"; 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
+import { signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, type User as FirebaseUser } from "firebase/auth";
+import { useAuth } from "@/firebase/provider";
 import { sendLegacyData } from "@/data/userUtils";
 
-const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
+const WELCOME_SEEN_KEY = "workwell-welcome-seen";
+const LEGACY_USER_SYNC_KEY_PREFIX = "workwell-legacy-user-synced-";
+const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
+const LAST_LOGIN_AT_KEY = "workwell-last-login-at";
 
 export function LoginForm() {
   const t = useTranslations();
   const { toast } = useToast();
   const router = useRouter();
   const auth = useAuth();
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
@@ -33,6 +46,62 @@ export function LoginForm() {
 
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
+  const completeVerifiedLogin = (fbUser: FirebaseUser) => {
+    const legacySyncKey = `${LEGACY_USER_SYNC_KEY_PREFIX}${fbUser.uid}`;
+    const alreadySynced = typeof window !== "undefined" && localStorage.getItem(legacySyncKey) === "1";
+
+    if (!alreadySynced) {
+      let pendingData: any = {};
+      if (typeof window !== "undefined") {
+        const pendingRaw = localStorage.getItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+        if (pendingRaw) {
+          try {
+            pendingData = JSON.parse(pendingRaw);
+          } catch {
+            pendingData = {};
+          }
+        }
+      }
+
+      sendLegacyData(
+        {
+          id: fbUser.uid,
+          email: fbUser.email || "",
+          name: fbUser.displayName || "",
+          gender: pendingData.gender || "",
+          initialEmotionalState: pendingData.initialEmotionalState ?? "",
+          ageRange: pendingData.ageRange || "",
+          department_code: pendingData.department_code || "",
+          verifiedAt: new Date().toISOString(),
+        },
+        "usuario"
+      );
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem(legacySyncKey, "1");
+        localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+      }
+    }
+
+    sendLegacyData({ id: fbUser.uid }, "guardarlogin");
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem(LAST_LOGIN_AT_KEY, String(Date.now()));
+    }
+
+    toast({
+      title: t.login,
+      description: t.loginSuccessMessage,
+    });
+
+    const welcomeSeen = localStorage.getItem(WELCOME_SEEN_KEY);
+    if (welcomeSeen) {
+      router.push("/dashboard");
+    } else {
+      router.push("/welcome");
+    }
+  };
+
   const handlePasswordReset = async () => {
     if (!resetEmail || !auth) {
       toast({ title: "Email requerido", description: "Por favor, introduce tu email.", variant: "destructive" });
@@ -40,23 +109,23 @@ export function LoginForm() {
     }
     setIsResetting(true);
     try {
-        await sendPasswordResetEmail(auth, resetEmail);
-        toast({ title: "Correo enviado", description: "Se ha enviado un correo para restablecer tu contraseña." });
-    } catch(error: any) {
-        console.error("Error sending password reset email:", error);
-        let errorMessage = "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.";
-        if (error.code === 'auth/invalid-email') {
-          errorMessage = "El formato del correo electrónico no es válido.";
-        }
-        toast({ title: "Error", description: errorMessage, variant: "destructive"});
+      await sendPasswordResetEmail(auth, resetEmail);
+      toast({ title: "Correo enviado", description: "Se ha enviado un correo para restablecer tu contrasena." });
+    } catch (error: any) {
+      console.error("Error sending password reset email:", error);
+      let errorMessage = "No se pudo enviar el correo de restablecimiento. Verifica que el email sea correcto.";
+      if (error.code === "auth/invalid-email") {
+        errorMessage = "El formato del correo electronico no es valido.";
+      }
+      toast({ title: "Error", description: errorMessage, variant: "destructive" });
     }
     setIsResetting(false);
-  }
+  };
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     if (!auth) {
-      setLoginError("El servicio de autenticación no está disponible. Inténtalo más tarde.");
+      setLoginError("El servicio de autenticacion no esta disponible. Intentalo mas tarde.");
       return;
     }
 
@@ -64,46 +133,35 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        await userCredential.user.reload();
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await userCredential.user.reload();
 
-        if (userCredential.user.email && !userCredential.user.emailVerified) {
-          auth.languageCode = "es";
-          await sendEmailVerification(userCredential.user);
-          await signOut(auth);
-          setLoginError("Debes verificar tu correo antes de entrar. Te hemos reenviado un email de verificación.");
-          return;
-        }
-        
-        if (userCredential.user) {
-            sendLegacyData({ id: userCredential.user.uid }, 'guardarlogin');
-        }
+      if (userCredential.user.email && !userCredential.user.emailVerified) {
+        auth.languageCode = "es";
+        await sendEmailVerification(userCredential.user);
+        await signOut(auth);
+        setLoginError("Debes verificar tu correo antes de entrar. Te hemos reenviado un email de verificacion.");
+        return;
+      }
 
-        toast({
-            title: t.login,
-            description: t.loginSuccessMessage,
-        });
-
-        const welcomeSeen = localStorage.getItem(WELCOME_SEEN_KEY);
-        if (welcomeSeen) {
-          router.push('/dashboard');
-        } else {
-          router.push('/welcome');
-        }
-        
+      completeVerifiedLogin(userCredential.user);
     } catch (error: any) {
-        console.error("Login Error:", error);
-        let errorMessage = "Credenciales inválidas. Por favor, inténtalo de nuevo.";
-        if (error.code === 'auth/network-request-failed') {
-            errorMessage = "Error de red. Por favor, revisa tu conexión a internet.";
-        } else if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
-            errorMessage = "Credenciales incorrectas. Verifica tu email y contraseña."
-        }
-        setLoginError(errorMessage);
+      console.error("Login Error:", error);
+      let errorMessage = "Credenciales invalidas. Por favor, intentalo de nuevo.";
+      if (error.code === "auth/network-request-failed") {
+        errorMessage = "Error de red. Por favor, revisa tu conexion a internet.";
+      } else if (
+        error.code === "auth/invalid-credential" ||
+        error.code === "auth/wrong-password" ||
+        error.code === "auth/user-not-found"
+      ) {
+        errorMessage = "Credenciales incorrectas. Verifica tu email y contrasena.";
+      }
+      setLoginError(errorMessage);
     } finally {
-        setIsLoggingIn(false);
+      setIsLoggingIn(false);
     }
-  }
+  };
 
   return (
     <Card className="w-full shadow-xl bg-card/70 text-card-foreground">
@@ -115,7 +173,18 @@ export function LoginForm() {
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <Label htmlFor="email">{t.email}</Label>
-            <Input id="email" name="email" type="email" placeholder="tu@ejemplo.com" required value={email} onChange={(e) => {setEmail(e.target.value); setResetEmail(e.target.value);}} />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="tu@ejemplo.com"
+              required
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setResetEmail(e.target.value);
+              }}
+            />
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -128,16 +197,22 @@ export function LoginForm() {
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Restablecer Contraseña</AlertDialogTitle>
+                    <AlertDialogTitle>Restablecer Contrasena</AlertDialogTitle>
                     <AlertDialogDescription>
-                      Introduce tu correo electrónico para enviarte un enlace de restablecimiento.
+                      Introduce tu correo electronico para enviarte un enlace de restablecimiento.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
-                  <Input id="reset-email-dialog" type="email" placeholder="tu@ejemplo.com" value={resetEmail} onChange={(e) => setResetEmail(e.target.value)} />
+                  <Input
+                    id="reset-email-dialog"
+                    type="email"
+                    placeholder="tu@ejemplo.com"
+                    value={resetEmail}
+                    onChange={(e) => setResetEmail(e.target.value)}
+                  />
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
                     <AlertDialogAction onClick={handlePasswordReset} disabled={isResetting}>
-                       {isResetting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                      {isResetting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                       Enviar enlace
                     </AlertDialogAction>
                   </AlertDialogFooter>
@@ -168,8 +243,8 @@ export function LoginForm() {
           </div>
           {loginError && <p className="text-sm text-destructive pt-1">{loginError}</p>}
           <Button type="submit" className="w-full" disabled={isLoggingIn || !auth}>
-              {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {auth ? t.login : 'Inicializando...'}
+            {isLoggingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+            {auth ? t.login : "Inicializando..."}
           </Button>
         </form>
       </CardContent>

@@ -116,12 +116,33 @@ export default function MapOfUnsaidThingsExercise({ content, pathId, onComplete 
 **Ejercicio: ${content.title}**
 ${patternName ? `\n**Nombre del Patrón:** ${patternName}\n` : ''}
 ---
+**SITUACIÓN REGISTRADA**
+
+**¿Qué ocurrió?:**
+${situation || 'No especificado.'}
+
+**¿Qué querías decir o hacer, pero no lo hiciste?:**
+${whatIWanted || 'No especificado.'}
+
+**¿Qué hiciste en su lugar?:**
+${whatIDid || 'No especificado.'}
+
+**¿Qué emoción sentiste?:**
+${selectedEmotions.length > 0 ? selectedEmotions.map(e => `- ${e}`).join('\n') : 'No especificado.'}
+
+**¿Qué pensamientos pasaron por tu mente?:**
+${thoughts || 'No especificado.'}
+
+**¿Qué pasó después?:**
+${aftermath || 'No especificado.'}
+
+---
 **MI PATRÓN PERSONAL**
 
 **Emociones que se repiten cuando callo:**
 ${repeatedEmotions || 'No especificado.'}
 
-**Contextos difíciles:**
+**Contextos difíciles (personas o situaciones):**
 ${difficultContexts || 'No especificado.'}
 
 **Temores si hablo:**
@@ -141,6 +162,9 @@ ${fearOrChoice || 'No especificado.'}
 
 **Peor escenario y cómo lo afrontaría:**
 ${worstCase || 'No especificado.'}
+
+**¿Cómo podría decirlo con respeto y firmeza?:**
+${howToSayIt || 'No especificado.'}
 
 ---
 **MI PLAN DE ACCIÓN**

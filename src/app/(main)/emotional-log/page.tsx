@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from 'next/link';
@@ -20,8 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
-import { useFirestore } from "@/firebase/provider";
-import { collection, query, orderBy, getDocs, addDoc, serverTimestamp, type Timestamp } from "firebase/firestore";
+import { getAutoregistrosLegacy, saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
 
 const moodScoreMapping: Record<string, number> = {
   alegria: 5, confianza: 5, sorpresa: 4, anticipacion: 4,
@@ -32,48 +31,36 @@ export default function EmotionalLogPage() {
   const t = useTranslations();
   const { toast } = useToast();
   const { user } = useUser();
-  const db = useFirestore();
   const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const loadEntries = useCallback(async () => {
-    if (!user?.id || !db) {
+    if (!user?.id) {
         setIsLoading(false);
         return;
     }
     setIsLoading(true);
     try {
-      const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      const q = query(entriesRef, orderBy("timestamp", "desc"));
-      const querySnapshot = await getDocs(q);
-      const entries = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          const timestamp = data.timestamp as Timestamp | null;
-          return {
-            id: doc.id,
-            ...data,
-            timestamp: timestamp ? timestamp.toDate().toISOString() : new Date().toISOString()
-          } as EmotionalEntry
-      });
+      const entries = await getAutoregistrosLegacy(user.id);
       setAllEntries(entries);
     } catch (error) {
-      console.error("Error loading emotional entries from Firestore:", error);
-      toast({ title: "Error", description: "No se pudieron cargar los registros emocionales.", variant: "destructive" });
+      console.error("Error loading emotional entries from webservice:", error);
+      toast({ title: "Error", description: "No se pudieron cargar los autorregistros.", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
-  }, [user?.id, db, toast]);
+  }, [user?.id, toast]);
 
   useEffect(() => {
     loadEntries();
   }, [loadEntries]);
 
   const handleEmotionalEntrySubmit = async (data: { situation: string; thought: string; emotion: string }) => {
-    if (!user || !user.id || !db) {
+    if (!user?.id) {
       toast({
         title: "Error de Usuario o Conexión",
-        description: "No se pudo identificar al usuario o la base de datos.",
+        description: "No se pudo identificar al usuario.",
         variant: "destructive",
       });
       return;
@@ -81,15 +68,19 @@ export default function EmotionalLogPage() {
     setIsEntryDialogOpen(false);
     
     try {
-      const entriesRef = collection(db, "users", user.id, "emotional_entries");
-      await addDoc(entriesRef, {
-        ...data,
-        timestamp: serverTimestamp()
+      const result = await saveAutoregistroLegacy({
+        userId: user.id,
+        entry: data,
       });
-      
+
+      if (!result.success) {
+        toast({ title: "Error al Guardar", description: result.message, variant: "destructive" });
+        return;
+      }
+
       toast({
         title: t.emotionalEntrySavedTitle,
-        description: "Tu registro se ha guardado en la nube.",
+        description: "Tu autorregistro se ha guardado.",
       });
 
       // Recargar entradas para mostrar la nueva
@@ -184,12 +175,12 @@ export default function EmotionalLogPage() {
                     <p className="text-sm text-foreground mt-1 whitespace-pre-wrap break-words">
                       {entry.situation}
                     </p>
-                    <p className="font-semibold text-primary mt-1">{emotionLabel}</p>
                      {entry.thought && (
                         <p className="text-sm text-muted-foreground mt-2 italic border-l-2 pl-2">
                            "{entry.thought}"
                         </p>
                     )}
+                    <p className="font-semibold text-primary mt-1">{emotionLabel}</p>
                     {index < allEntries.length - 1 && <Separator className="my-4" />}
                   </li>
                 );
@@ -203,3 +194,6 @@ export default function EmotionalLogPage() {
     </div>
   );
 }
+
+
+

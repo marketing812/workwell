@@ -243,7 +243,7 @@ export const empathyPath: Path = {
         },
         {
           type: 'emotionalInvolvementTrafficLightExercise',
-          title: 'Ejercicio 2: Semáforo de implicación emocional',
+          title: 'EJERCICIO 2: SEMÁFORO DE IMPLICACIÓN EMOCIONAL',
           objective: 'Este ejercicio te ayudará a ponerle nombre y color a lo que sientes en tus relaciones. Vas a observar cómo te afecta cada vínculo y decidir conscientemente cómo quieres implicarte para proteger tu energía.',
           duration: '15-20 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica2.mp3`,

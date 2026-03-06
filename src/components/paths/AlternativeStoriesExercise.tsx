@@ -102,6 +102,22 @@ export default function AlternativeStoriesExercise({ content, pathId, onComplete
     setIsSaved(true);
     onComplete();
   };
+
+  const handleRepeatExercise = () => {
+    setSituation('');
+    setNegativeStory('');
+    setNeutralStory('');
+    setPositiveStory('');
+    setUsualAnticipation('');
+    setAnticipationReason('');
+    setNewPossibilities('');
+    setIsSaved(false);
+    try {
+      localStorage.removeItem(storageKey);
+    } catch (error) {
+      console.error("Error clearing exercise state:", error);
+    }
+  };
   
   if (!isClient) {
     return null; // O un componente de carga
@@ -159,14 +175,26 @@ export default function AlternativeStoriesExercise({ content, pathId, onComplete
             <Textarea id="new-possibilities" value={newPossibilities} onChange={e => setNewPossibilities(e.target.value)} placeholder="¿Qué otras formas de ver esta situación podrías empezar a considerar?" disabled={isSaved} />
           </div>
 
+
+          <div className="space-y-2 rounded-md border bg-background/60 p-4">
+            <p className="text-sm whitespace-pre-line">
+              {"Tu mente tiende a imaginar lo peor.\nPero eso no significa que sea lo más probable.\nContarte historias alternativas te da la oportunidad de responder con flexibilidad… no solo de reaccionar desde el miedo."}
+            </p>
+          </div>
+
           {!isSaved ? (
              <Button type="submit" className="w-full">
-                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+                <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno como "Escenario alternativo"
             </Button>
           ) : (
-            <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <p className="font-medium">Tu ejercicio ha sido guardado.</p>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  <p className="font-medium">Tu ejercicio ha sido guardado.</p>
+              </div>
+              <Button type="button" variant="outline" className="w-full" onClick={handleRepeatExercise}>
+                Repetir ejercicio
+              </Button>
             </div>
           )}
         </form>

@@ -42,6 +42,7 @@ export type ExerciseContent = {
     duration?: string;
     content: ModuleContent[];
     audioUrl?: string;
+    stepMode?: boolean;
 };
 
 export type StressMapExerciseContent = {
@@ -64,8 +65,17 @@ export type TherapeuticNotebookReflection = {
     type: 'therapeuticNotebookReflection';
     title: string;
     prompts: string[];
+    guidedFields?: {
+      id: string;
+      label: string;
+      placeholder?: string;
+      required?: boolean;
+      rows?: number;
+    }[];
+    guidedStepMode?: boolean;
     audioUrl?: string;
     showOverloadSignals?: boolean;
+    savedSummaryText?: string;
 }
 
 export type DetectiveExerciseContent = {

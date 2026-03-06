@@ -321,10 +321,10 @@ export const t = {
   moodScoreLabel: "Puntuación de Ánimo",
 
   // Full Emotional History Page
-  fullEmotionalHistoryTitle: "Historial Emocional Completo",
+  fullEmotionalHistoryTitle: "Mis autoregistros",
   backToDashboard: "Volver al Panel",
   allEmotionalEntriesTitle: "Todos mis autorregistros",
-  allEmotionalEntriesDescription: "Aquí puedes ver todas tus entradas emocionales ordenadas por fecha.",
+  allEmotionalEntriesDescription: "Aquí puedes ver todos tus autorregistros ordenados por fecha.",
   noEntriesYet: "Aún no tienes registros emocionales.",
 
   // Therapeutic Notebook Page

@@ -28,6 +28,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
   const [writtenInquietud, setWrittenInquietud] = useState('');
   const [writtenReflection, setWrittenReflection] = useState('');
   const [writtenReformulation, setWrittenReformulation] = useState('');
+  const [writtenRelease, setWrittenRelease] = useState('Hoy elijo confiar en mi capacidad de avanzar paso a paso.');
 
   // State for "Cerrar con gratitud"
   const [gratitude, setGratitude] = useState('');
@@ -100,9 +101,17 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
 
       <div className="space-y-2">
         <Label className="font-semibold">Paso 4: Suelta</Label>
-        <p className="text-sm text-muted-foreground p-3 border rounded-md bg-background/50">
-            Cierra los ojos y repite en voz alta o mentalmente: "Hoy elijo confiar en mi capacidad de avanzar paso a paso." Siente cómo, al decirlo, una parte de ti suelta la necesidad de controlarlo todo.
+        <p className="text-sm text-muted-foreground">
+          Elige tu forma simbólica de soltar:
+          <br />
+          Rómpelo, bórralo, guárdalo o simplemente visualiza cómo lo dejas ir.
         </p>
+        <p className="text-sm text-muted-foreground">Texto sugerido:</p>
+        <Textarea
+          value={writtenRelease}
+          onChange={e => setWrittenRelease(e.target.value)}
+          placeholder='“Hoy elijo confiar en mi capacidad de avanzar paso a paso.”'
+        />
       </div>
 
       <Button onClick={() => {
@@ -110,10 +119,10 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
             `Pregunta: ¿Qué te inquieta? | Respuesta: ${writtenInquietud || 'No respondido.'}`,
             `Pregunta: Tu reflexión al leerlo | Respuesta: ${writtenReflection || 'No respondido.'}`,
             `Pregunta: Tu reformulación más útil | Respuesta: "${writtenReformulation || 'No respondido.'}"`,
-            `Pregunta: Pensamiento final de entrega | Respuesta: "Hoy elijo confiar en mi capacidad de avanzar paso a paso."`
+            `Pregunta: Pensamiento final de entrega | Respuesta: "${writtenRelease || 'No respondido.'}"`
           ].join('\n');
           handleSave("Escribir y Soltar", content);
-      }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
+      }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como “Entrega consciente”</Button>
       
       <Button variant="link" onClick={() => setStep(0)} className="w-auto px-0">Volver a opciones</Button>
     </div>
@@ -134,7 +143,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
                 <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_diafragmatica.mp3`} type="audio/mp3"/></audio>
             </div>
             <div>
-                <h5 className="font-semibold">Anclaje corporal con exhalación prolongada</h5>
+                <h5 className="font-semibold">Anclaje sensorial inmediato (5-4-3-2-1)</h5>
                 <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.m4a`} type="audio/mp3"/></audio>
             </div>
         </div>
@@ -162,7 +171,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         
         <div className="text-sm text-muted-foreground pt-4 space-y-2">
             <p className="font-semibold">¿Cómo convertir este ritual en hábito?</p>
-            <p>Usa este ritual al final del día, antes de una situación incierta o cuando tu mente esté acelerada.<br/>No hace falta hacerlo perfecto.<br/>Solo estar presente en el gesto es suficiente.</p>
+            <p>Hacer esto cada noche entrena a tu mente a cerrar el día con amabilidad, no con autoexigencia. <br />No necesitas tenerlo todo resuelto para descansar. <br />Solo darte permiso para reconocer lo vivido con presencia y gratitud.</p>
         </div>
         
         <Button onClick={() => {
