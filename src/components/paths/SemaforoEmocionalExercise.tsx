@@ -69,8 +69,7 @@ Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin re
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y, lo más importante, vas a elegir cómo cuidarte en cada momento.</p>
-            <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={nextStep}>Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:

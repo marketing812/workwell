@@ -132,6 +132,9 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label htmlFor="next-step-blocking" className="font-semibold text-lg">Paso 5: Integra el aprendizaje</Label>
             <p className="text-sm">Piensa en cómo podrías aplicar esta nueva forma de pensar la próxima vez.</p>
             <Textarea id="next-step-blocking" disabled={isSaved}/>
+            <p className="text-sm text-muted-foreground">
+              Ejemplo guía: "La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo."
+            </p>
              <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button></div>
           </form>
         );

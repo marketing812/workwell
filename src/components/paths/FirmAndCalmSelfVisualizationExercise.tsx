@@ -72,7 +72,7 @@ Tómate unos segundos para traer todos los detalles posibles.
 
 Y ahora… en esa escena, imagina que aparece una versión de ti más firme, más centrada, más tranquila. 
 
-Es tu “yo firme y tranquilo”. 
+Es tu “yo firme y tranquilo/a”. 
 Una parte de ti que puede sostener el malestar… sin ceder. 
 
 Observa cómo se mueve… 
@@ -152,7 +152,7 @@ Cada vez será un poco más fácil.`;
             <h4 className="font-semibold text-lg text-primary">Reflexión sobre la visualización</h4>
             <p className="text-sm text-muted-foreground">Has practicado algo muy importante: sostener un límite desde tu centro. Recuerda esta frase: “Puedo sentirme incómodo y aun así actuar con respeto y claridad.”</p>
             <div className="space-y-2">
-              <Label htmlFor="reflection-visualization">¿Qué sentiste al verte firme y tranquilo?</Label>
+              <Label htmlFor="reflection-visualization">¿Qué sentiste al verte firme y tranquilo/a?</Label>
               <Textarea id="reflection-visualization" value={reflection} onChange={e => setReflection(e.target.value)} disabled={isSaved} />
             </div>
             {!isSaved ? (

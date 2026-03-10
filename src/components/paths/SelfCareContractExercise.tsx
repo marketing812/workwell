@@ -1,17 +1,15 @@
-﻿
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle } from 'lucide-react';
+import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { SelfCareContractExerciseContent } from '@/data/paths/pathTypes';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 interface SelfCareContractExerciseProps {
   content: SelfCareContractExerciseContent;
@@ -22,32 +20,221 @@ interface SelfCareContractExerciseProps {
 export default function SelfCareContractExercise({ content, pathId, onComplete }: SelfCareContractExerciseProps) {
   const { toast } = useToast();
   const { user } = useUser();
-  const [initialCommitment, setInitialCommitment] = useState('');
-  const [howToTalk, setHowToTalk] = useState('');
-  const [howToRespond, setHowToRespond] = useState('');
-  const [signature, setSignature] = useState('');
+
+  const [step, setStep] = useState(0);
+  const [notWillingTo, setNotWillingTo] = useState('');
+  const [commitment, setCommitment] = useState('');
+  const [howIWillDoIt, setHowIWillDoIt] = useState('');
   const [isSaved, setIsSaved] = useState(false);
 
-  const handleSave = (e: FormEvent) => {
-    e.preventDefault();
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => Math.max(0, prev - 1));
+
+  const handleSave = () => {
+    if (!notWillingTo.trim() || !commitment.trim() || !howIWillDoIt.trim()) {
+      toast({
+        title: 'Campos incompletos',
+        description: 'Completa los tres bloques del contrato antes de guardarlo.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     const notebookContent = [
       `**Ejercicio: ${content.title}**`,
-      `Pregunta: Mi compromiso inicial | Respuesta: ${initialCommitment}`,
-      `Pregunta: Cómo quiero hablarme cuando me equivoque | Respuesta: ${howToTalk}`,
-      `Pregunta: Cómo quiero responder ante mis decisiones | Respuesta: ${howToRespond}`,
-      `Pregunta: Firma del contrato | Respuesta: ${signature}`
+      `Pregunta: No estoy dispuesta/o a... | Respuesta: ${notWillingTo}`,
+      `Pregunta: Me comprometo a... | Respuesta: ${commitment}`,
+      `Pregunta: Lo haré de forma... | Respuesta: ${howIWillDoIt}`,
+      '',
+      '**Mi contrato interno de autocuidado:**',
+      `No estoy dispuesta/o a ${notWillingTo}.`,
+      `Me comprometo a ${commitment}.`,
+      `Lo haré de forma ${howIWillDoIt}.`,
     ].join('\n\n');
 
-    addNotebookEntry({ title: 'Mi Contrato de Autorresponsabilidad Compasiva', content: notebookContent, pathId: pathId, userId: user?.id });
-    toast({ title: 'Contrato Guardado', description: 'Tu contrato ha sido guardado.' });
+    addNotebookEntry({
+      title: 'Mi Contrato Interno de Autocuidado',
+      content: notebookContent,
+      pathId,
+      userId: user?.id,
+    });
+
+    toast({
+      title: 'Contrato guardado',
+      description: 'Tu contrato se ha guardado en el cuaderno terapéutico.',
+    });
     setIsSaved(true);
     onComplete();
+    nextStep();
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Pantalla 1: ¿Por qué un contrato contigo?</h4>
+            <p className="text-sm text-muted-foreground">
+              A menudo hablamos de poner límites hacia fuera, pero ¿qué pasa con los límites internos? Este ejercicio
+              te ayuda a identificar con claridad aquello que ya no estás dispuesto o dispuesta a seguir
+              permitiéndote, desde un lugar de cuidado, no de juicio.
+            </p>
+            <div className="flex justify-end w-full">
+              <Button onClick={nextStep}>
+                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        );
+
+      case 1:
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Pantalla 2: Instrucciones</h4>
+            <p className="text-sm text-muted-foreground">
+              Busca un momento tranquilo para ti. Lee cada bloque con calma y completa las frases con sinceridad. No
+              hay respuestas correctas: este contrato es solo tuyo, para recordarte lo que necesitas cuidar y cómo
+              quieres comprometerte contigo.
+            </p>
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={nextStep}>
+                Comenzar ejercicio <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Pantalla 3: No estoy dispuesta/o a...</h4>
+            <p className="text-sm text-muted-foreground">Algunos ejemplos:</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li>Seguir callando lo que me duele.</li>
+              <li>Ceder siempre para evitar conflictos.</li>
+              <li>Negar mis necesidades para complacer.</li>
+              <li>Aceptar la falta de respeto, aunque venga disfrazada de cercanía.</li>
+            </ul>
+            <div className="space-y-2">
+              <Label htmlFor="not-willing-to">Completa: No estoy dispuesta/o a:</Label>
+              <Textarea
+                id="not-willing-to"
+                value={notWillingTo}
+                onChange={(e) => setNotWillingTo(e.target.value)}
+                placeholder="Escribe aquí..."
+              />
+            </div>
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={nextStep} disabled={!notWillingTo.trim()}>
+                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Pantalla 4: Me comprometo a...</h4>
+            <p className="text-sm text-muted-foreground">
+              Este compromiso no es una obligación, sino una forma de empezar a elegirte.
+            </p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li>Cuidar mi energía como prioridad.</li>
+              <li>Escuchar mis emociones sin juzgarlas.</li>
+              <li>Recordarme que tengo derecho a poner límites.</li>
+              <li>Practicar el respeto hacia mí cada día.</li>
+            </ul>
+            <div className="space-y-2">
+              <Label htmlFor="commitment">Completa: Me comprometo a:</Label>
+              <Textarea
+                id="commitment"
+                value={commitment}
+                onChange={(e) => setCommitment(e.target.value)}
+                placeholder="Escribe aquí..."
+              />
+            </div>
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={nextStep} disabled={!commitment.trim()}>
+                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        );
+
+      case 4:
+        return (
+          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+            <h4 className="font-semibold text-lg text-primary">Pantalla 5: Lo haré de forma...</h4>
+            <p className="text-sm text-muted-foreground">¿Cómo quieres ejercer ese autocuidado?</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li>Clara, sin herir.</li>
+              <li>Suave, pero firme.</li>
+              <li>Honesta, aunque me cueste.</li>
+            </ul>
+            <div className="space-y-2">
+              <Label htmlFor="how-i-will-do-it">Completa: Lo haré de forma:</Label>
+              <Textarea
+                id="how-i-will-do-it"
+                value={howIWillDoIt}
+                onChange={(e) => setHowIWillDoIt(e.target.value)}
+                placeholder="Escribe aquí..."
+              />
+            </div>
+            <div className="flex justify-between w-full">
+              <Button onClick={prevStep} variant="outline">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Atrás
+              </Button>
+              <Button onClick={handleSave} disabled={!howIWillDoIt.trim()}>
+                <Save className="mr-2 h-4 w-4" />
+                Guardar en el cuaderno terapéutico
+              </Button>
+            </div>
+          </div>
+        );
+
+      case 5:
+        return (
+          <div className="p-6 space-y-4 text-center animate-in fade-in-0 duration-500">
+            <div className="flex flex-col items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg space-y-3">
+              <CheckCircle className="h-8 w-8 text-green-600" />
+              <p className="font-medium text-green-800 dark:text-green-200">Guardado.</p>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Tu contrato interno de autocuidado quedó guardado. Puedes releerlo durante la semana para sostener tu
+              compromiso contigo.
+            </p>
+            <Button onClick={() => setStep(4)} variant="outline" disabled={!isSaved}>
+              Revisar mi contrato
+            </Button>
+          </div>
+        );
+
+      default:
+        return null;
+    }
   };
 
   return (
     <Card className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
+        <CardTitle className="text-lg text-accent flex items-center">
+          <Edit3 className="mr-2" />
+          {content.title}
+        </CardTitle>
         {content.objective && (
           <CardDescription className="pt-2">
             {content.objective}
@@ -62,56 +249,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
           </CardDescription>
         )}
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSave} className="space-y-4">
-          <div className="space-y-2">
-            <h4 className="font-semibold text-lg">El contrato comienza con tus propias palabras</h4>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Quiero que empieces escribiendo una frase que marque la intención general de tu contrato. Piensa en algo que resuma cómo quieres tratarte a partir de ahora.  <br>Ejemplo: Me comprometo a hablarme con respeto, aunque me equivoque, y a buscar siempre un aprendizaje en cada decisión." }} />
-            <Textarea id="initial-commitment" value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Escribe aquí tu frase de compromiso inicial…" />
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Cómo quiero hablarme cuando me equivoque</h4>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
-            <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Cómo quiero responder ante mis decisiones</h4>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Tanto si las cosas salen bien como si no, tu forma de responderte puede marcar la diferencia. Define qué actitudes y acciones quieres mantener después de tomar una decisión, evitando quedarte atrapado/a en la duda o el arrepentimiento. <br> Ejemplo: <br>Revisaré si la decisión estaba alineada con mis valores y aprenderé lo que pueda, en lugar de castigarme. " }} />
-            <Textarea id="how-to-respond" value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Escribe aquí cómo quieres responder ante tus decisiones…" />
-          </div>
-          <div className="space-y-2">
-            <h4 className="font-semibold text-lg">Firma y compromiso</h4>
-            <div className="text-sm text-muted-foreground space-y-2" dangerouslySetInnerHTML={{ __html: "Cuando termines, lee tu contrato completo en voz alta. Si te suena demasiado duro, ajústalo. Si te suena realista y motivador, fírmalo (puedes escribir tu nombre o solo tus iniciales).<br><b>Mi contrato:</b><br>" }} />
-            <div className="p-4 border rounded-md bg-background/50 space-y-3 text-sm">
-                <p><strong>Mi compromiso inicial:</strong></p>
-                <Textarea value={initialCommitment} onChange={e => setInitialCommitment(e.target.value)} disabled={isSaved} placeholder="Tu compromiso..."/>
-
-                <p className="mt-4"><strong>Quiero hablarme así:</strong></p>
-                <Textarea value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Cómo te hablarás..."/>
-                
-                <p className="mt-4"><strong>Quiero responderme ante mis decisiones así:</strong></p>
-                <Textarea value={howToRespond} onChange={e => setHowToRespond(e.target.value)} disabled={isSaved} placeholder="Cómo responderás..."/>
-            </div>
-            <Textarea id="signature" value={signature} onChange={e => setSignature(e.target.value)} placeholder="Firma aquí con tu nombre o iniciales para sellar tu compromiso..." disabled={isSaved} className="mt-2" />
-          </div>
-          {!isSaved ? (
-            <>
-              <Button type="submit" className="w-full"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
-              <p className="text-xs text-muted-foreground text-center mt-2">Recuerda: este contrato no es un castigo ni una lista de exigencias, sino una guía.</p>
-            </>
-          ) : (
-            <div className="flex flex-col items-center justify-center p-3 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-md">
-              <div className="flex items-center">
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <p className="font-medium">Guardado.</p>
-              </div>
-              <p className="text-sm text-center mt-2">
-                Recuerda: este contrato no es un castigo ni una lista de exigencias, sino una guía viva para acompañarte en tus errores y aprendizajes. Puedes volver a él siempre que necesites reorientarte.
-              </p>
-            </div>
-          )}
-        </form>
-      </CardContent>
+      <CardContent>{renderStep()}</CardContent>
     </Card>
   );
 }

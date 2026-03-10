@@ -154,6 +154,14 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         <CardDescription className="pt-2">{content.objective}</CardDescription>
+        {content.descriptionAudioUrl && (
+          <div className="mt-4">
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src={content.descriptionAudioUrl} type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        )}
       </CardHeader>
       <CardContent>
         {renderStep()}

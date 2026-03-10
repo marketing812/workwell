@@ -393,22 +393,22 @@ ${hasGuidedFields
 
           {!isSaved ? (
             isGuidedStepMode && hasGuidedFields ? (
-              <div className="flex gap-3">
+              <div className="flex items-center justify-between w-full gap-3">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1"
+                  className="w-auto"
                   onClick={() => setGuidedStepIndex(prev => Math.max(prev - 1, 0))}
                   disabled={guidedStepIndex === 0}
                 >
-                  Atras
+                  Atrás
                 </Button>
                 {!isLastGuidedStep ? (
-                  <Button type="button" className="flex-1" onClick={handleNextGuidedStep}>
+                  <Button type="button" className="w-auto ml-auto" onClick={handleNextGuidedStep}>
                     Siguiente
                   </Button>
                 ) : (
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="w-auto ml-auto">
                     <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                   </Button>
                 )}

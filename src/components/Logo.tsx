@@ -13,7 +13,10 @@ export function Logo({className, white = false}: {className?: string; white?: bo
         alt={t.appName}
         width={132}
         height={32}
-        className={cn('h-8 w-auto', white && 'brightness-0 invert')}
+        className={cn(
+          'h-8 w-auto',
+          white ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'
+        )}
         priority
       />
     </Link>

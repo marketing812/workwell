@@ -191,11 +191,23 @@ ${reassessment}
             <p className="text-sm text-muted-foreground">Ej: “Va a pensar que soy egoísta” (85%).</p>
             <div className="space-y-2">
                 <Input value={thoughts.thought1.text} onChange={e => handleThoughtChange('thought1', 'text', e.target.value)} placeholder="Pensamiento 1..."/>
-                <Slider value={[thoughts.thought1.belief]} onValueChange={v => handleThoughtChange('thought1', 'belief', v[0])} />
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>Nivel de creencia</span>
+                    <span className="font-semibold">{thoughts.thought1.belief}%</span>
+                </div>
+                <Slider value={[thoughts.thought1.belief]} onValueChange={v => handleThoughtChange('thought1', 'belief', v[0])} min={0} max={100} step={1} />
             </div>
              <div className="space-y-2">
                 <Input value={thoughts.thought2.text} onChange={e => handleThoughtChange('thought2', 'text', e.target.value)} placeholder="Pensamiento 2 (opcional)..."/>
-                {thoughts.thought2.text && <Slider value={[thoughts.thought2.belief]} onValueChange={v => handleThoughtChange('thought2', 'belief', v[0])} />}
+                {thoughts.thought2.text && (
+                    <>
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                            <span>Nivel de creencia</span>
+                            <span className="font-semibold">{thoughts.thought2.belief}%</span>
+                        </div>
+                        <Slider value={[thoughts.thought2.belief]} onValueChange={v => handleThoughtChange('thought2', 'belief', v[0])} min={0} max={100} step={1} />
+                    </>
+                )}
             </div>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -214,7 +226,15 @@ ${reassessment}
                             <Checkbox id={opt.id} checked={emotions[opt.id]?.selected || false} onCheckedChange={c => handleEmotionChange(opt.id, 'selected', !!c)} />
                             <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                         </div>
-                        {emotions[opt.id]?.selected && <Slider value={[emotions[opt.id]?.intensity || 5]} onValueChange={v => handleEmotionChange(opt.id, 'intensity', v[0])}/>}
+                        {emotions[opt.id]?.selected && (
+                            <>
+                                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                                    <span>Intensidad</span>
+                                    <span className="font-semibold">{emotions[opt.id]?.intensity || 5}%</span>
+                                </div>
+                                <Slider value={[emotions[opt.id]?.intensity || 5]} onValueChange={v => handleEmotionChange(opt.id, 'intensity', v[0])} min={0} max={100} step={1} />
+                            </>
+                        )}
                     </div>
                 ))}
                  <div className="flex justify-between w-full mt-4">

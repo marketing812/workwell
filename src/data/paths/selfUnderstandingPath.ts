@@ -252,7 +252,7 @@ export const selfUnderstandingPath: Path = {
         {
           type: 'semaforoEmocionalExercise',
           title: 'EJERCICIO 2: SEMÁFORO EMOCIONAL INTERACTIVO',
-          objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y qué puedes hacer para cuidarte en cada momento.',
+          objective: 'Este ejercicio te ayudará a parar antes de que la emoción tome el control. Vas a entrenar la capacidad de saber en qué punto estás y qué puedes hacer para cuidarte en cada momento. Porque sí: puedes aprender a no reaccionar en automático y a regularte con presencia, con respeto por lo que sientes… y con pequeñas decisiones que lo cambian todo.',
           duration: '5–10 minutos. Te recomiendo practicarlo 1 vez al día, o cada vez que sientas una activación emocional.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6semana3tecnica2.mp3`,
         },
@@ -364,6 +364,7 @@ export const selfUnderstandingPath: Path = {
           objective: 'Esta meditación te invita a dejar de luchar con lo que sientes y a practicar la aceptación: No como resignación, sino como una forma de cuidado profundo hacia ti.\n\nAl repetir la frase ancla — “Esto es lo que siento ahora… y está bien” — \nempiezas a entrenar una voz interior más compasiva, que te acompaña sin exigencias, incluso en los momentos difíciles.',
           duration: 'Duración recomendada: 5-7 minutos por sesión. Te recomiendo practicarla entre 3 y 5 veces a la semana para fortalecer la autocompasión y la regulación emocional.',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/descripciones/R6sem4ej1meditacion.mp3`,
+          descriptionAudioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6semana4tecnica1.mp3`,
         },
         {
           type: 'diarioMeDiCuentaExercise',

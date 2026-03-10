@@ -85,7 +85,7 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl">¿Cómo te sientes hoy?</DialogTitle>
-          <DialogDescription className="text-center">En general, ¿cómo ha sido tu estado de ánimo?</DialogDescription>
+          <DialogDescription className="text-center">En general, ¿cómo ha sido o está siendo tu estado de ánimo?</DialogDescription>
         </DialogHeader>
         <div className="py-4 space-y-3">
           {moodCheckInOptions.map((option) => {

@@ -219,6 +219,22 @@ export const settingBoundariesPath: Path = {
             { type: 'list', items: ['Escucharte.','Nombrar lo que necesitas.','Y atreverte a comunicarte desde tu centro, con respeto, verdad y seguridad emocional.'] },
           ],
         },
+        {
+          type: 'collapsible',
+          title: 'Resumen por puntos clave',
+          content: [
+            {
+              type: 'list',
+              items: [
+                'El estilo de comunicación es la forma habitual en la que nos expresamos: se aprende y puede transformarse.',
+                'Existen cuatro estilos comunes: pasivo, agresivo, pasivo-agresivo y asertivo.',
+                'Cada estilo tiene una jerarquía relacional implícita: por debajo, por encima o a la misma altura.',
+                'La asertividad consciente es la capacidad de expresar lo que sentimos, pensamos y necesitamos desde un lugar de respeto hacia uno mismo y hacia los demás.',
+                'No se trata de ser perfecto, sino de ganar conciencia, entrenar nuevas formas y elegir cómo queremos comunicarnos.',
+              ],
+            },
+          ],
+        },
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'assertivePhraseExercise',

@@ -150,10 +150,10 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                                   <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
                               </div>
                           ))}
-                        </div>
-                        <div className="flex items-center gap-2 pt-2">
-                          <Checkbox id="otra" checked={!!emotions['otra']} onCheckedChange={c => setEmotions(p => ({...p, otra: !!c}))} />
-                          <Label htmlFor="otra" className="font-normal">Otra:</Label>
+                          <div className="flex items-center space-x-2">
+                            <Checkbox id="otra" checked={!!emotions['otra']} onCheckedChange={c => setEmotions(p => ({...p, otra: !!c}))} />
+                            <Label htmlFor="otra" className="font-normal">Otro:</Label>
+                          </div>
                         </div>
                         {emotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} />}
                         <div className="flex justify-between w-full mt-2">
@@ -197,11 +197,24 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} placeholder="Ejemplo: “Haberme dado permiso para decir que no y descansar.”" />
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={handleSave} className="w-auto" disabled={!needed.trim()}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+                            <Button onClick={nextStep} className="w-auto" disabled={!needed.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
                     </div>
                 );
-            case 8: // Confirmation
+            case 8: // Paso 7: Consejo práctico
+                return (
+                    <div className="p-4 space-y-4">
+                        <h4 className="font-semibold">Paso 7: Consejo práctico</h4>
+                        <p className="text-sm text-muted-foreground italic">
+                          “No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.”
+                        </p>
+                        <div className="flex justify-between w-full mt-4">
+                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                            <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
+                        </div>
+                    </div>
+                );
+            case 9: // Confirmation
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />

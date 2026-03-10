@@ -15,7 +15,6 @@ import { Slider } from '@/components/ui/slider';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntryForm';
 import { useTranslations } from '@/lib/translations';
 
@@ -113,7 +112,7 @@ Pregunta: ¿Me sentiría orgulloso/a de dar esta explicación? | Respuesta: ${is
 Pregunta: ¿Refleja quién soy y quiero ser? | Respuesta: ${reflectsWhoIAm ? 'Sí' : 'No'}
 Nivel de coherencia percibida: ${coherence}/10
 
-Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta: ${adjustment || 'Ninguno.'}
+Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión? | Respuesta: ${adjustment || 'No especificado.'}
     `;
         addNotebookEntry({ title: 'Decisiones con Integridad', content: notebookContent, pathId: pathId, userId: user?.id });
         toast({title: "Reflexión Guardada"});
@@ -131,27 +130,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
-            case 1: // Ejemplo guiado
-                return (
-                    <div className="p-4 space-y-4 text-center">
-                        <Accordion type="single" defaultValue="example" className="w-full text-left">
-                            <AccordionItem value="example">
-                                <AccordionTrigger>Ver ejemplo guiado</AccordionTrigger>
-                                <AccordionContent>
-                                    <div className="space-y-3 text-sm p-2">
-                                        <p>Al finalizar el ejercicio podrías descubrir algo como esto…</p>
-                                        <p className="italic">Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia. En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es la decisión correcta para él.</p>
-                                    </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
-                        <div className="flex justify-between w-full mt-4">
-                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                            <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
-                        </div>
-                    </div>
-                );
-            case 2: // Paso 1: Elige la decisión
+            case 1: // Paso 1: Elige la decisión
                 return (
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 1: Describe la decisión</h4>
@@ -163,7 +142,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 3: // Paso 2: Filtro 1 – Tus valores
+            case 2: // Paso 2: Filtro 1 – Tus valores
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 2: Filtro 1 – Tus valores</h4>
@@ -188,7 +167,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 4: // Paso 3: Filtro 2 – Tus emociones
+            case 3: // Paso 3: Filtro 2 – Tus emociones
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Filtro 2 – Tus emociones</h4>
@@ -211,10 +190,10 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                          <div className="flex justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
-                        </div>
+                         </div>
                     </div>
                 );
-            case 5: // Paso 4: Filtro 3 – Impacto a largo plazo
+            case 4: // Paso 4: Filtro 3 – Impacto a largo plazo
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 4: Filtro 3 – Impacto a largo plazo</h4>
@@ -227,7 +206,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 6: // Paso 5: Autoevaluación
+            case 5: // Paso 5: Autoevaluación
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 5: Autoevaluación</h4>
@@ -256,22 +235,15 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 7: // Paso 6: Ajusta si es necesario
+            case 6: // Paso 6: Ajusta si es necesario
                 return (
                      <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                         <div className="text-sm text-muted-foreground space-y-2">
-                            <p className="font-semibold text-foreground">Guía de uso:</p>
-                            <ul className="list-disc list-inside pl-4 space-y-1">
-                                <li>“Escribe cualquier cambio, por pequeño que parezca, que haría que la decisión se sintiera más tuya.”</li>
-                                <li>“Piensa en ajustes de forma, de tiempos, de condiciones o de manera de comunicarla.”</li>
-                                <li>“No es un compromiso inmediato, es una exploración para ver si hay un punto intermedio que te acerque a tu coherencia.”</li>
-                            </ul>
-                        </div>
-                        <blockquote className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm mt-2">
-                            Ejemplo: “Antes de mudarme definitivamente, podría hacer una estancia de prueba de unos meses para adaptarme y también dar más tranquilidad a mi familia.”
-                        </blockquote>
-                        <Label htmlFor="adjustment">Escribe aquí lo qué cambiarías</Label>
+                        <p className="text-sm text-muted-foreground">Campo de texto abierto (opcional).</p>
+                        <Label htmlFor="adjustment">Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
+                        <p className="text-sm italic text-muted-foreground">
+                            Ejemplo: "Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."
+                        </p>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -279,7 +251,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </div>
                 );
-            case 8: // Cierre y guardado
+            case 7: // Cierre y guardado
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <p className="text-sm text-muted-foreground">"Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites."</p>
@@ -289,7 +261,7 @@ Pregunta: ¿Qué cambiarías para sentirte en paz con la decisión? | Respuesta:
                         </div>
                     </form>
                 );
-            case 9: // Confirmation
+            case 8: // Confirmation
                 return (
                     <div className="p-6 text-center space-y-4">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />

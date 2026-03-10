@@ -96,7 +96,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                 return (
                     <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold">Paso 1: Recuerda la situación</h4>
-                        <Label htmlFor="situation">Pregunta: ¿Qué ocurrió?</Label>
+                        <Label htmlFor="situation">Piensa en un momento reciente en el que no actuaste como hubieras querido.</Label>
                         <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
                         <div className="flex justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -139,19 +139,23 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
             case 3: // Paso 3: Mira con compasión
                 let reminderText;
                 if (coherenceChoice === 'flexibilidad') {
-                    reminderText = "✨ “Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
+                    reminderText = "“Esto no es incoherencia, es cuidar lo importante. Adaptarte también puede ser coherente. Reconócelo como un acto de equilibrio.”";
                 } else if (coherenceChoice === 'incoherencia') {
-                    reminderText = "✨ “Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
+                    reminderText = "“Está bien. Todos nos salimos del camino alguna vez. Lo importante no es castigarte, sino aprender de lo que pasó y ajustar para la próxima vez.”";
                 } else {
-                    reminderText = "✨ “La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
+                    reminderText = "“La duda también enseña. Pregúntate: ¿qué valor estaba en juego y qué emoción pesó más en mi decisión? Ahí encontrarás la respuesta.”";
                 }
                 return (
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 3: Mira con compasión</h4>
+                        <p className="text-sm text-muted-foreground">Según lo que marcaste antes, revisa este recordatorio:</p>
                         <p className="p-4 bg-accent/10 border-l-4 border-accent text-sm">{reminderText}</p>
                         <div className="space-y-2">
-                            <Label htmlFor="compassion-phrase">Pregunta: Si pudieras hablarte con ternura, ¿qué frase te dirías ahora?</Label>
-                            <Textarea id="compassion-phrase" value={compassionatePhrase} onChange={e => setCompassionatePhrase(e.target.value)} placeholder="Ejemplo: “Entiendo que estabas cansada y no querías problemas. Está bien, lo importante es cómo eliges a partir de ahora.”"/>
+                            <p className="text-sm text-muted-foreground">Campo opcional de escritura:</p>
+                            <p className="text-sm">Si pudieras hablarte con ternura, ¿qué frase te dirías ahora?</p>
+                            <p className="text-sm italic text-muted-foreground">Ejemplo: “Entiendo que estabas cansada y no querías problemas. Está bien, lo importante es cómo eliges a partir de ahora.”</p>
+                            <Label htmlFor="compassion-phrase">Lo que me diría ahora:</Label>
+                            <Textarea id="compassion-phrase" value={compassionatePhrase} onChange={e => setCompassionatePhrase(e.target.value)} />
                         </div>
                         <div className="flex justify-between mt-2">
                             <Button onClick={prevStep} variant="outline">Atrás</Button>

@@ -15,17 +15,13 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  Radar,
-  PolarRadiusAxis,
   BarChart,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
-  LabelList
+  LabelList,
+  Legend,
 } from "recharts";
 import { Textarea } from '../ui/textarea';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
@@ -78,19 +74,22 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
     const chartData = useMemo(() => {
         return selectedEnvironments.map(env => {
             const rating = ratings[env.id] || { support: 1, drain: 1, example: '' };
-            const score = (rating.support + (10 - rating.drain)) / 2;
             return {
                 area: env.label,
-                score: parseFloat(score.toFixed(1)),
-                fullMark: 10,
+                support: rating.support,
+                drain: rating.drain,
             };
         });
     }, [selectedEnvironments, ratings]);
 
     const chartConfig = {
-        score: {
-            label: 'Coherencia del Entorno',
-            color: "hsl(var(--primary))",
+        support: {
+            label: 'Apoya mis valores',
+            color: "hsl(var(--chart-2))",
+        },
+        drain: {
+            label: 'Me aleja de lo que quiero sostener',
+            color: "hsl(var(--destructive))",
         },
     };
     
@@ -229,53 +228,65 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                 return (
                     <form onSubmit={handleSave} className="p-4 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 3: Síntesis visual</h4>
-                        <p className="text-sm text-muted-foreground">Aquí tienes tu mapa de entornos. No es para juzgarte ni para que tomes decisiones inmediatas, sino para que tengas claridad. Y recuerda: un entorno que ahora es saboteador, puede transformarse si introduces cambios.</p>
-                        <div className="w-full h-[350px]">
-                          {chartData.length >= 3 ? (
-                            <ChartContainer config={chartConfig} className="w-full h-full">
-                              <RadarChart data={chartData}>
-                                <ChartTooltip
-                                    cursor={false}
-                                    content={<ChartTooltipContent indicator="line" />}
+                        <p className="text-sm text-muted-foreground">
+                          Este gráfico compara claramente tus dos respuestas por entorno:
+                          <span className="font-semibold text-foreground"> Apoya mis valores</span> y
+                          <span className="font-semibold text-foreground"> Me aleja de lo que quiero sostener</span>.
+                        </p>
+                        <div className="w-full h-[440px]">
+                          <ChartContainer config={chartConfig} className="w-full h-full">
+                            <BarChart
+                              data={chartData}
+                              layout="vertical"
+                              margin={{ top: 12, right: 36, left: 16, bottom: 8 }}
+                              barCategoryGap={10}
+                              barGap={2}
+                            >
+                              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="hsl(var(--border))" />
+                              <XAxis
+                                type="number"
+                                domain={[0, 10]}
+                                tickCount={11}
+                                axisLine={{ stroke: 'hsl(var(--foreground))' }}
+                                tickLine={{ stroke: 'hsl(var(--foreground))' }}
+                                tick={{ fill: 'hsl(var(--foreground))', fontSize: 12, fontWeight: 600 }}
+                              />
+                              <YAxis
+                                dataKey="area"
+                                type="category"
+                                width={180}
+                                tickLine={false}
+                                axisLine={false}
+                                tick={{ fill: 'hsl(var(--foreground))', fontSize: 12, fontWeight: 600 }}
+                                interval={0}
+                              />
+                              <Legend wrapperStyle={{ fontSize: '12px', fontWeight: 600 }} />
+                              <ChartTooltip
+                                cursor={{ fill: 'hsl(var(--muted))' }}
+                                content={<ChartTooltipContent indicator="line" />}
+                              />
+                              <Bar dataKey="support" name="Apoya mis valores" fill="var(--color-support)" radius={[0, 4, 4, 0]}>
+                                <LabelList
+                                  dataKey="support"
+                                  position="right"
+                                  offset={8}
+                                  fontSize={12}
+                                  fontWeight={700}
+                                  fill="hsl(var(--foreground))"
                                 />
-                                <PolarAngleAxis dataKey="area" tick={{ fontSize: 10 }} />
-                                <PolarRadiusAxis angle={90} domain={[0, 10]} tickCount={6} />
-                                <PolarGrid />
-                                <Radar
-                                    dataKey="score"
-                                    fill="var(--color-score)"
-                                    fillOpacity={0.6}
-                                    dot={{
-                                        r: 4,
-                                        fillOpacity: 1,
-                                    }}
+                              </Bar>
+                              <Bar dataKey="drain" name="Me aleja de lo que quiero sostener" fill="var(--color-drain)" radius={[0, 4, 4, 0]}>
+                                <LabelList
+                                  dataKey="drain"
+                                  position="right"
+                                  offset={8}
+                                  fontSize={12}
+                                  fontWeight={700}
+                                  fill="hsl(var(--foreground))"
                                 />
-                              </RadarChart>
-                            </ChartContainer>
-                          ) : (
-                            <ChartContainer config={chartConfig} className="w-full h-full">
-                              <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 30 }}>
-                                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                                <XAxis type="number" domain={[0, 10]} tickCount={11} />
-                                <YAxis
-                                  dataKey="area"
-                                  type="category"
-                                  width={100}
-                                  tickLine={false}
-                                  axisLine={false}
-                                  tick={{ fontSize: 12, width: 100 }}
-                                  interval={0}
-                                />
-                                <ChartTooltip
-                                  cursor={{ fill: 'hsl(var(--background))' }}
-                                  content={<ChartTooltipContent hideLabel />}
-                                />
-                                <Bar dataKey="score" fill="var(--color-score)" radius={[0, 4, 4, 0]}>
-                                  <LabelList dataKey="score" position="right" offset={8} fontSize={12} />
-                                </Bar>
-                              </BarChart>
-                            </ChartContainer>
-                          )}
+                              </Bar>
+                            </BarChart>
+                          </ChartContainer>
                         </div>
                          <div className="flex justify-between w-full mt-4">
                              <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>

@@ -33,6 +33,12 @@ export default function SenseChecklistExercise({ content, pathId, onComplete }: 
   const [step, setStep] = useState(0);
   const [selections, setSelections] = useState<Record<string, boolean>>({});
   const [isSaved, setIsSaved] = useState(false);
+  const rawAudioUrl = content.audioUrl ?? '';
+  const audioUrl = rawAudioUrl
+    ? /^https?:\/\//i.test(rawAudioUrl)
+      ? rawAudioUrl
+      : `${EXTERNAL_SERVICES_BASE_URL}${rawAudioUrl.startsWith('/') ? '' : '/'}${rawAudioUrl}`
+    : null;
 
   const handleSelectionChange = (id: string, checked: boolean) => {
     setSelections(prev => ({...prev, [id]: checked}));
@@ -87,12 +93,14 @@ Pregunta: Preguntas del checklist que resonaron conmigo | Respuesta: [${selected
         {content.objective && (
             <CardDescription className="pt-2">
                 {content.objective}
-                <div className="mt-4">
-                    <audio controls controlsList="nodownload" className="w-full">
-                        <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
-                        Tu navegador no soporta el elemento de audio.
-                    </audio>
-                </div>
+                {audioUrl && (
+                  <div className="mt-4">
+                      <audio controls controlsList="nodownload" className="w-full">
+                          <source src={audioUrl} type="audio/mp3" />
+                          Tu navegador no soporta el elemento de audio.
+                      </audio>
+                  </div>
+                )}
             </CardDescription>
         )}
       </CardHeader>

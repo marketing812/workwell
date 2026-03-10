@@ -1,4 +1,4 @@
-import type { Path } from  '@/data/paths/pathTypes';
+﻿import type { Path } from  '@/data/paths/pathTypes';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
 export const coherencePath: Path = {
@@ -16,7 +16,7 @@ export const coherencePath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: 'El primer paso para vivir con coherencia es reconocer dónde y cuándo te estás desviando de ti. Esta semana aprenderás a escuchar esas señales internas que te indican que algo no encaja: pensamientos que dicen una cosa, emociones que apuntan a otra y acciones que siguen un camino diferente. Al poner orden en este mapa interno, descubrirás patrones y entenderás qué provoca esas tensiones, para poder empezar a elegir de forma más consciente. ',
+          text: 'El primer paso para vivir con coherencia es reconocer dónde y cuándo te estás desviando de ti.\n\nEsta semana aprenderás a escuchar esas señales internas que te indican que algo no encaja: pensamientos que dicen una cosa, emociones que apuntan a otra y acciones que siguen un camino diferente. Al poner orden en este mapa interno, descubrirás patrones y entenderás qué provoca esas tensiones, para poder empezar a elegir de forma más consciente. ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/INTRODUCCIONSEMANA1.mp3`
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -84,7 +84,14 @@ export const coherencePath: Path = {
           duration: '5-10 min diarios',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/tecnicas/Ruta9semana1tecnica2.mp3`
         },
-        { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/REFLEXION.mp3`, prompts: ['<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p><p>Lo que he aprendido sobre mí:</p><p>(Escribe aquí 2-3 ideas clave que te lleves de esta semana)</p><p>Ejemplo: “Me he dado cuenta de que en mis relaciones soy coherente, pero en el trabajo suelo callar lo que pienso.”</p><p>Consecuencias de no cuidar mi coherencia:</p><p>(Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)</p><p>Ejemplo: “Me siento agotada, con menos motivación y más frustrada.”</p><p>Ventajas de vivir con coherencia personal:</p><p>(Enumera los beneficios que te inspira buscar esta alineación)</p><p>Ejemplo: “Me siento más ligera, segura y con energía para lo que importa.”</p><p>Mi compromiso para esta semana:</p><p>(Define un gesto concreto para acercarte a tu coherencia)</p><p>Ejemplo: “Decir que no a una petición que no puedo atender sin sentirme culpable.”</p>']},
+        {
+          type: 'therapeuticNotebookReflection',
+          title: 'Reflexión Final de la Semana',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/REFLEXION.mp3`,
+          prompts: [
+            '<p>Esta semana has explorado qué significa para ti vivir en coherencia, dónde la sientes y dónde no tanto. Vamos a aterrizar lo que has descubierto.</p><ul><li><strong>Lo que he aprendido sobre mí</strong><br/>Ejemplo: “Me he dado cuenta de que en mis relaciones soy coherente, pero en el trabajo suelo callar lo que pienso.”</li><li><strong>Consecuencias de no cuidar mi coherencia</strong> (Anota qué pasa si no haces nada para alinear lo que piensas, sientes y haces)<br/>Ejemplo: “Me siento agotada, con menos motivación y más frustrada.”</li><li><strong>Ventajas de vivir con coherencia personal</strong><br/>Ejemplo: “Me siento más ligera, segura y con energía para lo que importa.”</li><li><strong>Mi compromiso para esta semana</strong><br/>Ejemplo: “Decir que no a una petición que no puedo atender sin sentirme culpable.”</li></ul>'
+          ],
+        },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/RESUMEN.mp3` },
         { type: 'list', items: ['La coherencia personal ocurre cuando lo que piensas, sientes y haces apuntan en la misma dirección.','No es perfección, es práctica diaria y ajustes constantes.','La incoherencia no es un fallo: es una señal de que algo dentro necesita atención.','Entrenar la coherencia reduce la culpa, fortalece la confianza y mejora la energía emocional.','Se construye con decisiones cotidianas, no solo con grandes cambios.']},
@@ -120,7 +127,7 @@ export const coherencePath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana2/REFLEXION.mp3`,
           prompts: [
-            '<p>Hoy has explorado momentos en los que tu pensamiento, tu emocion y tu accion no iban al mismo ritmo. Esa incoherencia interna es como una brujula que te avisa de que algo no encaja del todo. Ahora, vamos a dejar por escrito lo que te llevas de esta semana, para que lo tengas siempre presente en tu cuaderno personal.</p>',
+            '<p>Te proponemos cuatro preguntas pensadas para ayudarte a identificar patrones y tomar conciencia de tu brújula interna. Tomate tu tiempo y recuerda que no hay respuestas correctas o incorrectas.</p>',
             '<p>Campos guiados:</p>'
           ],
           guidedFields: [
@@ -351,7 +358,7 @@ export const coherencePath: Path = {
             'El entorno influye: identificar qué lo facilita o dificulta te da margen de acción. ',
             'La coherencia se construye con actos cotidianos, no con grandes discursos. ',
             'Revisar y ajustar tu rumbo es una muestra de madurez, no de debilidad.',
-            '  Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad ',
+            'Respetarte en tus decisiones alimenta tu autoestima y tu sentido de dignidad ',
           ],
         },
         {

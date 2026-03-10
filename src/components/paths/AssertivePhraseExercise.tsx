@@ -118,8 +118,10 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       case 'step1':
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="fact" className="font-semibold text-lg">Paso 1: Describe el hecho objetivo</Label>
-            <p className="text-sm">¿Qué ocurrió? Sé concreto/a y evita juicios.</p>
+            <Label htmlFor="fact" className="font-semibold text-lg">Paso 1: ¿Qué ocurrió?</Label>
+            <p className="text-sm">Piensa en una situación reciente en la que algo te incomodó.</p>
+            <p className="text-sm italic">Ejemplo: “Llegaste tarde a la reunión sin avisar.”</p>
+            <Label htmlFor="fact" className="text-sm font-medium">Cuando...</Label>
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} placeholder="Ej: Llegaste tarde a la reunión sin avisar." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -131,8 +133,10 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       case 'step2':
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="feeling" className="font-semibold text-lg">Paso 2: Expresa tu emoción</Label>
-            <p className="text-sm">Cómo te sentiste.</p>
+            <Label htmlFor="feeling" className="font-semibold text-lg">Paso 2: ¿Cómo te sentiste?</Label>
+            <p className="text-sm">Ponle nombre a tu emoción. No hay respuestas correctas o incorrectas.</p>
+            <p className="text-sm italic">Ejemplo: frustración, tristeza, inseguridad...</p>
+            <Label htmlFor="feeling" className="text-sm font-medium">Me siento...</Label>
             <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustrado, triste, inseguro..." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -144,8 +148,10 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       case 'step3':
          return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="need" className="font-semibold text-lg">Paso 3: Identifica tu necesidad</Label>
+            <Label htmlFor="need" className="font-semibold text-lg">Paso 3: ¿Qué necesitabas?</Label>
             <p className="text-sm">Conecta con lo que estaba en juego para ti.</p>
+            <p className="text-sm italic">Ejemplo: respeto, apoyo, claridad...</p>
+            <Label htmlFor="need" className="text-sm font-medium">Necesito...</Label>
             <Textarea id="need" value={need} onChange={e => setNeed(e.target.value)} placeholder="Ej: respeto, apoyo, claridad..." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -157,8 +163,10 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
       case 'step4':
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <Label htmlFor="request" className="font-semibold text-lg">Paso 4: Formula una petición</Label>
-            <p className="text-sm">Pide algo concreto, breve y posible.</p>
+            <Label htmlFor="request" className="font-semibold text-lg">Paso 4: ¿Qué te gustaría pedir?</Label>
+            <p className="text-sm">Formula una petición concreta, breve y posible.</p>
+            <p className="text-sm italic">Ejemplo: “Te pido que me avises si vas a llegar más tarde.”</p>
+            <Label htmlFor="request" className="text-sm font-medium">Por eso te pido...</Label>
             <Textarea id="request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ej: Te pido que me avises si vas a llegar más tarde." />
             <div className="flex justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>

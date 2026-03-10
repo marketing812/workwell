@@ -169,6 +169,10 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Valora la calidad del apoyo</h4>
+            <p className="text-sm text-muted-foreground">
+              Del 1 al 5, puntúa la calidad del apoyo (1 = muy bajo, 5 = muy alto). Recuerda: calidad significa
+              que la ayuda es genuina, consistente y respetuosa.
+            </p>
             {relations.filter(r => r.name.trim()).map((rel, index) => (
               <div key={index} className="p-3 border rounded-md">
                 <Label htmlFor={`quality-${index}`} className="font-semibold">{rel.name}: Nivel {rel.quality}</Label>
@@ -185,6 +189,9 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                 <div className="space-y-2">
                     <Label htmlFor="reflection">Observa tu mapa y responde: ¿Tienes apoyos muy concentrados en una sola persona? ¿Faltan ciertos tipos de apoyo? ¿Hay vínculos que sería bueno cuidar más?</Label>
                     <Textarea id="reflection" value={reflection} onChange={e => setReflection(e.target.value)} />
+                    <p className="text-sm text-muted-foreground">
+                      Ejemplo guía: "Me doy cuenta de que recibo mucho apoyo emocional de Ana, pero casi nada práctico. Tal vez debería pedirle a mi hermano ayuda en tareas concretas."
+                    </p>
                 </div>
                 <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button></div>
             </div>

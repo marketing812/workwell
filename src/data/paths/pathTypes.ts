@@ -407,6 +407,7 @@ export type MeditacionGuiadaSinJuicioExerciseContent = {
     objective?: string;
     duration?: string;
     audioUrl?: string;
+    descriptionAudioUrl?: string;
 };
 
 export type DiarioMeDiCuentaExerciseContent = {
