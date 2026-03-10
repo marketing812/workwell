@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import type { ReactNode } from 'react';
@@ -33,7 +33,7 @@ export function FeatureFlagProvider({ children }: { children: ReactNode }) {
     //   }
     //   return newState;
     // });
-    console.log("toggleEmotionalDashboard called, but isEmotionalDashboardEnabled is fixed to true.");
+   // console.log("toggleEmotionalDashboard called, but isEmotionalDashboardEnabled is fixed to true.");
   }, []);
 
   return (

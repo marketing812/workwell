@@ -1,4 +1,4 @@
-import express from "express";
+﻿import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import CryptoJS from "crypto-js";
@@ -318,5 +318,5 @@ app.get("/resources/post/:slug", async (req, res) => {
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Backend API running on http://localhost:${port}`);
+ // console.log(`Backend API running on http://localhost:${port}`);
 });

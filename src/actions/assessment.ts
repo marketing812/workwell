@@ -1,4 +1,4 @@
-
+﻿
 "use server";
 
 import { initialAssessment, type InitialAssessmentInput, type InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
@@ -20,14 +20,14 @@ export async function submitAssessment(
   answers: Record<string, { score: number; weight: number }>
 ): Promise<ServerAssessmentResult> {
   try {
-    console.log("SubmitAssessment Action START: Received raw answers:", JSON.stringify(answers));
+   // console.log("SubmitAssessment Action START: Received raw answers:", JSON.stringify(answers));
     const validatedAnswers = assessmentAnswersSchema.safeParse(answers);
 
     if (!validatedAnswers.success) {
         console.error("SubmitAssessment Action: Validation of input answers failed:", validatedAnswers.error.flatten());
         return { success: false, error: "Datos de evaluación de entrada inválidos: " + JSON.stringify(validatedAnswers.error.flatten().fieldErrors) };
     }
-    console.log("SubmitAssessment Action: Validated answers:", JSON.stringify(validatedAnswers.data));
+   // console.log("SubmitAssessment Action: Validated answers:", JSON.stringify(validatedAnswers.data));
 
     // Extraer solo las puntuaciones para el flujo de IA, ya que el flujo ya conoce los pesos.
     const scoresOnly: Record<string, number> = Object.entries(
@@ -42,9 +42,9 @@ export async function submitAssessment(
       answers: scoresOnly,
     };
 
-    console.log("SubmitAssessment Action: Calling initialAssessment flow with input (scores only):", JSON.stringify(input));
+   // console.log("SubmitAssessment Action: Calling initialAssessment flow with input (scores only):", JSON.stringify(input));
     const result = await initialAssessment(input);
-    console.log("SubmitAssessment Action: Received result object from initialAssessment flow:", JSON.stringify(result, null, 2));
+   // console.log("SubmitAssessment Action: Received result object from initialAssessment flow:", JSON.stringify(result, null, 2));
     
     if (!result || 
         !result.emotionalProfile || 
@@ -64,7 +64,7 @@ export async function submitAssessment(
         throw new Error(specificError);
     }
 
-    console.log("SubmitAssessment Action END: Assessment successfully processed. Returning success.");
+   // console.log("SubmitAssessment Action END: Assessment successfully processed. Returning success.");
     return { success: true, data: result };
   } catch (error: any) {
     console.error("SubmitAssessment Action: Error during assessment processing:", error.message, error.stack);

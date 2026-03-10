@@ -1,4 +1,4 @@
-
+﻿
 'use server';
 
 import { forceEncryptStringAES } from '@/lib/encryption';
@@ -28,7 +28,7 @@ export async function saveNotebookEntryAction(
     
     saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    console.log(`[Server Action] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
+   // console.log(`[Server Action] Sending notebook entry via GET to: ${saveUrl.substring(0,150)}...`);
 
     const saveResponse = await fetch(saveUrl, {
       method: 'GET',

@@ -162,7 +162,7 @@ Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
           </div>
           <div className="space-y-2">
             <h4 className="font-semibold text-lg">Reconoce tu diálogo interno</h4>
-            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Revisa lo que escribiste y separa qué es un hecho objetivo y qué es una interpretación o juicio.<br> Ejemplos: No tengo remedio, Siempre meto la pata. " }} />
+            <p className="text-sm" dangerouslySetInnerHTML={{ __html: "Anota los pensamientos o frases que te dijiste en ese momento o después.  <br />“No tengo remedio”, “Siempre meto la pata.” " }} />
             <Textarea id="dialogue" value={dialogue} onChange={e => setDialogue(e.target.value)} disabled={isSaved} placeholder="Escribe tu diálogo interno" />
           </div>
           <div className="space-y-2">

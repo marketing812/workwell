@@ -144,7 +144,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
             </div>
             <div>
                 <h5 className="font-semibold">Anclaje sensorial inmediato (5-4-3-2-1)</h5>
-                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.m4a`} type="audio/mp3"/></audio>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.mp3`} type="audio/mp3"/></audio>
             </div>
         </div>
         <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>

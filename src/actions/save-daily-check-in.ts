@@ -1,4 +1,4 @@
-'use server';
+﻿'use server';
 
 import { encryptDataAES } from '@/lib/encryption';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
@@ -30,7 +30,7 @@ export async function saveDailyCheckInAction(payload: CheckInData): Promise<{ su
     
     saveUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardaclima&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    console.log("Server Action (save-daily-check-in): Attempting to save. URL constructed.");
+   // console.log("Server Action (save-daily-check-in): Attempting to save. URL constructed.");
 
     const saveResponse = await fetch(saveUrl, { 
       method: 'GET',

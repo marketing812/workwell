@@ -119,7 +119,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Reflexionsesion1ruta10.mp3`,
           prompts: [
-            '<ul><li>¿Cuál fue el descubrimiento más importante para ti y por qué?</li><li>¿Cuál fue la situación más significativa en la que lograste pasar de la queja o la culpa a la acción?</li><li>¿Qué culpa identificaste como “no mía” y pudiste soltar?</li><li>¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad?</li></ul>',
+            '<ul><li>De todos los contenidos y ejercicios que trabajaste, ¿cuál fue el descubrimiento más importante para ti y por qué?</li><li>¿Cuál fue la situación más significativa en la que lograste pasar de la queja o la culpa a la acción?</li><li>¿Qué culpa identificaste como “no mía” y pudiste soltar?</li><li>¿Qué has descubierto sobre ti mismo/a al diferenciar culpa, queja y responsabilidad? </li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion1/Resumensesion1ruta10.mp3` },
@@ -244,7 +244,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3`,
           prompts: [
-            '<p>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</p><ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
+            '<ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Resumensesion2ruta10.mp3` },
@@ -436,7 +436,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión final de la Ruta',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion4/Reflexionfinalruta10.mp3`,
           prompts: [
-            '<ul><li>¿Qué descubrimiento de esta semana ha sido más revelador para ti sobre la forma en que asumes la responsabilidad?</li><li>¿En qué situaciones recientes has podido decir “esto no me corresponde” y sentirte en paz con ello?</li><li>¿Cómo ha cambiado tu forma de hablarte a ti mismo o a ti misma después de realizar las técnicas propuestas?</li><li>¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?</li></ul>',
+            '<ul><li>¿Qué cambio has notado en tu forma de responder ante un error o una situación injusta?</li><li>¿Cuál ha sido tu mayor descubrimiento sobre ti mismo o ti misma en relación con la responsabilidad?</li><li>¿Qué compromiso concreto quieres llevarte de aquí para tu vida diaria?</li></ul>',
           ],
         },
         {

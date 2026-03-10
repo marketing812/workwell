@@ -1,4 +1,4 @@
-
+﻿
 import { forceEncryptStringAES } from '@/lib/encryption';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
@@ -24,7 +24,7 @@ export async function sendLegacyData(
     // Build the URL with unencrypted id and department_code, and the encrypted data
     const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(departmentCode)}&datos=${encodeURIComponent(encryptedPayload)}`;
 
-    console.log(`Sending legacy data of type '${type}' to old URL...`);
+   // console.log(`Sending legacy data of type '${type}' to old URL...`);
 
     // We are not awaiting the response to make the process faster for the user.
     // The call is "fire and forget".
@@ -33,7 +33,7 @@ export async function sendLegacyData(
         if (!response.ok) {
           console.warn(`Legacy data sync failed with status: ${response.status}`);
         } else {
-          console.log(`Legacy data sync for type '${type}' initiated successfully.`);
+         // console.log(`Legacy data sync for type '${type}' initiated successfully.`);
         }
       })
       .catch(error => {
@@ -55,7 +55,7 @@ export async function deleteLegacyData(
     // Build the URL for deletion, userId is NOT encrypted
     const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}`;
 
-    console.log(`Sending delete request for user '${userId}' to legacy URL...`);
+   // console.log(`Sending delete request for user '${userId}' to legacy URL...`);
 
     // "Fire and forget" call
     fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
@@ -63,7 +63,7 @@ export async function deleteLegacyData(
         if (!response.ok) {
           console.warn(`Legacy user deletion failed with status: ${response.status}`);
         } else {
-          console.log(`Legacy user deletion for user '${userId}' initiated successfully.`);
+         // console.log(`Legacy user deletion for user '${userId}' initiated successfully.`);
         }
       })
       .catch(error => {

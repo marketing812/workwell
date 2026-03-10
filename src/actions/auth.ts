@@ -1,4 +1,4 @@
-
+﻿
 "use server";
 
 import { z } from "zod";
@@ -58,6 +58,6 @@ export async function getUserProfile(userId: string): Promise<User | null> {
 }
 
 export async function resetPassword(email: string): Promise<{success: boolean; message: string}> {
-  console.log(`Simulating password reset for ${email}`);
+ // console.log(`Simulating password reset for ${email}`);
   return { success: true, message: "Se ha enviado un correo para restablecer tu contraseña." };
 }

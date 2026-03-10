@@ -169,15 +169,15 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
                 <div className="grid md:grid-cols-3 gap-4">
                     <div className="border-2 border-green-500 rounded-lg p-3 bg-green-50/50 dark:bg-green-900/20">
                         <h4 className="font-semibold text-green-700 dark:text-green-300 flex items-center gap-2 mb-2">🟢 Depende de mí</h4>
-                        <pre className="text-sm whitespace-pre-wrap">{greenZone || '...'}</pre>
+                        <div className="text-sm whitespace-pre-wrap font-sans">{greenZone || '...'}</div>
                     </div>
                     <div className="border-2 border-amber-500 rounded-lg p-3 bg-amber-50/50 dark:bg-amber-900/20">
                         <h4 className="font-semibold text-amber-700 dark:text-amber-300 flex items-center gap-2 mb-2">🟠 Puedo influir</h4>
-                        <pre className="text-sm whitespace-pre-wrap">{amberZone || '...'}</pre>
+                        <div className="text-sm whitespace-pre-wrap font-sans">{amberZone || '...'}</div>
                     </div>
                      <div className="border-2 border-red-500 rounded-lg p-3 bg-red-50/50 dark:bg-red-900/20">
                         <h4 className="font-semibold text-red-700 dark:text-red-300 flex items-center gap-2 mb-2">🔴 No depende de mí</h4>
-                        <pre className="text-sm whitespace-pre-wrap">{redZone || '...'}</pre>
+                        <div className="text-sm whitespace-pre-wrap font-sans">{redZone || '...'}</div>
                     </div>
                 </div>
                  <p className="text-center text-muted-foreground italic text-sm pt-4">

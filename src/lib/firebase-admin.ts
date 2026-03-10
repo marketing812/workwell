@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin';
+﻿import * as admin from 'firebase-admin';
 import { getFirestore as getAdminFirestore } from 'firebase-admin/firestore';
 
 let app: admin.app.App | undefined;
@@ -13,7 +13,7 @@ function getAdminApp(): admin.app.App {
     return app;
   }
 
-  console.log("🕵️ Intentando inicializar Firebase Admin...");
+ // console.log("🕵️ Intentando inicializar Firebase Admin...");
 
   const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
   if (process.env.FIREBASE_CLIENT_EMAIL && privateKey) {
@@ -26,7 +26,7 @@ function getAdminApp(): admin.app.App {
       storageBucket: "workwell-c4rlk.firebasestorage.app",
 
     });
-    console.log("✅ Firebase Admin inicializado con credenciales de Certificado (variables de entorno).");
+   // console.log("✅ Firebase Admin inicializado con credenciales de Certificado (variables de entorno).");
     return app;
   }
 
@@ -37,7 +37,7 @@ function getAdminApp(): admin.app.App {
       storageBucket: "workwell-c4rlk.firebasestorage.app",
 
     });
-    console.log("✅ Firebase Admin inicializado con Credenciales de Aplicación por Defecto (ADC).");
+   // console.log("✅ Firebase Admin inicializado con Credenciales de Aplicación por Defecto (ADC).");
     return app;
   } catch (error: any) {
     console.warn("⚠️  La inicialización con ADC falló. Esto es normal si no estás en un entorno de Google Cloud o no has configurado ADC localmente.", error.message);

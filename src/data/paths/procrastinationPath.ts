@@ -370,14 +370,14 @@ Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
           title: 'EJERCICIO 1: DISEÑA TU RITUAL REALISTA',
           objective: 'Este ejercicio te ayuda a transformar un propósito en una práctica concreta, mínima y sostenible. Crear un ritual no es hacer algo grande, sino algo que puedas mantener en tu contexto real, con tus recursos actuales.',
           duration: '7-10 minutos',
-          audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica1.mp3`
         },
         {
           type: 'gentleTrackingExercise',
           title: 'EJERCICIO 2: SEGUIMIENTO AMABLE + REFORZO VISUAL',
           objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
           duration: '3 a 5 minutos al día',
-          audioUrl: `https://workwellfut.com/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,
         },
         { 
           type: 'therapeuticNotebookReflection', 

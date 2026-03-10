@@ -109,8 +109,8 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
             <h4 className="font-semibold text-lg text-primary">Paso 1: ¿Quién te sostiene?</h4>
             <p className="text-sm text-muted-foreground">Piensa en personas que están ahí cuando las necesitas. No necesariamente te solucionan la vida, pero te escuchan, te contienen o te tranquilizan sin exigencias.</p>
             <div className="space-y-2">
-              <Label htmlFor="sustain-person">Nombre o relación:</Label>
-              <Textarea id="sustain-person" value={sustainPerson} onChange={e => setSustainPerson(e.target.value)} />
+              <Label htmlFor="sustain-person">Nombre o persona:</Label>
+              <Textarea id="sustain-person" value={sustainPerson} onChange={e => setSustainPerson(e.target.value)} placeholder="¿Quién es esa persona que te acompaña sin condiciones? "/>
             </div>
             <div className="space-y-2">
               <Label htmlFor="sustain-action">¿Qué hace o dice que te hace sentir acompañado/a?</Label>
@@ -128,8 +128,8 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
             <h4 className="font-semibold text-lg text-primary">Paso 2: ¿Quién te inspira?</h4>
             <p className="text-sm text-muted-foreground">Ahora piensa en alguien que te haga querer ser tu mejor versión. Una persona que te motive, te dé ejemplo, te contagie ganas de superarte o represente valores que admiras.</p>
             <div className="space-y-2">
-              <Label htmlFor="inspire-person">Nombre o relación:</Label>
-              <Textarea id="inspire-person" value={inspirePerson} onChange={e => setInspirePerson(e.target.value)} />
+              <Label htmlFor="inspire-person">Nombre o persona:</Label>
+              <Textarea id="inspire-person" value={inspirePerson} onChange={e => setInspirePerson(e.target.value)} placeholder='¿Quién despierta en ti ese impulso de crecer o avanzar? '/>
             </div>
             <div className="space-y-2">
               <Label htmlFor="inspire-aspect">¿Qué aspectos de esa persona te inspiran? ¿Cómo influye en ti?</Label>
@@ -147,8 +147,8 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
             <h4 className="font-semibold text-lg text-primary">Paso 3: ¿Quién respeta tu ritmo?</h4>
             <p className="text-sm text-muted-foreground">Hay personas que no te empujan ni te exigen. Que aceptan tus tiempos, que no te juzgan aunque estés pasando por un momento difícil. Que están, sin presionar.</p>
             <div className="space-y-2">
-              <Label htmlFor="respect-person">Nombre o relación:</Label>
-              <Textarea id="respect-person" value={respectPerson} onChange={e => setRespectPerson(e.target.value)} />
+              <Label htmlFor="respect-person">Nombre o persona:</Label>
+              <Textarea id="respect-person" value={respectPerson} onChange={e => setRespectPerson(e.target.value)} placeholder='¿Quién ha sabido esperar, entender o simplemente acompañarte en silencio? '/>
             </div>
             <div className="space-y-2">
               <Label htmlFor="respect-action">¿Cómo notas que esa persona respeta tus procesos?</Label>

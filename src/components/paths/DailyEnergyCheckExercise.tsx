@@ -204,11 +204,11 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                 <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                     <div>
                         <h5 className="font-semibold text-green-600">Me recargó:</h5>
-                        <pre className="text-sm whitespace-pre-wrap">{rechargedBy || 'Sin definir'}</pre>
+                        <p className="text-sm whitespace-pre-wrap">{rechargedBy || 'Sin definir'}</p>
                     </div>
                      <div>
                         <h5 className="font-semibold text-red-600">Me drenó:</h5>
-                        <pre className="text-sm whitespace-pre-wrap">{drainedBy || 'Sin definir'}</pre>
+                        <p className="text-sm whitespace-pre-wrap">{drainedBy || 'Sin definir'}</p>
                     </div>
                 </div>
                <p className="text-sm italic text-primary">{balanceMessage}</p>

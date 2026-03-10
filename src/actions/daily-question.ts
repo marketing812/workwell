@@ -1,4 +1,4 @@
-'use server';
+﻿'use server';
 
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import type { DailyQuestion, DailyQuestionApiResponse } from '@/types/daily-question';
@@ -20,7 +20,7 @@ async function fetchExternalDailyQuestion(userId: string): Promise<{ question: a
   // 3. Construct the final URL with ALL required parameters
   const externalUrl = `${API_BASE_URL}?archivo=clima&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
   
-  console.log("Server Action (daily-question): Fetching from external URL:", externalUrl);
+ // console.log("Server Action (daily-question): Fetching from external URL:", externalUrl);
 
   const response = await fetch(externalUrl, {
     cache: 'no-store',

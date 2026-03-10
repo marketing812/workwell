@@ -1,29 +1,22 @@
 ﻿
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Edit3, Save, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
+import { Edit3, CheckCircle, ArrowRight, ArrowLeft, Info } from 'lucide-react';
 import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { DailyWellbeingPlanExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
 import { useUser } from '@/contexts/UserContext';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { CalendarIcon } from 'lucide-react';
 
 const firstGestureOptions = [
   { id: 'respirar', label: 'Caminar 15 minutos al día  — ¿Por qué es importante?', importance: 'Caminar a diario no solo cuida tu salud física (mejora la circulación, fortalece el corazón y regula la presión arterial), sino que también activa la liberación de endorfinas y serotonina, neurotransmisores que elevan el estado de ánimo y reducen el estrés. Además, rompe la inercia de la pasividad: un gesto tan simple como ponerse en movimiento envía a tu cerebro el mensaje de que te estás cuidando activamente, lo que refuerza la motivación para otras acciones saludables. ' },
@@ -53,13 +46,15 @@ const mentalPrepOptions = [
   { id: 'meditacion4', label: 'Hacer un descanso sin pantallas cada hora — ¿Por qué es importante? ', importance: 'Darle un respiro a tu cerebro y a tu vista reduce la fatiga mental y visual. Estos microdescansos mejoran el rendimiento y la creatividad.' },
 ];
 
-const facilitatorOptions = [
-    { id: 'facilitator-alarma', label: 'Poner una alarma en el móvil' },
-    { id: 'facilitator-nota', label: 'Dejar una nota visible' },
-    { id: 'facilitator-vincular', label: 'Vincularlo a otra acción (ej. después de lavarme los dientes)' },
+const reminderOptions = [
+    'Poner una alarma en el móvil',
+    'Dejar una nota visible',
+    'Vincularlo a otra acción',
 ];
 
 const momentOptions = ['Al despertar', 'Antes o después de una comida', 'Antes de dormir', 'Al volver del trabajo/estudios'];
+
+const customOptionValue = '__other__';
 
 
 const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
@@ -118,11 +113,10 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
   const [mentalPrep, setMentalPrep] = useState('');
   const [otherMentalPrep, setOtherMentalPrep] = useState('');
   
-  const [durations, setDurations] = useState({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
   const [moments, setMoments] = useState<Record<string, string>>({ firstGesture: '', bodyCare: '', mentalPrep: '' });
-  const [otherMoments, setOtherMoments] = useState<Record<string, string>>({});
-  const [facilitators, setFacilitators] = useState<Record<string, boolean>>({});
-  const [otherFacilitator, setOtherFacilitator] = useState('');
+  const [customMoments, setCustomMoments] = useState<Record<string, string>>({ firstGesture: '', bodyCare: '', mentalPrep: '' });
+  const [reminders, setReminders] = useState<Record<string, string>>({ firstGesture: '', bodyCare: '', mentalPrep: '' });
+  const [customReminders, setCustomReminders] = useState<Record<string, string>>({ firstGesture: '', bodyCare: '', mentalPrep: '' });
   
   const storageKey = `exercise-progress-${pathId}-dailyWellbeingPlan`;
 
@@ -139,11 +133,10 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
         setOtherBodyCare(data.otherBodyCare || '');
         setMentalPrep(data.mentalPrep || '');
         setOtherMentalPrep(data.otherMentalPrep || '');
-        setDurations(data.durations || { firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
         setMoments(data.moments || { firstGesture: '', bodyCare: '', mentalPrep: '' });
-        setOtherMoments(data.otherMoments || {});
-        setFacilitators(data.facilitators || {});
-        setOtherFacilitator(data.otherFacilitator || '');
+        setCustomMoments(data.customMoments || { firstGesture: '', bodyCare: '', mentalPrep: '' });
+        setReminders(data.reminders || { firstGesture: '', bodyCare: '', mentalPrep: '' });
+        setCustomReminders(data.customReminders || { firstGesture: '', bodyCare: '', mentalPrep: '' });
         setIsSaved(data.isSaved || false);
       }
     } catch (error) {
@@ -154,12 +147,12 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
   useEffect(() => {
     if (!isClient) return;
     try {
-      const stateToSave = { step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, moments, otherMoments, facilitators, otherFacilitator, isSaved };
+      const stateToSave = { step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, moments, customMoments, reminders, customReminders, isSaved };
       localStorage.setItem(storageKey, JSON.stringify(stateToSave));
     } catch (error) {
       console.error("Error saving exercise state:", error);
     }
-  }, [step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, durations, moments, otherMoments, facilitators, otherFacilitator, isSaved, storageKey, isClient]);
+  }, [step, firstGesture, otherFirstGesture, bodyCare, otherBodyCare, mentalPrep, otherMentalPrep, moments, customMoments, reminders, customReminders, isSaved, storageKey, isClient]);
 
 
   const finalFirstGesture = firstGesture === 'Otro' ? otherFirstGesture : firstGesture;
@@ -177,26 +170,44 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
     setOtherBodyCare('');
     setMentalPrep('');
     setOtherMentalPrep('');
-    setDurations({ firstGesture: '1', bodyCare: '3', mentalPrep: '5' });
     setMoments({ firstGesture: '', bodyCare: '', mentalPrep: '' });
-    setOtherMoments({});
-    setFacilitators({});
-    setOtherFacilitator('');
+    setCustomMoments({ firstGesture: '', bodyCare: '', mentalPrep: '' });
+    setReminders({ firstGesture: '', bodyCare: '', mentalPrep: '' });
+    setCustomReminders({ firstGesture: '', bodyCare: '', mentalPrep: '' });
     setIsSaved(false);
     localStorage.removeItem(storageKey);
   };
+
+  const getResolvedValue = (value: string, customValue: string) => value === customOptionValue ? customValue : value;
+
+  const getHabitPlan = () => ([
+    { key: 'firstGesture', title: 'Microhábito físico', label: finalFirstGesture },
+    { key: 'bodyCare', title: 'Microhábito emocional', label: finalBodyCare },
+    { key: 'mentalPrep', title: 'Microhábito mental', label: finalMentalPrep }
+  ]).map((habit) => ({
+    ...habit,
+    moment: getResolvedValue(moments[habit.key] || '', customMoments[habit.key] || ''),
+    reminder: getResolvedValue(reminders[habit.key] || '', customReminders[habit.key] || ''),
+  })).filter((habit) => habit.label);
 
   const handleSave = () => {
     if (!finalFirstGesture || !finalBodyCare || !finalMentalPrep) {
       toast({ title: "Incompleto", description: "Por favor, elige un microhábito para cada área.", variant: 'destructive' });
       return;
     }
+
+    const habitPlan = getHabitPlan();
+    const incompletePlan = habitPlan.some(habit => !habit.moment || !habit.reminder);
+    if (incompletePlan) {
+      toast({ title: "Incompleto", description: "Completa el momento y el recordatorio de cada microhábito.", variant: 'destructive' });
+      return;
+    }
     
     const notebookContent = [
       `**${content.title}**`,
-      `Pregunta: Mi primer gesto al despertar | Respuesta: ${finalFirstGesture} (${durations.firstGesture} min)`,
-      `Pregunta: Mi cuidado para el cuerpo | Respuesta: ${finalBodyCare} (${durations.bodyCare} min)`,
-      `Pregunta: Mi preparación mental | Respuesta: ${finalMentalPrep} (${durations.mentalPrep} min)`,
+      `Pregunta: Microhábito físico | Respuesta: ${finalFirstGesture} | Momento: ${habitPlan.find(habit => habit.key === 'firstGesture')?.moment} | Recordatorio: ${habitPlan.find(habit => habit.key === 'firstGesture')?.reminder}`,
+      `Pregunta: Microhábito emocional | Respuesta: ${finalBodyCare} | Momento: ${habitPlan.find(habit => habit.key === 'bodyCare')?.moment} | Recordatorio: ${habitPlan.find(habit => habit.key === 'bodyCare')?.reminder}`,
+      `Pregunta: Microhábito mental | Respuesta: ${finalMentalPrep} | Momento: ${habitPlan.find(habit => habit.key === 'mentalPrep')?.moment} | Recordatorio: ${habitPlan.find(habit => habit.key === 'mentalPrep')?.reminder}`,
     ].join('\n\n');
 
     addNotebookEntry({ title: 'Mi Plan Diario de Bienestar', content: notebookContent, pathId: pathId, userId: user?.id });
@@ -211,20 +222,12 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
   }
 
   const renderStep = () => {
-    const habits = [
-        { key: 'firstGesture', label: finalFirstGesture, duration: durations.firstGesture },
-        { key: 'bodyCare', label: finalBodyCare, duration: durations.bodyCare },
-        { key: 'mentalPrep', label: finalMentalPrep, duration: durations.mentalPrep }
-    ].filter(h => h.label);
+    const habits = getHabitPlan();
 
     switch(step) {
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-             <p className="text-sm text-muted-foreground">En el ejercicio anterior trazaste tu plan maestro para cuidar de ti durante todo el día. Ahora vamos a encender ese plan desde el primer instante de la mañana, para que empiece a funcionar con tu primera respiración.</p>
-             <p className="text-sm text-muted-foreground">Tus primeras acciones al despertar marcan el tono de todo lo que viene después. Si empiezas acelerado o en piloto automático, el día puede arrastrarte. Si empiezas con calma, intención y energía positiva, tendrás más control y claridad para todo lo demás.</p>
-             <p className="text-sm text-muted-foreground">En este ejercicio vas a diseñar una rutina inicial breve —aunque sea de pocos minutos— que te permita aterrizar en tu día con presencia y equilibrio.</p>
-             <p className="text-xs text-muted-foreground">Tiempo estimado: 8-10 minutos para diseñarla. Hazlo una vez y revisa cuando sientas que tu mañana necesita un ajuste.</p>
             <Button onClick={nextStep}>Empezar</Button>
           </div>
         );
@@ -237,16 +240,35 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
       case 4:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 4: Decide el orden y la duración</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a ordenar tus tres gestos para que encajen en tu mañana sin prisa. No necesitas más de 10-15 minutos en total.</p>
+                <h4 className="font-semibold text-lg text-primary">Paso 4: Cuándo lo harás</h4>
+                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cuándo realizarás cada uno de los microhábitos que elegiste en los pasos anteriores.</p>
+                <p className="text-sm text-muted-foreground">Cuanto más los vincules a un momento concreto o a una rutina que ya tengas, más fácil será que se conviertan en parte natural de tu día.</p>
                 <div className="space-y-4">
+                    <p className="text-sm font-medium">Tus microhábitos elegidos:</p>
                     {habits.map(item => (
-                        <div key={item.key} className="p-3 border rounded-md bg-background flex items-center justify-between">
-                            <span className="font-medium text-sm">{item.label}</span>
-                            <div className="flex items-center gap-2">
-                                <Input type="number" value={item.duration} onChange={e => setDurations(p => ({...p, [item.key]: e.target.value}))} className="w-16 h-8 text-center" />
-                                <span className="text-sm text-muted-foreground">min</span>
+                        <div key={item.key} className="p-4 border rounded-md bg-background space-y-3">
+                            <div>
+                                <p className="font-medium text-sm">{item.label}</p>
+                                <Label className="text-xs text-muted-foreground">Elegir momento:</Label>
                             </div>
+                            <Select value={moments[item.key] || ''} onValueChange={(value) => setMoments(prev => ({ ...prev, [item.key]: value }))}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona un momento..." />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {momentOptions.map((option) => (
+                                        <SelectItem key={option} value={option}>{option}</SelectItem>
+                                    ))}
+                                    <SelectItem value={customOptionValue}>Otro</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {moments[item.key] === customOptionValue && (
+                                <Input
+                                    value={customMoments[item.key] || ''}
+                                    onChange={(e) => setCustomMoments(prev => ({ ...prev, [item.key]: e.target.value }))}
+                                    placeholder="Escribe otro momento"
+                                />
+                            )}
                         </div>
                     ))}
                 </div>
@@ -256,51 +278,82 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
        case 5:
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste. Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
-                <div className="space-y-2">
-                {facilitatorOptions.map(opt => (
-                    <div key={opt.id} className="flex items-center space-x-2">
-                        <Checkbox id={opt.id} checked={!!facilitators[opt.id]} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, [opt.id]: c}))} />
-                        <Label htmlFor={opt.id} className="font-normal">{opt.label}</Label>
-                    </div>
-                ))}
-                 <div className="flex items-center space-x-2">
-                    <Checkbox id="facilitator-other" checked={!!facilitators['facilitator-other']} onCheckedChange={(c: boolean) => setFacilitators(p => ({...p, ['facilitator-other']: c}))} />
-                    <Label htmlFor="facilitator-other" className="font-normal">Otro:</Label>
+                <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo recordarlo</h4>
+                <p className="text-sm text-muted-foreground">Incluso los hábitos más importantes pueden olvidarse si no les damos un pequeño empujón.</p>
+                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste.</p>
+                <p className="text-sm text-muted-foreground">Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
+                <div className="space-y-4">
+                    {habits.map(item => (
+                        <div key={item.key} className="p-4 border rounded-md bg-background space-y-3">
+                            <div>
+                                <p className="font-medium text-sm">{item.label}</p>
+                                <Label className="text-xs text-muted-foreground">Elegir recordatorio:</Label>
+                            </div>
+                            <Select value={reminders[item.key] || ''} onValueChange={(value) => setReminders(prev => ({ ...prev, [item.key]: value }))}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Selecciona un recordatorio..." />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {reminderOptions.map((option) => (
+                                        <SelectItem key={option} value={option}>{option}</SelectItem>
+                                    ))}
+                                    <SelectItem value={customOptionValue}>Otro</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {reminders[item.key] === customOptionValue && (
+                                <Input
+                                    value={customReminders[item.key] || ''}
+                                    onChange={(e) => setCustomReminders(prev => ({ ...prev, [item.key]: e.target.value }))}
+                                    placeholder="Escribe otro recordatorio"
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
-                {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
-                </div>
+                <p className="text-sm text-muted-foreground">Los recordatorios no son una señal de debilidad, sino un aliado para entrenar a tu cerebro. Cuanto más asocies tu microhábito a una señal, antes se convertirá en automático.</p>
                  <div className="flex justify-between w-full mt-4">
                      <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                     <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="mr-2 h-4 w-4" /></Button>
+                     <Button onClick={nextStep}>Continuar <ArrowRight className="mr-2 h-4 w-4" /></Button>
                  </div>
             </div>
         );
       case 6:
         return (
         <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg text-primary">Paso 6: Tu rutina de mañana amable</h4>
-            <p className="text-sm text-muted-foreground">Aquí tienes tu rutina inicial para empezar el día con más equilibrio y presencia. Es breve, realista y pensada para que puedas mantenerla incluso en días ocupados.</p>
+            <h4 className="font-semibold text-lg text-primary">Tu plan de microhábitos</h4>
+            <p className="text-sm text-muted-foreground">Aquí tienes tu plan personalizado de microhábitos: tres gestos simples, pero con un gran impacto en tu bienestar. Has elegido qué hacer y cuándo hacerlo… ahora vamos a darle un lugar fijo en tu día para que se conviertan en parte natural de tu vida.</p>
+            <p className="text-sm text-muted-foreground">Recuerda: no se trata de hacerlo perfecto, sino de volver a intentarlo cada vez que te desvíes. La constancia se construye paso a paso.</p>
             <div className="border rounded-lg overflow-hidden">
                 <Table>
-                    <TableHeader><TableRow><TableHead>Microhábito</TableHead><TableHead>Duración</TableHead></TableRow></TableHeader>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Microhábito</TableHead>
+                            <TableHead>Momento elegido</TableHead>
+                            <TableHead>Recordatorio</TableHead>
+                        </TableRow>
+                    </TableHeader>
                     <TableBody>
                         {habits.map(h => (
                             <TableRow key={h.key}>
-                                <TableCell>{h.label}</TableCell>
-                                <TableCell>{h.duration} min</TableCell>
+                                <TableCell>
+                                    <div className="font-medium">{h.title}</div>
+                                    <div className="text-sm text-muted-foreground">{h.label}</div>
+                                </TableCell>
+                                <TableCell>{h.moment || 'Pendiente'}</TableCell>
+                                <TableCell>{h.reminder || 'Pendiente'}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </div>
-            <p className="text-xs italic text-muted-foreground pt-2">Ya tienes tu kit personal de microhábitos: tres gestos sencillos, pero poderosos, que te acompañarán durante el día. Piensa en ellos como “semillas” que, al repetirlas, fortalecerán tu energía, tu ánimo y tu claridad mental. </p>
-            <p className="text-xs italic text-muted-foreground pt-2">Incluso los días difíciles cuentan, porque cada intento es una señal a tu cerebro de que estás priorizando tu salud.<br /> Y recuerda: en el próximo ejercicio nos centraremos en uno de los momentos más decisivos para ponerlos en marcha… el primer instante al despertar. </p>
+            <p className="text-xs italic text-muted-foreground pt-2">Ya tienes tu kit personal de microhábitos: tres gestos sencillos, pero poderosos, que te acompañarán durante el día.</p>
+            <p className="text-xs italic text-muted-foreground">Piensa en ellos como “semillas” que, al repetirlas, fortalecerán tu energía, tu ánimo y tu claridad mental.</p>
+            <p className="text-xs italic text-muted-foreground">Incluso los días difíciles cuentan, porque cada intento es una señal a tu cerebro de que estás priorizando tu salud.</p>
+            <p className="text-xs italic text-muted-foreground">Y recuerda: en el próximo ejercicio nos centraremos en uno de los momentos más decisivos para ponerlos en marcha… el primer instante al despertar.</p>
             <div className="flex justify-between w-full mt-2">
                 <Button onClick={prevStep} variant="link" className="px-0">Atrás</Button>
                 <Button onClick={handleSave}>
-                    Guardar en mi plan diario
+                    Guardar mi plan diario
                 </Button>
             </div>
         </div>
@@ -309,8 +362,11 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
         return (
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <p className="font-semibold">"Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido."</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Crear un nuevo plan</Button>
+            <p className="font-semibold">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center">
+              <Button onClick={() => setStep(6)} variant="outline">Editar mi plan</Button>
+              <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+            </div>
           </div>
         );
       default:

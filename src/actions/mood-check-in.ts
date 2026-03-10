@@ -1,4 +1,4 @@
-
+﻿
 "use server";
 
 import { sendLegacyData } from "@/data/userUtils";
@@ -34,7 +34,7 @@ export async function saveMoodCheckIn(payload: SaveMoodCheckInPayload): Promise<
     
     // Capture the debugUrl from sendLegacyData
     const { debugUrl } = await sendLegacyData(legacyPayload, 'guardaranimo'); 
-    console.log(`Mood check-in sent to legacy system for user ${userId}`);
+   // console.log(`Mood check-in sent to legacy system for user ${userId}`);
 
     // Return the URL for debugging purposes
     return { success: true, debugUrl };

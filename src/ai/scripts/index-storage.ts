@@ -1,4 +1,4 @@
-import { FieldValue, getDb, getStorage } from "@/lib/firebase-admin";
+﻿import { FieldValue, getDb, getStorage } from "@/lib/firebase-admin";
 import { PDFParse } from "pdf-parse";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";
@@ -24,7 +24,7 @@ async function main() {
   const [files] = await bucket.getFiles({ prefix });
 
   const pdfFiles = files.filter((f) => f.name.toLowerCase().endsWith(".pdf"));
-  console.log("PDFs encontrados:", pdfFiles.map((f) => f.name));
+ // console.log("PDFs encontrados:", pdfFiles.map((f) => f.name));
 
   for (const file of pdfFiles) {
     const already = await db
@@ -34,10 +34,10 @@ async function main() {
       .get();
 
     if (!already.empty) {
-      console.log("⏭️ Ya indexado, salto:", file.name);
+     // console.log("⏭️ Ya indexado, salto:", file.name);
       continue;
     }
-    console.log("\nIndexando:", file.name);
+   // console.log("\nIndexando:", file.name);
 
     const tmp = path.join(os.tmpdir(), path.basename(file.name));
     await file.download({ destination: tmp });
@@ -58,12 +58,12 @@ async function main() {
     }
 
     const chunks = chunkText(text);
-    console.log("Chunks:", chunks.length);
+   // console.log("Chunks:", chunks.length);
 
     for (let idx = 0; idx < chunks.length; idx++) {
       const chunk = chunks[idx];
       const embedding = await embedText(chunk);
-      //console.log("EMBEDDING_DIM=", embedding.length);return;
+    // console.log("EMBEDDING_DIM=", embedding.length);return;
       await db.collection("kb-chunks").add({
         text: chunk,
         embedding: FieldValue.vector(embedding),
@@ -74,10 +74,10 @@ async function main() {
     }
 
     await fs.unlink(tmp);
-    console.log("✅ OK:", file.name);
+   // console.log("✅ OK:", file.name);
   }
 
-  console.log("\nFIN ✅");
+ // console.log("\nFIN ✅");
 }
 
 main().catch((e) => {

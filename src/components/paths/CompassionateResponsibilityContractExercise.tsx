@@ -73,7 +73,7 @@ Pregunta: Firma del contrato | Respuesta: ${signature}
           </div>
           <div className="space-y-2">
             <h4 className="font-semibold text-lg">Cómo quiero hablarme cuando me equivoque</h4>
-            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: “Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: "Piensa en situaciones donde has cometido un error o no has cumplido lo que esperabas. ¿Qué tipo de palabras quieres usar contigo mismo/a en esos momentos? <br>Ejemplo: <br><ul><li>Antes: Soy un desastre, siempre lo estropeo. </li><li>Ahora: Me equivoqué, pero puedo repararlo o aprender para la próxima vez.</li></ul>" }} />
             <Textarea id="how-to-talk" value={howToTalk} onChange={e => setHowToTalk(e.target.value)} disabled={isSaved} placeholder="Describe aquí cómo quieres hablarte cuando cometas un error…" />
           </div>
           <div className="space-y-2">
