@@ -47,7 +47,15 @@ const registerSchema = z.object({
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 async function validateDepartmentCode(departmentId: string): Promise<{ valid: boolean; message?: string }> {
-  const response = await fetch("/api/department/validate", {
+  const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? "").replace(/\/+$/, "");
+  if (!base) {
+    return {
+      valid: false,
+      message: "La validación de departamento no está configurada en este entorno.",
+    };
+  }
+
+  const response = await fetch(`${base}/department/validate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ departmentId }),

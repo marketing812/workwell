@@ -17,6 +17,27 @@ const NOTEBOOK_API_KEY = process.env.NOTEBOOK_API_KEY || "4463";
 const NOTEBOOK_TIMEOUT_MS = 15000;
 const SECRET_KEY = process.env.ENCRYPTION_SECRET || "0123456789abcdef0123456789abcdef";
 
+function isDepartmentValidResponse(raw) {
+  const text = String(raw || "").trim();
+  if (!text) return false;
+
+  const normalized = text.toLowerCase();
+  if (normalized === "ok") return true;
+
+  try {
+    const parsed = JSON.parse(text);
+    if (parsed && typeof parsed === "object") {
+      const status = String(parsed.status ?? "").toLowerCase();
+      const result = String(parsed.result ?? "").toLowerCase();
+      return status === "ok" || result === "ok" || parsed.ok === true;
+    }
+  } catch {
+    // Ignore non-JSON responses; plain text is handled above.
+  }
+
+  return false;
+}
+
 function forceEncryptStringAES(value) {
   const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16));
   const encrypted = CryptoJS.AES.encrypt(
@@ -146,6 +167,54 @@ app.post("/knowledge-assistant", async (req, res) => {
     return res.json({ success: true, data: result });
   } catch (error) {
     return res.status(500).json({ success: false, error: error?.message || "Internal Server Error" });
+  }
+});
+
+app.post("/department/validate", async (req, res) => {
+  try {
+    const departmentId = String(req.body?.departmentId || "").trim();
+    if (!departmentId) {
+      return res.status(400).json({
+        ok: false,
+        valid: false,
+        error: "El codigo de departamento es obligatorio.",
+      });
+    }
+
+    const url =
+      `${NOTEBOOK_API_BASE}?apikey=${encodeURIComponent(NOTEBOOK_API_KEY)}` +
+      `&tipo=getdepartamento` +
+      `&token=${encodeURIComponent(departmentId)}` +
+      `&departamento=${encodeURIComponent(departmentId)}` +
+      `&iddepartamento=${encodeURIComponent(departmentId)}`;
+
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS),
+    });
+    const responseText = await response.text();
+
+    if (!response.ok) {
+      return res.status(502).json({
+        ok: false,
+        valid: false,
+        error: `Error del servicio externo (HTTP ${response.status}).`,
+      });
+    }
+
+    const valid = isDepartmentValidResponse(responseText);
+    return res.json({
+      ok: true,
+      valid,
+      message: valid
+        ? "Departamento validado correctamente."
+        : "Codigo de departamento no valido.",
+    });
+  } catch (error) {
+    const message = error?.name === "AbortError"
+      ? "Tiempo de espera agotado al validar el departamento."
+      : (error?.message || "No se pudo validar el departamento.");
+    return res.status(500).json({ ok: false, valid: false, error: message });
   }
 });
 
