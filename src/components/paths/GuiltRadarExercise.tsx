@@ -86,7 +86,9 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Recuerda la situación</h4>
-            <p className="text-sm text-muted-foreground">Piensa en un momento reciente en el que no actuaste como hubieras querido.</p>
+            <p className="text-sm text-muted-foreground">Te recuerdo que ...<br />La culpa es una emoción que aparece cuando sentimos que hemos hecho algo mal o que no hemos hecho lo suficiente. En dosis justas, nos ayuda a reconocer errores y reparar el daño. Pero cuando es excesiva o injustificada, se convierte en una carga que nos paraliza y nos castiga por cosas que no siempre dependen de nosotros o nosotras. 
+La culpa no es una sentencia, es solo una señal: puedes escucharla para aprender y luego decidir si realmente te corresponde o si es momento de soltarla. </p>
+            <p className="text-sm text-muted-foreground">Piensa en un momento reciente en el que hayas sentido culpa.</p>
             <Textarea id="situation-guilt" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe brevemente la situación" disabled={isSaved} />
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -98,8 +100,9 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Escucha tu frase interna</h4>
-            <p className="text-sm text-muted-foreground">Anota lo que te dijiste en ese momento, sin suavizarlo. Ejemplo: "Es mi culpa que mi amigo esté enfadado".</p>
+            <p className="text-sm text-muted-foreground">Cuando sentimos culpa, solemos hablarnos por dentro con frases muy rápidas y automáticas. Pueden ser juicios duros, exigencias o reproches. En este paso, quiero que anotes exactamente lo que te dijiste en ese momento, sin suavizarlo ni cambiar las palabras. Esto nos ayudará a detectarlo tal y como surge. Ejemplos: <ul><li>- “Es mi culpa que mi amigo esté enfadado.”</li><li>- “No hice lo suficiente, tendría que haberme esforzado más.”</li><li> - “Siempre meto la pata, no aprendo nunca.”</li></ul> </p>
             <Textarea id="internal-phrase" value={internalPhrase} onChange={e => setInternalPhrase(e.target.value)} placeholder={"Escribe tu frase interna..."} disabled={isSaved} />
+              <p>Recuerda: No estamos validando que estas frases sean ciertas; solo queremos capturarlas para analizarlas después.</p>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!internalPhrase.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -110,11 +113,11 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 3: Evalúa el control real</h4>
-            <p className="text-sm text-muted-foreground">Con honestidad, ¿qué parte de la situación dependía realmente de ti?</p>
+            <p className="text-sm text-muted-foreground">No todo lo que nos hace sentir culpa está realmente bajo nuestro control. A veces, cargamos con pesos que pertenecen a otras personas o a circunstancias que no podemos cambiar. </p><p className="text-sm text-muted-foreground">Ejemplo: <br /> - Situación: “Mi amiga estaba seria y pensé que era por algo que dije.” <br />- Evaluación: Parcialmente (porque no controlo cómo se siente, pero sí puedo preguntar o aclarar). </p><p className="text-sm text-muted-foreground">En este paso, quiero que te detengas y evalúes con honestidad: ¿qué parte de esta situación depende realmente de ti? </p>
             <RadioGroup value={controlLevel} onValueChange={v => setControlLevel(v as any)} disabled={isSaved} className="mt-2 space-y-1">
               <div className="flex items-center space-x-2"><RadioGroupItem value="total" id="ctrl-total" /><Label htmlFor="ctrl-total" className="font-normal">Estaba totalmente bajo mi control.</Label></div>
-              <div className="flex items-center space-x-2"><RadioGroupItem value="parcial" id="ctrl-partial" /><Label htmlFor="ctrl-partial" className="font-normal">Parcialmente: una parte sí y otra no.</Label></div>
               <div className="flex items-center space-x-2"><RadioGroupItem value="ninguno" id="ctrl-none" /><Label htmlFor="ctrl-none" className="font-normal">No estaba bajo mi control.</Label></div>
+              <div className="flex items-center space-x-2"><RadioGroupItem value="parcial" id="ctrl-partial" /><Label htmlFor="ctrl-partial" className="font-normal">Parcialmente: una parte sí y otra no.</Label></div>
             </RadioGroup>
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
@@ -126,13 +129,14 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4: Decide tu respuesta</h4>
-            <p className="text-sm text-muted-foreground">Ahora que sabes cuánto control tienes, ¿qué eliges hacer?</p>
-            <ul className="text-xs text-muted-foreground list-disc list-inside pl-2">
-                <li>Si no tenías control: repite mentalmente "No es mi responsabilidad" y suelta.</li>
-                <li>Si fue parcial: enfócate en tu parte.</li>
-                <li>Si fue total: define una acción reparadora o de aprendizaje.</li>
+            <p className="text-sm text-muted-foreground">Ahora que sabes cuánto control tienes sobre la situación, vamos a decidir qué hacer con esa culpa: </p>
+            <ul className="text- text-muted-foreground list-disc list-inside pl-2">
+                <li>Si marcaste No: repite mentalmente las veces que sean necesarias “No es mi responsabilidad” y deja que el pensamiento se vaya. </li>
+                <li>Si marcaste Parcialmente: escribe la parte que sí depende de ti y cómo actuarás sobre ella.</li>
+                <li>Si marcaste Sí: define una acción reparadora o de aprendizaje que puedas poner en marcha.</li>
             </ul>
-            <Textarea id="response-action" value={responseAction} onChange={e => setResponseAction(e.target.value)} placeholder="Escribe tu respuesta o acción..." disabled={isSaved} />
+            <p className="text- text-muted-foreground" >Ejemplo: <br />Evaluación: Parcialmente. <br />Respuesta: “Voy a hablar con ella para saber si mi comentario le molestó y, si es así, pedir disculpas.” </p>
+            <Textarea id="response-action" value={responseAction} onChange={e => setResponseAction(e.target.value)} placeholder="Escribe tu respuesta y/o acción..." disabled={isSaved} />
              <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!responseAction.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -144,11 +148,11 @@ Pregunta: Aprendizaje y cuidado para la próxima vez | Respuesta: ${learning}
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 5: Cierre</h4>
             <Label htmlFor="learning-guilt">Relee lo que has escrito y pregúntate: ¿Qué puedo aprender de esto y cómo puedo cuidarme mejor la próxima vez?</Label>
-            <Textarea id="learning-guilt" value={learning} onChange={e => setLearning(e.target.value)} placeholder="Escribe tu aprendizaje..." disabled={isSaved} />
+            <Textarea id="learning-guilt" value={learning} onChange={e => setLearning(e.target.value)} placeholder="Escribe tu aprendizaje y plan para la próxima vez..." disabled={isSaved} />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               {!isSaved ? (
-                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar aprendizaje</Button>
               ) : (
                 <div className="flex items-center p-3 text-green-800 dark:text-green-200">
                   <CheckCircle className="mr-2 h-5 w-5" />

@@ -6,6 +6,7 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
+  
   modules: [
     {
       id: 'res_sem1',
@@ -13,8 +14,9 @@ export const resiliencePath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Sabes que has llegado hasta aquí con cicatrices… pero también con recursos? A veces solo hace falta volver a mirarlos. \nEsta semana vas a aprender qué es la resiliencia y te voy a proponer que reconectes con tu capacidad para superar momentos difíciles. No vamos a idealizar nada, ni negar que hubo dolor. Pero sí vamos a mirar con más claridad cómo lograste avanzar, qué apoyos internos y externos utilizaste, y qué fortalezas aparecieron en ti, aunque fuera en silencio.\nSer resiliente no es ser invulnerable. Es recordar que tienes dentro lo que necesitas para seguir. Vamos a comenzar por ahí.' },
-        { type: 'title', text: 'Psicoeducación' },
+     
+          { type: 'paragraphWithAudio', text: '¿Sabes que has llegado hasta aquí con cicatrices… pero también con recursos? A veces solo hace falta volver a mirarlos. \nEsta semana vas a aprender qué es la resiliencia y te voy a proponer que reconectes con tu capacidad para superar momentos difíciles. No vamos a idealizar nada, ni negar que hubo dolor. Pero sí vamos a mirar con más claridad cómo lograste avanzar, qué apoyos internos y externos utilizaste, y qué fortalezas aparecieron en ti, aunque fuera en silencio.\nSer resiliente no es ser invulnerable. Es recordar que tienes dentro lo que necesitas para seguir. Vamos a comenzar por ahí.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/AUDIO1SEM1RUTA8.mp3` },
+     { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué es realmente la resiliencia?',
@@ -48,7 +50,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion1ruta8.mp3` },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.'] },
-        { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
+        { type: 'quote', text: 'Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.' }
       ]
     },
     {
@@ -147,7 +149,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion3ruta8.mp3` },
         { type: 'list', items: ['El miedo es una emoción natural. Escucharlo sin dejar que te controle es el primer paso hacia la decisión consciente.', 'Tu forma de pensar afecta directamente cómo decides: no creas todo lo que piensas cuando estás activado o activada emocionalmente.', 'Puedes ampliar tus opciones si exploras una situación desde distintas lentes: miedo, valor, confianza y desesperanza.', 'Decidir con claridad implica autorregulación emocional, flexibilidad cognitiva y compromiso con tus valores.', 'Tener un Plan B emocional no significa dudar de ti, sino protegerte y cuidarte, incluso si algo no sale como esperas.', 'Cada decisión tomada desde el valor —por pequeña que sea— fortalece tu resiliencia.'] },
-        { type: 'quote', text: '“No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.”' }
+        { type: 'quote', text: 'No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.' }
       ]
     },
     {
@@ -168,6 +170,7 @@ export const resiliencePath: Path = {
           {
             type: 'collapsible',
             title: 'Tu historia continúa',
+             
             content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
           },
           { type: 'title', text: 'Técnicas Específicas' },
@@ -207,7 +210,7 @@ export const resiliencePath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionfinalruta8.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumenfinalruta8.mp3`,
         },
         {
           type: 'list',

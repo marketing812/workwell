@@ -158,7 +158,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
         );
       case 5:
         return (
-          <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
+          <div className="p-4 space-y-4 rounded-xl border-2 border-primary/30 bg-primary/5 shadow-sm animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">MINIPRÁCTICA DIARIA (OPCIONAL) - "Recordar mis derechos emocionales"</h4>
             <p className="text-sm text-muted-foreground">Antes de cualquier interacción o decisión, dedica 1 minuto a recordarte esto:</p>
             <ul className="list-disc list-inside text-sm space-y-1 pl-4">
@@ -166,7 +166,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
               <li>Tengo derecho a expresarme con respeto, aunque no todos estén de acuerdo.</li>
               <li>Tengo derecho a no justificar mis emociones para que sean válidas.</li>
             </ul>
-            <blockquote className="mt-4 p-4 italic border-l-4 bg-accent/10 text-accent-foreground border-accent">
+            <blockquote className="mt-4 rounded-md border-l-4 border-accent bg-background/80 p-4 italic text-accent-foreground">
               Puedes repetir mentalmente esta frase: "Lo que siento es válido. No necesito explicarlo para merecer respeto."
             </blockquote>
             <div className="flex justify-between w-full mt-4">

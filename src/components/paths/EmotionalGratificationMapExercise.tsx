@@ -183,15 +183,15 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
                 <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
                     <div>
                         <h5 className="font-semibold">Actividades que me recargan:</h5>
-                        <pre className="text-sm whitespace-pre-wrap">{activities || 'Sin definir'}</pre>
+                        <p className="text-sm whitespace-pre-wrap">{activities || 'Sin definir'}</p>
                     </div>
                      <div>
                         <h5 className="font-semibold">Personas que me inspiran o me dan calma:</h5>
-                        <pre className="text-sm whitespace-pre-wrap">{people || 'Sin definir'}</pre>
+                        <p className="text-sm whitespace-pre-wrap">{people || 'Sin definir'}</p>
                     </div>
                      <div>
                         <h5 className="font-semibold">Lugares que me llenan de energía:</h5>
-                        <pre className="text-sm whitespace-pre-wrap">{places || 'Sin definir'}</pre>
+                        <p className="text-sm whitespace-pre-wrap">{places || 'Sin definir'}</p>
                     </div>
                 </div>
                 <p className="text-xs text-muted-foreground italic pt-2">Recuerda: No tienes que hacerlas todas a la vez. Incluso una sola de estas actividades, personas o lugares puede marcar la diferencia en tu día.</p>

@@ -46,9 +46,11 @@ const mentalPrepOptions = [
 ];
 
 const facilitatorOptions = [
-    { id: 'facilitator-alarma', label: 'Poner una alarma en el móvil' },
-    { id: 'facilitator-nota', label: 'Dejar una nota visible' },
-    { id: 'facilitator-vincular', label: 'Vincularlo a otra acción (ej. después de lavarme los dientes)' },
+    { id: 'facilitator-water', label: 'Dejar preparado el vaso de agua o la tetera la noche anterior.' },
+    { id: 'facilitator-alarm', label: 'Poner el despertador 5 minutos antes.' },
+    { id: 'facilitator-clothes', label: 'Dejar ropa cómoda o deportiva lista.' },
+    { id: 'facilitator-notebook', label: 'Tener a mano tu libreta o lista de intenciones.' },
+    { id: 'facilitator-phone', label: 'Guardar el móvil en otro lugar para evitar distracciones al despertar.' },
 ];
 
 const HabitStep = ({ stepTitle, description, options, selected, setSelected, other, setOther, onNext, onPrev }: any) => {
@@ -232,7 +234,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
         return (
             <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
                 <h4 className="font-semibold text-lg text-primary">Paso 5: Cómo facilitarlo</h4>
-                <p className="text-sm text-muted-foreground">Ahora vamos a decidir cómo te vas a recordar a ti mismo/a que es momento de hacer cada microhábito que elegiste. Piensa en lo que mejor funciona para ti: hay personas que responden bien a alarmas, otras a señales visuales, y otras a enlazarlo con una acción que ya hacen sin pensar.</p>
+                <p className="text-sm text-muted-foreground">Aquí vamos a elegir una acción previa que te ayude a que tu mañana amable ocurra incluso si te levantas con pereza o falta de tiempo.</p>
                 <div className="space-y-2">
                 {facilitatorOptions.map(opt => (
                     <div key={opt.id} className="flex items-center space-x-2">

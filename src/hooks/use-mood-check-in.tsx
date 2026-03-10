@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode, type FC } from 'react';
 
@@ -22,22 +22,22 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
   }, []);
 
   const checkShouldShowPopup = useCallback(() => {
-    console.log("useMoodCheckIn: Checking if popup should be shown...");
+   // console.log("useMoodCheckIn: Checking if popup should be shown...");
     try {
       const lastCompletedTimestamp = localStorage.getItem(MOOD_CHECKIN_KEY);
       if (!lastCompletedTimestamp) {
-        console.log("useMoodCheckIn: No last completed timestamp found. Showing popup.");
+       // console.log("useMoodCheckIn: No last completed timestamp found. Showing popup.");
         setShowPopup(true);
         return;
       }
 
       const timeSinceLastCheck = getTodayTimestamp() - parseInt(lastCompletedTimestamp, 10);
-      console.log(`useMoodCheckIn: Time since last check-in: ${Math.round(timeSinceLastCheck / (1000 * 60 * 60))} hours.`);
+     // console.log(`useMoodCheckIn: Time since last check-in: ${Math.round(timeSinceLastCheck / (1000 * 60 * 60))} hours.`);
       if (timeSinceLastCheck > TWO_DAYS_MS) {
-        console.log("useMoodCheckIn: More than 48 hours passed. Showing popup.");
+       // console.log("useMoodCheckIn: More than 48 hours passed. Showing popup.");
         setShowPopup(true);
       } else {
-        console.log("useMoodCheckIn: Less than 48 hours passed. Not showing popup.");
+       // console.log("useMoodCheckIn: Less than 48 hours passed. Not showing popup.");
         setShowPopup(false);
       }
     } catch (error) {
@@ -47,7 +47,7 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
 
   useEffect(() => {
     if (showPopup) {
-      console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via server action.");
+     // console.log("useMoodCheckIn: showPopup is true, triggering email reminder logic via server action.");
       const triggerEmailReminder = async () => {
         try {
           const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
@@ -56,7 +56,7 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
           if (!response.ok || !result.success) {
             console.error("useMoodCheckIn: trigger-reminder failed.", result?.message || result?.error);
           } else {
-            console.log("useMoodCheckIn: trigger-reminder responded.", result.message);
+           // console.log("useMoodCheckIn: trigger-reminder responded.", result.message);
           }
         } catch (error) {
           console.error("useMoodCheckIn: Error calling trigger-reminder endpoint.", error);
@@ -65,7 +65,7 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
   
       triggerEmailReminder();
     } else {
-      console.log("useMoodCheckIn: showPopup is false, not triggering email reminder.");
+     // console.log("useMoodCheckIn: showPopup is false, not triggering email reminder.");
     }
   }, [showPopup]);
 

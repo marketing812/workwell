@@ -371,7 +371,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
         case 0: // Intro
             return (
                 <div className="p-4 space-y-4 text-center">
-                    <p className="text-sm text-muted-foreground">Cuando no tienes certezas, tu mente busca control. Esta técnica te ayuda a entrenar lo contrario: una confianza activa. Vas a crear una frase breve, realista y significativa que funcione como una autoinstrucción emocional. Una especie de brújula interna que puedas repetirte cuando la inseguridad aparezca. No se trata de frases vacías, sino de una afirmación que te recuerde que puedes sostenerte aunque no tengas todo resuelto.</p>
+                    <p className="text-sm text-muted-foreground"> Vas a crear una frase breve, realista y significativa que funcione como una autoinstrucción emocional. Una especie de brújula interna que puedas repetirte cuando la inseguridad aparezca. No se trata de frases vacías, sino de una afirmación que te recuerde que puedes sostenerte aunque no tengas todo resuelto.</p>
                     <Button onClick={nextStep}>Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
             );

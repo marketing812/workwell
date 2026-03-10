@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { format, parseISO } from 'date-fns';
@@ -33,7 +33,7 @@ async function syncNotebookEntryWithServer(userId: string, entry: NotebookEntry)
         if (!response.ok || !result.success) {
             console.error(`[Client] Notebook sync via Server Action failed.`, result);
         } else {
-            console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully.`);
+           // console.log(`[Client] Notebook entry for user '${userId}' sync initiated successfully.`);
         }
     } catch (error) {
         console.error("[Client] Error calling save-notebook-entry backend endpoint:", error);

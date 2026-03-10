@@ -1,4 +1,4 @@
-
+﻿
 "use server";
 
 import { z } from "zod";
@@ -52,7 +52,7 @@ export async function saveUser(
       updatedAt: new Date().toISOString(), // Use updatedAt to show it's an update
     }, { merge: true });
 
-    console.log(`saveUser Action (DEPRECATED): Successfully saved profile for user ${userId}`);
+   // console.log(`saveUser Action (DEPRECATED): Successfully saved profile for user ${userId}`);
     return { success: true };
   } catch (error: any) {
     console.error(`saveUser Action (DEPRECATED): Error writing to Firestore for user ${userId}`, error);

@@ -1,7 +1,7 @@
 ﻿
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -12,8 +12,7 @@ import { addNotebookEntry } from '@/data/therapeuticNotebookStore';
 import type { IntensityScaleExerciseContent } from '@/data/paths/pathTypes';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useUser } from '@/contexts/UserContext';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
-
+import { TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 interface IntensityScaleExerciseProps {
   content: IntensityScaleExerciseContent;
   pathId: string;
@@ -102,11 +101,14 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
                 <AccordionTrigger className="text-sm text-muted-foreground hover:no-underline">Ver ejemplo guía</AccordionTrigger>
                 <AccordionContent>
                   <div className="text-xs space-y-2 p-2">
-                    <p><strong>Nivel 2:</strong> Siento calma, respiración estable. Necesito mantenerme así. Estrategia: Pasear, música suave.</p>
-                    <p><strong>Nivel 4:</strong> Empiezo a agobiarme, tensión en cuello. Necesito soltar presión. Estrategia: Respiración 5-5-5, pausa breve.</p>
-                    <p><strong>Nivel 6:</strong> Irritación, mente acelerada. Necesito calmar el sistema nervioso. Estrategia: Visualización segura, gesto de autocuidado.</p>
-                    <p><strong>Nivel 8:</strong> Llantos o bloqueo. Necesito protección y contención. Estrategia: Llamar a alguien, salir del entorno, técnica del ancla.</p>
-                    <p><strong>Nivel 10:</strong> Siento que no puedo más. Necesito seguridad. Estrategia: Parar, validar lo que siento, buscar apoyo urgente.</p>
+                    <table><TableHeader><TableRow><TableHead>Nivel</TableHead><TableHead>Señales</TableHead><TableHead>Qué necesito</TableHead><TableHead>Estrategia</TableHead></TableRow></TableHeader>
+                    <TableBody><TableRow><TableCell>
+                      Nivel 2:</TableCell><TableCell>Me siento en calma, respiración estable </TableCell><TableCell>Mantenerme así </TableCell><TableCell>Pasear, música suave</TableCell></TableRow>
+                    <TableRow><TableCell>Nivel 4:</TableCell><TableCell>Empiezo a agobiarme, tensión en cuello </TableCell><TableCell>Soltar presión </TableCell><TableCell>Respiración 5-5-5, pausa breve</TableCell></TableRow>
+                    <TableRow><TableCell>Nivel 6:</TableCell><TableCell>Irritación, mente acelerada </TableCell><TableCell>Calmar el sistema nervioso </TableCell><TableCell>Visualización segura, gesto de autocuidado</TableCell></TableRow>
+                    <TableRow><TableCell>Nivel 8:</TableCell><TableCell>Llantos o bloqueo </TableCell><TableCell>Protección y contención </TableCell><TableCell>Llamar a alguien, salir del entorno, técnica del ancla</TableCell></TableRow>
+                    <TableRow><TableCell>Nivel 10:</TableCell><TableCell>Siento que no puedo más </TableCell><TableCell>Seguridad </TableCell><TableCell>Parar, validar lo que siento, buscar apoyo urgente</TableCell></TableRow></TableBody></table>
+                    
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -124,13 +126,37 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
             {Object.keys(scale).map(level => (
               <div key={level} className="p-3 border rounded-md">
                 <h5 className="font-medium">Nivel {level}</h5>
-                <div className="space-y-2 mt-2">
-                  <Label>¿Qué siento en el cuerpo y en la mente?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].signals} onChange={e => handleScaleChange(level as keyof typeof scale, 'signals', e.target.value)} disabled={isSaved} />
-                  <Label>¿Qué necesito realmente en este nivel?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].needs} onChange={e => handleScaleChange(level as keyof typeof scale, 'needs', e.target.value)} disabled={isSaved} />
-                  <Label>¿Qué estrategias puedo usar para regularme?</Label>
-                  <Textarea value={scale[level as keyof typeof scale].strategy} onChange={e => handleScaleChange(level as keyof typeof scale, 'strategy', e.target.value)} disabled={isSaved} />
+                <div className="mt-3 grid gap-3 md:grid-cols-3">
+                  <div className="space-y-2">
+                    <Label>¿Qué siento en el cuerpo y en la mente?</Label>
+                    <Textarea
+                      value={scale[level as keyof typeof scale].signals}
+                      onChange={e => handleScaleChange(level as keyof typeof scale, 'signals', e.target.value)}
+                      disabled={isSaved}
+                      rows={4}
+                      className="min-h-24"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>¿Qué necesito realmente en este nivel?</Label>
+                    <Textarea
+                      value={scale[level as keyof typeof scale].needs}
+                      onChange={e => handleScaleChange(level as keyof typeof scale, 'needs', e.target.value)}
+                      disabled={isSaved}
+                      rows={4}
+                      className="min-h-24"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>¿Qué estrategias puedo usar para regularme?</Label>
+                    <Textarea
+                      value={scale[level as keyof typeof scale].strategy}
+                      onChange={e => handleScaleChange(level as keyof typeof scale, 'strategy', e.target.value)}
+                      disabled={isSaved}
+                      rows={4}
+                      className="min-h-24"
+                    />
+                  </div>
                 </div>
               </div>
             ))}
@@ -166,7 +192,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
           <audio controls controlsList="nodownload" className="w-full">
-            <source src={`${EXTERNAL_SERVICES_BASE_URL}${content.audioUrl}`} type="audio/mp3" />
+            <source src={content.audioUrl} type="audio/mp3" />
             Tu navegador no soporta el elemento de audio.
           </audio>
         </div>

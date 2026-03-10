@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @fileOverview An AI agent for conducting an initial psychological assessment.
  *
  * - initialAssessment - A function that handles the initial assessment process.
@@ -131,10 +131,10 @@ const initialAssessmentFlow = ai.defineFlow(
     outputSchema: InitialAssessmentOutputSchema,
   },
   async (flowInput: PromptHandlebarsInput): Promise<InitialAssessmentOutput> => {
-    console.log('InitialAssessmentFlow START: Received pre-calculated input:', JSON.stringify(flowInput, null, 2).substring(0,1000) + "...");
+   // console.log('InitialAssessmentFlow START: Received pre-calculated input:', JSON.stringify(flowInput, null, 2).substring(0,1000) + "...");
 
     const {output: aiResponse} = await prompt(flowInput);
-    console.log('InitialAssessmentFlow: Received RAW aiResponse from prompt:', JSON.stringify(aiResponse, null, 2));
+   // console.log('InitialAssessmentFlow: Received RAW aiResponse from prompt:', JSON.stringify(aiResponse, null, 2));
 
     if (!aiResponse) {
         console.error('InitialAssessmentFlow Error: AI response was null or undefined.');
@@ -172,7 +172,7 @@ const initialAssessmentFlow = ai.defineFlow(
       priorityAreas: aiResponse.priorityAreas,
       feedback: aiResponse.feedback,
     };
-    console.log('InitialAssessmentFlow END: Returning finalOutput to action:', JSON.stringify(finalOutput, null, 2));
+   // console.log('InitialAssessmentFlow END: Returning finalOutput to action:', JSON.stringify(finalOutput, null, 2));
     return finalOutput;
   }
 );

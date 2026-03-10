@@ -6,6 +6,7 @@ export const resiliencePath: Path = {
   title: 'Resiliencia en Acción',
   description: 'Aprende a resistir sin endurecerte, a sostenerte en medio del caos, de tomar decisiones desde el valor y no desde el miedo, y de reconstruir tu historia desde la experiencia vivida.',
   dataAiHint: 'resilience action overcome',
+  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Introruta8.mp3`,
   modules: [
     {
       id: 'res_sem1',
@@ -13,8 +14,8 @@ export const resiliencePath: Path = {
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
-        { type: 'paragraph', text: '¿Sabes que has llegado hasta aquí con cicatrices… pero también con recursos? A veces solo hace falta volver a mirarlos. \nEsta semana vas a aprender qué es la resiliencia y te voy a proponer que reconectes con tu capacidad para superar momentos difíciles. No vamos a idealizar nada, ni negar que hubo dolor. Pero sí vamos a mirar con más claridad cómo lograste avanzar, qué apoyos internos y externos utilizaste, y qué fortalezas aparecieron en ti, aunque fuera en silencio.\nSer resiliente no es ser invulnerable. Es recordar que tienes dentro lo que necesitas para seguir. Vamos a comenzar por ahí.' },
-        { type: 'title', text: 'Psicoeducación' },
+      { type: 'paragraphWithAudio', text: '¿Sabes que has llegado hasta aquí con cicatrices… pero también con recursos? A veces solo hace falta volver a mirarlos. \nEsta semana vas a aprender qué es la resiliencia y te voy a proponer que reconectes con tu capacidad para superar momentos difíciles. No vamos a idealizar nada, ni negar que hubo dolor. Pero sí vamos a mirar con más claridad cómo lograste avanzar, qué apoyos internos y externos utilizaste, y qué fortalezas aparecieron en ti, aunque fuera en silencio.\nSer resiliente no es ser invulnerable. Es recordar que tienes dentro lo que necesitas para seguir. Vamos a comenzar por ahí.', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/AUDIO1SEM1RUTA8.mp3` },
+           { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
           title: '¿Qué es realmente la resiliencia?',
@@ -48,7 +49,7 @@ export const resiliencePath: Path = {
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion1ruta8.mp3` },
         { type: 'list', items: ['La resiliencia no es perfección, ni aguantar sin sentir.','Se compone de habilidades que se pueden entrenar.','Ya has sido resiliente antes: tu historia lo demuestra.','Redefinir qué significa para ti resistir sin romperte te conecta con tu poder real.']},
-        { type: 'quote', text: '“Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.”' }
+        { type: 'quote', text: 'Resiliencia no es aguantar en silencio. Es reconstruirte con sentido.' }
       ]
     },
     {
@@ -70,7 +71,7 @@ export const resiliencePath: Path = {
         { type: 'collapsible', title: 'En resumen…', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Audio10sesion2ruta8.mp3`, content: [{ type: 'list', items: ['Tu cuerpo y mente están diseñados para protegerte, no para castigarte.', 'Observarte con atención sin juzgarte es el primer paso de la regulación.', 'Respirar, nombrar lo que sientes y sostenerte es empezar a sanar.', 'Crear un recurso personal como una “ancla” te da seguridad en momentos difíciles.', 'Tener una escala emocional con estrategias claras te ayuda a no actuar desde el desborde.', 'La regulación emocional se entrena cada día con prácticas simples y hábitos saludables.'] }] },
         { type: 'title', text: 'Técnicas Específicas' },
         { type: 'anchorInStormExercise', title: 'EJERCICIO 1: MI ANCLA EN LA TORMENTA', objective: '¿Te has sentido alguna vez como si todo dentro de ti estuviera a punto de romperse, mientras fuera el mundo seguía su ritmo como si nada? En esos momentos de tensión o caos, no necesitas entenderlo todo ni resolverlo ya. Lo que más necesitas es algo que te sostenga. Este ejercicio es un regalo que te haces a ti misma o a ti mismo: vas a crear tu propia “ancla emocional”, un recurso íntimo y poderoso que te devuelva el equilibrio cuando sientas que estás a la deriva.', duration: '10 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana2tecnica1.mp3` },
-        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min'},
+        { type: 'intensityScaleExercise', title: 'EJERCICIO 2: MI ESCALA DE INTENSIDAD Y PLAN DE AUTORREGULACIÓN', objective: 'Esta técnica te invita a conocer cómo cambia tu estado emocional según su intensidad, y a tener un plan claro para cada nivel.', duration: '15-20 min',audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/tecnicas/Ruta8semana2tecnica2.mp3`},
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionsesion2ruta8.mp3`, prompts: ['<ul><li>¿Cómo suele reaccionar mi cuerpo cuando me siento bajo presión o en peligro emocional?</li><li>¿Qué señales me ayudan a darme cuenta de que estoy a punto de desbordarme?</li><li>¿Qué herramienta me ha resultado más útil esta semana para regularme o calmarme?</li><li>¿Qué cambio pequeño podría incorporar en mi día a día para ayudarme a sostenerme mejor?</li><li>¿Por qué quiero comprometerme conmigo en este proceso de autorregulación emocional?</li></ul>'] },
         { type: 'title', text: 'Resumen Clave'},
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumensesion2ruta8.mp3` },
@@ -148,6 +149,7 @@ export const resiliencePath: Path = {
         {
           type: 'collapsible',
           title: 'Tu historia continúa',
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/ruta8semana4audio8.mp3`,
           content: [{ type: 'paragraph', text: 'No necesitas tenerlo todo claro, ni sentirte fuerte todos los días.\nLo importante es que ya sabes cómo volver a ti cuando te pierdes.\nYa tienes herramientas, aprendizajes, mapas internos.\nY puedes usarlos siempre que los necesites.\nEsta semana es para integrar.\nPero sobre todo, para recordarte que sigues caminando.\nCon más consciencia. Con más confianza. Y sobre todo… con más amor propio.' }]
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -187,7 +189,7 @@ export const resiliencePath: Path = {
         {
           type: 'title',
           text: 'RESUMEN FINAL DE LA RUTA',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Reflexionfinalruta8.mp3`,
+          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta8/descripciones/Resumenfinalruta8.mp3`,
         },
         {
           type: 'list',

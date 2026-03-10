@@ -153,6 +153,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
       case 1: // Resource Selection
         return (
             <div className="p-4 space-y-6 animate-in fade-in-0 duration-500">
+              <div className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño —una charla con alguien querido, una canción, un paseo— te cambió el estado de ánimo?<br />Eso no es casualidad: tu cerebro responde a ciertos estímulos que actúan como “medicina natural” para regular emociones. <ul><li> - Conectar con alguien activa circuitos de seguridad en tu sistema nervioso. </li><li>- Moverte o hacer una actividad placentera libera neurotransmisores como serotonina y dopamina, que elevan tu ánimo.</li><li>- La música regula directamente tu sistema límbico, influyendo en tus emociones.</li><li>- Sonreír o reír dispara endorfinas que reducen tensión.</li><li>- Hablarte con frases constructivas cambia cómo interpretas lo que vives.</li></ul><br />Hoy vas a reunir todas estas estrategias en un solo lugar: tu Botiquín Emocional Positivo. Un plan listo para usar, que te recordará qué hacer cuando lo necesites.  </div>
                 <h4 className="font-semibold text-lg">Paso 1: Elige tus recursos</h4>
                 <p className="text-sm text-muted-foreground">Cada recurso está basado en estrategias que tu cerebro reconoce como calmantes o estimulantes. Selecciona uno de cada categoría. (puedes añadir el tuyo con “Otro”)</p>
                 {Object.entries(resourceCategories).map(([key, category]) => (
@@ -182,7 +183,13 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                         <p className="font-medium text-primary">{finalSelections[key as ResourceKey]}</p>
                         <div className="space-y-1">
                             <Label htmlFor={`why-${key}`}>¿Por qué te ayuda?</Label>
-                            <Textarea id={`why-${key}`} value={personalization[key as ResourceKey].why} onChange={e => handlePersonalizationChange(key as ResourceKey, 'why', e.target.value)} placeholder="Ej: “Llamar a Marta me calma porque me escucha sin juzgar.”" rows={2}/>
+                            <Textarea
+                              id={`why-${key}`}
+                              value={personalization[key as ResourceKey].why}
+                              onChange={e => handlePersonalizationChange(key as ResourceKey, 'why', e.target.value)}
+                              placeholder={finalSelections[key as ResourceKey] === 'Llamar a un amigo o amiga' ? 'Ej: “Llamar a Marta me calma porque me escucha sin juzgar.”' : undefined}
+                              rows={2}
+                            />
                         </div>
                         <div className="space-y-1">
                             <Label htmlFor={`how-${key}`}>¿Cómo lo vas a activar?</Label>
@@ -259,8 +266,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
-        <p className="text-sm text-muted-foreground">¿Alguna vez has tenido un día difícil y, de repente, algo pequeño —una charla con alguien querido, una canción, un paseo— te cambió el estado de ánimo? Con este ejercicio vas a reunir esas estrategias en un solo lugar: tu Botiquín Emocional Positivo, listo para usar cuando lo necesites.</p><p className="text-sm text-muted-foreground">Eso no es casualidad: tu cerebro responde a ciertos estímulos que actúan como “medicina natural” para regular emociones. <br/>- Conectar con alguien activa circuitos de seguridad en tu sistema nervioso. <br/>- Moverte o hacer una actividad placentera libera neurotransmisores como serotonina y dopamina, que elevan tu ánimo.<br/>- La música regula directamente tu sistema límbico, influyendo en tus emociones.<br/>- Sonreír o reír dispara endorfinas que reducen tensión. <br/>- Hablarte con frases constructivas cambia cómo interpretas lo que vives. <br/>- Hoy vas a reunir todas estas estrategias en un solo lugar: tu Botiquín Emocional Positivo. Un plan listo para usar, que te recordará qué hacer cuando lo necesites.</p>
-        </CardDescription>}
+        <p className="text-sm text-muted-foreground">Se basa en estrategias que la ciencia ha demostrado efectivas: conectar con otros activa la calma en tu cerebro, moverte libera serotonina, la música regula tu sistema límbico, y hasta una sonrisa puede soltar endorfinas. </p><p>Es como preparar un botiquín de primeros auxilios, pero para tu mundo emocional: siempre disponible cuando lo necesites. </p><p><br />Tiempo estimado: 12–15 minutos para prepararlo. Úsalo cada vez que lo necesites y revisa su contenido al menos una vez al mes. </p>     </CardDescription>}
       </CardHeader>
       <CardContent>
         {renderStepContent()}

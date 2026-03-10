@@ -55,6 +55,10 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Bienvenida: cuida sin fundirte</h4>
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src="`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantalla12.mp3`" type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
             <p className="text-muted-foreground">Vamos a realizar una visualización para ayudarte a sostener a los demás sin perderte tú. Imagina que construyes un espacio interno que te protege sin cerrarte. Ese espacio se llama escudo empático: un filtro emocional que cuida tu energía y mantiene tu presencia sin exigirte absorber lo que no te corresponde.</p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
@@ -66,6 +70,10 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Respiración y conexión</h4>
+            <audio controls controlsList="nodownload" className="w-full">
+              <source src="`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantallas2-6-2.mp3`" type="audio/mp3" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
             <p className="text-muted-foreground">Busca una posición cómoda. Cierra los ojos si te ayuda a conectar. Lleva tu atención a la respiración.</p>
             <p className="text-muted-foreground">Inhala por la nariz… Retén… Exhala por la boca, vaciando completamente. Hazlo dos veces más… Y siente cómo tu cuerpo empieza a calmarse.</p>
             <p className="text-muted-foreground italic">Solo por hoy, no tienes que resolver nada. Solo estar.</p>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
@@ -84,10 +84,10 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
         if (Array.isArray(parsedData) && parsedData.length > 0) {
             if('status' in parsedData[0]){
                  apiResult = parsedData[0];
-                 console.log("UserContext: Processed concatenated JSON response, taking first object.");
+                // console.log("UserContext: Processed concatenated JSON response, taking first object.");
             } else {
                  apiResult = { status: "OK", data: parsedData };
-                 console.log("UserContext: Processed concatenated JSON as a direct data array.");
+                // console.log("UserContext: Processed concatenated JSON as a direct data array.");
             }
         } else {
             apiResult = parsedData;

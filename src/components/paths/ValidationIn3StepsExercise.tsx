@@ -159,7 +159,7 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 4: Toma conciencia de tus bloqueos</h4>
-            <p className="text-sm text-muted-foreground">Reflexiona con honestidad sobre tus propias barreras a la hora de escuchar.</p>
+            <p className="text-sm text-muted-foreground">A veces, sin querer, nos cuesta validar a los demás. Quizá por incomodidad, cansancio o automatismos aprendidos.</p>
             <div className="space-y-2">
               <Label htmlFor="blockage-reflection">¿En qué situaciones me resulta más difícil validar emocionalmente a alguien?</Label>
               <Textarea id="blockage-reflection" value={blockageReflection} onChange={(e) => setBlockageReflection(e.target.value)} />

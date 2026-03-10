@@ -1,4 +1,4 @@
-'use server';
+﻿'use server';
 
 import { ai } from "@/ai/genkit";
 import { googleAI } from "@genkit-ai/google-genai";
@@ -16,7 +16,7 @@ export async function embedText(text: string): Promise<number[]> {
   // B) { embedding: number[] }
   const vec =
     Array.isArray(res) ? res?.[0]?.embedding : res?.embedding;
-//console.log("QUERY EMBEDDING DIM:", vec.length);
+// console.log("QUERY EMBEDDING DIM:", vec.length);
   if (!vec || !Array.isArray(vec) || vec.length === 0) {
     console.error("Embedding inválido:", res);
     throw new Error("Embedding vacío o inválido");

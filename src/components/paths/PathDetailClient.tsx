@@ -323,16 +323,16 @@ function ExerciseCardWithSteps({
         {
           type: 'paragraph',
           text:
-            '¿Por qué estas técnicas funcionan?\n\n¿Por qué ayudan estas técnicas?\nCuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte.\nPero si esa activación se mantiene, tu bienestar se ve afectado.\n\nEstas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”.\n\nPracticar con regularidad te ayuda a recuperar el equilibrio con más facilidad.\n\nEstudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden reducir el volumen de la amígdala, el centro del miedo en el cerebro.\nEs decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.',
+            '<strong>¿Por qué estas técnicas funcionan?</strong>\n¿Por qué ayudan estas técnicas?\nCuando estás en modo alerta —corazón acelerado, cuerpo tenso, mente agitada— tu sistema nervioso intenta protegerte.\nPero si esa activación se mantiene, tu bienestar se ve afectado.\n\nEstas técnicas activan el sistema parasimpático, que envía una señal clara al cuerpo: “ya no estás en peligro”.\n\nPracticar con regularidad te ayuda a recuperar el equilibrio con más facilidad.\n\nEstudios científicos muestran que 8 semanas de práctica de respiración o mindfulness pueden reducir el volumen de la amígdala, el centro del miedo en el cerebro.\nEs decir: estás entrenando tu cuerpo y tu mente para vivir con más calma.',
         },
         {
           type: 'paragraph',
           text:
-            '¿Qué cambia cuando las practicas?\n\nEn tu cuerpo:\n• Respiración más profunda y regular\n• Regulación del CO₂ (menos mareos o ahogo)\n• Reducción de tensión muscular\n• Sensaciones de alivio, calor o calma\n\nEn tu mente:\n• Recuperas el control y vuelves al presente\n• Se interrumpe el bucle de pensamientos ansiosos\n• Refuerzas el autocuidado y la conexión contigo\n\nEstas técnicas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial...\nTodas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.',
+            '<strong>¿Qué cambia cuando las practicas?</strong>\nEn tu cuerpo:\n• Respiración más profunda y regular\n• Regulación del CO₂ (menos mareos o ahogo)\n• Reducción de tensión muscular\n• Sensaciones de alivio, calor o calma\n\nEn tu mente:\n• Recuperas el control y vuelves al presente\n• Se interrumpe el bucle de pensamientos ansiosos\n• Refuerzas el autocuidado y la conexión contigo\n\nEstas técnicas usan el cuerpo como puerta de entrada al bienestar. Respiración, movimiento, atención plena o contacto sensorial...\nTodas comparten un mismo propósito: ayudarte a regularte y conectar contigo desde un lugar seguro.',
         },
         {
           type: 'paragraph',
-          text: '¿Cuándo puedes usarlas?\n\nPuedes usar estas técnicas en el momento, si sientes ansiedad o bloqueo; antes de una situación desafiante; o como rutina diaria para entrenar tu equilibrio.\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.',
+          text: '<strong>¿Cuándo puedes usarlas?</strong>\nPuedes usar estas técnicas en el momento, si sientes ansiedad o bloqueo; antes de una situación desafiante; o como rutina diaria para entrenar tu equilibrio.\n\nPracticar no solo te calma en el momento. Te transforma a largo plazo. La calma también se entrena.',
         },
         contentItem.content.find(
           (item): item is ModuleContent => item.type === 'collapsible'
@@ -526,32 +526,24 @@ function ContentItemRenderer({
         <Accordion key={index} type="single" collapsible className="w-full mb-4">
           <AccordionItem value={`item-${index}`} className="border rounded-lg shadow-sm bg-background">
             <div className="px-3 py-2 sm:px-4 sm:py-2.5">
-              <AccordionTrigger className="p-0 py-1 text-base font-semibold hover:no-underline text-left">
-                <span>{contentItem.title}</span>
-              </AccordionTrigger>
-              {contentItem.audioUrl && (
-                <div className="mt-2">
-                  <audio
-                    src={contentItem.audioUrl}
-                    controls
-                    controlsList="nodownload"
-                    className="h-8 w-full max-w-full sm:w-auto sm:max-w-md"
-                  />
-                </div>
-              )}
-            </div>
-            <AccordionContent className="px-4 pb-4">
-              <div className="border-t pt-4">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <AccordionTrigger className="flex-1 p-0 py-1 text-base font-semibold hover:no-underline text-left">
+                  <span>{contentItem.title}</span>
+                </AccordionTrigger>
                 {contentItem.audioUrl && (
-                  <div className="mb-4">
+                  <div className="w-full sm:w-auto sm:min-w-[280px] sm:max-w-[360px]">
                     <audio
                       src={contentItem.audioUrl}
                       controls
                       controlsList="nodownload"
-                      className="w-full"
+                      className="block h-10 w-full max-w-full"
                     />
                   </div>
                 )}
+              </div>
+            </div>
+            <AccordionContent className="px-4 pb-4">
+              <div className="border-t pt-4">
                 {contentItem.content.map((item, i) => (
                   <ContentItemRenderer
                     key={`${index}-child-${i}`}

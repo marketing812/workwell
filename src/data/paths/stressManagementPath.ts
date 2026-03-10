@@ -222,7 +222,7 @@ export const stressManagementPath: Path = {
                   type: 'collapsible',
                   title: 'Técnica 1: Respiración 4–2–6 con gesto de autocuidado',
                    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nCalmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda. \n\nCómo se hace: \n\nColoca una mano sobre el pecho y otra sobre el abdomen. \n\nInhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho). \n\nMantén el aire 2 segundos. \n\nExhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda. \n\nMantén un ritmo lento y constante, sin forzar. \n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad. '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: calmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda. \n\nCómo se hace: \n 1- Coloca una mano sobre el pecho y otra sobre el abdomen. \n 2- Inhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho). \n 3- Mantén el aire 2 segundos. \n 4- Exhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda. \n 5- Mantén un ritmo lento y constante, sin forzar. \n 6 - Practica: durante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad. '}]
                 },
 
                
@@ -230,37 +230,37 @@ export const stressManagementPath: Path = {
                   type: 'collapsible',
                   title: 'Técnica 2:  Respiración diafragmática (versión guiada paso a paso)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_respiracioon_diafragmatica.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo:  Calmar el sistema nervioso y recuperar el equilibrio interno activando la respiración profunda.\nCómo se hace:\n\n1 - Coloca una mano sobre el pecho y otra sobre el abdomen. \n2 - Inhala lentamente por la nariz durante 4 segundos, llevando el aire hacia el abdomen (la mano del abdomen debe elevarse más que la del pecho).\n 3 - Mantén el aire 2 segundos.\n 4 - Exhala suavemente por la boca durante 6 segundos, dejando que el abdomen descienda.\n 5 - Mantén un ritmo lento y constante, sin forzar.\n\nPractica: \nDurante 3 a 5 minutos, una o dos veces al día, o siempre que notes activación física o ansiedad.   '}]
+                  content: [{ type: 'paragraph', text: '<p>Cómo funciona: En lugar de respirar solo con la parte alta del pecho —que es lo que solemos hacer cuando estamos nerviosos—, aprendemos a usar toda nuestra capacidad pulmonar.</p><p>Cuando el aire entra y llega hasta la parte baja de los pulmones, el diafragma (un músculo en forma de cúpula que separa el pecho del abdomen) desciende y empuja suavemente las vísceras hacia abajo. Por eso, al inhalar, parece que la barriga se expande un poco hacia fuera, como si inflaras un globo dentro del abdomen.</p><p>Al exhalar, el diafragma sube de nuevo y el abdomen baja de forma natural.</p>Metáfora sencilla: piensa que estás cambiando de “respirar rápido y superficial, como un perrito jadeando” a “respirar profundo y sereno, como un bebé dormido”.</p><p>Efecto: Disminuye la sensación de ahogo, reduce las palpitaciones y relaja la musculatura. Además, aumenta la oxigenación del cuerpo y manda un mensaje claro al cerebro: “no hay peligro real, podemos bajar la alarma”.'}]
                 },        
                 {
                   type: 'collapsible',
                   title: 'Técnica 3: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.m4a`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nSalir del bucle mental ansioso y volver al momento presente. \n\nCómo se hace: \n\nRealiza primero 2 respiraciones conscientes: \n\nInhala 6 segundos. \n\nMantén 2 segundos. \n\nExhala 4 segundos. \n\nDespués, nombra mentalmente: \n\n- 5 cosas que ves. \n\n- 4 cosas que puedes tocar. \n\n- 3 sonidos que escuchas. \n\n- 2 olores que detectas o recuerdas. \n\n- 1 sabor presente en tu boca. \n\nFinaliza con una respiración profunda. \n\nPractica: \nEntre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
+                  content: [{ type: 'paragraph', text: 'Objetivo: salir del bucle mental ansioso y volver al momento presente. \nCómo se hace: \n 1 - Realiza primero 2 respiraciones conscientes: \n 2 - Inhala 6 segundos. \n 3 - Mantén 2 segundos. \n 4 - Exhala 4 segundos. \n5 - Después, nombra mentalmente: \n&nbsp;&nbsp;- cinco cosas que ves. \n&nbsp;&nbsp;- cuatro cosas que puedes tocar. \n&nbsp;&nbsp;- tres sonidos que escuchas. \n&nbsp;&nbsp;- dos olores que detectas o recuerdas. \n&nbsp;&nbsp;- un sabor presente en tu boca. \n 6 - Finaliza con una respiración profunda. \n7 - Practica: entre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 4: Escaneo corporal sin juicio (body scan)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R_body_scan_breve.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nObservar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n\nSiéntate o túmbate en una postura cómoda. \n\nCierra los ojos y realiza una respiración lenta. \n\nLleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n\nVe subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n\nNo intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n\nSi tu mente se distrae, vuelve al cuerpo con suavidad. \n\nPractica: \nEntre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. ' }]
+                  content: [{ type: 'paragraph', text: 'Objetivo: observar el cuerpo con amabilidad y disminuir la tensión acumulada. \n\nCómo se hace: \n1 - Siéntate o túmbate en una postura cómoda. \n2 - Cierra los ojos y realiza una respiración lenta. \n3 - Lleva tu atención a los pies y observa qué sensaciones aparecen (temperatura, tensión, cosquilleo…). \n4 - Ve subiendo lentamente por piernas, abdomen, pecho, hombros, brazos, cuello y rostro. \n5 - No intentes cambiar nada. Solo observa y acompaña cada sensación con actitud amable. \n6 - Si tu mente se distrae, vuelve al cuerpo con suavidad. \n7 - Practica: entre 5 y 10 minutos, preferiblemente al final del día o antes de dormir. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 5: Relajación muscular progresiva (Jacobson)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1-parte-1-respiracion-muscular-progresiva.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nLiberar la tensión física generada por el estrés. \n\nCómo se hace: \n\nSiéntate o recuéstate en una posición cómoda. \n\nInhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n\nExhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n\nContinúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n\nMantén la respiración lenta durante todo el proceso. \n\nPractica: \nEntre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. ' }]
+                  content: [{ type: 'paragraph', text: 'Objetivo: liberar la tensión física generada por el estrés. \n\nCómo se hace: \n1 - Siéntate o recuéstate en una posición cómoda. \n2 - Inhala y tensa un grupo muscular (por ejemplo, puños) durante 5 segundos. \n3 - Exhala y suelta de golpe durante 10 segundos, notando la diferencia entre tensión y relajación. \n4 - Continúa con distintos grupos musculares: brazos, hombros, rostro, abdomen, piernas. \n5 - Mantén la respiración lenta durante todo el proceso. \n6 - Practica: entre 10 y 15 minutos, 3 o 4 veces por semana, o en periodos de alta tensión. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 6: Técnicas de presión profunda y balanceo corporal',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R16balanceocorporal.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nGenerar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \nElige una de estas opciones: \n\n- Autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n\n- Balanceo suave: Sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n\n- Manta con peso: Cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n\nMientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n\nPractica: \nEntre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. ' }]
+                  content: [{ type: 'paragraph', text: 'Objetivo: generar sensación de seguridad y arraigo a través del cuerpo. \n\nCómo se hace: \n 1 - Elige una de estas opciones: \n&nbsp;&nbsp; - autoabrazo firme: Cruza los brazos sobre el pecho y aplica una presión constante mientras respiras lentamente. \n&nbsp;&nbsp; - balanceo suave: sentado/a o de pie, realiza un vaivén rítmico y lento del cuerpo. \n&nbsp;&nbsp; - manta con peso: cúbrete durante unos minutos, permitiendo que la presión envuelva tu cuerpo. \n2 - Mientras realizas la técnica, mantén una respiración lenta (4 segundos inhalar – 6 segundos exhalar). \n3 - Practica: entre 2 y 5 minutos. Úsala tras situaciones exigentes o como parte de tu rutina diaria de regulación. ' }]
                 },
                 {
                   type: 'collapsible',
                   title: 'Técnica 7 Contacto frío breve (reset inmediato)',
                   audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana2tecnica20contactofrio.mp3`,
-                  content: [{ type: 'paragraph', text: 'Objetivo: \nInterrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n\nHumedece una toalla o paño con agua fría. \n\nAplícalo durante 10 a 20 segundos en: \n\n- Nuca \n\n- Muñecas \n\n- Parte interna de los brazos o mejillas \n\nRespira lenta y profundamente mientras sientes el contacto del frío. \n\nRetira el frío y realiza una exhalación larga. \n\nPractica: \n1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). ' }]
+                  content: [{ type: 'paragraph', text: 'Objetivo: interrumpir una activación emocional intensa y favorecer la regulación rápida. \n\nCómo se hace: \n1 - Humedece una toalla o paño con agua fría. \n2 - Aplícalo durante 10 a 20 segundos en: \n&nbsp;&nbsp;&nbsp;- nuca \n&nbsp;&nbsp;&nbsp;- muñecas \n &nbsp;&nbsp;&nbsp;- parte interna de los brazos o mejillas \n3 - Respira lenta y profundamente mientras sientes el contacto del frío. \n 4 - Retira el frío y realiza una exhalación larga. \n5 - Practica: 1 o 2 repeticiones cuando notes una activación intensa (pico de ansiedad, enfado o desbordamiento emocional). ' }]
                 }
                       ]
         },
@@ -269,7 +269,7 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/REFLEXION.mp3`,
           prompts: [
-            '<p>Tómate un momento para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </p>',
+            '<p>Tómate un momento para responder en tu cuaderno o en el espacio que te ofrecemos dentro de la app. No hay respuestas correctas: solo pistas valiosas que te ayudan a conocerte mejor. </p><p><ul><li>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a? </li></ul></p>',
           ]
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana2/RESUMENYCIERRE.mp3` },
@@ -279,7 +279,7 @@ export const stressManagementPath: Path = {
     },
     {
       id: 'estres_sem3',
-      title: 'Semana 3: Entrena tu Mente para Responder con Calma',
+      title: 'Semana 3: Reestructura tus pensamientos de sobrecarga',
       type: 'introduction',
       estimatedTime: '20-25 min',
       content: [
@@ -384,7 +384,7 @@ export const stressManagementPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Reflexionsemana3.mp3`,
-          prompts: ['<ul><li>¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?</li><li>¿Qué exigencias internas me alejan de mis verdaderas necesidades?</li><li>¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio? </li></ul>']
+          prompts: ['<p>Te proponemos un momento para integrar lo que has trabajado:</p><ul><li>¿Qué pensamientos me estoy creyendo que me hacen más daño que bien?</li><li>¿Qué exigencias internas me alejan de mis verdaderas necesidades?</li><li>¿Cómo sería mi día a día si me hablara con más comprensión y menos juicio? </li></ul>']
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Resumensemana3.mp3` },
         { type: 'list', items: ['El estrés no solo viene de fuera, sino de cómo interpretas lo que ocurre.','Tus pensamientos automáticos pueden aumentar o aliviar tu malestar.','Las distorsiones cognitivas son filtros mentales que puedes aprender a detectar.','Restructurar es entrenar la mente para pensar con más claridad, flexibilidad y compasión.' ] },
@@ -465,7 +465,7 @@ export const stressManagementPath: Path = {
           type: 'therapeuticNotebookReflection',
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Reflexionsemana4.mp3`,
-          prompts: ['<p>Pon en palabras tu aprendizaje y haz más tuya la experiencia.</p><p>¿Qué me ayuda a volver a mi centro cuando me siento desbordado/a?</p>']
+          prompts: ['<p>Pon en palabras tu aprendizaje y haz más tuya la experiencia.</p><p><ul><li>¿Qué me ayuda a volver a mi centro cuando me siento desbordado o desbordada?</li></ul></p>']
         },
         { type: 'title', text: 'Resumen Clave', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana4/Resumensemana4.mp3` },
         { type: 'list', items: ['El estrés no desaparece, pero puedes prepararte para atravesarlo con más conciencia.','Tener un plan personal te permite actuar antes de desbordarte.','Reconocer tus señales tempranas es una forma de autocuidado.','Recaer no es fracasar: es una oportunidad de aplicar lo aprendido.'] },
@@ -483,7 +483,7 @@ export const stressManagementPath: Path = {
           title: 'Reflexión Final de la Ruta de Gestión del Estrés',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Reflexionfinalruta1.mp3`,
           prompts: [
-            '<p>Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca. Ahora pasaremos a la reflexión final.</p><ul><li>¿Qué me ha enseñado esta ruta sobre mí misma/o que no quiero olvidar? </li></ul>',
+            '<p>Has llegado al final de la Ruta. Reconócete el trabajo hecho. Has aprendido qué es el estrés, cómo funciona en ti, de qué formas puedes gestionarlo y has elaborado un plan para afrontarlo cada vez que aparezca. Ahora pasaremos a la reflexión final.</p><ul><li>¿Qué ha cambiado en mi forma de ver el estrés?</li><li>¿Qué herramienta me llevo que antes no tenía?</li><li>¿Cómo quiero seguir cuidándome a partir de ahora?  </li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Final de la Ruta', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/cierre/Resumenfinalruta1.mp3` },

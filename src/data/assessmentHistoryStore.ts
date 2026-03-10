@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import type { InitialAssessmentOutput } from '@/ai/flows/initial-assessment';
@@ -66,7 +66,7 @@ export function saveAssessmentToHistory(assessmentData: InitialAssessmentOutput,
     const currentHistory = getAssessmentHistory();
     const updatedHistory = [newRecord, ...currentHistory].slice(0, MAX_HISTORY_ENTRIES);
     localStorage.setItem(ASSESSMENT_HISTORY_KEY, JSON.stringify(updatedHistory));
-    console.log("AssessmentHistoryStore: Saved new assessment record. Total records:", updatedHistory.length);
+   // console.log("AssessmentHistoryStore: Saved new assessment record. Total records:", updatedHistory.length);
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
     return newRecord;
   } catch (error) {
@@ -113,7 +113,7 @@ export function clearAssessmentHistory(): void {
   if (typeof window === "undefined") return;
   try {
     localStorage.removeItem(ASSESSMENT_HISTORY_KEY);
-    console.log("Assessment history cleared from localStorage.");
+   // console.log("Assessment history cleared from localStorage.");
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
   } catch (error) {
     console.error("Error clearing assessment history from localStorage:", error);
@@ -139,7 +139,7 @@ export function overwriteAssessmentHistory(records: AssessmentRecord[]): void {
     });
     const recordsToStore = sortedRecords.slice(0, MAX_HISTORY_ENTRIES);
     localStorage.setItem(ASSESSMENT_HISTORY_KEY, JSON.stringify(recordsToStore));
-    console.log("AssessmentHistoryStore: Overwritten local assessment history with API data. Total records:", recordsToStore.length);
+   // console.log("AssessmentHistoryStore: Overwritten local assessment history with API data. Total records:", recordsToStore.length);
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
   } catch (error) {
     console.error("Error overwriting assessment history in localStorage:", error);

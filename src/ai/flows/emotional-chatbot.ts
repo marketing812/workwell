@@ -1,4 +1,4 @@
-'use server';
+﻿'use server';
 
 /**
  * @fileOverview An AI-powered chatbot for emotional support and guidance using Cognitive-Behavioral Therapy principles.
@@ -231,16 +231,16 @@ const emotionalChatbotFlow = ai.defineFlow(
     let docsContext: string | undefined = undefined;
     try {
       // ✅ 1) Recupera contexto desde Firestore (kb-chunks)
-      console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
+     // console.log(`emotionalChatbotFlow: Buscando contexto para la pregunta: "${input.message}"`);
       
       const { context, chunks } = await retrieveDocsContext(input.message, { k: 6 });
       docsContext = context; // Assign to the outer scope variable
-      console.log("FLOW_FIRMA_123", { hasDocsContext: !!docsContext, len: docsContext?.length ?? 0 });
+     // console.log("FLOW_FIRMA_123", { hasDocsContext: !!docsContext, len: docsContext?.length ?? 0 });
       
-     /* console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
-      console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
-      console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
-      console.log("emotionalChatbotFlow: RAG context retrieved successfully.");*/
+    // /* console.log("RAG_CHAT chunks:", chunks?.length ?? 0);
+     // console.log("RAG_CHAT docsContext chars:", (docsContext ?? "").length);
+     // console.log("RAG_CHAT first sources:", (chunks ?? []).slice(0, 3).map((c:any) => c.source));
+     // console.log("emotionalChatbotFlow: RAG context retrieved successfully.");*/
 
     } catch (e: any) {
       console.error(
@@ -278,9 +278,9 @@ const raw =
     ? result.text()
     : (result?.text ?? result?.output ?? result?.message ?? "");
 /*
-console.log("LLM_RESULT_KEYS:", result ? Object.keys(result) : null);
-console.log("LLM_RAW_TYPE:", typeof raw);
-console.log("LLM_RAW_PREVIEW:", String(raw).slice(0, 300));
+// console.log("LLM_RESULT_KEYS:", result ? Object.keys(result) : null);
+// console.log("LLM_RAW_TYPE:", typeof raw);
+// console.log("LLM_RAW_PREVIEW:", String(raw).slice(0, 300));
 */
 const assistantText = String(raw ?? "").trim();
 

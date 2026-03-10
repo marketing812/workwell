@@ -84,20 +84,49 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">Todos hemos atravesado dificultades. Hoy te propongo mirar atrás no para quedarte ahí, sino para descubrir qué te ayudó a salir adelante.</p>
+            <p className="text-sm text-muted-foreground">Si quieres, antes de hacer tu línea del tiempo, puedes leer unos ejemplos que te servirán de inspiración.</p>
             <Accordion type="single" defaultValue="example" className="w-full text-left">
               <AccordionItem value="example">
-                <AccordionTrigger>Ver ejemplos</AccordionTrigger>
+                <AccordionTrigger>Ver ejemplos, recuerda: tu historia es única. Este ejemplo solo es una inspiración para ayudarte a conectar con tus propias vivencias y recursos. </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4 p-2">
-                    <div>
-                      <h4 className="font-semibold">Cambio de ciudad sin red de apoyo</h4>
-                      <p className="text-sm text-muted-foreground">Lo más difícil fue sentirme sola. Usé rutinas como salir a caminar para darme estabilidad. Aprendí que puedo adaptarme y que el coraje silencioso sostiene desde dentro.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">Ruptura amorosa inesperada</h4>
-                      <p className="text-sm text-muted-foreground">Lo más difícil fue la pérdida de un futuro imaginado. Pedí ayuda a una terapeuta, escribí en un diario y me permití llorar. Aprendí que puedo sostenerme incluso cuando lo que soñaba se desvanece.</p>
-                    </div>
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="example-1">
+                        <AccordionTrigger>Situación 1: Cambio de ciudad sin red de apoyo</AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-3 text-sm text-muted-foreground">
+                            <p><strong className="text-foreground">¿Qué fue lo más difícil?</strong><br />Sentirme sola. Dejar a mi familia y amistades para empezar desde cero en una ciudad donde no conocía a nadie. Me sentía pequeña y fuera de lugar.</p>
+                            <p><strong className="text-foreground">¿Qué recursos usé?</strong><br />Empecé a hacer pequeñas rutinas: salir a caminar por el mismo parque, ir a una cafetería fija… eso me dio sensación de estabilidad. También me animé a apuntarme a un taller de escritura, donde conocí gente. Aunque me daba vergüenza, me empujé con cariño.</p>
+                            <p><strong className="text-foreground">¿Qué aprendí?</strong><br />Que puedo adaptarme incluso cuando me siento desubicada. Que construir vínculos lleva tiempo, pero vale la pena. Aprendí que la soledad no me define y que puedo buscar compañía sin perder mi esencia.</p>
+                            <p><strong className="text-foreground">¿Qué me sorprendió de mí?</strong><br />La capacidad que tuve de cuidar de mí en lo cotidiano, aunque no me sintiera fuerte. El coraje silencioso que no se nota desde fuera, pero que sostiene desde dentro.</p>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="example-2">
+                        <AccordionTrigger>Situación 2: Ruptura amorosa inesperada</AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-3 text-sm text-muted-foreground">
+                            <p><strong className="text-foreground">¿Qué fue lo más difícil?</strong><br />Sentí que se rompía un futuro que ya me había imaginado. Me dolió la pérdida, pero también la sensación de no haber visto venir la ruptura.</p>
+                            <p><strong className="text-foreground">¿Qué recursos usé?</strong><br />Pedí ayuda a una terapeuta. Empecé a escribir un diario donde no me juzgaba. Me permití llorar sin culpa. Dejé de intentar entenderlo todo y me centré en cuidar lo que quedaba de mí.</p>
+                            <p><strong className="text-foreground">¿Qué aprendí?</strong><br />Que puedo sostenerme incluso cuando lo que soñaba se desvanece. Que la tristeza tiene su lugar, pero no es mi hogar permanente. Que a veces cerrar una puerta es abrir el paso a algo más verdadero.</p>
+                            <p><strong className="text-foreground">¿Qué me sorprendió de mí?</strong><br />Que no necesité reconstruirme deprisa. Me di tiempo. Y en ese tiempo, me reencontré con partes de mí que había dejado en pausa.</p>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="example-3">
+                        <AccordionTrigger>Situación 3: Enfermedad de un familiar cercano</AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-3 text-sm text-muted-foreground">
+                            <p><strong className="text-foreground">¿Qué fue lo más difícil?</strong><br />Ver sufrir a alguien que amo y no poder hacer mucho para aliviarlo. Sentirme impotente y, a la vez, tener que estar “entera” para acompañar.</p>
+                            <p><strong className="text-foreground">¿Qué recursos usé?</strong><br />Me apoyé en otros familiares. Hablé de lo que sentía con amistades de confianza. Hice pausas breves para respirar, caminar o simplemente estar conmigo. Aprendí a estar presente sin exigirme ser perfecta.</p>
+                            <p><strong className="text-foreground">¿Qué aprendí?</strong><br />Que puedo ser sostén sin desbordarme. Que incluso en medio del dolor, hay espacios de ternura, risa y conexión. Y que ser vulnerable no me resta valor como cuidadora.</p>
+                            <p><strong className="text-foreground">¿Qué me sorprendió de mí?</strong><br />La serenidad que logré encontrar en medio de todo. Nunca pensé que pudiera sentir paz en algo tan duro.</p>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                    <p className="text-sm text-muted-foreground">Tu línea del tiempo puede estar hecha de pérdidas, cambios, duelos o decisiones difíciles. Pero también está hecha de ti: de la fuerza que no se vio desde fuera, de las pequeñas elecciones conscientes, de tu forma única de levantarte.</p>
+                    <p className="text-sm text-muted-foreground">Es hora de reconocerlo con claridad y con cariño.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
