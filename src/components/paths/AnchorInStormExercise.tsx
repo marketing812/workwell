@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -165,7 +165,7 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ancla Guardada!</h4>
             <p>Recuérdala como una herramienta personal. Puedes volver a ella en cualquier momento. Cuanto más la practiques, más fácil será volver a tu centro incluso en la tormenta.</p>
-            <Button onClick={resetExercise} variant="outline">Crear otra ancla</Button>
+            
           </div>
         );
       default: return null;

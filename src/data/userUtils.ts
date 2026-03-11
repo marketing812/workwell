@@ -1,49 +1,31 @@
-﻿
-import { forceEncryptStringAES } from '@/lib/encryption';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
-
-const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
-const API_KEY = "4463";
-const API_TIMEOUT_MS = 15000;
+﻿function getApiBase(): string {
+  return (process.env.NEXT_PUBLIC_API_BASE_URL ?? "").replace(/\/+$/, "");
+}
 
 export async function sendLegacyData(
   data: Record<string, any>,
   type: 'usuario' | 'guardaranimo' | 'guardarlogin' | 'otro_tipo'
 ): Promise<{ success: boolean; debugUrl: string }> {
+  const base = getApiBase();
+  if (!base) {
+    return { success: false, debugUrl: 'API base no configurada' };
+  }
+
   try {
-    // Extract id and department_code to be sent unencrypted
-    const userId = data.id;
-    const departmentCode = data.department_code || '';
+    const response = await fetch(`${base}/legacy/sync`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, data }),
+      cache: 'no-store',
+    });
 
-    // Create a new object for encryption that excludes the unencrypted fields
-    const { id, name, email, department_code, ...encryptedData } = data;
-    
-    // Encrypt the rest of the data
-    const encryptedPayload = forceEncryptStringAES(JSON.stringify(encryptedData));
-
-    // Build the URL with unencrypted id and department_code, and the encrypted data
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(departmentCode)}&datos=${encodeURIComponent(encryptedPayload)}`;
-
-   // console.log(`Sending legacy data of type '${type}' to old URL...`);
-
-    // We are not awaiting the response to make the process faster for the user.
-    // The call is "fire and forget".
-    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
-      .then(response => {
-        if (!response.ok) {
-          console.warn(`Legacy data sync failed with status: ${response.status}`);
-        } else {
-         // console.log(`Legacy data sync for type '${type}' initiated successfully.`);
-        }
-      })
-      .catch(error => {
-        console.error(`Error sending legacy data for type '${type}':`, error);
-      });
-
-    return { success: true, debugUrl: url };
-  } catch (error) {
-    console.error(`Error preparing legacy data for sending (type: ${type}):`, error);
-    return { success: false, debugUrl: "Error creating URL" };
+    const payload = await response.json().catch(() => ({}));
+    return {
+      success: response.ok && payload?.success === true,
+      debugUrl: payload?.debugUrl || '',
+    };
+  } catch {
+    return { success: false, debugUrl: 'Error calling /legacy/sync' };
   }
 }
 
@@ -51,55 +33,34 @@ export async function deleteLegacyData(
   userId: string,
   type: 'borrarusuario'
 ): Promise<{ success: boolean; debugUrl: string }> {
+  const base = getApiBase();
+  if (!base || !userId || type !== 'borrarusuario') {
+    return { success: false, debugUrl: 'Invalid params or API base' };
+  }
+
   try {
-    // Build the URL for deletion, userId is NOT encrypted
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=${type}&idusuario=${encodeURIComponent(userId)}`;
+    const response = await fetch(`${base}/legacy/delete-user`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+      cache: 'no-store',
+    });
 
-   // console.log(`Sending delete request for user '${userId}' to legacy URL...`);
-
-    // "Fire and forget" call
-    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
-      .then(response => {
-        if (!response.ok) {
-          console.warn(`Legacy user deletion failed with status: ${response.status}`);
-        } else {
-         // console.log(`Legacy user deletion for user '${userId}' initiated successfully.`);
-        }
-      })
-      .catch(error => {
-        console.error(`Error sending legacy delete request for user '${userId}':`, error);
-      });
-
-    return { success: true, debugUrl: url };
-  } catch (error) {
-    console.error(`Error preparing legacy delete request for user '${userId}':`, error);
-    return { success: false, debugUrl: "Error creating delete URL" };
+    const payload = await response.json().catch(() => ({}));
+    return {
+      success: response.ok && payload?.success === true,
+      debugUrl: payload?.debugUrl || '',
+    };
+  } catch {
+    return { success: false, debugUrl: 'Error calling /legacy/delete-user' };
   }
 }
 
-// DEPRECATED - This function is no longer called directly from the client.
-// The functionality has been moved to the /api/save-notebook-entry route.
-// It is kept here for historical reference.
 export async function sendLegacyNotebookEntry(
   userId: string,
   entryData: Record<string, any>
 ): Promise<{ success: boolean; debugUrl: string }> {
-  console.warn("DEPRECATED: sendLegacyNotebookEntry is no longer in use. Please use the /api/save-notebook-entry endpoint.");
-  try {
-    const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
-    
-    // Corrected to send raw userId
-    const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=guardarcuaderno&idusuario=${encodeURIComponent(userId)}&token=&datos=${encodeURIComponent(encryptedPayload)}`;
-
-    // This part of the code is effectively unused now.
-    fetch(url, { signal: AbortSignal.timeout(API_TIMEOUT_MS) })
-        .catch(error => {
-            console.error(`Error sending legacy notebook entry for user '${userId}':`, error);
-        });
-
-    return { success: true, debugUrl: url };
-  } catch (error) {
-    console.error(`Error preparing legacy notebook entry for sending for user '${userId}':`, error);
-    return { success: false, debugUrl: "Error creating legacy notebook entry URL" };
-  }
+  console.warn('DEPRECATED: sendLegacyNotebookEntry is no longer in use.');
+  if (!userId || !entryData) return { success: false, debugUrl: 'Invalid payload' };
+  return { success: true, debugUrl: '' };
 }

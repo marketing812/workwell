@@ -116,6 +116,11 @@ export default function EmotionalLogPage() {
             {t.fullEmotionalHistoryTitle}
         </h1>
         <div className="flex gap-2">
+            <Button variant="outline" asChild>
+              <Link href="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas">
+                ¿qué es el autorregistro?
+              </Link>
+            </Button>
             <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
               <DialogTrigger asChild>
                 <Button variant="default" className="shadow-md">

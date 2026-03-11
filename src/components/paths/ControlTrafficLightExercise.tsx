@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -197,9 +197,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
             <p className="text-muted-foreground">Tu semáforo ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Hacer otro registro
-            </Button>
+            
           </div>
         )}
       </CardContent>

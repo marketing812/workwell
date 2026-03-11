@@ -124,7 +124,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep} disabled={!complaint.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -147,7 +147,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep} disabled={!underControl.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -175,7 +175,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep} disabled={!concreteAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -213,7 +213,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep} disabled={!tableComplaint.trim() || !tableAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -238,7 +238,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
@@ -253,11 +253,6 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Ejercicio guardado</h4>
             <p className="text-muted-foreground">La practica se guardo en tu cuaderno terapeutico.</p>
-            {isSaved && (
-              <Button onClick={resetExercise} variant="outline" className="w-full">
-                Hacer otro registro
-              </Button>
-            )}
           </div>
         );
       default:

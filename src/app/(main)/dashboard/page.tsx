@@ -35,7 +35,6 @@ import {
 import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
 import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
 import { pathsData } from '@/data/pathsData';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import { saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
 
 const MoodCheckInObjectSchema = z.object({
@@ -107,61 +106,30 @@ export default function DashboardPage() {
     setError(null); 
     setDebugUrl(null);
     try {
-      const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
-      const API_KEY = "4463";
-      
-      const clave = "SJDFgfds788sdfs8888KLLLL";
-      const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-      const raw = `${clave}|${fecha}`;
-      const token = btoa(raw);
-      const base64UserId = btoa(user.id);
-      
-      const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getanimo&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
-      setDebugUrl(url);
-
-      const response = await fetch(url, { cache: 'no-store' });
-      let responseText = await response.text();
-       
-      let jsonToParse = responseText;
-      if (!responseText.trim().startsWith('{')) {
-          const jsonStartIndex = responseText.indexOf('{');
-          if (jsonStartIndex !== -1) {
-              const jsonEndIndex = responseText.lastIndexOf('}');
-              if (jsonEndIndex > jsonStartIndex) {
-                  jsonToParse = responseText.substring(jsonStartIndex, jsonEndIndex + 1);
-              }
-          }
-      }
-
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(
+        `${base}/mood-check-ins?userId=${encodeURIComponent(user.id)}`,
+        { cache: 'no-store' }
+      );
       if (!response.ok) {
-        throw new Error(`Error del servidor (HTTP ${response.status}): ${responseText.substring(0, 150)}`);
+        const text = await response.text();
+        throw new Error(`Error del servidor (HTTP ${response.status}): ${text.substring(0, 150)}`);
       }
-      
-      const apiResult = JSON.parse(jsonToParse);
-      
-      if (apiResult.status === "OK" && Array.isArray(apiResult.data)) {
-        const validation = MoodCheckInsApiResponseSchema.safeParse(apiResult.data);
 
-        if (validation.success) {
-          const entries = validation.data.map((item, index) => ({
-              id: `mood-${Date.now()}-${index}`,
-              mood: item.mood,
-              score: item.score,
-              timestamp: new Date(item.timestamp.replace(' ', 'T')),
-          })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
-          
-          setAllMoodCheckIns(entries);
-        } else {
-           const errorMessage = "Error validando los datos de ánimo desde la API: " + validation.error.message;
-           console.error(errorMessage, validation.error);
-           throw new Error(errorMessage);
-        }
-      } else if (apiResult.message && (apiResult.message.toLowerCase().includes("no hay registros") || apiResult.message.toLowerCase().includes("no existen registros"))) {
-          setAllMoodCheckIns([]);
+      const payload = await response.json();
+      setDebugUrl(payload?.debugUrl || null);
+      const validation = MoodCheckInsApiResponseSchema.safeParse(payload?.entries ?? []);
+      if (validation.success) {
+        const entries = validation.data.map((item) => ({
+          id: `mood-${new Date(item.timestamp).getTime()}`,
+          mood: item.mood,
+          score: item.score,
+          timestamp: new Date(item.timestamp.replace(' ', 'T')),
+        })).sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+        setAllMoodCheckIns(entries);
       } else {
-        throw new Error(`Respuesta de API inesperada: ${apiResult.message || 'Sin mensaje'}`);
+        throw new Error("Error validando los datos de animo desde el backend.");
       }
-
     } catch (error: any) {
       const errorMessage = error.message || "Ocurrió un error desconocido al cargar los registros.";
       console.error("Error cargando los registros de ánimo:", error);

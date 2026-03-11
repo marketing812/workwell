@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -143,7 +143,7 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
               Este pacto no es una obligación. Es una forma de cuidarte con conciencia, de recordarte lo que vales, y de tener un faro cuando lleguen días grises. Llévalo contigo. 
               Porque esto no se acaba… solo empieza de otra manera.
             </p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Crear otro pacto</Button>
+            
           </div>
         );
       default:

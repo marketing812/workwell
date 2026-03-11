@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -99,9 +99,7 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Definición Guardada</h4>
             <p className="text-muted-foreground">Tendrás acceso a ella cuando necesites recordarte de lo que eres capaz.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Empezar de nuevo
-            </Button>
+            
           </div>
         );
       default:

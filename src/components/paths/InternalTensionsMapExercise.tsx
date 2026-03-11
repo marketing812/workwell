@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -220,7 +220,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Mapa Guardado</h4>
                         <p>Tu mapa de tensiones internas ha sido guardado. Puedes volver a él cuando necesites claridad.</p>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                        
                     </div>
                 );
             default: return null;

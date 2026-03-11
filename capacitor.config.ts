@@ -3,9 +3,9 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.workwell.app',
   appName: 'WorkWell',
-  webDir: 'public',
+  webDir: 'out',//public
   server: {
-    url: 'https://emotiva--workwell-c4rlk.europe-west4.hosted.app',
+    //url: 'https://emotiva--workwell-c4rlk.europe-west4.hosted.app',
     cleartext: false
   }
 };

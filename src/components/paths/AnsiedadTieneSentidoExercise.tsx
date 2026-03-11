@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -220,7 +220,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                         <p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p>
                         <div className="flex justify-between w-full mt-2">
                            <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
-                           <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro registro</Button>
+                           
                         </div>
                     </div>
                 );

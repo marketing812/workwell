@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -265,7 +265,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
                 <p className="italic">"Tus decisiones crean tu camino. No importa si es grande o pequeño: cada paso desde el propósito cuenta."</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={resetExercise} variant="outline" className="w-auto">Crear otra hoja de ruta</Button>
+                    
                 </div>
             </div>
         );

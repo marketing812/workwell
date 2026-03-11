@@ -61,29 +61,7 @@ export function AppHeader() {
       </div>
       
       <div className="flex items-center gap-2">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={forceMoodCheckInOpen}>
-              <Smile className="h-5 w-5 text-primary" />
-              <span className="sr-only">Chequeo de Ánimo</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Chequeo de Ánimo</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-            <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" onClick={forceOpen}>
-                  <MessageSquareQuote className="h-5 w-5 text-primary" />
-                  <span className="sr-only">Pregunta Diaria</span>
-                </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-                <p>Pregunta Diaria</p>
-            </TooltipContent>
-        </Tooltip>
+    
 
         {showProgressBadge && activePath && (
           <Tooltip>

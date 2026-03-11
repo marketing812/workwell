@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -287,7 +287,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
           <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <p className="font-semibold">"Cada mañana es una oportunidad para cuidarte, y tú acabas de darle a la tuya un nuevo sentido."</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Crear un nuevo plan</Button>
+            
           </div>
         );
       default:

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect, useCallback, type DragEvent } from 'react';
@@ -201,9 +201,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Has diseñado tu propia escalera de exposición.</h4>
             <p className="text-muted-foreground">Cada peldaño que subas será un entrenamiento para tu confianza. Recuerda: no necesitas subir de golpe. Basta con dar un paso, mantenerte, y volver a intentarlo. Con cada práctica, tu cerebro aprende que eres más capaz de lo que imaginas.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Hacer otra escalera
-            </Button>
+            
           </div>
         );
       default: return null;

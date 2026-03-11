@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -126,7 +126,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Círculo Guardado</h4>
             <p className="text-muted-foreground">"Este círculo es tu recordatorio de que no tienes que sostenerte solo o sola. Y también, de que tú eres parte del círculo de alguien más."</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+            
           </div>
         );
       default: return null;

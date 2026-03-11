@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -214,7 +214,7 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                <p className="text-sm italic text-primary">{balanceMessage}</p>
                <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                     <Button onClick={() => setStep(1)} variant="outline">Editar mi registro</Button>
-                    <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+                    
                </div>
            </div>
         );

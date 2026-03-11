@@ -17,9 +17,9 @@ export function initializeFirebase() {
       // Attempt to initialize via Firebase App Hosting environment variables
       firebaseApp = initializeApp();
     } catch (e) {
-      // Only warn in production because it's normal to use the firebaseConfig to initialize
-      // during development
-      if (process.env.NODE_ENV === "production") {
+      // During static export/build, automatic App Hosting init is expected to fail.
+      // Keep the fallback, but avoid noisy server-side build warnings.
+      if (typeof window !== 'undefined' && process.env.NODE_ENV === "production") {
         console.warn('Automatic initialization failed. Falling back to firebase config object.', e);
       }
       firebaseApp = initializeApp(firebaseConfig);

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -247,7 +247,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Botiquín Guardado</h4>
                 <p className="text-muted-foreground">Tu botiquín emocional ha sido guardado. Puedes volver a consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-                <Button onClick={resetExercise} variant="outline">Crear otro botiquín</Button>
+                
             </div>
         );
       default:

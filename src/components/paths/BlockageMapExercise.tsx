@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -255,9 +255,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">¡Mapa Guardado!</h4>
                 <p className="text-muted-foreground">Tu mapa del bloqueo se ha guardado en tu Cuaderno Terapéutico. Puedes consultarlo cuando quieras para recordar tus patrones.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">
-                  Registrar otra situación
-                </Button>
+                
             </div>
         );
       default:

@@ -1,10 +1,12 @@
-
+﻿
 import { pathsData } from '@/data/pathsData';
 import { PathDetailClient } from '@/components/paths/PathDetailClient';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+  return pathsData.map((path) => ({ pathId: path.id }));
+}
 
 interface PathDetailPageProps {
   params: Promise<{ pathId: string }>;
@@ -28,3 +30,4 @@ export async function generateMetadata(
   const path = pathsData.find(p => p.id === pathId);
   return { title: path?.title || "Ruta de Desarrollo" };
 }
+

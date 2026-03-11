@@ -31,13 +31,13 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
   const handleComplete = () => {
     if (!isCompleted) {
       addNotebookEntry({
-        title: `Práctica completada: ${content.title}`,
-        content: "He completado la visualización de Escudo Empático y he marcado el módulo como finalizado.",
+        title: `PrÃ¡ctica completada: ${content.title}`,
+        content: "He completado la visualizaciÃ³n de Escudo EmpÃ¡tico y he marcado el mÃ³dulo como finalizado.",
         pathId: pathId,
         userId: user?.id,
       });
       setIsCompleted(true);
-      toast({ title: "Práctica Finalizada", description: "Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti." });
+      toast({ title: "PrÃ¡ctica Finalizada", description: "Has entrenado una nueva forma de cuidar: desde la empatÃ­a que tambiÃ©n te cuida a ti." });
       onComplete();
     }
     setStep(7); // Go to final confirmation screen
@@ -48,7 +48,7 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
       case 0: // Intro
         return (
           <div className="p-4 space-y-4 text-center">
-            <Button onClick={nextStep}>Empezar Visualización <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar VisualizaciÃ³n <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Bienvenida
@@ -59,26 +59,26 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
               <source src="`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantalla12.mp3`" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
             </audio>
-            <p className="text-muted-foreground">Vamos a realizar una visualización para ayudarte a sostener a los demás sin perderte tú. Imagina que construyes un espacio interno que te protege sin cerrarte. Ese espacio se llama escudo empático: un filtro emocional que cuida tu energía y mantiene tu presencia sin exigirte absorber lo que no te corresponde.</p>
+            <p className="text-muted-foreground">Vamos a realizar una visualizaciÃ³n para ayudarte a sostener a los demÃ¡s sin perderte tÃº. Imagina que construyes un espacio interno que te protege sin cerrarte. Ese espacio se llama escudo empÃ¡tico: un filtro emocional que cuida tu energÃ­a y mantiene tu presencia sin exigirte absorber lo que no te corresponde.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
-      case 2: // Respiración
+      case 2: // RespiraciÃ³n
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary text-center">Respiración y conexión</h4>
+            <h4 className="font-semibold text-lg text-primary text-center">RespiraciÃ³n y conexiÃ³n</h4>
             <audio controls controlsList="nodownload" className="w-full">
               <source src="`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantallas2-6-2.mp3`" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
             </audio>
-            <p className="text-muted-foreground">Busca una posición cómoda. Cierra los ojos si te ayuda a conectar. Lleva tu atención a la respiración.</p>
-            <p className="text-muted-foreground">Inhala por la nariz… Retén… Exhala por la boca, vaciando completamente. Hazlo dos veces más… Y siente cómo tu cuerpo empieza a calmarse.</p>
+            <p className="text-muted-foreground">Busca una posiciÃ³n cÃ³moda. Cierra los ojos si te ayuda a conectar. Lleva tu atenciÃ³n a la respiraciÃ³n.</p>
+            <p className="text-muted-foreground">Inhala por la narizâ€¦ RetÃ©nâ€¦ Exhala por la boca, vaciando completamente. Hazlo dos veces mÃ¡sâ€¦ Y siente cÃ³mo tu cuerpo empieza a calmarse.</p>
             <p className="text-muted-foreground italic">Solo por hoy, no tienes que resolver nada. Solo estar.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -87,10 +87,10 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Construye tu escudo emocional</h4>
-            <p className="text-muted-foreground">Imagina ahora que una luz suave y cálida te envuelve. Puede tener el color que tú necesites hoy. Esta luz forma un escudo flexible a tu alrededor: por delante, por detrás, a los lados, arriba, abajo.</p>
-            <p className="text-muted-foreground">Este escudo no es una barrera. Es una membrana sabia: deja pasar lo que nutre, y suaviza lo que desborda. Dentro de él respiras mejor. Piensas con más claridad. Puedes cuidar sin romperte.</p>
+            <p className="text-muted-foreground">Imagina ahora que una luz suave y cÃ¡lida te envuelve. Puede tener el color que tÃº necesites hoy. Esta luz forma un escudo flexible a tu alrededor: por delante, por detrÃ¡s, a los lados, arriba, abajo.</p>
+            <p className="text-muted-foreground">Este escudo no es una barrera. Es una membrana sabia: deja pasar lo que nutre, y suaviza lo que desborda. Dentro de Ã©l respiras mejor. Piensas con mÃ¡s claridad. Puedes cuidar sin romperte.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -99,10 +99,10 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Escena emocional real</h4>
-            <p className="text-muted-foreground">Ahora, piensa en una persona o situación que suele exigirte emocionalmente. Imagina que estás ahí, pero con tu escudo activo.</p>
-            <p className="text-muted-foreground">Ves al otro. Lo escuchas. Comprendes su emoción… Pero no te pierdes en ella. Tu centro sigue contigo. Estás presente. Estás entera/o. Acompañas… pero no absorbes.</p>
+            <p className="text-muted-foreground">Ahora, piensa en una persona o situaciÃ³n que suele exigirte emocionalmente. Imagina que estÃ¡s ahÃ­, pero con tu escudo activo.</p>
+            <p className="text-muted-foreground">Ves al otro. Lo escuchas. Comprendes su emociÃ³nâ€¦ Pero no te pierdes en ella. Tu centro sigue contigo. EstÃ¡s presente. EstÃ¡s entera/o. AcompaÃ±asâ€¦ pero no absorbes.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -111,15 +111,15 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Refuerza tu espacio interior</h4>
-            <p className="text-muted-foreground">Vuelve a ti. A tu cuerpo. A tu escudo. Siente su contorno. Respira dentro de él.</p>
+            <p className="text-muted-foreground">Vuelve a ti. A tu cuerpo. A tu escudo. Siente su contorno. Respira dentro de Ã©l.</p>
             <p className="text-muted-foreground">Repite mentalmente:</p>
             <blockquote className="p-4 italic border-l-4 bg-background border-primary">
-              <p>“Puedo cuidar sin desaparecer.”</p>
-              <p>“Mi presencia es suficiente.”</p>
-              <p>“También yo merezco protección emocional.”</p>
+              <p>â€œPuedo cuidar sin desaparecer.â€</p>
+              <p>â€œMi presencia es suficiente.â€</p>
+              <p>â€œTambiÃ©n yo merezco protecciÃ³n emocional.â€</p>
             </blockquote>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -128,11 +128,11 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Cierre: tu escudo sigue contigo</h4>
-            <p className="text-muted-foreground">Imagina cómo ese escudo se integra en tu conciencia. No desaparece: ahora vive dentro de ti, como una herramienta que puedes activar siempre que lo necesites.</p>
-            <p className="text-muted-foreground">Respira una última vez… Y cuando estés lista/o, vuelve suavemente al presente.</p>
-            <p className="text-muted-foreground italic">Has entrenado una nueva forma de cuidar: desde la empatía que también te cuida a ti.</p>
+            <p className="text-muted-foreground">Imagina cÃ³mo ese escudo se integra en tu conciencia. No desaparece: ahora vive dentro de ti, como una herramienta que puedes activar siempre que lo necesites.</p>
+            <p className="text-muted-foreground">Respira una Ãºltima vezâ€¦ Y cuando estÃ©s lista/o, vuelve suavemente al presente.</p>
+            <p className="text-muted-foreground italic">Has entrenado una nueva forma de cuidar: desde la empatÃ­a que tambiÃ©n te cuida a ti.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={handleComplete}>Finalizar Ejercicio <CheckCircle className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -141,9 +141,9 @@ export default function EmpathicShieldVisualizationExercise({ content, pathId, o
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
-            <p className="text-muted-foreground">Has creado un recurso interno muy valioso. Recuerda tu escudo empático la próxima vez que necesites cuidar y cuidarte. Tu escudo ahora vive dentro de ti.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Repetir Visualización</Button>
+            <h4 className="font-bold text-lg">Â¡PrÃ¡ctica finalizada!</h4>
+            <p className="text-muted-foreground">Has creado un recurso interno muy valioso. Recuerda tu escudo empÃ¡tico la prÃ³xima vez que necesites cuidar y cuidarte. Tu escudo ahora vive dentro de ti.</p>
+            
           </div>
         );
       default:

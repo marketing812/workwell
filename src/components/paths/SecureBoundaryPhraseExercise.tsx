@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -154,7 +154,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">¡Frase Guardada!</h4>
                         <p className="text-muted-foreground">Tu frase de límite seguro se ha guardado. Puedes practicarla para que se vuelva parte de tu forma natural de comunicarte.</p>
-                        <Button onClick={resetExercise} variant="outline">Crear otra frase</Button>
+                        
                     </div>
                 );
             default:

@@ -1,11 +1,13 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   allowedDevOrigins: [
     "https://6000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev",
     "https://9000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev"
   ],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

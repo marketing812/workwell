@@ -1,0 +1,178 @@
+1:"$Sreact.fragment"
+2:I[16521,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"default"]
+3:I[48906,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ThemeProvider"]
+4:I[8282,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"FirebaseClientProvider"]
+5:I[29141,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"UserProvider"]
+6:I[14015,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ActivePathProvider"]
+7:I[9766,[],""]
+8:I[98924,[],""]
+9:I[18516,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"Toaster"]
+a:I[17989,[],"ClientSegmentRoot"]
+b:I[24784,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","6305","static/chunks/6305-46a61b1cfde3a029.js","784","static/chunks/784-2d9b37d01b82cf89.js","9779","static/chunks/9779-7630885f177320bb.js","2619","static/chunks/2619-04bc32f026a0d946.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","891","static/chunks/891-f1c0d682454575d6.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","3409","static/chunks/3409-2bce32c9b7806ab7.js","2477","static/chunks/2477-22f45d0551f7ecaf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","2076","static/chunks/app/(main)/layout-f295f1771e0f0803.js"],"default"]
+e:I[24431,[],"OutletBoundary"]
+10:I[15278,[],"AsyncMetadataOutlet"]
+12:I[24431,[],"ViewportBoundary"]
+14:I[24431,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+17:I[57150,[],""]
+:HL["/_next/static/css/b297fb236247ffc6.css","style"]
+0:{"P":null,"b":"hq8koZ9QfljX6AlkSzqFd","p":"","c":["","resources","post","terapia-cognitivo-conductual-tcc-una-brujula-para-tu-bienestar"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","terapia-cognitivo-conductual-tcc-una-brujula-para-tu-bienestar","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b297fb236247ffc6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L9",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$La",null,{"Component":"$b","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@c"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","terapia-cognitivo-conductual-tcc-una-brujula-para-tu-bienestar","d"],["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Ld",null,["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],null],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}],false]],"m":"$undefined","G":["$17",[]],"s":false,"S":true}
+c:"$0:f:0:1:2:children:1:props:children:1:props:params"
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+18:I[80622,[],"IconMark"]
+11:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L18","1",{}]],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
+19:T1372,
+<p><em>Porque lo que piensas influye en lo que sientes… y lo que sientes guía lo que haces</em>&nbsp;</p>
+
+
+
+<p>La&nbsp;<strong>Terapia Cognitivo-Conductual (TCC)</strong>&nbsp;es uno de los enfoques psicológicos con mayor respaldo científico en el mundo.&nbsp;</p>
+
+
+
+<p>Quizás has escuchado esta metáfora antes; imagina que tu mente es como un par de gafas: si los cristales están rayados o distorsionados, verás&nbsp;partes de&nbsp;la realidad&nbsp;borrosa. La TCC te ayuda a limpiar esas lentes para que veas con más claridad y decidas con más calma.&nbsp;</p>
+
+
+
+<p>No es que pienses de forma incorrecta, sino que&nbsp;cuando tu&nbsp;mente está en modo automático, a veces, tiene pensamientos que interpretan la realidad de una forma&nbsp;menos precisa e influida, en mayor intensidad, por la emoción del momento.&nbsp;</p>
+
+
+
+<p>La TCC no busca que pienses de una forma específica, sino que entrenes a tu mente para mirar de una manera funcional y adaptativa.&nbsp;&nbsp;</p>
+
+
+
+<p><strong>¿Qué propone la TCC?</strong>&nbsp;</p>
+
+
+
+<p>Parte de una idea sencilla:&nbsp;<strong>Tus pensamientos influyen en tus emociones, y estas influyen en tus acciones.</strong>&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Si piensas <em>“voy a fracasar”</em>, probablemente sientas ansiedad. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Si piensas <em>“puedo intentarlo paso a paso”</em>, sentirás más calma y motivación. </li>
+</ul>
+
+
+
+<p>Aaron Beck, uno de&nbsp;los creadores de la terapia&nbsp;cognitiva, descubrió que detrás de muchos problemas emocionales hay&nbsp;<strong>pensamientos automáticos</strong>: frases internas rápidas y casi invisibles que moldean cómo interpretas lo que ocurre.&nbsp;Son ideas que aparecen de forma espontánea, sin que las elijas, todos las tenemos. A veces son útiles y te ayudan a orientarte, pero otras veces se activan desde patrones aprendidos y pueden llevarte a conclusiones duras o desproporcionadas. Por su velocidad y familiaridad, suelen sentirse como “hechos”, cuando en realidad son interpretaciones automáticas que tu mente genera para intentar darte sentido y protección.&nbsp;</p>
+
+
+
+<p><strong>Cómo funciona en la práctica</strong>&nbsp;</p>
+
+
+
+<p>La TCC combina reflexión y acción:&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Detectar</strong> los pensamientos automáticos que aparecen sin darte cuenta. </li>
+</ol>
+
+
+
+<ol start="2" class="wp-block-list">
+<li><strong>Cuestionarlos</strong> con evidencias reales. </li>
+</ol>
+
+
+
+<ol start="3" class="wp-block-list">
+<li><strong>Sustituirlos</strong> por interpretaciones más útiles y equilibradas. </li>
+</ol>
+
+
+
+<ol start="4" class="wp-block-list">
+<li><strong>Practicar nuevas conductas</strong> que refuercen esos cambios. </li>
+</ol>
+
+
+
+<p>Es un proceso de aprendizaje: cuando entrenas nuevas formas de pensar y actuar, tu cerebro ajusta sus conexiones y fortalece patrones más útiles y flexibles.&nbsp;</p>
+
+
+
+<p><strong>El respaldo de la ciencia</strong>&nbsp;</p>
+
+
+
+<p>La TCC es&nbsp;una de las&nbsp;terapias&nbsp;más investigadas&nbsp;del mundo&nbsp;y con mayor respaldo empírico:&nbsp;&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>La <strong>APA</strong> (American Psychological Association) y la <strong>OMS</strong> la recomiendan como primera opción para ansiedad, depresión, fobias y estrés. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Estudios de revisión (Butler et al., 2006; Hofmann et al., 2012) muestran su eficacia en cientos de ensayos clínicos. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>La neurociencia confirma que con práctica se activa la <strong>corteza prefrontal</strong> (autorregulación) y se reducen respuestas automáticas del sistema de amenaza (amígdala). </li>
+</ul>
+
+
+
+<p><strong>Por qué funciona en tu día a día</strong>&nbsp;</p>
+
+
+
+<p>La TCC&nbsp;propone ejercicios concretos, como escribir tus pensamientos, probar nuevas respuestas o aplicar técnicas de relajación.&nbsp;</p>
+
+
+
+<p>Cada pequeño cambio genera&nbsp;<strong>experiencias&nbsp;nuevas</strong>: esas vivencias que enseñan a tu mente que puedes actuar de otro modo y sentirte mejor.&nbsp;</p>
+
+
+
+<p>No es teoría, es práctica: un camino para recuperar confianza y crear hábitos emocionales más sanos.&nbsp;</p>
+
+
+
+<p>La&nbsp;<strong>Terapia Cognitivo-Conductual</strong>&nbsp;es una brújula basada en ciencia que te ayuda a orientarte cuando tus pensamientos te desvían.&nbsp;</p>
+
+
+
+<p>Te ofrece:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Claridad para entender lo que sientes. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Herramientas para actuar de forma distinta. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Confianza para transformar tu vida paso a paso. </li>
+</ul>
+
+
+
+<p>En EMOTIVA la hemos&nbsp;elegido&nbsp;como&nbsp;base porque combina lo que más importa:&nbsp;<strong>rigor científico, humanidad y resultados reales</strong>.&nbsp;</p>
+d:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"TERAPIA COGNITIVO-CONDUCTUAL (TCC): UNA BRÚJULA PARA TU BIENESTAR "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$19"}}]}]]}],"$L1a"]}]
+1b:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-20f86404156ccb66.js"],""]
+1a:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1b",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

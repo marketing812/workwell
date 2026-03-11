@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -347,9 +347,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <blockquote className="italic text-primary pt-2">“Cada recuerdo positivo que eliges guardar es como encender una luz en tu interior. No elimina la oscuridad, pero sí te recuerda que siempre hay algo que puede iluminar tu camino.”</blockquote>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">
-                            Añadir nuevos recuerdos
-                        </Button>
+                        
                     </div>
                 );
             default: return null;

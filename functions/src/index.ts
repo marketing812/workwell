@@ -8,7 +8,7 @@ export const api = onRequest(
   {
     cors: true,
     timeoutSeconds: 120,
-     secrets: ["GEMINI_API_KEY"],
+    secrets: ["GEMINI_API_KEY", "ADMIN_DELETE_USERS_API_KEY"],
   },
   app
 );

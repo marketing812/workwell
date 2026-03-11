@@ -1,0 +1,298 @@
+1:"$Sreact.fragment"
+2:I[16521,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"default"]
+3:I[48906,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ThemeProvider"]
+4:I[8282,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"FirebaseClientProvider"]
+5:I[29141,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"UserProvider"]
+6:I[14015,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ActivePathProvider"]
+7:I[9766,[],""]
+8:I[98924,[],""]
+9:I[18516,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"Toaster"]
+a:I[17989,[],"ClientSegmentRoot"]
+b:I[24784,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","6305","static/chunks/6305-46a61b1cfde3a029.js","784","static/chunks/784-2d9b37d01b82cf89.js","9779","static/chunks/9779-7630885f177320bb.js","2619","static/chunks/2619-04bc32f026a0d946.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","891","static/chunks/891-f1c0d682454575d6.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","3409","static/chunks/3409-2bce32c9b7806ab7.js","2477","static/chunks/2477-22f45d0551f7ecaf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","2076","static/chunks/app/(main)/layout-f295f1771e0f0803.js"],"default"]
+e:I[24431,[],"OutletBoundary"]
+10:I[15278,[],"AsyncMetadataOutlet"]
+12:I[24431,[],"ViewportBoundary"]
+14:I[24431,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+17:I[57150,[],""]
+:HL["/_next/static/css/b297fb236247ffc6.css","style"]
+0:{"P":null,"b":"hq8koZ9QfljX6AlkSzqFd","p":"","c":["","resources","post","dormir-no-es-detener-la-vida-es-permitir-que-funcione"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","dormir-no-es-detener-la-vida-es-permitir-que-funcione","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b297fb236247ffc6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L9",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$La",null,{"Component":"$b","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@c"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","dormir-no-es-detener-la-vida-es-permitir-que-funcione","d"],["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Ld",null,["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],null],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}],false]],"m":"$undefined","G":["$17",[]],"s":false,"S":true}
+c:"$0:f:0:1:2:children:1:props:children:1:props:params"
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+18:I[80622,[],"IconMark"]
+11:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L18","1",{}]],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
+19:T2049,
+<p><em>Lo que ocurre en tu cerebro mientras duermes, incluso cuando tú no estás activo</em>&nbsp;</p>
+
+
+
+<p>Dormir adecuadamente no es un lujo ni una actividad secundaria. Es una&nbsp;<strong>función biológica esencial</strong>, tan necesaria como respirar o alimentarse. Aun así, solemos tratarlo como si fuera negociable.&nbsp;</p>
+
+
+
+<p>Cuando duermes, tu organismo realiza procesos clave:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>restaura la energía,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>regula la actividad cerebral,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>consolida información,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>y prepara al cuerpo para el día siguiente.&nbsp;</li>
+</ul>
+
+
+
+<p>No se trata solo de “descansar”, sino de permitir que el sistema nervioso lleve a cabo tareas que&nbsp;<strong>solo pueden ocurrir durante el sueño</strong>.&nbsp;</p>
+
+
+
+<p><strong>Dormir: el gran sistema operativo de tu cuerpo</strong>&nbsp;</p>
+
+
+
+<p>El sueño es un proceso biológico activo y complejo regulado por el sistema nervioso central. No consiste en “apagarse”, sino en atravesar ciclos en los que el cuerpo y el cerebro llevan a cabo funciones esenciales para la salud física, cognitiva y emocional.&nbsp;</p>
+
+
+
+<p>De acuerdo con organismos como el&nbsp;<em>National&nbsp;Institute&nbsp;of&nbsp;Neurological&nbsp;Disorders&nbsp;and&nbsp;Stroke</em>, durante el sueño se activan procesos fundamentales, entre ellos:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Restauración del sistema inmune y endocrino.</strong>&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Consolidación de la memoria y del aprendizaje.</strong>&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Eliminación de subproductos metabólicos del cerebro</strong>, incluido material de desecho que se acumula durante la vigilia.&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Regulación emocional y optimización de la toma de decisiones.</strong>&nbsp;</li>
+</ul>
+
+
+
+<p>Además, investigaciones con neuroimagen muestran que en la fase REM se activan regiones cerebrales implicadas en&nbsp;<strong>creatividad, integración emocional y resolución de problemas</strong>. Esto indica que parte del procesamiento cognitivo complejo ocurre precisamente mientras dormimos.&nbsp;</p>
+
+
+
+<p><strong>NREM y REM: los dos mundos del sueño</strong>&nbsp;</p>
+
+
+
+<p>Tu noche se divide en ciclos de&nbsp;aproximadamente&nbsp;90 minutos, donde se alternan dos tipos de sueño:&nbsp;</p>
+
+
+
+<p><strong>Sueño NREM (sin movimientos oculares rápidos)</strong>&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Fases 1 y 2:&nbsp;<strong>transición al descanso</strong>.&nbsp;Se reduce el tono muscular, baja la temperatura corporal y la actividad cerebral se ralentiza. Es la fase en la que empezamos a desconectarnos del entorno.&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Fases 3 y 4:&nbsp;<strong>sueño profundo o “de ondas lentas”</strong>.&nbsp;Aquí ocurren funciones clave como la recuperación física, la liberación de hormona del crecimiento, la reparación de tejidos y procesos que apoyan la función inmunológica.&nbsp;</li>
+</ul>
+
+
+
+<p><strong>Sueño REM (movimientos oculares rápidos)</strong>&nbsp;</p>
+
+
+
+<p>Aparece después de unos 90 minutos y se alarga en cada ciclo nocturno.&nbsp;Durante la fase REM:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>la actividad cerebral es más elevada,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>se producen la mayoría de los sueños vívidos,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>y se llevan a cabo procesos implicados en la&nbsp;<strong>regulación emocional</strong>, la&nbsp;<strong>consolidación de ciertos tipos de memoria</strong>&nbsp;y la&nbsp;<strong>integración de experiencias</strong>.&nbsp;</li>
+</ul>
+
+
+
+<p>Cuando el sueño se fragmenta por estrés, insomnio u otros factores, no solo aparece cansancio. La interrupción repetida dificulta que el sistema nervioso complete sus funciones de recuperación, procesamiento cognitivo y regulación emocional.&nbsp;</p>
+
+
+
+<p><strong>¿Y si no duermes bien?</strong>&nbsp;</p>
+
+
+
+<p><em>(Basado&nbsp;en&nbsp;el&nbsp;estudio&nbsp;“The&nbsp;human&nbsp;emotional&nbsp;brain&nbsp;without&nbsp;sleep”,&nbsp;Yoo et al., 2007,&nbsp;publicado&nbsp;en&nbsp;</em><strong><em>Current&nbsp;Biology</em></strong><em>):</em>&nbsp;</p>
+
+
+
+<p>La investigación muestra que incluso&nbsp;<strong>una sola noche sin dormir</strong>&nbsp;cambia de forma notable cómo tu cerebro gestiona las emociones. Lo más relevante:&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>&nbsp;Tu sistema emocional se&nbsp;sobreactiva</strong>&nbsp;</li>
+</ol>
+
+
+
+<p>El estudio encontró que la amígdala, encargada de detectar amenazas y procesar emociones intensas, responde con mucha más fuerza cuando no has dormido.&nbsp;En consecuencia, más reactividad&nbsp;y&nbsp;más sensibilidad al estrés y a lo negativo.&nbsp;</p>
+
+
+
+<ol start="2" class="wp-block-list">
+<li><strong>Se debilita la parte del cerebro que regula tus emociones</strong>&nbsp;</li>
+</ol>
+
+
+
+<p>La corteza prefrontal medial, que ayuda a poner freno, pensar con claridad y regular lo que sientes, pierde conectividad con la amígdala.&nbsp;&nbsp;<br>¿El resultado?&nbsp;Menor capacidad para mantener la calma&nbsp;y&nbsp;más impulsividad emocional.&nbsp;</p>
+
+
+
+<ol start="3" class="wp-block-list">
+<li><strong>Aumenta el riesgo de comportamientos desregulados</strong>&nbsp;</li>
+</ol>
+
+
+
+<p>Este desequilibrio —más activación emocional y menos control— puede traducirse en:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>reacciones exageradas,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>conflictos innecesarios,&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>peor toma de decisiones.&nbsp;</li>
+</ul>
+
+
+
+<ol start="4" class="wp-block-list">
+<li><strong>Dormir restaura el equilibrio emocional</strong>&nbsp;</li>
+</ol>
+
+
+
+<p>Según el estudio, una noche de sueño vuelve a estabilizar la comunicación entre la amígdala y la corteza prefrontal, ayudando a que afrontes el día con más claridad y regulación emocional.&nbsp;</p>
+
+
+
+<p><strong>Dormir bien es salud mental (y también rendimiento)</strong>&nbsp;</p>
+
+
+
+<p>El sueño no solo mejora cómo te&nbsp;sientes,&nbsp;sino que afecta directamente a tu claridad mental, tu regulación emocional y tu capacidad para responder al día a día.&nbsp;</p>
+
+
+
+<p>Cuando descansas adecuadamente:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Procesas la&nbsp;<strong>información&nbsp;</strong>con más precisión.&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Tomas&nbsp;<strong>decisiones&nbsp;</strong>de forma más efectiva.&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Regulas tus&nbsp;<strong>emociones&nbsp;</strong>con mayor facilidad.&nbsp;</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Gestionas imprevistos</strong>&nbsp;con más estabilidad.&nbsp;</li>
+</ul>
+
+
+
+<p>Dormir bien influye en tu funcionamiento cognitivo, emocional y conductual.&nbsp;</p>
+
+
+
+<p>En Emotiva entendemos el sueño como una&nbsp;<strong>base transversal del bienestar psicológico</strong>, no como un aspecto aislado. Cuando el descanso está alterado, lo priorizamos porque es un pilar que sostiene el resto de&nbsp;los procesos: la atención, la capacidad de poner límites, la motivación y el equilibrio emocional.&nbsp;</p>
+
+
+
+<p><strong>¿Y ahora qué?</strong>&nbsp;</p>
+
+
+
+<p>Dormir bien no es algo que se logre solo con fuerza de voluntad.&nbsp;<br>Requiere&nbsp;<strong>hábitos consistentes, conciencia del propio cuerpo y estrategias basadas en evidencia</strong>.&nbsp;</p>
+
+
+
+<p>El primer paso es comprender que descansar forma parte del autocuidado y que cuidarte no es egoísta.&nbsp;</p>
+
+
+
+<p>Si quieres empezar a mejorar tu descanso de manera práctica, puedes leer el post complementario: “<strong><a href="/resources/post/higiene-del-sueno">HIGIENE DEL SUEÑO</a></strong>”, donde encontrarás una guía sencilla para aplicar desde hoy. </p>
+
+
+
+<p><em>Dormir no es perder&nbsp;el&nbsp;tiempo: es mantener en equilibrio tu salud mental, tu energía y tu funcionamiento diario.</em>&nbsp;</p>
+
+
+
+<p></p>
+d:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"DORMIR NO ES DETENER LA VIDA. ES PERMITIR QUE FUNCIONE "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$19"}}]}]]}],"$L1a"]}]
+1b:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-20f86404156ccb66.js"],""]
+1a:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1b",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

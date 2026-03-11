@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -170,7 +170,7 @@ Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para 
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Plan Guardado</h4>
             <p className="text-muted-foreground italic">“No todo depende de ti. Pero sí depende de ti cómo decides cuidarte pase lo que pase”.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Crear otro plan A/B</Button>
+            
           </div>
         );
       default:

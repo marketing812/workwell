@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -267,7 +267,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Visualización Guardada</h4>
                         <blockquote className="italic border-l-4 border-primary pl-4 text-left">“Visualizar mi cambio me ayuda a construirlo. Cada pequeño paso que doy me acerca a esa versión de mí que ya está en camino.”</blockquote>
-                        <Button onClick={resetExercise} variant="outline">Hacer otra visualización</Button>
+                        
                     </div>
                 );
             default:

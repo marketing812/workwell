@@ -173,7 +173,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             </h4>
             <p className="text-sm text-muted-foreground">
               Cuando sientes mas saturacion mental o emocional? Ejemplos: justo antes de acostarte, despues de una
-              discusion, los lunes por la mañana.
+              discusion, los lunes por la maÃ±ana.
             </p>
 
             <RadioGroup value={redChoice} onValueChange={setRedChoice}>
@@ -212,7 +212,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -270,7 +270,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -328,7 +328,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -383,7 +383,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button onClick={nextStep}>
                 Siguiente
@@ -406,18 +406,13 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Atrás
+                AtrÃ¡s
               </Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" />
                 {isSaved ? "Semaforo guardado" : "Guardar mi semaforo en el cuaderno"}
               </Button>
             </div>
-            {isSaved && (
-              <Button type="button" variant="outline" onClick={resetExercise}>
-                Hacer otro registro
-              </Button>
-            )}
           </form>
         );
 

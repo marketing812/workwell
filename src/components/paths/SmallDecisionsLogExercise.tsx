@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -146,7 +146,7 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
                         <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                         <h4 className="font-semibold text-lg">Registro Guardado</h4>
                         <p>Este registro no es para ser perfecto. Es para ser más consciente. A veces elegimos desde el deber. Otras, desde el querer. Lo importante es que tú puedas distinguirlo… y poco a poco recuperar la brújula.</p>
-                        <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+                        
                     </div>
                 );
             default: return null;

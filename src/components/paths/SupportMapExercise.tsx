@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useMemo } from 'react';
@@ -202,7 +202,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Mapa Guardado</h4>
                 <p>Tu mapa ha sido guardado. Puedes volver a él cuando necesites recordar quiénes te sostienen.</p>
-                <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+                
             </div>
         );
       default: return null;

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -357,9 +357,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Ejercicio guardado</h4>
                 <p>Tu escenario “¿Y si...? pero también...” se ha guardado en el cuaderno terapéutico.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">
-                  Repetir ejercicio
-                </Button>
+                
               </div>
             );
           default:
@@ -475,9 +473,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                     <h4 className="font-bold text-lg">Mantra Guardado</h4>
                     <p>Tu mantra se ha guardado en el Cuaderno Terapéutico. Puedes volver a él cuando necesites recordar tu fuerza.</p>
-                    <Button onClick={resetExercise} variant="outline" className="w-full">
-                        Crear otro mantra
-                    </Button>
+                    
                 </div>
             )
         default:

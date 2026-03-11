@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -168,7 +168,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Ejercicio completado y guardado!</h4>
                 <p className="text-muted-foreground">Has dado un paso valiente para entrenar tu confianza. Cada vez que te expones a la incertidumbre y compruebas que puedes sostenerla, tu resiliencia crece.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                
             </div>
         );
       default: return null;

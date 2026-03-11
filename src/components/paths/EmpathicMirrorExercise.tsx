@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -240,7 +240,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Práctica guardada y completada!</h4>
             <blockquote className="italic text-primary pt-2">“Cuando escuchas sin corregir ni compararte, regalas al otro algo muy poderoso: el permiso de ser quien es.”</blockquote>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
+            
           </div>
         );
       default: return null;

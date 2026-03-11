@@ -1,0 +1,116 @@
+1:"$Sreact.fragment"
+2:I[16521,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"default"]
+3:I[48906,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ThemeProvider"]
+4:I[8282,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"FirebaseClientProvider"]
+5:I[29141,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"UserProvider"]
+6:I[14015,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ActivePathProvider"]
+7:I[9766,[],""]
+8:I[98924,[],""]
+9:I[18516,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"Toaster"]
+a:I[17989,[],"ClientSegmentRoot"]
+b:I[24784,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","6305","static/chunks/6305-46a61b1cfde3a029.js","784","static/chunks/784-2d9b37d01b82cf89.js","9779","static/chunks/9779-7630885f177320bb.js","2619","static/chunks/2619-04bc32f026a0d946.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","891","static/chunks/891-f1c0d682454575d6.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","3409","static/chunks/3409-2bce32c9b7806ab7.js","2477","static/chunks/2477-22f45d0551f7ecaf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","2076","static/chunks/app/(main)/layout-f295f1771e0f0803.js"],"default"]
+e:I[24431,[],"OutletBoundary"]
+10:I[15278,[],"AsyncMetadataOutlet"]
+12:I[24431,[],"ViewportBoundary"]
+14:I[24431,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+17:I[57150,[],""]
+:HL["/_next/static/css/b297fb236247ffc6.css","style"]
+0:{"P":null,"b":"hq8koZ9QfljX6AlkSzqFd","p":"","c":["","resources","post","no-estas-roto-ni-rota-solo-cansado-o-cansada-de-fingir-que-puedes-con-todo"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","no-estas-roto-ni-rota-solo-cansado-o-cansada-de-fingir-que-puedes-con-todo","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b297fb236247ffc6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L9",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$La",null,{"Component":"$b","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@c"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","no-estas-roto-ni-rota-solo-cansado-o-cansada-de-fingir-que-puedes-con-todo","d"],["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Ld",null,["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],null],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}],false]],"m":"$undefined","G":["$17",[]],"s":false,"S":true}
+c:"$0:f:0:1:2:children:1:props:children:1:props:params"
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+18:I[80622,[],"IconMark"]
+11:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L18","1",{}]],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
+19:T130e,
+<p><em>Autoexigencia, perfeccionismo y desconexión emocional: las cicatrices invisibles del cansancio que no se nota, pero pesa</em>&nbsp;</p>
+
+
+
+<p>A veces,&nbsp;no es tristeza, ni apatía, ni depresión. Es&nbsp;<strong>fatiga emocional acumulada</strong>. Es ese tipo de cansancio profundo que aparece cuando has sostenido demasiado sin darte el permiso de soltar. Cuando has sido fuerte por fuera&#8230;,&nbsp;pero te has ido desgastando por dentro.&nbsp;</p>
+
+
+
+<p>Y no, no es&nbsp;desidia, ni falta de actitud. Es el resultado de vivir en&nbsp;<strong>modo alerta</strong>, de&nbsp;invertir mucho esfuerzo y obtener poco a cambio.&nbsp;De exigirte incluso cuando no puedes más. Si te suena familiar, esto también es para ti.&nbsp;</p>
+
+
+
+<p><strong>La fatiga emocional no es debilidad. Es saturación</strong>&nbsp;</p>
+
+
+
+<p>Es un estado de agotamiento físico y mental producido por el esfuerzo prolongado de sostener emociones intensas: las propias&nbsp;o las de los demás. Escuchar, cuidar, contener&nbsp;y&nbsp;resolver&nbsp;día tras día. Esa sobrecarga silenciosa, muchas veces invisible, puede llevar al cuerpo y al cerebro a funcionar en&nbsp;<strong>modo supervivencia</strong>. Se activa el sistema límbico (emoción), y la corteza prefrontal (razón) se agota. El resultado: irritabilidad, desconexión, confusión mental, hipersensibilidad… o bloqueo.&nbsp;</p>
+
+
+
+<p>En estudios recientes sobre&nbsp;<strong>burnout emocional</strong>&nbsp;(Figley, 2002; Maslach &amp; Leiter, 2016), se ha demostrado que el impacto del estrés empático sostenido puede ser tan debilitante como el estrés físico crónico. Es lo que también se conoce como&nbsp;<strong>fatiga por compasión</strong>.&nbsp;</p>
+
+
+
+<p><strong>¿Y si no es que no puedes más… sino que llevas demasiado solo/a?</strong>&nbsp;</p>
+
+
+
+<p>Muchos de estos patrones no nacen de la nada. Se forman con el tiempo, con historias personales que enseñaron que&nbsp;<em>ser valiente</em>&nbsp;es no pedir ayuda, que&nbsp;<em>ser responsable</em>&nbsp;es no fallar&nbsp;y&nbsp;que&nbsp;<em>ser buena persona</em>&nbsp;es no poner límites. Y así, muchas personas terminan atrapadas en un ciclo de&nbsp;<strong>autoexigencia crónica</strong>, sin margen para la&nbsp;compasión&nbsp;hacia sí mismas.&nbsp;</p>
+
+
+
+<p>Quienes viven con estos niveles de exigencia suelen tener pensamientos como:&nbsp;<br>&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>“Todo depende de mí” </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>“No puedo equivocarme” </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>“Si no lo hago perfecto, no es válido” </li>
+</ul>
+
+
+
+<p>Este estilo de pensamiento activa de forma constante el sistema de estrés, genera una vigilancia permanente, disminuye el descanso y&nbsp;debilita la&nbsp;autoestima&nbsp;(Beck, 2005; Young et al., 2003).&nbsp;</p>
+
+
+
+<p><strong>El perfeccionismo no te protege: te drena</strong>&nbsp;</p>
+
+
+
+<p>Contrario a lo que muchas veces creemos, el perfeccionismo&nbsp;<strong>no es una virtud elevada</strong>, sino una forma de miedo muy bien disfrazada. Miedo al juicio, al error&nbsp;o&nbsp;a no ser suficiente.&nbsp;</p>
+
+
+
+<p>Mantenerse en ese estado de evaluación constante, sin pausas ni refuerzos positivos, produce una tensión interna que a la larga se traduce en&nbsp;<strong>agotamiento psicológico</strong>. Un tipo de malestar que impacta en la salud, las relaciones y la capacidad de disfrutar.&nbsp;</p>
+
+
+
+<p><strong>¿Y la desconexión emocional?&nbsp;</strong>&nbsp;</p>
+
+
+
+<p>Cuando llevas mucho tiempo conteniendo el dolor, es habitual que empieces a&nbsp;<strong>desconectarte&nbsp;</strong>de lo que sientes. No porque no te importe, sino porque te ha dolido demasiado durante mucho tiempo. Es un mecanismo de&nbsp;<strong>supervivencia</strong>: el cuerpo aprende a protegerse cerrando el acceso a las emociones que hieren. Pero, al hacerlo, también puede cerrar el paso a la ternura, al disfrute y al deseo.&nbsp;</p>
+
+
+
+<p>Esto se conoce como&nbsp;<strong>desconexión emocional funcional</strong>: se evita el contacto con las sensaciones internas por miedo a lo que puedan despertar. Pero evitar lo que sentimos&nbsp;<strong>no lo elimina</strong>: lo cronifica. A largo plazo, esta evitación está relacionada con mayor ansiedad, somatización y patrones de evitación interpersonal (Hayes et al., 1996; Linehan, 1993).&nbsp;</p>
+
+
+
+<p>Si todo esto te suena… no estás sola, ni solo. No estás rota ni roto.&nbsp;Solo estás&nbsp;<strong>agotado o agotada de aguantar tanto en silencio</strong>. Y eso también merece compasión.&nbsp;</p>
+
+
+
+<p><em>Revisar tu exigencia, recuperar tu&nbsp;compasión&nbsp;y darte el permiso de sentir, sin juicio,&nbsp;</em><strong><em>no es rendirse</em></strong><em>.&nbsp;Es el primer paso para cuidarte desde un lugar más sano, humano y sostenible.</em>&nbsp;</p>
+d:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"NO ESTÁS ROTO NI ROTA. SOLO CANSADO O CANSADA DE FINGIR QUE PUEDES CON TODO "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$19"}}]}]]}],"$L1a"]}]
+1b:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-20f86404156ccb66.js"],""]
+1a:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1b",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

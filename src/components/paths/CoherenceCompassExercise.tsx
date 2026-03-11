@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -404,9 +404,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
             <p className="text-muted-foreground">
               Tu brújula de coherencia ha sido guardada. Puedes volver a ella cuando lo necesites.
             </p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Hacer otro registro
-            </Button>
+            
           </div>
         );
       default:

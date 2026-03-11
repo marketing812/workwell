@@ -1,0 +1,294 @@
+1:"$Sreact.fragment"
+2:I[16521,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"default"]
+3:I[48906,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ThemeProvider"]
+4:I[8282,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"FirebaseClientProvider"]
+5:I[29141,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"UserProvider"]
+6:I[14015,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ActivePathProvider"]
+7:I[9766,[],""]
+8:I[98924,[],""]
+9:I[18516,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"Toaster"]
+a:I[17989,[],"ClientSegmentRoot"]
+b:I[24784,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","6305","static/chunks/6305-46a61b1cfde3a029.js","784","static/chunks/784-2d9b37d01b82cf89.js","9779","static/chunks/9779-7630885f177320bb.js","2619","static/chunks/2619-04bc32f026a0d946.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","891","static/chunks/891-f1c0d682454575d6.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","3409","static/chunks/3409-2bce32c9b7806ab7.js","2477","static/chunks/2477-22f45d0551f7ecaf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","2076","static/chunks/app/(main)/layout-f295f1771e0f0803.js"],"default"]
+e:I[24431,[],"OutletBoundary"]
+10:I[15278,[],"AsyncMetadataOutlet"]
+12:I[24431,[],"ViewportBoundary"]
+14:I[24431,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+17:I[57150,[],""]
+:HL["/_next/static/css/b297fb236247ffc6.css","style"]
+0:{"P":null,"b":"hq8koZ9QfljX6AlkSzqFd","p":"","c":["","resources","post","por-que-algunas-personas-simplemente-caen-bien"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","por-que-algunas-personas-simplemente-caen-bien","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b297fb236247ffc6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L9",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$La",null,{"Component":"$b","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@c"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","por-que-algunas-personas-simplemente-caen-bien","d"],["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Ld",null,["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],null],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}],false]],"m":"$undefined","G":["$17",[]],"s":false,"S":true}
+c:"$0:f:0:1:2:children:1:props:children:1:props:params"
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+18:I[80622,[],"IconMark"]
+11:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L18","1",{}]],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
+19:T1778,
+<p><em>No es magia. No es&nbsp;suerte.&nbsp;Es una combinación de habilidades sociales que podemos&nbsp;</em><strong><em>aprender, entrenar y potenciar</em></strong>&nbsp;</p>
+
+
+
+<p>Desde que nacemos, venimos programados para conectar.&nbsp;La sociabilidad fue seleccionada evolutivamente al mejorar múltiples funciones adaptativas: protección, crianza cooperativa, aprendizaje social, acceso a recursos y regulación emocional a través del grupo.&nbsp;&nbsp;</p>
+
+
+
+<p>Lo que antes garantizaba nuestra supervivencia física, hoy es también lo que sostiene nuestro bienestar emocional.&nbsp;</p>
+
+
+
+<p><strong>¿Qué son las habilidades sociales?</strong>&nbsp;</p>
+
+
+
+<p>Son ese conjunto de comportamientos, emociones y pensamientos que usamos para interactuar con los demás de forma&nbsp;<strong>respetuosa, auténtica y eficaz</strong>.&nbsp;No nacemos con ellas: las&nbsp;<strong>aprendemos</strong>. Y lo mejor es que&nbsp;<strong>se pueden entrenar a cualquier edad</strong>.&nbsp;</p>
+
+
+
+<p>Las vamos adquiriendo:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Por <strong>observación </strong>de la interacción las personas que nos rodean —familia, amigos, profesores, figuras de referencia, incluso personajes de ficción—. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Por <strong>ensayo y error. </strong>Mucho de lo que sabemos hacer socialmente viene de probar y ver qué funciona. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Por la <strong>retroalimentación de los demás. </strong>Las reacciones de los demás moldean nuestros comportamientos. Un “me ayudó mucho cómo me escuchaste” refuerza la escucha activa. Una mala experiencia social puede llevar a evitar o a sobreprotegerse. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Y por nuestra forma de <strong>interpretar</strong> lo que ocurre. No respondemos solo a los hechos, sino a lo que <strong>creemos que significan</strong>. </li>
+</ul>
+
+
+
+<p><strong>Las 7 habilidades que te hacen&nbsp;</strong><strong><em>socialmente atractivo o atractiva:</em></strong>&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Comunicación clara y coherente</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Hablas desde el “yo”, con emoción, sin rodeos ni ataques. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Tu tono, tu postura y tu mirada <em>acompañan lo que dices</em>. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Eres capaz de decir lo que sientes sin herir. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Y lo más importante: <strong>sabes escuchar</strong> (de verdad). </li>
+</ul>
+
+
+
+<ol start="2" class="wp-block-list">
+<li><strong>Empatía auténtica</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Captas lo que no se dice. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Percibes emociones, gestos, silencios. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Te importa lo que le pasa al otro, y se nota. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>La empatía es el <em>bálsamo natural de toda interacción humana</em>. </li>
+</ul>
+
+
+
+<ol start="3" class="wp-block-list">
+<li><strong>Asertividad</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Dices lo que necesitas respetándote a ti, sin invadir a nadie. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Sabes poner límites, expresar desacuerdo y también pedir perdón. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Ser asertivo no es ser duro: es ser claro, firme y respetuoso. </li>
+</ul>
+
+
+
+<ol start="4" class="wp-block-list">
+<li><strong>Conciencia emocional y autocontrol</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Te conoces. Sabes qué te molesta y por qué. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Y en lugar de estallar… gestionas. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Ser consciente de tus emociones <strong>mejora la conexión con los demás</strong>. </li>
+</ul>
+
+
+
+<ol start="5" class="wp-block-list">
+<li><strong>Sincronía y adaptabilidad</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Te “sintonizas” con el otro. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Te adaptas al ritmo de la conversación, al tono emocional, al contexto. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Esto crea <strong>rapport</strong>: ese “sentirnos en la misma onda”. </li>
+</ul>
+
+
+
+<ol start="6" class="wp-block-list">
+<li><strong>Refuerzo social positivo</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Sabes elogiar sin adular. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Reconoces lo bueno en los demás y lo expresas. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Sabes recibir cumplidos sin minimizarlos. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Eres esa persona que <em>los demás recuerdan con una sonrisa</em>. </li>
+</ul>
+
+
+
+<ol start="7" class="wp-block-list">
+<li><strong>Cuidado del vínculo</strong> </li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>No acumulas conflictos. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Buscas entender y reparar. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Valoras la calidad por encima de la cantidad de relaciones. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Aportas seguridad y apoyo emocional. </li>
+</ul>
+
+
+
+<p><strong>¿Y si no tengo estas habilidades?</strong>&nbsp;</p>
+
+
+
+<p>La buena noticia es esta:&nbsp;<strong>TODAS se pueden entrenar</strong>.&nbsp;Desde Emotiva te enseñamos cómo. Paso a paso, con prácticas reales, psicoeducación basada en evidencia, y herramientas para que las relaciones de tu vida dejen de ser fuente de estrés… y se conviertan en fuente de bienestar.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Porque conectar no es un lujo. Es una necesidad. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Y las habilidades sociales no solo mejoran tu entorno… mejoran tu salud, tu rendimiento, tu autoestima y tu felicidad. </li>
+</ul>
+
+
+
+<p><em>Porque sentir es el comienzo.</em>&nbsp;<br><em>Y conectar, la clave</em>&nbsp;</p>
+d:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"¿POR QUÉ ALGUNAS PERSONAS SIMPLEMENTE… CAEN BIEN? "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$19"}}]}]]}],"$L1a"]}]
+1b:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-20f86404156ccb66.js"],""]
+1a:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1b",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

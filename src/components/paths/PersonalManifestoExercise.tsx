@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -188,7 +188,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                     <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">La coherencia no se mide por un tropiezo, sino por cómo eliges levantarte. Cada vez que te miras con compasión y eliges un ajuste, fortaleces tu dirección interna.</h4>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                        
                     </div>
                 );
             default: return null;

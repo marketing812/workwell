@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -369,9 +369,7 @@ ${schema || 'No especificado.'}
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
               </Button>
-              <Button onClick={resetExercise} variant="outline">
-                Hacer otro registro
-              </Button>
+              
             </div>
           </div>
         );
@@ -389,9 +387,7 @@ ${schema || 'No especificado.'}
             <p className="italic text-primary pt-2">
               "Entender tus emociones no te cambia de un día para otro, pero sí cambia la dirección en la que caminas."
             </p>
-            <Button onClick={resetExercise} variant="outline">
-              Hacer otro registro
-            </Button>
+            
           </div>
         );
 

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState } from 'react';
@@ -83,7 +83,7 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">¡Práctica finalizada!</h4>
                 <p className="text-foreground">Has practicado una forma poderosa de hablarte. Recuerda que puedes volver a este ejercicio siempre que lo necesites.</p>
-                <Button onClick={() => setIsCompleted(false)} variant="outline" className="w-full">Repetir Práctica</Button>
+                
             </div>
         )}
       </CardContent>

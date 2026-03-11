@@ -48,9 +48,9 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
     }
     const notebookContent = [
         `**Ejercicio: ${content.title}**`,
-        `Pregunta: Hábito que quiero mantener | Respuesta: ${habit}`,
-        `Pregunta: Mi versión mínima viable | Respuesta: ${minVersion}`,
-        `Pregunta: Lo vincularé a | Respuesta: ${link}`,
+        `Pregunta: HÃ¡bito que quiero mantener | Respuesta: ${habit}`,
+        `Pregunta: Mi versiÃ³n mÃ­nima viable | Respuesta: ${minVersion}`,
+        `Pregunta: Lo vincularÃ© a | Respuesta: ${link}`,
         `Pregunta: Para recordarlo o facilitarlo, voy a | Respuesta: ${reminder}`
     ].join('\n\n');
     
@@ -58,7 +58,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       title: 'Mi Ritual Realista', 
       content: notebookContent, 
       pathId, 
-      ruta: 'Superar la Procrastinación y Crear Hábitos',
+      ruta: 'Superar la ProcrastinaciÃ³n y Crear HÃ¡bitos',
       userId: user?.id 
     });
     toast({ title: 'Ritual Guardado', description: 'Tu ritual ha sido guardado.' });
@@ -72,19 +72,19 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       case 0:
         return (
           <div className="text-center p-4 space-y-4">
-            <p>Un ritual realista es un hábito que se adapta a ti, no al revés. Aquí vas a diseñar una versión mínima, clara y posible de lo que quieres sostener en el tiempo.</p>
-            <Button onClick={nextStep}>Diseñar mi ritual <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <p>Un ritual realista es un hÃ¡bito que se adapta a ti, no al revÃ©s. AquÃ­ vas a diseÃ±ar una versiÃ³n mÃ­nima, clara y posible de lo que quieres sostener en el tiempo.</p>
+            <Button onClick={nextStep}>DiseÃ±ar mi ritual <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: ¿Qué hábito quiero mantener?</h4>
-            <p>Ejemplos: “Revisar mi agenda cada mañana”, “Hacer 3 minutos de respiración”, “Caminar 10 minutos después de comer”</p>
-            <Label htmlFor="habit-ritual" className="sr-only">¿Qué hábito quiero mantener?</Label>
+            <h4 className="font-semibold text-lg">Paso 1: Â¿QuÃ© hÃ¡bito quiero mantener?</h4>
+            <p>Ejemplos: â€œRevisar mi agenda cada maÃ±anaâ€, â€œHacer 3 minutos de respiraciÃ³nâ€, â€œCaminar 10 minutos despuÃ©s de comerâ€</p>
+            <Label htmlFor="habit-ritual" className="sr-only">Â¿QuÃ© hÃ¡bito quiero mantener?</Label>
             <Textarea id="habit-ritual" value={habit} onChange={e => setHabit(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button onClick={nextStep} disabled={!habit.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -92,12 +92,12 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       case 2:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: ¿Cuál es su versión mínima viable?</h4>
-            <p>Ejemplos: “Escribir solo una línea”, “Moverme durante 2 minutos”, “Preparar la ropa de deporte”</p>
-            <Label htmlFor="min-version" className="sr-only">¿Cuál es su versión mínima viable?</Label>
+            <h4 className="font-semibold text-lg">Paso 2: Â¿CuÃ¡l es su versiÃ³n mÃ­nima viable?</h4>
+            <p>Ejemplos: â€œEscribir solo una lÃ­neaâ€, â€œMoverme durante 2 minutosâ€, â€œPreparar la ropa de deporteâ€</p>
+            <Label htmlFor="min-version" className="sr-only">Â¿CuÃ¡l es su versiÃ³n mÃ­nima viable?</Label>
             <Textarea id="min-version" value={minVersion} onChange={e => setMinVersion(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                 <Button onClick={nextStep} disabled={!minVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
@@ -105,12 +105,12 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo o con qué lo vincularás?</h4>
-            <p>Ejemplos: “Después de lavarme los dientes”, “Cuando cierre el portátil”, “Al volver de dejar a mi hijo o hija”</p>
-            <Label htmlFor="link" className="sr-only">¿Cuándo o con qué lo vincularás?</Label>
+            <h4 className="font-semibold text-lg">Paso 3: Â¿CuÃ¡ndo o con quÃ© lo vincularÃ¡s?</h4>
+            <p>Ejemplos: â€œDespuÃ©s de lavarme los dientesâ€, â€œCuando cierre el portÃ¡tilâ€, â€œAl volver de dejar a mi hijo o hijaâ€</p>
+            <Label htmlFor="link" className="sr-only">Â¿CuÃ¡ndo o con quÃ© lo vincularÃ¡s?</Label>
             <Textarea id="link" value={link} onChange={e => setLink(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                 <Button onClick={nextStep} disabled={!link.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
@@ -118,14 +118,14 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
       case 4:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 4: ¿Qué puedo hacer para recordarlo o facilitarlo?</h4>
-            <p>Ejemplos: “Dejar una nota visible”, “Poner una alarma suave”, “Dejar el libro preparado sobre la mesa”</p>
-            <Label htmlFor="reminder" className="sr-only">¿Qué puedo hacer para recordarlo o facilitarlo?</Label>
+            <h4 className="font-semibold text-lg">Paso 4: Â¿QuÃ© puedo hacer para recordarlo o facilitarlo?</h4>
+            <p>Ejemplos: â€œDejar una nota visibleâ€, â€œPoner una alarma suaveâ€, â€œDejar el libro preparado sobre la mesaâ€</p>
+            <Label htmlFor="reminder" className="sr-only">Â¿QuÃ© puedo hacer para recordarlo o facilitarlo?</Label>
             <Textarea id="reminder" value={reminder} onChange={e => setReminder(e.target.value)} />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
               <Button type="submit" disabled={!reminder.trim()}>
-                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapÃ©utico
               </Button>
             </div>
           </form>
@@ -134,10 +134,8 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Ritual Guardado!</h4>
-            <Button onClick={resetExercise} variant="outline" className="w-full">
-              Crear otro ritual
-            </Button>
+            <h4 className="font-bold text-lg">Â¡Ritual Guardado!</h4>
+            
           </div>
         );
       default:

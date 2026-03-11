@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, useMemo, type FormEvent } from 'react';
@@ -300,7 +300,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Guardado</h4>
                         <p className="text-muted-foreground">Tu mapa de coherencia ha sido guardado. Puedes volver a él cuando lo necesites.</p>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                        
                     </div>
                 );
             default: return null;

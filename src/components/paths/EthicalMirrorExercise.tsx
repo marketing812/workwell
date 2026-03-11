@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -272,7 +272,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                         <h4 className="font-bold text-lg">Reflexión Guardada</h4>
                         <p className="text-muted-foreground">Has usado tu espejo ético para ganar claridad. Puedes volver a este registro cuando lo necesites.</p>
-                        <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otra reflexión</Button>
+                        
                     </div>
                 );
             default: return null;

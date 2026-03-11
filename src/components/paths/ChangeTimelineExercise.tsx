@@ -47,28 +47,28 @@ export default function ChangeTimelineExercise({ content, pathId, onComplete }: 
     const notebookContent = `**${content.title}**
 
 **Punto de Partida:**
-Pregunta: ¿Qué sentías? | Respuesta: ${startPoint.feelings || 'No especificado.'}
-Pregunta: ¿Qué pensamientos dominaban tu mente? | Respuesta: ${startPoint.thoughts || 'No especificado.'}
-Pregunta: ¿Qué creías sobre ti? | Respuesta: ${startPoint.beliefs || 'No especificado.'}
-Pregunta: ¿Qué cosas te costaban? | Respuesta: ${startPoint.struggles || 'No especificado.'}
+Pregunta: Â¿QuÃ© sentÃ­as? | Respuesta: ${startPoint.feelings || 'No especificado.'}
+Pregunta: Â¿QuÃ© pensamientos dominaban tu mente? | Respuesta: ${startPoint.thoughts || 'No especificado.'}
+Pregunta: Â¿QuÃ© creÃ­as sobre ti? | Respuesta: ${startPoint.beliefs || 'No especificado.'}
+Pregunta: Â¿QuÃ© cosas te costaban? | Respuesta: ${startPoint.struggles || 'No especificado.'}
 
-**Momentos de Inflexión:**
+**Momentos de InflexiÃ³n:**
 Pregunta: Recuerda 2 o 3 momentos importantes del proceso. | Respuesta: ${inflectionPoints || 'No especificado.'}
 
 **Momento Presente:**
-Pregunta: ¿Qué ha cambiado en tu forma de pensar? | Respuesta: ${presentMoment.thoughts || 'No especificado.'}
-Pregunta: ¿Cómo te hablas ahora? | Respuesta: ${presentMoment.talk || 'No especificado.'}
-Pregunta: ¿Qué recursos has desarrollado? | Respuesta: ${presentMoment.resources || 'No especificado.'}
-Pregunta: ¿Qué cosas valoras de ti? | Respuesta: ${presentMoment.values || 'No especificado.'}
+Pregunta: Â¿QuÃ© ha cambiado en tu forma de pensar? | Respuesta: ${presentMoment.thoughts || 'No especificado.'}
+Pregunta: Â¿CÃ³mo te hablas ahora? | Respuesta: ${presentMoment.talk || 'No especificado.'}
+Pregunta: Â¿QuÃ© recursos has desarrollado? | Respuesta: ${presentMoment.resources || 'No especificado.'}
+Pregunta: Â¿QuÃ© cosas valoras de ti? | Respuesta: ${presentMoment.values || 'No especificado.'}
 
-**Símbolo de Evolución:**
-Pregunta: ¿Qué imagen se te viene a la mente? | Respuesta: ${symbol.image || 'No especificado.'}
-Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.'}
+**SÃ­mbolo de EvoluciÃ³n:**
+Pregunta: Â¿QuÃ© imagen se te viene a la mente? | Respuesta: ${symbol.image || 'No especificado.'}
+Pregunta: Â¿Por quÃ© lo elegiste? | Respuesta: ${symbol.why || 'No especificado.'}
 `;
 
-    addNotebookEntry({ title: 'Mi Línea del Cambio', content: notebookContent, pathId, userId: user?.id });
+    addNotebookEntry({ title: 'Mi LÃ­nea del Cambio', content: notebookContent, pathId, userId: user?.id });
     setIsCompleted(true);
-    toast({ title: 'Línea de Cambio Finalizada', description: 'Has integrado tu camino de resiliencia.' });
+    toast({ title: 'LÃ­nea de Cambio Finalizada', description: 'Has integrado tu camino de resiliencia.' });
     onComplete();
     next();
   };
@@ -87,11 +87,11 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
       case 0: // NEW INTRO SCREEN
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm text-muted-foreground">A veces olvidamos todo lo que ya hemos logrado. Este ejercicio es una invitación a mirar hacia atrás con más conciencia y gratitud, y reconocer que no eres la misma persona que al inicio de este proceso.</p>
-            <p className="text-sm text-muted-foreground">Vas a crear una línea del tiempo emocional, donde podrás ver con más claridad tu camino, tus aprendizajes y tu evolución personal.</p>
+            <p className="text-sm text-muted-foreground">A veces olvidamos todo lo que ya hemos logrado. Este ejercicio es una invitaciÃ³n a mirar hacia atrÃ¡s con mÃ¡s conciencia y gratitud, y reconocer que no eres la misma persona que al inicio de este proceso.</p>
+            <p className="text-sm text-muted-foreground">Vas a crear una lÃ­nea del tiempo emocional, donde podrÃ¡s ver con mÃ¡s claridad tu camino, tus aprendizajes y tu evoluciÃ³n personal.</p>
             <div className="flex justify-end w-full">
               <Button onClick={next}>
-                Empezar mi línea del tiempo <ArrowRight className="ml-2 h-4 w-4" />
+                Empezar mi lÃ­nea del tiempo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -100,33 +100,33 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold">Paso 1: Nombra el punto de partida</h4>
-            <p className="text-sm text-muted-foreground">Piensa en ese momento clave que marcó un antes y un después para ti, el punto desde el que empieza lo que hoy quieres contar. Escribe aquí cómo estabas entonces:</p>
+            <p className="text-sm text-muted-foreground">Piensa en ese momento clave que marcÃ³ un antes y un despuÃ©s para ti, el punto desde el que empieza lo que hoy quieres contar. Escribe aquÃ­ cÃ³mo estabas entonces:</p>
             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                <p>Ejemplo: “Me sentía muy sobrepasada. Creía que no iba a poder con todo. Tenía ansiedad cada día y me hablaba con dureza.”</p>
+                <p>Ejemplo: â€œMe sentÃ­a muy sobrepasada. CreÃ­a que no iba a poder con todo. TenÃ­a ansiedad cada dÃ­a y me hablaba con dureza.â€</p>
             </div>
             <div className="space-y-2">
-              <Label>¿Qué sentías?</Label><Textarea value={startPoint.feelings} onChange={e => handleStartPointChange('feelings', e.target.value)} />
-              <Label>¿Qué pensamientos dominaban tu mente?</Label><Textarea value={startPoint.thoughts} onChange={e => handleStartPointChange('thoughts', e.target.value)} />
-              <Label>¿Qué creías sobre ti?</Label><Textarea value={startPoint.beliefs} onChange={e => handleStartPointChange('beliefs', e.target.value)} />
-              <Label>¿Qué cosas te costaban?</Label><Textarea value={startPoint.struggles} onChange={e => handleStartPointChange('struggles', e.target.value)} />
+              <Label>Â¿QuÃ© sentÃ­as?</Label><Textarea value={startPoint.feelings} onChange={e => handleStartPointChange('feelings', e.target.value)} />
+              <Label>Â¿QuÃ© pensamientos dominaban tu mente?</Label><Textarea value={startPoint.thoughts} onChange={e => handleStartPointChange('thoughts', e.target.value)} />
+              <Label>Â¿QuÃ© creÃ­as sobre ti?</Label><Textarea value={startPoint.beliefs} onChange={e => handleStartPointChange('beliefs', e.target.value)} />
+              <Label>Â¿QuÃ© cosas te costaban?</Label><Textarea value={startPoint.struggles} onChange={e => handleStartPointChange('struggles', e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
               <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
           </div>
         );
-      case 2: // OLD STEP 1: Momentos de inflexión
+      case 2: // OLD STEP 1: Momentos de inflexiÃ³n
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold">Paso 2: Nombra tus momentos de inflexión</h4>
-            <Label>Recuerda 2 o 3 momentos importantes del proceso. Pueden ser logros, caídas, descubrimientos o decisiones clave. No tienen que ser grandes cosas: a veces lo más transformador es pequeño y silencioso. Describe qué pasó, cómo lo viviste y qué aprendiste de ese momento.</Label>
+            <h4 className="font-semibold">Paso 2: Nombra tus momentos de inflexiÃ³n</h4>
+            <Label>Recuerda 2 o 3 momentos importantes del proceso. Pueden ser logros, caÃ­das, descubrimientos o decisiones clave. No tienen que ser grandes cosas: a veces lo mÃ¡s transformador es pequeÃ±o y silencioso. Describe quÃ© pasÃ³, cÃ³mo lo viviste y quÃ© aprendiste de ese momento.</Label>
              <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                <p>Ejemplo: “Cuando logré decirle a mi madre cómo me sentía sin culpa, fue un antes y un después. Me sentí vista y me di cuenta de que merezco expresarme.”</p>
+                <p>Ejemplo: â€œCuando logrÃ© decirle a mi madre cÃ³mo me sentÃ­a sin culpa, fue un antes y un despuÃ©s. Me sentÃ­ vista y me di cuenta de que merezco expresarme.â€</p>
             </div>
-            <Textarea value={inflectionPoints} onChange={e => setInflectionPoints(e.target.value)} placeholder="Momentos clave, logros, caídas, descubrimientos..." rows={5} />
+            <Textarea value={inflectionPoints} onChange={e => setInflectionPoints(e.target.value)} placeholder="Momentos clave, logros, caÃ­das, descubrimientos..." rows={5} />
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                 <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
           </div>
@@ -135,33 +135,33 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold">Paso 3: Nombra tu momento presente</h4>
-             <p className="text-sm text-muted-foreground">Ahora vuelve al presente. Describe cómo te sientes hoy comparado o comparada con ese inicio.</p>
+             <p className="text-sm text-muted-foreground">Ahora vuelve al presente. Describe cÃ³mo te sientes hoy comparado o comparada con ese inicio.</p>
              <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-                <p>Ejemplo: “Hoy me doy más permiso para descansar y sentir. Sigo teniendo momentos difíciles, pero ya no me siento tan sola ni tan atrapada en mi mente.”</p>
+                <p>Ejemplo: â€œHoy me doy mÃ¡s permiso para descansar y sentir. Sigo teniendo momentos difÃ­ciles, pero ya no me siento tan sola ni tan atrapada en mi mente.â€</p>
             </div>
             <div className="space-y-2">
-              <Label>¿Qué ha cambiado en tu forma de pensar?</Label><Textarea value={presentMoment.thoughts} onChange={e => handlePresentMomentChange('thoughts', e.target.value)} />
-              <Label>¿Cómo te hablas ahora?</Label><Textarea value={presentMoment.talk} onChange={e => handlePresentMomentChange('talk', e.target.value)} />
-              <Label>¿Qué recursos has desarrollado?</Label><Textarea value={presentMoment.resources} onChange={e => handlePresentMomentChange('resources', e.target.value)} />
-              <Label>¿Qué cosas valoras de ti?</Label><Textarea value={presentMoment.values} onChange={e => handlePresentMomentChange('values', e.target.value)} />
+              <Label>Â¿QuÃ© ha cambiado en tu forma de pensar?</Label><Textarea value={presentMoment.thoughts} onChange={e => handlePresentMomentChange('thoughts', e.target.value)} />
+              <Label>Â¿CÃ³mo te hablas ahora?</Label><Textarea value={presentMoment.talk} onChange={e => handlePresentMomentChange('talk', e.target.value)} />
+              <Label>Â¿QuÃ© recursos has desarrollado?</Label><Textarea value={presentMoment.resources} onChange={e => handlePresentMomentChange('resources', e.target.value)} />
+              <Label>Â¿QuÃ© cosas valoras de ti?</Label><Textarea value={presentMoment.values} onChange={e => handlePresentMomentChange('values', e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                 <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
           </div>
         );
-      case 4: // OLD STEP 3: Símbolo
+      case 4: // OLD STEP 3: SÃ­mbolo
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold">Paso 4: Elige un símbolo o imagen de tu evolución</h4>
-            <p className="text-sm text-muted-foreground">Para integrar todo lo trabajado, elige una imagen simbólica que represente tu proceso de resiliencia.</p>
+            <h4 className="font-semibold">Paso 4: Elige un sÃ­mbolo o imagen de tu evoluciÃ³n</h4>
+            <p className="text-sm text-muted-foreground">Para integrar todo lo trabajado, elige una imagen simbÃ³lica que represente tu proceso de resiliencia.</p>
             <div className="space-y-2">
-              <Label>¿Qué imagen se te viene a la mente?</Label><Textarea value={symbol.image} onChange={e => handleSymbolChange('image', e.target.value)} placeholder="Una montaña, un faro, una semilla..." />
-              <Label>¿Por qué lo elegiste?</Label><Textarea value={symbol.why} onChange={e => handleSymbolChange('why', e.target.value)} />
+              <Label>Â¿QuÃ© imagen se te viene a la mente?</Label><Textarea value={symbol.image} onChange={e => handleSymbolChange('image', e.target.value)} placeholder="Una montaÃ±a, un faro, una semilla..." />
+              <Label>Â¿Por quÃ© lo elegiste?</Label><Textarea value={symbol.why} onChange={e => handleSymbolChange('why', e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                 <Button onClick={handleComplete} className="w-auto"><CheckCircle className="mr-2 h-4 w-4"/> Finalizar Ejercicio</Button>
             </div>
           </div>
@@ -170,9 +170,9 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
         return (
            <div className="p-6 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">¡Ejercicio Completado!</h4>
-            <p className="text-muted-foreground">Tu historia no es lineal ni perfecta. Pero cada paso ha sido una forma de reconstruirte. Eres resiliente no porque no caíste, sino porque te levantaste diferente. Y eso… merece ser reconocido.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Repetir Ejercicio</Button>
+            <h4 className="font-bold text-lg">Â¡Ejercicio Completado!</h4>
+            <p className="text-muted-foreground">Tu historia no es lineal ni perfecta. Pero cada paso ha sido una forma de reconstruirte. Eres resiliente no porque no caÃ­ste, sino porque te levantaste diferente. Y esoâ€¦ merece ser reconocido.</p>
+            
           </div>
         )
       default:

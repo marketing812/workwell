@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -197,7 +197,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Mapa de Apoyos Guardado</h4>
                 <p className="text-muted-foreground">Ya tienes tu mapa personal. Puedes volver a consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
-                <Button onClick={resetExercise} variant="outline">Hacer otro mapa</Button>
+                
             </div>
         );
       default:

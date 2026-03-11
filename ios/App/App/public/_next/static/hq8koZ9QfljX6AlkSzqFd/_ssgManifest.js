@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fpaths\u002F[pathId]","\u002Fpaths\u002F[pathId]\u002Fcompleted","\u002Fresources\u002Fcategory\u002F[slug]","\u002Fresources\u002Fpost\u002F[slug]","\u002Ftherapeutic-notebook\u002Fpath\u002F[pathId]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

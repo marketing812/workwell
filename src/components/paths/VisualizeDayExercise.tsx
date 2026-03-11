@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -181,7 +181,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
               <p className="text-sm text-foreground pt-2">Si lo lees cada mañana, tu cerebro lo recordará más fácilmente durante el día.</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi visualización</Button>
-                   <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+                   
               </div>
           </div>
         );

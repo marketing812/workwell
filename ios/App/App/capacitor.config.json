@@ -1,6 +1,9 @@
 {
 	"appId": "com.workwell.app",
 	"appName": "WorkWell",
-	"webDir": "public",
+	"webDir": "out",
+	"server": {
+		"cleartext": false
+	},
 	"packageClassList": []
 }

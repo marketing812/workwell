@@ -21,21 +21,21 @@ interface DelSabotajeALaAccionExerciseProps {
 }
 
 const sabotageOptions = [
-    { id: 'sabotage-no-moment', label: '“No es el momento. Necesito estar inspirado o inspirada.”' },
-    { id: 'sabotage-tired', label: '“Estoy demasiado cansado o cansada. Mejor luego.”' },
-    { id: 'sabotage-perfect', label: '“Si no va a salir perfecto, no tiene sentido hacerlo.”' },
-    { id: 'sabotage-fail', label: '“¿Y si me equivoco y piensan que no soy capaz?”' },
-    { id: 'sabotage-no-interest', label: '“No tengo interés. No puedo con nada.”' },
-    { id: 'sabotage-too-late', label: '“Debería haberlo hecho antes. Ya es tarde.”' },
+    { id: 'sabotage-no-moment', label: 'â€œNo es el momento. Necesito estar inspirado o inspirada.â€' },
+    { id: 'sabotage-tired', label: 'â€œEstoy demasiado cansado o cansada. Mejor luego.â€' },
+    { id: 'sabotage-perfect', label: 'â€œSi no va a salir perfecto, no tiene sentido hacerlo.â€' },
+    { id: 'sabotage-fail', label: 'â€œÂ¿Y si me equivoco y piensan que no soy capaz?â€' },
+    { id: 'sabotage-no-interest', label: 'â€œNo tengo interÃ©s. No puedo con nada.â€' },
+    { id: 'sabotage-too-late', label: 'â€œDeberÃ­a haberlo hecho antes. Ya es tarde.â€' },
 ];
 
 const functionalResponses: Record<string, string> = {
-    'sabotage-no-moment': '“La inspiración ayuda, pero el progreso viene al actuar.”',
-    'sabotage-tired': '“Solo 15 minutos ya es un avance. A veces, empezar da energía.”',
-    'sabotage-perfect': '“Avanzar, aunque sea imperfecto, es mejor que quedarme bloqueado/a.”',
-    'sabotage-fail': '“No controlo lo que piensen. Pero puedo aprender y seguir.”',
-    'sabotage-no-interest': '“Es solo un pensamiento del bloqueo. Haré algo pequeño y veré.”',
-    'sabotage-too-late': '“No puedo cambiar el pasado, pero sí puedo actuar ahora.”',
+    'sabotage-no-moment': 'â€œLa inspiraciÃ³n ayuda, pero el progreso viene al actuar.â€',
+    'sabotage-tired': 'â€œSolo 15 minutos ya es un avance. A veces, empezar da energÃ­a.â€',
+    'sabotage-perfect': 'â€œAvanzar, aunque sea imperfecto, es mejor que quedarme bloqueado/a.â€',
+    'sabotage-fail': 'â€œNo controlo lo que piensen. Pero puedo aprender y seguir.â€',
+    'sabotage-no-interest': 'â€œEs solo un pensamiento del bloqueo. HarÃ© algo pequeÃ±o y verÃ©.â€',
+    'sabotage-too-late': 'â€œNo puedo cambiar el pasado, pero sÃ­ puedo actuar ahora.â€',
 };
 
 export default function DelSabotajeALaAccionExercise({ content, pathId, onComplete }: DelSabotajeALaAccionExerciseProps) {
@@ -68,7 +68,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
     e.preventDefault();
     
     if (selectedOptions.length === 0 && !customSabotage.trim()) {
-        toast({ title: "Ejercicio Incompleto", description: "Por favor, selecciona al menos una frase o añade una propia.", variant: "destructive"});
+        toast({ title: "Ejercicio Incompleto", description: "Por favor, selecciona al menos una frase o aÃ±ade una propia.", variant: "destructive"});
         return;
     }
 
@@ -85,16 +85,16 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
     }
 
     addNotebookEntry({
-      title: "Mi Tabla de Diálogo Interno",
+      title: "Mi Tabla de DiÃ¡logo Interno",
       content: notebookContent,
       pathId: pathId,
-      ruta: 'Superar la Procrastinación y Crear Hábitos',
+      ruta: 'Superar la ProcrastinaciÃ³n y Crear HÃ¡bitos',
       userId: user?.id
     });
 
     toast({
       title: "Ejercicio Guardado",
-      description: "Tu tabla de diálogo interno se ha guardado en el Cuaderno Terapéutico.",
+      description: "Tu tabla de diÃ¡logo interno se ha guardado en el Cuaderno TerapÃ©utico.",
     });
     
     setIsSaved(true);
@@ -107,15 +107,15 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
         case 0:
             return (
                 <div className="text-center p-4 space-y-4">
-                    <p className="mb-4">Muchas veces postergas no por flojera, sino por lo que te dices justo antes de actuar. Este ejercicio te ayuda a escuchar ese diálogo interno y a crear una respuesta que te sostenga.</p>
-                    <Button onClick={nextStep}>Entrenar mi diálogo interno</Button>
+                    <p className="mb-4">Muchas veces postergas no por flojera, sino por lo que te dices justo antes de actuar. Este ejercicio te ayuda a escuchar ese diÃ¡logo interno y a crear una respuesta que te sostenga.</p>
+                    <Button onClick={nextStep}>Entrenar mi diÃ¡logo interno</Button>
                 </div>
             );
         
         case 1:
             return (
                 <div className="space-y-4 p-2 animate-in fade-in-0 duration-500">
-                    <h4 className="font-semibold text-lg">Frases que alimentan la procrastinación</h4>
+                    <h4 className="font-semibold text-lg">Frases que alimentan la procrastinaciÃ³n</h4>
                     <p className="text-base">Marca las que sueles decirte:</p>
                     <div className="space-y-2">
                         {sabotageOptions.map(opt => (
@@ -126,7 +126,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                         ))}
                     </div>
                     <div className="flex justify-between w-full">
-                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                         <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 </div>
@@ -147,9 +147,9 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                                 </div>
                             ))}
                         </div>
-                    ) : <p className="italic">No has seleccionado ninguna frase común.</p> }
+                    ) : <p className="italic">No has seleccionado ninguna frase comÃºn.</p> }
                     <div className="flex justify-between w-full">
-                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                         <Button onClick={nextStep}>Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
                 </div>
@@ -159,7 +159,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
              return (
                 <form onSubmit={handleSave} className="space-y-4 p-2 animate-in fade-in-0 duration-500">
                     <h4 className="font-semibold text-lg">Crea tu tabla personal</h4>
-                    <p className="text-base">¿Hay otra frase que te repites? Añádela aquí con tu propia respuesta realista.</p>
+                    <p className="text-base">Â¿Hay otra frase que te repites? AÃ±Ã¡dela aquÃ­ con tu propia respuesta realista.</p>
                     <div className="space-y-2">
                         <Label htmlFor="custom-sabotage">Frase que te repites</Label>
                         <Textarea id="custom-sabotage" value={customSabotage} onChange={e => setCustomSabotage(e.target.value)} />
@@ -169,9 +169,9 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                         <Textarea id="custom-response" value={customResponse} onChange={e => setCustomResponse(e.target.value)} />
                     </div>
                     <div className="flex justify-between w-full">
-                        <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                        <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
                         <Button type="submit">
-                            <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+                            <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapÃ©utico
                         </Button>
                     </div>
                 </form>
@@ -181,11 +181,9 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
             return (
                 <div className="text-center p-4 space-y-4 animate-in fade-in-0 duration-500">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                    <h4 className="text-xl font-bold">¡Ejercicio Guardado!</h4>
-                    <p>Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasión, estás construyendo un puente hacia la acción.</p>
-                    <Button onClick={resetExercise} variant="outline" className="w-full">
-                        Hacer otro ejercicio
-                    </Button>
+                    <h4 className="text-xl font-bold">Â¡Ejercicio Guardado!</h4>
+                    <p>Tu forma de hablarte no tiene que ser perfecta. Solo necesita ayudarte a avanzar. Cada vez que te respondas con claridad y compasiÃ³n, estÃ¡s construyendo un puente hacia la acciÃ³n.</p>
+                    
                 </div>
             );
         default: return null;

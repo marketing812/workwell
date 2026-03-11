@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -145,7 +145,7 @@ Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedRefl
       case 7: 
         const selectedReflections = reflectionOptions.filter(opt => reflectionSelections[opt.id]).map(opt => opt.label);
         if (reflectionSelections['otra'] && otherReflection) selectedReflections.push(otherReflection);
-        return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-center text-lg">Tu Mapa Emocional</h4><p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p><div className="text-left border p-2 rounded-md bg-background"><p className="font-semibold">Tu registro:</p><p>Situación: {situation}</p><p>Pensamiento: {automaticThought}</p><p>Emoción(es): {finalEmotions.join(', ')}</p><p>Impulso: {impulse}</p><p>Aprendizaje: {selectedReflections.join(', ')}</p></div><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={resetExercise} variant="outline">Hacer otro registro</Button></div></div>;
+        return <div className="p-4 text-center space-y-4"><CheckCircle className="h-12 w-12 text-green-500 mx-auto" /><h4 className="font-bold text-center text-lg">Tu Mapa Emocional</h4><p>Hoy diste un paso más hacia tu autoconocimiento. Nombrar lo que sientes te permite cuidarte mejor.</p><div className="text-left border p-2 rounded-md bg-background"><p className="font-semibold">Tu registro:</p><p>Situación: {situation}</p><p>Pensamiento: {automaticThought}</p><p>Emoción(es): {finalEmotions.join(', ')}</p><p>Impulso: {impulse}</p><p>Aprendizaje: {selectedReflections.join(', ')}</p></div><div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button></div></div>;
       default: return null;
     }
   };

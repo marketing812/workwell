@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -218,7 +218,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
                  <p className="text-muted-foreground whitespace-pre-line">{`¿Qué tipo de relaciones quiero seguir cultivando a partir de ahora?
 ¿Qué sí quiero permitir? ¿Qué ya no necesito sostener?
 Tómate unos minutos para responderte con honestidad.`}</p>
-                 <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
+                 
             </div>
         )}
       </CardContent>

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -223,7 +223,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Compromiso Guardado</h4>
                 <p className="text-muted-foreground">Tu plan de cuidado mutuo se ha guardado en el cuaderno. Ahora, ¡a la acción!</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro compromiso</Button>
+                
             </div>
         );
         

@@ -188,9 +188,6 @@ Pregunta: Frase de cierre compasivo | Respuesta: "${compassionPhrase}"
                 <CheckCircle className="mr-2 h-5 w-5" />
                 <p className="font-medium">Guardado.</p>
               </div>
-              <Button type="button" variant="outline" className="w-full" onClick={handleNewRecord}>
-                Hacer otro registro
-              </Button>
             </div>
           )}
         </form>

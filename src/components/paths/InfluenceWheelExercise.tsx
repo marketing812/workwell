@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -233,7 +233,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Ejercicio Guardado</h4>
             <p className="text-muted-foreground italic">Soltar lo que no depende de ti no es rendirse, es liberar espacio para lo que sí puedes transformar.</p>
-            <Button onClick={resetExercise} variant="outline">Hacer otro registro</Button>
+            
           </div>
         );
       default: return null;

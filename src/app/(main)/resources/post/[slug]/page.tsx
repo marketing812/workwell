@@ -1,11 +1,20 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Clock, ArrowLeft } from 'lucide-react';
-import { getPostBySlug } from '@/data/resourcesData';
+import { getPostBySlug, getPostsByCategory, getResourceCategories } from '@/data/resourcesData';
 import { notFound } from 'next/navigation';
 
+export async function generateStaticParams() {
+    const categories = await getResourceCategories();
+    const allPosts = await Promise.all(
+      categories.map((category) => getPostsByCategory(category.slug))
+    );
+    const posts = allPosts.flat();
+    const dedupedSlugs = [...new Set(posts.map((post) => post.slug))];
+    return dedupedSlugs.map((slug) => ({ slug }));
+}
 interface PostPageProps {
   params: Promise<{
     slug: string;
@@ -65,3 +74,4 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
     );
 }
+

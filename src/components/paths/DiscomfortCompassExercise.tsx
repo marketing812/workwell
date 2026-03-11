@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -288,7 +288,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                  <h4 className="font-bold text-lg">Beneficio Adicional</h4>
                  <p>Cada vez que practicas este ejercicio, estás entrenando tu capacidad de reconocer tus límites, regular tus emociones y expresarte con mayor claridad.</p>
                  <p className="italic text-primary pt-2">“Tu cuerpo te habla. Este ejercicio te ayuda a escucharlo.”</p>
-                 <Button onClick={resetExercise} variant="outline" className="w-full">Registrar otra situación</Button>
+                 
              </div>
         );
       default: return null;

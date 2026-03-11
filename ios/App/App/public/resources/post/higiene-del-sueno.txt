@@ -1,0 +1,160 @@
+1:"$Sreact.fragment"
+2:I[16521,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"default"]
+3:I[48906,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ThemeProvider"]
+4:I[8282,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"FirebaseClientProvider"]
+5:I[29141,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"UserProvider"]
+6:I[14015,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"ActivePathProvider"]
+7:I[9766,[],""]
+8:I[98924,[],""]
+9:I[18516,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","9779","static/chunks/9779-7630885f177320bb.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","7258","static/chunks/7258-47d8af434bd43acf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","7177","static/chunks/app/layout-1f3d13768b185d85.js"],"Toaster"]
+a:I[17989,[],"ClientSegmentRoot"]
+b:I[24784,["7416","static/chunks/69806262-cb83078a6a09881d.js","2992","static/chunks/bc9e92e6-eb78b34e0a1f5268.js","9253","static/chunks/9253-af06fb289cc94a6f.js","5380","static/chunks/5380-d4c66dd6705974f7.js","5658","static/chunks/5658-f09838905113aa9a.js","6305","static/chunks/6305-46a61b1cfde3a029.js","784","static/chunks/784-2d9b37d01b82cf89.js","9779","static/chunks/9779-7630885f177320bb.js","2619","static/chunks/2619-04bc32f026a0d946.js","7110","static/chunks/7110-e19ab22dcc9f873c.js","3071","static/chunks/3071-85f577836c2e6ec9.js","891","static/chunks/891-f1c0d682454575d6.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","3409","static/chunks/3409-2bce32c9b7806ab7.js","2477","static/chunks/2477-22f45d0551f7ecaf.js","9141","static/chunks/9141-29889b8e0994a4f4.js","168","static/chunks/168-f07785e6efb032de.js","2076","static/chunks/app/(main)/layout-f295f1771e0f0803.js"],"default"]
+e:I[24431,[],"OutletBoundary"]
+10:I[15278,[],"AsyncMetadataOutlet"]
+12:I[24431,[],"ViewportBoundary"]
+14:I[24431,[],"MetadataBoundary"]
+15:"$Sreact.suspense"
+17:I[57150,[],""]
+:HL["/_next/static/css/b297fb236247ffc6.css","style"]
+0:{"P":null,"b":"hq8koZ9QfljX6AlkSzqFd","p":"","c":["","resources","post","higiene-del-sueno"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","higiene-del-sueno","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b297fb236247ffc6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L9",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$La",null,{"Component":"$b","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:0:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@c"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","higiene-del-sueno","d"],["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Ld",null,["$","$Le",null,{"children":["$Lf",["$","$L10",null,{"promise":"$@11"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L12",null,{"children":"$L13"}],null],["$","$L14",null,{"children":["$","div",null,{"hidden":true,"children":["$","$15",null,{"fallback":null,"children":"$L16"}]}]}]]}],false]],"m":"$undefined","G":["$17",[]],"s":false,"S":true}
+c:"$0:f:0:1:2:children:1:props:children:1:props:params"
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+f:null
+18:I[80622,[],"IconMark"]
+11:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L18","1",{}]],"error":null,"digest":"$undefined"}
+16:"$11:metadata"
+19:T1a48,
+<p><em>Guía práctica (y realista) para transformar tu descanso desde hoy, sin fórmulas mágicas ni mitos</em>&nbsp;</p>
+
+
+
+<p>La mayoría de las personas cree que el insomnio empieza en la cama, pero en realidad comienza antes: cuando la mente sigue acelerada mientras el cuerpo intenta pasar al reposo; cuando cenas revisando correos, cuando sigues trabajando&nbsp;mentalmente,&nbsp;aunque hayas cerrado el ordenador, o cuando la cama se convierte en despacho o sofá en vez de ser un espacio para descansar&nbsp;</p>
+
+
+
+<p>Los problemas de sueño pueden deberse a muchas causas, pero siempre hay un punto de partida en tus manos: cuidar tus hábitos. Entrenar el sueño empieza por lo más básico: la higiene del sueño; el conjunto de rutinas que prepara a tu cuerpo y a tu mente para descansar mejor.&nbsp;&nbsp;</p>
+
+
+
+<p><strong>&nbsp;¿Qué es realmente la higiene del sueño?</strong>&nbsp;</p>
+
+
+
+<p>No se trata solo de apagar la luz y evitar el café. La higiene del sueño es un conjunto de&nbsp;<strong>hábitos, condiciones ambientales y señales internas</strong>&nbsp;que preparan al cuerpo y al cerebro para descansar bien. Es&nbsp;la manera&nbsp;de decirle a tu sistema nervioso: “puedes bajar la guardia… estás a salvo”.&nbsp;</p>
+
+
+
+<p>Puede parecer simple, pero tiene un impacto profundo.&nbsp;Cuando las personas aplican hábitos de sueño de forma constante, duermen mejor, se despiertan con más energía y notan cambios reales en su día a día.&nbsp;</p>
+
+
+
+<p><strong>Reglas realistas (y sostenibles) para dormir mejor</strong>&nbsp;</p>
+
+
+
+<p>Aquí no vas a encontrar promesas vacías, pero sí una base sólida. Revisa estas prácticas y, si puedes,&nbsp;<strong>elige una o dos para comenzar esta semana</strong>. A veces, un pequeño cambio hace un gran clic.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Mantén horarios regulares</strong>: acuéstate y levántate a la misma hora cada día (sí, también el fin de semana). Esto entrena a tu ritmo circadiano como si fuera un reloj biológico. </li>
+
+
+
+<li><strong>Evita siestas largas</strong>: si las necesitas, que no pasen de 20-30 minutos y nunca después de las 17:00.</li>
+
+
+
+<li><strong>Cuida lo que consumes</strong>: cafeína, nicotina, alcohol y azúcar cerca de la noche; estos son enemigos del descanso. La ciencia lo deja claro: incluso una copa de vino a última hora puede alterar la calidad del sueño profundo. Aunque el alcohol aporte una fácil conciliación, en realidad reduce el sueño profundo y suprime el sueño REM, lo que hace que el descanso sea más ligero y fragmentado.</li>
+
+
+
+<li><strong>Haz ejercicio (pero escucha a tu cuerpo)</strong> : el ejercicio regular mejora la calidad del sueño, pero entrenar muy tarde puede activar demasiado a algunas personas. Si notas que te cuesta dormir después de ejercicio intenso por la noche, prueba a hacerlo un poco antes o baja la intensidad. La clave es encontrar el horario que mejor le sienta a tu cuerpo. </li>
+
+
+
+<li><strong>Diseña tu entorno como si fueras tu propio terapeuta del sueño</strong>: apaga pantallas al menos una hora antes de dormir. Ajusta la temperatura (ideal: entre 18 y 22°C). Oscuridad total. Sin ruidos bruscos. Que tu dormitorio sea un templo del descanso… no una sala de operaciones. </li>
+
+
+
+<li><strong>Usa la cama solo para dormir (y para el sexo)</strong>: leer, comer, pensar o revisar el móvil en la cama le envían al cerebro señales contradictorias. Queremos que, al tumbarte, tu cuerpo diga: “¡hora de dormir!”</li>
+
+
+
+<li><strong>Crea una rutina pre-sueño</strong>: repetir cada noche pequeños gestos (lavarte los dientes, preparar la ropa, apagar ciertas luces) funciona como un ritual de transición. Le dice a tu sistema nervioso: “todo está bien, puedes soltar”.</li>
+
+
+
+<li><strong>Si no te duermes en 20 minutos… sal de la cama</strong>: y vuelve solo cuando tengas sueño. Parece raro, pero es una de las técnicas más efectivas del <strong>control del estímulo</strong>. Si te quedas en la cama dando vueltas, tu mente empieza a asociar ese lugar con estar despierto, frustrado o pensando demasiado. En cambio, levantarte un momento (a un sitio tranquilo, con luz tenue, sin pantallas) y volver solo cuando aparece el sueño ayuda a que tu cerebro vuelva a relacionar la cama con dormir, no con luchar por dormir. La idea es simple: la cama debe ser un lugar para descansar, no un campo de batalla. </li>
+</ul>
+
+
+
+<p><strong>Cuando el insomnio no se va: ¿qué más puedes hacer?</strong>&nbsp;</p>
+
+
+
+<p>Si llevas más de tres meses con problemas de sueño y las recomendaciones básicas no están siendo suficientes, aquí te cuento algunas de las herramientas científicas más efectivas:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Reestructuración cognitiva</strong>: detectar y cuestionar pensamientos distorsionados como “si no duermo me va a ir fatal mañana” o “nunca voy a dormir bien”.&nbsp;Estos pensamientos ansiógenos&nbsp;hiperactivan&nbsp;el sistema nervioso e interfieren con la&nbsp;conciliación&nbsp;del sueño.&nbsp;</li>
+
+
+
+<li><strong>Técnicas de relajación</strong>&nbsp;como la respiración&nbsp;profunda y diafragmática&nbsp;o la relajación muscular progresiva de Jacobson.&nbsp;</li>
+
+
+
+<li><strong>Reducción del tiempo en cama</strong>: suena contraintuitivo, pero ayuda a aumentar la eficiencia del sueño.&nbsp;</li>
+
+
+
+<li><strong>Exposición a luz natural por la mañana</strong>, para reajustar tu ritmo circadiano.&nbsp;</li>
+
+
+
+<li><strong>Evaluación de factores emocionales</strong>: muchas veces el insomnio es un síntoma de fondo, no la raíz del problema.&nbsp;</li>
+</ul>
+
+
+
+<p>Todo esto lo integramos en nuestros programas en Emotiva, siempre desde una perspectiva amable, profesional y científicamente validada.&nbsp;Y si a pesar de todo el sueño sigue sin mejorar,&nbsp;<strong>no estás solo/a ni fallando</strong>. En esos casos, puede ser útil contar con acompañamiento profesional.&nbsp;</p>
+
+
+
+<p><strong>Dormir no es un lujo. Es una forma de cuidarte</strong>&nbsp;</p>
+
+
+
+<p>No necesitas&nbsp;seguir a la perfección estos hábitos. Solo empezar. Aunque sea con un gesto pequeño.&nbsp;</p>
+
+
+
+<p>Porque cuando duermes mejor, todo cambia:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Tu cuerpo responde mejor al estrés&nbsp;</li>
+
+
+
+<li>Tu memoria funciona con más claridad&nbsp;</li>
+
+
+
+<li>Tus emociones se regulan con menos esfuerzo&nbsp;</li>
+
+
+
+<li>Tus relaciones se vuelven más cálidas y sostenibles.&nbsp;</li>
+</ul>
+
+
+
+<p><em>Sin un buen descanso, todo cuesta más.&nbsp;Dormir bien no es el objetivo final, es el punto de partida.&nbsp;Empieza por ahí.</em>&nbsp;</p>
+d:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"HIGIENE DEL SUEÑO "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$19"}}]}]]}],"$L1a"]}]
+1b:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-20f86404156ccb66.js"],""]
+1a:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1b",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

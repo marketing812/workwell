@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as deleteFirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, getDoc, setDoc, getDocs, collection, query, orderBy, writeBatch } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection, writeBatch } from "firebase/firestore";
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -12,11 +12,8 @@ import { t } from '@/lib/translations';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
 import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
-import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
-import { overwriteNotebookEntries, clearAllNotebookEntries, type NotebookEntry } from '@/data/therapeuticNotebookStore';
-import { deleteLegacyData, sendLegacyData } from '@/data/userUtils'; // Importar la nueva función
-import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { overwriteNotebookEntries, type NotebookEntry } from '@/data/therapeuticNotebookStore';
+import { deleteLegacyData } from '@/data/userUtils';
 
 const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
 const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
@@ -46,16 +43,9 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
-const API_KEY = "4463";
-
 async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[], debugUrl: string}> {
-  const clave = "SJDFgfds788sdfs8888KLLLL";
-  const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-  const raw = `${clave}|${fecha}`;
-  const token = btoa(raw);
-  const base64UserId = btoa(userId);
-  const url = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getcuaderno&usuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`;
+  const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? "").replace(/\/+$/, "");
+  const url = `${base}/notebook?userId=${encodeURIComponent(userId)}`;
 
   try {
     const res = await fetch(url, { cache: 'no-store' });
@@ -64,97 +54,9 @@ async function fetchNotebook(userId: string): Promise<{entries: NotebookEntry[],
         console.error("Error fetching notebook:", errorText);
         return { entries: [], debugUrl: url };
     }
-    const responseText = await res.text();
-    
-    let jsonToParse = responseText.trim();
-    
-    // START FIX: Handle potentially concatenated JSON objects in the response.
-    // The backend sometimes returns multiple JSON objects back-to-back, e.g. {..}{..}
-    // This isn't valid JSON. We attempt to fix it by wrapping it in an array.
-    if (jsonToParse.startsWith('{') && jsonToParse.endsWith('}')) {
-        jsonToParse = `[${jsonToParse.replace(/}\s*{/g, '},{')}]`;
-    }
-    // END FIX
-
-    let apiResult;
-    try {
-        const parsedData = JSON.parse(jsonToParse);
-        // If the result of the fix is an array of objects, we take the first one
-        // if it contains a status, otherwise we assume it's the data array itself.
-        if (Array.isArray(parsedData) && parsedData.length > 0) {
-            if('status' in parsedData[0]){
-                 apiResult = parsedData[0];
-                // console.log("UserContext: Processed concatenated JSON response, taking first object.");
-            } else {
-                 apiResult = { status: "OK", data: parsedData };
-                // console.log("UserContext: Processed concatenated JSON as a direct data array.");
-            }
-        } else {
-            apiResult = parsedData;
-        }
-    } catch(e) {
-        // Fallback for when the response is not JSON but a raw encrypted string.
-        const decryptedData = decryptDataAES(jsonToParse);
-        if (Array.isArray(decryptedData)) {
-            apiResult = { status: "OK", data: decryptedData };
-        } else {
-             console.error("Failed to parse notebook response as JSON or decrypt it:", jsonToParse);
-             return { entries: [], debugUrl: url };
-        }
-    }
-    
-    // If the parsed result is an array directly, wrap it in the expected structure.
-    if (Array.isArray(apiResult)) {
-        apiResult = { status: "OK", data: apiResult };
-    }
-
-
-    if (apiResult.status === "OK") {
-        let notebookData: any[] | null = null;
-
-        if (Array.isArray(apiResult.data)) {
-            notebookData = apiResult.data;
-        } else if (typeof apiResult.data === 'string' && apiResult.data.trim() !== '') {
-            const decrypted = decryptDataAES(apiResult.data);
-            if (Array.isArray(decrypted)) {
-                notebookData = decrypted;
-            }
-        }
-        
-        if (notebookData) {
-             const entries = notebookData.map((item: any): NotebookEntry | null => {
-                // Handle array format (legacy)
-                if (Array.isArray(item) && item.length >= 5) {
-                    return {
-                        id: String(item[0]),
-                        timestamp: String(item[1]),
-                        // item[2] is userId
-                        title: String(item[3]),
-                        content: String(item[4]),
-                        pathId: item[5] ? String(item[5]) : undefined,
-                        ruta: item[5] ? (String(item[5]).replace(/-/g, ' ').charAt(0).toUpperCase() + String(item[5]).slice(1).replace(/-/g, ' ')) : undefined,
-                    };
-                }
-                // Handle object format (more likely, and more robust)
-                if (typeof item === 'object' && item !== null && 'id' in item && 'timestamp' in item) {
-                    return {
-                        id: String(item.id),
-                        timestamp: String(item.timestamp),
-                        title: String(item.title || ''),
-                        content: String(item.content || ''),
-                        pathId: item.pathId ? String(item.pathId) : (item.ruta ? String(item.ruta) : undefined), // check for ruta as fallback
-                        ruta: item.ruta ? String(item.ruta) : (item.pathId ? (String(item.pathId).replace(/-/g, ' ').charAt(0).toUpperCase() + String(item.pathId).slice(1).replace(/-/g, ' ')) : undefined),
-                    };
-                }
-                console.warn("Unrecognized notebook item format:", item);
-                return null;
-            }).filter((item): item is NotebookEntry => item !== null);
-            return { entries, debugUrl: url };
-        }
-    }
-
-    console.warn("Could not find notebook data in API response:", apiResult);
-    return { entries: [], debugUrl: url };
+    const payload = await res.json();
+    const entries = Array.isArray(payload?.entries) ? payload.entries : [];
+    return { entries, debugUrl: payload?.debugUrl || url };
 
   } catch (error) {
     console.error("Failed to fetch or process notebook:", error);

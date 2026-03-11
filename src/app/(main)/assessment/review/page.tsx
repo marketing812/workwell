@@ -64,4 +64,3 @@ export default function AssessmentReviewPage() {
   );
 }
 
-export const dynamic = 'force-dynamic';

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -148,9 +148,7 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
                     <Button asChild className="w-full sm:w-auto">
                         <Link href={`/therapeutic-notebook/path/${pathId}`}>Ver mi cuaderno</Link>
                     </Button>
-                    <Button onClick={resetExercise} variant="outline" className="w-full sm:w-auto">
-                        Hacer otro registro
-                    </Button>
+                    
                 </div>
             </div>
         );

@@ -9,16 +9,83 @@ import { formatAssessmentTimestamp, type AssessmentRecord, overwriteAssessmentHi
 import { History, Eye, ArrowRight, Loader2, AlertTriangle, RefreshCw, PlaySquare } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useUser } from '@/contexts/UserContext';
-import { forceEncryptStringAES, decryptDataAES } from '@/lib/encryption';
 import { z } from 'zod';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 
-// API constants
-const API_BASE_URL = `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
-const API_KEY = "4463";
 const API_TIMEOUT_MS = 20000;
 const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
+
+function toIsoTimestampSafe(timestamp: string): string {
+  const normalized = timestamp.includes('T') ? timestamp : timestamp.replace(' ', 'T');
+  const dateObj = new Date(normalized);
+  return isNaN(dateObj.getTime()) ? timestamp : dateObj.toISOString();
+}
+
+function buildAssessmentFingerprint(record: AssessmentRecord): string {
+  const timestampIso = toIsoTimestampSafe(record.timestamp);
+  const profile = record.data?.emotionalProfile ?? {};
+  const profileNormalized = Object.keys(profile)
+    .sort()
+    .map((key) => `${key}:${Number((profile as Record<string, number>)[key]).toFixed(2)}`)
+    .join('|');
+  const feedback = String(record.data?.feedback ?? '').trim().toLowerCase();
+  return `${timestampIso}::${feedback}::${profileNormalized}`;
+}
+
+function buildTimestampMinuteKey(timestamp: string): string {
+  const normalized = timestamp.includes('T') ? timestamp : timestamp.replace(' ', 'T');
+  const dateObj = new Date(normalized);
+  if (isNaN(dateObj.getTime())) return normalized.slice(0, 16);
+  return String(Math.floor(dateObj.getTime() / 60000));
+}
+
+function pickPreferredRecord(current: AssessmentRecord, candidate: AssessmentRecord): AssessmentRecord {
+  const currentProfileSize = Object.keys(current.data?.emotionalProfile ?? {}).length;
+  const candidateProfileSize = Object.keys(candidate.data?.emotionalProfile ?? {}).length;
+  if (candidateProfileSize > currentProfileSize) return candidate;
+  if (candidateProfileSize < currentProfileSize) return current;
+
+  const currentFeedbackLen = String(current.data?.feedback ?? '').trim().length;
+  const candidateFeedbackLen = String(candidate.data?.feedback ?? '').trim().length;
+  if (candidateFeedbackLen > currentFeedbackLen) return candidate;
+
+  return current;
+}
+
+function dedupeAssessments(records: AssessmentRecord[]): AssessmentRecord[] {
+  const normalized = records.map((record) => ({
+    ...record,
+    timestamp: toIsoTimestampSafe(record.timestamp),
+  }));
+
+  // 1) Collapse obvious duplicates by displayed minute first.
+  const dedupedByMinute = new Map<string, AssessmentRecord>();
+  normalized.forEach((record) => {
+    const minuteKey = buildTimestampMinuteKey(record.timestamp);
+    const existing = dedupedByMinute.get(minuteKey);
+    if (!existing) {
+      dedupedByMinute.set(minuteKey, record);
+      return;
+    }
+    dedupedByMinute.set(minuteKey, pickPreferredRecord(existing, record));
+  });
+
+  // 2) Keep semantic dedupe for remaining edge cases.
+  const dedupedByFingerprint = new Map<string, AssessmentRecord>();
+  Array.from(dedupedByMinute.values()).forEach((record) => {
+    const fingerprint = buildAssessmentFingerprint(record);
+    const existing = dedupedByFingerprint.get(fingerprint);
+    if (!existing) {
+      dedupedByFingerprint.set(fingerprint, record);
+      return;
+    }
+    dedupedByFingerprint.set(fingerprint, pickPreferredRecord(existing, record));
+  });
+
+  return Array.from(dedupedByFingerprint.values()).sort((a, b) =>
+    new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+  );
+}
 
 // Zod schema for validating the structure of a single assessment record from the API
 const ApiSingleAssessmentRecordSchema = z.object({
@@ -106,12 +173,6 @@ const ApiSingleAssessmentRecordSchema = z.object({
 
 const ApiFetchedAssessmentsSchema = z.array(ApiSingleAssessmentRecordSchema);
 
-interface ExternalApiResponse {
-  status: "OK" | "NOOK";
-  message: string;
-  data: any;
-}
-
 export default function MyAssessmentsPage() {
   const t = useTranslations();
   const { user, loading: userLoading } = useUser();
@@ -149,77 +210,37 @@ export default function MyAssessmentsPage() {
     setError(null);
     
     // --- OPTIMISTIC UI: Cargar datos locales primero ---
-    const localAssessments = getLocalAssessmentHistory();
+    const localAssessments = dedupeAssessments(getLocalAssessmentHistory());
     setAssessments(localAssessments);
     // ---
-
-    let constructedApiUrl = "";
     try {
-      const encryptedUserId = forceEncryptStringAES(user.id);
-      constructedApiUrl = `${API_BASE_URL}?apikey=${API_KEY}&tipo=getEvaluacion&usuario=${encodeURIComponent(encryptedUserId)}`;
-      
-      const response = await fetch(constructedApiUrl, { signal: AbortSignal.timeout(API_TIMEOUT_MS) });
-      let responseText = await response.text();
-
-      // ... (El resto de la lógica para parsear var_dump y JSON permanece igual)
-      let jsonToParse = responseText;
-      const varDumpRegex = /^string\(\d+\)\s*"([\s\S]*)"\s*$/;
-      const match = responseText.match(varDumpRegex);
-      if (match && match[1]) {
-        jsonToParse = match[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-      }
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(
+        `${base}/assessments?userId=${encodeURIComponent(user.id)}`,
+        { signal: AbortSignal.timeout(API_TIMEOUT_MS), cache: 'no-store' }
+      );
 
       if (!response.ok) {
-        throw new Error(`${t.errorOccurred} (HTTP ${response.status}): ${response.statusText || jsonToParse.substring(0,100) || 'Error del servidor'}`);
+        const responseText = await response.text();
+        throw new Error(`${t.errorOccurred} (HTTP ${response.status}): ${responseText.substring(0, 120) || 'Error del servidor'}`);
       }
 
-      const apiResult: ExternalApiResponse = JSON.parse(jsonToParse);
-      
-      if (apiResult.status === "OK") {
-        let potentialAssessmentsArray: any = null;
+      const payload = await response.json();
+      const potentialAssessmentsArray = Array.isArray(payload?.entries) ? payload.entries : [];
+      const validationResult = ApiFetchedAssessmentsSchema.safeParse(potentialAssessmentsArray);
+      if (validationResult.success) {
+        const serverAssessments = validationResult.data.map(record => {
+          return { ...record, timestamp: toIsoTimestampSafe(record.timestamp) };
+        });
 
-        if (Array.isArray(apiResult.data)) {
-          potentialAssessmentsArray = apiResult.data;
-        } else if (typeof apiResult.data === 'string' && apiResult.data.trim() !== '') {
-          const decryptedData = decryptDataAES(apiResult.data);
-          if (decryptedData && Array.isArray(decryptedData)) {
-            potentialAssessmentsArray = decryptedData;
-          }
-        } else {
-          potentialAssessmentsArray = [];
-        }
+        const allCandidates = [...localAssessments, ...serverAssessments];
+        const mergedAssessments = dedupeAssessments(allCandidates);
 
-        const validationResult = ApiFetchedAssessmentsSchema.safeParse(potentialAssessmentsArray);
-        if (validationResult.success) {
-          const serverAssessments = validationResult.data.map(record => {
-              const dateObj = new Date(record.timestamp.includes('T') ? record.timestamp : record.timestamp.replace(' ', 'T'));
-              return { ...record, timestamp: isNaN(dateObj.getTime()) ? record.timestamp : dateObj.toISOString() };
-          });
-
-          // --- MERGE LOGIC ---
-          const allAssessmentsMap = new Map<string, AssessmentRecord>();
-          localAssessments.forEach(record => allAssessmentsMap.set(record.id, record));
-          serverAssessments.forEach(record => allAssessmentsMap.set(record.id, record));
-          
-          const mergedAssessments = Array.from(allAssessmentsMap.values()).sort((a, b) => 
-            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-          );
-
-          setAssessments(mergedAssessments);
-          overwriteAssessmentHistory(mergedAssessments);
-          // --- END MERGE LOGIC ---
-
-        } else {
-          console.error("MyAssessmentsPage: Zod validation failed.", validationResult.error);
-          setError(t.errorOccurred + " (Datos de evaluación recibidos no son válidos)");
-        }
+        setAssessments(mergedAssessments);
+        overwriteAssessmentHistory(mergedAssessments);
       } else {
-        if (apiResult.message && apiResult.message.toLowerCase().includes("no hay evaluaciones")) {
-            setAssessments([]); 
-            overwriteAssessmentHistory([]);
-        } else {
-            setError(`${t.errorOccurred}: ${apiResult.message || 'Error desconocido del servidor'}`);
-        }
+        console.error('MyAssessmentsPage: Zod validation failed.', validationResult.error);
+        setError(t.errorOccurred + ' (Datos de evaluación recibidos no son válidos)');
       }
     } catch (e: any) {
       console.error("MyAssessmentsPage: Error fetching or processing assessments:", e);
@@ -331,7 +352,7 @@ export default function MyAssessmentsPage() {
                 </CardContent>
                 <CardFooter className="flex-col items-stretch space-y-4">
                   <Button asChild variant="default" className="w-full">
-                    <Link href={`/assessment/history-results/${assessment.id}`}>
+                    <Link href={`/assessment/history-results?id=${assessment.id}`}>
                       <Eye className="mr-2 h-4 w-4" />
                       {t.viewAssessmentResultsButton}
                     </Link>
@@ -345,3 +366,6 @@ export default function MyAssessmentsPage() {
     </div>
   );
 }
+
+
+

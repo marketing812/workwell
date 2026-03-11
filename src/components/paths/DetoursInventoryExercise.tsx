@@ -610,9 +610,6 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
               </Button>
-              <Button onClick={() => setStep(0)} variant="outline">
-                Hacer otro registro
-              </Button>
             </div>
           </div>
         );

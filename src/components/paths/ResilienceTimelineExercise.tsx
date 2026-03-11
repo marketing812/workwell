@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -220,9 +220,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Línea de Tiempo Guardada</h4>
                 <p className="text-muted-foreground">Tu historia de resiliencia ha sido guardada. Puedes volver a consultarla en tu cuaderno para recordar tu fortaleza.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">
-                  Empezar de nuevo
-                </Button>
+                
             </div>
         );
       default:

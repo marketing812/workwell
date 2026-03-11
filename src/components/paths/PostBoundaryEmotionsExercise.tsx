@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -310,7 +310,7 @@ ${reassessment}
                 </ul>
                 <div className="flex justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={resetExercise} variant="outline">Finalizar y hacer otro registro</Button>
+                  
                 </div>
             </div>
         );

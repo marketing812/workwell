@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -135,11 +135,6 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
                 <CheckCircle className="mr-2 h-5 w-5" />
                 <p className="font-medium">Guardado.</p>
               </div>
-            )}
-            {isSaved && (
-              <Button onClick={resetExercise} variant="outline" className="w-full mt-4">
-                Repetir la meditación
-              </Button>
             )}
              <p className="text-xs text-muted-foreground text-center pt-2">Puedes repetir esta meditación en cualquier momento del día. Es una herramienta que entrena tu amabilidad interna y tu presencia consciente.</p>
           </form>

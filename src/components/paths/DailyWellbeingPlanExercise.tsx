@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -365,7 +365,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
             <p className="font-semibold">“Las grandes transformaciones empiezan con pasos pequeños, repetidos con cariño y constancia.”</p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <Button onClick={() => setStep(6)} variant="outline">Editar mi plan</Button>
-              <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+              
             </div>
           </div>
         );

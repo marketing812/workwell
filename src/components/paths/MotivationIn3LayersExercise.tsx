@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -205,7 +205,7 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
               <p className="text-base text-foreground pt-4">Cada vez que sientas que te faltan ganas, vuelve aquí y recuerda por qué empezaste.</p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                    <Button onClick={() => setStep(1)} variant="outline">Editar mi motivación</Button>
-                   <Button onClick={resetExercise}>Finalizar ejercicio</Button>
+                   
               </div>
           </div>
         );

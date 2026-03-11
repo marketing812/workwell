@@ -283,10 +283,6 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
             <p className="text-muted-foreground">Tu mapa ha sido guardado en el cuaderno. Puedes revisarlo cuando quieras.</p>
-            <Button onClick={() => {
-              setIsSaved(false);
-              setStep(0);
-            }} variant="outline">Hacer otro registro</Button>
           </div>
         ) : renderStep()}
       </CardContent>

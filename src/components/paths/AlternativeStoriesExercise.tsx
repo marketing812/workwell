@@ -192,9 +192,6 @@ export default function AlternativeStoriesExercise({ content, pathId, onComplete
                   <CheckCircle className="mr-2 h-5 w-5" />
                   <p className="font-medium">Tu ejercicio ha sido guardado.</p>
               </div>
-              <Button type="button" variant="outline" className="w-full" onClick={handleRepeatExercise}>
-                Repetir ejercicio
-              </Button>
             </div>
           )}
         </form>

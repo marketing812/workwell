@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -168,7 +168,7 @@ La culpa no es una sentencia, es solo una señal: puedes escucharla para aprende
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Radar Guardado</h4>
                 <p className="text-muted-foreground">Tu radar de culpa se ha guardado en el cuaderno. Puedes volver a consultarlo para recordar cómo transformar la culpa en aprendizaje.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">Hacer otro registro</Button>
+                
             </div>
         );
       default:

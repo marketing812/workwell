@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState } from 'react';
@@ -139,7 +139,7 @@ Pregunta: Preguntas del checklist que resonaron conmigo | Respuesta: [${selected
                 <p className="italic">“Cada decisión es una oportunidad de acercarte a la vida que sí quieres habitar.”</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={resetExercise} variant="outline" className="w-auto">Hacer otro checklist</Button>
+                    
                 </div>
             </div>
         )}

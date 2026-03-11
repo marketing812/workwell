@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useMemo, useEffect } from 'react';
@@ -236,9 +236,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Guardado</h4>
                 <p className="text-muted-foreground">Tus no negociables han sido guardados. Puedes volver a ellos cuando lo necesites.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">
-                  Empezar de nuevo
-                </Button>
+                
             </div>
         );
       default: return null;

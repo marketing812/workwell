@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -257,7 +257,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm italic text-center">
               Si el pico persiste, repite Tomar una respiración–Observar una o dos veces y vuelve a Permitir con un paso más pequeño.
             </p>
-            <Button onClick={resetExercise} className="w-full">Hacer otra práctica</Button>
+            
           </div>
         );
       default:

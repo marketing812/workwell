@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -209,7 +209,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Elección Guardada</h4>
             <p className="italic">No necesitas eliminar el miedo. Solo necesitas escucharte por encima de él.</p>
-            <Button onClick={resetExercise} variant="outline" className="w-full">Empezar de nuevo</Button>
+            
           </div>
         );
       default:

@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -170,7 +170,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
                  <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
-                 <Button onClick={resetExercise} variant="outline">Practicar de nuevo</Button>
+                 
            </div>
         );
     }
@@ -200,7 +200,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">Ejercicio finalizado y guardado!</h4>
                  <p className="text-muted-foreground">Recuerda… Las relaciones que realmente nutren no son muchas. Pero cuando existen… sostienen, inspiran y respetan. Y eso no se encuentra por casualidad: se cultiva con presencia y cuidado.</p>
-                 <Button onClick={resetExercise} variant="outline" className="w-full">Practicar de nuevo</Button>
+                 
             </div>
         )}
       </CardContent>

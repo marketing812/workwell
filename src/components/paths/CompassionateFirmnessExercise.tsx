@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent, useEffect } from 'react';
@@ -124,7 +124,7 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
                   "{finalPhrase}"
                 </blockquote>
                 <p>Recuerda: validar al otro no significa invalidarte a ti. Puedes practicar esta frase para que te salga con naturalidad.</p>
-                <Button onClick={resetExercise} variant="outline" className="w-full">Crear otra frase</Button>
+                
             </div>
         );
       default: return null;

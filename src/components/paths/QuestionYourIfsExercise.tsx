@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -178,7 +178,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <blockquote className="italic">“Un pensamiento no es un hecho: es una hipótesis de tu mente. Y tú tienes el poder de revisarla.”</blockquote>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={resetExercise} variant="outline">Hacer otra práctica</Button>
+              
             </div>
           </div>
         );

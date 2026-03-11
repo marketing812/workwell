@@ -1,4 +1,4 @@
-﻿
+
 "use client";
 
 import { useState, type FormEvent } from 'react';
@@ -175,9 +175,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
                     <h4 className="font-bold text-lg">Escala Guardada</h4>
                     <p>Ya tienes tu propia escala emocional con recursos asociados. Esta será tu hoja de ruta cuando todo parezca desbordarte. Puedes volver a ella siempre que lo necesites.</p>
                     <p className="text-xs text-muted-foreground italic">Recuerda: tu cuerpo te habla. Cuanto antes lo escuches, más fácil será cuidarte.</p>
-                    <Button onClick={resetExercise} variant="outline" className="w-full">
-                        Empezar de nuevo
-                    </Button>
+                    
                 </div>
             );
       default:

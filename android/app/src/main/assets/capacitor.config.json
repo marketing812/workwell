@@ -1,9 +1,8 @@
 {
 	"appId": "com.workwell.app",
 	"appName": "WorkWell",
-	"webDir": "public",
+	"webDir": "out",
 	"server": {
-		"url": "https://emotiva--workwell-c4rlk.europe-west4.hosted.app",
 		"cleartext": false
 	}
 }
