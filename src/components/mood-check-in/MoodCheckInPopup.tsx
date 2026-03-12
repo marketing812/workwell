@@ -82,9 +82,9 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="w-[calc(100%-1rem)] max-w-lg max-h-[85vh] overflow-y-auto sm:w-full">
         <DialogHeader>
-          <DialogTitle className="text-center text-2xl">¿Cómo te sientes hoy?</DialogTitle>
+          <DialogTitle className="text-center text-xl sm:text-2xl">¿Cómo te sientes hoy?</DialogTitle>
           <DialogDescription className="text-center">En general, ¿cómo ha sido o está siendo tu estado de ánimo?</DialogDescription>
         </DialogHeader>
         <div className="py-4 space-y-3">
@@ -112,7 +112,7 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
           })}
         </div>
         <div className="flex justify-end pt-4">
-            <Button onClick={handleSubmit} disabled={!selectedMood || isSubmitting}>
+            <Button onClick={handleSubmit} disabled={!selectedMood || isSubmitting} className="w-full sm:w-auto">
                 {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 Guardar Respuesta
             </Button>
@@ -121,3 +121,4 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
     </Dialog>
   );
 }
+

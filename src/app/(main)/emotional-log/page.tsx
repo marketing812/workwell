@@ -110,25 +110,25 @@ export default function EmotionalLogPage() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl sm:text-3xl font-bold text-primary flex items-center">
             <LineChartIcon className="mr-2 sm:mr-3 h-7 w-7 sm:h-8 sm:w-8" />
             {t.fullEmotionalHistoryTitle}
         </h1>
-        <div className="flex gap-2">
-            <Button variant="outline" asChild>
+        <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:flex-nowrap">
+            <Button variant="outline" asChild className="w-full sm:w-auto">
               <Link href="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas">
                 ¿qué es el autorregistro?
               </Link>
             </Button>
             <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
               <DialogTrigger asChild>
-                <Button variant="default" className="shadow-md">
+                <Button variant="default" className="w-full sm:w-auto shadow-md">
                   <Edit className="mr-2 h-4 w-4" />
                   {t.registerEmotion}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[480px]">
+              <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[85vh] overflow-y-auto sm:w-full">
                 <DialogHeader>
                   <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
                   <DialogDescription>
@@ -138,7 +138,7 @@ export default function EmotionalLogPage() {
                 <EmotionalEntryForm onSubmit={handleEmotionalEntrySubmit} />
               </DialogContent>
             </Dialog>
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild className="w-full sm:w-auto">
             <Link href="/dashboard">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 {t.backToDashboard}

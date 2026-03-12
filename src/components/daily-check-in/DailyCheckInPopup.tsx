@@ -87,7 +87,7 @@ export function DailyCheckInPopup({ isOpen, questions, onClose, onDismiss }: Dai
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onDismiss()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[calc(100%-1rem)] max-w-md max-h-[85vh] overflow-y-auto sm:w-full">
         <DialogHeader>
           <DialogTitle>{t.dailyCheckInPageTitle || "Pregunta del Día"}</DialogTitle>
           <DialogDescription>{t.dailyCheckInPageDescription || "Una pequeña pausa para conectar contigo."}</DialogDescription>
@@ -99,7 +99,7 @@ export function DailyCheckInPopup({ isOpen, questions, onClose, onDismiss }: Dai
             </div>
           ) : (
               <div key={currentQuestion.id} className="space-y-4">
-                <p className="text-lg font-semibold text-center">{currentQuestion.text}</p>
+                <p className="text-base sm:text-lg font-semibold text-center leading-snug break-words">{currentQuestion.text}</p>
                 <RadioGroup
                   value={currentAnswer}
                   onValueChange={setCurrentAnswer}
@@ -132,7 +132,7 @@ export function DailyCheckInPopup({ isOpen, questions, onClose, onDismiss }: Dai
         </div>
         {currentQuestion && (
             <div className="flex justify-end pt-4">
-                <Button onClick={handleSubmit} disabled={!currentAnswer || isSubmitting}>
+                <Button onClick={handleSubmit} disabled={!currentAnswer || isSubmitting} className="w-full sm:w-auto">
                     {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
                     Guardar Respuesta
                 </Button>

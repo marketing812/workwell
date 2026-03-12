@@ -328,7 +328,7 @@ export default function DashboardPage() {
               {t.registerEmotion}
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[480px]">
+          <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[85vh] overflow-y-auto sm:w-full">
             <DialogHeader>
               <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
               <DialogDescription>
