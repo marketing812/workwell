@@ -326,12 +326,12 @@ export function RegisterForm() {
                   {fieldErrors?.agreeTerms && <p className="text-sm text-destructive">{fieldErrors.agreeTerms[0]}</p>}
                 </div>
               </div>
-
+<p>El uso de esta APP es completamente voluntario. Tu empresa no tiene acceso a tus datos personales ni a tu actividad individual en la APP. El uso o no uso de la APP no tiene ninguna consecuencia en tu relación laboral.</p>
               <div className="flex items-start space-x-2">
                 <Checkbox id="agreeHealthData" name="agreeHealthData" checked={agreeHealthData} onCheckedChange={(checked) => setAgreeHealthData(checked as boolean)} />
                 <div className="grid gap-1.5 leading-none">
                   <Label htmlFor="agreeHealthData" className="text-sm font-normal">
-                      Consiento de forma explícita el tratamiento de mis datos de salud y bienestar emocional, incluyendo información relacionada con mi estado psicológico, con la finalidad de prestar el servicio de acompañamiento y seguimiento terapéutico.
+                      Consiento expresamente el tratamiento de mis datos sobre estado emocional y bienestar psicológico —incluyendo el seguimiento de mi estado de ánimo y las actividades realizadas en la APP— con la finalidad de personalizar mi experiencia y recibir el servicio de acompañamiento emocional. Entiendo que este tratamiento es necesario para el funcionamiento del servicio y que puedo retirar mi consentimiento en cualquier momento, lo que conllevará la imposibilidad de continuar usándolo.
                   </Label>
                   {fieldErrors?.agreeHealthData && <p className="text-sm text-destructive">{fieldErrors.agreeHealthData[0]}</p>}
                 </div>
@@ -341,7 +341,7 @@ export function RegisterForm() {
                 <Checkbox id="agreeAI" name="agreeAI" checked={agreeAI} onCheckedChange={(checked) => setAgreeAI(checked as boolean)} />
                 <div className="grid gap-1.5 leading-none">
                   <Label htmlFor="agreeAI" className="text-sm font-normal">
-                      Autorizo el uso de sistemas de inteligencia artificial para generar recomendaciones personalizadas y respuestas automáticas, siendo consciente de que no sustituyen la intervención de un profesional sanitario.
+                     Consiento el uso de sistemas de inteligencia artificial para analizar mis datos de bienestar y generar recomendaciones personalizadas. Entiendo que estas recomendaciones no sustituyen la intervención de un profesional sanitario y que tengo derecho a solicitar la revisión humana de cualquier recomendación recibida.
                   </Label>
                   {fieldErrors?.agreeAI && <p className="text-sm text-destructive">{fieldErrors.agreeAI[0]}</p>}
                 </div>
