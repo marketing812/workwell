@@ -51,7 +51,13 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
       const triggerEmailReminder = async () => {
         try {
           const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
-          const response = await fetch(`${base}/trigger-reminder`);
+          if (!base) {
+            console.warn('useMoodCheckIn: NEXT_PUBLIC_API_BASE_URL no configurada. Se omite trigger-reminder.');
+            return;
+          }
+
+          const endpoint = `${base}/trigger-reminder`;
+          const response = await fetch(endpoint, { cache: 'no-store' });
           const result = await response.json();
           if (!response.ok || !result.success) {
             console.error("useMoodCheckIn: trigger-reminder failed.", result?.message || result?.error);
@@ -59,6 +65,16 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
            // console.log("useMoodCheckIn: trigger-reminder responded.", result.message);
           }
         } catch (error) {
+          const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+          if (error instanceof TypeError) {
+            console.error("useMoodCheckIn: Error calling trigger-reminder endpoint.", {
+              kind: 'network_or_cors_or_dns',
+              message: error.message,
+              baseUrl: base || '(empty)',
+              endpoint: base ? `${base}/trigger-reminder` : '(unresolved)',
+            });
+            return;
+          }
           console.error("useMoodCheckIn: Error calling trigger-reminder endpoint.", error);
         }
       };
