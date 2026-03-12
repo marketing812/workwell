@@ -311,6 +311,7 @@ export function RegisterForm() {
                   <p><strong>Destinatarios:</strong> proveedores tecnológicos necesarios (Firebase, hosting y proveedores de IA).</p>
                   <p><strong>Derechos:</strong> acceso, rectificación y supresión en lopd@futuver.com</p>
                   <p><strong>Delegado de protección de datos:</strong> dpo@futuver.com</p>
+                  <p>Se recomienda a los usuarios no introducir información que permita identificar a terceros.</p>
               </div>
 
               <div className="flex items-start space-x-2">
@@ -324,9 +325,9 @@ export function RegisterForm() {
                     {' '}y entiendo el tratamiento de mis datos personales.
                   </Label>
                   {fieldErrors?.agreeTerms && <p className="text-sm text-destructive">{fieldErrors.agreeTerms[0]}</p>}
-                </div>
+           <Label className="text-sm font-normal">El uso de esta APP es completamente voluntario. Tu empresa no tiene acceso a tus datos personales ni a tu actividad individual en la APP. El uso o no uso de la APP no tiene ninguna consecuencia en tu relación laboral.</Label>
+     </div>
               </div>
-<p>El uso de esta APP es completamente voluntario. Tu empresa no tiene acceso a tus datos personales ni a tu actividad individual en la APP. El uso o no uso de la APP no tiene ninguna consecuencia en tu relación laboral.</p>
               <div className="flex items-start space-x-2">
                 <Checkbox id="agreeHealthData" name="agreeHealthData" checked={agreeHealthData} onCheckedChange={(checked) => setAgreeHealthData(checked as boolean)} />
                 <div className="grid gap-1.5 leading-none">
