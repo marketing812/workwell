@@ -206,7 +206,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                     <div className="p-4 space-y-4">
                         <h4 className="font-semibold">Paso 7: Consejo práctico</h4>
                         <p className="text-sm text-muted-foreground italic">
-                          “No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.”
+                          No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.
                         </p>
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>

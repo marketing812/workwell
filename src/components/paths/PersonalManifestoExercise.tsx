@@ -151,7 +151,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                         <p className="text-sm text-muted-foreground">Según lo que marcaste antes, revisa este recordatorio:</p>
                         <p className="p-4 bg-accent/10 border-l-4 border-accent text-sm">{reminderText}</p>
                         <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground">Campo opcional de escritura:</p>
+                         
                             <p className="text-sm">Si pudieras hablarte con ternura, ¿qué frase te dirías ahora?</p>
                             <p className="text-sm italic text-muted-foreground">Ejemplo: “Entiendo que estabas cansada y no querías problemas. Está bien, lo importante es cómo eliges a partir de ahora.”</p>
                             <Label htmlFor="compassion-phrase">Lo que me diría ahora:</Label>

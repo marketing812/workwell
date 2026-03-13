@@ -112,17 +112,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 1: // Ejemplo guiado
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        <Accordion type="single" defaultValue="example" className="w-full text-left">
-                            <AccordionItem value="example">
-                                <AccordionTrigger>Ejemplo guiado</AccordionTrigger>
-                                <AccordionContent>
-                                    <div className="space-y-3 text-sm p-2">
-                                        <p>Al finalizar el ejercicio podrías descubrir algo como esto…</p>
-                                        <p className="italic">Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia. En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es la decisión correcta para él.</p>
-                                    </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
+               
                         <div className="flex justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>

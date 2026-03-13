@@ -44,15 +44,15 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">{content.objective}</p>
             <div className="mt-4">
-                <h4 className="font-semibold text-foreground">CuÃ¡ndo hacerla:</h4>
+                <h4 className="font-semibold text-foreground">Cuándo hacerla:</h4>
                 <ul className="list-disc list-inside text-sm text-left mx-auto max-w-md">
-                    <li>Antes de una conversaciÃ³n difÃ­cil.</li>
+                    <li>Antes de una conversación difícil.</li>
                     <li>Antes de un encuentro que sabes que te remueve.</li>
-                    <li>Antes de contestar un mensaje que te genera tensiÃ³n.</li>
-                    <li>Antes de acompaÃ±ar emocionalmente a alguien.</li>
+                    <li>Antes de contestar un mensaje que te genera tensión.</li>
+                    <li>Antes de acompañar emocionalmente a alguien.</li>
                 </ul>
             </div>
-            <Button onClick={nextStep}>Empezar PrÃ¡ctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            <Button onClick={nextStep}>Empezar Práctica <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>
         );
       case 1: // Step 1
@@ -125,7 +125,7 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
                 </audio>
             </div>
         )}
-        {content.duration && <p className="text-xs text-muted-foreground pt-1">DuraciÃ³n estimada: {content.duration}</p>}
+        {content.duration && <p className="text-xs text-muted-foreground pt-1">Duración estimada: {content.duration}</p>}
       </CardHeader>
       <CardContent>
         {renderStep()}

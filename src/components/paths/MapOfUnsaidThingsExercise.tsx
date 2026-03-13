@@ -216,25 +216,22 @@ ${nextStepOpener || 'No especificado.'}
     switch(step) {
       case 0: // Intro with example
         return (
-          <div className="p-4 space-y-4 text-center">
-            <p className="italic">
+          <div className="p-4 space-y-4">
+            <p className="text-sm ">
               Antes de hacer tu propio registro, te muestro un ejemplo completo del ejercicio que vas a realizar.
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm ">
               Leerlo con calma puede ayudarte a ponerle palabras a lo que te pasa y a comprender mejor cómo observar lo
               que piensas, sientes y haces cuando eliges no expresarte.
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm ">
               No tienes que seguir este modelo. Es solo una brújula. Lo importante es que uses tus propias palabras y
               seas honesta u honesto contigo.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Después de varios registros, podrás mirar tus respuestas con perspectiva para detectar patrones y decidir
-              cómo actuar distinto la próxima vez.
-            </p>
+           
             <Accordion type="single" defaultValue="example-situation" className="w-full text-left">
               <AccordionItem value="example-situation">
-                <AccordionTrigger>Pantalla 2: Ejemplo de situación no expresada</AccordionTrigger>
+                <AccordionTrigger>Ejemplo de situación no expresada</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3 p-2 border bg-background rounded-md">
                     <p><strong>¿Qué ocurrió?</strong> Estaba en una reunión del trabajo. Mi jefa pidió voluntarios para asumir un nuevo proyecto urgente.</p>
@@ -247,7 +244,17 @@ ${nextStepOpener || 'No especificado.'}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="example-pattern">
-                <AccordionTrigger>Pantalla 4: Ejemplo de detección de patrón</AccordionTrigger>
+                <AccordionTrigger> Detecta tu patrón (después de varios registros) </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3 p-2 border bg-background rounded-md">
+                    <p>Ahora que has hecho el ejercicio varias veces, es momento de mirar con más perspectiva. </p><p>No se trata de juzgarte, sino de entenderte mejor. 
+Detectar tus patrones te dará más poder de decisión para actuar distinto la próxima vez. </p>
+                        
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+             <AccordionItem value="example-pattern">
+                <AccordionTrigger>Ejemplo de detección de patrón</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3 p-2 border bg-background rounded-md">
                     <p><strong>¿Qué emociones se repiten cuando callas?</strong> Ansiedad, culpa y tristeza.</p>
@@ -279,12 +286,12 @@ ${nextStepOpener || 'No especificado.'}
              </div>
              <div className="space-y-2">
                  <Label htmlFor="sit-what-i-wanted">¿Qué querías decir o hacer, pero no lo hiciste?</Label>
-                 <p className="text-xs text-muted-foreground">Ej.: Quería pedir ayuda, poner un límite, decir que algo me dolió.</p>
+                 <p className="text-xs text-muted-foreground">Ej.: Quería pedir ayuda, poner un límite, decir que algo me dolió...</p>
                  <Textarea id="sit-what-i-wanted" value={whatIWanted} onChange={e => setWhatIWanted(e.target.value)} />
              </div>
              <div className="space-y-2">
                  <Label htmlFor="sit-what-i-did">¿Qué hiciste en su lugar?</Label>
-                 <p className="text-xs text-muted-foreground">Ej.: Cambié de tema, puse buena cara, dije que estaba todo bien.</p>
+                 <p className="text-xs text-muted-foreground">Ej.: Cambié de tema, puse buena cara, dije que estaba todo bien...</p>
                  <Textarea id="sit-what-i-did" value={whatIDid} onChange={e => setWhatIDid(e.target.value)} />
              </div>
               <div className="space-y-2">
@@ -306,7 +313,7 @@ ${nextStepOpener || 'No especificado.'}
               </div>
              <div className="space-y-2">
                  <Label htmlFor="sit-thoughts">¿Qué pensamientos pasaron por tu mente?</Label>
-                 <p className="text-xs text-muted-foreground">Escribe las frases que te dijiste o sentiste. Ej.: “Mejor me callo”, “No quiero molestar”.</p>
+                 <p className="text-xs text-muted-foreground">Escribe las frases que te dijiste o sentiste. Ej.: “Mejor me callo”, “Van a pensar que soy exagerada”, “No quiero molestar” …</p>
                  <Textarea id="sit-thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} />
              </div>
              <div className="space-y-2">
