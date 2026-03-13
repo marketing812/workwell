@@ -244,7 +244,7 @@ export const responsibilityPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Reflexionsesion2ruta10.mp3`,
           prompts: [
-            '<ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
+            '<ul><li>¿Cuál ha sido el descubrimiento más importante para ti y por qué?</li><li>¿Qué situación de esta semana te permitió poner en práctica la aceptación activa?</li><li>¿Qué culpa del pasado has soltado o disminuido gracias a lo trabajado?</li><li>¿Qué has descubierto sobre ti al separar hechos de juicios y actuar desde el presente?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/sesion2/Resumensesion2ruta10.mp3` },

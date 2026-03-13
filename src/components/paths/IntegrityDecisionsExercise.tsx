@@ -135,7 +135,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                     <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 1: Describe la decisión</h4>
                         <Label htmlFor="decision">¿Qué decisión tienes que tomar?</Label>
-                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
+                        <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Aceptar un nuevo puesto de trabajo en otra ciudad.”"/>
                         <div className="flex justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
@@ -239,7 +239,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                 return (
                      <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
                         <h4 className="font-semibold text-lg">Paso 6: Ajusta si es necesario</h4>
-                        <p className="text-sm text-muted-foreground">Campo de texto abierto (opcional).</p>
+                     
                         <Label htmlFor="adjustment">Si algo no encaja, ¿qué cambiarías para sentirte en paz con la decisión?</Label>
                         <p className="text-sm italic text-muted-foreground">
                             Ejemplo: "Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."

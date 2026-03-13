@@ -133,29 +133,29 @@ export const coherencePath: Path = {
           guidedFields: [
             {
               id: 'aprendizaje-semanal',
-              label: 'Lo que he aprendido sobre mi esta semana...',
+              label: '¿En qué tipo de situaciones te resulta más difícil mantener tu coherencia personal? ',
               placeholder: 'Ej: Me doy cuenta de que suelo decir que si aunque quiera decir que no...',
               required: true,
               rows: 4,
             },
             {
               id: 'incoherencia-impacto',
-              label: 'Que pasa en mi vida cuando no actuo en coherencia...',
-              placeholder: 'Ej: Me siento agotado/a y con menos motivacion...',
+              label: '¿Qué parte de ti intenta protegerte cuando te alejas de lo que realmente quieres o valoras? ',
+              placeholder: 'Ej: evitar un conflicto, no decepcionar a alguien o sentirte seguro o segura. ',
               required: true,
               rows: 4,
             },
             {
               id: 'ventajas-coherencia',
-              label: 'Ventajas que noto cuando alineo lo que pienso, siento y hago...',
+              label: '¿Qué has descubierto esta semana sobre tus valores o prioridades personales? ',
               placeholder: 'Ej: Me siento mas en paz y seguro/a de mis decisiones...',
               required: true,
               rows: 4,
             },
             {
               id: 'compromiso-personal',
-              label: 'Un compromiso personal que me llevo...',
-              placeholder: 'Ej: Escucharme antes de responder a una propuesta...',
+              label: '¿Cómo cambia tu sensación interna cuando imaginas actuar con mayor coherencia contigo en una situación importante de tu vida? ',
+              placeholder: 'Ej: más calma, seguridad, alivio o quizá también algo de miedo.',
               required: true,
               rows: 4,
             },
@@ -282,8 +282,8 @@ export const coherencePath: Path = {
           title: 'Reflexion Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
-            '<p>Esta semana has explorado que significa hacerte cargo de tu vida sin convertir la responsabilidad en una carga que te desgasta.</p><p>Has aprendido a distinguir entre lo que esta dentro de tu circulo de influencia y lo que no, y a comprometerte con decisiones que respeten tus limites y tu energia.</p><p>Piensa ahora en como este enfoque puede transformar tu manera de actuar y de cuidarte.</p><p>Preguntas para reflexionar:</p>'
-          ],
+             '<p>Hemos llegado al final de la semana 4. Párate y reflexiona sobre lo aprendido. </p><ul><li>¿Qué situaciones concretas me han mostrado que puedo mantenerme coherente incluso en entornos que no lo facilitan?  </li><li>¿En qué momentos he notado que la influencia externa casi me aparta de mis valores? ¿Qué aprendí de eso? </li><li>¿Qué ajustes pequeños puedo hacer para que mi entorno diario apoye más mi coherencia?  </li><li>¿Cómo puedo recordarme, en días difíciles, que la coherencia también incluye flexibilidad y autoaceptación?  </li><li>Si dentro de un mes miro atrás, qué me gustaría estar haciendo o sintiendo para saber que estoy viviendo más alineado/a conmigo?  </li></ul>'
+         ],
           guidedFields: [
             {
               id: 'descubrimiento-revelador',
