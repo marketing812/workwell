@@ -128,7 +128,7 @@ export default function EmotionalLogPage() {
                   {t.registerEmotion}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[85vh] overflow-y-auto sm:w-full">
+              <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
                 <DialogHeader>
                   <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
                   <DialogDescription>
@@ -199,6 +199,5 @@ export default function EmotionalLogPage() {
     </div>
   );
 }
-
 
 

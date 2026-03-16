@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { type ReactNode, useState, useEffect, useCallback, type FormEvent } from 'react';
+import React, { type ReactNode, useState, useEffect, useCallback, useMemo, type FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 
@@ -24,6 +24,7 @@ import {
   Minus as MinusIcon,
   CheckIcon,
   Loader2,
+  Lock,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -53,11 +54,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { ExerciseContent, SelfAcceptanceAudioExerciseContent } from '@/data/paths/pathTypes';
+import { pathsData } from '@/data/pathsData';
 import { useUser } from '@/contexts/UserContext';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { getModuleUnlockMap, getPathUnlockInfo } from '@/lib/pathAccess';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
@@ -984,6 +987,7 @@ export function PathDetailClient({ path }: { path: Path }) {
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
   const [uncompleteModuleId, setUncompleteModuleId] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [pathUnlockInfo, setPathUnlockInfo] = useState<{ isUnlocked: boolean; previousPathTitle?: string }>({ isUnlocked: true });
 
 
   useEffect(() => {
@@ -993,6 +997,7 @@ export function PathDetailClient({ path }: { path: Path }) {
     const updateCompletedState = () => {
       const completed = getCompletedModules(path.id);
       setCompletedModules(completed);
+      setPathUnlockInfo(getPathUnlockInfo(path.id, pathsData, getCompletedModules));
       // Actualizar el contexto también para consistencia
       loadPath(path.id, path.title, path.modules.length);
     };
@@ -1020,6 +1025,10 @@ export function PathDetailClient({ path }: { path: Path }) {
     }
   }, [pathname]);
 
+  const moduleUnlockMap = useMemo(() => {
+    return getModuleUnlockMap(path, completedModules);
+  }, [path, completedModules]);
+
   const completeModule = useCallback((moduleId: string, moduleTitle: string) => {
     const newCompletedModules = new Set(completedModules);
     newCompletedModules.add(moduleId);
@@ -1042,6 +1051,16 @@ export function PathDetailClient({ path }: { path: Path }) {
 
 
   const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
+    const moduleAccess = moduleUnlockMap.get(moduleId);
+    if (moduleAccess && !moduleAccess.isUnlocked) {
+      toast({
+        title: 'Módulo bloqueado',
+        description: moduleAccess.reason ?? 'Completa la semana anterior para continuar.',
+        duration: 3000,
+      });
+      return;
+    }
+
     if (completedModules.has(moduleId)) {
       setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
     } else {
@@ -1081,6 +1100,34 @@ export function PathDetailClient({ path }: { path: Path }) {
     );
   }
 
+  if (!pathUnlockInfo.isUnlocked) {
+    return (
+      <div className="container mx-auto py-8">
+        <Card className="max-w-2xl mx-auto shadow-xl">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-accent">
+              <Lock className="h-5 w-5" />
+              Ruta bloqueada
+            </CardTitle>
+            <CardDescription>
+              Para acceder a esta ruta primero debes completar la ruta anterior.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Ruta pendiente: <span className="font-medium">{pathUnlockInfo.previousPathTitle}</span>
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="outline" asChild>
+              <Link href="/paths">Volver a rutas</Link>
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto py-8">
       <Card className="mb-12 shadow-xl overflow-hidden">
@@ -1116,14 +1163,18 @@ export function PathDetailClient({ path }: { path: Path }) {
       </Card>
 
       <div className="space-y-6">
-        {path.modules.map(module => (
+        {path.modules.map((module) => {
+          const moduleAccess = moduleUnlockMap.get(module.id) ?? { isUnlocked: true };
+          const isModuleLocked = !moduleAccess.isUnlocked;
+
+          return (
           <ModuleErrorBoundary key={module.id} pathId={path.id} module={module}>
             <Card
               className={`shadow-lg transition-all duration-300 hover:shadow-xl ${
                 completedModules.has(module.id)
                   ? 'border-green-500/50 bg-green-50/30 dark:bg-green-900/10'
                   : 'border-transparent'
-              }`}
+              } ${isModuleLocked ? 'opacity-70 pointer-events-none' : ''}`}
             >
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">
@@ -1147,10 +1198,18 @@ export function PathDetailClient({ path }: { path: Path }) {
                       Completado
                     </Badge>
                   )}
+                  {isModuleLocked && (
+                    <Badge variant="outline" className="border-amber-500 text-amber-700 dark:text-amber-300">
+                      <Lock className="mr-1.5 h-3.5 w-3.5" />
+                      Bloqueado
+                    </Badge>
+                  )}
                 </div>
               </CardHeader>
               <CardContent>
-              {module.content.map((contentItem, i) => (
+              {isModuleLocked ? (
+                <p className="text-sm text-muted-foreground">{moduleAccess.reason}</p>
+              ) : module.content.map((contentItem, i) => (
                 <ContentItemErrorBoundary
                   key={i}
                   pathId={path.id}
@@ -1180,14 +1239,16 @@ export function PathDetailClient({ path }: { path: Path }) {
                   onClick={() => handleToggleComplete(module.id, module.title)}
                   variant={completedModules.has(module.id) ? 'default' : 'secondary'}
                   className={completedModules.has(module.id) ? 'bg-green-600 hover:bg-green-700' : ''}
+                  disabled={isModuleLocked}
                 >
                   <Check className="mr-2 h-4 w-4" />
-                  {completedModules.has(module.id) ? "Completado" : "Marcar como completado"}
+                  {isModuleLocked ? "Módulo bloqueado" : completedModules.has(module.id) ? "Completado" : "Marcar como completado"}
                 </Button>
               </CardFooter>
             </Card>
           </ModuleErrorBoundary>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-12 text-center">

@@ -20,6 +20,9 @@ const NOTEBOOK_TIMEOUT_MS = 15000;
 const SECRET_KEY =
   process.env.ENCRYPTION_SECRET || "0123456789abcdef0123456789abcdef";
 const MAX_USERS_PER_REQUEST = 1000;
+const PSYCHOLOGICAL_OPINION_DISCLAIMER =
+  "Las respuestas se generan automaticamente y pueden contener errores. " +
+  "Si atraviesas una situacion grave o de crisis, busca ayuda profesional.";
 
 function getAdminApp() {
   return getApps().length ? getApps()[0] : initializeApp();
@@ -90,6 +93,52 @@ function isDepartmentValidResponse(raw: string): boolean {
   }
 
   return false;
+}
+
+function shouldAppendPsychologicalOpinionDisclaimer(message: string): boolean {
+  const text = String(message || "").toLowerCase();
+  if (!text.trim()) return false;
+
+  const subjectiveTriggers = [
+    "que opinas",
+    "opinas",
+    "opinion",
+    "opinion subjetiva",
+    "que piensas",
+    "piensas que",
+    "crees que",
+    "tu crees",
+    "me aconsejas",
+    "consejo",
+    "es normal que",
+    "esta bien que",
+  ];
+
+  const psychologicalContextTriggers = [
+    "psicolog",
+    "emocion",
+    "emocional",
+    "ansiedad",
+    "depres",
+    "trauma",
+    "estres",
+    "autoestima",
+    "panico",
+    "salud mental",
+    "culpa",
+    "miedo",
+    "triste",
+    "pensamientos",
+    "terapia",
+    "bienestar mental",
+  ];
+
+  const hasSubjectiveSignal = subjectiveTriggers.some((token) => text.includes(token));
+  const hasPsychologicalSignal = psychologicalContextTriggers.some((token) =>
+    text.includes(token)
+  );
+
+  return hasSubjectiveSignal && hasPsychologicalSignal;
 }
 
 function forceEncryptStringAES(value: string): string {
@@ -341,10 +390,14 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
         message: "Faltan datos en la peticion.",
       });
     }
+    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const token = Buffer.from(`${DAILY_QUESTION_KEY}|${fecha}`).toString("base64");
+    const base64UserId = Buffer.from(String(userId)).toString("base64");
     const encryptedPayload = encryptDataAES({codigo: questionCode, respuesta: answer});
     const saveUrl =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardaclima` +
-      `&idusuario=${encodeURIComponent(userId)}&token=` +
+      `&idusuario=${encodeURIComponent(base64UserId)}` +
+      `&token=${encodeURIComponent(token)}` +
       `&datos=${encodeURIComponent(encryptedPayload)}`;
 
     const saveResponse = await fetch(saveUrl, {
@@ -359,27 +412,37 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
         debugUrl: saveUrl,
       });
     }
-    try {
-      const parsed = JSON.parse(text);
-      if (parsed.status === "OK") {
+    const textTrimmed = String(text || "").trim();
+    if (textTrimmed.toUpperCase() === "OK") {
+      return res.json({
+        success: true,
+        message: "Respuesta guardada.",
+        debugUrl: saveUrl,
+      });
+    }
+
+    const parsed = parseJsonFromNoisyText(textTrimmed);
+    if (parsed && typeof parsed === "object") {
+      const status = String(parsed.status ?? parsed.result ?? "").toUpperCase();
+      if (status === "OK" || parsed.ok === true) {
         return res.json({
           success: true,
-          message: parsed.message || "Respuesta guardada.",
+          message: String(parsed.message || "Respuesta guardada."),
           debugUrl: saveUrl,
         });
       }
       return res.status(400).json({
         success: false,
-        message: parsed.message || "Error del servicio externo.",
-        debugUrl: saveUrl,
-      });
-    } catch {
-      return res.json({
-        success: true,
-        message: "Guardado (respuesta no JSON).",
+        message: String(parsed.message || "Error del servicio externo."),
         debugUrl: saveUrl,
       });
     }
+
+    return res.status(502).json({
+      success: false,
+      message: "Respuesta invalida del servicio externo al guardar la pregunta diaria.",
+      debugUrl: saveUrl,
+    });
   } catch (error: any) {
     const message = error?.name === "AbortError" ?
       "Tiempo de espera agotado al conectar con el servidor externo." :
@@ -404,7 +467,14 @@ app.post("/chatbot", async (req: Request, res: Response) => {
     ].filter(Boolean).join("\n\n");
 
     const responseText = await callGemini(prompt);
-    return res.json({success: true, data: {response: responseText}});
+    const shouldAppendDisclaimer = shouldAppendPsychologicalOpinionDisclaimer(message);
+    const finalResponse =
+      shouldAppendDisclaimer &&
+      !responseText.includes(PSYCHOLOGICAL_OPINION_DISCLAIMER) ?
+        `${responseText.trim()}\n\n${PSYCHOLOGICAL_OPINION_DISCLAIMER}` :
+        responseText;
+
+    return res.json({success: true, data: {response: finalResponse}});
   } catch (error: any) {
     return res.status(500).json({
       success: false,

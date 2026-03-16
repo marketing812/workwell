@@ -23,20 +23,76 @@ interface EmotionalProfileChartProps {
   results: {
     emotionalProfile: Record<string, number>;
   };
+  rawAnswers?: Record<string, number | { score?: number; weight?: number }> | null;
   assessmentDimensions: AssessmentDimension[]; 
   className?: string;
 }
 
-export function EmotionalProfileChart({ results, assessmentDimensions, className }: EmotionalProfileChartProps) {
+function normalizeDimensionKey(value: string): string {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+export function EmotionalProfileChart({ results, rawAnswers, assessmentDimensions, className }: EmotionalProfileChartProps) {
   const t = useTranslations();
 
   if (!results || !results.emotionalProfile || Object.keys(results.emotionalProfile).length === 0 || !assessmentDimensions || assessmentDimensions.length === 0) {
     return null; 
   }
   
+  const normalizedProfile = new Map<string, number>();
+  Object.entries(results.emotionalProfile || {}).forEach(([key, value]) => {
+    const numericValue = Number(value as unknown);
+    if (Number.isFinite(numericValue)) {
+      normalizedProfile.set(normalizeDimensionKey(key), numericValue);
+    }
+  });
+
+  const overallScore = normalizedProfile.get(normalizeDimensionKey("Estado Emocional General"));
+
   const radarData = assessmentDimensions.map(dim => {
-    const scoreFromProfile = results.emotionalProfile[dim.name];
-    const scoreValue = scoreFromProfile !== undefined && typeof scoreFromProfile === 'number' ? scoreFromProfile : 0;
+    const exactScore = results.emotionalProfile[dim.name];
+    const normalizedScore = normalizedProfile.get(normalizeDimensionKey(dim.name));
+
+    let scoreValue: number | null =
+      typeof exactScore === "number" && Number.isFinite(exactScore) ?
+        exactScore :
+        (typeof normalizedScore === "number" && Number.isFinite(normalizedScore) ? normalizedScore : null);
+
+    if (scoreValue === null && rawAnswers && typeof rawAnswers === "object") {
+      let weightedTotal = 0;
+      let weightsSum = 0;
+
+      dim.items.forEach((item) => {
+        const rawAnswerValue = (rawAnswers as Record<string, number | { score?: number; weight?: number }>)[item.id];
+        const answer =
+          typeof rawAnswerValue === "object" && rawAnswerValue !== null ?
+            Number(rawAnswerValue.score) :
+            Number(rawAnswerValue);
+        const answerWeight =
+          typeof rawAnswerValue === "object" && rawAnswerValue !== null ?
+            Number(rawAnswerValue.weight ?? item.weight ?? 1) :
+            Number(item.weight ?? 1);
+        const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
+        if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
+          weightedTotal += answer * weight;
+          weightsSum += weight;
+        }
+      });
+
+      if (weightsSum > 0) {
+        scoreValue = weightedTotal / weightsSum;
+      }
+    }
+
+    if (scoreValue === null) {
+      scoreValue = 0;
+    }
+
     const finalScore = Math.max(0, Math.min(5, scoreValue));
     return {
       dimensionId: dim.id,
@@ -45,6 +101,12 @@ export function EmotionalProfileChart({ results, assessmentDimensions, className
       fullMark: 5,
     };
   });
+
+  const hasMeaningfulDimensionData = radarData.some((item) => item.score > 0);
+  const finalRadarData =
+    !hasMeaningfulDimensionData && typeof overallScore === "number" && Number.isFinite(overallScore) && overallScore > 0 ?
+      radarData.map((item) => ({...item, score: Math.max(0, Math.min(5, overallScore))})) :
+      radarData;
 
   const chartConfig = {
     score: {
@@ -62,7 +124,7 @@ export function EmotionalProfileChart({ results, assessmentDimensions, className
         <CardContent>
             <div className="h-[300px] w-full">
             <ChartContainer config={chartConfig} className="w-full h-full">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={finalRadarData}>
                     <PolarGrid gridType="polygon" stroke="hsl(var(--border))" />
                     <PolarAngleAxis
                         dataKey="dimension"
