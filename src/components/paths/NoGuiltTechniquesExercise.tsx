@@ -42,7 +42,7 @@ const techniques = {
     goal: "Evita respuestas impulsivas y te permite actuar desde la calma. Refuerza tu derecho a pensar antes de decidir.",
     howToBuild: "Agradece o reconoce la propuesta. Ej.: “Gracias por contar conmigo.” \nIndica que necesitas tiempo para responder. Ej.: “Prefiero pensarlo con calma y darte una respuesta después.” \nLa clave está en parar el impulso de complacer y darte un espacio para pensar.",
     example: "Gracias por contar conmigo. Prefiero pensarlo con calma y darte una respuesta más tarde.\nDéjame revisar mis tiempos y en un rato te confirmo.\nNecesito consultarlo antes de darte una respuesta definitiva.",
-    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3`
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial1.mp3`
   },
   acuerdoParcial: {
     title: "Técnica: Acuerdo parcial o asertivo",
@@ -50,7 +50,7 @@ const techniques = {
     goal: "Favorece un entendimiento real, mostrando que escuchas y validas al otro, sin dejarte de lado a ti. Refuerza tu capacidad de empatía y firmeza al mismo tiempo.",
     howToBuild: "Reconoce con sinceridad lo que el otro dice. Ej.: “Tienes razón en parte…”, “Es cierto que esto es importante…” \nA continuación, reafirma tu límite o necesidad. Ej.: “…pero también necesito cuidar mis tiempos.” \nEsta técnica es un puente: valida al otro y a ti, al mismo tiempo.",
     example: "Tienes razón en que esto es urgente, pero también necesito cuidar mis tiempos.\nSí, podría haber avisado antes, pero aun así no me siento bien con lo que ocurrió.",
-    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial.mp3`
+    audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/tecnicas/herramientas/R4sem2acuerdoparcial2.mp3`
   },
   sandwich: {
     title: "Técnica: Técnica del sándwich",
