@@ -25,13 +25,14 @@ import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
-import { getAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
+import { getAssessmentHistory, overwriteAssessmentHistory, type AssessmentRecord } from "@/data/assessmentHistoryStore";
 import { EmotionalProfileChart } from "@/components/dashboard/EmotionalProfileChart";
 import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessmentDimensions";
 import { getAutoregistrosLegacy, saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
 
 const DEBUG_REGISTER_FETCH_URL_KEY = "workwell-debug-register-fetch-url";
 const DEBUG_SAVE_NOTEBOOK_URL_KEY = "workwell-debug-save-notebook-url";
+const ASSESSMENTS_SYNC_TIMEOUT_MS = 20000;
 
 
 const moodScoreMapping: Record<string, number> = {
@@ -46,6 +47,76 @@ const moodScoreMapping: Record<string, number> = {
 };
 
 const NUM_RECENT_ENTRIES_TO_SHOW_ON_DASHBOARD = 4;
+
+function normalizeEmotionalProfile(rawProfile: any): Record<string, number> {
+  if (!rawProfile) return {};
+
+  if (Array.isArray(rawProfile)) {
+    const parsed: Record<string, number> = {};
+    rawProfile.forEach((item) => {
+      if (Array.isArray(item) && item.length >= 3 && typeof item[1] === "string") {
+        const score = Number(item[2]);
+        if (Number.isFinite(score)) parsed[item[1]] = score;
+        return;
+      }
+      if (Array.isArray(item) && item.length >= 2 && typeof item[0] === "string") {
+        const score = Number(item[1]);
+        if (Number.isFinite(score)) parsed[item[0]] = score;
+      }
+    });
+    return parsed;
+  }
+
+  if (typeof rawProfile === "object") {
+    return Object.entries(rawProfile).reduce((acc, [key, value]) => {
+      const score = Number(value);
+      if (Number.isFinite(score)) acc[key] = score;
+      return acc;
+    }, {} as Record<string, number>);
+  }
+
+  return {};
+}
+
+function normalizeRespuestas(rawRespuestas: any): Record<string, number> | null {
+  if (!rawRespuestas) return null;
+  if (Array.isArray(rawRespuestas)) return null;
+  if (typeof rawRespuestas !== "object") return null;
+
+  const parsed = Object.entries(rawRespuestas).reduce((acc, [key, value]) => {
+    const score = Number(value);
+    if (Number.isFinite(score)) acc[key] = score;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return Object.keys(parsed).length > 0 ? parsed : null;
+}
+
+function normalizeAssessmentEntry(raw: any, index: number): AssessmentRecord | null {
+  if (!raw || typeof raw !== "object") return null;
+  const rawData = raw.data && typeof raw.data === "object" ? raw.data : {};
+  const emotionalProfile = normalizeEmotionalProfile(rawData.emotionalProfile);
+  if (Object.keys(emotionalProfile).length === 0) return null;
+
+  const timestamp = String(raw.timestamp || raw.fecha || raw.createdAt || new Date().toISOString());
+  const id = String(raw.id || `assessment-${Date.now()}-${index}`);
+  const priorityAreasRaw = Array.isArray(rawData.priorityAreas) ? rawData.priorityAreas.flat(Infinity) : [];
+  const priorityAreas = priorityAreasRaw
+    .map((item: unknown) => String(item || "").trim())
+    .filter(Boolean)
+    .slice(0, 3);
+
+  return {
+    id,
+    timestamp,
+    data: {
+      emotionalProfile,
+      priorityAreas,
+      feedback: String(rawData.feedback || ""),
+      respuestas: normalizeRespuestas(rawData.respuestas),
+    },
+  };
+}
 
 export default function DashboardPage() {
   const t = useTranslations();
@@ -96,21 +167,52 @@ export default function DashboardPage() {
     }
   }, [user?.id, t, toast]);
 
+  const loadLatestAssessment = useCallback(async () => {
+    const localHistory = getAssessmentHistory();
+    if (localHistory.length > 0) {
+      setLatestAssessment(localHistory[0]);
+    }
+
+    if (!user?.id) return;
+
+    try {
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+      const response = await fetch(
+        `${base}/assessments?userId=${encodeURIComponent(user.id)}`,
+        { signal: AbortSignal.timeout(ASSESSMENTS_SYNC_TIMEOUT_MS), cache: "no-store" }
+      );
+      if (!response.ok) {
+        return;
+      }
+
+      const payload = await response.json();
+      const rawEntries: unknown[] = Array.isArray(payload?.entries) ? payload.entries : [];
+      const normalized = rawEntries
+        .map((entry: unknown, index: number) => normalizeAssessmentEntry(entry, index))
+        .filter((entry): entry is AssessmentRecord => !!entry)
+        .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
+      if (normalized.length > 0) {
+        overwriteAssessmentHistory(normalized);
+        setLatestAssessment(normalized[0]);
+      }
+    } catch {
+      // Keep local fallback silently.
+    }
+  }, [user?.id]);
+
   useEffect(() => {
     setIsClient(true);
     if (user?.id) {
       loadEntries();
-      const assessmentHistory = getAssessmentHistory();
-      if (assessmentHistory.length > 0) {
-        setLatestAssessment(assessmentHistory[0]);
-      }
+      loadLatestAssessment();
     } else {
         setIsLoadingEntries(false);
     }
      if (user && user.id && !user.ageRange) { 
       fetchUserProfile(user.id);
     }
-  }, [user, fetchUserProfile, loadEntries]);
+  }, [user, fetchUserProfile, loadEntries, loadLatestAssessment]);
 
 
   const chartData = useMemo(() => {
@@ -269,7 +371,7 @@ export default function DashboardPage() {
                   {t.registerEmotion}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[480px]">
+              <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
                 <DialogHeader>
                   <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
                   <DialogDescription>
@@ -356,6 +458,7 @@ export default function DashboardPage() {
             {latestAssessment ? (
                 <EmotionalProfileChart 
                     results={latestAssessment.data}
+                    rawAnswers={latestAssessment.data.respuestas ?? null}
                     assessmentDimensions={filteredDimensions}
                     className="lg:h-[450px]"
                 />
@@ -378,7 +481,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-
-
-

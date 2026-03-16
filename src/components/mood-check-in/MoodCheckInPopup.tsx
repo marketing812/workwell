@@ -82,7 +82,7 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="w-[calc(100%-1rem)] max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl">¿Cómo te sientes hoy?</DialogTitle>
           <DialogDescription className="text-center">En general, ¿cómo ha sido o está siendo tu estado de ánimo?</DialogDescription>

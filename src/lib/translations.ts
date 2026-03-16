@@ -163,7 +163,7 @@ export const t = {
   pathNotStarted: "Aún no has comenzado esta ruta.",
   // Chatbot
   chatbotTitle: "Mentor Emocional IA",
-  chatbotWelcome: "Hola, estoy aquí para escucharte y acompañarte. ¿En qué quieres trabajar hoy?",
+  chatbotWelcome: "Hola, estoy aquí para escucharte y acompañarte. ¿En qué quieres trabajar hoy? (utilizo inteligencia artificial para ofrecer orientación general sobre bienestar emocional. No sustituyo la evaluación ni el tratamiento de un profesional de la salud mental.)",
   chatbotInputPlaceholder: "Escribe tu mensaje aquí...",
   // Resources
   resourcesTitle: "Biblioteca de Recursos",

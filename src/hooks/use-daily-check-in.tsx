@@ -8,6 +8,7 @@ import { getDailyQuestion } from '@/data/dailyQuestion';
 import { useToast } from '@/hooks/use-toast';
 
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
+const ANSWERED_QUESTIONS_KEY_PREFIX = "workwell-daily-checkin-answered";
 
 interface DailyCheckInData extends Array<string> {}
 
@@ -27,7 +28,44 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   const [unansweredQuestions, setUnansweredQuestions] = useState<DailyQuestion[]>([]);
   const [isForcedOpen, setIsForcedOpen] = useState(false);
   const [wasDismissedThisSession, setWasDismissedThisSession] = useState(false);
-  
+
+  const getTodayKey = useCallback((): string => {
+    return new Date().toISOString().slice(0, 10);
+  }, []);
+
+  const getAnsweredStorageKey = useCallback((userId: string, dayKey: string): string => {
+    return `${ANSWERED_QUESTIONS_KEY_PREFIX}-${userId}-${dayKey}`;
+  }, []);
+
+  const getAnsweredTodaySet = useCallback((): Set<string> => {
+    if (typeof window === "undefined" || !user?.id) return new Set<string>();
+    const dayKey = getTodayKey();
+    const storageKey = getAnsweredStorageKey(user.id, dayKey);
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) return new Set<string>();
+    try {
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return new Set<string>();
+      return new Set(parsed.map((item) => String(item)));
+    } catch {
+      return new Set<string>();
+    }
+  }, [user?.id, getAnsweredStorageKey, getTodayKey]);
+
+  const hasAnsweredQuestionToday = useCallback((questionId: string): boolean => {
+    if (!questionId) return false;
+    return getAnsweredTodaySet().has(String(questionId));
+  }, [getAnsweredTodaySet]);
+
+  const markQuestionAnsweredToday = useCallback((questionId: string) => {
+    if (typeof window === "undefined" || !user?.id || !questionId) return;
+    const dayKey = getTodayKey();
+    const storageKey = getAnsweredStorageKey(user.id, dayKey);
+    const answered = getAnsweredTodaySet();
+    answered.add(String(questionId));
+    localStorage.setItem(storageKey, JSON.stringify(Array.from(answered)));
+  }, [user?.id, getAnsweredStorageKey, getTodayKey, getAnsweredTodaySet]);
+
 
   const loadAndFilterQuestions = useCallback(async (): Promise<DailyQuestion[]> => {
     if (!user?.id) {
@@ -45,13 +83,17 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
             setUnansweredQuestions([]);
             return [];
         }
+        if (hasAnsweredQuestionToday(nextQuestion.id)) {
+            setUnansweredQuestions([]);
+            return [];
+        }
         setUnansweredQuestions([nextQuestion]);
         return [nextQuestion];
     } else {
         setUnansweredQuestions([]);
         return [];
     }
-  }, [user?.id]);
+  }, [user?.id, hasAnsweredQuestionToday]);
   
   useEffect(() => {
     const initialTimer = setTimeout(() => {
@@ -138,6 +180,16 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
         return;
     }
 
+    if (hasAnsweredQuestionToday(questionToShow.id)) {
+      toast({
+        title: "Pregunta ya respondida",
+        description: "Ya has respondido esta pregunta hoy.",
+      });
+      setUnansweredQuestions([]);
+      setIsForcedOpen(false);
+      return;
+    }
+
     if (questionToShow) {
       setUnansweredQuestions([questionToShow]);
       setWasDismissedThisSession(false); 
@@ -148,7 +200,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
             description: "No hay más preguntas disponibles en este momento.",
         });
     }
-  }, [user?.id, toast]);
+  }, [user?.id, toast, hasAnsweredQuestionToday]);
   
   const dismissPopup = useCallback(() => {
     setIsForcedOpen(false);
@@ -157,10 +209,11 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
 
   const closePopup = useCallback((questionId: string) => {
     // Esta función ahora solo gestiona la UI. El guardado se hace en el pop-up.
+    markQuestionAnsweredToday(questionId);
     setIsForcedOpen(false);
     setWasDismissedThisSession(true); 
     setUnansweredQuestions([]); // Limpia la pregunta para que no vuelva a aparecer hasta la próxima comprobación
-  }, []);
+  }, [markQuestionAnsweredToday]);
 
   const showPopup = isForcedOpen || (unansweredQuestions.length > 0 && !wasDismissedThisSession);
 

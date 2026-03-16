@@ -87,7 +87,7 @@ export function DailyCheckInPopup({ isOpen, questions, onClose, onDismiss }: Dai
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onDismiss()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[calc(100%-1rem)] max-w-md max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle>{t.dailyCheckInPageTitle || "Pregunta del Día"}</DialogTitle>
           <DialogDescription>{t.dailyCheckInPageDescription || "Una pequeña pausa para conectar contigo."}</DialogDescription>

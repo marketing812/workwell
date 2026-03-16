@@ -6,17 +6,18 @@ import { pathsData, type Path } from '@/data/pathsData';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from '@/lib/translations';
-import { ArrowRight, BookCheck } from 'lucide-react';
+import { ArrowRight, BookCheck, Lock } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useActivePath } from '@/contexts/ActivePathContext'; // Importar el contexto
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
+import { getCompletedModules } from '@/lib/progressStore';
+import { getPathUnlockInfo } from '@/lib/pathAccess';
 
 export default function PathsPage() {
   const t = useTranslations();
   const searchParams = useSearchParams();
   const [highlightedPathId, setHighlightedPathId] = useState<string | null>(null);
-  const { clearActivePath } = useActivePath(); // Usar el contexto
+  const [, setProgressVersion] = useState(0);
 
   useEffect(() => {
     const startWithPath = searchParams.get('start_with');
@@ -29,6 +30,23 @@ export default function PathsPage() {
       }
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    const refreshProgress = () => setProgressVersion((prev) => prev + 1);
+    const progressEvents = pathsData.map((path) => `progress-updated-${path.id}`);
+
+    progressEvents.forEach((eventName) => {
+      window.addEventListener(eventName, refreshProgress);
+    });
+    window.addEventListener('storage', refreshProgress);
+
+    return () => {
+      progressEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, refreshProgress);
+      });
+      window.removeEventListener('storage', refreshProgress);
+    };
+  }, []);
 
   return (
     <div className="container mx-auto py-8">
@@ -44,11 +62,15 @@ export default function PathsPage() {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pathsData.map((path: Path) => (
-          <Card 
-            key={path.id} 
+        {pathsData.map((path: Path) => {
+          const unlockInfo = getPathUnlockInfo(path.id, pathsData, getCompletedModules);
+          const isLocked = !unlockInfo.isUnlocked;
+
+          return (
+          <Card
+            key={path.id}
             id={`path-${path.id}`}
-            className={`shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col ${highlightedPathId === path.id ? 'ring-2 ring-primary scale-105' : ''}`}
+            className={`shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col ${highlightedPathId === path.id ? 'ring-2 ring-primary scale-105' : ''} ${isLocked ? 'opacity-70' : ''}`}
           >
             <CardHeader>
               <div className="relative h-48 w-full mb-4 rounded-t-lg overflow-hidden">
@@ -64,16 +86,28 @@ export default function PathsPage() {
               <CardDescription className="text-sm min-h-[40px]">{path.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
+              {isLocked && (
+                <p className="text-sm text-muted-foreground">
+                  Desbloquea esta ruta completando antes: <span className="font-medium">{unlockInfo.previousPathTitle}</span>
+                </p>
+              )}
             </CardContent>
             <CardFooter>
-              <Button asChild className="w-full">
-                <Link href={`/paths/${path.id}`}>
-                  Explorar Ruta <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              {isLocked ? (
+                <Button className="w-full" disabled>
+                  <Lock className="mr-2 h-4 w-4" />
+                  Ruta bloqueada
+                </Button>
+              ) : (
+                <Button asChild className="w-full">
+                  <Link href={`/paths/${path.id}`}>
+                    Explorar Ruta <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
             </CardFooter>
           </Card>
-        ))}
+        )})}
       </div>
     </div>
   );

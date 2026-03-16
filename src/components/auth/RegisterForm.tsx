@@ -31,7 +31,9 @@ const registerSchema = z.object({
     .regex(/[^A-Za-z0-9]/, "La contraseña debe incluir al menos un símbolo (por ejemplo: *, $, %, !)."),
   ageRange: z.string().optional(),
   gender: z.string().optional(),
-  token: z.string().optional(), // New field for department code
+  token: z.string()
+    .trim()
+    .min(1, "El código de departamento es obligatorio."), // Required department code
   initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
   agreeTerms: z.boolean().refine((val) => val === true, {
     message: "Debes aceptar la Política de Privacidad.",
@@ -136,22 +138,20 @@ export function RegisterForm() {
       return;
     }
 
-    const departmentCode = String(validationResult.data.token || "").trim();
-    if (departmentCode) {
-      const departmentValidation = await validateDepartmentCode(departmentCode);
-      if (!departmentValidation.valid) {
-        const errorMessage =
-          departmentValidation.message ||
-          "El código de departamento no es válido. Revisa el dato e inténtalo de nuevo.";
-        setServerError(errorMessage);
-        toast({
-          title: t.errorOccurred,
-          description: errorMessage,
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
-        return;
-      }
+    const departmentCode = validationResult.data.token.trim();
+    const departmentValidation = await validateDepartmentCode(departmentCode);
+    if (!departmentValidation.valid) {
+      const errorMessage =
+        departmentValidation.message ||
+        "El código de departamento no es válido. Revisa el dato e inténtalo de nuevo.";
+      setServerError(errorMessage);
+      toast({
+        title: t.errorOccurred,
+        description: errorMessage,
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
     }
 
     try {
@@ -257,10 +257,10 @@ export function RegisterForm() {
             {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="token">Código de Departamento (opcional)</Label>
-            <Input id="token" name="token" value={formData.token || ''} onChange={handleInputChange} />
+            <Label htmlFor="token">Código de Departamento</Label>
+            <Input id="token" name="token" required value={formData.token || ''} onChange={handleInputChange} />
             <p className="text-xs text-muted-foreground mt-1">
-              Si indicas un dato válido en el campo "Código de Departamento" estarás a punto de unirte al entorno corporativo de tu organización. Esto permitirá que tu cuenta quede asociada a dicha organización.
+              Introduce un código de departamento válido para asociar tu cuenta al entorno corporativo de tu organización.
             </p>
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
