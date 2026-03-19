@@ -30,7 +30,7 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
 
   const handleComplete = () => {
     if (!isCompleted) {
-        toast({ title: "PrÃ¡ctica Finalizada", description: "Has entrenado tu escudo empÃ¡tico." });
+        toast({ title: "Práctica Finalizada", description: "Has entrenado tu escudo empático." });
         setIsCompleted(true);
         onComplete();
     }
@@ -59,9 +59,9 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 1: Pausa un momento</h4>
-            <p className="text-muted-foreground">Cierra los ojos (o baja la mirada). Toma una respiraciÃ³n lenta y profunda. Suelta el aire como si soltaras el peso de tener que resolverlo todo.</p>
+            <p className="text-muted-foreground">Cierra los ojos (o baja la mirada). Toma una respiración lenta y profunda. Suelta el aire como si soltaras el peso de tener que resolverlo todo.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
@@ -71,13 +71,13 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 2: Hazte estas 3 preguntas</h4>
             <ul className="list-disc list-inside space-y-2 pl-4 text-muted-foreground">
-                <li>Â¿Estoy emocionalmente disponible para esto ahora?</li>
-                <li>Â¿Desde dÃ³nde quiero responder: desde la presiÃ³n o desde la presencia?</li>
-                <li>Â¿Puedo activar mi escudo interno para estar sin absorber?</li>
+                <li>¿Estoy emocionalmente disponible para esto ahora?</li>
+                <li>¿Desde dónde quiero responder: desde la presión o desde la presencia?</li>
+                <li>¿Puedo activar mi escudo interno para estar sin absorber?</li>
             </ul>
-            <p className="italic text-sm text-muted-foreground">No tienes que responder perfecto. Solo notar cÃ³mo estÃ¡sâ€¦ ya es un acto de presencia.</p>
+            <p className="italic text-sm text-muted-foreground">No tienes que responder perfecto. Solo notar cómo estás... ya es un acto de presencia.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
           </div>
@@ -85,17 +85,17 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
       case 3: // Step 3
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Paso 3: Activa tu escudo empÃ¡tico</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 3: Activa tu escudo empático</h4>
             <p className="text-muted-foreground">Visualiza por un instante tu escudo suave a tu alrededor. Recuerda: no es una barrera, es tu espacio seguro.</p>
             <p className="text-muted-foreground">Repite en silencio una frase que te cuide:</p>
             <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic">
-                <p>â€œPuedo estar contigoâ€¦ sin dejar de estar conmigo.â€</p>
-                <p>â€œMi cuidado tambiÃ©n importa aquÃ­.â€</p>
-                <p>â€œMi presencia es suficiente. No tengo que absorberlo todo.â€</p>
+                <p>"Puedo estar contigo... sin dejar de estar conmigo."</p>
+                <p>"Mi cuidado también importa aquí."</p>
+                <p>"Mi presencia es suficiente. No tengo que absorberlo todo."</p>
             </blockquote>
              <div className="flex justify-between w-full mt-4">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
-                <Button onClick={handleComplete}>Finalizar PrÃ¡ctica <CheckCircle className="ml-2 h-4 w-4" /></Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button onClick={handleComplete}>Finalizar Práctica <CheckCircle className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
@@ -103,8 +103,8 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">PrÃ¡ctica finalizada</h4>
-            <p className="text-muted-foreground">Has practicado un gesto breve pero poderoso para cuidarte. Puedes volver a Ã©l siempre que lo necesites.</p>
+            <h4 className="font-bold text-lg">Práctica finalizada</h4>
+            <p className="text-muted-foreground">Has practicado un gesto breve pero poderoso para cuidarte. Puedes volver a él siempre que lo necesites.</p>
             
           </div>
         );

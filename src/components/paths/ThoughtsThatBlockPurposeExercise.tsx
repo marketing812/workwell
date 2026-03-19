@@ -21,21 +21,21 @@ interface ThoughtsThatBlockPurposeExerciseProps {
 }
 
 const distortionOptions = [
-    {id: 'catastrophism', label: 'Catastrofismo', description: 'Ver las situaciones como si el peor desenlace fuera inevitable o insoportable. Ejemplo: â€œSi fallo esta presentaciÃ³n, serÃ¡ un desastre total y arruinarÃ© mi carrera.â€' },
-    {id: 'dichotomous', label: 'Pensamiento dicotÃ³mico (todo o nada)', description: 'Ver las cosas en extremos (todo-nada, siempre-nunca, bien-mal, ...) sin matices. Todo es perfecto o un fracaso. Ejemplo: â€œSi no lo hago todo bien, entonces soy una inÃºtil.â€' },
-    {id: 'overgeneralization', label: 'SobregeneralizaciÃ³n', description: 'Sacar conclusiones generales a partir de un solo hecho negativo. Ejemplo: â€œMe equivoquÃ© en esto, siempre lo hago mal.â€' },
-    {id: 'personalization', label: 'PersonalizaciÃ³n', description: 'Creer que todo lo que ocurre estÃ¡ relacionado contigo, incluso sin evidencia. Ejemplo: â€œSeguro que estÃ¡n serios porque yo hice algo mal.â€' },
-    {id: 'mind_reading', label: 'Inferencia arbitraria / Saltar a conclusiones', description: 'Sacar conclusiones negativas sin pruebas claras. Hay dos tipos: la AdivinaciÃ³n del Pensamiento de los demÃ¡s y la AdivinaciÃ³n del Futuro. Ejemplo: â€œNo me contestÃ³ el mensaje, seguro que estÃ¡ molesto conmigoâ€, â€œNo me lo voy a pasar bien en la cena, asi que no voy a irâ€.' },
-    {id: 'selective_abstraction', label: 'AbstracciÃ³n selectiva', description: 'Fijarse solo en lo negativo, ignorando el resto de los acontecimientos y hechos de la experiencia. Ejemplo: â€œTodo saliÃ³ mal porque me equivoquÃ© en una palabraâ€, aunque el resto de la reuniÃ³n fue bien.' },
-    {id: 'emotional_reasoning', label: 'Razonamiento emocional', description: 'Creer que algo es cierto solo porque lo sientes intensamente. Ejemplo: â€œMe siento insegura, asÃ­ que debo ser incompetente.â€' },
-    {id: 'should_statements', label: 'â€œDeberÃ­asâ€ rÃ­gidos', description: 'Imponerse reglas a uno mismo o a los demÃ¡s, absolutas y exigentes que generan culpa o presiÃ³n. Ejemplo: â€œDeberÃ­a estar siempre tranquilaâ€, â€œNo deberÃ­a fallar nunca.â€' },
-    {id: 'magnification_minimization', label: 'Minimizar lo positivo y Maximizar lo negativo', description: 'Rechazar o minimizar cualquier logro o aspecto positivo y maximizar cualquier error o aspecto negativo. Ejemplo: â€œSÃ­, me felicitaronâ€¦ pero seguro fue por compromisoâ€, â€œMi pareja me seÃ±ala un error...soy lo peor, es imperdonableâ€.' },
-    {id: 'perfectionism', label: 'Perfeccionismo', description: 'Necesidad de cumplir estÃ¡ndares imposiblemente altos, sin permitir errores. Ejemplo: â€œSi no lo hago todo perfecto, no vale la pena.â€' },
-    {id: 'approval_dependency', label: 'ValÃ­a personal dependiente de la aprobaciÃ³n', description: 'Sentir que tu valor depende de lo que piensan los demÃ¡s. Ejemplo: â€œSi no me valoran en el trabajo, entonces no valgo nada.â€' },
-    {id: 'negative_comparison', label: 'ComparaciÃ³n negativa', description: 'Compararse con otros en lo que uno cree que falla, sin ver el conjunto. Ejemplo: â€œElla tiene mÃ¡s Ã©xito que yo (porque tiene un salario mÃ¡s alto), entonces soy un fracaso.â€' },
-    {id: 'responsibility_exaggeration', label: 'ExageraciÃ³n de la responsabilidad', description: 'Asumir que todo depende de ti, incluso cuando no estÃ¡ en tus manos. Ejemplo: â€œSi el grupo falla, serÃ¡ por mi culpa.â€' },
-    {id: 'time_distortion', label: 'DistorsiÃ³n del tiempo', description: 'Pensar que lo que sientes o vives ahora durarÃ¡ para siempre. Ejemplo: â€œNunca voy a salir de esto.â€' },
-    {id: 'negative_attentional_tunnel', label: 'TÃºnel atencional negativo', description: 'Enfocarse solo en los peligros o en lo que falta, y no ver lo que sÃ­ estÃ¡ bien. Ejemplo: â€œHoy ha sido horrible porque tuve una discusiÃ³nâ€, ignorando que el resto del dÃ­a fue tranquilo.' },
+    {id: 'catastrophism', label: 'Catastrofismo', description: 'Ver las situaciones como si el peor desenlace fuera inevitable o insoportable. Ejemplo: "Si fallo esta presentación, será un desastre total y arruinaré mi carrera."' },
+    {id: 'dichotomous', label: 'Pensamiento dicotómico (todo o nada)', description: 'Ver las cosas en extremos (todo-nada, siempre-nunca, bien-mal, ...) sin matices. Todo es perfecto o un fracaso. Ejemplo: "Si no lo hago todo bien, entonces soy una inútil."' },
+    {id: 'overgeneralization', label: 'Sobregeneralización', description: 'Sacar conclusiones generales a partir de un solo hecho negativo. Ejemplo: "Me equivoqué en esto, siempre lo hago mal."' },
+    {id: 'personalization', label: 'Personalización', description: 'Creer que todo lo que ocurre está relacionado contigo, incluso sin evidencia. Ejemplo: "Seguro que están serios porque yo hice algo mal."' },
+    {id: 'mind_reading', label: 'Inferencia arbitraria / Saltar a conclusiones', description: 'Sacar conclusiones negativas sin pruebas claras. Hay dos tipos: la Adivinación del Pensamiento de los demás y la Adivinación del Futuro. Ejemplo: "No me contestó el mensaje, seguro que está molesto conmigo", "No me lo voy a pasar bien en la cena, asi que no voy a ir".' },
+    {id: 'selective_abstraction', label: 'Abstracción selectiva', description: 'Fijarse solo en lo negativo, ignorando el resto de los acontecimientos y hechos de la experiencia. Ejemplo: "Todo salió mal porque me equivoqué en una palabra", aunque el resto de la reunión fue bien.' },
+    {id: 'emotional_reasoning', label: 'Razonamiento emocional', description: 'Creer que algo es cierto solo porque lo sientes intensamente. Ejemplo: "Me siento insegura, así que debo ser incompetente."' },
+    {id: 'should_statements', label: '"Deberías" rígidos', description: 'Imponerse reglas a uno mismo o a los demás, absolutas y exigentes que generan culpa o presión. Ejemplo: "Debería estar siempre tranquila", "No debería fallar nunca."' },
+    {id: 'magnification_minimization', label: 'Minimizar lo positivo y Maximizar lo negativo', description: 'Rechazar o minimizar cualquier logro o aspecto positivo y maximizar cualquier error o aspecto negativo. Ejemplo: "Sí, me felicitaron... pero seguro fue por compromiso", "Mi pareja me señala un error...soy lo peor, es imperdonable".' },
+    {id: 'perfectionism', label: 'Perfeccionismo', description: 'Necesidad de cumplir estándares imposiblemente altos, sin permitir errores. Ejemplo: "Si no lo hago todo perfecto, no vale la pena."' },
+    {id: 'approval_dependency', label: 'Valía personal dependiente de la aprobación', description: 'Sentir que tu valor depende de lo que piensan los demás. Ejemplo: "Si no me valoran en el trabajo, entonces no valgo nada."' },
+    {id: 'negative_comparison', label: 'Comparación negativa', description: 'Compararse con otros en lo que uno cree que falla, sin ver el conjunto. Ejemplo: "Ella tiene más éxito que yo (porque tiene un salario más alto), entonces soy un fracaso."' },
+    {id: 'responsibility_exaggeration', label: 'Exageración de la responsabilidad', description: 'Asumir que todo depende de ti, incluso cuando no está en tus manos. Ejemplo: "Si el grupo falla, será por mi culpa."' },
+    {id: 'time_distortion', label: 'Distorsión del tiempo', description: 'Pensar que lo que sientes o vives ahora durará para siempre. Ejemplo: "Nunca voy a salir de esto."' },
+    {id: 'negative_attentional_tunnel', label: 'Túnel atencional negativo', description: 'Enfocarse solo en los peligros o en lo que falta, y no ver lo que sí está bien. Ejemplo: "Hoy ha sido horrible porque tuve una discusión", ignorando que el resto del día fue tranquilo.' },
 ];
 
 
@@ -65,7 +65,7 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
     if (!reformulation.trim()) {
-        toast({ title: 'ReformulaciÃ³n vacÃ­a', description: 'Por favor, completa la reformulaciÃ³n.', variant: 'destructive'});
+        toast({ title: 'Reformulación vacía', description: 'Por favor, completa la reformulación.', variant: 'destructive'});
         return;
     }
     const selectedDistortions = distortionOptions.filter(d => distortions[d.id]).map(d => d.label);
@@ -73,13 +73,13 @@ export default function ThoughtsThatBlockPurposeExercise({ content, pathId, onCo
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pregunta: Â¿QuÃ© situaciÃ³n reciente te bloqueÃ³ para actuar desde tu propÃ³sito? | Respuesta: ${situation || 'No especificada.'}
-Pregunta: Â¿QuÃ© frase pasÃ³ por tu mente en ese momento? | Respuesta: "${automaticThought || 'No especificado.'}"
-Pregunta: Â¿QuÃ© distorsiones cognitivas detectas? | Respuesta: [${selectedDistortions.join(', ') || 'Ninguna.'}]
-Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasivo | Respuesta: "${reformulation}"
+Pregunta: ¿Qué situación reciente te bloqueó para actuar desde tu propósito? | Respuesta: ${situation || 'No especificada.'}
+Pregunta: ¿Qué frase pasó por tu mente en ese momento? | Respuesta: "${automaticThought || 'No especificado.'}"
+Pregunta: ¿Qué distorsiones cognitivas detectas? | Respuesta: [${selectedDistortions.join(', ') || 'Ninguna.'}]
+Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo | Respuesta: "${reformulation}"
     `;
-    addNotebookEntry({ title: `MicroprÃ¡ctica: Pensamientos que Bloquean`, content: notebookContent, pathId: pathId, userId: user?.id });
-    toast({ title: "PrÃ¡ctica Guardada", description: "Tu ejercicio ha sido guardado." });
+    addNotebookEntry({ title: `Micropráctica: Pensamientos que Bloquean`, content: notebookContent, pathId: pathId, userId: user?.id });
+    toast({ title: "Práctica Guardada", description: "Tu ejercicio ha sido guardado." });
     setIsSaved(true);
     onComplete();
     nextStep();
@@ -94,15 +94,15 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
       case 0:
         return (
             <div className="p-4 space-y-4">
-                <h4 className="font-semibold text-lg">Ejemplo guÃ­a:</h4>
+                <h4 className="font-semibold text-lg">Ejemplo guía:</h4>
                 <div className="p-3 border rounded-md bg-background/50 space-y-2">
-                    <p><strong>SituaciÃ³n reciente:</strong> TenÃ­a planeado hablar con mi jefe sobre reducir mi carga de trabajo, pero no me atrevÃ­.</p>
-                    <p><strong>Pensamiento automÃ¡tico que me bloqueÃ³:</strong> â€œSeguro que piensa que me estoy quejando por nada y que no soy lo suficientemente bueno/a para el puesto.â€</p>
-                    <p><strong>Distorsiones que aparecieron:</strong> Inferencia arbitraria: AdivinaciÃ³n del pensamiento, Catastrofismo</p>
-                    <p><strong>ReformulaciÃ³n adecuada consciente:</strong> â€œNo puedo saber lo que piensa. Estoy cuidÃ¡ndome al expresar mis lÃ­mites, y eso es una muestra de responsabilidad y valentÃ­a.â€</p>
+                    <p><strong>Situación reciente:</strong> Tenía planeado hablar con mi jefe sobre reducir mi carga de trabajo, pero no me atreví.</p>
+                    <p><strong>Pensamiento automático que me bloqueó:</strong> "Seguro que piensa que me estoy quejando por nada y que no soy lo suficientemente bueno/a para el puesto."</p>
+                    <p><strong>Distorsiones que aparecieron:</strong> Inferencia arbitraria: Adivinación del pensamiento, Catastrofismo</p>
+                    <p><strong>Reformulación adecuada consciente:</strong> "No puedo saber lo que piensa. Estoy cuidándome al expresar mis límites, y eso es una muestra de responsabilidad y valentía."</p>
                 </div>
                  <div className="flex justify-end w-full">
-                    <Button onClick={nextStep}>Empezar prÃ¡ctica <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                    <Button onClick={nextStep}>Empezar práctica <ArrowRight className="mr-2 h-4 w-4"/></Button>
                  </div>
             </div>
         );
@@ -110,10 +110,10 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
         return (
           <div className="p-4 space-y-4">
             <h4 className="font-semibold">Paso 1: Activa el recuerdo</h4>
-            <Label htmlFor="sit-block">Â¿QuÃ© situaciÃ³n reciente te bloqueÃ³ para actuar desde tu propÃ³sito?</Label>
+            <Label htmlFor="sit-block">¿Qué situación reciente te bloqueó para actuar desde tu propósito?</Label>
             <Textarea id="sit-block" value={situation} onChange={e => setSituation(e.target.value)} />
             <div className="flex justify-between mt-2">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -121,13 +121,13 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso 2: Pensamiento automÃ¡tico y distorsiones</h4>
+            <h4 className="font-semibold">Paso 2: Pensamiento automático y distorsiones</h4>
             <div className="space-y-2">
-                <Label htmlFor="thought-block">Â¿QuÃ© frase pasÃ³ por tu mente en ese momento?</Label>
+                <Label htmlFor="thought-block">¿Qué frase pasó por tu mente en ese momento?</Label>
                 <Textarea id="thought-block" value={automaticThought} onChange={e => setAutomaticThought(e.target.value)} />
             </div>
             <div className="space-y-4">
-                <Label>Â¿QuÃ© distorsiones cognitivas detectas?</Label>
+                <Label>¿Qué distorsiones cognitivas detectas?</Label>
                 {distortionOptions.map(opt => (
                     <div key={opt.id} className="flex items-start space-x-3 rounded-md border p-3">
                         <Checkbox id={opt.id} checked={!!distortions[opt.id]} onCheckedChange={(checked) => handleDistortionChange(opt.id, !!checked)} className="mt-1" />
@@ -139,7 +139,7 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
                 ))}
             </div>
              <div className="flex justify-between mt-2">
-                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
+                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!automaticThought.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -147,12 +147,12 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
       case 3:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold">Paso 3: ReformulaciÃ³n consciente</h4>
-            <Label htmlFor="reformulation-block">Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasivo.</Label>
+            <h4 className="font-semibold">Paso 3: Reformulación consciente</h4>
+            <Label htmlFor="reformulation-block">Reformula esa frase desde un lugar más realista, valiente o compasivo.</Label>
             <Textarea id="reformulation-block" value={reformulation} onChange={e => setReformulation(e.target.value)} />
              <div className="flex justify-between mt-2">
-                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>AtrÃ¡s</Button>
-                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapÃ©utico</Button>
+                <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
+                <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -160,8 +160,8 @@ Pregunta: Reformula esa frase desde un lugar mÃ¡s realista, valiente o compasi
         return (
              <div className="p-4 space-y-4 text-center">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-                <h4 className="font-bold text-lg">Â¡PrÃ¡ctica Guardada!</h4>
-                <p>Has entrenado una forma mÃ¡s consciente de relacionarte con tus pensamientos.</p>
+                <h4 className="font-bold text-lg">¡Práctica Guardada!</h4>
+                <p>Has entrenado una forma más consciente de relacionarte con tus pensamientos.</p>
                 <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                     <Button variant="secondary" disabled>
                       <Save className="mr-2 h-4 w-4" /> Guardado en tu caja de herramientas

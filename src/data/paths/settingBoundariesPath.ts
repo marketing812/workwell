@@ -238,7 +238,7 @@ export const settingBoundariesPath: Path = {
         { type: 'title', text: 'Técnicas Específicas' },
         {
           type: 'assertivePhraseExercise',
-          title: 'EJERCICIO 1: TU FRASE ACTIVA EN CUATRO PASOS',
+          title: 'EJERCICIO 1: TU FRASE ASERTIVA EN CUATRO PASOS',
           objective:
             'A veces sabes que necesitas decir algo… pero no encuentras las palabras. Esta técnica te acompaña paso a paso para expresar lo que sientes, lo que necesitas y lo que pides, con claridad y respeto.',
           duration: '10-15 min',
@@ -508,7 +508,7 @@ export const settingBoundariesPath: Path = {
           title: 'Reflexión final de la semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta4/descripciones/Reflexionsesion4ruta4.mp3`,
           prompts: [
-            '<p>¿En qué momento reciente sentí que me respeté al mantener un límite, aunque fuera incómodo?</p><p>¿Qué sentí internamente al sostener mi decisión sin justificarme?</p><p>¿Qué vínculo ha cambiado —aunque sea ligeramente— desde que empecé a expresarme con más claridad?</p><p>¿Qué me comprometo a seguir practicando, aunque a veces me cueste?</p>',
+            '<p><ul><li>¿En qué momento reciente sentí que me respeté al mantener un límite, aunque fuera incómodo?</li><li>¿Qué sentí internamente al sostener mi decisión sin justificarme?</li><li>¿Qué vínculo ha cambiado —aunque sea ligeramente— desde que empecé a expresarme con más claridad?</li><li>¿Qué me comprometo a seguir practicando, aunque a veces me cueste?</li></ul></p>',
           ],
         },
         {

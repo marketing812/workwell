@@ -184,7 +184,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Diálogo guardado</h4>
             <p>Has practicado una forma poderosa de escucharte. Recuerda que puedes volver a este ejercicio siempre que lo necesites.</p>
-            <Button onClick={() => setStep(0)} variant="outline">Empezar de nuevo</Button>
+            
           </div>
         );
       default:

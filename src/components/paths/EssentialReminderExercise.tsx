@@ -182,7 +182,7 @@ Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día
                 <p className="italic">"Cada vez que veas tu recordatorio, respira hondo y vuelve a ti. A tu valor. A tu dirección."</p>
                 <div className="flex justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                    <Button onClick={() => setStep(0)} variant="outline">Crear otro recordatorio</Button>
+                   
                 </div>
             </div>
         );

@@ -20,17 +20,17 @@ interface CompassionateReflectionExerciseProps {
 
 const emotionOptions = [
   { id: 'fear', label: 'Miedo al fallo' },
-  { id: 'shame', label: 'VergÃ¼enza' },
+  { id: 'shame', label: 'Vergüenza' },
   { id: 'guilt', label: 'Culpa' },
   { id: 'anxiety', label: 'Ansiedad' },
   { id: 'sadness', label: 'Tristeza' },
-  { id: 'frustration', label: 'FrustraciÃ³n' },
+  { id: 'frustration', label: 'Frustración' },
 ];
 
 const perfectionismOptions = [
-  { id: 'perfect', label: 'PensÃ© que, si no lo hacÃ­a perfecto, mejor no hacerlo.' },
-  { id: 'energy', label: 'SentÃ­ que tenÃ­a que estar con energÃ­a total.' },
-  { id: 'error', label: 'Cualquier error me parecÃ­a inaceptable.' },
+  { id: 'perfect', label: 'Pensé que, si no lo hacía perfecto, mejor no hacerlo.' },
+  { id: 'energy', label: 'Sentí que tenía que estar con energía total.' },
+  { id: 'error', label: 'Cualquier error me parecía inaceptable.' },
   { id: 'not-my-case', label: 'No fue mi caso esta vez.' },
 ];
 
@@ -60,22 +60,22 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
 
     const notebookContent = [
       `**Ejercicio: ${content.title}**`,
-      `Pregunta: A alguien que quiero le dirÃ­a queâ€¦ | Respuesta: ${adviceToFriend || 'No especificado.'}`,
-      `Pregunta: Cuando me bloqueÃ©, pensÃ© sobre mÃ­ queâ€¦ | Respuesta: ${selfJudgment || 'No especificado.'}`,
-      `Pregunta: Emociones que intentÃ© evitar | Respuesta: ${selectedEmotions.length > 0 ? `[${selectedEmotions.join(', ')}]` : 'No especificadas.'}`,
-      `Pregunta: Â¿QuÃ© sentÃ­ despuÃ©s de evitarlo? | Respuesta: ${aftermathEmotion || 'No especificado.'}`,
+      `Pregunta: A alguien que quiero le diría que... | Respuesta: ${adviceToFriend || 'No especificado.'}`,
+      `Pregunta: Cuando me bloqueé, pensé sobre mí que... | Respuesta: ${selfJudgment || 'No especificado.'}`,
+      `Pregunta: Emociones que intenté evitar | Respuesta: ${selectedEmotions.length > 0 ? `[${selectedEmotions.join(', ')}]` : 'No especificadas.'}`,
+      `Pregunta: ¿Qué sentí después de evitarlo? | Respuesta: ${aftermathEmotion || 'No especificado.'}`,
       `Pregunta: Exigencias detectadas | Respuesta: ${selectedPerfectionism.length > 0 ? `[${selectedPerfectionism.join(', ')}]` : 'Ninguna.'}`,
-      `Pregunta: Nueva forma de pensarlo con mÃ¡s flexibilidad | Respuesta: ${flexibleThought || 'No especificada.'}`
+      `Pregunta: Nueva forma de pensarlo con más flexibilidad | Respuesta: ${flexibleThought || 'No especificada.'}`
     ].join('\n\n');
 
     addNotebookEntry({
-      title: 'Mi ReflexiÃ³n Compasiva',
+      title: 'Mi Reflexión Compasiva',
       content: notebookContent,
       pathId,
-      ruta: 'Superar la ProcrastinaciÃ³n y Crear HÃ¡bitos',
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
       userId: user?.id,
     });
-    toast({ title: 'ReflexiÃ³n guardada', description: 'Tu reflexiÃ³n se ha guardado en el cuaderno.' });
+    toast({ title: 'Reflexión guardada', description: 'Tu reflexión se ha guardado en el cuaderno.' });
     setIsSaved(true);
     onComplete();
     setStep(prev => prev + 1);
@@ -112,27 +112,27 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
               </div>
             )}
             <Button onClick={() => setStep(1)}>
-              Empezar la reflexiÃ³n <ArrowRight className="ml-2 h-4 w-4" />
+              Empezar la reflexión <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         );
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: InstrucciÃ³n</h4>
-            <p>Imagina que una persona a la que quieres mucho estÃ¡ en tu situaciÃ³n: bloqueada, con miedo, posponiendo algo importante.</p>
+            <h4 className="font-semibold text-lg">Paso 1: Instrucción</h4>
+            <p>Imagina que una persona a la que quieres mucho está en tu situación: bloqueada, con miedo, posponiendo algo importante.</p>
             <div className="space-y-2">
-              <Label htmlFor="advice-to-friend">Le dirÃ­a queâ€¦</Label>
+              <Label htmlFor="advice-to-friend">Le diría que...</Label>
               <Textarea
                 id="advice-to-friend"
                 value={adviceToFriend}
                 onChange={e => setAdviceToFriend(e.target.value)}
-                placeholder="Ej: Entiendo que te bloquees, lo que estÃ¡s viviendo es difÃ­cil. Vas a poder con ello poco a poco."
+                placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
               />
             </div>
-            <p className="italic text-center text-foreground pt-2">Si puedes hablarle asÃ­ a otra personaâ€¦ tambiÃ©n puedes empezar a hablarte asÃ­ a ti.</p>
+            <p className="italic text-center text-foreground pt-2">Si puedes hablarle así a otra persona... también puedes empezar a hablarte así a ti.</p>
             <div className="flex justify-between w-full">
-              <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
+              <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(2)} disabled={!adviceToFriend.trim()}>Continuar</Button>
             </div>
           </div>
@@ -140,21 +140,21 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
       case 2:
         return (
           <div className="p-4 space-y-2 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Â¿Desde dÃ³nde me juzgo?</h4>
+            <h4 className="font-semibold text-lg">Paso 2: ¿Desde dónde me juzgo?</h4>
             <p className="text-sm text-muted-foreground">
-              A veces confundimos cÃ³mo nos sentimos con lo que somos. Estar cansado no significa ser incapaz.
-              Bloquearte no significa que seas dÃ©bil.
+              A veces confundimos cómo nos sentimos con lo que somos. Estar cansado no significa ser incapaz.
+              Bloquearte no significa que seas débil.
             </p>
-            <Label htmlFor="self-judgment">â€œCuando me bloqueÃ©, pensÃ© queâ€¦â€ [â€¦]</Label>
+            <Label htmlFor="self-judgment">"Cuando me bloqueé, pensé que..." [...]</Label>
             <Textarea
               id="self-judgment"
               value={selfJudgment}
               onChange={e => setSelfJudgment(e.target.value)}
-              placeholder="Ejemplo sugerido: â€œPensÃ© que no valÃ­a para esto.â€"
+              placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
             />
             <p className="text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(3)} disabled={!selfJudgment.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-              <h4 className="font-semibold text-lg">Paso 3: Â¿QuÃ© emociÃ³n crees que intentabas evitar cuando procrastinaste?</h4>
+              <h4 className="font-semibold text-lg">Paso 3: ¿Qué emoción crees que intentabas evitar cuando procrastinaste?</h4>
               <div className="space-y-1">
                 {emotionOptions.map(opt => (
                   <div key={opt.id} className="flex items-center gap-2">
@@ -191,23 +191,23 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
                   <Textarea
                     value={otherAvoidedEmotion}
                     onChange={(e) => setOtherAvoidedEmotion(e.target.value)}
-                    placeholder="Describe la otra emociÃ³n..."
+                    placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
                     className="ml-6 mt-1"
                   />
                 )}
               </div>
             </div>
             <div className="pt-4 space-y-2">
-              <Label htmlFor="aftermath" className="font-semibold">Â¿Y quÃ© sentÃ­ despuÃ©s de evitarlo?</Label>
+              <Label htmlFor="aftermath" className="font-semibold">¿Y qué sentí después de evitarlo?</Label>
               <Textarea
                 id="aftermath"
                 value={aftermathEmotion}
                 onChange={e => setAftermathEmotion(e.target.value)}
-                placeholder="Ejemplo sugerido: Alivio momentÃ¡neoâ€¦ y luego frustraciÃ³n."
+                placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
               />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(4)} disabled={!aftermathEmotion.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <div className="space-y-2">
-              <h4 className="font-semibold text-lg">Paso 4: Â¿Te exigiste demasiado en ese momento?</h4>
+              <h4 className="font-semibold text-lg">Paso 4: ¿Te exigiste demasiado en ese momento?</h4>
               <div className="space-y-1">
                 {perfectionismOptions.map(opt => (
                   <div key={opt.id} className="flex items-center gap-2">
@@ -233,18 +233,18 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
               </div>
             </div>
             <div className="pt-4 space-y-2">
-              <Label htmlFor="flexible-thought" className="font-semibold">Â¿CÃ³mo podrÃ­as pensarlo hoy con mÃ¡s flexibilidad?</Label>
+              <Label htmlFor="flexible-thought" className="font-semibold">¿Cómo podrías pensarlo hoy con más flexibilidad?</Label>
               <Textarea
                 id="flexible-thought"
                 value={flexibleThought}
                 onChange={e => setFlexibleThought(e.target.value)}
-                placeholder="Aunque no salga perfecto, un pequeÃ±o paso ya es avanzar."
+                placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
               />
             </div>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(5)} disabled={!flexibleThought.trim()}>
-                Ver mi reflexiÃ³n completa
+                Ver mi reflexión completa
               </Button>
             </div>
           </div>
@@ -252,12 +252,12 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
       case 5:
         return (
           <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
-            <h4 className="font-bold text-lg">Tu Mapa de ComprensiÃ³n Emocional</h4>
+            <h4 className="font-bold text-lg">Tu Mapa de Comprensión Emocional</h4>
             <div className="text-left p-4 border rounded-md bg-background/50 space-y-3">
-              <p><strong>A alguien que quiero le dirÃ­a:</strong> {adviceToFriend}</p>
-              <p><strong>En ese momento pensÃ© que:</strong> {selfJudgment}</p>
-              <p><strong>Emociones que intentÃ© evitar:</strong> {selectedEmotions.join(', ')}</p>
-              <p><strong>Â¿QuÃ© sentÃ­ despuÃ©s de evitarlo?:</strong> {aftermathEmotion}</p>
+              <p><strong>A alguien que quiero le diría:</strong> {adviceToFriend}</p>
+              <p><strong>En ese momento pensé que:</strong> {selfJudgment}</p>
+              <p><strong>Emociones que intenté evitar:</strong> {selectedEmotions.join(', ')}</p>
+              <p><strong>¿Qué sentí después de evitarlo?:</strong> {aftermathEmotion}</p>
               <p><strong>Exigencias detectadas:</strong> {selectedPerfectionism.join(', ')}</p>
               <p><strong>Nueva forma de pensarlo:</strong> {flexibleThought}</p>
             </div>
@@ -265,9 +265,9 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
               Has dado un paso valiente al mirar dentro de ti. Esto no es debilidad: es crecimiento. Hablarte con amabilidad te ayuda a avanzar.
             </p>
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={handleSave}>
-                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapÃ©utico
+                <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
               </Button>
             </div>
           </div>
@@ -276,8 +276,8 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
         return (
           <div className="p-4 space-y-2 text-center animate-in fade-in-0 duration-500">
             <CheckCircle className="h-10 w-10 text-primary mx-auto" />
-            <h4 className="font-bold text-lg">Â¡ReflexiÃ³n Guardada!</h4>
-            <p>Tu reflexiÃ³n se ha guardado en el Cuaderno TerapÃ©utico. Puedes consultarla cuando quieras para recordar tus patrones y tus nuevas formas de responder.</p>
+            <h4 className="font-bold text-lg">¡Reflexión Guardada!</h4>
+            <p>Tu reflexión se ha guardado en el Cuaderno Terapéutico. Puedes consultarla cuando quieras para recordar tus patrones y tus nuevas formas de responder.</p>
             
           </div>
         );

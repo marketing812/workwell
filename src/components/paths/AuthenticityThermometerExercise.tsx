@@ -201,12 +201,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Ejercicio Guardado!</h4>
             <p className="text-muted-foreground">Tu reflexión ha sido guardada en el Cuaderno Terapéutico. Puedes revisarla cuando quieras.</p>
-            <Button onClick={() => {
-                setStep(0);
-                setIsSaved(false);
-                setRelations(Array(6).fill({ name: '', howIShow: '', whatIHide: '', whyIHide: '', authenticity: 5 }));
-                setReflection({ q1: '', q2: '', q3: '', q4: '' });
-            }} variant="outline">Empezar de nuevo</Button>
+           
           </div>
         );
       default:

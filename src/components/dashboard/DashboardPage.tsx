@@ -455,6 +455,7 @@ export default function DashboardPage() {
       <section aria-labelledby="visualizations-heading">
         <h2 id="visualizations-heading" className="sr-only">Visualizaciones de Progreso</h2>
         <div className="grid gap-8 lg:grid-cols-2">
+            <div className="min-w-0">
             {latestAssessment ? (
                 <EmotionalProfileChart 
                     results={latestAssessment.data}
@@ -470,12 +471,15 @@ export default function DashboardPage() {
                     className="lg:h-[450px]"
                  />
             )}
+            </div>
+          <div className="min-w-0">
           <MoodEvolutionChart
             data={chartData}
             title={t.myEvolution}
             description="Gráfico de tu estado de ánimo general a lo largo del tiempo."
             className="lg:h-[450px]"
           />
+          </div>
         </div>
       </section>
     </div>

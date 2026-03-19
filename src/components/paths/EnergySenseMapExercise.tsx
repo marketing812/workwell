@@ -168,7 +168,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button
                 onClick={() => {
@@ -265,7 +265,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button
                 onClick={() => {
@@ -384,7 +384,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep}>
                 Reflexion y microaccion
@@ -419,7 +419,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={handleSave} disabled={!commitment.trim()}>
                 Guardar
@@ -441,7 +441,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               
             </div>

@@ -44,8 +44,8 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
 
   const getFinalWhen = () => {
     if (whenOption === 'now') return 'Ahora';
-    if (whenOption === 'next10') return 'En los prÃ³ximos 10 minutos';
-    if (whenOption === 'after') return `DespuÃ©s de ${whenAfter.trim()}`;
+    if (whenOption === 'next10') return 'En los próximos 10 minutos';
+    if (whenOption === 'after') return `Después de ${whenAfter.trim()}`;
     if (whenOption === 'tonight') return 'Esta tarde / noche';
     if (whenOption === 'other') return whenOther.trim();
     return '';
@@ -74,7 +74,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
     const notebookContent = [
       `**Ejercicio: ${content.title}**`,
       `Pregunta: Tarea que pospongo | Respuesta: ${task}`,
-      `Pregunta: Mi versiÃ³n de 2 minutos es | Respuesta: ${twoMinVersion}`,
+      `Pregunta: Mi versión de 2 minutos es | Respuesta: ${twoMinVersion}`,
       `Pregunta: Me comprometo a hacerlo | Respuesta: ${finalWhen}`
     ].join('\n\n');
 
@@ -82,7 +82,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       title: 'Mi Compromiso de 2 Minutos',
       content: notebookContent,
       pathId,
-      ruta: 'Superar la ProcrastinaciÃ³n y Crear HÃ¡bitos',
+      ruta: 'Superar la Procrastinación y Crear Hábitos',
       userId: user?.id
     });
     toast({ title: 'Compromiso Guardado', description: 'Tu plan de 2 minutos ha sido guardado.' });
@@ -104,11 +104,11 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       case 1:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 1: Â¿QuÃ© tarea estÃ¡s posponiendo?</h4>
+            <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
             <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
-            <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} placeholder="Ej: Escribir un email importante, Hacer ejercicio, Ordenar mi habitaciÃ³n" />
+            <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} placeholder="Ej: Escribir un email importante, Hacer ejercicio, Ordenar mi habitación" />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!task.trim()}>Siguiente</Button>
             </div>
           </div>
@@ -116,11 +116,11 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       case 2:
         return (
           <div className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Â¿CuÃ¡l serÃ­a su versiÃ³n de 2 minutos?</h4>
-            <Label htmlFor="twoMin" className="sr-only">VersiÃ³n de 2 minutos</Label>
-            <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} placeholder="Ej: Escribir solo una lÃ­nea, Moverme durante 2 minutos, Preparar la ropa de deporte" />
+            <h4 className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</h4>
+            <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
+            <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} placeholder="Ej: Escribir solo una línea, Moverme durante 2 minutos, Preparar la ropa de deporte" />
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
+              <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!twoMinVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
@@ -128,16 +128,16 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
       case 3:
         return (
           <form onSubmit={handleSave} className="space-y-4 p-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Â¿CuÃ¡ndo lo harÃ¡s?</h4>
-            <Label htmlFor="when-option">Elige una opciÃ³n</Label>
+            <h4 className="font-semibold text-lg">Paso 3: ¿Cuándo lo harás?</h4>
+            <Label htmlFor="when-option">Elige una opción</Label>
             <Select value={whenOption} onValueChange={setWhenOption}>
               <SelectTrigger id="when-option">
                 <SelectValue placeholder="Selecciona un momento" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="now">Ahora</SelectItem>
-                <SelectItem value="next10">En los prÃ³ximos 10 minutos</SelectItem>
-                <SelectItem value="after">DespuÃ©s de...</SelectItem>
+                <SelectItem value="next10">En los próximos 10 minutos</SelectItem>
+                <SelectItem value="after">Después de...</SelectItem>
                 <SelectItem value="tonight">Esta tarde / noche</SelectItem>
                 <SelectItem value="other">Otro</SelectItem>
               </SelectContent>
@@ -148,7 +148,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
                 id="when-after"
                 value={whenAfter}
                 onChange={e => setWhenAfter(e.target.value)}
-                placeholder="DespuÃ©s de [_________]"
+                placeholder="Después de [_________]"
               />
             )}
 
@@ -162,8 +162,8 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
             )}
 
             <div className="flex justify-between w-full mt-4">
-              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />AtrÃ¡s</Button>
-              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapÃ©utico</Button>
+              <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
+              <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>
           </form>
         );
@@ -171,8 +171,8 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">Â¡Compromiso Guardado!</h4>
-            <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeÃ±a que sea, tiene fuerza. Te conecta con tu capacidad de actuar sin esperar a tenerlo todo bajo control.</p>
+            <h4 className="font-bold text-lg">¡Compromiso Guardado!</h4>
+            <p className="text-muted-foreground">Acabas de plantar una semilla. Por pequeña que sea, tiene fuerza. Te conecta con tu capacidad de actuar sin esperar a tenerlo todo bajo control.</p>
             
           </div>
         );
@@ -197,7 +197,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
               </audio>
             </div>
           )}
-          Â¿Te pasa que algunas tareas se hacen cada vez mÃ¡s grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versiÃ³n tan sencilla que no puedas decir que no. Este microcomienzo te ayudarÃ¡ a pasar de la idea a la acciÃ³n.
+          ¿Te pasa que algunas tareas se hacen cada vez más grandes en tu cabeza? La regla de los 2 minutos consiste en empezar con una versión tan sencilla que no puedas decir que no. Este microcomienzo te ayudará a pasar de la idea a la acción.
         </CardDescription>
       </CardHeader>
       <CardContent>

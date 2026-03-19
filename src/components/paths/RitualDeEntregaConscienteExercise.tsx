@@ -124,7 +124,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
           handleSave("Escribir y Soltar", content);
       }} className="w-full"><Save className="mr-2 h-4 w-4"/> Guardar como “Entrega consciente”</Button>
       
-      <Button variant="link" onClick={() => setStep(0)} className="w-auto px-0">Volver a opciones</Button>
+    
     </div>
   );
 

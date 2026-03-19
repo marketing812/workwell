@@ -157,7 +157,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!presentSelfDesc.trim()}>
                 Siguiente
@@ -203,7 +203,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!essentialSelfDesc.trim()}>
                 Siguiente
@@ -241,7 +241,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button type="submit" disabled={!smallAction.trim()}>
                 <Save className="mr-2 h-4 w-4" />
@@ -309,7 +309,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
         </CardDescription>
         <p className="text-sm pt-1">
           Te recomiendo repetir este ejercicio una vez al mes, o cuando sientas que necesitas reconectar con tu
-          direcciÃ³n vital.
+          dirección vital.
         </p>
         {content.audioUrl && (
           <div className="mt-4">

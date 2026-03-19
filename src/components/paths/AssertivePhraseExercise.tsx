@@ -108,8 +108,9 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
           <div className="text-center p-4 space-y-4">
             <p className="text-sm">Esta técnica se basa en una estructura simple que puedes usar cuando algo te molesta o necesitas expresar un límite. Te ayudará a hablar desde ti, sin atacar ni culparte.</p>
             <div className="p-3 border rounded-md bg-background text-left">
-              <p className="text-sm">Piensa en una situación reciente en la que algo te incomodó.</p>
-              <p className="text-sm italic">Ejemplo: “Llegaste tarde a la reunión sin avisar.”</p>
+              <p className="text-sm">Ejemplo visual</p>
+              <p className="text-sm">Así quedaría una frase real, para que te hagas una idea:</p>
+              <p className="text-sm italic">“Cuando haces bromas sobre mí delante de otros, me siento incómoda. Necesito sentirme respetada. Por eso, si hay algo que no te gusta, te pido que me lo digas en privado.”  </p>
             </div>
             <Button onClick={nextStep}>Empezar a construir mi frase <ArrowRight className="ml-2 h-4 w-4" /></Button>
           </div>

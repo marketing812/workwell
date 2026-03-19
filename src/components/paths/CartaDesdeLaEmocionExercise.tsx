@@ -274,20 +274,7 @@ Tu emoción: ${finalEmotion}
               Tu carta desde la emoción ha sido guardada en tu cuaderno. Puedes volver a leerla cuando necesites
               reconectar contigo.
             </p>
-            <Button
-              onClick={() => {
-                setStep(0);
-                setEmotion('');
-                setOtherEmotion('');
-                setTone('');
-                setOtherTone('');
-                setNeed('');
-                setLetterBody('');
-              }}
-              variant="outline"
-            >
-              Escribir otra carta
-            </Button>
+           
           </div>
         );
 

@@ -431,7 +431,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                  <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                  <h4 className="font-bold text-lg">¡Guardado con éxito!</h4>
                  <p>Podrás volver a consultarlo siempre que lo necesites en tu Cuaderno Terapéutico.</p>
-                 <Button onClick={reset} variant="outline" className="w-full">Registrar otra situación</Button>
+                
              </div>
         );
       default: return null;

@@ -370,16 +370,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
               </Button>
-              <Button
-                onClick={() => {
-                  setStep(0);
-                  setSelectedAreas({});
-                  setReflections({});
-                }}
-                variant="outline"
-              >
-                Empezar de nuevo
-              </Button>
+             
             </div>
           </div>
         );

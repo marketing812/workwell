@@ -73,7 +73,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
       case 0:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Pantalla 1: ¿Por qué un contrato contigo?</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 1: ¿Por qué un contrato contigo?</h4>
             <p className="text-sm text-muted-foreground">
               A menudo hablamos de poner límites hacia fuera, pero ¿qué pasa con los límites internos? Este ejercicio
               te ayuda a identificar con claridad aquello que ya no estás dispuesto o dispuesta a seguir
@@ -90,7 +90,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Pantalla 2: Instrucciones</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 2: Instrucciones</h4>
             <p className="text-sm text-muted-foreground">
               Busca un momento tranquilo para ti. Lee cada bloque con calma y completa las frases con sinceridad. No
               hay respuestas correctas: este contrato es solo tuyo, para recordarte lo que necesitas cuidar y cómo
@@ -111,7 +111,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
       case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Pantalla 3: No estoy dispuesta/o a...</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 3: No estoy dispuesta/o a...</h4>
             <p className="text-sm text-muted-foreground">Algunos ejemplos:</p>
             <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
               <li>Seguir callando lo que me duele.</li>
@@ -143,7 +143,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
       case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Pantalla 4: Me comprometo a...</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 4: Me comprometo a...</h4>
             <p className="text-sm text-muted-foreground">
               Este compromiso no es una obligación, sino una forma de empezar a elegirte.
             </p>
@@ -177,7 +177,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
       case 4:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg text-primary">Pantalla 5: Lo haré de forma...</h4>
+            <h4 className="font-semibold text-lg text-primary">Paso 5: Lo haré de forma...</h4>
             <p className="text-sm text-muted-foreground">¿Cómo quieres ejercer ese autocuidado?</p>
             <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
               <li>Clara, sin herir.</li>

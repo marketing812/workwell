@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -57,7 +57,7 @@ export default function ComplaintTransformationExercise({ content, pathId, onCom
     ) {
       toast({
         title: 'Campos incompletos',
-        description: 'Completa las 5 pantallas antes de guardar.',
+        description: 'Completa los cinco pasos pantallas antes de guardar.',
         variant: 'destructive',
       });
       return;
@@ -66,17 +66,17 @@ export default function ComplaintTransformationExercise({ content, pathId, onCom
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pantalla 1 - Elige tu queja: ${complaint}
+Paso 1 - Elige tu queja: ${complaint}
 
-Pantalla 2 - Parte bajo tu control: ${underControl}
+Paso 2 - Parte bajo tu control: ${underControl}
 
-Pantalla 3 - Redefine en modo accion: ${concreteAction}
+Paso 3 - Redefine en modo accion: ${concreteAction}
 
-Pantalla 4 - Tabla (Me quejo de...): ${tableComplaint}
+Paso 4 - Tabla (Me quejo de...): ${tableComplaint}
 
-Pantalla 4 - Tabla (Lo que si puedo hacer es...): ${tableAction}
+Paso 4 - Tabla (Lo que si puedo hacer es...): ${tableAction}
 
-Pantalla 5 - Accion que hare hoy: ${todayAction}
+Paso 5 - Accion que hare hoy: ${todayAction}
 `;
 
     addNotebookEntry({
@@ -112,7 +112,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
       case 1:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Pantalla 1 - Elige tu queja</h4>
+            <h4 className="font-semibold text-lg">Paso 1 - Elige tu queja</h4>
             <p className="text-sm text-muted-foreground">
               Piensa en algo que te haya molestado en las ultimas 24-48 horas. Escribelo tal cual lo dirias.
             </p>
@@ -124,7 +124,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!complaint.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -135,7 +135,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
       case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Pantalla 2 - Detecta lo que esta bajo tu control</h4>
+            <h4 className="font-semibold text-lg">Paso 2 - Detecta lo que esta bajo tu control</h4>
             <p className="text-sm text-muted-foreground">
               Preguntate: "Que parte de esta situacion depende de mi?".
             </p>
@@ -147,7 +147,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!underControl.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -158,7 +158,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
       case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Pantalla 3 - Redefine en modo accion</h4>
+            <h4 className="font-semibold text-lg">Paso 3 - Redefine en modo accion</h4>
             <p className="text-sm text-muted-foreground">
               Cambia la queja por un paso concreto que puedas dar.
             </p>
@@ -175,7 +175,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!concreteAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -186,7 +186,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
       case 4:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Pantalla 4 - Registra tu plan</h4>
+            <h4 className="font-semibold text-lg">Paso 4 - Registra tu plan</h4>
             <p className="text-sm text-muted-foreground">
               En la tabla "Me quejo de... / Lo que si puedo hacer es...", anota de nuevo tu queja y la accion que has definido.
             </p>
@@ -213,7 +213,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button onClick={nextStep} disabled={!tableComplaint.trim() || !tableAction.trim()}>
                 Siguiente <ArrowRight className="ml-2 h-4 w-4" />
@@ -224,7 +224,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
       case 5:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Pantalla 5 - Revision final</h4>
+            <h4 className="font-semibold text-lg">Paso 5 - Revision final</h4>
             <p className="text-sm text-muted-foreground">
               Lee tus acciones y elige la primera que pondras en practica hoy mismo.
             </p>
@@ -238,7 +238,7 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                AtrÃ¡s
+                Atrás
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
@@ -288,4 +288,5 @@ Pantalla 5 - Accion que hare hoy: ${todayAction}
     </Card>
   );
 }
+
 

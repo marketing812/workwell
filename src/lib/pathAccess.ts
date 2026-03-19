@@ -10,6 +10,28 @@ export interface ModuleUnlockInfo {
   reason?: string;
 }
 
+const SEQUENTIAL_PATHS_ENV_VAR = 'NEXT_PUBLIC_ENFORCE_SEQUENTIAL_PATHS';
+
+function isSequentialPathAccessEnabled(): boolean {
+  const rawValue = process.env.NEXT_PUBLIC_ENFORCE_SEQUENTIAL_PATHS?.trim().toLowerCase();
+  if (!rawValue) {
+    return true;
+  }
+
+  if (['false', '0', 'no', 'off'].includes(rawValue)) {
+    return false;
+  }
+
+  if (['true', '1', 'yes', 'on'].includes(rawValue)) {
+    return true;
+  }
+
+  console.warn(
+    `[pathAccess] Valor no reconocido en ${SEQUENTIAL_PATHS_ENV_VAR}="${rawValue}". Se usa el valor por defecto (true).`
+  );
+  return true;
+}
+
 function parseWeekNumber(module: PathModule): number | null {
   const fromId = module.id.match(/sem(?:ana)?[_\-\s]?(\d+)/i);
   if (fromId) {
@@ -33,6 +55,10 @@ export function getPathUnlockInfo(
   paths: Path[],
   getCompletedForPath: (id: string) => Set<string>
 ): PathUnlockInfo {
+  if (!isSequentialPathAccessEnabled()) {
+    return { isUnlocked: true };
+  }
+
   const pathIndex = paths.findIndex((path) => path.id === pathId);
   if (pathIndex <= 0) {
     return { isUnlocked: true };
@@ -49,6 +75,14 @@ export function getPathUnlockInfo(
 }
 
 export function getModuleUnlockMap(path: Path, completedModules: Set<string>): Map<string, ModuleUnlockInfo> {
+  if (!isSequentialPathAccessEnabled()) {
+    const unlockMap = new Map<string, ModuleUnlockInfo>();
+    path.modules.forEach((module) => {
+      unlockMap.set(module.id, { isUnlocked: true });
+    });
+    return unlockMap;
+  }
+
   const unlockMap = new Map<string, ModuleUnlockInfo>();
   const weekModules = new Map<number, PathModule[]>();
 

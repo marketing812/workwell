@@ -49,6 +49,15 @@ interface CategorizedDimension extends AssessmentDimension {
   scoreLevel: string;
 }
 
+function normalizeDimensionKey(value: string): string {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 const themedChartColors = [
   "hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))",
   "hsl(var(--chart-4))", "hsl(var(--chart-5))", "hsl(var(--primary))",
@@ -109,9 +118,58 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     assessmentTimestamp: assessmentTimestamp || new Date().toISOString(),
   } : null;
 
+  const normalizedProfile = new Map<string, number>();
+  Object.entries(results.emotionalProfile || {}).forEach(([key, value]) => {
+    const numericValue = Number(value as unknown);
+    if (Number.isFinite(numericValue)) {
+      normalizedProfile.set(normalizeDimensionKey(key), numericValue);
+    }
+  });
+
+  const overallScore = normalizedProfile.get(normalizeDimensionKey("Estado Emocional General"));
+
+  const resolveDimensionScore = (dim: AssessmentDimension): number | null => {
+    const exactScore = results.emotionalProfile[dim.name];
+    if (typeof exactScore === "number" && Number.isFinite(exactScore)) {
+      return exactScore;
+    }
+
+    const normalizedScore = normalizedProfile.get(normalizeDimensionKey(dim.name));
+    if (typeof normalizedScore === "number" && Number.isFinite(normalizedScore)) {
+      return normalizedScore;
+    }
+
+    if (rawAnswers && typeof rawAnswers === "object") {
+      let weightedTotal = 0;
+      let weightsSum = 0;
+
+      dim.items.forEach((item) => {
+        const rawAnswer = rawAnswers[item.id];
+        const answer = Number(rawAnswer?.score);
+        const answerWeight = Number(rawAnswer?.weight ?? item.weight ?? 1);
+        const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
+
+        if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
+          weightedTotal += answer * weight;
+          weightsSum += weight;
+        }
+      });
+
+      if (weightsSum > 0) {
+        return weightedTotal / weightsSum;
+      }
+    }
+
+    if (typeof overallScore === "number" && Number.isFinite(overallScore)) {
+      return overallScore;
+    }
+
+    return null;
+  };
+
   const radarData = assessmentDimensions.map(dim => {
-    const scoreFromProfile = results.emotionalProfile[dim.name];
-    const scoreValue = scoreFromProfile !== undefined && typeof scoreFromProfile === 'number' ? scoreFromProfile : 0;
+    const scoreFromProfile = resolveDimensionScore(dim);
+    const scoreValue = scoreFromProfile !== null ? scoreFromProfile : 0;
     const finalScore = Math.max(0, Math.min(5, scoreValue));
     return {
       dimensionId: dim.id,
@@ -176,20 +234,21 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   const priorityImprovementDimensions: CategorizedDimension[] = [];
 
   assessmentDimensions.forEach(dim => {
-    const score = results.emotionalProfile[dim.name];
+    const score = resolveDimensionScore(dim);
     const interpretationKey = dim.id as keyof typeof assessmentInterpretations;
     const interpretationsForDim = assessmentInterpretations[interpretationKey];
 
-    if (typeof score === 'number' && interpretationsForDim) {
-      const interpretationText = getInterpretationText(score, interpretationsForDim);
-      const scoreLevel = getInterpretationLevel(score, interpretationsForDim, t);
-      const categorizedDim = { ...dim, score, interpretationText, scoreLevel };
+    if (score !== null && interpretationsForDim) {
+      const boundedScore = Math.max(0, Math.min(5, score));
+      const interpretationText = getInterpretationText(boundedScore, interpretationsForDim);
+      const scoreLevel = getInterpretationLevel(boundedScore, interpretationsForDim, t);
+      const categorizedDim = { ...dim, score: boundedScore, interpretationText, scoreLevel };
 
-      if (score >= 4.0) {
+      if (boundedScore >= 4.0) {
         highStrengthDimensions.push(categorizedDim);
-      } else if (score >= 2.5) {
+      } else if (boundedScore >= 2.5) {
         functionalDimensions.push(categorizedDim);
-      } else if (score < 2.5) { 
+      } else if (boundedScore < 2.5) { 
         priorityImprovementDimensions.push(categorizedDim);
       }
     }
@@ -230,7 +289,11 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   };
   
   const recommendedPaths = results.priorityAreas.map(areaName => {
-    const dimension = assessmentDimensions.find(d => d.name === areaName);
+    const normalizedArea = normalizeDimensionKey(areaName);
+    const dimension = assessmentDimensions.find((d) => {
+      if (d.name === areaName) return true;
+      return normalizeDimensionKey(d.name) === normalizedArea;
+    });
     if (dimension && dimension.recommendedPathId) {
         const path = pathsData.find(p => p.id === dimension.recommendedPathId);
         if (path) {

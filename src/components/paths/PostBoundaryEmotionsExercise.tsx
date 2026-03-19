@@ -153,7 +153,6 @@ ${reassessment}
             <p className="italic text-muted-foreground">Antes de empezar, te mostramos un ejemplo para guiarte. Lo importante es que uses tus propias palabras y seas honesto/a contigo.</p>
             <Accordion type="single" defaultValue="example" className="w-full text-left">
               <AccordionItem value="example">
-                <AccordionTrigger>Ver ejemplo completo</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3 text-sm p-2 border bg-background rounded-md">
                     <p><strong>Situación:</strong> “Mi amiga me pidió que le ayudara a organizar su mudanza este fin de semana, pero yo ya tenía planes de descanso. Le dije que no.”</p>

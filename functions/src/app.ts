@@ -1,4 +1,4 @@
-import cors from "cors";
+﻿import cors from "cors";
 import CryptoJS from "crypto-js";
 import express, {Request, Response} from "express";
 import {getApps, initializeApp} from "firebase-admin/app";
@@ -23,6 +23,27 @@ const MAX_USERS_PER_REQUEST = 1000;
 const PSYCHOLOGICAL_OPINION_DISCLAIMER =
   "Las respuestas se generan automaticamente y pueden contener errores. " +
   "Si atraviesas una situacion grave o de crisis, busca ayuda profesional.";
+
+type AssessmentDimensionMeta = {
+  id: string;
+  name: string;
+};
+
+const ASSESSMENT_DIMENSIONS_META: AssessmentDimensionMeta[] = [
+  {id: "dim1", name: "Regulaci\u00f3n Emocional y Estr\u00e9s"},
+  {id: "dim2", name: "Flexibilidad Mental y Adaptabilidad"},
+  {id: "dim3", name: "Autorregulaci\u00f3n personal y constancia"},
+  {id: "dim4", name: "Autoafirmaci\u00f3n y Expresi\u00f3n Personal"},
+  {id: "dim5", name: "Empat\u00eda y Conexi\u00f3n Interpersonal"},
+  {id: "dim6", name: "Insight y Autoconciencia"},
+  {id: "dim7", name: "Prop\u00f3sito Vital y Direcci\u00f3n Personal"},
+  {id: "dim8", name: "Estilo de Afrontamiento"},
+  {id: "dim9", name: "Integridad y Coherencia \u00c9tica"},
+  {id: "dim10", name: "Responsabilidad Personal y Aceptaci\u00f3n Consciente"},
+  {id: "dim11", name: "Apoyo Social Percibido"},
+  {id: "dim12", name: "Estado de \u00c1nimo"},
+  {id: "dim13", name: "Ansiedad Estado"},
+];
 
 function getAdminApp() {
   return getApps().length ? getApps()[0] : initializeApp();
@@ -93,6 +114,25 @@ function isDepartmentValidResponse(raw: string): boolean {
   }
 
   return false;
+}
+
+function normalizeExternalResponseText(raw: string): string {
+  const text = String(raw || "").trim();
+  if (!text) return "";
+
+  const varDumpMatch = text.match(/^string\(\d+\)\s*"([\s\S]*)"\s*$/);
+  const withoutVarDump = varDumpMatch?.[1] ?? text;
+  const unescaped = withoutVarDump.replace(/\\"/g, "\"").trim();
+
+  const hasDoubleQuotes =
+    unescaped.startsWith("\"") && unescaped.endsWith("\"");
+  const hasSingleQuotes =
+    unescaped.startsWith("'") && unescaped.endsWith("'");
+  const unwrapped = (hasDoubleQuotes || hasSingleQuotes) ?
+    unescaped.slice(1, -1).trim() :
+    unescaped;
+
+  return unwrapped;
 }
 
 function shouldAppendPsychologicalOpinionDisclaimer(message: string): boolean {
@@ -412,8 +452,14 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
         debugUrl: saveUrl,
       });
     }
-    const textTrimmed = String(text || "").trim();
-    if (textTrimmed.toUpperCase() === "OK") {
+    const normalizedText = normalizeExternalResponseText(text);
+    const normalizedUpper = normalizedText.toUpperCase();
+    if (
+      normalizedUpper === "OK" ||
+      normalizedUpper === "TRUE" ||
+      normalizedUpper === "SUCCESS" ||
+      normalizedText === "1"
+    ) {
       return res.json({
         success: true,
         message: "Respuesta guardada.",
@@ -421,19 +467,20 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
       });
     }
 
-    const parsed = parseJsonFromNoisyText(textTrimmed);
-    if (parsed && typeof parsed === "object") {
-      const status = String(parsed.status ?? parsed.result ?? "").toUpperCase();
-      if (status === "OK" || parsed.ok === true) {
+    const parsed = parseJsonFromNoisyText(normalizedText);
+    const parsedObject = Array.isArray(parsed) ? parsed[0] : parsed;
+    if (parsedObject && typeof parsedObject === "object") {
+      const status = String(parsedObject.status ?? parsedObject.result ?? "").toUpperCase();
+      if (status === "OK" || parsedObject.ok === true) {
         return res.json({
           success: true,
-          message: String(parsed.message || "Respuesta guardada."),
+          message: String(parsedObject.message || "Respuesta guardada."),
           debugUrl: saveUrl,
         });
       }
       return res.status(400).json({
         success: false,
-        message: String(parsed.message || "Error del servicio externo."),
+        message: String(parsedObject.message || "Error del servicio externo."),
         debugUrl: saveUrl,
       });
     }
@@ -442,6 +489,7 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
       success: false,
       message: "Respuesta invalida del servicio externo al guardar la pregunta diaria.",
       debugUrl: saveUrl,
+      details: normalizedText.slice(0, 300),
     });
   } catch (error: any) {
     const message = error?.name === "AbortError" ?
@@ -568,9 +616,19 @@ app.post("/submit-assessment", async (req: Request, res: Response) => {
       });
     }
 
-    const numericScores = Object.entries(answers)
-      .map(([, value]: [string, any]) => Number(value?.score))
-      .filter((score) => Number.isFinite(score) && score >= 1 && score <= 5);
+    const validEntries = Object.entries(answers)
+      .map(([itemId, value]: [string, any]) => {
+        const score = Number(value?.score);
+        const weightCandidate = Number(value?.weight);
+        const weight =
+          Number.isFinite(weightCandidate) && weightCandidate > 0 ?
+            weightCandidate :
+            1;
+        return {itemId, score, weight};
+      })
+      .filter(({score}) => Number.isFinite(score) && score >= 1 && score <= 5);
+
+    const numericScores = validEntries.map(({score}) => score);
 
     if (numericScores.length === 0) {
       return res.status(400).json({
@@ -583,15 +641,72 @@ app.post("/submit-assessment", async (req: Request, res: Response) => {
       numericScores.reduce((acc, v) => acc + v, 0) / numericScores.length
     ).toFixed(2));
 
+    const scoresByDimension = new Map<string, {
+      weightedSum: number;
+      totalWeight: number;
+    }>();
+    ASSESSMENT_DIMENSIONS_META.forEach(({id}) => {
+      scoresByDimension.set(id, {weightedSum: 0, totalWeight: 0});
+    });
+
+    validEntries.forEach(({itemId, score, weight}) => {
+      const dimMatch = itemId.match(/^(dim\d+)_item\d+$/i);
+      const dimensionId = dimMatch?.[1]?.toLowerCase();
+      if (!dimensionId || !scoresByDimension.has(dimensionId)) {
+        return;
+      }
+      const current = scoresByDimension.get(dimensionId)!;
+      current.weightedSum += score * weight;
+      current.totalWeight += weight;
+      scoresByDimension.set(dimensionId, current);
+    });
+
+    const emotionalProfile: Record<string, number> = {};
+    const dimensionScores: Array<{id: string; name: string; score: number}> = [];
+
+    ASSESSMENT_DIMENSIONS_META.forEach(({id, name}) => {
+      const agg = scoresByDimension.get(id);
+      if (!agg || agg.totalWeight <= 0) {
+        return;
+      }
+      const score = Number((agg.weightedSum / agg.totalWeight).toFixed(2));
+      emotionalProfile[name] = score;
+      dimensionScores.push({id, name, score});
+    });
+
+    if (dimensionScores.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: "No valid dimension scores found.",
+      });
+    }
+
+    emotionalProfile["Estado Emocional General"] = avg;
+
+    const priorityAreas = [...dimensionScores]
+      .sort((a, b) => a.score - b.score)
+      .slice(0, 3)
+      .map((item) => item.name);
+
+    const strongestAreas = [...dimensionScores]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 2)
+      .map((item) => item.name);
+
+    const feedback =
+      "Resumen general: esta evaluaci\u00f3n refleja tu estado actual por " +
+      "dimensiones. " +
+      `Tus \u00e1reas prioritarias ahora son: ${priorityAreas.join(", ")}. ` +
+      (strongestAreas.length > 0 ?
+        `Como fortalezas destacadas aparecen: ${strongestAreas.join(", ")}. ` :
+        "") +
+      "Recomendaci\u00f3n: empieza por una ruta alineada con la primera \u00e1rea " +
+      "prioritaria y revisa avances semanalmente.";
+
     const output = {
-      emotionalProfile: {"Estado Emocional General": avg},
-      priorityAreas: [
-        "Regulacion Emocional y Estres",
-        "Habitos de autocuidado",
-        "Apoyo social",
-      ],
-      feedback:
-        "Comprueba los datos de la evaluación que has introducido en el sistema.",
+      emotionalProfile,
+      priorityAreas,
+      feedback,
     };
 
     return res.json({success: true, data: output});
@@ -1309,3 +1424,4 @@ app.get("/resources/post/:slug", async (req: Request, res: Response) => {
 });
 
 export default app;
+

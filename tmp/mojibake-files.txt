@@ -1,0 +1,12 @@
+src\components\paths\ActivateShieldExercise.tsx
+src\components\paths\CompassionateReflectionExercise.tsx
+src\components\paths\DelSabotajeALaAccionExercise.tsx
+src\components\paths\DirectedDecisionsExercise.tsx
+src\components\paths\EmotionalInvolvementTrafficLightExercise.tsx
+src\components\paths\EnergySenseMapExercise.tsx
+src\components\paths\MentalNoiseTrafficLightExercise.tsx
+src\components\paths\NutritiveDrainingSupportMapExercise.tsx
+src\components\paths\PresentVsEssentialSelfExercise.tsx
+src\components\paths\RealisticRitualExercise.tsx
+src\components\paths\ThoughtsThatBlockPurposeExercise.tsx
+src\components\paths\TwoMinuteRuleExercise.tsx

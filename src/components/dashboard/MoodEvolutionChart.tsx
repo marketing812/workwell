@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 import { useTranslations } from '@/lib/translations';
 import { LineChart as LineChartIcon } from 'lucide-react'; // Icon for placeholder
 
@@ -67,15 +67,15 @@ export function MoodEvolutionChart({ data, title, description, className }: Mood
         </div>
         {description && <CardDescription className="pt-1">{description}</CardDescription>}
       </CardHeader>
-      <CardContent className="h-[300px] w-full p-2 pr-6 pb-6"> 
-        <ChartContainer config={chartConfig} className="w-full h-full">
+      <CardContent className="h-[260px] sm:h-[300px] w-full p-2 sm:pr-6 sm:pb-6 overflow-hidden">
+        <ChartContainer config={chartConfig} className="w-full h-full min-w-0">
           <LineChart
             data={data}
             margin={{
               top: 5,
-              right: 10, 
-              left: -20, // Adjust left margin to make Y-axis labels visible
-              bottom: 0,
+              right: 8,
+              left: 0,
+              bottom: 4,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
@@ -83,7 +83,9 @@ export function MoodEvolutionChart({ data, title, description, className }: Mood
               dataKey="date"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
+              tickMargin={6}
+              minTickGap={24}
+              interval="preserveStartEnd"
               tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
             />
             <YAxis
@@ -92,6 +94,7 @@ export function MoodEvolutionChart({ data, title, description, className }: Mood
               tickLine={false}
               axisLine={false}
               tickMargin={8}
+              width={28}
               tickFormatter={(value) => Math.round(value).toString()} // Ensure integer labels
               tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
             />
