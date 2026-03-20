@@ -1,8 +1,12 @@
 
 /** @type {import('next').NextConfig} */
+const isCapacitorBuild =
+  process.env.BUILD_TARGET === 'capacitor' ||
+  process.env.npm_lifecycle_event === 'build:capacitor';
+
 const nextConfig = {
-  // Firebase App Hosting adapter expects the standalone output structure.
-  output: 'standalone',
+  // Keep Firebase App Hosting on standalone and use export only for Capacitor builds.
+  output: isCapacitorBuild ? 'export' : 'standalone',
   allowedDevOrigins: [
     "https://6000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev",
     "https://9000-firebase-studio-1747988031687.cluster-jbb3mjctu5cbgsi6hwq6u4btwe.cloudworkstations.dev"
