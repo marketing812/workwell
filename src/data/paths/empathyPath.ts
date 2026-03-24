@@ -293,7 +293,7 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te has encontrado en relaciones donde das mucho… pero no siempre recibes lo mismo? ¿O donde te cuesta ser tú misma/o por miedo a incomodar?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. \n- No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. \n- Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti. ',
+          text: '¿Te has encontrado en relaciones donde das mucho… pero no siempre recibes lo mismo? ¿O donde te cuesta ser tú misma/o por miedo a incomodar?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. \n- No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos.\n- Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti. ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
