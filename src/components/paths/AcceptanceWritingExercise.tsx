@@ -15,7 +15,7 @@ import { emotions as emotionOptions } from '@/components/dashboard/EmotionalEntr
 import { useTranslations } from '@/lib/translations';
 import { useUser } from '@/contexts/UserContext';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
-
+ 
 interface AcceptanceWritingExerciseProps {
   content: AcceptanceWritingExerciseContent;
   pathId: string;
