@@ -19,6 +19,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Slider } from "../ui/slider";
 
 const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
+const SHOW_INITIAL_EMOTIONAL_STATE = false;
+const DEFAULT_INITIAL_EMOTIONAL_STATE = 1;
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -33,7 +35,7 @@ const registerSchema = z.object({
   gender: z.string().optional(),
   token: z.string()
     .trim()
-    .min(1, "El código de departamento es obligatorio."), // Required department code
+    .min(1, "El código de acceso es obligatorio."), // Required department code
   initialEmotionalState: z.coerce.number().min(1).max(5).optional(),
   agreeTerms: z.boolean().refine((val) => val === true, {
     message: "Debes aceptar la Política de Privacidad.",
@@ -53,7 +55,7 @@ async function validateDepartmentCode(departmentId: string): Promise<{ valid: bo
   if (!base) {
     return {
       valid: false,
-      message: "La validación de departamento no está configurada en este entorno.",
+      message: "La validación de  acceso no está configurada en este entorno.",
     };
   }
 
@@ -75,7 +77,7 @@ async function validateDepartmentCode(departmentId: string): Promise<{ valid: bo
       valid: false,
       message:
         payload?.error ||
-        "No se pudo validar el codigo de departamento en este momento. Intentalo de nuevo.",
+        "No se pudo validar el codigo de acceso en este momento. Intentalo de nuevo.",
     };
   }
 
@@ -100,7 +102,7 @@ export function RegisterForm() {
     gender: '',
     token: '',
   });
-  const [initialEmotionalState, setInitialEmotionalState] = useState(1);
+  const [initialEmotionalState, setInitialEmotionalState] = useState(DEFAULT_INITIAL_EMOTIONAL_STATE);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeHealthData, setAgreeHealthData] = useState(false);
   const [agreeAI, setAgreeAI] = useState(false);
@@ -129,7 +131,16 @@ export function RegisterForm() {
     setServerError(null);
     setIsSubmitting(true);
 
-    const dataToValidate = { ...formData, initialEmotionalState, agreeTerms, agreeHealthData, agreeAI };
+    const effectiveInitialEmotionalState = SHOW_INITIAL_EMOTIONAL_STATE
+      ? initialEmotionalState
+      : DEFAULT_INITIAL_EMOTIONAL_STATE;
+    const dataToValidate = {
+      ...formData,
+      initialEmotionalState: effectiveInitialEmotionalState,
+      agreeTerms,
+      agreeHealthData,
+      agreeAI,
+    };
     const validationResult = registerSchema.safeParse(dataToValidate);
 
     if (!validationResult.success) {
@@ -143,7 +154,7 @@ export function RegisterForm() {
     if (!departmentValidation.valid) {
       const errorMessage =
         departmentValidation.message ||
-        "El código de departamento no es válido. Revisa el dato e inténtalo de nuevo.";
+        "El código de acceso no es válido. Revisa el dato e inténtalo de nuevo.";
       setServerError(errorMessage);
       toast({
         title: t.errorOccurred,
@@ -260,7 +271,7 @@ export function RegisterForm() {
             <Label htmlFor="token">Código de Departamento</Label>
             <Input id="token" name="token" required value={formData.token || ''} onChange={handleInputChange} />
             <p className="text-xs text-muted-foreground mt-1">
-              Introduce un código de departamento válido para asociar tu cuenta al entorno corporativo de tu organización.
+              Introduce un código de acceso válido para asociar tu cuenta al entorno corporativo de tu organización.
             </p>
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
@@ -288,18 +299,20 @@ export function RegisterForm() {
             </Select>
             {fieldErrors?.gender && <p className="text-sm text-destructive pt-1">{fieldErrors.gender[0]}</p>}
           </div>
-           <div>
-            <Label htmlFor="initialEmotionalStateSlider">{t.initialEmotionalState}: {initialEmotionalState}</Label>
-            <input type="hidden" name="initialEmotionalState" value={initialEmotionalState} />
-            <Slider
-              id="initialEmotionalStateSlider"
-              min={1} max={5} step={1}
-              defaultValue={[initialEmotionalState]}
-              onValueChange={(value) => setInitialEmotionalState(value[0])}
-              className="mt-2"
-            />
-            {fieldErrors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{fieldErrors.initialEmotionalState[0]}</p>}
-          </div>
+          {SHOW_INITIAL_EMOTIONAL_STATE && (
+            <div>
+              <Label htmlFor="initialEmotionalStateSlider">{t.initialEmotionalState}: {initialEmotionalState}</Label>
+              <input type="hidden" name="initialEmotionalState" value={initialEmotionalState} />
+              <Slider
+                id="initialEmotionalStateSlider"
+                min={1} max={5} step={1}
+                defaultValue={[initialEmotionalState]}
+                onValueChange={(value) => setInitialEmotionalState(value[0])}
+                className="mt-2"
+              />
+              {fieldErrors?.initialEmotionalState && <p className="text-sm text-destructive pt-1">{fieldErrors.initialEmotionalState[0]}</p>}
+            </div>
+          )}
           
           <div className="space-y-4 pt-4 border-t">
               <div className="text-xs text-muted-foreground bg-muted/50 p-3 rounded-md space-y-1">

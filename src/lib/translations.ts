@@ -5,7 +5,7 @@
 export const t = {
   appName: "EMOTIVA",
   // General
-  welcome: "¡Hola!",
+  welcome: "¡Hola",
   loading: "Cargando...",
   submit: "Enviar",
   save: "Guardar",
@@ -35,6 +35,7 @@ export const t = {
   loginFailed: "Error al iniciar sesión. Verifica tus credenciales.",
   registrationFailed: "Error al registrar. Inténtalo de nuevo.",
   // Sidebar Navigation
+  navWelcome: "Bienvenida",
   navDashboard: "Panel",
   navAssessment: "Evaluación",
   navInteractiveAssessment: "Evaluación Guiada",

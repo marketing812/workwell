@@ -14,12 +14,13 @@ import {
   SidebarSeparator,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, FileQuestion, HeartPulse, List } from "lucide-react";
+import { LogOut, LayoutDashboard, ClipboardList, Milestone, Bot, Library, Settings, History, NotebookText, HeartPulse, Handshake } from "lucide-react";
 import { useTranslations } from "@/lib/translations";
 import { useUser } from "@/contexts/UserContext";
 import { Logo } from "@/components/Logo";
 
 const navItems = [
+  { href: "/bienvenida", labelKey: "navWelcome", icon: Handshake },
   { href: "/dashboard", labelKey: "navDashboard", icon: LayoutDashboard },
   { href: "/assessment/intro", labelKey: "navAssessment", icon: ClipboardList }, 
   { href: "/my-assessments", labelKey: "navMyAssessments", icon: History },

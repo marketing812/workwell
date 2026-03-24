@@ -33,6 +33,7 @@ import { useRouter } from 'next/navigation';
 import { formatAssessmentTimestamp } from '@/data/assessmentHistoryStore';
 import { pathsData } from '@/data/pathsData';
 import { useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AssessmentResultsDisplayProps {
   results: InitialAssessmentOutput | null;
@@ -56,6 +57,30 @@ function normalizeDimensionKey(value: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+}
+
+function splitLabelInTwoLines(value: string, maxCharsPerLine: number): [string, string?] {
+  const words = String(value || "").split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [""];
+
+  const firstLineWords: string[] = [];
+  let firstLineLength = 0;
+
+  for (const word of words) {
+    const nextLength = firstLineLength + (firstLineWords.length > 0 ? 1 : 0) + word.length;
+    if (nextLength <= maxCharsPerLine || firstLineWords.length === 0) {
+      firstLineWords.push(word);
+      firstLineLength = nextLength;
+    } else {
+      break;
+    }
+  }
+
+  const secondLineWords = words.slice(firstLineWords.length);
+  const firstLine = firstLineWords.join(" ");
+  const secondLine = secondLineWords.join(" ");
+
+  return secondLine ? [firstLine, secondLine] : [firstLine];
 }
 
 const themedChartColors = [
@@ -94,6 +119,7 @@ const getInterpretationLevel = (score: number, interpretations: InterpretationLe
 export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake, assessmentTimestamp, assessmentDimensions }: AssessmentResultsDisplayProps) {
   const t = useTranslations();
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   if (!results || !results.emotionalProfile || Object.keys(results.emotionalProfile).length === 0 ||
       Object.values(results.emotionalProfile).some(score => typeof score !== 'number') ||
@@ -186,7 +212,25 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     },
   };
 
-  const pieChartData = results.priorityAreas.map((areaName) => ({
+  const safePriorityAreas = (() => {
+    const fromPayload = (Array.isArray(results.priorityAreas) ? results.priorityAreas : [])
+      .map((area) => String(area || "").trim())
+      .filter(Boolean);
+
+    const fallbackFromProfile = assessmentDimensions
+      .map((dim) => ({
+        name: dim.name,
+        score: resolveDimensionScore(dim),
+      }))
+      .filter((item): item is { name: string; score: number } => Number.isFinite(item.score))
+      .sort((a, b) => a.score - b.score)
+      .map((item) => item.name);
+
+    const merged = [...new Set([...fromPayload, ...fallbackFromProfile])];
+    return merged.slice(0, 3);
+  })();
+
+  const pieChartData = safePriorityAreas.map((areaName) => ({
     name: areaName,
     slug: slugify(areaName),
     value: 1, 
@@ -201,6 +245,11 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   });
   
   const radarChartDescriptionText = t.radarChartDescription || "Visualización de tu perfil en las diferentes dimensiones.";
+  const getRadarTickLabel = (value: string) => {
+    const cleanValue = String(value || "").split("(")[0].trim();
+    const maxLength = isMobile ? 12 : 28;
+    return cleanValue.length > maxLength ? `${cleanValue.slice(0, maxLength)}…` : cleanValue;
+  };
   
   const CustomRadarDot = (props: DotProps & { payload?: any; value?: number }) => {
     const { cx, cy, payload, value } = props;
@@ -288,7 +337,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     );
   };
   
-  const recommendedPaths = results.priorityAreas.map(areaName => {
+  const recommendedPaths = safePriorityAreas.map(areaName => {
     const normalizedArea = normalizeDimensionKey(areaName);
     const dimension = assessmentDimensions.find((d) => {
       if (d.name === areaName) return true;
@@ -357,18 +406,37 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
             <CardTitle className="flex items-center"><Activity className="mr-2 h-6 w-6 text-accent" />{t.emotionalProfile}</CardTitle>
             <CardDescription>{radarChartDescriptionText}</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="h-[400px] w-full">
-            <ChartContainer config={emotionalProfileRadarConfig} className="w-full h-full">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+          <CardContent className="overflow-x-hidden">
+            <div className="h-[320px] sm:h-[400px] w-full min-w-0 overflow-hidden">
+            <ChartContainer config={emotionalProfileRadarConfig} className="w-full h-full aspect-auto">
+                <RadarChart
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={isMobile ? "56%" : "68%"}
+                  margin={isMobile ? { top: 24, right: 18, bottom: 24, left: 18 } : { top: 26, right: 30, bottom: 34, left: 30 }}
+                  data={radarData}
+                >
                     <PolarGrid gridType="polygon" stroke="hsl(var(--border))" />
                     <PolarAngleAxis
                         dataKey="dimension"
-                        tick={({ x, y, payload }) => (
-                          <text x={x} y={y} dy={4} textAnchor="middle" fill="hsl(var(--foreground))" fontSize={9}>
-                            {payload.value.split('(')[0].trim()}
-                          </text>
-                        )}
+                        tick={({ x, y, payload, textAnchor }) => {
+                          const label = getRadarTickLabel(String((payload as { value?: string })?.value ?? ""));
+                          const [line1, line2] = splitLabelInTwoLines(label, isMobile ? 12 : 16);
+
+                          return (
+                            <text
+                              x={x}
+                              y={y}
+                              dy={isMobile ? 3 : 0}
+                              textAnchor={textAnchor ?? "middle"}
+                              fill="hsl(var(--foreground))"
+                              fontSize={isMobile ? 6.5 : 8}
+                            >
+                              <tspan x={x} dy={isMobile ? 0 : 4}>{line1}</tspan>
+                              {line2 ? <tspan x={x} dy={isMobile ? 7 : 9}>{line2}</tspan> : null}
+                            </text>
+                          );
+                        }}
                     />
                     <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} axisLine={{ stroke: "hsl(var(--border))" }} />
                     <Radar 
@@ -405,10 +473,10 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
             <CardTitle className="flex items-center"><ListChecks className="mr-2 h-6 w-6 text-accent" />{t.priorityAreas}</CardTitle>
             <CardDescription>{t.priorityAreasDescription || "Dimensiones clave para tu desarrollo actual."}</CardDescription>
           </CardHeader>
-          <CardContent>
-             <div className="h-[400px] w-full">
-               <ChartContainer config={priorityAreasPieConfig} className="w-full h-full">
-                <PieChart>
+          <CardContent className="overflow-x-hidden">
+             <div className="h-[440px] w-full min-w-0 overflow-hidden">
+               <ChartContainer config={priorityAreasPieConfig} className="w-full h-full aspect-auto">
+                <PieChart margin={isMobile ? { top: 12, right: 10, left: 10, bottom: 32 } : { top: 24, right: 60, left: 60, bottom: 40 }}>
                   <ChartTooltip
                     content={
                       <ChartTooltipContent
@@ -423,11 +491,12 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                       />
                     }
                   />
-                  <Pie data={pieChartData} dataKey="value" nameKey="slug" cx="50%" cy="50%" labelLine={false} outerRadius={120}
+                  <Pie data={pieChartData} dataKey="value" nameKey="slug" cx="50%" cy="48%" labelLine={!isMobile} outerRadius={isMobile ? 86 : 110}
                     label={({ name, percent, ...entry }) => {
                        const originalEntry = pieChartData.find(d => d.slug === name);
-                       const displayName = originalEntry ? originalEntry.name.split('(')[0].trim().substring(0,15) : name.substring(0,15);
-                       return `${displayName}... (${(percent * 100).toFixed(0)}%)`;
+                       const displayName = originalEntry ? originalEntry.name.split('(')[0].trim() : String(name);
+                       if (isMobile) return `${(percent * 100).toFixed(0)}%`;
+                       return `${displayName} (${(percent * 100).toFixed(0)}%)`;
                     }}
                   >
                     {pieChartData.map((entry) => (
@@ -438,9 +507,9 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                 </PieChart>
               </ChartContainer>
             </div>
-            {results.priorityAreas.length > 0 ? (
+            {safePriorityAreas.length > 0 ? (
                 <ul className="mt-4 space-y-2 text-xs sm:text-sm">
-                {results.priorityAreas.map((area, index) => (
+                {safePriorityAreas.map((area, index) => (
                     <li key={index} className="flex items-center p-2 bg-muted/50 rounded-md">
                     <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
                     {area}

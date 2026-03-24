@@ -68,7 +68,7 @@ export function MoodEvolutionChart({ data, title, description, className }: Mood
         {description && <CardDescription className="pt-1">{description}</CardDescription>}
       </CardHeader>
       <CardContent className="h-[260px] sm:h-[300px] w-full p-2 sm:pr-6 sm:pb-6 overflow-hidden">
-        <ChartContainer config={chartConfig} className="w-full h-full min-w-0">
+        <ChartContainer config={chartConfig} className="w-full h-full min-w-0 aspect-auto">
           <LineChart
             data={data}
             margin={{

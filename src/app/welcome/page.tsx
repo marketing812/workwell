@@ -3,15 +3,15 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { useTranslations } from '@/lib/translations';
 import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import { cn } from '@/lib/utils';
+import { WelcomeIntroContent } from '@/components/welcome/WelcomeIntroContent';
 
 const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
 
-type WelcomeStep = 'hola' | 'pregunta' | 'opciones';
+type WelcomeStep = 'hola' | 'pregunta' | 'introduccion' | 'opciones';
 
 export default function WelcomePage() {
   const t = useTranslations();
@@ -19,10 +19,6 @@ export default function WelcomePage() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(WELCOME_SEEN_KEY, 'true');
-    }
-
     const fadeInTimer = setTimeout(() => setVisible(true), 100);
 
     if (step === 'hola') {
@@ -39,13 +35,21 @@ export default function WelcomePage() {
   }, []);
 
   useEffect(() => {
-    if (step === 'pregunta' || step === 'opciones') {
+    if (step === 'pregunta' || step === 'introduccion' || step === 'opciones') {
       const fadeInTimer = setTimeout(() => setVisible(true), 100);
       return () => clearTimeout(fadeInTimer);
     }
   }, [step]);
   
+  const handleShowIntro = () => {
+      setVisible(false);
+      setTimeout(() => setStep('introduccion'), 500);
+  };
+
   const handleShowOptions = () => {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(WELCOME_SEEN_KEY, 'true');
+      }
       setVisible(false);
       setTimeout(() => setStep('opciones'), 500);
   }
@@ -81,12 +85,23 @@ export default function WelcomePage() {
               ¿Cómo estás hoy?
             </h1>
             <button
-              onClick={handleShowOptions}
+              onClick={handleShowIntro}
               className="mt-8 transition-transform duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary-foreground/50 rounded-full"
               aria-label="Continuar"
             >
               <ArrowRight className="h-24 w-24 text-primary-foreground" />
             </button>
+          </div>
+        )}
+
+        {step === 'introduccion' && (
+          <div
+            className={cn(
+              "w-full max-w-4xl transition-opacity duration-500 ease-in-out",
+              visible ? "opacity-100" : "opacity-0"
+            )}
+          >
+            <WelcomeIntroContent showContinue onContinue={handleShowOptions} />
           </div>
         )}
 

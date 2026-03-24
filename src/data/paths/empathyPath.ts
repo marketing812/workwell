@@ -78,8 +78,8 @@ export const empathyPath: Path = {
           ]
         },
         { type: 'title', text: 'Técnicas Específicas' },
-        { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1 – MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3` },
-        { type: 'empatheticDialogueExercise', title: 'Ejercicio 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3` },
+        { type: 'authenticityThermometerExercise', title: 'EJERCICIO 1:  MI TERMÓMETRO DE AUTENTICIDAD', objective: '¿Alguna vez has sentido que en ciertas relaciones estás actuando, en lugar de ser tú? Este ejercicio te ayuda a observar con honestidad y sin juicio cómo te muestras en tus vínculos cotidianos. Vas a descubrir en qué relaciones puedes ser tú con libertad… y en cuáles tiendes a ponerte una máscara para protegerte o agradar. No se trata de cambiar todo de golpe, sino de empezar a reconocer tu verdad y recuperar tu presencia en cada vínculo.', duration: '15-20 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica1.mp3` },
+        { type: 'empatheticDialogueExercise', title: 'EJERCICIO 2: DIÁLOGO INTERNO EMPÁTICO', objective: 'Este ejercicio es una pausa consciente para escucharte desde la empatía y conectar contigo antes de responder a los demás. Te ayudará a darte lo que necesitas internamente, en lugar de actuar por impulso o por miedo. Porque a veces, lo más importante no es lo que dices… sino desde dónde lo dices.', duration: '10-15 min', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion1tecnica2.mp3` },
         { type: 'therapeuticNotebookReflection', title: 'Reflexión Final de la Semana', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/REFLEXION.mp3`, prompts: ['<p>Tómate unos minutos para responder con sinceridad. No hay respuestas correctas. Solo tu verdad, tal como se presenta hoy.</p>','<ul><li>¿Qué he descubierto sobre mí al observar cómo me muestro en mis relaciones?</li><li>¿Cómo me afecta a nivel emocional y físico cuando no me permito ser auténtico/a?</li><li>¿Qué me ocurre cuando no escucho lo que necesito y me esfuerzo por encajar o agradar?</li><li>¿Cómo se resienten mis relaciones cuando no soy empático/a con los demás? ¿Y conmigo?</li><li>¿Qué beneficios emocionales empiezo a notar cuando me expreso con más verdad, incluso en pequeños gestos?</li><li>¿Qué aprendizaje me llevo de esta semana para cuidar mis vínculos sin dejarme fuera de ellos?</li></ul>']},
         { type: 'title', text: 'Resumen Clave', 'audioUrl':`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana1/RESUMENYCIERRE.mp3` },
         { type: 'list', items: ['Las relaciones auténticas se construyen desde la presencia genuina, no desde la obligación o la perfección.','La empatía verdadera no es ponerte en los zapatos del otro, sino acompañar desde su realidad sin juicio.','Las frases bienintencionadas que minimizan el malestar generan invalidación emocional.','La autenticidad florece cuando hay espacio seguro creado por la empatía.','Ser honesto/a emocionalmente no es decirlo todo sin filtro, sino aprender a expresar lo esencial con respeto.','Las máscaras relacionales protegen, pero también desconectan de uno/a mismo/a y de los demás.','Esta semana entrenas a detectar tus máscaras, escuchar tus emociones y expresarte desde tu verdad.','La autenticidad empieza cuando te validas internamente y eliges no dejarte fuera de ellos.'] }, { type: 'quote', text: 'Cada vez que eliges mostrarte tal como eres, abres la puerta a vínculos más reales, más libres… y más tuyos.' }]
@@ -237,9 +237,9 @@ export const empathyPath: Path = {
           type: 'empathicShieldVisualizationExercise',
           title: 'EJERCICIO 1: VISUALIZACIÓN GUIADA: EL ESCUDO EMPÁTICO',
           objective:
-            '¿Te sientes a veces agotado/a después de acompañar a alguien? ¿Te cuesta distinguir entre estar presente… y quedarte vacía/o por dentro? \n\nEste ejercicio está hecho para ti. \nVamos a entrenar una forma de cuidar sin romperte: una visualización breve, pero poderosa, que te ayudará a crear tu escudo emocional interno. \nNo es una barrera. Es un filtro que te protege mientras sigues siendo tú. \nPara que puedas escuchar… sin absorber. Acompañar… sin fundirte. Y cuidar… sin desaparecer. \n\nTe recomiendo repetir esta visualización 2 o 3 veces por semana, especialmente antes de conversaciones emocionalmente exigentes o relaciones que te remueven.',
-          duration: '6-8 min',
-          audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3`,
+            '¿Te sientes a veces agotado/a después de acompañar a alguien? ¿Te cuesta distinguir entre estar presente… y quedarte vacía/o por dentro? \n\nEste ejercicio está hecho para ti. \nVamos a entrenar una forma de cuidar sin romperte: una visualización breve, pero poderosa, que te ayudará a crear tu escudo emocional interno. \nNo es una barrera. Es un filtro que te protege mientras sigues siendo tú. \nPara que puedas escuchar… sin absorber. Acompañar… sin fundirte. Y cuidar… sin desaparecer.',
+          duration: '6-8 min'
+        
         },
         {
           type: 'emotionalInvolvementTrafficLightExercise',
@@ -293,7 +293,7 @@ export const empathyPath: Path = {
       content: [
         {
           type: 'paragraphWithAudio',
-          text: '¿Te ha pasado que al empezar a poner límites… algunas personas se alejan y otras se acercan más?\\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti.',
+          text: '¿Te has encontrado en relaciones donde das mucho… pero no siempre recibes lo mismo? ¿O donde te cuesta ser tú misma/o por miedo a incomodar?\nEsta semana vas a revisar con calma qué vínculos realmente te nutren y cómo puedes construir relaciones más auténticas, honestas y seguras. \n- No se trata de tener muchas personas cerca, sino de cultivar la calidad emocional de tus lazos. \n- Aprenderás que decir “no” a lo que te daña es también una forma profunda de decirte “sí” a ti. ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/INTRODUCCIONSEMANA4.mp3`,
         },
         { type: 'title', text: 'Psicoeducación' },
@@ -468,3 +468,4 @@ export const empathyPath: Path = {
     }
   ]
 };
+

@@ -16,6 +16,7 @@ import {
 } from 'recharts';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { Activity } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface EmotionalProfileChartProps {
   results: {
@@ -35,8 +36,33 @@ function normalizeDimensionKey(value: string): string {
     .trim();
 }
 
+function splitLabelInTwoLines(value: string, maxCharsPerLine: number): [string, string?] {
+  const words = String(value || '').split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [''];
+
+  const firstLineWords: string[] = [];
+  let firstLineLength = 0;
+
+  for (const word of words) {
+    const nextLength = firstLineLength + (firstLineWords.length > 0 ? 1 : 0) + word.length;
+    if (nextLength <= maxCharsPerLine || firstLineWords.length === 0) {
+      firstLineWords.push(word);
+      firstLineLength = nextLength;
+    } else {
+      break;
+    }
+  }
+
+  const secondLineWords = words.slice(firstLineWords.length);
+  const firstLine = firstLineWords.join(' ');
+  const secondLine = secondLineWords.join(' ');
+
+  return secondLine ? [firstLine, secondLine] : [firstLine];
+}
+
 export function EmotionalProfileChart({ results, rawAnswers, assessmentDimensions, className }: EmotionalProfileChartProps) {
   const t = useTranslations();
+  const isMobile = useIsMobile();
 
   if (!results || !results.emotionalProfile || Object.keys(results.emotionalProfile).length === 0 || !assessmentDimensions || assessmentDimensions.length === 0) {
     return null;
@@ -113,6 +139,11 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
       color: 'hsl(var(--primary))',
     },
   };
+  const getLabel = (value: string) => {
+    const cleanValue = String(value || '').split('(')[0].trim();
+    const maxLength = isMobile ? 12 : 28;
+    return cleanValue.length > maxLength ? `${cleanValue.slice(0, maxLength)}…` : cleanValue;
+  };
 
   return (
     <Card className={`shadow-lg ${className}`}>
@@ -120,24 +151,36 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
         <CardTitle className="flex items-center"><Activity className="mr-2 h-6 w-6 text-accent" />{t.myEmotionalProfile}</CardTitle>
         <CardDescription>{t.myEmotionalProfileDescription}</CardDescription>
       </CardHeader>
-      <CardContent className="overflow-hidden">
-        <div className="h-[260px] sm:h-[300px] w-full min-w-0 overflow-hidden">
-          <ChartContainer config={chartConfig} className="w-full h-full min-w-0">
+      <CardContent className="overflow-x-hidden">
+        <div className="h-[320px] sm:h-[360px] w-full min-w-0 overflow-hidden">
+          <ChartContainer config={chartConfig} className="w-full h-full min-w-0 aspect-auto">
             <RadarChart
               cx="50%"
               cy="50%"
-              outerRadius="72%"
+              outerRadius={isMobile ? '56%' : '64%'}
               data={finalRadarData}
-              margin={{ top: 16, right: 16, bottom: 16, left: 16 }}
+              margin={isMobile ? { top: 24, right: 18, bottom: 26, left: 18 } : { top: 26, right: 30, bottom: 34, left: 30 }}
             >
               <PolarGrid gridType="polygon" stroke="hsl(var(--border))" />
               <PolarAngleAxis
                 dataKey="dimension"
-                tick={({ x, y, payload }) => (
-                  <text x={x} y={y} dy={4} textAnchor="middle" fill="hsl(var(--foreground))" fontSize={8}>
-                    {payload.value.split('(')[0].trim().substring(0, 10)}
-                  </text>
-                )}
+                tick={({ x, y, payload, textAnchor }) => {
+                  const label = getLabel(String((payload as { value?: string })?.value ?? ''));
+                  const [line1, line2] = splitLabelInTwoLines(label, isMobile ? 12 : 16);
+                  return (
+                    <text
+                      x={x}
+                      y={y}
+                      dy={isMobile ? 3 : 0}
+                      textAnchor={textAnchor ?? "middle"}
+                      fill="hsl(var(--foreground))"
+                      fontSize={isMobile ? 6.5 : 8}
+                    >
+                      <tspan x={x} dy={isMobile ? 0 : 4}>{line1}</tspan>
+                      {line2 ? <tspan x={x} dy={isMobile ? 7 : 9}>{line2}</tspan> : null}
+                    </text>
+                  );
+                }}
               />
               <PolarRadiusAxis
                 angle={90}

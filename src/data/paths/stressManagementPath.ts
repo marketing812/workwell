@@ -235,7 +235,7 @@ export const stressManagementPath: Path = {
                 {
                   type: 'collapsible',
                   title: 'Técnica 3: Anclaje sensorial inmediato (Técnica 5-4-3-2-1)',
-                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.m4a`,
+                  audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/R1_anclaje_sensorial_inmediato.mp3`,
                   content: [{ type: 'paragraph', text: 'Objetivo: salir del bucle mental ansioso y volver al momento presente. \nCómo se hace: \n 1 - Realiza primero 2 respiraciones conscientes: \n 2 - Inhala 6 segundos. \n 3 - Mantén 2 segundos. \n 4 - Exhala 4 segundos. \n5 - Después, nombra mentalmente: \n&nbsp;&nbsp;- cinco cosas que ves. \n&nbsp;&nbsp;- cuatro cosas que puedes tocar. \n&nbsp;&nbsp;- tres sonidos que escuchas. \n&nbsp;&nbsp;- dos olores que detectas o recuerdas. \n&nbsp;&nbsp;- un sabor presente en tu boca. \n 6 - Finaliza con una respiración profunda. \n7 - Practica: entre 2 y 4 minutos. Úsala en momentos de ansiedad aguda, antes de una reunión importante o cuando notes que tu mente se acelera. '}]
                 },
                 {
@@ -331,7 +331,7 @@ export const stressManagementPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta1/semana3/Unmismohechodosemocionesdistintas.mp3`,
           content: [
             { type: 'paragraph', text: 'Situación: Tu pareja no contesta a tu mensaje en horas.' },
-            { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia”.'] },
+            { type: 'list', items: ['Pensamiento 1: “Está enfadado/a conmigo” → Ansiedad, inseguridad.', 'Pensamiento 2: “Estará ocupado/a” → Calma, paciencia.'] },
             { type: 'paragraph', text: 'La misma situación puede vivirse con emociones muy diferentes según el pensamiento que la acompaña. ' }
           ]
         },
@@ -494,7 +494,7 @@ export const stressManagementPath: Path = {
           ],
         },
          { type: 'paragraph', text: 'Esta ruta no termina aquí: empieza tu camino con más herramientas, conciencia y confianza para cuidarte.' },
-          { type: 'paragraph', text: 'Aprender a gestionar el estrés no significa evitarlo, sino descubrir que dentro de ti hay recursos para sostenerte, incluso en los días difíciles.' }
+          { type: 'paragraph', text: '<i>Aprender a gestionar el estrés no significa evitarlo, sino descubrir que dentro de ti hay recursos para sostenerte, incluso en los días difíciles.</i>' }
       ]
     }
   ]

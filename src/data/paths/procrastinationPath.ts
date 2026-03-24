@@ -374,7 +374,7 @@ Puedes escribir, pensar o simplemente sentir. Hazlo a tu ritmo.`,
         },
         {
           type: 'gentleTrackingExercise',
-          title: 'EJERCICIO 2: SEGUIMIENTO AMABLE + REFORZO VISUAL',
+          title: 'EJERCICIO 2: SEGUIMIENTO AMABLE + REFUERZO VISUAL',
           objective: 'Este ejercicio te permite registrar tus avances sin exigencia, reforzar tu constancia con símbolos positivos y conectar con una sensación de progreso real.',
           duration: '3 a 5 minutos al día',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta3/tecnicas/Ruta3sesion4tecnica2.mp3`,

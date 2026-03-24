@@ -45,6 +45,15 @@ const MoodCheckInObjectSchema = z.object({
 const MoodCheckInsApiResponseSchema = z.array(MoodCheckInObjectSchema);
 const ASSESSMENTS_SYNC_TIMEOUT_MS = 20000;
 
+function normalizeDimensionKey(value: string): string {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 function normalizeEmotionalProfile(rawProfile: any): Record<string, number> {
   if (!rawProfile) return {};
 
@@ -98,10 +107,14 @@ function normalizeAssessmentEntry(raw: any, index: number): AssessmentRecord | n
   const timestamp = String(raw.timestamp || raw.fecha || raw.createdAt || new Date().toISOString());
   const id = String(raw.id || `assessment-${Date.now()}-${index}`);
   const priorityAreasRaw = Array.isArray(rawData.priorityAreas) ? rawData.priorityAreas.flat(Infinity) : [];
-  const priorityAreas = priorityAreasRaw
+  const priorityAreasFromPayload = priorityAreasRaw
     .map((item: unknown) => String(item || "").trim())
-    .filter(Boolean)
-    .slice(0, 3);
+    .filter(Boolean);
+  const fallbackPriorityAreas = Object.entries(emotionalProfile)
+    .filter(([name]) => normalizeDimensionKey(name) !== normalizeDimensionKey("Estado Emocional General"))
+    .sort((a, b) => a[1] - b[1])
+    .map(([name]) => name);
+  const priorityAreas = [...new Set([...priorityAreasFromPayload, ...fallbackPriorityAreas])].slice(0, 3);
 
   return {
     id,

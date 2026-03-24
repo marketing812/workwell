@@ -18,6 +18,7 @@ import { deleteLegacyData } from '@/data/userUtils';
 const DEBUG_DELETE_FETCH_URL_KEY = "workwell-debug-delete-fetch-url";
 const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
 const LAST_LOGIN_AT_KEY = "workwell-last-login-at";
+const WELCOME_SEEN_KEY = "workwell-welcome-seen";
 const MAX_SESSION_AGE_MS = 5 * 24 * 60 * 60 * 1000; // 5 dias
 
 export interface User {
@@ -200,7 +201,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
       setUser(null);
       setNotebookEntries([]);
       if (typeof window !== 'undefined') {
+        const welcomeSeen = localStorage.getItem(WELCOME_SEEN_KEY);
         localStorage.clear();
+        if (welcomeSeen) {
+          localStorage.setItem(WELCOME_SEEN_KEY, welcomeSeen);
+        }
         sessionStorage.clear();
       }
       router.push('/login');
