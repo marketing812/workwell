@@ -11,10 +11,11 @@ app.use(express.json());
 
 const EXTERNAL_SERVICES_BASE_URL =
   process.env.EXTERNAL_SERVICES_BASE_URL || "https://workwellfut.com";
+const EXTERNAL_SERVICES_BASE_URLSERVICIOS = "https://workwellfut.com";
 const DAILY_QUESTION_KEY =
   process.env.DAILY_QUESTION_KEY || "SJDFgfds788sdfs8888KLLLL";
 const NOTEBOOK_API_BASE =
-  `${EXTERNAL_SERVICES_BASE_URL}/wp-content/programacion/wscontenido.php`;
+  `${EXTERNAL_SERVICES_BASE_URLSERVICIOS}/wp-content/programacion/wscontenido.php`;
 const NOTEBOOK_API_KEY = process.env.NOTEBOOK_API_KEY || "4463";
 const NOTEBOOK_TIMEOUT_MS = 15000;
 const SECRET_KEY =

@@ -8,12 +8,20 @@ runConfig:
 env:
   - variable: GEMINI_API_KEY
     secret: GEMINI_API_KEY
+    availability:
+      - BUILD
+      - RUNTIME
 
   - variable: NEXT_PUBLIC_API_BASE_URL
     value: https://europe-west4-workwell-c4rlk.cloudfunctions.net/api
-    env:
+    availability:
+      - BUILD
+      - RUNTIME
   - variable: NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY
     value: 6LdtGX4sAAAAADDwF54H-dgmfVsdPMZbd0iFPf3s
+    availability:
+      - BUILD
+      - RUNTIME
 
 # Force rebuild to resolve genkit module resolution error by reverting to @genkit-ai/googleai. Timestamp: 2026-01-13T20:30:00.
 # Reverting to @genkit-ai/google-genai to fix module resolution and auth issues. Timestamp: 2026-01-14T09:45:00
