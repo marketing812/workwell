@@ -47,7 +47,7 @@
     "crypto-js": "^4.2.0",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
-    "firebase": "^10.12.4",
+    "firebase": "^12.11.0",
     "firebase-admin": "^13.6.1",
     "firebase-functions": "^7.0.6",
     "genkit": "^1.1.0",
@@ -67,7 +67,7 @@
     "zod": "^3.23.8"
   },
   "engines": {
-    "node": "22.x" 
+    "node": "22.x"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.1.0",
