@@ -299,7 +299,7 @@ export const empathyPath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'No necesitas muchas personas, necesitas relaciones que te sostengan',
+          title: 'No necesitas muchas personas, necesitas relaciones que te sostengan ',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/AUDIO1.mp3`,
           content: [
             {
