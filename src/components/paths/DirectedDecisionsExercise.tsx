@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, type FormEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,21 +24,21 @@ interface DecisionItem {
 }
 
 const valueOptions = [
-  { id: "care", label: "Cuidado personal", description: "Elegir lo que te hace bien fisica y emocionalmente." },
-  { id: "auth", label: "Autenticidad", description: "Ser fiel a lo que sientes, aunque no siempre sea lo mas comodo." },
+  { id: "care", label: "Cuidado personal", description: "Elegir lo que te hace bien física y emocionalmente." },
+  { id: "auth", label: "Autenticidad", description: "Ser fiel a lo que sientes, aunque no siempre sea lo más cómodo." },
   { id: "calm", label: "Calma", description: "Priorizar espacios de serenidad frente a la prisa o la hiperexigencia." },
-  { id: "connect", label: "Conexion", description: "Cuidar vinculos significativos y estar presente en ellos." },
-  { id: "respect", label: "Respeto", description: "Tratarte (y tratar a los demas) con dignidad y limites sanos." },
+  { id: "connect", label: "Conexión", description: "Cuidar vínculos significativos y estar presente en ellos." },
+  { id: "respect", label: "Respeto", description: "Tratarte (y tratar a los demás) con dignidad y límites sanos." },
   { id: "balance", label: "Equilibrio", description: "Sostener armonia entre dar y recibir, hacer y descansar." },
-  { id: "presence", label: "Presencia", description: 'Estar aqui y ahora, no vivir solo en el "tengo que".' },
+  { id: "presence", label: "Presencia", description: 'Estar aquí y ahora, no vivir solo en el "tengo que".' },
   { id: "coherence", label: "Coherencia interna", description: "Alinear lo que haces con lo que piensas y sientes." },
-  { id: "autonomy", label: "Autonomia", description: "Tomar decisiones propias, no solo por presion externa." },
-  { id: "compassion", label: "Compasion", description: "Tratarte con amabilidad cuando no puedes con todo." },
+  { id: "autonomy", label: "Autonomía", description: "Tomar decisiones propias, no solo por presión externa." },
+  { id: "compassion", label: "Compasión", description: "Tratarte con amabilidad cuando no puedes con todo." },
   { id: "creativity", label: "Creatividad", description: "Dar espacio a lo que te inspira, nutre o emociona." },
   { id: "growth", label: "Crecimiento personal", description: "Elegir lo que te ayuda a evolucionar." },
-  { id: "security", label: "Seguridad emocional", description: "Alejarte de lo que dana tu estabilidad interior." },
-  { id: "vitality", label: "Vitalidad", description: "Recuperar energia haciendo cosas con sentido." },
-  { id: "freedom", label: "Libertad interna", description: "Soltar el deber constante para elegir con mas consciencia." },
+  { id: "security", label: "Seguridad emocional", description: "Alejarte de lo que daña tu estabilidad interior." },
+  { id: "vitality", label: "Vitalidad", description: "Recuperar energía haciendo cosas con sentido." },
+  { id: "freedom", label: "Libertad interna", description: "Soltar el deber constante para elegir con más consciencia." },
 ];
 
 const createInitialDecisions = (): DecisionItem[] =>
@@ -84,8 +84,8 @@ export default function DirectedDecisionsExercise({
 
     if (!tomorrowAction.trim()) {
       toast({
-        title: "Accion no definida",
-        description: "Define tu accion para mañana.",
+        title: "Acción no definida",
+        description: "Define tu acción para mañana.",
         variant: "destructive",
       });
       return;
@@ -104,25 +104,25 @@ Pregunta: Valor elegido a fortalecer | Respuesta: ${finalSelectedValue}
       if (!decision.decision.trim() && !decision.adjustment.trim()) return;
       notebookContent += `
 ---
-**Decision ${i + 1}**
-Pregunta: Decision del dia | Respuesta: ${decision.decision || "No especificado."}
+**Decisión ${i + 1}**
+Pregunta: Decisión del día | Respuesta: ${decision.decision || "No especificado."}
 Pregunta: Ajuste posible para alinearla a mi valor | Respuesta: ${decision.adjustment || "Ninguno."}
 `;
     });
 
     notebookContent += `
 ---
-Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respuesta: ${tomorrowAction}
+Pregunta: Qué pequeña acción puedes tomar mañana que honre ese valor? | Respuesta: ${tomorrowAction}
 `;
 
     addNotebookEntry({
-      title: "Decisiones con Direccion",
+      title: "Decisiones con Dirección",
       content: notebookContent,
       pathId,
       userId: user?.id,
     });
 
-    toast({ title: "Decision guardada", description: "Tu accion de mañana se ha guardado." });
+    toast({ title: "Decisión guardada", description: "Tu acción de mañana se ha guardado." });
     setIsSaved(true);
     onComplete();
     nextStep();
@@ -134,16 +134,16 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
         return (
           <div className="p-4 text-center space-y-4">
             <p>
-              A veces vivimos decidiendo en automatico. Hoy vas a practicar algo distinto: tomar decisiones pequenas que
-              te acerquen a lo que si tiene sentido para ti.
+              A veces vivimos decidiendo en automático. Hoy vas a practicar algo distinto: tomar decisiones pequeñas que
+              te acerquen a lo que sí tiene sentido para ti.
             </p>
             <div className="text-sm p-3 border rounded-md bg-background/50 text-left">
-              <p className="font-semibold">Ejemplo guia:</p>
+              <p className="font-semibold">Ejemplo guía:</p>
               <p>
                 <strong>Valor:</strong> Cuidado personal
               </p>
               <p>
-                <strong>Decision:</strong> Comer en 10 minutos delante del ordenador.
+                <strong>Decisión:</strong> Comer en 10 minutos delante del ordenador.
               </p>
               <p>
                 <strong>Ajuste posible:</strong> Comer sin pantalla, aunque solo sean 15 minutos.
@@ -211,12 +211,12 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 2: Microdecisiones cotidianas</h4>
             <p className="text-sm">
-              Revisa tu dia y anota al menos 3 decisiones que hayas tomado hoy (o tomaras) y responde: esta decision
-              esta alineada con el valor que elegi? Si no lo esta, como podria reajustarla o replantearla?
+              Revisa tu día y anota al menos 3 decisiones que hayas tomado hoy (o tomarás) y responde: esta decisión
+              ¿está alineada con el valor que elegí? Si no lo está, ¿cómo podría reajustarla o replantearla?
             </p>
             {decisions.map((decision, index) => (
               <div key={index} className="space-y-2 p-3 border rounded-md">
-                <Label htmlFor={`decision${index}`}>Decision {index + 1}</Label>
+                <Label htmlFor={`decision${index}`}>Decisión {index + 1}</Label>
                 <Textarea
                   id={`decision${index}`}
                   value={decision.decision}
@@ -232,7 +232,7 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
             ))}
 
             <Button type="button" variant="outline" onClick={addDecision}>
-              Anadir decision {decisions.length + 1}
+              Añadir decisión {decisions.length + 1}
             </Button>
 
             <div className="flex justify-between w-full mt-4">
@@ -251,9 +251,9 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
       case 3:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 3: Elige una accion para mañana</h4>
+            <h4 className="font-semibold text-lg">Paso 3: Elige una acción para mañana</h4>
             <div className="space-y-2">
-              <Label htmlFor="tomorrow-action">Que pequena accion puedes tomar mañana que honre ese valor?</Label>
+              <Label htmlFor="tomorrow-action">Qué pequeña acción puedes tomar mañana que honre ese valor?</Label>
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={(e) => setTomorrowAction(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
@@ -264,7 +264,7 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
               {!isSaved ? (
                 <Button type="submit">
                   <Save className="mr-2 h-4 w-4" />
-                  Guardar mis decisiones con direccion
+                  Guardar mis decisiones con dirección
                 </Button>
               ) : (
                 <div className="flex items-center p-3 text-green-800 dark:text-green-200">
@@ -280,12 +280,12 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
         return (
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">Accion guardada</h4>
+            <h4 className="font-bold text-lg">Acción guardada</h4>
             <blockquote className="italic">
               "Cada vez que eliges desde un valor, fortaleces tu dirección interna."
             </blockquote>
             <p className="text-sm pt-2">
-              Tu plan de accion se ha guardado en tu Cuaderno Terapeutico. Puedes revisarlo cuando quieras para recordar
+              Tu plan de acción se ha guardado en tu Cuaderno Terapéutico. Puedes revisarlo cuando quieras para recordar
               tu compromiso.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
@@ -327,4 +327,6 @@ Pregunta: Que pequena accion puedes tomar mañana que honre ese valor? | Respues
     </Card>
   );
 }
+
+
 

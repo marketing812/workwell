@@ -78,41 +78,47 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
 
   const overallScore = normalizedProfile.get(normalizeDimensionKey('Estado Emocional General'));
 
+  const computeDimensionScoreFromRawAnswers = (dim: AssessmentDimension): number | null => {
+    if (!rawAnswers || typeof rawAnswers !== 'object') {
+      return null;
+    }
+
+    let weightedTotal = 0;
+    let weightsSum = 0;
+
+    dim.items.forEach((item) => {
+      const rawAnswerValue = (rawAnswers as Record<string, number | { score?: number; weight?: number }>)[item.id];
+      const answer =
+        typeof rawAnswerValue === 'object' && rawAnswerValue !== null
+          ? Number(rawAnswerValue.score)
+          : Number(rawAnswerValue);
+      const answerWeight =
+        typeof rawAnswerValue === 'object' && rawAnswerValue !== null
+          ? Number(rawAnswerValue.weight ?? item.weight ?? 1)
+          : Number(item.weight ?? 1);
+      const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
+
+      if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
+        const adjustedAnswer = item.isInverse ? 6 - answer : answer;
+        weightedTotal += adjustedAnswer * weight;
+        weightsSum += weight;
+      }
+    });
+
+    return weightsSum > 0 ? weightedTotal / weightsSum : null;
+  };
+
   const radarData = assessmentDimensions.map((dim) => {
+    const rawScore = computeDimensionScoreFromRawAnswers(dim);
     const exactScore = results.emotionalProfile[dim.name];
     const normalizedScore = normalizedProfile.get(normalizeDimensionKey(dim.name));
 
     let scoreValue: number | null =
-      typeof exactScore === 'number' && Number.isFinite(exactScore)
+      typeof rawScore === 'number' && Number.isFinite(rawScore)
+        ? rawScore
+        : typeof exactScore === 'number' && Number.isFinite(exactScore)
         ? exactScore
         : (typeof normalizedScore === 'number' && Number.isFinite(normalizedScore) ? normalizedScore : null);
-
-    if (scoreValue === null && rawAnswers && typeof rawAnswers === 'object') {
-      let weightedTotal = 0;
-      let weightsSum = 0;
-
-      dim.items.forEach((item) => {
-        const rawAnswerValue = (rawAnswers as Record<string, number | { score?: number; weight?: number }>)[item.id];
-        const answer =
-          typeof rawAnswerValue === 'object' && rawAnswerValue !== null
-            ? Number(rawAnswerValue.score)
-            : Number(rawAnswerValue);
-        const answerWeight =
-          typeof rawAnswerValue === 'object' && rawAnswerValue !== null
-            ? Number(rawAnswerValue.weight ?? item.weight ?? 1)
-            : Number(item.weight ?? 1);
-        const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
-
-        if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
-          weightedTotal += answer * weight;
-          weightsSum += weight;
-        }
-      });
-
-      if (weightsSum > 0) {
-        scoreValue = weightedTotal / weightsSum;
-      }
-    }
 
     if (scoreValue === null) {
       scoreValue = 0;

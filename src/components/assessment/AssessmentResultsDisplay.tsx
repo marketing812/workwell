@@ -154,7 +154,40 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
 
   const overallScore = normalizedProfile.get(normalizeDimensionKey("Estado Emocional General"));
 
+  const computeDimensionScoreFromRawAnswers = (dim: AssessmentDimension): number | null => {
+    if (!rawAnswers || typeof rawAnswers !== "object") {
+      return null;
+    }
+
+    let weightedTotal = 0;
+    let weightsSum = 0;
+
+    dim.items.forEach((item) => {
+      const rawAnswer = rawAnswers[item.id];
+      const answer = Number(rawAnswer?.score);
+      const answerWeight = Number(rawAnswer?.weight ?? item.weight ?? 1);
+      const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
+
+      if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
+        const adjustedAnswer = item.isInverse ? 6 - answer : answer;
+        weightedTotal += adjustedAnswer * weight;
+        weightsSum += weight;
+      }
+    });
+
+    if (weightsSum > 0) {
+      return weightedTotal / weightsSum;
+    }
+
+    return null;
+  };
+
   const resolveDimensionScore = (dim: AssessmentDimension): number | null => {
+    const rawScore = computeDimensionScoreFromRawAnswers(dim);
+    if (rawScore !== null) {
+      return rawScore;
+    }
+
     const exactScore = results.emotionalProfile[dim.name];
     if (typeof exactScore === "number" && Number.isFinite(exactScore)) {
       return exactScore;
@@ -163,27 +196,6 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     const normalizedScore = normalizedProfile.get(normalizeDimensionKey(dim.name));
     if (typeof normalizedScore === "number" && Number.isFinite(normalizedScore)) {
       return normalizedScore;
-    }
-
-    if (rawAnswers && typeof rawAnswers === "object") {
-      let weightedTotal = 0;
-      let weightsSum = 0;
-
-      dim.items.forEach((item) => {
-        const rawAnswer = rawAnswers[item.id];
-        const answer = Number(rawAnswer?.score);
-        const answerWeight = Number(rawAnswer?.weight ?? item.weight ?? 1);
-        const weight = Number.isFinite(answerWeight) && answerWeight > 0 ? answerWeight : 1;
-
-        if (Number.isFinite(answer) && Number.isFinite(weight) && weight > 0) {
-          weightedTotal += answer * weight;
-          weightsSum += weight;
-        }
-      });
-
-      if (weightsSum > 0) {
-        return weightedTotal / weightsSum;
-      }
     }
 
     if (typeof overallScore === "number" && Number.isFinite(overallScore)) {
@@ -230,11 +242,32 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     return merged.slice(0, 3);
   })();
 
-  const pieChartData = safePriorityAreas.map((areaName) => ({
-    name: areaName,
-    slug: slugify(areaName),
-    value: 1, 
-  }));
+  const pieChartData = safePriorityAreas.map((areaName) => {
+    const normalizedArea = normalizeDimensionKey(areaName);
+    const dimension = assessmentDimensions.find((d) => {
+      if (d.name === areaName) return true;
+      return normalizeDimensionKey(d.name) === normalizedArea;
+    });
+
+    const score =
+      dimension ?
+        resolveDimensionScore(dimension) :
+        normalizedProfile.get(normalizedArea) ?? null;
+    const boundedScore =
+      typeof score === "number" && Number.isFinite(score) ?
+        Math.max(0, Math.min(5, score)) :
+        2.5;
+
+    // Menor puntuación => mayor peso en "áreas prioritarias".
+    const priorityWeight = Math.max(0.05, 5 - boundedScore);
+
+    return {
+      name: areaName,
+      slug: slugify(areaName),
+      value: priorityWeight,
+      score: boundedScore,
+    };
+  });
 
   const priorityAreasPieConfig: ChartConfig = {};
   pieChartData.forEach((item, index) => {

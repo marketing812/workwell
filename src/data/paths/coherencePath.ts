@@ -22,19 +22,15 @@ export const coherencePath: Path = {
         { type: 'title', text: 'Psicoeducación' },
         {
           type: 'collapsible',
-          title: 'Gancho emocional + apertura',
-             content: [
-            { type: 'paragraph', text: '¿Te ha pasado alguna vez que dices que sí cuando por dentro gritas un no?\\n¿O que te encuentras actuando como se espera de ti, aunque eso te aleje de lo que de verdad sientes o piensas?' },
-            { type: 'paragraph', text: 'Esta semana vamos a comenzar un camino importante: reconectar contigo y aprender a vivir con coherencia personal. No desde la exigencia, sino desde el cuidado. No desde el juicio, sino desde la honestidad. No se trata de hacerlo perfecto, sino de escucharte mejor.' }
-          ]
-        },
-      {
-          type: 'collapsible',
           title: '¿Qué es la coherencia personal?',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta9/descripciones/semana1/Queeslacoherenciapersonal.mp3`,
           content: [
-            { type: 'paragraph', text: 'La coherencia personal ocurre cuando lo que piensas, sientes y haces están en la misma dirección.\\nEs cuando tus acciones reflejan tus valores, tus emociones no son silenciadas, y tus pensamientos no se contradicen con lo que haces cada día.\\nPero atención: no se trata de estar siempre en equilibrio ni de acertar todo el tiempo. Ser coherente es un acto de atención diaria.\\nEs preguntarte: “¿Esto que estoy haciendo me representa? ¿Estoy en paz con esta decisión?”' },
-            { type: 'paragraph', text: 'Ejemplo realista: Imagina que valoras profundamente el descanso, pero aceptas reuniones fuera de tu horario por no quedar mal. Aunque lo hagas con la mejor intención, eso genera un pequeño conflicto interno. Al final del día, puedes sentirte agotado/a, irritado/a o confundido/a sin saber muy bien por qué.' }
+            { type: 'paragraph', text: '¿Te ha pasado alguna vez que dices que sí cuando por dentro gritas un no?\\n¿O que te encuentras actuando como se espera de ti, aunque eso te aleje de lo que de verdad sientes o piensas?' },
+            { type: 'paragraph', text: 'No eres la única persona. Muchas veces vivimos en modo automático, cumpliendo, complaciendo, encajando… y dejando de lado algo muy valioso: nuestra propia voz interna.' },
+            { type: 'paragraph', text: 'Esta semana vamos a comenzar un camino importante: reconectar contigo y aprender a vivir con coherencia personal. No desde la exigencia, sino desde el cuidado. No desde el juicio, sino desde la honestidad. No se trata de hacerlo perfecto, sino de escucharte mejor.' },
+            { type: 'paragraph', text: 'La coherencia personal ocurre cuando lo que piensas, sientes y haces están en la misma dirección.\\nEs cuando tus acciones reflejan tus valores, tus emociones no son silenciadas, y tus pensamientos no se contradicen con lo que haces cada día.' },
+            { type: 'paragraph', text: 'Pero atención: no se trata de estar siempre en equilibrio ni de acertar todo el tiempo. Ser coherente es un acto de atención diaria.\\nEs preguntarte: “¿Esto que estoy haciendo me representa? ¿Estoy en paz con esta decisión?”' },
+            { type: 'paragraph', text: 'Ejemplo realista:\\nImagina que valoras profundamente el descanso, pero aceptas reuniones fuera de tu horario por no quedar mal. Aunque lo hagas con la mejor intención, eso genera un pequeño conflicto interno. Al final del día, puedes sentirte agotado/a, irritado/a o confundido/a sin saber muy bien por qué.' }
           ]
         },
         {
@@ -206,31 +202,31 @@ export const coherencePath: Path = {
           guidedFields: [
             {
               id: 'idea-clave-clic',
-              label: 'Que idea o descubrimiento de esta semana me ha hecho mas clic por dentro?',
+              label: '¿Que idea o descubrimiento de esta semana me ha hecho mas clic por dentro?',
               required: true,
               rows: 5,
             },
             {
               id: 'comprension-decisiones',
-              label: 'Que he comprendido sobre mi al observar como tomo decisiones importantes?',
+              label: '¿Que he comprendido sobre mi al observar como tomo decisiones importantes?',
               required: true,
               rows: 5,
             },
             {
               id: 'coherencia-rigidez',
-              label: 'Como ha cambiado mi forma de ver la relacion entre coherencia y rigidez?',
+              label: '¿Como ha cambiado mi forma de ver la relacion entre coherencia y rigidez?',
               required: true,
               rows: 5,
             },
             {
               id: 'equilibrio-no-negociables',
-              label: 'Que he aprendido sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?',
+              label: '¿Que he aprendido sobre el equilibrio entre mantener mis no negociables y adaptarme a las circunstancias?',
               required: true,
               rows: 5,
             },
             {
               id: 'proximo-paso',
-              label: 'Que puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?',
+              label: '¿Que puedo empezar a hacer desde ahora para que mis decisiones reflejen lo que valoro, incluso cuando las circunstancias cambien?',
               required: true,
               rows: 5,
             },
@@ -286,28 +282,10 @@ export const coherencePath: Path = {
          ],
           guidedFields: [
             {
-              id: 'descubrimiento-revelador',
-              label: 'Que descubrimiento de esta semana ha sido mas revelador para ti sobre la forma en que asumes la responsabilidad?',
+              id: 'reflexion-personal-semana-4',
+              label: 'Escribe aquí tu reflexión personal',
               required: true,
-              rows: 4,
-            },
-            {
-              id: 'situaciones-no-me-corresponde',
-              label: 'En que situaciones recientes has podido decir "esto no me corresponde" y sentirte en paz con ello?',
-              required: true,
-              rows: 4,
-            },
-            {
-              id: 'cambio-dialogo-interno',
-              label: 'Como ha cambiado tu forma de hablarte a ti mismo o a ti misma despues de realizar las tecnicas propuestas?',
-              required: true,
-              rows: 4,
-            },
-            {
-              id: 'compromisos-cuidado',
-              label: 'Que compromisos nuevos quieres mantener a partir de ahora para cuidar de ti mientras te haces cargo de lo que si depende de ti?',
-              required: true,
-              rows: 4,
+              rows: 6,
             },
           ],
         },

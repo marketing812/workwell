@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -50,7 +50,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
     if (filledRelations.length === 0) {
       toast({
         title: 'Ejercicio Incompleto',
-        description: 'Completa al menos una relacion con su sensacion para guardar.',
+        description: 'Completa al menos una relación con su sensación para guardar.',
         variant: 'destructive',
       });
       return;
@@ -59,16 +59,16 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
     let notebookContent = `**${content.title}**\n\n`;
     filledRelations.forEach(r => {
       let sensationLabel = r.sensation.charAt(0).toUpperCase() + r.sensation.slice(1);
-      if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento mas tranquilo/a y animado/a.';
+      if (r.sensation === 'nutritivo') sensationLabel = 'Apoyo nutritivo (Verde): Me siento más tranquilo/a y animado/a.';
       if (r.sensation === 'drenante') sensationLabel = 'Apoyo drenante (Rojo): Me siento agotado/a o tenso/a.';
-      if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ambar): Me siento igual que antes.';
+      if (r.sensation === 'neutral') sensationLabel = 'Neutral (Ámbar): Me siento igual que antes.';
 
       notebookContent += `**Relacion: ${r.name}**\n`;
-      notebookContent += `Pregunta: Sensacion habitual despues de interactuar | Respuesta: ${sensationLabel}\n\n`;
+      notebookContent += `Pregunta: Sensacion habitual después de interactuar | Respuesta: ${sensationLabel}\n\n`;
     });
-    notebookContent += `--- \n**Reflexion Final**\n\n`;
-    notebookContent += `Pregunta: A quien quieres acercarte mas en las proximas semanas? | Respuesta: ${reflection.approach || 'No respondido.'}\n`;
-    notebookContent += `Pregunta: De quien necesitas poner distancia o limitar el contacto? | Respuesta: ${reflection.distance || 'No respondido.'}\n`;
+    notebookContent += `--- \n**Reflexión Final**\n\n`;
+    notebookContent += `Pregunta: ¿A quién quieres acercarte más en las próximas semanas? | Respuesta: ${reflection.approach || 'No respondido.'}\n`;
+    notebookContent += `Pregunta: ¿De quién necesitas poner distancia o limitar el contacto? | Respuesta: ${reflection.distance || 'No respondido.'}\n`;
 
     addNotebookEntry({ title: 'Mapa de Apoyos Nutritivos y Drenantes', content: notebookContent, pathId, userId: user?.id });
     toast({ title: 'Mapa Guardado' });
@@ -99,7 +99,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
         return (
           <div className="p-4 text-center space-y-4">
             <p className="text-sm text-muted-foreground">
-              Imagina que tu energia emocional es como una mochila. Algunas personas la llenan con animo, comprension y apoyo... y otras, sin darse cuenta, la vacian. Esta tecnica te ayudara a dibujar un mapa claro de quienes son tus verdaderas "personas vitamina" y quienes podrian estar drenando tu fuerza.
+              Imagina que tu energía emocional es como una mochila. Algunas personas la llenan con ánimo, comprensión y apoyo... y otras, sin darse cuenta, la vacían. Esta técnica te ayudará a dibujar un mapa claro de quiénes son tus verdaderas "personas vitamina" y quiénes podrían estar drenando tu fuerza.
             </p>
             <Button onClick={nextStep}>Empezar mi semaforo <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
@@ -108,7 +108,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Lista inicial</h4>
-            <p className="text-sm text-muted-foreground">Escribe los nombres de las personas con las que interactuas de forma frecuente (familia, amistades, trabajo, comunidad).</p>
+            <p className="text-sm text-muted-foreground">Escribe los nombres de las personas con las que interactúas de forma frecuente (familia, amistades, trabajo, comunidad).</p>
             {relations.map((rel, index) => (
               <Input
                 key={index}
@@ -126,13 +126,13 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
       case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2: Sensacion despues de interactuar</h4>
-            <p className="text-sm text-muted-foreground">Para cada nombre, elige la sensacion mas habitual despues de pasar tiempo con esa persona.</p>
+            <h4 className="font-semibold text-lg">Paso 2: Sensacion después de interactuar</h4>
+            <p className="text-sm text-muted-foreground">Para cada nombre, elige la sensación más habitual después de pasar tiempo con esa persona.</p>
             {namedRelations.map(({ rel, originalIndex }) => (
               <div key={originalIndex} className="p-3 border rounded-md space-y-2 bg-background">
                 <Label className="font-semibold">{rel.name}</Label>
                 <RadioGroup value={rel.sensation} onValueChange={v => handleRelationChange(originalIndex, 'sensation', v as any)}>
-                  <div className="flex items-center space-x-2"><RadioGroupItem value="nutritivo" id={`s-${originalIndex}-n`} /><Label htmlFor={`s-${originalIndex}-n`} className="font-normal">Me siento mas tranquilo/a y animado/a</Label></div>
+                  <div className="flex items-center space-x-2"><RadioGroupItem value="nutritivo" id={`s-${originalIndex}-n`} /><Label htmlFor={`s-${originalIndex}-n`} className="font-normal">Me siento más tranquilo/a y animado/a</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="neutral" id={`s-${originalIndex}-neu`} /><Label htmlFor={`s-${originalIndex}-neu`} className="font-normal">Me siento igual que antes</Label></div>
                   <div className="flex items-center space-x-2"><RadioGroupItem value="drenante" id={`s-${originalIndex}-d`} /><Label htmlFor={`s-${originalIndex}-d`} className="font-normal">Me siento agotado/a o tenso/a</Label></div>
                 </RadioGroup>
@@ -140,15 +140,15 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={goToVisualClassificationStep}>Siguiente: Clasificacion Visual <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={goToVisualClassificationStep}>Siguiente: Clasificación Visual <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
       case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Clasificacion visual</h4>
-            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde), Neutral (ambar) o Apoyo drenante (rojo), segun la sensacion que predomina.</p>
+            <h4 className="font-semibold text-lg">Paso 3: Clasificación visual</h4>
+            <p className="text-sm text-muted-foreground">Ahora, marca a cada persona como Apoyo nutritivo (verde), Neutral (ámbar) o Apoyo drenante (rojo), según la sensación que predomina.</p>
             {namedRelations.map(({ rel, originalIndex }) => (
               <div key={originalIndex} className="flex items-center justify-between p-3 border rounded-md bg-background">
                 <Label className="font-semibold">{rel.name}</Label>
@@ -163,7 +163,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
                   <RadioGroupItem value="nutritivo" id={`s-${originalIndex}-nutritivo`} className="sr-only" />
 
                   <Label htmlFor={`s-${originalIndex}-neutral`} className={cn('px-3 py-1 rounded-md cursor-pointer border-2 border-transparent', rel.sensation === 'neutral' ? 'bg-amber-500 text-white border-amber-700' : 'bg-amber-200 text-amber-800 hover:bg-amber-300')}>
-                    Ambar
+                    Ámbar
                   </Label>
                   <RadioGroupItem value="neutral" id={`s-${originalIndex}-neutral`} className="sr-only" />
 
@@ -176,20 +176,20 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
             ))}
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
-              <Button onClick={nextStep}>Siguiente: Reflexion <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <Button onClick={nextStep}>Siguiente: Reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
           </div>
         );
       case 4:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 4: Reflexion guiada</h4>
+            <h4 className="font-semibold text-lg">Paso 4: Reflexión guiada</h4>
             <div className="space-y-2">
-              <Label htmlFor="reflection-approach">A quien quieres acercarte mas en las proximas semanas?</Label>
-              <Textarea id="reflection-approach" value={reflection.approach} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, approach: e.target.value }))} placeholder="Ej: Quiero pasar mas tiempo con Ana y mis tios..." />
+              <Label htmlFor="reflection-approach">¿A quién quieres acercarte más en las próximas semanas?</Label>
+              <Textarea id="reflection-approach" value={reflection.approach} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, approach: e.target.value }))} placeholder="Ej: Quiero pasar más tiempo con Ana y mis tíos..." />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="reflection-distance">De quien necesitas poner distancia o limitar el contacto?</Label>
+              <Label htmlFor="reflection-distance">¿De quién necesitas poner distancia o limitar el contacto?</Label>
               <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafes con Marta..." />
             </div>
             <div className="flex justify-between w-full mt-4">
@@ -203,7 +203,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Mapa Guardado</h4>
-            <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapeutico cuando lo necesites.</p>
+            <p className="text-muted-foreground">Tu mapa de relaciones se ha guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo necesites.</p>
             
           </div>
         );
@@ -232,4 +232,5 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
     </Card>
   );
 }
+
 

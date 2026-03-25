@@ -181,8 +181,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Explora tus áreas clave</h4>
             <p className="text-sm text-muted-foreground">
-              Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, piensa si lo que piensas, sientes y haces está en sintonía... o si notas contradicción o tensión.
-            </p>
+              Vamos a hacer un recorrido por distintas áreas de tu vida. En cada una, valora si lo que piensas, sientes y haces está en sintonía... o si notas contradicción o tensión.            </p>
             <p className="text-sm text-muted-foreground">
               Marca del 1 (muy baja coherencia) al 5 (muy alta coherencia).
             </p>
@@ -421,7 +420,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
         </CardTitle>
         <CardDescription className="pt-2 space-y-2">
           <p>
-            Objetivo terapéutico: ¿Te has sentido alguna vez dividido/a por dentro? Como si una parte de ti pensara una cosa, pero actuara de otra forma... Esta técnica te ayudará a hacer una pausa y observarte con más claridad y menos juicio. Vas a descubrir en qué partes de tu vida estás alineado o alineada contigo, y en cuáles sientes que hay una desconexión. Es un primer paso para recuperar tu centro. Y desde ahí, empezar a elegir diferente.
+            ¿Te has sentido alguna vez dividido/a por dentro? Como si una parte de ti pensara una cosa, pero actuara de otra forma... Esta técnica te ayudará a hacer una pausa y observarte con más claridad y menos juicio. Vas a descubrir en qué partes de tu vida estás alineado o alineada contigo, y en cuáles sientes que hay una desconexión. Es un primer paso para recuperar tu centro. Y desde ahí, empezar a elegir diferente.
           </p>
           <p>
             Te recomiendo hacerlo al inicio de la semana y volver a revisarlo al final. Te servirá como espejo.

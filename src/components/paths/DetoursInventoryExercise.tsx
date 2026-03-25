@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState, type FormEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,13 +20,13 @@ interface DetoursInventoryExerciseProps {
 }
 
 const frequentDetours = [
-  { id: "detour-yes", label: 'Decir "si" por compromiso, aunque queria decir "no".' },
+  { id: "detour-yes", label: 'Decir "sí" por compromiso, aunque quería decir "no".' },
   { id: "detour-social", label: "Revisar redes sociales como escape." },
   { id: "detour-eating", label: "Comer sin hambre por ansiedad o aburrimiento." },
   { id: "detour-postpone", label: "Posponer decisiones importantes por miedo." },
   {
     id: "detour-thoughts",
-    label: 'Pensamientos como: "No soy suficiente", "Tengo que hacerlo perfecto", "Si fallo, me rechazaran".',
+    label: 'Pensamientos como: "No soy suficiente", "Tengo que hacerlo perfecto", "Si fallo, me rechazarán".',
   },
   { id: "detour-toxic-env", label: "Rodearme de personas o ambientes que no me hacen bien." },
 ];
@@ -34,9 +34,9 @@ const frequentDetours = [
 const valueOptions = [
   { id: "val-auth", label: "Autenticidad (ser yo mismo/a)" },
   { id: "val-care", label: "Salud y autocuidado" },
-  { id: "val-connect", label: "Conexion con los demas" },
+  { id: "val-connect", label: "Conexión con los demás" },
   { id: "val-calm", label: "Calma y equilibrio" },
-  { id: "val-respect", label: "Respeto hacia mi mismo/a" },
+  { id: "val-respect", label: "Respeto hacia mí mismo/a" },
   { id: "val-growth", label: "Crecimiento personal" },
   { id: "val-responsibility", label: "Responsabilidad" },
   { id: "val-freedom", label: "Libertad" },
@@ -45,20 +45,20 @@ const valueOptions = [
 
 const emotionOptions = [
   { id: "emo-guilt", label: "Culpa" },
-  { id: "emo-frustration", label: "Frustracion" },
+  { id: "emo-frustration", label: "Frustración" },
   { id: "emo-sadness", label: "Tristeza" },
-  { id: "emo-relief", label: "Alivio momentaneo" },
+  { id: "emo-relief", label: "Alivio momentáneo" },
   { id: "emo-anxiety", label: "Ansiedad" },
-  { id: "emo-shame", label: "Verguenza" },
-  { id: "emo-disconnect", label: "Desconexion" },
+  { id: "emo-shame", label: "Vergüenza" },
+  { id: "emo-disconnect", label: "Desconexión" },
   { id: "emo-resentment", label: "Resentimiento" },
-  { id: "emo-emptiness", label: "Indiferencia / vacio" },
+  { id: "emo-emptiness", label: "Indiferencia / vacío" },
 ];
 
 const partOptions = [
   { id: "part-insecure", label: "Mi parte insegura" },
   { id: "part-fearful", label: "Mi parte que teme al rechazo" },
-  { id: "part-pleaser", label: "Mi parte que busca aprobacion" },
+  { id: "part-pleaser", label: "Mi parte que busca aprobación" },
   { id: "part-controlling", label: "Mi parte que quiere sentirse en control" },
   { id: "part-avoider", label: "Mi parte que evita el dolor o el conflicto" },
   { id: "part-needy", label: "Mi parte que necesita afecto o reconocimiento" },
@@ -110,7 +110,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
   const handleDetourToggle = (id: string, checked: boolean) => {
     if (checked && !detours[id] && selectedDetours.length >= 3) {
       toast({
-        title: "Maximo 3 desvíos",
+        title: "Máximo 3 desvíos",
         description: "Elige hasta 3 desvíos para trabajar hoy.",
         variant: "destructive",
       });
@@ -171,14 +171,14 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     if (!hasContent) {
       toast({
         title: "Paso incompleto",
-        description: "Completa al menos un desvio antes de guardarlo.",
+        description: "Completa al menos un desvío antes de guardarlo.",
         variant: "destructive",
       });
       return;
     }
 
     setDetourSaved(true);
-    toast({ title: "Desvio guardado", description: "Tu analisis de desvio se guardo para continuar." });
+    toast({ title: "Desvío guardado", description: "Tu análisis de desvío se guardó para continuar." });
   };
 
   const handleSave = (event: FormEvent) => {
@@ -187,7 +187,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     if (!commitment.trim() || !reconnectionGestures.trim()) {
       toast({
         title: "Ejercicio incompleto",
-        description: "Completa el compromiso y los gestos de reconexion.",
+        description: "Completa el compromiso y los gestos de reconexión.",
         variant: "destructive",
       });
       return;
@@ -217,14 +217,14 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       }
 
       notebookContent += `**Desvio: "${detour.label}"**\n`;
-      notebookContent += `Pregunta: Que valor personal estas dejando de lado? | Respuesta: [${selectedValues.length > 0 ? selectedValues.join(", ") : "No especificados."}]\n`;
-      notebookContent += `Pregunta: Que sientes despues de actuar asi? | Respuesta: [${selectedEmotions.length > 0 ? selectedEmotions.join(", ") : "No especificadas."}]\n`;
-      notebookContent += `Pregunta: Que parte de ti busca proteccion o alivio en ese desvio? | Respuesta: [${selectedParts.length > 0 ? selectedParts.join(", ") : "No especificada."}]\n\n`;
+      notebookContent += `Pregunta: Qué valor personal estás dejando de lado? | Respuesta: [${selectedValues.length > 0 ? selectedValues.join(", ") : "No especificados."}]\n`;
+      notebookContent += `Pregunta: Qué sientes después de actuar así? | Respuesta: [${selectedEmotions.length > 0 ? selectedEmotions.join(", ") : "No especificadas."}]\n`;
+      notebookContent += `Pregunta: Qué parte de ti busca protección o alivio en ese desvío? | Respuesta: [${selectedParts.length > 0 ? selectedParts.join(", ") : "No especificada."}]\n\n`;
     });
 
-    notebookContent += `---\n**Mi compromiso de cambio y reconexion**\n\n`;
+    notebookContent += `---\n**Mi compromiso de cambio y reconexión**\n\n`;
     notebookContent += `Pregunta: Escribe tu gesto de cambio en formato Si... entonces... | Respuesta: ${commitment}\n`;
-    notebookContent += `Pregunta: Escribe tu gesto de reconexion | Respuesta: ${reconnectionGestures}\n`;
+    notebookContent += `Pregunta: Escribe tu gesto de reconexión | Respuesta: ${reconnectionGestures}\n`;
 
     addNotebookEntry({
       title: "Inventario de Desvíos",
@@ -245,7 +245,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
           <div className="p-4 space-y-4 text-center">
             <p>
               A veces no es que no sepas lo que quieres... sino que hay interferencias que te desvían del camino. Hoy
-              vamos a ponerles nombre para empezar a recuperar direccion.
+              vamos a ponerles nombre para empezar a recuperar dirección.
             </p>
             <Button onClick={nextStep}>
               Empezar mi inventario
@@ -259,21 +259,21 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">
               Antes de mirar tus propios desvíos, observa un ejemplo realista. No es para copiarlo, sino para
-              inspirarte en como se identifica un desvio, el valor que toca y la reflexion que ayuda a reconectar.
+              inspirarte en cómo se identifica un desvío, el valor que toca y la reflexión que ayuda a reconectar.
             </p>
             <div className="p-4 border rounded-md bg-background/50 text-left text-sm">
               <p>
-                <strong>Desvio:</strong> Postergar el autocuidado por miedo a parecer egoista.
+                <strong>Desvío:</strong> Postergar el autocuidado por miedo a parecer egoísta.
               </p>
               <p>
                 <strong>Valor afectado:</strong> Autorrespeto y bienestar.
               </p>
               <p>
-                <strong>Reflexion:</strong> Cada vez que dejo de cuidarme para que los demas no me juzguen, me alejo
+                <strong>Reflexión:</strong> Cada vez que dejo de cuidarme para que los demás no me juzguen, me alejo
                 de mi autenticidad.
               </p>
             </div>
-            <p className="text-sm italic text-muted-foreground">Piensa: que cosas en tu vida se parecen a esto?</p>
+            <p className="text-sm italic text-muted-foreground">¿Piensa: qué cosas en tu vida se parecen a esto?</p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -290,13 +290,13 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 1: Tus desvíos mas frecuentes</h4>
+            <h4 className="font-semibold text-lg">Paso 1: Tus desvíos más frecuentes</h4>
             <p className="text-sm text-muted-foreground">
               Ahora haremos inventario. El objetivo no es juzgarte, sino poner nombre a lo que te aparta de tus
-              valores en el dia a dia.
+              valores en el día a día.
             </p>
             <p className="text-sm text-muted-foreground">
-              Marca o escribe los desvíos que reconoces en tu vida actual. Elige maximo 3 para trabajar hoy.
+              Marca o escribe los desvíos que reconoces en tu vida actual. Elige máximo 3 para trabajar hoy.
             </p>
             <div className="space-y-2">
               {frequentDetours.map((detour) => (
@@ -325,7 +325,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 <Textarea
                   value={otherDetour}
                   onChange={(event) => setOtherDetour(event.target.value)}
-                  placeholder="Escribe otro desvio..."
+                  placeholder="Escribe otro desvío..."
                 />
               )}
             </div>
@@ -338,8 +338,8 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 onClick={() => {
                   if (selectedDetours.length === 0) {
                     toast({
-                      title: "Seleccion requerida",
-                      description: "Marca al menos un desvio para continuar.",
+                      title: "Selección requerida",
+                      description: "Marca al menos un desvío para continuar.",
                       variant: "destructive",
                     });
                     return;
@@ -357,21 +357,21 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Paso 2: Como afectan a tu bienestar?</h4>
+            <h4 className="font-semibold text-lg">Paso 2: Cómo afectan a tu bienestar?</h4>
             <p className="text-sm text-muted-foreground">
-              Vamos a profundizar en un desvio importante. Aqui descubriras que valor personal dejas de lado y que
-              parte de ti busca proteccion o alivio en ese desvio. Puedes repetir este paso con mas desvíos.
+              Vamos a profundizar en un desvío importante. Aquí descubrirás qué valor personal dejas de lado y qué
+              parte de ti busca protección o alivio en ese desvío. Puedes repetir este paso con más desvíos.
             </p>
 
             {selectedDetours.map((detour, idx) => (
               <Accordion key={detour.id} type="single" collapsible className="w-full border rounded-md p-2 bg-background/50">
                 <AccordionItem value={detour.id}>
                   <AccordionTrigger className="font-semibold text-primary">
-                    Mi desvio {idx + 1}: {detour.label}
+                    Mi desvío {idx + 1}: {detour.label}
                   </AccordionTrigger>
                   <AccordionContent className="pt-4 space-y-4">
                     <div className="space-y-2">
-                      <Label>1. Que valor personal estas dejando de lado cuando esto ocurre?</Label>
+                      <Label>1. Qué valor personal estás dejando de lado cuando esto ocurre?</Label>
                       {valueOptions.map((value) => (
                         <div key={value.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -410,7 +410,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                     </div>
 
                     <div className="space-y-2">
-                      <Label>2. Que sientes despues de actuar asi?</Label>
+                      <Label>2. Qué sientes después de actuar así?</Label>
                       {emotionOptions.map((emotion) => (
                         <div key={emotion.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -443,13 +443,13 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                           onChange={(event) =>
                             handleOtherReflectionTextChange(detour.id, "otherEmotion", event.target.value)
                           }
-                          placeholder="Escribe otra emocion..."
+                          placeholder="Escribe otra emoción..."
                         />
                       )}
                     </div>
 
                     <div className="space-y-2">
-                      <Label>3. Que parte de ti busca proteccion o alivio en ese desvio?</Label>
+                      <Label>3. Qué parte de ti busca protección o alivio en ese desvío?</Label>
                       {partOptions.map((part) => (
                         <div key={part.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -492,7 +492,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             ))}
 
             <p className="text-sm text-muted-foreground italic">
-              Entender la funcion de un desvio te ayuda a transformarlo, no a castigarte.
+              Entender la función de un desvío te ayuda a transformarlo, no a castigarte.
             </p>
             <div className="flex flex-wrap gap-2 justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -500,7 +500,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 Atrás
               </Button>
               <Button type="button" variant="outline" onClick={handleSaveDetourStep}>
-                Guardar mi desvio
+                Guardar mi desvío
               </Button>
               <Button onClick={nextStep} disabled={!detourSaved}>
                 Ir al compromiso de cambio
@@ -514,18 +514,18 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 3: Primer compromiso de cambio</h4>
             <p className="text-sm text-muted-foreground">
-              Ahora toca pasar a la accion. Un pequeno gesto concreto puede ayudarte a reducir el desvio y volver a lo
+              Ahora toca pasar a la acción. Un pequeño gesto concreto puede ayudarte a reducir el desvío y volver a lo
               importante.
             </p>
             <p className="text-sm text-muted-foreground">
               Elige un gesto sencillo (1-3 minutos) formulado en positivo. Usa la estructura "si-entonces" para
-              hacerlo mas facil.
+              hacerlo más fácil.
             </p>
             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
-              <p>Ejemplo: Si me pongo a revisar redes por soledad, entonces enviare un mensaje sincero a alguien cercano.</p>
+              <p>Ejemplo: Si me pongo a revisar redes por soledad, entonces enviaré un mensaje sincero a alguien cercano.</p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="commitment-si">Escribe aqui tu gesto de cambio en formato: Si... entonces...</Label>
+              <Label htmlFor="commitment-si">Escribe aquí tu gesto de cambio en formato: Si... entonces...</Label>
               <Textarea
                 id="commitment-si"
                 value={commitment}
@@ -534,7 +534,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
               />
             </div>
             <p className="text-sm text-muted-foreground italic">
-              Mejor un paso pequeno y seguro que uno grande que nunca daras.
+              Mejor un paso pequeño y seguro que uno grande que nunca darás.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -553,35 +553,35 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
           <form onSubmit={handleSave} className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 4: Guarda tus gestos valiosos</h4>
             <p className="text-sm text-muted-foreground">
-              A veces, cuando mas lo necesitamos, se nos olvidan esas pequenas cosas que nos devuelven la calma y la
-              conexion con lo que importa.
+              A veces, cuando más lo necesitamos, se nos olvidan esas pequeñas cosas que nos devuelven la calma y la
+              conexión con lo que importa.
             </p>
             <p className="text-sm text-muted-foreground">
-              Aqui puedes crear tu kit personal de reconexion: una lista de gestos sencillos que siempre te ayudan a
-              volver a ti cuando sientes que te desvias.
+              Aquí puedes crear tu kit personal de reconexión: una lista de gestos sencillos que siempre te ayudan a
+              volver a ti cuando sientes que te desvías.
             </p>
             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm space-y-1">
-              <p>Ejemplo guia:</p>
+              <p>Ejemplo guía:</p>
               <p>Poner mi cancion favorita y moverme un rato.</p>
               <p>Escribir tres cosas por las que me siento agradecido/a.</p>
-              <p>Salir a caminar sin movil durante 10 minutos.</p>
-              <p>Respirar profundo tres veces y repetirme: "Estoy aqui, estoy a salvo".</p>
+              <p>Salir a caminar sin móvil durante 10 minutos.</p>
+              <p>Respirar profundo tres veces y repetirme: "Estoy aquí, estoy a salvo".</p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="reconnection-gestures">Escribe aqui tu gesto de reconexion:</Label>
+              <Label htmlFor="reconnection-gestures">Escribe aquí tu gesto de reconexión:</Label>
               <Textarea
                 id="reconnection-gestures"
                 value={reconnectionGestures}
                 onChange={(event) => setReconnectionGestures(event.target.value)}
-                placeholder="Escribe tu gesto de reconexion..."
+                placeholder="Escribe tu gesto de reconexión..."
               />
             </div>
             <p className="text-sm text-muted-foreground italic">
               No hace falta que sean grandes cambios. Lo importante es que sean gestos simples y realistas, que de
-              verdad puedas aplicar en tu dia a dia.
+              verdad puedas aplicar en tu día a día.
             </p>
             <p className="text-sm text-muted-foreground font-semibold text-center">
-              Cada gesto guardado sera un recordatorio de tu fuerza y de tu camino.
+              Cada gesto guardado será un recordatorio de tu fuerza y de tu camino.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
@@ -590,7 +590,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
               </Button>
               <Button type="submit">
                 <Save className="mr-2 h-4 w-4" />
-                Guardar en Mis gestos de reconexion
+                Guardar en Mis gestos de reconexión
               </Button>
             </div>
           </form>
@@ -602,7 +602,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Inventario guardado</h4>
             <p className="text-muted-foreground">
-              Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapeutico cuando lo
+              Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo
               necesites.
             </p>
             <div className="flex justify-between w-full mt-4">
@@ -644,4 +644,6 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
     </Card>
   );
 }
+
+
 

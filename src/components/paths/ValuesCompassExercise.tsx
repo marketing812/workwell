@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,16 +23,16 @@ import { useUser } from "@/contexts/UserContext";
 
 const lifeAreas = [
   { id: "familia", label: "Familia y crianza" },
-  { id: "pareja", label: "Pareja / Relaciones intimas" },
-  { id: "amistades", label: "Amistades y vinculos" },
-  { id: "salud", label: "Salud y bienestar fisico" },
+  { id: "pareja", label: "Pareja / Relaciones íntimas" },
+  { id: "amistades", label: "Amistades y vínculos" },
+  { id: "salud", label: "Salud y bienestar físico" },
   { id: "cuidado_emocional", label: "Cuidado emocional y mental" },
   { id: "desarrollo_personal", label: "Desarrollo personal o espiritual" },
   { id: "aprendizaje", label: "Aprendizaje y conocimiento" },
-  { id: "trabajo", label: "Trabajo y vocacion" },
+  { id: "trabajo", label: "Trabajo y vocación" },
   { id: "ocio", label: "Tiempo libre y disfrute" },
-  { id: "contribucion", label: "Contribucion y servicio a los demas" },
-  { id: "creatividad", label: "Creatividad y expresion personal" },
+  { id: "contribucion", label: "Contribución y servicio a los demás" },
+  { id: "creatividad", label: "Creatividad y expresión personal" },
   { id: "autenticidad", label: "Autenticidad / Vivir con coherencia" },
 ];
 
@@ -44,27 +44,27 @@ const valuesList = [
   "Amor",
   "Familia",
   "Amistad",
-  "Pareja / Amor romantico",
+  "Pareja / Amor romántico",
   "Justicia",
   "Responsabilidad",
   "Libertad",
   "Creatividad",
-  "Proposito vital",
+  "Propósito vital",
   "Aprendizaje",
-  "Empatia",
+  "Empatía",
   "Perseverancia",
   "Integridad",
-  "Compasion",
+  "Compasión",
   "Equilibrio",
   "Gratitud",
   "Generosidad",
   "Lealtad",
   "Coraje",
-  "Cooperacion",
+  "Cooperación",
   "Transparencia",
   "Sostenibilidad",
-  "Conexion",
-  "Autonomia",
+  "Conexión",
+  "Autonomía",
   "Paz interior",
   "Solidaridad",
   "Humildad",
@@ -129,7 +129,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     if (filledAreas.length === 0) {
       toast({
         title: "Ejercicio incompleto",
-        description: "Completa al menos un area para guardar.",
+        description: "Completa al menos un área para guardar.",
         variant: "destructive",
       });
       return;
@@ -139,22 +139,22 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     filledAreas.forEach((area) => {
       const reflection = reflections[area.id];
       if (!reflection) return;
-      notebookContent += `**Area: ${area.label}**\n`;
-      notebookContent += `Pregunta: Por que esta area es importante para ti? | Respuesta: ${reflection.importance || "No respondido."}\n`;
-      notebookContent += `Pregunta: Como te gustaria vivirla de forma mas plena o coherente? | Respuesta: ${reflection.howToLive || "No respondido."}\n`;
-      notebookContent += `Pregunta: Que valor personal representa esta area? | Respuesta: ${getAreaValue(area.id) || "No respondido."}\n\n`;
+      notebookContent += `**Área: ${area.label}**\n`;
+      notebookContent += `Pregunta: ¿Por qué esta área es importante para ti? | Respuesta: ${reflection.importance || "No respondido."}\n`;
+      notebookContent += `Pregunta: ¿Cómo te gustaría vivirla de forma más plena o coherente? | Respuesta: ${reflection.howToLive || "No respondido."}\n`;
+      notebookContent += `Pregunta: ¿Qué valor personal representa esta área? | Respuesta: ${getAreaValue(area.id) || "No respondido."}\n\n`;
     });
 
     addNotebookEntry({
-      title: "Mi Brujula de Valores",
+      title: "Mi Brújula de Valores",
       content: notebookContent,
       pathId,
       userId: user?.id,
     });
 
     toast({
-      title: "Brujula guardada",
-      description: "Tu brujula de valores ha sido guardada en el cuaderno.",
+      title: "Brújula guardada",
+      description: "Tu brújula de valores ha sido guardada en el cuaderno.",
     });
     onComplete();
     nextStep();
@@ -166,18 +166,18 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
         return (
           <div className="p-4 text-center space-y-4">
             <p className="italic text-sm text-muted-foreground">
-              &quot;Cuando vives desde tus valores, no todo es facil... pero todo tiene mas sentido.&quot;
+              &quot;Cuando vives desde tus valores, no todo es fácil... pero todo tiene más sentido.&quot;
             </p>
             <p>
-              Muchas veces actuamos en piloto automatico. Reaccionamos, cumplimos, nos adaptamos... pero sin
+              Muchas veces actuamos en piloto automático. Reaccionamos, cumplimos, nos adaptamos... pero sin
               preguntarnos:
             </p>
-            <p className="font-semibold">Esto que hago representa quien quiero ser?</p>
+            <p className="font-semibold">¿Esto que hago representa quién quiero ser?</p>
             <p>
-              En este ejercicio vamos a ayudarte a detectar cuales son los valores que realmente te importan, para que
+              En este ejercicio vamos a ayudarte a detectar cuáles son los valores que realmente te importan, para que
               esa pregunta tenga una respuesta clara.
             </p>
-            <Button onClick={nextStep}>Empezar mi brujula</Button>
+            <Button onClick={nextStep}>Empezar mi brújula</Button>
           </div>
         );
 
@@ -185,10 +185,10 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
         return (
           <div className="p-4 space-y-3">
             <Label className="font-semibold">
-              Selecciona de esta lista las areas que sientes importantes en tu vida actual.
+              Selecciona de esta lista las áreas que sientes importantes en tu vida actual.
             </Label>
             <p className="text-sm text-muted-foreground">
-              No se trata de ser perfecto o perfecta en todas, sino de notar con cuales conectas mas.
+              No se trata de ser perfecto o perfecta en todas, sino de notar con cuáles conectas más.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {lifeAreas.map((area) => (
@@ -214,8 +214,8 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                 onClick={() => {
                   if (activeAreas.length === 0) {
                     toast({
-                      title: "Seleccion requerida",
-                      description: "Elige al menos un area para continuar.",
+                      title: "Selección requerida",
+                      description: "Elige al menos un área para continuar.",
                       variant: "destructive",
                     });
                     return;
@@ -235,29 +235,29 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
         return (
           <div className="p-4 space-y-4">
             <p className="text-sm text-muted-foreground">
-              Por cada area que marcaste, responde a estas preguntas brevemente.
+              Por cada área que marcaste, responde a estas preguntas brevemente.
             </p>
             <div className="p-3 border rounded-md bg-background/50 text-sm space-y-1">
               <p>
-                <strong>Ejemplo: Area - Amistades</strong>
+                <strong>Ejemplo: Área - Amistades</strong>
               </p>
-              <p>Por que es importante? Me hace sentir acompanada y sostenida.</p>
-              <p>Como te gustaria vivirla? Siendo mas presente y cultivando amistades reales.</p>
-              <p>Valor asociado: Conexion y autenticidad.</p>
+              <p>¿Por qué es importante? Me hace sentir acompañada y sostenida.</p>
+              <p>¿Cómo te gustaría vivirla? Siendo más presente y cultivando amistades reales.</p>
+              <p>Valor asociado: Conexión y autenticidad.</p>
             </div>
 
             {activeAreas.map((area) => (
               <div key={area.id} className="p-3 border rounded-md">
                 <h4 className="font-semibold">{area.label}</h4>
                 <div className="space-y-2 mt-2">
-                  <Label htmlFor={`importance-${area.id}`}>Por que esta area es importante para ti?</Label>
+                  <Label htmlFor={`importance-${area.id}`}>¿Por qué esta área es importante para ti?</Label>
                   <Textarea
                     id={`importance-${area.id}`}
                     value={reflections[area.id]?.importance || ""}
                     onChange={(e) => handleReflectionChange(area.id, "importance", e.target.value)}
                   />
 
-                  <Label htmlFor={`how-${area.id}`}>Como te gustaria vivirla de forma mas plena o coherente?</Label>
+                  <Label htmlFor={`how-${area.id}`}>¿Cómo te gustaría vivirla de forma más plena o coherente?</Label>
                   <Textarea
                     id={`how-${area.id}`}
                     value={reflections[area.id]?.howToLive || ""}
@@ -265,7 +265,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                   />
 
                   <Label htmlFor={`value-${area.id}`}>
-                    Que valor personal representa esa area? (ej: cuidado, libertad, amor, justicia, presencia,
+                    ¿Qué valor personal representa esa área? (ej: cuidado, libertad, amor, justicia, presencia,
                     creatividad)
                   </Label>
                   <Select
@@ -301,7 +301,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
                 Atrás
               </Button>
               <Button onClick={nextStep} className="w-auto">
-                Ver mi brujula
+                Ver mi brújula
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -311,10 +311,10 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
       case 3:
         return (
           <div className="p-4 space-y-4">
-            <h3 className="font-bold text-lg text-center">Tu brujula personal</h3>
+            <h3 className="font-bold text-lg text-center">Tu brújula personal</h3>
             <p className="text-sm text-foreground">
-              Te mostramos ahora un resumen visual con tus areas prioritarias y los valores que representan. Esta
-              brujula te ayuda a tomar decisiones con mas coherencia y a reconectar contigo cuando te sientas perdida
+              Te mostramos ahora un resumen visual con tus áreas prioritarias y los valores que representan. Esta
+              brújula te ayuda a tomar decisiones con más coherencia y a reconectar contigo cuando te sientas perdida
               o dispersa.
             </p>
 
@@ -322,9 +322,9 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Area de vida</TableHead>
+                    <TableHead>Área de vida</TableHead>
                     <TableHead>Valor asociado</TableHead>
-                    <TableHead>Como quieres vivirla</TableHead>
+                    <TableHead>Cómo quieres vivirla</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -340,8 +340,8 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             </div>
 
             <p className="italic text-sm text-foreground text-center">
-              Mira esta brujula cada vez que tengas que tomar una decision dificil o cuando sientas que estas en
-              piloto automatico. Volver a tus valores es como volver a casa.
+              Mira esta brújula cada vez que tengas que tomar una decisión difícil o cuando sientas que estás en
+              piloto automático. Volver a tus valores es como volver a casa.
             </p>
 
             <div className="flex justify-between w-full mt-4">
@@ -351,7 +351,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
               </Button>
               <Button onClick={handleSave} className="w-auto">
                 <Save className="mr-2 h-4 w-4" />
-                Guardar brujula
+                Guardar brújula
               </Button>
             </div>
           </div>
@@ -361,9 +361,9 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
         return (
           <div className="p-4 text-center space-y-4">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
-            <h4 className="font-bold text-lg">Brujula guardada</h4>
+            <h4 className="font-bold text-lg">Brújula guardada</h4>
             <p className="text-foreground">
-              Tu brujula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.
+              Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -405,4 +405,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
     </Card>
   );
 }
+
+
+
 

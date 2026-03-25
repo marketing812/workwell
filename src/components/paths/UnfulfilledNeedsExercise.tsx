@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, type FormEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,13 +45,13 @@ export default function UnfulfilledNeedsExercise({
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pregunta: Identifica una pequena accion que hoy no hiciste y que sabes que te habria hecho bien | Respuesta: ${unfulfilledAction}
+Pregunta: Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien | Respuesta: ${unfulfilledAction}
 
-Pregunta: Que valor estaba asociado a eso que postergaste? | Respuesta: ${associatedValue}
+Pregunta: ¿Qué valor estaba asociado a eso que postergaste? | Respuesta: ${associatedValue}
 
-Pregunta: Que te impidio hacerlo? (miedo, prisa, presion, distraccion) | Respuesta: ${reason}
+Pregunta: ¿Qué te impidió hacerlo? (miedo, prisa, presión, distracción) | Respuesta: ${reason}
 
-Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${tomorrowPlan}
+Pregunta: ¿Qué puedes hacer mañana para proteger mejor ese valor? | Respuesta: ${tomorrowPlan}
     `;
 
     addNotebookEntry({
@@ -61,7 +61,7 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
       userId: user?.id,
     });
 
-    toast({ title: "Reflexion guardada", description: "Tu reflexion ha sido guardada en el cuaderno." });
+    toast({ title: "Reflexión guardada", description: "Tu reflexión ha sido guardada en el cuaderno." });
     setIsSaved(true);
     onComplete();
   };
@@ -75,22 +75,22 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
         </CardTitle>
         <CardDescription>
           {content.objective}
-          <p className="text-xs">Duracion: 3-5 minutos diarios. Realizar al final del dia o antes de dormir.</p>
+          <p className="text-xs">Duración: 3-5 minutos diarios. Realizar al final del día o antes de dormir.</p>
         </CardDescription>
 
         <div className="space-y-2 p-2 border bg-background rounded-md text-sm">
-          <p className="font-semibold">Ejemplo guia</p>
+          <p className="font-semibold">Ejemplo guía</p>
           <p>
-            <strong>Accion que me habria hecho bien:</strong> No sali a caminar, aunque sabia que me despejaba.
+            <strong>Acción que me habría hecho bien:</strong> No salí a caminar, aunque sabía que me despejaba.
           </p>
           <p>
-            <strong>Valor asociado:</strong> bienestar y conexion con la naturaleza.
+            <strong>Valor asociado:</strong> bienestar y conexión con la naturaleza.
           </p>
           <p>
-            <strong>Razon:</strong> me atrapo la urgencia de contestar correos.
+            <strong>Razón:</strong> me atrapó la urgencia de contestar correos.
           </p>
           <p>
-            <strong>Plan para mañana:</strong> reservar 20 minutos sin movil justo despues de comer.
+            <strong>Plan para mañana:</strong> reservar 20 minutos sin móvil justo después de comer.
           </p>
         </div>
       </CardHeader>
@@ -99,7 +99,7 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
         <form onSubmit={handleSave} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="unfulfilled-action">
-              Identifica una pequena accion que hoy no hiciste y que sabes que te habria hecho bien:
+              Identifica una pequeña acción que hoy no hiciste y que sabes que te habría hecho bien:
             </Label>
             <Textarea
               id="unfulfilled-action"
@@ -110,7 +110,7 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="assoc-value">Que valor estaba asociado a eso que postergaste?</Label>
+            <Label htmlFor="assoc-value">¿Qué valor estaba asociado a eso que postergaste?</Label>
             <Textarea
               id="assoc-value"
               value={associatedValue}
@@ -120,12 +120,12 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="reason">Que te impidio hacerlo? (miedo, prisa, presion, distraccion)</Label>
+            <Label htmlFor="reason">¿Qué te impidió hacerlo? (miedo, prisa, presión, distracción)</Label>
             <Textarea id="reason" value={reason} onChange={(e) => setReason(e.target.value)} disabled={isSaved} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="tomorrow-plan">Que puedes hacer mañana para proteger mejor ese valor?</Label>
+            <Label htmlFor="tomorrow-plan">¿Qué puedes hacer mañana para proteger mejor ese valor?</Label>
             <Textarea
               id="tomorrow-plan"
               value={tomorrowPlan}
@@ -137,12 +137,12 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
           {!isSaved ? (
             <Button type="submit" className="w-full">
               <Save className="mr-2 h-4 w-4" />
-              Guardar reflexion
+              Guardar reflexión
             </Button>
           ) : (
             <div className="p-4 text-center space-y-2">
               <CheckCircle className="h-10 w-10 text-primary mx-auto" />
-              <p className="font-semibold">Reflexion guardada</p>
+              <p className="font-semibold">Reflexión guardada</p>
               <p className="italic">"Reconocer lo que no hice desde el cuidado... ya es un acto de cuidado."</p>
             </div>
           )}
@@ -151,4 +151,6 @@ Pregunta: Que puedes hacer maana para proteger mejor ese valor? | Respuesta: ${t
     </Card>
   );
 }
+
+
 

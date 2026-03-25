@@ -20,28 +20,28 @@ interface MentalNoiseTrafficLightExerciseProps {
 
 const redOptions = [
   "Antes de dormir",
-  "Tras una discusion",
+  "Tras una discusión",
   "Al empezar la semana",
   "Durante atascos de trabajo",
 ];
 
 const amberOptions = [
-  "Antes de una reunion",
+  "Antes de una reunión",
   "Durante la jornada laboral",
-  "En conversaciones dificiles",
-  "Al final del dia con tareas pendientes",
+  "En conversaciones difíciles",
+  "Al final del día con tareas pendientes",
 ];
 
 const greenOptions = [
   "Al caminar",
   "Al desayunar en calma",
-  "Despues de hacer ejercicio",
+  "Después de hacer ejercicio",
   "En actividades creativas",
 ];
 
 const gestureOptions = [
   "Respirar hondo 3 veces",
-  "Hacer una mini-pausa fisica",
+  "Hacer una mini-pausa física",
   "Enviar un mensaje a alguien cercano",
   "Escribir en mi cuaderno una gratitud",
 ];
@@ -85,31 +85,14 @@ export default function MentalNoiseTrafficLightExercise({
     return choice || "No especificado.";
   };
 
-  const resetExercise = () => {
-    setStep(0);
-    setIsSaved(false);
-    setRedChoice("");
-    setRedOther("");
-    setRedDescription("");
-    setAmberChoice("");
-    setAmberOther("");
-    setAmberDescription("");
-    setGreenChoice("");
-    setGreenOther("");
-    setGreenDescription("");
-    setGestureChoice("");
-    setGestureOther("");
-    setGestureDescription("");
-  };
-
   const handleSave = (event: FormEvent) => {
     event.preventDefault();
 
     const resolvedGesture = resolveChoice(gestureChoice, gestureOther);
     if (!gestureDescription.trim() && resolvedGesture === "No especificado.") {
       toast({
-        title: "Micropractica incompleta",
-        description: "Completa al menos un gesto de proteccion antes de guardar.",
+        title: "Micropráctica incompleta",
+        description: "Completa al menos un gesto de protección antes de guardar.",
         variant: "destructive",
       });
       return;
@@ -118,31 +101,34 @@ export default function MentalNoiseTrafficLightExercise({
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-**Zona roja - Saturacion**
-Pregunta: Cuando sientes mas saturacion mental o emocional? | Respuesta: ${resolveChoice(redChoice, redOther)}
-Pregunta: Describe tu momento rojo aqui | Respuesta: ${redDescription || "No especificado."}
+**Zona roja - Saturación**
+Pregunta: ¿Cuándo sientes más saturación mental o emocional? | Respuesta: ${resolveChoice(redChoice, redOther)}
+Pregunta: Describe tu momento rojo aquí | Respuesta: ${redDescription || "No especificado."}
 
-**Zona amarilla - Tension creciente**
-Pregunta: Cuando notas que la tension va subiendo? | Respuesta: ${resolveChoice(amberChoice, amberOther)}
-Pregunta: Describe tu momento amarillo aqui | Respuesta: ${amberDescription || "No especificado."}
+**Zona amarilla - Tensión creciente**
+Pregunta: ¿Cuándo notas que la tensión va subiendo? | Respuesta: ${resolveChoice(amberChoice, amberOther)}
+Pregunta: Describe tu momento amarillo aquí | Respuesta: ${amberDescription || "No especificado."}
 
 **Zona verde - Claridad y presencia**
-Pregunta: En que momentos sientes mas calma y conexion contigo? | Respuesta: ${resolveChoice(greenChoice, greenOther)}
-Pregunta: Describe tu momento verde aqui | Respuesta: ${greenDescription || "No especificado."}
+Pregunta: ¿En qué momentos sientes más calma y conexión contigo? | Respuesta: ${resolveChoice(greenChoice, greenOther)}
+Pregunta: Describe tu momento verde aquí | Respuesta: ${greenDescription || "No especificado."}
 
-**Tu gesto de proteccion**
-Pregunta: Elige un gesto pequeno para proteger o ampliar los momentos verdes | Respuesta: ${resolvedGesture}
-Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especificado."}
+**Tu gesto de protección**
+Pregunta: Elige un gesto pequeño para proteger o ampliar los momentos verdes | Respuesta: ${resolvedGesture}
+Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No especificado."}
     `;
 
     addNotebookEntry({
-      title: "Mi Semaforo del Ruido Mental",
+      title: "Mi Semáforo del Ruido Mental",
       content: notebookContent,
       pathId,
       userId: user?.id,
     });
 
-    toast({ title: "Semaforo guardado", description: "Tu semaforo se guardo en el cuaderno." });
+    toast({
+      title: "Semáforo guardado",
+      description: "Tu semáforo se guardó en el cuaderno.",
+    });
     setIsSaved(true);
     onComplete();
   };
@@ -153,12 +139,12 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
         return (
           <div className="p-4 text-center space-y-4">
             <p>
-              Tu mente a veces es como una calle llena de trafico: hay momentos de atasco, momentos de tension
-              creciente y tambien momentos de calma. Este ejercicio te ayudara a reconocerlos y a entrenar tu
-              capacidad de detenerte cuando mas lo necesites.
+              Tu mente a veces es como una calle llena de tráfico: hay momentos de atasco, momentos de tensión
+              creciente y también momentos de calma. Este ejercicio te ayudará a reconocerlos y a entrenar tu
+              capacidad de detenerte cuando más lo necesites.
             </p>
             <Button onClick={nextStep}>
-              Empezar practica
+              Empezar práctica
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -169,11 +155,11 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2 text-red-600">
               <Dot colorClass="bg-red-500" />
-              Zona roja: Saturacion
+              Zona roja: Saturación
             </h4>
             <p className="text-sm text-muted-foreground">
-              Cuando sientes mas saturacion mental o emocional? Ejemplos: justo antes de acostarte, despues de una
-              discusion, los lunes por la mañana.
+              ¿Cuándo sientes más saturación mental o emocional? Ejemplos: justo antes de acostarte, después de una
+              discusión, los lunes por la mañana.
             </p>
 
             <RadioGroup value={redChoice} onValueChange={setRedChoice}>
@@ -196,12 +182,12 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
               <Textarea
                 value={redOther}
                 onChange={(e) => setRedOther(e.target.value)}
-                placeholder="Escribe tu opcion roja..."
+                placeholder="Escribe tu opción roja..."
               />
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="red-description">Describe tu momento rojo aqui...</Label>
+              <Label htmlFor="red-description">Describe tu momento rojo aquí...</Label>
               <Textarea
                 id="red-description"
                 value={redDescription}
@@ -227,11 +213,11 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg flex items-center gap-2 text-amber-600">
               <Dot colorClass="bg-amber-500" />
-              Zona amarilla: Tension creciente
+              Zona amarilla: Tensión creciente
             </h4>
             <p className="text-sm text-muted-foreground">
-              Cuando notas que la tension va subiendo, como si estuvieras a punto de desbordarte? Ejemplos: a mitad de
-              jornada laboral, antes de una reunion importante.
+              ¿Cuándo notas que la tensión va subiendo, como si estuvieras a punto de desbordarte? Ejemplos: a mitad de
+              jornada laboral, antes de una reunión importante.
             </p>
 
             <RadioGroup value={amberChoice} onValueChange={setAmberChoice}>
@@ -254,12 +240,12 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
               <Textarea
                 value={amberOther}
                 onChange={(e) => setAmberOther(e.target.value)}
-                placeholder="Escribe tu opcion amarilla..."
+                placeholder="Escribe tu opción amarilla..."
               />
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="amber-description">Describe tu momento amarillo aqui...</Label>
+              <Label htmlFor="amber-description">Describe tu momento amarillo aquí...</Label>
               <Textarea
                 id="amber-description"
                 value={amberDescription}
@@ -288,8 +274,8 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
               Zona verde: Claridad y presencia
             </h4>
             <p className="text-sm text-muted-foreground">
-              En que momentos sientes mas calma y conexion contigo? Ejemplos: al caminar, al desayunar en silencio,
-              despues de hacer algo creativo.
+              ¿En qué momentos sientes más calma y conexión contigo? Ejemplos: al caminar, al desayunar en silencio,
+              después de hacer algo creativo.
             </p>
 
             <RadioGroup value={greenChoice} onValueChange={setGreenChoice}>
@@ -312,12 +298,12 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
               <Textarea
                 value={greenOther}
                 onChange={(e) => setGreenOther(e.target.value)}
-                placeholder="Escribe tu opcion verde..."
+                placeholder="Escribe tu opción verde..."
               />
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="green-description">Describe tu momento verde aqui...</Label>
+              <Label htmlFor="green-description">Describe tu momento verde aquí...</Label>
               <Textarea
                 id="green-description"
                 value={greenDescription}
@@ -341,9 +327,9 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
       case 4:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Tu gesto de proteccion</h4>
+            <h4 className="font-semibold text-lg">Tu gesto de protección</h4>
             <p className="text-sm text-muted-foreground">
-              Elige un gesto pequeno para proteger o ampliar los momentos verdes. Ejemplos: pausar 3 respiraciones
+              Elige un gesto pequeño para proteger o ampliar los momentos verdes. Ejemplos: pausar 3 respiraciones
               profundas, salir a caminar 5 minutos, escribir una frase de gratitud.
             </p>
 
@@ -372,7 +358,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="gesture-description">Mi gesto verde sera...</Label>
+              <Label htmlFor="gesture-description">Mi gesto verde será...</Label>
               <Textarea
                 id="gesture-description"
                 value={gestureDescription}
@@ -397,11 +383,11 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
             <CheckCircle className="h-10 w-10 text-primary mx-auto" />
-            <h4 className="font-semibold text-lg">Tu semaforo personal</h4>
+            <h4 className="font-semibold text-lg">Tu semáforo personal</h4>
             <p className="text-sm text-muted-foreground">
-              Ya tienes tu semaforo personal: rojo para detectar saturacion, amarillo para anticipar tension y verde
+              Ya tienes tu semáforo personal: rojo para detectar saturación, amarillo para anticipar tensión y verde
               para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el
-              ruido mental, sino aprender a escucharlo como senal para volver a ti.
+              ruido mental, sino aprender a escucharlo como señal para volver a ti.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
@@ -410,7 +396,7 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
               </Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" />
-                {isSaved ? "Semaforo guardado" : "Guardar mi semaforo en el cuaderno"}
+                {isSaved ? "Semáforo guardado" : "Guardar mi semáforo en el cuaderno"}
               </Button>
             </div>
           </form>
@@ -432,9 +418,9 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
           <CardDescription className="pt-2">
             {content.objective}
             <p className="mt-2">
-              Muchas veces el ruido mental (preocupaciones, pensamientos repetitivos, tension emocional) aparece sin que
-              nos demos cuenta. Esta micropractica te ayudara a identificar en que momentos del dia se activa mas ese
-              ruido y a usar esas senales como recordatorio para frenar, respirar y reconectar contigo.
+              Muchas veces el ruido mental (preocupaciones, pensamientos repetitivos, tensión emocional) aparece sin que
+              nos demos cuenta. Esta micropráctica te ayudará a identificar en qué momentos del día se activa más ese
+              ruido y a usar esas señales como recordatorio para frenar, respirar y reconectar contigo.
             </p>
           </CardDescription>
         )}
@@ -443,4 +429,3 @@ Pregunta: Mi gesto verde sera... | Respuesta: ${gestureDescription || "No especi
     </Card>
   );
 }
-

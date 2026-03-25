@@ -209,7 +209,17 @@ export function RegisterForm() {
         errorMessage = "Este correo electrónico ya está en uso.";
       } else if (error.code === "auth/weak-password") {
         errorMessage = "La contraseña es demasiado débil.";
+      } else if (
+        error.code === "auth/invalid-api-key" ||
+        error.code === "auth/app-not-authorized"
+      ) {
+        errorMessage =
+          "Firebase rechazó la API key (401). Revisa NEXT_PUBLIC_FIREBASE_API_KEY y sus restricciones para localhost.";
+      } else if (error.code === "auth/network-request-failed") {
+        errorMessage =
+          "No se pudo conectar con Firebase Auth. Revisa red, VPN/proxy o bloqueo por firewall.";
       }
+      console.error("Register failed:", error?.code, error?.message, error);
       setServerError(errorMessage);
       toast({
         title: t.errorOccurred,

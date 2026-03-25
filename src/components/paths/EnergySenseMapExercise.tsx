@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -99,16 +99,16 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
       const energy = activity.energy ? energyLabel[activity.energy] : "No especificado.";
       const value = activity.value ? valueLabel[activity.value] : "No especificado.";
       notebookContent += `**Actividad ${idx + 1}:** ${activity.name}\n`;
-      notebookContent += `Pregunta: Cuanta energia te consume? | Respuesta: ${energy}\n`;
-      notebookContent += `Pregunta: Que tanto se alinea con tus valores personales? | Respuesta: ${value}\n\n`;
+      notebookContent += `Pregunta: ¿Cuánta energía te consume? | Respuesta: ${energy}\n`;
+      notebookContent += `Pregunta: ¿Qué tanto se alinea con tus valores personales? | Respuesta: ${value}\n\n`;
     });
-    notebookContent += `---\n**Reflexion y microaccion**\n\n`;
-    notebookContent += `Pregunta: Que actividad te gustaria hacer mas, porque te conecta con lo importante? | Respuesta: ${reflection.moreOf || "No respondido."}\n`;
-    notebookContent += `Pregunta: Que actividad podrias reducir o hacer de otra manera para cuidar tu energia? | Respuesta: ${reflection.lessOf || "No respondido."}\n`;
+    notebookContent += `---\n**Reflexión y microacción**\n\n`;
+    notebookContent += `Pregunta: ¿Qué actividad te gustaría hacer más, porque te conecta con lo importante? | Respuesta: ${reflection.moreOf || "No respondido."}\n`;
+    notebookContent += `Pregunta: ¿Qué actividad podrías reducir o hacer de otra manera para cuidar tu energía? | Respuesta: ${reflection.lessOf || "No respondido."}\n`;
     notebookContent += `Pregunta: Hoy me comprometo a... | Respuesta: ${commitment || "No respondido."}\n`;
 
     addNotebookEntry({
-      title: "Mi Mapa de Energia vs Sentido",
+      title: "Mi Mapa de Energía vs Sentido",
       content: notebookContent,
       pathId,
       userId: user?.id,
@@ -116,7 +116,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
 
     toast({
       title: "Mapa guardado",
-      description: "Tu mapa de energia y sentido se guardo en el cuaderno terapeutico.",
+      description: "Tu mapa de energía y sentido se guardó en el cuaderno terapéutico.",
     });
     onComplete();
     nextStep();
@@ -136,7 +136,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
               &quot;No todo lo que te agota es importante, y no todo lo importante te agota.&quot;
             </p>
             <p>
-              Cada dia invertimos nuestra energia en multiples cosas. Algunas nos conectan con lo que somos. Otras...
+              Cada día invertimos nuestra energía en múltiples cosas. Algunas nos conectan con lo que somos. Otras...
               solo nos drenan.
             </p>
             <p>Este ejercicio te ayuda a distinguir entre lo que te ocupa y lo que te nutre.</p>
@@ -149,7 +149,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
           <div className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Mapa semanal</h4>
             <p className="text-sm text-muted-foreground">
-              Haz una lista de 6 a 8 actividades que realizaste esta ultima semana.
+              Haz una lista de 6 a 8 actividades que realizaste esta última semana.
             </p>
             <div className="space-y-2">
               {activities.map((activity, index) => (
@@ -193,16 +193,16 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
       case 2:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Evalua cada actividad</h4>
+            <h4 className="font-semibold text-lg">Evalúa cada actividad</h4>
             <p className="text-sm text-muted-foreground">
-              Para cada actividad, responde cuanta energia consume y que tanto se alinea con tus valores.
+              Para cada actividad, responde cuánta energía consume y qué tanto se alinea con tus valores.
             </p>
             <div className="space-y-4">
               {filledActivities.map(({ activity, index }) => (
                 <div key={index} className="p-3 border rounded-md bg-background">
                   <p className="font-semibold mb-2">{activity.name}</p>
 
-                  <Label className="mb-2 block">Cuanta energia te consume?</Label>
+                  <Label className="mb-2 block">¿Cuánta energía te consume?</Label>
                   <RadioGroup
                     value={activity.energy}
                     onValueChange={(value) => handleActivityChange(index, "energy", value)}
@@ -231,7 +231,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                     </div>
                   </RadioGroup>
 
-                  <Label className="mt-4 mb-2 block">Que tanto se alinea con tus valores personales?</Label>
+                  <Label className="mt-4 mb-2 block">¿Qué tanto se alinea con tus valores personales?</Label>
                   <RadioGroup
                     value={activity.value}
                     onValueChange={(value) => handleActivityChange(index, "value", value)}
@@ -271,7 +271,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                 onClick={() => {
                   if (!canContinueFromEvaluation) {
                     toast({
-                      title: "Evaluacion incompleta",
+                      title: "Evaluación incompleta",
                       description: "Responde las dos preguntas de cada actividad para continuar.",
                       variant: "destructive",
                     });
@@ -290,29 +290,29 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
       case 3:
         return (
           <div className="p-4 space-y-5">
-            <h3 className="font-bold text-lg text-center">Tu cuadrante de energia y sentido</h3>
+            <h3 className="font-bold text-lg text-center">Tu cuadrante de energía y sentido</h3>
             <p className="text-sm text-foreground">
-              Tus actividades estan clasificadas segun su carga de energia y su conexion con valores:
+              Tus actividades están clasificadas según su carga de energía y su conexión con valores:
             </p>
             <div className="space-y-2 text-sm">
               <p className="flex items-center gap-2">
                 <ColorDot colorClass="bg-green-500" />
-                <span>Alta conexion con valores y baja carga: Potenciadoras</span>
+                <span>Alta conexión con valores y baja carga: Potenciadoras</span>
               </p>
               <p className="flex items-center gap-2">
                 <ColorDot colorClass="bg-red-500" />
-                <span>Alta carga y baja conexion: Drenantes</span>
+                <span>Alta carga y baja conexión: Drenantes</span>
               </p>
               <p className="flex items-center gap-2">
                 <ColorDot colorClass="bg-amber-500" />
-                <span>Conexion y carga medias: Neutras / Reajustables</span>
+                <span>Conexión y carga medias: Neutras / Reajustables</span>
               </p>
             </div>
 
             <div className="p-3 border rounded-md bg-background/50 space-y-3">
               <h4 className="font-semibold">Ejemplo de referencia</h4>
               <div>
-                <p className="text-sm font-medium">Potenciadoras (Alta conexion - Baja carga)</p>
+                <p className="text-sm font-medium">Potenciadoras (Alta conexión - Baja carga)</p>
                 <ul className="list-disc pl-5 text-sm">
                   <li>Caminar por el bosque los fines de semana</li>
                   <li>Leer sobre crecimiento personal</li>
@@ -321,21 +321,21 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                 </ul>
               </div>
               <div>
-                <p className="text-sm font-medium">Drenantes (Baja conexion - Alta carga)</p>
+                <p className="text-sm font-medium">Drenantes (Baja conexión - Alta carga)</p>
                 <ul className="list-disc pl-5 text-sm">
                   <li>Reuniones laborales sin sentido claro</li>
-                  <li>Revision constante de redes sociales</li>
-                  <li>Decir que si a planes que no quiero</li>
+                  <li>Revisión constante de redes sociales</li>
+                  <li>Decir que sí a planes que no quiero</li>
                   <li>Mantener conversaciones por compromiso</li>
                 </ul>
               </div>
               <div>
-                <p className="text-sm font-medium">Neutras o Reajustables (Carga y conexion medias)</p>
+                <p className="text-sm font-medium">Neutras o Reajustables (Carga y conexión medias)</p>
                 <ul className="list-disc pl-5 text-sm">
-                  <li>Tareas domesticas - repartidas con la pareja</li>
-                  <li>Estudiar temas laborales - enfocandome en los que me interesan</li>
-                  <li>Rutina de ejercicio - cambiarla por algo que disfrute mas</li>
-                  <li>Gestion de correos - limitar a 2 franjas al dia</li>
+                  <li>Tareas domésticas - repartidas con la pareja</li>
+                  <li>Estudiar temas laborales - enfocándome en los que me interesan</li>
+                  <li>Rutina de ejercicio - cambiarla por algo que disfrute más</li>
+                  <li>Gestión de correos - limitar a 2 franjas al día</li>
                 </ul>
               </div>
             </div>
@@ -349,7 +349,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                       <li key={`pot-${index}`}>{activity.name}</li>
                     ))
                   ) : (
-                    <li>No hay actividades en esta categoria por ahora.</li>
+                    <li>No hay actividades en esta categoría por ahora.</li>
                   )}
                 </ul>
               </div>
@@ -362,7 +362,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                       <li key={`drain-${index}`}>{activity.name}</li>
                     ))
                   ) : (
-                    <li>No hay actividades en esta categoria por ahora.</li>
+                    <li>No hay actividades en esta categoría por ahora.</li>
                   )}
                 </ul>
               </div>
@@ -375,7 +375,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                       <li key={`neutral-${index}`}>{activity.name}</li>
                     ))
                   ) : (
-                    <li>No hay actividades en esta categoria por ahora.</li>
+                    <li>No hay actividades en esta categoría por ahora.</li>
                   )}
                 </ul>
               </div>
@@ -387,7 +387,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                 Atrás
               </Button>
               <Button onClick={nextStep}>
-                Reflexion y microaccion
+                Reflexión y microacción
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -397,16 +397,16 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
       case 4:
         return (
           <div className="p-4 space-y-4">
-            <h4 className="font-semibold text-lg">Reflexion y microaccion</h4>
+            <h4 className="font-semibold text-lg">Reflexión y microacción</h4>
             <div className="space-y-2">
-              <Label>Que actividad te gustaria hacer mas, porque te conecta con lo importante?</Label>
+              <Label>¿Qué actividad te gustaría hacer más, porque te conecta con lo importante?</Label>
               <Textarea
                 value={reflection.moreOf}
                 onChange={(e) => setReflection((prev) => ({ ...prev, moreOf: e.target.value }))}
               />
             </div>
             <div className="space-y-2">
-              <Label>Que actividad podrias reducir o hacer de otra manera para cuidar tu energia?</Label>
+              <Label>¿Qué actividad podrías reducir o hacer de otra manera para cuidar tu energía?</Label>
               <Textarea
                 value={reflection.lessOf}
                 onChange={(e) => setReflection((prev) => ({ ...prev, lessOf: e.target.value }))}
@@ -435,7 +435,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Mapa guardado</h4>
             <p className="text-foreground">
-              Tu mapa de energia y sentido ha sido guardado. Te recomiendo repetirlo una vez por semana durante un
+              Tu mapa de energía y sentido ha sido guardado. Te recomiendo repetirlo una vez por semana durante un
               mes.
             </p>
             <div className="flex justify-between w-full mt-4">
@@ -478,4 +478,5 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
     </Card>
   );
 }
+
 

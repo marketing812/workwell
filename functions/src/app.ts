@@ -46,6 +46,33 @@ const ASSESSMENT_DIMENSIONS_META: AssessmentDimensionMeta[] = [
   {id: "dim13", name: "Ansiedad Estado"},
 ];
 
+// Items redactados en sentido negativo: su escala debe invertirse (1<->5).
+const INVERSE_ASSESSMENT_ITEM_IDS = new Set([
+  "dim1_item2",
+  "dim3_item4",
+  "dim4_item3",
+  "dim5_item2",
+  "dim11_item3",
+  "dim12_item1",
+  "dim12_item2",
+  "dim12_item3",
+  "dim12_item4",
+  "dim12_item5",
+  "dim12_item6",
+  "dim12_item7",
+  "dim12_item8",
+  "dim12_item9",
+  "dim12_item10",
+  "dim12_item11",
+  "dim12_item12",
+  "dim13_item1",
+  "dim13_item2",
+  "dim13_item3",
+  "dim13_item4",
+  "dim13_item5",
+  "dim13_item6",
+]);
+
 function getAdminApp() {
   return getApps().length ? getApps()[0] : initializeApp();
 }
@@ -619,13 +646,20 @@ app.post("/submit-assessment", async (req: Request, res: Response) => {
 
     const validEntries = Object.entries(answers)
       .map(([itemId, value]: [string, any]) => {
-        const score = Number(value?.score);
+        const normalizedItemId = String(itemId).trim().toLowerCase();
+        const rawScore = Number(value?.score);
         const weightCandidate = Number(value?.weight);
         const weight =
           Number.isFinite(weightCandidate) && weightCandidate > 0 ?
             weightCandidate :
             1;
-        return {itemId, score, weight};
+        if (!Number.isFinite(rawScore) || rawScore < 1 || rawScore > 5) {
+          return {itemId: normalizedItemId, score: NaN, weight};
+        }
+        const score = INVERSE_ASSESSMENT_ITEM_IDS.has(normalizedItemId) ?
+          6 - rawScore :
+          rawScore;
+        return {itemId: normalizedItemId, score, weight};
       })
       .filter(({score}) => Number.isFinite(score) && score >= 1 && score <= 5);
 

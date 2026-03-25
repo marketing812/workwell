@@ -153,18 +153,18 @@ export interface AssessmentItem {
       "definition": "Evaluación del estado de ánimo general y la presencia de síntomas relacionados con el desánimo o la anhedonia en las últimas semanas.",
       "recommendedPathId": "volver-a-lo-importante",
       "items": [
-        { "id": "dim12_item1", "text": "Me siento triste o desanimado/a.", "weight": 1 },
-        { "id": "dim12_item2", "text": "Tengo dificultad para disfrutar de las actividades que solían gustarme.", "weight": 1 },
-        { "id": "dim12_item3", "text": "Me siento inútil o inferior a los demás.", "weight": 1 },
-        { "id": "dim12_item4", "text": "Me siento culpable por cosas que hago o no hago.", "weight": 1 },
-        { "id": "dim12_item5", "text": "Me siento agotado/a física o mentalmente.", "weight": 1 },
-        { "id": "dim12_item6", "text": "Tengo dificultad para mantener la concentración en tareas.", "weight": 1 },
-        { "id": "dim12_item7", "text": "Me falta motivación para realizar actividades cotidianas.", "weight": 1 },
-        { "id": "dim12_item8", "text": "Siento que mi vida carece de sentido o dirección.", "weight": 1 },
-        { "id": "dim12_item9", "text": "Me aíslo o evito el contacto con otras personas.", "weight": 1 },
-        { "id": "dim12_item10", "text": "Siento que nada va a cambiar, aunque me esfuerce.", "weight": 1 },
-        { "id": "dim12_item11", "text": "Siento que he perdido interés por cuidar de mí mismo/a (higiene, salud, descanso...).", "weight": 1 },
-        { "id": "dim12_item12", "text": "Últimamente me cuesta identificar o expresar lo que siento.", "weight": 1 }
+        { "id": "dim12_item1", "text": "Me siento triste o desanimado/a.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item2", "text": "Tengo dificultad para disfrutar de las actividades que solían gustarme.", "weight": 1, "isInverse": true},
+        { "id": "dim12_item3", "text": "Me siento inútil o inferior a los demás.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item4", "text": "Me siento culpable por cosas que hago o no hago.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item5", "text": "Me siento agotado/a física o mentalmente.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item6", "text": "Tengo dificultad para mantener la concentración en tareas.", "weight": 1, "isInverse": true},
+        { "id": "dim12_item7", "text": "Me falta motivación para realizar actividades cotidianas.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item8", "text": "Siento que mi vida carece de sentido o dirección.", "weight": 1,"isInverse": true },
+        { "id": "dim12_item9", "text": "Me aíslo o evito el contacto con otras personas.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item10", "text": "Siento que nada va a cambiar, aunque me esfuerce.", "weight": 1, "isInverse": true },
+        { "id": "dim12_item11", "text": "Siento que he perdido interés por cuidar de mí mismo/a (higiene, salud, descanso...).", "weight": 1, "isInverse": true },
+        { "id": "dim12_item12", "text": "Últimamente me cuesta identificar o expresar lo que siento.", "weight": 1, "isInverse": true }
       ]
     },
     {
@@ -173,12 +173,12 @@ export interface AssessmentItem {
       "definition": "Evaluación del nivel de ansiedad y tensión experimentado en el momento presente o en los últimos días.",
       "recommendedPathId": "regular-ansiedad-paso-a-paso",
       "items": [
-        { "id": "dim13_item1", "text": "Me siento tenso/a o nervioso/a actualmente.", "weight": 1 },
-        { "id": "dim13_item2", "text": "Me preocupo por cosas que normalmente no me afectan.", "weight": 1 },
-        { "id": "dim13_item3", "text": "Siento una inquietud interna difícil de controlar.", "weight": 1 },
-        { "id": "dim13_item4", "text": "Me cuesta relajarme incluso en situaciones tranquilas.", "weight": 1 },
-        { "id": "dim13_item5", "text": "Reacciono con irritabilidad ante pequeñas molestias.", "weight": 1 },
-        { "id": "dim13_item6", "text": "Siento que pierdo el control fácilmente sobre mis emociones.", "weight": 1 }
+        { "id": "dim13_item1", "text": "Me siento tenso/a o nervioso/a actualmente.", "weight": 1,"isInverse": true },
+        { "id": "dim13_item2", "text": "Me preocupo por cosas que normalmente no me afectan.", "weight": 1, "isInverse": true },
+        { "id": "dim13_item3", "text": "Siento una inquietud interna difícil de controlar.", "weight": 1,"isInverse": true },
+        { "id": "dim13_item4", "text": "Me cuesta relajarme incluso en situaciones tranquilas.", "weight": 1,"isInverse": true },
+        { "id": "dim13_item5", "text": "Reacciono con irritabilidad ante pequeñas molestias.", "weight": 1, "isInverse": true },
+        { "id": "dim13_item6", "text": "Siento que pierdo el control fácilmente sobre mis emociones.", "weight": 1,"isInverse": true }
       ]
     },
     {

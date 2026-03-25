@@ -101,7 +101,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <p>Al finalizar el ejercicio te darás cuenta de algo así…</p>
                         <Accordion type="single" defaultValue="example" className="w-full text-left">
                             <AccordionItem value="example">
-                                <AccordionTrigger>Ver ejemplo</AccordionTrigger>
+                                
                                 <AccordionContent>
                                     <p className="text-sm">María nota que se enfada cuando acepta encargos extra en el trabajo. Al hacer el mapa, ve que siempre piensa: “Si digo que no, decepcionaré a mi jefe”. La emoción que surge es ansiedad. La acción es aceptar. Conclusión: necesita practicar pedir más tiempo o negociar plazos.</p>
                                 </AccordionContent>

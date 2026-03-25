@@ -50,7 +50,12 @@ export default function EthicalMirrorExercise({ content, pathId, onComplete }: E
     const [isSaved, setIsSaved] = useState(false);
     
     const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
+    const prevStep = () => setStep((prev) => {
+        if (prev <= 0) return 0;
+        // Step 1 was an old intermediate intro screen; skip it when navigating back.
+        if (prev === 2) return 0;
+        return prev - 1;
+    });
     
     const resetExercise = () => {
         setStep(0);
@@ -105,8 +110,16 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
             case 0: // Intro
                 return (
                     <div className="p-4 space-y-4 text-center">
-                        
-                        <Button onClick={nextStep}>Ver ejemplo <ArrowRight className="mr-2 h-4 w-4"/></Button>
+                        <div className="text-left space-y-3 text-sm text-muted-foreground">
+                            <p className="font-medium text-foreground">Al finalizar el ejercicio podrías descubrir algo como esto...</p>
+                            <p>
+                                Luis quiere mudarse a otra ciudad por un proyecto creativo, pero teme la opinión de su familia.
+                                En el ejercicio, se lo explica a su hermano mayor, resaltando que busca crecimiento personal y
+                                un entorno más inspirador. Al leerlo, siente que esa explicación le representa y confirma que es
+                                la decisión correcta para él.
+                            </p>
+                        </div>
+                        <Button onClick={() => setStep(2)}>Comenzar <ArrowRight className="mr-2 h-4 w-4"/></Button>
                     </div>
                 );
             case 1: // Ejemplo guiado
@@ -248,7 +261,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
-                        “Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.”
+                        Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.
                         </blockquote>
                         <div className="flex justify-between w-full gap-2">
                             <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>

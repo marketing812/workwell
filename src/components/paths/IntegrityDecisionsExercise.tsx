@@ -254,7 +254,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
             case 7: // Cierre y guardado
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
-                       <p className="text-sm text-muted-foreground">"Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites."</p>
+                       <p className="text-sm text-muted-foreground">Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites.</p>
                         <div className="flex justify-between w-full gap-2">
                             <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
@@ -275,12 +275,13 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
     };
 
     return (
-        <Card className="bg-muted/30 my-6 shadow-md">
+        <div className="my-6 space-y-2">
+            <p className="text-sm text-muted-foreground">Duración aproximada: {content.duration}</p>
+        <Card className="bg-muted/30 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 <CardDescription className="pt-2">
                     {content.objective}
-                     <p className="text-xs text-muted-foreground mt-1">Tiempo aproximado: {content.duration}</p>
                     {content.audioUrl && (
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
@@ -293,6 +294,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
             </CardHeader>
             <CardContent>{renderStep()}</CardContent>
         </Card>
+        </div>
     );
 }
 

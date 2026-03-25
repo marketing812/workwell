@@ -70,17 +70,17 @@ Paso 1 - Elige tu queja: ${complaint}
 
 Paso 2 - Parte bajo tu control: ${underControl}
 
-Paso 3 - Redefine en modo accion: ${concreteAction}
+Paso 3 - Redefine en modo acción: ${concreteAction}
 
 Paso 4 - Tabla (Me quejo de...): ${tableComplaint}
 
-Paso 4 - Tabla (Lo que si puedo hacer es...): ${tableAction}
+Paso 4 - Tabla (Lo que sí puedo hacer es...): ${tableAction}
 
-Paso 5 - Accion que hare hoy: ${todayAction}
+Paso 5 - Acción que haré hoy: ${todayAction}
 `;
 
     addNotebookEntry({
-      title: 'Transformacion de queja a accion',
+      title: 'Transformación de queja a acción',
       content: notebookContent,
       pathId,
       userId: user?.id,
@@ -88,7 +88,7 @@ Paso 5 - Accion que hare hoy: ${todayAction}
 
     toast({
       title: 'Ejercicio guardado',
-      description: 'La transformacion de queja a accion se guardo en tu cuaderno.',
+      description: 'La transformación de queja a acción se guardó en tu cuaderno.',
     });
 
     setIsSaved(true);
@@ -102,7 +102,7 @@ Paso 5 - Accion que hare hoy: ${todayAction}
         return (
           <div className="p-4 space-y-4 text-center">
             <p className="text-sm text-muted-foreground">
-              En este ejercicio vas a convertir una queja en una accion concreta que dependa de ti.
+              En este ejercicio vas a convertir una queja en una acción concreta que dependa de ti.
             </p>
             <Button onClick={nextStep}>
               Empezar ejercicio <ArrowRight className="ml-2 h-4 w-4" />
@@ -114,12 +114,12 @@ Paso 5 - Accion que hare hoy: ${todayAction}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1 - Elige tu queja</h4>
             <p className="text-sm text-muted-foreground">
-              Piensa en algo que te haya molestado en las ultimas 24-48 horas. Escribelo tal cual lo dirias.
+              Piensa en algo que te haya molestado en las últimas 24-48 horas. Escríbelo tal cual lo dirías.
             </p>
             <Textarea
               value={complaint}
               onChange={e => setComplaint(e.target.value)}
-              placeholder="Escribe aqui tu queja"
+              placeholder="Escribe aquí tu queja"
             />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -135,14 +135,14 @@ Paso 5 - Accion que hare hoy: ${todayAction}
       case 2:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 2 - Detecta lo que esta bajo tu control</h4>
+            <h4 className="font-semibold text-lg">Paso 2 - Detecta lo que está bajo tu control</h4>
             <p className="text-sm text-muted-foreground">
-              Preguntate: "Que parte de esta situacion depende de mi?".
+              Pregúntate: "¿Qué parte de esta situación depende de mí?".
             </p>
             <Textarea
               value={underControl}
               onChange={e => setUnderControl(e.target.value)}
-              placeholder="Describe la parte que si depende de ti"
+              placeholder="Describe la parte que sí depende de ti"
             />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -158,19 +158,19 @@ Paso 5 - Accion que hare hoy: ${todayAction}
       case 3:
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3 - Redefine en modo accion</h4>
+            <h4 className="font-semibold text-lg">Paso 3 - Redefine en modo acción</h4>
             <p className="text-sm text-muted-foreground">
               Cambia la queja por un paso concreto que puedas dar.
             </p>
             <div className="rounded-md border p-3 bg-muted/30 text-sm">
               <p><strong>Ejemplo:</strong></p>
               <p>Queja: "Nunca me valoran en el trabajo."</p>
-              <p>Accion: "Voy a pedir feedback a mi jefe esta semana para saber que estoy haciendo bien y que puedo mejorar."</p>
+              <p>Acción: "Voy a pedir feedback a mi jefe esta semana para saber qué estoy haciendo bien y qué puedo mejorar."</p>
             </div>
             <Textarea
               value={concreteAction}
               onChange={e => setConcreteAction(e.target.value)}
-              placeholder="Escribe tu accion concreta"
+              placeholder="Escribe tu acción concreta"
             />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -188,7 +188,7 @@ Paso 5 - Accion que hare hoy: ${todayAction}
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 4 - Registra tu plan</h4>
             <p className="text-sm text-muted-foreground">
-              En la tabla "Me quejo de... / Lo que si puedo hacer es...", anota de nuevo tu queja y la accion que has definido.
+              En la tabla "Me quejo de... / Lo que sí puedo hacer es...", anota de nuevo tu queja y la acción que has definido.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -201,12 +201,12 @@ Paso 5 - Accion que hare hoy: ${todayAction}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="table-action">Lo que si puedo hacer es...</Label>
+                <Label htmlFor="table-action">Lo que sí puedo hacer es...</Label>
                 <Textarea
                   id="table-action"
                   value={tableAction}
                   onChange={e => setTableAction(e.target.value)}
-                  placeholder="Escribe tu accion"
+                  placeholder="Escribe tu acción"
                 />
               </div>
             </div>
@@ -224,16 +224,16 @@ Paso 5 - Accion que hare hoy: ${todayAction}
       case 5:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 5 - Revision final</h4>
+            <h4 className="font-semibold text-lg">Paso 5 - Revisión final</h4>
             <p className="text-sm text-muted-foreground">
-              Lee tus acciones y elige la primera que pondras en practica hoy mismo.
+              Lee tus acciones y elige la primera que pondrás en práctica hoy mismo.
             </p>
-            <Label htmlFor="today-action">Escribe la accion que haras hoy</Label>
+            <Label htmlFor="today-action">Escribe la acción que harás hoy</Label>
             <Textarea
               id="today-action"
               value={todayAction}
               onChange={e => setTodayAction(e.target.value)}
-              placeholder="Escribe la accion que haras hoy"
+              placeholder="Escribe la acción que harás hoy"
             />
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
@@ -252,7 +252,7 @@ Paso 5 - Accion que hare hoy: ${todayAction}
           <div className="p-6 space-y-4 text-center">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Ejercicio guardado</h4>
-            <p className="text-muted-foreground">La practica se guardo en tu cuaderno terapeutico.</p>
+            <p className="text-muted-foreground">La práctica se guardó en tu cuaderno terapéutico.</p>
           </div>
         );
       default:
@@ -271,7 +271,7 @@ Paso 5 - Accion que hare hoy: ${todayAction}
           {content.objective}
           {content.duration && (
             <p className="pt-1 text-sm text-muted-foreground">
-              <span className="font-semibold">Duracion estimada:</span> {content.duration}
+              <span className="font-semibold">Duración estimada:</span> {content.duration}
             </p>
           )}
           {content.audioUrl && (
@@ -288,5 +288,6 @@ Paso 5 - Accion que hare hoy: ${todayAction}
     </Card>
   );
 }
+
 
 

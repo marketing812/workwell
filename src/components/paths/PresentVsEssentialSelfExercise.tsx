@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState, type FormEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -77,8 +77,8 @@ export default function PresentVsEssentialSelfExercise({
 
     if (!smallAction.trim()) {
       toast({
-        title: "Accion no definida",
-        description: "Por favor, escribe tu pequena accion para guardar.",
+        title: "Acción no definida",
+        description: "Por favor, escribe tu pequeña acción para guardar.",
         variant: "destructive",
       });
       return;
@@ -87,11 +87,11 @@ export default function PresentVsEssentialSelfExercise({
     const notebookContent = `
 **Ejercicio: ${content.title}**
 
-Pregunta: Como es mi yo actual? | Respuesta: ${presentSelfDesc || "No descrito."}
+Pregunta: Cómo es mi yo actual? | Respuesta: ${presentSelfDesc || "No descrito."}
 
-Pregunta: Como es mi yo esencial? | Respuesta: ${essentialSelfDesc || "No descrito."}
+Pregunta: Cómo es mi yo esencial? | Respuesta: ${essentialSelfDesc || "No descrito."}
 
-Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial? | Respuesta: ${smallAction}
+Pregunta: Qué gesto o acción pequeña voy a hacer para acercarme a mi yo esencial? | Respuesta: ${smallAction}
     `;
 
     addNotebookEntry({
@@ -101,7 +101,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
       userId: user?.id,
     });
 
-    toast({ title: "Ejercicio guardado", description: "Tu visualizacion ha sido guardada." });
+    toast({ title: "Ejercicio guardado", description: "Tu visualización ha sido guardada." });
     setIsSaved(true);
     onComplete();
     nextStep();
@@ -116,15 +116,15 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
           <div className="p-4 space-y-4 text-center">
             <p>
               No se trata de juzgarte ni de exigirte cambios inmediatos. Se trata de mirarte con amabilidad, como quien
-              observa una pelicula, para redescubrir quien eres y hacia donde quieres ir.
+              observa una película, para redescubrir quién eres y hacia dónde quieres ir.
             </p>
             <ul className="list-disc list-inside text-left mx-auto max-w-md">
-              <li>Tu yo actual: como estas viviendo hoy.</li>
-              <li>Tu yo esencial: como seria tu vida si actuases desde tus valores.</li>
+              <li>Tu yo actual: cómo estás viviendo hoy.</li>
+              <li>Tu yo esencial: cómo sería tu vida si actuases desde tus valores.</li>
             </ul>
-            <p>Cuando quieras, pulsa Empezar y deja que tu imaginacion te guie.</p>
+            <p>Cuando quieras, pulsa Empezar y deja que tu imaginación te guíe.</p>
             <Button onClick={nextStep}>
-              Empezar visualizacion
+              Empezar visualización
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -135,23 +135,23 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 1: Tu yo actual</h4>
             <p>
-              Antes de avanzar, piensa que este paso es como mirar una fotografia de ti hoy. No para criticarte, sino
+              Antes de avanzar, piensa que este paso es como mirar una fotografía de ti hoy. No para criticarte, sino
               para comprenderte mejor.
             </p>
-            <p>Preguntate:</p>
+            <p>Pregúntate:</p>
             <ul className="list-disc list-inside pl-4 text-sm">
-              <li>Como me hablo en mi dia a dia?</li>
-              <li>Como transcurren mis jornadas?</li>
-              <li>Que emociones predominan?</li>
-              <li>Como me relaciono con los demas?</li>
-              <li>Que habitos mantengo, aunque no me hagan bien?</li>
+              <li>¿Cómo me hablo en mi día a día?</li>
+              <li>¿Cómo transcurren mis jornadas?</li>
+              <li>¿Qué emociones predominan?</li>
+              <li>¿Cómo me relaciono con los demás?</li>
+              <li>¿Qué hábitos mantengo, aunque no me hagan bien?</li>
             </ul>
-            <Label htmlFor="present-self">Escribe aqui tu descripcion de tu yo actual...</Label>
+            <Label htmlFor="present-self">Escribe aquí tu descripción de tu yo actual...</Label>
             <Textarea id="present-self" value={presentSelfDesc} onChange={(e) => setPresentSelfDesc(e.target.value)} />
             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
               <p>
-                Ejemplo guia: "Mi yo actual corre a todos lados, revisa el movil constantemente, y muchas veces dice
-                que si, aunque quiere decir que no. Siento tension en el pecho y, a veces, tristeza."
+                Ejemplo guía: "Mi yo actual corre a todos lados, revisa el móvil constantemente, y muchas veces dice
+                que sí, aunque quiere decir que no. Siento tensión en el pecho y, a veces, tristeza."
               </p>
             </div>
             <div className="flex justify-between w-full mt-4">
@@ -172,18 +172,18 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg">Paso 2: Tu yo esencial</h4>
             <p>
-              Ahora imagina como seria tu vida si vivieras conectada o conectado a lo que de verdad importa para ti.
-              Visualiza tu yo esencial, esa version tuya que ya existe dentro, esperando mas espacio.
+              Ahora imagina cómo sería tu vida si vivieras conectada o conectado a lo que de verdad importa para ti.
+              Visualiza tu yo esencial, esa versión tuya que ya existe dentro, esperando más espacio.
             </p>
-            <p>Preguntate:</p>
+            <p>Pregúntate:</p>
             <ul className="list-disc list-inside pl-4 text-sm">
-              <li>Como se mueve esta version de mi?</li>
-              <li>Como cuida sus espacios y se habla?</li>
-              <li>Que decisiones toma?</li>
-              <li>Que limites pone?</li>
-              <li>Que transmite a los demas?</li>
+              <li>¿Cómo se mueve esta versión de mí?</li>
+              <li>¿Cómo cuida sus espacios y se habla?</li>
+              <li>¿Qué decisiones toma?</li>
+              <li>¿Qué límites pone?</li>
+              <li>¿Qué transmite a los demás?</li>
             </ul>
-            <Label htmlFor="essential-self">Escribe aqui tu descripcion de tu yo esencial...</Label>
+            <Label htmlFor="essential-self">Escribe aquí tu descripción de tu yo esencial...</Label>
             <Textarea
               id="essential-self"
               value={essentialSelfDesc}
@@ -191,14 +191,14 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
             />
             <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
               <p>
-                Ejemplo guia: "Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con
+                Ejemplo guía: "Mi yo esencial se mueve con calma, respira profundamente, dice lo que necesita con
                 serenidad y cuida sus tiempos. Me inspira paz y claridad."
               </p>
             </div>
             <p className="text-sm italic pt-2">
-              La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas areas
-              cerebrales que al ejecutarlos (corteza prefrontal y sistema limbico). Asi entrenas tu mente para acercarte
-              a esa version de ti.
+              La neurociencia muestra que visualizar de forma repetida comportamientos positivos activa las mismas áreas
+              cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte
+              a esa versión de ti.
             </p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
@@ -216,23 +216,23 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
       case 3:
         return (
           <form onSubmit={handleSave} className="p-4 space-y-4 animate-in fade-in-0 duration-500">
-            <h4 className="font-semibold text-lg">Paso 3: Integracion y eleccion</h4>
+            <h4 className="font-semibold text-lg">Paso 3: Integración y elección</h4>
             <p>
               Ahora que tienes delante a tu yo actual y a tu yo esencial, observa la diferencia entre ambos. Esta
-              comparacion no es para sentir distancia, sino para elegir un puente que los conecte.
+              comparación no es para sentir distancia, sino para elegir un puente que los conecte.
             </p>
-            <p>Preguntate:</p>
+            <p>Pregúntate:</p>
             <ul className="list-disc list-inside pl-4 text-sm">
-              <li>Que diferencia mas significativa noto entre mis dos versiones?</li>
-              <li>Que gesto pequeno de mi yo esencial puedo traer a mi vida esta semana?</li>
+              <li>¿Qué diferencia más significativa noto entre mis dos versiones?</li>
+              <li>¿Qué gesto pequeño de mi yo esencial puedo traer a mi vida esta semana?</li>
             </ul>
 
             <div className="space-y-2">
-              <Label htmlFor="small-action">Describe tu gesto o accion pequena...</Label>
+              <Label htmlFor="small-action">Describe tu gesto o acción pequeña...</Label>
               <Textarea id="small-action" value={smallAction} onChange={(e) => setSmallAction(e.target.value)} />
               <div className="p-2 border-l-2 border-accent bg-accent/10 italic text-sm">
                 <p>
-                  Ejemplo guia: "Quiero probar a poner el movil en silencio media hora cada noche y usar ese tiempo para
+                  Ejemplo guía: "Quiero probar a poner el móvil en silencio media hora cada noche y usar ese tiempo para
                   leer o simplemente descansar en calma."
                 </p>
               </div>
@@ -245,7 +245,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
               </Button>
               <Button type="submit" disabled={!smallAction.trim()}>
                 <Save className="mr-2 h-4 w-4" />
-                Guardar en el cuaderno terapeutico
+                Guardar en el cuaderno terapéutico
               </Button>
             </div>
           </form>
@@ -258,7 +258,7 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
               <div className="mx-auto h-14 w-14 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
                 <CheckCircle className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h4 className="font-bold text-xl">Visualizacion guardada</h4>
+              <h4 className="font-bold text-xl">Visualización guardada</h4>
               <p className="text-sm text-muted-foreground">
                 No se trata de transformarte de golpe, sino de acercarte poco a poco a tu esencia. Cada gesto que
                 incorpores es un paso hacia tu autenticidad.
@@ -266,20 +266,20 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
             </div>
 
             <div className="rounded-lg border bg-background p-4 space-y-3">
-              <p className="text-sm font-medium">Tu microaccion elegida</p>
+              <p className="text-sm font-medium">Tu microacción elegida</p>
               <p className="text-sm text-foreground italic">
-                {smallAction.trim() || "No se registro una microaccion."}
+                {smallAction.trim() || "No se registró una microacción."}
               </p>
             </div>
 
             <div className="text-sm space-y-2">
               <p className="flex items-start">
                 <CheckCircle className="h-4 w-4 mr-2 mt-0.5 text-primary flex-shrink-0" />
-                Felicitate por haberte regalado este momento de conexion.
+                Felicítate por haberte regalado este momento de conexión.
               </p>
               <p className="flex items-start">
                 <ArrowRight className="h-4 w-4 mr-2 mt-0.5 text-primary flex-shrink-0" />
-                Tus respuestas quedaron guardadas en tu cuaderno terapeutico.
+                Tus respuestas quedaron guardadas en tu cuaderno terapéutico.
               </p>
             </div>
 
@@ -302,10 +302,10 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
           {content.title}
         </CardTitle>
         <CardDescription>
-          A veces vivimos en "piloto automatico" y sentimos que no somos del todo nosotros mismos. Este ejercicio te
-          ayudara a observarte desde fuera, sin juicio, para distinguir entre tu yo presente (como vives ahora mismo) y
-          tu yo esencial (como te gustaria vivir si actuaras desde tus valores mas profundos). Al hacerlo, entrenas tu
-          capacidad de autoconciencia y te orientas hacia decisiones mas alineadas contigo.
+          A veces vivimos en "piloto automático" y sentimos que no somos del todo nosotros mismos. Este ejercicio te
+          ayudará a observarte desde fuera, sin juicio, para distinguir entre tu yo presente (cómo vives ahora mismo) y
+          tu yo esencial (cómo te gustaría vivir si actuaras desde tus valores más profundos). Al hacerlo, entrenas tu
+          capacidad de autoconciencia y te orientas hacia decisiones más alineadas contigo.
         </CardDescription>
         <p className="text-sm pt-1">
           Te recomiendo repetir este ejercicio una vez al mes, o cuando sientas que necesitas reconectar con tu
@@ -324,3 +324,5 @@ Pregunta: Que gesto o accion pequena voy a hacer para acercarme a mi yo esencial
     </Card>
   );
 }
+
+
