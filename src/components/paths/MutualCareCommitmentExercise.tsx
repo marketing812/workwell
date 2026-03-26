@@ -206,9 +206,9 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                     {c.date && <p><strong>Cuándo:</strong> {format(c.date, "PPP", {locale: es})} {c.time && `a las ${c.time}`}</p>}
                 </div>
             ))}
-            <p className="text-sm italic text-center pt-4">"Tu compromiso no es solo con la otra persona, también es contigo: con tu decisión de cultivar relaciones que te cuidan y a las que cuidas."</p>
+            <p className="text-sm italic text-center pt-4">Tu compromiso no es solo con la otra persona, también es contigo: con tu decisión de cultivar relaciones que te cuidan y a las que cuidas.</p>
              <div className="flex flex-col items-center gap-2 pt-4">
-                <p className="text-sm font-semibold">Guardar datos y gesto de cuidado, todo en un esquema circular</p>
+                
                 <div className="flex justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>

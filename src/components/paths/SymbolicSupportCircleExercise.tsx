@@ -125,7 +125,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
           <div className="p-6 text-center space-y-4 animate-in fade-in-0 duration-500">
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">Círculo Guardado</h4>
-            <p className="text-muted-foreground">"Este círculo es tu recordatorio de que no tienes que sostenerte solo o sola. Y también, de que tú eres parte del círculo de alguien más."</p>
+            <p className="text-muted-foreground">Este círculo es tu recordatorio de que no tienes que sostenerte solo o sola. Y también, de que tú eres parte del círculo de alguien más.</p>
             
           </div>
         );

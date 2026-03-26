@@ -66,10 +66,35 @@ export const supportNetworkPath: Path = {
           type: 'collapsible',
           title: 'Apoyo social percibido vs. apoyo real',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/descripciones/semana1/Apoyosocial.mp3`,
-          content: [
+               content: [
             {
               type: 'paragraph',
-              text: 'A veces, el problema no es que no haya apoyo, sino que no lo percibimos como accesible o de calidad. La ciencia muestra que la calidad del apoyo social es más importante que la cantidad (Cohen & Wills, 1985). Una red de personas pequeña pero nutritiva, es más valiosa que un gran número de contactos superficiales.    Según Waldinger y Marc Schulz, la calidad de nuestras relaciones sociales predice mejor nuestra salud y longevidad que el colesterol o la genética. Las conexiones humanas profundas actúan como un “escudo” contra el estrés y mejoran la salud física y mental.   Tener una red de apoyo sólida y positiva se asocia con:   - Menor riesgo de ansiedad y depresión.   - Mayor resiliencia ante crisis vitales.   - Mejor recuperación física tras una enfermedad o cirugía.   - Mayor esperanza de vida (Holt-Lunstad et al., 2015).   Por el contrario, la falta de apoyo o las relaciones de baja calidad pueden:   - Aumentar la vulnerabilidad al estrés y a la enfermedad.   - Favorecer sentimientos de soledad y aislamiento (Cacioppo & Patrick, 2008).   - Incrementar la probabilidad de hábitos poco saludables como mala alimentación o sedentarismo.   Es como tener muchos números en la agenda… pero solo unos pocos responden cuando llamas en medio de la noche.   Esta semana aprenderás a reconocer y valorar a quienes están realmente presentes y disponibles para ti.',
+              text: 'A veces, el problema no es que no haya apoyo, sino que no lo percibimos como accesible o de calidad.  La ciencia muestra que la calidad del apoyo social es más importante que la cantidad (Cohen & Wills, 1985). Una red de personas pequeña pero nutritiva, es más valiosa que un gran número de contactos superficiales. Según Waldinger y Marc Schulz, la calidad de nuestras relaciones sociales predice mejor nuestra salud y longevidad que el colesterol o la genética. Las conexiones humanas profundas actúan como un “escudo” contra el estrés y mejoran la salud física y mental. ',
+            },
+       {
+              type: 'paragraph',
+              text: 'Tener una red de apoyo sólida y positiva se asocia con: ',
+            },
+                      {  type: 'list', items: [
+                'Menor riesgo de ansiedad y depresión.',
+                'Mayor resiliencia ante crisis vitales',
+                'Mejor recuperación física tras una enfermedad o cirugía. ',
+                'Mayor esperanza de vida (Holt-Lunstad et al., 2015). '
+              ]
+            },
+       {
+              type: 'paragraph',
+              text: 'Por el contrario, la falta de apoyo o las relaciones de baja calidad pueden: ',
+            },
+                      {  type: 'list', items: [
+                'Aumentar la vulnerabilidad al estrés y a la enfermedad. ',
+                'Favorecer sentimientos de soledad y aislamiento (Cacioppo & Patrick, 2008). ',
+                'Incrementar la probabilidad de hábitos poco saludables como mala alimentación o sedentarismo. ',
+              ]
+            },
+       {
+              type: 'paragraph',
+              text: 'Es como tener muchos números en la agenda… pero solo unos pocos responden cuando llamas en medio de la noche. Esta semana aprenderás a reconocer y valorar a quienes están realmente presentes y disponibles para ti. ',
             },
           ],
         },

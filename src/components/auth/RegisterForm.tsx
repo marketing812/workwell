@@ -278,7 +278,7 @@ export function RegisterForm() {
             {fieldErrors?.password && <p className="text-sm text-destructive pt-1">{fieldErrors.password[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="token">Código de Departamento</Label>
+            <Label htmlFor="token">Código de acceso</Label>
             <Input id="token" name="token" required value={formData.token || ''} onChange={handleInputChange} />
             <p className="text-xs text-muted-foreground mt-1">
               Introduce un código de acceso válido para asociar tu cuenta al entorno corporativo de tu organización.

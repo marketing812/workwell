@@ -78,8 +78,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
       case 0:
         return (
           <div className="p-4 space-y-4 text-center">
-            <p className="text-sm">Esta técnica te ayuda a detectar y reformular los pensamientos que te frenan al pedir ayuda. Se basa en la Terapia Cognitivo-Conductual (Beck, 2011) que demuestra que cuestionar creencias disfuncionales reduce la ansiedad y mejora la disposición a buscar apoyo.</p>
-            <Button onClick={nextStep}>Empezar registro <ArrowRight className="mr-2 h-4 w-4" /></Button>
+                        <Button onClick={nextStep}>Empezar registro <ArrowRight className="mr-2 h-4 w-4" /></Button>
           </div>
         );
       case 1:

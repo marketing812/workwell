@@ -68,7 +68,32 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'A veces, el problema no es que no haya apoyo, sino que no lo percibimos como accesible o de calidad. La ciencia muestra que la calidad del apoyo social es más importante que la cantidad (Cohen & Wills, 1985). Una red de personas pequeña pero nutritiva, es más valiosa que un gran número de contactos superficiales.    Según Waldinger y Marc Schulz, la calidad de nuestras relaciones sociales predice mejor nuestra salud y longevidad que el colesterol o la genética. Las conexiones humanas profundas actúan como un “escudo” contra el estrés y mejoran la salud física y mental.   Tener una red de apoyo sólida y positiva se asocia con:   - Menor riesgo de ansiedad y depresión.   - Mayor resiliencia ante crisis vitales.   - Mejor recuperación física tras una enfermedad o cirugía.   - Mayor esperanza de vida (Holt-Lunstad et al., 2015).   Por el contrario, la falta de apoyo o las relaciones de baja calidad pueden:   - Aumentar la vulnerabilidad al estrés y a la enfermedad.   - Favorecer sentimientos de soledad y aislamiento (Cacioppo & Patrick, 2008).   - Incrementar la probabilidad de hábitos poco saludables como mala alimentación o sedentarismo.   Es como tener muchos números en la agenda… pero solo unos pocos responden cuando llamas en medio de la noche.   Esta semana aprenderás a reconocer y valorar a quienes están realmente presentes y disponibles para ti.',
+              text: 'A veces, el problema no es que no haya apoyo, sino que no lo percibimos como accesible o de calidad.  La ciencia muestra que la calidad del apoyo social es más importante que la cantidad (Cohen & Wills, 1985). Una red de personas pequeña pero nutritiva, es más valiosa que un gran número de contactos superficiales. Según Waldinger y Marc Schulz, la calidad de nuestras relaciones sociales predice mejor nuestra salud y longevidad que el colesterol o la genética. Las conexiones humanas profundas actúan como un “escudo” contra el estrés y mejoran la salud física y mental. ',
+            },
+       {
+              type: 'paragraph',
+              text: 'Tener una red de apoyo sólida y positiva se asocia con: ',
+            },
+                      {  type: 'list', items: [
+                'Menor riesgo de ansiedad y depresión.',
+                'Mayor resiliencia ante crisis vitales',
+                'Mejor recuperación física tras una enfermedad o cirugía. ',
+                'Mayor esperanza de vida (Holt-Lunstad et al., 2015). '
+              ]
+            },
+       {
+              type: 'paragraph',
+              text: 'Por el contrario, la falta de apoyo o las relaciones de baja calidad pueden: ',
+            },
+                      {  type: 'list', items: [
+                'Aumentar la vulnerabilidad al estrés y a la enfermedad. ',
+                'Favorecer sentimientos de soledad y aislamiento (Cacioppo & Patrick, 2008). ',
+                'Incrementar la probabilidad de hábitos poco saludables como mala alimentación o sedentarismo. ',
+              ]
+            },
+       {
+              type: 'paragraph',
+              text: 'Es como tener muchos números en la agenda… pero solo unos pocos responden cuando llamas en medio de la noche. Esta semana aprenderás a reconocer y valorar a quienes están realmente presentes y disponibles para ti. ',
             },
           ],
         },
@@ -79,8 +104,27 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Estos miedos están profundamente ligados a nuestra historia personal y a cómo aprendimos a vincularnos. Vincularnos significa cómo nos relacionamos y conectamos emocionalmente con otras personas: cómo buscamos afecto, cómo damos apoyo, cómo pedimos ayuda y cómo manejamos la cercanía o la distancia en una relación.    Muchas veces, estos miedos (depender, decepcionar o ser una carga), se forman en la infancia, cuando percibimos (o vivimos) que mostrar necesidad podía implicar rechazo, desaprobación o pérdida de afecto.   En terapia, trabajamos estos miedos como esquemas emocionales que tiñen nuestra interpretación de la realidad:   - “Si dependo, perderé mi autonomía o seré abandonado/a.”   - “Si muestro mis dificultades, decepcionaré y me rechazarán.”   - “Si acepto ayuda, confirmaré que soy débil o incapaz.”   La neurociencia afectiva (Porges, 2011) explica que la conexión segura con otras personas activa nuestro sistema nervioso parasimpático, ayudándonos a reducir la activación por la sensación de amenaza y permitiéndonos sentir calma. Esto significa que aceptar apoyo no solo es una decisión psicológica, sino también una respuesta biológica que favorece la regulación emocional.   Piensa en un puente colgante: si crees que no aguantará tu peso, nunca te atreverás a cruzarlo… aunque esté diseñado para sostener a muchas personas. Dar un paso sobre ese puente —aceptar ayuda— es arriesgarse a descubrir que, lejos de hundirse, la relación se fortalece.   Confiar en otros empieza por darles la oportunidad de demostrar que pueden sostenerte, y por permitirte a ti mismo/a experimentar que recibir no te resta valor: te conecta. RECUERDA no romper nada',
+              text: 'Estos miedos están profundamente ligados a nuestra historia personal y a cómo aprendimos a vincularnos. Vincularnos significa cómo nos relacionamos y conectamos emocionalmente con otras personas: cómo buscamos afecto, cómo damos apoyo, cómo pedimos ayuda y cómo manejamos la cercanía o la distancia en una relación. Muchas veces, estos miedos (depender, decepcionar o ser una carga), se forman en la infancia, cuando percibimos (o vivimos) que mostrar necesidad podía implicar rechazo, desaprobación o pérdida de afecto. ',
             },
+            {
+              type: 'paragraph',
+              text: 'En terapia, trabajamos estos miedos como esquemas emocionales que tiñen nuestra interpretación de la realidad: ',
+            },
+          {  type: 'list', items: [
+                '“Si dependo, perderé mi autonomía o seré abandonado/a.”',
+                '“Si muestro mis dificultades, decepcionaré y me rechazarán.” ',
+                '“Si acepto ayuda, confirmaré que soy débil o incapaz.”',
+              ]
+            },
+              {
+              type: 'paragraph',
+              text: 'La neurociencia afectiva (Porges, 2011) explica que la conexión segura con otras personas activa nuestro sistema nervioso parasimpático, ayudándonos a reducir la activación por la sensación de amenaza y permitiéndonos sentir calma. Esto significa que aceptar apoyo no solo es una decisión psicológica, sino también una respuesta biológica que favorece la regulación emocional. Piensa en un puente colgante: si crees que no aguantará tu peso, nunca te atreverás a cruzarlo… aunque esté diseñado para sostener a muchas personas. Dar un paso sobre ese puente —aceptar ayuda— es arriesgarse a descubrir que, lejos de hundirse, la relación se fortalece. ',
+            },
+              {
+              type: 'paragraph',
+              text: 'Confiar en otros empieza por darles la oportunidad de demostrar que pueden sostenerte, y por permitirte a ti mismo/a experimentar que recibir no te resta valor: te conecta. ',
+            },
+
           ],
         },
         { type: 'title', text: 'Técnicas Específicas' },
@@ -181,7 +225,14 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Vamos a ponerle nombre a tres formas comunes de “apoyo”:   - Dependencia patológica – Cuando una persona cree que sin el otro no puede afrontar nada. Se instala un miedo constante al abandono y la autonomía queda bloqueada. En TCC se ve como un patrón que refuerza inseguridad y baja autoestima.   - Exigencia – Se basa en “deberías” y “tienes que”, a veces con chantaje emocional incluido. Esto no es apoyo: es control con otro nombre.   - Acompañamiento genuino – El que todos merecemos: respeta, escucha, valida, y a la vez te impulsa a crecer. Como decía Bowlby (1988), un vínculo seguro es esa base estable desde la que nos atrevemos a explorar.',
+              text: 'Vamos a ponerle nombre a tres formas comunes de “apoyo”:',
+            },
+            {
+              type: 'list', items: [
+                'Dependencia: Es un apoyo que, aunque se presente como ayuda, en realidad te hace sentir más inseguro/a, dependiente o incapaz. Suele venir de personas que, sin mala intención, no respetan tus ritmos o decisiones, o que te sobreprotegen. Es como un salvavidas que, en vez de ayudarte a nadar, te mantiene flotando sin avanzar.',
+                'Exigencia: Este tipo de apoyo viene con condiciones o expectativas implícitas. Puede ser alguien que te dice “te ayudo, pero tienes que hacer esto a cambio” o “te apoyo, pero solo si haces las cosas a mi manera”. Aunque puede parecer útil en el corto plazo, a largo plazo suele generar resentimiento y dependencia emocional.',
+                'Acompañamiento genuino:  El que todos merecemos: respeta, escucha, valida, y a la vez te impulsa a crecer. Como decía Bowlby (1988), un vínculo seguro es esa base estable desde la que nos atrevemos a explorar.'
+              ]
             },
           ],
         },
@@ -192,7 +243,22 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Ahora que ya tienes claro qué tipos de apoyo existen, pasemos a las señales que te ayudarán a reconocer si un vínculo es sano y nutritivo:   - Puedes mostrarte como eres, sin miedo a ser juzgado/a.   - Hay empatía y validación emocional.   - Se comparte información personal e íntima.   - Hay muestras de cariño y calidez.   - Hay coherencia entre lo que la persona dice y lo que hace.   - El apoyo fluye en ambas direcciones: a veces das, a veces recibes.   - Respetan tus decisiones, incluso cuando no coinciden con ellas.   Pista rápida: si después de estar con alguien te sientes en calma y con ideas claras, probablemente sea un vínculo nutritivo. Si sales con tensión o dudas, quizá toque poner límites.',
+              text: 'Ahora que ya tienes claro qué tipos de apoyo existen, pasemos a las señales que te ayudarán a reconocer si un vínculo es sano y nutritivo: ',
+            },
+            { type: 'list', items: [
+                'Puedes mostrarte como eres, sin miedo a ser juzgado/a. ',
+                'Hay empatía y validación emocional.',
+              'Se comparte información personal e íntima.', 
+'Hay muestras de cariño y calidez. ',
+'Hay coherencia entre lo que la persona dice y lo que hace. ',
+'El apoyo fluye en ambas direcciones: a veces das, a veces recibes. ',
+'Respetan tus decisiones, incluso cuando no coinciden con ellas. '
+]
+            }
+            ,
+            {
+              type: 'paragraph',
+              text: 'Pista rápida: si después de estar con alguien te sientes en calma y con ideas claras, probablemente sea un vínculo nutritivo. Si sales con tensión o dudas, quizá toque poner límites. ',
             },
           ],
         },
@@ -203,8 +269,17 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'El acompañamiento genuino combina presencia, respeto y fomento de tu autonomía.   Se parece a tener un faro en medio de una noche oscura: no camina por ti, pero ilumina el camino para que tú avances.   Incluye:   - Escuchar sin prisas, sin interrumpir y sin hacer de tu historia la suya.   - Validar lo que sientes, aunque no esté de acuerdo.   - Decirte la verdad con respeto, no con dureza.   - Apoyarte sin sobreprotegerte.   - Mantener límites claros que cuiden la relación.   Según Feeney y Collins (2015), este tipo de apoyo aumenta la resiliencia y ayuda a que las personas afronten mejor los retos.',
+              text: 'El acompañamiento genuino combina presencia, respeto y fomento de tu autonomía.   Se parece a tener un faro en medio de una noche oscura: no camina por ti, pero ilumina el camino para que tú avances.   Incluye:',
             },
+            { type: 'list', items: [
+                'Escuchar sin prisas, sin interrumpir y sin hacer de tu historia la suya.',
+                'Validar lo que sientes, aunque no esté de acuerdo.','Decirte la verdad con respeto, no con dureza','Apoyarte sin sobreprotegerte','Mantener límites claros que cuiden la relación']
+              },
+                      {
+              type: 'paragraph',
+              text: 'Según Feeney y Collins (2015), este tipo de apoyo aumenta la resiliencia y ayuda a que las personas afronten mejor los retos.',
+            },
+
           ],
         },
         {
@@ -214,8 +289,13 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Una vez que sabes reconocer un buen apoyo, toca cultivarlo. Esto implica cuidar lo que das y lo que recibes.    La neurociencia afectiva (Porges, 2011) muestra que los vínculos seguros activan nuestro sistema nervioso parasimpático, favoreciendo calma y bienestar.   Para fortalecer estos vínculos:   - Cumple tus promesas.   - Valida emociones, incluso si no piensas igual.   - Respeta ritmos y decisiones.   - Busca equilibrio: tan importante es dar como recibir.',
+              text: 'Una vez que sabes reconocer un buen apoyo, toca cultivarlo. Esto implica cuidar lo que das y lo que recibes.',
             },
+            {
+              type: 'paragraph',
+              text: 'La neurociencia afectiva (Porges, 2011) muestra que los vínculos seguros activan nuestro sistema nervioso parasimpático, favoreciendo calma y bienestar.   Para fortalecer estos vínculos:',
+            },
+            { type: 'list', items: ['Cumple tus promesas.', 'Valida emociones, incluso si no piensas igual.', 'Respeta ritmos y decisiones.', 'Busca equilibrio: tan importante es dar como recibir.'] }
           ],
         },
         {
@@ -225,7 +305,7 @@ export const supportNetworkPath: Path = {
           content: [
             {
               type: 'paragraph',
-              text: 'Identificar quién te nutre no significa cortar con todo lo demás, sino dar prioridad a lo que te fortalece y protegerte de lo que te drena.   En las siguientes pantallas trabajaremos con dos ejercicios prácticos para que mapees tu red de apoyo y descubras quiénes son tus verdaderas personas refugio.  Te sorprenderá ver que, al ponerlo por escrito, la imagen de tu red social cambia… y mucho.  RECUERDA no romper nada',
+              text: 'Identificar quién te nutre no significa cortar con todo lo demás, sino dar prioridad a lo que te fortalece y protegerte de lo que te drena.   En las siguientes pantallas trabajaremos con dos ejercicios prácticos para que mapees tu red de apoyo y descubras quiénes son tus verdaderas personas refugio.  Te sorprenderá ver que, al ponerlo por escrito, la imagen de tu red social cambia… y mucho. ',
             },
           ],
         },
@@ -246,7 +326,7 @@ export const supportNetworkPath: Path = {
         },
         {
           type: 'vitaminMomentExercise',
-          title: 'Micropráctica: "Mi momento vitamina"',
+          title: 'MICROPRÁCTICA: MI MOMENTO VITAMINA',
           objective: 'Objetivo: entrenar la atención para detectar y reforzar microvínculos positivos en el día a día. Cada noche, antes de dormir, recuerda un momento del día en el que alguien te haya hecho sentir escuchado/a, acompañado/a o simplemente bien. Puede ser un mensaje, una sonrisa, una llamada o un gesto.',
           duration: '2-3 min',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta11/tecnicas/Ruta11semana2microreal.mp3`,
