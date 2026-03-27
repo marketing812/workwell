@@ -118,7 +118,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
           <form onSubmit={handleSave} className="p-4 space-y-4 text-center animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Cierre</h4>
             <p className="text-sm text-muted-foreground">Has practicado tu ensayo mental calmado. Recuerda: no buscamos que la ansiedad desaparezca por completo, sino entrenar a tu mente a responder con más calma. Con cada práctica, reduces la brecha entre el miedo anticipado y tu capacidad real.</p>
-            <blockquote className="italic text-primary pt-2">"Tu mente es un gimnasio: cuanto más ensayas la calma, más fuerte se vuelve."</blockquote>
+            <blockquote className="italic text-primary pt-2">Tu mente es un gimnasio: cuanto más ensayas la calma, más fuerte se vuelve.</blockquote>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               {!isSaved ? (

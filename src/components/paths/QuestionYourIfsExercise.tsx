@@ -175,7 +175,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
             <h4 className="font-bold text-lg">¡Práctica Guardada!</h4>
             <p className="text-sm text-muted-foreground">Lo que has hecho ahora es como sacar la lupa de la ansiedad y ponerte unas gafas más neutrales. La neurociencia lo confirma: cuando pones a prueba un pensamiento en lugar de creerlo al pie de la letra, la corteza prefrontal se activa y la amígdala se calma. Dicho de forma sencilla: tu parte racional gana terreno y tu alarma interna baja el volumen.</p>
-            <blockquote className="italic">“Un pensamiento no es un hecho: es una hipótesis de tu mente. Y tú tienes el poder de revisarla.”</blockquote>
+            <blockquote className="italic">Un pensamiento no es un hecho: es una hipótesis de tu mente. Y tú tienes el poder de revisarla.</blockquote>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               

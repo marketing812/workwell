@@ -1,5 +1,6 @@
-﻿import cors from "cors";
+import cors from "cors";
 import CryptoJS from "crypto-js";
+import {createHmac, randomUUID} from "crypto";
 import express, {Request, Response} from "express";
 import {getApps, initializeApp} from "firebase-admin/app";
 import {getAuth} from "firebase-admin/auth";
@@ -11,12 +12,17 @@ app.use(express.json());
 
 const EXTERNAL_SERVICES_BASE_URL =
   process.env.EXTERNAL_SERVICES_BASE_URL || "https://workwellfut.com";
-const EXTERNAL_SERVICES_BASE_URLSERVICIOS = "https://workwellfut.com";
+const EXTERNAL_SERVICES_BASE_URLSERVICIOS =
+  process.env.EXTERNAL_SERVICES_BASE_URLSERVICIOS ||
+  "https://webservicesemotiva-d9athhgdbzdyguhh.spaincentral-01.azurewebsites.net";
 const DAILY_QUESTION_KEY =
   process.env.DAILY_QUESTION_KEY || "SJDFgfds788sdfs8888KLLLL";
 const NOTEBOOK_API_BASE =
   `${EXTERNAL_SERVICES_BASE_URLSERVICIOS}/wp-content/programacion/wscontenido.php`;
-const NOTEBOOK_API_KEY = process.env.NOTEBOOK_API_KEY || "4463";
+const NOTEBOOK_API_KEY =
+  process.env.WS_API_KEY || process.env.NOTEBOOK_API_KEY || "4463";
+const NOTEBOOK_TOKEN_SECRET =
+  process.env.WS_TOKEN_SECRET || process.env.DAILY_QUESTION_KEY || "CHANGE_ME";
 const NOTEBOOK_TIMEOUT_MS = 15000;
 const SECRET_KEY =
   process.env.ENCRYPTION_SECRET || "0123456789abcdef0123456789abcdef";
@@ -222,6 +228,34 @@ function forceEncryptStringAES(value: string): string {
   });
 }
 
+function toBase64Url(value: string): string {
+  return Buffer.from(value, "utf8")
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+function buildNotebookSignedToken(input: {
+  tipo: string;
+  usuario?: string;
+  idusuario?: string;
+  ttlSeconds?: number;
+}): string {
+  const payload = {
+    exp: Math.floor(Date.now() / 1000) + (input.ttlSeconds ?? 60),
+    jti: randomUUID(),
+    tipo: input.tipo,
+    usuario: input.usuario ?? "",
+    idusuario: input.idusuario ?? "",
+  };
+  const payloadB64 = toBase64Url(JSON.stringify(payload));
+  const signature = createHmac("sha256", NOTEBOOK_TOKEN_SECRET)
+    .update(payloadB64)
+    .digest("hex");
+
+  return `${payloadB64}.${signature}`;
+}
 function encryptDataAES(obj: unknown): string {
   const json = JSON.stringify(obj);
   const iv = CryptoJS.enc.Utf8.parse(SECRET_KEY.substring(0, 16));
@@ -458,9 +492,11 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
         message: "Faltan datos en la peticion.",
       });
     }
-    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const token = Buffer.from(`${DAILY_QUESTION_KEY}|${fecha}`).toString("base64");
     const base64UserId = Buffer.from(String(userId)).toString("base64");
+    const token = buildNotebookSignedToken({
+      tipo: "guardaclima",
+      idusuario: base64UserId,
+    });
     const encryptedPayload = encryptDataAES({codigo: questionCode, respuesta: answer});
     const saveUrl =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardaclima` +
@@ -597,10 +633,11 @@ app.post("/department/validate", async (req: Request, res: Response) => {
       });
     }
 
+    const token = buildNotebookSignedToken({tipo: "getdepartamento"});
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${encodeURIComponent(NOTEBOOK_API_KEY)}` +
       `&tipo=getdepartamento` +
-      `&token=${encodeURIComponent(departmentId)}` +
+      `&token=${encodeURIComponent(token)}` +
       `&departamento=${encodeURIComponent(departmentId)}` +
       `&iddepartamento=${encodeURIComponent(departmentId)}`;
 
@@ -760,8 +797,10 @@ app.post("/save-assessment", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, message: "Missing payload"});
     }
     const encryptedPayload = encryptDataAES(payloadToSave);
+    const token = buildNotebookSignedToken({tipo: "guardarevaluacion"});
     const saveUrl =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardarevaluacion` +
+      `&token=${encodeURIComponent(token)}` +
       `&datosEvaluacion=${encodeURIComponent(encryptedPayload)}`;
     const saveResponse = await fetch(saveUrl, {
       signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS),
@@ -805,10 +844,14 @@ app.post("/save-notebook-entry", async (req: Request, res: Response) => {
         message: "Faltan datos en la peticion.",
       });
     }
+    const token = buildNotebookSignedToken({
+      tipo: "guardarcuaderno",
+      idusuario: String(userId),
+    });
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(entryData));
     const saveUrl =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardarcuaderno` +
-      `&idusuario=${encodeURIComponent(userId)}&token=` +
+      `&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}` +
       `&datos=${encodeURIComponent(encryptedPayload)}`;
     const saveResponse = await fetch(saveUrl, {
       method: "GET",
@@ -860,6 +903,10 @@ app.post("/save-mood-check-in", async (req: Request, res: Response) => {
         error: "Faltan datos en la peticion.",
       });
     }
+    const token = buildNotebookSignedToken({
+      tipo: "guardaranimo",
+      idusuario: String(userId),
+    });
     const encryptedPayload = forceEncryptStringAES(JSON.stringify({
       mood,
       score,
@@ -867,7 +914,7 @@ app.post("/save-mood-check-in", async (req: Request, res: Response) => {
     }));
     const saveUrl =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardaranimo` +
-      `&idusuario=${encodeURIComponent(userId)}&token=` +
+      `&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}` +
       `&datos=${encodeURIComponent(encryptedPayload)}`;
     const saveResponse = await fetch(saveUrl, {
       method: "GET",
@@ -904,7 +951,10 @@ app.post("/save-mood-check-in", async (req: Request, res: Response) => {
 
 app.get("/trigger-reminder", async (_req: Request, res: Response) => {
   try {
-    const url = `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getavisoemail`;
+    const token = buildNotebookSignedToken({tipo: "getavisoemail"});
+    const url =
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getavisoemail` +
+      `&token=${encodeURIComponent(token)}`;
     const response = await fetch(url, {cache: "no-store"});
     if (!response.ok) {
       const text = await response.text();
@@ -935,9 +985,11 @@ app.get("/mood-check-ins", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, error: "User ID is required."});
     }
 
-    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const token = Buffer.from(`${DAILY_QUESTION_KEY}|${fecha}`).toString("base64");
     const base64UserId = Buffer.from(userId).toString("base64");
+    const token = buildNotebookSignedToken({
+      tipo: "getanimo",
+      idusuario: base64UserId,
+    });
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getanimo` +
       `&idusuario=${encodeURIComponent(base64UserId)}` +
@@ -995,9 +1047,11 @@ app.get("/notebook", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, error: "User ID is required."});
     }
 
-    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const token = Buffer.from(`${DAILY_QUESTION_KEY}|${fecha}`).toString("base64");
     const base64UserId = Buffer.from(userId).toString("base64");
+    const token = buildNotebookSignedToken({
+      tipo: "getcuaderno",
+      usuario: base64UserId,
+    });
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getcuaderno` +
       `&usuario=${encodeURIComponent(base64UserId)}` +
@@ -1087,9 +1141,14 @@ app.get("/assessments", async (req: Request, res: Response) => {
     }
 
     const encryptedUserId = forceEncryptStringAES(userId);
+    const token = buildNotebookSignedToken({
+      tipo: "getEvaluacion",
+      usuario: encryptedUserId,
+    });
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getEvaluacion` +
-      `&usuario=${encodeURIComponent(encryptedUserId)}`;
+      `&usuario=${encodeURIComponent(encryptedUserId)}` +
+      `&token=${encodeURIComponent(token)}`;
 
     const response = await fetch(url, {signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS)});
     const responseText = await response.text();
@@ -1134,6 +1193,10 @@ app.post("/save-autoregistro", async (req: Request, res: Response) => {
       });
     }
 
+    const token = buildNotebookSignedToken({
+      tipo: "guardarautoregistro",
+      idusuario: String(userId),
+    });
     const payload = {
       entry: {
         id: String(Date.now()),
@@ -1147,7 +1210,7 @@ app.post("/save-autoregistro", async (req: Request, res: Response) => {
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=guardarautoregistro` +
       `&idusuario=${encodeURIComponent(userId)}` +
-      `&token=` +
+      `&token=${encodeURIComponent(token)}` +
       `&datosactividad=${encodeURIComponent(encryptedPayload)}`;
 
     const response = await fetch(url, {
@@ -1189,14 +1252,28 @@ app.get("/autoregistros", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, error: "User ID is required."});
     }
 
-    const fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const token = Buffer.from(`${DAILY_QUESTION_KEY}|${fecha}`).toString("base64");
     const base64UserId = Buffer.from(userId).toString("base64");
+    const tokenUserRaw = buildNotebookSignedToken({
+      tipo: "getautoregistro",
+      idusuario: userId,
+    });
+    const tokenUsersRaw = buildNotebookSignedToken({
+      tipo: "getautoregistros",
+      idusuario: userId,
+    });
+    const tokenUserBase64 = buildNotebookSignedToken({
+      tipo: "getautoregistro",
+      idusuario: base64UserId,
+    });
+    const tokenUsersBase64 = buildNotebookSignedToken({
+      tipo: "getautoregistros",
+      idusuario: base64UserId,
+    });
     const candidateUrls = [
-      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistro&idusuario=${encodeURIComponent(userId)}&token=`,
-      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistros&idusuario=${encodeURIComponent(userId)}&token=`,
-      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistro&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`,
-      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistros&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(token)}`,
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistro&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(tokenUserRaw)}`,
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistros&idusuario=${encodeURIComponent(userId)}&token=${encodeURIComponent(tokenUsersRaw)}`,
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistro&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(tokenUserBase64)}`,
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=getautoregistros&idusuario=${encodeURIComponent(base64UserId)}&token=${encodeURIComponent(tokenUsersBase64)}`,
     ];
 
     for (const url of candidateUrls) {
@@ -1247,17 +1324,20 @@ app.post("/legacy/sync", async (req: Request, res: Response) => {
     }
 
     const userId = String((data as any).id || "").trim();
-    const departmentCode = String((data as any).department_code || "");
     if (!userId) {
       return res.status(400).json({success: false, error: "Falta id de usuario."});
     }
 
     const {id, name, email, department_code, ...encryptedData} = data as any;
+    const token = buildNotebookSignedToken({
+      tipo: type,
+      idusuario: userId,
+    });
     const encryptedPayload = forceEncryptStringAES(JSON.stringify(encryptedData));
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=${encodeURIComponent(type)}` +
       `&idusuario=${encodeURIComponent(userId)}` +
-      `&token=${encodeURIComponent(departmentCode)}` +
+      `&token=${encodeURIComponent(token)}` +
       `&datos=${encodeURIComponent(encryptedPayload)}`;
 
     const response = await fetch(url, {signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS)});
@@ -1282,9 +1362,14 @@ app.post("/legacy/delete-user", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, error: "Falta id de usuario."});
     }
 
+    const token = buildNotebookSignedToken({
+      tipo: "borrarusuario",
+      idusuario: userId,
+    });
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=borrarusuario` +
-      `&idusuario=${encodeURIComponent(userId)}`;
+      `&idusuario=${encodeURIComponent(userId)}` +
+      `&token=${encodeURIComponent(token)}`;
 
     const response = await fetch(url, {signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS)});
     if (!response.ok) {
