@@ -12,7 +12,7 @@ export function WelcomeIntroContent({ showContinue = false, onContinue }: Welcom
   return (
     <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 text-center">
       <h2 className="text-3xl md:text-4xl font-bold">Bienvenida</h2>
-      <p className="text-lg md:text-xl leading-relaxed">XXXXXX</p>
+      <p className="text-lg md:text-xl leading-relaxed">Bienvenido a EMOTIVA</p>
 
       <div className="w-full">
         <audio controls controlsList="nodownload" className="w-full">
