@@ -1,68 +1,73 @@
-
 "use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useTranslations } from '@/lib/translations';
-import { ArrowRight } from 'lucide-react';
-import { Logo } from '@/components/Logo';
-import { cn } from '@/lib/utils';
-import { WelcomeIntroContent } from '@/components/welcome/WelcomeIntroContent';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ArrowRight } from "lucide-react";
+import { Logo } from "@/components/Logo";
+import { cn } from "@/lib/utils";
+import { WelcomeIntroContent } from "@/components/welcome/WelcomeIntroContent";
 
-const WELCOME_SEEN_KEY = 'workwell-welcome-seen';
+const WELCOME_SEEN_KEY = "workwell-welcome-seen";
 
-type WelcomeStep = 'hola' | 'pregunta' | 'introduccion' | 'opciones';
+type WelcomeStep = "hola" | "pregunta" | "introduccion" | "opciones";
 
 export default function WelcomePage() {
-  const t = useTranslations();
-  const [step, setStep] = useState<WelcomeStep>('hola');
+  const router = useRouter();
+  const [step, setStep] = useState<WelcomeStep>("hola");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const fadeInTimer = setTimeout(() => setVisible(true), 100);
+    const hasSeenWelcome = typeof window !== "undefined" && localStorage.getItem(WELCOME_SEEN_KEY) === "true";
 
-    if (step === 'hola') {
-        const transitionTimer = setTimeout(() => {
-            setVisible(false);
-            setTimeout(() => setStep('pregunta'), 500); // Change step after fade out
-        }, 4100); // Duration of 'hola' screen
-
-        return () => {
-            clearTimeout(fadeInTimer);
-            clearTimeout(transitionTimer);
-        };
+    if (hasSeenWelcome) {
+      setStep("opciones");
+      setVisible(true);
+      return;
     }
+
+    const fadeInTimer = setTimeout(() => setVisible(true), 100);
+    const transitionTimer = setTimeout(() => {
+      setVisible(false);
+      setTimeout(() => setStep("pregunta"), 500);
+    }, 4100);
+
+    return () => {
+      clearTimeout(fadeInTimer);
+      clearTimeout(transitionTimer);
+    };
   }, []);
 
   useEffect(() => {
-    if (step === 'pregunta' || step === 'introduccion' || step === 'opciones') {
+    if (step === "pregunta" || step === "introduccion" || step === "opciones") {
       const fadeInTimer = setTimeout(() => setVisible(true), 100);
       return () => clearTimeout(fadeInTimer);
     }
   }, [step]);
-  
+
   const handleShowIntro = () => {
-      setVisible(false);
-      setTimeout(() => setStep('introduccion'), 500);
+    setVisible(false);
+    setTimeout(() => setStep("introduccion"), 500);
   };
 
-  const handleShowOptions = () => {
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(WELCOME_SEEN_KEY, 'true');
-      }
-      setVisible(false);
-      setTimeout(() => setStep('opciones'), 500);
-  }
+  const handleStartAssessment = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(WELCOME_SEEN_KEY, "true");
+    }
+    router.push("/assessment/guided");
+  };
 
   return (
     <div
       className={cn(
         "flex flex-col items-center justify-center text-center p-4 w-full min-h-screen transition-colors duration-500 ease-in-out",
-        (step === 'pregunta' || step === 'opciones') ? 'bg-primary text-primary-foreground' : 'bg-background text-primary'
+        step === "pregunta" || step === "opciones"
+          ? "bg-primary text-primary-foreground"
+          : "bg-background text-primary"
       )}
     >
       <div className="relative flex-grow flex flex-col items-center justify-center w-full">
-        {step === 'hola' && (
+        {step === "hola" && (
           <h1
             className={cn(
               "text-8xl md:text-9xl font-bold transition-opacity duration-500 ease-in-out",
@@ -73,7 +78,7 @@ export default function WelcomePage() {
           </h1>
         )}
 
-        {step === 'pregunta' && (
+        {step === "pregunta" && (
           <div
             className={cn(
               "flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out",
@@ -81,9 +86,7 @@ export default function WelcomePage() {
             )}
           >
             <Logo className="mb-12 text-primary-foreground" white />
-            <h1 className="text-6xl md:text-8xl font-bold mb-12">
-              ¿Cómo estás hoy?
-            </h1>
+            <h1 className="text-6xl md:text-8xl font-bold mb-12">¿Cómo estás hoy?</h1>
             <button
               onClick={handleShowIntro}
               className="mt-8 transition-transform duration-300 ease-in-out hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary-foreground/50 rounded-full"
@@ -94,37 +97,40 @@ export default function WelcomePage() {
           </div>
         )}
 
-        {step === 'introduccion' && (
+        {step === "introduccion" && (
           <div
             className={cn(
               "w-full max-w-4xl transition-opacity duration-500 ease-in-out",
               visible ? "opacity-100" : "opacity-0"
             )}
           >
-            <WelcomeIntroContent showContinue onContinue={handleShowOptions} />
+            <WelcomeIntroContent showContinue onContinue={handleStartAssessment} />
           </div>
         )}
 
-        {step === 'opciones' && (
-            <div
-                className={cn(
-                "flex flex-col items-center justify-center space-y-8 transition-opacity duration-500 ease-in-out",
-                visible ? "opacity-100" : "opacity-0"
-                )}
-            >
-                <Link href="/assessment/intro" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
-                    Descúbrete
-                </Link>
-                <Link href="/dashboard" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+        {step === "opciones" && (
+          <div
+            className={cn(
+              "flex flex-col items-center justify-center space-y-8 transition-opacity duration-500 ease-in-out",
+              visible ? "opacity-100" : "opacity-0"
+            )}
+          >
+             <Link href="/dashboard" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
                     Mi Panel
                 </Link>
-                <Link href="/paths" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+                   <Link href="/paths" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
                     Rutas
                 </Link>
-                 <Link href="/resources" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+             <Link href="/emotional-log" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+                    Mis autorregistros
+                </Link>
+             <Link href="/chatbot" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+                    Mentor IA
+                </Link>
+                   <Link href="/resources" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
                     Recursos
                 </Link>
-            </div>
+          </div>
         )}
       </div>
     </div>

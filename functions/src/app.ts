@@ -1,4 +1,4 @@
-import cors from "cors";
+﻿import cors from "cors";
 import CryptoJS from "crypto-js";
 import {createHmac, randomUUID} from "crypto";
 import express, {Request, Response} from "express";
@@ -14,7 +14,8 @@ const EXTERNAL_SERVICES_BASE_URL =
   process.env.EXTERNAL_SERVICES_BASE_URL || "https://workwellfut.com";
 const EXTERNAL_SERVICES_BASE_URLSERVICIOS =
   process.env.EXTERNAL_SERVICES_BASE_URLSERVICIOS ||
-  "https://webservicesemotiva-d9athhgdbzdyguhh.spaincentral-01.azurewebsites.net";
+  /*"https://webservicesemotiva-d9athhgdbzdyguhh.spaincentral-01.azurewebsites.net";*/
+  "https://workwellfut.com";
 const DAILY_QUESTION_KEY =
   process.env.DAILY_QUESTION_KEY || "SJDFgfds788sdfs8888KLLLL";
 const NOTEBOOK_API_BASE =

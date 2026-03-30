@@ -9,7 +9,7 @@ export default function BienvenidaPage() {
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle>Bienvenida</CardTitle>
-          <CardDescription>Introducción general de la app.</CardDescription>
+          <CardDescription>Introducción general de EMOTIVA.</CardDescription>
         </CardHeader>
         <CardContent>
           <WelcomeIntroContent />
