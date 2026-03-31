@@ -217,9 +217,9 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
       }
 
       notebookContent += `**Desvio: "${detour.label}"**\n`;
-      notebookContent += `Pregunta: Qué valor personal estás dejando de lado? | Respuesta: [${selectedValues.length > 0 ? selectedValues.join(", ") : "No especificados."}]\n`;
-      notebookContent += `Pregunta: Qué sientes después de actuar así? | Respuesta: [${selectedEmotions.length > 0 ? selectedEmotions.join(", ") : "No especificadas."}]\n`;
-      notebookContent += `Pregunta: Qué parte de ti busca protección o alivio en ese desvío? | Respuesta: [${selectedParts.length > 0 ? selectedParts.join(", ") : "No especificada."}]\n\n`;
+      notebookContent += `Pregunta: ¿Qué valor personal estás dejando de lado? | Respuesta: [${selectedValues.length > 0 ? selectedValues.join(", ") : "No especificados."}]\n`;
+      notebookContent += `Pregunta: ¿Qué sientes después de actuar así? | Respuesta: [${selectedEmotions.length > 0 ? selectedEmotions.join(", ") : "No especificadas."}]\n`;
+      notebookContent += `Pregunta: ¿Qué parte de ti busca protección o alivio en ese desvío? | Respuesta: [${selectedParts.length > 0 ? selectedParts.join(", ") : "No especificada."}]\n\n`;
     });
 
     notebookContent += `---\n**Mi compromiso de cambio y reconexión**\n\n`;
@@ -273,7 +273,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 de mi autenticidad.
               </p>
             </div>
-            <p className="text-sm italic text-muted-foreground">¿Piensa: qué cosas en tu vida se parecen a esto?</p>
+            <p className="text-sm italic text-muted-foreground">Piensa: ¿qué cosas en tu vida se parecen a esto?</p>
             <div className="flex justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />

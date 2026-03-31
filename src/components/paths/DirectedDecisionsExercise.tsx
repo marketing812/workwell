@@ -253,7 +253,7 @@ Pregunta: Qué pequeña acción puedes tomar mañana que honre ese valor? | Resp
           <form onSubmit={handleSave} className="p-4 space-y-4">
             <h4 className="font-semibold text-lg">Paso 3: Elige una acción para mañana</h4>
             <div className="space-y-2">
-              <Label htmlFor="tomorrow-action">Qué pequeña acción puedes tomar mañana que honre ese valor?</Label>
+              <Label htmlFor="tomorrow-action">¿Qué pequeña acción puedes tomar mañana que honre ese valor?</Label>
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={(e) => setTomorrowAction(e.target.value)} />
             </div>
             <div className="flex justify-between w-full mt-4">
