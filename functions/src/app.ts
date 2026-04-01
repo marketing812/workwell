@@ -950,6 +950,83 @@ app.post("/save-mood-check-in", async (req: Request, res: Response) => {
   }
 });
 
+app.post("/save-analytics-event", async (req: Request, res: Response) => {
+  try {
+    const userId = String(req.body?.userId || "").trim();
+    const eventName = String(req.body?.eventName || "").trim();
+    const eventCategory = String(req.body?.eventCategory || "").trim();
+    if (!userId || !eventName || !eventCategory) {
+      return res.status(400).json({
+        success: false,
+        error: "Faltan datos obligatorios: userId, eventName o eventCategory.",
+      });
+    }
+
+    const analyticsType =
+      process.env.WS_ANALYTICS_TIPO || process.env.ANALYTICS_SAVE_TYPE || "guardaranalitica";
+    const token = buildNotebookSignedToken({
+      tipo: analyticsType,
+      idusuario: userId,
+    });
+
+    const schemaVersionRaw = Number(req.body?.schemaVersion);
+    const clientTimestampRaw = String(req.body?.clientTimestamp || "").trim();
+    const eventDateRaw = String(req.body?.eventDate || "").trim();
+    const payload = req.body?.payload && typeof req.body.payload === "object" ?
+      req.body.payload :
+      {};
+
+    const analyticsPayload = {
+      schemaVersion: Number.isFinite(schemaVersionRaw) ? schemaVersionRaw : 1,
+      userId,
+      eventName,
+      eventCategory,
+      clientTimestamp: clientTimestampRaw || new Date().toISOString(),
+      eventDate: eventDateRaw || new Date().toISOString().slice(0, 10),
+      payload,
+      source: "workwell-web",
+    };
+
+    const encryptedPayload = forceEncryptStringAES(JSON.stringify(analyticsPayload));
+    const saveUrl =
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}` +
+      `&tipo=${encodeURIComponent(analyticsType)}` +
+      `&idusuario=${encodeURIComponent(userId)}` +
+      `&token=${encodeURIComponent(token)}` +
+      `&datos=${encodeURIComponent(encryptedPayload)}`;
+
+    const saveResponse = await fetch(saveUrl, {
+      method: "GET",
+      signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS),
+    });
+    const text = await saveResponse.text();
+
+    if (!saveResponse.ok) {
+      return res.status(502).json({
+        success: false,
+        error: `Error externo (${saveResponse.status}).`,
+        debugUrl: saveUrl,
+      });
+    }
+
+    const parsed = parseJsonFromNoisyText(text);
+    if (parsed && typeof parsed === "object" && parsed.status && parsed.status !== "OK") {
+      return res.status(400).json({
+        success: false,
+        error: parsed.message || "El servicio externo devolvio error.",
+        debugUrl: saveUrl,
+      });
+    }
+
+    return res.json({success: true});
+  } catch (error: any) {
+    const message = error?.name === "AbortError" ?
+      "Timeout al guardar evento de analitica." :
+      (error?.message || "Error interno");
+    return res.status(500).json({success: false, error: message});
+  }
+});
+
 app.get("/trigger-reminder", async (_req: Request, res: Response) => {
   try {
     const token = buildNotebookSignedToken({tipo: "getavisoemail"});

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { AppAnalyticsTracker } from '@/components/analytics/AppAnalyticsTracker';
 import DisableLegacySw from './DisableLegacySw';
 export default function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default function RootLayout({
           <FirebaseClientProvider>
             <UserProvider>
               <ActivePathProvider>
+                <AppAnalyticsTracker />
                 {children}
                 <Toaster />
               </ActivePathProvider>

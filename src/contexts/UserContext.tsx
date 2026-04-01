@@ -243,7 +243,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
 
       // Then, proceed to delete Firestore data
-      const collectionsToDelete = ["notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles"];
+      const collectionsToDelete = ["notebook_entries", "psychologicalAssessments", "userRoutes", "userPreferences", "journalEntries", "emotionalCheckIns", "userProfiles", "analyticsEvents"];
       const batch = writeBatch(db);
 
       for (const collectionName of collectionsToDelete) {
