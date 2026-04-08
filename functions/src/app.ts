@@ -1406,12 +1406,12 @@ app.post("/legacy/sync", async (req: Request, res: Response) => {
       return res.status(400).json({success: false, error: "Falta id de usuario."});
     }
 
-    const {id, name, email, department_code, ...encryptedData} = data as any;
+    const {id, ...legacyPayload} = data as any;
     const token = buildNotebookSignedToken({
       tipo: type,
       idusuario: userId,
     });
-    const encryptedPayload = forceEncryptStringAES(JSON.stringify(encryptedData));
+    const encryptedPayload = forceEncryptStringAES(JSON.stringify(legacyPayload));
     const url =
       `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}&tipo=${encodeURIComponent(type)}` +
       `&idusuario=${encodeURIComponent(userId)}` +

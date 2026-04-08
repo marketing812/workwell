@@ -371,7 +371,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                   </AccordionTrigger>
                   <AccordionContent className="pt-4 space-y-4">
                     <div className="space-y-2">
-                      <Label>1. Qué valor personal estás dejando de lado cuando esto ocurre?</Label>
+                      <Label>1. ¿Qué valor personal estás dejando de lado cuando esto ocurre?</Label>
                       {valueOptions.map((value) => (
                         <div key={value.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -410,7 +410,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                     </div>
 
                     <div className="space-y-2">
-                      <Label>2. Qué sientes después de actuar así?</Label>
+                      <Label>2. ¿Qué sientes después de actuar así?</Label>
                       {emotionOptions.map((emotion) => (
                         <div key={emotion.id} className="flex items-center space-x-2">
                           <Checkbox
@@ -449,7 +449,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                     </div>
 
                     <div className="space-y-2">
-                      <Label>3. Qué parte de ti busca protección o alivio en ese desvío?</Label>
+                      <Label>3. ¿Qué parte de ti busca protección o alivio en ese desvío?</Label>
                       {partOptions.map((part) => (
                         <div key={part.id} className="flex items-center space-x-2">
                           <Checkbox

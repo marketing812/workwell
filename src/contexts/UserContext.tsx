@@ -4,14 +4,13 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as deleteFirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, getDoc, getDocs, collection, writeBatch } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection, setDoc, writeBatch } from "firebase/firestore";
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { t } from '@/lib/translations';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
-import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { overwriteNotebookEntries, type NotebookEntry } from '@/data/therapeuticNotebookStore';
 import { deleteLegacyData } from '@/data/userUtils';
 
@@ -215,14 +214,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }, [router, auth]);
 
  const updateUser = useCallback(async (updatedData: Partial<Pick<User, 'name' | 'ageRange' | 'gender'>>) => {
-    if (!user || !user.id || !db) return;
-    
-    const userDocRef = doc(db, "users", user.id);
-    setDocumentNonBlocking(userDocRef, { ...updatedData, updatedAt: new Date().toISOString() }, { merge: true });
-    
-    setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
+    const authUid = auth?.currentUser?.uid;
+    if (!user || !user.id || !db || !authUid || authUid !== user.id) return;
 
-  }, [user, db]);
+    const userDocRef = doc(db, "users", user.id);
+    const nowIso = new Date().toISOString();
+
+    await setDoc(userDocRef, { ...updatedData, updatedAt: nowIso }, { merge: true });
+    setUser(prevUser => prevUser ? { ...prevUser, ...updatedData } : null);
+  }, [user, db, auth]);
 
   const deleteUserAccount = useCallback(async (): Promise<{ success: boolean; error?: string }> => {
     const currentUser = auth?.currentUser;

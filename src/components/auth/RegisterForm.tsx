@@ -14,11 +14,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
 import { createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { useAuth, useFirestore } from "@/firebase/provider";
+import { sendLegacyData } from "@/data/userUtils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
 
 const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
+const LEGACY_USER_SYNC_KEY_PREFIX = "workwell-legacy-user-synced-";
 const SHOW_INITIAL_EMOTIONAL_STATE = false;
 const DEFAULT_INITIAL_EMOTIONAL_STATE = 1;
 
@@ -172,23 +175,49 @@ export function RegisterForm() {
         validationResult.data.password
       );
       const firebaseUser = userCredential.user;
-      auth.languageCode = "es";
-      await sendEmailVerification(firebaseUser);
+      const nowIso = new Date().toISOString();
 
-      if (typeof window !== "undefined") {
-        const pendingLegacyPayload = {
-          id: firebaseUser.uid,
+      await setDoc(
+        doc(db, "users", firebaseUser.uid),
+        {
           name: validationResult.data.name || "",
           email: validationResult.data.email || "",
           gender: validationResult.data.gender || "",
           ageRange: validationResult.data.ageRange || "",
-          initialEmotionalState: validationResult.data.initialEmotionalState ?? "",
+          initialEmotionalState: validationResult.data.initialEmotionalState ?? DEFAULT_INITIAL_EMOTIONAL_STATE,
           department_code: departmentCode || "",
-        };
-        localStorage.setItem(
-          `${LEGACY_PENDING_USER_DATA_PREFIX}${firebaseUser.uid}`,
-          JSON.stringify(pendingLegacyPayload)
-        );
+          createdAt: nowIso,
+          updatedAt: nowIso,
+        },
+        { merge: true }
+      );
+
+      const legacyPayload = {
+        id: firebaseUser.uid,
+        name: validationResult.data.name || "",
+        email: validationResult.data.email || "",
+        gender: validationResult.data.gender || "",
+        ageRange: validationResult.data.ageRange || "",
+        initialEmotionalState: validationResult.data.initialEmotionalState ?? "",
+        department_code: departmentCode || "",
+        registeredAt: nowIso,
+      };
+
+      const { success: legacySynced } = await sendLegacyData(legacyPayload, "usuario");
+
+      auth.languageCode = "es";
+      await sendEmailVerification(firebaseUser);
+
+      if (typeof window !== "undefined") {
+        const pendingLegacyKey = `${LEGACY_PENDING_USER_DATA_PREFIX}${firebaseUser.uid}`;
+        const syncedLegacyKey = `${LEGACY_USER_SYNC_KEY_PREFIX}${firebaseUser.uid}`;
+
+        if (legacySynced) {
+          localStorage.setItem(syncedLegacyKey, "1");
+          localStorage.removeItem(pendingLegacyKey);
+        } else {
+          localStorage.setItem(pendingLegacyKey, JSON.stringify(legacyPayload));
+        }
       }
 
       try {
