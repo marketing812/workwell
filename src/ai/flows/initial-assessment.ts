@@ -11,6 +11,7 @@ import {z} from 'genkit';
 import { assessmentDimensions } from '@/data/assessmentDimensions';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { googleAI } from '@genkit-ai/google-genai';
+import { buildPriorityAreaNames } from '@/lib/assessmentRecommendations';
 
 
 const InitialAssessmentInputSchema = z.object({
@@ -42,6 +43,7 @@ const AIResponseSchema = z.object({
 const PromptHandlebarsInputSchema = z.object({
   dimensionCalculations: z.array(z.string()).describe('An array of strings, each summarizing the pre-calculated weighted average for a dimension.'),
   dimensionNamesForPrompt: z.array(z.string()).describe('An array of all dimension names for reference within the prompt.'),
+  calculatedPriorityAreas: z.array(z.string()).min(3).max(3).describe('The 3 priority dimensions calculated by business rules.'),
 });
 type PromptHandlebarsInput = z.infer<typeof PromptHandlebarsInputSchema>;
 
@@ -89,9 +91,19 @@ export async function initialAssessment(input: InitialAssessmentInput): Promise<
     }
   });
 
+  const calculatedPriorityAreas = buildPriorityAreaNames({
+    assessmentDimensions: includedDimensions,
+    resolveDimensionScore: (dimension) => {
+      const score = dimensionScores[dimension.name];
+      return Number.isFinite(score) ? score : null;
+    },
+    maxAreas: 3,
+  });
+
   const handlebarsInputForPrompt: PromptHandlebarsInput = {
       dimensionCalculations: dimensionCalculationsForPrompt,
       dimensionNamesForPrompt: includedDimensions.map(d => d.name),
+      calculatedPriorityAreas,
   };
   
   return initialAssessmentFlow(handlebarsInputForPrompt);
@@ -115,7 +127,8 @@ Based on these pre-calculated scores, please perform the following tasks IN SPAN
 1.  **Emotional Profile (emotionalProfileJSON)**: Based on the pre-calculated scores provided above, construct a JSON STRING. The keys must be the dimension names and the values must be the NUMERIC scores provided.
     Dimension Names: {{#each dimensionNamesForPrompt}} "{{this}}"{{#unless @last}}, {{/unless}}{{/each}}.
 
-2.  **Priority Areas (priorityAreas)**: Identify EXACTLY 3 psychological dimensions (using their full names) that you consider priority areas for the user to focus on for their development or well-being. These should be the areas with the lowest scores.
+2.  **Priority Areas (priorityAreas)**: Use EXACTLY these 3 psychological dimensions as the priority areas, preserving the given order:
+    {{#each calculatedPriorityAreas}} "{{this}}"{{#unless @last}}, {{/unless}}{{/each}}.
 
 3.  **Feedback (feedback)**: Provide a concise (2-3 paragraphs), empathetic, and constructive overall summary of the assessment. This feedback must be encouraging, acknowledge potential strengths (higher scores), and gently highlight areas for growth (lower scores) based on the profile. Avoid overly technical jargon. Frame it as a starting point for self-discovery.
 
@@ -169,7 +182,7 @@ const initialAssessmentFlow = ai.defineFlow(
 
     const finalOutput: InitialAssessmentOutput = {
       emotionalProfile: parsedEmotionalProfile,
-      priorityAreas: aiResponse.priorityAreas,
+      priorityAreas: flowInput.calculatedPriorityAreas,
       feedback: aiResponse.feedback,
     };
    // console.log('InitialAssessmentFlow END: Returning finalOutput to action:', JSON.stringify(finalOutput, null, 2));

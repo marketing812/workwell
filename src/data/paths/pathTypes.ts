@@ -1054,6 +1054,8 @@ export interface AssessmentDimension {
   id: string;
   name: string; // The user-facing name of the dimension
   definition: string;
+  pesoA?: number;
+  pesoB?: number;
   items: AssessmentItem[]; // The questions related to this dimension
   recommendedPathId?: string; // Optional ID of a path recommended for this dimension
 }

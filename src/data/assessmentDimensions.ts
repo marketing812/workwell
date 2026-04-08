@@ -6,8 +6,10 @@ export interface AssessmentItem {
     isInverse?: boolean;
   }
   
-  export interface AssessmentDimension {
+export interface AssessmentDimension {
     id: string;
+    pesoA?: number;
+    pesoB?: number;
     name: string;
     definition: string;
     recommendedPathId?: string;
@@ -17,6 +19,8 @@ export interface AssessmentItem {
   export const assessmentDimensions: AssessmentDimension[] = [
     {
       "id": "dim1",
+      "pesoA": 13,
+      "pesoB": 13,
       "name": "Regulación Emocional y Estrés",
       "definition": "Capacidad para gestionar emociones difíciles, mantener el equilibrio en momentos de tensión y responder con serenidad frente a la incertidumbre o el conflicto.",
       "recommendedPathId": "gestion-estres",
@@ -29,6 +33,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim2",
+      "pesoA": 11,
+      "pesoB": 9,
       "name": "Flexibilidad Mental y Adaptabilidad",
       "definition": "Capacidad para abrirse a nuevas ideas, aceptar el cambio como parte natural de la vida y adaptarse mentalmente a escenarios inciertos o inesperados.",
       "recommendedPathId": "tolerar-incertidumbre",
@@ -41,6 +47,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim3",
+      "pesoA": 9,
+      "pesoB": 7,
       "name": "Autorregulación personal y constancia",
       "definition": "Capacidad de organizarse, mantenerse disciplinado/a y cumplir con lo que uno se propone, incluso cuando requiere esfuerzo o perseverancia.",
       "recommendedPathId": "superar-procrastinacion",
@@ -53,6 +61,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim4",
+      "pesoA": 5,
+      "pesoB": 3,
       "name": "Autoafirmación y Expresión Personal",
       "definition": "Capacidad de expresar opiniones, necesidades y límites de forma clara y segura, manteniendo el respeto por uno mismo y por los demás.",
       "recommendedPathId": "poner-limites",
@@ -65,6 +75,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim5",
+      "pesoA": 4,
+      "pesoB": 2,
       "name": "Empatía y Conexión Interpersonal",
       "definition": "Capacidad de ponerse en el lugar del otro, construir vínculos saludables y actuar desde la comprensión y el respeto mutuo.",
       "recommendedPathId": "relaciones-autenticas",
@@ -77,6 +89,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim6",
+      "pesoA": 10,
+      "pesoB": 8,
       "name": "Insight y Autoconciencia",
       "definition": "Capacidad de observarse a uno mismo, reconocer patrones emocionales y conductuales y comprender cómo afectan a la vida personal y profesional.",
       "recommendedPathId": "comprender-mejor-cada-dia",
@@ -89,6 +103,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim7",
+      "pesoA": 8,
+      "pesoB": 6,
       "name": "Propósito Vital y Dirección Personal",
       "definition": "Claridad sobre lo que uno quiere lograr en la vida, conexión con los propios valores y motivación para avanzar hacia metas significativas.",
       "recommendedPathId": "volver-a-lo-importante",
@@ -101,6 +117,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim8",
+      "pesoA": 12,
+      "pesoB": 10,
       "name": "Estilo de Afrontamiento",
       "definition": "Estilo de enfrentar los desafíos con determinación, capacidad de adaptación y actitud constructiva ante las dificultades.",
       "recommendedPathId": "resiliencia-en-accion",
@@ -113,6 +131,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim9",
+      "pesoA": 3,
+      "pesoB": 1,
       "name": "Integridad y Coherencia Ética",
       "definition": "Capacidad de actuar de acuerdo con valores personales sólidos, ser coherente entre lo que se piensa, se siente y se hace, y tener sensibilidad ética en las decisiones.",
       "recommendedPathId": "vivir-con-coherencia",
@@ -125,6 +145,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim10",
+      "pesoA": 7,
+      "pesoB": 5,
       "name": "Responsabilidad Personal y Aceptación Consciente",
       "definition": "Capacidad de reconocer el papel que uno tiene en las situaciones que atraviesa, asumir la parte de responsabilidad sin caer en la culpa, y actuar desde la aceptación y el compromiso con el cambio.",
       "recommendedPathId": "ni-culpa-ni-queja",
@@ -137,6 +159,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim11",
+      "pesoA": 6,
+      "pesoB": 4,
       "name": "Apoyo Social Percibido",
       "definition": "Grado en que la persona percibe tener apoyo emocional, instrumental y profesional disponible tanto en su vida personal como laboral. Evalúa la sensación de sentirse acompañado/a, comprendido/a y respaldado/a por otros.",
       "recommendedPathId": "confiar-en-mi-red",
@@ -149,6 +173,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim12",
+      "pesoA": 2,
+      "pesoB": 11,
       "name": "Estado de Ánimo",
       "definition": "Evaluación del estado de ánimo general y la presencia de síntomas relacionados con el desánimo o la anhedonia en las últimas semanas.",
       "recommendedPathId": "volver-a-lo-importante",
@@ -169,6 +195,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim13",
+      "pesoA": 1,
+      "pesoB": 12,
       "name": "Ansiedad Estado",
       "definition": "Evaluación del nivel de ansiedad y tensión experimentado en el momento presente o en los últimos días.",
       "recommendedPathId": "regular-ansiedad-paso-a-paso",
@@ -183,6 +211,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim14",
+      "pesoA": 1,
+      "pesoB": 1,      
       "name": "Rendimiento Autopercibido",
       "definition": "Evaluación de la satisfacción personal con el propio rendimiento laboral.",
       "items": [
@@ -191,6 +221,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim15",
+      "pesoA": 1,
+      "pesoB": 1,
       "name": "Eficacia Laboral",
       "definition": "Capacidad para completar tareas de manera eficiente y sin agotamiento excesivo.",
       "items": [
@@ -199,6 +231,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim16",
+      "pesoA": 1,
+      "pesoB": 1,
       "name": "Engagement",
       "definition": "Nivel de compromiso y sentimiento de valor dentro del equipo y la empresa.",
       "items": [
@@ -208,6 +242,8 @@ export interface AssessmentItem {
     },
     {
       "id": "dim17",
+      "pesoA": 1,
+      "pesoB": 1,
       "name": "Permanencia",
       "definition": "Intención de continuar en la empresa a medio plazo.",
       "items": [

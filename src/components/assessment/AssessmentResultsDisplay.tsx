@@ -34,10 +34,11 @@ import { formatAssessmentTimestamp } from '@/data/assessmentHistoryStore';
 import { pathsData } from '@/data/pathsData';
 import { useEffect, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { buildPriorityAreaNames, buildRecommendedPaths, rankDimensionsForRecommendations } from '@/lib/assessmentRecommendations';
 
 interface AssessmentResultsDisplayProps {
   results: InitialAssessmentOutput | null;
-  rawAnswers?: Record<string, { score: number, weight: number }> | null;
+  rawAnswers?: Record<string, { score: number, weight: number, pesoA?: number, pesoB?: number }> | null;
   userId?: string | null;
   onRetake: () => void;
   assessmentTimestamp?: string;
@@ -224,42 +225,25 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     },
   };
 
-  const safePriorityAreas = (() => {
-    const fromPayload = (Array.isArray(results.priorityAreas) ? results.priorityAreas : [])
-      .map((area) => String(area || "").trim())
-      .filter(Boolean);
+  const weightedPriorityRanking = rankDimensionsForRecommendations({
+    priorityAreas: Array.isArray(results.priorityAreas) ? results.priorityAreas : [],
+    assessmentDimensions,
+    resolveDimensionScore,
+  });
 
-    const fallbackFromProfile = assessmentDimensions
-      .map((dim) => ({
-        name: dim.name,
-        score: resolveDimensionScore(dim),
-      }))
-      .filter((item): item is { name: string; score: number } => Number.isFinite(item.score))
-      .sort((a, b) => a.score - b.score)
-      .map((item) => item.name);
-
-    const merged = [...new Set([...fromPayload, ...fallbackFromProfile])];
-    return merged.slice(0, 3);
-  })();
+  const safePriorityAreas = buildPriorityAreaNames({
+    priorityAreas: Array.isArray(results.priorityAreas) ? results.priorityAreas : [],
+    assessmentDimensions,
+    resolveDimensionScore,
+    maxAreas: 3,
+  });
 
   const pieChartData = safePriorityAreas.map((areaName) => {
-    const normalizedArea = normalizeDimensionKey(areaName);
-    const dimension = assessmentDimensions.find((d) => {
-      if (d.name === areaName) return true;
-      return normalizeDimensionKey(d.name) === normalizedArea;
-    });
-
-    const score =
-      dimension ?
-        resolveDimensionScore(dimension) :
-        normalizedProfile.get(normalizedArea) ?? null;
-    const boundedScore =
-      typeof score === "number" && Number.isFinite(score) ?
-        Math.max(0, Math.min(5, score)) :
-        2.5;
-
-    // Menor puntuación => mayor peso en "áreas prioritarias".
-    const priorityWeight = Math.max(0.05, 5 - boundedScore);
+    const rankedItem = weightedPriorityRanking.rankedDimensions.find(
+      (item) => item.dimension.name === areaName
+    );
+    const boundedScore = rankedItem?.score ?? 2.5;
+    const priorityWeight = Math.max(0.05, rankedItem?.weightedPriority ?? (5 - boundedScore));
 
     return {
       name: areaName,
@@ -370,22 +354,13 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
     );
   };
   
-  const recommendedPaths = safePriorityAreas.map(areaName => {
-    const normalizedArea = normalizeDimensionKey(areaName);
-    const dimension = assessmentDimensions.find((d) => {
-      if (d.name === areaName) return true;
-      return normalizeDimensionKey(d.name) === normalizedArea;
-    });
-    if (dimension && dimension.recommendedPathId) {
-        const path = pathsData.find(p => p.id === dimension.recommendedPathId);
-        if (path) {
-            return path;
-        }
-    }
-    return null;
-  }).filter((path): path is NonNullable<typeof path> => path !== null);
-
-  const uniqueRecommendedPaths = Array.from(new Map(recommendedPaths.map(p => [p.id, p])).values());
+  const uniqueRecommendedPaths = buildRecommendedPaths({
+    priorityAreas: safePriorityAreas,
+    assessmentDimensions,
+    pathsData,
+    resolveDimensionScore,
+    maxPaths: 3,
+  });
 
   const startCarePath = uniqueRecommendedPaths.length > 0
     ? `/paths/${uniqueRecommendedPaths[0].id}`
