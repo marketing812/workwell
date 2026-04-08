@@ -133,7 +133,7 @@ function normalizeAssessmentEntry(raw: any, index: number): AssessmentRecord | n
 
 export default function DashboardPage() {
   const t = useTranslations();
-  const { user, fetchUserProfile } = useUser();
+  const { user } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
 
@@ -216,16 +216,16 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
     if (user?.id) {
       loadEntries();
       loadLatestAssessment();
     } else {
-        setIsLoadingEntries(false);
+      setIsLoadingEntries(false);
     }
-     if (user && user.id && !user.ageRange) { 
-      fetchUserProfile(user.id);
-    }
-  }, [user, fetchUserProfile, loadEntries, loadLatestAssessment]);
+  }, [user?.id, loadEntries, loadLatestAssessment]);
 
 
   const chartData = useMemo(() => {

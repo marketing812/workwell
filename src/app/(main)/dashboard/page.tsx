@@ -131,7 +131,7 @@ function normalizeAssessmentEntry(raw: any, index: number): AssessmentRecord | n
 
 export default function DashboardPage() {
   const t = useTranslations();
-  const { user, fetchUserProfile } = useUser();
+  const { user } = useUser();
   const { toast } = useToast();
   const { activePath: currentActivePath } = useActivePath();
   const { forceOpen: forceDailyCheckInOpen } = useDailyCheckIn();
@@ -259,17 +259,16 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
     if (user?.id) {
       loadMoodCheckIns();
       loadLatestAssessment();
     } else {
-        setIsLoading(false);
+      setIsLoading(false);
     }
-     if (user && user.id && !user.ageRange) { 
-      fetchUserProfile(user.id);
-    }
-
-  }, [user, fetchUserProfile, loadMoodCheckIns, loadLatestAssessment]);
+  }, [user?.id, loadMoodCheckIns, loadLatestAssessment]);
 
   const lastMood = useMemo(() => {
     if (allMoodCheckIns.length === 0) return null;

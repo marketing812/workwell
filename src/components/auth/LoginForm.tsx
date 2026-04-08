@@ -46,15 +46,17 @@ export function LoginForm() {
 
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
-  const completeVerifiedLogin = (fbUser: FirebaseUser) => {
+  const completeVerifiedLogin = async (fbUser: FirebaseUser) => {
     const legacySyncKey = `${LEGACY_USER_SYNC_KEY_PREFIX}${fbUser.uid}`;
     const alreadySynced = typeof window !== "undefined" && localStorage.getItem(legacySyncKey) === "1";
 
     if (!alreadySynced) {
       let pendingData: any = {};
+      let hasPendingPayload = false;
       if (typeof window !== "undefined") {
         const pendingRaw = localStorage.getItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
         if (pendingRaw) {
+          hasPendingPayload = true;
           try {
             pendingData = JSON.parse(pendingRaw);
           } catch {
@@ -63,27 +65,29 @@ export function LoginForm() {
         }
       }
 
-      sendLegacyData(
-        {
-          id: fbUser.uid,
-          email: fbUser.email || "",
-          name: fbUser.displayName || "",
-          gender: pendingData.gender || "",
-          initialEmotionalState: pendingData.initialEmotionalState ?? "",
-          ageRange: pendingData.ageRange || "",
-          department_code: pendingData.department_code || "",
-          verifiedAt: new Date().toISOString(),
-        },
-        "usuario"
-      );
+      if (hasPendingPayload) {
+        const { success } = await sendLegacyData(
+          {
+            id: fbUser.uid,
+            email: pendingData.email || fbUser.email || "",
+            name: pendingData.name || fbUser.displayName || "",
+            gender: pendingData.gender || "",
+            initialEmotionalState: pendingData.initialEmotionalState ?? "",
+            ageRange: pendingData.ageRange || "",
+            department_code: pendingData.department_code || "",
+            verifiedAt: new Date().toISOString(),
+          },
+          "usuario"
+        );
 
-      if (typeof window !== "undefined") {
-        localStorage.setItem(legacySyncKey, "1");
-        localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+        if (typeof window !== "undefined" && success) {
+          localStorage.setItem(legacySyncKey, "1");
+          localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+        }
       }
     }
 
-    sendLegacyData({ id: fbUser.uid }, "guardarlogin");
+    await sendLegacyData({ id: fbUser.uid }, "guardarlogin");
 
     if (typeof window !== "undefined") {
       localStorage.setItem(LAST_LOGIN_AT_KEY, String(Date.now()));
@@ -144,7 +148,7 @@ export function LoginForm() {
         return;
       }
 
-      completeVerifiedLogin(userCredential.user);
+      await completeVerifiedLogin(userCredential.user);
     } catch (error: any) {
       console.error("Login Error:", error);
       let errorMessage = "Credenciales invalidas. Por favor, intentalo de nuevo.";
