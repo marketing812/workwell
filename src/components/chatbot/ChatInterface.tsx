@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from 'react';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -10,6 +11,7 @@ import { Loader2, Send, User, Bot } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
 import { cn } from '@/lib/utils';
 import { renderSimpleMarkdown } from '@/lib/chatFormatting';
+import { trackUserAnalyticsEvent } from '@/lib/analytics/user-analytics';
 
 interface Message {
   id: string;
@@ -25,10 +27,22 @@ type ServerChatbotResult =
 export function ChatInterface() {
   const t = useTranslations();
   const { user: currentUser } = useUser();
+  const pathname = usePathname();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const conversationIdRef = useRef<string>(crypto.randomUUID());
+  const userMessageCountRef = useRef<number>(0);
+  const assistantMessageCountRef = useRef<number>(0);
+  const sessionStartedRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    sessionStartedRef.current = false;
+    conversationIdRef.current = crypto.randomUUID();
+    userMessageCountRef.current = 0;
+    assistantMessageCountRef.current = 0;
+  }, [currentUser?.id]);
 
   useEffect(() => {
     // Add initial welcome message from bot.
@@ -62,6 +76,39 @@ export function ChatInterface() {
     }
   }, [messages]); // This effect depends on the 'messages' state.
 
+  useEffect(() => {
+    if (!currentUser?.id || sessionStartedRef.current) {
+      return;
+    }
+
+    sessionStartedRef.current = true;
+    trackUserAnalyticsEvent({
+        userId: currentUser.id,
+      category: 'chat',
+      eventName: 'chat_session_started',
+      payload: {
+        pagePath: pathname,
+        chatChannel: 'mentor_ia',
+        conversationId: conversationIdRef.current,
+      },
+    });
+
+    return () => {
+      trackUserAnalyticsEvent({
+        userId: currentUser.id,
+        category: 'chat',
+        eventName: 'chat_session_ended',
+        payload: {
+          pagePath: pathname,
+          chatChannel: 'mentor_ia',
+          conversationId: conversationIdRef.current,
+          userMessageCount: userMessageCountRef.current,
+          assistantMessageCount: assistantMessageCountRef.current,
+        },
+      });
+    };
+  }, [currentUser?.id, pathname]);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
@@ -75,6 +122,23 @@ export function ChatInterface() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    const requestStartedAt = performance.now();
+    userMessageCountRef.current += 1;
+
+    if (currentUser?.id) {
+      trackUserAnalyticsEvent({
+        userId: currentUser.id,
+        category: 'chat',
+        eventName: 'chat_user_message_sent',
+        payload: {
+          pagePath: pathname,
+          chatChannel: 'mentor_ia',
+          conversationId: conversationIdRef.current,
+          messageLength: userMessage.text.length,
+          messageIndex: userMessageCountRef.current,
+        },
+      });
+    }
 
     const context = messages
       .slice(-5)
@@ -108,6 +172,23 @@ export function ChatInterface() {
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, botMessage]);
+      assistantMessageCountRef.current += 1;
+
+      if (currentUser?.id) {
+        trackUserAnalyticsEvent({
+        userId: currentUser.id,
+          category: 'chat',
+          eventName: 'chat_ai_response_received',
+          payload: {
+            pagePath: pathname,
+            chatChannel: 'mentor_ia',
+            conversationId: conversationIdRef.current,
+            responseLength: botMessage.text.length,
+            responseIndex: assistantMessageCountRef.current,
+            latencyMs: Math.round(performance.now() - requestStartedAt),
+          },
+        });
+      }
     } else {
       const errorMessage: Message = {
         id: crypto.randomUUID(),
@@ -116,6 +197,21 @@ export function ChatInterface() {
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
+
+      if (currentUser?.id) {
+        trackUserAnalyticsEvent({
+        userId: currentUser.id,
+          category: 'chat',
+          eventName: 'chat_ai_response_failed',
+          payload: {
+            pagePath: pathname,
+            chatChannel: 'mentor_ia',
+            conversationId: conversationIdRef.current,
+            errorMessage: result.error?.slice(0, 250),
+            latencyMs: Math.round(performance.now() - requestStartedAt),
+          },
+        });
+      }
     }
   };
   
@@ -189,3 +285,6 @@ export function ChatInterface() {
     </div>
   );
 }
+
+
+

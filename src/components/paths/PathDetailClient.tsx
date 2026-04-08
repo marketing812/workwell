@@ -95,6 +95,26 @@ function getSharedDuration(contentItem: ModuleContent): string | null {
   return normalized.length > 0 ? normalized : null;
 }
 
+function getModuleWeekNumber(module: PathModule): number | null {
+  const idMatch = module.id.match(/(?:sem(?:ana)?|week)[_-]?(\d+)/i);
+  if (idMatch) {
+    const parsed = Number.parseInt(idMatch[1], 10);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  const titleMatch = module.title.match(/semana\s+(\d+)/i);
+  if (titleMatch) {
+    const parsed = Number.parseInt(titleMatch[1], 10);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  return null;
+}
+
 // RUTA 1
 const StressMapExercise = dynamic(() => import('@/components/paths/StressMapExercise'), { loading: LoaderComponent, ssr: false });
 const TriggerExercise = dynamic(() => import('@/components/paths/TriggerExercise'), { loading: LoaderComponent, ssr: false });
@@ -1130,52 +1150,67 @@ export function PathDetailClient({ path }: { path: Path }) {
 
   return (
     <div className="container mx-auto py-8">
-      <Card className="mb-12 shadow-xl overflow-hidden">
-        <div className="relative h-64 w-full">
-          <Image
-            src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/${encodeURIComponent(
-              path.title.replace(':', '')
-            )}_800x300.jpg`}
-            alt={path.title}
-            fill
-            className="object-cover"
-            data-ai-hint={path.dataAiHint || path.title}
-          />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
-            <h1 className="text-3xl md:text-5xl font-bold text-white text-center drop-shadow-lg">
-              {path.title}
-            </h1>
-          </div>
-        </div>
-        <CardContent className="p-8">
-          <p className="text-lg mt-2 text-center">{path.description}</p>
-          {path.audioUrl && (
-            <div className="mt-4 flex justify-center">
-              <audio
-                src={path.audioUrl}
-                controls
-                controlsList="nodownload"
-                className="w-full max-w-md h-10"
-              />
+      <div
+        data-analytics-context="path-overview"
+        data-analytics-path-id={path.id}
+        data-analytics-path-title={path.title}
+      >
+        <Card className="mb-12 shadow-xl overflow-hidden">
+          <div className="relative h-64 w-full">
+            <Image
+              src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/${encodeURIComponent(
+                path.title.replace(':', '')
+              )}_800x300.jpg`}
+              alt={path.title}
+              fill
+              className="object-cover"
+              data-ai-hint={path.dataAiHint || path.title}
+            />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center p-4">
+              <h1 className="text-3xl md:text-5xl font-bold text-white text-center drop-shadow-lg">
+                {path.title}
+              </h1>
             </div>
-          )}
-        </CardContent>
-      </Card>
+          </div>
+          <CardContent className="p-8">
+            <p className="text-lg mt-2 text-center">{path.description}</p>
+            {path.audioUrl && (
+              <div className="mt-4 flex justify-center">
+                <audio
+                  src={path.audioUrl}
+                  controls
+                  controlsList="nodownload"
+                  className="w-full max-w-md h-10"
+                />
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="space-y-6">
         {path.modules.map((module) => {
           const moduleAccess = moduleUnlockMap.get(module.id) ?? { isUnlocked: true };
           const isModuleLocked = !moduleAccess.isUnlocked;
+          const moduleWeekNumber = getModuleWeekNumber(module);
 
           return (
           <ModuleErrorBoundary key={module.id} pathId={path.id} module={module}>
-            <Card
-              className={`shadow-lg transition-all duration-300 hover:shadow-xl ${
-                completedModules.has(module.id)
-                  ? 'border-green-500/50 bg-green-50/30 dark:bg-green-900/10'
-                  : 'border-transparent'
-              } ${isModuleLocked ? 'opacity-70 pointer-events-none' : ''}`}
+            <div
+              data-analytics-context="path-module"
+              data-analytics-path-id={path.id}
+              data-analytics-path-title={path.title}
+              data-analytics-module-id={module.id}
+              data-analytics-module-title={module.title}
+              data-analytics-week-number={moduleWeekNumber ?? undefined}
             >
+              <Card
+                className={`shadow-lg transition-all duration-300 hover:shadow-xl ${
+                  completedModules.has(module.id)
+                    ? 'border-green-500/50 bg-green-50/30 dark:bg-green-900/10'
+                    : 'border-transparent'
+                } ${isModuleLocked ? 'opacity-70 pointer-events-none' : ''}`}
+              >
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">
                   <div className="flex items-center gap-4">
@@ -1245,7 +1280,8 @@ export function PathDetailClient({ path }: { path: Path }) {
                   {isModuleLocked ? "Módulo bloqueado" : completedModules.has(module.id) ? "Completado" : "Marcar como completado"}
                 </Button>
               </CardFooter>
-            </Card>
+              </Card>
+            </div>
           </ModuleErrorBoundary>
           );
         })}

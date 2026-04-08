@@ -96,6 +96,11 @@ service cloud.firestore {
       match /userPreferences/{userPreferenceId} {
         allow get, list, create, update, delete: if isOwner(userId);
       }
+
+      match /analyticsEvents/{analyticsEventId} {
+        allow get, list, create: if isOwner(userId);
+        allow update, delete: if false;
+      }
     }
 
 
