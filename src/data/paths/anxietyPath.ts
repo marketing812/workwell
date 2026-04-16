@@ -119,7 +119,7 @@ export const anxietyPath: Path = {
           type: 'therapeuticNotebookReflection', 
           title: 'Reflexión Final de la Semana', 
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13reflexioncuaderno.mp3`,
-          prompts: ['<ul><li>¿Qué he descubierto sobre mi manera de interpretar la ansiedad?</li><li>¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?</li><li>¿Qué cambió en mí cuando las observé en vez de pelear con ellas?</li></ul>']
+          prompts: ['<ul><li>¿Qué he descubierto sobre mi manera de interpretar la ansiedad?</li><li>¿Qué sensaciones me resultan más difíciles de aceptar y qué pensamientos suelen acompañarlas?</li><li>¿Qué ha cambiado en mí al observarlas en vez de pelear con ellas?</li></ul>']
         },
         { type: 'title', text: 'Resumen Clave' },
         { type: 'paragraphWithAudio', text: '', audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/semana1/Ruta13resumenclave.mp3` },

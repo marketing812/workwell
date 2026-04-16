@@ -16,6 +16,20 @@ export default function WelcomePage() {
   const router = useRouter();
   const [step, setStep] = useState<WelcomeStep>("hola");
   const [visible, setVisible] = useState(false);
+  const [introScreen, setIntroScreen] = useState(1);
+
+  useEffect(() => {
+    const previousBodyBackground = document.body.style.backgroundColor;
+    const previousHtmlBackground = document.documentElement.style.backgroundColor;
+
+    document.body.style.backgroundColor = "#ffffff";
+    document.documentElement.style.backgroundColor = "#ffffff";
+
+    return () => {
+      document.body.style.backgroundColor = previousBodyBackground;
+      document.documentElement.style.backgroundColor = previousHtmlBackground;
+    };
+  }, []);
 
   useEffect(() => {
     const hasSeenWelcome = typeof window !== "undefined" && localStorage.getItem(WELCOME_SEEN_KEY) === "true";
@@ -57,16 +71,25 @@ export default function WelcomePage() {
     router.push("/assessment/guided");
   };
 
+  const isImmersiveIntro = step === "introduccion" && introScreen === 2;
+
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center text-center p-4 w-full min-h-screen transition-colors duration-500 ease-in-out",
+        "flex flex-col items-center text-center w-full min-h-screen transition-colors duration-500 ease-in-out",
+        isImmersiveIntro ? "justify-start p-0" : "justify-center p-4",
         step === "pregunta" || step === "opciones"
           ? "bg-primary text-primary-foreground"
-          : "bg-background text-primary"
+          : "bg-white text-primary"
       )}
+      style={step === "pregunta" || step === "opciones" ? undefined : { backgroundColor: "#ffffff" }}
     >
-      <div className="relative flex-grow flex flex-col items-center justify-center w-full">
+      <div
+        className={cn(
+          "relative flex-grow flex flex-col items-center w-full",
+          isImmersiveIntro ? "justify-start" : "justify-center"
+        )}
+      >
         {step === "hola" && (
           <h1
             className={cn(
@@ -104,7 +127,11 @@ export default function WelcomePage() {
               visible ? "opacity-100" : "opacity-0"
             )}
           >
-            <WelcomeIntroContent showContinue onContinue={handleStartAssessment} />
+            <WelcomeIntroContent
+              showContinue
+              onContinue={handleStartAssessment}
+              onScreenChange={setIntroScreen}
+            />
           </div>
         )}
 

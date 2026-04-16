@@ -238,7 +238,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                 {content.audioUrl && (
                     <div className="mt-4">
                         <audio controls controlsList="nodownload" className="w-full">
-                            <source src={content.audioUrl} type="audio/mp3" />
+                            <source src={content.audioUrl} type="audio/mpeg" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>

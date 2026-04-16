@@ -49,21 +49,21 @@ export default function SelfAcceptanceAudioExercise({ content, pathId, onComplet
                     <div>
                         <h4 className="font-semibold text-foreground">Objetivo terapéutico</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2primeraparte.mp3`} type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2primeraparte.mp3`} type="audio/mpeg" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                     <div>
                         <h4 className="font-semibold text-foreground">Práctica de autoaceptación guiada</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3`} type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2meditacion.mp3`} type="audio/mpeg" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>
                      <div>
                         <h4 className="font-semibold text-foreground">Micropráctica</h4>
                         <audio controls controlsList="nodownload" className="w-full mt-1">
-                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2micropractica.mp3`} type="audio/mp3" />
+                            <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana2tecnica2micropractica.mp3`} type="audio/mpeg" />
                             Tu navegador no soporta el elemento de audio.
                         </audio>
                     </div>

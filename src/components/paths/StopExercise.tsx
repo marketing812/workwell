@@ -86,7 +86,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm text-muted-foreground">El objetivo de este primer paso es interrumpir el piloto automático ansioso (la reacción impulsiva de la amígdala) y crear un micro-espacio entre lo que pasa y lo que haces.</p>
             <div className="mt-4">
                 <audio key="audio-step-1" controls controlsList="nodownload" className="w-full">
-                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3`} type="audio/mp3" />
+                    <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1paso1stop.mp3`} type="audio/mpeg" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
@@ -126,7 +126,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
              <p className="text-sm text-muted-foreground">El objetivo del paso 2 es activar el freno parasimpático (nervio vago), reducir la hiperventilación y bajar la activación del cuerpo.</p>
              <div className="mt-4">
               <audio key="audio-step-2" controls controlsList="nodownload" className="w-full">
-                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3`} type="audio/mp3" />
+                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13semana3tecnica1respira.mp3`} type="audio/mpeg" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -166,7 +166,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm text-muted-foreground">El objetivo del tercer paso es pasar de “estar dentro del pensamiento” a mirarlo desde fuera. Observar pensamientos, emociones, sensaciones y entorno.</p>
              <div className="mt-4">
               <audio key="audio-step-3" controls controlsList="nodownload" className="w-full">
-                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica1observa.mp3`} type="audio/mp3" />
+                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica1observa.mp3`} type="audio/mpeg" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -209,7 +209,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             <p className="text-sm text-muted-foreground">El objetivo del último paso es practicar la aceptación activa (dejar estar sin luchar) y elegir la siguiente acción alineada con lo importante, aunque la ansiedad siga.</p>
             <div className="mt-4">
               <audio key="audio-step-4" controls controlsList="nodownload" className="w-full">
-                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3`} type="audio/mp3" />
+                  <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana3tecnica1permite.mp3`} type="audio/mpeg" />
                   Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -279,7 +279,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
           {contentTyped.audioUrl && (
             <div className="mt-4">
               <audio controls controlsList="nodownload" className="w-full">
-                <source src={contentTyped.audioUrl} type="audio/mp3" />
+                <source src={contentTyped.audioUrl} type="audio/mpeg" />
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>

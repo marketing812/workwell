@@ -1,8 +1,16 @@
 'use client';
 
+import { Capacitor } from '@capacitor/core';
 import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import {
+  browserLocalPersistence,
+  browserSessionPersistence,
+  getAuth,
+  inMemoryPersistence,
+  indexedDBLocalPersistence,
+  initializeAuth,
+} from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
 
 // IMPORTANT: DO NOT MODIFY THIS FUNCTION
@@ -33,33 +41,49 @@ export function initializeFirebase() {
 }
 
 export function getSdks(firebaseApp: FirebaseApp) {
-  // App Check (init una sola vez)
- /* if (typeof window !== 'undefined') {
-    initializeAppCheck(firebaseApp, {
-      provider: new ReCaptchaV3Provider(
-        process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY!
-      ),
-      isTokenAutoRefreshEnabled: true,
-    });
-  }*/
- const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY;
+  const isNativeCapacitor = typeof window !== 'undefined' && Capacitor.isNativePlatform();
+  const auth = (() => {
+    try {
+      if (isNativeCapacitor) {
+        return initializeAuth(firebaseApp, {
+          persistence: inMemoryPersistence,
+        });
+      }
 
-if (typeof window !== 'undefined' && siteKey) {
-  initializeAppCheck(firebaseApp, {
-    provider: new ReCaptchaV3Provider(siteKey),
-    isTokenAutoRefreshEnabled: true,
-  });
-} else if (typeof window !== 'undefined') {
-  console.warn('App Check no inicializado: falta NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY');
-}
+      return initializeAuth(firebaseApp, {
+        persistence: [
+          indexedDBLocalPersistence,
+          browserLocalPersistence,
+          browserSessionPersistence,
+        ],
+      });
+    } catch {
+      return getAuth(firebaseApp);
+    }
+  })();
+
+  if (typeof window !== 'undefined' && !isNativeCapacitor && siteKey) {
+    void import('firebase/app-check')
+      .then(({ initializeAppCheck, ReCaptchaV3Provider }) => {
+        initializeAppCheck(firebaseApp, {
+          provider: new ReCaptchaV3Provider(siteKey),
+          isTokenAutoRefreshEnabled: true,
+        });
+      })
+      .catch((error) => {
+        console.warn('No se pudo inicializar App Check en web.', error);
+      });
+  } else if (typeof window !== 'undefined' && !isNativeCapacitor) {
+    console.warn('App Check no inicializado: falta NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY');
+  }
+
   return {
     firebaseApp,
-    auth: getAuth(firebaseApp),
+    auth,
     firestore: getFirestore(firebaseApp, "defaultue")
   };
 }
-
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 
 

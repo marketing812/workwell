@@ -4,7 +4,15 @@ import Image from 'next/image';
 import { useTranslations } from '@/lib/translations';
 import { cn } from '@/lib/utils';
 
-export function Logo({className, white = false}: {className?: string; white?: boolean}) {
+export function Logo({
+  className,
+  imageClassName,
+  white = false,
+}: {
+  className?: string;
+  imageClassName?: string;
+  white?: boolean;
+}) {
   const t = useTranslations();
   return (
     <Link href="/welcome" className={cn('flex items-center', className)}>
@@ -15,6 +23,7 @@ export function Logo({className, white = false}: {className?: string; white?: bo
         height={32}
         className={cn(
           'h-8 w-auto',
+          imageClassName,
           white ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'
         )}
         priority

@@ -67,7 +67,7 @@ Pregunta: Recordatorio | Respuesta: ${reminder.type === 'Otro' ? reminder.custom
                 {content.objective}
                 <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana4tecnica2.mp3`} type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta10/tecnicas/Ruta10semana4tecnica2.mp3`} type="audio/mpeg" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

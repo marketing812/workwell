@@ -5,6 +5,7 @@ import { createContext, useContext, useState, useCallback, useEffect } from 'rea
 import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as deleteFirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
 import { doc, getDoc, getDocs, collection, writeBatch } from "firebase/firestore";
+import { Capacitor } from '@capacitor/core';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -20,6 +21,8 @@ const DEBUG_NOTEBOOK_FETCH_URL_KEY = "workwell-debug-notebook-fetch-url";
 const LAST_LOGIN_AT_KEY = "workwell-last-login-at";
 const WELCOME_SEEN_KEY = "workwell-welcome-seen";
 const MAX_SESSION_AGE_MS = 5 * 24 * 60 * 60 * 1000; // 5 dias
+const AUTH_INIT_TIMEOUT_MS = 6000;
+const IOS_FIRESTORE_AUTH_RETRY_DELAY_MS = 1200;
 
 export interface User {
   id: string;
@@ -107,10 +110,35 @@ export function UserProvider({ children }: { children: ReactNode }) {
           initialEmotionalState: userData.initialEmotionalState || null,
         }));
       }
-    } catch (error) {
+    } catch (error: any) {
+      const isNativeIos = Capacitor.getPlatform() === 'ios';
+      if (isNativeIos && error?.code === 'permission-denied') {
+        try {
+          await new Promise((resolve) => window.setTimeout(resolve, IOS_FIRESTORE_AUTH_RETRY_DELAY_MS));
+          const retryDoc = await getDoc(userDocRef);
+          if (retryDoc.exists()) {
+            const userData = retryDoc.data();
+            setUser(prevUser => ({
+              ...(prevUser as User),
+              id: userId,
+              name: userData.name || prevUser?.name || 'Usuario',
+              email: userData.email || prevUser?.email,
+              ageRange: userData.ageRange || null,
+              gender: userData.gender || null,
+              initialEmotionalState: userData.initialEmotionalState || null,
+            }));
+            return;
+          }
+        } catch (retryError) {
+          console.warn("iOS Firestore profile retry failed:", retryError);
+        }
+      }
       errorEmitter.emit('permission-error', new FirestorePermissionError({
         path: userDocRef.path,
         operation: 'get',
+        databaseId: (db as any)?._databaseId?.database ?? (db as any)?._databaseId ?? undefined,
+        originalErrorCode: error?.code,
+        originalErrorMessage: error?.message,
       }));
     }
   }, [db]);
@@ -122,7 +150,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    let authStateResolved = false;
+    const authInitTimeout = window.setTimeout(() => {
+      if (!authStateResolved) {
+        console.warn("Auth initialization timed out. Falling back to unauthenticated state.");
+        setUser(null);
+        setNotebookEntries([]);
+        setLoading(false);
+      }
+    }, AUTH_INIT_TIMEOUT_MS);
+
     const unsubscribe = onAuthStateChanged(auth, async (fbUser: FirebaseUser | null) => {
+      authStateResolved = true;
+      window.clearTimeout(authInitTimeout);
+
       if (fbUser) {
         setLoading(true);
         try {
@@ -158,17 +199,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
             email: fbUser.email,
           };
           setUser(minimalUser);
+          setLoading(false);
 
-          // Fetch critical profile, but don't block notebook loading
+          try {
+            await fbUser.getIdToken();
+          } catch (tokenError) {
+            console.warn("Could not prefetch auth token before Firestore access:", tokenError);
+          }
+
+          // Keep profile and notebook hydration in the background so auth never blocks navigation.
           await fetchUserProfile(fbUser.uid);
-          
-          // Fetch notebook in the background
           fetchAndSetNotebook(fbUser.uid);
 
         } catch (error) {
           console.error("Failed to initialize user session:", error);
         } finally {
-          // Unblock the UI after critical data (profile) is loaded
           setLoading(false);
         }
       } else {
@@ -178,7 +223,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    return () => unsubscribe();
+    return () => {
+      window.clearTimeout(authInitTimeout);
+      unsubscribe();
+    };
   }, [auth, db, fetchUserProfile, fetchAndSetNotebook, router, toast]);
 
   useEffect(() => {

@@ -136,15 +136,15 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
          <div className="space-y-4">
             <div>
                 <h5 className="font-semibold">Respiración 4-2-6</h5>
-                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mp3"/></audio>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_4-2-6.mp3`} type="audio/mpeg"/></audio>
             </div>
             <div>
                 <h5 className="font-semibold">Respiración diafragmática suave</h5>
-                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_diafragmatica.mp3`} type="audio/mp3"/></audio>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_respiracion_diafragmatica.mp3`} type="audio/mpeg"/></audio>
             </div>
             <div>
                 <h5 className="font-semibold">Anclaje sensorial inmediato (5-4-3-2-1)</h5>
-                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.mp3`} type="audio/mp3"/></audio>
+                <audio controls controlsList="nodownload" className="w-full h-10 mt-1"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/rm/R1_anclaje_sensorial_inmediato.mp3`} type="audio/mpeg"/></audio>
             </div>
         </div>
         <p className="text-sm italic text-primary pt-2">Respirar no es un descanso menor. Es una señal clara a tu cuerpo de que puede soltar el control.</p>
@@ -203,7 +203,7 @@ export default function RitualDeEntregaConscienteExercise({ content, pathId, onC
         {(content as any).audioUrl && (
             <div className="mt-4">
                 <audio controls controlsList="nodownload" className="w-full h-10">
-                    <source src={(content as any).audioUrl} type="audio/mp3" />
+                    <source src={(content as any).audioUrl} type="audio/mpeg" />
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>

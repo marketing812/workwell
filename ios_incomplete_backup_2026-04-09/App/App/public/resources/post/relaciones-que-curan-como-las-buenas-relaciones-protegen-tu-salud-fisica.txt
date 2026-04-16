@@ -1,0 +1,159 @@
+1:"$Sreact.fragment"
+2:I[16521,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"default"]
+3:I[48906,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ThemeProvider"]
+4:I[6511,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"FirebaseClientProvider"]
+5:I[29141,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"UserProvider"]
+6:I[14015,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ActivePathProvider"]
+7:I[15315,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"AppAnalyticsTracker"]
+8:I[9766,[],""]
+9:I[98924,[],""]
+a:I[18516,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"Toaster"]
+b:I[17989,[],"ClientSegmentRoot"]
+c:I[24784,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","6305","static/chunks/6305-ec82219fc1d069fd.js","7112","static/chunks/7112-8aa1de1c16a49340.js","784","static/chunks/784-2d9b37d01b82cf89.js","2619","static/chunks/2619-04bc32f026a0d946.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","2948","static/chunks/2948-dbd9114568d3e53b.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","1704","static/chunks/1704-5c0857bcf5e07861.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","2076","static/chunks/app/(main)/layout-39810fdfe78c5a4f.js"],"default"]
+f:I[24431,[],"OutletBoundary"]
+11:I[15278,[],"AsyncMetadataOutlet"]
+13:I[24431,[],"ViewportBoundary"]
+15:I[24431,[],"MetadataBoundary"]
+16:"$Sreact.suspense"
+18:I[57150,[],""]
+:HL["/_next/static/css/baabfbe2b368a81d.css","style"]
+0:{"P":null,"b":"0PYZozBcCzH44JNfrTPb3","p":"","c":["","resources","post","relaciones-que-curan-como-las-buenas-relaciones-protegen-tu-salud-fisica"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","relaciones-que-curan-como-las-buenas-relaciones-protegen-tu-salud-fisica","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/baabfbe2b368a81d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{}],["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$La",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$Lb",null,{"Component":"$c","slots":{"children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@d"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","relaciones-que-curan-como-las-buenas-relaciones-protegen-tu-salud-fisica","d"],["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Le",null,["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],null],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$16",null,{"fallback":null,"children":"$L17"}]}]}]]}],false]],"m":"$undefined","G":["$18",[]],"s":false,"S":true}
+d:"$0:f:0:1:2:children:1:props:children:1:props:params"
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+19:I[80622,[],"IconMark"]
+12:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L19","1",{}]],"error":null,"digest":"$undefined"}
+17:"$12:metadata"
+1a:T1cc6,
+<p><em>Las relaciones interpersonales de calidad son mucho más que un apoyo emocional: contribuyen a regular tus hormonas, refuerzan tu sistema inmune y favorecen tu bienestar general</em>&nbsp;</p>
+
+
+
+<p>¿Alguna vez has sentido que una conversación con alguien querido te “baja la fiebre emocional”? ¿O que un abrazo sincero te calma más que cualquier medicina? No es solo una sensación: es ciencia. Las relaciones humanas de calidad no solo alimentan nuestra mente y emociones, sino que tienen un impacto directo y profundo en nuestro cuerpo.&nbsp;</p>
+
+
+
+<p>¿Alguna vez has notado que hablar con alguien de confianza reduce tu tensión emocional? ¿O que un gesto de cercanía te ayuda a calmarte? No es casualidad. Las investigaciones muestran que las relaciones humanas de calidad no solo influyen en nuestro estado emocional, sino que también tienen efectos medibles en el cuerpo.&nbsp;</p>
+
+
+
+<p>Sentirte bien con las personas que te rodean&nbsp;<strong>no es un lujo emocional</strong>, es una necesidad biológica.&nbsp;</p>
+
+
+
+<p><strong>Tus relaciones hablan con tu cuerpo</strong>&nbsp;</p>
+
+
+
+<p>Cada vez que tienes una interacción positiva con alguien&nbsp;—una conversación auténtica, un gesto amable, un momento de conexión—&nbsp;tu sistema nervioso responde. Se activa el&nbsp;<strong>sistema de recompensa cerebral</strong>, disminuye la actividad en los centros del miedo, y se liberan&nbsp;hormonas&nbsp;como la oxitocina, la dopamina o las endorfinas&nbsp;(entre otras moléculas implicadas en la regulación del estrés), que regulan el estrés, fortalecen tu sistema inmune y estabilizan funciones vitales como la presión arterial o el ritmo cardíaco.&nbsp;</p>
+
+
+
+<p>Las relaciones, incluso las rutinarias, actúan como&nbsp;<strong>termostatos biológicos</strong>, regulando constantemente nuestro equilibrio interno. Un contacto físico afectuoso, por ejemplo, puede calmar zonas del cerebro asociadas a la amenaza y activar regiones ligadas al placer y la seguridad.&nbsp;</p>
+
+
+
+<p><strong>Más allá del corazón: tu sistema inmunológico también escucha</strong>&nbsp;</p>
+
+
+
+<p>El apoyo social contribuye a equilibrar el sistema nervioso,<strong>&nbsp;reducir los niveles de cortisol&nbsp;</strong>y disminuir la activación fisiológica que sostiene la ansiedad. Este impacto se refleja también en el sistema&nbsp;inmunológico: las personas que cuentan con vínculos sólidos afrontan&nbsp;mejor las situaciones adversas, muestran menor vulnerabilidad ante los efectos del estrés crónico y presentan una recuperación más favorable en problemas de salud física.&nbsp;&nbsp;</p>
+
+
+
+<p>Además, las relaciones seguras facilitan&nbsp;<strong>estrategias de afrontamiento&nbsp;</strong>más eficaces, aumentan la resiliencia y fortalecen la sensación de control frente a las dificultades. Por todo ello, la ciencia coincide en que una red social de apoyo no es solo un recurso emocional, sino un factor protector fundamental para el bienestar integral.&nbsp;</p>
+
+
+
+<p><strong>Amortiguador frente al deterioro y la enfermedad</strong>&nbsp;</p>
+
+
+
+<p>Las relaciones de calidad también influyen en cómo evoluciona la salud cuando ya existe una enfermedad o un factor de riesgo. La presencia de apoyo estable&nbsp;<strong>reduce la probabilidad de recaídas asociadas al estrés</strong>, mejora la adherencia a los tratamientos médicos y facilita conductas de autocuidado más consistentes.&nbsp;&nbsp;</p>
+
+
+
+<p>En contextos de problemas cardíacos, dolor crónico o enfermedades de larga duración, contar con vínculos significativos se asocia con una mejor capacidad para manejar la ansiedad, evitar picos de estrés perjudiciales y sostener hábitos saludables en el tiempo.&nbsp;&nbsp;</p>
+
+
+
+<p>Del mismo modo, la soledad y el aislamiento suelen aumentar la vulnerabilidad psicológica y favorecer conductas de riesgo —como el abandono del tratamiento o el consumo problemático—, lo que impacta directamente en el curso de la enfermedad. En conjunto, las relaciones sólidas no solo previenen, sino que actúan como apoyo para frenar el deterioro y favorecer la recuperación.&nbsp;&nbsp;</p>
+
+
+
+<p><strong>Relaciones que motivan a cuidarte</strong>&nbsp;</p>
+
+
+
+<p>Las relaciones de calidad también influyen en la forma en que cuidamos nuestro cuerpo y sostenemos hábitos saludables a largo plazo.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Facilitan hábitos protectores</strong>: el apoyo social ayuda a mantener una alimentación equilibrada, un buen descanso y rutinas de ejercicio, reduciendo la vulnerabilidad física y emocional. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Reducen conductas de riesgo</strong>: una red de apoyo disminuye la probabilidad de recurrir al sedentarismo, al abuso de sustancias o al abandono del autocuidado. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Favorecen el afrontamiento activo</strong>: las personas con vínculos sólidos afrontan mejor el estrés, lo que protege frente a recaídas y episodios de deterioro. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Fortalecen la autoeficacia</strong>: la validación, el reconocimiento y la retroalimentación positiva aumentan la sensación de capacidad para cambiar y sostener mejoras. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Funcionan como refuerzo social</strong>: gestos de apoyo, atención, aprobación y colaboración favorecen que las conductas saludables se repitan y se mantengan. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Mejoran la adherencia a tratamientos</strong>: la presencia de apoyo emocional y práctico facilita seguir recomendaciones médicas y terapéuticas. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Permiten pedir ayuda a tiempo</strong>: pedir apoyo es una habilidad social clave que previene la escalada del malestar y facilita la resiliencia. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Potencian la solución de problemas</strong>: las relaciones promueven habilidades cognitivas y sociales que ayudan a manejar situaciones difíciles sin deterioro adicional. </li>
+</ul>
+
+
+
+<p><strong>El perdón y la reparación también&nbsp;protegen</strong>&nbsp;</p>
+
+
+
+<p>Las relaciones de calidad no son perfectas, pero tienen la capacidad de reparación. Hablar después de un conflicto, reconocer el daño o sostener emociones difíciles se ha asociado a niveles más bajos de estrés, a una mayor sensación de seguridad y a&nbsp;<strong>vínculos más estables</strong>.&nbsp;</p>
+
+
+
+<p>Por el contrario, permanecer en el rencor o en el conflicto prolongado suele aumentar la carga de estrés y favorecer patrones emocionales que afectan tanto al bienestar psicológico como al físico. Por eso, trabajar en nuestras relaciones no es solo una cuestión&nbsp;emocional,&nbsp;sino que también forma parte del<strong>&nbsp;cuidado del cuerpo</strong>.&nbsp;</p>
+
+
+
+<p>Las relaciones humanas de calidad son un<strong>&nbsp;factor protector</strong>&nbsp;real. Contribuyen a la regulación emocional, apoyan la resiliencia y ayudan a mantener un funcionamiento fisiológico más equilibrado.&nbsp;</p>
+
+
+
+<p><em>Construir vínculos sanos no solo mejora el estado de ánimo: también se asocia a una mejor salud y a una mayor capacidad para afrontar la vida con estabilidad.</em>&nbsp;</p>
+e:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"RELACIONES QUE CURAN: CÓMO LAS BUENAS RELACIONES PROTEGEN TU SALUD FÍSICA "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$1a"}}]}]]}],"$L1b"]}]
+1c:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-dd13871588cad778.js"],""]
+1b:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1c",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

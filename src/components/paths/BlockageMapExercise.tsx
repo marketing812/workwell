@@ -96,7 +96,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
              {(content as any).audioUrl && (
               <div className="mb-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src={(content as any).audioUrl} type="audio/mp3" />
+                      <source src={(content as any).audioUrl} type="audio/mpeg" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>

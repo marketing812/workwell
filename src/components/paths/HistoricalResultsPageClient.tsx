@@ -150,7 +150,7 @@ const assessmentDimensionsData: AssessmentDimension[] = [
       "id": "dim12",
       "name": "Estado de Ánimo",
       "definition": "Evaluación del estado de ánimo general y la presencia de síntomas relacionados con el desánimo o la anhedonia en las últimas semanas.",
-      "recommendedPathId": "volver-a-lo-importante",
+      "recommendedPathId": "volver-a-sentirse-bien",
       "items": [
         { "id": "dim12_item1", "text": "Me siento triste o desanimado/a.", "weight": 1 },
         { "id": "dim12_item2", "text": "Tengo dificultad para disfrutar de las actividades que solían gustarme.", "weight": 1 },

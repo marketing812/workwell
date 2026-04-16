@@ -1,0 +1,213 @@
+1:"$Sreact.fragment"
+2:I[16521,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"default"]
+3:I[48906,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ThemeProvider"]
+4:I[6511,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"FirebaseClientProvider"]
+5:I[29141,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"UserProvider"]
+6:I[14015,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ActivePathProvider"]
+7:I[15315,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"AppAnalyticsTracker"]
+8:I[9766,[],""]
+9:I[98924,[],""]
+a:I[18516,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"Toaster"]
+b:I[17989,[],"ClientSegmentRoot"]
+c:I[24784,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","6305","static/chunks/6305-ec82219fc1d069fd.js","7112","static/chunks/7112-8aa1de1c16a49340.js","784","static/chunks/784-2d9b37d01b82cf89.js","2619","static/chunks/2619-04bc32f026a0d946.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","2948","static/chunks/2948-dbd9114568d3e53b.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","1704","static/chunks/1704-5c0857bcf5e07861.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","2076","static/chunks/app/(main)/layout-39810fdfe78c5a4f.js"],"default"]
+f:I[24431,[],"OutletBoundary"]
+11:I[15278,[],"AsyncMetadataOutlet"]
+13:I[24431,[],"ViewportBoundary"]
+15:I[24431,[],"MetadataBoundary"]
+16:"$Sreact.suspense"
+18:I[57150,[],""]
+:HL["/_next/static/css/baabfbe2b368a81d.css","style"]
+0:{"P":null,"b":"0PYZozBcCzH44JNfrTPb3","p":"","c":["","resources","post","el-estres-no-es-el-enemigo-es-un-mensajero"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","el-estres-no-es-el-enemigo-es-un-mensajero","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/baabfbe2b368a81d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{}],["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$La",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$Lb",null,{"Component":"$c","slots":{"children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@d"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","el-estres-no-es-el-enemigo-es-un-mensajero","d"],["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Le",null,["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],null],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$16",null,{"fallback":null,"children":"$L17"}]}]}]]}],false]],"m":"$undefined","G":["$18",[]],"s":false,"S":true}
+d:"$0:f:0:1:2:children:1:props:children:1:props:params"
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+19:I[80622,[],"IconMark"]
+12:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L19","1",{}]],"error":null,"digest":"$undefined"}
+17:"$12:metadata"
+1a:T16a5,
+<p><em>Descubre cómo escucharlo, regularlo y convertirlo en tu aliado</em>&nbsp;</p>
+
+
+
+<p>¿Y si el estrés no fuera el problema?&nbsp;¿Y si lo que nos desestabiliza no es tener estrés…&nbsp;sino no saber qué hacer con él?&nbsp;</p>
+
+
+
+<p>Vivimos intentando escapar del&nbsp;estrés, pero&nbsp;el estrés no se escapa. Se&nbsp;transforma.&nbsp;Y cuando aprendes a entenderlo, regularlo y canalizarlo, ya no es una amenaza.&nbsp;Es tu señal interna de que algo necesita atención, cambio, acción o cuidado.&nbsp;</p>
+
+
+
+<p><strong>¿Qué es exactamente el estrés?</strong>&nbsp;</p>
+
+
+
+<p>El estrés es la respuesta natural de tu cuerpo y tu mente cuando sientes que una&nbsp;situación exige más de lo que crees poder&nbsp;dar.&nbsp;Es&nbsp;tu sistema de alerta evolutivo.&nbsp;Te prepara para actuar cuando algo se vuelve desafiante o potencialmente amenazante.&nbsp;</p>
+
+
+
+<p>Tu corazón late más rápido. Tu cuerpo libera cortisol y adrenalina. Tus sentidos se&nbsp;agudizan. En&nbsp;esencia: tu sistema nervioso se activa para&nbsp;<em>protegerte o impulsarte</em>.&nbsp;</p>
+
+
+
+<p>Según Lazarus y Folkman (1984), no todo depende del estímulo. Lo que define si algo te estresa es&nbsp;cómo lo&nbsp;interpretas:&nbsp;¿Esto es manejable?&nbsp;¿Tengo recursos?&nbsp;¿Puedo con esto?&nbsp;</p>
+
+
+
+<p>Tu percepción moldea tu reacción.&nbsp;Y por eso, dos personas pueden vivir el mismo evento con emociones completamente distintas.&nbsp;</p>
+
+
+
+<p><strong>No todo el estrés es malo:&nbsp;Eustrés&nbsp;vs. Distrés</strong>&nbsp;</p>
+
+
+
+<p>Hay dos formas fundamentales en que tu cuerpo y tu mente viven el estrés:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong> Eustrés</strong> </li>
+</ul>
+
+
+
+<p>Es el estrés positivo. El que te impulsa a actuar, a superarte, a sacar lo mejor&nbsp;de ti.&nbsp;Cuando&nbsp;lo que enfrentas es&nbsp;retador,&nbsp;pero crees que puedes con ello, tu organismo se activa&nbsp;y tú rindes al máximo.&nbsp;Mejora tu foco&nbsp;atencional, creatividad,&nbsp;y&nbsp;rendimiento.&nbsp;</p>
+
+
+
+<p>Ejemplo: esa adrenalina antes de hablar en público que te&nbsp;prepara para responder con eficacia.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong> Distrés</strong> </li>
+</ul>
+
+
+
+<p>Es el estrés negativo. El que te abruma, bloquea o desborda.&nbsp;Aparece cuando la situación se percibe como&nbsp;<em>incontrolable</em>&nbsp;y te sientes&nbsp;<em>solo, incapaz o&nbsp;agotado</em>.&nbsp;&nbsp;Aquí&nbsp;el estrés se cronifica y empieza a doler: insomnio, tensión muscular, irritabilidad, dificultad para pensar con claridad.&nbsp;</p>
+
+
+
+<p>Ejemplo: cuando cada notificación del trabajo te hace apretar los dientes.&nbsp;</p>
+
+
+
+<p><strong>¿Qué pasa en tu cuerpo cuando te estresas?</strong>&nbsp;</p>
+
+
+
+<p>Cuando detectas un peligro (real o simbólico), se activa el sistema nervioso simpático y el eje HHA (hipotálamo-hipófisis-adrenal).&nbsp;Esto desencadena tres fases:&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Alarma:</strong> Aumenta la frecuencia cardíaca, la respiración, la tensión. Tu cuerpo se prepara para luchar o huir. </li>
+</ol>
+
+
+
+<ol start="2" class="wp-block-list">
+<li><strong>Resistencia:</strong> Si el estrés continúa, entras en modo “aguante”. Pero aquí empieza el desgaste. </li>
+</ol>
+
+
+
+<ol start="3" class="wp-block-list">
+<li><strong>Agotamiento:</strong> Si no hay pausa ni regulación, tus recursos se agotan. Aparecen problemas físicos, emocionales y cognitivos. </li>
+</ol>
+
+
+
+<p>La percepción funciona como un filtro que decide si el estrés nos desgasta o nos&nbsp;fortalece.&nbsp;Cambiar ese filtro reduce el impacto negativo del estrés y aumenta la capacidad de recuperación.&nbsp;</p>
+
+
+
+<p><strong>¿Qué te estresa a ti?</strong>&nbsp;</p>
+
+
+
+<p>Los estresores pueden ser externos o internos, y no siempre son evidentes:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Cambios vitales</strong>: mudanzas, separaciones, nuevas responsabilidades. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Conflictos internos:</strong> autoexigencia, miedo al rechazo, sensación de no llegar. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Estímulos físicos</strong>: ruido, calor, falta de sueño. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Estímulos sociales</strong>: críticas, aislamiento, exceso de demandas. </li>
+</ul>
+
+
+
+<p><strong>¿Y entonces, cómo gestionarlo?</strong>&nbsp;</p>
+
+
+
+<p>En Emotiva no te prometemos eliminar el estrés, aparte de que no es posible, no es el objetivo.&nbsp;Te enseñamos a&nbsp;<strong>optimizarlo</strong>.&nbsp;</p>
+
+
+
+<p>Eso significa:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Reconocerlo a tiempo (¿cómo reacciona tu cuerpo y tu mente?). </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Distinguir entre lo urgente y lo importante. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Validar tus emociones sin juzgarte. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Cuestionar tus pensamientos automáticos (“tengo que poder con todo”, “esto es un desastre”). </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Activar tu sistema de calma con técnicas de respiración, visualización, pausa consciente o escritura emocional. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Redefinir tu relación con el estrés como una oportunidad de reconexión contigo. </li>
+</ul>
+
+
+
+<p>Porque cuando el estrés se vuelve crónico y silencioso, se vuelve peligroso, pero cuando lo miras de frente, lo entiendes y lo regulas… te devuelve tu fuerza.&nbsp;</p>
+
+
+
+<p><em>El estrés no es el&nbsp;problema. Es&nbsp;la brújula que señala que algo necesita atención.&nbsp;Si lo escuchas, lo regulas y lo integras, te vuelve más fuerte.&nbsp;</em>&nbsp;<br><em></em>&nbsp;</p>
+e:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":" EL ESTRÉS NO ES EL ENEMIGO. ES UN MENSAJERO "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$1a"}}]}]]}],"$L1b"]}]
+1c:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-dd13871588cad778.js"],""]
+1b:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1c",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

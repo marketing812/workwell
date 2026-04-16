@@ -159,7 +159,7 @@ Pregunta: ¿Qué aprendiste al observar esta cadena? | Respuesta: ${selectedRefl
                 {content.objective}
                  <div className="mt-4">
                     <audio controls controlsList="nodownload" className="w-full">
-                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3`} type="audio/mp3" />
+                        <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta6/tecnicas/Ruta6sesion1tecnica1.mp3`} type="audio/mpeg" />
                         Tu navegador no soporta el elemento de audio.
                     </audio>
                 </div>

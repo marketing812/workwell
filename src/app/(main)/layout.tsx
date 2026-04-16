@@ -64,10 +64,10 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
       <DailyCheckInProvider>
         <MoodCheckInProvider>
           <SidebarProvider>
-            <div className="flex min-h-screen w-full flex-col">
+            <div className="safe-area-bottom flex min-h-screen w-full flex-col">
               <AppSidebar />
               <AppHeader />
-              <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+              <main className="safe-area-x flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
                  {children}
               </main>
               <PopupManager />

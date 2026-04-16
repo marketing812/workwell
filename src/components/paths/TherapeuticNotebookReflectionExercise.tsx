@@ -18,6 +18,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { SafeAudioPlayer } from '@/components/media/SafeAudioPlayer';
 
 const cognitiveSignals = [
   { id: 'cog-concentration', label: 'Me cuesta concentrarme' },
@@ -319,12 +320,7 @@ ${hasGuidedFields
         </CardTitle>
         {content.audioUrl && (
           <div className="mt-4">
-            <audio
-              src={content.audioUrl}
-              controls
-              controlsList="nodownload"
-              className="w-full"
-            />
+            <SafeAudioPlayer src={content.audioUrl} />
           </div>
         )}
         <div
@@ -436,4 +432,3 @@ ${hasGuidedFields
     </Card>
   );
 }
-

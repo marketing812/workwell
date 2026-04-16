@@ -152,7 +152,7 @@ export default function GentleTrackingExercise({ content, pathId, onComplete }: 
             {content.audioUrl && (
               <div className="mb-4">
                 <audio controls controlsList="nodownload" className="w-full">
-                  <source src={content.audioUrl} type="audio/mp3" />
+                  <source src={content.audioUrl} type="audio/mpeg" />
                   Tu navegador no soporta el elemento de audio.
                 </audio>
               </div>

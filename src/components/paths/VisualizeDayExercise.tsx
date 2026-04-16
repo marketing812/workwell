@@ -199,7 +199,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
           {content.audioUrl && (
               <div className="mt-4">
                   <audio controls controlsList="nodownload" className="w-full">
-                      <source src={resolveAudioUrl(content.audioUrl)} type="audio/mp3" />
+                      <source src={resolveAudioUrl(content.audioUrl)} type="audio/mpeg" />
                       Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>

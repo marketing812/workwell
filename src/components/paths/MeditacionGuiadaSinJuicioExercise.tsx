@@ -90,7 +90,7 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
           <div className="p-4 space-y-4 text-center">
             <h4 className="font-semibold">Meditación Guiada (Audio)</h4>
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={content.audioUrl} type="audio/mp3" />
+              <source src={content.audioUrl} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
             <div className="flex justify-end w-full mt-4">
@@ -152,7 +152,7 @@ Pregunta: ¿Qué sentí al observarme sin intentar corregirme? | Respuesta: ${re
         {content.descriptionAudioUrl && (
           <div className="mt-4">
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={content.descriptionAudioUrl} type="audio/mp3" />
+              <source src={content.descriptionAudioUrl} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
           </div>

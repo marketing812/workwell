@@ -1,0 +1,205 @@
+1:"$Sreact.fragment"
+2:I[16521,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"default"]
+3:I[48906,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ThemeProvider"]
+4:I[6511,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"FirebaseClientProvider"]
+5:I[29141,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"UserProvider"]
+6:I[14015,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ActivePathProvider"]
+7:I[15315,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"AppAnalyticsTracker"]
+8:I[9766,[],""]
+9:I[98924,[],""]
+a:I[18516,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"Toaster"]
+b:I[17989,[],"ClientSegmentRoot"]
+c:I[24784,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","6305","static/chunks/6305-ec82219fc1d069fd.js","7112","static/chunks/7112-8aa1de1c16a49340.js","784","static/chunks/784-2d9b37d01b82cf89.js","2619","static/chunks/2619-04bc32f026a0d946.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","2948","static/chunks/2948-dbd9114568d3e53b.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","1704","static/chunks/1704-5c0857bcf5e07861.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","2076","static/chunks/app/(main)/layout-39810fdfe78c5a4f.js"],"default"]
+f:I[24431,[],"OutletBoundary"]
+11:I[15278,[],"AsyncMetadataOutlet"]
+13:I[24431,[],"ViewportBoundary"]
+15:I[24431,[],"MetadataBoundary"]
+16:"$Sreact.suspense"
+18:I[57150,[],""]
+:HL["/_next/static/css/baabfbe2b368a81d.css","style"]
+0:{"P":null,"b":"0PYZozBcCzH44JNfrTPb3","p":"","c":["","resources","post","psicologia-la-ciencia-de-comprender-y-transformar-lo-humano"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","psicologia-la-ciencia-de-comprender-y-transformar-lo-humano","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/baabfbe2b368a81d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{}],["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$La",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$Lb",null,{"Component":"$c","slots":{"children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@d"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","psicologia-la-ciencia-de-comprender-y-transformar-lo-humano","d"],["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Le",null,["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],null],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$16",null,{"fallback":null,"children":"$L17"}]}]}]]}],false]],"m":"$undefined","G":["$18",[]],"s":false,"S":true}
+d:"$0:f:0:1:2:children:1:props:children:1:props:params"
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+19:I[80622,[],"IconMark"]
+12:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L19","1",{}]],"error":null,"digest":"$undefined"}
+17:"$12:metadata"
+1a:T18f5,
+<p><em>Porque entender la mente no es magia, es ciencia aplicada al bienestar</em>&nbsp;</p>
+
+
+
+<p>Cuando hablamos de psicología, muchas personas aún piensan en consejos, intuiciones o frases inspiradoras.&nbsp;</p>
+
+
+
+<p>Pero la realidad es que la&nbsp;<strong>psicología es una ciencia</strong>: utiliza la investigación, la medición rigurosa y la validación empírica para comprender cómo pensamos, sentimos y actuamos.&nbsp;</p>
+
+
+
+<p>La psicología no se limita a observar los síntomas; investiga los procesos internos que los explican y te ofrece herramientas para manejarlos.&nbsp;</p>
+
+
+
+<p><strong>Psicología y TCC: ciencia en acción</strong>&nbsp;</p>
+
+
+
+<p>La&nbsp;<strong>Terapia Cognitivo-Conductual (TCC)</strong>&nbsp;es uno de los enfoques que más claramente demuestra la naturaleza científica de la psicología.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Es un procedimiento <strong>activo, estructurado y de tiempo limitado</strong>, con resultados medibles. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Se basa en la <strong>metodología científica</strong>: observación sistemática, formulación de hipótesis, control de variables, experimentación y medición de resultados. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Terapeutas y pacientes actúan como <strong>colaboradores científicos</strong>, probando hipótesis sobre los pensamientos y conductas, y ajustándolas con evidencia. </li>
+</ul>
+
+
+
+<p>Por eso, la TCC es la psicoterapia con&nbsp;<strong>mayor respaldo empírico</strong>&nbsp;en las últimas tres décadas para problemas como ansiedad, depresión o estrés.&nbsp;</p>
+
+
+
+<p><strong>Bases teóricas y evolución de la disciplina</strong>&nbsp;</p>
+
+
+
+<p>La psicología ha atravesado distintas etapas teóricas y metodológicas hasta consolidarse como una ciencia basada en la evidencia.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Conductismo (primera generación):</strong> con Pavlov, Watson y Skinner, la psicología se centró en el aprendizaje observable, aplicando principios del condicionamiento. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Revolución cognitiva (segunda generación):</strong> con Aaron Beck y Albert Ellis, se reconoció el papel central de los <strong>pensamientos</strong> en el origen y mantenimiento del malestar. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Tercera generación:</strong> terapias como la <strong>Terapia de Aceptación y Compromiso (ACT)</strong>, la <strong>Terapia Dialéctica Conductual (DBT)</strong> o las basadas en <strong>Mindfulness</strong> incorporaron aceptación, valores y conciencia plena. </li>
+</ul>
+
+
+
+<p>Esta evolución refleja lo mejor de la ciencia: cuestionarse, integrar nuevos hallazgos y adaptarse a la complejidad del ser humano.&nbsp;</p>
+
+
+
+<p><strong>Neurociencia y emoción: un puente hacia lo profundo</strong>&nbsp;</p>
+
+
+
+<p>Hoy, la psicología dialoga con la neurociencia para entender cómo los procesos mentales y los cerebrales se influyen de forma recíproca.&nbsp;</p>
+
+
+
+<p>Investigadores como Antonio&nbsp;Damasio&nbsp;o Joseph&nbsp;LeDoux&nbsp;han demostrado que las emociones no son simples reacciones, sino procesos con bases neuronales que afectan a nuestras decisiones, aprendizajes y conductas.&nbsp;</p>
+
+
+
+<p>La neurociencia social también ha evidenciado que las interacciones humanas modulan sistemas cerebrales implicados en la regulación emocional, el estrés y el bienestar.&nbsp;</p>
+
+
+
+<p>De este modo, la psicología integra hallazgos de la biología, la medicina y la neurociencia para fortalecer su base científica y desarrollar intervenciones más eficaces.&nbsp;</p>
+
+
+
+<p><strong>Autocrítica y evolución constante</strong>&nbsp;</p>
+
+
+
+<p>La psicología ha avanzado porque no teme cuestionarse a sí misma:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Puso en duda enfoques difícilmente verificables, como el psicoanálisis clásico. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>Debatió sobre la predicción clínica frente a la estadística, mostrando que los datos superan a la intuición incluso en contextos clínicos. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>En la actualidad sigue enfrentando retos como la clasificación de los trastornos mentales, la fiabilidad de los diagnósticos o la evaluación rigurosa de las terapias emergentes. </li>
+</ul>
+
+
+
+<p>Lejos de ser una debilidad, esta autocrítica constante es lo que hace de la psicología una disciplina&nbsp;<strong>científica, abierta y en crecimiento</strong>.&nbsp;</p>
+
+
+
+<p><strong>Una ciencia aplicada al bienestar</strong>&nbsp;</p>
+
+
+
+<p>La psicología no se queda en los laboratorios: aplica sus hallazgos para mejorar la vida cotidiana.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>En salud mental:</strong> tratamientos basados en evidencia para la ansiedad, la depresión o el trauma. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>En educación:</strong> programas de resiliencia, habilidades sociales y mejora del aprendizaje. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>En organizaciones:</strong> prevención del burnout y desarrollo del liderazgo. </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>En la vida diaria:</strong> herramientas de autorregulación emocional, mindfulness y comunicación asertiva. </li>
+</ul>
+
+
+
+<p>En conjunto, la psicología ofrece recursos científicos que pueden utilizarse en el día a día para tomar decisiones más informadas y vivir con mayor claridad y equilibrio.&nbsp;</p>
+
+
+
+<p>La&nbsp;<strong>psicología es ciencia y humanidad al mismo tiempo</strong>.&nbsp;Se fundamenta en la investigación, integra conocimientos de distintas ramas y transforma esa evidencia en prácticas que&nbsp;tratan de&nbsp;mejorar la calidad de vida.&nbsp;&nbsp;</p>
+
+
+
+<p>La&nbsp;<strong>Terapia Cognitivo-Conductual</strong>&nbsp;es uno de sus ejemplos más sólidos: un modelo que ha sabido crecer, evolucionar y demostrar su eficacia con rigor científico y aplicación&nbsp;directa en los problemas.&nbsp;&nbsp;</p>
+
+
+
+<p>En EMOTIVA creemos en la psicología como un puente&nbsp;entre el conocimiento y la vida, entre la ciencia y la calidez.&nbsp;&nbsp;</p>
+
+
+
+<p><em>Porque comprender cómo funciona tu mente no es un lujo, es una herramienta esencial para cuidarte y avanzar con mayor claridad.</em>&nbsp;</p>
+e:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"PSICOLOGÍA. LA CIENCIA DE COMPRENDER Y TRANSFORMAR LO HUMANO"}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$1a"}}]}]]}],"$L1b"]}]
+1c:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-dd13871588cad778.js"],""]
+1b:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1c",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]
