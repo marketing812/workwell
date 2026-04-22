@@ -54,7 +54,7 @@ export default function EmpathicShieldVisualizationExercise({
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary text-center">Bienvenida: cuida sin fundirte</h4>
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3`} type="audio/mp3" />
+              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/Ruta5sesion3tecnica1.mp3`} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
                <div className="flex justify-end w-full mt-4">
@@ -72,7 +72,7 @@ export default function EmpathicShieldVisualizationExercise({
            
             <p className="text-muted-foreground">
                <audio controls controlsList="nodownload" className="w-full">
-              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantalla12.mp3`} type="audio/mp3" />
+              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantalla12.mp3`} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio> Te recomiendo repetir esta visualización 2 o 3 veces por semana, especialmente antes de conversaciones emocionalmente exigentes o relaciones que te remueven.
             </p>
@@ -91,7 +91,7 @@ export default function EmpathicShieldVisualizationExercise({
         return (
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantallas2-6-2.mp3`} type="audio/mp3" />
+              <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantallas2-6-2.mp3`} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
             <div className="flex justify-between w-full mt-4">

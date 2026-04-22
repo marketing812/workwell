@@ -130,7 +130,7 @@ Cada vez será un poco más fácil.`;
           <div className="p-4 space-y-4">
             <p className="text-sm text-muted-foreground">Busca un lugar tranquilo. Si puedes, siéntate con la espalda recta. Cierra los ojos o suaviza tu mirada. Respira. Escucha. Imagina. Y permite que tu “yo firme” te acompañe.</p>
             <audio controls controlsList="nodownload" className="w-full">
-              <source src={content.audioUrl} type="audio/mp3" />
+              <source src={content.audioUrl} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
             <Accordion type="single" collapsible className="w-full">

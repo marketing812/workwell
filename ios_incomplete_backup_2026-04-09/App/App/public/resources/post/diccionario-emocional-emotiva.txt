@@ -1,0 +1,891 @@
+1:"$Sreact.fragment"
+2:I[16521,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"default"]
+3:I[48906,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ThemeProvider"]
+4:I[6511,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"FirebaseClientProvider"]
+5:I[29141,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"UserProvider"]
+6:I[14015,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"ActivePathProvider"]
+7:I[15315,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"AppAnalyticsTracker"]
+8:I[9766,[],""]
+9:I[98924,[],""]
+a:I[18516,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","7112","static/chunks/7112-8aa1de1c16a49340.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","5846","static/chunks/5846-62e74783756b335e.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","7177","static/chunks/app/layout-f128cd0bba07c779.js"],"Toaster"]
+b:I[17989,[],"ClientSegmentRoot"]
+c:I[24784,["1823","static/chunks/57523b15-4cb7ac2e0b5e9965.js","8354","static/chunks/3ed8c523-79bb936ea3ff6eff.js","1328","static/chunks/1328-5241e258e0ed2367.js","1098","static/chunks/1098-ace04f2a23a66071.js","5380","static/chunks/5380-d4c66dd6705974f7.js","6305","static/chunks/6305-ec82219fc1d069fd.js","7112","static/chunks/7112-8aa1de1c16a49340.js","784","static/chunks/784-2d9b37d01b82cf89.js","2619","static/chunks/2619-04bc32f026a0d946.js","9540","static/chunks/9540-3a7ef3eef4c1c80f.js","3071","static/chunks/3071-85f577836c2e6ec9.js","2948","static/chunks/2948-dbd9114568d3e53b.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","1704","static/chunks/1704-5c0857bcf5e07861.js","9141","static/chunks/9141-8740fb1ea5c08619.js","168","static/chunks/168-8bc8eeb9659395f2.js","2076","static/chunks/app/(main)/layout-39810fdfe78c5a4f.js"],"default"]
+f:I[24431,[],"OutletBoundary"]
+11:I[15278,[],"AsyncMetadataOutlet"]
+13:I[24431,[],"ViewportBoundary"]
+15:I[24431,[],"MetadataBoundary"]
+16:"$Sreact.suspense"
+18:I[57150,[],""]
+:HL["/_next/static/css/baabfbe2b368a81d.css","style"]
+0:{"P":null,"b":"0PYZozBcCzH44JNfrTPb3","p":"","c":["","resources","post","diccionario-emocional-emotiva"],"i":false,"f":[[["",{"children":["(main)",{"children":["resources",{"children":["post",{"children":[["slug","diccionario-emocional-emotiva","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/baabfbe2b368a81d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"es","suppressHydrationWarning":true,"children":[["$","head",null,{}],["$","body",null,{"className":"antialiased","children":[["$","$L2",null,{}],["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L4",null,{"children":["$","$L5",null,{"children":["$","$L6",null,{"children":[["$","$L7",null,{}],["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$La",null,{}]]}]}]}]}]]}]]}]]}],{"children":["(main)",["$","$1","c",{"children":[null,["$","$Lb",null,{"Component":"$c","slots":{"children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:1:props:children:1:props:children:props:children:props:children:props:children:1:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]},"params":{},"promise":"$@d"}]]}],{"children":["resources",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","diccionario-emocional-emotiva","d"],["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$Le",null,["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],null],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$16",null,{"fallback":null,"children":"$L17"}]}]}]]}],false]],"m":"$undefined","G":["$18",[]],"s":false,"S":true}
+d:"$0:f:0:1:2:children:1:props:children:1:props:params"
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+19:I[80622,[],"IconMark"]
+12:{"metadata":[["$","link","0",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L19","1",{}]],"error":null,"digest":"$undefined"}
+17:"$12:metadata"
+1a:T7a0c,
+<p><strong><em>Cada emoción incluye:</em></strong>&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Qué es</strong> (definición simple) </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Para qué sirve</strong> (función adaptativa explicada en lenguaje cotidiano) </li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Si se mantiene demasiado</strong> (riesgos formulados con claridad y sin dramatismos) </li>
+</ul>
+
+
+
+<p><strong>FAMILIA 1:&nbsp;Emociones Básicas Universales</strong>&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Alegría</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir bienestar, ligereza o disfrute ante algo que valoras.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te impulsa a repetir lo que te hace bien y a conectar mejor con los demás.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes evitar afrontar situaciones necesarias o buscar placer inmediato como única estrategia.&nbsp;</p>
+
+
+
+<ol start="2" class="wp-block-list">
+<li><strong>Tristeza</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Una reacción natural ante pérdidas, decepciones o situaciones que duelen.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te invita a parar, cuidarte y pedir apoyo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes perder energía, aislarte o desconectarte de tus rutinas.&nbsp;</p>
+
+
+
+<ol start="3" class="wp-block-list">
+<li><strong> Miedo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;La sensación de que algo podría ponerte en peligro.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te ayuda a protegerte y a tomar decisiones prudentes.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes evitar situaciones seguras o limitar tu vida más de lo necesario.&nbsp;</p>
+
+
+
+<ol start="4" class="wp-block-list">
+<li><strong>Ira</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Activación intensa cuando sientes que algo es injusto, invasivo o dañino.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te ayuda a poner límites y defenderte.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes reaccionar impulsivamente y dañar relaciones importantes.&nbsp;</p>
+
+
+
+<ol start="5" class="wp-block-list">
+<li><strong>Asco</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Rechazo fuerte hacia algo que percibes como sucio, peligroso o inapropiado.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te protege de riesgos físicos o morales.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede volverse rigidez o rechazo exagerado.&nbsp;</p>
+
+
+
+<ol start="6" class="wp-block-list">
+<li><strong>Sorpresa</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Reacción inmediata ante algo inesperado.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te hace prestar atención y adaptarte rápido.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede convertirse en alerta continua.&nbsp;</p>
+
+
+
+<ol start="7" class="wp-block-list">
+<li><strong>Desprecio</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de superioridad o rechazo hacia algo o alguien.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;A veces ayuda a marcar distancia con comportamientos que consideras inaceptables.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Afecta la convivencia y deteriora vínculos.&nbsp;</p>
+
+
+
+<ol start="8" class="wp-block-list">
+<li><strong>Rabia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Una forma muy intensa de ira que domina la conducta.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Puede impulsar defensa inmediata ante daño extremo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te lleva a actuar sin pensar y a generar rupturas relacionales.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 2:&nbsp;Regulación Emocional y Estados Corporales</strong>&nbsp;</p>
+
+
+
+<ol start="9" class="wp-block-list">
+<li><strong>Estrés</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de presión cuando sientes que tienes más demandas que recursos.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Activa tu energía para resolver situaciones importantes.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te agota, afecta la concentración y puede impactar en tu salud.&nbsp;</p>
+
+
+
+<ol start="10" class="wp-block-list">
+<li><strong>Ansiedad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de alerta cuando imaginas que algo malo podría pasar.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te prepara para actuar y anticiparte.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te bloquea, agota y te lleva a evitar situaciones que necesitas afrontar.&nbsp;</p>
+
+
+
+<ol start="11" class="wp-block-list">
+<li><strong>Agobio</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que todo ocurre a la vez y no puedes con todo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te indica que necesitas frenar y reorganizarte.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te desborda y dificulta tomar decisiones.&nbsp;</p>
+
+
+
+<ol start="12" class="wp-block-list">
+<li><strong>Alarma</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Activación súbita ante una posible amenaza.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Reaccionas con rapidez para protegerte.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes vivir en estado de tensión continua.&nbsp;</p>
+
+
+
+<ol start="13" class="wp-block-list">
+<li><strong>Vigilancia / Alerta sostenida</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Estar pendiente continuamente de lo que podría salir mal.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Es útil en entornos inciertos.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Genera cansancio y mantiene la ansiedad.&nbsp;</p>
+
+
+
+<ol start="14" class="wp-block-list">
+<li><strong>Tensión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Rigidez o presión interna causada por preocupación o esfuerzo prolongado.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Indica que hay algo que te está exigiendo demasiado.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Afecta al sueño, a los músculos y a tu bienestar diario.&nbsp;</p>
+
+
+
+<ol start="15" class="wp-block-list">
+<li><strong>Serenidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir equilibrio, claridad y calma.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Facilita ver las cosas con perspectiva y tomar decisiones estables.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede confundirse con evitar conflictos o emociones incómodas.&nbsp;</p>
+
+
+
+<ol start="16" class="wp-block-list">
+<li><strong>Aceptación</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Reconocer una situación tal como es, sin lucha interna.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Reduce sufrimiento y ayuda a adaptarte.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes confundirla con resignación y dejar de defender tus necesidades.&nbsp;</p>
+
+
+
+<ol start="17" class="wp-block-list">
+<li><strong>Alivio</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Descenso de tensión cuando un malestar disminuye o desaparece.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Permite descansar y recuperar energía.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede reforzar la evitación de situaciones necesarias.&nbsp;</p>
+
+
+
+<ol start="18" class="wp-block-list">
+<li><strong>Calma</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de tranquilidad y bajo nivel de activación.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Recuperación emocional y claridad mental.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes desconectarte de asuntos importantes.&nbsp;</p>
+
+
+
+<ol start="19" class="wp-block-list">
+<li><strong>Aburrimiento</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Falta de interés en lo que estás haciendo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala necesidad de cambio o estimulación.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede reducir tu motivación y aumentar frustración.&nbsp;</p>
+
+
+
+<ol start="20" class="wp-block-list">
+<li><strong>Desaliento</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Perder motivación después de varios intentos fallidos.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te invita a evaluar nuevas formas de avanzar.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Bloquea la acción y la confianza.&nbsp;</p>
+
+
+
+<ol start="21" class="wp-block-list">
+<li><strong>Vacío</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de falta de sentido o desconexión interna.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Indica que algo importante está descuidado.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede llevar a apatía o búsqueda compulsiva de estímulos.&nbsp;</p>
+
+
+
+<ol start="22" class="wp-block-list">
+<li><strong>Impotencia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que no puedes influir en la situación actual.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;A veces te lleva a pedir ayuda o cambiar de estrategia.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Reduce tu percepción de capacidad y acción.&nbsp;</p>
+
+
+
+<ol start="23" class="wp-block-list">
+<li><strong>Indefensión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Creencia profunda de que nada de lo que hagas cambiará la situación.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Protege en situaciones realmente imposibles de controlar.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Conduce a pasividad, depresión o abandono.&nbsp;</p>
+
+
+
+<ol start="24" class="wp-block-list">
+<li><strong>Desamparo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de vulnerabilidad y falta de apoyo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te señala la necesidad de buscar sostén.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Genera ansiedad, aislamiento y baja autoestima.&nbsp;</p>
+
+
+
+<ol start="25" class="wp-block-list">
+<li><strong>Cansancio emocional</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Agotamiento profundo por sostener cargas emocionales durante mucho tiempo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Indica que necesitas descanso, límites y autocuidado.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Drena energía, esperanza y motivación.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 3:&nbsp;Emociones Prospectivas y Motivacionales</strong>&nbsp;</p>
+
+
+
+<ol start="26" class="wp-block-list">
+<li><strong> Ilusión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Expectativa positiva hacia algo que te importa.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te da energía para avanzar.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes idealizar situaciones o frustrarte más fácilmente.&nbsp;</p>
+
+
+
+<ol start="27" class="wp-block-list">
+<li><strong>Entusiasmo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Activación positiva hacia un proyecto o idea.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Aumenta la motivación y el compromiso.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes sobrecargarte o perder ritmo.&nbsp;</p>
+
+
+
+<ol start="28" class="wp-block-list">
+<li><strong>Inspiración</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que algo te impulsa a mejorar o crear.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Activa la creatividad y el sentido de propósito.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes compararte en exceso con ideales.&nbsp;</p>
+
+
+
+<ol start="29" class="wp-block-list">
+<li><strong>Deseo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Impulso de conseguir o vivir algo que valoras.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Dirige tu energía hacia metas importantes.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede generar impulsividad.&nbsp;</p>
+
+
+
+<ol start="30" class="wp-block-list">
+<li><strong>Esperanza</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Confianza en que algo puede mejorar.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Sostiene el esfuerzo en momentos difíciles.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Riesgo de expectativas poco realistas.&nbsp;</p>
+
+
+
+<ol start="31" class="wp-block-list">
+<li><strong>Satisfacción</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Bienestar después de conseguir algo significativo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Refuerza el aprendizaje y la motivación.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Se puede transformar en estancamiento o conformismo.&nbsp;</p>
+
+
+
+<ol start="32" class="wp-block-list">
+<li><strong>Placer</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación agradable que surge del cuerpo o de la experiencia.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Regula el ánimo y favorece el bienestar.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Búsqueda compulsiva de gratificación.&nbsp;</p>
+
+
+
+<ol start="33" class="wp-block-list">
+<li><strong>Deseo de evasión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Necesidad de alejarte de una emoción o situación incómoda.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Puede ofrecer descanso temporal.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Refuerza la evitación y limita el crecimiento.&nbsp;</p>
+
+
+
+<ol start="34" class="wp-block-list">
+<li><strong>Curiosidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Ganas de explorar, saber o entender algo nuevo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Facilita el aprendizaje y la creatividad.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede dispersarte o alejarte de prioridades.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 4:&nbsp;Emociones Relacionales y Vinculares</strong>&nbsp;</p>
+
+
+
+<ol start="35" class="wp-block-list">
+<li><strong>Amor</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Afecto profundo que te conecta con el bienestar del otro.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Crea vínculos estables y cooperación.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede generar dependencia si no hay equilibrio.&nbsp;</p>
+
+
+
+<ol start="36" class="wp-block-list">
+<li><strong> Ternura</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Calidez que aparece al ver la vulnerabilidad del otro.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Fomenta cuidado y conexión emocional.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Riesgo de sobreproteger.&nbsp;</p>
+
+
+
+<ol start="37" class="wp-block-list">
+<li><strong> Empatía</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Comprender lo que otra persona siente.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Facilita comunicación y apoyo mutuo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puedes absorber el malestar ajeno.&nbsp;</p>
+
+
+
+<ol start="38" class="wp-block-list">
+<li><strong>Compasión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensibilidad al sufrimiento propio o ajeno con intención de aliviarlo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Promueve autocuidado y cuidado de otros.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Riesgo de fatiga emocional.&nbsp;</p>
+
+
+
+<ol start="39" class="wp-block-list">
+<li><strong>Complicidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir sintonía espontánea con otra persona.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Fortalece la conexión y la confianza.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede crear círculos cerrados excluyentes.&nbsp;</p>
+
+
+
+<ol start="40" class="wp-block-list">
+<li><strong>Gratitud</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Reconocer lo que recibes y valorarlo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Aumenta bienestar y fortalece vínculos.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede confundirse con conformidad excesiva.&nbsp;</p>
+
+
+
+<ol start="41" class="wp-block-list">
+<li><strong>Confianza</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que puedes contar contigo o con otra persona.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Estabiliza relaciones y reduce miedo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Riesgo de ingenuidad.&nbsp;</p>
+
+
+
+<ol start="42" class="wp-block-list">
+<li><strong>Autocompasión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Tratarte con amabilidad cuando sufres o fallas.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Regula el malestar y aumenta resiliencia.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede confundirse con autoindulgencia.&nbsp;</p>
+
+
+
+<ol start="43" class="wp-block-list">
+<li><strong>Plenitud / Autoconexión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación de estar en paz contigo y con tu vida.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Mejora bienestar y claridad.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede dificultar afrontar áreas que necesitan cambio.&nbsp;</p>
+
+
+
+<ol start="44" class="wp-block-list">
+<li><strong>Rechazo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que no eres aceptado o querido.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te invita a revisar vínculos o límites.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Afecta autoestima y seguridad.&nbsp;</p>
+
+
+
+<ol start="45" class="wp-block-list">
+<li><strong>Soledad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir falta de compañía emocional importante.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala necesidad de conexión.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede generar tristeza profunda.&nbsp;</p>
+
+
+
+<ol start="46" class="wp-block-list">
+<li><strong>Soledad existencial</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sensación profunda de desconexión del mundo o de uno mismo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Genera reflexión y búsqueda de sentido.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Aumenta desesperanza.&nbsp;</p>
+
+
+
+<ol start="47" class="wp-block-list">
+<li><strong>Incomprensión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que los demás no captan lo que vives o sientes.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Impulsa a comunicarte mejor.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Aíslamiento&nbsp;emocional.&nbsp;</p>
+
+
+
+<ol start="48" class="wp-block-list">
+<li><strong>Nostalgia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Emoción cálida y triste hacia algo del pasado.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Conecta con tu identidad y tus raíces.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te aleja del presente.&nbsp;</p>
+
+
+
+<ol start="49" class="wp-block-list">
+<li><strong>Melancolía</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Tristeza suave mezclada con reflexión.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Profundizar en tu mundo interior.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Rumiaciones y desconexión actual.&nbsp;</p>
+
+
+
+<ol start="50" class="wp-block-list">
+<li><strong>Dolor emocional</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Malestar intenso por una herida afectiva.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te ayuda a procesar experiencias importantes.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede&nbsp;cronificarse&nbsp;y afectar autoestima.&nbsp;</p>
+
+
+
+<ol start="51" class="wp-block-list">
+<li><strong>Celos</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Temor a perder un vínculo importante.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala necesidades afectivas no expresadas.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Control, desconfianza y conflicto.&nbsp;</p>
+
+
+
+<ol start="52" class="wp-block-list">
+<li><strong>Envidia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Malestar por lo que otro tiene y tú deseas.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Revela aspiraciones y necesidades.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Autoestima baja y comparaciones continuas.&nbsp;</p>
+
+
+
+<ol start="53" class="wp-block-list">
+<li><strong>Hostilidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Actitud de rechazo o agresividad hacia otros.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Protegerte cuando algo te amenaza.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Dificulta convivir y comunicarte.&nbsp;</p>
+
+
+
+<ol start="54" class="wp-block-list">
+<li><strong>Odio</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Rechazo profundo y prolongado hacia alguien o algo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Distanciarte de aquello que percibes como dañino.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Genera amargura y aislamiento.&nbsp;</p>
+
+
+
+<ol start="55" class="wp-block-list">
+<li><strong>Resentimiento</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Mantener un enfado o dolor por algo pasado.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala que algo aún necesita reparación interna.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te encierra en el pasado y drena energía.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 5:&nbsp;Emociones Morales y Autoevaluativas</strong>&nbsp;</p>
+
+
+
+<ol start="56" class="wp-block-list">
+<li><strong>Vergüenza</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que no estás a la altura o que otros te juzgan.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Ajusta comportamientos a normas sociales.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Daño en autoestima y evitación social.&nbsp;</p>
+
+
+
+<ol start="57" class="wp-block-list">
+<li><strong>Vergüenza ajena</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Malestar al ver a alguien comportarse inadecuadamente.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Marca límites culturales y sociales.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Hipersensibilidad al juicio ajeno.&nbsp;</p>
+
+
+
+<ol start="58" class="wp-block-list">
+<li><strong>Vergüenza tóxica</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Creer que hay algo “mal” en ti de forma global.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;No tiene función adaptativa.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Depresión, ansiedad social, autoexclusión.&nbsp;</p>
+
+
+
+<ol start="59" class="wp-block-list">
+<li><strong>Culpa</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Malestar por haber hecho algo que consideras incorrecto.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Impulsa a reparar y aprender.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Autoexigencia y rumiación.&nbsp;</p>
+
+
+
+<ol start="60" class="wp-block-list">
+<li><strong>Remordimiento</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Culpa por algo que ya no puedes cambiar.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Asimilar aprendizajes importantes.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Duelo prolongado y dolor interno.&nbsp;</p>
+
+
+
+<ol start="61" class="wp-block-list">
+<li><strong>Ridículo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir vergüenza al creer que haces el papel de “tonto/a”.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Regular conductas sociales.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Evitación de situaciones sociales.&nbsp;</p>
+
+
+
+<ol start="62" class="wp-block-list">
+<li><strong>Inseguridad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Duda sobre tu capacidad o tu valor.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Preparación y mejora.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Dependencia y bloqueo.&nbsp;</p>
+
+
+
+<ol start="63" class="wp-block-list">
+<li><strong>Timidez</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Inhibición o nerviosismo ante situaciones sociales.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Cautela ante lo desconocido.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Aislamiento o pérdida de oportunidades.&nbsp;</p>
+
+
+
+<ol start="64" class="wp-block-list">
+<li><strong>Orgullo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Satisfacción por un logro propio o personal.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Refuerza autoestima y motivación.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede parecer soberbia.&nbsp;</p>
+
+
+
+<ol start="65" class="wp-block-list">
+<li><strong>Humildad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Reconocer tus límites sin desvalorizarte.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Facilita aprendizaje y vínculos sanos.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede confundirse con inseguridad.&nbsp;</p>
+
+
+
+<ol start="66" class="wp-block-list">
+<li><strong>Grandilocuencia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que eres excepcional por encima de lo real.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;A veces protege de inseguridades.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Conflictos y decepciones.&nbsp;</p>
+
+
+
+<ol start="67" class="wp-block-list">
+<li><strong>Prepotencia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentirte superior a los demás.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Proteger el ego.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te aísla y dificulta aprender.&nbsp;</p>
+
+
+
+<ol start="68" class="wp-block-list">
+<li><strong>Inutilidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir que no tienes valor o que no aportas.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala áreas que necesitan apoyo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Depresión y desánimo profundo.&nbsp;</p>
+
+
+
+<ol start="69" class="wp-block-list">
+<li><strong>Incapacidad</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Creer que no podrás lograr algo.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Revisar recursos y estrategias.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Bloqueo y evitación.&nbsp;</p>
+
+
+
+<ol start="70" class="wp-block-list">
+<li><strong>Desesperanza</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Creer que nada va a mejorar.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala agotamiento emocional extremo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Riesgo de depresión severa.&nbsp;</p>
+
+
+
+<ol start="71" class="wp-block-list">
+<li><strong>Desesperación</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir urgencia y angustia cuando ves todo sin salida.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Impulsa a buscar ayuda o cambio inmediato.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Impulsividad y decisiones precipitadas.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 6:&nbsp;Emociones Cognitivas y Complejas</strong>&nbsp;</p>
+
+
+
+<ol start="72" class="wp-block-list">
+<li><strong>Ambivalencia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Sentir dos emociones opuestas a la vez.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Evita tomar decisiones impulsivas.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Dificulta avanzar.&nbsp;</p>
+
+
+
+<ol start="73" class="wp-block-list">
+<li><strong>Confusión</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;No tener claro qué pensar, sentir o decidir.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te invita a parar y revisar información.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Aumenta inseguridad.&nbsp;</p>
+
+
+
+<ol start="74" class="wp-block-list">
+<li><strong>Irritación</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Molestia leve ante fricciones o interrupciones.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Marca límites.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Deriva en malhumor constante.&nbsp;</p>
+
+
+
+<ol start="75" class="wp-block-list">
+<li><strong>Frustración</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Tensión por no lograr algo que te importa.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Te impulsa a ajustar la estrategia.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Irritabilidad y desmotivación.&nbsp;</p>
+
+
+
+<ol start="76" class="wp-block-list">
+<li><strong>Enfado leve</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Versión más moderada de la ira.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señalar necesidades no atendidas.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Aumenta conflictos cotidianos.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 7:&nbsp;Intensidades Extremas</strong>&nbsp;</p>
+
+
+
+<ol start="77" class="wp-block-list">
+<li><strong>Euforia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Alegría muy intensa y expansiva.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Facilita celebración y conexión.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te lleva a decisiones impulsivas.&nbsp;</p>
+
+
+
+<ol start="78" class="wp-block-list">
+<li><strong>Rabia</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Una forma muy intensa de ira que domina la conducta.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Puede impulsar defensa inmediata ante daño extremo.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Te lleva a actuar sin pensar y a generar rupturas relacionales.&nbsp;</p>
+
+
+
+<p><strong>FAMILIA 8:&nbsp;Afectos Globales</strong>&nbsp;</p>
+
+
+
+<ol start="79" class="wp-block-list">
+<li><strong>Afecto positivo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Estado emocional agradable sin causa concreta.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Aumenta creatividad y apertura.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede ocultar problemas no atendidos.&nbsp;</p>
+
+
+
+<ol start="80" class="wp-block-list">
+<li><strong>Afecto negativo</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Estado emocional desagradable general.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Señala malestar que necesita atención.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Pinta la realidad más negativa de lo que es.&nbsp;</p>
+
+
+
+<ol start="81" class="wp-block-list">
+<li><strong>Afecto neutral</strong> </li>
+</ol>
+
+
+
+<p><strong>Qué es:</strong>&nbsp;Estado sin carga emocional clara.&nbsp;<br><strong>Para qué sirve:</strong>&nbsp;Permite descanso y estabilidad.&nbsp;<br><strong>Si se mantiene demasiado:</strong>&nbsp;Puede percibirse como falta de motivación.&nbsp;</p>
+e:["$","div",null,{"className":"container mx-auto py-8 max-w-4xl","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 border-b p-0","children":["$undefined",["$","div",null,{"className":"p-6","children":[["$","div",null,{"ref":"$undefined","className":"tracking-tight text-3xl md:text-4xl font-bold text-primary","dangerouslySetInnerHTML":{"__html":"DICCIONARIO EMOCIONAL EMOTIVA  "}}],["$","div",null,{"ref":"$undefined","className":"flex flex-wrap items-center text-sm text-muted-foreground pt-2 gap-x-4 gap-y-1","children":["$","span",null,{"className":"flex items-center","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock h-4 w-4 mr-1.5","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}]," Publicado el ","5 de diciembre de 2025"]}]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"p-6 py-6 px-6 md:px-8","children":["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$1a"}}]}]]}],"$L1b"]}]
+1c:I[52619,["2619","static/chunks/2619-04bc32f026a0d946.js","1356","static/chunks/1356-1fb83b63ccda55b7.js","8460","static/chunks/app/(main)/resources/post/%5Bslug%5D/page-dd13871588cad778.js"],""]
+1b:["$","div",null,{"className":"mt-8 text-center","children":["$","$L1c",null,{"href":"/resources","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left mr-2 h-4 w-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}]," Volver a Recursos"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2","ref":null}]}]

@@ -191,36 +191,47 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
   const isDeveloper = user?.email === DEVELOPER_EMAIL;
   
   return (
-    <div className="container mx-auto py-8">
-      {isDeveloper && (
-        <div className="mb-4 text-center">
-          <Button onClick={handleDevSubmit} variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 hover:text-yellow-700">
-            <TestTube2 className="mr-2 h-4 w-4" />
-            🧪 Rellenar para Desarrollo
-          </Button>
-        </div>
-      )}
-      <QuestionnaireForm
-        onSubmit={handleSubmit}
-        isSubmitting={isSubmitting}
-        isGuided={isGuided}
-      />
-        
-      
+    <div className="relative isolate -mx-4 -my-4 overflow-hidden px-4 py-4 md:-mx-8 md:-my-8 md:px-8 md:py-8">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="assessment-aurora absolute inset-0" />
+        <div className="absolute left-[-8%] top-[12%] h-52 w-52 rounded-full bg-[#dceffd]/75 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute right-[-10%] top-[20%] h-64 w-64 rounded-full bg-[#f2c7a6]/38 blur-3xl sm:h-80 sm:w-80" />
+        <div className="absolute bottom-[8%] left-[8%] h-56 w-56 rounded-full bg-[#f8e1d8]/55 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute bottom-[2%] right-[12%] h-48 w-48 rounded-full bg-[#ddead7]/55 blur-3xl sm:h-64 sm:w-64" />
+      </div>
 
-      <Dialog open={isProcessingModalVisible}>
-        <DialogContent className="sm:max-w-md flex flex-col items-center justify-center text-center p-8">
-          <DialogHeader>
-            <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-6" />
-            <DialogModalTitle className="text-2xl font-bold text-primary">
-              {t.assessmentCompletedModalTitle}
-            </DialogModalTitle>
-            <DialogModalDescription className="text-md text-muted-foreground mt-2">
-              {t.assessmentProcessingModalMessage}
-            </DialogModalDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <div className="relative min-h-[100svh] w-full px-4 py-6 sm:px-6 sm:py-8">
+        {isDeveloper && (
+          <div className="mb-4 text-center">
+            <Button onClick={handleDevSubmit} variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 hover:text-yellow-700">
+              <TestTube2 className="mr-2 h-4 w-4" />
+              🧪 Rellenar para Desarrollo
+            </Button>
+          </div>
+        )}
+        <QuestionnaireForm
+          onSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isGuided={isGuided}
+        />
+
+        <Dialog open={isProcessingModalVisible}>
+          <DialogContent className="sm:max-w-md flex flex-col items-center justify-center text-center p-8">
+            <DialogHeader>
+              <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-6" />
+              <DialogModalTitle className="text-2xl font-bold text-primary">
+                {t.assessmentCompletedModalTitle}
+              </DialogModalTitle>
+              <DialogModalDescription className="text-md text-muted-foreground mt-2">
+                {t.assessmentProcessingModalMessage}
+              </DialogModalDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }

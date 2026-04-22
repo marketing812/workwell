@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { Viewport } from 'next';
 import './globals.css';
 import { UserProvider } from '@/contexts/UserContext';
 import { Toaster } from "@/components/ui/toaster";
@@ -7,6 +8,13 @@ import { ActivePathProvider } from '@/contexts/ActivePathContext';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { AppAnalyticsTracker } from '@/components/analytics/AppAnalyticsTracker';
 import DisableLegacySw from './DisableLegacySw';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,8 +29,9 @@ export default function RootLayout({
         <DisableLegacySw />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          forcedTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <FirebaseClientProvider>

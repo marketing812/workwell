@@ -10,6 +10,29 @@ export interface MoodOption {
   score: number;
 }
 
+export const moodCheckInToneClasses: Record<number, { base: string; selected: string }> = {
+  1: {
+    base: 'border-rose-200 bg-rose-50',
+    selected: 'border-rose-300 bg-rose-100 ring-rose-200',
+  },
+  2: {
+    base: 'border-orange-200 bg-orange-50',
+    selected: 'border-orange-300 bg-orange-100 ring-orange-200',
+  },
+  3: {
+    base: 'border-amber-200 bg-amber-50',
+    selected: 'border-amber-300 bg-amber-100 ring-amber-200',
+  },
+  4: {
+    base: 'border-lime-200 bg-lime-50',
+    selected: 'border-lime-300 bg-lime-100 ring-lime-200',
+  },
+  5: {
+    base: 'border-emerald-200 bg-emerald-50',
+    selected: 'border-emerald-300 bg-emerald-100 ring-emerald-200',
+  },
+};
+
 export const moodCheckInOptions: MoodOption[] = [
   {
     value: 'muy-mal',

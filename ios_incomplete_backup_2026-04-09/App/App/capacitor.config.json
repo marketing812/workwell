@@ -1,0 +1,9 @@
+{
+	"appId": "com.workwell.app",
+	"appName": "Emotiva",
+	"webDir": "out",
+	"server": {
+		"cleartext": false
+	},
+	"packageClassList": []
+}

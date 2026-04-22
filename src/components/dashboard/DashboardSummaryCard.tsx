@@ -35,16 +35,16 @@ export function DashboardSummaryCard({
 
 
   return (
-    <Card className={cn('shadow-lg hover:shadow-xl transition-shadow duration-300 h-full', cardColorClass)}>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm md:text-base font-medium">{title}</CardTitle>
-        <Icon className={cn('h-5 w-5', iconColorClass)} />
+    <Card className={cn('h-full shadow-lg transition-shadow duration-300 hover:shadow-xl', cardColorClass)}>
+      <CardHeader className="flex flex-col items-center justify-center space-y-2 p-4 pb-2 text-center">
+        <Icon className={cn('h-6 w-6 shrink-0 sm:h-7 sm:w-7', iconColorClass)} />
+        <CardTitle className="text-xs font-medium leading-snug sm:text-sm md:text-base">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="text-xl md:text-2xl font-bold break-words">{value}</div>
-        {description && <p className="text-xs text-muted-foreground pt-1">{description}</p>}
+      <CardContent className="p-4 pt-0 text-center">
+        <div className="text-base font-bold leading-tight break-words sm:text-xl md:text-2xl">{value}</div>
+        {description && <p className="pt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm">{description}</p>}
         {finalCtaLink && ctaLabel && (
-          <Button asChild variant="link" className="px-0 pt-3 text-sm h-auto leading-tight">
+          <Button asChild variant="link" className="h-auto px-0 pt-3 text-center text-xs leading-tight sm:text-sm">
             <Link href={finalCtaLink}>{ctaLabel}</Link>
           </Button>
         )}
@@ -52,4 +52,3 @@ export function DashboardSummaryCard({
     </Card>
   );
 }
-

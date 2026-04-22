@@ -12,8 +12,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useUser } from "@/contexts/UserContext";
 import { useTranslations } from "@/lib/translations";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, Palette, Trash2, AlertTriangle, ShieldAlert, KeyRound, FastForward, Download, FileText } from 'lucide-react'; 
-import { useTheme } from 'next-themes';
+import { Loader2, Save, Trash2, AlertTriangle, ShieldAlert, KeyRound, FastForward, Download, FileText } from 'lucide-react'; 
 import { clearAllEmotionalEntries } from '@/data/emotionalEntriesStore';
 import Link from 'next/link';
 import { pathsData } from '@/data/pathsData';
@@ -24,7 +23,6 @@ export default function SettingsPage() {
   const t = useTranslations();
   const { user, updateUser, loading: userLoading } = useUser();
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
 
   const [name, setName] = useState(user?.name || '');
   const [ageRange, setAgeRange] = useState(user?.ageRange || '');
@@ -33,7 +31,6 @@ export default function SettingsPage() {
 
   const [dailyCheckIn, setDailyCheckIn] = useState(true);
   const [moduleReminders, setModuleReminders] = useState(true);
-  const [motivationalQuotes, setMotivationalQuotes] = useState(false);
 
   const [isSaving, setIsSaving] = useState(false);
   const [appVersion, setAppVersion] = useState('');
@@ -61,12 +58,6 @@ export default function SettingsPage() {
     { value: "male", label: t.gender_male }, { value: "female", label: t.gender_female },
     { value: "non_binary", label: t.gender_non_binary }, { value: "other", label: t.gender_other },
     { value: "prefer_not_to_say", label: t.gender_prefer_not_to_say },
-  ];
-
-  const themeOptions = [
-    { value: "light", label: t.themeLight },
-    { value: "dark", label: t.themeDark },
-    { value: "system", label: t.themeSystem },
   ];
 
   const handleSubmit = async (e: FormEvent) => {
@@ -158,27 +149,6 @@ export default function SettingsPage() {
             </Card>
           </form>
 
-          <Card>
-            <CardHeader>
-                <CardTitle className="text-xl flex items-center"><Palette className="mr-2 h-5 w-5" />{t.themeSettingsTitle}</CardTitle>
-                <CardDescription>{t.selectThemePrompt}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Select value={theme} onValueChange={setTheme}>
-                <SelectTrigger id="themeSelector">
-                  <SelectValue placeholder={t.selectThemePrompt} />
-                </SelectTrigger>
-                <SelectContent>
-                  {themeOptions.map(opt => (
-                    <SelectItem key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </CardContent>
-          </Card>
-          
            <Card>
             <CardHeader>
                 <CardTitle className="text-xl">{t.language}</CardTitle>
@@ -216,14 +186,14 @@ export default function SettingsPage() {
                 </Label>
                 <Switch id="moduleReminders" checked={moduleReminders} onCheckedChange={setModuleReminders} />
               </div>
-               <div className="flex items-center justify-between rounded-lg border p-4">
+               <div className="flex items-center justify-between rounded-lg border p-4 opacity-60">
                 <Label htmlFor="motivationalQuotes" className="flex flex-col space-y-1">
                   <span>Frases Motivadoras</span>
                   <span className="font-normal leading-snug text-muted-foreground">
-                    Recibe frases inspiradoras periódicamente.
+                    Esta función no está disponible actualmente.
                   </span>
                 </Label>
-                <Switch id="motivationalQuotes" checked={motivationalQuotes} onCheckedChange={setMotivationalQuotes} />
+                <Switch id="motivationalQuotes" checked={false} disabled aria-disabled="true" />
               </div>
             </CardContent>
           </Card>
@@ -276,4 +246,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-

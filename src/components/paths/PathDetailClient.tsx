@@ -61,6 +61,7 @@ import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import { getModuleUnlockMap, getPathUnlockInfo } from '@/lib/pathAccess';
+import { SafeAudioPlayer } from '@/components/media/SafeAudioPlayer';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
@@ -499,12 +500,7 @@ function ContentItemRenderer({
         <div className="mt-6 mb-3 space-y-3">
           <h3 className="text-xl font-bold text-primary">{contentItem.text}</h3>
           {contentItem.audioUrl && (
-            <audio
-              src={contentItem.audioUrl}
-              controls
-              controlsList="nodownload"
-              className="w-full"
-            />
+            <SafeAudioPlayer src={contentItem.audioUrl} />
           )}
         </div>
       );
@@ -512,7 +508,7 @@ function ContentItemRenderer({
       return (
         <div key={index} className="space-y-4 mb-4">
           {contentItem.audioUrl && (
-            <audio src={contentItem.audioUrl} controls controlsList="nodownload" className="w-full" />
+            <SafeAudioPlayer src={contentItem.audioUrl} />
           )}
           <p
             className="text-base leading-relaxed whitespace-pre-line"
@@ -555,12 +551,7 @@ function ContentItemRenderer({
                 </AccordionTrigger>
                 {contentItem.audioUrl && (
                   <div className="w-full sm:w-auto sm:min-w-[280px] sm:max-w-[360px]">
-                    <audio
-                      src={contentItem.audioUrl}
-                      controls
-                      controlsList="nodownload"
-                      className="block h-10 w-full max-w-full"
-                    />
+                    <SafeAudioPlayer src={contentItem.audioUrl} compact />
                   </div>
                 )}
               </div>
@@ -1312,4 +1303,3 @@ export function PathDetailClient({ path }: { path: Path }) {
     </div>
   );
 }
-

@@ -237,7 +237,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                         {content.objective}
                         <div className="mt-4">
                             <audio controls controlsList="nodownload" className="w-full">
-                                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana1tecnica1.mp3`} type="audio/mp3" />
+                                <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/Ruta13semana1tecnica1.mp3`} type="audio/mpeg" />
                                 Tu navegador no soporta el elemento de audio.
                             </audio>
                         </div>

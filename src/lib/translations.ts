@@ -42,7 +42,7 @@ export const t = {
   navPaths: "Rutas",
   navChatbot: "Mentor IA",
   navKnowledgeAssistant: "Asistente",
-  navResources: "Recursos",
+  navResources: "Aprende",
   navSettings: "Configuración",
   navMyAssessments: "Mis Evaluaciones",
   navTherapeuticNotebook: "Cuaderno Terapéutico",
@@ -268,7 +268,7 @@ export const t = {
   // Emotional Entry Form
   registerEmotionDialogTitle: "Nuevo Registro Emocional",
   registerEmotionDialogDescription: "Describe cómo te sientes. Este espacio es para ti.",
-  situationLabel: "¿Qué situación relevante viviste hoy o recientemente?",
+  situationLabel: "¿Qué situación reciente has vivido hoy o recientemente?",
   situationPlaceholder: "Ej: Tuve una reunión importante, recibí una noticia, tuve una conversación difícil...",
   thoughtLabel: "¿Qué pensaste en ese momento?",
   thoughtPlaceholder: "Ej: 'No soy capaz', 'Todo va a salir mal', 'Esto es injusto'...",

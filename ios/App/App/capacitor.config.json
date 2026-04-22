@@ -1,9 +1,19 @@
 {
-	"appId": "com.workwell.app",
+	"appId": "com.futuver.emotiva",
 	"appName": "Emotiva",
 	"webDir": "out",
 	"server": {
-		"cleartext": false
+		"cleartext": false,
+		"allowNavigation": [
+			"www.youtube.com",
+			"*.youtube.com",
+			"youtube.com",
+			"www.youtube-nocookie.com",
+			"*.youtube-nocookie.com",
+			"*.googlevideo.com",
+			"*.ytimg.com",
+			"*.ggpht.com"
+		]
 	},
 	"packageClassList": []
 }

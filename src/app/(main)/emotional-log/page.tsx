@@ -1,14 +1,13 @@
 ﻿"use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "@/lib/translations";
-import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { EmotionalEntryForm, emotions as emotionOptions } from "@/components/dashboard/EmotionalEntryForm";
 import { formatEntryTimestamp, type EmotionalEntry } from "@/data/emotionalEntriesStore";
-import { ArrowLeft, NotebookPen, LineChart as LineChartIcon, Edit, Loader2 } from "lucide-react";
+import { ArrowLeft, NotebookPen, Edit, Loader2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
   Dialog,
@@ -21,11 +20,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
 import { getAutoregistrosLegacy, saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
-
-const moodScoreMapping: Record<string, number> = {
-  alegria: 5, confianza: 5, sorpresa: 4, anticipacion: 4,
-  enfado: 2, miedo: 2, tristeza: 1, asco: 1,
-};
 
 export default function EmotionalLogPage() {
   const t = useTranslations();
@@ -91,28 +85,11 @@ export default function EmotionalLogPage() {
     }
   };
 
-  const chartData = useMemo(() => {
-    if (!allEntries || allEntries.length === 0) return [];
-    return allEntries
-      .filter(entry => entry.timestamp)
-      .map(entry => {
-        const emotionDetail = emotionOptions.find(e => e.value === entry.emotion);
-        const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
-        const moodScore = moodScoreMapping[entry.emotion] ?? 0;
-        return {
-          date: formatEntryTimestamp(entry.timestamp).split(',')[0],
-          moodScore: moodScore,
-          emotionLabel: emotionLabel,
-          fullDate: formatEntryTimestamp(entry.timestamp),
-        };
-      }).reverse();
-  }, [allEntries, t]);
-
   return (
     <div className="container mx-auto py-8 space-y-8">
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl sm:text-3xl font-bold text-primary flex items-center">
-            <LineChartIcon className="mr-2 sm:mr-3 h-7 w-7 sm:h-8 sm:w-8" />
+            <NotebookPen className="mr-2 sm:mr-3 h-7 w-7 sm:h-8 sm:w-8" />
             {t.fullEmotionalHistoryTitle}
         </h1>
         <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:flex-nowrap">
@@ -146,13 +123,6 @@ export default function EmotionalLogPage() {
             </Button>
         </div>
       </div>
-
-      <MoodEvolutionChart
-        data={chartData}
-        title="Mis autorregistros"
-        description="Evolución de tus autorregistros a lo largo del tiempo"
-        className="lg:h-[450px]"
-      />
 
       <Card className="shadow-lg">
         <CardHeader>
@@ -199,5 +169,4 @@ export default function EmotionalLogPage() {
     </div>
   );
 }
-
 

@@ -51,6 +51,9 @@ interface CategorizedDimension extends AssessmentDimension {
   scoreLevel: string;
 }
 
+const LOW_SCORE_SUPPORT_NOTE =
+  "Los resultados indican que esta área podría estar generándote dificultades en este momento. En Emotiva encontrarás contenidos y herramientas basadas en psicología científica que pueden ayudarte a comprender mejor lo que ocurre y a desarrollar habilidades para mejorar tu bienestar. Sin embargo, Emotiva es una herramienta de aprendizaje y entrenamiento psicológico y no sustituye a una evaluación o terapia psicológica profesional. Si estas dificultades están afectando a tu vida o se mantienen en el tiempo, te recomendamos consultar con un profesional de la salud mental que pueda valorar tu situación de forma personalizada.";
+
 function normalizeDimensionKey(value: string): string {
   return String(value || "")
     .normalize("NFD")
@@ -326,7 +329,12 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
   priorityImprovementDimensions.sort((a, b) => a.score - b.score);
 
 
-  const renderDimensionGroup = (title: string, dimensions: CategorizedDimension[], icon: React.ElementType) => {
+  const renderDimensionGroup = (
+    title: string,
+    dimensions: CategorizedDimension[],
+    icon: React.ElementType,
+    showLowScoreSupportNote = false
+  ) => {
     if (dimensions.length === 0) return null;
     const IconComponent = icon;
     return (
@@ -346,6 +354,11 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
               </AccordionTrigger>
               <AccordionContent className="text-sm text-foreground/90 px-2">
                 <p className="whitespace-pre-line leading-relaxed">{dim.interpretationText}</p>
+                {showLowScoreSupportNote && (
+                  <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50/80 p-4 text-sm leading-relaxed text-amber-950">
+                    {LOW_SCORE_SUPPORT_NOTE}
+                  </p>
+                )}
               </AccordionContent>
             </AccordionItem>
           ))}
@@ -548,7 +561,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
         <CardContent>
           {renderDimensionGroup("Fortalezas Consolidadas (Puntuación >= 4.0)", highStrengthDimensions, Star)}
           {renderDimensionGroup("Ámbitos Funcionales con Potencial de Mejora (Puntuación 2.5 - 3.9)", functionalDimensions, TrendingUp)}
-          {renderDimensionGroup("Áreas de Mejora Prioritaria (Puntuación < 2.5)", priorityImprovementDimensions, Zap)}
+          {renderDimensionGroup("Áreas de Mejora Prioritaria (Puntuación < 2.5)", priorityImprovementDimensions, Zap, true)}
           
           {(highStrengthDimensions.length === 0 && functionalDimensions.length === 0 && priorityImprovementDimensions.length === 0) && (
              <p className="text-muted-foreground text-center py-4">No se pudieron categorizar las dimensiones para el análisis detallado. Verifica los datos de entrada.</p>

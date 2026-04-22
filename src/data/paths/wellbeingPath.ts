@@ -320,7 +320,7 @@ export const wellbeingPath: Path = {
           title: 'Reflexión Final de la Semana',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionssesion4ruta12.mp3`,
           prompts: [
-            '<ul><li>¿Qué descubriste esta semana sobre tu capacidad para reconocer y generar emociones positivas?</li><li>¿Qué quieres ajustar en tu día a día para que tu capacidad de generar emociones positivas funcione mejor?</li><li>¿Qué cosas, personas o experiencias forman parte de tu propia “mochila de reserva”?</li><li>¿Qué hábitos sencillos (ej. dormir bien, caminar, escuchar música) notas que te ayudan a mantenerte más sereno/a y equilibrado/a?</li><li>Cuando reviviste un recuerdo positivo o usaste uno de tus recursos, ¿qué cambió en tu estado de ánimo?</li><li>¿Qué tres pequeñas acciones concretas podrías repetir la próxima semana para seguir fortaleciendo tu reserva emocional?</li></ul>',
+            '<ul><li>¿Qué has descubierto esta semana sobre tu capacidad para reconocer y generar emociones positivas?</li><li>¿Qué quieres ajustar en tu día a día para que tu capacidad de generar emociones positivas funcione mejor?</li><li>¿Qué cosas, personas o experiencias forman parte de tu propia “mochila de reserva”?</li><li>¿Qué hábitos sencillos (ej. dormir bien, caminar, escuchar música) notas que te ayudan a mantenerte más sereno/a y equilibrado/a?</li><li>Cuando has revivido un recuerdo positivo o has usado uno de tus recursos, ¿qué ha cambiado en tu estado de ánimo?</li><li>¿Qué tres pequeñas acciones concretas podrías repetir la próxima semana para seguir fortaleciendo tu reserva emocional?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -358,7 +358,7 @@ export const wellbeingPath: Path = {
           title: 'REFLEXIÓN FINAL PARA EL CUADERNO',
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta12/descripciones/sesion4/Reflexionfinalruta12.mp3`,
           prompts: [
-            '<ul><li>¿Qué hábitos, rutinas o pequeños gestos descubrí que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>',
+            '<ul><li>¿Qué hábitos, rutinas o pequeños gestos he descubierto que me ayudan a sentirme con más calma o energía?</li><li>¿Qué he comprendido sobre la relación entre acción y motivación? ¿Cómo puedo aplicarlo en los días en los que me falten las ganas?</li><li>¿Qué recuerdos, apoyos o recursos de mi “mochila positiva” siento que son los más poderosos para levantar mi ánimo en momentos difíciles?</li><li>¿Qué conclusiones saco sobre cómo me hago cargo de mi bienestar y qué quiero seguir cultivando a partir de ahora?</li></ul>',
           ],
         },
         {

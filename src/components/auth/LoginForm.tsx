@@ -29,6 +29,16 @@ const WELCOME_SEEN_KEY = "workwell-welcome-seen";
 const LEGACY_USER_SYNC_KEY_PREFIX = "workwell-legacy-user-synced-";
 const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
 const LAST_LOGIN_AT_KEY = "workwell-last-login-at";
+const LOGIN_TIMEOUT_MS = 12000;
+
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string): Promise<T> {
+  return await Promise.race([
+    promise,
+    new Promise<T>((_, reject) => {
+      window.setTimeout(() => reject(new Error(message)), timeoutMs);
+    }),
+  ]);
+}
 
 export function LoginForm() {
   const t = useTranslations();
@@ -65,20 +75,19 @@ export function LoginForm() {
         }
       }
 
-      if (hasPendingPayload) {
-        const { success } = await sendLegacyData(
-          {
-            id: fbUser.uid,
-            email: pendingData.email || fbUser.email || "",
-            name: pendingData.name || fbUser.displayName || "",
-            gender: pendingData.gender || "",
-            initialEmotionalState: pendingData.initialEmotionalState ?? "",
-            ageRange: pendingData.ageRange || "",
-            department_code: pendingData.department_code || "",
-            verifiedAt: new Date().toISOString(),
-          },
-          "usuario"
-        );
+      void sendLegacyData(
+        {
+          id: fbUser.uid,
+          email: fbUser.email || "",
+          name: fbUser.displayName || "",
+          gender: pendingData.gender || "",
+          initialEmotionalState: pendingData.initialEmotionalState ?? "",
+          ageRange: pendingData.ageRange || "",
+          department_code: pendingData.department_code || "",
+          verifiedAt: new Date().toISOString(),
+        },
+        "usuario"
+      );
 
         if (typeof window !== "undefined" && success) {
           localStorage.setItem(legacySyncKey, "1");
@@ -87,7 +96,7 @@ export function LoginForm() {
       }
     }
 
-    await sendLegacyData({ id: fbUser.uid }, "guardarlogin");
+    void sendLegacyData({ id: fbUser.uid }, "guardarlogin");
 
     if (typeof window !== "undefined") {
       localStorage.setItem(LAST_LOGIN_AT_KEY, String(Date.now()));
@@ -137,12 +146,29 @@ export function LoginForm() {
     setLoginError(null);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      await userCredential.user.reload();
+      const userCredential = await withTimeout(
+        signInWithEmailAndPassword(auth, email, password),
+        LOGIN_TIMEOUT_MS,
+        "El inicio de sesion ha tardado demasiado."
+      );
+
+      try {
+        await withTimeout(
+          userCredential.user.reload(),
+          4000,
+          "No se pudo refrescar el usuario autenticado."
+        );
+      } catch (reloadError) {
+        console.warn("Login reload skipped after timeout/failure:", reloadError);
+      }
 
       if (userCredential.user.email && !userCredential.user.emailVerified) {
         auth.languageCode = "es";
-        await sendEmailVerification(userCredential.user);
+        await withTimeout(
+          sendEmailVerification(userCredential.user),
+          5000,
+          "No se pudo enviar el email de verificacion."
+        );
         await signOut(auth);
         setLoginError("Debes verificar tu correo antes de entrar. Te hemos reenviado un email de verificacion.");
         return;
@@ -154,6 +180,10 @@ export function LoginForm() {
       let errorMessage = "Credenciales invalidas. Por favor, intentalo de nuevo.";
       if (error.code === "auth/network-request-failed") {
         errorMessage = "Error de red. Por favor, revisa tu conexion a internet.";
+      } else if (error.code === "auth/firebase-app-check-token-is-invalid.") {
+        errorMessage = "Firebase esta rechazando el token de seguridad de esta app en iOS. Cierra la app del simulador, vuelve a compilar y prueba otra vez.";
+      } else if (error.message === "El inicio de sesion ha tardado demasiado.") {
+        errorMessage = "El login esta tardando demasiado. Revisa la conexion del simulador e intentalo otra vez.";
       } else if (
         error.code === "auth/invalid-credential" ||
         error.code === "auth/wrong-password" ||

@@ -75,7 +75,10 @@ export function AppSidebar() {
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" side="left">
-      <SidebarHeader className="p-4">
+      <SidebarHeader
+        className="safe-area-top p-4"
+        style={{ paddingTop: "calc(var(--safe-area-top) + 1rem)" }}
+      >
         <Logo className="group-data-[collapsible=icon]:hidden" />
       </SidebarHeader>
       <SidebarContent className="flex-grow">

@@ -190,7 +190,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
         {content.objective && <CardDescription className="pt-2">{content.objective}
         <div className="mt-4">
           <audio controls controlsList="nodownload" className="w-full">
-            <source src={content.audioUrl} type="audio/mp3" />
+            <source src={content.audioUrl} type="audio/mpeg" />
             Tu navegador no soporta el elemento de audio.
           </audio>
         </div>

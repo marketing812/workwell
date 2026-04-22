@@ -5,6 +5,9 @@ export type SecurityRuleContext = {
   path: string;
   operation: 'get' | 'list' | 'create' | 'update' | 'delete' | 'write';
   requestResourceData?: any;
+  databaseId?: string;
+  originalErrorCode?: string;
+  originalErrorMessage?: string;
 };
 
 interface FirebaseAuthToken {
@@ -32,6 +35,9 @@ interface SecurityRuleRequest {
   resource?: {
     data: any;
   };
+  databaseId?: string;
+  originalErrorCode?: string;
+  originalErrorMessage?: string;
 }
 
 /**
@@ -91,8 +97,11 @@ function buildRequestObject(context: SecurityRuleContext): SecurityRuleRequest {
   return {
     auth: authObject,
     method: context.operation,
-    path: `/databases/(default)/documents/${context.path}`,
+    path: `/databases/${context.databaseId || '(default)'}/documents/${context.path}`,
     resource: context.requestResourceData ? { data: context.requestResourceData } : undefined,
+    databaseId: context.databaseId || '(default)',
+    originalErrorCode: context.originalErrorCode,
+    originalErrorMessage: context.originalErrorMessage,
   };
 }
 

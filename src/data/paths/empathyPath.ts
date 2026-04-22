@@ -403,7 +403,7 @@ export const empathyPath: Path = {
           audioUrl: `${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/descripciones/semana4/REFLEXION.mp3`,
           prompts: [
             '<p>Responde con honestidad, sin juicio. Estas preguntas no buscan respuestas perfectas, sino verdaderas.</p>',
-            '<ul><li>¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?</li><li>¿Qué me cuesta más: elegir a quién dejo entrar… o cómo me muestro yo?</li><li>¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?</li><li>¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?</li></ul>',
+            '<ul><li>¿Qué he aprendido esta semana sobre el tipo de relaciones que deseo construir?</li><li>¿Qué me ha costado más: elegir a quién dejo entrar… o cómo me muestro yo?</li><li>¿Qué vínculo me gustaría cuidar mejor desde hoy? ¿Qué gesto pequeño puedo hacer?</li><li>¿Qué necesito recordarme cuando sienta culpa por proteger mi bienestar?</li></ul>',
           ],
         },
         { type: 'title', text: 'Resumen Clave' },
@@ -468,4 +468,3 @@ export const empathyPath: Path = {
     }
   ]
 };
-
