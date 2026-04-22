@@ -11,7 +11,7 @@ import { DashboardSummaryCard } from "@/components/dashboard/DashboardSummaryCar
 import { ChartPlaceholder } from "@/components/dashboard/ChartPlaceholder";
 import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle, MessageSquareQuote } from "lucide-react";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle, MessageSquareQuote, HeartPulse, Brain, Route, BookHeart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -396,12 +396,12 @@ export default function DashboardPage() {
 
       <section aria-labelledby="quick-summary-heading">
         <h2 id="quick-summary-heading" className="sr-only">{t.quickSummary}</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-4">
           <DashboardSummaryCard
             title="Tu Bienestar Hoy"
             value={lastMood || "Estable"}
             description="Basado en tu último registro de ánimo."
-            icon={lastMood ? CheckCircle : Smile}
+            icon={HeartPulse}
             cardColorClass={lastMood ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700" : "bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-700"}
             iconColorClass={lastMood ? "text-green-600 dark:text-green-400" : "text-slate-600 dark:text-slate-400"}
           />
@@ -409,7 +409,7 @@ export default function DashboardPage() {
             title="Área Prioritaria"
             value={focusArea}
             description="Tu principal área de enfoque según tu última evaluación."
-            icon={Target}
+            icon={Brain}
             cardColorClass="bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700"
             iconColorClass="text-purple-600 dark:text-purple-400"
           />
@@ -417,7 +417,7 @@ export default function DashboardPage() {
             title="Ruta en Curso"
             value={activePathProgress.value}
             description={activePathProgress.description}
-            icon={TrendingUp}
+            icon={Route}
             cardColorClass="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700"
             iconColorClass="text-blue-600 dark:text-blue-400"
           />
@@ -427,7 +427,7 @@ export default function DashboardPage() {
             description="¡Sigue así para conocerte mejor!"
             ctaLink="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas"
             ctaLabel="¿Qué es el autoregistro?"
-            icon={Activity}
+            icon={BookHeart}
             cardColorClass="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700"
             iconColorClass="text-yellow-600 dark:text-yellow-500"
           />

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { AppHeader } from "@/components/layout/AppHeader";
@@ -36,6 +36,8 @@ function PopupManager() {
 export default function MainAppLayout({ children }: { children: ReactNode }) {
   const { user, loading } = useUser();
   const router = useRouter();
+  const pathname = usePathname();
+  const isImmersiveRoute = pathname === '/bienvenida';
 
   useEffect(() => {
     if (!loading && !user) {
@@ -65,9 +67,15 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
         <MoodCheckInProvider>
           <SidebarProvider>
             <div className="safe-area-bottom flex min-h-screen w-full flex-col">
-              <AppSidebar />
-              <AppHeader />
-              <main className="safe-area-x flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+              {!isImmersiveRoute && <AppSidebar />}
+              {!isImmersiveRoute && <AppHeader />}
+              <main
+                className={
+                  isImmersiveRoute
+                    ? 'flex flex-1 flex-col'
+                    : 'safe-area-x flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8'
+                }
+              >
                  {children}
               </main>
               <PopupManager />

@@ -130,4 +130,26 @@ body {
     .safe-area-bottom {
         padding-bottom: var(--safe-area-bottom);
     }
+
+    .assessment-aurora {
+        background:
+            radial-gradient(circle at top left, rgba(220, 239, 253, 0.96), transparent 30%),
+            radial-gradient(circle at 78% 18%, rgba(242, 199, 166, 0.34), transparent 24%),
+            radial-gradient(circle at 24% 78%, rgba(232, 215, 155, 0.24), transparent 26%),
+            radial-gradient(circle at top right, rgba(215, 243, 238, 0.84), transparent 28%),
+            linear-gradient(180deg, #fffdf9 0%, #fff7ef 38%, #fff4ea 68%, #f9f6ff 100%);
+        animation: assessmentHueShift 18s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes assessmentHueShift {
+    0% {
+        filter: saturate(1) brightness(1);
+    }
+    50% {
+        filter: saturate(1.04) brightness(1.01);
+    }
+    100% {
+        filter: saturate(0.98) brightness(0.995);
+    }
 }

@@ -147,43 +147,43 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
   };
   const getLabel = (value: string) => {
     const cleanValue = String(value || '').split('(')[0].trim();
-    const maxLength = isMobile ? 12 : 28;
+    const maxLength = isMobile ? 15 : 28;
     return cleanValue.length > maxLength ? `${cleanValue.slice(0, maxLength)}…` : cleanValue;
   };
 
   return (
     <Card className={`shadow-lg ${className}`}>
-      <CardHeader>
+      <CardHeader className="pb-1 sm:pb-3">
         <CardTitle className="flex items-center"><Activity className="mr-2 h-6 w-6 text-accent" />{t.myEmotionalProfile}</CardTitle>
         <CardDescription>{t.myEmotionalProfileDescription}</CardDescription>
       </CardHeader>
-      <CardContent className="overflow-x-hidden">
-        <div className="h-[320px] sm:h-[360px] w-full min-w-0 overflow-hidden">
+      <CardContent className="overflow-x-auto px-2 pb-1 pt-0 sm:px-6 sm:pb-3">
+        <div className="h-[390px] w-full min-w-[380px] overflow-visible sm:h-[340px] sm:min-w-0">
           <ChartContainer config={chartConfig} className="w-full h-full min-w-0 aspect-auto">
             <RadarChart
               cx="50%"
               cy="50%"
-              outerRadius={isMobile ? '56%' : '64%'}
+              outerRadius={isMobile ? '78%' : '69%'}
               data={finalRadarData}
-              margin={isMobile ? { top: 24, right: 18, bottom: 26, left: 18 } : { top: 26, right: 30, bottom: 34, left: 30 }}
+              margin={isMobile ? { top: 18, right: 38, bottom: 18, left: 38 } : { top: 16, right: 24, bottom: 18, left: 24 }}
             >
               <PolarGrid gridType="polygon" stroke="hsl(var(--border))" />
               <PolarAngleAxis
                 dataKey="dimension"
                 tick={({ x, y, payload, textAnchor }) => {
                   const label = getLabel(String((payload as { value?: string })?.value ?? ''));
-                  const [line1, line2] = splitLabelInTwoLines(label, isMobile ? 12 : 16);
+                  const [line1, line2] = splitLabelInTwoLines(label, isMobile ? 14 : 16);
                   return (
                     <text
                       x={x}
                       y={y}
-                      dy={isMobile ? 3 : 0}
+                      dy={isMobile ? 2 : 0}
                       textAnchor={textAnchor ?? "middle"}
                       fill="hsl(var(--foreground))"
-                      fontSize={isMobile ? 6.5 : 8}
+                      fontSize={isMobile ? 8.5 : 8}
                     >
                       <tspan x={x} dy={isMobile ? 0 : 4}>{line1}</tspan>
-                      {line2 ? <tspan x={x} dy={isMobile ? 7 : 9}>{line2}</tspan> : null}
+                      {line2 ? <tspan x={x} dy={isMobile ? 9 : 9}>{line2}</tspan> : null}
                     </text>
                   );
                 }}
@@ -192,7 +192,7 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
                 angle={90}
                 domain={[0, 5]}
                 tickCount={6}
-                tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+                tick={{ fontSize: isMobile ? 11 : 10, fill: 'hsl(var(--muted-foreground))' }}
                 axisLine={{ stroke: 'hsl(var(--border))' }}
               />
               <Radar

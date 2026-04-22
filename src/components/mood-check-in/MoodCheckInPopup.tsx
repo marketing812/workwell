@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/contexts/UserContext';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { moodCheckInOptions, type MoodOption } from '@/data/moodCheckInOptions';
+import { moodCheckInOptions, moodCheckInToneClasses, type MoodOption } from '@/data/moodCheckInOptions';
 
 const LOW_MOOD_VALUES = new Set(['muy-mal', 'mal']);
 const LOW_MOOD_ALERT_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
@@ -177,17 +177,21 @@ export function MoodCheckInPopup({ isOpen, onClose }: MoodCheckInPopupProps) {
           <div className="py-4 space-y-3">
             {moodCheckInOptions.map((option) => {
               const Icon = option.icon;
+              const tone = moodCheckInToneClasses[option.score];
               return (
                 <Button
                   key={option.value}
                   variant="outline"
                   className={cn(
-                    "w-full h-auto text-left justify-start p-4 space-x-4 items-start whitespace-normal",
-                    selectedMood?.value === option.value && "border-primary ring-2 ring-primary"
+                    "w-full h-auto text-left justify-start p-4 space-x-4 items-start whitespace-normal border-2 transition-all duration-200 ease-in-out",
+                    tone?.base,
+                    selectedMood?.value === option.value
+                      ? cn("ring-2", tone?.selected)
+                      : "shadow-sm"
                   )}
                   onClick={() => setSelectedMood(option)}
                 >
-                  <Icon className="h-8 w-8 text-muted-foreground flex-shrink-0 mt-1" />
+                  <Icon className="mt-1 h-8 w-8 flex-shrink-0 text-foreground/80" />
                   <div className="flex flex-col flex-1 min-w-0">
                     <span className="font-semibold text-base">{option.label}</span>
                     <span className="text-sm text-muted-foreground font-normal">

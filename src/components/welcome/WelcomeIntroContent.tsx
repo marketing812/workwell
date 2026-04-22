@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useUser } from "@/contexts/UserContext";
-import { Capacitor } from "@capacitor/core";
 
 interface WelcomeIntroContentProps {
   showContinue?: boolean;
@@ -21,12 +21,16 @@ const MOTIVATION_OPTIONS = [
   "Simplemente sentirme mejor.",
 ];
 
+const WELCOME_VIDEO_SRC = "https://www.workwellfut.com/videos/bienvenida.mp4";
+const WELCOME_VIDEO_POSTER = "/welcome-video-poster.jpg";
+
 export function WelcomeIntroContent({ showContinue = false, onContinue, onScreenChange }: WelcomeIntroContentProps) {
   const router = useRouter();
   const { user } = useUser();
   const [screen, setScreen] = useState(1);
   const [selectedMotivation, setSelectedMotivation] = useState<string | null>(null);
-  const isNativeApp = Capacitor.isNativePlatform();
+  const [videoLoadError, setVideoLoadError] = useState(false);
+  const screenLayoutClass = "flex min-h-[100svh] flex-col justify-center gap-6 px-4 py-8 md:gap-8 md:px-0 md:py-10";
 
   useEffect(() => {
     onScreenChange?.(screen);
@@ -52,8 +56,8 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col gap-6 text-center">
       {screen === 1 && (
-        <>
-          <div className="relative mx-auto mb-2 flex w-full max-w-4xl flex-col items-center gap-5 px-6 py-4">
+        <div className={screenLayoutClass}>
+          <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-2 py-4 sm:px-6">
             <div className="relative h-[310px] w-full max-w-5xl">
               <Image
                 src="/welcome-bienvenida-v2.jpg"
@@ -76,43 +80,42 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
               Quiero empezar
             </Button>
           </div>
-        </>
+        </div>
       )}
 
       {screen === 2 && (
-        <div className="flex flex-col gap-6 md:gap-8">
-          {isNativeApp ? (
-            <div className="order-1 relative left-1/2 w-screen -translate-x-1/2 border-y bg-muted/30 p-6 text-center md:left-auto md:w-full md-translate-x-0 md:rounded-xl md:border md:px-6 md:py-8">
-              <p className="text-base leading-relaxed md:text-lg">
-                En iPhone el reproductor integrado de YouTube puede fallar dentro de la app. Puedes ver este vídeo de
-                bienvenida directamente en YouTube.
-              </p>
-              <div className="pt-4">
-                <Button asChild size="lg">
-                  <a
-                    href="https://www.youtube.com/watch?v=riFTSyQWv84"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Ver vídeo en YouTube
-                  </a>
-                </Button>
-              </div>
+        <div className="flex min-h-[100svh] flex-col justify-center gap-6 px-0 py-0 md:gap-8 md:px-0 md:py-0">
+          <div className="order-1 relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-black md:left-auto md:w-full md:translate-x-0 md:rounded-xl">
+            <div className="relative aspect-[9/16] h-[78vh] min-h-[520px] w-full max-h-[82vh] md:aspect-video md:h-auto md:min-h-0">
+              {videoLoadError ? (
+                <div className="flex h-full min-h-[520px] w-full flex-col items-center justify-center gap-4 px-6 text-center text-white md:min-h-0 md:py-10">
+                  <p className="max-w-md text-base leading-relaxed text-white/90 md:text-lg">
+                    No hemos podido cargar el video de bienvenida en este momento.
+                  </p>
+                  <Button asChild size="lg" variant="secondary">
+                    <a href={WELCOME_VIDEO_SRC} target="_blank" rel="noreferrer">
+                      Abrir video
+                    </a>
+                  </Button>
+                </div>
+              ) : (
+                <video
+                  key={WELCOME_VIDEO_SRC}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={WELCOME_VIDEO_POSTER}
+                  controlsList="nodownload"
+                  disablePictureInPicture
+                  onError={() => setVideoLoadError(true)}
+                >
+                  <source src={WELCOME_VIDEO_SRC} type="video/mp4" />
+                  Tu navegador no puede reproducir este video.
+                </video>
+              )}
             </div>
-          ) : (
-            <div className="order-1 relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-black md:left-auto md:w-full md:translate-x-0 md:rounded-xl">
-              <div className="relative -mt-2 h-[68vh] min-h-[460px] w-full md:mt-0 md:h-auto md:min-h-0 md:pb-[56.25%]">
-                <iframe
-                  className="absolute inset-0 h-full w-full"
-                  src="https://www.youtube.com/embed/riFTSyQWv84"
-                  title="Video de bienvenida"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          )}
+          </div>
 
           <div className="order-2 space-y-4 px-4 md:px-0">
             <h2 className="text-3xl font-bold md:text-4xl">¿Qué es EMOTIVA?</h2>
@@ -134,11 +137,11 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
       )}
 
       {screen === 3 && (
-        <div className="flex min-h-[70vh] flex-col items-center justify-center gap-6 px-4 md:gap-8 md:px-0">
+        <div className={screenLayoutClass}>
           <div className="relative h-[240px] w-full max-w-4xl">
             <Image
-              src="/welcome-bienvenida-v2.jpg"
-              alt="Ilustracion de bienvenida de EMOTIVA"
+              src="/queobtendras.jpg"
+              alt="Ilustracion sobre lo que obtendras con EMOTIVA"
               fill
               className="object-contain"
             />
@@ -164,7 +167,7 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
       )}
 
       {screen === 4 && (
-        <div className="flex min-h-[70vh] flex-col justify-center gap-6 px-4 md:gap-8 md:px-0">
+        <div className={screenLayoutClass}>
           <h2 className="text-3xl font-bold md:text-4xl">Antes de empezar, una pregunta:</h2>
           <p className="text-lg leading-relaxed text-black md:text-xl">
             Ahora mismo, ¿en qué te gustaría trabajar en ti?
@@ -194,11 +197,11 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
       )}
 
       {screen === 5 && (
-        <div className="flex min-h-[70vh] flex-col items-center justify-center gap-6 px-4 md:gap-8 md:px-0">
+        <div className={screenLayoutClass}>
           <div className="relative h-[240px] w-full max-w-4xl">
             <Image
-              src="/welcome-bienvenida-v2.jpg"
-              alt="Ilustracion de bienvenida de EMOTIVA"
+              src="/antesdeempezar.jpg"
+              alt="Ilustracion de antes de empezar en EMOTIVA"
               fill
               className="object-contain"
             />
@@ -232,32 +235,34 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
       )}
 
       {screen === 6 && (
-        <div className="flex min-h-[70vh] flex-col justify-center gap-6 px-4 md:gap-8 md:px-0">
-          <h2 className="text-3xl font-bold md:text-4xl">Importante</h2>
-          <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-black md:text-lg">
-            Esta evaluación no es un diagnóstico formal ni sustituye un proceso terapéutico clínico.
-            <br />
-            Tus respuestas son confidenciales.
-            <br />
-            La información se utiliza únicamente para generar tu perfil emocional y ofrecerte recomendaciones
-            personalizadas. Los datos se analizan de forma agregada y anónima.
-          </p>
+        <div className={screenLayoutClass}>
+          <Alert className="mx-auto w-full max-w-3xl border-amber-300 bg-amber-50 text-center text-amber-950">
+            <AlertTitle className="text-2xl font-bold md:text-3xl">Importante</AlertTitle>
+            <AlertDescription className="text-sm leading-relaxed md:text-base">
+              <p>Esta evaluación no es un diagnóstico formal ni sustituye un proceso terapéutico clínico.</p>
+              <p className="mt-2">Tus respuestas son confidenciales.</p>
+              <p className="mt-2">
+                La información se utiliza únicamente para generar tu perfil emocional y ofrecerte recomendaciones
+                personalizadas. Los datos se analizan de forma agregada y anónima.
+              </p>
 
-          <div className="mx-auto max-w-3xl text-left text-black">
-            <p className="mb-2 text-base font-semibold md:text-lg">En unos segundos recibirás:</p>
-            <ul className="list-disc space-y-1 pl-6 text-base md:text-lg">
-              <li>Tu perfil emocional.</li>
-              <li>Tus fortalezas psicológicas.</li>
-              <li>Las áreas que puedes mejorar.</li>
-              <li>Tus primeras rutas recomendadas.</li>
-            </ul>
-          </div>
+              <div className="mt-4">
+                <p className="mb-2 text-base font-semibold md:text-lg">En unos segundos recibirás:</p>
+                <ul className="list-disc list-inside space-y-1 text-base md:text-lg">
+                  <li>Tu perfil emocional.</li>
+                  <li>Tus fortalezas psicológicas.</li>
+                  <li>Las áreas que puedes mejorar.</li>
+                  <li>Tus primeras rutas recomendadas.</li>
+                </ul>
+              </div>
 
-          <div className="pt-2">
-            <Button size="lg" onClick={handleStartEvaluation}>
-              Empezar evaluación
-            </Button>
-          </div>
+              <div className="pt-5">
+                <Button size="lg" onClick={handleStartEvaluation}>
+                  Empezar evaluación
+                </Button>
+              </div>
+            </AlertDescription>
+          </Alert>
         </div>
       )}
     </div>

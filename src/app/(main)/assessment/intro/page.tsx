@@ -12,9 +12,9 @@ export default function AssessmentIntroPage() {
   const t = useTranslations();
   
   return (
-    <div className="container mx-auto py-8 flex justify-center">
-      <Card className="w-full max-w-3xl shadow-xl my-8 overflow-hidden">
-        <CardHeader className="p-0 relative h-64 w-full">
+    <div className="container mx-auto flex justify-center py-3 sm:py-6">
+      <Card className="w-full max-w-3xl overflow-hidden shadow-xl my-0 sm:my-4">
+        <CardHeader className="relative h-56 w-full p-0 sm:h-64">
             <Image 
                 src={`${EXTERNAL_SERVICES_BASE_URL}/imgapp/800x300/imagenEvaluacion.jpg`}
                 alt="Evaluación de bienestar" 

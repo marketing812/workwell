@@ -38,6 +38,29 @@ const likertOptions = [
     { value: 5, label: 'Laugh', description: 'Totalmente de acuerdo' },
 ];
 
+const likertToneClasses: Record<number, { base: string; selected: string }> = {
+  1: {
+    base: "border-rose-200 bg-rose-50",
+    selected: "border-rose-300 bg-rose-100 ring-rose-200",
+  },
+  2: {
+    base: "border-orange-200 bg-orange-50",
+    selected: "border-orange-300 bg-orange-100 ring-orange-200",
+  },
+  3: {
+    base: "border-amber-200 bg-amber-50",
+    selected: "border-amber-300 bg-amber-100 ring-amber-200",
+  },
+  4: {
+    base: "border-lime-200 bg-lime-50",
+    selected: "border-lime-300 bg-lime-100 ring-lime-200",
+  },
+  5: {
+    base: "border-emerald-200 bg-emerald-50",
+    selected: "border-emerald-300 bg-emerald-100 ring-emerald-200",
+  },
+};
+
 const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
 
 interface InProgressData {
@@ -65,6 +88,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const [answers, setAnswers] = useState<Record<string, { score: number; weight: number }>>({});
   const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false);
   const [hasLoadedProgress, setHasLoadedProgress] = useState(false);
+  const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
 
 
   useEffect(() => {
@@ -230,6 +254,13 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     router.push('/my-assessments');
   };
 
+  useEffect(() => {
+    if (!currentItem?.id) return;
+    setIsQuestionTransitioning(true);
+    const timer = setTimeout(() => setIsQuestionTransitioning(false), 360);
+    return () => clearTimeout(timer);
+  }, [currentItem?.id]);
+
   if (!currentItem) {
     if (allItems.length > 0 && currentOverallIndex >= allItems.length) {
        return (
@@ -256,66 +287,75 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
 
   return (
     <>
-      <Card className="w-full max-w-2xl mx-auto shadow-xl overflow-hidden">
-        <CardHeader>
-          <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
-          <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
-                
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="pt-2 px-2 sm:px-6">
-            <div 
-              key={currentItem.id} 
-              className={cn("py-4", "animate-in fade-in-0 slide-in-from-right-5 duration-500")}
-            >
-              <p className="text-xs font-medium text-muted-foreground mb-2 text-center">
-                Pregunta {currentOverallIndex + 1} de {allItems.length}
-              </p>
-              <p className="text-md sm:text-lg font-semibold text-primary mb-6 min-h-[3em] text-center px-2">{currentItem.text}</p>
-              <RadioGroup
-                value={answers[currentItem.id]?.score.toString() || ""}
-                onValueChange={(value) => handleAnswerChange(currentItem, value)}
-                className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 pt-2"
-                aria-label={currentItem.text}
-              >
-                {likertOptions.map(option => {
-                  const IconComponent = iconMap[option.label];
-                  return (
-                    <Label
-                      key={option.value}
-                      htmlFor={`${currentItem.id}-${option.value}`}
-                      className={cn(
-                        "flex flex-col items-center justify-center p-2 border-2 rounded-lg cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105",
-                        "w-16 h-16 sm:w-20 sm:h-20", 
-                        answers[currentItem.id]?.score === option.value
-                          ? "bg-primary/20 border-primary ring-2 ring-primary shadow-lg"
-                          : "bg-background border-input"
-                      )}
-                      title={option.description}
-                    >
-                      <RadioGroupItem
-                        value={option.value.toString()}
-                        id={`${currentItem.id}-${option.value}`}
-                        className="sr-only"
-                      />
-                      {IconComponent ? <IconComponent className="h-8 w-8 sm:h-10 sm:h-10 text-foreground/80" /> : null}
-                    </Label>
-                  );
-                })}
-              </RadioGroup>
-            </div>
-          </CardContent>
-        <CardFooter className="flex justify-between items-center mt-4 p-4 border-t">
-          <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
-            <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
-          </Button>
-          {!isGuided && (
-            <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
-                Siguiente <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+      <div className="flex min-h-[70vh] items-center">
+        <Card
+          className={cn(
+            "w-full max-w-2xl mx-auto overflow-hidden border-white/60 bg-white/80 backdrop-blur-[2px] transition-all duration-300",
+            isQuestionTransitioning ? "shadow-2xl ring-2 ring-primary/25" : "shadow-[0_24px_70px_rgba(84,72,61,0.18)]"
           )}
-        </CardFooter>
-      </Card>
+        >
+          <CardHeader>
+            <Progress value={progressPercentage} className="w-full mb-4" aria-label={`Progreso: ${progressPercentage.toFixed(0)}%`} />
+            <CardDescription className="text-sm text-muted-foreground mt-2 text-center px-2">
+                  
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-2 px-2 sm:px-6">
+              <div 
+                key={currentItem.id} 
+                className={cn("py-4", "animate-in fade-in-0 slide-in-from-right-16 zoom-in-95 duration-500")}
+              >
+                <p className="text-base sm:text-lg font-medium text-muted-foreground mb-2 text-center">
+                  Pregunta {currentOverallIndex + 1} de {allItems.length}
+                </p>
+                <p className="text-2xl sm:text-3xl font-semibold text-primary mb-6 min-h-[3em] text-center px-2 leading-snug">{currentItem.text}</p>
+                <RadioGroup
+                  value={answers[currentItem.id]?.score.toString() || ""}
+                  onValueChange={(value) => handleAnswerChange(currentItem, value)}
+                  className="grid grid-cols-5 justify-items-center items-center gap-2 pt-2 sm:gap-4"
+                  aria-label={currentItem.text}
+                >
+                  {likertOptions.map((option) => {
+                    const IconComponent = iconMap[option.label];
+                    const tone = likertToneClasses[option.value];
+                    return (
+                      <Label
+                        key={option.value}
+                        htmlFor={`${currentItem.id}-${option.value}`}
+                        className={cn(
+                          "flex flex-col items-center justify-center p-2 border-2 rounded-lg cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105",
+                          "aspect-square w-full max-w-14 sm:max-w-20",
+                          tone?.base,
+                          answers[currentItem.id]?.score === option.value
+                            ? cn("ring-2 shadow-lg", tone?.selected)
+                            : "shadow-sm"
+                        )}
+                        title={option.description}
+                      >
+                        <RadioGroupItem
+                          value={option.value.toString()}
+                          id={`${currentItem.id}-${option.value}`}
+                          className="sr-only"
+                        />
+                        {IconComponent ? <IconComponent className="h-7 w-7 sm:h-10 sm:w-10 text-foreground/80" /> : null}
+                      </Label>
+                    );
+                  })}
+                </RadioGroup>
+              </div>
+            </CardContent>
+          <CardFooter className="flex justify-between items-center mt-4 p-4 border-t">
+            <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
+              <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
+            </Button>
+            {!isGuided && (
+              <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
+                  Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            )}
+          </CardFooter>
+        </Card>
+      </div>
       
       <AlertDialog open={showDimensionCompletedDialog}>
         <AlertDialogContent>
@@ -329,11 +369,11 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
                   .replace("{totalDimensions}", assessmentDimensions.length.toString())}
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="mt-4 flex-col sm:flex-row sm:justify-end sm:space-x-2 gap-2 sm:gap-0">
-            <Button variant="outline" onClick={handleSaveForLater} disabled={isSubmitting} className="w-full sm:w-auto">
+          <AlertDialogFooter className="mt-4 grid grid-cols-2 gap-2">
+            <Button variant="outline" onClick={handleSaveForLater} disabled={isSubmitting} className="w-full">
               <Save className="mr-2 h-4 w-4" /> {t.saveForLaterButton}
             </Button>
-            <Button onClick={handleDialogContinue} disabled={isSubmitting} className="w-full sm:w-auto" autoFocus>
+            <Button onClick={handleDialogContinue} disabled={isSubmitting} className="w-full" autoFocus>
               {currentDimensionIndex === assessmentDimensions.length - 1 ? (isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t.finishAssessment) : t.continueButton} 
               {currentDimensionIndex < assessmentDimensions.length - 1 && <ArrowRight className="ml-2 h-4 w-4" />}
               {currentDimensionIndex === assessmentDimensions.length - 1 && !isSubmitting && <CheckCircle className="ml-2 h-4 w-4" />}

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resumen Ejecutivo Rediseño EMOTIVA - 120h</title>
+  <style>
+    :root {
+      --paper: #fffaf5;
+      --card: #ffffff;
+      --ink: #24323a;
+      --muted: #67727a;
+      --line: #e9e2da;
+      --accent: #9bcfb5;
+      --accent-soft: #eef8f2;
+      --sky: #dceffd;
+      --peach: #f8e1d8;
+      --shadow: 0 18px 40px rgba(36, 50, 58, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(220, 239, 253, 0.85), transparent 28%),
+        radial-gradient(circle at top right, rgba(248, 225, 216, 0.55), transparent 24%),
+        linear-gradient(180deg, var(--paper) 0%, #fffdfb 100%);
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 72px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 34px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--sky);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 19px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    section { margin-top: 22px; }
+
+    .card { padding: 28px; }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    .mini {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.84));
+    }
+
+    .highlight {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(155, 207, 181, 0.55);
+      background: linear-gradient(180deg, var(--accent-soft), rgba(255,255,255,0.96));
+      color: var(--ink);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    li { margin-bottom: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    th, td {
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(220, 239, 253, 0.35);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 20px; }
+      .hero, .card { box-shadow: none; background: white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <span class="eyebrow">Resumen Ejecutivo</span>
+      <h1>Rediseño Visual de EMOTIVA</h1>
+      <p>
+        Propuesta resumida para presentar una única línea de intervención viable, enfocada en mejorar la percepción
+        visual del producto, pulir la experiencia en iPhone y reforzar las pantallas clave sin superar un máximo de 120 horas.
+      </p>
+      <div class="highlight">
+        <strong>Propuesta única recomendada:</strong> restyling visual controlado de pantallas clave, componentes visibles y experiencia móvil.
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Qué se propone</h2>
+      <p>
+        No se plantea rehacer toda la aplicación. La propuesta consiste en una mejora de alto impacto visual sobre
+        los puntos que más condicionan la percepción del producto: onboarding, evaluación, dashboard, popups y
+        consistencia general en móvil.
+      </p>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="mini">
+          <h3>Objetivo</h3>
+          <p>Mejorar la sensación de cuidado, claridad y calidad percibida del producto.</p>
+        </div>
+        <div class="mini">
+          <h3>Enfoque</h3>
+          <p>Intervenir donde el cambio se nota más, sin entrar en una reingeniería completa.</p>
+        </div>
+        <div class="mini">
+          <h3>Límite</h3>
+          <p>La intervención total no puede superar <strong>120 horas</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Alcance Incluido</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Incluye</h3>
+          <ul>
+            <li>Refinamiento visual de bienvenida y flujo previo a evaluación.</li>
+            <li>Mejora estética y de legibilidad en la evaluación guiada.</li>
+            <li>Optimización visual del dashboard principal.</li>
+            <li>Revisión de popups y modales más visibles en iPhone.</li>
+            <li>Ajuste de espaciados, tipografía, iconografía y jerarquía visual.</li>
+            <li>Pruebas específicas en iPhone y ajustes de responsive.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>No incluye</h3>
+          <ul>
+            <li>Rediseño completo de todas las pantallas y módulos.</li>
+            <li>Replanteamiento profundo de arquitectura frontend.</li>
+            <li>Sistema de temas para usuario final.</li>
+            <li>Refactor completo del sistema de componentes.</li>
+            <li>Revisión exhaustiva de todos los flujos secundarios de la app.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Estimación Cerrada</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Bloque</th>
+            <th>Contenido</th>
+            <th>Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Revisión y dirección visual</strong></td>
+            <td>Aterrizar estilo, prioridades y reglas visuales de intervención.</td>
+            <td><strong>12 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>2. Bienvenida y flujo de entrada</strong></td>
+            <td>Refinado de onboarding, imágenes, video, composición y percepción inicial.</td>
+            <td><strong>18 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>3. Evaluación</strong></td>
+            <td>Pantallas intro, preguntas, fondo, legibilidad, tarjetas y experiencia móvil.</td>
+            <td><strong>28 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>4. Dashboard principal</strong></td>
+            <td>Tarjetas resumen, gráfico, jerarquía, composición y mejora visual en iPhone.</td>
+            <td><strong>22 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>5. Popups y modales clave</strong></td>
+            <td>Pregunta del día, check-ins y overlays principales.</td>
+            <td><strong>16 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>6. QA y ajustes finales</strong></td>
+            <td>Pruebas, correcciones, detalle visual y validación final.</td>
+            <td><strong>24 h</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="footer-note"><strong>Total estimado:</strong> <strong>120 horas</strong>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Resultado Esperado</h2>
+      <ul>
+        <li>Una app visualmente más coherente, amable y madura.</li>
+        <li>Mayor calidad percibida desde el primer contacto.</li>
+        <li>Experiencia más cuidada y menos “responsive genérica” en iPhone.</li>
+        <li>Mejor lectura de la evaluación y del panel principal.</li>
+        <li>Base visual más sólida para iteraciones futuras sin asumir un rediseño total.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Riesgos y Criterio</h2>
+      <p>
+        Con 120 horas, el criterio debe ser priorizar impacto visible sobre cobertura total. El resultado puede ser
+        muy bueno a nivel de percepción, pero no debe venderse como un rediseño integral de toda la plataforma.
+      </p>
+      <div class="highlight">
+        <strong>Mensaje recomendado para dirección:</strong> “Sí es viable mejorar de forma clara la imagen de EMOTIVA
+        con una intervención controlada de 120 horas, centrada en las pantallas y momentos más importantes del producto,
+        especialmente en móvil y iPhone”.
+      </div>
+    </section>
+  </div>
+</body>
+</html>

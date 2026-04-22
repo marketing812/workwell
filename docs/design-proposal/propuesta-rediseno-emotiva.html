@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Propuesta de Rediseño EMOTIVA</title>
+  <style>
+    :root {
+      --sky-mist: #dceffd;
+      --soft-aqua: #d7f3ee;
+      --blush-peach: #f8e1d8;
+      --warm-cream: #fff9f3;
+      --pale-sage: #ddead7;
+      --paper: #fffcf9;
+      --cloud: #f5f4f1;
+      --mist-gray: #d9d8d4;
+      --stone-text: #6f6a66;
+      --deep-ink: #2f3a40;
+      --soft-rose: #e7b7b5;
+      --apricot: #f2c7a6;
+      --sun-haze: #e8d79b;
+      --tender-lime: #c9dda8;
+      --soft-emerald: #a9d5bf;
+      --line: #ebe6e0;
+      --shadow: 0 20px 60px rgba(47, 58, 64, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-ink);
+      background:
+        radial-gradient(circle at top left, rgba(220, 239, 253, 0.9), transparent 28%),
+        radial-gradient(circle at top right, rgba(215, 243, 238, 0.75), transparent 24%),
+        linear-gradient(180deg, var(--paper) 0%, var(--warm-cream) 100%);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .hero {
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--sky-mist);
+      color: var(--deep-ink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: var(--deep-ink);
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--stone-text);
+      font-size: 16px;
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 18px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .meta-card,
+    .card,
+    .mood-card,
+    .palette-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    .meta-card {
+      padding: 18px 20px;
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--deep-ink);
+    }
+
+    section {
+      margin-top: 32px;
+    }
+
+    .card {
+      padding: 28px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--stone-text);
+    }
+
+    li { margin-bottom: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 15px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 12px;
+    }
+
+    th {
+      background: rgba(220, 239, 253, 0.4);
+      color: var(--deep-ink);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .highlight {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(215, 243, 238, 0.5), rgba(255, 249, 243, 0.95));
+      border: 1px solid rgba(169, 213, 191, 0.45);
+      color: var(--deep-ink);
+    }
+
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .swatch {
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .swatch-color {
+      height: 90px;
+    }
+
+    .swatch-label {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--deep-ink);
+    }
+
+    .moodboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .mood-card {
+      padding: 22px;
+    }
+
+    .mood-tag {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--cloud);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--deep-ink);
+    }
+
+    .mockups {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .mockup {
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .mockup img {
+      width: 100%;
+      display: block;
+      background: linear-gradient(180deg, var(--paper), var(--cloud));
+    }
+
+    .mockup-copy {
+      padding: 20px 22px 24px;
+    }
+
+    .next-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+    }
+
+    .footer-note {
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--stone-text);
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        max-width: none;
+        padding: 24px;
+      }
+
+      .hero,
+      .meta-card,
+      .card,
+      .mood-card,
+      .palette-card,
+      .mockup {
+        box-shadow: none;
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <span class="eyebrow">Propuesta Visual y Funcional</span>
+      <h1>Rediseño de Interfaz para EMOTIVA</h1>
+      <p>
+        Documento de trabajo para presentar una evolución visual completa de la app, con una línea más cálida,
+        premium, serena y coherente. El objetivo es demostrar alcance, complejidad, tiempos estimados y
+        dirección creativa suficiente para tomar una decisión informada a nivel de producto.
+      </p>
+      <div class="meta">
+        <div class="meta-card">
+          <strong>Proyecto</strong>
+          EMOTIVA
+        </div>
+        <div class="meta-card">
+          <strong>Propuesta principal</strong>
+          Rediseño completo de interfaz por fases
+        </div>
+        <div class="meta-card">
+          <strong>Estimación ampliada</strong>
+          660 horas
+        </div>
+        <div class="meta-card">
+          <strong>Escenario avanzado</strong>
+          840 horas con temas visuales
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Resumen Ejecutivo</h2>
+      <p>
+        Sí es viable cambiar por completo la interfaz de EMOTIVA sin romper la lógica principal de la app,
+        siempre que se aborde como una modernización del sistema visual y no como una simple capa de maquillaje.
+        La app actual tiene una base suficiente para evolucionar, pero su tamaño y el número de componentes
+        aconsejan trabajar por fases.
+      </p>
+      <div class="highlight">
+        <strong>Recomendación:</strong> plantear un rediseño completo de interfaz en dos fases principales y
+        dejar como tercera fase opcional el soporte de temas configurables por el usuario.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Dimensión Actual del Producto</h2>
+      <div class="grid-3">
+        <div class="meta-card">
+          <strong>Componentes UI y funcionales</strong>
+          Aproximadamente 180 archivos dentro de <code>src/components</code>.
+        </div>
+        <div class="meta-card">
+          <strong>Pantallas y rutas</strong>
+          Más de 30 páginas y layouts principales dentro de <code>src/app</code>.
+        </div>
+        <div class="meta-card">
+          <strong>Componentes base</strong>
+          Unas 33 piezas base dentro de <code>src/components/ui</code>.
+        </div>
+      </div>
+      <p style="margin-top:18px;">
+        Esto confirma que no se trata de una app pequeña ni de una interfaz aislada. El rediseño debe contemplar
+        navegación, formularios, popups, evaluación, dashboard, secciones de ejercicios, cuaderno terapéutico,
+        recursos, chatbot y ajustes.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Escenarios de Intervención</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Escenario</th>
+            <th>Alcance</th>
+            <th>Horas estimadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Opción A. Restyling visual controlado</strong></td>
+            <td>Nueva apariencia, mejora de componentes base y ajuste de pantallas clave sin rehacer toda la arquitectura visual.</td>
+            <td><strong>120-200 horas</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Opción B. Rediseño completo de interfaz</strong></td>
+            <td>Sistema visual nuevo, rediseño de componentes, pantallas core, módulos secundarios, QA multiplataforma y refinado.</td>
+            <td><strong>660 horas</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Opción C. Rediseño completo + temas personalizables</strong></td>
+            <td>Todo lo anterior, más soporte para varios temas visuales, preferencias por usuario y QA ampliado.</td>
+            <td><strong>840 horas</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Para una propuesta sólida y creíble, la mejor recomendación es presentar la <strong>Opción B</strong> como base
+        y la <strong>Opción C</strong> como evolución estratégica.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Fases Recomendadas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Contenido</th>
+            <th>Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fase 0. Auditoría funcional y visual</strong></td>
+            <td>Inventario de pantallas, componentes, deuda visual y riesgos técnicos. Definición del alcance real.</td>
+            <td><strong>20 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 1. Dirección visual y sistema de diseño</strong></td>
+            <td>Paleta, tipografía, espaciado, radios, sombras, elevación, overlays, lenguaje iconográfico y tokens base.</td>
+            <td><strong>60 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 2. Arquitectura de UI</strong></td>
+            <td>Normalización de componentes base: botones, cards, inputs, selects, tabs, modales, alerts, toasts y contenedores.</td>
+            <td><strong>120 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 3. Rediseño de pantallas core</strong></td>
+            <td>Bienvenida, login, registro, evaluación, resultados, dashboard, navegación principal y estados asociados.</td>
+            <td><strong>180 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 4. Rediseño de módulos secundarios</strong></td>
+            <td>Paths, cuaderno terapéutico, historial, recursos, chatbot, emotional log, settings y pantallas auxiliares.</td>
+            <td><strong>140 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 5. Responsive, accesibilidad y QA</strong></td>
+            <td>Pruebas en móvil, escritorio, iPhone dentro de Capacitor, overlays, teclado, scroll, contraste y regresión visual.</td>
+            <td><strong>80 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 6. Iteraciones con stakeholders</strong></td>
+            <td>Feedback interno, cambios de criterio, refinado y ajuste final antes de release.</td>
+            <td><strong>60 h</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Fase 7. Temas personalizables</strong></td>
+            <td>Arquitectura de temas, selector, persistencia y QA por combinaciones visuales.</td>
+            <td><strong>180 h</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Riesgos y Consideraciones</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Riesgos principales</h3>
+          <ul>
+            <li>Alta dispersión de estilos dentro de componentes funcionales.</li>
+            <li>Gran número de ejercicios y pantallas específicas en la sección de paths.</li>
+            <li>Popups, overlays y formularios con comportamiento delicado en móvil.</li>
+            <li>Diferencias entre navegador y contenedor iOS/Capacitor.</li>
+            <li>Incremento importante de QA si se habilitan temas visuales.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cómo reducir el riesgo</h3>
+          <ul>
+            <li>No rediseñar todo de golpe.</li>
+            <li>Empezar por tokens y componentes base.</li>
+            <li>Migrar primero pantallas core del negocio.</li>
+            <li>Dejar la tematización para una tercera fase.</li>
+            <li>Hacer QA y revisión visual al final de cada bloque.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Kit Visual Pastel Utilizable</h2>
+      <p>
+        Dirección visual propuesta: bienestar emocional premium, suave, luminosa, segura y humana.
+        La intención es alejarse de una interfaz técnica o clínica y acercar la percepción a un
+        cuaderno de bienestar contemporáneo.
+      </p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:#DCEFFD"></div><div class="swatch-label"><strong>Sky Mist</strong><br>#DCEFFD</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D7F3EE"></div><div class="swatch-label"><strong>Soft Aqua</strong><br>#D7F3EE</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F8E1D8"></div><div class="swatch-label"><strong>Blush Peach</strong><br>#F8E1D8</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFF9F3"></div><div class="swatch-label"><strong>Warm Cream</strong><br>#FFF9F3</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#DDEAD7"></div><div class="swatch-label"><strong>Pale Sage</strong><br>#DDEAD7</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFFCF9"></div><div class="swatch-label"><strong>Paper</strong><br>#FFFCF9</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F5F4F1"></div><div class="swatch-label"><strong>Cloud</strong><br>#F5F4F1</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2F3A40"></div><div class="swatch-label"><strong>Deep Ink</strong><br>#2F3A40</div></div>
+      </div>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="palette-card card">
+          <h3>Tipografía recomendada</h3>
+          <ul>
+            <li>Titulares: <strong>Cormorant Garamond</strong> o <strong>Fraunces</strong></li>
+            <li>Texto UI y cuerpo: <strong>Manrope</strong> o <strong>Plus Jakarta Sans</strong></li>
+            <li>Combinación ideal: <strong>Cormorant Garamond + Manrope</strong></li>
+          </ul>
+        </div>
+        <div class="palette-card card">
+          <h3>Uso de color sugerido</h3>
+          <ul>
+            <li>Fondo general: <code>#FFF9F3</code> o <code>#FFFCF9</code></li>
+            <li>Superficies principales: blanco cálido</li>
+            <li>Texto principal: <code>#2F3A40</code></li>
+            <li>Texto secundario: <code>#6F6A66</code></li>
+            <li>CTA principal: <code>#A9D5BF</code></li>
+            <li>CTA secundario: <code>#DCEFFD</code></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mini Documento de Estilo por Pantallas</h2>
+      <div class="grid-2">
+        <div class="mood-card">
+          <h3>Bienvenida</h3>
+          <p>Debe transmitir calma, cuidado y confianza desde el primer segundo.</p>
+          <ul>
+            <li>Fondo atmosférico pastel con degradado cielo-crema-aqua.</li>
+            <li>Ilustración o imagen superior amplia con mucho aire.</li>
+            <li>Titular emocional elegante.</li>
+            <li>CTA principal redondeado, amable y claro.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Evaluación</h3>
+          <p>Responder debe sentirse ligero, guiado y humano.</p>
+          <ul>
+            <li>Card blanco cálido centrado sobre fondo suave.</li>
+            <li>Barra de progreso fina y elegante.</li>
+            <li>Pregunta con jerarquía alta.</li>
+            <li>Opciones emocionales como botones visuales suaves.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Dashboard</h3>
+          <p>Los datos deben sentirse útiles, no fríos.</p>
+          <ul>
+            <li>Cards amplias y redondeadas.</li>
+            <li>Fondos pastel muy suaves por bloque.</li>
+            <li>Gráficos discretos y legibles.</li>
+            <li>Jerarquía clara entre estado actual y acciones recomendadas.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Modales y Popups</h3>
+          <p>Interrumpir poco y acompañar mucho.</p>
+          <ul>
+            <li>Overlay suave con tinte crema o sky.</li>
+            <li>Modal blanco cálido con esquinas grandes.</li>
+            <li>Uso de icono o microilustración arriba.</li>
+            <li>Botón principal ancho y claro.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Moodboard de Dirección Artística</h2>
+      <div class="moodboard">
+        <div class="mood-card">
+          <h3>Palabras guía</h3>
+          <span class="mood-tag">calma</span>
+          <span class="mood-tag">luz</span>
+          <span class="mood-tag">aire</span>
+          <span class="mood-tag">refugio</span>
+          <span class="mood-tag">suavidad</span>
+          <span class="mood-tag">claridad</span>
+          <span class="mood-tag">cuidado</span>
+          <span class="mood-tag">horizonte</span>
+          <span class="mood-tag">serenidad</span>
+          <span class="mood-tag">respiración</span>
+        </div>
+        <div class="mood-card">
+          <h3>Fondos</h3>
+          <ul>
+            <li>Cielos pastel desaturados.</li>
+            <li>Mar tranquilo y horizonte limpio.</li>
+            <li>Niebla luminosa y texturas suaves.</li>
+            <li>Degradados orgánicos con muy poco ruido visual.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Ilustración e imagen</h3>
+          <ul>
+            <li>Dirección orgánica y editorial, no infantil.</li>
+            <li>Temas: introspección, naturaleza, amanecer, agua, pausa.</li>
+            <li>Evitar stock clínico o corporativo.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Iconografía</h3>
+          <ul>
+            <li>Lineal, redondeada y amable.</li>
+            <li>Preferencia por iconos dentro de cápsulas suaves.</li>
+            <li>Estados emocionales muy claros pero no chillones.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Materiales visuales</h3>
+          <ul>
+            <li>Papel cálido.</li>
+            <li>Cristal muy suave.</li>
+            <li>Agua tranquila.</li>
+            <li>Luz de mañana.</li>
+            <li>Telas ligeras y texturas apenas visibles.</li>
+          </ul>
+        </div>
+        <div class="mood-card">
+          <h3>Qué evitar</h3>
+          <ul>
+            <li>Aspecto demasiado médico o técnico.</li>
+            <li>Diseño demasiado corporativo.</li>
+            <li>Exceso de contraste duro.</li>
+            <li>Fondos planos sin atmósfera.</li>
+            <li>Recursos visuales genéricos de startup.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mockups de Referencia</h2>
+      <p>
+        A continuación se incluyen dos direcciones visuales generadas como referencia conceptual. No sustituyen
+        un diseño final, pero ayudan a visualizar el tono deseado y a validar preferencias con stakeholders.
+      </p>
+      <div class="mockups">
+        <article class="mockup">
+          <img src="./assets/mockup-premium.png" alt="Mockup premium calmado para EMOTIVA" />
+          <div class="mockup-copy">
+            <h3>Línea Premium Calm</h3>
+            <p>
+              Dirección más elegante y sobria, con una lectura de producto de salud-tech emocional de gama alta.
+              Funciona bien si se quiere proyectar un producto más maduro y diferencial.
+            </p>
+          </div>
+        </article>
+        <article class="mockup">
+          <img src="./assets/mockup-pastel.png" alt="Mockup pastel suave para EMOTIVA" />
+          <div class="mockup-copy">
+            <h3>Línea Pastel Soft</h3>
+            <p>
+              Dirección más luminosa, cálida y amable. Probablemente más alineada con una experiencia de cuidado,
+              suavidad y seguridad emocional desde el primer contacto.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Propuesta de Ejecución Recomendada</h2>
+      <div class="next-steps">
+        <div class="step">
+          <h3>Fase 1</h3>
+          <p>Auditoría + sistema visual + componentes base + pantallas core.</p>
+          <strong>380 horas</strong>
+        </div>
+        <div class="step">
+          <h3>Fase 2</h3>
+          <p>Módulos secundarios + QA + refinado final.</p>
+          <strong>280 horas</strong>
+        </div>
+        <div class="step">
+          <h3>Fase 3 opcional</h3>
+          <p>Temas visuales configurables por usuario.</p>
+          <strong>180 horas</strong>
+        </div>
+      </div>
+      <p class="footer-note">
+        Mensaje resumido para dirección: “Sí, es viable rehacer la interfaz sin comprometer la lógica principal
+        de la app, siempre que se ejecute por fases. Se recomienda una primera etapa de sistema visual y pantallas
+        core, una segunda de extensión y QA, y una tercera opcional de tematización para el usuario”.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

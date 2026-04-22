@@ -29,8 +29,9 @@ export default function RootLayout({
         <DisableLegacySw />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          forcedTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <FirebaseClientProvider>
