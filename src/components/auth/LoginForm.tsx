@@ -62,11 +62,9 @@ export function LoginForm() {
 
     if (!alreadySynced) {
       let pendingData: any = {};
-      let hasPendingPayload = false;
       if (typeof window !== "undefined") {
         const pendingRaw = localStorage.getItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
         if (pendingRaw) {
-          hasPendingPayload = true;
           try {
             pendingData = JSON.parse(pendingRaw);
           } catch {
@@ -75,7 +73,7 @@ export function LoginForm() {
         }
       }
 
-      void sendLegacyData(
+      const { success } = await sendLegacyData(
         {
           id: fbUser.uid,
           email: fbUser.email || "",
@@ -89,10 +87,9 @@ export function LoginForm() {
         "usuario"
       );
 
-        if (typeof window !== "undefined" && success) {
-          localStorage.setItem(legacySyncKey, "1");
-          localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
-        }
+      if (typeof window !== "undefined" && success) {
+        localStorage.setItem(legacySyncKey, "1");
+        localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
       }
     }
 

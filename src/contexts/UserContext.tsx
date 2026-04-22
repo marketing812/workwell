@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as deleteFirebaseUser } from "firebase/auth";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { doc, getDoc, getDocs, collection, writeBatch } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection, writeBatch, setDoc } from "firebase/firestore";
 import { Capacitor } from '@capacitor/core';
 import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
