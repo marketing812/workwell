@@ -287,7 +287,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
 
   return (
     <>
-      <div className="flex min-h-[70vh] items-center">
+      <div className="flex min-h-[65vh] items-center">
         <Card
           className={cn(
             "w-full max-w-2xl mx-auto overflow-hidden border-white/60 bg-white/80 backdrop-blur-[2px] transition-all duration-300",

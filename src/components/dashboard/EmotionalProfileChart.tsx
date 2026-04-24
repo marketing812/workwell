@@ -157,15 +157,15 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
         <CardTitle className="flex items-center"><Activity className="mr-2 h-6 w-6 text-accent" />{t.myEmotionalProfile}</CardTitle>
         <CardDescription>{t.myEmotionalProfileDescription}</CardDescription>
       </CardHeader>
-      <CardContent className="overflow-x-auto px-2 pb-1 pt-0 sm:px-6 sm:pb-3">
-        <div className="h-[390px] w-full min-w-[380px] overflow-visible sm:h-[340px] sm:min-w-0">
+      <CardContent className="overflow-hidden px-2 pb-1 pt-0 sm:px-6 sm:pb-3">
+        <div className="h-[350px] w-full min-w-0 overflow-hidden sm:h-[340px]">
           <ChartContainer config={chartConfig} className="w-full h-full min-w-0 aspect-auto">
             <RadarChart
               cx="50%"
               cy="50%"
-              outerRadius={isMobile ? '78%' : '69%'}
+              outerRadius={isMobile ? '68%' : '69%'}
               data={finalRadarData}
-              margin={isMobile ? { top: 18, right: 38, bottom: 18, left: 38 } : { top: 16, right: 24, bottom: 18, left: 24 }}
+              margin={isMobile ? { top: 14, right: 12, bottom: 14, left: 12 } : { top: 16, right: 24, bottom: 18, left: 24 }}
             >
               <PolarGrid gridType="polygon" stroke="hsl(var(--border))" />
               <PolarAngleAxis
@@ -180,7 +180,7 @@ export function EmotionalProfileChart({ results, rawAnswers, assessmentDimension
                       dy={isMobile ? 2 : 0}
                       textAnchor={textAnchor ?? "middle"}
                       fill="hsl(var(--foreground))"
-                      fontSize={isMobile ? 8.5 : 8}
+                      fontSize={isMobile ? 8 : 8}
                     >
                       <tspan x={x} dy={isMobile ? 0 : 4}>{line1}</tspan>
                       {line2 ? <tspan x={x} dy={isMobile ? 9 : 9}>{line2}</tspan> : null}

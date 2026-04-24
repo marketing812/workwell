@@ -203,7 +203,7 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
         <div className="absolute bottom-[2%] right-[12%] h-48 w-48 rounded-full bg-[#ddead7]/55 blur-3xl sm:h-64 sm:w-64" />
       </div>
 
-      <div className="relative min-h-[100svh] w-full px-4 py-6 sm:px-6 sm:py-8">
+      <div className="relative w-full px-3 py-4 sm:px-6 sm:py-6">
         {isDeveloper && (
           <div className="mb-4 text-center">
             <Button onClick={handleDevSubmit} variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 hover:text-yellow-700">

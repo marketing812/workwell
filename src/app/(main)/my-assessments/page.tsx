@@ -6,7 +6,7 @@ import { useTranslations } from '@/lib/translations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatAssessmentTimestamp, type AssessmentRecord, overwriteAssessmentHistory, getAssessmentHistory as getLocalAssessmentHistory } from '@/data/assessmentHistoryStore';
-import { History, Eye, ArrowRight, Loader2, AlertTriangle, RefreshCw, PlaySquare } from 'lucide-react';
+import { History, Eye, ArrowRight, Loader2, AlertTriangle, PlaySquare } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useUser } from '@/contexts/UserContext';
 import { z } from 'zod';
@@ -279,10 +279,6 @@ export default function MyAssessmentsPage() {
           <h1 className="text-4xl font-bold text-primary mb-3">{t.myAssessmentsTitle}</h1>
           <p className="text-lg text-muted-foreground">{t.myAssessmentsDescription}</p>
         </div>
-        <Button onClick={fetchAssessments} variant="outline" disabled={isLoading || !user || !user.id}>
-          <RefreshCw className={`mr-2 h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-          Refrescar
-        </Button>
       </div>
 
       {error && (
@@ -318,7 +314,7 @@ export default function MyAssessmentsPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-6">
-              Parece que aún no has completado ninguna evaluación o no se pudieron cargar. Intenta refrescar o realiza una nueva.
+              Parece que aún no has completado ninguna evaluación o no se pudieron cargar. Realiza una nueva para empezar.
             </p>
           </CardContent>
           <CardFooter className="justify-center">

@@ -219,7 +219,7 @@ export function ChatInterface() {
   const userAvatarSrc = `https://placehold.co/100x100.png?text=${userInitials}`;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-12rem)] max-h-[700px] w-full max-w-2xl mx-auto bg-card shadow-xl rounded-lg">
+    <div className="flex w-full max-w-2xl flex-col rounded-lg bg-card shadow-xl h-[calc(100dvh-11.5rem)] min-h-[420px] max-h-[700px] sm:h-[calc(100dvh-13rem)]">
       <ScrollArea className="flex-grow p-4 space-y-4" ref={scrollAreaRef}>
         {messages.map((msg) => (
           <div

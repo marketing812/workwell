@@ -86,9 +86,9 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
       {screen === 2 && (
         <div className="flex min-h-[100svh] flex-col justify-center gap-6 px-0 py-0 md:gap-8 md:px-0 md:py-0">
           <div className="order-1 relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-black md:left-auto md:w-full md:translate-x-0 md:rounded-xl">
-            <div className="relative aspect-[9/16] h-[78vh] min-h-[520px] w-full max-h-[82vh] md:aspect-video md:h-auto md:min-h-0">
+            <div className="relative aspect-[9/16] h-[56svh] min-h-[300px] w-full max-h-[460px] md:aspect-video md:h-auto md:min-h-0 md:max-h-none">
               {videoLoadError ? (
-                <div className="flex h-full min-h-[520px] w-full flex-col items-center justify-center gap-4 px-6 text-center text-white md:min-h-0 md:py-10">
+                <div className="flex h-full min-h-[300px] w-full flex-col items-center justify-center gap-4 px-6 text-center text-white md:min-h-0 md:py-10">
                   <p className="max-w-md text-base leading-relaxed text-white/90 md:text-lg">
                     No hemos podido cargar el video de bienvenida en este momento.
                   </p>
