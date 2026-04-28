@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent, useEffect } from 'react';
+import { useState, type FormEvent, useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -36,6 +36,18 @@ export default function VisualizacionGuiadaCuerpoAnsiedadExercise({ content, pat
     const [acceptancePhrase, setAcceptancePhrase] = useState('');
     const [wavePhrase, setWavePhrase] = useState('');
     const [isSaved, setIsSaved] = useState(false);
+    const exerciseTopRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (step === 0) return;
+        const id = window.requestAnimationFrame(() => {
+            exerciseTopRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        });
+        return () => window.cancelAnimationFrame(id);
+    }, [step]);
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev > 0 ? prev - 1 : 0);
@@ -277,7 +289,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
     };
 
     return (
-        <Card className="bg-muted/30 my-6 shadow-md">
+        <Card ref={exerciseTopRef} className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center">
                     <Edit3 className="mr-2" />{content.title}

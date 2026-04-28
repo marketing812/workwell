@@ -34,7 +34,9 @@ export default async function ResourcesPage() {
                     <CardTitle className="text-2xl text-accent group-hover:text-primary transition-colors">{category.name}</CardTitle>
                   </CardHeader>
                   <CardContent className="flex-grow">
-                    <CardDescription>Explora los {category.count} artículos y ejercicios sobre {category.name.toLowerCase()}.</CardDescription>
+                    <CardDescription>
+                      Explora {category.count === 1 ? "el" : "los"}  {category.count} {category.count === 1 ? "artículo" : "artículos"} sobre {category.name.toLowerCase()}.
+                    </CardDescription>
                   </CardContent>
                   <CardContent>
                      <div className="flex items-center text-sm text-primary font-semibold">

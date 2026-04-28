@@ -98,7 +98,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     const initialTimer = setTimeout(() => {
         loadAndFilterQuestions();
-    }, 5000);
+    }, 3000);
 
     const intervalId = setInterval(() => {
         setWasDismissedThisSession(false); // Reinicia periódicamente el descarte

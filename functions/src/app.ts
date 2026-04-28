@@ -31,6 +31,10 @@ const MAX_USERS_PER_REQUEST = 1000;
 const PSYCHOLOGICAL_OPINION_DISCLAIMER =
   "Las respuestas se generan automaticamente y pueden contener errores. " +
   "Si atraviesas una situacion grave o de crisis, busca ayuda profesional.";
+const VERTEX_REGION = process.env.VERTEX_REGION || "europe-west4";
+const VERTEX_MODEL = process.env.VERTEX_MODEL || "gemini-2.5-flash";
+const VERTEX_API_VERSION = process.env.VERTEX_API_VERSION || "v1";
+const GEMINI_MAX_RETRIES = 4;
 
 type AssessmentDimensionMeta = {
   id: string;
@@ -383,39 +387,106 @@ function normalizeLegacyAutoregistro(raw: any, fallbackIndex: number) {
 }
 
 async function callGemini(prompt: string): Promise<string> {
-  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-  if (!apiKey) {
-    throw new Error("Missing GEMINI_API_KEY / GOOGLE_API_KEY");
+  const projectId = process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
+  if (!projectId) {
+    throw new Error("Missing GCLOUD_PROJECT / GOOGLE_CLOUD_PROJECT");
   }
 
+  const token = await getMetadataAccessToken();
+  const modelPath = [
+    "projects",
+    projectId,
+    "locations",
+    VERTEX_REGION,
+    "publishers",
+    "google",
+    "models",
+    VERTEX_MODEL,
+  ].join("/");
   const url =
-    "https://generativelanguage.googleapis.com/v1beta/models/" +
-    `gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+    `https://${VERTEX_REGION}-aiplatform.googleapis.com/${VERTEX_API_VERSION}/` +
+    `${modelPath}:generateContent`;
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      contents: [{parts: [{text: prompt}]}],
-    }),
+  let lastError = "";
+  for (let attempt = 0; attempt <= GEMINI_MAX_RETRIES; attempt++) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [{role: "user", parts: [{text: prompt}]}],
+        generationConfig: {
+          maxOutputTokens: 512,
+          temperature: 0.7,
+        },
+      }),
+    });
+
+    const text = await response.text();
+    if (response.ok) {
+      let parsed: any;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        throw new Error("Invalid JSON from Vertex Gemini API.");
+      }
+
+      return (
+        parsed?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
+        "No he podido generar una respuesta util. Prueba a reformular."
+      );
+    }
+
+    lastError = `Gemini API error (${response.status}): ${text.slice(0, 250)}`;
+    if (!shouldRetryGeminiRequest(response.status) || attempt === GEMINI_MAX_RETRIES) {
+      break;
+    }
+    await sleep(getRetryDelayMs(attempt));
+  }
+
+  throw new Error(lastError || "Gemini API call failed.");
+}
+
+async function getMetadataAccessToken(): Promise<string> {
+  const tokenUrl =
+    "http://metadata.google.internal/computeMetadata/v1/instance/" +
+    "service-accounts/default/token";
+  const response = await fetch(tokenUrl, {
+    headers: {"Metadata-Flavor": "Google"},
   });
-
   const text = await response.text();
   if (!response.ok) {
-    throw new Error(`Gemini API error (${response.status}): ${text.slice(0, 250)}`);
+    throw new Error(`Metadata token error (${response.status}): ${text.slice(0, 250)}`);
   }
 
   let parsed: any;
   try {
     parsed = JSON.parse(text);
   } catch {
-    throw new Error("Invalid JSON from Gemini API.");
+    throw new Error("Invalid JSON from metadata token endpoint.");
   }
 
-  return (
-    parsed?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
-    "No he podido generar una respuesta util. Prueba a reformular."
-  );
+  const token = String(parsed?.access_token || "").trim();
+  if (!token) {
+    throw new Error("Metadata token endpoint returned empty access token.");
+  }
+  return token;
+}
+
+function shouldRetryGeminiRequest(status: number): boolean {
+  return status === 429 || status === 500 || status === 503;
+}
+
+function getRetryDelayMs(attempt: number): number {
+  const baseMs = 400;
+  const jitter = Math.floor(Math.random() * 250);
+  return baseMs * (2 ** attempt) + jitter;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 app.get("/health", (_req: Request, res: Response) => {

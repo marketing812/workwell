@@ -95,7 +95,7 @@ export default function EmotionalLogPage() {
         <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:flex-nowrap">
             <Button variant="outline" asChild className="w-full sm:w-auto">
               <Link href="/resources/post/autorregistro-el-habito-que-cambia-como-piensas-como-sientes-y-como-actuas">
-                ¿qué es el autorregistro?
+                ¿Qué es el autorregistro?
               </Link>
             </Button>
             <Dialog open={isEntryDialogOpen} onOpenChange={setIsEntryDialogOpen}>
@@ -115,12 +115,6 @@ export default function EmotionalLogPage() {
                 <EmotionalEntryForm onSubmit={handleEmotionalEntrySubmit} />
               </DialogContent>
             </Dialog>
-            <Button variant="outline" asChild className="w-full sm:w-auto">
-            <Link href="/dashboard">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                {t.backToDashboard}
-            </Link>
-            </Button>
         </div>
       </div>
 

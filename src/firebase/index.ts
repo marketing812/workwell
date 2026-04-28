@@ -47,7 +47,11 @@ export function getSdks(firebaseApp: FirebaseApp) {
     try {
       if (isNativeCapacitor) {
         return initializeAuth(firebaseApp, {
-          persistence: inMemoryPersistence,
+          persistence: [
+            indexedDBLocalPersistence,
+            browserLocalPersistence,
+            inMemoryPersistence,
+          ],
         });
       }
 

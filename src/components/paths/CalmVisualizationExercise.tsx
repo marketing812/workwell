@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -24,6 +24,18 @@ export default function CalmVisualizationExercise({ content, pathId, onComplete 
   const [situation, setSituation] = useState('');
   const [calmScript, setCalmScript] = useState('');
   const [isSaved, setIsSaved] = useState(false);
+  const exerciseTopRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (step === 0) return;
+    const id = window.requestAnimationFrame(() => {
+      exerciseTopRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [step]);
 
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => (prev > 0 ? prev - 1 : 0));
@@ -140,7 +152,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
   };
 
   return (
-    <Card className="bg-muted/30 my-6 shadow-md">
+    <Card ref={exerciseTopRef} className="bg-muted/30 my-6 shadow-md">
       <CardHeader>
         <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
         <CardDescription className="pt-2">

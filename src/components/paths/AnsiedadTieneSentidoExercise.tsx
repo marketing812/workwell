@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -32,6 +32,18 @@ export default function AnsiedadTieneSentidoExercise({ content, pathId, onComple
     const [initialThreat, setInitialThreat] = useState('');
     const [finalAction, setFinalAction] = useState('');
     const [isSaved, setIsSaved] = useState(false);
+    const exerciseTopRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (step === 0) return;
+        const id = window.requestAnimationFrame(() => {
+            exerciseTopRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        });
+        return () => window.cancelAnimationFrame(id);
+    }, [step]);
 
     const symptomOptions = [
         { id: 'symptom-palpitations', label: 'Palpitaciones o taquicardia' },
@@ -229,7 +241,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
     }
 
     return (
-        <Card className="bg-muted/30 my-6 shadow-md">
+        <Card ref={exerciseTopRef} className="bg-muted/30 my-6 shadow-md">
             <CardHeader>
                 <CardTitle className="text-lg text-accent flex items-center"><Edit3 className="mr-2" />{content.title}</CardTitle>
                 {content.objective && (

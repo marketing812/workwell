@@ -36,7 +36,7 @@ export const t = {
   registrationFailed: "Error al registrar. Inténtalo de nuevo.",
   // Sidebar Navigation
   navWelcome: "Bienvenida",
-  navDashboard: "Panel",
+  navDashboard: "Mi perfil",
   navAssessment: "Evaluación",
   navInteractiveAssessment: "Evaluación Guiada",
   navPaths: "Rutas",
@@ -72,7 +72,7 @@ export const t = {
   dimensionCompletedTitle: "Sección Completada",
   dimensionCompletedMessage: "¡Muy bien! Has completado la sección {dimensionNumber} de {totalDimensions}.",
   continueButton: "Continuar",
-  saveForLaterButton: "Guardar y Continuar Luego",
+  saveForLaterButton: "Guardar y Continuar",
   radarChartDescription: "Visualización de tu perfil en las diferentes dimensiones.",
   priorityAreasDescription: "Dimensiones clave para tu desarrollo actual.",
   detailedAnalysisTitle: "Análisis Detallado por Dimensión",
@@ -322,7 +322,7 @@ export const t = {
   moodScoreLabel: "Puntuación de Ánimo",
 
   // Full Emotional History Page
-  fullEmotionalHistoryTitle: "Mis autoregistros",
+  fullEmotionalHistoryTitle: "Mis autorregistros",
   backToDashboard: "Volver al Panel",
   allEmotionalEntriesTitle: "Todos mis autorregistros",
   allEmotionalEntriesDescription: "Aquí puedes ver todos tus autorregistros ordenados por fecha.",

@@ -590,7 +590,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
                 className="w-full max-w-sm sm:w-auto justify-center"
               >
                 <Link href={`/paths/${path.id}`}>
-                  Comenzar Ruta: {path.title}
+                  {path.title}
                 </Link>
               </Button>
             ))
@@ -613,18 +613,7 @@ export function AssessmentResultsDisplay({ results, rawAnswers, userId, onRetake
         </CardContent>
       </Card>
 
-      <div className="mt-12 text-center flex flex-col sm:flex-row justify-center items-center gap-4">
-        <Button asChild variant="default" size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-          <Link href={startCarePath}>
-            <HeartHandshake className="mr-2 h-5 w-5" />
-            Empezar a cuidarme
-          </Link>
-        </Button>
-        <Button onClick={onRetake} variant="outline" size="lg">
-            <RotateCcw className="mr-2 h-4 w-4" />
-            Realizar Evaluación de Nuevo
-        </Button>
-      </div>
+      
     </div>
   );
 }

@@ -170,7 +170,7 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
         <div className={screenLayoutClass}>
           <h2 className="text-3xl font-bold md:text-4xl">Antes de empezar, una pregunta:</h2>
           <p className="text-lg leading-relaxed text-black md:text-xl">
-            Ahora mismo, ¿en qué te gustaría trabajar en ti?
+            Ahora mismo, ¿en qué te gustaría trabajar?
           </p>
           <div className="grid gap-3 text-left">
             {MOTIVATION_OPTIONS.map((option) => (
@@ -206,7 +206,7 @@ export function WelcomeIntroContent({ showContinue = false, onContinue, onScreen
               className="object-contain"
             />
           </div>
-          <h2 className="text-3xl font-bold md:text-4xl">Antes de empezar</h2>
+          <h2 className="text-3xl font-bold md:text-4xl">Comenzamos</h2>
           <p className="max-w-3xl text-center text-base leading-relaxed text-black md:text-lg">
             Vamos a hacer una breve evaluación para entender mejor cómo te sientes y cómo afrontas tu día a día.
             <br />

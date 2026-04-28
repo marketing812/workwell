@@ -89,7 +89,7 @@ export const MoodCheckInProvider: FC<{ children: ReactNode }> = ({ children }) =
   useEffect(() => {
     const initialTimer = setTimeout(() => {
       checkShouldShowPopup();
-    }, 5000); // Check 5 seconds after app load
+    }, 3000); // Check 3 seconds after app load
 
     const intervalId = setInterval(() => {
       checkShouldShowPopup();
