@@ -140,7 +140,7 @@ export default function EmotionalLogPage() {
                 const emotionLabel = emotionDetail ? t[emotionDetail.labelKey as keyof typeof t] : entry.emotion;
                 return (
                   <li key={entry.id} className="p-4 border rounded-lg bg-muted/30 shadow-sm">
-                    <p className="text-xs text-muted-foreground">{formatEntryTimestamp(entry.timestamp)}</p>
+                    <p className="text-xs text-muted-foreground">{new Date(entry.timestamp).toLocaleDateString("es-ES")}</p>
                     <p className="text-sm text-foreground mt-1 whitespace-pre-wrap break-words">
                       {entry.situation}
                     </p>

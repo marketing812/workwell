@@ -35,7 +35,7 @@ export default async function ResourcesPage() {
                   </CardHeader>
                   <CardContent className="flex-grow">
                     <CardDescription>
-                      Explora {category.count === 1 ? "el" : "los"}  {category.count} {category.count === 1 ? "artículo" : "artículos"} sobre {category.name.toLowerCase()}.
+                     Explora {category.count === 1 ? "el" : "los"}{" "}{category.count === 1 ? "artículo" : category.count + " artículos"}{" "}sobre {category.name.toLowerCase()}.
                     </CardDescription>
                   </CardContent>
                   <CardContent>
