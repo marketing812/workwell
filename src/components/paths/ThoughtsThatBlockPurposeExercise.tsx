@@ -112,7 +112,7 @@ Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo
             <h4 className="font-semibold">Paso 1: Activa el recuerdo</h4>
             <Label htmlFor="sit-block">¿Qué situación reciente te bloqueó para actuar desde tu propósito?</Label>
             <Textarea id="sit-block" value={situation} onChange={e => setSituation(e.target.value)} />
-            <div className="flex justify-between mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
             </div>
@@ -138,7 +138,7 @@ Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo
                     </div>
                 ))}
             </div>
-             <div className="flex justify-between mt-2">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!automaticThought.trim()}>Siguiente</Button>
             </div>
@@ -150,7 +150,7 @@ Pregunta: Reformula esa frase desde un lugar más realista, valiente o compasivo
             <h4 className="font-semibold">Paso 3: Reformulación consciente</h4>
             <Label htmlFor="reformulation-block">Reformula esa frase desde un lugar más realista, valiente o compasivo.</Label>
             <Textarea id="reformulation-block" value={reformulation} onChange={e => setReformulation(e.target.value)} />
-             <div className="flex justify-between mt-2">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>

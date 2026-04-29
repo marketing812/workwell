@@ -98,7 +98,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                         <h4 className="font-semibold">Paso 1: Recuerda la situación</h4>
                         <Label htmlFor="situation">Piensa en un momento reciente en el que no actuaste como hubieras querido.</Label>
                         <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté una tarea extra en el trabajo, aunque necesitaba descansar, y lo hice solo por miedo a decepcionar.”"/>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -130,7 +130,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                                 <div className="flex items-center space-x-2"><RadioGroupItem value="duda" id="choice-duda" /><Label htmlFor="choice-duda" className="font-normal">No lo tengo claro → Necesito reflexionar un poco más.</Label></div>
                             </RadioGroup>
                         </div>
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={nextStep} disabled={!coherenceChoice}>Siguiente</Button>
                         </div>
@@ -157,7 +157,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                             <Label htmlFor="compassion-phrase">Lo que me diría ahora:</Label>
                             <Textarea id="compassion-phrase" value={compassionatePhrase} onChange={e => setCompassionatePhrase(e.target.value)} />
                         </div>
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button onClick={prevStep} variant="outline">Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
@@ -177,7 +177,7 @@ Pregunta: Elige un ajuste sencillo | Respuesta: ${adjustment}
                         </div>
                         <Label htmlFor="adjustment">Pregunta: Pequeño paso:</Label>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
                         </div>

@@ -115,7 +115,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                 <Input key={i} value={c.name} onChange={e => handleCommitmentChange(i, 'name', e.target.value)} placeholder={`Persona ${i + 1}...`} />
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={filledPeople.length === 0}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -145,7 +145,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                      </div>
                  </div>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -188,7 +188,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
                         </div>
                     </div>
                 ))}
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="ml-2 h-4 w-4"/></Button>
                 </div>
@@ -209,7 +209,7 @@ export default function MutualCareCommitmentExercise({ content, pathId, onComple
             <p className="text-sm italic text-center pt-4">Tu compromiso no es solo con la otra persona, también es contigo: con tu decisión de cultivar relaciones que te cuidan y a las que cuidas.</p>
              <div className="flex flex-col items-center gap-2 pt-4">
                 
-                <div className="flex justify-between w-full mt-2">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                 </div>

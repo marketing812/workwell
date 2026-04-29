@@ -121,7 +121,7 @@ Paso 5 - Acción que haré hoy: ${todayAction}
               onChange={e => setComplaint(e.target.value)}
               placeholder="Escribe aquí tu queja"
             />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -144,7 +144,7 @@ Paso 5 - Acción que haré hoy: ${todayAction}
               onChange={e => setUnderControl(e.target.value)}
               placeholder="Describe la parte que sí depende de ti"
             />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -172,7 +172,7 @@ Paso 5 - Acción que haré hoy: ${todayAction}
               onChange={e => setConcreteAction(e.target.value)}
               placeholder="Escribe tu acción concreta"
             />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -210,7 +210,7 @@ Paso 5 - Acción que haré hoy: ${todayAction}
                 />
               </div>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -235,7 +235,7 @@ Paso 5 - Acción que haré hoy: ${todayAction}
               onChange={e => setTodayAction(e.target.value)}
               placeholder="Escribe la acción que harás hoy"
             />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

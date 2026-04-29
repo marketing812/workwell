@@ -82,7 +82,7 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
                 <li className="italic">“Entiendo que esperabas otra cosa, pero esta vez necesito respetar mis tiempos.”</li>
                 <li className="italic">“Me doy cuenta de que esto te duele, y al mismo tiempo no puedo encargarme de eso ahora.”</li>
             </ul>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Crear mi frase <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -106,7 +106,7 @@ export default function CompassionateFirmnessExercise({ content, pathId, onCompl
                 <Textarea id="my-need" value={myNeed} onChange={e => setMyNeed(e.target.value)} placeholder="Ej: mantener mi decisión, cuidar mi tiempo..." disabled={isSaved}/>
              </div>
              <p className="text-xs italic">Puedes escribirla en tu cuaderno emocional, repetirla en voz alta o guardarla para futuras conversaciones difíciles.</p>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave} disabled={isSaved}>
                   {isSaved ? <><CheckCircle className="mr-2 h-4 w-4"/> Guardado</> : <><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</>}

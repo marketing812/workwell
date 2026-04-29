@@ -117,7 +117,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
                 </Select>
                 {intention === 'Otro' && <Input value={otherIntention} onChange={e => setOtherIntention(e.target.value)} placeholder="Escribe otra intención..." className="mt-2" />}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={nextStep} disabled={!finalIntention.trim()}>Continuar</Button>
             </div>
@@ -139,7 +139,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
                 </Select>
                 {selectedActivity === 'Otro' && <Input value={otherActivity} onChange={e => {setOtherActivity(e.target.value); setIdealDay(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Escribe otra actividad" className="mt-2"/>}
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={nextStep} disabled={!idealDay.trim()}>Continuar</Button>
             </div>
@@ -151,7 +151,7 @@ export default function VisualizeDayExercise({ content, pathId, onComplete }: Vi
             <h4 className="font-semibold text-lg">Paso 3: Un gesto clave para mantener tu intención</h4>
             <p className="text-sm text-muted-foreground">Piensa en una acción sencilla que puedas repetir hoy para sostener el estado emocional que has elegido.</p>
             <Textarea value={keyGesture} onChange={e => setKeyGesture(e.target.value)} placeholder="Ej: Hacer 3 respiraciones profundas antes de una reunión."/>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={handleSave} disabled={!keyGesture.trim()}>Guardar en el cuaderno terapéutico</Button>
             </div>

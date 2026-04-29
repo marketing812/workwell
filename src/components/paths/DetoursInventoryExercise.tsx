@@ -274,7 +274,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
               </p>
             </div>
             <p className="text-sm italic text-muted-foreground">Piensa: ¿qué cosas en tu vida se parecen a esto?</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -329,7 +329,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
                 />
               )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -536,7 +536,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <p className="text-sm text-muted-foreground italic">
               Mejor un paso pequeño y seguro que uno grande que nunca darás.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -583,7 +583,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
             <p className="text-sm text-muted-foreground font-semibold text-center">
               Cada gesto guardado será un recordatorio de tu fuerza y de tu camino.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -605,7 +605,7 @@ export default function DetoursInventoryExercise({ content, pathId, onComplete }
               Tu inventario de desvíos ha sido guardado. Puedes consultarlo en tu Cuaderno Terapéutico cuando lo
               necesites.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

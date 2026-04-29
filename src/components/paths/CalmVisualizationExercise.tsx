@@ -80,7 +80,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 1: Prepara tu cuerpo</h4>
             <p className="text-sm text-muted-foreground">Siéntate cómodo o cómoda, cierra los ojos y toma tres respiraciones profundas. Puedes hacerlo tú solo/a o utilizar la guía de audio. Esto ayuda a calmar tu sistema nervioso y preparar el terreno.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente</Button>
             </div>
@@ -93,7 +93,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
             <p className="text-sm text-muted-foreground">Trae a tu mente una situación que normalmente te produce ansiedad. No empieces con la más difícil, elige una de nivel intermedio.</p>
             <Label htmlFor="situation-vis">Escribe con detalle qué situación vas a imaginar</Label>
             <Textarea id="situation-vis" value={situation} onChange={e => setSituation(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
             </div>
@@ -107,7 +107,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
             <p className="text-sm text-muted-foreground italic">Ejemplo: "Me veo entrando en la sala de reuniones, siento algo de nervios, pero respiro y sonrío. Empiezo a hablar y noto que mi voz suena clara."</p>
             <Label htmlFor="calm-script">Ahora, escríbelo</Label>
             <Textarea id="calm-script" value={calmScript} onChange={e => setCalmScript(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!calmScript.trim()}>Siguiente</Button>
             </div>
@@ -119,7 +119,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
             <h4 className="font-semibold text-lg text-primary">Paso 4: Repite la escena</h4>
             <p className="text-sm text-muted-foreground">Visualiza la misma escena varias veces, como un ensayo. Cada repetición entrena tu cerebro para que la respuesta ansiosa sea menor en la vida real.</p>
             <p className="text-xs text-muted-foreground p-2 border-l-2 border-accent bg-accent/10">La neurociencia lo confirma: las imágenes mentales activan las mismas áreas cerebrales que la experiencia real (Kosslyn, 2001).</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente</Button>
             </div>
@@ -131,7 +131,7 @@ Pregunta: Mi guion interno de calma | Respuesta: "${calmScript}"
             <h4 className="font-semibold text-lg text-primary">Cierre</h4>
             <p className="text-sm text-muted-foreground">Has practicado tu ensayo mental calmado. Recuerda: no buscamos que la ansiedad desaparezca por completo, sino entrenar a tu mente a responder con más calma. Con cada práctica, reduces la brecha entre el miedo anticipado y tu capacidad real.</p>
             <blockquote className="italic text-primary pt-2">Tu mente es un gimnasio: cuanto más ensayas la calma, más fuerte se vuelve.</blockquote>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               {!isSaved ? (
                 <Button type="submit">

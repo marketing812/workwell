@@ -154,7 +154,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
                         />
                     </div>
                 ))}
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep}>Siguiente: Clasificar <ArrowRight className="ml-2 h-4 w-4"/></Button>
                  </div>
@@ -180,7 +180,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
                 </RadioGroup>
               </div>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>
                 Siguiente: Plan de Acción <ArrowRight className="ml-2 h-4 w-4"/>
@@ -221,7 +221,7 @@ export default function InfluenceWheelExercise({ content, pathId, onComplete }: 
                         )}
                     </div>
                 ))}
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>

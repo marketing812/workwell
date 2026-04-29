@@ -72,7 +72,7 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
               <li>¿Qué has aprendido de tus momentos más duros?</li>
               <li>¿Cómo te gustaría recordar tu forma de atravesar los desafíos?</li>
             </ul>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -85,7 +85,7 @@ export default function PersonalDefinitionExercise({ content, pathId, onComplete
             <Label htmlFor="resilience-def">Ahora escribe tu propia definición de resiliencia, con tus palabras. Puedes empezar con:</Label>
             <p className="text-sm text-muted-foreground italic">"Para mí, ser resiliente es..."</p>
             <Textarea id="resilience-def" value={definition} onChange={e => setDefinition(e.target.value)} rows={5} disabled={isSaved} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button type="submit" disabled={isSaved || !definition.trim()}>
                 <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}

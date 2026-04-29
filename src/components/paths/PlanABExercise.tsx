@@ -96,7 +96,7 @@ Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para 
             <Label htmlFor="decision">Describe en una frase clara la decisión que estás enfrentando.</Label>
             <p className="text-xs text-muted-foreground italic">Ejemplo: “Decidir si hablo con mi hermana sobre cómo me sentí en la discusión.”</p>
             <Textarea id="decision" value={decision} onChange={e => setDecision(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -119,7 +119,7 @@ Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para 
               <Label htmlFor="planA-outcome">Resultado deseado</Label>
               <Textarea id="planA-outcome" value={planA.outcome} onChange={e => setPlanA(p => ({ ...p, outcome: e.target.value }))} />
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!planA.action.trim() || !planA.value.trim() || !planA.outcome.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -146,7 +146,7 @@ Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para 
               <Label htmlFor="planB-phrase">¿Qué frase o imagen podrías recordarte para sostenerte?</Label>
               <Textarea id="planB-phrase" value={planB.phrase} onChange={e => setPlanB(p => ({ ...p, phrase: e.target.value }))} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!planB.fear.trim() || !planB.strategy.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -158,7 +158,7 @@ Pregunta: ¿Qué paso pequeño y concreto vas a dar en los próximos días para 
             <h4 className="font-semibold text-lg">Paso 4: Tu compromiso realista</h4>
             <Label htmlFor="commitment">¿Qué paso pequeño y concreto vas a dar en los próximos días para poner en marcha este plan?</Label>
             <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>

@@ -124,11 +124,16 @@ ${reflection.toolUsed || 'No especificado.'}
           </div>
 
           {!isSaved ? (
-            <div className="flex justify-between w-full mt-4">
-                <Button variant="outline" type="button" onClick={() => toast({title: "No hay paso anterior"})}>
+            <div className="mt-4 flex w-full flex-col gap-3 sm:flex-row sm:justify-between">
+                <Button
+                  variant="outline"
+                  type="button"
+                  onClick={() => toast({title: "No hay paso anterior"})}
+                  className="w-full sm:w-auto"
+                >
                     <ArrowLeft className="mr-2 h-4 w-4"/>Atrás
                 </Button>
-                <Button type="submit" className="w-auto">
+                <Button type="submit" className="w-full sm:w-auto">
                     <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
                 </Button>
             </div>

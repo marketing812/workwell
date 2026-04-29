@@ -176,7 +176,7 @@ ${reassessment}
                 <h4 className="font-semibold text-lg text-primary">Paso 1: Situación desencadenante</h4>
                 <Label htmlFor="sit-desc">¿Qué ocurrió exactamente? ¿Qué dijiste o hiciste que supusiera un límite?</Label>
                 <Textarea id="sit-desc" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ej: “Le dije a mi compañero que no podía cubrirle el turno.”" />
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
                 </div>
@@ -208,7 +208,7 @@ ${reassessment}
                     </>
                 )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente</Button>
             </div>
@@ -236,7 +236,7 @@ ${reassessment}
                         )}
                     </div>
                 ))}
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep}>Siguiente</Button>
                  </div>
@@ -254,7 +254,7 @@ ${reassessment}
                     <Label htmlFor="behavior">¿Qué hiciste o evitaste hacer tras el límite?</Label>
                     <Textarea id="behavior" value={behavior} onChange={e => setBehavior(e.target.value)} placeholder="Ej: Me fui sin hablar mucho más. Le estuve dando vueltas todo el día."/>
                 </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep}>Siguiente</Button>
                  </div>
@@ -272,7 +272,7 @@ ${reassessment}
                     <Label htmlFor="comp-resp">¿Qué podrías decirte para validar lo que sientes sin dejarte arrastrar?</Label>
                     <Textarea id="comp-resp" value={compassionateResponse} onChange={e => setCompassionateResponse(e.target.value)} placeholder="Ej: 'Es normal sentirme culpable. Estoy aprendiendo. Cuidarme no es egoísmo.'"/>
                 </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep}>Siguiente</Button>
                  </div>
@@ -287,7 +287,7 @@ ${reassessment}
                     <Textarea id="reassess" value={reassessment} onChange={e => setReassessment(e.target.value)} placeholder="Ej: 'Ya no creo que fui egoísta. Estoy empezando a respetarme.'" disabled={isSaved}/>
                 </div>
                 {!isSaved ? (
-                     <div className="flex justify-between w-full mt-4">
+                     <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                     </div>
@@ -307,7 +307,7 @@ ${reassessment}
                         </li>
                     ))}
                 </ul>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   
                 </div>

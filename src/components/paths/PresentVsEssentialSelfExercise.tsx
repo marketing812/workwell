@@ -154,7 +154,7 @@ Pregunta: Qué gesto o acción pequeña voy a hacer para acercarme a mi yo esenc
                 que sí, aunque quiere decir que no. Siento tensión en el pecho y, a veces, tristeza."
               </p>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -200,7 +200,7 @@ Pregunta: Qué gesto o acción pequeña voy a hacer para acercarme a mi yo esenc
               cerebrales que al ejecutarlos (corteza prefrontal y sistema límbico). Así entrenas tu mente para acercarte
               a esa versión de ti.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -238,7 +238,7 @@ Pregunta: Qué gesto o acción pequeña voy a hacer para acercarme a mi yo esenc
               </div>
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

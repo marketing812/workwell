@@ -165,7 +165,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
               ))}
             </div>
             <p className="text-xs text-muted-foreground">Debes completar al menos 6 actividades para continuar.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -262,7 +262,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
                 </div>
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -381,7 +381,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
               </div>
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -416,7 +416,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
               <Label>Hoy me comprometo a...</Label>
               <Textarea value={commitment} onChange={(e) => setCommitment(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -438,7 +438,7 @@ export default function EnergySenseMapExercise({ content, pathId, onComplete }: 
               Tu mapa de energía y sentido ha sido guardado. Te recomiendo repetirlo una vez por semana durante un
               mes.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

@@ -142,7 +142,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
             {situations.map((sit, index) => (
               <Textarea key={index} value={sit} onChange={e => handleSituationChange(index, e.target.value)} placeholder={`Situación ${index + 1}`} />
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next} disabled={situations.every(s => !s.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -167,7 +167,7 @@ export default function ResilienceTimelineExercise({ content, pathId, onComplete
                 </div>
               </div>
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next}>Ver mi línea de resiliencia</Button>
             </div>

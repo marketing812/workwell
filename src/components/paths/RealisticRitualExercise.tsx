@@ -83,7 +83,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
             <p>Ejemplos: "Revisar mi agenda cada mañana", "Hacer 3 minutos de respiración", "Caminar 10 minutos después de comer"</p>
             <Label htmlFor="habit-ritual" className="sr-only">¿Qué hábito quiero mantener?</Label>
             <Textarea id="habit-ritual" value={habit} onChange={e => setHabit(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!habit.trim()}>Siguiente</Button>
             </div>
@@ -96,7 +96,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
             <p>Ejemplos: "Escribir solo una línea", "Moverme durante 2 minutos", "Preparar la ropa de deporte"</p>
             <Label htmlFor="min-version" className="sr-only">¿Cuál es su versión mínima viable?</Label>
             <Textarea id="min-version" value={minVersion} onChange={e => setMinVersion(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!minVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -109,7 +109,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
             <p>Ejemplos: "Después de lavarme los dientes", "Cuando cierre el portátil", "Al volver de dejar a mi hijo o hija"</p>
             <Label htmlFor="link" className="sr-only">¿Cuándo o con qué lo vincularás?</Label>
             <Textarea id="link" value={link} onChange={e => setLink(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!link.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -122,7 +122,7 @@ export default function RealisticRitualExercise({ content, pathId, onComplete }:
             <p>Ejemplos: "Dejar una nota visible", "Poner una alarma suave", "Dejar el libro preparado sobre la mesa"</p>
             <Label htmlFor="reminder" className="sr-only">¿Qué puedo hacer para recordarlo o facilitarlo?</Label>
             <Textarea id="reminder" value={reminder} onChange={e => setReminder(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button type="submit" disabled={!reminder.trim()}>
                 <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

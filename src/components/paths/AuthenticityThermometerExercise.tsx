@@ -138,7 +138,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
                 </div>
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente: Detallar <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -162,7 +162,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
                 <Slider id={`auth-${index}`} value={[relation.authenticity]} onValueChange={(v) => handleRelationChange(index, 'authenticity', v[0])} max={10} step={1} />
               </div>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Ir a la reflexión <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -189,7 +189,7 @@ export default function AuthenticityThermometerExercise({ content, pathId, onCom
                 <Label>¿Qué pequeña acción podría probar para empezar a mostrarme un poco más como soy?</Label>
                 <Textarea value={reflection.q4} onChange={(e) => handleReflectionChange('q4', e.target.value)} />
              </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
              </div>

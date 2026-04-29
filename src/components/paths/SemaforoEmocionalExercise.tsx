@@ -100,7 +100,7 @@ Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin re
                 </Label>
               ))}
             </RadioGroup>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} className="w-auto" disabled={!light}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -127,7 +127,7 @@ Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin re
             <p className="text-sm text-muted-foreground text-center whitespace-pre-line">{suggestions}</p>
             <Label htmlFor="action-textarea" className="font-semibold">Tu acción:</Label>
             <Textarea id="action-textarea" value={action} onChange={e => setAction(e.target.value)} placeholder={placeholder} />
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} className="w-auto" disabled={!action.trim()}>Siguiente</Button>
             </div>
@@ -142,7 +142,7 @@ Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin re
                     <Label htmlFor="learning-reflection">¿Qué aprendiste hoy sobre ti? (Opcional)</Label>
                     <Textarea id="learning-reflection" value={learning} onChange={(e) => setLearning(e.target.value)} />
                 </div>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                     <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>
@@ -165,7 +165,7 @@ Pregunta: Reflexión y aprendizaje (opcional) | Respuesta: ${learning || 'Sin re
                     </ul>
                     <blockquote className="text-sm italic pt-4">“Tu calma no es un destino. Es una decisión que puedes entrenar.”</blockquote>
                 </div>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     
                 </div>

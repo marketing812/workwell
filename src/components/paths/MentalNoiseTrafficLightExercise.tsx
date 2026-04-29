@@ -195,7 +195,7 @@ Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No espec
               />
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -253,7 +253,7 @@ Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No espec
               />
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -311,7 +311,7 @@ Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No espec
               />
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -366,7 +366,7 @@ Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No espec
               />
             </div>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -389,7 +389,7 @@ Pregunta: Mi gesto verde será... | Respuesta: ${gestureDescription || "No espec
               para reconocer tus momentos de calma. Cada vez que lo consultes, recuerda que no necesitas eliminar el
               ruido mental, sino aprender a escucharlo como señal para volver a ti.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

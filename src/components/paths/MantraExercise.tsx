@@ -185,7 +185,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                 </div>
                 <Label htmlFor="if-thought">Escríbelo aquí, tal y como te viene a la cabeza:</Label>
                 <Textarea id="if-thought" value={ifThought} placeholder="Y si..." onChange={e => setIfThought(e.target.value)} />
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                   <Button onClick={nextStep} disabled={!ifThought.trim()}>Siguiente</Button>
                 </div>
@@ -255,7 +255,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                   Esta parte del ejercicio te ayuda a ampliar tu mirada y confiar más en ti.
                   Aunque ocurra lo que temes, también hay algo dentro de ti que sabe sostenerse.
                 </p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                   <Button onClick={nextStep} disabled={!finalButAlsoPhrase.trim()}>Siguiente</Button>
                 </div>
@@ -285,7 +285,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                   Este ejercicio no elimina el miedo, pero te recuerda que puedes sostenerlo con más recursos de los que crees.
                   Esa también es parte de tu historia.
                 </p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                   <Button onClick={nextStep}>Siguiente</Button>
                 </div>
@@ -343,7 +343,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                   No hace falta que todo cambie de golpe.
                   A veces, darle otra forma a un pensamiento es el primer paso para vivirlo de otra manera.
                 </p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                   <Button onClick={handleSaveIfButAlso} disabled={isSaved}>
                     <Save className="mr-2 h-4 w-4" /> Guardar en mi cuaderno terapéutico
@@ -389,7 +389,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                     </div>
                     <Label htmlFor="blockingThought">¿Qué te dices cuando sientes que necesitas tenerlo todo bajo control?</Label>
                     <Textarea id="blockingThought" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} />
-                    <div className="flex justify-between w-full mt-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={nextStep} disabled={!blockingThought.trim()}>Siguiente</Button>
                     </div>
@@ -415,7 +415,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                     {ideaBase === 'Otra:' && (
                         <Textarea value={customIdeaBase} onChange={e => setCustomIdeaBase(e.target.value)} className="ml-6 mt-2" />
                     )}
-                    <div className="flex justify-between w-full mt-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline">Atrás</Button>
                         <Button onClick={nextStep} disabled={!finalIdeaBase?.trim()}>Siguiente</Button>
                     </div>
@@ -441,7 +441,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                     </div>
                     <Label htmlFor="personalMantra">Escribe tu frase aquí:</Label>
                     <Textarea id="personalMantra" value={personalMantra} onChange={e => setPersonalMantra(e.target.value)} />
-                    <div className="flex justify-between w-full mt-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline">Atrás</Button>
                         <Button onClick={nextStep} disabled={!personalMantra.trim()}>Siguiente</Button>
                     </div>
@@ -459,7 +459,7 @@ export default function MantraExercise({ content, pathId, onComplete }: MantraEx
                     <li>Como ritual diario para conectar con tu centro</li>
                 </ul>
                 <p className="italic text-primary pt-2">Repetirlo te entrena. Cuanto más lo digas, más fácil será que tu cuerpo lo reconozca como una señal de seguridad.</p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit">
                         <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

@@ -16,18 +16,27 @@ import { MoodCheckInPopup } from '@/components/mood-check-in/MoodCheckInPopup';
 
 // Componente para gestionar los pop-ups
 function PopupManager() {
-  const { unansweredQuestions, closePopup, showPopup, dismissPopup } = useDailyCheckIn();
+  const pathname = usePathname();
+  const { unansweredQuestions, closePopup, showPopup, dismissPopup, markPopupShownToday } = useDailyCheckIn();
   const { showPopup: showMoodPopup, closePopup: closeMoodPopup } = useMoodCheckIn();
+  const shouldSuppressPopups = pathname.startsWith('/assessment') || pathname === '/bienvenida';
+  const shouldShowDailyPopup = !shouldSuppressPopups && showPopup;
+
+  useEffect(() => {
+    if (shouldShowDailyPopup) {
+      markPopupShownToday();
+    }
+  }, [markPopupShownToday, shouldShowDailyPopup]);
 
   return (
     <>
       <DailyCheckInPopup 
-        isOpen={showPopup} 
+        isOpen={shouldShowDailyPopup} 
         questions={unansweredQuestions}
         onClose={closePopup}
         onDismiss={dismissPopup}
       />
-      <MoodCheckInPopup isOpen={showMoodPopup} onClose={closeMoodPopup} />
+      <MoodCheckInPopup isOpen={!shouldSuppressPopups && showMoodPopup} onClose={closeMoodPopup} />
     </>
   );
 }

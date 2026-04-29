@@ -147,7 +147,7 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                             className="mt-2"
                         />
                     )}
-                    <div className="flex justify-between w-full">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                         <Button variant="outline" onClick={() => setStep(0)}>Atrás</Button>
                         <Button onClick={() => setStep(2)} className="w-auto" disabled={!finalMoment.trim()}>Siguiente paso</Button>
                     </div>
@@ -158,7 +158,7 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                 <div className="p-4 space-y-4">
                     <h4 className="font-semibold text-lg">Paso 2: ¿Qué pequeña acción puedes vincular a ese momento?</h4>
                     <Textarea value={action} onChange={e => setAction(e.target.value)} placeholder="Ej: Salir a caminar 10 minutos..." />
-                    <div className="flex justify-between w-full">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                         <Button variant="outline" onClick={() => setStep(1)}>Atrás</Button>
                         <Button onClick={() => setStep(3)} className="w-auto" disabled={!action.trim()}>Ver mi frase</Button>
                     </div>
@@ -177,7 +177,7 @@ export default function MicroPlanExercise({ content, pathId, onComplete }: Micro
                         </ul>
                     </div>
                     <p className="text-sm italic pt-2">Esta frase no es una obligación: es una señal de autocuidado. Puedes ajustarla tantas veces como necesites. Lo importante es empezar.</p>
-                    <div className="flex justify-between items-center gap-2 mt-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between items-center gap-2 mt-4">
                         <Button onClick={() => setStep(1)} variant="outline">Volver a editar</Button>
                         <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                     </div>

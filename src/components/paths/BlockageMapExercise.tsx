@@ -121,7 +121,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               onChange={e => setAvoidedTask(e.target.value)}
               placeholder="Ej: “Escribir un email importante”, “Retomar una conversación difícil”, “Ordenar papeles”, “Volver a hacer ejercicio”"
             />
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(2)} disabled={!avoidedTask.trim()}>Siguiente</Button>
             </div>
@@ -138,7 +138,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               onChange={e => setBlockingThoughts(e.target.value)}
               placeholder="Ej: “Lo haré mal y me juzgarán”, “Seguro no soy capaz”, “No me va a salir perfecto, mejor no lo intento”, “Ya lo he pospuesto tanto que no tiene sentido”"
             />
-             <div className="flex justify-between w-full">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(3)} disabled={!blockingThoughts.trim()}>Siguiente</Button>
             </div>
@@ -183,7 +183,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
                   />
                 )}
             </div>
-             <div className="flex justify-between w-full">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(4)} disabled={Object.values(avoidedEmotions).every(v => !v)}>Siguiente</Button>
             </div>
@@ -200,7 +200,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               onChange={e => setEscapeBehaviors(e.target.value)}
               placeholder="Ej: “Miro redes sociales”, “Limpio compulsivamente”, “Me digo que ya lo haré mañana”, “Planifico sin actuar”, “Me aíslo”"
             />
-             <div className="flex justify-between w-full">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(5)} disabled={!escapeBehaviors.trim()}>Siguiente</Button>
             </div>
@@ -217,7 +217,7 @@ export default function BlockageMapExercise({ content, pathId, onComplete }: Blo
               onChange={e => setConsequences(e.target.value)}
               placeholder="Ej: Me siento culpable, pierdo oportunidades..."
             />
-             <div className="flex justify-between w-full">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(6)} disabled={!consequences.trim()}>Ver mi mapa del bloqueo</Button>
             </div>

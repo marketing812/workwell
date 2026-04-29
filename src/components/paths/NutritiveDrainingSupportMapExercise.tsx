@@ -117,7 +117,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
                 placeholder={`Persona ${index + 1}... (Ej: Ana, Carlos, Marta)`}
               />
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente: Clasificar Sensacion <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -138,7 +138,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
                 </RadioGroup>
               </div>
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={goToVisualClassificationStep}>Siguiente: Clasificación Visual <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -174,7 +174,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
                 </RadioGroup>
               </div>
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente: Reflexión <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -192,7 +192,7 @@ export default function NutritiveDrainingSupportMapExercise({ content, pathId, o
               <Label htmlFor="reflection-distance">¿De quién necesitas poner distancia o limitar el contacto?</Label>
               <Textarea id="reflection-distance" value={reflection.distance} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setReflection(p => ({ ...p, distance: e.target.value }))} placeholder="Ej: Voy a limitar los cafes con Marta..." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar Mapa</Button>
             </div>

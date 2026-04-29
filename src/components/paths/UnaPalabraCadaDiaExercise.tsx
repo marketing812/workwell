@@ -136,7 +136,7 @@ Pregunta: ¿Qué microacción de anclaje elegiste? | Respuesta: ${finalAnchorAct
             <p>Has sentido: <strong>{finalEmotion}</strong>.</p>
             <p>Reconócelo con respeto: "Me permito reconocerlo, sin juzgarlo y con aceptación".</p>
             <p className="italic text-primary pt-2">"No hace falta que entiendas del todo lo que sientes. Basta con permitirte sentirlo sin pelear."</p>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -160,7 +160,7 @@ Pregunta: ¿Qué microacción de anclaje elegiste? | Respuesta: ${finalAnchorAct
                 className="ml-6"
               />
             )}
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} className="w-auto" disabled={!finalAnchorAction.trim()}>Ver resumen y Guardar</Button>
             </div>

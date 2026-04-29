@@ -162,7 +162,7 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
         </div>
         <div className="flex items-center gap-2 pt-2"><Checkbox id="otra" checked={needs['otra'] || false} onCheckedChange={c => setNeeds(p => ({...p, otra: !!c}))} /><Label htmlFor="otra" className="font-normal">Otra:</Label></div>
         {needs.otra && <Textarea value={otherNeed} onChange={e => setOtherNeed(e.target.value)} />}
-        <div className="flex justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
         </div>;
       case 2:
         const hasAnyAction = careActions.laboral || careActions.familiar || careActions.personal || otherCareActions.laboral || otherCareActions.familiar || otherCareActions.personal;
@@ -243,7 +243,7 @@ Pregunta: ¿Qué podrías hacer hoy para cuidar esa necesidad? | Respuesta: ${al
                     )}
                 </div>
                 
-                <div className="flex justify-between w-full mt-2">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                     <Button onClick={nextStep} className="w-auto" disabled={!hasAnyAction}>Ver Síntesis <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>

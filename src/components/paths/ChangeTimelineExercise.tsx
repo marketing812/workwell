@@ -109,7 +109,7 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
               <Label>¿Qué creías sobre ti?</Label><Textarea value={startPoint.beliefs} onChange={(e) => handleStartPointChange('beliefs', e.target.value)} />
               <Label>¿Qué cosas te costaban?</Label><Textarea value={startPoint.struggles} onChange={(e) => handleStartPointChange('struggles', e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
@@ -124,7 +124,7 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
               <p>Ejemplo: "Cuando logré decirle a mi madre cómo me sentía sin culpa, fue un antes y un después. Me sentí vista y me di cuenta de que merezco expresarme."</p>
             </div>
             <Textarea value={inflectionPoints} onChange={(e) => setInflectionPoints(e.target.value)} placeholder="Momentos clave, logros, caídas, descubrimientos..." rows={5} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
@@ -144,7 +144,7 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
               <Label>¿Qué recursos has desarrollado?</Label><Textarea value={presentMoment.resources} onChange={(e) => handlePresentMomentChange('resources', e.target.value)} />
               <Label>¿Qué cosas valoras de ti?</Label><Textarea value={presentMoment.values} onChange={(e) => handlePresentMomentChange('values', e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={next} className="w-auto">Siguiente</Button>
             </div>
@@ -159,7 +159,7 @@ Pregunta: ¿Por qué lo elegiste? | Respuesta: ${symbol.why || 'No especificado.
               <Label>¿Qué imagen se te viene a la mente?</Label><Textarea value={symbol.image} onChange={(e) => handleSymbolChange('image', e.target.value)} placeholder="Una montaña, un faro, una semilla..." />
               <Label>¿Por qué lo elegiste?</Label><Textarea value={symbol.why} onChange={(e) => handleSymbolChange('why', e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={handleComplete} className="w-auto"><CheckCircle className="mr-2 h-4 w-4" /> Finalizar Ejercicio</Button>
             </div>

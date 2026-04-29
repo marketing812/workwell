@@ -123,7 +123,7 @@ Pregunta: Preguntas del checklist que resonaron conmigo | Respuesta: [${selected
                         </div>
                     ))}
                 </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={handleSave}>
                         <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
@@ -137,7 +137,7 @@ Pregunta: Preguntas del checklist que resonaron conmigo | Respuesta: [${selected
                 <h4 className="font-semibold text-lg">Revisa</h4>
                 <p>Si hay más ✓ en la dirección de tus valores, adelante. Si hay dudas, quizá aún puedas elegir diferente.</p>
                 <p className="italic">“Cada decisión es una oportunidad de acercarte a la vida que sí quieres habitar.”</p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     
                 </div>

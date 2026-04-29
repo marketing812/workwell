@@ -87,7 +87,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label className="font-semibold text-lg">Paso 1: Recuerda una situación reciente</Label>
             <p className="text-sm">Piensa en un momento en el que necesitaste algo, pero dudaste o decidiste no pedirlo.</p>
             <Textarea value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: La semana pasada no pedí que me sustituyeran en la reunión aunque estaba enferma." disabled={isSaved} />
-            <div className="flex justify-between w-full pt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -99,7 +99,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label htmlFor="thought-blocking" className="font-semibold text-lg">Paso 2: Anota el pensamiento bloqueante</Label>
             <p className="text-sm">¿Qué frase pasó por tu mente en ese momento?</p>
             <Textarea id="thought-blocking" value={blockingThought} onChange={e => setBlockingThought(e.target.value)} placeholder="Ej: No quiero molestar. / Si lo pido, pensarán que no soy capaz." disabled={isSaved} />
-            <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep} disabled={!blockingThought.trim()}>Siguiente</Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep} disabled={!blockingThought.trim()}>Siguiente</Button></div>
           </div>
         );
       case 3:
@@ -113,7 +113,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
                     {distortionOptions.map(opt => <SelectItem key={opt.value} value={opt.label}>{opt.label}</SelectItem>)}
                 </SelectContent>
             </Select>
-            <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
           </div>
         );
       case 4:
@@ -122,7 +122,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <Label htmlFor="reformulation-blocking" className="font-semibold text-lg">Paso 4: Reformulación</Label>
             <p className="text-sm">Transforma tu pensamiento en uno más realista y útil.</p>
             <Textarea id="reformulation-blocking" value={reformulation} onChange={e => setReformulation(e.target.value)} placeholder="Ej: Pedir ayuda me permite avanzar más rápido. / A las personas que me aprecian les gusta estar ahí para mí." disabled={isSaved} />
-            <div className="flex justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep} disabled={!reformulation.trim()}>Siguiente</Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={nextStep} disabled={!reformulation.trim()}>Siguiente</Button></div>
           </div>
         );
       case 5:
@@ -134,7 +134,7 @@ export default function BlockingThoughtsExercise({ content, pathId, onComplete }
             <p className="text-sm text-muted-foreground">
               Ejemplo guía: "La próxima vez que esté enferma pediré a María que me sustituya, así me recupero antes y no afecto al equipo."
             </p>
-             <div className="flex justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button></div>
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between"><Button onClick={prevStep} variant="outline" type="button">Atrás</Button><Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button></div>
           </form>
         );
       case 6: // Confirmation

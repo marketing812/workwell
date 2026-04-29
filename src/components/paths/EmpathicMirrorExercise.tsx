@@ -145,7 +145,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
                 <Label htmlFor="conversation-topic">¿Qué te compartió o qué tema estaba en juego?</Label>
                 <Textarea id="conversation-topic" value={conversationTopic} onChange={e => setConversationTopic(e.target.value)} />
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!conversationWith.trim() || !conversationTopic.trim()}>Siguiente</Button>
             </div>
@@ -167,7 +167,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
               </Select>
               {perceivedEmotion === 'otra' && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Describe la otra emoción..." className="mt-2" />}
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!perceivedEmotion}>Siguiente</Button>
             </div>
@@ -188,7 +188,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
               <p className="font-semibold">Consejo para la vida real:</p>
               <p>Hablar desde “Entiendo que estés…” transmite empatía y validación emocional sin juzgar ni exagerar. No hace falta tener razón. Basta con estar presente con el otro, sin minimizar ni comparar.</p>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!mirrorPhrase.trim()}>Siguiente</Button>
             </div>
@@ -213,7 +213,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
               {selectedInvalidating['inv-other'] && <Textarea value={otherInvalidating} onChange={e => setOtherInvalidating(e.target.value)} placeholder="Escribe otra frase que suelas usar..." className="ml-6"/>}
             </div>
             <p className="text-base italic pt-2">Tu intención: Quiero intentar evitar estas respuestas automáticas y practicar el silencio como espacio seguro para el otro.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente</Button>
             </div>
@@ -228,7 +228,7 @@ Pregunta: Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”)
               <Label htmlFor="commitment">Mi compromiso (Ej: “Voy a dejar más silencios, sin interrumpir.”):</Label>
               <Textarea id="commitment" value={commitment} onChange={e => setCommitment(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>

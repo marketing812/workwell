@@ -126,7 +126,7 @@ Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día
               </div>
               {selectedValues['otro'] && <Input value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe tu valor personalizado..." className="mt-2" />}
           </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={Object.values(selectedValues).every(v => !v)}>Siguiente</Button>
             </div>
@@ -146,7 +146,7 @@ Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día
                 <Label htmlFor="reminder-content">Tu recordatorio (frase, descripción de imagen...)</Label>
                 <Textarea id="reminder-content" value={reminderContent} onChange={e => setReminderContent(e.target.value)}/>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!reminderType || !reminderContent.trim()}>Siguiente</Button>
             </div>
@@ -168,7 +168,7 @@ Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día
                 </RadioGroup>
                 {placement === 'Otro' && <Input value={otherPlacement} onChange={e => setOtherPlacement(e.target.value)} placeholder="Escribe otra ubicación..." className="mt-2 ml-6"/>}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>
@@ -180,7 +180,7 @@ Pregunta: ¿Dónde vas a ponerlo para que sea un ancla visible en tu día a día
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto" />
                 <h4 className="font-bold text-lg">Recordatorio Guardado</h4>
                 <p className="italic">"Cada vez que veas tu recordatorio, respira hondo y vuelve a ti. A tu valor. A tu dirección."</p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                    
                 </div>

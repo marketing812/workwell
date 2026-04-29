@@ -241,7 +241,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                             </div>
                         ))}
                         <p className="text-xs italic text-center">No busques “algo perfecto”. Lo pequeño vale: un olor, una frase, una sensación corporal.</p>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep} disabled={moments.every(m => !m.trim())}>Continuar</Button>
                         </div>
@@ -254,7 +254,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                         <p className="text-sm text-muted-foreground">Al recrear mentalmente una escena positiva, activas circuitos cerebrales que generan bienestar. Esto significa que no solo recuerdas: también revives la emoción.</p>
                         <p className="text-sm font-semibold">Cierra los ojos… Imagínate dentro de cada momento: observa colores, sonidos, olores, la temperatura, la emoción que sentías. Quédate ahí, en ese recuerdo, el tiempo que desees.</p>
                         <p className="text-xs italic border-l-2 p-2 text-left">Ejemplo: si recuerdas un paseo, imagina el color del cielo, el sonido de tus pasos, el olor del aire y la calma que te envolvía.</p>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep}>Continuar</Button>
                         </div>
@@ -287,7 +287,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                             <Slider defaultValue={[activityDuration]} onValueChange={(v) => setActivityDuration(v[0])} min={1} max={15} step={1} />
                         </div>
                         <Button onClick={handleSavePlan} className="w-full"><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
@@ -306,7 +306,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                             <Label htmlFor="positive-learning">Busca un aspecto positivo, un aprendizaje o un signo de tu fortaleza, como si aconsejaras a un amigo o amiga:</Label>
                             <Textarea id="positive-learning" value={positiveLearning} onChange={e => setPositiveLearning(e.target.value)} placeholder="Ej: Aunque fue duro, descubrí que soy más fuerte de lo que pensaba." />
                         </div>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
@@ -336,7 +336,7 @@ export default function IlluminatingMemoriesAlbumExercise({ content, pathId, onC
                             ))}
                         </div>
                         <Button onClick={() => setStarResource(filledMomentsForSelection.map(item => item.moment))} variant="secondary" className="w-full">Seleccionar todos mis recuerdos</Button>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
                         </div>

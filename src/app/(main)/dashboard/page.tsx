@@ -11,7 +11,7 @@ import { DashboardSummaryCard } from "@/components/dashboard/DashboardSummaryCar
 import { ChartPlaceholder } from "@/components/dashboard/ChartPlaceholder";
 import { MoodEvolutionChart } from "@/components/dashboard/MoodEvolutionChart";
 import { useToast } from "@/hooks/use-toast";
-import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, Lightbulb, AlertTriangle, MessageSquareQuote, HeartPulse, Brain, Route, BookHeart } from "lucide-react";
+import { Smile, TrendingUp, Target, Edit, NotebookPen, CheckCircle, Activity, RefreshCw, Loader2, ArrowRight, ClipboardList, AlertTriangle, MessageSquareQuote, HeartPulse, Brain, Route, BookHeart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useActivePath } from "@/contexts/ActivePathContext";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -34,8 +34,8 @@ import {
 } from "@/components/ui/dialog";
 import { EmotionalEntryForm } from "@/components/dashboard/EmotionalEntryForm";
 import { useDailyCheckIn } from "@/hooks/use-daily-check-in";
-import { pathsData } from '@/data/pathsData';
-import { saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
+import { getAutoregistrosLegacy, saveAutoregistroLegacy } from "@/data/autoregistrosLegacy";
+import type { EmotionalEntry } from "@/data/emotionalEntriesStore";
 
 const MoodCheckInObjectSchema = z.object({
   mood: z.string(),
@@ -128,6 +128,12 @@ function normalizeAssessmentEntry(raw: any, index: number): AssessmentRecord | n
   };
 }
 
+function parseEmotionalEntryTimestamp(timestamp: EmotionalEntry["timestamp"] | null | undefined): Date | null {
+  if (!timestamp) return null;
+  const parsed = new Date(String(timestamp).replace(" ", "T"));
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 
 export default function DashboardPage() {
   const t = useTranslations();
@@ -143,6 +149,7 @@ export default function DashboardPage() {
   const [error, setError] = useState<string | null>(null);
   const [debugUrl, setDebugUrl] = useState<string | null>(null);
   const [isEntryDialogOpen, setIsEntryDialogOpen] = useState(false);
+  const [allEntries, setAllEntries] = useState<EmotionalEntry[]>([]);
   
   const filteredDimensions = useMemo(() => 
     assessmentDimensionsData.filter(dim => {
@@ -176,10 +183,26 @@ export default function DashboardPage() {
         title: t.emotionalEntrySavedTitle,
         description: "Tu autorregistro se ha guardado.",
       });
+
+      await loadEntries();
     } catch (_error) {
       toast({ title: "Error al Guardar", description: "No se pudo guardar el registro.", variant: "destructive" });
     }
   };
+
+  const loadEntries = useCallback(async () => {
+    if (!user?.id) {
+      setAllEntries([]);
+      return;
+    }
+
+    try {
+      const entries = await getAutoregistrosLegacy(user.id);
+      setAllEntries(entries);
+    } catch (error) {
+      console.error("Error cargando autorregistros:", error);
+    }
+  }, [user?.id]);
 
   const loadMoodCheckIns = useCallback(async () => {
     if (!user?.id) {
@@ -263,12 +286,14 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (user?.id) {
+      loadEntries();
       loadMoodCheckIns();
       loadLatestAssessment();
     } else {
       setIsLoading(false);
+      setAllEntries([]);
     }
-  }, [user?.id, loadMoodCheckIns, loadLatestAssessment]);
+  }, [user?.id, loadEntries, loadMoodCheckIns, loadLatestAssessment]);
 
   const lastMood = useMemo(() => {
     if (allMoodCheckIns.length === 0) return null;
@@ -301,12 +326,11 @@ export default function DashboardPage() {
     if (!isClient) return 0;
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    return allMoodCheckIns.filter(entry => {
-        if (!entry.timestamp) return false;
-        const entryDate = entry.timestamp as Date;
-        return entryDate > oneWeekAgo;
+    return allEntries.filter((entry) => {
+        const entryDate = parseEmotionalEntryTimestamp(entry.timestamp);
+        return !!entryDate && entryDate > oneWeekAgo;
     }).length;
-  }, [isClient, allMoodCheckIns]);
+  }, [isClient, allEntries]);
   
   const focusArea = useMemo(() => {
     if (!isClient) return "Autoconocimiento";
@@ -321,30 +345,6 @@ export default function DashboardPage() {
       description: `${currentActivePath.completedModuleIds.length} de ${currentActivePath.totalModules} módulos completados.`
     };
   }, [isClient, currentActivePath]);
-
-  const pathSuggestion = useMemo(() => {
-    if (!isClient || allMoodCheckIns.length < 3) return null; // require at least 3 entries to suggest
-
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-    const recentCheckIns = allMoodCheckIns.filter(entry => {
-      if (!entry.timestamp) return false;
-      const entryDate = entry.timestamp as Date;
-      return entryDate > oneWeekAgo;
-    });
-
-    if (recentCheckIns.length < 3) return null; // again, require at least 3 in the last week
-
-    const averageScore = recentCheckIns.reduce((acc, entry) => acc + entry.score, 0) / recentCheckIns.length;
-
-    if (averageScore <= 3) {
-      return pathsData.find(p => p.id === 'volver-a-sentirse-bien');
-    }
-
-    return null;
-  }, [isClient, allMoodCheckIns]);
-
 
   if (isLoading || !isClient) {
     return (
@@ -374,21 +374,6 @@ export default function DashboardPage() {
                   <p><strong>URL de la llamada:</strong> {debugUrl || 'No disponible'}</p>
                   <p><strong>Error:</strong> {error}</p>
                 </details>
-            </AlertDescription>
-        </Alert>
-      )}
-
-      {pathSuggestion && (
-        <Alert>
-            <Lightbulb className="h-4 w-4" />
-            <AlertTitle className="font-semibold">Sugerencia para ti</AlertTitle>
-            <AlertDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-               <div>
-                  Hemos notado que tu estado de ánimo ha estado algo bajo últimamente. Te sugerimos explorar la ruta de desarrollo <strong>&quot;{pathSuggestion.title}&quot;</strong> para ayudarte a reconectar con tus fuentes de bienestar.
-               </div>
-               <Button asChild className="w-full sm:w-auto mt-2 sm:mt-0">
-                  <Link href={`/paths/${pathSuggestion.id}`}>Ir a la Ruta</Link>
-               </Button>
             </AlertDescription>
         </Alert>
       )}
@@ -442,8 +427,8 @@ export default function DashboardPage() {
               {t.registerEmotion}
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[calc(100%-1rem)] max-w-[480px] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
-            <DialogHeader>
+          <DialogContent className="flex w-[calc(100%-1rem)] max-w-[480px] max-h-[calc(100dvh-1rem)] flex-col overflow-hidden p-4 sm:p-6">
+            <DialogHeader className="shrink-0">
               <DialogTitle className="text-2xl">{t.registerEmotionDialogTitle}</DialogTitle>
               <DialogDescription>
                 {t.registerEmotionDialogDescription}

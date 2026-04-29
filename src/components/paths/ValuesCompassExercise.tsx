@@ -205,7 +205,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
               ))}
             </div>
             <p className="text-sm">Puedes elegir varias.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -295,7 +295,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
               </div>
             ))}
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -344,7 +344,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
               piloto automático. Volver a tus valores es como volver a casa.
             </p>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -365,7 +365,7 @@ export default function ValuesCompassExercise({ content, pathId, onComplete }: V
             <p className="text-foreground">
               Tu brújula de valores ha sido guardada en el cuaderno. Puedes volver a consultarla cuando quieras.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

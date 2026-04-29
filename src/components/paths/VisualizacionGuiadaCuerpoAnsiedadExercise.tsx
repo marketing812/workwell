@@ -151,7 +151,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                           />
                         )}
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: “Respirar así no significa que te falte el aire de verdad. Es tu sistema de alarma funcionando.”</p>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing || (breathing === 'Otra' && !otherBreathing.trim())}>Siguiente</Button></div>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!breathing || (breathing === 'Otra' && !otherBreathing.trim())}>Siguiente</Button></div>
                     </div>
                 );
             
@@ -181,7 +181,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                                 <AccordionContent className="text-sm text-muted-foreground">El corazón se acelera para prepararte para correr o luchar. Aunque lo sientas intenso, no significa que vaya a fallar: es una reacción normal del cuerpo bajo ansiedad.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!heart || (heart === 'Otra' && !otherHeart.trim())}>Siguiente</Button></div>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!heart || (heart === 'Otra' && !otherHeart.trim())}>Siguiente</Button></div>
                     </div>
                 );
 
@@ -225,7 +225,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                             )}
                         </div>
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: Estos síntomas, aunque incómodos, no son peligrosos: forman parte de la activación del sistema nervioso.</p>
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || (stomach === 'Otra' && !otherStomach.trim()) || !head || (head === 'Otra' && !otherHead.trim())}>Siguiente</Button></div>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!stomach || (stomach === 'Otra' && !otherStomach.trim()) || !head || (head === 'Otra' && !otherHead.trim())}>Siguiente</Button></div>
                     </div>
                 );
             
@@ -236,7 +236,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                         <p className="text-sm text-muted-foreground">Ahora que has explorado tu respiración, tu corazón, tu estómago y tu cabeza, haz algo importante: nombra lo que sientes sin intentar cambiarlo.</p>
                         <Label htmlFor="acceptancePhrase">Ahora mismo siento que…</Label>
                         <Textarea id="acceptancePhrase" value={acceptancePhrase} onChange={e => setAcceptancePhrase(e.target.value)} placeholder="Ejemplo: “Mi corazón late fuerte, tengo un nudo en el estómago y la respiración acelerada. Sé que es ansiedad y no algo peligroso.”" />
-                        <div className="flex justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!acceptancePhrase.trim()}>Siguiente</Button></div>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button><Button onClick={nextStep} disabled={!acceptancePhrase.trim()}>Siguiente</Button></div>
                     </div>
                 );
 
@@ -253,7 +253,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                                 <AccordionContent className="text-sm text-muted-foreground">Las investigaciones muestran que una emoción intensa dura entre 60 y 90 segundos si no la alimentas con pensamientos catastróficos.</AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4">
                             <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button type="submit" disabled={!wavePhrase.trim() || isSaved}>
                                 {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}
@@ -277,7 +277,7 @@ Pregunta: Frase para recordar la ola emocional | Respuesta: "${wavePhrase}"
                            <span>Ola</span>
                         </div>
                         <p className="text-foreground pt-2">Tu cuerpo grita con la ansiedad, pero tú puedes aprender a escucharlo sin miedo. Cada vez que lo haces, la ola pierde fuerza.</p>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            
                         </div>

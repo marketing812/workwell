@@ -76,7 +76,7 @@ export default function EmpathicShieldVisualizationExercise({
               Tu navegador no soporta el elemento de audio.
             </audio> Te recomiendo repetir esta visualización 2 o 3 veces por semana, especialmente antes de conversaciones emocionalmente exigentes o relaciones que te remueven.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -94,7 +94,7 @@ export default function EmpathicShieldVisualizationExercise({
               <source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta5/tecnicas/R5sem3tec1pantallas2-6-2.mp3`} type="audio/mpeg" />
               Tu navegador no soporta el elemento de audio.
             </audio>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

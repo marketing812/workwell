@@ -181,7 +181,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
                     )}
                 </div>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>{index === 2 ? 'Revisar mi hoja de ruta' : 'Siguiente Acción'}</Button>
             </div>
@@ -224,7 +224,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
                 </div>
             </RadioGroup>
             {chosenValue === 'Otro' && <Textarea value={otherChosenValue} onChange={e => setOtherChosenValue(e.target.value)} placeholder="Describe tu valor personalizado..." className="mt-2" />}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!chosenValue.trim()}>Siguiente</Button>
             </div>
@@ -249,7 +249,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
                 </div>
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}
@@ -263,7 +263,7 @@ Pregunta: ¿Qué valor representa esta acción? | Respuesta: ${finalValue}
                 <CheckCircle className="h-10 w-10 text-primary mx-auto"/>
                 <h4 className="font-semibold text-lg">Hoja de Ruta Guardada</h4>
                 <p className="italic">"Tus decisiones crean tu camino. No importa si es grande o pequeño: cada paso desde el propósito cuenta."</p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     
                 </div>

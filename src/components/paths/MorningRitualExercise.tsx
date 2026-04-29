@@ -227,7 +227,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button></div>
             </div>
         );
        case 5:
@@ -248,7 +248,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
                 </div>
                 {facilitators['facilitator-other'] && <Textarea value={otherFacilitator} onChange={e => setOtherFacilitator(e.target.value)} placeholder="Describe tu facilitador" className="ml-6"/>}
                 </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                      <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                      <Button onClick={nextStep}>Revisar y Guardar <ArrowRight className="mr-2 h-4 w-4" /></Button>
                  </div>
@@ -274,7 +274,7 @@ export default function MorningRitualExercise({ content, pathId, onComplete }: M
             </div>
             <p className="text-xs italic text-muted-foreground pt-2">Si un día no puedes hacerlos todos, haz al menos el primero: será suficiente para recordarte que tú decides cómo empezar.</p>
             <p className="text-xs italic text-muted-foreground pt-2">Y ahora, con tu mañana amable lista y tus tres microhábitos definidos, tu bienestar diario tiene un punto de partida y un plan de continuidad.</p>
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                 <Button onClick={prevStep} variant="link" className="px-0">Atrás</Button>
                 <Button onClick={handleSave}>
                     Guardar en el cuaderno terapéutico

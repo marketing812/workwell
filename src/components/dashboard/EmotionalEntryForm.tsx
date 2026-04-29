@@ -78,7 +78,7 @@ export function EmotionalEntryForm({ onSubmit }: EmotionalEntryFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-6 py-4">
+    <form onSubmit={handleSubmit} className="grid min-h-0 gap-6 overflow-y-auto py-4 pr-1">
       <div className="grid gap-2">
         <Label htmlFor="situation" className="text-base">
           {t.situationLabel}
@@ -89,7 +89,7 @@ export function EmotionalEntryForm({ onSubmit }: EmotionalEntryFormProps) {
           onChange={(e) => setSituation(e.target.value)}
           placeholder={t.situationPlaceholder}
           rows={3}
-          className="text-sm"
+          className="resize-none text-base md:text-sm"
         />
       </div>
       <div className="grid gap-2">
@@ -102,7 +102,7 @@ export function EmotionalEntryForm({ onSubmit }: EmotionalEntryFormProps) {
           onChange={(e) => setThought(e.target.value)}
           placeholder={t.thoughtPlaceholder}
           rows={3}
-          className="text-sm"
+          className="resize-none text-base md:text-sm"
         />
       </div>
       <div className="grid gap-2">
@@ -110,12 +110,12 @@ export function EmotionalEntryForm({ onSubmit }: EmotionalEntryFormProps) {
           {t.emotionLabel}
         </Label>
         <Select value={selectedEmotion} onValueChange={setSelectedEmotion}>
-          <SelectTrigger id="emotion" className="w-full text-sm">
+          <SelectTrigger id="emotion" className="w-full text-base md:text-sm">
             <SelectValue placeholder={t.emotionPlaceholder} />
           </SelectTrigger>
           <SelectContent>
             {emotions.map((emo) => (
-              <SelectItem key={emo.value} value={emo.value} className="text-sm">
+              <SelectItem key={emo.value} value={emo.value} className="text-base md:text-sm">
                 {t[emo.labelKey as keyof typeof t] || emo.value}
               </SelectItem>
             ))}

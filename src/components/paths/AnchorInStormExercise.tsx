@@ -131,7 +131,7 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
             {anchorType === 'Otra' && (
                 <Textarea value={otherAnchorType} onChange={e => setOtherAnchorType(e.target.value)} placeholder="Describe tu tipo de ancla..." className="ml-6 mt-2" />
             )}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!finalAnchorType.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -153,7 +153,7 @@ Pregunta: Describe tu ancla emocional: ¿Qué imagen, gesto, respiración o fras
                 <p className="font-semibold">Conecta con tu ancla ahora:</p>
                 <p className="text-sm">Hazlo en este momento. Respira, visualiza, repite tu frase o realiza el gesto. Siente su efecto en tu cuerpo.</p>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>

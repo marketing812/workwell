@@ -86,7 +86,7 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
             </div>
             <Label htmlFor="commitment-pact">Escribe aquí lo que te comprometes a cuidar</Label>
             <Textarea id="commitment-pact" value={commitment} onChange={e => setCommitment(e.target.value)} disabled={isSaved} />
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!commitment.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -106,7 +106,7 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
               <div className="flex items-center space-x-2"><RadioGroupItem value="gesto" id="rem-gesture" /><Label className="font-normal" htmlFor="rem-gesture">Un gesto físico</Label></div>
             </RadioGroup>
             <Textarea value={reminder} onChange={e => setReminder(e.target.value)} placeholder={`Describe tu recordatorio. Ej: "Cada mañana, al lavarme la cara, me repetiré mi frase..."`}/>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!reminder.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -128,7 +128,7 @@ Pregunta: Mi frase de acompañamiento emocional es: | Respuesta: "${anchorPhrase
             </div>
             <Label htmlFor="anchor-phrase">Mi frase de acompañamiento emocional es:</Label>
             <Textarea id="anchor-phrase" value={anchorPhrase} onChange={e => setAnchorPhrase(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>

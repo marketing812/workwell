@@ -96,7 +96,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
               hay respuestas correctas: este contrato es solo tuyo, para recordarte lo que necesitas cuidar y cómo
               quieres comprometerte contigo.
             </p>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -128,7 +128,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
                 placeholder="Escribe aquí..."
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -162,7 +162,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
                 placeholder="Escribe aquí..."
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -193,7 +193,7 @@ export default function SelfCareContractExercise({ content, pathId, onComplete }
                 placeholder="Escribe aquí..."
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

@@ -136,7 +136,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                         <h4 className="font-semibold text-lg">Paso 1: Describe la decisión</h4>
                         <Label htmlFor="decision">¿Qué decisión tienes que tomar?</Label>
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Aceptar un nuevo puesto de trabajo en otra ciudad.”"/>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -161,7 +161,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                         </div>
                         {values['Otro'] && <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />}
                          <p className="text-sm text-muted-foreground pt-2">Piensa en lo que es importante para ti, no en lo que crees que es importante para los demás.</p>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={handleValuesNext}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -187,7 +187,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                         </div>
                         {emotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} placeholder="Escribe otra emoción..." className="mt-2" />}
                         <p className="text-sm text-muted-foreground pt-2">Sentir emociones encontradas es normal. Aquí no hay emociones correctas o incorrectas.</p>
-                         <div className="flex justify-between w-full pt-4">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                          </div>
@@ -200,7 +200,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                         <Label htmlFor="long-term-impact">Si tomo esta decisión, ¿cómo me afectará dentro de 1 año? ¿Y dentro de 5 años?</Label>
                         <p className="text-sm italic text-muted-foreground">Ejemplo: "A 1 año: tendré más ingresos pero estaré lejos de mi familia. A 5 años: habré crecido profesionalmente y podré volver con más opciones."</p>
                         <Textarea id="long-term-impact" value={longTermImpact} onChange={e => setLongTermImpact(e.target.value)} rows={4} />
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!longTermImpact.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -224,12 +224,12 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                         <div className="pt-4">
                             <Label className="font-semibold">Nivel de coherencia percibida: {coherence}/10</Label>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={0} max={10} step={1} className="mt-2" />
-                            <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between text-xs text-muted-foreground mt-1">
                                 <span>Nada coherente</span>
                                 <span>Totalmente coherente</span>
                             </div>
                         </div>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -245,7 +245,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                             Ejemplo: "Negociaría trabajar en remoto algunos días para pasar más tiempo en casa."
                         </p>
                         <Textarea id="adjustment" value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -255,7 +255,7 @@ Pregunta: Si algo no encaja, ¿qué cambiarías para sentirte en paz con la deci
                  return (
                     <form onSubmit={handleSave} className="p-4 space-y-4 text-center">
                        <p className="text-sm text-muted-foreground">Lo importante no es decidir rápido, sino decidir en paz. Guarda esta reflexión en tu cuaderno para revisarla cuando lo necesites.</p>
-                        <div className="flex justify-between w-full gap-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full gap-2">
                             <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                         </div>

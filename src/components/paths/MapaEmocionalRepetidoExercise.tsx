@@ -169,7 +169,7 @@ ${schema || 'No especificado.'}
               placeholder={`“Ayer envié un mensaje importante a una amiga y no me contestó.”
 (No pongas: “Me sentí ignorada” o “Seguro que está enfadada conmigo” -> eso lo veremos después)`}
             />
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -207,7 +207,7 @@ ${schema || 'No especificado.'}
                 className="mt-2"
               />
             )}
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -234,7 +234,7 @@ ${schema || 'No especificado.'}
 "Siempre me dejan fuera."
 "Seguro se están burlando de mí."`}
             />
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -261,7 +261,7 @@ ${schema || 'No especificado.'}
 "Me bloqueé y no dije nada."
 "Me mostré sonriente, pero me dolía por dentro."`}
             />
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -297,7 +297,7 @@ ${schema || 'No especificado.'}
                 </Label>
               </div>
             </RadioGroup>
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -325,7 +325,7 @@ ${schema || 'No especificado.'}
                 ))}
               </SelectContent>
             </Select>
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -364,7 +364,7 @@ ${schema || 'No especificado.'}
             <p className="text-sm italic text-center pt-2">
               Este es tu primer paso para interrumpir el patrón y empezar a transformarlo.
             </p>
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

@@ -181,7 +181,7 @@ Tu emoción: ${finalEmotion}
               />
             )}
 
-            <div className="flex justify-between mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
               <Button onClick={() => setStep(0)} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -252,7 +252,7 @@ Tu emoción: ${finalEmotion}
               como recordatorio de que tus emociones también quieren ayudarte.
             </p>
 
-            <div className="flex justify-between mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
               <Button onClick={() => setStep(1)} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

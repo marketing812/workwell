@@ -105,7 +105,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                 <Input key={i} value={p.name} onChange={e => handlePersonChange(i, 'name', e.target.value)} placeholder={`Persona ${i + 1}... (Ej: Ana, Carlos, Marta)`} />
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={filledPeople.length === 0}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -135,7 +135,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                 )}
               </div>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -155,7 +155,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                     <Slider id={`confidence-${i}`} value={[p.confidence]} onValueChange={v => handlePersonChange(i, 'confidence', v[0])} min={1} max={5} step={1} className="mt-2"/>
                 </div>
              ))}
-              <div className="flex justify-between w-full mt-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Ver mi mapa final <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -185,7 +185,7 @@ export default function SupportBankExercise({ content, pathId, onComplete }: Sup
                         </TableBody>
                     </Table>
                  </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button type="submit" disabled={isSaved}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                 </div>

@@ -92,7 +92,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             <p className="text-sm">Describe brevemente la decisión que tienes que tomar. Intenta que sea lo más concreta posible. Ejemplos: Hablar con mi pareja sobre algo que me está doliendo. Pedir un cambio de proyecto en el trabajo. Decidir si continúo en esta relación. Elegir entre quedarme o mudarme.</p>
             <Label htmlFor="situation-brave">¿Cuál es la decisión que estás enfrentando?</Label>
             <Textarea id="situation-brave" value={situation} onChange={e => setSituation(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -113,7 +113,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             </div>
             <Label htmlFor="fear-decision" className="pt-2 block">Describe tu posible decisión si actuaras desde el miedo</Label>
             <Textarea id="fear-decision" value={fearDecision} onChange={e => setFearDecision(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!fearDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -134,7 +134,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             </div>
             <Label htmlFor="value-decision" className="pt-2 block">Describe qué harías si actuaras desde tu coraje y tus valores</Label>
             <Textarea id="value-decision" value={valueDecision} onChange={e => setValueDecision(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!valueDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -155,7 +155,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             </div>
             <Label htmlFor="confidence-decision" className="pt-2 block">Describe la decisión que tomarías si confiaras en ti y en tu proceso</Label>
             <Textarea id="confidence-decision" value={confidenceDecision} onChange={e => setConfidenceDecision(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!confidenceDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -176,7 +176,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             </div>
             <Label htmlFor="despair-decision" className="pt-2 block">Describe tu posible decisión si actuaras desde la rendición o el agotamiento emocional</Label>
             <Textarea id="despair-decision" value={despairDecision} onChange={e => setDespairDecision(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!despairDecision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -197,7 +197,7 @@ Pregunta: ¿Qué decisión quieres tomar hoy y por qué? | Respuesta: ${finalCho
             </div>
             <Label htmlFor="final-choice" className="pt-2 block">¿Qué decisión quieres tomar hoy y por qué?</Label>
             <Textarea id="final-choice" value={finalChoice} onChange={e => setFinalChoice(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>

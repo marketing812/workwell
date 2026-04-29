@@ -60,7 +60,7 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
           <div className="p-4 space-y-4 animate-in fade-in-0 duration-500">
             <h4 className="font-semibold text-lg text-primary">Paso 1: Pausa un momento</h4>
             <p className="text-muted-foreground">Cierra los ojos (o baja la mirada). Toma una respiración lenta y profunda. Suelta el aire como si soltaras el peso de tener que resolverlo todo.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -76,7 +76,7 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
                 <li>¿Puedo activar mi escudo interno para estar sin absorber?</li>
             </ul>
             <p className="italic text-sm text-muted-foreground">No tienes que responder perfecto. Solo notar cómo estás... ya es un acto de presencia.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -93,7 +93,7 @@ export default function ActivateShieldExercise({ content, pathId, onComplete }: 
                 <p>"Mi cuidado también importa aquí."</p>
                 <p>"Mi presencia es suficiente. No tengo que absorberlo todo."</p>
             </blockquote>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleComplete}>Finalizar Práctica <CheckCircle className="ml-2 h-4 w-4" /></Button>
             </div>

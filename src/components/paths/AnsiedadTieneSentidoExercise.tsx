@@ -149,7 +149,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                           <Textarea id="thoughts" value={thoughts} onChange={e => setThoughts(e.target.value)} placeholder='Ejemplo: “Pensaba: ‘me voy a desmayar’, ‘no voy a aguantar aquí’.”'/>
                         </div>
                         <p className="text-sm italic">A veces, junto con los síntomas, aparece miedo a tu propia ansiedad (‘me voy a volver loco/a’, ‘voy a perder el control’, ‘me va a dar algo’). Si te pasó, anótalo: es clave para desarmar el círculo.</p>
-                        <div className="flex justify-between w-full mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                             <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                             <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                         </div>
@@ -176,7 +176,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between w-full mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                             <Button onClick={() => setStep(1)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                             <Button onClick={() => setStep(3)} disabled={!initialThreat.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                         </div>
@@ -211,7 +211,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                           </AccordionItem>
                         </Accordion>
                         <p className="text-sm italic border-l-2 pl-2">Recordatorio: Este es el círculo típico de la ansiedad: Situación → Pensamiento amenazante inicial → Síntomas físicos y mentales → Miedo a los síntomas (‘me va a dar algo’) → Más ansiedad.</p>
-                        <div className="flex justify-between w-full mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                            <Button onClick={() => setStep(2)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            <Button onClick={handleSave} disabled={isSaved}>
                              <Save className="mr-2 h-4 w-4" />
@@ -230,7 +230,7 @@ Pregunta: Efecto final: ¿qué hiciste o qué sentiste después? | Respuesta: ${
                            <p>Situación → Pensamiento inicial → Síntomas → Interpretación de los síntomas → Más ansiedad</p>
                         </div>
                         <p className="italic mt-2">“Tu ansiedad tiene un sentido. Al reconocer el círculo, recuperas poco a poco el control.”</p>
-                        <div className="flex justify-between w-full mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                            <Button onClick={() => setStep(3)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
                            
                         </div>

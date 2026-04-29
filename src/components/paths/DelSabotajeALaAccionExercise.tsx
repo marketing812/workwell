@@ -125,7 +125,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                             </div>
                         ))}
                     </div>
-                    <div className="flex justify-between w-full">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                         <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
@@ -148,7 +148,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                             ))}
                         </div>
                     ) : <p className="italic">No has seleccionado ninguna frase común.</p> }
-                    <div className="flex justify-between w-full">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                         <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button onClick={nextStep}>Continuar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     </div>
@@ -168,7 +168,7 @@ export default function DelSabotajeALaAccionExercise({ content, pathId, onComple
                         <Label htmlFor="custom-response">Respuesta realista y amable</Label>
                         <Textarea id="custom-response" value={customResponse} onChange={e => setCustomResponse(e.target.value)} />
                     </div>
-                    <div className="flex justify-between w-full">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                         <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                         <Button type="submit">
                             <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

@@ -185,7 +185,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <h4 className="font-semibold text-lg">Paso 1: Define tu hábito deseado</h4>
                         <Label htmlFor="habit">Escribe aquí el hábito que deseas construir.</Label>
                         <Textarea id="habit" value={habit} onChange={e => setHabit(e.target.value)} placeholder="Ej: Revisar mi agenda cada mañana" />
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(0)}>Atrás</Button>
                             <Button onClick={() => setStep(2)} disabled={!habit}>Siguiente</Button>
                         </div>
@@ -198,7 +198,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <p>Imagina que ha pasado el tiempo suficiente para que el hábito que deseas ya forme parte de tu vida.</p>
                         <Label htmlFor="futureSelf">¿Dónde estás? ¿Es por la mañana, por la tarde? ¿Qué estás haciendo justo después de completar ese hábito? ¿Cómo te ves? ¿Cómo es tu cuerpo, tu ropa, tu expresión facial? ¿Qué transmite tu mirada?</Label>
                         <Textarea id="futureSelf" value={futureSelf} onChange={e => setFutureSelf(e.target.value)} />
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(1)}>Atrás</Button>
                             <Button onClick={() => setStep(3)} disabled={!futureSelf}>Siguiente</Button>
                         </div>
@@ -212,7 +212,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <Label htmlFor="emotions">¿Sientes orgullo? ¿Confianza? ¿Tranquilidad? ¿Qué pensamientos aparecen en tu mente? ¿Hay frases que te dices o que resuenan dentro de ti?</Label>
                         <Textarea id="emotions" value={emotions} onChange={e => setEmotions(e.target.value)} />
                         <p>Déjalas entrar como una luz suave que te abraza por dentro.</p>
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(2)}>Atrás</Button>
                             <Button onClick={() => setStep(4)} disabled={!emotions}>Siguiente</Button>
                         </div>
@@ -225,7 +225,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <Label htmlFor="benefits">¿Cómo ha mejorado tu bienestar físico o emocional? ¿En qué ha cambiado tu autoestima o tu energía diaria? ¿Y tus relaciones? ¿Qué dificultades lograste superar?</Label>
                         <p>Observa con atención los frutos del camino recorrido.</p>
                         <Textarea id="benefits" value={benefits} onChange={e => setBenefits(e.target.value)} />
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(3)}>Atrás</Button>
                             <Button onClick={() => setStep(5)} disabled={!benefits}>Siguiente</Button>
                         </div>
@@ -237,7 +237,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <h4 className="font-semibold text-lg">Paso 5: Mirar atrás desde el futuro</h4>
                         <Label htmlFor="journeySteps">Desde esa versión futura de ti, ¿qué fue lo primero que hiciste para empezar? ¿Qué estrategias usaste en momentos de duda? ¿Qué actitud mental te ayudó a no rendirte?</Label>
                         <Textarea id="journeySteps" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} />
-                        <div className="flex justify-between mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-2">
                             <Button variant="outline" onClick={() => setStep(4)}>Atrás</Button>
                             <Button onClick={() => setStep(6)} disabled={!journeySteps}>Ir al plan de acción</Button>
                         </div>
@@ -254,7 +254,7 @@ Y cuando estés listo o lista, abre los ojos… lentamente.</p>
                         <div className="space-y-2"><Label htmlFor="benefits-final">¿Qué beneficios viste en tu vida?</Label><Textarea id="benefits-final" value={benefits} onChange={e => setBenefits(e.target.value)} disabled={isSaved} /></div>
                         <div className="space-y-2"><Label htmlFor="steps-final">¿Qué pasos te ayudaron a llegar hasta ahí?</Label><Textarea id="steps-final" value={journeySteps} onChange={e => setJourneySteps(e.target.value)} disabled={isSaved} /></div>
                         {!isSaved ? (
-                            <div className="flex justify-between w-full mt-4">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                                 <Button variant="outline" onClick={() => setStep(5)} type="button">Atrás</Button>
                                 <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                             </div>

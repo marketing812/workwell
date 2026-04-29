@@ -113,7 +113,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -160,7 +160,7 @@ export default function IntensityScaleExercise({ content, pathId, onComplete }: 
                 </div>
               </div>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" /> {isSaved ? 'Guardado' : 'Guardar en el cuaderno terapéutico'}

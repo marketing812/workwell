@@ -132,7 +132,7 @@ export default function SmallDecisionsLogExercise({ content, pathId, onComplete 
                                 <Textarea id={`nextTime-${index}`} value={log.nextTime} onChange={e => handleLogChange(index, 'nextTime', e.target.value)} placeholder="Ejemplo: Después me sentí frustrada porque necesitaba descansar. La próxima vez me gustaría proponer un encuentro más breve o en otro momento." />
                             </div>
                         ))}
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={handleSave} className="w-auto">
                                 <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico

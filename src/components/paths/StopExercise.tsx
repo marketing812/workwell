@@ -125,7 +125,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
                 <li>Postura: pies firmes, hombros sueltos, mirada al frente.</li>
               </ul>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} >Siguiente</Button>
             </div>
@@ -165,7 +165,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
                   <li>Frase ancla: “Inhalo…Exhalo… y suelto.”</li>
                 </ul>
              </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button onClick={nextStep}>Siguiente</Button>
             </div>
@@ -208,7 +208,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             </div>
             <Label htmlFor="observed-state">Escríbelo:</Label>
             <Textarea value={observedState} onChange={e => setObservedState(e.target.value)} placeholder="Ej: ‘Voy a hacer el ridículo si entro solo o sola a esa sala’ y siento un nudo en el estómago."/>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button onClick={nextStep} disabled={!observedState.trim()}>Siguiente</Button>
             </div>
@@ -250,7 +250,7 @@ Pregunta: ¿Qué paso eliges para proseguir? | Respuesta: ${nextAction}
             </div>
             <Label htmlFor="next-action">Continua la frase añadiendo un paso para seguir adelante: "Esto es lo que se me pasa por la cabeza y lo que siento: '{observedState}'. Lo acepto…lo dejo estar. Lo que sí puedo hacer es..."</Label>
             <Textarea value={nextAction} onChange={e => setNextAction(e.target.value)} placeholder="Ej: ...dar tres pasos, entrar y saludar, aunque aún me sienta nervioso o nerviosa." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit" disabled={!nextAction.trim() || isSaved}>
                     {isSaved ? <CheckCircle className="mr-2 h-4 w-4" /> : <Save className="mr-2 h-4 w-4" />}

@@ -195,7 +195,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                                 className="mt-2"
                             />
                         )}
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={handleNextStep1}>Siguiente</Button>
                         </div>
@@ -218,7 +218,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                             <Textarea id={`example-${e.id}`} value={ratings[e.id]?.example || ''} onChange={v => handleExampleChange(e.id, v.target.value)} rows={2}/>
                         </div>
                     )) : <p className="text-muted-foreground text-center">No has seleccionado ningún entorno. Vuelve al paso anterior para elegirlos.</p>}
-                     <div className="flex justify-between w-full mt-4">
+                     <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                         <Button onClick={prevStep} variant="outline">Atrás</Button>
                         <Button onClick={nextStep} disabled={activeAreas.length === 0}>Ver Síntesis Visual</Button>
                     </div>
@@ -288,7 +288,7 @@ export default function EnvironmentEvaluationExercise({ content, pathId, onCompl
                             </BarChart>
                           </ChartContainer>
                         </div>
-                         <div className="flex justify-between w-full mt-4">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                              <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                              <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                          </div>

@@ -1,7 +1,7 @@
 
 "use client";
 
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,37 +12,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, User as UserIcon, Settings as SettingsIcon, ListChecks, MessageSquareQuote, Smile } from "lucide-react";
+import { LogOut, Settings as SettingsIcon } from "lucide-react";
 import { useUser } from "@/contexts/UserContext";
 import { useTranslations } from "@/lib/translations";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { useActivePath } from "@/contexts/ActivePathContext";
-import { Badge } from "@/components/ui/badge";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { usePathname } from "next/navigation";
-import { useDailyCheckIn } from '@/hooks/use-daily-check-in'; // Importar el hook
-import { useMoodCheckIn } from "@/hooks/use-mood-check-in";
 
 export function AppHeader() {
   const { user, logout } = useUser();
   const t = useTranslations();
-  const { isMobile } = useSidebar();
-  const { activePath } = useActivePath();
-  const pathname = usePathname();
-  const { forceOpen } = useDailyCheckIn(); // Usar el hook del check-in
-  const { forceOpen: forceMoodCheckInOpen } = useMoodCheckIn();
-
-  const modulesRemaining = activePath ? activePath.totalModules - activePath.completedModuleIds.length : 0;
-
-  let showProgressBadge = false;
-  if (activePath && modulesRemaining > 0) {
-    const isCurrentlyOnActivePathPage = pathname === `/paths/${activePath.id}`;
-    const hasMadeProgressOnActivePath = activePath.completedModuleIds.length > 0;
-    if (isCurrentlyOnActivePathPage || hasMadeProgressOnActivePath) {
-      showProgressBadge = true;
-    }
-  }
 
   return (
     <header
@@ -62,29 +40,6 @@ export function AppHeader() {
         </div>
 
         <div className="flex items-center justify-end gap-2">
-    
-
-          {showProgressBadge && activePath && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" asChild className="relative">
-                  <Link href={`/paths/${activePath.id}`}>
-                    <ListChecks className="h-5 w-5 text-primary" />
-                    {modulesRemaining > 0 && (
-                      <Badge variant="destructive" className="absolute -top-1 -right-1 px-1.5 py-0.5 text-xs">
-                        {modulesRemaining}
-                      </Badge>
-                    )}
-                    <span className="sr-only">Progreso de Ruta</span>
-                  </Link>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t.modulesLeftTooltip.replace("{count}", modulesRemaining.toString()).replace("{pathTitle}", activePath.title)}</p>
-              </TooltipContent>
-            </Tooltip>
-          )}
-
           {user && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -167,7 +167,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                         {selections[key as ResourceKey] === 'Otro' && <Input value={otherValues[key as ResourceKey] || ''} onChange={e => handleOtherChange(key as ResourceKey, e.target.value)} placeholder="Escribe tu opción personalizada" className="mt-2 ml-6" />}
                     </div>
                 ))}
-                <div className="flex justify-between mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={() => setStep(2)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </div>
@@ -204,7 +204,7 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                         </div>
                     </div>
                  ))}
-                 <div className="flex justify-between mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={() => setStep(3)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                  </div>
@@ -235,9 +235,13 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
                     </Table>
                  </div>
                  <p className="text-sm italic text-muted-foreground pt-2">“Tu botiquín ya está listo. Cada recurso es una herramienta de apoyo emocional diseñada para ti. Cuanto más lo uses, más automático será para tu mente recurrir a él en los momentos difíciles.”</p>
-                <div className="flex justify-between w-full mt-4">
-                  <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
-                  <Button onClick={handleSave} className="w-half mt-4"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
+                <div className="mt-4 flex w-full flex-col gap-3 sm:flex-row sm:justify-between">
+                  <Button onClick={prevStep} variant="outline" className="w-full sm:w-auto">
+                    <ArrowLeft className="mr-2 h-4 w-4"/>Atrás
+                  </Button>
+                  <Button onClick={handleSave} className="w-full sm:mt-0 sm:w-auto">
+                    <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico
+                  </Button>
                 </div>
             </div>
         );
@@ -274,4 +278,3 @@ export default function PositiveEmotionalFirstAidKitExercise({ content, pathId, 
     </Card>
   );
 }
-

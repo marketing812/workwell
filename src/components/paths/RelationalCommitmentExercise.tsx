@@ -106,7 +106,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
               <p className="text-sm text-muted-foreground">Puede ser alguien con quien ya te relacionas o alguien con quien deseas cultivar algo nuevo.</p>
               <Textarea id="commitment-person" value={commitmentPerson} onChange={e => setCommitmentPerson(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -128,7 +128,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
               <Label htmlFor="blocking-thoughts">¿Qué pensamientos te frenan cuando quieres poner un límite o ser tú misma/o?</Label>
               <Textarea id="blocking-thoughts" value={blockingThoughts} onChange={e => setBlockingThoughts(e.target.value)} placeholder="Ej: 'Si soy honesta, se enfadará'..." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={next} className="w-auto">Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -143,7 +143,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
               <Label htmlFor="commitment-statement">Mi compromiso relacional personal:</Label>
               <Textarea id="commitment-statement" value={commitmentStatement} onChange={e => setCommitmentStatement(e.target.value)} placeholder="Ej: Me comprometo a construir vínculos basados en el respeto y la honestidad. Me permito expresar mis necesidades con claridad, incluso cuando me da miedo hacerlo." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={next} disabled={!commitmentStatement.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -158,7 +158,7 @@ Pregunta: ¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo
               <Label htmlFor="micro-action">¿Qué pequeño gesto vas a hacer esta semana para cuidar ese vínculo?</Label>
               <Textarea id="micro-action" value={weeklyMicroAction} onChange={e => setWeeklyMicroAction(e.target.value)} placeholder="Ej: Poner un límite sin justificarme, agradecer su presencia..." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>

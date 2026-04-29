@@ -126,7 +126,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                 return (
                     <div className="p-4 space-y-4 text-center">
                
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="mr-2 h-4 w-4"/></Button>
                         </div>
@@ -138,7 +138,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         <Label className="font-semibold text-lg">Paso 1: Elige la decisión que quieres explorar</Label>
                         <p className="text-sm text-muted-foreground">Describe la decisión de forma concreta y breve.</p>
                         <Textarea value={decision} onChange={e => setDecision(e.target.value)} placeholder="Ejemplo: “Estoy pensando en mudarme a otra ciudad para un proyecto creativo, aunque me preocupa la reacción de mi familia.”"/>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep} disabled={!decision.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -163,7 +163,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                              <Label htmlFor="why-person">¿Por qué esa persona?</Label>
                              <Textarea id="why-person" value={whyPerson} onChange={e => setWhyPerson(e.target.value)} placeholder="Ejemplo: “Elegí a mi hermano mayor porque siempre me escucha sin juzgar y me anima a crecer.”"/>
                          </div>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!person || (person === 'Otra' && !otherPerson.trim())}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -199,7 +199,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                                 <Textarea value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otros valores..." className="mt-2" />
                             )}
                         </div>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!motives.trim() || !explanationForOther.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -222,13 +222,13 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                             <Label className="font-semibold text-lg">Pregunta: ¿Qué nivel de coherencia percibo? {coherence}/10</Label>
                             <p className="text-base text-muted-foreground mb-2">Muévete por sensaciones: no busques un número ‘perfecto’. Piensa en qué medida esta decisión está alineada con tus valores y cómo te gustaría verte actuando en el futuro.</p>
                             <Slider value={[coherence]} onValueChange={v => setCoherence(v[0])} min={1} max={10} step={1} />
-                            <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between text-xs text-muted-foreground mt-1">
                                 <span>0 (Nada coherente)</span>
                                 <span>5 (Medio)</span>
                                 <span>10 (Total)</span>
                             </div>
                         </div>
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -251,7 +251,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                         </blockquote>
                         <Label htmlFor="adjustment">Pregunta: Escribe aquí qué cambiarías</Label>
                         <Textarea value={adjustment} onChange={e => setAdjustment(e.target.value)} />
-                        <div className="flex justify-between w-full pt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full pt-4">
                            <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                            <Button onClick={nextStep}>Ir al Cierre <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -263,7 +263,7 @@ Pregunta: Ajusta si es necesario | Respuesta: ${adjustment || 'Ninguno.'}
                        <blockquote className="p-4 border-l-4 border-accent bg-accent/10 italic text-base">
                         Si al escribir notas que te justificas demasiado o que sientes tensión, puede que no estés del todo en coherencia. Esto no es malo: es tu oportunidad para ajustar el rumbo antes de decidir.
                         </blockquote>
-                        <div className="flex justify-between w-full gap-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full gap-2">
                             <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                             <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                         </div>

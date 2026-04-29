@@ -139,7 +139,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                   <PlusCircle className="mr-2 h-4 w-4" />
                   Añadir otra persona
                 </Button>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                  </div>
@@ -162,7 +162,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                 </div>
               </div>
             ))}
-            <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
           </div>
         );
       case 3:
@@ -179,7 +179,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                 <Slider id={`quality-${index}`} value={[rel.quality]} onValueChange={v => handleQualityChange(index, v)} min={1} max={5} step={1} className="mt-2"/>
               </div>
             ))}
-            <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button></div>
           </div>
         );
       case 4:
@@ -193,7 +193,7 @@ export default function SupportMapExercise({ content, pathId, pathTitle, moduleT
                       Ejemplo guía: "Me doy cuenta de que recibo mucho apoyo emocional de Ana, pero casi nada práctico. Tal vez debería pedirle a mi hermano ayuda en tareas concretas."
                     </p>
                 </div>
-                <div className="flex justify-between w-full"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={prevStep} variant="outline">Atrás</Button><Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button></div>
             </div>
         );
        case 5:

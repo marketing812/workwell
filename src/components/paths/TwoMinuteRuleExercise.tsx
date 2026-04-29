@@ -107,7 +107,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
             <h4 className="font-semibold text-lg">Paso 1: ¿Qué tarea estás posponiendo?</h4>
             <Label htmlFor="task" className="sr-only">Tarea que pospones</Label>
             <Textarea id="task" value={task} onChange={e => setTask(e.target.value)} placeholder="Ej: Escribir un email importante, Hacer ejercicio, Ordenar mi habitación" />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!task.trim()}>Siguiente</Button>
             </div>
@@ -119,7 +119,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
             <h4 className="font-semibold text-lg">Paso 2: ¿Cuál sería su versión de 2 minutos?</h4>
             <Label htmlFor="twoMin" className="sr-only">Versión de 2 minutos</Label>
             <Textarea id="twoMin" value={twoMinVersion} onChange={e => setTwoMinVersion(e.target.value)} placeholder="Ej: Escribir solo una línea, Moverme durante 2 minutos, Preparar la ropa de deporte" />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep} disabled={!twoMinVersion.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -161,7 +161,7 @@ export default function TwoMinuteRuleExercise({ content, pathId, onComplete }: T
               />
             )}
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
             </div>

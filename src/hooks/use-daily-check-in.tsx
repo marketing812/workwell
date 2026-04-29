@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 
 const CHECK_INTERVAL_MS = 1000 * 60 * 30; // Check every 30 minutes
 const ANSWERED_QUESTIONS_KEY_PREFIX = "workwell-daily-checkin-answered";
+const SHOWN_TODAY_KEY_PREFIX = "workwell-daily-checkin-shown";
 
 interface DailyCheckInData extends Array<string> {}
 
@@ -18,6 +19,7 @@ interface DailyCheckInContextType {
   closePopup: (questionId: string) => void;
   showPopup: boolean;
   dismissPopup: () => void;
+  markPopupShownToday: () => void;
 }
 
 const DailyCheckInContext = createContext<DailyCheckInContextType | undefined>(undefined);
@@ -35,6 +37,10 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
 
   const getAnsweredStorageKey = useCallback((userId: string, dayKey: string): string => {
     return `${ANSWERED_QUESTIONS_KEY_PREFIX}-${userId}-${dayKey}`;
+  }, []);
+
+  const getShownStorageKey = useCallback((userId: string, dayKey: string): string => {
+    return `${SHOWN_TODAY_KEY_PREFIX}-${userId}-${dayKey}`;
   }, []);
 
   const getAnsweredTodaySet = useCallback((): Set<string> => {
@@ -66,6 +72,20 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     localStorage.setItem(storageKey, JSON.stringify(Array.from(answered)));
   }, [user?.id, getAnsweredStorageKey, getTodayKey, getAnsweredTodaySet]);
 
+  const hasShownPopupToday = useCallback((): boolean => {
+    if (typeof window === "undefined" || !user?.id) return false;
+    const dayKey = getTodayKey();
+    const storageKey = getShownStorageKey(user.id, dayKey);
+    return localStorage.getItem(storageKey) === "true";
+  }, [user?.id, getShownStorageKey, getTodayKey]);
+
+  const markPopupShownToday = useCallback(() => {
+    if (typeof window === "undefined" || !user?.id) return;
+    const dayKey = getTodayKey();
+    const storageKey = getShownStorageKey(user.id, dayKey);
+    localStorage.setItem(storageKey, "true");
+  }, [user?.id, getShownStorageKey, getTodayKey]);
+
 
   const loadAndFilterQuestions = useCallback(async (): Promise<DailyQuestion[]> => {
     if (!user?.id) {
@@ -87,13 +107,17 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
             setUnansweredQuestions([]);
             return [];
         }
+        if (hasShownPopupToday()) {
+            setUnansweredQuestions([]);
+            return [];
+        }
         setUnansweredQuestions([nextQuestion]);
         return [nextQuestion];
     } else {
         setUnansweredQuestions([]);
         return [];
     }
-  }, [user?.id, hasAnsweredQuestionToday]);
+  }, [user?.id, hasAnsweredQuestionToday, hasShownPopupToday]);
   
   useEffect(() => {
     const initialTimer = setTimeout(() => {
@@ -190,6 +214,16 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
+    if (hasShownPopupToday()) {
+      toast({
+        title: "Pregunta ya mostrada",
+        description: "La pregunta del día ya se ha mostrado hoy.",
+      });
+      setUnansweredQuestions([]);
+      setIsForcedOpen(false);
+      return;
+    }
+
     if (questionToShow) {
       setUnansweredQuestions([questionToShow]);
       setWasDismissedThisSession(false); 
@@ -200,7 +234,7 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
             description: "No hay más preguntas disponibles en este momento.",
         });
     }
-  }, [user?.id, toast, hasAnsweredQuestionToday]);
+  }, [user?.id, toast, hasAnsweredQuestionToday, hasShownPopupToday]);
   
   const dismissPopup = useCallback(() => {
     setIsForcedOpen(false);
@@ -222,7 +256,8 @@ export const DailyCheckInProvider: FC<{ children: ReactNode }> = ({ children }) 
     forceOpen, 
     closePopup,
     showPopup,
-    dismissPopup
+    dismissPopup,
+    markPopupShownToday
   };
 
   return (

@@ -122,7 +122,7 @@ Pregunta: ¿Qué necesito ahora que me he dado cuenta de esto? | Respuesta: ${wh
                     <Textarea id="whatINeed" value={whatINeed} onChange={e => setWhatINeed(e.target.value)} disabled={isSaved} />
                 </div>
                 <p className="text-xs text-muted-foreground flex items-center gap-2 pt-2"><CheckCircle className="h-4 w-4 text-primary" />Puedes completar este diario cada día o varias veces a la semana. Lo importante es crear el hábito de escucharte con más atención y menos juicio.</p>
-                <div className="flex justify-between w-full mt-2">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                     <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                     <Button type="submit" disabled={isSaved}>
                         {isSaved ? <><CheckCircle className="mr-2 h-4 w-4" /> Guardado</> : <><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</>}

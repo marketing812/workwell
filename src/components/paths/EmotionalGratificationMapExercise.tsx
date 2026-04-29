@@ -124,7 +124,7 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
                 </Select>
                 {selectedActivity === 'Otro' && <Input value={otherActivity} onChange={e => {setOtherActivity(e.target.value); setActivities(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Escribe otra actividad" className="mt-2"/>}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Continuar</Button>
             </div>
@@ -146,7 +146,7 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
                 </Select>
                 {selectedPerson === 'Otro' && <Input value={otherPerson} onChange={e => {setOtherPerson(e.target.value); setPeople(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Describe a otra persona" className="mt-2"/>}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Continuar</Button>
             </div>
@@ -168,7 +168,7 @@ export default function EmotionalGratificationMapExercise({ content, pathId, onC
                 </Select>
                 {selectedPlace === 'Otro' && <Input value={otherPlace} onChange={e => {setOtherPlace(e.target.value); setPlaces(p => p ? `${p}\n- ${e.target.value}`.trim() : `- ${e.target.value}`)}} placeholder="Describe otro lugar" className="mt-2"/>}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}>Guardar en el cuaderno terapéutico</Button>
             </div>

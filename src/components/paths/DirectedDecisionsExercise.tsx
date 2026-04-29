@@ -190,7 +190,7 @@ Pregunta: Qué pequeña acción puedes tomar mañana que honre ese valor? | Resp
                 </div>
               </div>
             </RadioGroup>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -235,7 +235,7 @@ Pregunta: Qué pequeña acción puedes tomar mañana que honre ese valor? | Resp
               Añadir decisión {decisions.length + 1}
             </Button>
 
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -256,7 +256,7 @@ Pregunta: Qué pequeña acción puedes tomar mañana que honre ese valor? | Resp
               <Label htmlFor="tomorrow-action">¿Qué pequeña acción puedes tomar mañana que honre ese valor?</Label>
               <Textarea id="tomorrow-action" value={tomorrowAction} onChange={(e) => setTomorrowAction(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

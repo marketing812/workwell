@@ -176,7 +176,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                     <p>Vamos a observar qué te pasó a ti. Recuerda una situación reciente en la que sentiste malestar, incomodidad o sobrecarga emocional. </p>
                     <Textarea id="discomfort-situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Describe con tus palabras lo que ocurrió: qué pasó, dónde estabas, con quién…" />
                 </div>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                     <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
                 </div>
@@ -197,7 +197,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                     <div className="flex items-center space-x-2 pt-1"><Checkbox id="body-other" checked={bodySensations['other'] || false} onCheckedChange={c => setBodySensations(p => ({...p, other:!!c}))} /><Label htmlFor="body-other" className="font-normal">Otra:</Label></div>
                     {bodySensations['other'] && <Textarea value={otherBodySensation} onChange={e => setOtherBodySensation(e.target.value)} placeholder="Tensión en la mandíbula y presión en el pecho. Sentí calor en la cara y el estómago se me cerró." className="ml-6"/>}
                 </div>
-                 <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
       case 3: // Emociones y pensamientos
@@ -220,7 +220,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                     <Label htmlFor="thought-belief">¿Cuánto te creíste ese pensamiento? {thoughtBelief}%</Label>
                     <Slider id="thought-belief" value={[thoughtBelief]} onValueChange={v => setThoughtBelief(v[0])} max={100} step={5} />
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
        case 4: // Impulso e intuición
@@ -243,7 +243,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                     <Label htmlFor="body-told-me" className="font-semibold">¿Tu cuerpo y tus emociones estaban intentando decirte algo?</Label>
                     <Textarea id="body-told-me" value={bodyToldMe} onChange={e => setBodyToldMe(e.target.value)} placeholder="Campo abierto de reflexión libre." />
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente</Button></div>
             </div>
         );
       case 5: // Respuesta alternativa
@@ -272,7 +272,7 @@ export default function DiscomfortCompassExercise({ content, pathId, onComplete 
                     <Label htmlFor="response-confidence" className="font-semibold">¿Qué grado de seguridad te genera esta nueva respuesta? {responseConfidence}%</Label>
                     <Slider id="response-confidence" value={[responseConfidence]} onValueChange={v => setResponseConfidence(v[0])} max={100} step={5} />
                 </div>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                   <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                   <Button onClick={handleSave} className="w-auto" disabled={isSaved}>
                     {isSaved ? <CheckCircle className="mr-2 h-4 w-4"/> : <Save className="mr-2 h-4 w-4" />}

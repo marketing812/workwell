@@ -124,7 +124,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <p className="text-sm italic">Ejemplo: “Llegaste tarde a la reunión sin avisar.”</p>
             <Label htmlFor="fact" className="text-sm font-medium">Cuando...</Label>
             <Textarea id="fact" value={fact} onChange={e => setFact(e.target.value)} placeholder="Ej: Llegaste tarde a la reunión sin avisar." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -139,7 +139,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <p className="text-sm italic">Ejemplo: frustración, tristeza, inseguridad...</p>
             <Label htmlFor="feeling" className="text-sm font-medium">Me siento...</Label>
             <Textarea id="feeling" value={feeling} onChange={e => setFeeling(e.target.value)} placeholder="Ej: frustrado, triste, inseguro..." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -154,7 +154,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <p className="text-sm italic">Ejemplo: respeto, apoyo, claridad...</p>
             <Label htmlFor="need" className="text-sm font-medium">Necesito...</Label>
             <Textarea id="need" value={need} onChange={e => setNeed(e.target.value)} placeholder="Ej: respeto, apoyo, claridad..." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -169,7 +169,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
             <p className="text-sm italic">Ejemplo: “Te pido que me avises si vas a llegar más tarde.”</p>
             <Label htmlFor="request" className="text-sm font-medium">Por eso te pido...</Label>
             <Textarea id="request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ej: Te pido que me avises si vas a llegar más tarde." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Ver mi frase completa</Button>
             </div>
@@ -184,7 +184,7 @@ export default function AssertivePhraseExercise({ content, pathId, onComplete }:
               “Cuando {fact || '...' }, me siento {feeling || '...'}. Necesito {need || '...'}. Por eso te pido {request || '...' }.”
             </blockquote>
             <p className="text-sm">Puedes guardarla en tu cuaderno, practicarla en voz alta o escribirla varias veces. Cuanto más la repitas, más natural te saldrá. Si ves que la frase está mal construida, repite los pasos.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}><Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico</Button>
             </div>

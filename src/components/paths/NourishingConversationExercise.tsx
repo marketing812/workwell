@@ -96,7 +96,7 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!person}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -115,7 +115,7 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
               <Label htmlFor="question">Pregunta abierta para el otro/a:</Label>
               <Textarea id="question" value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ej: “¿Tú cómo te sientes cuando necesitas pedir ayuda?”" disabled={isSaved} />
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!topic || !question}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -131,7 +131,7 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
                 <li><strong>Valida sus emociones.</strong> Usa frases como “Entiendo que te sientas así”.</li>
                 <li><strong>Comparte tu experiencia</strong> sin convertir la conversación en un monólogo.</li>
             </ul>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Ir a la reflexión final <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -154,7 +154,7 @@ Pregunta: ¿Cómo puedo seguir fortaleciendo este vínculo? | Respuesta: ${refle
               <Textarea id="reflection-strengthen" value={reflection.strengthen} onChange={e => setReflection(p => ({...p, strengthen: e.target.value}))} disabled={isSaved} />
             </div>
             {!isSaved ? (
-              <div className="flex justify-between w-full mt-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               </div>

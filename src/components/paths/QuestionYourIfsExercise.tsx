@@ -110,7 +110,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <Label htmlFor="thought" className="font-medium">Escribe tu “¿Y si…?” más frecuente.</Label>
             <Textarea id="thought" value={thought} onChange={e => setThought(e.target.value)} />
             <p className="text-xs text-muted-foreground italic">Recordatorio: no intentes elegir el “peor” ni el “más importante”, basta con uno que aparezca en tu día a día.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next} disabled={!thought.trim()}>Siguiente</Button>
             </div>
@@ -126,7 +126,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <Label>Escribe una prueba a favor y una en contra</Label>
             <Textarea value={evidence.pro} onChange={e => setEvidence(p => ({...p, pro: e.target.value}))} placeholder="Pruebas a favor..."/>
             <Textarea value={evidence.con} onChange={e => setEvidence(p => ({...p, con: e.target.value}))} placeholder="Pruebas en contra..."/>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next} disabled={!evidence.pro.trim() || !evidence.con.trim()}>Siguiente</Button>
             </div>
@@ -142,7 +142,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <Label>Escribe al menos dos alternativas a tu “¿Y si…?”</Label>
             <Textarea value={alternatives[0]} onChange={e => setAlternatives(p => [e.target.value, p[1]])} placeholder="Alternativa 1..."/>
             <Textarea value={alternatives[1]} onChange={e => setAlternatives(p => [p[0], e.target.value])} placeholder="Alternativa 2..."/>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next} disabled={!alternatives[0].trim() || !alternatives[1].trim()}>Siguiente</Button>
             </div>
@@ -157,7 +157,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <audio key="audio-step-4" controls controlsList="nodownload" className="w-full mt-2"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica2paso4.mp3`} type="audio/mpeg" /></audio>
             <Label>Valora del 0 al 10, ¿qué tan grave sería en realidad?</Label>
             <Slider value={[severity]} onValueChange={v => setSeverity(v[0])} max={10} step={1} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next}>Siguiente</Button>
             </div>
@@ -172,7 +172,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <audio key="audio-step-5" controls controlsList="nodownload" className="w-full mt-2"><source src={`${EXTERNAL_SERVICES_BASE_URL}/audios/ruta13/tecnicas/R13sem3tecnica2paso5.mp3`} type="audio/mpeg" /></audio>
             <Label htmlFor="reformulation">Escribe tu nueva versión más realista</Label>
             <Textarea id="reformulation" value={reformulation} onChange={e => setReformulation(e.target.value)} />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave} disabled={!reformulation.trim() || isSaved}>
                     <Save className="mr-2 h-4 w-4"/>
@@ -188,7 +188,7 @@ Pregunta: Reformulación final | Respuesta: "${reformulation}"
             <h4 className="font-bold text-lg">¡Práctica Guardada!</h4>
             <p className="text-sm text-muted-foreground">Lo que has hecho ahora es como sacar la lupa de la ansiedad y ponerte unas gafas más neutrales. La neurociencia lo confirma: cuando pones a prueba un pensamiento en lugar de creerlo al pie de la letra, la corteza prefrontal se activa y la amígdala se calma. Dicho de forma sencilla: tu parte racional gana terreno y tu alarma interna baja el volumen.</p>
             <blockquote className="italic">Un pensamiento no es un hecho: es una hipótesis de tu mente. Y tú tienes el poder de revisarla.</blockquote>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               
             </div>

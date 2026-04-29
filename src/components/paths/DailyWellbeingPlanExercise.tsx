@@ -272,7 +272,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4"><Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button><Button onClick={nextStep}>Siguiente <ArrowRight className="mr-2 h-4 w-4"/></Button></div>
             </div>
         );
        case 5:
@@ -311,7 +311,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
                     ))}
                 </div>
                 <p className="text-sm text-muted-foreground">Los recordatorios no son una señal de debilidad, sino un aliado para entrenar a tu cerebro. Cuanto más asocies tu microhábito a una señal, antes se convertirá en automático.</p>
-                 <div className="flex justify-between w-full mt-4">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                      <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                      <Button onClick={nextStep}>Continuar <ArrowRight className="mr-2 h-4 w-4" /></Button>
                  </div>
@@ -350,7 +350,7 @@ export default function DailyWellbeingPlanExercise({ content, pathId, onComplete
             <p className="text-xs italic text-muted-foreground">Piensa en ellos como “semillas” que, al repetirlas, fortalecerán tu energía, tu ánimo y tu claridad mental.</p>
             <p className="text-xs italic text-muted-foreground">Incluso los días difíciles cuentan, porque cada intento es una señal a tu cerebro de que estás priorizando tu salud.</p>
             <p className="text-xs italic text-muted-foreground">Y recuerda: en el próximo ejercicio nos centraremos en uno de los momentos más decisivos para ponerlos en marcha… el primer instante al despertar.</p>
-            <div className="flex justify-between w-full mt-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                 <Button onClick={prevStep} variant="link" className="px-0">Atrás</Button>
                 <Button onClick={handleSave}>
                     Guardar mi plan diario

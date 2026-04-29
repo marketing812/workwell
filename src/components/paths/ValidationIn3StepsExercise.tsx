@@ -143,7 +143,7 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
               <Label htmlFor="step2-phrase">Tu frase completa:</Label>
               <Textarea id="step2-phrase" value={step2Phrase} onChange={(e) => setStep2Phrase(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -170,7 +170,7 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
               <Label htmlFor="step3-phrase">Tu frase para normalizar:</Label>
               <Textarea id="step3-phrase" value={step3Phrase} onChange={(e) => setStep3Phrase(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -209,7 +209,7 @@ Pregunta: ¿Qué podría empezar a hacer diferente para estar más presente? | R
                 onChange={(e) => setNextStepReflection(e.target.value)}
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

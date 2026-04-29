@@ -107,7 +107,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep}>Empezar mi registro <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -119,7 +119,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <h4 className="font-semibold">Paso 1: Elige una situación reciente</h4>
                         <Label htmlFor="situation">Pregunta: ¿Qué ocurrió?</Label>
                         <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="Ejemplo: “Ayer acepté un plan aunque quería quedarme en casa.”" />
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -132,7 +132,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <Label htmlFor="thought">Pregunta: ¿Qué te dijiste?</Label>
                         <Textarea id="thought" value={thought} onChange={e => setThought(e.target.value)} placeholder="Ejemplo: “Si digo que no, pensarán que soy una aburrida.”" />
                         <p className="text-sm text-muted-foreground">Escribe las frases que pasaron por tu mente, tal y como las recuerdes</p>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!thought.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -156,7 +156,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                           </div>
                         </div>
                         {emotions['otra'] && <Textarea value={otherEmotion} onChange={e => setOtherEmotion(e.target.value)} />}
-                        <div className="flex justify-between w-full mt-2">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-2">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                             <Button onClick={nextStep} className="w-auto" disabled={Object.values(emotions).every(v => !v)}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
                         </div>
@@ -168,7 +168,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <h4 className="font-semibold">Paso 4: Describe la acción que tomaste</h4>
                         <Label htmlFor="action">Pregunta: ¿Qué hiciste finalmente?</Label>
                         <Textarea id="action" value={action} onChange={e => setAction(e.target.value)} placeholder="Ejemplo: Fui al plan y volví tarde, cansado/a y molesto/a conmigo mismo/a." />
-                         <div className="flex justify-between w-full mt-4">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!action.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -183,7 +183,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                             <div className="flex items-center space-x-2"><RadioGroupItem value="parcialmente" id="align-2" /><Label htmlFor="align-2">Parcialmente alineado/a</Label></div>
                             <div className="flex items-center space-x-2"><RadioGroupItem value="desalineado/a" id="align-3" /><Label htmlFor="align-3">Desalineado/a</Label></div>
                         </RadioGroup>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} disabled={!alignment}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -195,7 +195,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <h4 className="font-semibold">Paso 6: Reflexiona</h4>
                         <Label htmlFor="needed">Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo que sentía y pensaba?</Label>
                         <Textarea id="needed" value={needed} onChange={e => setNeeded(e.target.value)} placeholder="Ejemplo: “Haberme dado permiso para decir que no y descansar.”" />
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={nextStep} className="w-auto" disabled={!needed.trim()}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
                         </div>
@@ -208,7 +208,7 @@ Pregunta: ¿Qué hubiera necesitado para actuar de forma más coherente con lo q
                         <p className="text-sm text-muted-foreground italic">
                           No se trata de señalarte con el dedo, sino de conocerte mejor. La autocrítica frena, la curiosidad impulsa.
                         </p>
-                        <div className="flex justify-between w-full mt-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                             <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                             <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
                         </div>

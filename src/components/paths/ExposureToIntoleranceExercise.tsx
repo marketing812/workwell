@@ -103,7 +103,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
                 </ul>
             </div>
             <Textarea id="situation" value={situation} onChange={e => setSituation(e.target.value)} placeholder="¿Cuál será tu pequeña exposición de hoy?"/>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
                 <Button onClick={nextStep} disabled={!situation.trim()}>Siguiente</Button>
             </div>
@@ -117,7 +117,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
             <div className="space-y-2"><Label htmlFor="what-wrong">¿Qué creo que podría salir mal?</Label><Textarea id="what-wrong" value={whatCouldGoWrong} onChange={e => setWhatCouldGoWrong(e.target.value)} /></div>
             <div className="space-y-2"><Label htmlFor="how-handle">¿Qué haría si eso pasara?</Label><Textarea id="how-handle" value={howToHandle} onChange={e => setHowToHandle(e.target.value)} /></div>
             <div className="space-y-2"><Label htmlFor="past-exp">¿En qué otras ocasiones me he enfrentado a situaciones inciertas como esta? ¿Qué hice entonces que me ayudó o me dio fuerza?</Label><Textarea id="past-exp" value={pastExperience} onChange={e => setPastExperience(e.target.value)} /></div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
                 <Button onClick={nextStep} disabled={!whatCouldGoWrong.trim() || !howToHandle.trim() || !pastExperience.trim()}>Hecho, siguiente</Button>
             </div>
@@ -131,7 +131,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
             <div className="space-y-2"><Label>En tu cuerpo (¿Se activó algo? ¿Hubo tensión? ¿Cómo fue cambiando?):</Label><Textarea value={bodyReflection} onChange={e => setBodyReflection(e.target.value)} /></div>
             <div className="space-y-2"><Label>En tu mente (¿Qué pensamientos aparecieron? ¿Se cumplieron tus predicciones?):</Label><Textarea value={mindReflection} onChange={e => setMindReflection(e.target.value)} /></div>
             <div className="space-y-2"><Label>En la realidad (¿Qué ocurrió realmente? ¿Fue tan grave como temías?):</Label><Textarea value={realityReflection} onChange={e => setRealityReflection(e.target.value)} /></div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                 <Button onClick={prevStep} variant="outline">Atrás</Button>
                 <Button onClick={nextStep} disabled={!bodyReflection.trim() || !mindReflection.trim() || !realityReflection.trim()}>Siguiente</Button>
             </div>
@@ -149,7 +149,7 @@ export default function ExposureToIntoleranceExercise({ content, pathId, onCompl
                 <Textarea id="final-reflection" value={finalReflection} onChange={e => setFinalReflection(e.target.value)} disabled={isSaved}/>
             </div>
             {!isSaved ? (
-                <div className="flex justify-between w-full">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit" disabled={!finalReflection.trim()}>
                         <Save className="mr-2 h-4 w-4"/> Guardar en el cuaderno terapéutico

@@ -116,7 +116,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
               <Label htmlFor="sustain-action">¿Qué hace o dice que te hace sentir acompañado/a?</Label>
               <Textarea id="sustain-action" value={sustainAction} onChange={e => setSustainAction(e.target.value)} placeholder="Ej: Me llama cuando sabe que estoy mal. Me escucha sin juzgar." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -135,7 +135,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
               <Label htmlFor="inspire-aspect">¿Qué aspectos de esa persona te inspiran? ¿Cómo influye en ti?</Label>
               <Textarea id="inspire-aspect" value={inspireAspect} onChange={e => setInspireAspect(e.target.value)} placeholder="Ej: Su forma de ver la vida. Cómo enfrenta las dificultades." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -154,7 +154,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
               <Label htmlFor="respect-action">¿Cómo notas que esa persona respeta tus procesos?</Label>
               <Textarea id="respect-action" value={respectAction} onChange={e => setRespectAction(e.target.value)} placeholder="Ej: No me obliga a hablar si no quiero. Me da espacio cuando lo necesito." />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={next}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -182,7 +182,7 @@ Pregunta: Elige una acción pequeña para cuidar uno de estos vínculos nutritiv
                  <p className="text-xs text-muted-foreground">Elige una acción pequeña para cuidar uno de estos vínculos nutritivos.</p>
                 <Textarea id="micro-action" value={microAction} onChange={e => setMicroAction(e.target.value)} placeholder="Ej: Mandarle un mensaje a [persona] agradeciéndole su apoyo."/>
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={handleSave} className="w-auto"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>

@@ -141,7 +141,7 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
             <p className="text-sm text-muted-foreground">Vamos a empezar por lo más simple: ¿qué es exactamente lo que vas a hacer hoy? No lo pienses demasiado, céntrate en algo concreto y posible.</p>
             <Label htmlFor="action">Escribe una acción específica que quieras realizar.</Label>
             <Textarea id="action" value={action} onChange={e => setAction(e.target.value)} placeholder="Ej: “Llamar a mi amiga Marta”, “Caminar 15 minutos”, “Enviar ese email pendiente”." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!action.trim()}>Continuar</Button>
             </div>
@@ -172,7 +172,7 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
               </div>
               {selectedValues['otro'] && <Input value={otherValue} onChange={e => setOtherValue(e.target.value)} placeholder="Escribe otro valor..." className="mt-2" />}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!valueReason.trim()}>Continuar</Button>
             </div>
@@ -185,7 +185,7 @@ export default function MotivationIn3LayersExercise({ content, pathId, onComplet
             <p className="text-sm text-muted-foreground">Por último, conecta esa acción con la vida que quieres construir. Aquí no hablamos solo de hoy, sino de la dirección en la que quieres avanzar.</p>
             <Label htmlFor="purpose">Describe cómo esta acción encaja en tu proyecto de vida o en lo que te gustaría sentir a largo plazo.</Label>
             <Textarea id="purpose" value={purpose} onChange={e => setPurpose(e.target.value)} placeholder="Ej: “Quiero tener energía para jugar con mis hijos”, “Quiero sentirme más libre y tranquila con mis finanzas”." />
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={handleSave} disabled={!purpose.trim()}>Guardar en el cuaderno terapéutico</Button>
             </div>

@@ -134,7 +134,7 @@ export default function EmotionalInvolvementTrafficLightExercise({
                 placeholder={`Persona ${index + 1}...`}
               />
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -201,7 +201,7 @@ export default function EmotionalInvolvementTrafficLightExercise({
                   </div>
                 </div>
               ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -232,7 +232,7 @@ export default function EmotionalInvolvementTrafficLightExercise({
               <Label>¿Qué vínculo te gustaría cuidar más conscientemente?</Label>
               <Textarea value={reflection.q4} onChange={(e) => handleReflectionChange('q4', e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -267,7 +267,7 @@ export default function EmotionalInvolvementTrafficLightExercise({
             <p className="text-base text-muted-foreground italic text-center">
               No tienes que cortar ningún vínculo de golpe. Solo dar un paso hacia delante que te devuelva a ti.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">Atrás</Button>
               <Button onClick={handleSave}>
                 <Save className="mr-2 h-4 w-4" /> Guargar en el cuaderno

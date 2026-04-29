@@ -90,7 +90,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                             “Gracias por pensar en mí, pero esta vez no voy a poder.”
                         </blockquote>
                         <p className="text-sm text-muted-foreground">Es una frase breve, respetuosa y clara. No necesitas justificarte, ni dar explicaciones largas. Solo necesitas sentir que lo que dices te representa y te cuida.</p>
-                        <div className="flex justify-between w-full">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                             <Button variant="outline" onClick={prevStep}>Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
@@ -112,7 +112,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                                 <Label htmlFor="phrase-other" className="font-normal">Otra (escríbela tú)</Label>
                             </div>
                         </RadioGroup>
-                         <div className="flex justify-between w-full">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                             <Button variant="outline" onClick={prevStep}>Atrás</Button>
                             <Button onClick={nextStep} disabled={!selectedPhrase}>Siguiente</Button>
                         </div>
@@ -128,7 +128,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                             setCustomPhrase(e.target.value)
                         }} />
                         <p className="text-xs text-muted-foreground">Puedes grabarte diciéndola o leerla cada mañana para integrarla.</p>
-                         <div className="flex justify-between w-full">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                             <Button variant="outline" onClick={prevStep}>Atrás</Button>
                             <Button onClick={nextStep}>Siguiente</Button>
                         </div>
@@ -142,7 +142,7 @@ export default function SecureBoundaryPhraseExercise({ content, pathId, onComple
                         <Label htmlFor="daily-practice">Escribe aquí:</Label>
                         <Textarea id="daily-practice" value={dailyPractice} onChange={e => setDailyPractice(e.target.value)} />
                         <p className="text-xs text-muted-foreground italic">Este ensayo mental o escrito fortalece tus circuitos de autoafirmación. Es un entrenamiento emocional real.</p>
-                         <div className="flex justify-between w-full">
+                         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                             <Button variant="outline" onClick={prevStep}>Atrás</Button>
                              <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
                         </div>

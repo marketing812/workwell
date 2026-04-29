@@ -168,7 +168,7 @@ Pregunta: ¿Qué compromiso quiero llevarme para el futuro cuando aparezca la an
                 <p><strong>Mi compromiso:</strong><br/>{responses.q4}</p>
             </div>
             <p className="text-sm italic pt-2">Vuelve a este resumen en tu cuaderno cuando necesites recordar el poder que tienes para observar tus pensamientos sin que te arrastren.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 
             </div>

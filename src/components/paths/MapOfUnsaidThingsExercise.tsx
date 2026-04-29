@@ -321,7 +321,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                  <p className="text-xs text-muted-foreground">¿Cómo te sentiste después? ¿Hubo consecuencias en ti o en la relación?</p>
                  <Textarea id="sit-aftermath" value={aftermath} onChange={e => setAftermath(e.target.value)} />
              </div>
-             <div className="flex justify-between w-full">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                 <Button onClick={back} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button onClick={next}>Siguiente: Detectar Patrón <ArrowRight className="ml-2 h-4 w-4" /></Button>
              </div>
@@ -346,7 +346,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                         ))}
                     </div>
                 </div>
-                <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Replantear <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Replantear <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
              </div>
          );
        case 3: // REPLANTEA
@@ -358,7 +358,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                 <div className="space-y-2"><Label htmlFor="reframe-choice">¿Estoy actuando por miedo o por elección?</Label><Textarea id="reframe-choice" value={fearOrChoice} onChange={e => setFearOrChoice(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="reframe-worstcase">¿Qué es lo peor que podría pasar si hablo? ¿Y qué haría si eso ocurre?</Label><Textarea id="reframe-worstcase" value={worstCase} onChange={e => setWorstCase(e.target.value)} /></div>
                 <div className="space-y-2"><Label htmlFor="reframe-how">¿Cómo podría decirlo con respeto y firmeza?</Label><Textarea id="reframe-how" value={howToSayIt} onChange={e => setHowToSayIt(e.target.value)} /></div>
-                <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Dar el Primer Paso <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Dar el Primer Paso <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
             </div>
          );
        case 4: // DA TU PRIMER PASO
@@ -400,7 +400,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                   <p className="text-xs text-muted-foreground">Esta frase te ayudará a empezar la conversación cuando te cuesta romper el hielo.</p>
                   <Textarea id="step-opener" value={nextStepOpener} onChange={e => setNextStepOpener(e.target.value)} placeholder="Ej: Hay algo que quiero comentarte y me cuesta un poco expresarlo..." />
                 </div>
-                <div className="flex justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Guardar <Save className="ml-2 h-4 w-4" /></Button></div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full"><Button onClick={back} variant="outline">Atrás</Button><Button onClick={next} className="w-auto">Siguiente: Guardar <Save className="ml-2 h-4 w-4" /></Button></div>
             </div>
          );
        case 5: // Guardar
@@ -419,7 +419,7 @@ Detectar tus patrones te dará más poder de decisión para actuar distinto la p
                     <Label htmlFor="pattern-name">Ponle un nombre a este patrón (opcional)</Label>
                     <Textarea id="pattern-name" value={patternName} onChange={e => setPatternName(e.target.value)} placeholder="Ej: Cuando me callo en el trabajo" />
                 </div>
-                 <div className="flex justify-between w-full gap-2">
+                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full gap-2">
                     <Button onClick={back} variant="outline">Atrás</Button>
                     <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar patrón y alternativa adaptativa en mi cuaderno</Button>
                  </div>

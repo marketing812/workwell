@@ -131,7 +131,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
               />
             </div>
             <p className="italic text-center text-foreground pt-2">Si puedes hablarle así a otra persona... también puedes empezar a hablarte así a ti.</p>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={() => setStep(0)} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={() => setStep(2)} disabled={!adviceToFriend.trim()}>Continuar</Button>
             </div>
@@ -153,7 +153,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
               placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
             />
             <p className="text-center text-primary pt-2">Es solo un pensamiento. No eres ese pensamiento.</p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(3)} disabled={!selfJudgment.trim()}>Siguiente</Button>
             </div>
@@ -206,7 +206,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
                 placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(4)} disabled={!aftermathEmotion.trim()}>Siguiente</Button>
             </div>
@@ -241,7 +241,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
                 placeholder='Ejemplo sugerido: "Pensé que no valía para esto."'
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={() => setStep(5)} disabled={!flexibleThought.trim()}>
                 Ver mi reflexión completa
@@ -264,7 +264,7 @@ export default function CompassionateReflectionExercise({ content, pathId, onCom
             <p className="italic text-center pt-2">
               Has dado un paso valiente al mirar dentro de ti. Esto no es debilidad: es crecimiento. Hablarte con amabilidad te ayuda a avanzar.
             </p>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" /> Atrás</Button>
               <Button onClick={handleSave}>
                 <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

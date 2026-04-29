@@ -202,7 +202,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 />
               </div>
             ))}
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -263,7 +263,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 disabled={isSaved}
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -313,7 +313,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 disabled={isSaved}
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -348,7 +348,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 />
               </RadarChart>
             </ChartContainer>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -377,7 +377,7 @@ export default function CoherenceCompassExercise({ content, pathId, onComplete }
                 disabled={isSaved}
               />
             </div>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

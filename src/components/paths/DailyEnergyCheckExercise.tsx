@@ -143,7 +143,7 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                 <Label htmlFor="energy-nuance">Si quieres, cuéntame un poco más sobre cómo te sientes (opcional)</Label>
                 <Input id="energy-nuance" value={energyNuance} onChange={e => setEnergyNuance(e.target.value)} maxLength={200} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={!energyLevel}>Continuar</Button>
             </div>
@@ -164,7 +164,7 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                     </SelectContent>
                 </Select>
             </div>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep}>Continuar</Button>
             </div>
@@ -185,7 +185,7 @@ export default function DailyEnergyCheckExercise({ content, pathId, onComplete }
                     </SelectContent>
                 </Select>
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={handleSave}>Guardar en el cuaderno terapéutico</Button>
             </div>

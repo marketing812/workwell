@@ -156,7 +156,7 @@ Cada vez será un poco más fácil.`;
               <Textarea id="reflection-visualization" value={reflection} onChange={e => setReflection(e.target.value)} disabled={isSaved} />
             </div>
             {!isSaved ? (
-              <div className="flex justify-between w-full">
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico</Button>
               </div>

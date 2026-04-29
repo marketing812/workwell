@@ -88,7 +88,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
                 <Input key={i} value={p.name} onChange={e => handlePillarChange(i, 'name', e.target.value)} placeholder={`Pilar ${i + 1}...`} disabled={isSaved} />
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={filledPillars.length === 0}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -112,7 +112,7 @@ export default function SymbolicSupportCircleExercise({ content, pathId, onCompl
                 </div>
               </div>
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button type="submit" disabled={isSaved}>
                 <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

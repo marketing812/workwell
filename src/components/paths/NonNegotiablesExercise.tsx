@@ -193,7 +193,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 placeholder='Ejemplo: "Acepté un trato injusto por miedo a perder el trabajo. El valor que se rompió fue la justicia."'
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -233,7 +233,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 />
               )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -273,7 +273,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 />
               )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -301,7 +301,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 </div>
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -327,7 +327,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 <Textarea id={`commit-${i}`} value={commitments[v] || ''} onChange={(e) => handleCommitmentChange(v, e.target.value)} />
               </div>
             ))}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={nextStep}>Revisar y guardar <ArrowRight className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -349,7 +349,7 @@ ${nonNegotiables.map((v) => `Pregunta: Compromiso para ${v} | Respuesta: ${commi
                 </div>
               ))}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4" />Atrás</Button>
               <Button onClick={handleSave}><Save className="mr-2 h-4 w-4" />Guardar en el cuaderno terapéutico</Button>
             </div>

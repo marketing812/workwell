@@ -80,7 +80,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
                 placeholder="Ej: mi parte complaciente, insegura, defensiva..."
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -101,7 +101,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
               <Label htmlFor="empathetic-phrase">Tu frase empática hacia ti:</Label>
               <Textarea id="empathetic-phrase" value={empatheticPhrase} onChange={(e) => setEmpatheticPhrase(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -124,7 +124,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
                 placeholder="Ej: más claridad, más calma, permiso para poner un límite..."
               />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -145,7 +145,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
               <Label htmlFor="intention">Mi intención es...</Label>
               <Textarea id="intention" value={intention} onChange={(e) => setIntention(e.target.value)} />
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás
@@ -169,7 +169,7 @@ Pregunta: Mi intención es... | Respuesta: ${intention || 'No especificado.'}
             <blockquote className="mt-4 rounded-md border-l-4 border-accent bg-background/80 p-4 italic text-accent-foreground">
               Puedes repetir mentalmente esta frase: "Lo que siento es válido. No necesito explicarlo para merecer respeto."
             </blockquote>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline" type="button">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Atrás

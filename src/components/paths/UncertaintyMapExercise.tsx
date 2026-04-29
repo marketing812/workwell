@@ -156,7 +156,7 @@ export default function UncertaintyMapExercise({ content, pathId, onComplete }: 
                     <Textarea value={otherArea} onChange={e => setOtherArea(e.target.value)} placeholder="Describe el otra área" className="ml-6" />
                 )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -182,7 +182,7 @@ export default function UncertaintyMapExercise({ content, pathId, onComplete }: 
                     <Textarea value={otherResponse} onChange={e => setOtherResponse(e.target.value)} placeholder="Describe la otra respuesta" className="ml-6" />
                 )}
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Ver mi mapa</Button>
             </div>
@@ -216,7 +216,7 @@ export default function UncertaintyMapExercise({ content, pathId, onComplete }: 
              <p className="text-sm italic text-center text-muted-foreground pt-4">
                 Este mapa no es un diagnóstico, es una brújula. Reconocer dónde te cuesta soltar el control te da la oportunidad de responder con conciencia, en lugar de reaccionar en automático.
              </p>
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit">
                     <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

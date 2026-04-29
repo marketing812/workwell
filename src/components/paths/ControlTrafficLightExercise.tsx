@@ -115,7 +115,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
             <div className="text-xs text-muted-foreground bg-background p-2 rounded-md border">
                 <strong>Pistas:</strong> Tus decisiones, tu actitud, cómo organizas tu tiempo, cómo te hablas, cómo gestionas tus emociones, tu manera de cuidarte.
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -133,7 +133,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
             <div className="text-xs text-muted-foreground bg-background p-2 rounded-md border">
                 <strong>Pistas:</strong> Puedes proponer o negociar, expresar lo que sientes, pedir ayuda, planificar con más margen, ofrecer tu punto de vista con respeto.
             </div>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Siguiente <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </div>
@@ -156,7 +156,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
                     <AlertDescription>Has colocado muchas cosas en la Zona Roja. Es natural sentir que hay mucho fuera de tu control. Reconocerlo es el primer paso para soltar. Y soltar no es rendirse: es confiar más en ti.</AlertDescription>
                 </Alert>
             )}
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep}>Ver mi semáforo <TrafficCone className="ml-2 h-4 w-4" /></Button>
             </div>
@@ -183,7 +183,7 @@ export default function ControlTrafficLightExercise({ content, pathId, onComplet
                  <p className="text-center text-muted-foreground italic text-sm pt-4">
                     Soltar no es rendirse. Es redirigir tu energía hacia lo que sí puedes transformar. No todo depende de ti, pero sí puedes elegir cómo responder.
                  </p>
-                <div className="flex justify-between w-full mt-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                     <Button onClick={prevStep} variant="outline" type="button">Atrás</Button>
                     <Button type="submit">
                         <Save className="mr-2 h-4 w-4" /> Guardar en el cuaderno terapéutico

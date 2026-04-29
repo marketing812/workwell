@@ -121,7 +121,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
             <h4 className="font-semibold text-lg">Paso 1: Define tu meta</h4>
             <p className="text-sm text-muted-foreground">¿Qué situación ansiosa quieres poder afrontar en el futuro?</p>
             <Textarea id="goal" value={goal} onChange={e => setGoal(e.target.value)} placeholder="Ej: Hablar en público en una reunión de trabajo"/>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
               <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
               <Button onClick={nextStep} disabled={!goal.trim()}>Siguiente</Button>
             </div>
@@ -149,7 +149,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
             {steps.map((s, i) => (
                 <Textarea key={i} value={s} onChange={e => handleStepChange(i, e.target.value)} placeholder={`Escalón ${i+1}`}/>
             ))}
-             <div className="flex justify-between w-full mt-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={nextStep} disabled={filledStepsCount < 3}>Siguiente</Button>
             </div>
@@ -176,7 +176,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
                 </li>
               ))}
             </ul>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button onClick={() => {
                     const newSteps = [...orderedSteps];
@@ -201,7 +201,7 @@ Pregunta: Mi primer paso será | Respuesta: ${firstStep}
                      </div>
                 ))}
              </RadioGroup>
-            <div className="flex justify-between w-full mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between w-full mt-4">
                 <Button onClick={prevStep} variant="outline" type="button"><ArrowLeft className="mr-2 h-4 w-4"/>Atrás</Button>
                 <Button type="submit"><Save className="mr-2 h-4 w-4"/>Guardar en el cuaderno terapéutico</Button>
             </div>
