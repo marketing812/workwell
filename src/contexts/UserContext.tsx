@@ -81,8 +81,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (!userId) return;
     setIsNotebookLoading(true);
     const { entries, debugUrl } = await fetchNotebook(userId);
-    overwriteNotebookEntries(entries);
-    setNotebookEntries(entries); // Actualizar el estado del contexto
+    const reconciledEntries = overwriteNotebookEntries(entries);
+    setNotebookEntries(reconciledEntries); // Actualizar el estado del contexto con timestamps reconciliados
     if (typeof window !== 'undefined') {
         sessionStorage.setItem(DEBUG_NOTEBOOK_FETCH_URL_KEY, debugUrl);
         window.dispatchEvent(new Event('notebook-url-updated'));

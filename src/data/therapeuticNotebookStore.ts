@@ -105,11 +105,29 @@ export function addNotebookEntry(
   return newEntry;
 }
 
+function reconcileNotebookEntriesWithLocal(entries: NotebookEntry[]): NotebookEntry[] {
+  if (typeof window === "undefined") return entries;
 
-export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
-  if (typeof window === "undefined") return;
+  const localEntriesById = new Map(
+    getNotebookEntries().map((entry) => [entry.id, entry])
+  );
+
+  return entries.map((entry) => {
+    const localEntry = localEntriesById.get(entry.id);
+    if (!localEntry?.timestamp) return entry;
+
+    return {
+      ...entry,
+      timestamp: localEntry.timestamp,
+    };
+  });
+}
+
+export function overwriteNotebookEntries(entries: NotebookEntry[]): NotebookEntry[] {
+  if (typeof window === "undefined") return entries;
   try {
-    const sortedEntries = [...entries].sort((a, b) => {
+    const reconciledEntries = reconcileNotebookEntriesWithLocal(entries);
+    const sortedEntries = [...reconciledEntries].sort((a, b) => {
         try {
             return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
         } catch(e) {
@@ -125,8 +143,10 @@ export function overwriteNotebookEntries(entries: NotebookEntry[]): void {
     const entriesToStore = sortedEntries.slice(0, MAX_NOTEBOOK_ENTRIES);
     localStorage.setItem(NOTEBOOK_ENTRIES_KEY, JSON.stringify(entriesToStore));
     // Do NOT dispatch 'notebook-updated' here to avoid infinite loops when called from the context.
+    return entriesToStore;
   } catch (error) {
     console.error("Error overwriting notebook entries in localStorage:", error);
+    return entries;
   }
 }
 

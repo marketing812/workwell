@@ -99,6 +99,13 @@ function normalizeResourceContentHtml(html: string): string {
   );
 }
 
+function normalizeResourceTitleHtml(html: string): string {
+  return String(html || "")
+    .replace(/&nbsp;|&#160;|\u00A0/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export default async function PostPage({ params }: PostPageProps) {
     const { slug } = await params;
     const post = await getPostBySlug(slug);
@@ -112,6 +119,8 @@ export default async function PostPage({ params }: PostPageProps) {
         imageUrl = imageUrl.replace('workwellfut.hl1450.dinaserver.com', 'workwellfut.com');
     }
 
+    const normalizedTitleHtml = normalizeResourceTitleHtml(post.title.rendered);
+
     return (
         <div className="container mx-auto py-8 max-w-4xl">
         <Card className="shadow-xl overflow-hidden">
@@ -120,7 +129,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     <div className="relative h-64 w-full">
                         <Image 
                             src={imageUrl} 
-                            alt={post.title.rendered} 
+                            alt={normalizedTitleHtml} 
                             fill 
                             className="object-cover"
                             data-ai-hint="resource article header"
@@ -129,8 +138,8 @@ export default async function PostPage({ params }: PostPageProps) {
                 )}
                 <div className="p-6">
                     <CardTitle
-                      className="text-3xl md:text-4xl font-bold text-primary leading-tight whitespace-normal break-words [overflow-wrap:anywhere]"
-                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                      className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary leading-tight whitespace-normal break-normal hyphens-none [overflow-wrap:normal] [word-break:normal] [text-wrap:balance]"
+                      dangerouslySetInnerHTML={{ __html: normalizedTitleHtml }}
                     />
                     
                 </div>

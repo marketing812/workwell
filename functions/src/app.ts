@@ -342,7 +342,21 @@ function parseJsonFromNoisyText(text: string): any | null {
 
 function normalizeDateInput(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return new Date().toISOString();
-  const normalized = value.includes("T") ? value : value.replace(" ", "T");
+  const trimmed = value.trim();
+  const normalized = trimmed.includes("T") ? trimmed : trimmed.replace(" ", "T");
+  const hasExplicitTimezone =
+    /(?:Z|[+-]\d{2}:\d{2}|[+-]\d{4})$/i.test(normalized);
+
+  // Si la fecha viene sin zona horaria desde el servicio externo, la preservamos
+  // como hora "naive" para no desplazarla según la zona del servidor.
+  if (!hasExplicitTimezone) {
+    const naiveDatePattern =
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(?:\.\d{1,3})?)?$/;
+    if (naiveDatePattern.test(normalized)) {
+      return normalized;
+    }
+  }
+
   const date = new Date(normalized);
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }

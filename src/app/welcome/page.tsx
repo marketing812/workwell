@@ -154,8 +154,8 @@ export default function WelcomePage() {
              <Link href="/chatbot" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
                     Mentor IA
                 </Link>
-                   <Link href="/resources" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
-                    Recursos
+             <Link href="/resources" className="text-4xl md:text-5xl font-bold hover:opacity-80 transition-opacity">
+                    Aprende
                 </Link>
           </div>
         )}
