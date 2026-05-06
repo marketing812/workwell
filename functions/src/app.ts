@@ -34,7 +34,180 @@ const PSYCHOLOGICAL_OPINION_DISCLAIMER =
 const VERTEX_REGION = process.env.VERTEX_REGION || "europe-west4";
 const VERTEX_MODEL = process.env.VERTEX_MODEL || "gemini-2.5-flash";
 const VERTEX_API_VERSION = process.env.VERTEX_API_VERSION || "v1";
+const CHATBOT_API_VERSION = "chatbot-grounded-paths-2026-05-06-v4";
 const GEMINI_MAX_RETRIES = 4;
+const GEMINI_MAX_OUTPUT_TOKENS = parsePositiveIntegerEnv(
+  process.env.GEMINI_MAX_OUTPUT_TOKENS,
+  2048
+);
+const GEMINI_RETRY_MAX_OUTPUT_TOKENS = Math.max(
+  GEMINI_MAX_OUTPUT_TOKENS,
+  parsePositiveIntegerEnv(process.env.GEMINI_RETRY_MAX_OUTPUT_TOKENS, 4096)
+);
+const GEMINI_OUTPUT_TOKEN_BUDGETS = GEMINI_RETRY_MAX_OUTPUT_TOKENS >
+  GEMINI_MAX_OUTPUT_TOKENS ?
+  [GEMINI_MAX_OUTPUT_TOKENS, GEMINI_RETRY_MAX_OUTPUT_TOKENS] :
+  [GEMINI_MAX_OUTPUT_TOKENS];
+const GEMINI_THINKING_BUDGET = parseIntegerEnv(
+  process.env.GEMINI_THINKING_BUDGET,
+  0
+);
+const CHATBOT_MAX_CONTEXT_CHARS = parsePositiveIntegerEnv(
+  process.env.CHATBOT_MAX_CONTEXT_CHARS,
+  2000
+);
+const INCOMPLETE_RESPONSE_END_WORDS = new Set([
+  "ademas",
+  "aunque",
+  "como",
+  "con",
+  "cuando",
+  "de",
+  "del",
+  "durante",
+  "el",
+  "en",
+  "entre",
+  "estos",
+  "estas",
+  "hacia",
+  "la",
+  "las",
+  "los",
+  "mientras",
+  "o",
+  "para",
+  "pero",
+  "por",
+  "porque",
+  "que",
+  "si",
+  "sin",
+  "sobre",
+  "tambien",
+  "un",
+  "una",
+  "y",
+]);
+
+type GeminiGenerationConfig = {
+  maxOutputTokens: number;
+  temperature: number;
+  thinkingConfig?: {
+    thinkingBudget: number;
+  };
+};
+
+type GeminiCallOptions = {
+  detectIncompleteText?: boolean;
+};
+
+type ChatbotPathCatalogEntry = {
+  id: string;
+  title: string;
+  topics: string[];
+  description: string;
+};
+
+const CHATBOT_PATH_CATALOG: ChatbotPathCatalogEntry[] = [
+  {
+    id: "gestion-estres",
+    title: "Gestionar el Estr\u00e9s con Conciencia",
+    topics: ["estres", "sobrecarga", "regulacion fisiologica"],
+    description: "Reconocer y regular el estres con tecnicas de calma y conciencia.",
+  },
+  {
+    id: "tolerar-incertidumbre",
+    title: "Tolerar la Incertidumbre con Confianza",
+    topics: ["incertidumbre", "control", "ansiedad ante lo incierto"],
+    description: "Convivir con lo incierto sin perder equilibrio.",
+  },
+  {
+    id: "superar-procrastinacion",
+    title: "Superar la Procrastinaci\u00f3n y Crear H\u00e1bitos",
+    topics: ["procrastinacion", "habitos", "constancia"],
+    description: "Desbloquearse, comenzar y sostener habitos con flexibilidad.",
+  },
+  {
+    id: "poner-limites",
+    title: "Poner L\u00edmites con Respeto y Firmeza",
+    topics: ["limites", "asertividad", "decir no"],
+    description: "Decir lo que necesitas y sostener limites sanos.",
+  },
+  {
+    id: "relaciones-autenticas",
+    title: "Relaciones Aut\u00e9nticas con Empat\u00eda",
+    topics: ["relaciones", "empatia", "vinculos"],
+    description: "Cuidar vinculos con claridad, autenticidad y equilibrio.",
+  },
+  {
+    id: "comprender-mejor-cada-dia",
+    title: "Comprenderme Mejor Cada D\u00eda",
+    topics: ["autoconocimiento", "emociones", "necesidades"],
+    description: "Nombrar emociones, detectar necesidades y comprender patrones.",
+  },
+  {
+    id: "volver-a-lo-importante",
+    title: "Volver a lo Importante",
+    topics: ["proposito", "valores", "direccion vital"],
+    description: "Distinguir lo urgente de lo valioso y actuar con sentido.",
+  },
+  {
+    id: "resiliencia-en-accion",
+    title: "Resiliencia en Acci\u00f3n",
+    topics: ["resiliencia", "dificultad", "valor"],
+    description: "Sostenerse en la dificultad y decidir desde el valor.",
+  },
+  {
+    id: "vivir-con-coherencia",
+    title: "Vivir con Coherencia Personal",
+    topics: ["coherencia", "integridad", "valores"],
+    description: "Alinear pensamientos, emociones y acciones con flexibilidad.",
+  },
+  {
+    id: "ni-culpa-ni-queja",
+    title: "Ni Culpa Ni Queja: Responsabilidad Activa",
+    topics: ["culpa", "queja", "responsabilidad"],
+    description: "Distinguir responsabilidad de culpa y recuperar agencia.",
+  },
+  {
+    id: "confiar-en-mi-red",
+    title: "Confiar en mi Red y Dejarme Sostener",
+    topics: ["apoyo social", "pedir ayuda", "red"],
+    description: "Detectar apoyos nutritivos y pedir ayuda sin culpa.",
+  },
+  {
+    id: "volver-a-sentirse-bien",
+    title: "Volver a lo que me hace sentir bien",
+    topics: ["bienestar", "animo bajo", "motivacion"],
+    description: "Reconectar con bienestar, rutinas y reserva emocional positiva.",
+  },
+  {
+    id: "regular-ansiedad-paso-a-paso",
+    title: "Regular la Ansiedad Paso a Paso",
+    topics: ["ansiedad", "panico", "ataque de ansiedad", "pensamiento ansioso"],
+    description: "Entender la ansiedad, calmar el cuerpo, observar pensamientos y avanzar poco a poco.",
+  },
+];
+const PATH_SEARCH_STOPWORDS = new Set([
+  "algo",
+  "como",
+  "cual",
+  "cuales",
+  "donde",
+  "esta",
+  "hacer",
+  "hace",
+  "llama",
+  "para",
+  "pero",
+  "pregunta",
+  "quiero",
+  "ruta",
+  "rutas",
+  "sobre",
+  "tengo",
+]);
 
 type AssessmentDimensionMeta = {
   id: string;
@@ -400,7 +573,196 @@ function normalizeLegacyAutoregistro(raw: any, fallbackIndex: number) {
   };
 }
 
-async function callGemini(prompt: string): Promise<string> {
+function parseIntegerEnv(value: string | undefined, fallback: number): number {
+  if (value === undefined) return fallback;
+  const parsed = Number(value);
+  return Number.isInteger(parsed) ? parsed : fallback;
+}
+
+function parsePositiveIntegerEnv(
+  value: string | undefined,
+  fallback: number
+): number {
+  const parsed = parseIntegerEnv(value, fallback);
+  return parsed > 0 ? parsed : fallback;
+}
+
+function shouldApplyGemini25ThinkingBudget(model: string): boolean {
+  const normalized = model.toLowerCase();
+  return normalized.includes("gemini-2.5-flash");
+}
+
+function buildGeminiGenerationConfig(
+  maxOutputTokens: number
+): GeminiGenerationConfig {
+  const generationConfig: GeminiGenerationConfig = {
+    maxOutputTokens,
+    temperature: 0.7,
+  };
+
+  if (shouldApplyGemini25ThinkingBudget(VERTEX_MODEL)) {
+    generationConfig.thinkingConfig = {
+      thinkingBudget: GEMINI_THINKING_BUDGET,
+    };
+  }
+
+  return generationConfig;
+}
+
+function extractGeminiCandidateText(candidate: any): string {
+  const parts = candidate?.content?.parts;
+  if (!Array.isArray(parts)) return "";
+
+  return parts
+    .map((part) => typeof part?.text === "string" ? part.text : "")
+    .join("")
+    .trim();
+}
+
+function truncateForPrompt(value: unknown, maxChars: number): string {
+  const text = String(value || "").trim();
+  if (text.length <= maxChars) return text;
+
+  return text.slice(text.length - maxChars).trim();
+}
+
+function normalizeWord(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function looksIncompleteResponseText(value: string): boolean {
+  const text = value.trim();
+  if (!text) return false;
+
+  if (/[,:;(\[{]$/.test(text)) return true;
+  if (/[.!?]["')\]]*$/.test(text)) return false;
+
+  const words = text.split(/\s+/);
+  const lastWord = normalizeWord(words[words.length - 1] || "");
+  return text.length > 40 || INCOMPLETE_RESPONSE_END_WORDS.has(lastWord);
+}
+
+function buildGeminiPromptForBudget(prompt: string, isRetry: boolean): string {
+  if (!isRetry) return prompt;
+
+  return [
+    prompt,
+    "Instruccion adicional:",
+    "La respuesta anterior pudo quedar incompleta por limite de salida.",
+    "Responde de nuevo desde cero, mas breve, y termina con una frase cerrada.",
+  ].join("\n\n");
+}
+
+function normalizeSearchText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isPathCatalogQuestion(message: string): boolean {
+  const text = normalizeSearchText(message);
+  if (!text) return false;
+
+  const pathWords = ["ruta", "rutas", "itinerario", "programa", "modulo"];
+  const askWords = [
+    "como se llama",
+    "cual es",
+    "cuales son",
+    "donde esta",
+    "que ruta",
+    "ruta para",
+    "ruta de",
+    "tengo que hacer",
+    "recomiendas",
+  ];
+
+  return pathWords.some((word) => text.includes(word)) &&
+    askWords.some((word) => text.includes(word));
+}
+
+function findPathCatalogMatches(message: string): ChatbotPathCatalogEntry[] {
+  const text = normalizeSearchText(message);
+  if (!text) return [];
+  const textTokens = new Set(text.split(" "));
+
+  const scored = CHATBOT_PATH_CATALOG
+    .map((path) => {
+      const searchable = normalizeSearchText([
+        path.id,
+        path.title,
+        path.description,
+        path.topics.join(" "),
+      ].join(" "));
+      const score = path.topics.reduce((total, topic) => {
+        const normalizedTopic = normalizeSearchText(topic);
+        return total + (normalizedTopic && text.includes(normalizedTopic) ? 3 : 0);
+      }, searchable.split(" ").reduce((total, token) => {
+        return total + (
+          token.length > 3 &&
+          !PATH_SEARCH_STOPWORDS.has(token) &&
+          textTokens.has(token) ? 1 : 0
+        );
+      }, 0));
+
+      return {path, score};
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  const topScore = scored[0]?.score ?? 0;
+  return scored
+    .filter((item) => topScore >= 3 ? item.score >= Math.max(3, topScore - 1) : item.score === topScore)
+    .slice(0, 3)
+    .map((item) => item.path);
+}
+
+function buildPathCatalogContext(): string {
+  return CHATBOT_PATH_CATALOG
+    .map((path) =>
+      `- ${path.title} | id: ${path.id} | temas: ${path.topics.join(", ")}`
+    )
+    .join("\n");
+}
+
+function buildPathCatalogAnswer(
+  message: string,
+  matches: ChatbotPathCatalogEntry[]
+): string | null {
+  if (!isPathCatalogQuestion(message)) return null;
+  if (matches.length === 0) {
+    return [
+      "No tengo una ruta con ese nombre o tema en el catalogo disponible.",
+      "Puedo orientarte si me dices el tema principal: ansiedad, estres, limites, relaciones, procrastinacion, estado de animo, apoyo social o proposito.",
+    ].join("\n");
+  }
+
+  if (matches.length === 1) {
+    const path = matches[0];
+    return [
+      `La ruta se llama **${path.title}**.`,
+      `Puedes encontrarla en /paths/${path.id}.`,
+    ].join("\n");
+  }
+
+  const lines = matches.map((path) => `- **${path.title}**: /paths/${path.id}`);
+  return [
+    "Estas son las rutas reales que encajan mejor con lo que preguntas:",
+    ...lines,
+  ].join("\n");
+}
+
+async function callGemini(
+  prompt: string,
+  options: GeminiCallOptions = {}
+): Promise<string> {
   const projectId = process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
   if (!projectId) {
     throw new Error("Missing GCLOUD_PROJECT / GOOGLE_CLOUD_PROJECT");
@@ -422,42 +784,63 @@ async function callGemini(prompt: string): Promise<string> {
     `${modelPath}:generateContent`;
 
   let lastError = "";
-  for (let attempt = 0; attempt <= GEMINI_MAX_RETRIES; attempt++) {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contents: [{role: "user", parts: [{text: prompt}]}],
-        generationConfig: {
-          maxOutputTokens: 512,
-          temperature: 0.7,
+  for (let budgetIndex = 0; budgetIndex < GEMINI_OUTPUT_TOKEN_BUDGETS.length; budgetIndex++) {
+    const maxOutputTokens = GEMINI_OUTPUT_TOKEN_BUDGETS[budgetIndex];
+    for (let attempt = 0; attempt <= GEMINI_MAX_RETRIES; attempt++) {
+      const promptForAttempt = buildGeminiPromptForBudget(prompt, budgetIndex > 0);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-      }),
-    });
+        body: JSON.stringify({
+          contents: [{role: "user", parts: [{text: promptForAttempt}]}],
+          generationConfig: buildGeminiGenerationConfig(maxOutputTokens),
+        }),
+      });
 
-    const text = await response.text();
-    if (response.ok) {
-      let parsed: any;
-      try {
-        parsed = JSON.parse(text);
-      } catch {
-        throw new Error("Invalid JSON from Vertex Gemini API.");
+      const text = await response.text();
+      if (response.ok) {
+        let parsed: any;
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          throw new Error("Invalid JSON from Vertex Gemini API.");
+        }
+
+        const candidate = parsed?.candidates?.[0];
+        const responseText = extractGeminiCandidateText(candidate);
+        const finishReason = String(candidate?.finishReason || "");
+
+        if (
+          finishReason === "MAX_TOKENS" ||
+          (
+            options.detectIncompleteText === true &&
+            looksIncompleteResponseText(responseText)
+          )
+        ) {
+          lastError =
+            `Gemini response reached maxOutputTokens (${maxOutputTokens}) ` +
+            "or looked incomplete.";
+          break;
+        }
+
+        return (
+          responseText ||
+          "No he podido generar una respuesta util. Prueba a reformular."
+        );
       }
 
-      return (
-        parsed?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
-        "No he podido generar una respuesta util. Prueba a reformular."
-      );
+      lastError = `Gemini API error (${response.status}): ${text.slice(0, 250)}`;
+      if (
+        !shouldRetryGeminiRequest(response.status) ||
+        attempt === GEMINI_MAX_RETRIES
+      ) {
+        throw new Error(lastError);
+      }
+      await sleep(getRetryDelayMs(attempt));
     }
-
-    lastError = `Gemini API error (${response.status}): ${text.slice(0, 250)}`;
-    if (!shouldRetryGeminiRequest(response.status) || attempt === GEMINI_MAX_RETRIES) {
-      break;
-    }
-    await sleep(getRetryDelayMs(attempt));
   }
 
   throw new Error(lastError || "Gemini API call failed.");
@@ -504,7 +887,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 app.get("/health", (_req: Request, res: Response) => {
-  res.json({ok: true});
+  res.json({ok: true, version: CHATBOT_API_VERSION});
 });
 
 app.get("/daily-question", async (req: Request, res: Response) => {
@@ -651,20 +1034,40 @@ app.post("/save-daily-check-in", async (req: Request, res: Response) => {
 
 app.post("/chatbot", async (req: Request, res: Response) => {
   try {
+    res.set("X-Workwell-Chatbot-Version", CHATBOT_API_VERSION);
     const {message, context, userName} = req.body || {};
     if (!message || typeof message !== "string") {
       return res.status(400).json({success: false, error: "Message is required"});
     }
 
+    const pathMatches = findPathCatalogMatches(`${context || ""}\n${message}`);
+    const pathCatalogAnswer = buildPathCatalogAnswer(message, pathMatches);
+    if (pathCatalogAnswer) {
+      return res.json({
+        success: true,
+        data: {response: pathCatalogAnswer, version: CHATBOT_API_VERSION},
+      });
+    }
+
+    const trimmedContext = context ?
+      truncateForPrompt(context, CHATBOT_MAX_CONTEXT_CHARS) :
+      "";
     const prompt = [
       "Eres un asistente emocional para una app de bienestar.",
       "Responde siempre en espanol, claro, breve y empatico.",
+      "Da respuestas completas y cerradas, sin frases cortadas.",
+      "Maximo 10 lineas. Si das pasos, usa 3 a 5 pasos concretos.",
+      "No repitas el saludo en cada turno si ya existe conversacion.",
+      "No inventes nombres de rutas, modulos, ejercicios o ubicaciones dentro de la app.",
+      "Si el usuario pregunta por rutas de la app, usa exclusivamente el catalogo verificado.",
+      "Si el catalogo no contiene una ruta para lo que pide, dilo claramente y pregunta por el tema que busca.",
       userName ? `Usuario: ${userName}` : "",
-      context ? `Contexto:\n${context}` : "",
+      `Catalogo verificado de rutas:\n${buildPathCatalogContext()}`,
+      trimmedContext ? `Contexto reciente:\n${trimmedContext}` : "",
       `Pregunta:\n${message}`,
     ].filter(Boolean).join("\n\n");
 
-    const responseText = await callGemini(prompt);
+    const responseText = await callGemini(prompt, {detectIncompleteText: true});
     const shouldAppendDisclaimer = shouldAppendPsychologicalOpinionDisclaimer(message);
     const finalResponse =
       shouldAppendDisclaimer &&
@@ -672,7 +1075,10 @@ app.post("/chatbot", async (req: Request, res: Response) => {
         `${responseText.trim()}\n\n${PSYCHOLOGICAL_OPINION_DISCLAIMER}` :
         responseText;
 
-    return res.json({success: true, data: {response: finalResponse}});
+    return res.json({
+      success: true,
+      data: {response: finalResponse, version: CHATBOT_API_VERSION},
+    });
   } catch (error: any) {
     return res.status(500).json({
       success: false,

@@ -24,6 +24,27 @@ type ServerChatbotResult =
   | { success: true; data: { response: string } }
   | { success: false; error: string };
 
+const MAX_CONTEXT_MESSAGE_CHARS = 700;
+const MAX_CONTEXT_CHARS = 2200;
+
+function compactMessageForContext(text: string): string {
+  const normalized = text.replace(/\s+/g, ' ').trim();
+  if (normalized.length <= MAX_CONTEXT_MESSAGE_CHARS) {
+    return normalized;
+  }
+
+  return `${normalized.slice(0, MAX_CONTEXT_MESSAGE_CHARS).trim()}...`;
+}
+
+function buildConversationContext(messages: Message[]): string {
+  return messages
+    .slice(-4)
+    .map((msg) => `${msg.sender === 'user' ? 'Usuario' : 'Mentor'}: ${compactMessageForContext(msg.text)}`)
+    .join('\n')
+    .slice(-MAX_CONTEXT_CHARS)
+    .trim();
+}
+
 export function ChatInterface() {
   const t = useTranslations();
   const { user: currentUser } = useUser();
@@ -140,10 +161,7 @@ export function ChatInterface() {
       });
     }
 
-    const context = messages
-      .slice(-5)
-      .map(msg => `${msg.sender === 'user' ? 'User' : 'Bot'}: ${msg.text}`)
-      .join('\n');
+    const context = buildConversationContext(messages);
 
     const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
     let result: ServerChatbotResult;
