@@ -72,7 +72,7 @@ export const t = {
   dimensionCompletedTitle: "Sección Completada",
   dimensionCompletedMessage: "¡Muy bien! Has completado la sección {dimensionNumber} de {totalDimensions}.",
   continueButton: "Continuar",
-  saveForLaterButton: "Guardar y Continuar",
+  saveForLaterButton: "Guardar",
   radarChartDescription: "Visualización de tu perfil en las diferentes dimensiones.",
   priorityAreasDescription: "Dimensiones clave para tu desarrollo actual.",
   detailedAnalysisTitle: "Análisis Detallado por Dimensión",

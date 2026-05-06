@@ -89,6 +89,8 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const [showDimensionCompletedDialog, setShowDimensionCompletedDialog] = useState(false);
   const [hasLoadedProgress, setHasLoadedProgress] = useState(false);
   const [isQuestionTransitioning, setIsQuestionTransitioning] = useState(false);
+  const [isReviewingAnswers, setIsReviewingAnswers] = useState(false);
+  const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
 
 
   useEffect(() => {
@@ -170,11 +172,13 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     const isLastItemInDimension = currentItemIndexInDimension === currentDimension.items.length - 1;
 
     if (isLastItem) {
+      setIsAutoAdvancing(false);
       submitFullAssessment(finalAnswers);
       return;
     }
 
     if (isGuided && isLastItemInDimension) {
+      setIsAutoAdvancing(false);
       if (!isSubmitting) {
         setShowDimensionCompletedDialog(true);
       }
@@ -204,6 +208,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
     setAnswers(newAnswers);
     
     if (isGuided) {
+      setIsAutoAdvancing(true);
       setTimeout(() => {
         goToNextQuestion(newAnswers);
       }, 250); 
@@ -211,6 +216,8 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   };
   
   const handleGoBack = () => {
+    setIsReviewingAnswers(true);
+    setIsAutoAdvancing(false);
     if (currentItemIndexInDimension > 0) {
       setCurrentItemIndexInDimension(prev => prev - 1);
     } else if (currentDimensionIndex > 0) {
@@ -224,6 +231,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   
   const handleDialogContinue = () => {
     setShowDimensionCompletedDialog(false);
+    setIsAutoAdvancing(false);
     const isLastDimension = currentDimensionIndex === assessmentDimensions.length - 1;
     if (!isLastDimension) {
       const nextDimIndex = currentDimensionIndex + 1;
@@ -257,6 +265,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   useEffect(() => {
     if (!currentItem?.id) return;
     setIsQuestionTransitioning(true);
+    setIsAutoAdvancing(false);
     const timer = setTimeout(() => setIsQuestionTransitioning(false), 360);
     return () => clearTimeout(timer);
   }, [currentItem?.id]);
@@ -348,9 +357,9 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
             <Button variant="outline" onClick={handleGoBack} disabled={isFirstQuestion}>
               <ArrowLeft className="mr-2 h-4 w-4" /> Anterior
             </Button>
-            {!isGuided && (
+            {(!isGuided || (isReviewingAnswers && isNextButtonActive && !isAutoAdvancing)) && (
               <Button onClick={handleNextStep} disabled={!isNextButtonActive} variant={isNextButtonActive ? "secondary" : "secondary"}>
-                  Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+                  {isGuided ? "Continuar" : "Siguiente"} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             )}
           </CardFooter>
