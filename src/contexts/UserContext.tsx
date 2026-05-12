@@ -6,7 +6,6 @@ import { onAuthStateChanged, signOut, type User as FirebaseUser, deleteUser as d
 import { useAuth, useFirestore } from "@/firebase/provider";
 import { doc, getDoc, getDocs, collection, writeBatch, setDoc } from "firebase/firestore";
 import { Capacitor } from '@capacitor/core';
-import { clearAssessmentHistory } from '@/data/assessmentHistoryStore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { t } from '@/lib/translations';

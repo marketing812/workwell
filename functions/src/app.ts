@@ -1386,6 +1386,90 @@ app.post("/save-notebook-entry", async (req: Request, res: Response) => {
   }
 });
 
+app.post("/save-route-progress", async (req: Request, res: Response) => {
+  try {
+    const userId = String(req.body?.userId || "").trim();
+    const routeNumber = Number(req.body?.routeNumber);
+    const weekNumber = Number(req.body?.weekNumber);
+    const status = Number(req.body?.status);
+
+    if (
+      !userId ||
+      !Number.isInteger(routeNumber) ||
+      routeNumber <= 0 ||
+      !Number.isInteger(weekNumber) ||
+      weekNumber <= 0 ||
+      status !== 1
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Faltan datos obligatorios: userId, routeNumber, weekNumber o status=1.",
+      });
+    }
+
+    const routeProgressType = "guardarrutasemana";
+    const token = buildNotebookSignedToken({
+      tipo: routeProgressType,
+      idusuario: userId,
+    });
+    const payload = {
+      idusuario: userId,
+      numeroruta: routeNumber,
+      numerosemana: weekNumber,
+      completado: 1,
+      timestamp: new Date().toISOString(),
+    };
+    const encryptedPayload = forceEncryptStringAES(JSON.stringify(payload));
+    const saveUrl =
+      `${NOTEBOOK_API_BASE}?apikey=${NOTEBOOK_API_KEY}` +
+      `&tipo=${encodeURIComponent(routeProgressType)}` +
+      `&idusuario=${encodeURIComponent(userId)}` +
+      `&token=${encodeURIComponent(token)}` +
+      `&datos=${encodeURIComponent(encryptedPayload)}`;
+
+    const saveResponse = await fetch(saveUrl, {
+      method: "GET",
+      signal: AbortSignal.timeout(NOTEBOOK_TIMEOUT_MS),
+    });
+    const text = await saveResponse.text();
+    if (!saveResponse.ok) {
+      return res.status(502).json({
+        success: false,
+        message: `Error externo (${saveResponse.status})`,
+        debugUrl: saveUrl,
+      });
+    }
+
+    try {
+      const parsed = JSON.parse(text);
+      if (parsed.status === "OK") {
+        return res.json({
+          success: true,
+          message: parsed.message || "Progreso de ruta guardado.",
+          debugUrl: saveUrl,
+        });
+      }
+      return res.status(400).json({
+        success: false,
+        message: parsed.message || "Error del servicio externo.",
+        debugUrl: saveUrl,
+      });
+    } catch {
+      return res.json({
+        success: true,
+        message: "Guardado (respuesta no JSON).",
+        debugUrl: saveUrl,
+      });
+    }
+  } catch (error: any) {
+    const message = error?.name === "AbortError" ?
+      "Tiempo de espera agotado al conectar con el servidor externo." :
+      (error?.message || "Error interno");
+    return res.status(500).json({success: false, message});
+  }
+});
+
 app.post("/save-mood-check-in", async (req: Request, res: Response) => {
   try {
     const {userId, mood, score} = req.body || {};
@@ -1534,10 +1618,45 @@ app.get("/trigger-reminder", async (_req: Request, res: Response) => {
       });
     }
     const result = await response.json();
+
+    const reminderUserId = String(result?.message || "").trim();
+    const reminderHtml = String(result?.data || "").trim();
+
+    if (reminderUserId && reminderHtml) {
+      const appInstance = getAdminApp();
+      const auth = getAuth(appInstance);
+      const db = getFirestore(appInstance);
+      const userRecord = await auth.getUser(reminderUserId);
+      const userEmail = String(userRecord.email || "").trim();
+
+      if (!userEmail) {
+        return res.status(400).json({
+          success: false,
+          error: "El usuario no tiene email en Firebase Auth.",
+          message: reminderUserId,
+          data: reminderHtml,
+        });
+      }
+
+      await db.collection("mail").add({
+        to: userEmail,
+        message: {
+          subject: "Recordatorio de EMOTIVA",
+          html: reminderHtml,
+        },
+        createdAt: new Date().toISOString(),
+        meta: {
+          kind: "mood-checkin-reminder",
+          userId: reminderUserId,
+        },
+      });
+    }
+
     return res.json({
       success: true,
-      message: result?.message || "OK",
-      data: result?.data || null,
+      message: reminderUserId || result?.message || "OK",
+      data: reminderHtml || result?.data || null,
+      queued: Boolean(reminderUserId && reminderHtml),
     });
   } catch (error: any) {
     return res.status(500).json({
@@ -2032,7 +2151,66 @@ app.post("/admin/auth/delete-users", async (req: Request, res: Response) => {
     });
   }
 });
+app.post("/admin/auth/authorize-user", async (req: Request, res: Response) => {
+  const expectedApiKey = process.env.ADMIN_DELETE_USERS_API_KEY;
 
+  if (!expectedApiKey) {
+    return res.status(500).json({
+      ok: false,
+      error: "Falta configurar ADMIN_DELETE_USERS_API_KEY en el servidor.",
+    });
+  }
+
+  const requestApiKey = getAdminApiKeyFromRequest(req);
+
+  if (!requestApiKey || requestApiKey !== expectedApiKey) {
+    return res.status(401).json({
+      ok: false,
+      error: "No autorizado.",
+    });
+  }
+
+  const email = String(req.body?.email || "").trim().toLowerCase();
+
+  if (!email) {
+    return res.status(400).json({
+      ok: false,
+      error: "El campo 'email' es obligatorio.",
+    });
+  }
+
+  try {
+    const appInstance = getAdminApp();
+    const auth = getAuth(appInstance);
+
+    const user = await auth.getUserByEmail(email);
+
+    await auth.setCustomUserClaims(user.uid, {
+      ...(user.customClaims || {}),
+      authorized: true,
+    });
+
+    await auth.updateUser(user.uid, {
+      disabled: false,
+      emailVerified: true,
+    });
+
+    return res.json({
+      ok: true,
+      uid: user.uid,
+      email: user.email,
+      authorized: true,
+      emailVerified: true,
+      message: "Usuario autorizado correctamente.",
+    });
+  } catch (error: any) {
+    return res.status(500).json({
+      ok: false,
+      error: "Error interno al autorizar usuario.",
+      details: error?.message ?? "Unknown error",
+    });
+  }
+});
 const WP_API_BASE = `${EXTERNAL_SERVICES_BASE_URL}/wp-json/wp/v2`;
 
 app.get("/resources", async (_req: Request, res: Response) => {

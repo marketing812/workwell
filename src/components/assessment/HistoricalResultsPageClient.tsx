@@ -15,7 +15,7 @@ import { assessmentDimensions as assessmentDimensionsData } from "@/data/assessm
 export function HistoricalResultsPageClient() {
   const t = useTranslations();
   const router = useRouter();
-  const { user } = useUser();
+  const { user, loading: userLoading } = useUser();
   const searchParams = useSearchParams();
   const assessmentId = searchParams.get("id") || "";
   const { toast } = useToast();
@@ -30,6 +30,9 @@ export function HistoricalResultsPageClient() {
   useEffect(() => {
     const processData = async () => {
       setIsLoading(true);
+      if (userLoading) {
+        return;
+      }
       if (!assessmentId) {
         setError("ID de evaluacion no proporcionado.");
         setIsLoading(false);
@@ -42,7 +45,7 @@ export function HistoricalResultsPageClient() {
           const dimIdNum = parseInt(dim.id.replace("dim", ""), 10);
           return dimIdNum <= 13;
         });
-        const record = getAssessmentById(assessmentId);
+        const record = getAssessmentById(assessmentId, user?.id);
 
         setAssessmentDimensions(dimensions);
 
@@ -84,7 +87,7 @@ export function HistoricalResultsPageClient() {
     };
 
     processData();
-  }, [assessmentId, toast]);
+  }, [assessmentId, toast, user?.id, userLoading]);
 
   const handleRetakeAssessment = () => {
     router.push("/assessment/intro");

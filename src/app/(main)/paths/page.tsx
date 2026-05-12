@@ -13,6 +13,8 @@ import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import { getCompletedModules } from '@/lib/progressStore';
 import { getPathUnlockInfo } from '@/lib/pathAccess';
 
+const REMINDER_TRIGGERED_ON_PATHS_KEY = 'workwell-reminder-triggered-on-paths-day';
+
 export default function PathsPage() {
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -46,6 +48,30 @@ export default function PathsPage() {
       });
       window.removeEventListener('storage', refreshProgress);
     };
+  }, []);
+
+  useEffect(() => {
+    const triggerReminderOnPathsEntry = async () => {
+      try {
+        const todayKey = new Date().toISOString().slice(0, 10);
+        const alreadyTriggeredToday = window.sessionStorage.getItem(REMINDER_TRIGGERED_ON_PATHS_KEY) === todayKey;
+        if (alreadyTriggeredToday) {
+          return;
+        }
+
+        const base = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/+$/, '');
+        if (!base) {
+          return;
+        }
+
+        window.sessionStorage.setItem(REMINDER_TRIGGERED_ON_PATHS_KEY, todayKey);
+        await fetch(`${base}/trigger-reminder`, { cache: 'no-store' });
+      } catch (error) {
+        console.error('PathsPage: Error triggering reminder on entry.', error);
+      }
+    };
+
+    triggerReminderOnPathsEntry();
   }, []);
 
   return (

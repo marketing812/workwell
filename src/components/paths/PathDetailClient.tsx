@@ -62,6 +62,8 @@ import { useRouter } from 'next/navigation';
 import { EXTERNAL_SERVICES_BASE_URL } from '@/lib/constants';
 import { getModuleUnlockMap, getPathUnlockInfo } from '@/lib/pathAccess';
 import { SafeAudioPlayer } from '@/components/media/SafeAudioPlayer';
+import { normalizeResourceContentHtml } from '@/lib/resourceLinks';
+import { syncRouteProgressCompletion } from '@/lib/routeProgressSync';
 
 const LoaderComponent = () => <div className="flex justify-center items-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>;
 
@@ -114,6 +116,46 @@ function getModuleWeekNumber(module: PathModule): number | null {
   }
 
   return null;
+}
+
+function isRouteClosureModule(module: PathModule): boolean {
+  return /(?:^|[_-])cierre$/i.test(module.id) || /cierre de la ruta|reflexi[oó]n final de la ruta|resumen final de la ruta/i.test(module.title);
+}
+
+function resolveModuleWeekNumber(path: Path, moduleIndex: number): number {
+  const directWeekNumber = getModuleWeekNumber(path.modules[moduleIndex]);
+  if (directWeekNumber && directWeekNumber >= 1 && directWeekNumber <= 5) {
+    return directWeekNumber;
+  }
+
+  if (isRouteClosureModule(path.modules[moduleIndex])) {
+    return 5;
+  }
+
+  for (let i = moduleIndex - 1; i >= 0; i--) {
+    const previousWeekNumber = getModuleWeekNumber(path.modules[i]);
+    if (previousWeekNumber && previousWeekNumber >= 1 && previousWeekNumber <= 4) {
+      return previousWeekNumber;
+    }
+  }
+
+  for (let i = moduleIndex + 1; i < path.modules.length; i++) {
+    const nextWeekNumber = getModuleWeekNumber(path.modules[i]);
+    if (nextWeekNumber && nextWeekNumber >= 1 && nextWeekNumber <= 4) {
+      return nextWeekNumber;
+    }
+  }
+
+  return 1;
+}
+
+function getRouteNumber(pathId: string): number | null {
+  const index = pathsData.findIndex((path) => path.id === pathId);
+  if (index === -1) {
+    return null;
+  }
+
+  return index + 1;
 }
 
 // RUTA 1
@@ -486,7 +528,7 @@ function ContentItemRenderer({
     html.replace(/(^|<br\s*\/?>)\s*(Paso\s+\d+:)/gi, '$1<strong>$2</strong>');
   const normalizeContentHtml = (html: string): string => {
     const base = insideCollapsible ? stripBoldTags(html) : html;
-    return emphasizeStepPrefixes(base);
+    return normalizeResourceContentHtml(emphasizeStepPrefixes(base));
   };
   const normalizeQuoteHtml = (html: string): string =>
     normalizeContentHtml(html)
@@ -991,6 +1033,7 @@ function RepeatableContentItemRenderer({
 export function PathDetailClient({ path }: { path: Path }) {
   const t = useTranslations();
   const { toast } = useToast();
+  const { user } = useUser();
   const { loadPath, updateModuleCompletion: contextUpdateModuleCompletion } = useActivePath();
   const router = useRouter();
   const pathname = usePathname();
@@ -1040,13 +1083,26 @@ export function PathDetailClient({ path }: { path: Path }) {
     return getModuleUnlockMap(path, completedModules);
   }, [path, completedModules]);
 
-  const completeModule = useCallback((moduleId: string, moduleTitle: string) => {
+  const completeModule = useCallback((moduleId: string, moduleTitle: string, moduleWeekNumber: number) => {
+    if (completedModules.has(moduleId)) {
+      return;
+    }
+
     const newCompletedModules = new Set(completedModules);
     newCompletedModules.add(moduleId);
     
     setCompletedModules(newCompletedModules);
     saveCompletedModules(path.id, newCompletedModules);
     contextUpdateModuleCompletion(path.id, moduleId, true);
+
+    const routeNumber = getRouteNumber(path.id);
+    if (routeNumber) {
+      syncRouteProgressCompletion({
+        userId: user?.id,
+        routeNumber,
+        weekNumber: moduleWeekNumber,
+      });
+    }
     
     toast({
       title: t.moduleCompletedTitle,
@@ -1058,10 +1114,10 @@ export function PathDetailClient({ path }: { path: Path }) {
     if (allModulesCompleted) {
       router.push(`/paths/${path.id}/completed`);
     }
-  }, [completedModules, path.id, path.modules, contextUpdateModuleCompletion, t, toast, router]);
+  }, [completedModules, path.id, path.modules, contextUpdateModuleCompletion, user?.id, t, toast, router]);
 
 
-  const handleToggleComplete = (moduleId: string, moduleTitle: string) => {
+  const handleToggleComplete = (moduleId: string, moduleTitle: string, moduleWeekNumber: number) => {
     const moduleAccess = moduleUnlockMap.get(moduleId);
     if (moduleAccess && !moduleAccess.isUnlocked) {
       toast({
@@ -1075,7 +1131,7 @@ export function PathDetailClient({ path }: { path: Path }) {
     if (completedModules.has(moduleId)) {
       setUncompleteModuleId(moduleId); // Open confirmation dialog to uncomplete
     } else {
-      completeModule(moduleId, moduleTitle); // Directly complete it
+      completeModule(moduleId, moduleTitle, moduleWeekNumber); // Directly complete it
     }
   };
 
@@ -1181,9 +1237,11 @@ export function PathDetailClient({ path }: { path: Path }) {
 
       <div className="space-y-6">
         {path.modules.map((module) => {
+          const moduleIndex = path.modules.findIndex((item) => item.id === module.id);
           const moduleAccess = moduleUnlockMap.get(module.id) ?? { isUnlocked: true };
           const isModuleLocked = !moduleAccess.isUnlocked;
           const moduleWeekNumber = getModuleWeekNumber(module);
+          const resolvedModuleWeekNumber = resolveModuleWeekNumber(path, moduleIndex);
 
           return (
           <ModuleErrorBoundary key={module.id} pathId={path.id} module={module}>
@@ -1193,7 +1251,7 @@ export function PathDetailClient({ path }: { path: Path }) {
               data-analytics-path-title={path.title}
               data-analytics-module-id={module.id}
               data-analytics-module-title={module.title}
-              data-analytics-week-number={moduleWeekNumber ?? undefined}
+              data-analytics-week-number={resolvedModuleWeekNumber}
             >
               <Card
                 className={`shadow-lg transition-all duration-300 hover:shadow-xl ${
@@ -1254,7 +1312,11 @@ export function PathDetailClient({ path }: { path: Path }) {
                     index={i}
                     path={path}
                     module={module}
-                    onExerciseComplete={() => completeModule(module.id, module.title)}
+                    onExerciseComplete={() => completeModule(
+                      module.id,
+                      module.title,
+                      resolvedModuleWeekNumber
+                    )}
                   />
                 </ContentItemErrorBoundary>
               ))}
@@ -1262,7 +1324,11 @@ export function PathDetailClient({ path }: { path: Path }) {
               </CardContent>
               <CardFooter>
                  <Button
-                  onClick={() => handleToggleComplete(module.id, module.title)}
+                  onClick={() => handleToggleComplete(
+                    module.id,
+                    module.title,
+                    resolvedModuleWeekNumber
+                  )}
                   variant={completedModules.has(module.id) ? 'default' : 'secondary'}
                   className={completedModules.has(module.id) ? 'bg-green-600 hover:bg-green-700' : ''}
                   disabled={isModuleLocked}

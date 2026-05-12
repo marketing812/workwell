@@ -18,28 +18,53 @@ export interface AssessmentRecord {
 }
 
 const ASSESSMENT_HISTORY_KEY = "workwell-assessment-history";
+const ASSESSMENT_HISTORY_KEY_PREFIX = "workwell-assessment-history:";
 const MAX_HISTORY_ENTRIES = 20; // Limit for localStorage
 
-export function getAssessmentHistory(): AssessmentRecord[] {
-  if (typeof window === "undefined") return [];
+function getScopedAssessmentHistoryKey(userId: string): string {
+  return `${ASSESSMENT_HISTORY_KEY_PREFIX}${userId}`;
+}
+
+function sortAssessmentRecords(records: AssessmentRecord[]): AssessmentRecord[] {
+  return records.sort((a, b) => {
+    try {
+      return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
+    } catch (e) {
+      return 0;
+    }
+  });
+}
+
+function clearLegacyAssessmentHistoryIfPresent(): void {
+  if (typeof window === "undefined") return;
   try {
-    const item = localStorage.getItem(ASSESSMENT_HISTORY_KEY);
+    if (localStorage.getItem(ASSESSMENT_HISTORY_KEY) !== null) {
+      localStorage.removeItem(ASSESSMENT_HISTORY_KEY);
+    }
+  } catch (error) {
+    console.error("Error clearing legacy assessment history from localStorage:", error);
+  }
+}
+
+export function getAssessmentHistory(userId?: string | null): AssessmentRecord[] {
+  if (typeof window === "undefined") return [];
+  if (!userId) return [];
+  try {
+    clearLegacyAssessmentHistoryIfPresent();
+    const item = localStorage.getItem(getScopedAssessmentHistoryKey(userId));
     const records = item ? (JSON.parse(item) as AssessmentRecord[]) : [];
-    // Sort by timestamp descending (newest first)
-    return records.sort((a, b) => {
-        try {
-            return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime()
-        } catch(e) {
-            return 0; // if dates are invalid, don't sort
-        }
-    });
+    return sortAssessmentRecords(records);
   } catch (error) {
     console.error("Error reading assessment history from localStorage:", error);
     return [];
   }
 }
 
-export function saveAssessmentToHistory(assessmentData: InitialAssessmentOutput, rawAnswers: Record<string, number>): AssessmentRecord {
+export function saveAssessmentToHistory(
+  assessmentData: InitialAssessmentOutput,
+  rawAnswers: Record<string, number>,
+  userId?: string | null
+): AssessmentRecord {
   if (typeof window === "undefined") {
     const placeholderRecord: AssessmentRecord = {
       id: crypto.randomUUID(),
@@ -53,6 +78,19 @@ export function saveAssessmentToHistory(assessmentData: InitialAssessmentOutput,
     return placeholderRecord;
   }
 
+  if (!userId) {
+    const placeholderRecord: AssessmentRecord = {
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(),
+      data: {
+        ...assessmentData,
+        respuestas: rawAnswers,
+      },
+    };
+    console.warn("Skipped saving assessment history because no userId was provided.");
+    return placeholderRecord;
+  }
+
   const newRecord: AssessmentRecord = {
     id: crypto.randomUUID(),
     timestamp: new Date().toISOString(),
@@ -63,9 +101,10 @@ export function saveAssessmentToHistory(assessmentData: InitialAssessmentOutput,
   };
 
   try {
-    const currentHistory = getAssessmentHistory();
+    clearLegacyAssessmentHistoryIfPresent();
+    const currentHistory = getAssessmentHistory(userId);
     const updatedHistory = [newRecord, ...currentHistory].slice(0, MAX_HISTORY_ENTRIES);
-    localStorage.setItem(ASSESSMENT_HISTORY_KEY, JSON.stringify(updatedHistory));
+    localStorage.setItem(getScopedAssessmentHistoryKey(userId), JSON.stringify(updatedHistory));
    // console.log("AssessmentHistoryStore: Saved new assessment record. Total records:", updatedHistory.length);
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
     return newRecord;
@@ -75,9 +114,9 @@ export function saveAssessmentToHistory(assessmentData: InitialAssessmentOutput,
   }
 }
 
-export function getAssessmentById(id: string): AssessmentRecord | undefined {
+export function getAssessmentById(id: string, userId?: string | null): AssessmentRecord | undefined {
   if (typeof window === "undefined") return undefined;
-  const history = getAssessmentHistory();
+  const history = getAssessmentHistory(userId);
   return history.find(record => record.id === id);
 }
 
@@ -109,10 +148,12 @@ export function formatAssessmentTimestamp(isoTimestamp: string | null | undefine
   }
 }
 
-export function clearAssessmentHistory(): void {
+export function clearAssessmentHistory(userId?: string | null): void {
   if (typeof window === "undefined") return;
+  if (!userId) return;
   try {
-    localStorage.removeItem(ASSESSMENT_HISTORY_KEY);
+    clearLegacyAssessmentHistoryIfPresent();
+    localStorage.removeItem(getScopedAssessmentHistoryKey(userId));
    // console.log("Assessment history cleared from localStorage.");
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
   } catch (error) {
@@ -120,25 +161,25 @@ export function clearAssessmentHistory(): void {
   }
 }
 
-export function overwriteAssessmentHistory(records: AssessmentRecord[]): void {
+export function overwriteAssessmentHistory(records: AssessmentRecord[], userId?: string | null): void {
   if (typeof window === "undefined") return;
+  if (!userId) return;
   try {
-    // Ensure records are sorted by timestamp descending (newest first) before saving
+    clearLegacyAssessmentHistoryIfPresent();
     const sortedRecords = [...records].sort((a, b) => {
+      try {
+        return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
+      } catch (e) {
         try {
-            return parseISO(b.timestamp).getTime() - parseISO(a.timestamp).getTime();
-        } catch (e) {
-             // Fallback for potentially non-ISO timestamps from API before they are normalized
-             try {
-                return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
-             } catch (e2) {
-                console.warn("overwriteAssessmentHistory: Could not parse timestamps for sorting", b.timestamp, a.timestamp);
-                return 0;
-             }
+          return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+        } catch (e2) {
+          console.warn("overwriteAssessmentHistory: Could not parse timestamps for sorting", b.timestamp, a.timestamp);
+          return 0;
         }
+      }
     });
     const recordsToStore = sortedRecords.slice(0, MAX_HISTORY_ENTRIES);
-    localStorage.setItem(ASSESSMENT_HISTORY_KEY, JSON.stringify(recordsToStore));
+    localStorage.setItem(getScopedAssessmentHistoryKey(userId), JSON.stringify(recordsToStore));
    // console.log("AssessmentHistoryStore: Overwritten local assessment history with API data. Total records:", recordsToStore.length);
     window.dispatchEvent(new CustomEvent('assessment-history-updated'));
   } catch (error) {

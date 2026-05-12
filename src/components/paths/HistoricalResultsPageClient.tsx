@@ -222,7 +222,7 @@ interface HistoricalResultsPageClientProps {
 export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsPageClientProps) {
   const t = useTranslations();
   const router = useRouter();
-  const { user } = useUser();
+  const { user, loading: userLoading } = useUser();
   const { toast } = useToast();
 
   const [assessmentRecord, setAssessmentRecord] = useState<AssessmentRecord | null | undefined>(undefined);
@@ -234,6 +234,9 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
   useEffect(() => {
     const processData = async () => {
       setIsLoading(true);
+      if (userLoading) {
+        return;
+      }
       if (!assessmentId) {
         setError("ID de evaluación no proporcionado.");
         setIsLoading(false);
@@ -243,7 +246,7 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
       
       try {
         const dimensions = assessmentDimensionsData;
-        const record = getAssessmentById(assessmentId);
+        const record = getAssessmentById(assessmentId, user?.id);
 
         setAssessmentDimensions(dimensions);
 
@@ -295,7 +298,7 @@ export function HistoricalResultsPageClient({ assessmentId }: HistoricalResultsP
     };
 
     processData();
-  }, [assessmentId, toast]);
+  }, [assessmentId, toast, user?.id, userLoading]);
 
   const handleRetakeAssessment = () => {
     router.push('/assessment/intro');

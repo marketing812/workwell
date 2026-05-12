@@ -22,7 +22,8 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import { signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, type User as FirebaseUser } from "firebase/auth";
-import { useAuth } from "@/firebase/provider";
+import { doc, getDoc } from "firebase/firestore";
+import { useAuth, useFirestore } from "@/firebase/provider";
 import { sendLegacyData } from "@/data/userUtils";
 
 const WELCOME_SEEN_KEY = "workwell-welcome-seen";
@@ -45,6 +46,7 @@ export function LoginForm() {
   const { toast } = useToast();
   const router = useRouter();
   const auth = useAuth();
+  const db = useFirestore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,6 +64,7 @@ export function LoginForm() {
 
     if (!alreadySynced) {
       let pendingData: any = {};
+      let firestoreData: any = {};
       if (typeof window !== "undefined") {
         const pendingRaw = localStorage.getItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
         if (pendingRaw) {
@@ -73,23 +76,53 @@ export function LoginForm() {
         }
       }
 
+      try {
+        const userSnapshot = await getDoc(doc(db, "users", fbUser.uid));
+        if (userSnapshot.exists()) {
+          firestoreData = userSnapshot.data();
+        }
+      } catch (error) {
+        console.warn("No se pudo cargar el perfil Firestore para sincronizacion legacy:", error);
+      }
+
       const { success } = await sendLegacyData(
         {
           id: fbUser.uid,
-          email: fbUser.email || "",
-          name: fbUser.displayName || "",
-          gender: pendingData.gender || "",
-          initialEmotionalState: pendingData.initialEmotionalState ?? "",
-          ageRange: pendingData.ageRange || "",
-          department_code: pendingData.department_code || "",
+          email: fbUser.email || firestoreData.email || pendingData.email || "",
+          name: fbUser.displayName || firestoreData.name || pendingData.name || "",
+          gender: pendingData.gender || firestoreData.gender || "",
+          initialEmotionalState:
+            pendingData.initialEmotionalState ??
+            firestoreData.initialEmotionalState ??
+            "",
+          ageRange: pendingData.ageRange || firestoreData.ageRange || "",
+          department_code:
+            pendingData.department_code ||
+            firestoreData.department_code ||
+            "",
           verifiedAt: new Date().toISOString(),
         },
         "usuario"
       );
 
-      if (typeof window !== "undefined" && success) {
-        localStorage.setItem(legacySyncKey, "1");
-        localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+      if (typeof window !== "undefined") {
+        if (success) {
+          localStorage.setItem(legacySyncKey, "1");
+          localStorage.removeItem(`${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`);
+        } else if (Object.keys(pendingData).length === 0 && Object.keys(firestoreData).length > 0) {
+          localStorage.setItem(
+            `${LEGACY_PENDING_USER_DATA_PREFIX}${fbUser.uid}`,
+            JSON.stringify({
+              id: fbUser.uid,
+              name: firestoreData.name || "",
+              email: fbUser.email || firestoreData.email || "",
+              gender: firestoreData.gender || "",
+              ageRange: firestoreData.ageRange || "",
+              initialEmotionalState: firestoreData.initialEmotionalState ?? "",
+              department_code: firestoreData.department_code || "",
+            })
+          );
+        }
       }
     }
 

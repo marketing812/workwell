@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { SafeAudioPlayer } from '@/components/media/SafeAudioPlayer';
+import { normalizeResourceContentHtml } from '@/lib/resourceLinks';
 
 const cognitiveSignals = [
   { id: 'cog-concentration', label: 'Me cuesta concentrarme' },
@@ -78,7 +79,8 @@ export default function TherapeuticNotebookReflectionExercise({
     physical: '',
   });
   const [notes, setNotes] = useState<Record<string, string>>({});
-  const normalizePromptsHtml = (html: string) => html.replace(/<\/?(b|strong)>/gi, '');
+  const normalizePromptsHtml = (html: string) =>
+    normalizeResourceContentHtml(html.replace(/<\/?(b|strong)>/gi, ''));
   const hasGuidedFields = Boolean(content.guidedFields && content.guidedFields.length > 0);
   const isGuidedStepMode = Boolean(hasGuidedFields && content.guidedStepMode);
 

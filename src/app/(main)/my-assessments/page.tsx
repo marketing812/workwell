@@ -11,9 +11,9 @@ import { Badge } from '@/components/ui/badge';
 import { useUser } from '@/contexts/UserContext';
 import { z } from 'zod';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { getInProgressAssessment } from '@/data/inProgressAssessmentStore';
 
 const API_TIMEOUT_MS = 20000;
-const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
 
 function toIsoTimestampSafe(timestamp: string): string {
   const normalized = timestamp.includes('T') ? timestamp : timestamp.replace(' ', 'T');
@@ -182,12 +182,11 @@ export default function MyAssessmentsPage() {
   const [hasInProgress, setHasInProgress] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && user?.id) {
         try {
-            const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
-            if(savedProgress) {
-                const parsedData = JSON.parse(savedProgress);
-                setHasInProgress(!!parsedData && !!parsedData.answers && Object.keys(parsedData.answers).length > 0);
+            const parsedData = getInProgressAssessment(user.id);
+            if(parsedData) {
+                setHasInProgress(!!parsedData.answers && Object.keys(parsedData.answers).length > 0);
             } else {
                 setHasInProgress(false);
             }
@@ -195,6 +194,8 @@ export default function MyAssessmentsPage() {
             console.error("Error checking in-progress assessment:", e);
             setHasInProgress(false);
         }
+    } else if (!user?.id) {
+      setHasInProgress(false);
     }
   }, [user]);
 
@@ -210,7 +211,7 @@ export default function MyAssessmentsPage() {
     setError(null);
     
     // --- OPTIMISTIC UI: Cargar datos locales primero ---
-    const localAssessments = dedupeAssessments(getLocalAssessmentHistory());
+    const localAssessments = dedupeAssessments(getLocalAssessmentHistory(user.id));
     setAssessments(localAssessments);
     // ---
     try {
@@ -237,7 +238,7 @@ export default function MyAssessmentsPage() {
         const mergedAssessments = dedupeAssessments(allCandidates);
 
         setAssessments(mergedAssessments);
-        overwriteAssessmentHistory(mergedAssessments);
+        overwriteAssessmentHistory(mergedAssessments, user.id);
       } else {
         console.error('MyAssessmentsPage: Zod validation failed.', validationResult.error);
         setError(t.errorOccurred + ' (Datos de evaluación recibidos no son válidos)');

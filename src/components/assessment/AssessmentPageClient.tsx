@@ -16,11 +16,10 @@ import { saveAssessmentToHistory } from '@/data/assessmentHistoryStore';
 import type { AssessmentDimension } from '@/data/paths/pathTypes';
 import { saveAssessment as saveAssessmentToServer } from '@/actions/client-assessment';
 import { assessmentDimensions } from '@/data/assessmentDimensions';
+import { clearInProgressAssessment } from '@/data/inProgressAssessmentStore';
 
 const DEVELOPER_EMAIL = 'jpcampa@example.com';
 const SESSION_STORAGE_ASSESSMENT_RESULTS_KEY = 'workwell-assessment-results';
-const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
-
 interface AssessmentSavePayload {
   assessmentId: string;
   userId: string;
@@ -85,7 +84,7 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
     setIsProcessingModalVisible(true);
     setGeneratedSaveUrl(null); 
 
-    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
+    clearInProgressAssessment(user?.id);
 
     const result: ServerAssessmentResult = await submitAssessment(answers);
 
@@ -112,7 +111,7 @@ export default function AssessmentPageClient({ isGuided = false }: AssessmentPag
           return acc;
         }, {} as Record<string, number>);
 
-        saveAssessmentToHistory(result.data, scoresOnlyForHistory);
+        saveAssessmentToHistory(result.data, scoresOnlyForHistory, user?.id);
 
       } catch (error) {
         console.error("AssessmentPage: Error saving results to sessionStorage or history store:", error);

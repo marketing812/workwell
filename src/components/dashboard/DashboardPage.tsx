@@ -181,7 +181,7 @@ export default function DashboardPage() {
   }, [user?.id, t, toast]);
 
   const loadLatestAssessment = useCallback(async () => {
-    const localHistory = getAssessmentHistory();
+    const localHistory = getAssessmentHistory(user?.id);
     if (localHistory.length > 0) {
       setLatestAssessment(localHistory[0]);
     }
@@ -206,7 +206,7 @@ export default function DashboardPage() {
         .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
       if (normalized.length > 0) {
-        overwriteAssessmentHistory(normalized);
+        overwriteAssessmentHistory(normalized, user.id);
         setLatestAssessment(normalized[0]);
       }
     } catch {

@@ -19,6 +19,7 @@ import { useAuth, useFirestore } from "@/firebase/provider";
 import { sendLegacyData } from "@/data/userUtils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Slider } from "../ui/slider";
+import { toExportAwareAppPath } from "@/lib/staticExportPaths";
 
 const LEGACY_PENDING_USER_DATA_PREFIX = "workwell-legacy-pending-user-";
 const LEGACY_USER_SYNC_KEY_PREFIX = "workwell-legacy-user-synced-";
@@ -34,8 +35,12 @@ const registerSchema = z.object({
     .regex(/[a-z]/, "La contraseña debe incluir al menos una letra minúscula.")
     .regex(/[0-9]/, "La contraseña debe incluir al menos un número.")
     .regex(/[^A-Za-z0-9]/, "La contraseña debe incluir al menos un símbolo (por ejemplo: *, $, %, !)."),
-  ageRange: z.string().optional(),
-  gender: z.string().optional(),
+  ageRange: z.string()
+    .trim()
+    .min(1, "El rango de edad es obligatorio."),
+  gender: z.string()
+    .trim()
+    .min(1, "El género es obligatorio."),
   token: z.string()
     .trim()
     .min(1, "El código de acceso es obligatorio."), // Required department code
@@ -112,6 +117,7 @@ export function RegisterForm() {
   const [errors, setErrors] = useState<z.ZodError<RegisterFormData> | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const privacyPolicyHref = toExportAwareAppPath("/settings/legal");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -217,6 +223,7 @@ export function RegisterForm() {
           localStorage.removeItem(pendingLegacyKey);
         } else {
           localStorage.setItem(pendingLegacyKey, JSON.stringify(legacyPayload));
+          console.warn("Sincronizacion legacy pendiente para usuario recien registrado:", firebaseUser.uid);
         }
       }
 
@@ -315,7 +322,7 @@ export function RegisterForm() {
             {fieldErrors?.token && <p className="text-sm text-destructive pt-1">{fieldErrors.token[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="ageRange">{t.ageRange}</Label>
+            <Label htmlFor="ageRange">{t.ageRange} *</Label>
             <Select name="ageRange" onValueChange={handleSelectChange('ageRange')} value={formData.ageRange}>
               <SelectTrigger id="ageRange">
                 <SelectValue placeholder={t.ageRangePlaceholder} />
@@ -327,7 +334,7 @@ export function RegisterForm() {
              {fieldErrors?.ageRange && <p className="text-sm text-destructive pt-1">{fieldErrors.ageRange[0]}</p>}
           </div>
           <div>
-            <Label htmlFor="gender">{t.gender}</Label>
+            <Label htmlFor="gender">{t.gender.replace(" (opcional)", "")} *</Label>
             <Select name="gender" onValueChange={handleSelectChange('gender')} value={formData.gender}>
               <SelectTrigger id="gender">
                 <SelectValue placeholder={t.genderPlaceholder} />
@@ -371,7 +378,7 @@ export function RegisterForm() {
                 <div className="grid gap-1.5 leading-none">
                   <Label htmlFor="agreeTerms" className="text-sm font-normal">
                     He leído y acepto la{' '}
-                    <Link href="/settings/legal" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">
+                    <Link href={privacyPolicyHref} className="underline hover:text-primary">
                       Política de Privacidad
                     </Link>
                     {' '}y entiendo el tratamiento de mis datos personales.

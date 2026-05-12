@@ -21,6 +21,13 @@ import {
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { assessmentDimensions } from '@/data/assessmentDimensions';
+import { useUser } from '@/contexts/UserContext';
+import {
+  clearInProgressAssessment,
+  getInProgressAssessment,
+  saveInProgressAssessment,
+  type InProgressAssessmentData,
+} from '@/data/inProgressAssessmentStore';
 
 const iconMap: Record<string, React.ElementType> = {
   Frown,
@@ -61,16 +68,6 @@ const likertToneClasses: Record<number, { base: string; selected: string }> = {
   },
 };
 
-const IN_PROGRESS_ANSWERS_KEY = 'workwell-assessment-in-progress';
-
-interface InProgressData {
-  answers: Record<string, { score: number; weight: number }>;
-  position: {
-    dimension: number;
-    item: number;
-  };
-}
-
 interface QuestionnaireFormProps {
   onSubmit: (answers: Record<string, { score: number; weight: number }>) => Promise<void>;
   isSubmitting: boolean;
@@ -81,6 +78,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
   const t = useTranslations();
   const router = useRouter();
   const { toast } = useToast();
+  const { user, loading: userLoading } = useUser();
   
   const [currentDimensionIndex, setCurrentDimensionIndex] = useState(0);
   const [currentItemIndexInDimension, setCurrentItemIndexInDimension] = useState(0);
@@ -94,12 +92,18 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
 
 
   useEffect(() => {
-    if (!Array.isArray(assessmentDimensions) || assessmentDimensions.length === 0 || hasLoadedProgress) return;
+    if (
+      !Array.isArray(assessmentDimensions) ||
+      assessmentDimensions.length === 0 ||
+      hasLoadedProgress ||
+      userLoading
+    ) {
+      return;
+    }
 
     try {
-      const savedProgress = localStorage.getItem(IN_PROGRESS_ANSWERS_KEY);
-      if (savedProgress) {
-        const parsedData = JSON.parse(savedProgress) as InProgressData;
+      const parsedData = getInProgressAssessment(user?.id);
+      if (parsedData) {
         if (parsedData.answers && parsedData.position) {
           setAnswers(parsedData.answers);
           const { dimension, item } = parsedData.position;
@@ -127,15 +131,15 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
       console.error("Error loading in-progress assessment:", error);
       setHasLoadedProgress(true);
     }
-  }, [toast, hasLoadedProgress]);
+  }, [toast, hasLoadedProgress, user?.id, userLoading]);
   
   const saveProgress = (dimIndex: number, itemIndex: number, currentAnswers: Record<string, { score: number; weight: number }>) => {
     try {
-      const dataToSave: InProgressData = {
+      const dataToSave: InProgressAssessmentData = {
         answers: currentAnswers,
         position: { dimension: dimIndex, item: itemIndex }
       };
-      localStorage.setItem(IN_PROGRESS_ANSWERS_KEY, JSON.stringify(dataToSave));
+      saveInProgressAssessment(user?.id, dataToSave);
     } catch (error) {
       console.error("Error saving partial progress:", error);
     }
@@ -160,7 +164,7 @@ export function QuestionnaireForm({ onSubmit, isSubmitting, isGuided = true }: Q
        });
        return;
     }
-    localStorage.removeItem(IN_PROGRESS_ANSWERS_KEY);
+    clearInProgressAssessment(user?.id);
     await onSubmit(finalAnswers);
   };
   
