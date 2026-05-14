@@ -96,19 +96,36 @@ function keywordScore(question: string, text: string) {
 
 const EMOTIONAL_DISTRESS_PATTERNS = [
   "no me siento con animo",
+  "no estoy bien",
+  "no me encuentro bien",
   "sin animo",
   "desanim",
   "triste",
+  "decaid",
+  "deprim",
   "agotad",
   "agobiad",
   "ansios",
   "ansiedad",
   "bloquead",
+  "estresad",
+  "estres",
   "no puedo mas",
   "me siento mal",
+  "me encuentro mal",
   "estoy mal",
+  "estoy regular",
+  "estoy fatal",
+  "me siento raro",
+  "me siento rara",
   "me cuesta todo",
   "no tengo ganas",
+  "no tengo energia",
+  "sin fuerzas",
+  "sin energia",
+  "estoy saturad",
+  "me siento superad",
+  "me siento superada",
   "vac",
   "solo",
   "sola",
@@ -133,6 +150,12 @@ function startsWithPrematureResourceSuggestion(response: string) {
     /^mi recomendacion es\b/,
     /^podrias empezar\b/,
     /^puedes empezar\b/,
+    /^quizas te ayude\b/,
+    /^quiza te ayude\b/,
+    /^quizas te vendria bien\b/,
+    /^quiza te vendria bien\b/,
+    /^podria ayudarte\b/,
+    /^puede ayudarte\b/,
     /^la ruta\b/,
     /^una ruta\b/,
     /^te iria bien\b/,
@@ -145,7 +168,7 @@ function startsWithPrematureResourceSuggestion(response: string) {
     return true;
   }
 
-  return /^(te recomiendo|te sugiero|mi recomendacion es|podrias empezar|puedes empezar).{0,80}\b(ruta|ejercicio|recurso|contenido)\b/.test(
+  return /^(te recomiendo|te sugiero|mi recomendacion es|podrias empezar|puedes empezar|quizas te ayude|quiza te ayude|quizas te vendria bien|quiza te vendria bien|podria ayudarte|puede ayudarte).{0,120}\b(ruta|ejercicio|recurso|contenido)\b/.test(
     text
   );
 }
