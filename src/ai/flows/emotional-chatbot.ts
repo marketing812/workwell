@@ -94,6 +94,62 @@ function keywordScore(question: string, text: string) {
   return score;
 }
 
+const EMOTIONAL_DISTRESS_PATTERNS = [
+  "no me siento con animo",
+  "sin animo",
+  "desanim",
+  "triste",
+  "agotad",
+  "agobiad",
+  "ansios",
+  "ansiedad",
+  "bloquead",
+  "no puedo mas",
+  "me siento mal",
+  "estoy mal",
+  "me cuesta todo",
+  "no tengo ganas",
+  "vac",
+  "solo",
+  "sola",
+  "sobrepas",
+  "abrum",
+];
+
+function isEmotionalDistress(message: string) {
+  const text = normalize(message);
+  if (!text) return false;
+
+  return EMOTIONAL_DISTRESS_PATTERNS.some((pattern) => text.includes(pattern));
+}
+
+function startsWithPrematureResourceSuggestion(response: string) {
+  const text = normalize(response).slice(0, 240);
+  if (!text) return false;
+
+  const leadingSuggestionPatterns = [
+    /^te recomiendo\b/,
+    /^te sugiero\b/,
+    /^mi recomendacion es\b/,
+    /^podrias empezar\b/,
+    /^puedes empezar\b/,
+    /^la ruta\b/,
+    /^una ruta\b/,
+    /^te iria bien\b/,
+    /^te vendria bien\b/,
+    /^haz la ruta\b/,
+    /^prueba la ruta\b/,
+  ];
+
+  if (leadingSuggestionPatterns.some((pattern) => pattern.test(text))) {
+    return true;
+  }
+
+  return /^(te recomiendo|te sugiero|mi recomendacion es|podrias empezar|puedes empezar).{0,80}\b(ruta|ejercicio|recurso|contenido)\b/.test(
+    text
+  );
+}
+
 export async function retrieveDocsContext(
   question: string,
   opts?: { k?: number; minChars?: number }
@@ -178,7 +234,8 @@ const emotionalChatbotPrompt = ai.definePrompt({
   name: "emotionalChatbotPrompt",
   model: googleAI.model("gemini-2.5-flash"),
   prompt: `**ROL Y OBJETIVO**
-Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es ayudar al usuario de forma clara, cercana y profesional, como un orientador emocional que utiliza documentación interna como fuente principal.
+Eres un asistente conversacional para la app EMOTIVA. Actúas como mentor psicoeducativo: cálido, profesional y basado en evidencia. Tu objetivo es ayudar al usuario de forma clara, cercana y profesional, utilizando la documentación interna como fuente principal.
+No sustituyes a un profesional de salud mental y no debes presentarte como terapeuta ni como servicio clínico.
 **REGLA CRÍTICA (USO DE DOCUMENTOS)**
 1. Responde basándote en la información de DOCUMENTOS siempre que haya algo relacionado.
 2. Si DOCUMENTOS contiene la respuesta, contesta directo y claro.
@@ -188,6 +245,17 @@ Eres un asistente conversacional para la app EMOTIVA. Tu objetivo es ayudar al u
    - Haz 1 pregunta aclaratoria para identificar qué “Beck” o qué concepto busca.
 4. Solo si DOCUMENTOS está vacío, responde exactamente:
    "No se han encontrado resultados en la documentación disponible. ¿Podrías reformular tu consulta o intentarlo con otras palabras?"
+
+**MANEJO DEL MALESTAR EMOCIONAL**
+- REGLA PRIORITARIA: si el mensaje expresa malestar emocional, tristeza, desánimo, ansiedad, agobio o bloqueo, queda prohibido recomendar una ruta, ejercicio, contenido o recurso como primera respuesta, aunque aparezca en DOCUMENTOS.
+- En esos casos, sigue obligatoriamente este orden:
+  1. valida emocionalmente lo que comparte el usuario;
+  2. ofrece una explicación breve y psicoeducativa, sin sonar clínica ni distante;
+  3. propone una microacción concreta, breve y segura;
+  4. cierra con una pregunta abierta para continuar la conversación.
+- Usa el contenido de las rutas para orientar la conversación y enriquecer tu respuesta, pero no derives automáticamente al usuario a una ruta.
+- Solo puedes mencionar rutas si el usuario las pide explícitamente o como sugerencia secundaria al final de la respuesta, después de haber respondido con validación, explicación, microacción y pregunta abierta.
+- En mensajes de malestar emocional, el primer bloque de la respuesta nunca debe empezar recomendando una ruta, ejercicio, contenido o recurso.
 
 **ESTILO DE RESPUESTA**
 - Conversacional, cercano y profesional.
@@ -211,6 +279,12 @@ HISTORIAL DE CONVERSACIÓN:
 ---
 PREGUNTA DEL USUARIO:
 {{{message}}}
+
+{{#if responseDirective}}
+---
+INSTRUCCION ADICIONAL DE RESPUESTA:
+{{{responseDirective}}}
+{{/if}}
 
 ---
 RESPUESTA DEL ASISTENTE (TEXTO PLANO, SIN JSON, SIN MARKDOWN):
@@ -256,9 +330,12 @@ const emotionalChatbotFlow = ai.defineFlow(
       context?: string;
       userName?: string;
       docsContext?: string;
+      responseDirective?: string;
     } = {
       message: input.message,
     };
+
+    const emotionalSupportMode = isEmotionalDistress(input.message);
     
     if (docsContext) {
         promptPayload.docsContext = docsContext;
@@ -270,6 +347,12 @@ const emotionalChatbotFlow = ai.defineFlow(
     if (typeof input.userName === "string" && input.userName.trim() !== "") {
       promptPayload.userName = input.userName;
     }
+
+    if (emotionalSupportMode) {
+      promptPayload.responseDirective =
+        "El mensaje del usuario expresa malestar emocional. No puedes recomendar una ruta, ejercicio, contenido o recurso como apertura de la respuesta. Primero valida, luego explica brevemente, despues propone una microaccion concreta y termina con una pregunta abierta. Si mencionas una ruta, solo puede aparecer al final como sugerencia secundaria.";
+    }
+
 const result: any = await emotionalChatbotPrompt(promptPayload);
 
 // Extrae texto de forma compatible con Genkit
@@ -282,7 +365,26 @@ const raw =
 // console.log("LLM_RAW_TYPE:", typeof raw);
 // console.log("LLM_RAW_PREVIEW:", String(raw).slice(0, 300));
 */
-const assistantText = String(raw ?? "").trim();
+let assistantText = String(raw ?? "").trim();
+
+if (
+  emotionalSupportMode &&
+  startsWithPrematureResourceSuggestion(assistantText)
+) {
+  const retryPayload = {
+    ...promptPayload,
+    responseDirective:
+      "Corrige la respuesta anterior. El usuario expresa malestar emocional y esta prohibido empezar recomendando una ruta, ejercicio, contenido o recurso. Reescribe la respuesta empezando por validacion emocional, seguida de una explicacion breve, una microaccion concreta y una pregunta abierta. Solo si aporta valor, menciona una ruta al final como sugerencia secundaria.",
+  };
+
+  const retryResult: any = await emotionalChatbotPrompt(retryPayload);
+  const retryRaw =
+    typeof retryResult?.text === "function"
+      ? retryResult.text()
+      : (retryResult?.text ?? retryResult?.output ?? retryResult?.message ?? "");
+
+  assistantText = String(retryRaw ?? "").trim() || assistantText;
+}
 
 // Si viene vacío, NO devuelvas vacío nunca
 if (!assistantText) {
